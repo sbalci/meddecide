@@ -1,17 +1,42 @@
 ---
-title: What the Package Does (Title Case)
+title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.0
+version: 0.0.1
 jms: '1.0'
 authors:
-  - Who wrote it
-maintainer: The package maintainer <yourself@somewhere.net>
-date: '1970-01-01'
+  - Serdar Balci
+maintainer: Serdar Balci <drserdarbalci@gmail.com>
+date: '2020-07-04'
 type: R
-description: >-
-  More about what it does (maybe more than one line) Use four spaces when
-  indenting paragraphs within the Description.
-analyses: []
+description: |-
+  Functions for Medical Decision in ClinicoPath jamovi Module
+    Analysis for Clinicopathological Research
+analyses:
+  - title: Interrater Reliability
+    name: agreement
+    ns: meddecide
+    menuGroup: meddecide
+    menuSubgroup: Agreement
+    menuTitle: Interrater Reliability
+    description: Function for Interrater Reliability.
+  - title: Medical Decision
+    name: decision
+    ns: meddecide
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Medical Decision
+    description: >
+      Function for Medical Decision Analysis. Sensitivity, specificity, positive
+      predictive value, negative predictive value.
+    menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
+  - title: Decision Calculator
+    name: decisioncalculator
+    ns: meddecide
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Decision Calculator
+    description: Function for Medical Decision Calculator.
+    menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
 usesNative: true
 minApp: 1.0.8
 
