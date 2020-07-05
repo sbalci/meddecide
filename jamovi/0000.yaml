@@ -37,6 +37,13 @@ analyses:
     menuTitle: Decision Calculator
     description: Function for Medical Decision Calculator.
     menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
+datasets:
+  - name: histopathology including analysis
+    path: histopathologyMedicalDecision.omv
+    description: Example analysis for Medical Decision Tests.
+    tags:
+      - Kappa
+      - Sensitivity
 usesNative: true
 minApp: 1.0.8
 
