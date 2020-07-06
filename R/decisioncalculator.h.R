@@ -14,7 +14,7 @@ decisioncalculatorOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
             pprob = 0.3, ...) {
 
             super$initialize(
-                package='ClinicoPath',
+                package='meddecide',
                 name='decisioncalculator',
                 requiresData=FALSE,
                 ...)
@@ -95,7 +95,7 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
     public = list(
         initialize = function(options, data=NULL, datasetId="", analysisId="", revision=0) {
             super$initialize(
-                package = 'ClinicoPath',
+                package = 'meddecide',
                 name = 'decisioncalculator',
                 version = c(1,0,0),
                 options = options,
