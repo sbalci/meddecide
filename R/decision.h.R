@@ -12,7 +12,7 @@ decisionOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
             testPositive = NULL, ...) {
 
             super$initialize(
-                package='meddecide',
+                package='ClinicoPath',
                 name='decision',
                 requiresData=TRUE,
                 ...)
@@ -85,7 +85,7 @@ decisionBase <- if (requireNamespace('jmvcore')) R6::R6Class(
     public = list(
         initialize = function(options, data=NULL, datasetId="", analysisId="", revision=0) {
             super$initialize(
-                package = 'meddecide',
+                package = 'ClinicoPath',
                 name = 'decision',
                 version = c(1,0,0),
                 options = options,
