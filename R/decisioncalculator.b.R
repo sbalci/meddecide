@@ -136,9 +136,9 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
 
-        LRP <- Sens/(1 - Spec)
+        LRP <- Sens / (1 - Spec)
 
-        LRN <- (1 - Sens)/Spec
+        LRN <- (1 - Sens) / Spec
 
 
 

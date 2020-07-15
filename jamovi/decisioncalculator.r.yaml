@@ -87,11 +87,11 @@ items:
           using known Population Prevalence)'
           type: number
           format: pc
-        - name: PLR
+        - name: LRP
           title: Positive Likelihood Ratio
           type: number
           format: pc
-        - name: NLR
+        - name: LRN
           title: Negative Likelihood Ratio
           type: number
           format: pc
