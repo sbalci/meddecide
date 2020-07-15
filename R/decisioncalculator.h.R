@@ -171,13 +171,11 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                     list(
                         `name`="LRP", 
                         `title`="Positive Likelihood Ratio", 
-                        `type`="number", 
-                        `format`="pc"),
+                        `type`="number"),
                     list(
                         `name`="LRN", 
                         `title`="Negative Likelihood Ratio", 
-                        `type`="number", 
-                        `format`="pc")),
+                        `type`="number")),
                 clearWith=list(
                     "pp",
                     "pprob")))}))

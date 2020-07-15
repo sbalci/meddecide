@@ -90,11 +90,11 @@ items:
         - name: LRP
           title: Positive Likelihood Ratio
           type: number
-          format: pc
+          # format: pc
         - name: LRN
           title: Negative Likelihood Ratio
           type: number
-          format: pc
+          # format: pc
       clearWith:
           - pp
           - pprob

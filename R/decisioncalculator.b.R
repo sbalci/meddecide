@@ -88,6 +88,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         # Self Calculation https://cran.r-project.org/web/packages/caret/caret.pdf
         # https://online.stat.psu.edu/stat509/node/150/
 
+        # https://en.wikipedia.org/wiki/Sensitivity_and_specificity
 
         TotalPop <- TP + TN + FP + FN
 
