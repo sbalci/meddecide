@@ -167,6 +167,16 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `name`="PostTestProbHealthy", 
                         `title`="Post-test Probability of Being Healthy (Probability of being healthy after a negative test using known Population Prevalence)", 
                         `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="PLR", 
+                        `title`="Positive Likelihood Ratio", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="NLR", 
+                        `title`="Negative Likelihood Ratio", 
+                        `type`="number", 
                         `format`="pc")),
                 clearWith=list(
                     "pp",

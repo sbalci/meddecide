@@ -87,6 +87,14 @@ items:
           using known Population Prevalence)'
           type: number
           format: pc
+        - name: PLR
+          title: Positive Likelihood Ratio
+          type: number
+          format: pc
+        - name: NLR
+          title: Negative Likelihood Ratio
+          type: number
+          format: pc
       clearWith:
           - pp
           - pprob

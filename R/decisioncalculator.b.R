@@ -165,7 +165,9 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             PPV = PPV,
             NPV = NPV,
             PostTestProbDisease = PostTestProbDisease,
-            PostTestProbHealthy = PostTestProbHealthy
+            PostTestProbHealthy = PostTestProbHealthy,
+            LRP = LRP,
+            LRN = LRN
             )
             )
 
