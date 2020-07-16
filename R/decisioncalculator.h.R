@@ -81,7 +81,8 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
     inherit = jmvcore::Group,
     active = list(
         text2 = function() private$.items[["text2"]],
-        manualtable = function() private$.items[["manualtable"]]),
+        nTable = function() private$.items[["nTable"]],
+        ratioTable = function() private$.items[["ratioTable"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -99,7 +100,7 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                     "pprob")))
             self$add(jmvcore::Table$new(
                 options=options,
-                name="manualtable",
+                name="nTable",
                 title="Decision Test Statistics",
                 swapRowsColumns=TRUE,
                 rows=1,
@@ -130,12 +131,22 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="TestT", 
-                        `title`="Total Number of True Test Results", 
+                        `title`="True Test (n)", 
                         `type`="number"),
                     list(
                         `name`="TestW", 
-                        `title`="Total Number of Wrong Test Results", 
-                        `type`="number"),
+                        `title`="Wrong Test (n)", 
+                        `type`="number")),
+                clearWith=list(
+                    "pp",
+                    "pprob")))
+            self$add(jmvcore::Table$new(
+                options=options,
+                name="ratioTable",
+                title="Decision Test Statistics",
+                swapRowsColumns=TRUE,
+                rows=1,
+                columns=list(
                     list(
                         `name`="Sens", 
                         `title`="Sensitivity (True Positives among Diseased)", 
@@ -227,14 +238,15 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$text2} \tab \tab \tab \tab \tab a preformatted \cr
-#'   \code{results$manualtable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$nTable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
 #'
-#' \code{results$manualtable$asDF}
+#' \code{results$nTable$asDF}
 #'
-#' \code{as.data.frame(results$manualtable)}
+#' \code{as.data.frame(results$nTable)}
 #'
 #' @export
 decisioncalculator <- function(

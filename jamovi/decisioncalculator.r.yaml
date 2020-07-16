@@ -51,11 +51,11 @@ items:
         - name: TestW
           title: 'Wrong Test (n)'
           type: number
-          clearWith:
-              - pp
-              - pprob
+      clearWith:
+          - pp
+          - pprob
 
-    - name:  nTable
+    - name:  ratioTable
       title: 'Decision Test Statistics'
       type: Table
       swapRowsColumns: true
