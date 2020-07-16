@@ -21,7 +21,7 @@ items:
           - pprob
 
 
-    - name:  manualtable
+    - name:  nTable
       title: 'Decision Test Statistics'
       type: Table
       swapRowsColumns: true
@@ -46,11 +46,21 @@ items:
           title: 'Negative Tests (n)'
           type: number
         - name: TestT
-          title: 'Total Number of True Test Results'
+          title: 'True Test (n)'
           type: number
         - name: TestW
-          title: 'Total Number of Wrong Test Results'
+          title: 'Wrong Test (n)'
           type: number
+          clearWith:
+              - pp
+              - pprob
+
+      - name:  nTable
+        title: 'Decision Test Statistics'
+        type: Table
+        swapRowsColumns: true
+        rows:  1
+        columns:
         - name: Sens
           title: 'Sensitivity (True Positives among Diseased)'
           type: number

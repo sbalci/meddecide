@@ -148,17 +148,24 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         # Populate Table ----
 
-        manualtable <- self$results$manualtable
-        manualtable$setRow(rowNo = 1,
+        nTable <- self$results$nTable
+        nTable$setRow(rowNo = 1,
                            values = list(
-            tablename = "Decision Test Statistics",
+            tablename = "Test Descriptives",
             TotalPop = TotalPop,
             DiseaseP = DiseaseP,
             DiseaseN = DiseaseN,
             TestP = TestP,
             TestN = TestN,
             TestT = TestT,
-            TestW = TestW,
+            TestW = TestW
+                           )
+        )
+
+        ratioTable <- self$results$ratioTable
+        ratioTable$setRow(rowNo = 1,
+                      values = list(
+            tablename = "Ratios",
             Sens = Sens,
             Spec = Spec,
             AccurT = AccurT,
@@ -176,41 +183,47 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         if (self$options$fnote) {
 
-        # manualtable$addFootnote(rowKey = "1", col = "TotalPop", "Total Population")
+        # nTable$addFootnote(rowKey = "1", col = "TotalPop", "Total Population")
 
-        manualtable$addFootnote(rowNo = 1, col = "TotalPop", "Total Number of Subjects")
+        nTable$addFootnote(rowNo = 1, col = "TotalPop", "Total Number of Subjects")
 
-        manualtable$addFootnote(rowNo = 1, col = "DiseaseP", "Total Number of Subjects with Disease")
+        nTable$addFootnote(rowNo = 1, col = "DiseaseP", "Total Number of Subjects with Disease")
 
-        manualtable$addFootnote(rowNo = 1, col = "DiseaseN", "Total Number of Healthy Subjects")
+        nTable$addFootnote(rowNo = 1, col = "DiseaseN", "Total Number of Healthy Subjects")
 
-        manualtable$addFootnote(rowNo = 1, col = "TestP", "Total Number of Positive Tests")
+        nTable$addFootnote(rowNo = 1, col = "TestP", "Total Number of Positive Tests")
 
-        manualtable$addFootnote(rowNo = 1, col = "TestN", "Total Number of Negative Tests")
+        nTable$addFootnote(rowNo = 1, col = "TestN", "Total Number of Negative Tests")
 
-        manualtable$addFootnote(rowNo = 1, col = "TestT", "")
+        nTable$addFootnote(rowNo = 1, col = "TestT", "Total Number of True Test Results")
 
-        manualtable$addFootnote(rowNo = 1, col = "TestW", "")
+        nTable$addFootnote(rowNo = 1, col = "TestW", "Total Number of Wrong Test Results")
 
-        manualtable$addFootnote(rowNo = 1, col = "Sens", "")
 
-        manualtable$addFootnote(rowNo = 1, col = "Spec", "")
+        }
 
-        manualtable$addFootnote(rowNo = 1, col = "AccurT", "")
 
-        manualtable$addFootnote(rowNo = 1, col = "PrevalenceD", "")
+        if (self$options$fnote) {
 
-        manualtable$addFootnote(rowNo = 1, col = "PPV", "")
+        ratioTable$addFootnote(rowNo = 1, col = "Sens", "")
 
-        manualtable$addFootnote(rowNo = 1, col = "NPV", "")
+        ratioTable$addFootnote(rowNo = 1, col = "Spec", "")
 
-        manualtable$addFootnote(rowNo = 1, col = "PostTestProbDisease", "")
+        ratioTable$addFootnote(rowNo = 1, col = "AccurT", "")
 
-        manualtable$addFootnote(rowNo = 1, col = "PostTestProbHealthy", "")
+        ratioTable$addFootnote(rowNo = 1, col = "PrevalenceD", "")
 
-        manualtable$addFootnote(rowNo = 1, col = "LRP", "")
+        ratioTable$addFootnote(rowNo = 1, col = "PPV", "")
 
-        manualtable$addFootnote(rowNo = 1, col = "LRN", "")
+        ratioTable$addFootnote(rowNo = 1, col = "NPV", "")
+
+        ratioTable$addFootnote(rowNo = 1, col = "PostTestProbDisease", "")
+
+        ratioTable$addFootnote(rowNo = 1, col = "PostTestProbHealthy", "")
+
+        ratioTable$addFootnote(rowNo = 1, col = "LRP", "")
+
+        ratioTable$addFootnote(rowNo = 1, col = "LRN", "")
 
 
         }
