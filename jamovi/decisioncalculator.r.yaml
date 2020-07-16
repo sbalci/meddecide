@@ -34,22 +34,22 @@ items:
           title: 'Total'
           type: number
         - name: DiseaseP
-          title: 'Diseased (n)'
+          title: 'Diseased'
           type: number
         - name: DiseaseN
-          title: 'Healthy (n)'
+          title: 'Healthy'
           type: number
         - name: TestP
-          title: 'Positive Tests (n)'
+          title: 'Positive Tests'
           type: number
         - name: TestN
-          title: 'Negative Tests (n)'
+          title: 'Negative Tests'
           type: number
         - name: TestT
-          title: 'True Test (n)'
+          title: 'True Test'
           type: number
         - name: TestW
-          title: 'Wrong Test (n)'
+          title: 'Wrong Test'
           type: number
       clearWith:
           - pp

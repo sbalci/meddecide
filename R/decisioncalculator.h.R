@@ -115,27 +115,27 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="DiseaseP", 
-                        `title`="Diseased (n)", 
+                        `title`="Diseased", 
                         `type`="number"),
                     list(
                         `name`="DiseaseN", 
-                        `title`="Healthy (n)", 
+                        `title`="Healthy", 
                         `type`="number"),
                     list(
                         `name`="TestP", 
-                        `title`="Positive Tests (n)", 
+                        `title`="Positive Tests", 
                         `type`="number"),
                     list(
                         `name`="TestN", 
-                        `title`="Negative Tests (n)", 
+                        `title`="Negative Tests", 
                         `type`="number"),
                     list(
                         `name`="TestT", 
-                        `title`="True Test (n)", 
+                        `title`="True Test", 
                         `type`="number"),
                     list(
                         `name`="TestW", 
-                        `title`="Wrong Test (n)", 
+                        `title`="Wrong Test", 
                         `type`="number")),
                 clearWith=list(
                     "pp",
