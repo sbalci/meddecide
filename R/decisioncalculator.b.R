@@ -264,8 +264,8 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         # use epiR ----
 
-        # table4 <- epiR::epi.tests(dat = table3)
-        # self$results$text3$setContent(table4)
+        table4 <- epiR::epi.tests(dat = table3)
+        self$results$text3$setContent(table4)
 
 
 
