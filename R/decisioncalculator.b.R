@@ -172,9 +172,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             )
             )
 
-        manualtable$getCell(col = 1, row = 1,
-
-            "Total Population")
+        manualtable$addFootnote(col = TotalPop, "Total Population")
 
 
 
