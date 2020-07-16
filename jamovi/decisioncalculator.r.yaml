@@ -31,19 +31,19 @@ items:
           title: ''
           type: text
         - name: TotalPop
-          title: 'Total Number of Subjects'
+          title: 'n'
           type: number
         - name: DiseaseP
-          title: 'Total Number of Subjects with Disease'
+          title: 'Diseased (n)'
           type: number
         - name: DiseaseN
-          title: 'Total Number of Healthy Subjects'
+          title: 'Healthy (n)'
           type: number
         - name: TestP
-          title: 'Total Number of Positive Tests'
+          title: 'Positive Tests (n)'
           type: number
         - name: TestN
-          title: 'Total Number of Negative Tests'
+          title: 'Negative Tests (n)'
           type: number
         - name: TestT
           title: 'Total Number of True Test Results'

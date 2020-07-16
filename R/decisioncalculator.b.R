@@ -172,9 +172,49 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             )
             )
 
-        # manualtable$addFootnote(rowNo = 1, col = "TotalPop", "Total Population")
+        # footnotes ----
 
-        manualtable$addFootnote(rowKey = "1", col = "TotalPop", "Total Population")
+        if (self$options$fnote) {
+
+        # manualtable$addFootnote(rowKey = "1", col = "TotalPop", "Total Population")
+
+        manualtable$addFootnote(rowNo = 1, col = "TotalPop", "Total Number of Subjects")
+
+        manualtable$addFootnote(rowNo = 1, col = "DiseaseP", "Total Number of Subjects with Disease")
+
+        manualtable$addFootnote(rowNo = 1, col = "DiseaseN", "Total Number of Healthy Subjects")
+
+        manualtable$addFootnote(rowNo = 1, col = "TestP", "Total Number of Positive Tests")
+
+        manualtable$addFootnote(rowNo = 1, col = "TestN", "Total Number of Negative Tests")
+
+        manualtable$addFootnote(rowNo = 1, col = "TestT", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "TestW", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "Sens", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "Spec", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "AccurT", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "PrevalenceD", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "PPV", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "NPV", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "PostTestProbDisease", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "PostTestProbHealthy", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "LRP", "")
+
+        manualtable$addFootnote(rowNo = 1, col = "LRN", "")
+
+
+        }
+
 
 
 

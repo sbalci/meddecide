@@ -11,7 +11,8 @@ decisioncalculatorOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
             FP = 30,
             FN = 20,
             pp = FALSE,
-            pprob = 0.3, ...) {
+            pprob = 0.3,
+            fnote = FALSE, ...) {
 
             super$initialize(
                 package='meddecide',
@@ -45,6 +46,10 @@ decisioncalculatorOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
                 default=0.3,
                 min=0.001,
                 max=0.999)
+            private$..fnote <- jmvcore::OptionBool$new(
+                "fnote",
+                fnote,
+                default=FALSE)
 
             self$.addOption(private$..TP)
             self$.addOption(private$..TN)
@@ -52,6 +57,7 @@ decisioncalculatorOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
             self$.addOption(private$..FN)
             self$.addOption(private$..pp)
             self$.addOption(private$..pprob)
+            self$.addOption(private$..fnote)
         }),
     active = list(
         TP = function() private$..TP$value,
@@ -59,14 +65,16 @@ decisioncalculatorOptions <- if (requireNamespace('jmvcore')) R6::R6Class(
         FP = function() private$..FP$value,
         FN = function() private$..FN$value,
         pp = function() private$..pp$value,
-        pprob = function() private$..pprob$value),
+        pprob = function() private$..pprob$value,
+        fnote = function() private$..fnote$value),
     private = list(
         ..TP = NA,
         ..TN = NA,
         ..FP = NA,
         ..FN = NA,
         ..pp = NA,
-        ..pprob = NA)
+        ..pprob = NA,
+        ..fnote = NA)
 )
 
 decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
@@ -102,23 +110,23 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="text"),
                     list(
                         `name`="TotalPop", 
-                        `title`="Total Number of Subjects", 
+                        `title`="n", 
                         `type`="number"),
                     list(
                         `name`="DiseaseP", 
-                        `title`="Total Number of Subjects with Disease", 
+                        `title`="Diseased (n)", 
                         `type`="number"),
                     list(
                         `name`="DiseaseN", 
-                        `title`="Total Number of Healthy Subjects", 
+                        `title`="Healthy (n)", 
                         `type`="number"),
                     list(
                         `name`="TestP", 
-                        `title`="Total Number of Positive Tests", 
+                        `title`="Positive Tests (n)", 
                         `type`="number"),
                     list(
                         `name`="TestN", 
-                        `title`="Total Number of Negative Tests", 
+                        `title`="Negative Tests (n)", 
                         `type`="number"),
                     list(
                         `name`="TestT", 
@@ -215,6 +223,7 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #' @param pp .
 #' @param pprob Prior probability (disease prevelance in the community).
 #'   Requires a value between 0.001 and 0.999, default 0.300.
+#' @param fnote .
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$text2} \tab \tab \tab \tab \tab a preformatted \cr
@@ -234,7 +243,8 @@ decisioncalculator <- function(
     FP = 30,
     FN = 20,
     pp = FALSE,
-    pprob = 0.3) {
+    pprob = 0.3,
+    fnote = FALSE) {
 
     if ( ! requireNamespace('jmvcore'))
         stop('decisioncalculator requires jmvcore to be installed (restart may be required)')
@@ -246,7 +256,8 @@ decisioncalculator <- function(
         FP = FP,
         FN = FN,
         pp = pp,
-        pprob = pprob)
+        pprob = pprob,
+        fnote = fnote)
 
     analysis <- decisioncalculatorClass$new(
         options = options,
