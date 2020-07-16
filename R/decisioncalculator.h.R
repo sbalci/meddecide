@@ -82,7 +82,8 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
     active = list(
         text2 = function() private$.items[["text2"]],
         nTable = function() private$.items[["nTable"]],
-        ratioTable = function() private$.items[["ratioTable"]]),
+        ratioTable = function() private$.items[["ratioTable"]],
+        text3 = function() private$.items[["text3"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -201,7 +202,11 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="number")),
                 clearWith=list(
                     "pp",
-                    "pprob")))}))
+                    "pprob")))
+            self$add(jmvcore::Preformatted$new(
+                options=options,
+                name="text3",
+                title="epiR"))}))
 
 decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
     "decisioncalculatorBase",
@@ -244,6 +249,7 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #'   \code{results$text2} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$nTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$text3} \tab \tab \tab \tab \tab a preformatted \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

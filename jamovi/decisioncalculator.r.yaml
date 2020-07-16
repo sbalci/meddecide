@@ -110,6 +110,12 @@ items:
 
 
 
+    - name:  text3
+      title: epiR
+      type:  Preformatted
+
+
+
     # - name:  table1
     #   title: 'Table 1'
     #   type:  Html
