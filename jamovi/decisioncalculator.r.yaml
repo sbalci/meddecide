@@ -55,12 +55,12 @@ items:
               - pp
               - pprob
 
-      - name:  nTable
-        title: 'Decision Test Statistics'
-        type: Table
-        swapRowsColumns: true
-        rows:  1
-        columns:
+    - name:  nTable
+      title: 'Decision Test Statistics'
+      type: Table
+      swapRowsColumns: true
+      rows:  1
+      columns:
         - name: Sens
           title: 'Sensitivity (True Positives among Diseased)'
           type: number
