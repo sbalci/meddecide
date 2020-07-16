@@ -111,7 +111,7 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="text"),
                     list(
                         `name`="TotalPop", 
-                        `title`="n", 
+                        `title`="Total", 
                         `type`="number"),
                     list(
                         `name`="DiseaseP", 
@@ -148,43 +148,47 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 rows=1,
                 columns=list(
                     list(
+                        `name`="tablename", 
+                        `title`="", 
+                        `type`="text"),
+                    list(
                         `name`="Sens", 
-                        `title`="Sensitivity (True Positives among Diseased)", 
+                        `title`="Sensitivity", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="Spec", 
-                        `title`="Specificity (True Negatives among Healthy)", 
+                        `title`="Specificity", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="AccurT", 
-                        `title`="Accuracy (True Test Result Ratio)", 
+                        `title`="Accuracy", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="PrevalenceD", 
-                        `title`="Disease Prevalence in this population", 
+                        `title`="Prevalence", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="PPV", 
-                        `title`="Positive Predictive Value (Probability of having disease after a positive test using this experimental population)", 
+                        `title`="Positive Predictive Value", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="NPV", 
-                        `title`="Negative Predictive Value (Probability of being healthy after a negative test using this experimental population)", 
+                        `title`="Negative Predictive Value", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="PostTestProbDisease", 
-                        `title`="Post-test Probability of Having Disease  (Probability of having disease after a positive test using known Population Prevalence)", 
+                        `title`="Post-test Disease Probability", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="PostTestProbHealthy", 
-                        `title`="Post-test Probability of Being Healthy (Probability of being healthy after a negative test using known Population Prevalence)", 
+                        `title`="Post-test Health Probability", 
                         `type`="number", 
                         `format`="pc"),
                     list(

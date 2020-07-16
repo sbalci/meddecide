@@ -151,7 +151,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         nTable <- self$results$nTable
         nTable$setRow(rowNo = 1,
                            values = list(
-            tablename = "Test Descriptives",
+            tablename = "n",
             TotalPop = TotalPop,
             DiseaseP = DiseaseP,
             DiseaseN = DiseaseN,
@@ -205,25 +205,25 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         if (self$options$fnote) {
 
-        ratioTable$addFootnote(rowNo = 1, col = "Sens", "")
+        ratioTable$addFootnote(rowNo = 1, col = "Sens", "Sensitivity (True Positives among Diseased)")
 
-        ratioTable$addFootnote(rowNo = 1, col = "Spec", "")
+        ratioTable$addFootnote(rowNo = 1, col = "Spec", "Specificity (True Negatives among Healthy)")
 
-        ratioTable$addFootnote(rowNo = 1, col = "AccurT", "")
+        ratioTable$addFootnote(rowNo = 1, col = "AccurT", "Accuracy (True Test Result Ratio)")
 
-        ratioTable$addFootnote(rowNo = 1, col = "PrevalenceD", "")
+        ratioTable$addFootnote(rowNo = 1, col = "PrevalenceD", "Disease Prevalence in this population")
 
-        ratioTable$addFootnote(rowNo = 1, col = "PPV", "")
+        ratioTable$addFootnote(rowNo = 1, col = "PPV", "Positive Predictive Value (Probability of having disease after a positive test using this experimental population)")
 
-        ratioTable$addFootnote(rowNo = 1, col = "NPV", "")
+        ratioTable$addFootnote(rowNo = 1, col = "NPV", "Negative Predictive Value (Probability of being healthy after a negative test using this experimental population)")
 
-        ratioTable$addFootnote(rowNo = 1, col = "PostTestProbDisease", "")
+        ratioTable$addFootnote(rowNo = 1, col = "PostTestProbDisease", "Post-test Probability of Having Disease  (Probability of having disease after a positive test using known Population Prevalence)")
 
-        ratioTable$addFootnote(rowNo = 1, col = "PostTestProbHealthy", "")
+        ratioTable$addFootnote(rowNo = 1, col = "PostTestProbHealthy", "Post-test Probability of Being Healthy (Probability of being healthy after a negative test using known Population Prevalence)")
 
-        ratioTable$addFootnote(rowNo = 1, col = "LRP", "")
+        # ratioTable$addFootnote(rowNo = 1, col = "LRP", "")
 
-        ratioTable$addFootnote(rowNo = 1, col = "LRN", "")
+        # ratioTable$addFootnote(rowNo = 1, col = "LRN", "")
 
 
         }
