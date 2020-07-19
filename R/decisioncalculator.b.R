@@ -264,11 +264,17 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         # use epiR ----
 
-        table4 <- epiR::epi.tests(dat = table3)
-        self$results$text3$setContent(table4)
+        # epirresult <- epiR::epi.tests(dat = table3)
+        # self$results$text3$setContent(epirresult)
 
 
-
+        # epirresult[[1]]
+        # epirresult[[2]]
+        # epirresult[[2]][["conf.level"]]
+        # epirresult[[2]][["elements"]]
+        # epirresult[[2]][["rval"]]
+        # epirresult[[2]][["tab"]]
+        # epirresult[[4]]
 
 
 

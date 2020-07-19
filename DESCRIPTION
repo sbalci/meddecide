@@ -29,8 +29,7 @@ Imports:
     caret,
     utils,
     forcats,
-    e1071,
-    epiR
+    e1071
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
