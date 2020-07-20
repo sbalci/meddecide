@@ -274,19 +274,8 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         text4 <-
             list(
-
-        "1" = epirresult[[1]],
-        "2" = epirresult[[2]],
-        epirresult[[2]][["conf.level"]],
-        epirresult[[2]][["elements"]],
-        epirresult[[2]][["rval"]],
-        epirresult[[2]][["tab"]],
-
-        "4" = epirresult[[4]],
-
-
-
-        "3" = epirresult[[3]],
+        "epirresult[[3]]" = epirresult[[3]],
+        as.data.frame(epirresult[[3]]),
 
         epirresult[[3]]$aprev,
         epirresult[[3]]$tprev,
@@ -303,11 +292,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         epirresult[[3]]$pro,
         epirresult[[3]]$pri,
         epirresult[[3]]$pfp,
-        epirresult[[3]]$pfn,
-
-        epirresult[[4]][["est"]],
-        epirresult[[4]][["lower"]],
-        epirresult[[4]][["upper"]]
+        epirresult[[3]]$pfn
             )
 
 
