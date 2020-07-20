@@ -277,7 +277,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         epirresult[[3]][["aprev"]],
 
 
-        epirresult[[3]]$aprev.est,
+        epirresult[[3]][["est"]],
         epirresult[[3]]$tprev,
         epirresult[[3]]$se,
         epirresult[[3]]$sp,
