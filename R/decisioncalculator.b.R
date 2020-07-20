@@ -281,24 +281,24 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         text4 <-
             list(
 
-                "summary" = epirresult2,
+                "summary" = epirresult2
 
-        epirresult[[3]]$aprev,
-        epirresult[[3]]$tprev,
-        epirresult[[3]]$se,
-        epirresult[[3]]$sp,
-        epirresult[[3]]$diag.acc,
-        epirresult[[3]]$diag.or,
-        epirresult[[3]]$nnd,
-        epirresult[[3]]$youden,
-        epirresult[[3]]$ppv,
-        epirresult[[3]]$npv,
-        epirresult[[3]]$plr,
-        epirresult[[3]]$nlr,
-        epirresult[[3]]$pro,
-        epirresult[[3]]$pri,
-        epirresult[[3]]$pfp,
-        epirresult[[3]]$pfn
+        # epirresult[[3]]$aprev,
+        # epirresult[[3]]$tprev,
+        # epirresult[[3]]$se,
+        # epirresult[[3]]$sp,
+        # epirresult[[3]]$diag.acc,
+        # epirresult[[3]]$diag.or,
+        # epirresult[[3]]$nnd,
+        # epirresult[[3]]$youden,
+        # epirresult[[3]]$ppv,
+        # epirresult[[3]]$npv,
+        # epirresult[[3]]$plr,
+        # epirresult[[3]]$nlr,
+        # epirresult[[3]]$pro,
+        # epirresult[[3]]$pri,
+        # epirresult[[3]]$pfp,
+        # epirresult[[3]]$pfn
             )
 
 
@@ -309,41 +309,15 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         self$results$text4$setContent(text4)
 
-        # ratioTable$setRow(rowNo = 2,
-        #                   values = list(
-        #                       tablename = "Ratios",
-        #                       aprev = epirresult[[3]]$aprev,
-        #                       tprev = epirresult[[3]]$tprev)
-        # )
 
 
 
-        # epirTable <- self$results$epirTable
+        epirTable <- self$results$epirTable
 
-        # data_frame <- epirresult[[4]]
-        # for(i in seq_along(data_frame[,1,drop=T])) {
-        #     epirTable$addRow(rowKey = i, values = c(data_frame[i,])) # This code produces a named vector/list, which is what the values argument expects
-        # }
-
-
-        # epirTable <- self$results$epirTable
-        # epirTable$setRow(rowNo = 1,
-        #                   values = epirresult
-        #
-        #                      # list(
-        #                      #  tablename = "Ratios",
-        #                      #  Sens = Sens,
-        #                      #  Spec = Spec,
-        #                      #  AccurT = AccurT,
-        #                      #  PrevalenceD = PrevalenceD,
-        #                      #  PPV = PPV,
-        #                      #  NPV = NPV,
-        #                      #  PostTestProbDisease = PostTestProbDisease,
-        #                      #  PostTestProbHealthy = PostTestProbHealthy,
-        #                      #  LRP = LRP,
-        #                      #  LRN = LRN
-        #                      # )
-        # )
+        data_frame <- epirresult2
+        for(i in seq_along(data_frame[,1,drop=T])) {
+            epirTable$addRow(rowKey = i, values = c(data_frame[i,])) # This code produces a named vector/list, which is what the values argument expects
+        }
 
 
 

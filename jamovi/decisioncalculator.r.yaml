@@ -119,23 +119,23 @@ items:
       type:  Preformatted
 
 
-    # - name:  epirTable
-    #   title: 'EpiR Table'
-    #   type: Table
-    #   rows:  2
-    #   columns:
-    #     - name: tablename
-    #       title: ''
-    #       type: text
-    #     - name: aprev
-    #       title: 'aprev'
-    #       type: number
-    #       format: pc
-    #     - name: tprev
-    #       title: 'tprev'
-    #       type: number
-    #       format: pc
-
+    - name:  epirTable
+      title: 'EpiR Table'
+      type: Table
+      rows: 0
+      columns: &idcols
+        - name: rowname
+          title: ""
+          type: text
+        - name: est
+          title: ""
+          type: number
+        - name: lower
+          title: ""
+          type: number
+        - name: upper
+          title: ""
+          type: number
 
     # - name:  table1
     #   title: 'Table 1'
