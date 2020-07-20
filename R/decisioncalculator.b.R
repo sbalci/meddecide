@@ -274,7 +274,6 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         text4 <-
             list(
-        "epirresult[[3]]" = epirresult[[3]],
         epirresult[[3]][["aprev"]],
 
 
