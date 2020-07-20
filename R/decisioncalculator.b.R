@@ -264,8 +264,8 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         # use epiR ----
 
-        epirresult <- epiR::epi.tests(dat = table3)
-        self$results$text3$setContent(epirresult)
+        # epirresult <- epiR::epi.tests(dat = table3)
+        # self$results$text3$setContent(epirresult)
 
 
         # epirresult[[1]]
@@ -278,24 +278,24 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
 
-        epirTable <- self$results$epirTable
-        epirTable$setRow(rowNo = 1,
-                          values = epirresult
-
-                             # list(
-                             #  tablename = "Ratios",
-                             #  Sens = Sens,
-                             #  Spec = Spec,
-                             #  AccurT = AccurT,
-                             #  PrevalenceD = PrevalenceD,
-                             #  PPV = PPV,
-                             #  NPV = NPV,
-                             #  PostTestProbDisease = PostTestProbDisease,
-                             #  PostTestProbHealthy = PostTestProbHealthy,
-                             #  LRP = LRP,
-                             #  LRN = LRN
-                             # )
-        )
+        # epirTable <- self$results$epirTable
+        # epirTable$setRow(rowNo = 1,
+        #                   values = epirresult
+        #
+        #                      # list(
+        #                      #  tablename = "Ratios",
+        #                      #  Sens = Sens,
+        #                      #  Spec = Spec,
+        #                      #  AccurT = AccurT,
+        #                      #  PrevalenceD = PrevalenceD,
+        #                      #  PPV = PPV,
+        #                      #  NPV = NPV,
+        #                      #  PostTestProbDisease = PostTestProbDisease,
+        #                      #  PostTestProbHealthy = PostTestProbHealthy,
+        #                      #  LRP = LRP,
+        #                      #  LRN = LRN
+        #                      # )
+        # )
 
 
 
