@@ -288,10 +288,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
                 epirresult[[3]],
                 # epirresult[[4]],
                 # data_frame,
-                # as.data.frame(data_frame),
-                typeof(data_frame),
-                class(data_frame),
-                print(data_frame)
+                as.data.frame(data_frame)
+                # typeof(data_frame),
+                # class(data_frame),
+                # print(data_frame)
                 # capture.output(data_frame)
             ))
 
