@@ -275,17 +275,13 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         epirresult2 <- summary(epirresult)
         epirresult2 <- as.data.frame(epirresult2) %>%
-            tibble::rownames_to_column()
-
-        epirresult2 <- summary(rval)
-        epirresult2 <- as.data.frame(epirresult2) %>%
-            tibble::rownames_to_column()
+            tibble::rownames_to_column(.data = .)
 
 
         text4 <-
             list(
 
-                epirresult2,
+                "summary" = epirresult2,
 
         epirresult[[3]]$aprev,
         epirresult[[3]]$tprev,
