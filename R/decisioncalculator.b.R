@@ -235,17 +235,21 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
 
-        # caretresult[['positive']] caretresult[['table']]
-        # caretresult[['overall']] caretresult[['overall']][['Accuracy']]
+        # caretresult[['positive']]
+        # caretresult[['table']]
+        # caretresult[['overall']]
+        # caretresult[['overall']][['Accuracy']]
         # caretresult[['overall']][['Kappa']]
         # caretresult[['overall']][['AccuracyLower']]
         # caretresult[['overall']][['AccuracyUpper']]
         # caretresult[['overall']][['AccuracyNull']]
         # caretresult[['overall']][['AccuracyPValue']]
-        # caretresult[['overall']][['McnemarPValue']] caretresult[['byClass']]
+        # caretresult[['overall']][['McnemarPValue']]
+        # caretresult[['byClass']]
         # caretresult[['byClass']][['Sensitivity']]
-        # caretresult[['byClass']][['Specificity']] caretresult[['byClass']][['Pos
-        # Pred Value']] caretresult[['byClass']][['Neg Pred Value']]
+        # caretresult[['byClass']][['Specificity']]
+        # caretresult[['byClass']][['Pos Pred Value']]
+        # caretresult[['byClass']][['Neg Pred Value']]
         # caretresult[['byClass']][['Precision']]
         # caretresult[['byClass']][['Recall']] caretresult[['byClass']][['F1']]
         # caretresult[['byClass']][['Prevalence']]
@@ -309,6 +313,14 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
         self$results$text4$setContent(text4)
+
+        ratioTable$setRow(rowNo = 2,
+                          values = list(
+                              tablename = "Ratios",
+                              aprev = epirresult[[3]]$aprev,
+                              tprev = epirresult[[3]]$tprev)
+        )
+
 
 
         # epirTable <- self$results$epirTable

@@ -119,9 +119,22 @@ items:
       type:  Preformatted
 
 
-    # - name:  epirTable
-    #   title: 'EpiR Table'
-    #   type: Table
+    - name:  epirTable
+      title: 'EpiR Table'
+      type: Table
+      rows:  2
+      columns:
+        - name: tablename
+          title: ''
+          type: text
+        - name: aprev
+          title: 'aprev'
+          type: number
+          format: pc
+        - name: tprev
+          title: 'tprev'
+          type: number
+          format: pc
 
 
     # - name:  table1

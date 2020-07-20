@@ -84,7 +84,8 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
         nTable = function() private$.items[["nTable"]],
         ratioTable = function() private$.items[["ratioTable"]],
         text3 = function() private$.items[["text3"]],
-        text4 = function() private$.items[["text4"]]),
+        text4 = function() private$.items[["text4"]],
+        epirTable = function() private$.items[["epirTable"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -211,7 +212,27 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="text4",
-                title="epiR[[4]]"))}))
+                title="epiR[[4]]"))
+            self$add(jmvcore::Table$new(
+                options=options,
+                name="epirTable",
+                title="EpiR Table",
+                rows=2,
+                columns=list(
+                    list(
+                        `name`="tablename", 
+                        `title`="", 
+                        `type`="text"),
+                    list(
+                        `name`="aprev", 
+                        `title`="aprev", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="tprev", 
+                        `title`="tprev", 
+                        `type`="number", 
+                        `format`="pc"))))}))
 
 decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
     "decisioncalculatorBase",
@@ -256,6 +277,7 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$text3} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$text4} \tab \tab \tab \tab \tab a preformatted \cr
+#'   \code{results$epirTable} \tab \tab \tab \tab \tab a table \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
