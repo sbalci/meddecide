@@ -283,6 +283,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         self$results$text4$setContent(
             list(
                 data_frame,
+                as.data.frame(data_frame),
                 typeof(data_frame),
                 class(data_frame)
             ))
