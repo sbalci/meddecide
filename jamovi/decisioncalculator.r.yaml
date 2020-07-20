@@ -110,10 +110,13 @@ items:
 
 
 
-    # - name:  text3
-    #   title: epiR
-    #   type:  Preformatted
+    - name:  text3
+      title: epiR
+      type:  Preformatted
 
+    - name:  text4
+      title: epiR[[4]]
+      type:  Preformatted
 
 
     # - name:  epirTable

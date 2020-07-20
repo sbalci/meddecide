@@ -264,8 +264,8 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         # use epiR ----
 
-        # epirresult <- epiR::epi.tests(dat = table3)
-        # self$results$text3$setContent(epirresult)
+        epirresult <- epiR::epi.tests(dat = table3)
+        self$results$text3$setContent(epirresult)
 
 
         # epirresult[[1]]
@@ -276,6 +276,24 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         # epirresult[[2]][["tab"]]
         # epirresult[[4]]
 
+
+
+        data_frame <- epirresult[[4]]
+
+        self$results$text4$setContent(
+            list(
+                data_frame,
+                typeof(data_frame),
+                class(data_frame)
+            ))
+
+
+        epirTable <- self$results$epirTable
+
+        data_frame <- epirresult[[4]]
+        for(i in seq_along(data_frame[,1,drop=T])) {
+            epirTable$addRow(rowKey = i, values = c(data_frame[i,])) # This code produces a named vector/list, which is what the values argument expects
+        }
 
 
         # epirTable <- self$results$epirTable
