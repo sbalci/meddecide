@@ -288,12 +288,12 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             ))
 
 
-        epirTable <- self$results$epirTable
+        # epirTable <- self$results$epirTable
 
-        data_frame <- epirresult[[4]]
-        for(i in seq_along(data_frame[,1,drop=T])) {
-            epirTable$addRow(rowKey = i, values = c(data_frame[i,])) # This code produces a named vector/list, which is what the values argument expects
-        }
+        # data_frame <- epirresult[[4]]
+        # for(i in seq_along(data_frame[,1,drop=T])) {
+        #     epirTable$addRow(rowKey = i, values = c(data_frame[i,])) # This code produces a named vector/list, which is what the values argument expects
+        # }
 
 
         # epirTable <- self$results$epirTable
