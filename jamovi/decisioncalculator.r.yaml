@@ -125,16 +125,16 @@ items:
       rows: 0
       columns: &idcols
         - name: rowname
-          title: ""
+          title: "Decision Statistics"
           type: text
         - name: est
-          title: ""
+          title: "Estimate"
           type: number
         - name: lower
-          title: ""
+          title: "Lower 95% CI"
           type: number
         - name: upper
-          title: ""
+          title: "Upper 95% CI"
           type: number
 
     # - name:  table1

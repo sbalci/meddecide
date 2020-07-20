@@ -221,19 +221,19 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 columns=list(
                     list(
                         `name`="rowname", 
-                        `title`="", 
+                        `title`="Decision Statistics", 
                         `type`="text"),
                     list(
                         `name`="est", 
-                        `title`="", 
+                        `title`="Estimate", 
                         `type`="number"),
                     list(
                         `name`="lower", 
-                        `title`="", 
+                        `title`="Lower 95% CI", 
                         `type`="number"),
                     list(
                         `name`="upper", 
-                        `title`="", 
+                        `title`="Upper 95% CI", 
                         `type`="number"))))}))
 
 decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
