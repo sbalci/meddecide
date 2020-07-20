@@ -278,22 +278,37 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
 
-        data_frame <- epirresult[[3]]
-
-        self$results$text4$setContent(
+        text4 <-
             list(
-                # epirresult,
-                # epirresult[[1]],
-                # epirresult[[2]],
-                epirresult[[3]],
-                # epirresult[[4]],
-                # data_frame,
-                as.data.frame(data_frame)
-                # typeof(data_frame),
-                # class(data_frame),
-                # print(data_frame)
-                # capture.output(data_frame)
-            ))
+        epirresult[[3]],
+        epirresult[[3]]$aprev,
+        epirresult[[3]]$tprev,
+        epirresult[[3]]$se,
+        epirresult[[3]]$sp,
+        epirresult[[3]]$diag.acc,
+        epirresult[[3]]$diag.or,
+        epirresult[[3]]$nnd,
+        epirresult[[3]]$youden,
+        epirresult[[3]]$ppv,
+        epirresult[[3]]$npv,
+        epirresult[[3]]$plr,
+        epirresult[[3]]$nlr,
+        epirresult[[3]]$pro,
+        epirresult[[3]]$pri,
+        epirresult[[3]]$pfp,
+        epirresult[[3]]$pfn,
+        epirresult[[4]]$est,
+        epirresult[[4]]$lower,
+        epirresult[[4]]$upper
+            )
+
+
+
+
+
+
+
+        self$results$text4$setContent(text4)
 
 
         # epirTable <- self$results$epirTable
