@@ -272,19 +272,20 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         self$results$text3$setContent(epirresult)
 
 
-        # epirresult[[1]]
-        # epirresult[[2]]
-        # epirresult[[2]][["conf.level"]]
-        # epirresult[[2]][["elements"]]
-        # epirresult[[2]][["rval"]]
-        # epirresult[[2]][["tab"]]
-        # epirresult[[4]]
-
-
-
         text4 <-
             list(
+        epirresult[[1]],
+        epirresult[[2]],
+        epirresult[[2]][["conf.level"]],
+        epirresult[[2]][["elements"]],
+        epirresult[[2]][["rval"]],
+        epirresult[[2]][["tab"]],
+        epirresult[[4]],
+
+
+
         epirresult[[3]],
+
         epirresult[[3]]$aprev,
         epirresult[[3]]$tprev,
         epirresult[[3]]$se,
@@ -301,6 +302,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         epirresult[[3]]$pri,
         epirresult[[3]]$pfp,
         epirresult[[3]]$pfn,
+
         epirresult[[4]][["est"]],
         epirresult[[4]][["lower"]],
         epirresult[[4]][["upper"]]
@@ -314,12 +316,12 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         self$results$text4$setContent(text4)
 
-        ratioTable$setRow(rowNo = 2,
-                          values = list(
-                              tablename = "Ratios",
-                              aprev = epirresult[[3]]$aprev,
-                              tprev = epirresult[[3]]$tprev)
-        )
+        # ratioTable$setRow(rowNo = 2,
+        #                   values = list(
+        #                       tablename = "Ratios",
+        #                       aprev = epirresult[[3]]$aprev,
+        #                       tprev = epirresult[[3]]$tprev)
+        # )
 
 
 
