@@ -274,18 +274,19 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         text4 <-
             list(
-                epirresult[[0]],
-        epirresult[[1]],
-        epirresult[[2]],
+
+        "1" = epirresult[[1]],
+        "2" = epirresult[[2]],
         epirresult[[2]][["conf.level"]],
         epirresult[[2]][["elements"]],
         epirresult[[2]][["rval"]],
         epirresult[[2]][["tab"]],
-        epirresult[[4]],
+
+        "4" = epirresult[[4]],
 
 
 
-        epirresult[[3]],
+        "3" = epirresult[[3]],
 
         epirresult[[3]]$aprev,
         epirresult[[3]]$tprev,
