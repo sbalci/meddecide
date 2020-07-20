@@ -272,17 +272,22 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         self$results$text3$setContent(epirresult)
 
 
+
+        epirresult2 <- summary(epirresult)
+        epirresult2 <- as.data.frame(epirresult2) %>%
+            tibble::rownames_to_column()
+
+        epirresult2 <- summary(rval)
+        epirresult2 <- as.data.frame(epirresult2) %>%
+            tibble::rownames_to_column()
+
+
         text4 <-
             list(
-        dplyr::glimpse(epirresult),
-        str(epirresult),
-        "aaa",
-        epirresult[[2]][["elements"]][["pfn"]],
 
-        epirresult[[3]][["aprev"]],
+                epirresult2,
 
-
-        epirresult[[3]][["est"]],
+        epirresult[[3]]$aprev,
         epirresult[[3]]$tprev,
         epirresult[[3]]$se,
         epirresult[[3]]$sp,
