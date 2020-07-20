@@ -274,8 +274,9 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         text4 <-
             list(
-                dplyr::glimpse(epirresult),
-                str(epirresult),
+        dplyr::glimpse(epirresult),
+        str(epirresult),
+        "aaa",
         epirresult[[2]][["elements"]][["pfn"]],
 
         epirresult[[3]][["aprev"]],
