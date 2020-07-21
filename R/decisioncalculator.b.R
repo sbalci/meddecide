@@ -275,7 +275,56 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         epirresult2 <- summary(epirresult)
         epirresult2 <- as.data.frame(epirresult2) %>%
-            tibble::rownames_to_column(.data = .)
+            tibble::rownames_to_column(.data = ., var = 'statsabv')
+
+
+        epirresult2$statsnames <-
+            c(
+                "Apparent prevalence",
+                "True prevalence",
+                "Test sensitivity",
+                "Test specificity",
+                "Diagnostic accuracy",
+                "Diagnostic odds ratio",
+                "Number needed to diagnose",
+                "Youden's index",
+                "Positive predictive value",
+                "Negative predictive value",
+                "Likelihood ratio of a positive test",
+                "Likelihood ratio of a negative test",
+                "Proportion of subjects with the outcome ruled out",
+                "Proportion of subjects with the outcome ruled in",
+                "Proportion of false positives",
+                "Proportion of false negative"
+            )
+
+        ratiorows <- c(
+            "aprev",
+            "tprev",
+            "se",
+            "sp",
+            "diag.acc",
+            "ppv",
+            "npv",
+            "pro",
+            "pri",
+            "pfp",
+            "pfn"
+        )
+
+
+        numberrows <- c(
+            "diag.or",
+            "nnd",
+            "youden",
+            "plr",
+            "nlr"
+        )
+
+        epirresult_number <- epirresult2[epirresult2$statsabv %in% numberrows, ]
+
+        epirresult_ratio <- epirresult2[epirresult2$statsabv %in% ratiorows, ]
+
 
 
         text4 <-
@@ -312,13 +361,20 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
 
-        epirTable <- self$results$epirTable
+        epirTable_ratio <- self$results$epirTable_ratio
 
-        data_frame <- epirresult2
+        data_frame <- epirresult_ratio
         for(i in seq_along(data_frame[,1,drop=T])) {
-            epirTable$addRow(rowKey = i, values = c(data_frame[i,])) # This code produces a named vector/list, which is what the values argument expects
+            epirTable_ratio$addRow(rowKey = i, values = c(data_frame[i,])) # This code produces a named vector/list, which is what the values argument expects
         }
 
+
+        epirTable_number <- self$results$epirTable_number
+
+        data_frame <- epirresult_number
+        for(i in seq_along(data_frame[,1,drop=T])) {
+            epirTable_number$addRow(rowKey = i, values = c(data_frame[i,]))
+        }
 
 
 

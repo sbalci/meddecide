@@ -115,16 +115,16 @@ items:
       type:  Preformatted
 
     - name:  text4
-      title: epiR[[4]]
+      title: epiR Table Preformatted
       type:  Preformatted
 
 
-    - name:  epirTable
-      title: 'EpiR Table'
+    - name:  epirTable_ratio
+      title: 'EpiR Table Ratios'
       type: Table
       rows: 0
       columns: &idcols
-        - name: rowname
+        - name: statsnames
           title: "Decision Statistics"
           type: text
         - name: est
@@ -137,12 +137,34 @@ items:
           title: "Upper 95% CI"
           type: number
 
+
+    - name:  epirTable_number
+      title: 'EpiR Table Numbers'
+      type: Table
+      rows: 0
+      columns: *idcols
+        - name: statsnames
+          title: "Decision Statistics"
+          type: text
+        - name: est
+          title: "Estimate"
+          type: number
+        - name: lower
+          title: "Lower 95% CI"
+          type: number
+        - name: upper
+          title: "Upper 95% CI"
+          type: number
+
+
     # - name:  table1
     #   title: 'Table 1'
     #   type:  Html
 
 
 
-refs: caret
+refs:
+    - caret
+    - epiR
 
 ...
