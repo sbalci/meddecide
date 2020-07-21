@@ -235,15 +235,18 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                     list(
                         `name`="est", 
                         `title`="Estimate", 
-                        `type`="number"),
+                        `type`="number", 
+                        `format`="pc"),
                     list(
                         `name`="lower", 
                         `title`="Lower 95% CI", 
-                        `type`="number"),
+                        `type`="number", 
+                        `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper 95% CI", 
-                        `type`="number")),
+                        `type`="number", 
+                        `format`="pc")),
                 clearWith=list(
                     "pp",
                     "pprob")))

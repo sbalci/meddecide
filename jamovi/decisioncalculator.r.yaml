@@ -134,13 +134,16 @@ items:
           type: text
         - name: est
           title: "Estimate"
-          type: pc
+          type: number
+          format: pc
         - name: lower
           title: "Lower 95% CI"
-          type: pc
+          type: number
+          format: pc
         - name: upper
           title: "Upper 95% CI"
-          type: pc
+          type: number
+          format: pc
       clearWith:
           - pp
           - pprob
