@@ -85,7 +85,8 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
         ratioTable = function() private$.items[["ratioTable"]],
         text3 = function() private$.items[["text3"]],
         text4 = function() private$.items[["text4"]],
-        epirTable = function() private$.items[["epirTable"]]),
+        epirTable_ratio = function() private$.items[["epirTable_ratio"]],
+        epirTable_number = function() private$.items[["epirTable_number"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -93,7 +94,9 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 options=options,
                 name="",
                 title="Decision Calculator",
-                refs="caret")
+                refs=list(
+                    "caret",
+                    "epiR"))
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="text2",
@@ -208,19 +211,25 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="text3",
-                title="epiR"))
+                title="epiR",
+                clearWith=list(
+                    "pp",
+                    "pprob")))
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="text4",
-                title="epiR[[4]]"))
+                title="epiR Table Preformatted",
+                clearWith=list(
+                    "pp",
+                    "pprob")))
             self$add(jmvcore::Table$new(
                 options=options,
-                name="epirTable",
-                title="EpiR Table",
+                name="epirTable_ratio",
+                title="EpiR Table Ratios",
                 rows=0,
                 columns=list(
                     list(
-                        `name`="rowname", 
+                        `name`="statsnames", 
                         `title`="Decision Statistics", 
                         `type`="text"),
                     list(
@@ -234,7 +243,35 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                     list(
                         `name`="upper", 
                         `title`="Upper 95% CI", 
-                        `type`="number"))))}))
+                        `type`="number")),
+                clearWith=list(
+                    "pp",
+                    "pprob")))
+            self$add(jmvcore::Table$new(
+                options=options,
+                name="epirTable_number",
+                title="EpiR Table Numbers",
+                rows=0,
+                columns=list(
+                    list(
+                        `name`="statsnames", 
+                        `title`="Decision Statistics", 
+                        `type`="text"),
+                    list(
+                        `name`="est", 
+                        `title`="Estimate", 
+                        `type`="number"),
+                    list(
+                        `name`="lower", 
+                        `title`="Lower 95% CI", 
+                        `type`="number"),
+                    list(
+                        `name`="upper", 
+                        `title`="Upper 95% CI", 
+                        `type`="number")),
+                clearWith=list(
+                    "pp",
+                    "pprob")))}))
 
 decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
     "decisioncalculatorBase",
@@ -279,7 +316,8 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$text3} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$text4} \tab \tab \tab \tab \tab a preformatted \cr
-#'   \code{results$epirTable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$epirTable_ratio} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$epirTable_number} \tab \tab \tab \tab \tab a table \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
