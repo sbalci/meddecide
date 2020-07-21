@@ -124,11 +124,11 @@ items:
           - pp
           - pprob
 
-    - name:  epirTable_ratio
+    - name: epirTable_ratio
       title: 'EpiR Table Ratios'
       type: Table
       rows: 0
-      # columns: &idcols
+      columns:
         - name: statsnames
           title: "Decision Statistics"
           type: text
@@ -145,11 +145,11 @@ items:
           - pp
           - pprob
 
-    - name:  epirTable_number
+    - name: epirTable_number
       title: 'EpiR Table Numbers'
       type: Table
       rows: 0
-      # columns: *idcols
+      columns:
         - name: statsnames
           title: "Decision Statistics"
           type: text
