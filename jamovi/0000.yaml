@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.1.0001
+version: 0.0.1.0002
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2020-07-22'
+date: '2020-07-23'
 type: R
 description: |-
   Functions for Medical Decision in ClinicoPath jamovi Module
@@ -29,12 +29,12 @@ analyses:
       Function for Medical Decision Analysis. Sensitivity, specificity, positive
       predictive value, negative predictive value.
     menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
-  - title: Decision Calculator
+  - title: Medical Decision Calculator
     name: decisioncalculator
     ns: meddecide
     menuGroup: meddecide
     menuSubgroup: Decision
-    menuTitle: Decision Calculator
+    menuTitle: Medical Decision Calculator
     description: Function for Medical Decision Calculator.
     menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
 datasets:
