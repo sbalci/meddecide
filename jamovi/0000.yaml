@@ -9,8 +9,8 @@ maintainer: Serdar Balci <drserdarbalci@gmail.com>
 date: '2020-07-23'
 type: R
 description: |-
-  Functions for Medical Decision in ClinicoPath jamovi Module
-    Analysis for Clinicopathological Research
+    This module contains functions for interobserver and intraobserver reliability
+    and decision tests (sensitivity, specificity, PPV, NPV).
 analyses:
   - title: Interrater Reliability
     name: agreement

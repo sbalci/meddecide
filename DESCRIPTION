@@ -10,8 +10,8 @@ Authors@R:
            email = "drserdarbalci@gmail.com",
            comment = c(ORCID = "0000-0002-7852-3851"))
 Maintainer: Serdar Balci <drserdarbalci@gmail.com>
-Description: Functions for Medical Decision in ClinicoPath jamovi Module
-    Analysis for Clinicopathological Research
+Description: This module contains functions for interobserver and intraobserver reliability
+    and decision tests (sensitivity, specificity, PPV, NPV).
 License: GPL-3
 URL: https://github.com/sbalci/ClinicoPathJamoviModule/,
     https://github.com/sbalci/meddecision/,
