@@ -12,12 +12,33 @@ items:
     - name:  text1
       title: Original Data
       type:  Preformatted
+      visible: (od)
+
+
+    # - name:  text2
+    #   title: Original Data
+    #   type:  Preformatted
+
 
 
     # - name:  text2
     #   title: Decision Tests
     #   type:  Preformatted
     #   refs: caret
+
+
+
+    # - name:  origTable
+    #   title: 'Original Table'
+    #   type: Table
+    #   rows: (newtest)
+    #   columns:
+    #     - name: goldPositive
+    #       title: ''
+    #       type: text
+    #       content: ($key)
+
+
 
 
 

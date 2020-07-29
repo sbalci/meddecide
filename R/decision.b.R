@@ -99,6 +99,36 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
         self$results$text1$setContent(results1)
 
 
+
+
+        # results2 <- as.data.frame(results1)
+        #
+        # namesfrom <- names(results2)[2]
+        #
+        # results2 <- results2 %>%
+        #         tidyr::pivot_wider(data = .,
+        #                        names_from = namesfrom,
+        #                        values_from = Freq)
+        #
+        #
+        # self$results$text2$setContent(results2)
+
+
+
+        # Original Table -----
+
+        # origTable <- self$results$origTable
+
+
+        # xnames <- results2[,1]
+        #
+        #
+        # data_frame <- results2
+        # for (i in seq_along(data_frame[,1,drop = T])) {
+        #     origTable$addRow(rowKey = i, values = c(data_frame[i,]))
+        # }
+
+
         # Recode ----
 
         mydata2 <- mydata
