@@ -7,7 +7,15 @@
 #'
 
 decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
-    inherit = decisionBase, private = list(.run = function() {
+    inherit = decisionBase, private = list(
+
+
+
+
+
+
+
+        .run = function() {
 
 
         # # Error Message ----
