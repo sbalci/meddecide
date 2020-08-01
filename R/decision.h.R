@@ -183,8 +183,7 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="number")),
                 clearWith=list(
                     "pp",
-                    "pprob",
-                    "fnote")))
+                    "pprob")))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="ratioTable",
@@ -246,8 +245,7 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="number")),
                 clearWith=list(
                     "pp",
-                    "pprob",
-                    "fnote")))
+                    "pprob")))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="epirTable_ratio",
@@ -266,18 +264,19 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `format`="pc"),
                     list(
                         `name`="lower", 
-                        `title`="Lower 95% CI", 
+                        `title`="Lower", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
-                        `title`="Upper 95% CI", 
+                        `title`="Upper", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number", 
                         `format`="pc")),
                 clearWith=list(
                     "pp",
-                    "pprob",
-                    "fnote"),
+                    "pprob"),
                 refs="epiR"))
             self$add(jmvcore::Table$new(
                 options=options,
@@ -296,16 +295,17 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="lower", 
-                        `title`="Lower 95% CI", 
+                        `title`="Lower", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number"),
                     list(
                         `name`="upper", 
-                        `title`="Upper 95% CI", 
+                        `title`="Upper", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number")),
                 clearWith=list(
                     "pp",
-                    "pprob",
-                    "fnote"),
+                    "pprob"),
                 refs="epiR"))}))
 
 decisionBase <- if (requireNamespace('jmvcore')) R6::R6Class(
