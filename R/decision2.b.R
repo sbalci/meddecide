@@ -9,8 +9,6 @@ decision2Class <- if (requireNamespace('jmvcore')) R6::R6Class(
 
         .init = function() {
 
-            table <- self$results$cTable
-
             private$.initcTable()
 
         },
