@@ -1,160 +1,182 @@
 
+
+
 # This file is a generated template, your changes will not be overwritten
 
-decision2Class <- if (requireNamespace('jmvcore')) R6::R6Class(
-    "decision2Class",
-    inherit = decision2Base,
-    private = list(
+decision2Class <- if (requireNamespace('jmvcore'))
+    R6::R6Class(
+        "decision2Class",
+        inherit = decision2Base,
+        private = list(
+            .init = function() {
+                private$.initcTable()
 
+            },
 
-        .init = function() {
 
-            private$.initcTable()
+            .run = function() {
+                results <- private$.compute()
+                private$.populatecTable(results)
 
-        },
+            },
 
 
-        .run = function() {
+            .initcTable = function() {
+                cTable <- self$results$cTable
 
-            results <- private$.compute()
-            private$.populatecTable(results)
+            },
 
-        },
 
+            .compute = function() {
+                # Data definition ----
+                mydata <- self$data
 
-        .initcTable = function() {
+                mydata <- jmvcore::naOmit(mydata)
 
+                testPLevel <-
+                    jmvcore::constructFormula(terms = self$options$testPositive)
 
-            cTable <- self$results$cTable
+                testPLevel <-
+                    jmvcore::decomposeFormula(formula = testPLevel)
 
-        },
+                testPLevel <- unlist(testPLevel)
 
 
-        .compute = function() {
+                testVariable <-
+                    jmvcore::constructFormula(terms = self$options$newtest)
 
-            # Data definition ----
-            mydata <- self$data
+                testVariable <-
+                    jmvcore::decomposeFormula(formula = testVariable)
 
-            mydata <- jmvcore::naOmit(mydata)
+                testVariable <- unlist(testVariable)
 
-            testPLevel <- jmvcore::constructFormula(terms = self$options$testPositive)
 
-            testPLevel <- jmvcore::decomposeFormula(formula = testPLevel)
+                goldPLevel <-
+                    jmvcore::constructFormula(terms = self$options$goldPositive)
 
-            testPLevel <- unlist(testPLevel)
+                goldPLevel <-
+                    jmvcore::decomposeFormula(formula = goldPLevel)
 
+                goldPLevel <- unlist(goldPLevel)
 
-            testVariable <- jmvcore::constructFormula(terms = self$options$newtest)
 
-            testVariable <- jmvcore::decomposeFormula(formula = testVariable)
+                goldVariable <-
+                    jmvcore::constructFormula(terms = self$options$gold)
 
-            testVariable <- unlist(testVariable)
+                goldVariable <-
+                    jmvcore::decomposeFormula(formula = goldVariable)
 
+                goldVariable <- unlist(goldVariable)
 
-            goldPLevel <- jmvcore::constructFormula(terms = self$options$goldPositive)
+                mydata[[testVariable]] <-
+                    forcats::as_factor(mydata[[testVariable]])
 
-            goldPLevel <- jmvcore::decomposeFormula(formula = goldPLevel)
+                mydata[[goldVariable]] <-
+                    forcats::as_factor(mydata[[goldVariable]])
 
-            goldPLevel <- unlist(goldPLevel)
 
+                # Recode ----
 
-            goldVariable <- jmvcore::constructFormula(terms = self$options$gold)
+                mydata2 <- mydata
 
-            goldVariable <- jmvcore::decomposeFormula(formula = goldVariable)
+                mydata2 <-
+                    mydata2 %>% dplyr::mutate(
+                        testVariable2 = dplyr::case_when(
+                            .data[[testVariable]] ==
+                                self$options$testPositive ~ "Positive",
+                            NA ~ NA_character_,
+                            TRUE ~
+                                "Negative"
+                        )
+                    ) %>%
+                    dplyr::mutate(
+                        goldVariable2 = dplyr::case_when(
+                            .data[[goldVariable]] ==
+                                self$options$goldPositive ~ "Positive",
+                            NA ~ NA_character_,
+                            TRUE ~
+                                "Negative"
+                        )
+                    )
 
-            goldVariable <- unlist(goldVariable)
+                mydata2 <-
+                    mydata2 %>%
+                    dplyr::mutate(testVariable2 = forcats::fct_relevel(testVariable2, "Positive")) %>%
+                    dplyr::mutate(goldVariable2 = forcats::fct_relevel(goldVariable2, "Positive"))
 
-            mydata[[testVariable]] <- forcats::as_factor(mydata[[testVariable]])
 
-            mydata[[goldVariable]] <- forcats::as_factor(mydata[[goldVariable]])
 
-            # Table 1 ----
 
-            results1 <- mydata %>% dplyr::select(.data[[testVariable]], .data[[goldVariable]]) %>%
-                table()
+                # conf_table ----
 
-            self$results$text1$setContent(results1)
+                conf_table <-
+                    table(mydata2[["testVariable2"]], mydata2[["goldVariable2"]])
 
 
+                # Caret ----
 
-            # Recode ----
 
-            mydata2 <- mydata
+                TP <- conf_table[1, 1]
 
-            mydata2 <- mydata2 %>% dplyr::mutate(testVariable2 = dplyr::case_when(.data[[testVariable]] ==
-                                                                                      self$options$testPositive ~ "Positive", NA ~ NA_character_, TRUE ~
-                                                                                      "Negative")) %>%
-                dplyr::mutate(goldVariable2 = dplyr::case_when(.data[[goldVariable]] ==
-                                                                   self$options$goldPositive ~ "Positive", NA ~ NA_character_, TRUE ~
-                                                                   "Negative"))
+                FP <- conf_table[1, 2]
 
-            mydata2 <- mydata2 %>% dplyr::mutate(testVariable2 = forcats::fct_relevel(testVariable2,
-                                                                                      "Positive")) %>% dplyr::mutate(goldVariable2 = forcats::fct_relevel(goldVariable2,
-                                                                                                                                                          "Positive"))
+                FN <- conf_table[2, 1]
 
+                TN <- conf_table[2, 2]
 
 
+                return(list(
+                    "TP" = TP,
+                    "FP" = FP,
+                    "FN" = FN,
+                    "TN" = TN
+                ))
 
-            # conf_table ----
+            },
 
-            conf_table <- table(mydata2[["testVariable2"]], mydata2[["goldVariable2"]])
 
 
-            # Caret ----
 
 
-            TP <- conf_table[1,1]
+            .populatecTable = function(results) {
+                cTable <- self$results$cTable
 
-            FP <- conf_table[1,2]
 
-            FN <- conf_table[2,1]
+                cTable$addRow(
+                    rowKey = "Test Positive",
+                    values = list(
+                        newtest = "Test Positive",
+                        GP = results$TP,
+                        GN = results$FP,
+                        Total = results$TP + results$FP
+                    )
+                )
 
-            TN <- conf_table[2,2]
 
+                cTable$addRow(
+                    rowKey = "Test Negative",
+                    values = list(
+                        newtest = "Test Negative",
+                        GP = results$FN,
+                        GN = results$TN,
+                        Total = results$FN + results$TN
+                    )
+                )
 
-        },
+                cTable$addRow(
+                    rowKey = "Total",
+                    values = list(
+                        newtest = "Total",
+                        GP = results$TP + results$FN,
+                        GN = results$FP + results$TN,
+                        Total = results$TP + results$FP + results$FN + results$TN
+                    )
+                )
 
 
 
-
-
-        .populatecTable = function(results) {
-
-            cTable <- self$results$cTable
-
-
-            cTable$addRow(rowKey = "Test Positive",
-                          values = list(
-                              newtest = "Test Positive",
-                              GP = results[["TP"]],
-                              GN = results$FP,
-                              Total = results$TP + results$FP
-                          )
-            )
-
-
-            cTable$addRow(rowKey = "Test Negative",
-                          values = list(
-                              newtest = "Test Negative",
-                              GP = results$FN,
-                              GN = results$TN,
-                              Total = results$FN + results$TN
-                          )
-            )
-
-            cTable$addRow(rowKey = "Total",
-                          values = list(
-                              newtest = "Total",
-                              GP = results$TP + results$FN,
-                              GN = results$FP + results$TN,
-                              Total = results$TP + results$FP + results$FN + results$TN
-                          )
-            )
-
-
-
-        }
+            }
 
 
         )
-)
+    )
