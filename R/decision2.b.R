@@ -126,7 +126,7 @@ decision2Class <- if (requireNamespace('jmvcore')) R6::R6Class(
             cTable$addRow(rowKey = "Test Positive",
                           values = list(
                               newtest = "Test Positive",
-                              GP = results[[TP]],
+                              GP = results[["TP"]],
                               GN = results$FP,
                               Total = results$TP + results$FP
                           )
