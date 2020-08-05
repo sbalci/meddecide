@@ -243,6 +243,27 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
         TN <- conf_table[2,2]
 
+
+
+
+
+        results <- private$.compute()
+        private$.populatecTable(results)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         # Self Calculations ----
 
         # Self Calculation https://cran.r-project.org/web/packages/caret/caret.pdf
