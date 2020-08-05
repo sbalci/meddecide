@@ -22,6 +22,12 @@ decision2Class <- if (requireNamespace('jmvcore')) R6::R6Class(
         },
 
 
+        .initcTable = function() {
+
+
+            cTable <- self$results$cTable
+
+        },
 
 
         .compute = function() {
@@ -110,27 +116,19 @@ decision2Class <- if (requireNamespace('jmvcore')) R6::R6Class(
 
 
 
-        .initcTable = function() {
-
-
-            cTable <- self$results$cTable
-
-        },
 
 
         .populatecTable = function(results) {
 
             cTable <- self$results$cTable
 
-            table <- self$results$cTable
-
 
             cTable$addRow(rowKey = "Test Positive",
                           values = list(
                               newtest = "Test Positive",
-                              GP = TP,
-                              GN = FP,
-                              Total = TP + FP
+                              GP = results$TP,
+                              GN = results$FP,
+                              Total = results$TP + results$FP
                           )
             )
 
@@ -138,18 +136,18 @@ decision2Class <- if (requireNamespace('jmvcore')) R6::R6Class(
             cTable$addRow(rowKey = "Test Negative",
                           values = list(
                               newtest = "Test Negative",
-                              GP = FN,
-                              GN = TN,
-                              Total = FN + TN
+                              GP = results$FN,
+                              GN = results$TN,
+                              Total = results$FN + results$TN
                           )
             )
 
             cTable$addRow(rowKey = "Total",
                           values = list(
                               newtest = "Total",
-                              GP = TP + FN,
-                              GN = FP + TN,
-                              Total = TP + FP + FN + TN
+                              GP = results$TP + results$FN,
+                              GN = results$FP + results$TN,
+                              Total = results$TP + results$FP + results$FN + results$TN
                           )
             )
 
