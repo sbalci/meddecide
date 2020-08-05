@@ -11,9 +11,25 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
 
+        .init = function() {
+
+            private$.initcTable()
+
+            private$.initnTable()
+
+            private$.initratioTable()
+
+            private$.initepirTable_ratio()
+
+            private$.initepirTable_number()
 
 
 
+
+
+
+        }
+,
 
         .run = function() {
 
