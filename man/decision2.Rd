@@ -4,18 +4,7 @@
 \alias{decision2}
 \title{Decision 2 for using init}
 \usage{
-decision2(
-  data,
-  gold,
-  goldPositive,
-  newtest,
-  testPositive,
-  pp = FALSE,
-  pprob = 0.3,
-  od = FALSE,
-  fnote = FALSE,
-  ci = FALSE
-)
+decision2(data, gold, goldPositive, newtest, testPositive)
 }
 \arguments{
 \item{data}{The data as a data frame.}
@@ -27,28 +16,11 @@ decision2(
 \item{newtest}{.}
 
 \item{testPositive}{.}
-
-\item{pp}{.}
-
-\item{pprob}{Prior probability (disease prevelance in the community).
-Requires a value between 0.001 and 0.999, default 0.300.}
-
-\item{od}{Boolean selection whether to show frequency table. Default is
-'false'.}
-
-\item{fnote}{.}
-
-\item{ci}{.}
 }
 \value{
 A results object containing:
 \tabular{llllll}{
-\code{results$text1} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$cTable} \tab \tab \tab \tab \tab a table \cr
-\code{results$nTable} \tab \tab \tab \tab \tab a table \cr
-\code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
-\code{results$epirTable_ratio} \tab \tab \tab \tab \tab a table \cr
-\code{results$epirTable_number} \tab \tab \tab \tab \tab a table \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

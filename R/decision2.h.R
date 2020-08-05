@@ -9,12 +9,7 @@ decision2Options <- if (requireNamespace('jmvcore')) R6::R6Class(
             gold = NULL,
             goldPositive = NULL,
             newtest = NULL,
-            testPositive = NULL,
-            pp = FALSE,
-            pprob = 0.3,
-            od = FALSE,
-            fnote = FALSE,
-            ci = FALSE, ...) {
+            testPositive = NULL, ...) {
 
             super$initialize(
                 package='meddecide',
@@ -44,70 +39,28 @@ decision2Options <- if (requireNamespace('jmvcore')) R6::R6Class(
                 "testPositive",
                 testPositive,
                 variable="(newtest)")
-            private$..pp <- jmvcore::OptionBool$new(
-                "pp",
-                pp,
-                default=FALSE)
-            private$..pprob <- jmvcore::OptionNumber$new(
-                "pprob",
-                pprob,
-                default=0.3,
-                min=0.001,
-                max=0.999)
-            private$..od <- jmvcore::OptionBool$new(
-                "od",
-                od,
-                default=FALSE)
-            private$..fnote <- jmvcore::OptionBool$new(
-                "fnote",
-                fnote,
-                default=FALSE)
-            private$..ci <- jmvcore::OptionBool$new(
-                "ci",
-                ci,
-                default=FALSE)
 
             self$.addOption(private$..gold)
             self$.addOption(private$..goldPositive)
             self$.addOption(private$..newtest)
             self$.addOption(private$..testPositive)
-            self$.addOption(private$..pp)
-            self$.addOption(private$..pprob)
-            self$.addOption(private$..od)
-            self$.addOption(private$..fnote)
-            self$.addOption(private$..ci)
         }),
     active = list(
         gold = function() private$..gold$value,
         goldPositive = function() private$..goldPositive$value,
         newtest = function() private$..newtest$value,
-        testPositive = function() private$..testPositive$value,
-        pp = function() private$..pp$value,
-        pprob = function() private$..pprob$value,
-        od = function() private$..od$value,
-        fnote = function() private$..fnote$value,
-        ci = function() private$..ci$value),
+        testPositive = function() private$..testPositive$value),
     private = list(
         ..gold = NA,
         ..goldPositive = NA,
         ..newtest = NA,
-        ..testPositive = NA,
-        ..pp = NA,
-        ..pprob = NA,
-        ..od = NA,
-        ..fnote = NA,
-        ..ci = NA)
+        ..testPositive = NA)
 )
 
 decision2Results <- if (requireNamespace('jmvcore')) R6::R6Class(
     inherit = jmvcore::Group,
     active = list(
-        text1 = function() private$.items[["text1"]],
-        cTable = function() private$.items[["cTable"]],
-        nTable = function() private$.items[["nTable"]],
-        ratioTable = function() private$.items[["ratioTable"]],
-        epirTable_ratio = function() private$.items[["epirTable_ratio"]],
-        epirTable_number = function() private$.items[["epirTable_number"]]),
+        cTable = function() private$.items[["cTable"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -115,11 +68,6 @@ decision2Results <- if (requireNamespace('jmvcore')) R6::R6Class(
                 options=options,
                 name="",
                 title="Decision 2 for using init")
-            self$add(jmvcore::Preformatted$new(
-                options=options,
-                name="text1",
-                title="Original Data",
-                visible="(od)"))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="cTable",
@@ -141,172 +89,7 @@ decision2Results <- if (requireNamespace('jmvcore')) R6::R6Class(
                     list(
                         `name`="Total", 
                         `title`="Total", 
-                        `type`="number"))))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="nTable",
-                title="",
-                swapRowsColumns=TRUE,
-                rows=1,
-                columns=list(
-                    list(
-                        `name`="tablename", 
-                        `title`="", 
-                        `type`="text"),
-                    list(
-                        `name`="TotalPop", 
-                        `title`="Total", 
-                        `type`="number"),
-                    list(
-                        `name`="DiseaseP", 
-                        `title`="Diseased", 
-                        `type`="number"),
-                    list(
-                        `name`="DiseaseN", 
-                        `title`="Healthy", 
-                        `type`="number"),
-                    list(
-                        `name`="TestP", 
-                        `title`="Positive Tests", 
-                        `type`="number"),
-                    list(
-                        `name`="TestN", 
-                        `title`="Negative Tests", 
-                        `type`="number"),
-                    list(
-                        `name`="TestT", 
-                        `title`="True Test", 
-                        `type`="number"),
-                    list(
-                        `name`="TestW", 
-                        `title`="Wrong Test", 
-                        `type`="number")),
-                clearWith=list(
-                    "pp",
-                    "pprob")))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="ratioTable",
-                title="",
-                swapRowsColumns=TRUE,
-                rows=1,
-                columns=list(
-                    list(
-                        `name`="tablename", 
-                        `title`="", 
-                        `type`="text"),
-                    list(
-                        `name`="Sens", 
-                        `title`="Sensitivity", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="Spec", 
-                        `title`="Specificity", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="AccurT", 
-                        `title`="Accuracy", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="PrevalenceD", 
-                        `title`="Prevalence", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="PPV", 
-                        `title`="Positive Predictive Value", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="NPV", 
-                        `title`="Negative Predictive Value", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="PostTestProbDisease", 
-                        `title`="Post-test Disease Probability", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="PostTestProbHealthy", 
-                        `title`="Post-test Health Probability", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="LRP", 
-                        `title`="Positive Likelihood Ratio", 
-                        `type`="number"),
-                    list(
-                        `name`="LRN", 
-                        `title`="Negative Likelihood Ratio", 
-                        `type`="number")),
-                clearWith=list(
-                    "pp",
-                    "pprob")))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="epirTable_ratio",
-                title="",
-                visible="(ci)",
-                rows=0,
-                columns=list(
-                    list(
-                        `name`="statsnames", 
-                        `title`="Decision Statistics", 
-                        `type`="text"),
-                    list(
-                        `name`="est", 
-                        `title`="Estimate", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="lower", 
-                        `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
-                        `type`="number", 
-                        `format`="pc"),
-                    list(
-                        `name`="upper", 
-                        `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
-                        `type`="number", 
-                        `format`="pc")),
-                clearWith=list(
-                    "pp",
-                    "pprob"),
-                refs="epiR"))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="epirTable_number",
-                title="",
-                visible="(ci)",
-                rows=0,
-                columns=list(
-                    list(
-                        `name`="statsnames", 
-                        `title`="Decision Statistics", 
-                        `type`="text"),
-                    list(
-                        `name`="est", 
-                        `title`="Estimate", 
-                        `type`="number"),
-                    list(
-                        `name`="lower", 
-                        `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
-                        `type`="number"),
-                    list(
-                        `name`="upper", 
-                        `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
-                        `type`="number")),
-                clearWith=list(
-                    "pp",
-                    "pprob"),
-                refs="epiR"))}))
+                        `type`="number"))))}))
 
 decision2Base <- if (requireNamespace('jmvcore')) R6::R6Class(
     "decision2Base",
@@ -343,21 +126,9 @@ decision2Base <- if (requireNamespace('jmvcore')) R6::R6Class(
 #' @param goldPositive .
 #' @param newtest .
 #' @param testPositive .
-#' @param pp .
-#' @param pprob Prior probability (disease prevelance in the community).
-#'   Requires a value between 0.001 and 0.999, default 0.300.
-#' @param od Boolean selection whether to show frequency table. Default is
-#'   'false'.
-#' @param fnote .
-#' @param ci .
 #' @return A results object containing:
 #' \tabular{llllll}{
-#'   \code{results$text1} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$cTable} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$nTable} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$epirTable_ratio} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$epirTable_number} \tab \tab \tab \tab \tab a table \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
@@ -372,12 +143,7 @@ decision2 <- function(
     gold,
     goldPositive,
     newtest,
-    testPositive,
-    pp = FALSE,
-    pprob = 0.3,
-    od = FALSE,
-    fnote = FALSE,
-    ci = FALSE) {
+    testPositive) {
 
     if ( ! requireNamespace('jmvcore'))
         stop('decision2 requires jmvcore to be installed (restart may be required)')
@@ -397,12 +163,7 @@ decision2 <- function(
         gold = gold,
         goldPositive = goldPositive,
         newtest = newtest,
-        testPositive = testPositive,
-        pp = pp,
-        pprob = pprob,
-        od = od,
-        fnote = fnote,
-        ci = ci)
+        testPositive = testPositive)
 
     analysis <- decision2Class$new(
         options = options,
