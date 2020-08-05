@@ -11,70 +11,6 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
 
-        .init = function() {
-
-            private$.initcTable()
-
-            # private$.initnTable()
-            #
-            # private$.initratioTable()
-            #
-            # private$.initepirTable_ratio()
-            #
-            # private$.initepirTable_number()
-
-
-
-
-
-
-        }
-,
-
-# Cross Table in jamovi style ----
-
-
-
-.initcTable = function() {
-
-
-    cTable <- self$results$cTable
-
-},
-
-
-.populatecTable = function() {
-
-
-    cTable$addRow(rowKey = "Test Positive",
-                  values = list(
-                      newtest = "Test Positive",
-                      GP = TP,
-                      GN = FP,
-                      Total = TP + FP
-                  )
-    )
-
-
-    cTable$addRow(rowKey = "Test Negative",
-                  values = list(
-                      newtest = "Test Negative",
-                      GP = FN,
-                      GN = TN,
-                      Total = FN + TN
-                  )
-    )
-
-    cTable$addRow(rowKey = "Total",
-                  values = list(
-                      newtest = "Total",
-                      GP = TP + FN,
-                      GN = FP + TN,
-                      Total = TP + FP + FN + TN
-                  )
-    )
-
-},
 
 
 
@@ -246,19 +182,38 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
 
+        # Cross Table in jamovi style ----
 
-        results <- private$.compute()
-        private$.populatecTable(results)
-
-
+        cTable <- self$results$cTable
 
 
+        cTable$addRow(rowKey = "Test Positive",
+                      values = list(
+                          newtest = "Test Positive",
+                          GP = TP,
+                          GN = FP,
+                          Total = TP + FP
+                      )
+        )
 
 
+        cTable$addRow(rowKey = "Test Negative",
+                      values = list(
+                          newtest = "Test Negative",
+                          GP = FN,
+                          GN = TN,
+                          Total = FN + TN
+                      )
+        )
 
-
-
-
+        cTable$addRow(rowKey = "Total",
+                      values = list(
+                          newtest = "Total",
+                          GP = TP + FN,
+                          GN = FP + TN,
+                          Total = TP + FP + FN + TN
+                      )
+        )
 
 
 
