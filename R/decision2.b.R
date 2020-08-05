@@ -120,6 +120,8 @@ decision2Class <- if (requireNamespace('jmvcore')) R6::R6Class(
 
         .populatecTable = function(results) {
 
+            cTable <- self$results$cTable
+
             table <- self$results$cTable
 
 
