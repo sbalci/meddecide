@@ -8,8 +8,10 @@ decision2Class <- if (requireNamespace('jmvcore'))
         "decision2Class",
         inherit = decision2Base,
         private = list(
+
+
             .init = function() {
-                private$.initcTable()
+                # private$.initcTable()
 
             },
 
