@@ -1,5 +1,7 @@
 #' @import ggplot2
 #' @import scales
+#' @importFrom stats line
+
 
 ## Create simple Fagan nomograms as ggplot objects
 ##   Based on Perl web-implementation (https://araw.mede.uic.edu/cgi-bin/testcalc.pl)
