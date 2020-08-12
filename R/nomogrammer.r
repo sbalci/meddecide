@@ -21,25 +21,25 @@ nomogrammer <- function(Prevalence,
     # Or
         # Likelihood ratios
         # Positive and Negative LRs (numeric)
-    
+
 ## Function options:
     # Detail: If true, will overlay key statistics onto the plot
     # NullLine: If true, will add a line from prior prob through LR = 1
     # LabelSize: Tweak this number to change the label sizes
     # Verbose: Print out relevant metrics in the console
-    
+
 ## Function returns:
     # ggplot object
 
-    
-    
+
+
 ######################################
 ########## Libraries & Functions #####
 ######################################
 
 ## Libraries
-require(ggplot2)
-require(scales)
+requireNamespace(ggplot2)
+requireNamespace(scales)
 
 
 
@@ -69,7 +69,7 @@ logodds_to_p <- function(lo){
 
 p2percent <- function(p){
     # Function turns numeric probability into string percentage
-    # e.g. 0.6346111 -> 63.5% 
+    # e.g. 0.6346111 -> 63.5%
     scales::percent(signif(p, digits = 3))}
 
 
@@ -142,8 +142,8 @@ if(sensspec == TRUE){
     prior_odds  <- odds(prior_prob)
     PLR <- Plr
     NLR <- Nlr
-    sensitivity <- (PLR*(1-NLR))/(PLR-NLR)    ## TODO: check Adam's math! 
-    specificity <- (1-PLR)/(NLR-PLR)          ## TODO: check Adam's math! 
+    sensitivity <- (PLR*(1-NLR))/(PLR-NLR)    ## TODO: check Adam's math!
+    specificity <- (1-PLR)/(NLR-PLR)          ## TODO: check Adam's math!
     post_odds_pos  <- prior_odds * PLR
     post_odds_neg  <- prior_odds * NLR
     post_prob_pos  <- post_odds_pos/(1+post_odds_pos)
@@ -179,7 +179,7 @@ ticks_prob    <- c(0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 30,
                    40, 50, 60, 70, 80, 90, 95, 99)
 # Convert % to odds
 ticks_odds    <- odds(ticks_prob/100)
-# Convert % to logodds 
+# Convert % to logodds
 ticks_logodds <- logodds(ticks_prob/100)
 
 # Select the likelihood ratios of interest (for the middle y-axis)
@@ -200,8 +200,8 @@ midright <- 0.75
 ##  (the start and finish of the positive and negative lines)
 
 # Initially these are expressed as probabilities
-df <- data.frame(x=c(left, right, left, right), 
-                 y=c(prior_prob, post_prob_pos, prior_prob, post_prob_neg), 
+df <- data.frame(x=c(left, right, left, right),
+                 y=c(prior_prob, post_prob_pos, prior_prob, post_prob_neg),
                  line = c("pos", "pos", "neg", "neg"))
 
 adj_min      <- range(ticks_logodds)[1]
@@ -222,7 +222,7 @@ df$lo_y  <- ifelse(df$x==left,logodds(1-df$y)-scale_factor,logodds(df$y))
 
 
 rescale   <- range(ticks_logodds) + abs(adj_min) - adj_diff/2
-rescale_x_breaks  <- ticks_logodds + abs(adj_min) - adj_diff/2  
+rescale_x_breaks  <- ticks_logodds + abs(adj_min) - adj_diff/2
 
 
 
@@ -243,7 +243,7 @@ p <- ggplot(df) +
                  x = rep(middle, length(ticks_log_lrs)),
                  y = (ticks_log_lrs-scale_factor)/2,
                  size = 1) +
-        scale_x_continuous(expand = c(0,0)) + 
+        scale_x_continuous(expand = c(0,0)) +
         scale_y_continuous(expand = c(0,0),
                            limits = rescale,
                            breaks = -rescale_x_breaks,
@@ -271,10 +271,10 @@ if(NullLine == TRUE){
     uninformative <- data.frame(
         x = c(left,right),
         lo_y = c( (logodds(1-prior_prob) - scale_factor) , logodds(prior_prob))
-    ) 
-    
+    )
+
     p <- p + geom_line(aes(x = x, y = lo_y), data = uninformative,
-                       color = "gray", 
+                       color = "gray",
                        lty = 2,
                        inherit.aes = FALSE)
 }
@@ -315,7 +315,7 @@ return(p)
 
 
 ### TODO:
-# Allow ppl to input the confusion matrix 
+# Allow ppl to input the confusion matrix
 # input_TP
 # input_FP
 # input_FN
