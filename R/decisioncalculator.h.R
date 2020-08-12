@@ -101,7 +101,8 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
         ratioTable = function() private$.items[["ratioTable"]],
         epirTable_ratio = function() private$.items[["epirTable_ratio"]],
         epirTable_number = function() private$.items[["epirTable_number"]],
-        plot = function() private$.items[["plot"]]),
+        plot1 = function() private$.items[["plot1"]],
+        plot2 = function() private$.items[["plot2"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -298,11 +299,27 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 refs="epiR"))
             self$add(jmvcore::Image$new(
                 options=options,
-                name="plot",
+                name="plot1",
                 title="Fagan nomogram",
                 width=600,
                 height=450,
-                renderFun=".plot",
+                renderFun=".plot1",
+                requiresData=TRUE,
+                visible="(fagan)",
+                clearWith=list(
+                    "pp",
+                    "pprob",
+                    "fagan"),
+                refs=list(
+                    "Fagan",
+                    "Fagan2")))
+            self$add(jmvcore::Image$new(
+                options=options,
+                name="plot2",
+                title="Fagan nomogram",
+                width=600,
+                height=450,
+                renderFun=".plot2",
                 requiresData=TRUE,
                 visible="(fagan)",
                 clearWith=list(
@@ -358,7 +375,8 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$epirTable_ratio} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$epirTable_number} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$plot} \tab \tab \tab \tab \tab an image \cr
+#'   \code{results$plot1} \tab \tab \tab \tab \tab an image \cr
+#'   \code{results$plot2} \tab \tab \tab \tab \tab an image \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

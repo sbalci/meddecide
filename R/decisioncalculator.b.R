@@ -510,7 +510,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         # Send Data to Plot ----
 
 
-        plotData <- list(
+        plotData1 <- list(
             "Prevalence" = PriorProb,
             "Sens" = Sens,
             "Spec" = Spec,
@@ -518,9 +518,13 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             "Nlr" = LRN
         )
 
-        image <- self$results$plot
-        image$setState(plotData)
+        image1 <- self$results$plot1
+        image1$setState(plotData1)
 
+        plotData2 <- plotData1
+
+        image2 <- self$results$plot2
+        image2$setState(plotData2)
 
 
             }
@@ -528,35 +532,48 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         ,
 
-        .plot = function(image, ggtheme, ...) {
+        .plot1 = function(image1, ggtheme, ...) {
 
 
-            plotData <- image$state
+            plotData1 <- image1$state
 
-        plot1 <- nomogrammer(Prevalence = plotData$Prevalence,
-                            Sens = plotData$Sens,
-                            Spec = plotData$Spec,
+        plot1 <- nomogrammer(Prevalence = plotData1$Prevalence,
+                            Sens = plotData1$Sens,
+                            Spec = plotData1$Spec,
                             Detail = TRUE,
                             NullLine = TRUE,
                             LabelSize = (14/5),
                             Verbose = TRUE
                             )
 
-        plot2 <- nomogrammer(Prevalence = plotData$Prevalence,
-                            Plr = plotData$Plr,
-                            Nlr = plotData$Nlr,
-                            Detail = TRUE,
-                            NullLine = TRUE,
-                            LabelSize = (14/5),
-                            Verbose = TRUE
-                            )
-
-        print(plot1 + plot2)
+        print(plot1)
         TRUE
 
 
         }
 
+
+        ,
+
+        .plot2 = function(image2, ggtheme, ...) {
+
+
+            plotData2 <- image2$state
+
+            plot2 <- nomogrammer(Prevalence = plotData2$Prevalence,
+                                 Plr = plotData2$Plr,
+                                 Nlr = plotData2$Nlr,
+                                 Detail = TRUE,
+                                 NullLine = TRUE,
+                                 LabelSize = (14/5),
+                                 Verbose = TRUE
+            )
+
+            print(plot2)
+            TRUE
+
+
+        }
 
 
 

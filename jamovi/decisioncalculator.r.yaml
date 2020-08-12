@@ -214,12 +214,12 @@ items:
     #   title: 'Table 1'
     #   type:  Html
 
-    - name: plot
+    - name: plot1
       title: 'Fagan nomogram'
       type: Image
       width:  600
       height: 450
-      renderFun: .plot
+      renderFun: .plot1
       requiresData: true
       visible: (fagan)
       clearWith:
@@ -230,6 +230,22 @@ items:
           - Fagan
           - Fagan2
 
+
+    - name: plot2
+      title: 'Fagan nomogram'
+      type: Image
+      width:  600
+      height: 450
+      renderFun: .plot2
+      requiresData: true
+      visible: (fagan)
+      clearWith:
+          - pp
+          - pprob
+          - fagan
+      refs:
+          - Fagan
+          - Fagan2
 
 
 
