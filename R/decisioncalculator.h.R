@@ -299,7 +299,10 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 clearWith=list(
                     "age",
                     "gender",
-                    "female")))}))
+                    "female"),
+                refs=list(
+                    "Fagan",
+                    "Fagan2")))}))
 
 decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
     "decisioncalculatorBase",
