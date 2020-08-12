@@ -521,10 +521,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         image1 <- self$results$plot1
         image1$setState(plotData1)
 
-        plotData2 <- plotData1
-
-        image2 <- self$results$plot2
-        image2$setState(plotData2)
+        # plotData2 <- plotData1
+        #
+        # image2 <- self$results$plot2
+        # image2$setState(plotData2)
 
 
             }
@@ -555,28 +555,27 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         }
 
 
-        ,
-
-        .plot2 = function(image2, ggtheme, ...) {
-
-
-            plotData2 <- image2$state
-
-            plot2 <- nomogrammer(Prevalence = plotData2$Prevalence,
-                                 Plr = plotData2$Plr,
-                                 Nlr = plotData2$Nlr,
-                                 Detail = TRUE,
-                                 NullLine = TRUE,
-                                 LabelSize = (14/5),
-                                 Verbose = TRUE
-            )
-
-            print(plot2)
-            TRUE
-
-
-        }
-
+        # ,
+        # .plot2 = function(image2, ggtheme, ...) {
+        #
+        #
+        #     plotData2 <- image2$state
+        #
+        #     plot2 <- nomogrammer(Prevalence = plotData2$Prevalence,
+        #                          Plr = plotData2$Plr,
+        #                          Nlr = plotData2$Nlr,
+        #                          Detail = TRUE,
+        #                          NullLine = TRUE,
+        #                          LabelSize = (14/5),
+        #                          Verbose = TRUE
+        #     )
+        #
+        #     print(plot2)
+        #     TRUE
+        #
+        #
+        # }
+        #
 
 
 
