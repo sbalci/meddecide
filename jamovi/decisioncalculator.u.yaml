@@ -45,8 +45,6 @@ children:
           - type: CheckBox
             name: ci
             enable: (!pp)
-          - type: CheckBox
-            name: fagan
   - type: Label
     label: Prior Probability
     children:
@@ -58,3 +56,9 @@ children:
         label: ''
         format: number
         enable: (!ci && pp)
+  - type: Label
+    label: Plots
+    children:
+      - type: CheckBox
+        name: fagan
+

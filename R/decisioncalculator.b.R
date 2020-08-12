@@ -513,7 +513,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         plotData <- list(
             "Prevalence" = PriorProb,
             "Sens" = Sens,
-            "Spec" = Spec,
+            "Spec" = Spec
         )
 
         image <- self$results$plot
