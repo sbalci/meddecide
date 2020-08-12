@@ -37,16 +37,6 @@ analyses:
     menuTitle: Medical Decision Calculator
     description: Function for Medical Decision Calculator.
     menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
-  - title: Decision 2 for using init
-    name: decision2
-    ns: meddecide
-    menuGroup: meddecide
-    menuSubgroup: Decision
-    menuTitle: Decision 2 for using init
-    menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
-    description: >
-      Function for Medical Decision Analysis. Sensitivity, specificity, positive
-      predictive value, negative predictive value.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
