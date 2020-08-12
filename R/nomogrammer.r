@@ -1,3 +1,6 @@
+#' @import ggplot2
+#' @import scales
+
 ## Create simple Fagan nomograms as ggplot objects
 ##   Based on Perl web-implementation (https://araw.mede.uic.edu/cgi-bin/testcalc.pl)
 ##   Authors: AM. Chekroud* & A. Schwartz (* adam dot chekroud at yale . edu)
@@ -38,8 +41,8 @@ nomogrammer <- function(Prevalence,
 ######################################
 
 ## Libraries
-requireNamespace(ggplot2)
-requireNamespace(scales)
+# require(ggplot2)
+# require(scales)
 
 
 
