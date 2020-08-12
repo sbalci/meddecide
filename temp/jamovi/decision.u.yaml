@@ -1,5 +1,5 @@
-title: Decision 2 for using init
-name: decision2
+title: Medical Decision
+name: decision
 jus: '3.0'
 stage: 0
 compilerMode: tame
@@ -28,3 +28,30 @@ children:
           - type: LevelSelector
             name: testPositive
             enable: (newtest)
+  - type: Label
+    label: Table
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: od
+          - type: CheckBox
+            name: fnote
+          - type: CheckBox
+            name: ci
+            enable: (!pp)
+
+  - type: Label
+    label: Prior Probability
+    children:
+          - type: CheckBox
+            name: pp
+            enable: (!ci)
+          - type: TextBox
+            name: pprob
+            label: ''
+            format: number
+            enable: (!ci && pp)
+
+

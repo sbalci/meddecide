@@ -2,7 +2,6 @@
 
 export(agreement)
 export(decision)
-export(decision2)
 export(decisioncalculator)
 import(jmvcore)
 import(magrittr)
