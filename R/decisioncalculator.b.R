@@ -540,6 +540,8 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         plot1 <- nomogrammer(Prevalence = plotData1$Prevalence,
                             Sens = plotData1$Sens,
                             Spec = plotData1$Spec,
+                            Plr = plotData2$Plr,
+                            Nlr = plotData2$Nlr,
                             Detail = TRUE,
                             NullLine = TRUE,
                             LabelSize = (14/5),
