@@ -193,10 +193,6 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         LRN <- (1 - Sens) / Spec
 
 
-
-
-
-
         # nTable Populate Table ----
 
         nTable <- self$results$nTable
@@ -232,6 +228,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             LRN = LRN
             )
             )
+
+
+
+
 
         # nTable footnotes ----
 
@@ -505,6 +505,22 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         }
 
 
+
+
+        # Send Data to Plot ----
+
+
+        plotData <- list(
+            "Prevalence" = PriorProb,
+            "Sens" = Sens,
+            "Spec" = Spec,
+        )
+
+        image <- self$results$plot
+        image$setState(plotData)
+
+
+
             }
 
 
@@ -512,7 +528,14 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         .plot = function(image, ggtheme, ...) {
 
-        plot <- nomogrammer(Prevalence = 0.6, Sens = 0.7, Spec = 0.8)
+
+            plotData <- image$state
+
+
+
+        plot <- nomogrammer(Prevalence = plotData$Prevalence,
+                            Sens = plotData$Sens,
+                            Spec = plotData$Spec)
 
         print(plot)
         TRUE
