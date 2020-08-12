@@ -92,7 +92,8 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
         nTable = function() private$.items[["nTable"]],
         ratioTable = function() private$.items[["ratioTable"]],
         epirTable_ratio = function() private$.items[["epirTable_ratio"]],
-        epirTable_number = function() private$.items[["epirTable_number"]]),
+        epirTable_number = function() private$.items[["epirTable_number"]],
+        plot = function() private$.items[["plot"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -286,7 +287,19 @@ decisioncalculatorResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 clearWith=list(
                     "pp",
                     "pprob"),
-                refs="epiR"))}))
+                refs="epiR"))
+            self$add(jmvcore::Image$new(
+                options=options,
+                name="plot",
+                title="Fagan nomogram",
+                width=600,
+                height=450,
+                renderFun=".plot",
+                requiresData=TRUE,
+                clearWith=list(
+                    "age",
+                    "gender",
+                    "female")))}))
 
 decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
     "decisioncalculatorBase",
@@ -332,6 +345,7 @@ decisioncalculatorBase <- if (requireNamespace('jmvcore')) R6::R6Class(
 #'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$epirTable_ratio} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$epirTable_number} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$plot} \tab \tab \tab \tab \tab an image \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

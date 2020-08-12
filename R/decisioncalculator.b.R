@@ -9,7 +9,9 @@
 #'
 
 decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisioncalculatorClass",
-    inherit = decisioncalculatorBase, private = list(.run = function() {
+    inherit = decisioncalculatorBase, private = list(
+
+        .run = function() {
 
 
         # # Error Message ----
@@ -503,4 +505,23 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         }
 
 
-            }))
+            }
+
+
+        ,
+
+        .plot = function(image, ggtheme, ...) {
+
+        plot <- nomogrammer(Prevalence = 0.6, Sens = 0.7, Spec = 0.8)
+
+        print(plot)
+        TRUE
+
+
+        }
+
+
+
+
+
+        ))

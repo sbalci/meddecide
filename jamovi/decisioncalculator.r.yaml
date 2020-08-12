@@ -214,4 +214,19 @@ items:
     #   title: 'Table 1'
     #   type:  Html
 
+    - name: plot
+      title: 'Fagan nomogram'
+      type: Image
+      width:  600
+      height: 450
+      renderFun: .plot
+      requiresData: true
+      clearWith:
+          - age
+          - gender
+          - female
+
+
+
+
 ...
