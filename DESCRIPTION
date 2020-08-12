@@ -29,7 +29,9 @@ Imports:
     utils,
     forcats,
     e1071,
-    epiR
+    epiR,
+    ggplot2,
+    scales
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
