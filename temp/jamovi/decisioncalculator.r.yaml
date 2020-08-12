@@ -221,10 +221,11 @@ items:
       height: 450
       renderFun: .plot
       requiresData: true
+      visible: (fagan)
       clearWith:
-          - age
-          - gender
-          - female
+          - pp
+          - pprob
+          - fagan
       refs:
           - Fagan
           - Fagan2

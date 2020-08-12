@@ -12,7 +12,8 @@ decisioncalculator(
   pp = FALSE,
   pprob = 0.3,
   fnote = FALSE,
-  ci = FALSE
+  ci = FALSE,
+  fagan = FALSE
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ Requires a value between 0.001 and 0.999, default 0.300.}
 \item{fnote}{.}
 
 \item{ci}{.}
+
+\item{fagan}{.}
 }
 \value{
 A results object containing:
