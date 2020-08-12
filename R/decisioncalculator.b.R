@@ -533,7 +533,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
             plotData <- image$state
 
-        plot <- nomogrammer(Prevalence = plotData$Prevalence,
+        plot1 <- nomogrammer(Prevalence = plotData$Prevalence,
                             Sens = plotData$Sens,
                             Spec = plotData$Spec,
                             Detail = TRUE,
@@ -542,7 +542,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
                             Verbose = TRUE
                             )
 
-        plot <- nomogrammer(Prevalence = plotData$Prevalence,
+        plot2 <- nomogrammer(Prevalence = plotData$Prevalence,
                             Plr = plotData$Plr,
                             Nlr = plotData$Nlr,
                             Detail = TRUE,
@@ -551,7 +551,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
                             Verbose = TRUE
                             )
 
-        print(plot)
+        print(plot1 + plot2)
         TRUE
 
 
