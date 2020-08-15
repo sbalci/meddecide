@@ -137,7 +137,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         cTable <- self$results$cTable
 
 
-        cTable$addRow(rowKey = "Test Positive",
+        cTable$setRow(rowKey = "Test Positive",
                       values = list(
                           newtest = "Test Positive",
                           GP = TP,
@@ -147,7 +147,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         )
 
 
-        cTable$addRow(rowKey = "Test Negative",
+        cTable$setRow(rowKey = "Test Negative",
                       values = list(
                           newtest = "Test Negative",
                           GP = FN,
@@ -156,7 +156,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
                       )
         )
 
-        cTable$addRow(rowKey = "Total",
+        cTable$setRow(rowKey = "Total",
                       values = list(
                           newtest = "Total",
                           GP = TP + FN,
