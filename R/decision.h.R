@@ -124,7 +124,7 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 options=options,
                 name="cTable",
                 title="Recoded Data for Decision Test Statistics",
-                rows=3,
+                rows=0,
                 columns=list(
                     list(
                         `name`="newtest", 

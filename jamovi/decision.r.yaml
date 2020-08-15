@@ -45,7 +45,7 @@ items:
     - name:  cTable
       title: 'Recoded Data for Decision Test Statistics'
       type: Table
-      rows: 3
+      rows: 0
       columns:
         - name: newtest
           title: ''
