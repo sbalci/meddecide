@@ -19,12 +19,23 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
                           values = list(
                               newtest = "Test Positive"
                           )
-
                           )
 
 
-            cTable$addRow(rowKey = "Test Negative")
-            cTable$addRow(rowKey = "Total")
+            cTable$addRow(rowKey = "Test Negative",
+                          values = list(
+                              newtest = "Test Negative"
+                          )
+                          )
+
+
+
+
+            cTable$addRow(rowKey = "Total",
+                          values = list(
+                              newtest = "Total"
+                              )
+                          )
 
         },
 
@@ -200,7 +211,7 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
         # Cross Table in jamovi style ----
 
-        # cTable <- self$results$cTable
+        cTable <- self$results$cTable
 
         cTable$setRow(rowKey = "Test Positive",
                       values = list(
