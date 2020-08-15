@@ -13,7 +13,23 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
         .initcTable = function() {
+
             cTable <- self$results$cTable
+
+            cTable$addRow(
+                rowKey = "Test Positive"
+                )
+
+
+            cTable$addRow(
+                rowKey = "Test Negative"
+            )
+
+            cTable$addRow(
+                rowKey = "Total"
+            )
+
+
 
         },
 
