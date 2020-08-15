@@ -139,7 +139,7 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `title`="Gold Negative", 
                         `type`="number"),
                     list(
-                        `name`="TotalCol", 
+                        `name`="Total", 
                         `title`="Total", 
                         `type`="number"))))
             self$add(jmvcore::Table$new(

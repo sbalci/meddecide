@@ -56,7 +56,7 @@ items:
         - name: GN
           title: 'Gold Negative'
           type: number
-        - name: TotalCol
+        - name: Total
           title: 'Total'
           type: number
 
