@@ -45,21 +45,9 @@ items:
     - name:  cTable
       title: 'Recoded Data for Decision Test Statistics'
       type: Table
-      rows:
-        - name: newtest
-          title: ''
-          type: text
-        - name: TP
-          title: 'Test Positive'
-          type: number
-        - name: TN
-          title: 'Test Negative'
-          type: number
-        - name: TotalRow
-          title: 'Total'
-          type: number
+      rows: 3
       columns:
-        - name: gold
+        - name: newtest
           title: ''
           type: text
         - name: GP

@@ -124,7 +124,7 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                 options=options,
                 name="cTable",
                 title="Recoded Data for Decision Test Statistics",
-                rows=0,
+                rows=3,
                 columns=list(
                     list(
                         `name`="newtest", 
@@ -139,7 +139,7 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                         `title`="Gold Negative", 
                         `type`="number"),
                     list(
-                        `name`="Total", 
+                        `name`="TotalCol", 
                         `title`="Total", 
                         `type`="number"))))
             self$add(jmvcore::Table$new(
