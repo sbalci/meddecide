@@ -17,16 +17,22 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
             cTable <- self$results$cTable
 
             cTable$addRow(
-                rowKey = "Test Positive"
+                rowKey = "Test Positive",
+                values = list(
+                    newtest = "Test Positive")
                 )
 
 
             cTable$addRow(
-                rowKey = "Test Negative"
+                rowKey = "Test Negative",
+                values = list(
+                    newtest = "Test Negative")
             )
 
             cTable$addRow(
-                rowKey = "Total"
+                rowKey = "Total",
+                values = list(
+                    newtest = "Total")
             )
 
 
