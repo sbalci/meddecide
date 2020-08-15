@@ -129,7 +129,19 @@ decisionResults <- if (requireNamespace('jmvcore')) R6::R6Class(
                     list(
                         `name`="newtest", 
                         `title`="", 
-                        `type`="text"))))
+                        `type`="text"),
+                    list(
+                        `name`="GP", 
+                        `title`="Gold Positive", 
+                        `type`="number"),
+                    list(
+                        `name`="GN", 
+                        `title`="Gold Negative", 
+                        `type`="number"),
+                    list(
+                        `name`="Total", 
+                        `title`="Total", 
+                        `type`="number"))))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="nTable",

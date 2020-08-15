@@ -50,15 +50,15 @@ items:
         - name: newtest
           title: ''
           type: text
-        # - name: GP
-        #   title: 'Gold Positive'
-        #   type: number
-        # - name: GN
-        #   title: 'Gold Negative'
-        #   type: number
-        # - name: Total
-        #   title: 'Total'
-        #   type: number
+        - name: GP
+          title: 'Gold Positive'
+          type: number
+        - name: GN
+          title: 'Gold Negative'
+          type: number
+        - name: Total
+          title: 'Total'
+          type: number
 
 
     - name:  nTable
