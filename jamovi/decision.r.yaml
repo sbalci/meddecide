@@ -46,6 +46,9 @@ items:
       title: 'Recoded Data for Decision Test Statistics'
       type: Table
       rows:
+        - name: newtest
+          title: ''
+          type: text
         - name: TP
           title: 'Test Positive'
           type: number
@@ -56,7 +59,7 @@ items:
           title: 'Total'
           type: number
       columns:
-        - name: newtest
+        - name: gold
           title: ''
           type: text
         - name: GP
