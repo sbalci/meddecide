@@ -12,63 +12,11 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
 
-        .initcTable = function() {
-
-            cTable <- self$results$cTable
-
-            # cTable$addRow(
-            #     rowKey = "Test Positive",
-            #     values = list(
-            #         newtest = "Test Positive")
-            #     )
-            #
-            #
-            # cTable$addRow(
-            #     rowKey = "Test Negative",
-            #     values = list(
-            #         newtest = "Test Negative")
-            # )
-            #
-            # cTable$addRow(
-            #     rowKey = "Total",
-            #     values = list(
-            #         newtest = "Total")
-            # )
-
-            cTable$addRow(rowKey = "Test Positive",
-                          values = list(
-                              newtest = "Test Positive",
-                              GP = TP,
-                              GN = FP,
-                              Total = TP + FP
-                          )
-            )
-
-
-            cTable$addRow(rowKey = "Test Negative",
-                          values = list(
-                              newtest = "Test Negative",
-                              GP = FN,
-                              GN = TN,
-                              Total = FN + TN
-                          )
-            )
-
-            cTable$addRow(rowKey = "Total",
-                          values = list(
-                              newtest = "Total",
-                              GP = TP + FN,
-                              GN = FP + TN,
-                              Total = TP + FP + FN + TN
-                          )
-            )
-
-
-        },
 
 
 
         .run = function() {
+
 
         # # Error Message ----
         #
@@ -236,38 +184,36 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
         # Cross Table in jamovi style ----
 
-        private$.initcTable()
+        cTable <- self$results$cTable
 
-        # cTable <- self$results$cTable
-        #
-        #
-        # cTable$addRow(rowKey = "Test Positive",
-        #               values = list(
-        #                   # newtest = "Test Positive",
-        #                   GP = TP,
-        #                   GN = FP,
-        #                   Total = TP + FP
-        #               )
-        # )
-        #
-        #
-        # cTable$addRow(rowKey = "Test Negative",
-        #               values = list(
-        #                   # newtest = "Test Negative",
-        #                   GP = FN,
-        #                   GN = TN,
-        #                   Total = FN + TN
-        #               )
-        # )
-        #
-        # cTable$addRow(rowKey = "Total",
-        #               values = list(
-        #                   # newtest = "Total",
-        #                   GP = TP + FN,
-        #                   GN = FP + TN,
-        #                   Total = TP + FP + FN + TN
-        #               )
-        # )
+
+        cTable$addRow(rowKey = "Test Positive",
+                      values = list(
+                          newtest = "Test Positive",
+                          GP = TP,
+                          GN = FP,
+                          Total = TP + FP
+                      )
+        )
+
+
+        cTable$addRow(rowKey = "Test Negative",
+                      values = list(
+                          newtest = "Test Negative",
+                          GP = FN,
+                          GN = TN,
+                          Total = FN + TN
+                      )
+        )
+
+        cTable$addRow(rowKey = "Total",
+                      values = list(
+                          newtest = "Total",
+                          GP = TP + FN,
+                          GN = FP + TN,
+                          Total = TP + FP + FN + TN
+                      )
+        )
 
 
 

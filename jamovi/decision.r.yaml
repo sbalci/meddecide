@@ -45,7 +45,16 @@ items:
     - name:  cTable
       title: 'Recoded Data for Decision Test Statistics'
       type: Table
-      rows: 0
+      rows:
+        - name: TP
+          title: 'Test Positive'
+          type: number
+        - name: TN
+          title: 'Test Negative'
+          type: number
+        - name: TotalRow
+          title: 'Total'
+          type: number
       columns:
         - name: newtest
           title: ''
@@ -56,7 +65,7 @@ items:
         - name: GN
           title: 'Gold Negative'
           type: number
-        - name: Total
+        - name: TotalCol
           title: 'Total'
           type: number
 
