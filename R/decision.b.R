@@ -577,7 +577,49 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
         }
 
 
+
+        # Send Data to Plot ----
+
+
+        plotData1 <- list(
+            "Prevalence" = PriorProb,
+            "Sens" = Sens,
+            "Spec" = Spec,
+            "Plr" = LRP,
+            "Nlr" = LRN
+        )
+
+        image1 <- self$results$plot1
+        image1$setState(plotData1)
+
+
+
+
+
         }
+        }
+
+        ,
+
+        .plot1 = function(image1, ggtheme, ...) {
+
+
+            plotData1 <- image1$state
+
+            plot1 <- nomogrammer(Prevalence = plotData1$Prevalence,
+                                 Sens = plotData1$Sens,
+                                 Spec = plotData1$Spec,
+                                 Plr = plotData1$Plr,
+                                 Nlr = plotData1$Nlr,
+                                 Detail = TRUE,
+                                 NullLine = TRUE,
+                                 LabelSize = (14/5),
+                                 Verbose = TRUE
+            )
+
+            print(plot1)
+            TRUE
+
 
 
         # drafts ----

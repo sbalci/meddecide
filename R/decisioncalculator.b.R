@@ -11,6 +11,41 @@
 decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisioncalculatorClass",
     inherit = decisioncalculatorBase, private = list(
 
+
+
+        .init = function() {
+
+            cTable <- self$results$cTable
+
+            cTable$addRow(rowKey = "Test Positive",
+                          values = list(
+                              newtest = "Test Positive"
+                          )
+            )
+
+
+            cTable$addRow(rowKey = "Test Negative",
+                          values = list(
+                              newtest = "Test Negative"
+                          )
+            )
+
+
+
+
+            cTable$addRow(rowKey = "Total",
+                          values = list(
+                              newtest = "Total"
+                          )
+            )
+
+        },
+
+
+
+
+
+
         .run = function() {
 
 
