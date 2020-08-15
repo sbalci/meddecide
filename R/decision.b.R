@@ -12,7 +12,7 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
 
-        .initcTable = function() {
+        .init = function() {
 
             cTable <- self$results$cTable
 
@@ -42,7 +42,6 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
         .run = function() {
-
 
         # # Error Message ----
         #
