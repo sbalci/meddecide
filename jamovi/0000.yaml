@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.1.0005
+version: 0.0.2.0037
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2020-08-12'
+date: '2020-08-22'
 type: R
 description: |-
   This module contains functions for interobserver and intraobserver reliability
