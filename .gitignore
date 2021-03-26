@@ -27,9 +27,10 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 .Rprofile
-
+docs
 ClinicoPath.Rproj
 build
 .Rbuildignore
 *.jmo
 .Rprofile
+.DS_Store
