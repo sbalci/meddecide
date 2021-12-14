@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>/404.html</loc>
+  </url>
+  <url>
+    <loc>/authors.html</loc>
+  </url>
+  <url>
+    <loc>/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ClinicoPath-package.html</loc>
+  </url>
+  <url>
+    <loc>/reference/agreement.html</loc>
+  </url>
+  <url>
+    <loc>/reference/agreementClass.html</loc>
+  </url>
+  <url>
+    <loc>/reference/decision.html</loc>
+  </url>
+  <url>
+    <loc>/reference/decisionClass.html</loc>
+  </url>
+  <url>
+    <loc>/reference/decisioncalculator.html</loc>
+  </url>
+  <url>
+    <loc>/reference/decisioncalculatorClass.html</loc>
+  </url>
+  <url>
+    <loc>/reference/index.html</loc>
+  </url>
+</urlset>
