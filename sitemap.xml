@@ -10,9 +10,6 @@
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/reference/ClinicoPath-package.html</loc>
-  </url>
-  <url>
     <loc>/reference/agreement.html</loc>
   </url>
   <url>
@@ -31,6 +28,12 @@
     <loc>/reference/decisioncalculatorClass.html</loc>
   </url>
   <url>
+    <loc>/reference/histopathology.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/meddecide-package.html</loc>
   </url>
 </urlset>
