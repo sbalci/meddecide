@@ -1,8 +1,8 @@
 Type: Package
 Package: meddecide
 Title: Functions for Medical Decision in ClinicoPath jamovi Module
-Version: 0.0.2.0041
-Date: 2020-08-31
+Version: 0.0.2.01
+Date: 2022-02-10
 Authors@R: 
     person(given = "Serdar",
            family = "Balci",
@@ -35,4 +35,4 @@ Imports:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
