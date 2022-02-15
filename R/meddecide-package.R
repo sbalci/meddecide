@@ -1,8 +1,8 @@
-#' \code{ClinicoPath}
+#' \code{meddecide}
 #'
-#' @title ClinicoPath: Analysis for Clinicopathological Research
+#' @title meddecide: Analysis for meddecideological Research
 #'
-#' @description `ClinicoPath` ClinicoPath help researchers to generate natural
+#' @description `meddecide` meddecide help researchers to generate natural
 #' language summaries of their dataset, generate cross tables with statistical
 #' tests, and survival analysis with survival tables, survival plots,
 #' and natural language summaries.
@@ -16,6 +16,6 @@
 #' \href{https://sbalci.github.io/ClinicoPathJamoviModule/}{Website}.
 #'
 #' @docType package
-#' @aliases ClinicoPath ClinicoPath-package
-#' @name ClinicoPath-package
+#' @aliases meddecide meddecide-package
+#' @name meddecide-package
 "_PACKAGE"
