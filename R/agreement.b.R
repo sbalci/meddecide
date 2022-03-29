@@ -152,11 +152,14 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
 
             result1 <- irr::agree(ratings)
 
-            # self$results$text1$setContent(result1)
+            self$results$text1$setContent(result1)
 
             # Table ----
 
             table2 <- self$results$irrtable
+
+
+
             table2$setRow(rowNo = 1, values = list(method = result2[["method"]],
                 subjects = result1[["subjects"]], raters = result1[["raters"]],
                 peragree = result1[["value"]], kappa = result2[["value"]],

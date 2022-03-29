@@ -48,13 +48,13 @@ items:
     #       format: zto,pvalue
 
 
-    # - name:  text1
-    #   title: Agreement
-    #   type:  Preformatted
-    #   clearWith:
-    #       - vars
-    #       - wght
-    #       - exct
+    - name:  text1
+      title: Agreement
+      type:  Preformatted
+      clearWith:
+          - vars
+          - wght
+          - exct
 
     # - name:  text2
     #   title: Interrater Reliability
