@@ -152,7 +152,13 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
 
             result1 <- irr::agree(ratings)
 
-            self$results$text1$setContent(result1)
+            # self$results$text1$setContent(result1[["value"]])
+
+            if (result1[["value"]] > 100) {
+
+                result1[["value"]] <- "Please check the data. It seems that observers do not agree on any cases"
+            }
+
 
             # Table ----
 

@@ -106,7 +106,7 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     list(
                         `name`="peragree", 
                         `title`="Agreement %", 
-                        `type`="number"),
+                        `type`="integer"),
                     list(
                         `name`="kappa", 
                         `title`="Kappa", 
