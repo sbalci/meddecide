@@ -429,4 +429,19 @@
         `year`=2020, 
         `title`="bbplot: MAKING GGPLOT GRAPHICS IN BBC NEWS STYLE", 
         `publisher`="[R package]. Retrieved from https://github.com/bbc/bbplot", 
-        `url`="https://github.com/bbc/bbplot"))
+        `url`="https://github.com/bbc/bbplot"), 
+    `ClinicoPathJamoviModule`=list(
+        `type`="software", 
+        `author`="Serdar Balci", 
+        `year`=2022, 
+        `title`="ClinicoPath jamovi Module doi:10.5281/zenodo.3997188", 
+        `publisher`="[R package]. Retrieved from https://github.com/sbalci/ClinicoPathJamoviModule", 
+        `doi`="10.17605/OSF.IO/9SZUD", 
+        `url`="https://www.serdarbalci.com/ClinicoPathJamoviModule/"), 
+    `sensspecwiki`=list(
+        `type`="webpage", 
+        `author`="Wikipedia contributors", 
+        `title`="Sensitivity and specificity --- Wikipedia, The Free Encyclopedia", 
+        `year`="2022", 
+        `url`="https://en.wikipedia.org/w/index.php?title=Sensitivity_and_specificity&oldid=1077556477", 
+        `note`="[Online; accessed 3-April-2022]"))

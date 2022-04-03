@@ -111,7 +111,9 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                 name="",
                 title="Medical Decision Calculator",
                 refs=list(
-                    "DiagnosticTests"))
+                    "DiagnosticTests",
+                    "sensspecwiki",
+                    "ClinicoPathJamoviModule"))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="cTable",
@@ -269,7 +271,9 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                 clearWith=list(
                     "pp",
                     "pprob"),
-                refs="epiR"))
+                refs=list(
+                    "epiR",
+                    "sensspecwiki")))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="epirTable_number",
@@ -298,7 +302,9 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                 clearWith=list(
                     "pp",
                     "pprob"),
-                refs="epiR"))
+                refs=list(
+                    "epiR",
+                    "sensspecwiki")))
             self$add(jmvcore::Image$new(
                 options=options,
                 name="plot1",
@@ -314,7 +320,8 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     "fagan"),
                 refs=list(
                     "Fagan",
-                    "Fagan2")))}))
+                    "Fagan2",
+                    "sensspecwiki")))}))
 
 decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "decisioncalculatorBase",
