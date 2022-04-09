@@ -371,7 +371,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         # epiR ----
 
         epirresult <- epiR::epi.tests(dat = table3)
-        self$results$text3$setContent(epirresult)
+        # self$results$text3$setContent(epirresult)
 
 
 
@@ -432,10 +432,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
 
-         text4 <-
-             list(
+         # text4 <-
+         #     list(
 
-                 "summary" = epirresult2
+                 # "summary" = epirresult2
 
          # epirresult[[3]]$aprev,
          # epirresult[[3]]$tprev,
@@ -453,7 +453,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
          # epirresult[[3]]$pri,
          # epirresult[[3]]$pfp,
          # epirresult[[3]]$pfn
-             )
+             # )
 
 
 
@@ -461,7 +461,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
 
 
-        self$results$text4$setContent(text4)
+        # self$results$text4$setContent(text4)
 
 
 
