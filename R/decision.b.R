@@ -476,7 +476,9 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
                 "Proportion of subjects with the outcome ruled out",
                 "Proportion of subjects with the outcome ruled in",
                 "Proportion of false positives",
-                "Proportion of false negative"
+                "Proportion of false negative",
+                "False Discovery Rate",
+                "False Omission Rate"
             )
 
         ratiorows <- c(
@@ -523,14 +525,14 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
         # epirTable_ratio footnotes ----
 
-        if (self$options$fnote) {
-
-            epirTable_ratio$addFootnote(
-                rowNo = 5,
-                col = "statsnames",
-                "Proportion of all tests that give a correct result."
-            )
-        }
+        # if (self$options$fnote) {
+        #
+        #     epirTable_ratio$addFootnote(
+        #         rowNo = 5,
+        #         col = "statsnames",
+        #         "Proportion of all tests that give a correct result."
+        #     )
+        # }
 
 
 
@@ -551,32 +553,32 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
         # epirTable_number footnotes ----
 
-        if (self$options$fnote) {
+        # if (self$options$fnote) {
+        #
+        #
+        #     epirTable_number$addFootnote(
+        #         rowNo = 1,
+        #         col = "statsnames",
+        #         "How much more likely will the test make a correct diagnosis than an incorrect diagnosis in patients with the disease."
+        #     )
+        #
+        #     epirTable_number$addFootnote(
+        #         rowNo = 2,
+        #         col = "statsnames",
+        #         "Number of patients that need to be tested to give one correct positive test."
+        #     )
+        #
+        #
+        #     epirTable_number$addFootnote(
+        #         rowNo = 3,
+        #         col = "statsnames",
+        #         "Youden's index is the difference between the true positive rate and the false positive rate. Youden's index ranges from -1 to +1 with values closer to 1 if both sensitivity and specificity are high (i.e. close to 1)."
+        #
+        #     )
+        #
+        # }
 
-
-            epirTable_number$addFootnote(
-                rowNo = 1,
-                col = "statsnames",
-                "How much more likely will the test make a correct diagnosis than an incorrect diagnosis in patients with the disease."
-            )
-
-            epirTable_number$addFootnote(
-                rowNo = 2,
-                col = "statsnames",
-                "Number of patients that need to be tested to give one correct positive test."
-            )
-
-
-            epirTable_number$addFootnote(
-                rowNo = 3,
-                col = "statsnames",
-                "Youden's index is the difference between the true positive rate and the false positive rate. Youden's index ranges from -1 to +1 with values closer to 1 if both sensitivity and specificity are high (i.e. close to 1)."
-
-            )
-
-        }
-
-
+}
 
         # Send Data to Plot ----
 
@@ -589,6 +591,11 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
             "Nlr" = LRN
         )
 
+
+        # self$results$plotcontent$setContent(plotData1)
+
+
+
         image1 <- self$results$plot1
         image1$setState(plotData1)
 
@@ -597,7 +604,7 @@ decisionClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisionClass",
 
 
         }
-        }
+
 
         ,
 

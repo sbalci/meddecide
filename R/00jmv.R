@@ -444,4 +444,11 @@
         `title`="Sensitivity and specificity --- Wikipedia, The Free Encyclopedia", 
         `year`="2022", 
         `url`="https://en.wikipedia.org/w/index.php?title=Sensitivity_and_specificity&oldid=1077556477", 
-        `note`="[Online; accessed 3-April-2022]"))
+        `note`="[Online; accessed 3-April-2022]"), 
+    `kappaSize`=list(
+        `type`="software", 
+        `author`="Michael A Rotondi", 
+        `year`=2022, 
+        `title`="kappaSize: Sample Size Estimation Functions for Studies of Interobserver Agreement", 
+        `publisher`="[R package]. Retrieved from https://cran.r-project.org/web/packages/kappaSize/", 
+        `url`="https://cran.r-project.org/web/packages/kappaSize/"))

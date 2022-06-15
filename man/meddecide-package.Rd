@@ -5,7 +5,7 @@
 \alias{meddecide-package}
 \alias{_PACKAGE}
 \alias{meddecide}
-\title{meddecide: Analysis for meddecideological Research}
+\title{Functions for Medical Decision Making in ClinicoPath jamovi Module}
 \description{
 \code{meddecide} meddecide help researchers to generate natural
 language summaries of their dataset, generate cross tables with statistical

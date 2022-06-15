@@ -31,7 +31,7 @@ decision(
 
 \item{pp}{.}
 
-\item{pprob}{Prior probability (disease prevelance in the community).
+\item{pprob}{Prior probability (disease prevalence in the community).
 Requires a value between 0.001 and 0.999, default 0.300.}
 
 \item{od}{Boolean selection whether to show frequency table. Default is

@@ -210,7 +210,9 @@ items:
           - pprob
       refs: epiR
 
-
+    # - name:  plotcontent
+    #   title: plotcontent
+    #   type:  Preformatted
 
     # - name:  text3
     #   title: Matrix Details

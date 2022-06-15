@@ -1,16 +1,17 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.2.04
+version: 0.0.2.07
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2022-04-03'
+date: '2022-06-14'
 type: R
 description: |-
   This module contains functions for interobserver and intraobserver reliability
   and decision tests (sensitivity, specificity, PPV, NPV).
+  Power analyses are available.
 analyses:
   - title: Interrater Reliability
     name: agreement
@@ -37,6 +38,33 @@ analyses:
     menuTitle: Medical Decision Calculator
     description: Function for Medical Decision Calculator.
     menuSubtitle: 'Sensitivity, Specificity, PPV, NPV, ...'
+  - title: Power Approach for the Number of Subjects Required
+    name: kappaSizePower
+    ns: meddecide
+    menuGroup: meddecide
+    menuSubgroup: Power Analysis
+    menuSubtitle: Power Analysis Kappa
+    menuTitle: Power Approach for the Number of Subjects Required
+    description: |
+      Power Analysis for Interobserver Agreement Analysis.
+  - title: Confidence Interval Approach for the Number of Subjects Required
+    name: kappaSizeCI
+    ns: meddecide
+    menuGroup: meddecide
+    menuTitle: Confidence Interval Approach for the Number of Subjects Required
+    menuSubgroup: Power Analysis
+    menuSubtitle: CI Kappa
+    description: |
+      Power Analysis for Interobserver Agreement Analysis.
+  - title: Lowest Expected Value for a fixed sample size
+    name: kappaSizeFixedN
+    ns: meddecide
+    menuGroup: meddecide
+    menuTitle: Lowest Expected Value for a fixed sample size
+    menuSubgroup: Power Analysis
+    menuSubtitle: Lowest Expected Value fixed sample size
+    description: |
+      Lowest Expected Value for a fixed sample size.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

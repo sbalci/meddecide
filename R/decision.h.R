@@ -373,7 +373,7 @@ decisionBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param newtest .
 #' @param testPositive .
 #' @param pp .
-#' @param pprob Prior probability (disease prevelance in the community).
+#' @param pprob Prior probability (disease prevalence in the community).
 #'   Requires a value between 0.001 and 0.999, default 0.300.
 #' @param od Boolean selection whether to show frequency table. Default is
 #'   'false'.
