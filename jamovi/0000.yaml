@@ -43,7 +43,7 @@ analyses:
     ns: meddecide
     menuGroup: meddecide
     menuSubgroup: Power Analysis
-    menuSubtitle: Power Analysis Kappa
+    menuSubtitle: Find sample size based on power
     menuTitle: Power Approach for the Number of Subjects Required
     description: |
       Power Analysis for Interobserver Agreement Analysis.
@@ -53,7 +53,7 @@ analyses:
     menuGroup: meddecide
     menuTitle: Confidence Interval Approach for the Number of Subjects Required
     menuSubgroup: Power Analysis
-    menuSubtitle: CI Kappa
+    menuSubtitle: Find sample size based on Kappa confidence
     description: |
       Power Analysis for Interobserver Agreement Analysis.
   - title: Lowest Expected Value for a fixed sample size
@@ -62,7 +62,7 @@ analyses:
     menuGroup: meddecide
     menuTitle: Lowest Expected Value for a fixed sample size
     menuSubgroup: Power Analysis
-    menuSubtitle: Lowest Expected Value fixed sample size
+    menuSubtitle: Find lower Kappa based on sample size
     description: |
       Lowest Expected Value for a fixed sample size.
 datasets:

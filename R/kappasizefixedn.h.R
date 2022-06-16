@@ -93,7 +93,7 @@ kappaSizeFixedNResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             super$initialize(
                 options=options,
                 name="",
-                title="Lowest Expected Value fixed sample size",
+                title="Lowest Expected Value for a fixed sample size",
                 refs=list(
                     "ClinicoPathJamoviModule",
                     "kappaSize"))

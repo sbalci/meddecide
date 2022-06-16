@@ -1,6 +1,6 @@
 ---
 name:  kappaSizeFixedN
-title: Lowest Expected Value fixed sample size
+title: Lowest Expected Value for a fixed sample size
 jrs:   '1.1'
 
 items:
