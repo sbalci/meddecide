@@ -1,7 +1,4 @@
 #' @title Medical Decision Making
-#'
-#'
-#'
 #' @importFrom R6 R6Class
 #' @import jmvcore
 #'

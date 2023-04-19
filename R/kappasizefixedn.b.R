@@ -1,7 +1,4 @@
 #' @title Lowest Expected Value for a fixed sample size
-#'
-#'
-#'
 #' @importFrom R6 R6Class
 #' @import jmvcore
 

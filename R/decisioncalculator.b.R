@@ -1,8 +1,4 @@
 #' @title Decision Calculator
-#'
-#'
-#'
-#'
 #' @importFrom R6 R6Class
 #' @import jmvcore
 #' @importFrom utils data

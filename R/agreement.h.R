@@ -63,8 +63,9 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "agreementResults",
     inherit = jmvcore::Group,
     active = list(
-        text = function() private$.items[["text"]],
-        irrtable = function() private$.items[["irrtable"]]),
+        irrtable = function() private$.items[["irrtable"]],
+        text2 = function() private$.items[["text2"]],
+        text = function() private$.items[["text"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -76,15 +77,6 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "irr",
                     "PathologyKappa",
                     "ClinicoPathJamoviModule"))
-            self$add(jmvcore::Preformatted$new(
-                options=options,
-                name="text",
-                title="Table",
-                visible="(sft)",
-                clearWith=list(
-                    "vars",
-                    "wght",
-                    "exct")))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="irrtable",
@@ -121,6 +113,24 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `title`="p-value", 
                         `type`="number", 
                         `format`="zto,pvalue")),
+                clearWith=list(
+                    "vars",
+                    "wght",
+                    "exct")))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="text2",
+                title="Table",
+                visible="(sft)",
+                clearWith=list(
+                    "vars",
+                    "wght",
+                    "exct")))
+            self$add(jmvcore::Preformatted$new(
+                options=options,
+                name="text",
+                title="Table",
+                visible="(sft)",
                 clearWith=list(
                     "vars",
                     "wght",
@@ -168,8 +178,9 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'   than 3 observers.
 #' @return A results object containing:
 #' \tabular{llllll}{
-#'   \code{results$text} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$irrtable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$text2} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$text} \tab \tab \tab \tab \tab a preformatted \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

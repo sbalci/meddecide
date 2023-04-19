@@ -1,7 +1,4 @@
 #' @title Power Approach for the Number of Subjects Required
-#'
-#'
-#'
 #' @importFrom R6 R6Class
 #' @import jmvcore
 
