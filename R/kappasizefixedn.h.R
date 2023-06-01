@@ -123,7 +123,8 @@ kappaSizeFixedNBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                 revision = revision,
                 pause = NULL,
                 completeWhenFilled = FALSE,
-                requiresMissings = FALSE)
+                requiresMissings = FALSE,
+                weightsSupport = 'na')
         }))
 
 #' Lowest Expected Value for a fixed sample size
