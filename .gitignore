@@ -30,7 +30,5 @@ vignettes/*.pdf
 docs
 ClinicoPath.Rproj
 build
-.Rbuildignore
-*.jmo
 .Rprofile
 .DS_Store
