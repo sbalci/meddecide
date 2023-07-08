@@ -400,31 +400,31 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             )
 
         ratiorows <- c(
-            "aprev",
-            "tprev",
+            "ap",
+            "tp",
             "se",
             "sp",
-            "diag.acc",
-            "ppv",
-            "npv",
-            "pro",
-            "pri",
-            "pfp",
-            "pfn"
+            "diag.ac",
+            "pv.pos",
+            "pv.neg",
+            "p.tpdn",
+            "p.tndp",
+            "p.dntp",
+            "p.dptn"
         )
 
 
         numberrows <- c(
             "diag.or",
-            "nnd",
+            "nndx",
             "youden",
-            "plr",
-            "nlr"
+            "lr.pos",
+            "lr.neg"
         )
 
-        epirresult_number <- epirresult2[epirresult2$statsabv %in% numberrows, ]
+        epirresult_number <- epirresult2[epirresult2$statistic %in% numberrows, ]
 
-        epirresult_ratio <- epirresult2[epirresult2$statsabv %in% ratiorows, ]
+        epirresult_ratio <- epirresult2[epirresult2$statistic %in% ratiorows, ]
 
 
 

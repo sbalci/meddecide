@@ -15,6 +15,12 @@ items:
       visible: (od)
 
 
+    - name:  text2
+      title: Original Data
+      type:  Html
+      visible: (od)
+
+
     # - name:  text2
     #   title: Original Data
     #   type:  Preformatted
