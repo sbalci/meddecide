@@ -1,8 +1,8 @@
 Type: Package
 Package: meddecide
 Title: Functions for Medical Decision Making in ClinicoPath jamovi Module
-Version: 0.0.2.11
-Date: 2023-12-06
+Version: 0.0.2.17
+Date: 2023-12-24
 Authors@R: 
     person(given = "Serdar",
            family = "Balci",
