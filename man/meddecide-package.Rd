@@ -3,7 +3,6 @@
 \docType{package}
 \name{meddecide-package}
 \alias{meddecide-package}
-\alias{_PACKAGE}
 \alias{meddecide}
 \title{Functions for Medical Decision Making in ClinicoPath jamovi Module}
 \description{
