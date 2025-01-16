@@ -32,3 +32,4 @@ ClinicoPath.Rproj
 build
 .Rprofile
 .DS_Store
+*.jmo
