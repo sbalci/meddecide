@@ -25,9 +25,7 @@ Description: A comprehensive toolkit for medical decision analysis and reliabili
     Tools are provided through an intuitive graphical interface in jamovi, making
     complex medical decision analyses accessible to clinical researchers.
 License: GPL (>= 2)
-URL: https://github.com/sbalci/ClinicoPathJamoviModule/,
-    https://github.com/sbalci/meddecision/,
-    https://sbalci.github.io/ClinicoPathJamoviModule/
+URL: https://github.com/sbalci/ClinicoPathJamoviModule/, https://github.com/sbalci/meddecision/, https://sbalci.github.io/ClinicoPathJamoviModule/, https://www.serdarbalci.com/meddecide/
 BugReports: 
     https://github.com/sbalci/ClinicoPathJamoviModule/issues/
 Depends:
@@ -44,7 +42,8 @@ Imports:
     epiR,
     ggplot2,
     scales,
-    kappaSize
+    kappaSize,
+    tidyr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
