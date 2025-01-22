@@ -9,9 +9,20 @@ maintainer: Serdar Balci <drserdarbalci@gmail.com>
 date: '2025-01-22'
 type: R
 description: |-
-  This module contains functions for interobserver and intraobserver reliability
-  and decision tests (sensitivity, specificity, PPV, NPV).
-  Power analyses are available.
+    A comprehensive toolkit for medical decision analysis and reliability
+    assessment, implemented as a jamovi module. The package provides tools for:
+    * Interrater and intrarater reliability analysis using Cohen's Kappa and
+      Fleiss' Kappa statistics
+    * Diagnostic test evaluation with sensitivity, specificity, predictive values,
+      and likelihood ratios
+    * Sample size calculations for reliability studies using confidence interval
+      and power-based approaches
+    * Visualization tools including Fagan nomograms for Bayesian probability
+      updates
+    * Power analysis for interobserver agreement studies with support for
+      multiple raters and outcome categories
+    Tools are provided through an intuitive graphical interface in jamovi, making
+    complex medical decision analyses accessible to clinical researchers.
 analyses:
   - title: Interrater Reliability
     name: agreement
