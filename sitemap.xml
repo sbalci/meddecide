@@ -7,20 +7,10 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/agreementClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/auc_ci.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/bootstrap_ci.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/bootstrap_roc_test.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/calculate_auc.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/calculate_bootstrap_results.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/calculate_ci_roc.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/calculate_delong_cov.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/calculate_placement_values.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/calculate_se.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/compare_auc.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/compare_tests.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decision.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisionClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncalculator.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncalculatorClass.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/delong_test.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/histopathology.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/index.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.html</loc></url>
@@ -32,7 +22,5 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/meddecide-package.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/nogoldstandard.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/nogoldstandardClass.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/prepare_bootstrap_data.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/roc_utils.html</loc></url>
 </urlset>
 
