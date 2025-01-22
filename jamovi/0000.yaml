@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.2.52
+version: 0.0.2.53
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2025-01-19'
+date: '2025-01-22'
 type: R
 description: |-
   This module contains functions for interobserver and intraobserver reliability
@@ -65,6 +65,14 @@ analyses:
     menuSubtitle: Find lower Kappa based on sample size
     description: |
       Lowest Expected Value for a fixed sample size.
+  - title: Analysis Without Gold Standard
+    name: nogoldstandard
+    ns: meddecide
+    menuGroup: meddecide
+    menuTitle: Analysis Without Gold Standard
+    menuSubgroup: Decision
+    menuSubtitle: Multiple Test Analysis Without Gold Standard
+    description: Analysis of diagnostic tests without a gold standard reference
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
