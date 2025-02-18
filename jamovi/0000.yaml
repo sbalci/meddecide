@@ -1,28 +1,28 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.2.54
+version: 0.0.2.60
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2025-01-24'
+date: '2025-02-18'
 type: R
 description: |-
-    A comprehensive toolkit for medical decision analysis and reliability
-    assessment, implemented as a jamovi module. The package provides tools for:
-    * Interrater and intrarater reliability analysis using Cohen's Kappa and
-      Fleiss' Kappa statistics
-    * Diagnostic test evaluation with sensitivity, specificity, predictive values,
-      and likelihood ratios
-    * Sample size calculations for reliability studies using confidence interval
-      and power-based approaches
-    * Visualization tools including Fagan nomograms for Bayesian probability
-      updates
-    * Power analysis for interobserver agreement studies with support for
-      multiple raters and outcome categories
-    Tools are provided through an intuitive graphical interface in jamovi, making
-    complex medical decision analyses accessible to clinical researchers.
+  A comprehensive toolkit for medical decision analysis and reliability
+  assessment, implemented as a jamovi module. The package provides tools for:
+  * Interrater and intrarater reliability analysis using Cohen's Kappa and
+    Fleiss' Kappa statistics
+  * Diagnostic test evaluation with sensitivity, specificity, predictive values,
+    and likelihood ratios
+  * Sample size calculations for reliability studies using confidence interval
+    and power-based approaches
+  * Visualization tools including Fagan nomograms for Bayesian probability
+    updates
+  * Power analysis for interobserver agreement studies with support for
+    multiple raters and outcome categories
+  Tools are provided through an intuitive graphical interface in jamovi, making
+  complex medical decision analyses accessible to clinical researchers.
 analyses:
   - title: Interrater Reliability
     name: agreement
@@ -76,14 +76,6 @@ analyses:
     menuSubtitle: Find lower Kappa based on sample size
     description: |
       Lowest Expected Value for a fixed sample size.
-  - title: Analysis Without Gold Standard
-    name: nogoldstandard
-    ns: meddecide
-    menuGroup: meddecide
-    menuTitle: Analysis Without Gold Standard
-    menuSubgroup: Decision
-    menuSubtitle: Multiple Test Analysis Without Gold Standard
-    description: Analysis of diagnostic tests without a gold standard reference
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
