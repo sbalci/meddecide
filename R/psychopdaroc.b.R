@@ -287,6 +287,392 @@ print.DeLong = function(x, digits = max(3, getOption("digits") - 3), ...) {
   cat(paste("\nOverall test:\n p-value =", format.pval(x$global.p, digits = digits), "\n"))
 }
 
+#' Convert raw test values to predicted probabilities using ROC curve
+#' @param values Raw test values
+#' @param actual Binary outcomes (0/1)
+#' @param direction Direction of the test ">=" or "<="
+#' @return Vector of predicted probabilities
+raw_to_prob <- function(values, actual, direction = ">=") {
+  # Sort values for thresholds
+  sorted_values <- sort(unique(values))
+
+  # Calculate sensitivity and specificity for each threshold
+  threshold_data <- data.frame(
+    threshold = numeric(length(sorted_values)),
+    sensitivity = numeric(length(sorted_values)),
+    specificity = numeric(length(sorted_values))
+  )
+
+  for (i in seq_along(sorted_values)) {
+    threshold <- sorted_values[i]
+
+    if (direction == ">=") {
+      predicted_pos <- values >= threshold
+    } else {
+      predicted_pos <- values <= threshold
+    }
+
+    tp <- sum(predicted_pos & actual == 1)
+    fp <- sum(predicted_pos & actual == 0)
+    tn <- sum(!predicted_pos & actual == 0)
+    fn <- sum(!predicted_pos & actual == 1)
+
+    threshold_data$threshold[i] <- threshold
+    threshold_data$sensitivity[i] <- tp / (tp + fn)
+    threshold_data$specificity[i] <- tn / (tn + fp)
+  }
+
+  # For each value, find nearest threshold and use sensitivity as probability
+  probs <- numeric(length(values))
+  for (i in seq_along(values)) {
+    idx <- which.min(abs(threshold_data$threshold - values[i]))
+    if (direction == ">=") {
+      probs[i] <- threshold_data$sensitivity[idx]
+    } else {
+      probs[i] <- 1 - threshold_data$sensitivity[idx]
+    }
+  }
+
+  return(probs)
+}
+
+
+#' Calculate Integrated Discrimination Improvement (IDI)
+#' @param values_new Raw values from the new test
+#' @param values_ref Raw values from the reference test
+#' @param actual Actual binary outcomes
+#' @param direction Direction of the test ">=" or "<="
+#' @param ci Calculate confidence intervals
+#' @param boot_runs Number of bootstrap iterations
+#' @return List with IDI value and confidence intervals
+calculate_idi <- function(values_new, values_ref, actual, direction = ">=",
+                          ci = TRUE, boot_runs = 1000) {
+  # Ensure actual is binary (0 or 1)
+  actual_binary <- as.numeric(actual)
+
+  # Convert raw values to probabilities
+  predicted_new <- raw_to_prob(values_new, actual_binary, direction)
+  predicted_ref <- raw_to_prob(values_ref, actual_binary, direction)
+
+  # Calculate discrimination slopes
+  discrim_slope_new <- mean(predicted_new[actual_binary == 1]) -
+    mean(predicted_new[actual_binary == 0])
+  discrim_slope_ref <- mean(predicted_ref[actual_binary == 1]) -
+    mean(predicted_ref[actual_binary == 0])
+
+  # Calculate IDI
+  idi <- discrim_slope_new - discrim_slope_ref
+
+  # Calculate confidence intervals if requested
+  if (ci && boot_runs > 0 && requireNamespace("boot", quietly = TRUE)) {
+    # Bootstrap function for confidence intervals
+    boot_idi <- function(data, indices) {
+      boot_actual <- actual_binary[indices]
+      boot_new <- values_new[indices]
+      boot_ref <- values_ref[indices]
+
+      boot_prob_new <- raw_to_prob(boot_new, boot_actual, direction)
+      boot_prob_ref <- raw_to_prob(boot_ref, boot_actual, direction)
+
+      slope_new <- mean(boot_prob_new[boot_actual == 1]) -
+        mean(boot_prob_new[boot_actual == 0])
+      slope_ref <- mean(boot_prob_ref[boot_actual == 1]) -
+        mean(boot_prob_ref[boot_actual == 0])
+
+      return(slope_new - slope_ref)
+    }
+
+    # Run bootstrap
+    boot_results <- boot::boot(data = data.frame(values_new, values_ref, actual_binary),
+                               statistic = boot_idi,
+                               R = boot_runs)
+
+    # Calculate confidence intervals
+    boot_ci <- boot::boot.ci(boot_results, type = "perc", conf = 0.95)
+    ci_lower <- boot_ci$percent[4]
+    ci_upper <- boot_ci$percent[5]
+
+    # Calculate p-value
+    p_value <- 2 * min(
+      mean(boot_results$t <= 0),
+      mean(boot_results$t >= 0)
+    )
+  } else {
+    ci_lower <- NA
+    ci_upper <- NA
+    p_value <- NA
+  }
+
+  return(list(
+    idi = idi,
+    ci_lower = ci_lower,
+    ci_upper = ci_upper,
+    p_value = p_value
+  ))
+}
+
+
+#' Calculate Net Reclassification Improvement (NRI)
+#' @param values_new Raw values from the new test
+#' @param values_ref Raw values from the reference test
+#' @param actual Actual binary outcomes
+#' @param thresholds Thresholds for category-based NRI (NULL for continuous)
+#' @param direction Direction of the test ">=" or "<="
+#' @param ci Calculate confidence intervals
+#' @param boot_runs Number of bootstrap iterations
+#' @return List with NRI values and confidence intervals
+calculate_nri <- function(values_new, values_ref, actual,
+                          thresholds = NULL, direction = ">=",
+                          ci = TRUE, boot_runs = 1000) {
+  # Ensure actual is binary (0 or 1)
+  actual_binary <- as.numeric(actual)
+
+  # Convert raw values to probabilities
+  predicted_new <- raw_to_prob(values_new, actual_binary, direction)
+  predicted_ref <- raw_to_prob(values_ref, actual_binary, direction)
+
+  # Identify events and non-events
+  events <- actual_binary == 1
+  non_events <- actual_binary == 0
+
+  # Calculate NRI
+  if (is.null(thresholds) || length(thresholds) == 0) {
+    # Continuous NRI calculation
+    up_events <- sum(predicted_new[events] > predicted_ref[events])
+    down_events <- sum(predicted_new[events] < predicted_ref[events])
+    up_non_events <- sum(predicted_new[non_events] > predicted_ref[non_events])
+    down_non_events <- sum(predicted_new[non_events] < predicted_ref[non_events])
+
+    # Calculate proportions
+    p_up_events <- up_events / sum(events)
+    p_down_events <- down_events / sum(events)
+    p_up_non_events <- up_non_events / sum(non_events)
+    p_down_non_events <- down_non_events / sum(non_events)
+
+    # Calculate NRI components
+    event_nri <- p_up_events - p_down_events
+    non_event_nri <- p_down_non_events - p_up_non_events
+  } else {
+    # Category-based NRI calculation
+    # Create risk categories
+    ref_cats <- cut(predicted_ref,
+                    breaks = c(0, thresholds, 1),
+                    labels = 1:(length(thresholds) + 1),
+                    include.lowest = TRUE)
+
+    new_cats <- cut(predicted_new,
+                    breaks = c(0, thresholds, 1),
+                    labels = 1:(length(thresholds) + 1),
+                    include.lowest = TRUE)
+
+    # Calculate movement
+    move_up_event <- sum(as.numeric(new_cats[events]) > as.numeric(ref_cats[events]))
+    move_down_event <- sum(as.numeric(new_cats[events]) < as.numeric(ref_cats[events]))
+    move_up_non_event <- sum(as.numeric(new_cats[non_events]) > as.numeric(ref_cats[non_events]))
+    move_down_non_event <- sum(as.numeric(new_cats[non_events]) < as.numeric(ref_cats[non_events]))
+
+    # Calculate proportions
+    p_up_events <- move_up_event / sum(events)
+    p_down_events <- move_down_event / sum(events)
+    p_up_non_events <- move_up_non_event / sum(non_events)
+    p_down_non_events <- move_down_non_event / sum(non_events)
+
+    # Calculate NRI components
+    event_nri <- p_up_events - p_down_events
+    non_event_nri <- p_down_non_events - p_up_non_events
+  }
+
+  # Calculate overall NRI
+  nri <- event_nri + non_event_nri
+
+  # Calculate confidence intervals via bootstrap if requested
+  if (ci && boot_runs > 0 && requireNamespace("boot", quietly = TRUE)) {
+    # Bootstrap function
+    boot_nri <- function(data, indices) {
+      # Same calculation as above but with bootstrap sample
+      # Using a simplified version for brevity
+      b_actual <- actual_binary[indices]
+      b_events <- b_actual == 1
+      b_non_events <- b_actual == 0
+
+      b_new <- values_new[indices]
+      b_ref <- values_ref[indices]
+
+      b_prob_new <- raw_to_prob(b_new, b_actual, direction)
+      b_prob_ref <- raw_to_prob(b_ref, b_actual, direction)
+
+      # Calculate continuous NRI for bootstrap sample
+      b_up_events <- sum(b_prob_new[b_events] > b_prob_ref[b_events])
+      b_down_events <- sum(b_prob_new[b_events] < b_prob_ref[b_events])
+      b_up_non_events <- sum(b_prob_new[b_non_events] > b_prob_ref[b_non_events])
+      b_down_non_events <- sum(b_prob_new[b_non_events] < b_prob_ref[b_non_events])
+
+      b_p_up_events <- b_up_events / sum(b_events)
+      b_p_down_events <- b_down_events / sum(b_events)
+      b_p_up_non_events <- b_up_non_events / sum(b_non_events)
+      b_p_down_non_events <- b_down_non_events / sum(b_non_events)
+
+      b_event_nri <- b_p_up_events - b_p_down_events
+      b_non_event_nri <- b_p_down_non_events - b_p_up_non_events
+
+      return(b_event_nri + b_non_event_nri)
+    }
+
+    # Run bootstrap
+    boot_results <- boot::boot(data = data.frame(values_new, values_ref, actual_binary),
+                               statistic = boot_nri,
+                               R = boot_runs)
+
+    # Calculate confidence intervals
+    boot_ci <- boot::boot.ci(boot_results, type = "perc", conf = 0.95)
+    ci_lower <- boot_ci$percent[4]
+    ci_upper <- boot_ci$percent[5]
+
+    # Calculate p-value
+    p_value <- 2 * min(
+      mean(boot_results$t <= 0),
+      mean(boot_results$t >= 0)
+    )
+  } else {
+    ci_lower <- NA
+    ci_upper <- NA
+    p_value <- NA
+  }
+
+  return(list(
+    nri = nri,
+    event_nri = event_nri,
+    non_event_nri = non_event_nri,
+    ci_lower = ci_lower,
+    ci_upper = ci_upper,
+    p_value = p_value
+  ))
+}
+
+
+
+# Calculate precision-recall curve
+.calculatePrecisionRecall = function(x, class, pos_class) {
+  # Convert to binary response (1 = positive, 0 = negative)
+  response <- as.numeric(class == pos_class)
+
+  # Sort values and create thresholds
+  sorted_values <- sort(unique(x))
+  precision <- numeric(length(sorted_values))
+  recall <- numeric(length(sorted_values))
+
+  # Calculate precision and recall for each threshold
+  for (i in seq_along(sorted_values)) {
+    threshold <- sorted_values[i]
+    predicted_pos <- x >= threshold
+
+    # Compute TP, FP, FN
+    tp <- sum(predicted_pos & response == 1)
+    fp <- sum(predicted_pos & response == 0)
+    fn <- sum(!predicted_pos & response == 1)
+
+    # Calculate precision and recall
+    precision[i] <- ifelse(tp + fp > 0, tp / (tp + fp), 0)
+    recall[i] <- ifelse(tp + fn > 0, tp / (tp + fn), 0)
+  }
+
+  # Calculate AUPRC using the trapezoidal rule
+  auprc <- 0
+  for (i in 2:length(recall)) {
+    auprc <- auprc + 0.5 * (precision[i] + precision[i-1]) * abs(recall[i] - recall[i-1])
+  }
+
+  return(list(
+    threshold = sorted_values,
+    precision = precision,
+    recall = recall,
+    auprc = auprc
+  ))
+}
+
+# Calculate comprehensive performance metrics for classifier comparison
+.calculateClassifierMetrics = function(x, class, pos_class) {
+  # Need to load pROC package
+  if (!requireNamespace("pROC", quietly = TRUE)) {
+    warning("The pROC package is required for classifier comparison.")
+    return(NULL)
+  }
+
+  # Create ROC object
+  roc_obj <- pROC::roc(
+    response = class,
+    predictor = x,
+    levels = c(unique(class)[unique(class) != pos_class][1], pos_class),
+    direction = "<",
+    quiet = TRUE
+  )
+
+  # Calculate AUC
+  auc <- pROC::auc(roc_obj)
+
+  # Calculate precision-recall
+  pr_results <- private$.calculatePrecisionRecall(x, class, pos_class)
+  auprc <- pr_results$auprc
+
+  # Convert to binary response (1 = positive, 0 = negative)
+  response <- as.numeric(class == pos_class)
+
+  # Find optimal threshold using Youden's index
+  coords <- pROC::coords(roc_obj, x = "best", best.method = "youden")
+  threshold <- coords$threshold
+
+  # Get predictions using optimal threshold
+  predicted_prob <- pROC::predict.roc(roc_obj)
+  predicted_class <- ifelse(predicted_prob >= threshold, 1, 0)
+
+  # Calculate Brier score
+  brier_score <- mean((predicted_prob - response)^2)
+
+  # Calculate confusion matrix metrics
+  tp <- sum(predicted_class == 1 & response == 1)
+  tn <- sum(predicted_class == 0 & response == 0)
+  fp <- sum(predicted_class == 1 & response == 0)
+  fn <- sum(predicted_class == 0 & response == 1)
+
+  # Calculate F1 score
+  precision <- ifelse(tp + fp > 0, tp / (tp + fp), 0)
+  recall <- ifelse(tp + fn > 0, tp / (tp + fn), 0)
+  f1_score <- ifelse(precision + recall > 0, 2 * precision * recall / (precision + recall), 0)
+
+  # Calculate accuracy
+  accuracy <- (tp + tn) / (tp + tn + fp + fn)
+
+  # Calculate balanced accuracy
+  sensitivity <- tp / (tp + fn)
+  specificity <- tn / (tn + fp)
+  balanced_accuracy <- (sensitivity + specificity) / 2
+
+  return(list(
+    auc = as.numeric(auc),
+    auprc = auprc,
+    brier = brier_score,
+    f1_score = f1_score,
+    accuracy = accuracy,
+    balanced_accuracy = balanced_accuracy
+  ))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ============================================================================
 # MAIN ANALYSIS CLASS
 # ============================================================================
@@ -419,6 +805,198 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
           distance = distances[best_idx]
         ))
       },
+
+
+
+      # Calculate partial AUC using pROC package
+      .calculatePartialAUC = function(x, class, pos_class, from, to) {
+        # Need to load pROC package
+        if (!requireNamespace("pROC", quietly = TRUE)) {
+          warning("The pROC package is required for partial AUC calculations.")
+          return(NULL)
+        }
+
+        # Create ROC object
+        roc_obj <- pROC::roc(
+          response = class,
+          predictor = x,
+          levels = c(unique(class)[unique(class) != pos_class][1], pos_class),
+          direction = "<",
+          quiet = TRUE
+        )
+
+        # Calculate partial AUC
+        partial_auc <- try(pROC::auc(roc_obj, partial.auc = c(from, to), partial.auc.focus = "specificity"), silent = TRUE)
+
+        # Calculate normalized partial AUC (scaled to 0-1 range)
+        partial_auc_norm <- try(pROC::auc(roc_obj, partial.auc = c(from, to), partial.auc.focus = "specificity", partial.auc.correct = TRUE), silent = TRUE)
+
+        # Calculate CI if possible
+        if (self$options$bootstrapCI) {
+          ci <- try(pROC::ci.auc(roc_obj, partial.auc = c(from, to), partial.auc.focus = "specificity",
+                                 method = "bootstrap", boot.n = self$options$bootstrapReps), silent = TRUE)
+
+          if (inherits(ci, "try-error")) {
+            ci_lower <- NA
+            ci_upper <- NA
+          } else {
+            ci_lower <- ci[1]
+            ci_upper <- ci[3]
+          }
+        } else {
+          ci_lower <- NA
+          ci_upper <- NA
+        }
+
+        return(list(
+          pAUC = as.numeric(partial_auc),
+          pAUC_normalized = as.numeric(partial_auc_norm),
+          ci_lower = ci_lower,
+          ci_upper = ci_upper,
+          spec_range = paste0("(", from, " - ", to, ")")
+        ))
+      },
+
+      # Create smoothed ROC curve using pROC
+      .createSmoothedROC = function(x, class, pos_class, method) {
+        # Need to load pROC package
+        if (!requireNamespace("pROC", quietly = TRUE)) {
+          warning("The pROC package is required for ROC curve smoothing.")
+          return(NULL)
+        }
+
+        # Create ROC object
+        roc_obj <- pROC::roc(
+          response = class,
+          predictor = x,
+          levels = c(unique(class)[unique(class) != pos_class][1], pos_class),
+          direction = "<",
+          quiet = TRUE
+        )
+
+        # Apply smoothing
+        if (method != "none") {
+          smooth_roc <- try(pROC::smooth(roc_obj, method = method), silent = TRUE)
+
+          if (!inherits(smooth_roc, "try-error")) {
+            # Extract coordinates
+            coords <- pROC::coords(smooth_roc, x = "all", ret = c("threshold", "specificity", "sensitivity"))
+
+            return(list(
+              threshold = coords$threshold,
+              specificity = coords$specificity,
+              sensitivity = coords$sensitivity,
+              auc = pROC::auc(smooth_roc)
+            ))
+          }
+        }
+
+        return(NULL)
+      },
+
+      # Calculate bootstrap confidence intervals for metrics
+      .calculateBootstrapCI = function(x, class, pos_class, metrics = c("auc", "threshold", "sensitivity", "specificity")) {
+        # Need to load pROC package
+        if (!requireNamespace("pROC", quietly = TRUE)) {
+          warning("The pROC package is required for bootstrap confidence intervals.")
+          return(NULL)
+        }
+
+        # Create ROC object
+        roc_obj <- pROC::roc(
+          response = class,
+          predictor = x,
+          levels = c(unique(class)[unique(class) != pos_class][1], pos_class),
+          direction = "<",
+          quiet = TRUE
+        )
+
+        results <- list()
+
+        # Calculate CI for AUC
+        if ("auc" %in% metrics) {
+          auc_ci <- try(pROC::ci.auc(roc_obj, method = "bootstrap", boot.n = self$options$bootstrapReps), silent = TRUE)
+
+          if (!inherits(auc_ci, "try-error")) {
+            results$auc <- list(
+              estimate = as.numeric(pROC::auc(roc_obj)),
+              ci_lower = auc_ci[1],
+              ci_upper = auc_ci[3]
+            )
+          }
+        }
+
+        # Find Youden's J point (optimal threshold)
+        if (any(c("threshold", "sensitivity", "specificity") %in% metrics)) {
+          optimal_coords <- pROC::coords(roc_obj, x = "best", best.method = "youden", ret = c("threshold", "sensitivity", "specificity"))
+
+          # Calculate CI for threshold
+          if ("threshold" %in% metrics) {
+            threshold_ci <- try(pROC::ci.coords(roc_obj, x = "best", best.method = "youden",
+                                                ret = "threshold", method = "bootstrap", boot.n = self$options$bootstrapReps),
+                                silent = TRUE)
+
+            if (!inherits(threshold_ci, "try-error")) {
+              results$threshold <- list(
+                estimate = optimal_coords$threshold,
+                ci_lower = threshold_ci[1],
+                ci_upper = threshold_ci[3]
+              )
+            }
+          }
+
+          # Calculate CI for sensitivity
+          if ("sensitivity" %in% metrics) {
+            sens_ci <- try(pROC::ci.coords(roc_obj, x = "best", best.method = "youden",
+                                           ret = "sensitivity", method = "bootstrap", boot.n = self$options$bootstrapReps),
+                           silent = TRUE)
+
+            if (!inherits(sens_ci, "try-error")) {
+              results$sensitivity <- list(
+                estimate = optimal_coords$sensitivity,
+                ci_lower = sens_ci[1],
+                ci_upper = sens_ci[3]
+              )
+            }
+          }
+
+          # Calculate CI for specificity
+          if ("specificity" %in% metrics) {
+            spec_ci <- try(pROC::ci.coords(roc_obj, x = "best", best.method = "youden",
+                                           ret = "specificity", method = "bootstrap", boot.n = self$options$bootstrapReps),
+                           silent = TRUE)
+
+            if (!inherits(spec_ci, "try-error")) {
+              results$specificity <- list(
+                estimate = optimal_coords$specificity,
+                ci_lower = spec_ci[1],
+                ci_upper = spec_ci[3]
+              )
+            }
+          }
+        }
+
+        return(results)
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       # ============================================================================
       # INITIALIZATION METHOD
@@ -929,6 +1507,151 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
             }
           }
 
+
+
+          # Calculate partial AUC if requested
+          if (self$options$partialAUC) {
+            # Set up partial AUC table if not already done
+            if (!self$results$partialAUCTable$isVisible) {
+              self$results$partialAUCTable$setVisible(TRUE)
+            }
+
+            for (var in vars) {
+              # Get the necessary data
+              if (is.null(subGroup)) {
+                # Standard case - no grouping
+                dependentVar <- as.numeric(data[, var])
+                classVar <- data[, self$options$classVar]
+              } else {
+                # Case with grouping - extract data for this group
+                varParts <- strsplit(var, split = "_")[[1]]
+                varName <- varParts[1]
+                groupName <- paste(varParts[-1], collapse="_")
+
+                # Filter data for this group
+                dependentVar <- as.numeric(data[subGroup == groupName, varName])
+                classVar <- data[subGroup == groupName, self$options$classVar]
+              }
+
+              # Calculate partial AUC
+              pAUC_results <- private$.calculatePartialAUC(
+                x = dependentVar,
+                class = classVar,
+                pos_class = positiveClass,
+                from = self$options$partialAUCfrom,
+                to = self$options$partialAUCto
+              )
+
+              # Add to table
+              if (!is.null(pAUC_results)) {
+                self$results$partialAUCTable$addRow(rowKey = var, values = list(
+                  variable = var,
+                  pAUC = pAUC_results$pAUC,
+                  pAUC_normalized = pAUC_results$pAUC_normalized,
+                  ci_lower = pAUC_results$ci_lower,
+                  ci_upper = pAUC_results$ci_upper,
+                  spec_range = pAUC_results$spec_range
+                ))
+              }
+            }
+          }
+
+          # Apply ROC curve smoothing if requested
+          if (self$options$rocSmoothingMethod != "none") {
+            for (var in vars) {
+              # Get the necessary data
+              if (is.null(subGroup)) {
+                # Standard case - no grouping
+                dependentVar <- as.numeric(data[, var])
+                classVar <- data[, self$options$classVar]
+              } else {
+                # Case with grouping - extract data for this group
+                varParts <- strsplit(var, split = "_")[[1]]
+                varName <- varParts[1]
+                groupName <- paste(varParts[-1], collapse="_")
+
+                # Filter data for this group
+                dependentVar <- as.numeric(data[subGroup == groupName, varName])
+                classVar <- data[subGroup == groupName, self$options$classVar]
+              }
+
+              # Create smoothed ROC curve
+              smooth_results <- private$.createSmoothedROC(
+                x = dependentVar,
+                class = classVar,
+                pos_class = positiveClass,
+                method = self$options$rocSmoothingMethod
+              )
+
+              # Store smoothed ROC curve data for plotting
+              if (!is.null(smooth_results)) {
+                # Store for plotting
+                private$.rocDataList[[paste0(var, "_smooth")]] <- data.frame(
+                  threshold = smooth_results$threshold,
+                  sensitivity = smooth_results$sensitivity,
+                  specificity = smooth_results$specificity,
+                  var = var,
+                  smoothed = TRUE,
+                  method = self$options$rocSmoothingMethod
+                )
+              }
+            }
+          }
+
+          # Calculate bootstrap confidence intervals if requested
+          if (self$options$bootstrapCI) {
+            # Set up bootstrap CI table if not already done
+            if (!self$results$bootstrapCITable$isVisible) {
+              self$results$bootstrapCITable$setVisible(TRUE)
+            }
+
+            for (var in vars) {
+              # Get the necessary data
+              if (is.null(subGroup)) {
+                # Standard case - no grouping
+                dependentVar <- as.numeric(data[, var])
+                classVar <- data[, self$options$classVar]
+              } else {
+                # Case with grouping - extract data for this group
+                varParts <- strsplit(var, split = "_")[[1]]
+                varName <- varParts[1]
+                groupName <- paste(varParts[-1], collapse="_")
+
+                # Filter data for this group
+                dependentVar <- as.numeric(data[subGroup == groupName, varName])
+                classVar <- data[subGroup == groupName, self$options$classVar]
+              }
+
+              # Calculate bootstrap CIs
+              bootstrap_results <- private$.calculateBootstrapCI(
+                x = dependentVar,
+                class = classVar,
+                pos_class = positiveClass
+              )
+
+              # Add to table
+              if (!is.null(bootstrap_results)) {
+                for (param in names(bootstrap_results)) {
+                  self$results$bootstrapCITable$addRow(rowKey = paste0(var, "_", param), values = list(
+                    variable = var,
+                    parameter = param,
+                    estimate = bootstrap_results[[param]]$estimate,
+                    ci_lower = bootstrap_results[[param]]$ci_lower,
+                    ci_upper = bootstrap_results[[param]]$ci_upper
+                  ))
+                }
+              }
+            }
+          }
+
+
+
+
+
+
+
+
+
           # -----------------------------------------------------------------------
           # 7. DETERMINE CUTPOINTS TO DISPLAY
           # -----------------------------------------------------------------------
@@ -1103,6 +1826,142 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
             stringsAsFactors = FALSE
           )
           attr(private$.rocDataList[[var]], "rawData") <- rawData
+
+
+
+
+
+          # Add to the main .run method to calculate precision-recall curves
+
+          # Calculate precision-recall curves if requested
+          if (self$options$precisionRecallCurve) {
+            # Initialize precision-recall plot array
+            if (self$options$combinePlots) {
+              # Add a single item for combined plot
+              self$results$precisionRecallPlot$addItem(key = 1)
+              pr_plot_data <- data.frame()
+            }
+
+            for (var in vars) {
+              # Get the necessary data
+              if (is.null(subGroup)) {
+                # Standard case - no grouping
+                dependentVar <- as.numeric(data[, var])
+                classVar <- data[, self$options$classVar]
+              } else {
+                # Case with grouping - extract data for this group
+                varParts <- strsplit(var, split = "_")[[1]]
+                varName <- varParts[1]
+                groupName <- paste(varParts[-1], collapse="_")
+
+                # Filter data for this group
+                dependentVar <- as.numeric(data[subGroup == groupName, varName])
+                classVar <- data[subGroup == groupName, self$options$classVar]
+              }
+
+              # Calculate precision-recall
+              pr_results <- private$.calculatePrecisionRecall(
+                x = dependentVar,
+                class = classVar,
+                pos_class = positiveClass
+              )
+
+              if (!is.null(pr_results)) {
+                if (self$options$combinePlots) {
+                  # Add to combined data
+                  pr_plot_data <- rbind(
+                    pr_plot_data,
+                    data.frame(
+                      threshold = pr_results$threshold,
+                      precision = pr_results$precision,
+                      recall = pr_results$recall,
+                      auprc = rep(pr_results$auprc, length(pr_results$threshold)),
+                      var = rep(var, length(pr_results$threshold))
+                    )
+                  )
+                } else {
+                  # Create individual plot
+                  self$results$precisionRecallPlot$addItem(key = var)
+                  pr_plot <- self$results$precisionRecallPlot$get(key = var)
+                  pr_plot$setTitle(paste0("Precision-Recall Curve: ", var))
+                  pr_plot$setState(
+                    data.frame(
+                      threshold = pr_results$threshold,
+                      precision = pr_results$precision,
+                      recall = pr_results$recall,
+                      auprc = rep(pr_results$auprc, length(pr_results$threshold))
+                    )
+                  )
+                }
+              }
+            }
+
+            # Set state for combined plot if using
+            if (self$options$combinePlots && nrow(pr_plot_data) > 0) {
+              pr_plot <- self$results$precisionRecallPlot$get(key = 1)
+              pr_plot$setTitle("Precision-Recall Curves: Combined")
+              pr_plot$setState(pr_plot_data)
+            }
+          }
+
+          # Compare classifier performance if requested
+          if (self$options$compareClassifiers) {
+            # Set up comparison table
+            if (!self$results$rocComparisonTable$isVisible) {
+              self$results$rocComparisonTable$setVisible(TRUE)
+            }
+
+            for (var in vars) {
+              # Get the necessary data
+              if (is.null(subGroup)) {
+                # Standard case - no grouping
+                dependentVar <- as.numeric(data[, var])
+                classVar <- data[, self$options$classVar]
+              } else {
+                # Case with grouping - extract data for this group
+                varParts <- strsplit(var, split = "_")[[1]]
+                varName <- varParts[1]
+                groupName <- paste(varParts[-1], collapse="_")
+
+                # Filter data for this group
+                dependentVar <- as.numeric(data[subGroup == groupName, varName])
+                classVar <- data[subGroup == groupName, self$options$classVar]
+              }
+
+              # Calculate classifier metrics
+              metrics <- private$.calculateClassifierMetrics(
+                x = dependentVar,
+                class = classVar,
+                pos_class = positiveClass
+              )
+
+              # Add to table
+              if (!is.null(metrics)) {
+                self$results$rocComparisonTable$addRow(rowKey = var, values = list(
+                  variable = var,
+                  auc = metrics$auc,
+                  auprc = metrics$auprc,
+                  brier = metrics$brier,
+                  f1_score = metrics$f1_score,
+                  accuracy = metrics$accuracy,
+                  balanced_accuracy = metrics$balanced_accuracy
+                ))
+              }
+            }
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           # -----------------------------------------------------------------------
           # 12. PREPARE PLOTTING DATA
@@ -1462,6 +2321,121 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
             }
           }
         }
+
+
+        # -----------------------------------------------------------------------
+        # 17. CALCULATE IDI AND NRI IF REQUESTED
+        # -----------------------------------------------------------------------
+
+        # Calculate IDI and NRI if requested
+        if (self$options$calculateIDI || self$options$calculateNRI) {
+          # Check if we have enough variables
+          if (length(self$options$dependentVars) < 2) {
+            stop("Please specify at least two dependent variables to calculate IDI/NRI.")
+          }
+
+          # Get reference variable
+          if (is.null(self$options$refVar) || self$options$refVar == "") {
+            refVar <- self$options$dependentVars[1]
+          } else {
+            refVar <- self$options$refVar
+          }
+
+          # Get actual class values and convert to binary
+          classVar <- data[, self$options$classVar]
+          pos_class <- ifelse(self$options$positiveClass == "",
+                              as.character(unique(classVar)[1]),
+                              self$options$positiveClass)
+          actual_binary <- as.numeric(classVar == pos_class)
+
+          # Get direction
+          direction <- self$options$direction
+
+          # Get bootstrap runs
+          boot_runs <- as.numeric(self$options$idiNriBootRuns)
+
+          # Calculate IDI if requested
+          if (self$options$calculateIDI) {
+            # Get reference variable values
+            ref_values <- as.numeric(data[, refVar])
+
+            # For each other variable
+            for (var in self$options$dependentVars) {
+              if (var != refVar) {
+                var_values <- as.numeric(data[, var])
+
+                # Calculate IDI
+                idi_result <- calculate_idi(
+                  values_new = var_values,
+                  values_ref = ref_values,
+                  actual = actual_binary,
+                  direction = direction,
+                  ci = TRUE,
+                  boot_runs = boot_runs
+                )
+
+                # Add to IDI table
+                self$results$idiTable$addRow(rowKey = var, values = list(
+                  variable = var,
+                  refVar = refVar,
+                  idi = idi_result$idi,
+                  ci_lower = idi_result$ci_lower,
+                  ci_upper = idi_result$ci_upper,
+                  p = idi_result$p_value
+                ))
+              }
+            }
+          }
+
+          # Calculate NRI if requested
+          if (self$options$calculateNRI) {
+            # Get reference variable values
+            ref_values <- as.numeric(data[, refVar])
+
+            # Parse thresholds string if provided
+            thresholds <- NULL
+            if (!is.null(self$options$nriThresholds) && self$options$nriThresholds != "") {
+              thresholds <- as.numeric(unlist(strsplit(self$options$nriThresholds, ",")))
+              thresholds <- thresholds[!is.na(thresholds)]
+              thresholds <- thresholds[thresholds > 0 & thresholds < 1]
+            }
+
+            # For each other variable
+            for (var in self$options$dependentVars) {
+              if (var != refVar) {
+                var_values <- as.numeric(data[, var])
+
+                # Calculate NRI
+                nri_result <- calculate_nri(
+                  values_new = var_values,
+                  values_ref = ref_values,
+                  actual = actual_binary,
+                  thresholds = thresholds,
+                  direction = direction,
+                  ci = TRUE,
+                  boot_runs = boot_runs
+                )
+
+                # Add to NRI table
+                self$results$nriTable$addRow(rowKey = var, values = list(
+                  variable = var,
+                  refVar = refVar,
+                  nri = nri_result$nri,
+                  event_nri = nri_result$event_nri,
+                  non_event_nri = nri_result$non_event_nri,
+                  ci_lower = nri_result$ci_lower,
+                  ci_upper = nri_result$ci_upper,
+                  p = nri_result$p_value
+                ))
+              }
+            }
+          }
+        }
+
+
+
+
+
       },
 
       # ============================================================================
@@ -1540,6 +2514,221 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
           # Use the provided theme
           plot <- plot + ggtheme
         }
+
+
+        # Add the following code inside the .run method at an appropriate location (after the basic ROC analysis is done)
+
+        # Calculate partial AUC if requested
+        if (self$options$partialAUC) {
+          # Set up partial AUC table if not already done
+          if (!self$results$partialAUCTable$isVisible) {
+            self$results$partialAUCTable$setVisible(TRUE)
+          }
+
+          for (var in vars) {
+            # Get the necessary data
+            if (is.null(subGroup)) {
+              # Standard case - no grouping
+              dependentVar <- as.numeric(data[, var])
+              classVar <- data[, self$options$classVar]
+            } else {
+              # Case with grouping - extract data for this group
+              varParts <- strsplit(var, split = "_")[[1]]
+              varName <- varParts[1]
+              groupName <- paste(varParts[-1], collapse="_")
+
+              # Filter data for this group
+              dependentVar <- as.numeric(data[subGroup == groupName, varName])
+              classVar <- data[subGroup == groupName, self$options$classVar]
+            }
+
+            # Calculate partial AUC
+            pAUC_results <- private$.calculatePartialAUC(
+              x = dependentVar,
+              class = classVar,
+              pos_class = positiveClass,
+              from = self$options$partialAUCfrom,
+              to = self$options$partialAUCto
+            )
+
+            # Add to table
+            if (!is.null(pAUC_results)) {
+              self$results$partialAUCTable$addRow(rowKey = var, values = list(
+                variable = var,
+                pAUC = pAUC_results$pAUC,
+                pAUC_normalized = pAUC_results$pAUC_normalized,
+                ci_lower = pAUC_results$ci_lower,
+                ci_upper = pAUC_results$ci_upper,
+                spec_range = pAUC_results$spec_range
+              ))
+            }
+          }
+        }
+
+
+
+
+        # Modify the .plotROC function to handle smoothed curves
+        # Add this within the existing plot function when generating the ggplot
+
+        # Check if we have smoothed curves
+        has_smoothed <- any(grepl("_smooth", names(private$.rocDataList)))
+
+        if (has_smoothed && self$options$rocSmoothingMethod != "none") {
+          # Prepare data for smoothed curves
+          smoothed_data <- data.frame()
+
+          for (var_name in names(private$.rocDataList)) {
+            if (grepl("_smooth", var_name)) {
+              smooth_data <- private$.rocDataList[[var_name]]
+              if (!is.null(smooth_data)) {
+                smoothed_data <- rbind(smoothed_data, smooth_data)
+              }
+            }
+          }
+
+          if (nrow(smoothed_data) > 0) {
+            # Add smoothed curves
+            if (self$options$combinePlots && length(unique(smoothed_data$var)) > 1) {
+              # For combined plot
+              plot <- plot +
+                ggplot2::geom_line(
+                  data = smoothed_data,
+                  ggplot2::aes(
+                    x = 1 - specificity,
+                    y = sensitivity,
+                    color = var
+                  ),
+                  linetype = "solid",
+                  size = 1.5,
+                  alpha = 0.8
+                )
+            } else {
+              # For individual plot
+              plot <- plot +
+                ggplot2::geom_line(
+                  data = smoothed_data,
+                  ggplot2::aes(
+                    x = 1 - specificity,
+                    y = sensitivity
+                  ),
+                  linetype = "solid",
+                  size = 1.5,
+                  color = "blue",
+                  alpha = 0.8
+                )
+            }
+
+            # Add annotation about smoothing
+            plot <- plot +
+              ggplot2::annotate(
+                "text",
+                x = 0.25,
+                y = 0.1,
+                label = paste("Smoothing:", self$options$rocSmoothingMethod),
+                hjust = 0,
+                alpha = 0.7
+              )
+          }
+        }
+
+
+
+
+
+
+
+
+
+
+        # Apply ROC curve smoothing if requested
+        if (self$options$rocSmoothingMethod != "none") {
+          for (var in vars) {
+            # Get the necessary data
+            if (is.null(subGroup)) {
+              # Standard case - no grouping
+              dependentVar <- as.numeric(data[, var])
+              classVar <- data[, self$options$classVar]
+            } else {
+              # Case with grouping - extract data for this group
+              varParts <- strsplit(var, split = "_")[[1]]
+              varName <- varParts[1]
+              groupName <- paste(varParts[-1], collapse="_")
+
+              # Filter data for this group
+              dependentVar <- as.numeric(data[subGroup == groupName, varName])
+              classVar <- data[subGroup == groupName, self$options$classVar]
+            }
+
+            # Create smoothed ROC curve
+            smooth_results <- private$.createSmoothedROC(
+              x = dependentVar,
+              class = classVar,
+              pos_class = positiveClass,
+              method = self$options$rocSmoothingMethod
+            )
+
+            # Store smoothed ROC curve data for plotting
+            if (!is.null(smooth_results)) {
+              # Store for plotting
+              private$.rocDataList[[paste0(var, "_smooth")]] <- data.frame(
+                threshold = smooth_results$threshold,
+                sensitivity = smooth_results$sensitivity,
+                specificity = smooth_results$specificity,
+                var = var,
+                smoothed = TRUE,
+                method = self$options$rocSmoothingMethod
+              )
+            }
+          }
+        }
+
+        # Calculate bootstrap confidence intervals if requested
+        if (self$options$bootstrapCI) {
+          # Set up bootstrap CI table if not already done
+          if (!self$results$bootstrapCITable$isVisible) {
+            self$results$bootstrapCITable$setVisible(TRUE)
+          }
+
+          for (var in vars) {
+            # Get the necessary data
+            if (is.null(subGroup)) {
+              # Standard case - no grouping
+              dependentVar <- as.numeric(data[, var])
+              classVar <- data[, self$options$classVar]
+            } else {
+              # Case with grouping - extract data for this group
+              varParts <- strsplit(var, split = "_")[[1]]
+              varName <- varParts[1]
+              groupName <- paste(varParts[-1], collapse="_")
+
+              # Filter data for this group
+              dependentVar <- as.numeric(data[subGroup == groupName, varName])
+              classVar <- data[subGroup == groupName, self$options$classVar]
+            }
+
+            # Calculate bootstrap CIs
+            bootstrap_results <- private$.calculateBootstrapCI(
+              x = dependentVar,
+              class = classVar,
+              pos_class = positiveClass
+            )
+
+            # Add to table
+            if (!is.null(bootstrap_results)) {
+              for (param in names(bootstrap_results)) {
+                self$results$bootstrapCITable$addRow(rowKey = paste0(var, "_", param), values = list(
+                  variable = var,
+                  parameter = param,
+                  estimate = bootstrap_results[[param]]$estimate,
+                  ci_lower = bootstrap_results[[param]]$ci_lower,
+                  ci_upper = bootstrap_results[[param]]$ci_upper
+                ))
+              }
+            }
+          }
+        }
+
 
         # Add smoothing if requested
         if (self$options$smoothing) {
@@ -2147,6 +3336,94 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
 
         # If there was an error, return FALSE
         return(FALSE)
+      },
+
+
+
+
+
+      # Add this function to plot precision-recall curves
+      .plotPrecisionRecall = function(image, ggtheme, theme, ...) {
+        plotData <- image$state
+
+        if (is.null(plotData) || nrow(plotData) == 0)
+          return(FALSE)
+
+        # Determine if this is a combined or individual plot
+        if ("var" %in% names(plotData)) {
+          # Combined plot with multiple variables
+          plot <- ggplot2::ggplot(
+            plotData,
+            ggplot2::aes(
+              x = recall,
+              y = precision,
+              color = var,
+              linetype = var
+            )
+          ) +
+            ggplot2::geom_line(size = 1) +
+            ggplot2::scale_color_brewer(palette = "Set1") +
+            ggplot2::scale_linetype_manual(
+              values = rep(c("solid", "dashed", "dotted", "longdash"),
+                           length.out = length(unique(plotData$var)))
+            )
+        } else {
+          # Individual plot
+          plot <- ggplot2::ggplot(
+            plotData,
+            ggplot2::aes(
+              x = recall,
+              y = precision
+            )
+          ) +
+            ggplot2::geom_line(size = 1) +
+            ggplot2::geom_point(size = 0.5, alpha = 0.7)
+        }
+
+        # Add AUPRC annotations
+        if ("auprc" %in% names(plotData)) {
+          if ("var" %in% names(plotData)) {
+            # For combined plot
+            auprc_data <- aggregate(auprc ~ var, data = plotData, FUN = function(x) x[1])
+            auprc_data$label <- sprintf("AUPRC = %.3f", auprc_data$auprc)
+            auprc_data$x <- 0.25
+            auprc_data$y <- seq(0.3, 0.1, length.out = nrow(auprc_data))
+
+            plot <- plot +
+              ggplot2::geom_text(
+                data = auprc_data,
+                ggplot2::aes(x = x, y = y, label = label, color = var),
+                hjust = 0,
+                show.legend = FALSE
+              )
+          } else {
+            # For individual plot
+            plot <- plot +
+              ggplot2::annotate(
+                "text",
+                x = 0.25,
+                y = 0.25,
+                label = sprintf("AUPRC = %.3f", unique(plotData$auprc)[1])
+              )
+          }
+        }
+
+        # Add labels and theme
+        plot <- plot +
+          ggplot2::xlab("Recall (Sensitivity)") +
+          ggplot2::ylab("Precision (Positive Predictive Value)") +
+          ggplot2::xlim(0, 1) +
+          ggplot2::ylim(0, 1) +
+          ggtheme
+
+        print(plot)
+        return(TRUE)
       }
+
+
+
+
+
+
     )
   )
