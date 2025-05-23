@@ -48,7 +48,8 @@ Imports:
     Matrix,
     RColorBrewer,
     poLCA,
-    cutpointr
+    cutpointr,
+    pROC
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
