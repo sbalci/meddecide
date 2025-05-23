@@ -287,55 +287,6 @@ print.DeLong = function(x, digits = max(3, getOption("digits") - 3), ...) {
   cat(paste("\nOverall test:\n p-value =", format.pval(x$global.p, digits = digits), "\n"))
 }
 
-#' Convert raw test values to predicted probabilities using ROC curve
-#' @param values Raw test values
-#' @param actual Binary outcomes (0/1)
-#' @param direction Direction of the test ">=" or "<="
-#' @return Vector of predicted probabilities
-raw_to_prob <- function(values, actual, direction = ">=") {
-  # Sort values for thresholds
-  sorted_values <- sort(unique(values))
-
-  # Calculate sensitivity and specificity for each threshold
-  threshold_data <- data.frame(
-    threshold = numeric(length(sorted_values)),
-    sensitivity = numeric(length(sorted_values)),
-    specificity = numeric(length(sorted_values))
-  )
-
-  for (i in seq_along(sorted_values)) {
-    threshold <- sorted_values[i]
-
-    if (direction == ">=") {
-      predicted_pos <- values >= threshold
-    } else {
-      predicted_pos <- values <= threshold
-    }
-
-    tp <- sum(predicted_pos & actual == 1)
-    fp <- sum(predicted_pos & actual == 0)
-    tn <- sum(!predicted_pos & actual == 0)
-    fn <- sum(!predicted_pos & actual == 1)
-
-    threshold_data$threshold[i] <- threshold
-    threshold_data$sensitivity[i] <- tp / (tp + fn)
-    threshold_data$specificity[i] <- tn / (tn + fp)
-  }
-
-  # For each value, find nearest threshold and use sensitivity as probability
-  probs <- numeric(length(values))
-  for (i in seq_along(values)) {
-    idx <- which.min(abs(threshold_data$threshold - values[i]))
-    if (direction == ">=") {
-      probs[i] <- threshold_data$sensitivity[idx]
-    } else {
-      probs[i] <- 1 - threshold_data$sensitivity[idx]
-    }
-  }
-
-  return(probs)
-}
-
 
 #' Calculate Integrated Discrimination Improvement (IDI)
 #' @param values_new Raw values from the new test
