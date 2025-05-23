@@ -2516,8 +2516,6 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
         }
 
 
-        # Add the following code inside the .run method at an appropriate location (after the basic ROC analysis is done)
-
         # Calculate partial AUC if requested
         if (self$options$partialAUC) {
           # Set up partial AUC table if not already done
@@ -2567,9 +2565,6 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
 
 
 
-
-        # Modify the .plotROC function to handle smoothed curves
-        # Add this within the existing plot function when generating the ggplot
 
         # Check if we have smoothed curves
         has_smoothed <- any(grepl("_smooth", names(private$.rocDataList)))
