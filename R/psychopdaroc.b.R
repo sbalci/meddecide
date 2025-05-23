@@ -2365,13 +2365,12 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
                 var_values <- as.numeric(data[, var])
 
                 # Calculate IDI
-                idi_result <- calculate_idi(
-                  values_new = var_values,
-                  values_ref = ref_values,
+                idi_result <- bootstrapIDI(
+                  new_values = var_values,
+                  ref_values = ref_values,
                   actual = actual_binary,
                   direction = direction,
-                  ci = TRUE,
-                  boot_runs = boot_runs
+                  n_boot = boot_runs
                 )
 
                 # Add to IDI table
@@ -2406,14 +2405,13 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
                 var_values <- as.numeric(data[, var])
 
                 # Calculate NRI
-                nri_result <- calculate_nri(
-                  values_new = var_values,
-                  values_ref = ref_values,
+                nri_result <- bootstrapNRI(
+                  new_values = var_values,
+                  ref_values = ref_values,
                   actual = actual_binary,
-                  thresholds = thresholds,
                   direction = direction,
-                  ci = TRUE,
-                  boot_runs = boot_runs
+                  thresholds = thresholds,
+                  n_boot = boot_runs
                 )
 
                 # Add to NRI table
