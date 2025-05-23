@@ -375,8 +375,8 @@ bootstrapIDI <- function(new_values, ref_values, actual, direction = ">=", n_boo
     boot_idi <- numeric(n_boot)
 
     # Original IDI calculation
-    new_probs <- rawToProb(new_values, actual, direction)
-    ref_probs <- rawToProb(ref_values, actual, direction)
+    new_probs <- raw_to_prob(new_values, actual, direction)
+    ref_probs <- raw_to_prob(ref_values, actual, direction)
 
     original_idi <- (mean(new_probs[actual == 1]) - mean(new_probs[actual == 0])) -
         (mean(ref_probs[actual == 1]) - mean(ref_probs[actual == 0]))
@@ -390,8 +390,8 @@ bootstrapIDI <- function(new_values, ref_values, actual, direction = ">=", n_boo
         boot_actual <- actual[boot_idx]
 
         # Calculate probabilities for bootstrap sample
-        boot_new_probs <- rawToProb(boot_new, boot_actual, direction)
-        boot_ref_probs <- rawToProb(boot_ref, boot_actual, direction)
+        boot_new_probs <- raw_to_prob(boot_new, boot_actual, direction)
+        boot_ref_probs <- raw_to_prob(boot_ref, boot_actual, direction)
 
         # Calculate IDI
         boot_idi[i] <- (mean(boot_new_probs[boot_actual == 1]) - mean(boot_new_probs[boot_actual == 0])) -
@@ -484,7 +484,7 @@ bootstrapNRI <- function(new_values, ref_values, actual, direction = ">=",
 #' @param actual Binary outcomes (0/1)
 #' @param direction Direction of test (">=", "<=")
 #' @return Vector of predicted probabilities
-rawToProb <- function(values, actual, direction = ">=") {
+raw_to_prob <- function(values, actual, direction = ">=") {
 
     # Get unique sorted values for thresholds
     sorted_values <- sort(unique(values))
@@ -531,8 +531,8 @@ rawToProb <- function(values, actual, direction = ">=") {
 computeNRI <- function(new_values, ref_values, actual, direction = ">=", thresholds = NULL) {
 
     # Convert to probabilities
-    new_probs <- rawToProb(new_values, actual, direction)
-    ref_probs <- rawToProb(ref_values, actual, direction)
+    new_probs <- raw_to_prob(new_values, actual, direction)
+    ref_probs <- raw_to_prob(ref_values, actual, direction)
 
     # Identify events and non-events
     events <- actual == 1
