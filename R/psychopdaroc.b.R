@@ -979,6 +979,91 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
         return(results)
       },
 
+      # Prepare data for a single variable with optional subgrouping
+      .prepareVarData = function(data, var, subGroup) {
+        if (is.null(subGroup)) {
+          dependentVar <- as.numeric(data[, var])
+          classVar <- data[, self$options$classVar]
+        } else {
+          varParts <- strsplit(var, split = "_")[[1]]
+          varName <- varParts[1]
+          groupName <- paste(varParts[-1], collapse="_")
+          dependentVar <- as.numeric(data[subGroup == groupName, varName])
+          classVar <- data[subGroup == groupName, self$options$classVar]
+        }
+        list(dependentVar = dependentVar, classVar = classVar)
+      },
+
+      # Run cutpointr and return results with confusion matrix
+      .runCutpointrMetrics = function(dependentVar, classVar, pos_class,
+                                      method, score, metric, direction,
+                                      tol_metric, boot_runs, break_ties) {
+        result_success <- FALSE
+        result_message <- NULL
+        results <- NULL
+
+        tryCatch({
+          results <- cutpointr::cutpointr(
+            x = dependentVar,
+            class = classVar,
+            subgroup = NULL,
+            method = method,
+            cutpoint = score,
+            metric = metric,
+            direction = direction,
+            pos_class = pos_class,
+            tol_metric = tol_metric,
+            boot_runs = boot_runs,
+            break_ties = break_ties,
+            na.rm = TRUE
+          )
+          result_success <- TRUE
+        }, error = function(e) {
+          result_message <<- e$message
+        })
+
+        if (!result_success) {
+          response <- as.numeric(classVar == pos_class)
+          roc_data <- data.frame(
+            x.sorted = sort(unique(dependentVar)),
+            direction = ifelse(direction == ">=", ">", "<")
+          )
+          for(i in 1:nrow(roc_data)) {
+            threshold <- roc_data$x.sorted[i]
+            if(direction == ">=")
+              predicted_pos <- dependentVar >= threshold
+            else
+              predicted_pos <- dependentVar <= threshold
+
+            roc_data$tp[i] <- sum(predicted_pos & response == 1)
+            roc_data$fp[i] <- sum(predicted_pos & response == 0)
+            roc_data$tn[i] <- sum(!predicted_pos & response == 0)
+            roc_data$fn[i] <- sum(!predicted_pos & response == 1)
+          }
+
+          sens <- roc_data$tp / (roc_data$tp + roc_data$fn)
+          spec <- roc_data$tn / (roc_data$tn + roc_data$fp)
+          roc_points <- data.frame(specificity = spec, sensitivity = sens)
+          roc_points <- roc_points[order(1-roc_points$specificity),]
+          auc <- 0
+          for(i in 2:nrow(roc_points)) {
+            x_diff <- (1-roc_points$specificity[i]) - (1-roc_points$specificity[i-1])
+            y_avg <- (roc_points$sensitivity[i] + roc_points$sensitivity[i-1])/2
+            auc <- auc + x_diff * y_avg
+          }
+          youdens_j <- sens + spec - 1
+          optimal_idx <- which.max(youdens_j)
+          results <- list(
+            optimal_cutpoint = roc_data$x.sorted[optimal_idx],
+            roc_curve = list(roc_data),
+            AUC = auc
+          )
+        }
+
+        confusionMatrix <- results$roc_curve[[1]]
+        list(results = results, confusionMatrix = confusionMatrix)
+      },
+
 
 
 
@@ -1356,20 +1441,9 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
           }
 
           # Extract data for analysis
-          if (is.null(subGroup)) {
-            # Standard case - no grouping
-            dependentVar <- as.numeric(data[, var])
-            classVar <- data[, self$options$classVar]
-          } else {
-            # Case with grouping - extract data for this group
-            varParts <- strsplit(var, split = "_")[[1]]
-            varName <- varParts[1]
-            groupName <- paste(varParts[-1], collapse="_")
-
-            # Filter data for this group
-            dependentVar <- as.numeric(data[subGroup == groupName, varName])
-            classVar <- data[subGroup == groupName, self$options$classVar]
-          }
+          prepared <- private$.prepareVarData(data, var, subGroup)
+          dependentVar <- prepared$dependentVar
+          classVar <- prepared$classVar
 
           # Use the already determined positive class
           pos_class <- positiveClass
@@ -1378,99 +1452,21 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
           # 5. RUN ROC ANALYSIS
           # -----------------------------------------------------------------------
 
-          # Try to use cutpointr package; handle errors gracefully
-          result_success <- FALSE
-          result_message <- NULL
 
-          tryCatch({
-            # Primary method using cutpointr
-            results <- cutpointr::cutpointr(
-              x = dependentVar,
-              class = classVar,
-              subgroup = NULL,
-              method = method,
-              cutpoint = score,
-              metric = metric,
-              direction = direction,
-              pos_class = pos_class,
-              tol_metric = tol_metric,
-              boot_runs = boot_runs,
-              break_ties = break_ties,
-              na.rm = TRUE
-            )
-            result_success <- TRUE
-          }, error = function(e) {
-            result_message <- e$message
-          })
-
-          # If cutpointr failed, use alternative implementation
-          if (!result_success) {
-            self$results$procedureNotes$setContent(paste0(
-              self$results$procedureNotes$content,
-              "<p><strong>Note:</strong> Standard ROC analysis failed with error: '",
-              result_message,
-              "'. Using alternative implementation.</p>"
-            ))
-
-            # Convert to binary response (1 = positive, 0 = negative)
-            response <- as.numeric(classVar == pos_class)
-
-            # Create minimal ROC data structure
-            roc_data <- data.frame(
-              x.sorted = sort(unique(dependentVar)),
-              direction = ifelse(direction == ">=", ">", "<")
-            )
-
-            # Calculate confusion matrix for each threshold
-            for(i in 1:nrow(roc_data)) {
-              threshold <- roc_data$x.sorted[i]
-              if(direction == ">=") {
-                predicted_pos <- dependentVar >= threshold
-              } else {
-                predicted_pos <- dependentVar <= threshold
-              }
-
-              # Compute TP, FP, TN, FN
-              roc_data$tp[i] <- sum(predicted_pos & response == 1)
-              roc_data$fp[i] <- sum(predicted_pos & response == 0)
-              roc_data$tn[i] <- sum(!predicted_pos & response == 0)
-              roc_data$fn[i] <- sum(!predicted_pos & response == 1)
-            }
-
-            # Calculate sensitivity and specificity
-            sens <- roc_data$tp / (roc_data$tp + roc_data$fn)
-            spec <- roc_data$tn / (roc_data$tn + roc_data$fp)
-
-            # Compute ROC curve points
-            roc_points <- data.frame(
-              specificity = spec,
-              sensitivity = sens
-            )
-
-            # Order by increasing 1-specificity for AUC calculation
-            roc_points <- roc_points[order(1-roc_points$specificity),]
-
-            # Calculate AUC using trapezoidal rule
-            auc <- 0
-            for(i in 2:nrow(roc_points)) {
-              # Area of trapezoid
-              x_diff <- (1-roc_points$specificity[i]) - (1-roc_points$specificity[i-1])
-              y_avg <- (roc_points$sensitivity[i] + roc_points$sensitivity[i-1])/2
-              auc <- auc + x_diff * y_avg
-            }
-
-            # Find optimal cutpoint using Youden's index
-            youdens_j <- sens + spec - 1
-            optimal_idx <- which.max(youdens_j)
-
-            # Build minimal result object
-            results <- list(
-              optimal_cutpoint = roc_data$x.sorted[optimal_idx],
-              roc_curve = list(roc_data),
-              AUC = auc
-            )
-          }
-
+          cp_res <- private$.runCutpointrMetrics(
+            dependentVar = dependentVar,
+            classVar = classVar,
+            pos_class = pos_class,
+            method = method,
+            score = score,
+            metric = metric,
+            direction = direction,
+            tol_metric = tol_metric,
+            boot_runs = boot_runs,
+            break_ties = break_ties
+          )
+          results <- cp_res$results
+          confusionMatrix <- cp_res$confusionMatrix
           # -----------------------------------------------------------------------
           # 6. HANDLE CUSTOM CUTPOINT METHODS
           # -----------------------------------------------------------------------
@@ -1656,177 +1652,27 @@ psychopdarocClass = if (requireNamespace('jmvcore'))
           # 7. DETERMINE CUTPOINTS TO DISPLAY
           # -----------------------------------------------------------------------
 
-          # Determine which cutpoints to display
-          if (!self$options$allObserved) {
-            # Just show the optimal cutpoint(s)
-            resultsToDisplay <- unlist(results$optimal_cutpoint)
-          } else {
-            # Show all observed values as potential cutpoints
-            resultsToDisplay <- sort(unique(dependentVar))
-          }
 
-          # Get ROC curve data
-          confusionMatrix <- results$roc_curve[[1]]
-
-          # Filter confusion matrix for display
-          if (!self$options$allObserved) {
-            confusionMatrixForTable <- confusionMatrix[which(confusionMatrix$x.sorted %in% resultsToDisplay),]
-          } else {
-            confusionMatrixForTable <- confusionMatrix
-          }
-
-          # -----------------------------------------------------------------------
-          # 8. GENERATE SENSITIVITY-SPECIFICITY TABLES
-          # -----------------------------------------------------------------------
-
-          if (self$options$sensSpecTable) {
-            # Generate individual tables for each cutpoint
-            for (i in seq_along(resultsToDisplay)) {
-              cp <- resultsToDisplay[i]
-              # Find the closest cutpoint in the confusion matrix
-              idx <- which.min(abs(confusionMatrix$x.sorted - cp))
-
-              # Create HTML table with confusion matrix
-              sensSpecRes <- print.sensSpecTable(
-                Title = paste0("Scale: ", var, " | Cut Score: ", round(confusionMatrix$x.sorted[idx], 4)),
-                TP = confusionMatrix$tp[idx],
-                FP = confusionMatrix$fp[idx],
-                TN = confusionMatrix$tn[idx],
-                FN = confusionMatrix$fn[idx]
-              )
-
-              # Add to the results
-              sensTable <- self$results$sensSpecTable$get(key = var)
-              sensTable$setContent(sensSpecRes)
-            }
-          }
-
-          # -----------------------------------------------------------------------
-          # 9. CALCULATE PERFORMANCE METRICS
-          # -----------------------------------------------------------------------
-
-          # Calculate metrics based on confusion matrix
-          sensList <- cutpointr::sensitivity(
-            tp = confusionMatrix$tp,
-            fp = confusionMatrix$fp,
-            tn = confusionMatrix$tn,
-            fn = confusionMatrix$fn
-          )
-
-          specList <- cutpointr::specificity(
-            tp = confusionMatrix$tp,
-            fp = confusionMatrix$fp,
-            tn = confusionMatrix$tn,
-            fn = confusionMatrix$fn
-          )
-
-          ppvList <- cutpointr::ppv(
-            tp = confusionMatrix$tp,
-            fp = confusionMatrix$fp,
-            tn = confusionMatrix$tn,
-            fn = confusionMatrix$fn
-          )
-
-          npvList <- cutpointr::npv(
-            tp = confusionMatrix$tp,
-            fp = confusionMatrix$fp,
-            tn = confusionMatrix$tn,
-            fn = confusionMatrix$fn
-          )
-
-          youdenList <- cutpointr::youden(
-            tp = confusionMatrix$tp,
-            fp = confusionMatrix$fp,
-            tn = confusionMatrix$tn,
-            fn = confusionMatrix$fn
-          )
-
-          # Calculate the selected metric
-          metricList <- metric(
-            tp = confusionMatrix$tp,
-            fp = confusionMatrix$fp,
-            tn = confusionMatrix$tn,
-            fn = confusionMatrix$fn
-          )
-
-          # -----------------------------------------------------------------------
-          # 10. CREATE RESULTS TABLE
-          # -----------------------------------------------------------------------
-
-          # Get the table and set title
-          table <- self$results$resultsTable$get(key = var)
-          table$setTitle(paste0("Scale: ", var))
-
-          # Add rows to the results table for each cutpoint to display
-          for (i in seq_along(resultsToDisplay)) {
-            cp <- resultsToDisplay[i]
-
-            # Find the closest cutpoint in the confusion matrix
-            idx <- which.min(abs(confusionMatrix$x.sorted - cp))
-
-            # Get the values for this cutpoint
-            row <- list(
-              cutpoint = confusionMatrix$x.sorted[idx],
-              sensitivity = sensList[idx],
-              specificity = specList[idx],
-              ppv = ppvList[idx],
-              npv = npvList[idx],
-              youden = youdenList[idx],
-              AUC = results$AUC,
-              metricValue = metricList[idx]
-            )
-
-            # Add row to the table
-            table$addRow(rowKey = as.character(i), values = row)
-          }
-
-          # Save AUC value for summary tables
-          aucList[[var]] <- results$AUC
-
-          # -----------------------------------------------------------------------
-          # 11. STORE DATA FOR ADDITIONAL PLOTS
-          # -----------------------------------------------------------------------
-
-          # Store ROC data for additional plots
-          rocData <- data.frame(
-            threshold = confusionMatrix$x.sorted,
-            sensitivity = sensList,
-            specificity = specList,
-            ppv = ppvList,
-            npv = npvList,
-            youden = youdenList,
-            stringsAsFactors = FALSE
-          )
-          private$.rocDataList[[var]] <- rocData
-
-          # Save optimal criterion data (based on Youden's index)
-          j_max_idx <- which.max(youdenList)
-          optimalCriterion <- list(
-            threshold = confusionMatrix$x.sorted[j_max_idx],
-            sensitivity = sensList[j_max_idx],
-            specificity = specList[j_max_idx],
-            ppv = ppvList[j_max_idx],
-            npv = npvList[j_max_idx],
-            youden = youdenList[j_max_idx]
-          )
-          private$.optimalCriteriaList[[var]] <- optimalCriterion
-
-          # Calculate and store prevalence
-          n_pos <- sum(classVar == pos_class)
-          n_neg <- sum(classVar != pos_class)
-          prevalence <- n_pos / (n_pos + n_neg)
-          private$.prevalenceList[[var]] <- prevalence
-
-          # Store raw data for dot plot
-          rawData <- data.frame(
-            value = dependentVar,
-            class = as.factor(ifelse(classVar == pos_class, "Positive", "Negative")),
-            threshold = optimalCriterion$threshold,
+          resultsToDisplay <- if (!self$options$allObserved) unlist(results$optimal_cutpoint) else sort(unique(dependentVar))
+          metrics_res <- private$.generateTables(
+            var = var,
+            results = results,
+            confusionMatrix = results$roc_curve[[1]],
+            resultsToDisplay = resultsToDisplay,
+            dependentVar = dependentVar,
+            classVar = classVar,
+            pos_class = pos_class,
             direction = direction,
-            stringsAsFactors = FALSE
+            metric = metric
           )
-          attr(private$.rocDataList[[var]], "rawData") <- rawData
-
+          sensList <- metrics_res$sensList
+          specList <- metrics_res$specList
+          ppvList <- metrics_res$ppvList
+          npvList <- metrics_res$npvList
+          youdenList <- metrics_res$youdenList
+          metricList <- metrics_res$metricList
+          j_max_idx <- metrics_res$j_max_idx
+          aucList[[var]] <- results$AUC
 
 
 
