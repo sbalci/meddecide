@@ -76,6 +76,16 @@ analyses:
     menuSubtitle: Find lower Kappa based on sample size
     description: |
       Lowest Expected Value for a fixed sample size.
+  - title: ROC Analysis
+    name: psychopdaroc
+    ns: meddecide
+    menuGroup: meddecide
+    menuSubgroup: ROC Analysis
+    menuTitle: ROC Analysis
+    menuSubtitle: ROC Analysis, AUC, Cutpoints
+    description: >
+      Receiver Operating Characteristic (ROC) curve analysis with optimal
+      cutpoint determination.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
