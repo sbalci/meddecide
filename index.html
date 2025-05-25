@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3.06</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3.11</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,24 @@
 <p>Functions for Medical Decision Making for ClinicoPath jamovi Module</p>
 <p>See <a href="https://sbalci.github.io/ClinicoPathJamoviModule/" class="external-link uri">https://sbalci.github.io/ClinicoPathJamoviModule/</a></p>
 <p><a href="https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></p>
+<div class="section level2">
+<h2 id="example-datasets">Example datasets<a class="anchor" aria-label="anchor" href="#example-datasets"></a>
+</h2>
+<p>Small CSV files are provided in <code>inst/extdata</code> to illustrate the main functions. Use <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> together with <code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file()</a></code> to access the files after the package is installed.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Decision analysis example</span></span>
+<span><span class="va">df_dec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"decision_example.csv"</span>, package <span class="op">=</span> <span class="st">"meddecide"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/decision.html">decision</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_dec</span>, gold <span class="op">=</span> <span class="va">df_dec</span><span class="op">$</span><span class="va">gold</span>, newtest <span class="op">=</span> <span class="va">df_dec</span><span class="op">$</span><span class="va">newtest</span>,</span>
+<span>         goldPositive <span class="op">=</span> <span class="fl">1</span>, testPositive <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ROC analysis example</span></span>
+<span><span class="va">df_roc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"roc_example.csv"</span>, package <span class="op">=</span> <span class="st">"meddecide"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/psychopdaroc.html">psychopdaroc</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_roc</span>, class <span class="op">=</span> <span class="va">df_roc</span><span class="op">$</span><span class="va">class</span>, value <span class="op">=</span> <span class="va">df_roc</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Agreement analysis example</span></span>
+<span><span class="va">df_agr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"agreement_example.csv"</span>, package <span class="op">=</span> <span class="st">"meddecide"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/agreement.html">agreement</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_agr</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
@@ -94,7 +112,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
