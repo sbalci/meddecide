@@ -4,8 +4,9 @@ pkgdown_sha: ~
 articles:
   agreement-analysis: agreement-analysis.html
   diagnostic-tests: diagnostic-tests.html
+  nogoldstandard: nogoldstandard.html
   roc-analysis: roc-analysis.html
-last_built: 2025-05-25T17:17Z
+last_built: 2025-05-26T19:15Z
 urls:
   reference: https://www.serdarbalci.com/meddecide/reference
   article: https://www.serdarbalci.com/meddecide/articles
