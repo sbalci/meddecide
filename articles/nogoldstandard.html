@@ -62,7 +62,7 @@
                         <h4 data-toc-skip class="author">ClinicoPath
 Development Team</h4>
             
-            <h4 data-toc-skip class="date">2025-05-26</h4>
+            <h4 data-toc-skip class="date">2025-05-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/master/vignettes/nogoldstandard.Rmd" class="external-link"><code>vignettes/nogoldstandard.Rmd</code></a></small>
       <div class="d-none name"><code>nogoldstandard.Rmd</code></div>
@@ -205,7 +205,7 @@ method:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ClinicoPath</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">nogoldstandard</span><span class="op">(</span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nogoldstandard.html">nogoldstandard</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">data</span>,</span>
 <span>  test1 <span class="op">=</span> <span class="st">"test1"</span>,</span>
 <span>  test1Positive <span class="op">=</span> <span class="st">"pos"</span>,</span>
@@ -253,7 +253,7 @@ specificity)</li>
 <p>The enhanced version of the <code>nogoldstandard</code> module
 includes detailed progress reporting during bootstrap analysis:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result_with_ci</span> <span class="op">&lt;-</span> <span class="fu">nogoldstandard</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">result_with_ci</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nogoldstandard.html">nogoldstandard</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">data</span>,</span>
 <span>  test1 <span class="op">=</span> <span class="st">"test1"</span>,</span>
 <span>  test1Positive <span class="op">=</span> <span class="st">"pos"</span>,</span>
@@ -356,7 +356,7 @@ samples</li>
 <span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">method</span> <span class="kw">in</span> <span class="va">methods</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">results</span><span class="op">[[</span><span class="va">method</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">nogoldstandard</span><span class="op">(</span></span>
+<span>  <span class="va">results</span><span class="op">[[</span><span class="va">method</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nogoldstandard.html">nogoldstandard</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">data</span>,</span>
 <span>    test1 <span class="op">=</span> <span class="st">"test1"</span>,</span>
 <span>    test1Positive <span class="op">=</span> <span class="st">"pos"</span>,</span>
