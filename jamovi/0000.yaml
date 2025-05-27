@@ -31,6 +31,7 @@ analyses:
     menuSubgroup: Agreement
     menuTitle: Interrater Reliability
     description: Function for Interrater Reliability.
+    ribbon: analyses
   - title: Medical Decision
     name: decision
     ns: meddecide
@@ -41,6 +42,7 @@ analyses:
       Function for Medical Decision Analysis. Sensitivity, specificity, positive
       predictive value, negative predictive value.
     menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
+    ribbon: analyses
   - title: Medical Decision Calculator
     name: decisioncalculator
     ns: meddecide
@@ -49,6 +51,7 @@ analyses:
     menuTitle: Medical Decision Calculator
     description: Function for Medical Decision Calculator.
     menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
+    ribbon: analyses
   - title: Power Approach for the Number of Subjects Required
     name: kappaSizePower
     ns: meddecide
@@ -58,6 +61,7 @@ analyses:
     menuTitle: Power Approach for the Number of Subjects Required
     description: |
       Power Analysis for Interobserver Agreement Analysis.
+    ribbon: analyses
   - title: Confidence Interval Approach for the Number of Subjects Required
     name: kappaSizeCI
     ns: meddecide
@@ -67,6 +71,7 @@ analyses:
     menuSubtitle: Find sample size based on Kappa confidence
     description: |
       Power Analysis for Interobserver Agreement Analysis.
+    ribbon: analyses
   - title: Lowest Expected Value for a fixed sample size
     name: kappaSizeFixedN
     ns: meddecide
@@ -76,16 +81,27 @@ analyses:
     menuSubtitle: Find lower Kappa based on sample size
     description: |
       Lowest Expected Value for a fixed sample size.
+    ribbon: analyses
   - title: ROC Analysis
     name: psychopdaroc
     ns: meddecide
     menuGroup: meddecide
-    menuSubgroup: ROC Analysis
+    menuSubgroup: ROC
     menuTitle: ROC Analysis
     menuSubtitle: ROC Analysis, AUC, Cutpoints
     description: >
       Receiver Operating Characteristic (ROC) curve analysis with optimal
       cutpoint determination.
+    ribbon: analyses
+  - title: Analysis Without Gold Standard
+    name: nogoldstandard
+    ns: meddecide
+    ribbon: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Analysis Without Gold Standard
+    menuSubtitle: Multiple Test Analysis Without Gold Standard
+    description: Analysis of diagnostic tests without a gold standard reference
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
