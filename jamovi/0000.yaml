@@ -1,7 +1,7 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.3.19
+version: 0.0.3.20
 jms: '1.0'
 authors:
   - Serdar Balci
@@ -102,6 +102,19 @@ analyses:
     menuTitle: Analysis Without Gold Standard
     menuSubtitle: Multiple Test Analysis Without Gold Standard
     description: Analysis of diagnostic tests without a gold standard reference
+  - title: Compare Medical Decision Tests
+    name: decisioncompare
+    ns: meddecide
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Compare Medical Decision Tests
+    menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
+    description: >
+      Function for comparing multiple Medical Decision Tests. Compares
+      sensitivity, specificity, positive predictive value, negative predictive
+      value, and other metrics between different tests against the same golden
+      standard. Includes statistical comparison using McNemar's test and
+      confidence intervals for differences.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
