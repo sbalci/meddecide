@@ -115,6 +115,7 @@ analyses:
       value, and other metrics between different tests against the same golden
       standard. Includes statistical comparison using McNemar's test and
       confidence intervals for differences.
+    ribbon: analyses
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
