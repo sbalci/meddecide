@@ -1,8 +1,8 @@
 Type: Package
 Package: meddecide
 Title: Medical Decision Analysis and Reliability Assessment Tools in ClinicoPath jamovi Module
-Version: 0.0.3.21
-Date: 2024-06-02
+Version: 0.0.3.22
+Date: 2024-06-08
 Authors@R: 
     person(given = "Serdar",
            family = "Balci",
@@ -52,7 +52,8 @@ Imports:
     pROC,
     MASS,
     glue,
-    htmlTable
+    htmlTable,
+    reshape2
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

@@ -4,8 +4,25 @@ Functions for Medical Decision Making for ClinicoPath jamovi Module
 
 See https://sbalci.github.io/ClinicoPathJamoviModule/
 
+[![CRAN Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
+[![R-CMD-check](https://github.com/sbalci/meddecide/workflows/R-CMD-check/badge.svg)](https://github.com/sbalci/meddecide/actions)
+[![License: GPL (>= 2)](https://img.shields.io/badge/License-GPL%20(%3E=%202)-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
+[![jamovi Module](https://img.shields.io/badge/jamovi-module-brightgreen.svg?logo=jamovi)](https://www.jamovi.org/)
+[![jamovi Version](https://img.shields.io/badge/jamovi-%E2%89%A5%201.8.1-orange.svg)](https://www.jamovi.org/)
+[![R Version](https://img.shields.io/badge/R-%E2%89%A5%204.1.0-blue.svg)](https://www.r-project.org/)
 
-[![R-CMD-check](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml)
+[![GitHub Release](https://img.shields.io/github/v/release/sbalci/meddecide)](https://github.com/sbalci/meddecide/releases)
+[![GitHub Issues](https://img.shields.io/github/issues/sbalci/ClinicoPathJamoviModule)](https://github.com/sbalci/ClinicoPathJamoviModule/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/sbalci/meddecide?style=social)](https://github.com/sbalci/meddecide)
+
+[![Medical Decision Analysis](https://img.shields.io/badge/Focus-Medical%20Decision%20Analysis-red.svg)](https://github.com/sbalci/meddecide)
+[![Reliability Assessment](https://img.shields.io/badge/Focus-Reliability%20Assessment-green.svg)](https://github.com/sbalci/meddecide)
+[![ROC Analysis](https://img.shields.io/badge/Feature-ROC%20Analysis-purple.svg)](https://github.com/sbalci/meddecide)
+[![Kappa Statistics](https://img.shields.io/badge/Feature-Kappa%20Statistics-orange.svg)](https://github.com/sbalci/meddecide)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXX)
+[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://sbalci.github.io/ClinicoPathJamoviModule/)
+[![Clinical Research](https://img.shields.io/badge/Domain-Clinical%20Research-darkblue.svg)](https://github.com/sbalci/meddecide)
 
 ## Example datasets
 
