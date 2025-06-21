@@ -126,7 +126,7 @@ head(data)
 Now let's analyze this data using the Latent Class Analysis method:
 
 ```{r eval=FALSE}
-library(ClinicoPath)
+library(meddecide)
 
 result <- nogoldstandard(
   data = data,

@@ -53,7 +53,8 @@ Imports:
     MASS,
     glue,
     htmlTable,
-    reshape2
+    reshape2,
+    psych
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
