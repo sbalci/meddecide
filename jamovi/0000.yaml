@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.3.30
+version: 0.0.3.33
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2024-06-22'
+date: '2024-06-30'
 type: R
 description: |-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -97,7 +97,7 @@ analyses:
     name: nogoldstandard
     ns: meddecide
     ribbon: analyses
-    menuGroup: meddecide
+    menuGroup: meddecideD
     menuSubgroup: Decision
     menuTitle: Analysis Without Gold Standard
     menuSubtitle: Multiple Test Analysis Without Gold Standard
@@ -106,7 +106,7 @@ analyses:
     name: decisioncompare
     ns: meddecide
     menuGroup: meddecide
-    menuSubgroup: Decision
+    menuSubgroup: DecisionD
     menuTitle: Compare Medical Decision Tests
     menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
     description: >
