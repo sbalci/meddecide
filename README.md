@@ -20,7 +20,7 @@ See https://sbalci.github.io/ClinicoPathJamoviModule/
 [![ROC Analysis](https://img.shields.io/badge/Feature-ROC%20Analysis-purple.svg)](https://github.com/sbalci/meddecide)
 [![Kappa Statistics](https://img.shields.io/badge/Feature-Kappa%20Statistics-orange.svg)](https://github.com/sbalci/meddecide)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3997188.svg)](https://doi.org/10.5281/zenodo.3997188)
 [![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://sbalci.github.io/ClinicoPathJamoviModule/)
 [![Clinical Research](https://img.shields.io/badge/Domain-Clinical%20Research-darkblue.svg)](https://github.com/sbalci/meddecide)
 
