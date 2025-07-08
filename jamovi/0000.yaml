@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.3.34
+version: 0.0.3.46
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2024-07-01'
+date: '2025-07-08'
 type: R
 description: |-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -32,6 +32,7 @@ analyses:
     menuTitle: Interrater Reliability
     description: Function for Interrater Reliability.
     ribbon: analyses
+    category: analyses
   - title: Medical Decision
     name: decision
     ns: meddecide
@@ -43,15 +44,24 @@ analyses:
       predictive value, negative predictive value.
     menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
     ribbon: analyses
+    category: analyses
   - title: Medical Decision Calculator
     name: decisioncalculator
     ns: meddecide
     menuGroup: meddecide
     menuSubgroup: Decision
     menuTitle: Medical Decision Calculator
-    description: Function for Medical Decision Calculator.
+    description: |
+      Medical Decision Calculator for diagnostic test evaluation when you have 
+      the four key counts: True Positives (TP), False Positives (FP), True 
+      Negatives (TN), and False Negatives (FN). Calculates comprehensive 
+      diagnostic performance metrics including sensitivity, specificity, 
+      positive and negative predictive values, likelihood ratios, and 
+      post-test probabilities. Supports confidence interval estimation and 
+      Fagan nomogram visualization for clinical decision making.
     menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
     ribbon: analyses
+    category: analyses
   - title: Power Approach for the Number of Subjects Required
     name: kappaSizePower
     ns: meddecide
@@ -62,6 +72,7 @@ analyses:
     description: |
       Power Analysis for Interobserver Agreement Analysis.
     ribbon: analyses
+    category: analyses
   - title: Confidence Interval Approach for the Number of Subjects Required
     name: kappaSizeCI
     ns: meddecide
@@ -72,6 +83,7 @@ analyses:
     description: |
       Power Analysis for Interobserver Agreement Analysis.
     ribbon: analyses
+    category: analyses
   - title: Lowest Expected Value for a fixed sample size
     name: kappaSizeFixedN
     ns: meddecide
@@ -82,6 +94,7 @@ analyses:
     description: |
       Lowest Expected Value for a fixed sample size.
     ribbon: analyses
+    category: analyses
   - title: ROC Analysis
     name: psychopdaroc
     ns: meddecide
@@ -93,20 +106,22 @@ analyses:
       Receiver Operating Characteristic (ROC) curve analysis with optimal
       cutpoint determination.
     ribbon: analyses
+    category: analyses
   - title: Analysis Without Gold Standard
     name: nogoldstandard
     ns: meddecide
     ribbon: analyses
-    menuGroup: meddecideD
+    menuGroup: meddecide
     menuSubgroup: Decision
     menuTitle: Analysis Without Gold Standard
     menuSubtitle: Multiple Test Analysis Without Gold Standard
     description: Analysis of diagnostic tests without a gold standard reference
+    category: analyses
   - title: Compare Medical Decision Tests
     name: decisioncompare
     ns: meddecide
     menuGroup: meddecide
-    menuSubgroup: DecisionD
+    menuSubgroup: Decision
     menuTitle: Compare Medical Decision Tests
     menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
     description: >
@@ -116,6 +131,19 @@ analyses:
       standard. Includes statistical comparison using McNemar's test and
       confidence intervals for differences.
     ribbon: analyses
+    category: analyses
+  - title: Decision Tree Graph
+    name: decisiongraph
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: DecisionD
+    menuTitle: Decision Tree Graph
+    menuSubtitle: Cost-Effectiveness Decision Tree Visualization
+    description: >
+      Creates decision tree graphs for cost-effectiveness analysis with typical
+      decision nodes, chance nodes, and terminal nodes. Supports visualization
+      of treatment pathways, probabilities, costs, and outcomes.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
