@@ -1,11 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://www.serdarbalci.com/meddecide/404.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/CLAUDE.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/LICENSE.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/articles/agreement-analysis.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/articles/diagnostic-tests.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/articles/index.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/articles/nogoldstandard.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/articles/roc-analysis.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/authors.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/index.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/agreement.html</loc></url>
@@ -22,7 +18,8 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisionClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncalculator.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncalculatorClass.html</loc></url>
-<url><loc>https://www.serdarbalci.com/meddecide/reference/histopathology.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncompare.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncompareClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/index.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/kappaSizeCIClass.html</loc></url>

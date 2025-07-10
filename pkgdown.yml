@@ -1,12 +1,8 @@
 pandoc: 3.1.11
 pkgdown: 2.1.3
 pkgdown_sha: ~
-articles:
-  agreement-analysis: agreement-analysis.html
-  diagnostic-tests: diagnostic-tests.html
-  nogoldstandard: nogoldstandard.html
-  roc-analysis: roc-analysis.html
-last_built: 2025-05-27T09:01Z
+articles: {}
+last_built: 2025-07-10T08:36Z
 urls:
   reference: https://www.serdarbalci.com/meddecide/reference
   article: https://www.serdarbalci.com/meddecide/articles
