@@ -132,18 +132,6 @@ analyses:
       confidence intervals for differences.
     ribbon: analyses
     category: analyses
-  - title: Decision Tree Graph
-    name: decisiongraph
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: DecisionD
-    menuTitle: Decision Tree Graph
-    menuSubtitle: Cost-Effectiveness Decision Tree Visualization
-    description: >
-      Creates decision tree graphs for cost-effectiveness analysis with typical
-      decision nodes, chance nodes, and terminal nodes. Supports visualization
-      of treatment pathways, probabilities, costs, and outcomes.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
