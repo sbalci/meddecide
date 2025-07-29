@@ -1,0 +1,35 @@
+pandoc: 3.7.0.2
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  01-introduction: 01-introduction.html
+  02-comprehensive-guide: 02-comprehensive-guide.html
+  03-agreement-advanced-features: 03-agreement-advanced-features.html
+  03-agreement-analysis: 03-agreement-analysis.html
+  03-roc-analysis: 03-roc-analysis.html
+  04-decision-tree-guide: 04-decision-tree-guide.html
+  05-decision-tree-analysis: 05-decision-tree-analysis.html
+  06-decision-tree-vs-markov: 06-decision-tree-vs-markov.html
+  06-jamovi-workflow-examples: 06-jamovi-workflow-examples.html
+  07-bayesian-decision-curve-analysis: 07-bayesian-decision-curve-analysis.html
+  07-decision-trees: 07-decision-trees.html
+  07-kappasizeci-comprehensive: 07-kappasizeci-comprehensive.html
+  08-decision-panel-clinical: 08-decision-panel-clinical.html
+  08-kappasizefixedn-comprehensive: 08-kappasizefixedn-comprehensive.html
+  09-decision-panel-advanced: 09-decision-panel-advanced.html
+  09-kappasizepower-comprehensive: 09-kappasizepower-comprehensive.html
+  10-decision-panel-optimization: 10-decision-panel-optimization.html
+  11-precision-oncology: 11-precision-oncology.html
+  12-nogoldstandard: 12-nogoldstandard.html
+  13-diagnostic-tests: 13-diagnostic-tests.html
+  14-diagnostic-style-quick-guide: 14-diagnostic-style-quick-guide.html
+  15-diagnostic-style-clustering: 15-diagnostic-style-clustering.html
+  16-use-in-r: 16-use-in-r.html
+  34-cotest-analysis: 34-cotest-analysis.html
+  35-screening-calculator-comprehensive: 35-screening-calculator-comprehensive.html
+  36-sequential-testing-comprehensive: 36-sequential-testing-comprehensive.html
+  38-modelbuilder-comprehensive: 38-modelbuilder-comprehensive.html
+last_built: 2025-07-29T11:04Z
+urls:
+  reference: https://www.serdarbalci.com/meddecide/reference
+  article: https://www.serdarbalci.com/meddecide/articles
