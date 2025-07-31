@@ -281,9 +281,16 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class(
                 ci_upper <- result$value + qnorm((1 + conf_level)/2) * se_value
             }
 
+            # Determine method name based on exact calculation
+            method_name <- if (exact) {
+                "Fleiss' Kappa (Exact)"
+            } else {
+                "Fleiss' Kappa"
+            }
+
             # Add to table
             table$addRow(rowKey = "fleiss", values = list(
-                method = "Fleiss' Kappa",
+                method = method_name,
                 kappa = result$value,
                 se = se_value,
                 ci_lower = ci_lower,
