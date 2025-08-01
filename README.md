@@ -1,8 +1,18 @@
 # meddecide
 
-Functions for Medical Decision Making for ClinicoPath jamovi Module
+**Medical Decision Analysis and Reliability Assessment Tools for Clinical Research**
 
-See https://sbalci.github.io/ClinicoPathJamoviModule/
+## Abstract
+
+`meddecide` is a comprehensive R package and jamovi module that bridges the gap between complex statistical methodology and practical clinical research. It provides an intuitive toolkit for medical professionals and researchers to perform diagnostic test evaluations, reliability assessments, and evidence-based decision analyses without requiring extensive programming knowledge. By offering both a traditional R interface and a user-friendly jamovi GUI, the package democratizes access to advanced statistical methods essential for modern medical research and clinical decision-making.
+
+## Overview
+
+The `meddecide` package serves as the computational engine for the ClinicoPath jamovi Module, offering dual functionality:
+- **As an R Package**: Direct access to all functions through R scripts and console
+- **As a jamovi Module**: Point-and-click interface for statistical analyses without coding
+
+See full documentation at https://sbalci.github.io/ClinicoPathJamoviModule/
 
 [![CRAN Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
 [![R-CMD-check](https://github.com/sbalci/meddecide/workflows/R-CMD-check/badge.svg)](https://github.com/sbalci/meddecide/actions)
@@ -23,6 +33,62 @@ See https://sbalci.github.io/ClinicoPathJamoviModule/
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3997188.svg)](https://doi.org/10.5281/zenodo.3997188)
 [![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://sbalci.github.io/ClinicoPathJamoviModule/)
 [![Clinical Research](https://img.shields.io/badge/Domain-Clinical%20Research-darkblue.svg)](https://github.com/sbalci/meddecide)
+
+## Key Features
+
+### 🏥 Medical Decision Analysis
+- **Diagnostic Test Evaluation**: Calculate sensitivity, specificity, predictive values, and likelihood ratios
+- **Test Comparison**: Compare multiple diagnostic tests against a gold standard
+- **Decision Calculator**: Interactive tool for exploring how test characteristics affect clinical decisions
+- **Bayesian Updates**: Fagan nomograms for visualizing post-test probability calculations
+
+### 📊 ROC Analysis
+- **ROC Curve Generation**: Create and visualize receiver operating characteristic curves
+- **AUC Calculation**: Compute area under the curve with confidence intervals
+- **Optimal Cutpoint Detection**: Determine best thresholds using various optimization methods
+- **Multiple Comparison**: Compare ROC curves from different diagnostic tests
+
+### 🤝 Reliability Assessment
+- **Cohen's Kappa**: Calculate inter-rater agreement for two raters
+- **Fleiss' Kappa**: Assess agreement among multiple raters
+- **Weighted Kappa**: Account for ordinal data with custom weighting schemes
+- **Agreement Visualization**: Generate plots to visualize rater concordance patterns
+
+### 📐 Sample Size Calculations
+- **Power-Based**: Determine sample size for desired statistical power
+- **Precision-Based**: Calculate sample size for confidence interval width
+- **Fixed N Analysis**: Evaluate achievable power with predetermined sample size
+- **Multiple Scenarios**: Compare sample size requirements across different study designs
+
+### 🔬 Advanced Analysis
+- **No Gold Standard**: Analyze diagnostic tests when reference standard is imperfect
+- **Latent Class Analysis**: Estimate test performance without gold standard
+- **Bootstrap Methods**: Generate robust confidence intervals
+- **Missing Data Handling**: Appropriate methods for incomplete datasets
+
+### 📈 Visualization Tools
+- **Fagan Nomograms**: Interactive Bayesian probability calculators
+- **Forest Plots**: Compare diagnostic metrics across studies
+- **Agreement Plots**: Visualize inter-rater reliability patterns
+- **ROC Space**: Multi-test comparison in ROC coordinate system
+
+## Installation
+
+### As an R Package
+```r
+# Install from GitHub
+devtools::install_github("sbalci/meddecide")
+
+# Load the package
+library(meddecide)
+```
+
+### As a jamovi Module
+1. Open jamovi (≥ 1.8.1)
+2. Click the modules menu (⋮) in the top right
+3. Select "jamovi library"
+4. Search for "ClinicoPath"
+5. Click Install
 
 ## Example datasets
 

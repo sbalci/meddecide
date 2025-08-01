@@ -56,6 +56,7 @@ Functions follow consistent naming:
 - `jamovi/*.a.yaml`: Analysis definitions (what the analysis does)
 - `jamovi/*.r.yaml`: Results definitions (output structure)
 - `jamovi/*.u.yaml`: UI definitions (input controls)
+- `jamovi/js/*.js`: JavaScript for dynamic UI behavior
 
 ### Key Dependencies
 - `jmvcore`: jamovi integration framework
