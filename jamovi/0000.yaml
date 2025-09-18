@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.31.36
+version: 0.0.31.69
 jms: '1.0'
 authors:
   - Serdar Balci
-maintainer: Serdar Balci <drserdarbalci@gmail.com>
-date: '2025-08-22'
+maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
+date: '2025-09-18'
 type: R
 description: |-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -115,7 +115,12 @@ analyses:
     menuSubgroup: Decision
     menuTitle: Analysis Without Gold Standard
     menuSubtitle: Multiple Test Analysis Without Gold Standard
-    description: Analysis of diagnostic tests without a gold standard reference
+    description: >
+      Analysis of diagnostic tests without a gold standard reference using
+      multiple statistical approaches. Implements Latent Class Analysis (Hui &
+      Walter, 1980), Bayesian methods (Joseph et al., 1995),  and composite
+      reference standards for estimating test performance when no perfect
+      reference test exists.
     category: analyses
   - title: Compare Medical Decision Tests
     name: decisioncompare
@@ -132,6 +137,33 @@ analyses:
       confidence intervals for differences.
     ribbon: analyses
     category: analyses
+  - title: Decision Panel Optimization
+    name: decisionpanel
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Decision Panel Optimization
+    menuSubtitle: Optimize test panels and decision trees
+    description: >
+      Optimize diagnostic test panels by evaluating various combination
+      strategies including parallel testing (cotest), sequential testing, and
+      repeated tests. Creates decision trees to minimize cost while maximizing
+      accuracy.
+  - title: Clinical ROC Analysis
+    name: enhancedROC
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: ROC
+    menuTitle: Clinical ROC Analysis
+    menuSubtitle: Clinical ROC analysis with diagnostic metrics and optimal cutoffs
+    description: |
+      Clinical ROC analysis toolkit for comprehensive diagnostic performance 
+      evaluation. Includes ROC curve analysis, Youden Index optimization, 
+      sensitivity/specificity analysis, optimal cutoff determination, and 
+      comparative ROC analysis. Essential for biomarker validation, diagnostic
+      test evaluation, and clinical decision support in medical research.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

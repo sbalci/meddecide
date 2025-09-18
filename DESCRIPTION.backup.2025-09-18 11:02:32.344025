@@ -5,9 +5,9 @@ Title: Medical Decision Analysis and Reliability Assessment Tools in
 Version: 0.0.31.69
 Date: 2025-09-18
 Authors@R: person(given = "Serdar", family = "Balci", role = c("aut",
-        "cre"), email = "serdarbalci@serdarbalci.com", comment = c(ORCID =
+        "cre"), email = "drserdarbalci@gmail.com", comment = c(ORCID =
         "0000-0002-7852-3851"))
-Maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
+Maintainer: Serdar Balci <drserdarbalci@gmail.com>
 Description: A comprehensive toolkit for medical decision analysis and
         reliability assessment, implemented as a jamovi module. The
         package provides tools for: * Interrater and intrarater
@@ -29,8 +29,8 @@ URL: https://github.com/sbalci/ClinicoPathJamoviModule/,
         https://www.serdarbalci.com/meddecide/
 BugReports: https://github.com/sbalci/ClinicoPathJamoviModule/issues/
 Depends: R (>= 4.1.0)
-Imports: boot, caret, cutpointr, dplyr, e1071, epiR, forcats, ggplot2,
-        glue, grid, htmlTable, irr, jmvcore, kappaSize, magrittr, MASS,
+Imports: boot, cutpointr, dplyr, e1071, epiR, forcats, ggplot2, glue,
+        grid, htmlTable, irr, jmvcore, kappaSize, magrittr, MASS,
         Matrix, poLCA, pROC, psych, R6, RColorBrewer, reshape2, rlang,
         scales, tidyr, utils
 Encoding: UTF-8

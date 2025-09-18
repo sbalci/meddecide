@@ -1,0 +1,881 @@
+---
+name: decisionpanel
+title: Decision Panel Optimization
+jrs: '1.1'
+
+items:
+    # ==========================================
+    # SUMMARY RESULTS
+    # ==========================================
+    
+    - name: summary
+      title: Summary
+      type: Html
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - optimizationCriteria
+      
+    - name: clinicalSummary
+      title: Clinical Summary
+      type: Html
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - optimizationCriteria
+      
+    - name: clinicalInterpretation
+      title: Clinical Interpretation
+      type: Html
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - optimizationCriteria
+      
+    - name: clinicalReport
+      title: Copy-Ready Report
+      type: Html
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - optimizationCriteria
+      
+    - name: clinicalWarnings
+      title: Clinical Considerations
+      type: Html
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - minSensitivity
+        - minSpecificity
+      
+    - name: optimalPanel
+      title: Optimal Test Panel
+      type: Table
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - optimizationCriteria
+        - panelOptimization
+        - maxTests
+        - topN
+        - useCosts
+        - testCosts
+        - fpCost
+        - fnCost
+      columns:
+        - name: rank
+          title: Rank
+          type: integer
+        - name: tests
+          title: Test Combination
+          type: text
+        - name: strategy
+          title: Strategy
+          type: text
+        - name: sensitivity
+          title: Sensitivity
+          type: number
+          format: pc
+        - name: specificity
+          title: Specificity
+          type: number
+          format: pc
+        - name: accuracy
+          title: Accuracy
+          type: number
+          format: pc
+        - name: ppv
+          title: PPV
+          type: number
+          format: pc
+        - name: npv
+          title: NPV
+          type: number
+          format: pc
+        - name: youden
+          title: "Youden's J"
+          type: number
+          format: zto
+        - name: cost
+          title: Cost
+          type: number
+          format: zto
+          visible: (useCosts)
+        - name: utility
+          title: Utility
+          type: number
+          format: zto
+          visible: (useCosts)
+        - name: efficiency
+          title: Efficiency
+          type: number
+          format: zto
+          visible: (useCosts)
+
+    # ==========================================
+    # STRATEGY COMPARISON
+    # ==========================================
+    
+    - name: strategyComparison
+      title: Testing Strategy Comparison
+      type: Table
+      visible: (compareStrategies)
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - optimizationCriteria
+        - useCosts
+        - testCosts
+        - fpCost
+        - fnCost
+      columns:
+        - name: strategy
+          title: Strategy
+          type: text
+        - name: nTests
+          title: Tests Used
+          type: integer
+        - name: avgSens
+          title: Avg Sensitivity
+          type: number
+          format: pc
+        - name: avgSpec
+          title: Avg Specificity
+          type: number
+          format: pc
+        - name: avgAccuracy
+          title: Avg Accuracy
+          type: number
+          format: pc
+        - name: avgCost
+          title: Avg Cost
+          type: number
+          format: zto
+          visible: (useCosts)
+        - name: bestPanel
+          title: Best Panel
+          type: text
+        - name: bestPerformance
+          title: Best Performance
+          type: number
+          format: zto
+
+    # ==========================================
+    # INDIVIDUAL TEST PERFORMANCE
+    # ==========================================
+    
+    - name: individualTests
+      title: Individual Test Performance (Ranked by Diagnostic Value)
+      type: Table
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - useCosts
+        - testCosts
+      columns:
+        - name: rank
+          title: Rank
+          type: integer
+        - name: test
+          title: Test
+          type: text
+        - name: sensitivity
+          title: Sensitivity
+          type: number
+          format: pc
+        - name: specificity
+          title: Specificity
+          type: number
+          format: pc
+        - name: accuracy
+          title: Accuracy
+          type: number
+          format: pc
+        - name: ppv
+          title: PPV
+          type: number
+          format: pc
+        - name: npv
+          title: NPV
+          type: number
+          format: pc
+        - name: plr
+          title: +LR
+          type: number
+          format: zto
+        - name: nlr
+          title: -LR
+          type: number
+          format: zto
+        - name: auc
+          title: AUC
+          type: number
+          format: zto
+        - name: youden
+          title: "Youden's J"
+          type: number
+          format: zto
+        - name: cost
+          title: Cost
+          type: number
+          format: zto
+          visible: (useCosts)
+
+    # ==========================================
+    # PANEL OPTIMIZATION RESULTS
+    # ==========================================
+    
+    - name: panelBuilding
+      title: Panel Building Analysis (Forward Selection)
+      type: Table
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - panelOptimization
+        - optimizationCriteria
+        - minImprovement
+      columns:
+        - name: step
+          title: Step
+          type: integer
+        - name: testAdded
+          title: Test Added
+          type: text
+        - name: panelComposition
+          title: Panel Composition
+          type: text
+        - name: baselineAccuracy
+          title: Baseline Accuracy
+          type: number
+          format: pc
+        - name: newAccuracy
+          title: New Accuracy
+          type: number
+          format: pc
+        - name: improvementPercent
+          title: Improvement
+          type: number
+          format: pc
+        - name: pValue
+          title: P-value
+          type: number
+          format: zto
+        - name: keep
+          title: Include?
+          type: text
+        
+    - name: optimalPanelsBySize
+      title: Optimal Panels by Size
+      type: Table
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - optimizationCriteria
+        - maxTests
+        - useCosts
+        - testCosts
+        - fpCost
+        - fnCost
+      columns:
+        - name: panelSize
+          title: Panel Size
+          type: integer
+        - name: testCombination
+          title: Test Combination
+          type: text
+        - name: strategy
+          title: Strategy
+          type: text
+        - name: sensitivity
+          title: Sensitivity
+          type: number
+          format: pc
+        - name: specificity
+          title: Specificity
+          type: number
+          format: pc
+        - name: accuracy
+          title: Accuracy
+          type: number
+          format: pc
+        - name: youden
+          title: "Youden's J"
+          type: number
+          format: zto
+        - name: costEffectiveness
+          title: Cost-Effectiveness
+          type: number
+          format: zto
+          visible: (useCosts)
+        - name: recommendation
+          title: Recommendation
+          type: text
+
+    - name: testRedundancy
+      title: Test Redundancy Analysis
+      type: Table
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - redundancyThreshold
+      columns:
+        - name: testPair
+          title: Test Pair
+          type: text
+        - name: correlation
+          title: Correlation
+          type: number
+          format: zto
+        - name: overlap
+          title: Result Overlap
+          type: number
+          format: pc
+        - name: redundancyLevel
+          title: Redundancy
+          type: text
+        - name: recommendation
+          title: Recommendation
+          type: text
+
+    - name: incrementalValue
+      title: Incremental Diagnostic Value
+      type: Table
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+      columns:
+        - name: test
+          title: Test
+          type: text
+        - name: aloneAccuracy
+          title: Alone
+          type: number
+          format: pc
+        - name: withOthersAccuracy
+          title: With Others
+          type: number
+          format: pc
+        - name: incrementalAccuracy
+          title: Incremental Value
+          type: number
+          format: pc
+        - name: nri
+          title: NRI
+          type: number
+          format: zto
+        - name: pValueImprovement
+          title: P-value
+          type: number
+          format: zto
+        - name: essential
+          title: Essential?
+          type: text
+
+    - name: resultImportance
+      title: Test Result Importance Analysis
+      type: Table
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+      columns:
+        - name: test
+          title: Test
+          type: text
+        - name: resultType
+          title: Result
+          type: text
+        - name: frequency
+          title: Frequency
+          type: number
+        - name: positiveLR
+          title: +LR
+          type: number
+          format: zto
+        - name: negativeLR
+          title: -LR
+          type: number
+          format: zto
+        - name: informationGain
+          title: Info Gain
+          type: number
+          format: zto
+        - name: diagnosticImpact
+          title: Diagnostic Impact
+          type: text
+
+    # ==========================================
+    # ALL COMBINATIONS TABLE
+    # ==========================================
+    
+    - name: allCombinations
+      title: All Test Combinations
+      type: Table
+      visible: (showAllCombinations)
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - maxTests
+        - useCosts
+        - testCosts
+        - fpCost
+        - fnCost
+      columns:
+        - name: tests
+          title: Tests
+          type: text
+        - name: strategy
+          title: Strategy
+          type: text
+        - name: nTests
+          title: N Tests
+          type: integer
+        - name: sensitivity
+          title: Sensitivity
+          type: number
+          format: pc
+        - name: specificity
+          title: Specificity
+          type: number
+          format: pc
+        - name: accuracy
+          title: Accuracy
+          type: number
+          format: pc
+        - name: ppv
+          title: PPV
+          type: number
+          format: pc
+        - name: npv
+          title: NPV
+          type: number
+          format: pc
+        - name: cost
+          title: Cost
+          type: number
+          format: zto
+          visible: (useCosts)
+        - name: utility
+          title: Utility
+          type: number
+          format: zto
+          visible: (useCosts)
+
+    # ==========================================
+    # DECISION TREE RESULTS
+    # ==========================================
+    
+    - name: treeStructure
+      title: Decision Tree Structure
+      type: Html
+      visible: (createTree)
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - treeMethod
+        - maxDepth
+        - minSplit
+      
+    - name: treePerformance
+      title: Decision Tree Performance
+      type: Table
+      visible: (createTree)
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - treeMethod
+        - maxDepth
+        - minSplit
+      columns:
+        - name: node
+          title: Node
+          type: text
+        - name: condition
+          title: Condition
+          type: text
+        - name: nCases
+          title: N Cases
+          type: integer
+        - name: probPositive
+          title: P(Disease+)
+          type: number
+          format: pc
+        - name: decision
+          title: Decision
+          type: text
+        - name: accuracy
+          title: Node Accuracy
+          type: number
+          format: pc
+
+    # ==========================================
+    # CROSS-VALIDATION RESULTS
+    # ==========================================
+    
+    - name: crossValidation
+      title: Cross-Validation Results
+      type: Table
+      visible: (crossValidate)
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - optimizationCriteria
+        - nFolds
+        - seed
+      columns:
+        - name: panel
+          title: Test Panel
+          type: text
+        - name: strategy
+          title: Strategy
+          type: text
+        - name: cvSensitivity
+          title: CV Sensitivity
+          type: number
+          format: pc
+        - name: cvSensitivitySD
+          title: SD
+          type: number
+          format: zto
+        - name: cvSpecificity
+          title: CV Specificity
+          type: number
+          format: pc
+        - name: cvSpecificitySD
+          title: SD
+          type: number
+          format: zto
+        - name: cvAccuracy
+          title: CV Accuracy
+          type: number
+          format: pc
+        - name: cvAccuracySD
+          title: SD
+          type: number
+          format: zto
+
+    # ==========================================
+    # BOOTSTRAP RESULTS
+    # ==========================================
+    
+    - name: bootstrapResults
+      title: Bootstrap Confidence Intervals
+      type: Table
+      visible: (bootstrap)
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - optimizationCriteria
+        - bootReps
+        - seed
+      columns:
+        - name: panel
+          title: Test Panel
+          type: text
+        - name: metric
+          title: Metric
+          type: text
+        - name: estimate
+          title: Estimate
+          type: number
+          format: zto
+        - name: lower
+          title: "2.5%"
+          type: number
+          format: zto
+        - name: upper
+          title: "97.5%"
+          type: number
+          format: zto
+        - name: se
+          title: SE
+          type: number
+          format: zto
+
+    # ==========================================
+    # PLOTS
+    # ==========================================
+    
+    - name: treeVisualization
+      title: Decision Tree
+      type: Image
+      width: 800
+      height: 600
+      renderFun: .plotTree
+      visible: (plotTree && createTree)
+      clearWith:
+        - tests
+        - gold
+        - goldPositive
+        - treeMethod
+        - maxDepth
+        - minSplit
+
+    - name: strategyComparisonPlot
+      title: Strategy Comparison
+      type: Image
+      width: 700
+      height: 500
+      renderFun: .plotStrategyComparison
+      visible: (plotComparison && compareStrategies)
+      clearWith:
+        - tests
+        - strategies
+        - optimizationCriteria
+
+    - name: costEffectivenessPlot
+      title: Cost-Effectiveness Frontier
+      type: Image
+      width: 700
+      height: 500
+      renderFun: .plotCostEffectiveness
+      visible: (plotCostEffect && useCosts)
+      clearWith:
+        - tests
+        - testCosts
+        - fpCost
+        - fnCost
+
+    - name: rocCurvesPlot
+      title: ROC Curves for Top Panels
+      type: Image
+      width: 700
+      height: 500
+      renderFun: .plotROCCurves
+      visible: (plotROC)
+      clearWith:
+        - tests
+        - topN
+
+    # ==========================================
+    # RECOMMENDATIONS
+    # ==========================================
+    
+    - name: recommendations
+      title: Recommendations
+      type: Html
+      visible: true
+      clearWith:
+        - test1
+        - test2
+        - test3
+        - test4
+        - test5
+        - gold
+        - test1Positive
+        - test2Positive
+        - test3Positive
+        - test4Positive
+        - test5Positive
+        - goldPositive
+        - strategies
+        - optimizationCriteria
+        - useCosts
+        - minSensitivity
+        - minSpecificity
+
+refs:
+    - rpart
+    - partykit
+    - DiagrammeR
+    - ROCR
+    - ClinicoPathJamoviModule
+
+...

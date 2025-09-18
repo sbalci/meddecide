@@ -12,8 +12,14 @@ agreement(
   heatmapDetails = FALSE,
   wght = "unweighted",
   exct = FALSE,
+  multiraterMethod = "auto",
+  fleissCI = TRUE,
   kripp = FALSE,
-  krippMethod = "nominal"
+  krippMethod = "nominal",
+  consensus = FALSE,
+  consensus_method = "majority",
+  tie_breaking = "exclude",
+  show_consensus_table = TRUE
 )
 }
 \arguments{
@@ -40,11 +46,29 @@ disagreement.}
 \item{exct}{Use exact method for Fleiss' kappa calculation with 3 or more
 raters. More accurate but computationally intensive.}
 
+\item{multiraterMethod}{Choose specific method for multi-rater agreement
+analysis or use automatic selection.}
+
+\item{fleissCI}{Calculate 95\\% confidence intervals for Fleiss' kappa using
+asymptotic standard errors.}
+
 \item{kripp}{Calculate Krippendorff's alpha, a generalized measure of
 reliability for any number of observers and data types.}
 
 \item{krippMethod}{Measurement level for Krippendorff's alpha calculation.
 Choose based on your data type.}
+
+\item{consensus}{Perform consensus scoring analysis to determine
+agreed-upon ratings from multiple raters.}
+
+\item{consensus_method}{Method for determining consensus scores from
+multiple raters.}
+
+\item{tie_breaking}{How to handle cases where no consensus can be reached
+using the selected method.}
+
+\item{show_consensus_table}{Display detailed consensus scoring results
+including individual rater scores and consensus outcomes.}
 }
 \value{
 A results object containing:
@@ -53,6 +77,8 @@ A results object containing:
 \code{results$overviewTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$kappaTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$krippTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$consensusTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$consensusSummary} \tab \tab \tab \tab \tab a table \cr
 \code{results$heatmapPlot} \tab \tab \tab \tab \tab an image \cr
 \code{results$frequencyTables} \tab \tab \tab \tab \tab a html \cr
 }

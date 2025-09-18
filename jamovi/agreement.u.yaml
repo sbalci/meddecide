@@ -48,6 +48,13 @@ children:
           - type: ComboBox
             name: wght
             label: Weighted Kappa
+            options:
+              - title: Unweighted
+                name: unweighted
+              - title: Squared
+                name: squared
+              - title: Equal/Linear
+                name: equal
   - type: Label
     label: Krippendorff's Alpha
     children:
@@ -59,3 +66,57 @@ children:
           - type: ComboBox
             name: krippMethod
             enable: (kripp)
+            options:
+              - title: Nominal
+                name: nominal
+              - title: Ordinal
+                name: ordinal
+              - title: Interval
+                name: interval
+              - title: Ratio
+                name: ratio
+  - type: Label
+    label: Consensus Scoring
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: consensus
+            label: Perform Consensus Analysis
+          - type: ComboBox
+            name: consensus_method
+            label: Consensus Method
+            enable: (consensus)
+            options:
+              - title: Majority Rule (≥50%)
+                name: majority
+              - title: Super Majority (≥2/3)
+                name: super_majority
+              - title: Unanimous Only
+                name: unanimous
+          - type: ComboBox
+            name: tie_breaking
+            label: Tie Breaking
+            enable: (consensus)
+            options:
+              - title: Exclude ties from analysis
+                name: exclude
+              - title: Flag for expert arbitration
+                name: arbitration
+              - title: Use most frequent category overall
+                name: global_mode
+          - type: CheckBox
+            name: show_consensus_table
+            label: Show Consensus Details
+            enable: (consensus)
+  - type: LayoutBox
+    margin: large
+    children:
+      - type: ComboBox
+        name: multiraterMethod
+  - type: LayoutBox
+    margin: large
+    children:
+      - type: CheckBox
+        name: fleissCI

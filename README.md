@@ -110,3 +110,12 @@ psychopdaroc(data = df_roc, class = df_roc$class, value = df_roc$value)
 df_agr <- read.csv(system.file("extdata", "agreement_example.csv", package = "meddecide"))
 agreement(data = df_agr)
 ```
+
+## Citation
+
+If you use meddecide in your research, please cite the main ClinicoPath project:
+
+```
+Serdar Balci (2025). ClinicoPath jamovi Module. doi:10.5281/zenodo.3997188
+[R package]. Retrieved from https://github.com/sbalci/ClinicoPathJamoviModule
+```
