@@ -1,9 +1,9 @@
 ---
-name: psychopdaroc
-title: ROC Analysis
+name: psychopdaROC
+title: Advanced ROC Analysis
 menuGroup: meddecide
 menuSubgroup: ROC
-menuSubtitle: ROC Analysis, AUC, Cutpoints
+menuSubtitle: Advanced ROC analysis with statistical comparisons and effect sizes
 version: '0.0.31'
 jas: '1.2'
 
@@ -12,6 +12,28 @@ description:
         Receiver Operating Characteristic (ROC) curve analysis with optimal cutpoint determination.
 
 options:
+    # ==========================================
+    # CLINICAL ANALYSIS MODE SELECTION
+    # ==========================================
+    
+    - name: clinicalMode
+      title: Analysis Level
+      type: List
+      options:
+        - name: basic
+          title: Basic ROC Analysis (Recommended for Clinical Use)
+        - name: advanced
+          title: Advanced Research Analysis
+        - name: comprehensive
+          title: Comprehensive Statistical Analysis
+      default: basic
+      description:
+          R: >
+            Select the complexity level of analysis:
+            Basic - Essential ROC metrics for clinical decision making
+            Advanced - Additional statistical comparisons and metrics
+            Comprehensive - Full research-grade analysis with all options
+
     # ==========================================
     # DATA INPUT SECTION
     # ==========================================
@@ -66,6 +88,33 @@ options:
           R: >
             Optional grouping variable for stratified analysis. 
             ROC curves will be calculated separately for each group.
+
+    # ==========================================
+    # CLINICAL WORKFLOW PRESETS
+    # ==========================================
+    
+    - name: clinicalPreset
+      title: Clinical Use Case
+      type: List
+      options:
+        - name: none
+          title: Custom Analysis
+        - name: screening
+          title: Screening Test (Prioritize Sensitivity)
+        - name: confirmation
+          title: Confirmation Test (Prioritize Specificity)  
+        - name: balanced
+          title: Balanced Diagnostic Test
+        - name: research
+          title: Research Comparison
+      default: none
+      description:
+          R: >
+            Choose a preset configuration optimized for specific clinical scenarios:
+            Screening - High sensitivity to avoid missing cases
+            Confirmation - High specificity to avoid false positives
+            Balanced - Equal weight to sensitivity and specificity
+            Research - Comprehensive analysis for publication
 
     # ==========================================
     # CUTPOINT OPTIMIZATION SECTION
@@ -285,12 +334,13 @@ options:
             Maximum number of threshold values to show in the threshold table.
 
     - name: delongTest
-      title: Compare AUCs (DeLong's Test)
+      title: Compare Test Performance Statistically
       type: Bool
       default: false
       description:
           R: >
-            Perform DeLong's test for comparing AUCs between multiple test variables.
+            Test whether the diagnostic performance differs significantly between multiple tests.
+            Uses DeLong's method to compare Area Under the Curve (AUC) values.
             Requires at least two test variables.
 
     # ==========================================
@@ -520,20 +570,22 @@ options:
             Perform comprehensive comparison of classifier performance metrics.
 
     - name: calculateIDI
-      title: Calculate IDI
+      title: Calculate Discrimination Improvement
       type: Bool
       default: false
       description:
           R: >
-            Calculate Integrated Discrimination Improvement for model comparison.
+            Calculate how much better one test is at discriminating between diseased and healthy patients.
+            IDI (Integrated Discrimination Improvement) measures the average improvement in predicted probabilities.
 
     - name: calculateNRI
-      title: Calculate NRI
+      title: Calculate Reclassification Improvement
       type: Bool
       default: false
       description:
           R: >
-            Calculate Net Reclassification Index for model comparison.
+            Calculate how many patients are correctly reclassified when using a new test.
+            NRI (Net Reclassification Index) measures the net improvement in patient classification.
 
     - name: refVar
       title: Reference Variable
@@ -562,5 +614,303 @@ options:
       description:
           R: >
             Number of bootstrap iterations for IDI and NRI confidence intervals.
+
+    # ==========================================
+    # ADVANCED STATISTICAL ANALYSES
+    # ==========================================
+
+    - name: effectSizeAnalysis
+      title: Effect Size Analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate effect sizes for ROC curve differences using Cohen's conventions
+            and standardized mean differences between AUC values.
+
+    - name: effectSizeMethod
+      title: Effect Size Method
+      type: List
+      options:
+        - name: cohens_d
+          title: Cohen's d for AUC differences
+        - name: delta_auc
+          title: Standardized AUC difference
+        - name: overlap_coefficient
+          title: ROC curve overlap coefficient
+        - name: net_benefit_difference
+          title: Net benefit effect size
+      default: cohens_d
+      description:
+          R: >
+            Method for calculating effect sizes between ROC curves.
+
+    - name: powerAnalysis
+      title: Statistical Power Analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform statistical power analysis for ROC curve comparisons including
+            sample size estimation and power calculations for detecting AUC differences.
+
+    - name: powerAnalysisType
+      title: Power Analysis Type
+      type: List
+      options:
+        - name: post_hoc
+          title: Post-hoc power (observed data)
+        - name: prospective
+          title: Prospective power (planning)
+        - name: sample_size
+          title: Sample size estimation
+      default: post_hoc
+      description:
+          R: >
+            Type of power analysis to perform.
+
+    - name: expectedAUCDifference
+      title: Expected AUC Difference
+      type: Number
+      default: 0.1
+      min: 0.01
+      max: 0.5
+      description:
+          R: >
+            Expected difference in AUC values for power calculations and sample size estimation.
+
+    - name: targetPower
+      title: Target Statistical Power
+      type: Number
+      default: 0.8
+      min: 0.5
+      max: 0.99
+      description:
+          R: >
+            Target statistical power for sample size calculations (typically 0.8 or 0.9).
+
+    - name: significanceLevel
+      title: Significance Level (Alpha)
+      type: Number
+      default: 0.05
+      min: 0.001
+      max: 0.1
+      description:
+          R: >
+            Type I error rate for power calculations (typically 0.05).
+
+    - name: correlationROCs
+      title: ROC Correlation
+      type: Number
+      default: 0.5
+      min: -1.0
+      max: 1.0
+      description:
+          R: >
+            Expected correlation between paired ROC curves for power calculations.
+            Use 0.5 for moderate correlation, 0.0 for independent samples.
+
+    - name: advancedMetrics
+      title: Advanced Performance Metrics
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate additional advanced metrics including H-measure, Kolmogorov-Smirnov
+            statistic, and Gini coefficient for comprehensive model evaluation.
+
+    - name: bayesianAnalysis
+      title: Probabilistic ROC Analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform Bayesian analysis of ROC curves with credible intervals
+            and posterior probability assessments.
+
+    - name: priorAUC
+      title: Prior AUC Belief
+      type: Number
+      default: 0.7
+      min: 0.5
+      max: 1.0
+      description:
+          R: >
+            Prior belief about AUC value for Bayesian analysis (center of prior distribution).
+
+    - name: priorPrecision
+      title: Prior Precision
+      type: Number
+      default: 10
+      min: 1
+      max: 100
+      description:
+          R: >
+            Precision of prior belief (higher values = more confident prior).
+
+    # ==========================================
+    # CLINICAL UTILITY ANALYSIS
+    # ==========================================
+
+    - name: clinicalUtilityAnalysis
+      title: Clinical Utility Analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform clinical utility analysis including net benefit curves,
+            decision curve analysis, and clinical impact assessment.
+
+    - name: treatmentThreshold
+      title: Treatment Threshold Range
+      type: String
+      default: "0.05,0.5,0.05"
+      description:
+          R: >
+            Treatment threshold range for decision curve analysis (min,max,step).
+            Example: "0.05,0.5,0.05" creates thresholds from 5% to 50% in 5% steps.
+
+    - name: harmBenefitRatio
+      title: Harm-to-Benefit Ratio
+      type: Number
+      default: 0.25
+      min: 0.01
+      max: 10.0
+      description:
+          R: >
+            Ratio of harm from unnecessary treatment to benefit from necessary treatment.
+            Lower values favor more aggressive treatment policies.
+
+    - name: interventionCost
+      title: Intervention Cost Analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Include cost-effectiveness considerations in clinical utility analysis.
+
+    # ==========================================
+    # FIXED SENSITIVITY/SPECIFICITY ANALYSIS
+    # ==========================================
+
+    - name: fixedSensSpecAnalysis
+      title: Fixed Sensitivity/Specificity Analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Determine cutoffs based on fixed sensitivity or specificity values and
+            display corresponding performance metrics.
+
+    - name: fixedAnalysisType
+      title: Fixed Analysis Type
+      type: List
+      options:
+        - name: sensitivity
+          title: Fixed Sensitivity
+        - name: specificity
+          title: Fixed Specificity
+      default: sensitivity
+      description:
+          R: >
+            Choose whether to fix sensitivity or specificity value for cutoff determination.
+
+    - name: fixedSensitivityValue
+      title: Target Sensitivity
+      type: Number
+      default: 0.90
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Target sensitivity value (0-1) for determining the corresponding cutoff and specificity.
+
+    - name: fixedSpecificityValue
+      title: Target Specificity
+      type: Number
+      default: 0.90
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Target specificity value (0-1) for determining the corresponding cutoff and sensitivity.
+
+    - name: showFixedROC
+      title: Show Fixed Point ROC Curve
+      type: Bool
+      default: true
+      description:
+          R: >
+            Display separate ROC curve highlighting the fixed sensitivity/specificity point.
+
+    - name: fixedInterpolation
+      title: Interpolation Method
+      type: List
+      options:
+        - name: linear
+          title: Linear Interpolation
+        - name: nearest
+          title: Nearest Point
+        - name: stepwise
+          title: Stepwise (Conservative)
+      default: linear
+      description:
+          R: >
+            Method for interpolating between observed points to achieve target sensitivity/specificity.
+
+    - name: showFixedExplanation
+      title: Show Analysis Guide
+      type: Bool
+      default: true
+      description:
+          R: >
+            Display explanatory guide for fixed sensitivity/specificity analysis including 
+            clinical interpretation, interpolation methods, and usage recommendations.
+
+    # ==========================================
+    # META-ANALYSIS OPTIONS
+    # ==========================================
+
+    - name: metaAnalysis
+      title: Meta-Analysis of ROC Curves
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform meta-analysis of AUC values across multiple test variables.
+            Requires at least 3 test variables to enable pooled effect estimation.
+
+    - name: metaAnalysisMethod
+      title: Meta-Analysis Method
+      type: List
+      options:
+        - name: fixed
+          title: Fixed Effects Model
+        - name: random
+          title: Random Effects Model (DerSimonian-Laird)
+        - name: both
+          title: Both Fixed and Random Effects
+      default: both
+      description:
+          R: >
+            Statistical method for combining AUC estimates across studies/variables.
+
+    - name: heterogeneityTest
+      title: Test for Heterogeneity
+      type: Bool
+      default: true
+      description:
+          R: >
+            Perform Cochran's Q test and calculate I² statistic to assess
+            heterogeneity between AUC estimates.
+
+    - name: forestPlot
+      title: Forest Plot
+      type: Bool
+      default: false
+      description:
+          R: >
+            Create forest plot visualization of individual and pooled AUC estimates
+            with confidence intervals.
 
 ...

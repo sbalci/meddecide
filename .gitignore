@@ -33,3 +33,5 @@ build
 .Rprofile
 .DS_Store
 *.jmo
+temp/
+
