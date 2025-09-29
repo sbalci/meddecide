@@ -1,0 +1,165 @@
+---
+name: sequentialtests
+title: Sequential Testing Analysis
+jrs: '1.1'
+
+items:
+    - name: summary_table
+      title: 'Summary of Testing Strategy'
+      type: Table
+      rows: 1
+      columns:
+        - name: strategy_name
+          title: 'Testing Strategy'
+          type: text
+        - name: prevalence
+          title: 'Disease Prevalence'
+          type: number
+          format: pc
+        - name: first_test
+          title: 'First Test'
+          type: text
+        - name: second_test
+          title: 'Second Test'
+          type: text
+        - name: combined_sens
+          title: 'Combined Sensitivity'
+          type: number
+          format: pc
+        - name: combined_spec
+          title: 'Combined Specificity'
+          type: number
+          format: pc
+        - name: combined_ppv
+          title: 'Combined PPV'
+          type: number
+          format: pc
+        - name: combined_npv
+          title: 'Combined NPV'
+          type: number
+          format: pc
+
+    - name: individual_tests_table
+      title: 'Individual Test Performance'
+      type: Table
+      rows: 0
+      columns:
+        - name: test_name
+          title: 'Test'
+          type: text
+        - name: sensitivity
+          title: 'Sensitivity'
+          type: number
+          format: pc
+        - name: specificity
+          title: 'Specificity'
+          type: number
+          format: pc
+        - name: ppv
+          title: 'PPV'
+          type: number
+          format: pc
+        - name: npv
+          title: 'NPV'
+          type: number
+          format: pc
+        - name: plr
+          title: 'Positive LR'
+          type: number
+        - name: nlr
+          title: 'Negative LR'
+          type: number
+
+    - name: population_flow_table
+      title: 'Population Flow Analysis'
+      type: Table
+      rows: 0
+      columns:
+        - name: stage
+          title: 'Testing Stage'
+          type: text
+        - name: total_n
+          title: 'Total Subjects'
+          type: number
+        - name: disease_pos
+          title: 'Disease Positive'
+          type: number
+        - name: disease_neg
+          title: 'Disease Negative'
+          type: number
+        - name: test_pos
+          title: 'Test Positive'
+          type: number
+        - name: test_neg
+          title: 'Test Negative'
+          type: number
+        - name: true_pos
+          title: 'True Positives'
+          type: number
+        - name: false_pos
+          title: 'False Positives'
+          type: number
+        - name: false_neg
+          title: 'False Negatives'
+          type: number
+        - name: true_neg
+          title: 'True Negatives'
+          type: number
+
+    - name: explanation_text
+      title: 'Explanation'
+      type: Html
+      visible: (show_explanation)
+
+    - name: formulas_text
+      title: 'Formulas Used'
+      type: Html
+      visible: (show_formulas)
+
+    - name: plot_flow_diagram
+      title: 'Testing Strategy Flow Diagram'
+      type: Image
+      width: 600
+      height: 400
+      renderFun: .plot_flow_diagram
+      visible: (show_nomogram)
+
+    - name: plot_performance
+      title: 'Test Performance Comparison'
+      type: Image
+      width: 600
+      height: 400
+      renderFun: .plot_performance
+      visible: (show_nomogram)
+
+    - name: plot_probability
+      title: 'Probability Transformation'
+      type: Image
+      width: 600
+      height: 400
+      renderFun: .plot_probability
+      visible: (show_nomogram)
+
+    - name: plot_population_flow
+      title: 'Population Flow Visualization'
+      type: Image
+      width: 600
+      height: 400
+      renderFun: .plot_population_flow
+      visible: (show_nomogram)
+
+    - name: clinical_guidance
+      title: 'Clinical Guidance'
+      type: Html
+
+
+
+
+refs:
+    - DiagnosticTests
+    - Fagan
+    - Fagan2
+    - sensspecwiki
+    - ClinicoPathJamoviModule
+
+...

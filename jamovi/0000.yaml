@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.31.72
+version: 0.0.31.80
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2025-09-21'
+date: '2025-09-29'
 type: R
 description: |-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -40,9 +40,9 @@ analyses:
     menuSubgroup: Decision
     menuTitle: Medical Decision
     description: >
-      Function for Medical Decision Analysis. Sensitivity, specificity, positive
-      predictive value, negative predictive value.
-    menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
+      Function for Medical Decision Analysis. Sensitivity, Specificity, Positive
+      Predictive Value, Negative Predictive Value.
+    menuSubtitle: Sensitivity, Specificity, PPV, NPV
     ribbon: analyses
     category: analyses
   - title: Medical Decision Calculator
@@ -93,18 +93,6 @@ analyses:
     menuSubtitle: Find lower Kappa based on sample size
     description: |
       Lowest Expected Value for a fixed sample size.
-    ribbon: analyses
-    category: analyses
-  - title: ROC Analysis
-    name: psychopdaroc
-    ns: meddecide
-    menuGroup: meddecide
-    menuSubgroup: ROC
-    menuTitle: ROC Analysis
-    menuSubtitle: ROC Analysis, AUC, Cutpoints
-    description: >
-      Receiver Operating Characteristic (ROC) curve analysis with optimal
-      cutpoint determination.
     ribbon: analyses
     category: analyses
   - title: Analysis Without Gold Standard
@@ -175,6 +163,37 @@ analyses:
     description: >
       Receiver Operating Characteristic (ROC) curve analysis with optimal
       cutpoint determination.
+  - title: Co-Testing Analysis
+    name: cotest
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Co-Testing Analysis
+    menuSubtitle: Analyze combined test results
+    description: >
+      Function for analyzing combined results of two concurrent diagnostic
+      tests. Calculates post-test probabilities based on various scenarios
+      (either test positive, both positive, both negative).
+  - title: Sequential Testing Analysis
+    name: sequentialtests
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Sequential Testing Analysis
+    menuSubtitle: Sequential Test Analysis
+    description: >-
+      Analyzes how diagnostic accuracy changes when applying two tests in
+      sequence,
+
+      comparing three different testing strategies: serial positive
+      (confirmation),
+
+      serial negative (exclusion), and parallel testing. Provides comprehensive
+
+      analysis including population flow, cost implications, and Fagan
+      nomograms.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

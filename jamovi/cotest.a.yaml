@@ -1,0 +1,178 @@
+---
+name:  cotest
+title: Co-Testing Analysis
+menuGroup: meddecide
+menuSubgroup: Decision
+menuSubtitle: Analyze combined test results
+version: '0.0.31'
+jas: '1.2'
+
+description:
+    main: >
+        Function for analyzing combined results of two concurrent diagnostic tests.
+        Calculates post-test probabilities based on various scenarios (either test positive, both positive, both negative).
+    R:
+        dontrun: false
+        usage: |
+            # Basic co-testing analysis with independent tests
+            cotest(
+                test1_sens = 0.80,
+                test1_spec = 0.90,
+                test2_sens = 0.75, 
+                test2_spec = 0.95,
+                prevalence = 0.10,
+                indep = TRUE,
+                fagan = TRUE
+            )
+            
+            # Co-testing with dependent tests
+            cotest(
+                test1_sens = 0.85,
+                test1_spec = 0.88,
+                test2_sens = 0.82,
+                test2_spec = 0.92,
+                prevalence = 0.05,
+                indep = FALSE,
+                cond_dep_pos = 0.15,
+                cond_dep_neg = 0.10,
+                fnote = TRUE
+            )
+            
+            # High-stakes screening scenario
+            cotest(
+                test1_sens = 0.95,
+                test1_spec = 0.85,
+                test2_sens = 0.90,
+                test2_spec = 0.90,
+                prevalence = 0.02,
+                indep = TRUE,
+                fagan = TRUE,
+                fnote = TRUE
+            )
+
+
+options:
+    # Test 1 parameters
+    - name: test1_sens
+      title: Test 1 Sensitivity
+      type: Number
+      default: 0.80
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Sensitivity (true positive rate) of Test 1.
+
+    - name: test1_spec
+      title: Test 1 Specificity
+      type: Number
+      default: 0.90
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Specificity (true negative rate) of Test 1.
+
+    # Test 2 parameters
+    - name: test2_sens
+      title: Test 2 Sensitivity
+      type: Number
+      default: 0.75
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Sensitivity (true positive rate) of Test 2.
+
+    - name: test2_spec
+      title: Test 2 Specificity
+      type: Number
+      default: 0.95
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Specificity (true negative rate) of Test 2.
+
+    # Test independence assumption
+    - name: indep
+      title: Independent Tests
+      type: Bool
+      default: true
+      description:
+          R: >
+            Assume tests are conditionally independent (default is true).
+
+    # Conditional dependence parameters (visible only when indep = false)
+    - name: cond_dep_pos
+      title: Conditional Dependence Positive
+      type: Number
+      default: 0.05
+      min: 0.00
+      max: 1.00
+      description:
+          R: >
+            Conditional dependence between tests for subjects with disease.
+            Value between 0 (independence) and 1 (complete dependence).
+
+    - name: cond_dep_neg
+      title: Conditional Dependence Negative
+      type: Number
+      default: 0.05
+      min: 0.00
+      max: 1.00
+      description:
+          R: >
+            Conditional dependence between tests for subjects without disease.
+            Value between 0 (independence) and 1 (complete dependence).
+
+    # Prior probability (prevalence)
+    - name: prevalence
+      title: Disease Prevalence
+      type: Number
+      default: 0.10
+      min: 0.001
+      max: 0.999
+      description:
+          R: >
+            Prior probability (disease prevalence in the population).
+            Requires a value between 0.001 and 0.999.
+
+    # Display options
+    - name: fnote
+      title: Show Footnotes
+      type: Bool
+      default: false
+
+    - name: fagan
+      title: 'Fagan Nomogram'
+      type: Bool
+      default: false
+
+    # Clinical presets
+    - name: preset
+      title: Clinical Preset
+      type: List
+      options:
+        - name: custom
+          title: Custom Values
+        - name: hpv_pap
+          title: HPV + Pap Smear (Cervical Cancer)
+        - name: psa_dre
+          title: PSA + DRE (Prostate Cancer)
+        - name: troponin_ecg
+          title: Troponin + ECG (Myocardial Infarction)
+        - name: mammogram_ultrasound
+          title: Mammogram + Ultrasound (Breast Cancer)
+        - name: covid_antigen_pcr
+          title: Rapid Antigen + PCR (COVID-19)
+        - name: tb_xray_sputum
+          title: Chest X-ray + Sputum (Tuberculosis)
+      default: custom
+      description:
+          R: >
+            Select a clinical preset or use custom values. Presets load evidence-based
+            sensitivity and specificity values from medical literature with appropriate
+            dependence parameters and prevalence estimates.
+
+...

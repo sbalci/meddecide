@@ -1,0 +1,162 @@
+---
+name: sequentialtests
+title: Sequential Testing Analysis
+menuGroup: meddecide
+menuSubgroup: Decision
+menuSubtitle: Sequential Test Analysis
+version: '0.0.31'
+jas: '1.2'
+
+description:
+    main: |
+        Analyzes how diagnostic accuracy changes when applying two tests in sequence,
+        comparing three different testing strategies: serial positive (confirmation),
+        serial negative (exclusion), and parallel testing. Provides comprehensive
+        analysis including population flow, cost implications, and Fagan nomograms.
+        
+        This analysis is particularly useful for:
+        • Designing diagnostic protocols and clinical pathways
+        • Optimizing test sequencing for specific clinical contexts
+        • Understanding trade-offs between sensitivity and specificity
+        • Evaluating cost-effectiveness of different testing strategies
+        • Teaching sequential testing concepts and Bayesian probability
+        
+    R:
+        dontrun: false
+        usage: |
+            # COVID-19 testing: Rapid antigen followed by RT-PCR confirmation
+            # Shows how serial positive strategy improves specificity
+            data(sequential_testing_examples)
+            covid_example <- sequential_testing_examples[
+              sequential_testing_examples$scenario == "COVID-19 Testing" & 
+              sequential_testing_examples$clinical_setting == "Community screening", ]
+            
+            # Cancer screening: Mammography followed by tissue biopsy
+            # Demonstrates cost-effective screening with definitive diagnosis
+            breast_cancer <- sequential_testing_examples[
+              sequential_testing_examples$scenario == "Breast Cancer Screening", ]
+            
+            # Emergency medicine: Parallel testing for rapid diagnosis
+            # Shows how parallel strategy maximizes sensitivity
+            emergency_example <- sequential_testing_examples[
+              sequential_testing_examples$scenario == "Myocardial Infarction Rule-out", ]
+            
+            # Strategy comparison across different prevalence settings
+            data(strategy_comparison)
+            
+            # Cost-effectiveness analysis for resource planning
+            data(cost_effectiveness_examples)
+            
+            # Load example datasets for realistic clinical scenarios
+            data(sequential_testing_examples)  # 15+ clinical scenarios across specialties
+            data(strategy_comparison)          # Strategy performance comparisons
+            data(cost_effectiveness_examples)  # Economic analysis examples
+            data(teaching_examples)            # Educational scenarios
+            data(common_test_combinations)     # Reference test characteristics
+
+options:
+    # Clinical Presets
+    - name: preset
+      title: Clinical Preset
+      type: List
+      options:
+        - name: custom
+          title: Custom Values
+        - name: covid_screening_confirmation
+          title: COVID-19 Screening + PCR Confirmation
+        - name: breast_cancer_screening
+          title: Mammography + Biopsy (Breast Cancer)
+        - name: mi_emergency_parallel
+          title: Troponin + ECG (Emergency MI)
+        - name: tb_screening_confirmation
+          title: Chest X-ray + Sputum Culture (TB)
+        - name: prostate_screening_exclusion
+          title: PSA + MRI (Prostate Cancer)
+        - name: hiv_screening_confirmation
+          title: ELISA + Western Blot (HIV)
+        - name: stroke_emergency_parallel
+          title: Clinical Assessment + CT (Stroke)
+      default: custom
+      description:
+          R: |
+            Select a clinical preset or use custom values. Presets load evidence-based
+            test parameters and optimal strategies from medical literature.
+
+    # First Test (Screening Test) Parameters
+    - name: test1_name
+      title: Screening Test Name
+      type: String
+      default: 'Screening Test'
+      
+    - name: test1_sens
+      title: Sensitivity
+      type: Number
+      default: 0.95
+      min: 0.01
+      max: 0.99
+      
+    - name: test1_spec
+      title: Specificity 
+      type: Number
+      default: 0.70
+      min: 0.01
+      max: 0.99
+    
+    # Second Test (Confirmatory Test) Parameters  
+    - name: test2_name
+      title: Confirmatory Test Name
+      type: String
+      default: 'Confirmatory Test'
+      
+    - name: test2_sens
+      title: Sensitivity
+      type: Number
+      default: 0.80
+      min: 0.01
+      max: 0.99
+      
+    - name: test2_spec
+      title: Specificity
+      type: Number
+      default: 0.98
+      min: 0.01
+      max: 0.99
+    
+    # Testing Strategy
+    - name: strategy
+      title: Testing Strategy
+      type: List
+      options:
+        - title: Test all positives from first test
+          name: serial_positive
+        - title: Test all negatives from first test
+          name: serial_negative 
+        - title: Test all subjects with both tests (parallel)
+          name: parallel
+      default: serial_positive
+      
+    # Disease Prevalence
+    - name: prevalence
+      title: Disease Prevalence
+      type: Number
+      default: 0.10
+      min: 0.001
+      max: 0.999
+    
+    # Display Options
+    - name: show_explanation
+      title: Show Explanations
+      type: Bool
+      default: true
+      
+    - name: show_formulas
+      title: Show Calculation Formulas
+      type: Bool
+      default: false
+      
+    - name: show_nomogram
+      title: Show Fagan Nomogram
+      type: Bool
+      default: false
+
+...
