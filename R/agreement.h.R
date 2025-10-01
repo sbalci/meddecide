@@ -8,18 +8,14 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         initialize = function(
             vars = NULL,
             sft = FALSE,
-            heatmap = FALSE,
-            heatmapDetails = FALSE,
+            showText = FALSE,
             wght = "unweighted",
             exct = FALSE,
-            multiraterMethod = "auto",
-            fleissCI = TRUE,
             kripp = FALSE,
             krippMethod = "nominal",
-            consensus = FALSE,
-            consensus_method = "majority",
-            tie_breaking = "exclude",
-            show_consensus_table = TRUE, ...) {
+            bootstrap = FALSE,
+            showSummary = FALSE,
+            showAbout = FALSE, ...) {
 
             super$initialize(
                 package="meddecide",
@@ -39,39 +35,22 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 "sft",
                 sft,
                 default=FALSE)
-            private$..heatmap <- jmvcore::OptionBool$new(
-                "heatmap",
-                heatmap,
-                default=FALSE)
-            private$..heatmapDetails <- jmvcore::OptionBool$new(
-                "heatmapDetails",
-                heatmapDetails,
+            private$..showText <- jmvcore::OptionBool$new(
+                "showText",
+                showText,
                 default=FALSE)
             private$..wght <- jmvcore::OptionList$new(
                 "wght",
                 wght,
                 options=list(
                     "unweighted",
-                    "squared",
-                    "equal"),
+                    "equal",
+                    "squared"),
                 default="unweighted")
             private$..exct <- jmvcore::OptionBool$new(
                 "exct",
                 exct,
                 default=FALSE)
-            private$..multiraterMethod <- jmvcore::OptionList$new(
-                "multiraterMethod",
-                multiraterMethod,
-                options=list(
-                    "auto",
-                    "cohen",
-                    "fleiss",
-                    "krippendorff"),
-                default="auto")
-            private$..fleissCI <- jmvcore::OptionBool$new(
-                "fleissCI",
-                fleissCI,
-                default=TRUE)
             private$..kripp <- jmvcore::OptionBool$new(
                 "kripp",
                 kripp,
@@ -85,90 +64,66 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "interval",
                     "ratio"),
                 default="nominal")
-            private$..consensus <- jmvcore::OptionBool$new(
-                "consensus",
-                consensus,
+            private$..bootstrap <- jmvcore::OptionBool$new(
+                "bootstrap",
+                bootstrap,
                 default=FALSE)
-            private$..consensus_method <- jmvcore::OptionList$new(
-                "consensus_method",
-                consensus_method,
-                options=list(
-                    "majority",
-                    "super_majority",
-                    "unanimous"),
-                default="majority")
-            private$..tie_breaking <- jmvcore::OptionList$new(
-                "tie_breaking",
-                tie_breaking,
-                options=list(
-                    "exclude",
-                    "arbitration",
-                    "global_mode"),
-                default="exclude")
-            private$..show_consensus_table <- jmvcore::OptionBool$new(
-                "show_consensus_table",
-                show_consensus_table,
-                default=TRUE)
+            private$..showSummary <- jmvcore::OptionBool$new(
+                "showSummary",
+                showSummary,
+                default=FALSE)
+            private$..showAbout <- jmvcore::OptionBool$new(
+                "showAbout",
+                showAbout,
+                default=FALSE)
 
             self$.addOption(private$..vars)
             self$.addOption(private$..sft)
-            self$.addOption(private$..heatmap)
-            self$.addOption(private$..heatmapDetails)
+            self$.addOption(private$..showText)
             self$.addOption(private$..wght)
             self$.addOption(private$..exct)
-            self$.addOption(private$..multiraterMethod)
-            self$.addOption(private$..fleissCI)
             self$.addOption(private$..kripp)
             self$.addOption(private$..krippMethod)
-            self$.addOption(private$..consensus)
-            self$.addOption(private$..consensus_method)
-            self$.addOption(private$..tie_breaking)
-            self$.addOption(private$..show_consensus_table)
+            self$.addOption(private$..bootstrap)
+            self$.addOption(private$..showSummary)
+            self$.addOption(private$..showAbout)
         }),
     active = list(
         vars = function() private$..vars$value,
         sft = function() private$..sft$value,
-        heatmap = function() private$..heatmap$value,
-        heatmapDetails = function() private$..heatmapDetails$value,
+        showText = function() private$..showText$value,
         wght = function() private$..wght$value,
         exct = function() private$..exct$value,
-        multiraterMethod = function() private$..multiraterMethod$value,
-        fleissCI = function() private$..fleissCI$value,
         kripp = function() private$..kripp$value,
         krippMethod = function() private$..krippMethod$value,
-        consensus = function() private$..consensus$value,
-        consensus_method = function() private$..consensus_method$value,
-        tie_breaking = function() private$..tie_breaking$value,
-        show_consensus_table = function() private$..show_consensus_table$value),
+        bootstrap = function() private$..bootstrap$value,
+        showSummary = function() private$..showSummary$value,
+        showAbout = function() private$..showAbout$value),
     private = list(
         ..vars = NA,
         ..sft = NA,
-        ..heatmap = NA,
-        ..heatmapDetails = NA,
+        ..showText = NA,
         ..wght = NA,
         ..exct = NA,
-        ..multiraterMethod = NA,
-        ..fleissCI = NA,
         ..kripp = NA,
         ..krippMethod = NA,
-        ..consensus = NA,
-        ..consensus_method = NA,
-        ..tie_breaking = NA,
-        ..show_consensus_table = NA)
+        ..bootstrap = NA,
+        ..showSummary = NA,
+        ..showAbout = NA)
 )
 
 agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "agreementResults",
     inherit = jmvcore::Group,
     active = list(
-        todo = function() private$.items[["todo"]],
-        overviewTable = function() private$.items[["overviewTable"]],
-        kappaTable = function() private$.items[["kappaTable"]],
+        welcome = function() private$.items[["welcome"]],
+        irrtable = function() private$.items[["irrtable"]],
+        text2 = function() private$.items[["text2"]],
+        text = function() private$.items[["text"]],
         krippTable = function() private$.items[["krippTable"]],
-        consensusTable = function() private$.items[["consensusTable"]],
-        consensusSummary = function() private$.items[["consensusSummary"]],
-        heatmapPlot = function() private$.items[["heatmapPlot"]],
-        frequencyTables = function() private$.items[["frequencyTables"]]),
+        weightedKappaGuide = function() private$.items[["weightedKappaGuide"]],
+        summary = function() private$.items[["summary"]],
+        about = function() private$.items[["about"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -178,22 +133,83 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 title="Interrater Reliability",
                 refs=list(
                     "irr",
-                    "psych",
-                    "ICC",
                     "PathologyKappa",
                     "ClinicoPathJamoviModule"))
             self$add(jmvcore::Html$new(
                 options=options,
-                name="todo",
-                title="Getting Started"))
+                name="welcome",
+                title=""))
             self$add(jmvcore::Table$new(
                 options=options,
-                name="overviewTable",
-                title="Agreement Analysis Summary",
+                name="irrtable",
+                title="Interrater Reliability",
+                swapRowsColumns=TRUE,
                 rows=1,
                 columns=list(
                     list(
-                        `name`="cases", 
+                        `name`="method", 
+                        `title`="Method", 
+                        `type`="text"),
+                    list(
+                        `name`="subjects", 
+                        `title`="Subjects", 
+                        `type`="integer"),
+                    list(
+                        `name`="raters", 
+                        `title`="Raters", 
+                        `type`="integer"),
+                    list(
+                        `name`="peragree", 
+                        `title`="Agreement %", 
+                        `type`="integer"),
+                    list(
+                        `name`="kappa", 
+                        `title`="Kappa", 
+                        `type`="number"),
+                    list(
+                        `name`="z", 
+                        `title`="z", 
+                        `type`="number"),
+                    list(
+                        `name`="p", 
+                        `title`="p-value", 
+                        `type`="number", 
+                        `format`="zto,pvalue")),
+                clearWith=list(
+                    "vars",
+                    "wght",
+                    "exct")))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="text2",
+                title="Table",
+                visible="(sft)",
+                clearWith=list(
+                    "vars",
+                    "wght",
+                    "exct")))
+            self$add(jmvcore::Preformatted$new(
+                options=options,
+                name="text",
+                title="Table",
+                visible="(sft && showText)",
+                clearWith=list(
+                    "vars",
+                    "wght",
+                    "exct")))
+            self$add(jmvcore::Table$new(
+                options=options,
+                name="krippTable",
+                title="Krippendorff's Alpha Results",
+                visible="(kripp)",
+                rows=1,
+                columns=list(
+                    list(
+                        `name`="method", 
+                        `title`="Method", 
+                        `type`="text"),
+                    list(
+                        `name`="subjects", 
                         `title`="Cases", 
                         `type`="integer"),
                     list(
@@ -201,148 +217,38 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `title`="Raters", 
                         `type`="integer"),
                     list(
-                        `name`="categories", 
-                        `title`="Categories", 
-                        `type`="integer"),
-                    list(
-                        `name`="overall_agreement", 
-                        `title`="Overall Agreement %", 
-                        `type`="number", 
-                        `format`="zto"),
-                    list(
-                        `name`="primary_method", 
-                        `title`="Primary Method", 
-                        `type`="text"))))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="kappaTable",
-                title="Kappa Statistics",
-                columns=list(
-                    list(
-                        `name`="method", 
-                        `title`="Method", 
-                        `type`="text"),
-                    list(
-                        `name`="kappa", 
-                        `title`="Kappa", 
-                        `type`="number", 
-                        `format`="zto"),
-                    list(
-                        `name`="se", 
-                        `title`="Standard Error", 
-                        `type`="number", 
-                        `format`="zto"),
-                    list(
-                        `name`="ci_lower", 
-                        `title`="CI Lower", 
-                        `type`="number", 
-                        `format`="zto"),
-                    list(
-                        `name`="ci_upper", 
-                        `title`="CI Upper", 
-                        `type`="number", 
-                        `format`="zto"),
-                    list(
-                        `name`="z", 
-                        `title`="z-value", 
-                        `type`="number", 
-                        `format`="zto"),
-                    list(
-                        `name`="p", 
-                        `title`="p-value", 
-                        `type`="number", 
-                        `format`="zto,pvalue"),
-                    list(
-                        `name`="interpretation", 
-                        `title`="Interpretation", 
-                        `type`="text"))))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="krippTable",
-                title="Krippendorff's Alpha Results",
-                visible="(kripp)",
-                columns=list(
-                    list(
-                        `name`="data_type", 
-                        `title`="Data Type", 
-                        `type`="text"),
-                    list(
                         `name`="alpha", 
                         `title`="Alpha", 
-                        `type`="number", 
-                        `format`="zto"),
+                        `type`="number"),
                     list(
                         `name`="ci_lower", 
                         `title`="CI Lower", 
                         `type`="number", 
-                        `format`="zto"),
+                        `visible`="(bootstrap)"),
                     list(
                         `name`="ci_upper", 
                         `title`="CI Upper", 
                         `type`="number", 
-                        `format`="zto"),
-                    list(
-                        `name`="interpretation", 
-                        `title`="Interpretation", 
-                        `type`="text"))))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="consensusTable",
-                title="Consensus Scoring Results",
-                visible="(consensus && show_consensus_table)",
-                columns=list(
-                    list(
-                        `name`="case_id", 
-                        `title`="Case ID", 
-                        `type`="text"),
-                    list(
-                        `name`="consensus_score", 
-                        `title`="Consensus Score", 
-                        `type`="text"),
-                    list(
-                        `name`="agreement_level", 
-                        `title`="Agreement Level", 
-                        `type`="text"),
-                    list(
-                        `name`="n_agreeing", 
-                        `title`="Raters Agreeing", 
-                        `type`="integer"),
-                    list(
-                        `name`="rater_scores", 
-                        `title`="Individual Scores", 
-                        `type`="text"))))
-            self$add(jmvcore::Table$new(
-                options=options,
-                name="consensusSummary",
-                title="Consensus Summary Statistics",
-                visible="(consensus)",
-                columns=list(
-                    list(
-                        `name`="metric", 
-                        `title`="Metric", 
-                        `type`="text"),
-                    list(
-                        `name`="value", 
-                        `title`="Value", 
-                        `type`="text"),
-                    list(
-                        `name`="percentage", 
-                        `title`="Percentage", 
-                        `type`="number", 
-                        `format`="zto"))))
-            self$add(jmvcore::Image$new(
-                options=options,
-                name="heatmapPlot",
-                title="Agreement Heatmap",
-                width=800,
-                height=600,
-                renderFun=".heatmapPlot",
-                visible="(heatmap)"))
+                        `visible`="(bootstrap)")),
+                clearWith=list(
+                    "vars",
+                    "krippMethod",
+                    "bootstrap")))
             self$add(jmvcore::Html$new(
                 options=options,
-                name="frequencyTables",
-                title="Frequency Tables",
-                visible="(sft)"))}))
+                name="weightedKappaGuide",
+                title="Weighted Kappa Interpretation Guide",
+                visible="(showAbout && (wght:unweighted == FALSE))"))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="summary",
+                title="Summary",
+                visible="(showSummary)"))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="about",
+                title="About This Analysis",
+                visible="(showAbout)"))}))
 
 agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "agreementBase",
@@ -373,73 +279,66 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' \donttest{
 #' # example will be added
 #'}
-#' @param data The data as a data frame. Each row represents a case/subject,
-#'   and columns represent different raters/observers.
-#' @param vars Variables representing different raters/observers. Each
-#'   variable should contain the ratings/diagnoses  given by each observer for
-#'   the same set of cases.
-#' @param sft Show frequency tables for each rater and cross-tabulation tables
-#'   for pairwise comparisons.
-#' @param heatmap Show agreement heatmap visualization with color-coded
-#'   agreement levels.
-#' @param heatmapDetails Show detailed heatmap with kappa values and
-#'   confidence intervals for all rater pairs.
-#' @param wght Weighting scheme for kappa analysis. Use 'squared' or 'equal'
-#'   only with ordinal variables. Weighted kappa accounts for the degree of
-#'   disagreement.
-#' @param exct Use exact method for Fleiss' kappa calculation with 3 or more
-#'   raters. More accurate but computationally intensive.
-#' @param multiraterMethod Choose specific method for multi-rater agreement
-#'   analysis or use automatic selection.
-#' @param fleissCI Calculate 95\% confidence intervals for Fleiss' kappa using
-#'   asymptotic standard errors.
-#' @param kripp Calculate Krippendorff's alpha, a generalized measure of
-#'   reliability for any number of observers and data types.
-#' @param krippMethod Measurement level for Krippendorff's alpha calculation.
-#'   Choose based on your data type.
-#' @param consensus Perform consensus scoring analysis to determine
-#'   agreed-upon ratings from multiple raters.
-#' @param consensus_method Method for determining consensus scores from
-#'   multiple raters.
-#' @param tie_breaking How to handle cases where no consensus can be reached
-#'   using the selected method.
-#' @param show_consensus_table Display detailed consensus scoring results
-#'   including individual rater scores and consensus outcomes.
+#' @param data The data as a data frame. The data should be in long format,
+#'   where each row is a unique observation.
+#' @param vars A string naming the variable from \code{data} that contains the
+#'   diagnosis given by the observer, variable can be categorical or ordinal.
+#' @param sft Display frequency tables showing the distribution of ratings for
+#'   each rater. Useful for understanding rating patterns and identifying
+#'   potential biases.
+#' @param showText Display simple preformatted text version of frequency
+#'   tables. Provides a plain-text alternative to the HTML formatted tables.
+#' @param wght For ordinal variables (e.g., tumor grade G1/G2/G3), weighted
+#'   kappa accounts for degree of disagreement. Linear weights: Adjacent
+#'   disagreements (G1 vs G2) receive partial credit. Squared weights: Larger
+#'   disagreements (G1 vs G3) are penalized more heavily. Use 'Unweighted' for
+#'   nominal categories with no inherent order.
+#' @param exct Use exact p-value calculation instead of normal approximation.
+#'   Recommended for small sample sizes (< 30 cases) with 3 or more raters.
+#'   Note: Not applicable for 2-rater analysis (use Cohen's kappa).
+#' @param kripp Alternative reliability measure that handles missing data and
+#'   supports various data types. Useful when raters didn't rate all cases or
+#'   when comparing different measurement levels.
+#' @param krippMethod Specifies the measurement level for Krippendorff's alpha
+#'   calculation.
+#' @param bootstrap Calculate bootstrap confidence intervals for
+#'   Krippendorff's alpha.
+#' @param showSummary Display a natural-language interpretation of results
+#'   with color-coded agreement levels and clinical guidance. Recommended for
+#'   reports and presentations.
+#' @param showAbout Display an explanatory panel describing what this analysis
+#'   does, when to use it, and how to interpret results.
 #' @return A results object containing:
 #' \tabular{llllll}{
-#'   \code{results$todo} \tab \tab \tab \tab \tab a html \cr
-#'   \code{results$overviewTable} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$kappaTable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$welcome} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$irrtable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$text2} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$text} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$krippTable} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$consensusTable} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$consensusSummary} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$heatmapPlot} \tab \tab \tab \tab \tab an image \cr
-#'   \code{results$frequencyTables} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$weightedKappaGuide} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$summary} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$about} \tab \tab \tab \tab \tab a html \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
 #'
-#' \code{results$overviewTable$asDF}
+#' \code{results$irrtable$asDF}
 #'
-#' \code{as.data.frame(results$overviewTable)}
+#' \code{as.data.frame(results$irrtable)}
 #'
 #' @export
 agreement <- function(
     data,
     vars,
     sft = FALSE,
-    heatmap = FALSE,
-    heatmapDetails = FALSE,
+    showText = FALSE,
     wght = "unweighted",
     exct = FALSE,
-    multiraterMethod = "auto",
-    fleissCI = TRUE,
     kripp = FALSE,
     krippMethod = "nominal",
-    consensus = FALSE,
-    consensus_method = "majority",
-    tie_breaking = "exclude",
-    show_consensus_table = TRUE) {
+    bootstrap = FALSE,
+    showSummary = FALSE,
+    showAbout = FALSE) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("agreement requires jmvcore to be installed (restart may be required)")
@@ -455,18 +354,14 @@ agreement <- function(
     options <- agreementOptions$new(
         vars = vars,
         sft = sft,
-        heatmap = heatmap,
-        heatmapDetails = heatmapDetails,
+        showText = showText,
         wght = wght,
         exct = exct,
-        multiraterMethod = multiraterMethod,
-        fleissCI = fleissCI,
         kripp = kripp,
         krippMethod = krippMethod,
-        consensus = consensus,
-        consensus_method = consensus_method,
-        tie_breaking = tie_breaking,
-        show_consensus_table = show_consensus_table)
+        bootstrap = bootstrap,
+        showSummary = showSummary,
+        showAbout = showAbout)
 
     analysis <- agreementClass$new(
         options = options,

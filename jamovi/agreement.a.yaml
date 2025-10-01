@@ -19,108 +19,74 @@ options:
       type: Data
       description:
           R: >
-            The data as a data frame. Each row represents a case/subject, and columns represent different raters/observers.
+            The data as a data frame. The data should be in long format, where each row is a unique observation.
 
     - name: vars
-      title: Raters/Observers
+      title: Raters
       type: Variables
       suggested: [ ordinal, nominal ]
       permitted: [ factor ]
       description:
           R: >
-            Variables representing different raters/observers. Each variable should contain the ratings/diagnoses 
-            given by each observer for the same set of cases.
+            A string naming the variable from `data` that contains the
+            diagnosis given by the observer, variable can be categorical or ordinal.
 
-    # - name: caseID
-    #   title: Case ID (Optional)
-    #   type: Variable
-    #   suggested: [ nominal, id ]
-    #   permitted: [ factor, string, integer ]
-    #   default: NULL
-    #   description:
-    #       R: >
-    #         Optional case identifier variable for tracking individual cases across raters.
 
     - name: sft
-      title: Frequency Tables
+      title: Show Frequency Tables
       type: Bool
       default: false
       description:
           R: >
-            Show frequency tables for each rater and cross-tabulation tables for pairwise comparisons.
+            Display frequency tables showing the distribution of ratings for each rater.
+            Useful for understanding rating patterns and identifying potential biases.
 
-    - name: heatmap
-      title: Agreement Heatmap
+    - name: showText
+      title: Show Simple Text Frequency Tables
       type: Bool
       default: false
       description:
           R: >
-            Show agreement heatmap visualization with color-coded agreement levels.
+            Display simple preformatted text version of frequency tables.
+            Provides a plain-text alternative to the HTML formatted tables.
 
-    - name: heatmapDetails
-      title: Show Detailed Heatmap
-      type: Bool
-      default: false
-      description:
-          R: >
-            Show detailed heatmap with kappa values and confidence intervals for all rater pairs.
 
     - name: wght
-      title: Weighted Kappa (Ordinal Variables only)
+      title: Weighted Kappa (Ordinal Data Only)
       type: List
       options:
-        - title: Unweighted
+        - title: Unweighted (Standard)
           name: unweighted
-        - title: Squared
-          name: squared
-        - title: Equal/Linear
+        - title: Linear Weights (Equal Steps)
           name: equal
+        - title: Squared Weights (Severity Weighted)
+          name: squared
       default: unweighted
       description:
           R: >
-            Weighting scheme for kappa analysis. Use 'squared' or 'equal' only with ordinal variables.
-            Weighted kappa accounts for the degree of disagreement.
+            For ordinal variables (e.g., tumor grade G1/G2/G3), weighted kappa accounts for degree of disagreement.
+            Linear weights: Adjacent disagreements (G1 vs G2) receive partial credit.
+            Squared weights: Larger disagreements (G1 vs G3) are penalized more heavily.
+            Use 'Unweighted' for nominal categories with no inherent order.
 
     - name: exct
-      title: Exact Kappa (>=3 Variables)
+      title: Exact Kappa (3+ Raters)
       type: Bool
       default: false
       description:
           R: >
-            Use exact method for Fleiss' kappa calculation with 3 or more raters. More accurate but computationally intensive.
-
-    - name: multiraterMethod
-      title: Multi-rater Agreement Method
-      type: List
-      options:
-        - title: Automatic (based on number of raters)
-          name: auto
-        - title: Pairwise Cohen's Kappa (2 raters)
-          name: cohen
-        - title: Fleiss' Kappa (3+ raters)
-          name: fleiss
-        - title: Krippendorff's Alpha (any number)
-          name: krippendorff
-      default: auto
-      description:
-          R: >
-            Choose specific method for multi-rater agreement analysis or use automatic selection.
-
-    - name: fleissCI
-      title: Fleiss Kappa Confidence Intervals
-      type: Bool
-      default: true
-      description:
-          R: >
-            Calculate 95% confidence intervals for Fleiss' kappa using asymptotic standard errors.
+            Use exact p-value calculation instead of normal approximation.
+            Recommended for small sample sizes (< 30 cases) with 3 or more raters.
+            Note: Not applicable for 2-rater analysis (use Cohen's kappa).
 
     - name: kripp
-      title: "Krippendorff's Alpha"
+      title: "Calculate Krippendorff's Alpha"
       type: Bool
       default: false
       description:
           R: >
-            Calculate Krippendorff's alpha, a generalized measure of reliability for any number of observers and data types.
+            Alternative reliability measure that handles missing data and supports various data types.
+            Useful when raters didn't rate all cases or when comparing different measurement levels.
 
     - name: krippMethod
       title: "Data Type for Krippendorff's Alpha" 
@@ -137,268 +103,32 @@ options:
       default: nominal
       description:
           R: >
-            Measurement level for Krippendorff's alpha calculation. Choose based on your data type.
+            Specifies the measurement level for Krippendorff's alpha calculation.
 
-    - name: consensus
-      title: Consensus Analysis
+    - name: bootstrap
+      title: "Bootstrap Confidence Intervals"
       type: Bool
       default: false
       description:
           R: >
-            Perform consensus scoring analysis to determine agreed-upon ratings from multiple raters.
+            Calculate bootstrap confidence intervals for Krippendorff's alpha.
 
-    - name: consensus_method
-      title: Consensus Method
-      type: List
-      options:
-        - title: Majority Rule (≥50%)
-          name: majority
-        - title: Super Majority (≥2/3)
-          name: super_majority
-        - title: Unanimous Only
-          name: unanimous
-      default: majority
-      description:
-          R: >
-            Method for determining consensus scores from multiple raters.
-
-    - name: tie_breaking
-      title: Tie Breaking Method
-      type: List
-      options:
-        - title: Exclude ties from analysis
-          name: exclude
-        - title: Flag for expert arbitration
-          name: arbitration
-        - title: Use most frequent category overall
-          name: global_mode
-      default: exclude
-      description:
-          R: >
-            How to handle cases where no consensus can be reached using the selected method.
-
-    - name: show_consensus_table
-      title: Show Consensus Results
+    - name: showSummary
+      title: "Show Plain-Language Summary"
       type: Bool
-      default: true
+      default: false
       description:
           R: >
-            Display detailed consensus scoring results including individual rater scores and consensus outcomes.
+            Display a natural-language interpretation of results with color-coded agreement levels
+            and clinical guidance. Recommended for reports and presentations.
 
-    # - name: bootstrap
-    #   title: "Bootstrap Confidence Intervals"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Calculate bootstrap confidence intervals for Krippendorff's alpha (1000 bootstrap samples).
-
-    # - name: icc
-    #   title: "Intraclass Correlation Coefficient"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Calculate ICC for continuous or ordinal data. Appropriate for quantitative measurements.
-
-    # - name: iccType
-    #   title: "ICC Type"
-    #   type: List
-    #   options:
-    #     - title: "ICC(1,1) - Single Measures, Absolute Agreement"
-    #       name: "ICC1"
-    #     - title: "ICC(2,1) - Single Measures, Consistency"
-    #       name: "ICC2"
-    #     - title: "ICC(3,1) - Single Measures, Consistency (Fixed Raters)"
-    #       name: "ICC3"
-    #     - title: "ICC(1,k) - Average Measures, Absolute Agreement"
-    #       name: "ICC1k"
-    #     - title: "ICC(2,k) - Average Measures, Consistency"
-    #       name: "ICC2k"
-    #     - title: "ICC(3,k) - Average Measures, Consistency (Fixed Raters)"
-    #       name: "ICC3k"
-    #   default: "ICC2"
-    #   description:
-    #       R: >
-    #         Type of ICC to calculate. Choose based on your study design and measurement model.
-
-    # - name: pathologyContext
-    #   title: "Pathology-Specific Analysis"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Enable pathology-specific analysis including diagnostic accuracy metrics and clinical interpretation.
-
-    # - name: diagnosisVar
-    #   title: "True Diagnosis (Optional)"
-    #   type: Variable
-    #   suggested: [ nominal ]
-    #   permitted: [ factor ]
-    #   default: NULL
-    #   description:
-    #       R: >
-    #         Gold standard or consensus diagnosis for calculating diagnostic accuracy of individual raters.
-
-    # - name: confidenceLevel
-    #   title: "Confidence Level"
-    #   type: Number
-    #   min: 0.8
-    #   max: 0.99
-    #   default: 0.95
-    #   description:
-    #       R: >
-    #         Confidence level for confidence intervals (default 95%).
-
-    # - name: minAgreement
-    #   title: "Minimum Acceptable Agreement"
-    #   type: Number
-    #   min: 0.0
-    #   max: 1.0
-    #   default: 0.6
-    #   description:
-    #       R: >
-    #         Minimum kappa value considered acceptable agreement (default 0.6).
-
-    # - name: showInterpretation
-    #   title: "Show Interpretation Guidelines"
-    #   type: Bool
-    #   default: true
-    #   description:
-    #       R: >
-    #         Display interpretation guidelines for kappa values and ICC coefficients.
-
-    # - name: outlierAnalysis
-    #   title: "Outlier Case Analysis"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Identify cases with consistently poor agreement across raters.
-
-    # - name: pairwiseAnalysis
-    #   title: "Pairwise Rater Analysis"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Detailed analysis of agreement between each pair of raters.
-
-    # - name: categoryAnalysis
-    #   title: "Category-Specific Analysis"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Analysis of agreement for each diagnostic category separately.
-
-    # - name: diagnosticStyleAnalysis
-    #   title: "Diagnostic Style Clustering (Usubutun Method)"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Identify diagnostic "schools" or "styles" among pathologists using hierarchical clustering 
-    #         based on diagnostic patterns. This reveals whether pathologists cluster by experience, 
-    #         training, geographic region, or diagnostic philosophy.
-
-    # - name: styleClusterMethod
-    #   title: "Style Clustering Method"
-    #   type: List
-    #   options:
-    #     - title: "Ward's Linkage (Usubutun 2012)"
-    #       name: "ward"
-    #     - title: "Complete Linkage"
-    #       name: "complete"
-    #     - title: "Average Linkage"
-    #       name: "average"
-    #   default: "ward"
-    #   description:
-    #       R: >
-    #         Hierarchical clustering method for identifying diagnostic styles. Ward's linkage 
-    #         was used in the original Usubutun et al. 2012 study.
-
-    # - name: styleDistanceMetric
-    #   title: "Style Distance Metric"
-    #   type: List
-    #   options:
-    #     - title: "Percentage Agreement"
-    #       name: "agreement"
-    #     - title: "Correlation"
-    #       name: "correlation"
-    #     - title: "Euclidean"
-    #       name: "euclidean"
-    #   default: "agreement"
-    #   description:
-    #       R: >
-    #         Distance metric for style clustering. Percentage agreement was used in original study.
-
-    # - name: numberOfStyleGroups
-    #   title: "Number of Style Groups"
-    #   type: Integer
-    #   min: 2
-    #   max: 10
-    #   default: 3
-    #   description:
-    #       R: >
-    #         Number of diagnostic style groups to identify. Original study found 3 distinct styles.
-
-    # - name: identifyDiscordantCases
-    #   title: "Identify Discordant Cases"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Identify specific cases that distinguish different diagnostic style groups.
-
-    # - name: raterCharacteristics
-    #   title: "Include Rater Characteristics"
-    #   type: Bool
-    #   default: false
-    #   description:
-    #       R: >
-    #         Include analysis of rater characteristics (experience, training, institution) 
-    #         in relation to diagnostic styles.
-
-    # - name: experienceVar
-    #   title: "Experience Variable (Optional)"
-    #   type: Variable
-    #   suggested: [ ordinal, nominal ]
-    #   permitted: [ factor, numeric ]
-    #   default: NULL
-    #   description:
-    #       R: >
-    #         Variable indicating years of experience or experience level of each rater.
-
-    # - name: trainingVar
-    #   title: "Training Institution Variable (Optional)"
-    #   type: Variable
-    #   suggested: [ nominal ]
-    #   permitted: [ factor ]
-    #   default: NULL
-    #   description:
-    #       R: >
-    #         Variable indicating training institution or background of each rater.
-
-    # - name: institutionVar
-    #   title: "Current Institution Variable (Optional)"
-    #   type: Variable
-    #   suggested: [ nominal ]
-    #   permitted: [ factor ]
-    #   default: NULL
-    #   description:
-    #       R: >
-    #         Variable indicating current practice institution of each rater.
-
-    # - name: specialtyVar
-    #   title: "Specialty Variable (Optional)"
-    #   type: Variable
-    #   suggested: [ nominal ]
-    #   permitted: [ factor ]
-    #   default: NULL
-    #   description:
-    #       R: >
-    #         Variable indicating specialty (e.g., generalist vs specialist) of each rater.
+    - name: showAbout
+      title: "Show About This Analysis"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display an explanatory panel describing what this analysis does, when to use it, and how to interpret results.
 
 
 ...

@@ -8,86 +8,75 @@ agreement(
   data,
   vars,
   sft = FALSE,
-  heatmap = FALSE,
-  heatmapDetails = FALSE,
+  showText = FALSE,
   wght = "unweighted",
   exct = FALSE,
-  multiraterMethod = "auto",
-  fleissCI = TRUE,
   kripp = FALSE,
   krippMethod = "nominal",
-  consensus = FALSE,
-  consensus_method = "majority",
-  tie_breaking = "exclude",
-  show_consensus_table = TRUE
+  bootstrap = FALSE,
+  showSummary = FALSE,
+  showAbout = FALSE
 )
 }
 \arguments{
-\item{data}{The data as a data frame. Each row represents a case/subject,
-and columns represent different raters/observers.}
+\item{data}{The data as a data frame. The data should be in long format,
+where each row is a unique observation.}
 
-\item{vars}{Variables representing different raters/observers. Each
-variable should contain the ratings/diagnoses  given by each observer for
-the same set of cases.}
+\item{vars}{A string naming the variable from \code{data} that contains the
+diagnosis given by the observer, variable can be categorical or ordinal.}
 
-\item{sft}{Show frequency tables for each rater and cross-tabulation tables
-for pairwise comparisons.}
+\item{sft}{Display frequency tables showing the distribution of ratings for
+each rater. Useful for understanding rating patterns and identifying
+potential biases.}
 
-\item{heatmap}{Show agreement heatmap visualization with color-coded
-agreement levels.}
+\item{showText}{Display simple preformatted text version of frequency
+tables. Provides a plain-text alternative to the HTML formatted tables.}
 
-\item{heatmapDetails}{Show detailed heatmap with kappa values and
-confidence intervals for all rater pairs.}
+\item{wght}{For ordinal variables (e.g., tumor grade G1/G2/G3), weighted
+kappa accounts for degree of disagreement. Linear weights: Adjacent
+disagreements (G1 vs G2) receive partial credit. Squared weights: Larger
+disagreements (G1 vs G3) are penalized more heavily. Use 'Unweighted' for
+nominal categories with no inherent order.}
 
-\item{wght}{Weighting scheme for kappa analysis. Use 'squared' or 'equal'
-only with ordinal variables. Weighted kappa accounts for the degree of
-disagreement.}
+\item{exct}{Use exact p-value calculation instead of normal approximation.
+Recommended for small sample sizes (< 30 cases) with 3 or more raters.
+Note: Not applicable for 2-rater analysis (use Cohen's kappa).}
 
-\item{exct}{Use exact method for Fleiss' kappa calculation with 3 or more
-raters. More accurate but computationally intensive.}
+\item{kripp}{Alternative reliability measure that handles missing data and
+supports various data types. Useful when raters didn't rate all cases or
+when comparing different measurement levels.}
 
-\item{multiraterMethod}{Choose specific method for multi-rater agreement
-analysis or use automatic selection.}
+\item{krippMethod}{Specifies the measurement level for Krippendorff's alpha
+calculation.}
 
-\item{fleissCI}{Calculate 95\\% confidence intervals for Fleiss' kappa using
-asymptotic standard errors.}
+\item{bootstrap}{Calculate bootstrap confidence intervals for
+Krippendorff's alpha.}
 
-\item{kripp}{Calculate Krippendorff's alpha, a generalized measure of
-reliability for any number of observers and data types.}
+\item{showSummary}{Display a natural-language interpretation of results
+with color-coded agreement levels and clinical guidance. Recommended for
+reports and presentations.}
 
-\item{krippMethod}{Measurement level for Krippendorff's alpha calculation.
-Choose based on your data type.}
-
-\item{consensus}{Perform consensus scoring analysis to determine
-agreed-upon ratings from multiple raters.}
-
-\item{consensus_method}{Method for determining consensus scores from
-multiple raters.}
-
-\item{tie_breaking}{How to handle cases where no consensus can be reached
-using the selected method.}
-
-\item{show_consensus_table}{Display detailed consensus scoring results
-including individual rater scores and consensus outcomes.}
+\item{showAbout}{Display an explanatory panel describing what this analysis
+does, when to use it, and how to interpret results.}
 }
 \value{
 A results object containing:
 \tabular{llllll}{
-\code{results$todo} \tab \tab \tab \tab \tab a html \cr
-\code{results$overviewTable} \tab \tab \tab \tab \tab a table \cr
-\code{results$kappaTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$welcome} \tab \tab \tab \tab \tab a html \cr
+\code{results$irrtable} \tab \tab \tab \tab \tab a table \cr
+\code{results$text2} \tab \tab \tab \tab \tab a html \cr
+\code{results$text} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$krippTable} \tab \tab \tab \tab \tab a table \cr
-\code{results$consensusTable} \tab \tab \tab \tab \tab a table \cr
-\code{results$consensusSummary} \tab \tab \tab \tab \tab a table \cr
-\code{results$heatmapPlot} \tab \tab \tab \tab \tab an image \cr
-\code{results$frequencyTables} \tab \tab \tab \tab \tab a html \cr
+\code{results$weightedKappaGuide} \tab \tab \tab \tab \tab a html \cr
+\code{results$summary} \tab \tab \tab \tab \tab a html \cr
+\code{results$about} \tab \tab \tab \tab \tab a html \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
 
-\code{results$overviewTable$asDF}
+\code{results$irrtable$asDF}
 
-\code{as.data.frame(results$overviewTable)}
+\code{as.data.frame(results$irrtable)}
 }
 \description{
 Function for Interrater Reliability.
