@@ -13,38 +13,94 @@ decisioncalculator(
   pprob = 0.3,
   fnote = FALSE,
   ci = FALSE,
-  fagan = FALSE
+  fagan = FALSE,
+  showWelcome = TRUE,
+  showSummary = FALSE,
+  showAbout = FALSE,
+  showGlossary = FALSE,
+  multiplecuts = FALSE,
+  cutoff1 = "Conservative",
+  tp1 = 85,
+  fp1 = 10,
+  tn1 = 190,
+  fn1 = 15,
+  cutoff2 = "Aggressive",
+  tp2 = 95,
+  fp2 = 25,
+  tn2 = 175,
+  fn2 = 5
 )
 }
 \arguments{
-\item{TP}{.}
+\item{TP}{True Positive count: cases with disease that tested positive.}
 
-\item{TN}{.}
+\item{TN}{True Negative count: cases without disease that tested negative.}
 
-\item{FP}{.}
+\item{FP}{False Positive count: cases without disease that tested positive.}
 
-\item{FN}{.}
+\item{FN}{False Negative count: cases with disease that tested negative.}
 
-\item{pp}{.}
+\item{pp}{Boolean selection whether to use known population prevalence.}
 
 \item{pprob}{Prior probability (disease prevalence in the community).
 Requires a value between 0.001 and 0.999, default 0.300.}
 
-\item{fnote}{.}
+\item{fnote}{Boolean selection whether to show detailed explanatory
+footnotes.}
 
-\item{ci}{.}
+\item{ci}{Boolean selection whether to calculate 95\\% confidence intervals.}
 
-\item{fagan}{.}
+\item{fagan}{Boolean selection whether to generate a Fagan nomogram plot.}
+
+\item{showWelcome}{Boolean selection whether to show welcome message.}
+
+\item{showSummary}{Boolean selection whether to show plain-language summary
+of results.}
+
+\item{showAbout}{Boolean selection whether to show about and assumptions
+panels.}
+
+\item{showGlossary}{Boolean selection whether to show clinical glossary.}
+
+\item{multiplecuts}{Boolean selection whether to evaluate multiple cut-off
+scenarios.}
+
+\item{cutoff1}{Name identifier for cut-off scenario 1.}
+
+\item{tp1}{.}
+
+\item{fp1}{.}
+
+\item{tn1}{.}
+
+\item{fn1}{.}
+
+\item{cutoff2}{Name identifier for cut-off scenario 2.}
+
+\item{tp2}{.}
+
+\item{fp2}{.}
+
+\item{tn2}{.}
+
+\item{fn2}{.}
 }
 \value{
 A results object containing:
 \tabular{llllll}{
+\code{results$welcome} \tab \tab \tab \tab \tab a html \cr
+\code{results$summary} \tab \tab \tab \tab \tab a html \cr
+\code{results$about} \tab \tab \tab \tab \tab a html \cr
+\code{results$assumptions} \tab \tab \tab \tab \tab a html \cr
+\code{results$glossary} \tab \tab \tab \tab \tab a html \cr
 \code{results$cTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$nTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$advancedMetricsTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$epirTable_ratio} \tab \tab \tab \tab \tab a table \cr
 \code{results$epirTable_number} \tab \tab \tab \tab \tab a table \cr
 \code{results$plot1} \tab \tab \tab \tab \tab an image \cr
+\code{results$multipleCutoffTable} \tab \tab \tab \tab \tab a table \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

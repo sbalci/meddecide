@@ -14,7 +14,22 @@ decisioncalculatorOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
             pprob = 0.3,
             fnote = FALSE,
             ci = FALSE,
-            fagan = FALSE, ...) {
+            fagan = FALSE,
+            showWelcome = TRUE,
+            showSummary = FALSE,
+            showAbout = FALSE,
+            showGlossary = FALSE,
+            multiplecuts = FALSE,
+            cutoff1 = "Conservative",
+            tp1 = 85,
+            fp1 = 10,
+            tn1 = 190,
+            fn1 = 15,
+            cutoff2 = "Aggressive",
+            tp2 = 95,
+            fp2 = 25,
+            tn2 = 175,
+            fn2 = 5, ...) {
 
             super$initialize(
                 package="meddecide",
@@ -60,6 +75,66 @@ decisioncalculatorOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                 "fagan",
                 fagan,
                 default=FALSE)
+            private$..showWelcome <- jmvcore::OptionBool$new(
+                "showWelcome",
+                showWelcome,
+                default=TRUE)
+            private$..showSummary <- jmvcore::OptionBool$new(
+                "showSummary",
+                showSummary,
+                default=FALSE)
+            private$..showAbout <- jmvcore::OptionBool$new(
+                "showAbout",
+                showAbout,
+                default=FALSE)
+            private$..showGlossary <- jmvcore::OptionBool$new(
+                "showGlossary",
+                showGlossary,
+                default=FALSE)
+            private$..multiplecuts <- jmvcore::OptionBool$new(
+                "multiplecuts",
+                multiplecuts,
+                default=FALSE)
+            private$..cutoff1 <- jmvcore::OptionString$new(
+                "cutoff1",
+                cutoff1,
+                default="Conservative")
+            private$..tp1 <- jmvcore::OptionNumber$new(
+                "tp1",
+                tp1,
+                default=85)
+            private$..fp1 <- jmvcore::OptionNumber$new(
+                "fp1",
+                fp1,
+                default=10)
+            private$..tn1 <- jmvcore::OptionNumber$new(
+                "tn1",
+                tn1,
+                default=190)
+            private$..fn1 <- jmvcore::OptionNumber$new(
+                "fn1",
+                fn1,
+                default=15)
+            private$..cutoff2 <- jmvcore::OptionString$new(
+                "cutoff2",
+                cutoff2,
+                default="Aggressive")
+            private$..tp2 <- jmvcore::OptionNumber$new(
+                "tp2",
+                tp2,
+                default=95)
+            private$..fp2 <- jmvcore::OptionNumber$new(
+                "fp2",
+                fp2,
+                default=25)
+            private$..tn2 <- jmvcore::OptionNumber$new(
+                "tn2",
+                tn2,
+                default=175)
+            private$..fn2 <- jmvcore::OptionNumber$new(
+                "fn2",
+                fn2,
+                default=5)
 
             self$.addOption(private$..TP)
             self$.addOption(private$..TN)
@@ -70,6 +145,21 @@ decisioncalculatorOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
             self$.addOption(private$..fnote)
             self$.addOption(private$..ci)
             self$.addOption(private$..fagan)
+            self$.addOption(private$..showWelcome)
+            self$.addOption(private$..showSummary)
+            self$.addOption(private$..showAbout)
+            self$.addOption(private$..showGlossary)
+            self$.addOption(private$..multiplecuts)
+            self$.addOption(private$..cutoff1)
+            self$.addOption(private$..tp1)
+            self$.addOption(private$..fp1)
+            self$.addOption(private$..tn1)
+            self$.addOption(private$..fn1)
+            self$.addOption(private$..cutoff2)
+            self$.addOption(private$..tp2)
+            self$.addOption(private$..fp2)
+            self$.addOption(private$..tn2)
+            self$.addOption(private$..fn2)
         }),
     active = list(
         TP = function() private$..TP$value,
@@ -80,7 +170,22 @@ decisioncalculatorOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
         pprob = function() private$..pprob$value,
         fnote = function() private$..fnote$value,
         ci = function() private$..ci$value,
-        fagan = function() private$..fagan$value),
+        fagan = function() private$..fagan$value,
+        showWelcome = function() private$..showWelcome$value,
+        showSummary = function() private$..showSummary$value,
+        showAbout = function() private$..showAbout$value,
+        showGlossary = function() private$..showGlossary$value,
+        multiplecuts = function() private$..multiplecuts$value,
+        cutoff1 = function() private$..cutoff1$value,
+        tp1 = function() private$..tp1$value,
+        fp1 = function() private$..fp1$value,
+        tn1 = function() private$..tn1$value,
+        fn1 = function() private$..fn1$value,
+        cutoff2 = function() private$..cutoff2$value,
+        tp2 = function() private$..tp2$value,
+        fp2 = function() private$..fp2$value,
+        tn2 = function() private$..tn2$value,
+        fn2 = function() private$..fn2$value),
     private = list(
         ..TP = NA,
         ..TN = NA,
@@ -90,19 +195,41 @@ decisioncalculatorOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
         ..pprob = NA,
         ..fnote = NA,
         ..ci = NA,
-        ..fagan = NA)
+        ..fagan = NA,
+        ..showWelcome = NA,
+        ..showSummary = NA,
+        ..showAbout = NA,
+        ..showGlossary = NA,
+        ..multiplecuts = NA,
+        ..cutoff1 = NA,
+        ..tp1 = NA,
+        ..fp1 = NA,
+        ..tn1 = NA,
+        ..fn1 = NA,
+        ..cutoff2 = NA,
+        ..tp2 = NA,
+        ..fp2 = NA,
+        ..tn2 = NA,
+        ..fn2 = NA)
 )
 
 decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "decisioncalculatorResults",
     inherit = jmvcore::Group,
     active = list(
+        welcome = function() private$.items[["welcome"]],
+        summary = function() private$.items[["summary"]],
+        about = function() private$.items[["about"]],
+        assumptions = function() private$.items[["assumptions"]],
+        glossary = function() private$.items[["glossary"]],
         cTable = function() private$.items[["cTable"]],
         nTable = function() private$.items[["nTable"]],
         ratioTable = function() private$.items[["ratioTable"]],
+        advancedMetricsTable = function() private$.items[["advancedMetricsTable"]],
         epirTable_ratio = function() private$.items[["epirTable_ratio"]],
         epirTable_number = function() private$.items[["epirTable_number"]],
-        plot1 = function() private$.items[["plot1"]]),
+        plot1 = function() private$.items[["plot1"]],
+        multipleCutoffTable = function() private$.items[["multipleCutoffTable"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -114,6 +241,31 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     "DiagnosticTests",
                     "sensspecwiki",
                     "ClinicoPathJamoviModule"))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="welcome",
+                title="",
+                visible="(showWelcome)"))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="summary",
+                title="Summary",
+                visible="(showSummary)"))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="about",
+                title="About This Analysis",
+                visible="(showAbout)"))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="assumptions",
+                title="Assumptions & Caveats",
+                visible="(showAbout)"))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="glossary",
+                title="Clinical Terms Glossary",
+                visible="(showGlossary)"))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="cTable",
@@ -242,6 +394,41 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     "pprob")))
             self$add(jmvcore::Table$new(
                 options=options,
+                name="advancedMetricsTable",
+                title="Advanced Diagnostic Metrics",
+                swapRowsColumns=TRUE,
+                rows=1,
+                columns=list(
+                    list(
+                        `name`="tablename", 
+                        `title`="", 
+                        `type`="text"),
+                    list(
+                        `name`="youdenIndex", 
+                        `title`="Youden's Index", 
+                        `type`="number"),
+                    list(
+                        `name`="balancedAccuracy", 
+                        `title`="Balanced Accuracy", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="f1Score", 
+                        `title`="F1 Score", 
+                        `type`="number"),
+                    list(
+                        `name`="mcc", 
+                        `title`="Matthews Correlation", 
+                        `type`="number"),
+                    list(
+                        `name`="dor", 
+                        `title`="Diagnostic Odds Ratio", 
+                        `type`="number")),
+                clearWith=list(
+                    "pp",
+                    "pprob")))
+            self$add(jmvcore::Table$new(
+                options=options,
                 name="epirTable_ratio",
                 title="",
                 visible="(ci)",
@@ -321,7 +508,63 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                 refs=list(
                     "Fagan",
                     "Fagan2",
-                    "sensspecwiki")))}))
+                    "sensspecwiki")))
+            self$add(jmvcore::Table$new(
+                options=options,
+                name="multipleCutoffTable",
+                title="Cut-off Comparison",
+                visible="(multiplecuts)",
+                rows=0,
+                columns=list(
+                    list(
+                        `name`="cutoffName", 
+                        `title`="Cut-off Scenario", 
+                        `type`="text"),
+                    list(
+                        `name`="sensitivity", 
+                        `title`="Sensitivity", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="specificity", 
+                        `title`="Specificity", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="ppv", 
+                        `title`="PPV", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="npv", 
+                        `title`="NPV", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="accuracy", 
+                        `title`="Accuracy", 
+                        `type`="number", 
+                        `format`="pc"),
+                    list(
+                        `name`="youden", 
+                        `title`="Youden Index", 
+                        `type`="number"),
+                    list(
+                        `name`="recommendation", 
+                        `title`="Clinical Recommendation", 
+                        `type`="text")),
+                clearWith=list(
+                    "multiplecuts",
+                    "cutoff1",
+                    "cutoff2",
+                    "tp1",
+                    "fp1",
+                    "tn1",
+                    "fn1",
+                    "tp2",
+                    "fp2",
+                    "tn2",
+                    "fn2")))}))
 
 decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "decisioncalculatorBase",
@@ -376,24 +619,50 @@ decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
 #'   ci = TRUE, pp = TRUE, pprob = 0.15, fagan = TRUE
 #' )
 #'
-#' @param TP .
-#' @param TN .
-#' @param FP .
-#' @param FN .
-#' @param pp .
+#' @param TP True Positive count: cases with disease that tested positive.
+#' @param TN True Negative count: cases without disease that tested negative.
+#' @param FP False Positive count: cases without disease that tested positive.
+#' @param FN False Negative count: cases with disease that tested negative.
+#' @param pp Boolean selection whether to use known population prevalence.
 #' @param pprob Prior probability (disease prevalence in the community).
 #'   Requires a value between 0.001 and 0.999, default 0.300.
-#' @param fnote .
-#' @param ci .
-#' @param fagan .
+#' @param fnote Boolean selection whether to show detailed explanatory
+#'   footnotes.
+#' @param ci Boolean selection whether to calculate 95\% confidence intervals.
+#' @param fagan Boolean selection whether to generate a Fagan nomogram plot.
+#' @param showWelcome Boolean selection whether to show welcome message.
+#' @param showSummary Boolean selection whether to show plain-language summary
+#'   of results.
+#' @param showAbout Boolean selection whether to show about and assumptions
+#'   panels.
+#' @param showGlossary Boolean selection whether to show clinical glossary.
+#' @param multiplecuts Boolean selection whether to evaluate multiple cut-off
+#'   scenarios.
+#' @param cutoff1 Name identifier for cut-off scenario 1.
+#' @param tp1 .
+#' @param fp1 .
+#' @param tn1 .
+#' @param fn1 .
+#' @param cutoff2 Name identifier for cut-off scenario 2.
+#' @param tp2 .
+#' @param fp2 .
+#' @param tn2 .
+#' @param fn2 .
 #' @return A results object containing:
 #' \tabular{llllll}{
+#'   \code{results$welcome} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$summary} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$about} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$assumptions} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$glossary} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$cTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$nTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$ratioTable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$advancedMetricsTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$epirTable_ratio} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$epirTable_number} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$plot1} \tab \tab \tab \tab \tab an image \cr
+#'   \code{results$multipleCutoffTable} \tab \tab \tab \tab \tab a table \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
@@ -412,7 +681,22 @@ decisioncalculator <- function(
     pprob = 0.3,
     fnote = FALSE,
     ci = FALSE,
-    fagan = FALSE) {
+    fagan = FALSE,
+    showWelcome = TRUE,
+    showSummary = FALSE,
+    showAbout = FALSE,
+    showGlossary = FALSE,
+    multiplecuts = FALSE,
+    cutoff1 = "Conservative",
+    tp1 = 85,
+    fp1 = 10,
+    tn1 = 190,
+    fn1 = 15,
+    cutoff2 = "Aggressive",
+    tp2 = 95,
+    fp2 = 25,
+    tn2 = 175,
+    fn2 = 5) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("decisioncalculator requires jmvcore to be installed (restart may be required)")
@@ -427,7 +711,22 @@ decisioncalculator <- function(
         pprob = pprob,
         fnote = fnote,
         ci = ci,
-        fagan = fagan)
+        fagan = fagan,
+        showWelcome = showWelcome,
+        showSummary = showSummary,
+        showAbout = showAbout,
+        showGlossary = showGlossary,
+        multiplecuts = multiplecuts,
+        cutoff1 = cutoff1,
+        tp1 = tp1,
+        fp1 = fp1,
+        tn1 = tn1,
+        fn1 = fn1,
+        cutoff2 = cutoff2,
+        tp2 = tp2,
+        fp2 = fp2,
+        tn2 = tn2,
+        fn2 = fn2)
 
     analysis <- decisioncalculatorClass$new(
         options = options,
