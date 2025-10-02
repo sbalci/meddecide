@@ -7,17 +7,18 @@ items:
     - name: text1
       title: Original Data
       type: Preformatted
-      visible: (od)
+      visible: false # (od)
 
     - name: text2
       title: Original Data
       type: Html
-      visible: (od)
+      visible: false (od)
 
     # Tables for Test 1
     - name: cTable1
       title: 'Test 1 - Recoded Data'
       type: Table
+      visible: (!is.null(test1) && test1 != "")
       rows: 0
       columns:
         - name: newtest
@@ -36,6 +37,7 @@ items:
     - name: epirTable1
       title: 'Test 1 - Confidence Intervals'
       type: Table
+      visible: (ci && !is.null(test1) && test1 != "")
       rows: 0
       columns:
         - name: statsnames
@@ -60,6 +62,7 @@ items:
     - name: cTable2
       title: 'Test 2 - Recoded Data'
       type: Table
+      visible: (!is.null(test2) && test2 != "")
       rows: 0
       columns:
         - name: newtest
@@ -78,6 +81,7 @@ items:
     - name: epirTable2
       title: 'Test 2 - Confidence Intervals'
       type: Table
+      visible: (ci && !is.null(test2) && test2 != "")
       rows: 0
       columns:
         - name: statsnames
@@ -102,6 +106,7 @@ items:
     - name: cTable3
       title: 'Test 3 - Recoded Data'
       type: Table
+      visible: (!is.null(test3) && test3 != "")
       rows: 0
       columns:
         - name: newtest
@@ -120,6 +125,7 @@ items:
     - name: epirTable3
       title: 'Test 3 - Confidence Intervals'
       type: Table
+      visible: (ci && !is.null(test3) && test3 != "")
       rows: 0
       columns:
         - name: statsnames
@@ -181,16 +187,21 @@ items:
 
     # Statistical Comparison Tables
     - name: mcnemarTable
-      title: "McNemar's Test for Test Comparison"
+      title: "Statistical Comparison of Test Accuracy"
       type: Table
       visible: (statComp)
       rows: 0
+      notes:
+        note: >
+          For 2 tests: McNemar's test compares overall diagnostic accuracy between paired tests.
+          For 3+ tests: Cochran's Q test provides an overall test, followed by pairwise McNemar's tests with Holm-Bonferroni correction for multiple comparisons.
+          Tests examine discordant pairs (cases where tests disagree) to determine if differences in accuracy are statistically significant.
       columns:
         - name: comparison
           title: 'Comparison'
           type: text
         - name: stat
-          title: "McNemar's Chi-squared"
+          title: "Chi-squared"
           type: number
         - name: df
           title: 'df'
@@ -199,6 +210,9 @@ items:
           title: 'p-value'
           type: number
           format: zto,pvalue
+        - name: interpretation
+          title: 'Clinical Interpretation'
+          type: text
 
     - name: diffTable
       title: 'Differences with 95% Confidence Intervals'
@@ -241,8 +255,53 @@ items:
       refs:
           - ggplot2
 
+    # Radar Plot
+    - name: plotRadar
+      title: 'Radar Plot Comparison'
+      type: Image
+      width: 600
+      height: 600
+      renderFun: .plotRadar
+      requiresData: true
+      visible: (radarplot)
+      clearWith:
+          - radarplot
+      refs:
+          - ggplot2
+
+    # Summary Report
+    - name: summaryReport
+      title: 'Summary'
+      type: Html
+      visible: (statComp && showSummary)
+
+    # Report Sentence
+    - name: reportSentence
+      title: 'Manuscript-Ready Report'
+      type: Html
+      visible: (statComp && showReportSentence)
+
+    # Explanations and Glossary
+    - name: explanationsContent
+      title: 'Statistical Explanations & Glossary'
+      type: Html
+      visible: (showExplanations)
+
+    # Clinical Report
+    - name: clinicalReport
+      title: 'Clinical Summary & Report Templates'
+      type: Html
+      visible: true
+
+    # About This Analysis
+    - name: aboutAnalysis
+      title: 'About This Analysis'
+      type: Html
+      visible: true
+
 refs:
     - DiagnosticTests
     - ClinicoPathJamoviModule
     - stats
+
 ...
