@@ -194,6 +194,24 @@ analyses:
 
       analysis including population flow, cost implications, and Fagan
       nomograms.
+  - title: Combine Medical Decision Tests
+    name: decisioncombine
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Combine Medical Decision Tests
+    menuSubtitle: Combine and evaluate test patterns
+    description: >
+      Systematic evaluation of diagnostic test combinations. Analyzes all
+      possible
+
+      test result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a
+      gold
+
+      standard to identify optimal testing strategies. Calculates sensitivity,
+
+      specificity, PPV, NPV, and accuracy for each pattern combination.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

@@ -1,0 +1,96 @@
+title: Combine Medical Decision Tests
+name: decisioncombine
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Gold Standard (Reference Test)
+        children:
+          - type: VariablesListBox
+            name: gold
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: goldPositive
+            label: Disease Present Level
+
+      - type: TargetLayoutBox
+        label: Test 1 (Required)
+        children:
+          - type: VariablesListBox
+            name: test1
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: test1Positive
+            label: Positive Level
+
+      - type: TargetLayoutBox
+        label: Test 2 (Required for Combinations)
+        children:
+          - type: VariablesListBox
+            name: test2
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: test2Positive
+            label: Positive Level
+
+      - type: TargetLayoutBox
+        label: Test 3 (Optional)
+        children:
+          - type: VariablesListBox
+            name: test3
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: test3Positive
+            label: Positive Level
+
+  - type: CollapseBox
+    label: Display Options
+    collapsed: true
+    children:
+      - type: CheckBox
+        name: showIndividual
+        label: Show Individual Test Statistics
+      - type: CheckBox
+        name: showFrequency
+        label: Show Frequency Tables
+      - type: CheckBox
+        name: showRecommendation
+        label: Show Optimal Pattern Recommendation
+      - type: CheckBox
+        name: addPatternToData
+        label: Add Test Pattern to Data
+      - type: Label
+        label: Visualizations
+        children:
+          - type: CheckBox
+            name: showBarPlot
+            label: Bar Chart
+          - type: CheckBox
+            name: showHeatmap
+            label: Heatmap
+          - type: CheckBox
+            name: showForest
+            label: Forest Plot
+          - type: CheckBox
+            name: showDecisionTree
+            label: Decision Tree
+
+  - type: CollapseBox
+    label: Filters
+    collapsed: true
+    children:
+      - type: ComboBox
+        name: filterStatistic
+        label: Show Statistic
+      - type: ComboBox
+        name: filterPattern
+        label: Show Pattern Type

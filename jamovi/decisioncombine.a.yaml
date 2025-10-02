@@ -1,0 +1,263 @@
+---
+name: decisioncombine
+title: Combine Medical Decision Tests
+menuGroup: meddecide
+menuSubgroup: Decision
+menuSubtitle: Combine and evaluate test patterns
+version: '0.0.31'
+jas: '1.2'
+
+description:
+    main: |
+        Systematic evaluation of diagnostic test combinations. Analyzes all possible
+        test result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a gold
+        standard to identify optimal testing strategies. Calculates sensitivity,
+        specificity, PPV, NPV, and accuracy for each pattern combination.
+    R:
+        dontrun: false
+        usage: |
+            # Two-test combination analysis
+            result <- decisioncombine(
+              data = histopathology,
+              gold = "Golden Standart",
+              goldPositive = "1",
+              test1 = "New Test",
+              test1Positive = "1",
+              test2 = "Rater 1",
+              test2Positive = "1",
+              showIndividual = TRUE
+            )
+
+options:
+    - name: data
+      type: Data
+      description:
+          R: The data as a data frame.
+
+    - name: gold
+      title: Gold Standard (Reference Test)
+      type: Variable
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            Select the reference standard (e.g., biopsy, final diagnosis).
+            This represents the "truth" for comparison. Must have exactly 2 levels.
+          R: >
+            The gold standard reference variable representing true disease status.
+
+    - name: goldPositive
+      title: Disease Present Level
+      type: Level
+      variable: (gold)
+      description:
+          ui: >
+            Select the level indicating disease presence (e.g., "1", "positive", "malignant").
+          R: >
+            The level indicating presence of disease in the gold standard.
+
+    - name: test1
+      title: Test 1 (Required)
+      type: Variable
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            First diagnostic test to evaluate. Must have at least 2 levels.
+          R: >
+            The first diagnostic test variable.
+
+    - name: test1Positive
+      title: Test 1 Positive Level
+      type: Level
+      variable: (test1)
+      description:
+          ui: >
+            Select the level representing a positive result for Test 1.
+          R: >
+            The level representing a positive result for Test 1.
+
+    - name: test2
+      title: Test 2 (Required for Combinations)
+      type: Variable
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            Second diagnostic test for combination analysis. Leave empty for single test only.
+          R: >
+            The second diagnostic test variable for combination analysis.
+
+    - name: test2Positive
+      title: Test 2 Positive Level
+      type: Level
+      variable: (test2)
+      description:
+          R: >
+            The level representing a positive result for Test 2.
+
+    - name: test3
+      title: Test 3 (Optional)
+      type: Variable
+      default: NULL
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            Optional third test for 3-way combination analysis (8 patterns).
+          R: >
+            The third diagnostic test variable for 3-way combination analysis.
+
+    - name: test3Positive
+      title: Test 3 Positive Level
+      type: Level
+      variable: (test3)
+      description:
+          R: >
+            The level representing a positive result for Test 3.
+
+    - name: showIndividual
+      title: Show Individual Test Statistics
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display diagnostic statistics for each individual test before combinations.
+          R: >
+            Boolean to show individual test performance tables.
+
+    - name: showFrequency
+      title: Show Frequency Tables
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display frequency distribution tables for the gold standard and cross-tabulation of test results.
+          R: >
+            Boolean to show frequency tables.
+
+    - name: showBarPlot
+      title: Show Bar Chart
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display grouped bar chart comparing performance metrics across test combinations.
+          R: >
+            Boolean to display bar chart visualization.
+
+    - name: showHeatmap
+      title: Show Heatmap
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display heatmap showing all metrics for all test patterns with color-coded performance values.
+          R: >
+            Boolean to display heatmap visualization.
+
+    - name: showForest
+      title: Show Forest Plot
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display forest plot showing confidence intervals for key diagnostic metrics across patterns.
+          R: >
+            Boolean to display forest plot.
+
+    - name: showDecisionTree
+      title: Show Decision Tree
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display hierarchical decision tree visualization showing test combination patterns with performance-based recommendations.
+          R: >
+            Boolean to display decision tree visualization.
+
+    - name: showRecommendation
+      title: Show Optimal Pattern Recommendation
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display recommendation for the optimal test combination pattern based on Youden's J index and overall performance.
+          R: >
+            Boolean to show optimal pattern recommendation table.
+
+    - name: addPatternToData
+      title: Add Test Pattern to Data
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Add a new column to the dataset containing the test combination pattern for each case (e.g., "+/+", "+/-", "-/-").
+          R: >
+            Boolean to add test pattern column to the dataset.
+
+    - name: filterStatistic
+      title: Filter by Statistic
+      type: List
+      options:
+        - name: all
+          title: All Statistics
+        - name: prevalence
+          title: Prevalence
+        - name: sens
+          title: Sensitivity
+        - name: spec
+          title: Specificity
+        - name: ppv
+          title: PPV
+        - name: npv
+          title: NPV
+        - name: acc
+          title: Accuracy
+        - name: balancedAccuracy
+          title: Balanced Accuracy
+        - name: youden
+          title: Youden's J
+        - name: lrPos
+          title: LR+
+        - name: lrNeg
+          title: LR-
+        - name: dor
+          title: Diagnostic OR
+      default: all
+      description:
+          ui: >
+            Filter tables and plots to show only the selected diagnostic statistic.
+          R: >
+            Character indicating which statistic to display (default: all).
+
+    - name: filterPattern
+      title: Filter by Pattern Type
+      type: List
+      options:
+        - name: all
+          title: All Patterns
+        - name: allPositive
+          title: All Tests Positive
+        - name: allNegative
+          title: All Tests Negative
+        - name: majorityPositive
+          title: Majority Positive
+        - name: majorityNegative
+          title: Majority Negative
+        - name: mixed
+          title: Mixed/Discordant
+        - name: parallel
+          title: Parallel Strategy
+        - name: serial
+          title: Serial Strategy
+        - name: majority
+          title: Majority Rule Strategy
+      default: all
+      description:
+          ui: >
+            Filter tables and plots by pattern type. Options include all positive (+/+, +/+/+), all negative (-/-, -/-/-), majority positive/negative, mixed results, and clinical strategies (Parallel, Serial, Majority rule).
+          R: >
+            Character indicating which pattern type to display (default: all).
+
+...
