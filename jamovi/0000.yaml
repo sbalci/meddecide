@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.31.83
+version: 0.0.31.84
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2025-10-02'
+date: '2025-10-03'
 type: R
 description: |-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -49,7 +49,7 @@ analyses:
     name: decisioncalculator
     ns: meddecide
     menuGroup: meddecide
-    menuSubgroup: Decision
+    menuSubgroup: Decision Calculators
     menuTitle: Medical Decision Calculator
     description: |
       Medical Decision Calculator for diagnostic test evaluation when you have 
@@ -155,7 +155,7 @@ analyses:
     ns: meddecide
     category: analyses
     menuGroup: meddecide
-    menuSubgroup: Decision
+    menuSubgroup: Decision Calculators
     menuTitle: Co-Testing Analysis
     menuSubtitle: Analyze combined test results
     description: >
@@ -167,7 +167,7 @@ analyses:
     ns: meddecide
     category: analyses
     menuGroup: meddecide
-    menuSubgroup: Decision
+    menuSubgroup: Decision Calculators
     menuTitle: Sequential Testing Analysis
     menuSubtitle: Sequential Test Analysis
     description: >-
