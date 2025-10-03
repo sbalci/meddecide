@@ -38,8 +38,11 @@ See full documentation at https://sbalci.github.io/ClinicoPathJamoviModule/
 
 ### 🏥 Medical Decision Analysis
 - **Diagnostic Test Evaluation**: Calculate sensitivity, specificity, predictive values, and likelihood ratios
-- **Test Comparison**: Compare multiple diagnostic tests against a gold standard
+- **Test Comparison**: Compare multiple diagnostic tests against a gold standard with statistical significance testing
+- **Test Combination**: Systematically evaluate all possible patterns from 2-3 diagnostic tests to identify optimal strategies
 - **Decision Calculator**: Interactive tool for exploring how test characteristics affect clinical decisions
+- **Co-Testing Analysis**: Analyze combined results of concurrent diagnostic tests (parallel strategies)
+- **Sequential Testing**: Evaluate serial testing strategies (confirmation and exclusion approaches)
 - **Bayesian Updates**: Fagan nomograms for visualizing post-test probability calculations
 
 ### 📊 ROC Analysis
@@ -67,10 +70,14 @@ See full documentation at https://sbalci.github.io/ClinicoPathJamoviModule/
 - **Missing Data Handling**: Appropriate methods for incomplete datasets
 
 ### 📈 Visualization Tools
-- **Fagan Nomograms**: Interactive Bayesian probability calculators
-- **Forest Plots**: Compare diagnostic metrics across studies
+- **Fagan Nomograms**: Interactive Bayesian probability calculators for sequential testing
+- **Forest Plots**: Compare diagnostic metrics across studies with confidence intervals
 - **Agreement Plots**: Visualize inter-rater reliability patterns
 - **ROC Space**: Multi-test comparison in ROC coordinate system
+- **Radar Plots**: Comprehensive multi-metric test comparison visualization
+- **Heatmaps**: Color-coded performance matrices for test combinations
+- **Decision Trees**: Hierarchical visualization of test combination strategies
+- **Comparison Bar Charts**: Side-by-side performance metric comparisons
 
 ## Installation
 
@@ -90,26 +97,97 @@ library(meddecide)
 4. Search for "ClinicoPath"
 5. Click Install
 
-## Example datasets
+## Quick Start Examples
 
-Small CSV files are provided in `inst/extdata` to illustrate the main
-functions. Use `read.csv()` together with `system.file()` to access the
-files after the package is installed.
-
+### Basic Diagnostic Test Evaluation
 ```r
-# Decision analysis example
-df_dec <- read.csv(system.file("extdata", "decision_example.csv", package = "meddecide"))
-decision(data = df_dec, gold = df_dec$gold, newtest = df_dec$newtest,
-         goldPositive = 1, testPositive = 1)
+library(meddecide)
 
-# ROC analysis example
-df_roc <- read.csv(system.file("extdata", "roc_example.csv", package = "meddecide"))
-psychopdaroc(data = df_roc, class = df_roc$class, value = df_roc$value)
-
-# Agreement analysis example
-df_agr <- read.csv(system.file("extdata", "agreement_example.csv", package = "meddecide"))
-agreement(data = df_agr)
+# Single test evaluation
+result <- decision(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  newtest = "New Test",
+  testPositive = "1"
+)
 ```
+
+### Compare Multiple Tests
+```r
+# Compare two diagnostic tests
+comparison <- decisioncompare(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  test1 = "New Test",
+  test1Positive = "1",
+  test2 = "Rater 1",
+  test2Positive = "1",
+  ci = TRUE,
+  plot = TRUE,
+  statComp = TRUE
+)
+```
+
+### Evaluate Test Combinations
+```r
+# Analyze all possible patterns from 2 tests
+combinations <- decisioncombine(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  test1 = "New Test",
+  test1Positive = "1",
+  test2 = "Rater 1",
+  test2Positive = "1",
+  showIndividual = TRUE,
+  showHeatmap = TRUE,
+  showRecommendation = TRUE
+)
+```
+
+### Sequential Testing Analysis
+```r
+# Evaluate serial testing strategies
+sequential <- sequentialtests(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  test1 = "New Test",
+  test1Positive = "1",
+  test2 = "Rater 1",
+  test2Positive = "1",
+  showFagan = TRUE
+)
+```
+
+### ROC Analysis
+```r
+# ROC curve with optimal cutpoint
+roc_result <- psychopdaroc(
+  data = biomarker_data,
+  class = "diagnosis",
+  value = "biomarker_level"
+)
+```
+
+### Interrater Reliability
+```r
+# Cohen's Kappa for two raters
+agreement_result <- agreement(
+  data = rating_data
+)
+```
+
+## Example Datasets
+
+Small CSV files are provided in `inst/extdata` to illustrate the main functions:
+- `decision_example.csv`: Basic medical decision analysis
+- `roc_example.csv`: ROC curve analysis
+- `agreement_example.csv`: Interrater reliability
+
+Access via: `system.file("extdata", "filename.csv", package = "meddecide")`
 
 ## Citation
 
