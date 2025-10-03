@@ -125,19 +125,6 @@ analyses:
       confidence intervals for differences.
     ribbon: analyses
     category: analyses
-  - title: Decision Panel Optimization
-    name: decisionpanel
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision
-    menuTitle: Decision Panel Optimization
-    menuSubtitle: Optimize test panels and decision trees
-    description: >
-      Optimize diagnostic test panels by evaluating various combination
-      strategies including parallel testing (cotest), sequential testing, and
-      repeated tests. Creates decision trees to minimize cost while maximizing
-      accuracy.
   - title: Clinical ROC Analysis
     name: enhancedROC
     ns: meddecide
