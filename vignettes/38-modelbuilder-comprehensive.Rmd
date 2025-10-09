@@ -35,7 +35,7 @@ Prediction modeling is essential when:
 
 ```{r setup, message=FALSE, warning=FALSE}
 # Load required libraries
-library(meddecide)
+
 library(dplyr)
 library(pROC)
 library(ggplot2)
@@ -964,4 +964,4 @@ For more information and updates, visit the [ClinicoPath documentation](https://
 
 ------------------------------------------------------------------------
 
-*This vignette was generated using ClinicoPath version `r packageVersion("ClinicoPath")` on `r Sys.Date()`.*
+*This vignette was generated using meddecide version `r packageVersion("meddecide")` on `r Sys.Date()`.*

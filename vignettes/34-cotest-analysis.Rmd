@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
   eval = FALSE
 )
 
-library(meddecide)
+
 ```
 
 # Introduction to Co-Testing Analysis

@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3.82</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,12 +56,36 @@
     <li><a class="dropdown-item" href="../articles/14-diagnostic-style-quick-guide.html">Quick Guide: Diagnostic Style Clustering in jamovi</a></li>
     <li><a class="dropdown-item" href="../articles/15-diagnostic-style-clustering.html">Diagnostic Style Clustering: Identifying Pathologist 'Schools' and Diagnostic Preferences</a></li>
     <li><a class="dropdown-item" href="../articles/16-use-in-r.html">Use meddecide in R</a></li>
+    <li><a class="dropdown-item" href="../articles/17-introduction-legacy.html">meddecide: Introduction to Medical Decision Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/18-roc-analysis-legacy.html">ROC Curve Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/19-decisionpanel-advanced-legacy.html">Advanced Features and Customization in Decision Panel Optimization</a></li>
+    <li><a class="dropdown-item" href="../articles/20-decisionpanel-clinical-legacy.html">Clinical Applications of Decision Panel Optimization</a></li>
+    <li><a class="dropdown-item" href="../articles/21-decisionpanel-optimization-legacy.html">Introduction to Decision Panel Optimization</a></li>
+    <li><a class="dropdown-item" href="../articles/22-diagnostic-style-clustering-legacy.html">Diagnostic Style Clustering: Identifying Pathologist 'Schools' and Diagnostic Preferences</a></li>
+    <li><a class="dropdown-item" href="../articles/23-diagnostic-style-quick-guide-legacy.html">Quick Guide: Diagnostic Style Clustering in jamovi</a></li>
+    <li><a class="dropdown-item" href="../articles/24-agreement-analysis-legacy.html">Inter-Rater Agreement and Reliability Analysis in Pathology</a></li>
+    <li><a class="dropdown-item" href="../articles/25-diagnostic-tests-legacy.html">Diagnostic Test Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/25-jamovi-workflow-examples-legacy.html">Jamovi Workflow Examples for Decision Tree and Markov Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/26-medical-decision-tree-guide-legacy.html">Medical Decision Tree - Clinical Implementation Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/27-nogoldstandard-legacy.html">Analyzing Diagnostic Tests without a Gold Standard</a></li>
+    <li><a class="dropdown-item" href="../articles/28-decision-tree-examples-legacy.html">Decision Tree and Markov Chain Analysis Examples</a></li>
+    <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
+    <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
+    <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -87,7 +111,7 @@ evaluating clinical utility of prediction models and diagnostic
 tests</h3>
                         <h4 data-toc-skip class="author">ClinicoPath</h4>
             
-            <h4 data-toc-skip class="date">2025-07-29</h4>
+            <h4 data-toc-skip class="date">2025-10-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/07-bayesian-decision-curve-analysis.Rmd" class="external-link"><code>vignettes/07-bayesian-decision-curve-analysis.Rmd</code></a></small>
       <div class="d-none name"><code>07-bayesian-decision-curve-analysis.Rmd</code></div>
@@ -241,13 +265,31 @@ has significant risks (e.g., major surgery)</li>
 <h3 id="load-required-libraries">Load Required Libraries<a class="anchor" aria-label="anchor" href="#load-required-libraries"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sbalci/ClinicoPathJamoviModule/" class="external-link">meddecide</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Use the histopathology dataset for examples</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"histopathology"</span><span class="op">)</span></span>
-<span><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="va">histopathology</span></span>
+<span><span class="co"># Try to load the dataset, if it fails create a simple example dataset</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/exists.html" class="external-link">exists</a></span><span class="op">(</span><span class="st">"histopathology"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">mydata</span> <span class="op">&lt;-</span> <span class="va">histopathology</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"histopathology"</span>, package <span class="op">=</span> <span class="st">"meddecide"</span><span class="op">)</span></span>
+<span>    <span class="va">mydata</span> <span class="op">&lt;-</span> <span class="va">histopathology</span></span>
+<span>  <span class="op">}</span>, error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># Create a simple synthetic dataset for demonstration if data loading fails</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
+<span>    <span class="va">mydata</span> <span class="op">&lt;&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>      Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">60</span>, <span class="fl">15</span><span class="op">)</span>,</span>
+<span>      Grade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      TStage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"T1"</span>, <span class="st">"T2"</span>, <span class="st">"T3"</span>, <span class="st">"T4"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      MeasurementA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">50</span>, <span class="fl">20</span><span class="op">)</span>,</span>
+<span>      MeasurementB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">100</span>, <span class="fl">30</span><span class="op">)</span>,</span>
+<span>      Death <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>, prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
 <span><span class="co"># Display basic dataset information</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Dataset dimensions:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">mydata</span><span class="op">)</span>, <span class="st">"rows ×"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">mydata</span><span class="op">)</span>, <span class="st">"columns\n"</span><span class="op">)</span></span></code></pre></div>

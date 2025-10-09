@@ -25,11 +25,34 @@ articles:
   14-diagnostic-style-quick-guide: 14-diagnostic-style-quick-guide.html
   15-diagnostic-style-clustering: 15-diagnostic-style-clustering.html
   16-use-in-r: 16-use-in-r.html
+  17-introduction-legacy: 17-introduction-legacy.html
+  18-roc-analysis-legacy: 18-roc-analysis-legacy.html
+  19-decisionpanel-advanced-legacy: 19-decisionpanel-advanced-legacy.html
+  20-decisionpanel-clinical-legacy: 20-decisionpanel-clinical-legacy.html
+  21-decisionpanel-optimization-legacy: 21-decisionpanel-optimization-legacy.html
+  22-diagnostic-style-clustering-legacy: 22-diagnostic-style-clustering-legacy.html
+  23-diagnostic-style-quick-guide-legacy: 23-diagnostic-style-quick-guide-legacy.html
+  24-agreement-analysis-legacy: 24-agreement-analysis-legacy.html
+  25-diagnostic-tests-legacy: 25-diagnostic-tests-legacy.html
+  25-jamovi-workflow-examples-legacy: 25-jamovi-workflow-examples-legacy.html
+  26-medical-decision-tree-guide-legacy: 26-medical-decision-tree-guide-legacy.html
+  27-nogoldstandard-legacy: 27-nogoldstandard-legacy.html
+  28-decision-tree-examples-legacy: 28-decision-tree-examples-legacy.html
+  29-decision-tree-vs-markov-analysis-legacy: 29-decision-tree-vs-markov-analysis-legacy.html
+  30-decisiontree-analysis-vignette-legacy: 30-decisiontree-analysis-vignette-legacy.html
+  31-precision-oncology-biomarkers-legacy: 31-precision-oncology-biomarkers-legacy.html
+  32-vignettes-legacy: 32-vignettes-legacy.html
+  33-use-in-r-legacy: 33-use-in-r-legacy.html
   34-cotest-analysis: 34-cotest-analysis.html
   35-screening-calculator-comprehensive: 35-screening-calculator-comprehensive.html
   36-sequential-testing-comprehensive: 36-sequential-testing-comprehensive.html
   38-modelbuilder-comprehensive: 38-modelbuilder-comprehensive.html
-last_built: 2025-07-29T11:04Z
+  decisionpanel_threshold_calculator: decisionpanel_threshold_calculator.html
+  meddecide-01-oncodatasets-examples: meddecide-01-oncodatasets-examples.html
+  meddecide-05-decisiongraph-comprehensive: meddecide-05-decisiongraph-comprehensive.html
+  meddecide-09-digital-pathology-validation: meddecide-09-digital-pathology-validation.html
+  meddecide-15-multiclass-diagnostics-comprehensive: meddecide-15-multiclass-diagnostics-comprehensive.html
+last_built: 2025-10-09T16:23Z
 urls:
   reference: https://www.serdarbalci.com/meddecide/reference
   article: https://www.serdarbalci.com/meddecide/articles

@@ -41,7 +41,7 @@ Agreement analysis is essential for:
 6. **Quality Assurance**: Establishing institutional benchmarks
 
 ```{r load-packages}
-library(meddecide)
+
 library(dplyr)
 library(ggplot2)
 library(knitr)

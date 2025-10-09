@@ -41,7 +41,7 @@ Modern precision oncology requires integration of multiple biomarker types:
 5. **Immune Markers**: Guide immunotherapy (MSI, TMB, TILs)
 
 ```{r load-packages}
-library(meddecide)
+
 library(dplyr)
 library(ggplot2)
 library(survival)

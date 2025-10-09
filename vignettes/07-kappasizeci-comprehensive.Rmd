@@ -50,7 +50,7 @@ Interobserver agreement studies require adequate sample sizes to:
 
 ```{r setup}
 # Load required libraries
-library(meddecide)
+
 library(dplyr)
 library(knitr)
 

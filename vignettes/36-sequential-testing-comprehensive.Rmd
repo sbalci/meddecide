@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
   eval = FALSE
 )
 
-library(meddecide)
+
 library(dplyr)
 library(ggplot2)
 library(knitr)
@@ -736,4 +736,4 @@ Sequential testing analysis represents a critical tool for evidence-based diagno
 
 ---
 
-*This vignette was generated using ClinicoPath version `r packageVersion("ClinicoPath")` on `r Sys.Date()`.*
+*This vignette was generated using meddecide version `r packageVersion("meddecide")` on `r Sys.Date()`.*
