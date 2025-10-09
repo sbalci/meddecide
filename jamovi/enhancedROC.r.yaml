@@ -437,6 +437,5 @@ items:
 
 refs:
     - ClinicoPathJamoviModule
-    - BlueSky
-
+    - pROC
 ...

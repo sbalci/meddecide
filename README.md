@@ -9,10 +9,11 @@
 ## Overview
 
 The `meddecide` package serves as the computational engine for the ClinicoPath jamovi Module, offering dual functionality:
+
 - **As an R Package**: Direct access to all functions through R scripts and console
 - **As a jamovi Module**: Point-and-click interface for statistical analyses without coding
 
-See full documentation at https://sbalci.github.io/ClinicoPathJamoviModule/
+See full documentation at <https://sbalci.github.io/ClinicoPathJamoviModule/>
 
 [![CRAN Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
 [![R-CMD-check](https://github.com/sbalci/meddecide/workflows/R-CMD-check/badge.svg)](https://github.com/sbalci/meddecide/actions)
@@ -37,6 +38,7 @@ See full documentation at https://sbalci.github.io/ClinicoPathJamoviModule/
 ## Key Features
 
 ### 🏥 Medical Decision Analysis
+
 - **Diagnostic Test Evaluation**: Calculate sensitivity, specificity, predictive values, and likelihood ratios
 - **Test Comparison**: Compare multiple diagnostic tests against a gold standard with statistical significance testing
 - **Test Combination**: Systematically evaluate all possible patterns from 2-3 diagnostic tests to identify optimal strategies
@@ -46,30 +48,35 @@ See full documentation at https://sbalci.github.io/ClinicoPathJamoviModule/
 - **Bayesian Updates**: Fagan nomograms for visualizing post-test probability calculations
 
 ### 📊 ROC Analysis
+
 - **ROC Curve Generation**: Create and visualize receiver operating characteristic curves
 - **AUC Calculation**: Compute area under the curve with confidence intervals
 - **Optimal Cutpoint Detection**: Determine best thresholds using various optimization methods
 - **Multiple Comparison**: Compare ROC curves from different diagnostic tests
 
 ### 🤝 Reliability Assessment
+
 - **Cohen's Kappa**: Calculate inter-rater agreement for two raters
 - **Fleiss' Kappa**: Assess agreement among multiple raters
 - **Weighted Kappa**: Account for ordinal data with custom weighting schemes
 - **Agreement Visualization**: Generate plots to visualize rater concordance patterns
 
 ### 📐 Sample Size Calculations
+
 - **Power-Based**: Determine sample size for desired statistical power
 - **Precision-Based**: Calculate sample size for confidence interval width
 - **Fixed N Analysis**: Evaluate achievable power with predetermined sample size
 - **Multiple Scenarios**: Compare sample size requirements across different study designs
 
 ### 🔬 Advanced Analysis
+
 - **No Gold Standard**: Analyze diagnostic tests when reference standard is imperfect
 - **Latent Class Analysis**: Estimate test performance without gold standard
 - **Bootstrap Methods**: Generate robust confidence intervals
 - **Missing Data Handling**: Appropriate methods for incomplete datasets
 
 ### 📈 Visualization Tools
+
 - **Fagan Nomograms**: Interactive Bayesian probability calculators for sequential testing
 - **Forest Plots**: Compare diagnostic metrics across studies with confidence intervals
 - **Agreement Plots**: Visualize inter-rater reliability patterns
@@ -82,6 +89,7 @@ See full documentation at https://sbalci.github.io/ClinicoPathJamoviModule/
 ## Installation
 
 ### As an R Package
+
 ```r
 # Install from GitHub
 devtools::install_github("sbalci/meddecide")
@@ -91,6 +99,7 @@ library(meddecide)
 ```
 
 ### As a jamovi Module
+
 1. Open jamovi (≥ 1.8.1)
 2. Click the modules menu (⋮) in the top right
 3. Select "jamovi library"
@@ -100,6 +109,7 @@ library(meddecide)
 ## Quick Start Examples
 
 ### Basic Diagnostic Test Evaluation
+
 ```r
 library(meddecide)
 
@@ -114,6 +124,7 @@ result <- decision(
 ```
 
 ### Compare Multiple Tests
+
 ```r
 # Compare two diagnostic tests
 comparison <- decisioncompare(
@@ -131,6 +142,7 @@ comparison <- decisioncompare(
 ```
 
 ### Evaluate Test Combinations
+
 ```r
 # Analyze all possible patterns from 2 tests
 combinations <- decisioncombine(
@@ -148,6 +160,7 @@ combinations <- decisioncombine(
 ```
 
 ### Sequential Testing Analysis
+
 ```r
 # Evaluate serial testing strategies
 sequential <- sequentialtests(
@@ -163,9 +176,10 @@ sequential <- sequentialtests(
 ```
 
 ### ROC Analysis
+
 ```r
 # ROC curve with optimal cutpoint
-roc_result <- psychopdaroc(
+roc_result <- psychopdaROC(
   data = biomarker_data,
   class = "diagnosis",
   value = "biomarker_level"
@@ -173,6 +187,7 @@ roc_result <- psychopdaroc(
 ```
 
 ### Interrater Reliability
+
 ```r
 # Cohen's Kappa for two raters
 agreement_result <- agreement(
@@ -183,6 +198,7 @@ agreement_result <- agreement(
 ## Example Datasets
 
 Small CSV files are provided in `inst/extdata` to illustrate the main functions:
+
 - `decision_example.csv`: Basic medical decision analysis
 - `roc_example.csv`: ROC curve analysis
 - `agreement_example.csv`: Interrater reliability

@@ -366,7 +366,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                 title="Clinical ROC Analysis Results",
                 refs=list(
                     "ClinicoPathJamoviModule",
-                    "BlueSky"))
+                    "pROC"))
             self$add(R6::R6Class(
                 inherit = jmvcore::Group,
                 active = list(
