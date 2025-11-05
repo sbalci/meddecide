@@ -2,8 +2,8 @@ Type: Package
 Package: meddecide
 Title: Medical Decision Analysis and Reliability Assessment Tools in
         ClinicoPath jamovi Module
-Version: 0.0.32.13
-Date: 2025-11-03
+Version: 0.0.32.15
+Date: 2025-11-05
 Authors@R: person(given = "Serdar", family = "Balci", role = c("aut",
         "cre"), email = "serdarbalci@serdarbalci.com", comment =
         c(ORCID = "0000-0002-7852-3851"))
