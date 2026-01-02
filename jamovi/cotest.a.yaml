@@ -98,10 +98,11 @@ options:
     - name: indep
       title: Independent Tests
       type: Bool
-      default: true
+      default: false
       description:
           R: >
-            Assume tests are conditionally independent (default is true).
+            Assume tests are conditionally independent (default is false for safety).
+            Use true only if tests measure completely different phenomena.
 
     # Conditional dependence parameters (visible only when indep = false)
     - name: cond_dep_pos

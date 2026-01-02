@@ -20,6 +20,7 @@ decisioncompareOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             fnote = FALSE,
             ci = FALSE,
             plot = FALSE,
+            excludeIndeterminate = FALSE,
             radarplot = FALSE,
             statComp = FALSE,
             showSummary = FALSE,
@@ -103,6 +104,10 @@ decisioncompareOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 "plot",
                 plot,
                 default=FALSE)
+            private$..excludeIndeterminate <- jmvcore::OptionBool$new(
+                "excludeIndeterminate",
+                excludeIndeterminate,
+                default=FALSE)
             private$..radarplot <- jmvcore::OptionBool$new(
                 "radarplot",
                 radarplot,
@@ -138,6 +143,7 @@ decisioncompareOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             self$.addOption(private$..fnote)
             self$.addOption(private$..ci)
             self$.addOption(private$..plot)
+            self$.addOption(private$..excludeIndeterminate)
             self$.addOption(private$..radarplot)
             self$.addOption(private$..statComp)
             self$.addOption(private$..showSummary)
@@ -159,6 +165,7 @@ decisioncompareOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         fnote = function() private$..fnote$value,
         ci = function() private$..ci$value,
         plot = function() private$..plot$value,
+        excludeIndeterminate = function() private$..excludeIndeterminate$value,
         radarplot = function() private$..radarplot$value,
         statComp = function() private$..statComp$value,
         showSummary = function() private$..showSummary$value,
@@ -179,6 +186,7 @@ decisioncompareOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         ..fnote = NA,
         ..ci = NA,
         ..plot = NA,
+        ..excludeIndeterminate = NA,
         ..radarplot = NA,
         ..statComp = NA,
         ..showSummary = NA,
@@ -207,7 +215,8 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         reportSentence = function() private$.items[["reportSentence"]],
         explanationsContent = function() private$.items[["explanationsContent"]],
         clinicalReport = function() private$.items[["clinicalReport"]],
-        aboutAnalysis = function() private$.items[["aboutAnalysis"]]),
+        aboutAnalysis = function() private$.items[["aboutAnalysis"]],
+        notices = function() private$.items[["notices"]]),
     private = list(),
     public=list(
         initialize=function(options) {
@@ -435,7 +444,7 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 visible="(statComp)",
                 rows=0,
                 notes=list(
-                    `note`="For 2 tests: McNemar's test compares overall diagnostic accuracy between paired tests. For 3+ tests: Cochran's Q test provides an overall test, followed by pairwise McNemar's tests with Holm-Bonferroni correction for multiple comparisons. Tests examine discordant pairs (cases where tests disagree) to determine if differences in accuracy are statistically significant.\n"),
+                    `note`="For 2 tests: McNemar's test compares diagnostic CORRECTNESS (agreement with gold standard) between paired tests. For 3+ tests: Cochran's Q test provides an overall test, followed by pairwise McNemar's tests with Holm-Bonferroni correction for multiple comparisons. Tests examine discordant pairs (cases where one test is correct and the other is wrong relative to the gold standard) to determine if differences in accuracy are statistically significant.\n"),
                 columns=list(
                     list(
                         `name`="comparison", 
@@ -540,7 +549,25 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 options=options,
                 name="aboutAnalysis",
                 title="About This Analysis",
-                visible=TRUE))}))
+                visible=TRUE))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="notices",
+                title="Important Information",
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive",
+                    "pp",
+                    "pprob",
+                    "ci",
+                    "excludeIndeterminate",
+                    "statComp")))}))
 
 decisioncompareBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "decisioncompareBase",
@@ -641,6 +668,9 @@ decisioncompareBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' @param fnote .
 #' @param ci .
 #' @param plot Generate comparison plot showing test performance metrics.
+#' @param excludeIndeterminate If TRUE, drop rows where test/gold values are
+#'   neither the specified positive level nor a clear negative level to avoid
+#'   inflating specificity/NPV from equivocal results.
 #' @param radarplot Generate radar plot for comprehensive test comparison
 #'   visualization.
 #' @param statComp Perform statistical comparison between tests (McNemar's
@@ -670,6 +700,7 @@ decisioncompareBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #'   \code{results$explanationsContent} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$clinicalReport} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$aboutAnalysis} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$notices} \tab \tab \tab \tab \tab a html \cr
 #' }
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
@@ -695,6 +726,7 @@ decisioncompare <- function(
     fnote = FALSE,
     ci = FALSE,
     plot = FALSE,
+    excludeIndeterminate = FALSE,
     radarplot = FALSE,
     statComp = FALSE,
     showSummary = FALSE,
@@ -736,6 +768,7 @@ decisioncompare <- function(
         fnote = fnote,
         ci = ci,
         plot = plot,
+        excludeIndeterminate = excludeIndeterminate,
         radarplot = radarplot,
         statComp = statComp,
         showSummary = showSummary,

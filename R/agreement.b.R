@@ -22,6 +22,29 @@
 agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
     inherit = agreementBase, private = list(
 
+        .init = function() {
+            # Initialize plot render functions
+            if (self$options$blandAltmanPlot) {
+                self$results$blandAltman$setRenderFun(private$.blandAltman)
+            }
+        },
+
+        # Helper function to escape variable names for R code generation
+        # Variable names with spaces or special characters are wrapped in backticks
+        .escapeVariableName = function(varName) {
+            if (is.null(varName) || length(varName) == 0) {
+                return(NULL)
+            }
+
+            # Check if variable name needs escaping
+            # If make.names() would change it, it needs backticks
+            if (!identical(make.names(varName), varName)) {
+                return(paste0('`', varName, '`'))
+            }
+
+            return(varName)
+        },
+
         .createSummary = function(result1, result2, wght, exct) {
             # Create plain-language summary of agreement results
 
@@ -357,6 +380,150 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             return(html_output)
         },
 
+        .blandAltman = function(image, ...) {
+            # Render Bland-Altman plot from stored state
+
+            plotState <- image$state
+
+            if (is.null(plotState)) {
+                return(FALSE)
+            }
+
+            # Extract data from state
+            diff <- plotState$diff
+            avg <- plotState$avg
+            mean_diff <- plotState$mean_diff
+            lower_loa <- plotState$lower_loa
+            upper_loa <- plotState$upper_loa
+            conf_level <- plotState$conf_level
+            prop_bias <- plotState$prop_bias
+            rater_names <- plotState$rater_names
+
+            # Create plot
+            plot_data <- data.frame(
+                avg = avg,
+                diff = diff
+            )
+
+            p <- ggplot2::ggplot(plot_data, ggplot2::aes(x = avg, y = diff)) +
+                ggplot2::geom_point(alpha = 0.6, size = 2) +
+                ggplot2::geom_hline(yintercept = mean_diff, linetype = "solid", color = "blue", size = 1) +
+                ggplot2::geom_hline(yintercept = lower_loa, linetype = "dashed", color = "red", size = 0.8) +
+                ggplot2::geom_hline(yintercept = upper_loa, linetype = "dashed", color = "red", size = 0.8) +
+                ggplot2::labs(
+                    title = "Bland-Altman Plot",
+                    subtitle = sprintf("Mean Difference and %g%% Limits of Agreement", conf_level * 100),
+                    x = sprintf("Mean of %s and %s", rater_names[1], rater_names[2]),
+                    y = sprintf("Difference (%s - %s)", rater_names[1], rater_names[2])
+                ) +
+                ggplot2::annotate("text", x = max(avg) * 0.95, y = mean_diff,
+                                label = sprintf("Mean: %.2f", mean_diff),
+                                hjust = 1, vjust = -0.5, color = "blue") +
+                ggplot2::annotate("text", x = max(avg) * 0.95, y = lower_loa,
+                                label = sprintf("Lower LoA: %.2f", lower_loa),
+                                hjust = 1, vjust = 1.2, color = "red") +
+                ggplot2::annotate("text", x = max(avg) * 0.95, y = upper_loa,
+                                label = sprintf("Upper LoA: %.2f", upper_loa),
+                                hjust = 1, vjust = -0.2, color = "red") +
+                ggplot2::theme_minimal() +
+                ggplot2::theme(
+                    plot.title = ggplot2::element_text(hjust = 0.5, face = "bold"),
+                    plot.subtitle = ggplot2::element_text(hjust = 0.5)
+                )
+
+            # Add proportional bias trend line if requested
+            if (prop_bias) {
+                p <- p + ggplot2::geom_smooth(method = "lm", se = TRUE, color = "darkgreen", size = 0.8)
+            }
+
+            print(p)
+
+            return(TRUE)
+        },
+
+        .populateBlandAltman = function(ratings) {
+            # Generate Bland-Altman plot for continuous agreement analysis
+            # Only applicable for 2 raters with numeric/continuous data
+
+            # Validate inputs
+            if (ncol(ratings) != 2) {
+                self$results$blandAltman$setVisible(FALSE)
+                self$results$blandAltmanStats$setVisible(FALSE)
+                self$results$blandAltmanStats$setNote(
+                    "error",
+                    "Bland-Altman analysis requires exactly 2 raters. Please select only 2 variables."
+                )
+                return()
+            }
+
+            # Check if data is numeric/continuous
+            if (!is.numeric(ratings[[1]]) || !is.numeric(ratings[[2]])) {
+                self$results$blandAltman$setVisible(FALSE)
+                self$results$blandAltmanStats$setVisible(FALSE)
+                self$results$blandAltmanStats$setNote(
+                    "error",
+                    "Bland-Altman analysis requires continuous (numeric) data. Your data appears to be categorical."
+                )
+                return()
+            }
+
+            # Calculate Bland-Altman statistics
+            rater1 <- ratings[[1]]
+            rater2 <- ratings[[2]]
+
+            # Remove missing values pairwise
+            complete_idx <- complete.cases(ratings)
+            rater1 <- rater1[complete_idx]
+            rater2 <- rater2[complete_idx]
+
+            # Calculate difference and mean
+            diff <- rater1 - rater2
+            avg <- (rater1 + rater2) / 2
+
+            # Statistics
+            mean_diff <- mean(diff, na.rm = TRUE)
+            sd_diff <- sd(diff, na.rm = TRUE)
+
+            # Limits of Agreement (LoA)
+            conf_level <- self$options$baConfidenceLevel
+            z_value <- qnorm((1 + conf_level) / 2)
+            lower_loa <- mean_diff - z_value * sd_diff
+            upper_loa <- mean_diff + z_value * sd_diff
+
+            # Test for proportional bias (if requested)
+            prop_bias_p <- NA
+            if (self$options$proportionalBias) {
+                tryCatch({
+                    lm_result <- lm(diff ~ avg)
+                    prop_bias_p <- summary(lm_result)$coefficients[2, 4]  # p-value for slope
+                }, error = function(e) {
+                    prop_bias_p <- NA
+                })
+            }
+
+            # Populate statistics table
+            self$results$blandAltmanStats$setRow(rowNo = 1, values = list(
+                meanDiff = mean_diff,
+                sdDiff = sd_diff,
+                lowerLoA = lower_loa,
+                upperLoA = upper_loa,
+                propBiasP = prop_bias_p
+            ))
+
+            # Generate plot
+            plot <- self$results$blandAltman
+            plot$setState(list(
+                diff = diff,
+                avg = avg,
+                mean_diff = mean_diff,
+                lower_loa = lower_loa,
+                upper_loa = upper_loa,
+                conf_level = conf_level,
+                prop_bias = self$options$proportionalBias,
+                rater_names = names(ratings)
+            ))
+        },
+
         .run = function() {
 
         # Validate input ----
@@ -409,6 +576,8 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             mydata <- self$data
 
             # Safe variable selection - ensure proper data frame structure
+            # Note: Variable names with spaces (e.g., "Rater 1") are handled correctly
+            # by R's bracket notation. No special escaping needed for data access.
             ratings <- mydata[, self$options$vars, drop = FALSE]
 
             # Ensure it's a proper data frame
@@ -497,86 +666,82 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }
 
             # Frequency tables (if requested) ----
+            # Control visibility based on number of raters and sft option
+            num_raters <- length(self$options$vars)
+
             if (self$options$sft) {
+                # Show contingency table only for 2 raters
+                self$results$contingencyTable$setVisible(num_raters == 2)
+
+                # Show rating combinations table only for 3+ raters
+                self$results$ratingCombinationsTable$setVisible(num_raters >= 3)
+
                 # For 2 raters, create a 2x2 contingency table
-                if (length(self$options$vars) == 2) {
+                if (num_raters == 2) {
                     # Create contingency table
                     cont_table <- table(ratings[[1]], ratings[[2]])
 
-                    # Format as text output (like janitor::tabyl)
-                    text_output <- paste0(
-                        "\nContingency Table: ", names(ratings)[1], " vs ", names(ratings)[2], "\n",
-                        paste(rep("-", 60), collapse = ""), "\n\n"
+                    # Get row and column names
+                    row_names <- rownames(cont_table)
+                    col_names <- colnames(cont_table)
+
+                    # Create jamovi table with dynamic columns
+                    contTable <- self$results$contingencyTable
+
+                    # Add row name column
+                    # Note: names(ratings)[1] preserves original variable name with spaces
+                    contTable$addColumn(
+                        name = 'rater1',
+                        title = names(ratings)[1],  # Original name (e.g., "Rater 1")
+                        type = 'text'
                     )
 
-                    # Create formatted table
-                    capture_output <- capture.output({
-                        print(addmargins(cont_table))
-                        cat("\n")
-                        cat("Row Percentages:\n")
-                        print(round(prop.table(cont_table, 1) * 100, 1))
-                        cat("\n")
-                        cat("Column Percentages:\n")
-                        print(round(prop.table(cont_table, 2) * 100, 1))
-                    })
-
-                    self$results$text$setContent(paste(capture_output, collapse = "\n"))
-
-                    # Compact HTML version
-                    n_row <- nrow(cont_table)
-                    n_col <- ncol(cont_table)
-
-                    html_table <- paste0(
-                        "<div style='font-family: monospace; font-size: 12px; overflow-x: auto;'>",
-                        "<p style='font-weight: bold; margin-bottom: 8px;'>",
-                        names(ratings)[1], " vs ", names(ratings)[2], "</p>",
-                        "<table style='border-collapse: collapse;'>",
-                        "<tr><th style='border: 1px solid #999; padding: 6px; background: #f5f5f5;'></th>"
-                    )
-
-                    # Column headers
-                    for (j in 1:n_col) {
-                        html_table <- paste0(html_table,
-                            "<th style='border: 1px solid #999; padding: 6px; background: #f5f5f5; text-align: center;'>",
-                            colnames(cont_table)[j], "</th>")
+                    # Add columns for each category of rater 2
+                    # Note: use make.names() for safe column IDs, display original labels
+                    for (col_name in col_names) {
+                        col_id <- make.names(col_name)
+                        contTable$addColumn(
+                            name = col_id,
+                            title = as.character(col_name),  # Original category label
+                            type = 'integer'
+                        )
                     }
-                    html_table <- paste0(html_table, "<th style='border: 1px solid #999; padding: 6px; background: #e8e8e8;'>Total</th></tr>")
 
-                    # Data rows
-                    for (i in 1:n_row) {
-                        html_table <- paste0(html_table,
-                            "<tr><th style='border: 1px solid #999; padding: 6px; background: #f5f5f5;'>",
-                            rownames(cont_table)[i], "</th>")
+                    # Add row total column
+                    contTable$addColumn(
+                        name = 'row_total',
+                        title = 'Total',
+                        type = 'integer'
+                    )
 
-                        row_total <- sum(cont_table[i, ])
-                        for (j in 1:n_col) {
-                            pct <- round(cont_table[i, j] / row_total * 100, 1)
-                            html_table <- paste0(html_table,
-                                "<td style='border: 1px solid #999; padding: 6px; text-align: center;'>",
-                                cont_table[i, j], "<br><span style='font-size: 11px; color: #666;'>(",
-                                pct, "%)</span></td>")
+                    # Populate data rows
+                    for (i in seq_along(row_names)) {
+                        row_data <- list(rater1 = as.character(row_names[i]))
+
+                        for (j in seq_along(col_names)) {
+                            col_id <- make.names(col_names[j])
+                            row_data[[col_id]] <- as.integer(cont_table[i, j])
                         }
-                        html_table <- paste0(html_table,
-                            "<td style='border: 1px solid #999; padding: 6px; background: #f9f9f9; text-align: center;'>",
-                            row_total, "</td></tr>")
+
+                        row_data$row_total <- sum(cont_table[i, ])
+                        contTable$addRow(rowKey = i, values = row_data)
                     }
 
-                    # Total row
-                    html_table <- paste0(html_table,
-                        "<tr><th style='border: 1px solid #999; padding: 6px; background: #e8e8e8;'>Total</th>")
-                    grand_total <- sum(cont_table)
-                    for (j in 1:n_col) {
-                        col_total <- sum(cont_table[, j])
-                        html_table <- paste0(html_table,
-                            "<td style='border: 1px solid #999; padding: 6px; background: #f9f9f9; text-align: center;'>",
-                            col_total, "</td>")
+                    # Add total row
+                    total_row <- list(rater1 = 'Total')
+                    for (j in seq_along(col_names)) {
+                        col_id <- make.names(col_names[j])
+                        total_row[[col_id]] <- sum(cont_table[, j])
                     }
-                    html_table <- paste0(html_table,
-                        "<td style='border: 1px solid #999; padding: 6px; background: #e8e8e8; text-align: center; font-weight: bold;'>",
-                        grand_total, "</td></tr>",
-                        "</table></div>")
+                    total_row$row_total <- sum(cont_table)
+                    contTable$addRow(rowKey = 'total', values = total_row)
 
-                    self$results$text2$setContent(html_table)
+                    # Add note about percentages
+                    contTable$setNote(
+                        'interpretation',
+                        sprintf('N = %d cases. Cell counts show frequency of agreement/disagreement patterns.',
+                                sum(cont_table))
+                    )
 
                 } else {
                     # For 3+ raters, show combination counts
@@ -585,46 +750,67 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                         dplyr::count() %>%
                         as.data.frame()
 
-                    # Text output
-                    self$results$text$setContent(capture.output(print(freq_table)))
+                    # Create jamovi table with dynamic columns
+                    combTable <- self$results$ratingCombinationsTable
 
-                    # Compact HTML for multiple raters
-                    max_display <- min(50, nrow(freq_table))  # Limit to 50 rows
+                    # Add columns for each rater
+                    # Note: use make.names() for jamovi column IDs, but keep original
+                    # variable names (with spaces) as titles for display
+                    for (var_name in self$options$vars) {
+                        col_id <- make.names(var_name)
+                        combTable$addColumn(
+                            name = col_id,
+                            title = var_name,  # Original name with spaces preserved
+                            type = 'text'
+                        )
+                    }
 
-                    html_table <- paste0(
-                        "<div style='font-family: monospace; font-size: 11px; max-height: 400px; overflow-y: auto;'>",
-                        "<p style='font-weight: bold;'>Rating Combinations (showing ", max_display, " of ", nrow(freq_table), ")</p>",
-                        "<table style='width: auto; border-collapse: collapse;'>",
-                        "<tr style='background: #f5f5f5;'>"
+                    # Add count column
+                    combTable$addColumn(
+                        name = 'count',
+                        title = 'Count',
+                        type = 'integer'
                     )
 
-                    # Headers
-                    for (col_name in names(freq_table)) {
-                        display_name <- if (col_name == "n") "Count" else col_name
-                        html_table <- paste0(html_table,
-                            "<th style='border: 1px solid #ccc; padding: 4px 8px; font-size: 11px;'>",
-                            display_name, "</th>")
-                    }
-                    html_table <- paste0(html_table, "</tr>")
+                    # Populate rows (limit to 100 most frequent combinations)
+                    max_display <- min(100, nrow(freq_table))
 
-                    # Data rows (limited)
                     for (i in 1:max_display) {
-                        html_table <- paste0(html_table, "<tr>")
-                        for (j in seq_len(ncol(freq_table))) {
-                            html_table <- paste0(html_table,
-                                "<td style='border: 1px solid #ccc; padding: 4px 8px;'>",
-                                freq_table[i, j], "</td>")
+                        row_data <- list()
+
+                        # Add rater values
+                        # Note: freq_table column names preserve spaces from original variables
+                        for (var_name in self$options$vars) {
+                            col_id <- make.names(var_name)
+                            value <- freq_table[i, var_name, drop = TRUE]  # Explicit drop for clarity
+                            row_data[[col_id]] <- as.character(value)
                         }
-                        html_table <- paste0(html_table, "</tr>")
+
+                        # Add count
+                        row_data$count <- as.integer(freq_table$n[i])
+
+                        combTable$addRow(rowKey = i, values = row_data)
                     }
 
-                    html_table <- paste0(html_table,
-                        "</table>",
-                        "<p style='margin-top: 8px; font-size: 11px;'>Total: ", sum(freq_table$n), " ratings</p>",
-                        "</div>")
-
-                    self$results$text2$setContent(html_table)
+                    # Add note
+                    if (nrow(freq_table) > max_display) {
+                        combTable$setNote(
+                            'truncated',
+                            sprintf('Showing %d of %d unique rating combinations. Total: %d ratings.',
+                                    max_display, nrow(freq_table), sum(freq_table$n))
+                        )
+                    } else {
+                        combTable$setNote(
+                            'complete',
+                            sprintf('%d unique rating combinations. Total: %d ratings.',
+                                    nrow(freq_table), sum(freq_table$n))
+                        )
+                    }
                 }
+            } else {
+                # Hide both frequency tables when sft is disabled
+                self$results$contingencyTable$setVisible(FALSE)
+                self$results$ratingCombinationsTable$setVisible(FALSE)
             }
 
             # Weighted Kappa Guide (if using weights) ----
@@ -737,11 +923,95 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             })
         }
 
+        # Bland-Altman analysis (if requested) ----
+        if (self$options$blandAltmanPlot) {
+            private$.populateBlandAltman(ratings)
+        }
 
+        }  # End of .run function
 
+    ),  # End of private list
 
+    public = list(
+        #' @description
+        #' Generate R source code for Interrater Reliability analysis
+        #' @return Character string with R syntax for reproducible analysis outside jamovi
+        asSource = function() {
+            vars <- self$options$vars
 
+            # Return empty string if insufficient variables
+            if (is.null(vars) || length(vars) < 2) {
+                return('')
+            }
 
+            # Escape variable names that need backticks
+            vars_escaped <- sapply(vars, function(v) {
+                private$.escapeVariableName(v)
+            })
 
+            # Build vars argument for function call
+            # Each variable name is quoted, with backticks if needed
+            vars_arg <- paste0('vars = c(',
+                             paste(sapply(vars_escaped, function(v) {
+                                 # If already has backticks, preserve them in quotes
+                                 if (grepl("^`.*`$", v)) {
+                                     paste0('"', v, '"')
+                                 } else {
+                                     paste0('"', v, '"')
+                                 }
+                             }), collapse = ', '),
+                             ')')
 
-    }))
+            # Build other arguments
+            args_list <- c(vars_arg)
+
+            # Add weighted kappa option if not default
+            if (self$options$wght != "unweighted") {
+                wght_arg <- paste0('wght = "', self$options$wght, '"')
+                args_list <- c(args_list, wght_arg)
+            }
+
+            # Add exact kappa option if enabled
+            if (self$options$exct) {
+                args_list <- c(args_list, 'exct = TRUE')
+            }
+
+            # Add Krippendorff's alpha options if enabled
+            if (self$options$kripp) {
+                args_list <- c(args_list, 'kripp = TRUE')
+
+                if (self$options$krippMethod != "nominal") {
+                    args_list <- c(args_list, paste0('krippMethod = "', self$options$krippMethod, '"'))
+                }
+
+                if (self$options$bootstrap) {
+                    args_list <- c(args_list, 'bootstrap = TRUE')
+                }
+            }
+
+            # Add display options if enabled
+            if (self$options$sft) {
+                args_list <- c(args_list, 'sft = TRUE')
+            }
+
+            if (self$options$showSummary) {
+                args_list <- c(args_list, 'showSummary = TRUE')
+            }
+
+            # Build final R code
+            code <- paste0(
+                '# Interrater Reliability Analysis\n',
+                '# Generated by ClinicoPath jamovi module\n\n',
+                'library(ClinicoPath)\n\n',
+                '# Load your data\n',
+                '# data <- read.csv("your_data.csv")\n\n',
+                'agreement(\n',
+                '    data = data,\n',
+                '    ', paste(args_list, collapse = ',\n    '),
+                '\n)'
+            )
+
+            return(code)
+        }
+    )  # End of public list
+    )

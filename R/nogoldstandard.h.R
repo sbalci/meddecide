@@ -186,6 +186,7 @@ nogoldstandardResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
     inherit = jmvcore::Group,
     active = list(
         instructions = function() private$.items[["instructions"]],
+        agreement_stats = function() private$.items[["agreement_stats"]],
         clinical_summary = function() private$.items[["clinical_summary"]],
         method_guide = function() private$.items[["method_guide"]],
         prevalence = function() private$.items[["prevalence"]],
@@ -210,6 +211,30 @@ nogoldstandardResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
                 name="instructions",
                 title="Instructions",
                 visible=TRUE))
+            self$add(jmvcore::Table$new(
+                options=options,
+                name="agreement_stats",
+                title="Agreement Statistics (Cohen's Kappa)",
+                visible=TRUE,
+                columns=list(
+                    list(
+                        `name`="test_pair", 
+                        `title`="Test Pair", 
+                        `type`="text"),
+                    list(
+                        `name`="kappa", 
+                        `title`="Kappa", 
+                        `type`="number"),
+                    list(
+                        `name`="p_value", 
+                        `title`="p-value", 
+                        `type`="number", 
+                        `format`="zto,pvalue"),
+                    list(
+                        `name`="agreement", 
+                        `title`="Agreement", 
+                        `type`="number", 
+                        `format`="pc"))))
             self$add(jmvcore::Html$new(
                 options=options,
                 name="clinical_summary",
@@ -442,6 +467,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$instructions} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$agreement_stats} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$clinical_summary} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$method_guide} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$prevalence} \tab \tab \tab \tab \tab a table \cr
@@ -454,9 +480,9 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #'
 #' Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
 #'
-#' \code{results$prevalence$asDF}
+#' \code{results$agreement_stats$asDF}
 #'
-#' \code{as.data.frame(results$prevalence)}
+#' \code{as.data.frame(results$agreement_stats)}
 #'
 #' @export
 nogoldstandard <- function(

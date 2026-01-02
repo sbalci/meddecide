@@ -95,40 +95,121 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             ci <- self$options$ci
 
             # Input validation ----
-            # Enforce mutual exclusion of CI and custom prevalence
+            # Enforce mutual exclusion of CI and custom prevalence (epiR limitation)
             if (ci && pp) {
-                stop("Cannot use both confidence intervals (ci=TRUE) and custom prevalence (pp=TRUE) simultaneously. ",
-                     "Confidence interval calculations require study prevalence. Please disable one option.")
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'ciAndPpConflict',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('Confidence intervals are unavailable when using population prevalence. • epiR::epi.tests() computes CIs from the study sample, not an externally supplied prevalence. • Disable either "95% Confidence Intervals" or "Use Known Population Prevalence" to proceed. • Point estimates will still be Bayes-adjusted when prevalence is supplied.')
+                self$results$insert(999, notice)
+                return()
+            }
+
+            # Inform user that CIs are unavailable when using population prevalence
+            if (!ci && pp) {
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'ciUnavailableWithPP',
+                    type = jmvcore::NoticeType$INFO
+                )
+                notice$setContent('Confidence intervals are not calculated when using population prevalence. • epiR::epi.tests() provides CIs only for sample-based prevalence. • Point estimates shown here are Bayes-adjusted to the supplied prevalence without CIs.')
+                self$results$insert(999, notice)
+            }
+
+            # Validate prevalence when provided programmatically
+            if (pp && (is.na(pprob) || pprob <= 0 || pprob >= 1)) {
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'invalidPriorProb',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('Invalid prior probability. • Prior probability must be between 0 and 1 (exclusive). • Update the "Prior Probability (prevalence)" value.')
+                self$results$insert(999, notice)
+                return()
+            }
+
+            # Reject non-finite inputs
+            if (any(!is.finite(c(TP, FP, TN, FN)))) {
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'nonFiniteCounts',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('Non-finite counts detected. • TP, FP, TN, and FN must be finite numbers. • Please check your input values.')
+                self$results$insert(999, notice)
+                return()
             }
 
             # Check for non-negative values
             if (TP < 0 || FP < 0 || TN < 0 || FN < 0) {
-                stop("All counts must be non-negative. Please check your input values.")
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'negativeCountsDetected',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('Negative counts detected. • All counts (TP, FP, TN, FN) must be non-negative. • Please check your input values for errors.')
+                self$results$insert(999, notice)
+                return()
             }
             
             # Check for at least some data
             if (TP + FP + TN + FN == 0) {
-                stop("All counts are zero. Please provide valid diagnostic test data.")
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'allCountsZero',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('All counts are zero. • Please provide valid diagnostic test data. • Ensure TP, FP, TN, and FN values are entered correctly.')
+                self$results$insert(999, notice)
+                return()
             }
             
             # Check for diseased subjects
             if (TP + FN == 0) {
-                stop("No diseased subjects (TP + FN = 0). Cannot calculate sensitivity and related metrics.")
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'noDiseasedSubjects',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('No diseased subjects detected (TP + FN = 0). • Cannot calculate sensitivity and related metrics. • Ensure your confusion matrix includes cases with disease present.')
+                self$results$insert(999, notice)
+                return()
             }
-            
+
             # Check for healthy subjects
             if (TN + FP == 0) {
-                stop("No healthy subjects (TN + FP = 0). Cannot calculate specificity and related metrics.")
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'noHealthySubjects',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('No healthy subjects detected (TN + FP = 0). • Cannot calculate specificity and related metrics. • Ensure your confusion matrix includes cases without disease.')
+                self$results$insert(999, notice)
+                return()
             }
             
             # Check for positive tests
             if (TP + FP == 0) {
-                warning("No positive test results (TP + FP = 0). PPV will be undefined.")
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'noPositiveTests',
+                    type = jmvcore::NoticeType$WARNING
+                )
+                notice$setContent('No positive test results detected (TP + FP = 0). • Positive Predictive Value (PPV) is undefined. • Ensure your confusion matrix includes both positive and negative test results.')
+                self$results$insert(999, notice)
             }
             
             # Check for negative tests
             if (TN + FN == 0) {
-                warning("No negative test results (TN + FN = 0). NPV will be undefined.")
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'noNegativeTests',
+                    type = jmvcore::NoticeType$WARNING
+                )
+                notice$setContent('No negative test results detected (TN + FN = 0). • Negative Predictive Value (NPV) is undefined. • Ensure your confusion matrix includes both positive and negative test results.')
+                self$results$insert(999, notice)
             }
 
 
@@ -206,15 +287,46 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         TestW <- FP + FN
 
+        # Warn on non-integer counts (allowed but unusual)
+        if (any(abs(c(TP, FP, TN, FN) - round(c(TP, FP, TN, FN))) > 1e-6)) {
+            notice <- jmvcore::Notice$new(
+                options = self$options,
+                name = 'nonIntegerCounts',
+                type = jmvcore::NoticeType$WARNING
+            )
+            notice$setContent('Non-integer counts detected. • Diagnostic test counts are typically whole numbers. • Proceeding with calculations, but verify your inputs.')
+            self$results$insert(999, notice)
+        }
+
+        # Continuity correction for zero-cell issues (stabilizes LR/DOR and CIs)
+        zero_cell <- any(c(TP, FP, TN, FN) == 0)
+        TP_cc <- TP
+        FP_cc <- FP
+        TN_cc <- TN
+        FN_cc <- FN
+
+        if (zero_cell) {
+            TP_cc <- TP + 0.5
+            FP_cc <- FP + 0.5
+            TN_cc <- TN + 0.5
+            FN_cc <- FN + 0.5
+
+            notice <- jmvcore::Notice$new(
+                options = self$options,
+                name = 'continuityCorrection',
+                type = jmvcore::NoticeType$WARNING
+            )
+            notice$setContent('Zero cells detected. Applied Haldane-Anscombe 0.5 continuity correction for likelihood ratios, diagnostic odds ratio, and confidence intervals to avoid infinite or undefined estimates.')
+            self$results$insert(999, notice)
+        }
+
         # Calculate metrics with safe division
         Sens <- if (DiseaseP > 0) TP/DiseaseP else 0
         Spec <- if (DiseaseN > 0) TN/DiseaseN else 0
         AccurT <- if (TotalPop > 0) TestT/TotalPop else 0
         PrevalenceD <- if (TotalPop > 0) DiseaseP/TotalPop else 0
-        PPV <- if (TestP > 0) TP/TestP else NA
-        NPV <- if (TestN > 0) TN/TestN else NA
 
-
+        # Determine which prevalence to use
         if (pp) {
             # Known prior probability from population
             PriorProb <- pprob
@@ -223,21 +335,52 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             PriorProb <- PrevalenceD
         }
 
+        # CRITICAL FIX: Calculate PPV and NPV using the selected prevalence
+        # When pp=TRUE, PPV/NPV must use population prevalence via Bayes' theorem,
+        # NOT the sample-based TP/(TP+FP) calculation
+        if (pp) {
+            # Population-adjusted PPV/NPV using Bayes' theorem
+            PPV <- if (!is.na(Sens) && !is.na(Spec)) {
+                numerator <- Sens * PriorProb
+                denominator <- (Sens * PriorProb) + ((1 - Spec) * (1 - PriorProb))
+                if (denominator > 0) numerator / denominator else NA
+            } else NA
 
-        PostTestProbDisease <- (PriorProb * Sens)/((PriorProb * Sens) + ((1 -
-            PriorProb) * (1 - Spec)))
+            NPV <- if (!is.na(Sens) && !is.na(Spec)) {
+                numerator <- Spec * (1 - PriorProb)
+                denominator <- (Spec * (1 - PriorProb)) + ((1 - Sens) * PriorProb)
+                if (denominator > 0) numerator / denominator else NA
+            } else NA
+        } else {
+            # Sample-based PPV/NPV
+            PPV <- if (TestP > 0) TP/TestP else NA
+            NPV <- if (TestN > 0) TN/TestN else NA
+        }
+
+        # Post-test probabilities (same as PPV/NPV when using population prevalence)
+        PostTestProbDisease <- if (!is.na(Sens) && !is.na(Spec)) {
+            numerator <- PriorProb * Sens
+            denominator <- (PriorProb * Sens) + ((1 - PriorProb) * (1 - Spec))
+            if (denominator > 0) numerator / denominator else NA
+        } else NA
+
+        PostTestProbHealthy <- if (!is.na(Sens) && !is.na(Spec)) {
+            numerator <- (1 - PriorProb) * Spec
+            denominator <- ((1 - PriorProb) * Spec) + (PriorProb * (1 - Sens))
+            if (denominator > 0) numerator / denominator else NA
+        } else NA
 
 
 
-        PostTestProbHealthy <- ((1 - PriorProb) * Spec)/(((1 - PriorProb) *
-            Spec) + (PriorProb * (1 - Sens)))
 
+        # Calculate likelihood ratios with safe division (corrected if needed)
+        LRP <- if ((1 - (TN_cc / (TN_cc + FP_cc))) > 0) {
+            (TP_cc / (TP_cc + FN_cc)) / (1 - (TN_cc / (TN_cc + FP_cc)))
+        } else Inf
 
-
-
-        # Calculate likelihood ratios with safe division
-        LRP <- if ((1 - Spec) > 0 && !is.na(Sens)) Sens / (1 - Spec) else Inf
-        LRN <- if (Spec > 0 && !is.na(Sens)) (1 - Sens) / Spec else 0
+        LRN <- if ((TN_cc / (TN_cc + FP_cc)) > 0) {
+            (1 - (TP_cc / (TP_cc + FN_cc))) / (TN_cc / (TN_cc + FP_cc))
+        } else 0
 
         # Advanced confidence interval calculations ----
         # Multiple CI methods for different metrics (following diagnostic test literature):
@@ -247,14 +390,18 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         # These supplement epiR::epi.tests() for verification and methodological transparency
 
         # Clopper-Pearson exact binomial CIs for sensitivity and specificity
-        sens_ci <- stats::binom.test(TP, TP + FN, conf.level = 0.95)$conf.int
-        spec_ci <- stats::binom.test(TN, TN + FP, conf.level = 0.95)$conf.int
+        sens_ci <- stats::binom.test(TP_cc, TP_cc + FN_cc, conf.level = 0.95)$conf.int
+        spec_ci <- stats::binom.test(TN_cc, TN_cc + FP_cc, conf.level = 0.95)$conf.int
         
         # Logit transformation CIs for PPV and NPV (more accurate)
         # PPV CI using logit transformation
-        if (TP > 0 && TestP > 0) {
-            ppv_logit <- log(PPV / (1 - PPV))
-            ppv_se <- sqrt((1/TP) + (1/FP))
+        eps <- 1e-9
+        PPV_for_ci <- min(max(PPV, eps), 1 - eps)
+        NPV_for_ci <- min(max(NPV, eps), 1 - eps)
+
+        if (TP_cc > 0 && TestP > 0) {
+            ppv_logit <- log(PPV_for_ci / (1 - PPV_for_ci))
+            ppv_se <- sqrt((1/TP_cc) + (1/FP_cc))
             ppv_ci_logit <- ppv_logit + c(-1.96, 1.96) * ppv_se
             ppv_ci <- exp(ppv_ci_logit) / (1 + exp(ppv_ci_logit))
         } else {
@@ -262,9 +409,9 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         }
         
         # NPV CI using logit transformation
-        if (TN > 0 && TestN > 0) {
-            npv_logit <- log(NPV / (1 - NPV))
-            npv_se <- sqrt((1/TN) + (1/FN))
+        if (TN_cc > 0 && TestN > 0) {
+            npv_logit <- log(NPV_for_ci / (1 - NPV_for_ci))
+            npv_se <- sqrt((1/TN_cc) + (1/FN_cc))
             npv_ci_logit <- npv_logit + c(-1.96, 1.96) * npv_se
             npv_ci <- exp(npv_ci_logit) / (1 + exp(npv_ci_logit))
         } else {
@@ -273,9 +420,9 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         
         # Log-transformed CIs for likelihood ratios
         # PLR CI
-        if (TP > 0 && FP > 0) {
+        if (TP_cc > 0 && FP_cc > 0) {
             plr_log <- log(LRP)
-            plr_se <- sqrt((1/TP) - (1/(TP + FN)) + (1/FP) - (1/(TN + FP)))
+            plr_se <- sqrt((1/TP_cc) - (1/(TP_cc + FN_cc)) + (1/FP_cc) - (1/(TN_cc + FP_cc)))
             plr_ci_log <- plr_log + c(-1.96, 1.96) * plr_se
             plr_ci <- exp(plr_ci_log)
         } else {
@@ -283,9 +430,9 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         }
         
         # NLR CI
-        if (FN > 0 && TN > 0) {
+        if (FN_cc > 0 && TN_cc > 0) {
             nlr_log <- log(LRN)
-            nlr_se <- sqrt((1/FN) - (1/(TP + FN)) + (1/TN) - (1/(TN + FP)))
+            nlr_se <- sqrt((1/FN_cc) - (1/(TP_cc + FN_cc)) + (1/TN_cc) - (1/(TN_cc + FP_cc)))
             nlr_ci_log <- nlr_log + c(-1.96, 1.96) * nlr_se
             nlr_ci <- exp(nlr_ci_log)
         } else {
@@ -294,16 +441,16 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         
         # Additional diagnostic metrics from DiagROC
         # Diagnostic Odds Ratio
-        if (FN > 0 && FP > 0) {
-            DOR <- (TP * TN) / (FN * FP)
+        if (FN_cc > 0 && FP_cc > 0) {
+            DOR <- (TP_cc * TN_cc) / (FN_cc * FP_cc)
             # CI for DOR using log transformation
             dor_log <- log(DOR)
-            dor_se <- sqrt((1/TP) + (1/TN) + (1/FN) + (1/FP))
+            dor_se <- sqrt((1/TP_cc) + (1/TN_cc) + (1/FN_cc) + (1/FP_cc))
             dor_ci_log <- dor_log + c(-1.96, 1.96) * dor_se
             dor_ci <- exp(dor_ci_log)
         } else {
-            DOR <- Inf
-            dor_ci <- c(0, Inf)
+            DOR <- NA
+            dor_ci <- c(NA, NA)
         }
         
         # Youden's Index (optimal cut-off criterion)
@@ -406,9 +553,20 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         ratioTable$addFootnote(rowNo = 1, col = "PrevalenceD", "Disease Prevalence in this population")
 
-        ratioTable$addFootnote(rowNo = 1, col = "PPV", "Positive Predictive Value (Probability of having disease after a positive test using this experimental population)")
+        ppv_note <- if (pp) {
+            "Positive Predictive Value (Probability of disease after a positive test using supplied population prevalence)"
+        } else {
+            "Positive Predictive Value (Probability of having disease after a positive test using this study population)"
+        }
+        npv_note <- if (pp) {
+            "Negative Predictive Value (Probability of being healthy after a negative test using supplied population prevalence)"
+        } else {
+            "Negative Predictive Value (Probability of being healthy after a negative test using this study population)"
+        }
 
-        ratioTable$addFootnote(rowNo = 1, col = "NPV", "Negative Predictive Value (Probability of being healthy after a negative test using this experimental population)")
+        ratioTable$addFootnote(rowNo = 1, col = "PPV", ppv_note)
+
+        ratioTable$addFootnote(rowNo = 1, col = "NPV", npv_note)
 
         ratioTable$addFootnote(rowNo = 1, col = "PostTestProbDisease", "Post-test Probability of Having Disease  (Probability of having disease after a positive test using known Population Prevalence)")
 
@@ -441,7 +599,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         # Add footnotes for advanced metrics
         if (self$options$fnote) {
             advancedMetricsTable$addFootnote(rowNo = 1, col = "youdenIndex", 
-                "Youden's Index: Discriminatory ability independent of prevalence. >0.5 excellent, 0.3-0.5 good, 0.1-0.3 fair, <0.1 poor.")
+                "Youden's Index: Discriminatory ability independent of prevalence. >0.8 excellent, 0.6-0.8 good, 0.4-0.6 fair, <0.4 poor.")
             
             advancedMetricsTable$addFootnote(rowNo = 1, col = "balancedAccuracy", 
                 "Balanced Accuracy: Average of sensitivity and specificity. Useful for imbalanced datasets.")
@@ -450,10 +608,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
                 "F1 Score: Harmonic mean of sensitivity and PPV. Ranges 0-1, higher is better.")
             
             advancedMetricsTable$addFootnote(rowNo = 1, col = "mcc", 
-                "Matthews Correlation Coefficient: Overall test quality measure. Ranges -1 to +1, >0.5 is good.")
+                "Matthews Correlation Coefficient: Overall test quality measure. Ranges -1 to +1. >0.8 excellent, 0.6-0.8 good, 0.4-0.6 fair.")
             
             advancedMetricsTable$addFootnote(rowNo = 1, col = "dor", 
-                "Diagnostic Odds Ratio: Overall discriminatory performance. >25 strong, 5-25 moderate, 2-5 weak.")
+                "Diagnostic Odds Ratio: Overall discriminatory performance. >25 strong, 5-25 moderate, 2-5 weak, <2 poor.")
         }
 
 
@@ -467,7 +625,17 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
 
         if (ci) {
 
-
+            # Check if epiR package is available
+            if (!requireNamespace("epiR", quietly = TRUE)) {
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'epiRMissing',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('epiR package is required for confidence intervals. • Install with install.packages("epiR"). • Or disable "95% Confidence Intervals" option.')
+                self$results$insert(999, notice)
+                return()
+            }
 
         # epiR ----
 
@@ -536,10 +704,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         balanced_acc_row <- data.frame(
             statistic = "bal.acc",
             est = BalancedAccuracy,
-            lower = BalancedAccuracy - 1.96*sqrt((Sens*(1-Sens)/(TP+FN) + Spec*(1-Spec)/(TN+FP))/4),
-            upper = BalancedAccuracy + 1.96*sqrt((Sens*(1-Sens)/(TP+FN) + Spec*(1-Spec)/(TN+FP))/4),
+            lower = NA_real_,
+            upper = NA_real_,
             statsabv = "bal.acc",
-            statsnames = "Balanced accuracy",
+            statsnames = "Balanced accuracy (CI not computed)",
             stringsAsFactors = FALSE
         )
         
@@ -547,10 +715,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         f1_row <- data.frame(
             statistic = "f1.score",
             est = F1Score,
-            lower = 0,  # F1 score CI is complex, using simple bounds
-            upper = 1,
+            lower = NA_real_,  # CI not computed
+            upper = NA_real_,
             statsabv = "f1.score", 
-            statsnames = "F1 score",
+            statsnames = "F1 score (CI not computed)",
             stringsAsFactors = FALSE
         )
         
@@ -558,10 +726,10 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
         mcc_row <- data.frame(
             statistic = "mcc",
             est = MCC,
-            lower = -1,  # MCC CI is complex, using theoretical bounds
-            upper = 1,
+            lower = NA_real_,  # CI not computed
+            upper = NA_real_,
             statsabv = "mcc",
-            statsnames = "Matthews correlation coefficient", 
+            statsnames = "Matthews correlation coefficient (CI not computed)", 
             stringsAsFactors = FALSE
         )
         
@@ -625,19 +793,64 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             
             # Helper function to calculate metrics for a cut-off
             calculate_cutoff_metrics <- function(tp, fp, tn, fn, cutoff_name) {
+                # Validate inputs and guard against zero/NA division
+                if (any(is.na(c(tp, fp, tn, fn))) || any(c(tp, fp, tn, fn) < 0)) {
+                    notice <- jmvcore::Notice$new(
+                        options = self$options,
+                        name = 'invalidCutoffInputs',
+                        type = jmvcore::NoticeType$ERROR
+                    )
+                    notice$setContent(sprintf('Invalid inputs for cut-off "%s". • All values (TP=%s, FP=%s, TN=%s, FN=%s) must be non-negative numbers. • Check your input values for errors.', cutoff_name, tp, fp, tn, fn))
+                    self$results$insert(999, notice)
+                    return(NULL)
+                }
+
                 total <- tp + fp + tn + fn
                 diseased <- tp + fn
                 healthy <- tn + fp
-                
-                sens <- tp / diseased
-                spec <- tn / healthy
-                ppv <- tp / (tp + fp)
-                npv <- tn / (tn + fn)
-                accuracy <- (tp + tn) / total
-                youden <- sens + spec - 1
+
+                # Validate that we have cases to analyze
+                if (total == 0) {
+                    notice <- jmvcore::Notice$new(
+                        options = self$options,
+                        name = 'noCasesForCutoff',
+                        type = jmvcore::NoticeType$ERROR
+                    )
+                    notice$setContent(sprintf('No cases for cut-off "%s". • Total cases (TP+FP+TN+FN) = 0. • Check your confusion matrix inputs.', cutoff_name))
+                    self$results$insert(999, notice)
+                    return(NULL)
+                }
+
+                # Safe division with appropriate handling for zero denominators
+                sens <- if (diseased > 0) tp / diseased else NA_real_
+                spec <- if (healthy > 0) tn / healthy else NA_real_
+                ppv <- if ((tp + fp) > 0) tp / (tp + fp) else NA_real_
+                npv <- if ((tn + fn) > 0) tn / (tn + fn) else NA_real_
+                accuracy <- if (total > 0) (tp + tn) / total else NA_real_
+
+                # Youden index only defined when both sens and spec are available
+                youden <- if (!is.na(sens) && !is.na(spec)) sens + spec - 1 else NA_real_
+
+                # Warn if metrics are undefined
+                if (diseased == 0 || healthy == 0) {
+                    notice <- jmvcore::Notice$new(
+                        options = self$options,
+                        name = sprintf('incompleteCutoff_%s', make.names(cutoff_name)),
+                        type = jmvcore::NoticeType$WARNING
+                    )
+                    msg <- sprintf('Cut-off "%s" has incomplete data.', cutoff_name)
+                    if (diseased == 0) msg <- paste0(msg, ' • No diseased cases (TP+FN=0): Sensitivity is undefined.')
+                    if (healthy == 0) msg <- paste0(msg, ' • No healthy cases (TN+FP=0): Specificity is undefined.')
+                    msg <- paste0(msg, ' • Consider this cut-off unreliable for clinical decisions.')
+                    notice$setContent(msg)
+                    self$results$insert(999, notice)
+                }
 
                 # Clinical recommendation based on Youden index and balanced metrics
-                if (youden > private$.YOUDEN_EXCELLENT && accuracy > private$.ACCURACY_EXCELLENT) {
+                # Only make recommendations when all metrics are valid
+                if (is.na(youden) || is.na(accuracy)) {
+                    recommendation <- "Incomplete data - Cannot recommend"
+                } else if (youden > private$.YOUDEN_EXCELLENT && accuracy > private$.ACCURACY_EXCELLENT) {
                     recommendation <- "Excellent performance - Recommended"
                 } else if (youden > private$.YOUDEN_GOOD && accuracy > private$.ACCURACY_GOOD) {
                     recommendation <- "Good performance - Consider for use"
@@ -661,38 +874,53 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             
             # Calculate metrics for both cut-offs
             cutoff1_metrics <- calculate_cutoff_metrics(
-                self$options$tp1, self$options$fp1, 
+                self$options$tp1, self$options$fp1,
                 self$options$tn1, self$options$fn1,
                 self$options$cutoff1
             )
-            
+
             cutoff2_metrics <- calculate_cutoff_metrics(
                 self$options$tp2, self$options$fp2,
-                self$options$tn2, self$options$fn2, 
+                self$options$tn2, self$options$fn2,
                 self$options$cutoff2
             )
-            
+
+            # Skip table population if validation failed
+            if (is.null(cutoff1_metrics) || is.null(cutoff2_metrics)) {
+                notice <- jmvcore::Notice$new(
+                    options = self$options,
+                    name = 'cutoffValidationFailed',
+                    type = jmvcore::NoticeType$ERROR
+                )
+                notice$setContent('Cut-off comparison cannot be performed due to invalid inputs. • Check the error messages above for specific issues. • Ensure all TP, FP, TN, FN values are non-negative numbers.')
+                self$results$insert(999, notice)
+                return()
+            }
+
             # Add rows to comparison table
             multipleCutoffTable$addRow(
                 rowKey = 1,
                 values = cutoff1_metrics
             )
-            
+
             multipleCutoffTable$addRow(
-                rowKey = 2, 
+                rowKey = 2,
                 values = cutoff2_metrics
             )
-            
+
             # Add optimal cut-off recommendation based on current data
             current_youden <- YoudenIndex
             current_accuracy <- AccurT
-            
-            if (cutoff1_metrics$youden > current_youden && cutoff1_metrics$accuracy > current_accuracy) {
+
+            # Safe comparison (handle NA values)
+            optimal_msg <- "Current cut-off appears optimal"
+
+            if (!is.na(cutoff1_metrics$youden) && !is.na(cutoff1_metrics$accuracy) &&
+                cutoff1_metrics$youden > current_youden && cutoff1_metrics$accuracy > current_accuracy) {
                 optimal_msg <- paste0(cutoff1_metrics$cutoffName, " cut-off performs better than current")
-            } else if (cutoff2_metrics$youden > current_youden && cutoff2_metrics$accuracy > current_accuracy) {
+            } else if (!is.na(cutoff2_metrics$youden) && !is.na(cutoff2_metrics$accuracy) &&
+                       cutoff2_metrics$youden > current_youden && cutoff2_metrics$accuracy > current_accuracy) {
                 optimal_msg <- paste0(cutoff2_metrics$cutoffName, " cut-off performs better than current")
-            } else {
-                optimal_msg <- "Current cut-off appears optimal"
             }
             
             multipleCutoffTable$addRow(
@@ -1044,7 +1272,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) R6::R6Class("decisio
             <dd style='margin-left: 20px; margin-bottom: 10px;'>Balanced measure accounting for class imbalance. Range: -1 to +1. >0.8 = excellent, 0.6-0.8 = good, 0.4-0.6 = fair.</dd>
 
             <dt style='font-weight: bold; margin-top: 15px; color: #333;'>DOR (Diagnostic Odds Ratio)</dt>
-            <dd style='margin-left: 20px; margin-bottom: 10px;'>Odds of positive test in diseased vs healthy. <em>Interpretation:</em> >100 = excellent, 20-100 = good, 5-20 = fair, <5 = poor discrimination.</dd>
+            <dd style='margin-left: 20px; margin-bottom: 10px;'>Odds of positive test in diseased vs healthy. <em>Interpretation:</em> >25 = strong, 5-25 = moderate, 2-5 = weak, <2 = poor discrimination.</dd>
             </dl>
             </div>
             </div>"

@@ -92,24 +92,66 @@ items:
           - exct
 
 
-    - name:  text2
-      title: 'Table'
-      type:  Html
+    - name:  contingencyTable
+      title: 'Contingency Table (2 Raters)'
+      type: Table
       visible: (sft)
+      rows: 0
+      columns: []
       clearWith:
           - vars
           - wght
           - exct
 
-
-    - name:  text
-      title: 'Table'
-      type:  Preformatted
-      visible: (sft && showText)
+    - name:  ratingCombinationsTable
+      title: 'Rating Combinations (3+ Raters)'
+      type: Table
+      visible: (sft)
+      rows: 0
+      columns: []
       clearWith:
           - vars
           - wght
           - exct
+
+    - name: blandAltman
+      title: 'Bland-Altman Plot'
+      type: Image
+      width: 500
+      height: 400
+      visible: (blandAltmanPlot)
+      requiresData: true
+      clearWith:
+          - vars
+          - baConfidenceLevel
+
+    - name: blandAltmanStats
+      title: 'Bland-Altman Statistics'
+      type: Table
+      visible: (blandAltmanPlot)
+      rows: 1
+      columns:
+        - name: meanDiff
+          title: 'Mean Difference'
+          type: number
+        - name: sdDiff
+          title: 'SD of Difference'
+          type: number
+        - name: lowerLoA
+          title: 'Lower LoA'
+          type: number
+        - name: upperLoA
+          title: 'Upper LoA'
+          type: number
+        - name: propBiasP
+          title: 'Proportional Bias (p)'
+          type: number
+          format: zto,pvalue
+          visible: (proportionalBias)
+      clearWith:
+          - vars
+          - baConfidenceLevel
+          - proportionalBias
 
 
 

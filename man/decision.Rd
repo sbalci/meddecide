@@ -10,16 +10,20 @@ decision(
   goldPositive,
   newtest,
   testPositive,
+  goldNegative,
+  testNegative,
   pp = FALSE,
   pprob = 0.3,
   od = FALSE,
   fnote = FALSE,
   ci = FALSE,
   fagan = FALSE,
-  showNaturalLanguage = TRUE,
-  showClinicalInterpretation = TRUE,
+  showNaturalLanguage = FALSE,
+  showClinicalInterpretation = FALSE,
   showReportTemplate = FALSE,
-  showAboutAnalysis = FALSE
+  showAboutAnalysis = FALSE,
+  showMisclassified = FALSE,
+  maxCasesShow = 50
 )
 }
 \arguments{
@@ -36,6 +40,12 @@ standard variable.}
 performance.}
 
 \item{testPositive}{The level representing a positive result for the test
+under evaluation.}
+
+\item{goldNegative}{The level indicating absence of disease in the gold
+standard variable.}
+
+\item{testNegative}{The level representing a negative result for the test
 under evaluation.}
 
 \item{pp}{Boolean selection whether to use known population prevalence
@@ -65,10 +75,18 @@ report template.}
 
 \item{showAboutAnalysis}{Boolean selection whether to show the about
 analysis section.}
+
+\item{showMisclassified}{Boolean selection whether to show detailed
+misclassified cases tables.}
+
+\item{maxCasesShow}{Maximum number of misclassified cases to display in
+tables.}
 }
 \value{
 A results object containing:
 \tabular{llllll}{
+\code{results$welcome} \tab \tab \tab \tab \tab a html \cr
+\code{results$notices} \tab \tab \tab \tab \tab a html \cr
 \code{results$rawContingency} \tab \tab \tab \tab \tab a table \cr
 \code{results$rawCounts} \tab \tab \tab \tab \tab a table \cr
 \code{results$cTable} \tab \tab \tab \tab \tab a table \cr
@@ -82,6 +100,12 @@ A results object containing:
 \code{results$clinicalInterpretation} \tab \tab \tab \tab \tab a html \cr
 \code{results$reportTemplate} \tab \tab \tab \tab \tab a html \cr
 \code{results$aboutAnalysis} \tab \tab \tab \tab \tab a html \cr
+\code{results$misclassifiedHeading} \tab \tab \tab \tab \tab a html \cr
+\code{results$confusionMatrixSummary} \tab \tab \tab \tab \tab a table \cr
+\code{results$falsePositiveTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$falseNegativeTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$misclassificationInterpretation} \tab \tab \tab \tab \tab a html \cr
+\code{results$saveClassifications} \tab \tab \tab \tab \tab an output \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

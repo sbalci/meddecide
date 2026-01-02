@@ -7,8 +7,10 @@
 agreement(
   data,
   vars,
+  baConfidenceLevel = 0.95,
+  proportionalBias = FALSE,
+  blandAltmanPlot = FALSE,
   sft = FALSE,
-  showText = FALSE,
   wght = "unweighted",
   exct = FALSE,
   kripp = FALSE,
@@ -25,12 +27,21 @@ where each row is a unique observation.}
 \item{vars}{A string naming the variable from \code{data} that contains the
 diagnosis given by the observer, variable can be categorical or ordinal.}
 
+\item{baConfidenceLevel}{Confidence level for Bland-Altman limits of
+agreement (LoA). Typically 0.95 for 95\\% confidence intervals.}
+
+\item{proportionalBias}{Test whether the difference between raters changes
+systematically with the magnitude of measurement (proportional bias). Uses
+linear regression of difference vs. mean.}
+
+\item{blandAltmanPlot}{Generate Bland-Altman plot for continuous agreement
+analysis. Displays mean difference and limits of agreement between the
+first two raters. Only applicable when raters provide continuous
+measurements (e.g., tumor size in mm).}
+
 \item{sft}{Display frequency tables showing the distribution of ratings for
 each rater. Useful for understanding rating patterns and identifying
 potential biases.}
-
-\item{showText}{Display simple preformatted text version of frequency
-tables. Provides a plain-text alternative to the HTML formatted tables.}
 
 \item{wght}{For ordinal variables (e.g., tumor grade G1/G2/G3), weighted
 kappa accounts for degree of disagreement. Linear weights: Adjacent
@@ -64,8 +75,10 @@ A results object containing:
 \tabular{llllll}{
 \code{results$welcome} \tab \tab \tab \tab \tab a html \cr
 \code{results$irrtable} \tab \tab \tab \tab \tab a table \cr
-\code{results$text2} \tab \tab \tab \tab \tab a html \cr
-\code{results$text} \tab \tab \tab \tab \tab a preformatted \cr
+\code{results$contingencyTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$ratingCombinationsTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$blandAltman} \tab \tab \tab \tab \tab an image \cr
+\code{results$blandAltmanStats} \tab \tab \tab \tab \tab a table \cr
 \code{results$krippTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$weightedKappaGuide} \tab \tab \tab \tab \tab a html \cr
 \code{results$summary} \tab \tab \tab \tab \tab a html \cr

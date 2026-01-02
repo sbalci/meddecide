@@ -7,8 +7,10 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     public = list(
         initialize = function(
             vars = NULL,
+            baConfidenceLevel = 0.95,
+            proportionalBias = FALSE,
+            blandAltmanPlot = FALSE,
             sft = FALSE,
-            showText = FALSE,
             wght = "unweighted",
             exct = FALSE,
             kripp = FALSE,
@@ -25,19 +27,24 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 
             private$..vars <- jmvcore::OptionVariables$new(
                 "vars",
-                vars,
-                suggested=list(
-                    "ordinal",
-                    "nominal"),
-                permitted=list(
-                    "factor"))
+                vars)
+            private$..baConfidenceLevel <- jmvcore::OptionNumber$new(
+                "baConfidenceLevel",
+                baConfidenceLevel,
+                default=0.95,
+                min=0.5,
+                max=0.99)
+            private$..proportionalBias <- jmvcore::OptionBool$new(
+                "proportionalBias",
+                proportionalBias,
+                default=FALSE)
+            private$..blandAltmanPlot <- jmvcore::OptionBool$new(
+                "blandAltmanPlot",
+                blandAltmanPlot,
+                default=FALSE)
             private$..sft <- jmvcore::OptionBool$new(
                 "sft",
                 sft,
-                default=FALSE)
-            private$..showText <- jmvcore::OptionBool$new(
-                "showText",
-                showText,
                 default=FALSE)
             private$..wght <- jmvcore::OptionList$new(
                 "wght",
@@ -78,8 +85,10 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 default=FALSE)
 
             self$.addOption(private$..vars)
+            self$.addOption(private$..baConfidenceLevel)
+            self$.addOption(private$..proportionalBias)
+            self$.addOption(private$..blandAltmanPlot)
             self$.addOption(private$..sft)
-            self$.addOption(private$..showText)
             self$.addOption(private$..wght)
             self$.addOption(private$..exct)
             self$.addOption(private$..kripp)
@@ -90,8 +99,10 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         }),
     active = list(
         vars = function() private$..vars$value,
+        baConfidenceLevel = function() private$..baConfidenceLevel$value,
+        proportionalBias = function() private$..proportionalBias$value,
+        blandAltmanPlot = function() private$..blandAltmanPlot$value,
         sft = function() private$..sft$value,
-        showText = function() private$..showText$value,
         wght = function() private$..wght$value,
         exct = function() private$..exct$value,
         kripp = function() private$..kripp$value,
@@ -101,8 +112,10 @@ agreementOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
         showAbout = function() private$..showAbout$value),
     private = list(
         ..vars = NA,
+        ..baConfidenceLevel = NA,
+        ..proportionalBias = NA,
+        ..blandAltmanPlot = NA,
         ..sft = NA,
-        ..showText = NA,
         ..wght = NA,
         ..exct = NA,
         ..kripp = NA,
@@ -118,8 +131,10 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     active = list(
         welcome = function() private$.items[["welcome"]],
         irrtable = function() private$.items[["irrtable"]],
-        text2 = function() private$.items[["text2"]],
-        text = function() private$.items[["text"]],
+        contingencyTable = function() private$.items[["contingencyTable"]],
+        ratingCombinationsTable = function() private$.items[["ratingCombinationsTable"]],
+        blandAltman = function() private$.items[["blandAltman"]],
+        blandAltmanStats = function() private$.items[["blandAltmanStats"]],
         krippTable = function() private$.items[["krippTable"]],
         weightedKappaGuide = function() private$.items[["weightedKappaGuide"]],
         summary = function() private$.items[["summary"]],
@@ -179,24 +194,72 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     "vars",
                     "wght",
                     "exct")))
-            self$add(jmvcore::Html$new(
+            self$add(jmvcore::Table$new(
                 options=options,
-                name="text2",
-                title="Table",
+                name="contingencyTable",
+                title="Contingency Table (2 Raters)",
                 visible="(sft)",
+                rows=0,
+                columns=list(),
                 clearWith=list(
                     "vars",
                     "wght",
                     "exct")))
-            self$add(jmvcore::Preformatted$new(
+            self$add(jmvcore::Table$new(
                 options=options,
-                name="text",
-                title="Table",
-                visible="(sft && showText)",
+                name="ratingCombinationsTable",
+                title="Rating Combinations (3+ Raters)",
+                visible="(sft)",
+                rows=0,
+                columns=list(),
                 clearWith=list(
                     "vars",
                     "wght",
                     "exct")))
+            self$add(jmvcore::Image$new(
+                options=options,
+                name="blandAltman",
+                title="Bland-Altman Plot",
+                width=500,
+                height=400,
+                visible="(blandAltmanPlot)",
+                requiresData=TRUE,
+                clearWith=list(
+                    "vars",
+                    "baConfidenceLevel")))
+            self$add(jmvcore::Table$new(
+                options=options,
+                name="blandAltmanStats",
+                title="Bland-Altman Statistics",
+                visible="(blandAltmanPlot)",
+                rows=1,
+                columns=list(
+                    list(
+                        `name`="meanDiff", 
+                        `title`="Mean Difference", 
+                        `type`="number"),
+                    list(
+                        `name`="sdDiff", 
+                        `title`="SD of Difference", 
+                        `type`="number"),
+                    list(
+                        `name`="lowerLoA", 
+                        `title`="Lower LoA", 
+                        `type`="number"),
+                    list(
+                        `name`="upperLoA", 
+                        `title`="Upper LoA", 
+                        `type`="number"),
+                    list(
+                        `name`="propBiasP", 
+                        `title`="Proportional Bias (p)", 
+                        `type`="number", 
+                        `format`="zto,pvalue", 
+                        `visible`="(proportionalBias)")),
+                clearWith=list(
+                    "vars",
+                    "baConfidenceLevel",
+                    "proportionalBias")))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="krippTable",
@@ -283,11 +346,18 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'   where each row is a unique observation.
 #' @param vars A string naming the variable from \code{data} that contains the
 #'   diagnosis given by the observer, variable can be categorical or ordinal.
+#' @param baConfidenceLevel Confidence level for Bland-Altman limits of
+#'   agreement (LoA). Typically 0.95 for 95\% confidence intervals.
+#' @param proportionalBias Test whether the difference between raters changes
+#'   systematically with the magnitude of measurement (proportional bias). Uses
+#'   linear regression of difference vs. mean.
+#' @param blandAltmanPlot Generate Bland-Altman plot for continuous agreement
+#'   analysis. Displays mean difference and limits of agreement between the
+#'   first two raters. Only applicable when raters provide continuous
+#'   measurements (e.g., tumor size in mm).
 #' @param sft Display frequency tables showing the distribution of ratings for
 #'   each rater. Useful for understanding rating patterns and identifying
 #'   potential biases.
-#' @param showText Display simple preformatted text version of frequency
-#'   tables. Provides a plain-text alternative to the HTML formatted tables.
 #' @param wght For ordinal variables (e.g., tumor grade G1/G2/G3), weighted
 #'   kappa accounts for degree of disagreement. Linear weights: Adjacent
 #'   disagreements (G1 vs G2) receive partial credit. Squared weights: Larger
@@ -312,8 +382,10 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' \tabular{llllll}{
 #'   \code{results$welcome} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$irrtable} \tab \tab \tab \tab \tab a table \cr
-#'   \code{results$text2} \tab \tab \tab \tab \tab a html \cr
-#'   \code{results$text} \tab \tab \tab \tab \tab a preformatted \cr
+#'   \code{results$contingencyTable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$ratingCombinationsTable} \tab \tab \tab \tab \tab a table \cr
+#'   \code{results$blandAltman} \tab \tab \tab \tab \tab an image \cr
+#'   \code{results$blandAltmanStats} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$krippTable} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$weightedKappaGuide} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$summary} \tab \tab \tab \tab \tab a html \cr
@@ -330,8 +402,10 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 agreement <- function(
     data,
     vars,
+    baConfidenceLevel = 0.95,
+    proportionalBias = FALSE,
+    blandAltmanPlot = FALSE,
     sft = FALSE,
-    showText = FALSE,
     wght = "unweighted",
     exct = FALSE,
     kripp = FALSE,
@@ -349,12 +423,13 @@ agreement <- function(
             parent.frame(),
             `if`( ! missing(vars), vars, NULL))
 
-    for (v in vars) if (v %in% names(data)) data[[v]] <- as.factor(data[[v]])
 
     options <- agreementOptions$new(
         vars = vars,
+        baConfidenceLevel = baConfidenceLevel,
+        proportionalBias = proportionalBias,
+        blandAltmanPlot = blandAltmanPlot,
         sft = sft,
-        showText = showText,
         wght = wght,
         exct = exct,
         kripp = kripp,

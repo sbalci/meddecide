@@ -20,6 +20,7 @@ decisioncompare(
   fnote = FALSE,
   ci = FALSE,
   plot = FALSE,
+  excludeIndeterminate = FALSE,
   radarplot = FALSE,
   statComp = FALSE,
   showSummary = FALSE,
@@ -65,6 +66,10 @@ Requires a value between 0.001 and 0.999, default 0.300.}
 
 \item{plot}{Generate comparison plot showing test performance metrics.}
 
+\item{excludeIndeterminate}{If TRUE, drop rows where test/gold values are
+neither the specified positive level nor a clear negative level to avoid
+inflating specificity/NPV from equivocal results.}
+
 \item{radarplot}{Generate radar plot for comprehensive test comparison
 visualization.}
 
@@ -100,6 +105,7 @@ A results object containing:
 \code{results$explanationsContent} \tab \tab \tab \tab \tab a html \cr
 \code{results$clinicalReport} \tab \tab \tab \tab \tab a html \cr
 \code{results$aboutAnalysis} \tab \tab \tab \tab \tab a html \cr
+\code{results$notices} \tab \tab \tab \tab \tab a html \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

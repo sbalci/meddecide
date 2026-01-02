@@ -3,7 +3,9 @@
     "allow": [
       "Bash(find:*)",
       "Bash(R:*)",
-      "Bash(Rscript:*)"
+      "Bash(Rscript:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)"
     ],
     "deny": []
   }

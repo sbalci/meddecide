@@ -25,9 +25,6 @@ children:
           - type: CheckBox
             name: sft
           - type: CheckBox
-            name: showText
-            enable: (sft)
-          - type: CheckBox
             name: showSummary
           - type: CheckBox
             name: showAbout
@@ -56,3 +53,19 @@ children:
           - type: CheckBox
             name: bootstrap
             enable: (kripp)
+
+  - type: Label
+    label: "Bland-Altman Analysis (Continuous Data)"
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: blandAltmanPlot
+          - type: TextBox
+            name: baConfidenceLevel
+            format: number
+            enable: (blandAltmanPlot)
+          - type: CheckBox
+            name: proportionalBias
+            enable: (blandAltmanPlot)

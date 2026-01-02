@@ -39,40 +39,288 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 cTable$addRow(rowKey = "Test Positive", values = list(newtest = .("Test Positive")))
                 cTable$addRow(rowKey = "Test Negative", values = list(newtest = .("Test Negative")))
                 cTable$addRow(rowKey = "Total", values = list(newtest = .("Total")))
+
+                # Populate welcome message
+                self$results$welcome$setContent("
+                    <div style='padding: 20px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 8px; border-left: 4px solid #4A90E2;'>
+                        <h3 style='margin-top: 0; color: #2c3e50;'>📊 Medical Decision Analysis</h3>
+                        <p style='font-size: 15px; color: #34495e;'>Evaluate diagnostic test performance with sensitivity, specificity, and predictive values.</p>
+
+                        <h4 style='color: #2c3e50; margin-top: 20px;'>Quick Start:</h4>
+                        <ol style='font-size: 14px; color: #34495e; line-height: 1.8;'>
+                            <li><strong>Select Gold Standard:</strong> Choose the reference variable representing true disease status (e.g., biopsy result, final diagnosis)</li>
+                            <li><strong>Select Disease Present Level:</strong> Choose which level indicates disease is present</li>
+                            <li><strong>Select Test Variable:</strong> Choose the diagnostic test you want to evaluate</li>
+                            <li><strong>Select Test Positive Level:</strong> Choose which level represents a positive test result</li>
+                        </ol>
+
+                        <div style='background: #fff; padding: 15px; border-radius: 5px; margin-top: 15px;'>
+                            <h4 style='margin-top: 0; color: #2c3e50;'>💡 What You'll Get:</h4>
+                            <ul style='font-size: 13px; color: #34495e; line-height: 1.6;'>
+                                <li><strong>Sensitivity & Specificity:</strong> How well the test identifies disease presence and absence</li>
+                                <li><strong>Predictive Values:</strong> Probability of disease given test results (PPV, NPV)</li>
+                                <li><strong>Likelihood Ratios:</strong> How much test results change disease probability</li>
+                                <li><strong>Confidence Intervals:</strong> Uncertainty estimates for all statistics</li>
+                                <li><strong>Fagan Nomogram:</strong> Visual representation of probability changes</li>
+                                <li><strong>Misclassification Analysis:</strong> Detailed examination of false positives and false negatives</li>
+                            </ul>
+                        </div>
+                    </div>
+                ")
+
+                # Control welcome message visibility programmatically
+                # Hide when all required options are set
+                has_gold <- !is.null(self$options$gold) && length(self$options$gold) > 0
+                has_newtest <- !is.null(self$options$newtest) && length(self$options$newtest) > 0
+                has_goldPositive <- !is.null(self$options$goldPositive) && length(self$options$goldPositive) > 0 && nchar(self$options$goldPositive) > 0
+                has_testPositive <- !is.null(self$options$testPositive) && length(self$options$testPositive) > 0 && nchar(self$options$testPositive) > 0
+
+                # Show welcome when NOT all options are set
+                # Logic: visible = !(gold && newtest && goldPositive && testPositive)
+                show_welcome <- !(has_gold && has_newtest && has_goldPositive && has_testPositive)
+                self$results$welcome$setVisible(show_welcome)
+            },
+
+            # Initialize notice collection list
+            .noticeList = list(),
+
+            # HTML sanitization for security
+            .safeHtmlOutput = function(text) {
+                if (is.null(text) || length(text) == 0) return("")
+                text <- as.character(text)
+                # Sanitize potentially dangerous characters
+                text <- gsub("&", "&amp;", text, fixed = TRUE)
+                text <- gsub("<", "&lt;", text, fixed = TRUE)
+                text <- gsub(">", "&gt;", text, fixed = TRUE)
+                text <- gsub("\"", "&quot;", text, fixed = TRUE)
+                text <- gsub("'", "&#x27;", text, fixed = TRUE)
+                text <- gsub("/", "&#x2F;", text, fixed = TRUE)
+                return(text)
+            },
+
+            # Add a notice to the collection
+            .addNotice = function(type, title, content) {
+                private$.noticeList[[length(private$.noticeList) + 1]] <- list(
+                    type = type,
+                    title = title,
+                    content = content
+                )
+            },
+
+            # Render collected notices as HTML
+            .renderNotices = function() {
+                if (length(private$.noticeList) == 0) {
+                    return()
+                }
+
+                # Map notice types to colors and icons
+                typeStyles <- list(
+                    ERROR = list(color = "#dc2626", bgcolor = "#fef2f2", border = "#fca5a5", icon = "⛔"),
+                    STRONG_WARNING = list(color = "#ea580c", bgcolor = "#fff7ed", border = "#fdba74", icon = "⚠️"),
+                    WARNING = list(color = "#ca8a04", bgcolor = "#fefce8", border = "#fde047", icon = "⚡"),
+                    INFO = list(color = "#2563eb", bgcolor = "#eff6ff", border = "#93c5fd", icon = "ℹ️")
+                )
+
+                html <- "<div style='margin: 10px 0;'>"
+
+                for (notice in private$.noticeList) {
+                    style <- typeStyles[[notice$type]] %||% typeStyles$INFO
+
+                    html <- paste0(html,
+                        "<div style='background-color: ", style$bgcolor, "; ",
+                        "border-left: 4px solid ", style$border, "; ",
+                        "padding: 12px; margin: 8px 0; border-radius: 4px;'>",
+                        "<strong style='color: ", style$color, ";'>",
+                        style$icon, " ", private$.safeHtmlOutput(notice$title), "</strong><br>",
+                        "<span style='color: #374151;'>", private$.safeHtmlOutput(notice$content), "</span>",
+                        "</div>"
+                    )
+                }
+
+                html <- paste0(html, "</div>")
+
+                self$results$notices$setContent(html)
             },
 
             # Enhanced input validation for categorical diagnostic data
             .validateCategoricalInputs = function() {
                 # Check for required variables with helpful messages
                 if (length(self$options$gold) == 0) {
-                    stop(.("Please select a gold standard (reference) variable"))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "No gold standard variable selected",
+                        content = "Select a reference variable (e.g., biopsy result, final diagnosis). This represents the true disease status."
+                    )
+                    return(FALSE)
                 }
                 if (length(self$options$newtest) == 0) {
-                    stop(.("Please select a test variable to evaluate"))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "No test variable selected",
+                        content = "Select the diagnostic test you want to evaluate. This is typically a new, faster, or less expensive test."
+                    )
+                    return(FALSE)
                 }
                 if (length(self$options$goldPositive) == 0) {
-                    stop(.("Please select the positive level for the gold standard variable"))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "No disease-present level selected for gold standard",
+                        content = "Select the level that indicates disease is present. This represents the condition you want to detect."
+                    )
+                    return(FALSE)
                 }
                 if (length(self$options$testPositive) == 0) {
-                    stop(.("Please select the positive level for the test variable"))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "No positive level selected for test variable",
+                        content = "Select the level that represents a positive test result. This should indicate suspected disease presence."
+                    )
+                    return(FALSE)
                 }
-                
+
                 # Check data availability
                 if (is.null(self$data) || nrow(self$data) == 0) {
-                    stop(.("No data available for analysis. Please ensure your data is loaded."))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "No data available for analysis",
+                        content = "Please ensure your data is loaded. Check that your dataset contains observations."
+                    )
+                    return(FALSE)
                 }
-                
+
                 # Validate data has enough cases
                 if (nrow(self$data) < 4) {
-                    stop(.("Insufficient data: At least 4 cases are required for diagnostic test analysis"))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = sprintf('Insufficient data: %d cases found', nrow(self$data)),
+                        content = "At least 4 cases are required for diagnostic test analysis. Each cell of the 2×2 table should have at least one observation."
+                    )
+                    return(FALSE)
                 }
-                
+
                 # Validate prior probability if specified
                 if (self$options$pp && (self$options$pprob <= 0 || self$options$pprob >= 1)) {
-                    stop(paste0("Population prevalence must be between 0 and 1 (exclusive). Current value: ", self$options$pprob, ". Please enter a value like 0.05 for 5% prevalence."))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = sprintf('Invalid population prevalence: %.3f', self$options$pprob),
+                        content = "Prevalence must be between 0 and 1 (exclusive). For 5% prevalence, enter 0.05. For 20% prevalence, enter 0.20."
+                    )
+                    return(FALSE)
                 }
-                
-                # Allow users to combine population prevalence with confidence intervals.
+
+                # Warn about CI interpretation when using population prevalence
+                if (self$options$pp && self$options$ci) {
+                    private$.addNotice(
+                        type = "WARNING",
+                        title = "Confidence Intervals Interpretation",
+                        content = "The displayed confidence intervals (95% CI) are calculated based on your study sample data. They apply to the sample-based Sensitivity, Specificity, PPV, and NPV. They do NOT apply to the adjusted \"Post-test Probabilities\" calculated using the fixed population prevalence."
+                    )
+                }
+
+                # Validate that selected levels actually exist in the data
+                goldVar <- jmvcore::constructFormula(terms = self$options$gold) %>%
+                          jmvcore::decomposeFormula() %>% unlist()
+                testVar <- jmvcore::constructFormula(terms = self$options$newtest) %>%
+                          jmvcore::decomposeFormula() %>% unlist()
+
+                # Get actual levels from data
+                gold_levels <- if (is.factor(self$data[[goldVar]])) {
+                    levels(self$data[[goldVar]])
+                } else {
+                    sort(unique(as.character(self$data[[goldVar]])))
+                }
+
+                test_levels <- if (is.factor(self$data[[testVar]])) {
+                    levels(self$data[[testVar]])
+                } else {
+                    sort(unique(as.character(self$data[[testVar]])))
+                }
+
+                # Validate gold standard positive level
+                if (!(self$options$goldPositive %in% gold_levels)) {
+                    available_levels <- if (length(gold_levels) <= 10) {
+                        paste(gold_levels, collapse = ", ")
+                    } else {
+                        paste(c(gold_levels[1:10], "..."), collapse = ", ")
+                    }
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = sprintf('Disease-present level "%s" not found in gold standard variable', self$options$goldPositive),
+                        content = sprintf('Available levels: %s. Check for typos or select the correct level from the dropdown.', available_levels)
+                    )
+                    return(FALSE)
+                }
+
+                # Validate test positive level
+                if (!(self$options$testPositive %in% test_levels)) {
+                    available_levels <- if (length(test_levels) <= 10) {
+                        paste(test_levels, collapse = ", ")
+                    } else {
+                        paste(c(test_levels[1:10], "..."), collapse = ", ")
+                    }
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = sprintf('Test-positive level "%s" not found in test variable', self$options$testPositive),
+                        content = sprintf('Available levels: %s. Check for typos or select the correct level from the dropdown.', available_levels)
+                    )
+                    return(FALSE)
+                }
+
+                # Validate gold standard negative level if specified
+                if (length(self$options$goldNegative) > 0 && nchar(self$options$goldNegative) > 0) {
+                    if (!(self$options$goldNegative %in% gold_levels)) {
+                        available_levels <- if (length(gold_levels) <= 10) {
+                            paste(gold_levels, collapse = ", ")
+                        } else {
+                            paste(c(gold_levels[1:10], "..."), collapse = ", ")
+                        }
+                        private$.addNotice(
+                            type = "ERROR",
+                            title = sprintf('Disease-absent level "%s" not found in gold standard variable', self$options$goldNegative),
+                            content = sprintf('Available levels: %s. Check for typos or select the correct level from the dropdown.', available_levels)
+                        )
+                        return(FALSE)
+                    }
+
+                    # Check that positive and negative levels are different
+                    if (self$options$goldNegative == self$options$goldPositive) {
+                        private$.addNotice(
+                            type = "ERROR",
+                            title = "Disease-present and disease-absent levels cannot be the same",
+                            content = "Select different levels for positive and negative outcomes."
+                        )
+                        return(FALSE)
+                    }
+                }
+
+                # Validate test negative level if specified
+                if (length(self$options$testNegative) > 0 && nchar(self$options$testNegative) > 0) {
+                    if (!(self$options$testNegative %in% test_levels)) {
+                        available_levels <- if (length(test_levels) <= 10) {
+                            paste(test_levels, collapse = ", ")
+                        } else {
+                            paste(c(test_levels[1:10], "..."), collapse = ", ")
+                        }
+                        private$.addNotice(
+                            type = "ERROR",
+                            title = sprintf('Test-negative level "%s" not found in test variable', self$options$testNegative),
+                            content = sprintf('Available levels: %s. Check for typos or select the correct level from the dropdown.', available_levels)
+                        )
+                        return(FALSE)
+                    }
+
+                    # Check that positive and negative levels are different
+                    if (self$options$testNegative == self$options$testPositive) {
+                        private$.addNotice(
+                            type = "ERROR",
+                            title = "Test-positive and test-negative levels cannot be the same",
+                            content = "Select different levels for positive and negative outcomes."
+                        )
+                        return(FALSE)
+                    }
+                }
+
+                return(TRUE)
             },
 
             # Enhanced likelihood ratio validation with recovery
@@ -137,52 +385,140 @@ decisionClass <- if (requireNamespace("jmvcore"))
 
                 vars_needed <- unique(c(testVar, goldVar))
                 if (length(vars_needed) < 2) {
-                    stop(.("Selected variables are not available in the data."))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "Selected variables are not available in the data",
+                        content = "Check that variable names are correct. Ensure the data has been loaded properly."
+                    )
+                    return(NULL)
                 }
 
                 # Restrict case removal to variables used in the diagnostic table
+                # Track original row indices BEFORE filtering
                 subset_data <- self$data[, vars_needed, drop = FALSE]
+                subset_data$original_row_index <- seq_len(nrow(subset_data))
+
                 mydata <- jmvcore::naOmit(subset_data)
 
                 if (nrow(mydata) < nrow(self$data)) {
                     removed <- nrow(self$data) - nrow(mydata)
-                    warning(paste0("Removed ", removed, " rows with missing diagnostic data"))
+                    private$.addNotice(
+                        type = "WARNING",
+                        title = sprintf('Removed %d row(s) with missing diagnostic data', removed),
+                        content = sprintf('Complete-case analysis uses %d of %d cases. Consider investigating patterns of missingness.', nrow(mydata), nrow(self$data))
+                    )
                 }
                 
                 # Convert to factors and recode in single pipeline
                 mydata[[testVar]] <- forcats::as_factor(mydata[[testVar]])
                 mydata[[goldVar]] <- forcats::as_factor(mydata[[goldVar]])
-                
-                # Efficient recoding with single mutate
-                mydata <- mydata %>% 
+
+                # Get actual levels for validation
+                gold_actual_levels <- levels(mydata[[goldVar]])
+                test_actual_levels <- levels(mydata[[testVar]])
+
+                # Determine negative levels (explicit or implicit)
+                has_gold_negative <- length(self$options$goldNegative) > 0 && nchar(self$options$goldNegative) > 0
+                has_test_negative <- length(self$options$testNegative) > 0 && nchar(self$options$testNegative) > 0
+
+                gold_negative_level <- if (has_gold_negative) self$options$goldNegative else NULL
+                test_negative_level <- if (has_test_negative) self$options$testNegative else NULL
+
+                # Check for levels that will be excluded (not positive, not negative)
+                gold_used_levels <- c(self$options$goldPositive, gold_negative_level)
+                test_used_levels <- c(self$options$testPositive, test_negative_level)
+
+                gold_excluded <- setdiff(gold_actual_levels, gold_used_levels)
+                test_excluded <- setdiff(test_actual_levels, test_used_levels)
+
+                if (length(gold_excluded) > 0) {
+                    excluded_str <- if (length(gold_excluded) <= 5) {
+                        paste(gold_excluded, collapse = ", ")
+                    } else {
+                        paste(c(gold_excluded[1:5], "..."), collapse = ", ")
+                    }
+                    if (has_gold_negative) {
+                        private$.addNotice(
+                            type = "WARNING",
+                            title = sprintf('Gold standard levels excluded from analysis: %s', excluded_str),
+                            content = sprintf('Only "%s" (disease-present) and "%s" (disease-absent) will be used. Rows with excluded levels will be removed. To include all levels, leave "Disease Absent Level" empty.', self$options$goldPositive, gold_negative_level)
+                        )
+                    } else {
+                        private$.addNotice(
+                            type = "WARNING",
+                            title = sprintf('Gold standard has %d level(s) beyond positive: %s', length(gold_excluded), excluded_str),
+                            content = 'These will be treated as disease-absent (negative). If this is incorrect, explicitly select the "Disease Absent Level".'
+                        )
+                    }
+                }
+
+                if (length(test_excluded) > 0) {
+                    excluded_str <- if (length(test_excluded) <= 5) {
+                        paste(test_excluded, collapse = ", ")
+                    } else {
+                        paste(c(test_excluded[1:5], "..."), collapse = ", ")
+                    }
+                    if (has_test_negative) {
+                        private$.addNotice(
+                            type = "WARNING",
+                            title = sprintf('Test variable levels excluded from analysis: %s', excluded_str),
+                            content = sprintf('Only "%s" (test-positive) and "%s" (test-negative) will be used. Rows with excluded levels will be removed. To include all levels, leave "Test Negative Level" empty.', self$options$testPositive, test_negative_level)
+                        )
+                    } else {
+                        private$.addNotice(
+                            type = "WARNING",
+                            title = sprintf('Test variable has %d level(s) beyond positive: %s', length(test_excluded), excluded_str),
+                            content = 'These will be treated as test-negative. If this is incorrect, explicitly select the "Test Negative Level".'
+                        )
+                    }
+                }
+
+                # Efficient recoding with explicit negative level handling
+                mydata <- mydata %>%
                     dplyr::mutate(
                         testVariable2 = dplyr::case_when(
                             is.na(.data[[testVar]]) ~ NA_character_,
                             .data[[testVar]] == self$options$testPositive ~ "Positive",
-                            TRUE ~ "Negative"
+                            !has_test_negative ~ "Negative",  # If no explicit negative, treat all others as negative
+                            .data[[testVar]] == test_negative_level ~ "Negative",
+                            TRUE ~ NA_character_  # Explicit negative specified, others become NA (filtered)
                         ),
                         goldVariable2 = dplyr::case_when(
                             is.na(.data[[goldVar]]) ~ NA_character_,
-                            .data[[goldVar]] == self$options$goldPositive ~ "Positive", 
-                            TRUE ~ "Negative"
+                            .data[[goldVar]] == self$options$goldPositive ~ "Positive",
+                            !has_gold_negative ~ "Negative",  # If no explicit negative, treat all others as negative
+                            .data[[goldVar]] == gold_negative_level ~ "Negative",
+                            TRUE ~ NA_character_  # Explicit negative specified, others become NA (filtered)
                         )
                     ) %>%
                     dplyr::mutate(
                         testVariable2 = forcats::fct_relevel(testVariable2, "Positive"),
                         goldVariable2 = forcats::fct_relevel(goldVariable2, "Positive")
                     )
+
+                # Remove rows with NA in recoded variables (excluded levels when explicit negative specified)
+                mydata <- mydata %>% dplyr::filter(!is.na(testVariable2), !is.na(goldVariable2))
                 
                 # Validate contingency table structure after data preparation
                 test_table <- table(mydata$testVariable2, mydata$goldVariable2)
                 
                 # Check for empty cells that would cause problems
                 if (any(dim(test_table) != c(2, 2))) {
-                    stop(.("Invalid data structure: Both test and gold standard variables must have exactly 2 levels each"))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "Invalid data structure: Both test and gold standard variables must have exactly 2 levels each",
+                        content = "Ensure your variables are dichotomous (binary). Check that positive/negative levels are correctly specified."
+                    )
+                    return(NULL)
                 }
                 
                 # Check for zero cells that would cause division by zero
                 if (any(test_table == 0)) {
-                    warning(.("Zero counts detected in contingency table. Results may be unstable. Consider collecting more data."))
+                    private$.addNotice(
+                        type = "STRONG_WARNING",
+                        title = "Zero counts detected in contingency table",
+                        content = "Results may be unstable or undefined (e.g., infinite likelihood ratios). Consider collecting more data or using exact methods. Ensure both tests and gold standard have both positive and negative cases."
+                    )
                 }
                 
                 return(list(data = mydata, testVar = testVar, goldVar = goldVar))
@@ -438,11 +774,18 @@ decisionClass <- if (requireNamespace("jmvcore"))
             # Check data size and provide performance warnings
             .checkDataSize = function(data) {
                 n_rows <- nrow(data)
-                if (n_rows > 10000) {
-                    message(sprintf("Large dataset detected (%d rows). Analysis may take longer.", n_rows))
-                }
                 if (n_rows > 100000) {
-                    warning("Very large dataset (>100,000 rows). Consider sampling for initial analysis.")
+                    private$.addNotice(
+                        type = "WARNING",
+                        title = sprintf('Very large dataset detected (%d rows)', n_rows),
+                        content = "Analysis may take longer than usual. Consider sampling for initial exploratory analysis. Full dataset will still be used for final results."
+                    )
+                } else if (n_rows > 10000) {
+                    private$.addNotice(
+                        type = "INFO",
+                        title = sprintf('Large dataset detected (%d rows)', n_rows),
+                        content = "Analysis may take a moment to complete."
+                    )
                 }
             },
 
@@ -453,18 +796,31 @@ decisionClass <- if (requireNamespace("jmvcore"))
 
                 # Clinical best practices for diagnostic tests
                 if (total_n < 20) {
-                    warning("Very small sample size (n < 20). Results may be unreliable. Consider collecting more data.")
+                    private$.addNotice(
+                        type = "STRONG_WARNING",
+                        title = sprintf('Very small sample size: n = %d (< 20 cases)', total_n),
+                        content = "Results may be unreliable and unstable. Confidence intervals will be very wide. Consider collecting more data before making clinical decisions. Minimum recommended: 100 cases for robust estimates."
+                    )
                 } else if (total_n < 50) {
-                    message("Small sample size (n < 50). Interpret results with caution.")
+                    private$.addNotice(
+                        type = "WARNING",
+                        title = sprintf('Small sample size: n = %d (< 50 cases)', total_n),
+                        content = "Interpret results with caution. Confidence intervals may be wide. Minimum recommended: 100 cases for robust estimates."
+                    )
+                } else if (total_n < 100) {
+                    private$.addNotice(
+                        type = "INFO",
+                        title = sprintf('Sample size: n = %d', total_n),
+                        content = "For robust diagnostic test evaluation, 100+ cases recommended. Current sample provides preliminary estimates."
+                    )
                 }
 
                 if (min_cell < 5) {
-                    warning("Cell count < 5 detected. Consider Fisher's exact test or collect more data for stable estimates.")
-                }
-
-                # Recommend minimum for stable estimates
-                if (total_n < 100) {
-                    message("For robust diagnostic test evaluation, a minimum of 100 cases is recommended.")
+                    private$.addNotice(
+                        type = "WARNING",
+                        title = sprintf('Small cell count detected (minimum = %d, < 5)', min_cell),
+                        content = "Statistical estimates may be unstable. Consider Fisher's exact test for small samples. Collect more data for stable estimates of sensitivity/specificity."
+                    )
                 }
             },
 
@@ -659,11 +1015,19 @@ decisionClass <- if (requireNamespace("jmvcore"))
                     return()
 
                 # Consolidated input validation
-                private$.validateCategoricalInputs()
+                if (!private$.validateCategoricalInputs()) {
+                    return()
+                }
 
                 # Efficient data preparation with missing data analysis
                 original_data <- self$data
                 prepared_data <- private$.prepareAnalysisData()
+
+                # Check if data preparation failed
+                if (is.null(prepared_data)) {
+                    return()
+                }
+
                 mydata <- prepared_data$data
                 testVariable <- prepared_data$testVar
                 goldVariable <- prepared_data$goldVar
@@ -674,13 +1038,15 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 # Enhanced missing data reporting
                 missing_analysis <- private$.analyzeMissingData(original_data, mydata)
                 if (nrow(original_data) != nrow(mydata)) {
-                    message(missing_analysis)
+                    # Missing data summary is already shown via missingDataSummary HTML output
+                    # No need for console message - users see it in the results panel
+                    self$results$missingDataSummary$setContent(missing_analysis)
                 }
 
                 # Table 1 ----
 
                 results1 <- mydata %>%
-                    dplyr::select(.data[[testVariable]], .data[[goldVariable]]) %>%
+                    dplyr::select(dplyr::all_of(c(testVariable, goldVariable))) %>%
                     table()
 
                 # self$results$text1$setContent(results1)
@@ -695,10 +1061,12 @@ decisionClass <- if (requireNamespace("jmvcore"))
 
                 # self$results$text2$setContent(result2)
 
-                # Populate raw contingency jamovi table
+                # Populate raw contingency jamovi table (using user's selected levels, not lexicographic order)
                 raw_contingency <- self$results$rawContingency
-                try(raw_contingency$clear(), silent = TRUE)
+                # Clear existing rows - jamovi tables use deleteRows(), not clear()
+                try(raw_contingency$deleteRows(), silent = TRUE)
 
+                # Get actual levels from the ORIGINAL variables (before recoding)
                 test_levels <- if (is.factor(mydata[[testVariable]])) {
                     levels(mydata[[testVariable]])
                 } else {
@@ -711,22 +1079,39 @@ decisionClass <- if (requireNamespace("jmvcore"))
                     sort(unique(as.character(mydata[[goldVariable]])))
                 }
 
+                # Determine gold negative level (explicit or infer)
+                has_gold_negative <- length(self$options$goldNegative) > 0 && nchar(self$options$goldNegative) > 0
+                gold_negative_level <- if (has_gold_negative) {
+                    self$options$goldNegative
+                } else {
+                    # Infer: any level that's not positive
+                    setdiff(gold_levels, self$options$goldPositive)[1]
+                }
+
+                # Determine test negative level (explicit or infer)
+                has_test_negative <- length(self$options$testNegative) > 0 && nchar(self$options$testNegative) > 0
+                test_negative_level <- if (has_test_negative) {
+                    self$options$testNegative
+                } else {
+                    # Infer: any level that's not positive
+                    setdiff(test_levels, self$options$testPositive)[1]
+                }
+
                 results_matrix <- as.matrix(results1)
 
+                # Set column headers using USER'S selections, not lexicographic order
                 if (!is.null(raw_contingency$getColumn("test_level"))) {
                     raw_contingency$getColumn("test_level")$setTitle(testVariable)
                     raw_contingency$getColumn("test_level")$setSuperTitle("")
                 }
                 if (!is.null(raw_contingency$getColumn("gold_pos"))) {
-                    raw_contingency$getColumn("gold_pos")$setTitle(
-                        if (length(gold_levels) >= 1) gold_levels[1] else ""
-                    )
+                    # Use user's goldPositive selection
+                    raw_contingency$getColumn("gold_pos")$setTitle(self$options$goldPositive)
                     raw_contingency$getColumn("gold_pos")$setSuperTitle(goldVariable)
                 }
                 if (!is.null(raw_contingency$getColumn("gold_neg"))) {
-                    raw_contingency$getColumn("gold_neg")$setTitle(
-                        if (length(gold_levels) >= 2) gold_levels[2] else ""
-                    )
+                    # Use user's goldNegative selection (or inferred)
+                    raw_contingency$getColumn("gold_neg")$setTitle(gold_negative_level)
                     raw_contingency$getColumn("gold_neg")$setSuperTitle(goldVariable)
                 }
                 if (!is.null(raw_contingency$getColumn("row_total"))) {
@@ -737,10 +1122,16 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 row_names <- rownames(results_matrix)
                 col_names <- colnames(results_matrix)
 
+                # Populate rows in order: positive test first, then negative test
+                ordered_test_levels <- c(self$options$testPositive, test_negative_level)
+
                 if (!is.null(test_levels) && length(test_levels) > 0 &&
                     !is.null(gold_levels) && length(gold_levels) > 0) {
 
-                    for (lvl in test_levels) {
+                    for (lvl in ordered_test_levels) {
+                        # Skip if this level doesn't exist in the data
+                        if (!(lvl %in% test_levels)) next
+
                         row_vector <- if (!is.null(row_names) && lvl %in% row_names) {
                             results_matrix[lvl, , drop = FALSE]
                         } else {
@@ -754,21 +1145,20 @@ decisionClass <- if (requireNamespace("jmvcore"))
                             names(row_values) <- col_names
                         }
 
-                        val_pos <- if (length(gold_levels) >= 1 &&
-                                        gold_levels[1] %in% names(row_values)) {
-                            row_values[[gold_levels[1]]]
+                        # Use user's selected positive/negative levels
+                        val_pos <- if (self$options$goldPositive %in% names(row_values)) {
+                            row_values[[self$options$goldPositive]]
                         } else {
                             NA_real_
                         }
 
-                        val_neg <- if (length(gold_levels) >= 2 &&
-                                        gold_levels[2] %in% names(row_values)) {
-                            row_values[[gold_levels[2]]]
+                        val_neg <- if (gold_negative_level %in% names(row_values)) {
+                            row_values[[gold_negative_level]]
                         } else {
                             NA_real_
                         }
 
-                        row_total <- sum(row_values)
+                        row_total <- sum(row_values, na.rm = TRUE)
 
                         raw_contingency$addRow(
                             rowKey = paste0("row_", lvl),
@@ -790,16 +1180,15 @@ decisionClass <- if (requireNamespace("jmvcore"))
                         names(col_totals) <- gold_levels
                     }
 
-                    total_pos <- if (length(gold_levels) >= 1 &&
-                                        gold_levels[1] %in% names(col_totals)) {
-                        col_totals[[gold_levels[1]]]
+                    # Use user's selected levels for totals
+                    total_pos <- if (self$options$goldPositive %in% names(col_totals)) {
+                        col_totals[[self$options$goldPositive]]
                     } else {
                         NA_real_
                     }
 
-                    total_neg <- if (length(gold_levels) >= 2 &&
-                                        gold_levels[2] %in% names(col_totals)) {
-                        col_totals[[gold_levels[2]]]
+                    total_neg <- if (gold_negative_level %in% names(col_totals)) {
+                        col_totals[[gold_negative_level]]
                     } else {
                         NA_real_
                     }
@@ -817,7 +1206,8 @@ decisionClass <- if (requireNamespace("jmvcore"))
 
                 # Populate raw combination count jamovi table
                 raw_counts_table <- self$results$rawCounts
-                try(raw_counts_table$clear(), silent = TRUE)
+                # Clear existing rows - jamovi tables use deleteRows(), not clear()
+                try(raw_counts_table$deleteRows(), silent = TRUE)
 
                 if (!is.null(raw_counts_table$getColumn("test_level"))) {
                     raw_counts_table$getColumn("test_level")$setTitle(testVariable)
@@ -872,22 +1262,59 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 # Validate sample size and provide clinical guidance
                 private$.validateSampleSize(conf_table)
 
+                # Apply Haldane-Anscombe correction for zero cells to stabilize LR/OR
+                conf_table_cc <- conf_table
+                continuity_used <- FALSE
+                if (any(conf_table == 0)) {
+                    conf_table_cc <- conf_table + 0.5
+                    continuity_used <- TRUE
+                }
 
 
                 # Extract confusion matrix values with error handling
-                tryCatch({
-                    TP <- conf_table[1, 1]
-                    FP <- conf_table[1, 2]
-                    FN <- conf_table[2, 1]
-                    TN <- conf_table[2, 2]
-                    
-                    # Validate extracted values
-                    if (any(is.na(c(TP, FP, FN, TN))) || any(c(TP, FP, FN, TN) < 0)) {
-                        stop(.("Invalid contingency table values detected"))
-                    }
+                extraction_result <- tryCatch({
+                    list(
+                        TP = conf_table[1, 1],
+                        FP = conf_table[1, 2],
+                        FN = conf_table[2, 1],
+                        TN = conf_table[2, 2]
+                        ,
+                        TPc = conf_table_cc[1, 1],
+                        FPc = conf_table_cc[1, 2],
+                        FNc = conf_table_cc[2, 1],
+                        TNc = conf_table_cc[2, 2]
+                    )
                 }, error = function(e) {
-                    stop(paste0("Error extracting confusion matrix values: ", e$message, ". Please check your data formatting."))
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = sprintf('Error extracting confusion matrix values: %s', e$message),
+                        content = "Check your data formatting. Ensure both variables have exactly 2 levels. Verify positive/negative levels are correctly specified."
+                    )
+                    return(NULL)
                 })
+
+                if (is.null(extraction_result)) {
+                    return()
+                }
+
+                TP <- extraction_result$TP
+                FP <- extraction_result$FP
+                FN <- extraction_result$FN
+                TN <- extraction_result$TN
+                TPc <- extraction_result$TPc
+                FPc <- extraction_result$FPc
+                FNc <- extraction_result$FNc
+                TNc <- extraction_result$TNc
+
+                # Validate extracted values
+                if (any(is.na(c(TP, FP, FN, TN))) || any(c(TP, FP, FN, TN) < 0)) {
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "Invalid contingency table values detected",
+                        content = "Confusion matrix contains NA or negative values. Check that your data is properly formatted. Ensure sufficient observations in all categories."
+                    )
+                    return()
+                }
 
 
 
@@ -999,20 +1426,20 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 for (metric_name in c("Sens", "Spec", "AccurT", "PrevalenceD", "PPV", "NPV")) {
                     metric_value <- get(metric_name)
                     if (!is.na(metric_value) && (metric_value < 0 || metric_value > 1)) {
-                        warning(sprintf("%s out of valid range [0,1]: %.3f - check data", metric_name, metric_value))
+                        # Metric validation - should not occur with proper data validation
+                        # warning(sprintf("%s out of valid range [0,1]: %.3f - check data", metric_name, metric_value))
                     }
                 }
 
                 # Debug logging for edge cases and unusual conditions
                 if (getOption("jamovi.debug", FALSE)) {
-                    message(sprintf("Decision analysis debug: n=%d, prev=%.3f, sens=%.3f, spec=%.3f, ppv=%.3f, npv=%.3f",
-                                   TotalPop, PrevalenceD, Sens, Spec, PPV, NPV))
+                    # Debug message - commented out for production
+                    # message(sprintf("Decision analysis debug: n=%d, prev=%.3f, sens=%.3f, spec=%.3f, ppv=%.3f, npv=%.3f",
+                    #                TotalPop, PrevalenceD, Sens, Spec, PPV, NPV))
 
                     # Log potential issues
-                    if (TotalPop < 30) message("Warning: Small sample size detected")
-                    if (PrevalenceD < 0.05 || PrevalenceD > 0.95) message("Warning: Extreme prevalence detected")
-                    if (any(c(TP, FP, FN, TN) < 5)) message("Warning: Small cell counts detected")
-                    if (is.na(LRP) || is.na(LRN)) message("Note: Undefined likelihood ratios (perfect test)")
+                    # Data quality checks - these are now handled by .validateSampleSize() via Notices
+                    # Small sample size, extreme prevalence, small cell counts notifications are emitted earlier
                 }
 
 
@@ -1046,27 +1473,30 @@ decisionClass <- if (requireNamespace("jmvcore"))
 
 
 
-                # Calculate likelihood ratios with proper statistical handling
+                # Calculate likelihood ratios with proper statistical handling (use continuity-corrected counts when needed)
                 if (is.na(Sens) || is.na(Spec)) {
                     LRP <- NA
                     LRN <- NA
                 } else {
-                    # LR+ = Sensitivity / (1 - Specificity) = True Positive Rate / False Positive Rate
-                    LRP <- if (Spec < 1) {
-                        Sens / (1 - Spec)
-                    } else if (Sens == 1 && Spec == 1) {
+                    sens_cc <- TPc / (TPc + FNc)
+                    spec_cc <- TNc / (TNc + FPc)
+
+                    # LR+ = Sensitivity / (1 - Specificity)
+                    LRP <- if (spec_cc < 1) {
+                        sens_cc / (1 - spec_cc)
+                    } else if (sens_cc == 1 && spec_cc == 1) {
                         NA  # Perfect test - undefined
                     } else {
-                        Inf  # No false positives
+                        Inf
                     }
 
-                    # LR- = (1 - Sensitivity) / Specificity = False Negative Rate / True Negative Rate
-                    LRN <- if (Spec > 0) {
-                        (1 - Sens) / Spec
-                    } else if (Sens == 1 && Spec == 1) {
-                        NA  # Perfect test - undefined
+                    # LR- = (1 - Sensitivity) / Specificity
+                    LRN <- if (spec_cc > 0) {
+                        (1 - sens_cc) / spec_cc
+                    } else if (sens_cc == 1 && spec_cc == 1) {
+                        NA
                     } else {
-                        Inf  # No true negatives
+                        Inf
                     }
                 }
 
@@ -1075,7 +1505,19 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 LRP <- lr_validation$lrp
                 LRN <- lr_validation$lrn
                 if (length(lr_validation$issues) > 0) {
-                    message(paste("LR adjustments:", paste(lr_validation$issues, collapse = "; ")))
+                    private$.addNotice(
+                        type = "INFO",
+                        title = "Likelihood ratio adjustments applied",
+                        content = sprintf('%s. Results have been adjusted for statistical validity.', paste(lr_validation$issues, collapse = "; "))
+                    )
+                }
+
+                if (continuity_used) {
+                    private$.addNotice(
+                        type = "INFO",
+                        title = "Continuity correction applied",
+                        content = "Zero cells detected; applied Haldane-Anscombe 0.5 continuity correction for LR/OR calculations (sensitivity/specificity still use observed counts)."
+                    )
                 }
 
 
@@ -1190,7 +1632,26 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 }, error = function(e) {
                     # Silently handle misuse detection errors
                 })
-                
+
+                # Misclassified Cases Analysis and Output
+                tryCatch({
+                    # Helper to check if output variable is properly specified
+                    has_output_var <- !is.null(self$options$saveClassifications) &&
+                                     length(self$options$saveClassifications) > 0 &&
+                                     nchar(self$options$saveClassifications) > 0
+
+                    # Always create classifications if output is requested or analysis is shown
+                    if (self$options$showMisclassified || has_output_var) {
+                        private$.analyzeMisclassifiedCases(mydata, goldVariable, testVariable)
+                    }
+                }, error = function(e) {
+                    private$.addNotice(
+                        type = "ERROR",
+                        title = "Error in misclassified cases analysis",
+                        content = paste("Technical details:", e$message, "Please report this issue if it persists.")
+                    )
+                })
+
                 # Add footnotes using centralized method
                 private$.addFootnotes()
 
@@ -1252,18 +1713,22 @@ decisionClass <- if (requireNamespace("jmvcore"))
 
                                     epir_success <- nrow(epir_ratio) > 0 || nrow(epir_number) > 0
                                 } else {
-                                    warning("epiR statistical detail did not include expected measures - confidence intervals not available")
+                                    # epiR package issue - silently skip, user won't see CI tables
+                                    # warning("epiR statistical detail did not include expected measures - confidence intervals not available")
                                 }
                             } else {
-                                warning("epiR detail is NULL or empty - confidence intervals not available")
+                                # epiR package issue - silently skip
+                                # warning("epiR detail is NULL or empty - confidence intervals not available")
                             }
                         } else {
-                            warning("epiR returned NULL results - confidence intervals not available")
+                            # epiR package issue - silently skip
+                            # warning("epiR returned NULL results - confidence intervals not available")
                         }
 
                     }, error = function(e) {
                         # Handle epiR errors gracefully
-                        warning(paste("Error in epiR confidence interval calculation:", e$message))
+                        # epiR error - silently skip, CI table won't be populated
+                        # warning(paste("Error in epiR confidence interval calculation:", e$message))
                         epir_success <- FALSE
                     })
 
@@ -1338,7 +1803,8 @@ decisionClass <- if (requireNamespace("jmvcore"))
                     image1$setState(plotData1)
                 }
 
-
+                # Render all collected notices as HTML (last step)
+                private$.renderNotices()
 
             },
 
@@ -1347,13 +1813,12 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 required_fields <- c("Prevalence", "Plr", "Nlr", "Sens", "Spec")
 
                 if (is.null(state)) {
-                    stop("Plot state is null - cannot generate plot")
+                    return(NULL)
                 }
 
                 missing_fields <- setdiff(required_fields, names(state))
                 if (length(missing_fields) > 0) {
-                    stop(paste("Missing required plot data fields:",
-                               paste(missing_fields, collapse = ", ")))
+                    return(NULL)
                 }
 
                 # Validate numeric ranges
@@ -1361,7 +1826,8 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 for (field in numeric_fields) {
                     if (!is.numeric(state[[field]]) ||
                         state[[field]] < 0 || state[[field]] > 1) {
-                        warning(paste("Invalid", field, "value:", state[[field]]))
+                        # Plot state validation - returns NULL to prevent plotting
+                        # warning(paste("Invalid", field, "value:", state[[field]]))
                         state[[field]] <- max(0, min(1, as.numeric(state[[field]])))
                     }
                 }
@@ -1373,6 +1839,11 @@ decisionClass <- if (requireNamespace("jmvcore"))
             .plot1 = function(image1, ggtheme, ...) {
                 # Validate plot state data structure
                 plotData1 <- private$.validatePlotState(image1$state)
+
+                if (is.null(plotData1)) {
+                    # Return FALSE to prevent plot rendering
+                    return(FALSE)
+                }
 
                 nomogram_fn <- get0("nomogrammer", mode = "function", inherits = TRUE)
 
@@ -1390,7 +1861,8 @@ decisionClass <- if (requireNamespace("jmvcore"))
                     }
 
                     if (is.na(prevalence) || prevalence <= 0 || prevalence >= 1) {
-                        stop("Prevalence must be between 0 and 1 to produce the probability plot")
+                        # Return FALSE instead of stopping
+                        return(FALSE)
                     }
 
                     pre_odds <- prevalence / (1 - prevalence)
@@ -1449,17 +1921,215 @@ decisionClass <- if (requireNamespace("jmvcore"))
                 print(plot1)
                 TRUE
 
+            },
+
+            # Misclassified Cases Analysis ----
+            # Inspired by Orange Data Mining's interactive confusion matrix
+            # Adapted for static jamovi output
+
+            .analyzeMisclassifiedCases = function(mydata2, gold_var, test_var) {
+
+                # Get levels
+                gold_pos <- self$options$goldPositive
+                test_pos <- self$options$testPositive
+
+                # Create classification groups for all data rows (not just complete cases)
+                # Initialize with NA for all rows in original dataset
+                classification_vector <- rep(NA_character_, nrow(self$data))
+
+                # Map complete case indices back to original data indices
+                # Get row names from mydata2 to match with original data
+                complete_indices <- as.numeric(rownames(mydata2))
+
+                # Create classification groups for complete cases
+                mydata2$classification_group <- NA_character_
+
+                # True Positive: Test+ and Disease+
+                tp_idx <- mydata2[[test_var]] == test_pos & mydata2[[gold_var]] == gold_pos
+                mydata2$classification_group[tp_idx] <- "True Positive"
+
+                # False Positive: Test+ but Disease-
+                fp_idx <- mydata2[[test_var]] == test_pos & mydata2[[gold_var]] != gold_pos
+                mydata2$classification_group[fp_idx] <- "False Positive"
+
+                # False Negative: Test- but Disease+
+                fn_idx <- mydata2[[test_var]] != test_pos & mydata2[[gold_var]] == gold_pos
+                mydata2$classification_group[fn_idx] <- "False Negative"
+
+                # True Negative: Test- and Disease-
+                tn_idx <- mydata2[[test_var]] != test_pos & mydata2[[gold_var]] != gold_pos
+                mydata2$classification_group[tn_idx] <- "True Negative"
+
+                # Map complete case classifications back to original data positions
+                if (length(complete_indices) > 0) {
+                    classification_vector[complete_indices] <- mydata2$classification_group
+                }
+
+                # Save classifications to dataset if output variable is specified
+                if (!is.null(self$options$saveClassifications) &&
+                    length(self$options$saveClassifications) > 0 &&
+                    nchar(self$options$saveClassifications) > 0) {
+                    output <- self$results$saveClassifications
+                    if (!is.null(output) && is.function(output$setValues)) {
+                        output$setValues(classification_vector)
+                    }
+                }
+
+                # Only populate tables if user requested to see misclassified cases
+                if (!self$options$showMisclassified) {
+                    return()
+                }
+
+                # Summary counts
+                n_total <- nrow(mydata2)
+                n_tp <- sum(tp_idx, na.rm = TRUE)
+                n_fp <- sum(fp_idx, na.rm = TRUE)
+                n_fn <- sum(fn_idx, na.rm = TRUE)
+                n_tn <- sum(tn_idx, na.rm = TRUE)
+
+                # Populate confusion matrix summary
+                summary_table <- self$results$confusionMatrixSummary
+                try(summary_table$deleteRows(), silent = TRUE)
+                summary_table$addRow(rowKey = 1, values = list(
+                    classification = "True Positive",
+                    count = n_tp,
+                    percentage = n_tp / n_total
+                ))
+                summary_table$addRow(rowKey = 2, values = list(
+                    classification = "False Positive",
+                    count = n_fp,
+                    percentage = n_fp / n_total
+                ))
+                summary_table$addRow(rowKey = 3, values = list(
+                    classification = "False Negative",
+                    count = n_fn,
+                    percentage = n_fn / n_total
+                ))
+                summary_table$addRow(rowKey = 4, values = list(
+                    classification = "True Negative",
+                    count = n_tn,
+                    percentage = n_tn / n_total
+                ))
+
+                # False Positive cases table
+                fp_table <- self$results$falsePositiveTable
+                try(fp_table$deleteRows(), silent = TRUE)
+                if (n_fp > 0) {
+                    fp_cases <- mydata2[fp_idx, ]
+                    # Use original row indices from the dataset, not filtered indices
+                    fp_cases$row_id <- fp_cases$original_row_index
+
+                    max_show <- min(self$options$maxCasesShow, nrow(fp_cases))
+                    try(fp_table$deleteRows(), silent = TRUE)
+
+                    for (i in seq_len(max_show)) {
+                        fp_table$addRow(rowKey = i, values = list(
+                            case_id = fp_cases$row_id[i],
+                            gold_value = as.character(fp_cases[[gold_var]][i]),
+                            test_value = as.character(fp_cases[[test_var]][i])
+                        ))
+                    }
+
+                    if (nrow(fp_cases) > max_show) {
+                        note_text <- sprintf("Showing first %d of %d false positive cases",
+                                           max_show, nrow(fp_cases))
+                        fp_table$setNote("truncated", note_text)
+                    }
+                }
+
+                # False Negative cases table
+                fn_table <- self$results$falseNegativeTable
+                try(fn_table$deleteRows(), silent = TRUE)
+                if (n_fn > 0) {
+                    fn_cases <- mydata2[fn_idx, ]
+                    # Use original row indices from the dataset, not filtered indices
+                    fn_cases$row_id <- fn_cases$original_row_index
+
+                    max_show <- min(self$options$maxCasesShow, nrow(fn_cases))
+                    try(fn_table$deleteRows(), silent = TRUE)
+
+                    for (i in seq_len(max_show)) {
+                        fn_table$addRow(rowKey = i, values = list(
+                            case_id = fn_cases$row_id[i],
+                            gold_value = as.character(fn_cases[[gold_var]][i]),
+                            test_value = as.character(fn_cases[[test_var]][i])
+                        ))
+                    }
+
+                    if (nrow(fn_cases) > max_show) {
+                        note_text <- sprintf("Showing first %d of %d false negative cases",
+                                           max_show, nrow(fn_cases))
+                        fn_table$setNote("truncated", note_text)
+                    }
+                }
+
+                # Interpretation
+                private$.generateMisclassificationInterpretation(n_tp, n_fp, n_fn, n_tn)
+            },
+
+            .generateMisclassificationInterpretation = function(n_tp, n_fp, n_fn, n_tn) {
+
+                total_errors <- n_fp + n_fn
+                error_rate <- (total_errors / (n_tp + n_fp + n_fn + n_tn)) * 100
+
+                fp_proportion <- if (total_errors > 0) (n_fp / total_errors) * 100 else 0
+                fn_proportion <- if (total_errors > 0) (n_fn / total_errors) * 100 else 0
+
+                html <- "<h3>Understanding Misclassifications</h3>"
+
+                html <- paste0(html, sprintf(
+                    "<p><b>Error Summary:</b> %d total misclassifications (%.1f%% error rate)</p>",
+                    total_errors, error_rate
+                ))
+
+                html <- paste0(html, "<ul>")
+                html <- paste0(html, sprintf(
+                    "<li><b>False Positives:</b> %d cases (%.1f%% of errors) - Test incorrectly predicts disease</li>",
+                    n_fp, fp_proportion
+                ))
+                html <- paste0(html, sprintf(
+                    "<li><b>False Negatives:</b> %d cases (%.1f%% of errors) - Test misses actual disease</li>",
+                    n_fn, fn_proportion
+                ))
+                html <- paste0(html, "</ul>")
+
+                # Clinical interpretation
+                if (n_fp > n_fn) {
+                    html <- paste0(html,
+                        "<p><b>Clinical Implication:</b> The test tends to over-diagnose (more false positives). ",
+                        "This may lead to unnecessary treatments but rarely misses disease.</p>")
+                } else if (n_fn > n_fp) {
+                    html <- paste0(html,
+                        "<p><b>Clinical Implication:</b> The test tends to under-diagnose (more false negatives). ",
+                        "This may miss cases that need treatment but reduces unnecessary interventions.</p>")
+                } else {
+                    html <- paste0(html,
+                        "<p><b>Clinical Implication:</b> The test has balanced error types.</p>")
+                }
+
+                # Recommendations
+                html <- paste0(html, "<p><b>Recommendations:</b></p><ul>")
+
+                if (n_fp > 0) {
+                    html <- paste0(html,
+                        "<li>Review false positive cases to identify common characteristics</li>",
+                        "<li>Consider if test cutpoint needs adjustment to reduce false positives</li>")
+                }
+
+                if (n_fn > 0) {
+                    html <- paste0(html,
+                        "<li>Review false negative cases to understand what the test misses</li>",
+                        "<li>Consider supplementary tests for cases with high clinical suspicion</li>")
+                }
+
+                html <- paste0(html, "</ul>")
+
+                html <- paste0(html,
+                    "<p><i>This analysis was inspired by Orange Data Mining's interactive confusion matrix feature, ",
+                    "adapted for static jamovi output with comprehensive statistical tables.</i></p>")
+
+                self$results$misclassificationInterpretation$setContent(html)
             }
-
-
-
-
-
-
-
-
-
-
 
 
         )

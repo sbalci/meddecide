@@ -261,6 +261,57 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
     .prevalenceList = list(),         # Store prevalence values
     .aucList = list(),               # Store AUC values for clinical interpretation
     .forestPlotData = NULL,          # Store forest plot data for meta-analysis
+    
+    # ============================================================================
+    # INITIALIZATION AND VALIDATION
+    # ============================================================================
+
+    # COMMENTED OUT: Duplicate .init - see complete implementation at line ~1711
+    # .init = function() {
+    #   # Initialize tables and plots
+    #
+    #   # Hide advanced results by default
+    #   self$results$clinicalInterpretationTable$setVisible(
+    #     self$options$clinicalMode %in% c("basic", "advanced", "comprehensive")
+    #   )
+    #
+    #   # Show run summary if available (it's always visible in r.yaml/default, but we can set content)
+    #   self$results$runSummary$setContent("")
+    # },
+
+    .validateInputsOLD = function() {
+      # 1. Check if data is present
+      if (is.null(self$data) || nrow(self$data) == 0) {
+        return(list(valid = FALSE, message = "No data available for analysis."))
+      }
+      
+      # 2. Check class variable
+      classVar <- self$options$classVar
+      if (is.null(classVar) || !classVar %in% names(self$data)) {
+        return(list(valid = FALSE, message = "Class variable not specified or not found."))
+      }
+      
+      # 3. Check positive class
+      posClass <- self$options$positiveClass
+      if (!is.null(posClass) && posClass != "") {
+        # Verify positive class exists in data
+        actualLevels <- unique(as.character(self$data[[classVar]]))
+        if (!posClass %in% actualLevels) {
+          return(list(valid = FALSE, message = sprintf(
+            "Specified positive class '%s' not found in variable '%s'. Available levels: %s",
+            posClass, classVar, paste(actualLevels, collapse = ", ")
+          )))
+        }
+      }
+      
+      # 4. Check dependent variables
+      depVars <- self$options$dependentVars
+      if (is.null(depVars) || length(depVars) == 0) {
+        return(list(valid = FALSE, message = "No test variables selected."))
+      }
+      
+      return(list(valid = TRUE, message = ""))
+    },
 
     # ============================================================================
     # UTILITY METHODS
@@ -303,9 +354,26 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       
       stop(full_message, call. = FALSE)
     },
-    
+
+    # Safe variable name handling for data frame access
+    .escapeVar = function(x) {
+      if (is.null(x) || length(x) == 0) return(x)
+      vapply(x, function(v) {
+        if (is.character(v) && nzchar(v)) {
+          # Use backticks for spaces/special chars in formulas
+          if (grepl("[^A-Za-z0-9_.]", v)) {
+            paste0("`", v, "`")
+          } else {
+            v
+          }
+        } else {
+          as.character(v)
+        }
+      }, character(1), USE.NAMES = FALSE)
+    },
+
     # ============================================================================
-    # CLINICAL UTILITY METHODS  
+    # CLINICAL UTILITY METHODS
     # ============================================================================
     
     # Apply clinical mode settings
@@ -705,7 +773,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       cutpoint <- fixed_result$cutpoint
       achieved_sens <- fixed_result$achieved_sensitivity
       achieved_spec <- fixed_result$achieved_specificity
-      
+
       # Calculate PPV, NPV, accuracy, and Youden's J
       # Find the closest threshold in the confusion matrix for exact calculations
       closest_idx <- which.min(abs(confusionMatrix$x.sorted - cutpoint))
@@ -713,16 +781,32 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       fp <- confusionMatrix$fp[closest_idx]
       tn <- confusionMatrix$tn[closest_idx]
       fn <- confusionMatrix$fn[closest_idx]
-      
+
       ppv <- tp / (tp + fp)
       npv <- tn / (tn + fn)
       accuracy <- (tp + tn) / (tp + fp + tn + fn)
       youden <- achieved_sens + achieved_spec - 1
-      
+
+      # Ensure all values are atomic (scalar) for jamovi table
+      # Convert vectors to single values, handle NaN/Inf
+      cutpoint <- as.numeric(cutpoint)[1]
+      achieved_sens <- as.numeric(achieved_sens)[1]
+      achieved_spec <- as.numeric(achieved_spec)[1]
+      ppv <- as.numeric(ppv)[1]
+      npv <- as.numeric(npv)[1]
+      accuracy <- as.numeric(accuracy)[1]
+      youden <- as.numeric(youden)[1]
+      target_value <- as.numeric(target_value)[1]
+
+      # Ensure strings are atomic
+      var <- as.character(var)[1]
+      analysis_type_str <- paste("Fixed", tools::toTitleCase(analysis_type))
+      interpolation_str <- as.character(fixed_result$interpolation_method)[1]
+
       # Add row to table
       table$addRow(rowKey = var, values = list(
         variable = var,
-        analysis_type = paste("Fixed", tools::toTitleCase(analysis_type)),
+        analysis_type = analysis_type_str,
         target_value = target_value,
         cutpoint = cutpoint,
         achieved_sensitivity = achieved_sens,
@@ -731,7 +815,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         npv = npv,
         accuracy = accuracy,
         youden = youden,
-        interpolation_used = fixed_result$interpolation_method
+        interpolation_used = interpolation_str
       ))
     },
 
@@ -895,7 +979,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       roc_obj <- pROC::roc(
         response = class,
         predictor = x,
-        levels = c(unique(class)[unique(class) != positiveClass][1], positiveClass),
+        levels = c(setdiff(levels(class), positiveClass)[1], positiveClass),
         direction = "<",
         quiet = TRUE
       )
@@ -943,7 +1027,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       roc_obj <- pROC::roc(
         response = class,
         predictor = x,
-        levels = c(unique(class)[unique(class) != positiveClass][1], positiveClass),
+        levels = c(setdiff(levels(class), positiveClass)[1], positiveClass),
         direction = "<",
         quiet = TRUE
       )
@@ -979,7 +1063,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       roc_obj <- pROC::roc(
         response = class,
         predictor = x,
-        levels = c(unique(class)[unique(class) != positiveClass][1], positiveClass),
+        levels = c(setdiff(levels(class), positiveClass)[1], positiveClass),
         direction = "<",
         quiet = TRUE
       )
@@ -1010,8 +1094,13 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
                               silent = TRUE)
 
           if (!inherits(threshold_ci, "try-error")) {
+            # Handle case where multiple CIs are returned (e.g. multiple optimal thresholds)
+            if (is.list(threshold_ci) && !inherits(threshold_ci, "ci")) {
+              threshold_ci <- threshold_ci[[1]]
+            }
+
             results$threshold <- list(
-              estimate = optimal_coords$threshold,
+              estimate = if(length(optimal_coords$threshold) > 1) optimal_coords$threshold[1] else optimal_coords$threshold,
               ci_lower = threshold_ci[1],
               ci_upper = threshold_ci[3]
             )
@@ -1054,15 +1143,21 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
     # Prepare data for a single variable with optional subgrouping
     .prepareVarData = function(data, var, subGroup) {
+      # Escape variable names for safe data frame access
+      classVarEscaped <- private$.escapeVar(self$options$classVar)
+
       if (is.null(subGroup)) {
-        dependentVar <- as.numeric(data[, var])
-        classVar <- data[, self$options$classVar]
+        # Use [[]] for column access with escaped names
+        varEscaped <- private$.escapeVar(var)
+        dependentVar <- as.numeric(data[[varEscaped]])
+        classVar <- data[[classVarEscaped]]
       } else {
         varParts <- strsplit(var, split = "_")[[1]]
         varName <- varParts[1]
+        varNameEscaped <- private$.escapeVar(varName)
         groupName <- paste(varParts[-1], collapse="_")
-        dependentVar <- as.numeric(data[subGroup == groupName, varName])
-        classVar <- data[subGroup == groupName, self$options$classVar]
+        dependentVar <- as.numeric(data[subGroup == groupName, varNameEscaped])
+        classVar <- data[subGroup == groupName, classVarEscaped]
       }
       
       # Data validation and cleaning
@@ -1086,7 +1181,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       classVar <- factor(ifelse(classVar == self$options$positiveClass, 
                                self$options$positiveClass, 
                                "Other"), 
-                        levels = c(self$options$positiveClass, "Other"))
+                        levels = c("Other", self$options$positiveClass))
       
       # Check minimum sample sizes
       pos_count <- sum(classVar == self$options$positiveClass)
@@ -1307,13 +1402,15 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       if (self$options$sensSpecTable) {
         sensSpecTable <- self$results$sensSpecTable$get(key = var)
 
-        # Get optimal cutpoint data
-        optimal_idx <- which(confusionMatrix$x.sorted == results$optimal_cutpoint[1])
+        # Get optimal cutpoint data - use closest match instead of exact equality
+        # to avoid floating point precision issues
+        optimal_idx <- which.min(abs(confusionMatrix$x.sorted - results$optimal_cutpoint[1]))
         if (length(optimal_idx) > 0) {
-          tp <- confusionMatrix$tp[optimal_idx]
-          fp <- confusionMatrix$fp[optimal_idx]
-          tn <- confusionMatrix$tn[optimal_idx]
-          fn <- confusionMatrix$fn[optimal_idx]
+          # Ensure we get scalar values for the confusion matrix cells
+          tp <- as.numeric(confusionMatrix$tp[optimal_idx])[1]
+          fp <- as.numeric(confusionMatrix$fp[optimal_idx])[1]
+          tn <- as.numeric(confusionMatrix$tn[optimal_idx])[1]
+          fn <- as.numeric(confusionMatrix$fn[optimal_idx])[1]
 
           # Create HTML table using enhanced formatting
           html_table <- private$.formatSensSpecTable(
@@ -1387,7 +1484,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       roc_obj <- pROC::roc(
         response = class,
         predictor = x,
-        levels = c(unique(class)[unique(class) != positiveClass][1], positiveClass),
+        levels = c(setdiff(levels(class), positiveClass)[1], positiveClass),
         direction = "<",
         quiet = TRUE
       )
@@ -1407,7 +1504,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       threshold <- coords$threshold
 
       # Get predictions using optimal threshold
-      predicted_prob <- pROC::predict.roc(roc_obj)
+      predicted_prob <- roc_obj$predictor
       predicted_class <- ifelse(predicted_prob >= threshold, 1, 0)
 
       # Calculate Brier score
@@ -1467,9 +1564,14 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         }
       }
 
+      # Check for NA values in classification variable
+      if (any(is.na(classVar))) {
+        stop(.("Classification variable contains missing values (NA). Please remove or handle missing values before performing ROC analysis."))
+      }
+
       # Check if positive class exists in the data
       id.pos <- classVar == positiveClass
-      if (sum(id.pos) < 1) {
+      if (sum(id.pos, na.rm = TRUE) < 1) {
         stop(.("Wrong level specified for positive class. No observations found."))
       }
 
@@ -1655,6 +1757,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
     .init = function() {
       # Keep main tables visible but empty them to prevent loading animations
       self$results$simpleResultsTable$setVisible(TRUE)
+      self$results$runSummary$setVisible(TRUE)
       self$results$aucSummaryTable$setVisible(TRUE)
       self$results$clinicalInterpretationTable$setVisible(TRUE)
       
@@ -1675,9 +1778,46 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       private$.applyClinicalPresetSettings()
       self$results$precisionRecallPlot$setVisible(FALSE)
       self$results$procedureNotes$setVisible(FALSE)
+      self$results$metaAnalysisWarning$setVisible(FALSE)
       self$results$metaAnalysisTable$setVisible(FALSE)
       self$results$metaAnalysisForestPlot$setVisible(FALSE)
-      
+
+      # Initialize advanced plot states (enable rendering when data is ready)
+      # These plots have renderFun defined in .r.yaml but need setState to activate
+      if (length(self$options$dependentVars) > 0) {
+        # Effect size plots
+        if (self$options$effectSizeAnalysis && length(self$options$dependentVars) > 1) {
+          for (var in self$options$dependentVars) {
+            image <- self$results$effectSizePlot$get(key=var)
+            if (!is.null(image)) image$setState(list(ready=FALSE))
+          }
+        }
+
+        # Power curve plots
+        if (self$options$powerAnalysis) {
+          for (var in self$options$dependentVars) {
+            image <- self$results$powerCurvePlot$get(key=var)
+            if (!is.null(image)) image$setState(list(ready=FALSE))
+          }
+        }
+
+        # Bayesian trace plots
+        if (self$options$bayesianAnalysis) {
+          for (var in self$options$dependentVars) {
+            image <- self$results$bayesianTracePlot$get(key=var)
+            if (!is.null(image)) image$setState(list(ready=FALSE))
+          }
+        }
+
+        # Decision curve plots
+        if (self$options$clinicalUtilityAnalysis) {
+          for (var in self$options$dependentVars) {
+            image <- self$results$decisionCurvePlot$get(key=var)
+            if (!is.null(image)) image$setState(list(ready=FALSE))
+          }
+        }
+      }
+
       # Set up initial instructions - show by default until variables are provided
       self$results$instructions$setVisible(TRUE)
       self$results$instructions$setContent(
@@ -1711,6 +1851,14 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
     # Execute the ROC analysis
     .run = function() {
+      print("DEBUG: Starting .run")
+      
+      # -----------------------------------------------------------------------
+      # 0. SET SEED FOR REPRODUCIBILITY
+      # -----------------------------------------------------------------------
+      if (!is.null(self$options$seed)) {
+        set.seed(self$options$seed)
+      }
 
       # -----------------------------------------------------------------------
       # 1. INSTRUCTIONS AND PRELIMINARY CHECKS
@@ -1744,8 +1892,16 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         )
         return()
       } else {
+        # Strict Validation
+        val <- private$.validateInputs()
+        if (!is.null(val)) {
+          self$results$runSummary$setContent(paste("<b>Error:</b>", val))
+          self$results$instructions$setVisible(FALSE)
+          stop(val) # Stop execution
+        }
+
         # Hide instructions when inputs are provided
-        self$results$instructions$setVisible(visible = FALSE)
+        self$results$instructions$setVisible(FALSE)
         
         # Show procedure notes when analysis proceeds
         self$results$procedureNotes$setVisible(TRUE)
@@ -1798,10 +1954,10 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         }
 
         # Add subgroup info if used
-        if (!is.null(self$options$subGroup)) {
+        if (FALSE) { # (!is.null(self$options$subGroup) && self$options$subGroup != "") {
           procedureNotes <- paste0(
             procedureNotes,
-            "<p> Sub-Group Variable: ",
+            "<p> Subgroup Variable: ",
             self$options$subGroup,
             "</p>")
         }
@@ -1848,20 +2004,25 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         self$results$procedureNotes$setContent(procedureNotes)
       }
 
+
       # -----------------------------------------------------------------------
       # 2. SET UP ANALYSIS PARAMETERS
       # -----------------------------------------------------------------------
+      print("DEBUG: Setup Analysis Parameters")
 
       # Get data
       data <- self$data
 
       # Determine positive class early for use throughout the analysis
+      # Escape class variable name for safe data access
+      classVarEscaped <- private$.escapeVar(self$options$classVar)
+
       if (!is.null(self$options$positiveClass) && self$options$positiveClass != "") {
         # Use the level selector value
         positiveClass <- self$options$positiveClass
 
         # Verify the selected level exists in the data
-        classVar <- data[, self$options$classVar]
+        classVar <- data[[classVarEscaped]]
         if (!positiveClass %in% levels(factor(classVar))) {
           warning(paste("Selected positive class", positiveClass,
                         "not found in data. Using first level instead."))
@@ -1869,9 +2030,60 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         }
       } else {
         # Default to first level if not specified
-        classVar <- data[, self$options$classVar]
+        classVar <- data[[classVarEscaped]]
         positiveClass <- levels(factor(classVar))[1]
       }
+      
+      # -----------------------------------------------------------------------
+      # 2.5. VALIDATION AND SAFEGUARDS
+      # -----------------------------------------------------------------------
+      
+      # Check class imbalance
+      n_pos <- sum(classVar == positiveClass, na.rm = TRUE)
+      n_total <- sum(!is.na(classVar))
+      prevalence <- if (n_total > 0) n_pos / n_total else NA
+
+      summary_status <- list()
+      summary_status$warnings <- character()
+
+      if (!is.na(prevalence) && (prevalence < 0.1 || prevalence > 0.9)) {
+        summary_status$warnings <- c(summary_status$warnings,
+          sprintf("Class imbalance detected (Prevalence: %.1f%%). Consider using Precision-Recall curves.", prevalence * 100))
+      }
+      
+      # Gating incompatible options
+      if (!is.null(self$options$subGroup)) {
+        if (self$options$delongTest) {
+           summary_status$warnings <- c(summary_status$warnings, "DeLong test disabled because subgroup analysis is active.")
+        }
+        if (self$options$calculateIDI || self$options$calculateNRI) {
+           summary_status$warnings <- c(summary_status$warnings, "IDI/NRI disabled because subgroup analysis is active.")
+        }
+      }
+      
+      # Populate Run Summary
+      run_summary_html <- paste0(
+        "<div style='padding: 10px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 15px;'>",
+        "<h4>Analysis Status</h4>",
+        "<ul>",
+        "<li><strong>Seed:</strong> ", self$options$seed, "</li>",
+        "<li><strong>Positive Class:</strong> ", positiveClass, " (Prevalence: ", round(prevalence * 100, 1), "%)</li>", 
+        "<li><strong>Analysis Mode:</strong> ", tools::toTitleCase(self$options$clinicalMode), "</li>"
+      )
+      
+      if (length(summary_status$warnings) > 0) {
+        run_summary_html <- paste0(run_summary_html, 
+          "</ul><div style='background-color: #fff3cd; color: #856404; padding: 10px; border-radius: 4px; margin-top: 10px;'>",
+          "<strong>Warnings:</strong><ul>")
+        for (w in summary_status$warnings) {
+          run_summary_html <- paste0(run_summary_html, "<li>", w, "</li>")
+        }
+        run_summary_html <- paste0(run_summary_html, "</ul></div>")
+      } else {
+        run_summary_html <- paste0(run_summary_html, "</ul></div>")
+      }
+      
+      self$results$runSummary$setContent(run_summary_html)
 
       # Set up cutpoint method
       if (self$options$method == "oc_manual") {
@@ -1934,6 +2146,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
       # Set up metric function
       metricName <- self$options$metric
+      
       if (metricName == "youden") {
         metric <- cutpointr::youden
       } else if (metricName == "sum_sens_spec") {
@@ -1992,12 +2205,14 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         cutpoint = numeric(),
         sensitivity = numeric(),
         specificity = numeric(),
+
         ppv = numeric(),
         npv = numeric(),
         AUC = numeric(),
         youden = numeric(),
         stringsAsFactors = FALSE
       )
+
 
       # -----------------------------------------------------------------------
       # 3. PREPARE VARIABLES FOR ANALYSIS
@@ -2008,8 +2223,13 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
       # Handle subgroups if present
       if (!is.null(self$options$subGroup)) {
-        subGroup <- data[, self$options$subGroup]
-        classVar <- data[, self$options$classVar]
+        # Escape variable names for safe data frame access
+        subGroupEscaped <- private$.escapeVar(self$options$subGroup)
+        classVarEscaped <- private$.escapeVar(self$options$classVar)
+
+        # Use [[]] for safe column access with escaped names
+        subGroup <- data[[subGroupEscaped]]
+        classVar <- data[[classVarEscaped]]
         uniqueGroups <- unique(subGroup)
         # Create combined variable names (var_group)
         vars <- apply(expand.grid(vars, uniqueGroups), 1, function(x) paste(x, collapse="_"))
@@ -2182,7 +2402,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
           if (self$options$combinePlots == FALSE) {
             # Individual plot for this variable
             image <- self$results$plotROC$get(key = var)
-            image$setTitle(.("ROC Curve: {var}"))
+            image$setTitle(paste("ROC Curve:", var))
             image$setState(
               data.frame(
                 var = rep(var, length(confusionMatrix$x.sorted)),
@@ -2201,13 +2421,13 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
             # Set states for additional plots if enabled
             if (self$options$showCriterionPlot) {
               criterionImage <- self$results$criterionPlot$get(key = var)
-              criterionImage$setTitle(.("Sensitivity and Specificity vs. Threshold: {var}"))
+              criterionImage$setTitle(paste("Sensitivity and Specificity vs. Threshold:", var))
               criterionImage$setState(private$.rocDataList[[var]])
             }
 
             if (self$options$showPrevalencePlot) {
               prevImage <- self$results$prevalencePlot$get(key = var)
-              prevImage$setTitle(.("Predictive Values vs. Prevalence: {var}"))
+              prevImage$setTitle(paste("Predictive Values vs. Prevalence:", var))
               prevImage$setState(list(
                 optimal = private$.optimalCriteriaList[[var]],
                 prevalence = private$.prevalenceList[[var]]
@@ -2225,7 +2445,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
               )
 
               dotImage <- self$results$dotPlot$get(key = var)
-              dotImage$setTitle(.("Dot Plot: {var}"))
+              dotImage$setTitle(paste("Dot Plot:", var))
               dotImage$setState(rawData)
             }
           } else {
@@ -2323,11 +2543,35 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         if (!is.null(self$options$subGroup)) {
           stop(.("DeLong's test does not currently support the group variable. If you would like to contribute/provide guidance, please use the contact information provided in the documentation."))
         } else {
+          # Escape variable names for safe data access
+          depVarsEscaped <- private$.escapeVar(self$options$dependentVars)
+          classVarEscaped <- private$.escapeVar(self$options$classVar)
+
+          # Prepare data frames with escaped column names
+          depVarsData <- data.frame(lapply(depVarsEscaped, function(v) as.numeric(data[[v]])))
+          names(depVarsData) <- self$options$dependentVars  # Use original names for output
+
+          # Prepare classification variable
+          classVarData <- as.character(data[[classVarEscaped]])
+
+          # Filter out rows with NA values in classification variable
+          complete_cases <- !is.na(classVarData)
+          n_excluded <- sum(!complete_cases)
+
+          if (n_excluded > 0) {
+            # Filter data to complete cases only
+            depVarsData_complete <- depVarsData[complete_cases, , drop = FALSE]
+            classVarData_complete <- classVarData[complete_cases]
+          } else {
+            depVarsData_complete <- depVarsData
+            classVarData_complete <- classVarData
+          }
+
           # Run enhanced DeLong's test with better error handling
           delongResults <- tryCatch({
             private$.enhancedDelongTest(
-              data = data.frame(lapply(data[, self$options$dependentVars], as.numeric)),
-              classVar = as.character(data[, self$options$classVar]),
+              data = depVarsData_complete,
+              classVar = classVarData_complete,
               pos_class = positiveClass,
               ref = NULL,
               conf.level = 0.95
@@ -2336,8 +2580,8 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
             # Fallback to original implementation if enhanced version fails
             warning(paste("Enhanced DeLong test failed, using fallback:", e$message))
             private$.deLongTest(
-              data = data.frame(lapply(data[, self$options$dependentVars], as.numeric)),
-              classVar = as.character(data[, self$options$classVar]),
+              data = depVarsData_complete,
+              classVar = classVarData_complete,
               ref = NULL,
               positiveClass = positiveClass,
               conf.level = 0.95
@@ -2346,6 +2590,22 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
           # Display results
           self$results$delongTest$setVisible(visible = TRUE)
+
+          # Add methodology note
+          self$results$delongComparisonTable$setNote(
+            key = "delong_method",
+            note = "DeLong's test uses validated pROC package implementation. Reference: DeLong ER, DeLong DM, Clarke-Pearson DL (1988). Comparing the areas under two or more correlated ROC curves: a nonparametric approach. Biometrics 44(3):837-845.",
+            init = FALSE
+          )
+
+          # Add note about excluded cases if any
+          if (n_excluded > 0) {
+            self$results$delongComparisonTable$setNote(
+              key = "missing_cases",
+              note = sprintf("Note: %d row(s) with missing values in the classification variable were excluded from DeLong test analysis.", n_excluded),
+              init = FALSE
+            )
+          }
 
           # Use enhanced formatting if available
           if (inherits(delongResults, "EnhancedDeLong")) {
@@ -2396,13 +2656,16 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         auc_value <- aucList[[var]]
 
         # Get counts of positive and negative cases for this variable
+        # Escape class variable name for safe data access
+        classVarEscaped <- private$.escapeVar(self$options$classVar)
+
         if (is.null(subGroup)) {
-          classVar <- data[, self$options$classVar]
+          classVar <- data[[classVarEscaped]]
         } else {
           # For grouped variables, extract the group
           varParts <- strsplit(var, split = "_")[[1]]
           groupName <- paste(varParts[-1], collapse="_")
-          classVar <- data[subGroup == groupName, self$options$classVar]
+          classVar <- data[subGroup == groupName, classVarEscaped]
         }
 
         n_pos <- sum(classVar == positiveClass)
@@ -2457,13 +2720,16 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         auc_value <- aucList[[var]]
 
         # Get data needed for calculations
+        # Escape class variable name for safe data access
+        classVarEscaped <- private$.escapeVar(self$options$classVar)
+
         if (is.null(subGroup)) {
-          classVar <- data[, self$options$classVar]
+          classVar <- data[[classVarEscaped]]
         } else {
           # For grouped variables, extract the group
           varParts <- strsplit(var, split = "_")[[1]]
           groupName <- paste(varParts[-1], collapse="_")
-          classVar <- data[subGroup == groupName, self$options$classVar]
+          classVar <- data[subGroup == groupName, classVarEscaped]
         }
 
         # Calculate counts and statistics
@@ -2588,7 +2854,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         private$.checkpoint()
         
         # Set up partial AUC table if not already done
-        if (!self$results$partialAUCTable$isVisible) {
+        if (!self$results$partialAUCTable$visible) {
           self$results$partialAUCTable$setVisible(TRUE)
         }
 
@@ -2661,7 +2927,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         private$.checkpoint()
         
         # Set up bootstrap CI table if not already done
-        if (!self$results$bootstrapCITable$isVisible) {
+        if (!self$results$bootstrapCITable$visible) {
           self$results$bootstrapCITable$setVisible(TRUE)
         }
 
@@ -2681,13 +2947,31 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
           # Add to table
           if (!is.null(bootstrap_results)) {
             for (param in names(bootstrap_results)) {
-              self$results$bootstrapCITable$addRow(rowKey = paste0(var, "_", param), values = list(
-                variable = var,
-                parameter = param,
-                estimate = bootstrap_results[[param]]$estimate,
-                ci_lower = bootstrap_results[[param]]$ci_lower,
-                ci_upper = bootstrap_results[[param]]$ci_upper
-              ))
+              # DEBUG
+              est <- bootstrap_results[[param]]$estimate
+              if (is.null(est) || length(est) == 0) est <- NA
+              if (length(est) > 1) est <- est[1]
+              
+              lower <- bootstrap_results[[param]]$ci_lower
+              if (is.null(lower) || length(lower) == 0) lower <- NA
+              if (length(lower) > 1) lower <- lower[1]
+              
+              upper <- bootstrap_results[[param]]$ci_upper
+              if (is.null(upper) || length(upper) == 0) upper <- NA
+              if (length(upper) > 1) upper <- upper[1]
+              
+              tryCatch({
+                self$results$bootstrapCITable$addRow(rowKey = paste0(var, "_", param), values = list(
+                  variable = var,
+                  parameter = param,
+                  estimate = est,
+                  ci_lower = lower,
+                  ci_upper = upper
+                ))
+              }, error = function(e) {
+                cat(paste("Error adding row for", var, param, ":", e$message, "\n"), file = stderr())
+                cat(paste("Values - Est:", est, "Lower:", lower, "Upper:", upper, "\n"), file = stderr())
+              })
             }
           }
         }
@@ -2759,7 +3043,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       # Compare classifier performance if requested
       if (self$options$compareClassifiers) {
         # Set up comparison table
-        if (!self$results$rocComparisonTable$isVisible) {
+        if (!self$results$rocComparisonTable$visible) {
           self$results$rocComparisonTable$setVisible(TRUE)
         }
 
@@ -2803,14 +3087,19 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         }
 
         # Get reference variable
+        using_default_ref <- FALSE
         if (is.null(self$options$refVar) || self$options$refVar == "") {
           refVar <- self$options$dependentVars[1]
+          using_default_ref <- TRUE
         } else {
           refVar <- self$options$refVar
         }
 
+        # Escape variable names for safe data access
+        classVarEscaped <- private$.escapeVar(self$options$classVar)
+
         # Get actual class values and convert to binary
-        classVar <- data[, self$options$classVar]
+        classVar <- data[[classVarEscaped]]
         actual_binary <- as.numeric(classVar == positiveClass)
 
         # Get direction
@@ -2821,13 +3110,15 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
         # Calculate IDI if requested
         if (self$options$calculateIDI) {
-          # Get reference variable values
-          ref_values <- as.numeric(data[, refVar])
+          # Get reference variable values with escaped name
+          refVarEscaped <- private$.escapeVar(refVar)
+          ref_values <- as.numeric(data[[refVarEscaped]])
 
           # For each other variable
           for (var in self$options$dependentVars) {
             if (var != refVar) {
-              var_values <- as.numeric(data[, var])
+              varEscaped <- private$.escapeVar(var)
+              var_values <- as.numeric(data[[varEscaped]])
 
               # Calculate IDI
               idi_result <- bootstrapIDI(
@@ -2853,8 +3144,9 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
         # Calculate NRI if requested
         if (self$options$calculateNRI) {
-          # Get reference variable values
-          ref_values <- as.numeric(data[, refVar])
+          # Get reference variable values with escaped name
+          refVarEscaped <- private$.escapeVar(refVar)
+          ref_values <- as.numeric(data[[refVarEscaped]])
 
           # Parse thresholds string if provided
           thresholds <- NULL
@@ -2867,7 +3159,8 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
           # For each other variable
           for (var in self$options$dependentVars) {
             if (var != refVar) {
-              var_values <- as.numeric(data[, var])
+              varEscaped <- private$.escapeVar(var)
+              var_values <- as.numeric(data[[varEscaped]])
 
               # Calculate NRI
               nri_result <- bootstrapNRI(
@@ -2891,6 +3184,25 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
                 p = nri_result$p_value
               ))
             }
+          }
+        }
+
+        # Add note if using default reference variable
+        if (using_default_ref) {
+          note_text <- sprintf("Note: Using '%s' as reference variable (first variable selected). To use a different reference, select it in the Reference Variable option.", refVar)
+          if (self$options$calculateIDI) {
+            self$results$idiTable$setNote(
+              key = "default_ref",
+              note = note_text,
+              init = FALSE
+            )
+          }
+          if (self$options$calculateNRI) {
+            self$results$nriTable$setNote(
+              key = "default_ref",
+              note = note_text,
+              init = FALSE
+            )
           }
         }
       }
@@ -2920,10 +3232,16 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         private$.calculateBayesianROC(data, classVar, positiveClass)
       }
 
-      # Clinical utility analysis (currently disabled - clinicalUtilityAnalysis option not defined in YAML)
-      # if (self$options$clinicalUtilityAnalysis) {
-      #   private$.calculateClinicalUtility(data, classVar, positiveClass)
-      # }
+      # Clinical utility analysis
+      # TODO: Implementation in progress - method .calculateClinicalUtility() not yet implemented
+      if (self$options$clinicalUtilityAnalysis) {
+        # Notify user that this feature is not yet available
+        warning(paste(
+          "Clinical Utility Analysis is currently under development.",
+          "This feature will be available in a future release.",
+          "For now, you can perform decision curve analysis manually using the pROC package."
+        ))
+      }
 
       # Meta-analysis
       if (self$options$metaAnalysis && length(self$options$dependentVars) >= 3) {
@@ -3768,10 +4086,13 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
 
     # Fixed Sensitivity/Specificity ROC plotting function
     .plotFixedSensSpecROC = function(image, ggtheme, theme, ...) {
-      var <- image$itemKey
       plotData <- image$state
-      
+
       if (!self$options$fixedSensSpecAnalysis || is.null(plotData)) return(FALSE)
+
+      # Get variable name from plot data (stored in state)
+      var <- plotData$var[1]
+      if (is.null(var) || is.na(var)) return(FALSE)
       
       # Get fixed analysis parameters
       analysis_type <- self$options$fixedAnalysisType
@@ -3786,15 +4107,14 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       fixed_row <- NULL
       
       if (length(fixedTable$rowKeys) > 0) {
-        for (key in fixedTable$rowKeys) {
-          if (fixedTable$getCell(rowKey = key, "variable") == var) {
-            fixed_row <- list(
-              cutpoint = fixedTable$getCell(rowKey = key, "cutpoint"),
-              achieved_sensitivity = fixedTable$getCell(rowKey = key, "achieved_sensitivity"),
-              achieved_specificity = fixedTable$getCell(rowKey = key, "achieved_specificity")
-            )
-            break
-          }
+        # rowKey is the variable name (see .populateFixedSensSpecTable line 791)
+        # So we can compare directly without extracting from cells
+        if (var %in% fixedTable$rowKeys) {
+          fixed_row <- list(
+            cutpoint = fixedTable$getCell(rowKey = var, "cutpoint"),
+            achieved_sensitivity = fixedTable$getCell(rowKey = var, "achieved_sensitivity"),
+            achieved_specificity = fixedTable$getCell(rowKey = var, "achieved_specificity")
+          )
         }
       }
       
@@ -3930,30 +4250,66 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
     },
 
     # Enhanced DeLong test implementation with better error handling
+    # Enhanced DeLong test implementation using pROC for robust covariance calculation
     .enhancedDelongTest = function(data, classVar, pos_class, ref = NULL, conf.level = 0.95) {
-      # Enhanced validation
+      # Check pROC availability
+      if (!requireNamespace('pROC', quietly = TRUE)) {
+        stop('pROC package is required for DeLong\'s test')
+      }
+
+      # Validate inputs
       if (length(classVar) != nrow(data)) {
-        stop("The number of rows in data must match the length of classVar")
+        stop('The number of rows in data must match the length of classVar')
+      }
+
+      # Check for NA values in classification variable
+      if (any(is.na(classVar))) {
+        stop('Classification variable contains missing values (NA). Please remove or handle missing values before performing ROC analysis.')
       }
 
       id.pos <- classVar == pos_class
-      
-      if (sum(id.pos) < 1) {
-        stop("Wrong positive class level specified.")
+      if (sum(id.pos, na.rm = TRUE) < 1) {
+        stop('Wrong positive class level specified.')
       }
       if (ncol(data) < 2) {
-        stop("Data must contain at least two columns.")
-      }
-      if (nrow(data) < 2) {
-        stop("Data must contain at least two dependent variables for DeLong's test.")
+        stop('Data must contain at least two columns.')
       }
 
-      nn <- sum(!id.pos)
-      np <- sum(id.pos)
       nauc <- ncol(data)
-
-      # Enhanced matrix setup with better error handling
+      vars <- colnames(data)
+      
+      # Calculate ROC curves using pROC
+      rocs <- list()
+      auc_values <- numeric(nauc)
+      
+      for (i in 1:nauc) {
+        # pROC handles direction automatically
+        rocs[[i]] <- pROC::roc(response = classVar, predictor = data[,i], 
+                              levels = c(setdiff(unique(classVar), pos_class), pos_class),
+                              direction = 'auto', quiet = TRUE)
+        auc_values[i] <- as.numeric(pROC::auc(rocs[[i]]))
+      }
+      
+      # Compute Covariance Matrix S using pROC
+      # S[i,j] = cov(roc[i], roc[j])
+      S <- matrix(0, nrow = nauc, ncol = nauc)
+      for (i in 1:nauc) {
+        for (j in i:nauc) {
+          if (i == j) {
+            # Variance of a single ROC curve
+            S[i,j] <- pROC::var(rocs[[i]], method='delong')
+          } else {
+            # Covariance between two ROC curves
+            v <- pROC::cov(rocs[[i]], rocs[[j]], method='delong')
+            S[i,j] <- v
+            S[j,i] <- v
+          }
+        }
+      }
+      
+      # Construct Contrast Matrix L for Global Test
       if (is.null(ref)) {
+        # Matrix for all pairwise differences (sequential construction matching original)
         L <- matrix(0, nrow = nauc * (nauc - 1) / 2, ncol = nauc)
         newa <- 0
         for (i in 1:(nauc - 1)) {
@@ -3964,171 +4320,143 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
           newa <- newa + newl
         }
       } else {
-        if (ref > nauc) {
-          stop(paste("Reference ref must be one of the markers (1...", nauc, " in this case)", sep = ""))
-        }
+        # Compare against reference
+        if (ref > nauc) stop(paste('Reference ref must be one of the markers (1...', nauc, ')', sep = ''))
         L <- matrix(1, ncol = nauc, nrow = nauc - 1)
         L[, -ref] <- diag(-1, nrow = nauc - 1, ncol = nauc - 1)
       }
 
-      markern <- as.matrix(data[!id.pos, ])
-      markerp <- as.matrix(data[id.pos, ])
-
-      # Enhanced Wilcoxon statistic calculation
-      WK.STAT <- function(data, y) {
-        if (length(data) == 0 || length(y) == 0) {
-          return(NA)
-        }
-        r <- rank(c(data, y))
-        n.data <- length(data)
-        n.y <- length(y)
-        STATISTIC <- sum(r[seq_along(data)]) - n.data * (n.data + 1) / 2
-        return(STATISTIC)
-      }
-
-      auc <- numeric(nauc)
-      for (r in 1:nauc) {
-        stat_result <- WK.STAT(markerp[, r], markern[, r])
-        if (is.na(stat_result)) {
-          auc[r] <- NA
-        } else {
-          auc[r] <- stat_result
-        }
-      }
-      auc <- auc / (nn * np)
-
-      # Handle AUCs smaller than 0.5 with enhanced logic
-      if (any(auc < 0.5, na.rm = TRUE)) {
-        flip_indices <- which(auc < 0.5)
-        data[, flip_indices] <- -data[, flip_indices]
-        auc[flip_indices] <- 1 - auc[flip_indices]
-        markern <- as.matrix(data[!id.pos, ])
-        markerp <- as.matrix(data[id.pos, ])
-      }
-
-      # Enhanced covariance calculation with better error handling
-      V10 <- matrix(0, nrow = np, ncol = nauc)
-      V01 <- matrix(0, nrow = nn, ncol = nauc)
-
-      tryCatch({
-        tmn <- t(markern)
-        tmp <- t(markerp)
-        for (i in 1:np) {
-          V10[i, ] <- rowSums(tmn < tmp[, i]) + 0.5 * rowSums(tmn == tmp[, i])
-        }
-        for (i in 1:nn) {
-          V01[i, ] <- rowSums(tmp > tmn[, i]) + 0.5 * rowSums(tmp == tmn[, i])
-        }
-      }, error = function(e) {
-        stop(paste("Error in covariance calculation:", e$message))
-      })
-
-      V10 <- V10 / nn
-      V01 <- V01 / np
-
-      W10 <- cov(V10)
-      W01 <- cov(V01)
-
-      # Estimated covariance matrix
-      S <- W10 / np + W01 / nn
-
-      # Enhanced variance calculations
-      q1 <- auc / (2 - auc)
-      q2 <- 2 * auc^2 / (1 + auc)
-
-      # Hanley, McNeil (1982) / Bamber (1975) variance estimates
-      aucvar <- (auc * (1 - auc) + (np - 1) * (q1 - auc^2) + (nn - 1) * (q2 - auc^2)) / (np * nn)
-      zhalf <- (auc - 0.5) / sqrt(aucvar)
-      phalf <- 1 - pnorm(zhalf)
-      zdelong <- (auc - 0.5) / sqrt(diag(S))
-      pdelong <- 1 - pnorm(zdelong)
-
-      # Enhanced global p-value calculation
-      aucdiff <- L %*% auc
+      # Calculate Global Test Statistics
+      aucdiff <- L %*% auc_values
       
-      # Use enhanced matrix inversion with better error handling
+      # Use generalized inverse for stability
       tryCatch({
         LSL_matrix <- L %*% S %*% t(L)
-        z <- t(aucdiff) %*% MASS::ginv(LSL_matrix) %*% aucdiff
-        p <- pchisq(z, df = qr(LSL_matrix)$rank, lower.tail = FALSE)
+        z_score <- t(aucdiff) %*% MASS::ginv(LSL_matrix) %*% aucdiff
+        global_p <- pchisq(z_score, df = qr(LSL_matrix)$rank, lower.tail = FALSE)
       }, error = function(e) {
-        warning(paste("Error in global test calculation:", e$message))
-        z <- NA
-        p <- NA
+        warning(paste('Error in global test calculation:', e$message))
+        z_score <- NA
+        global_p <- NA
       })
 
-      # Enhanced pairwise comparisons
+      # Pairwise Comparisons
+      quantil <- qnorm(1 - (1 - conf.level) / 2)
+      
       if (is.null(ref)) {
-        cor.auc <- matrix(ncol = 1, nrow = nauc * (nauc - 1) / 2)
-        ci <- matrix(ncol = 2, nrow = nauc * (nauc - 1) / 2)
-        ctr <- 1
-        rows <- character(nauc * (nauc - 1) / 2)
-        pairp <- matrix(nrow = nauc * (nauc - 1) / 2, ncol = 1)
-        quantil <- qnorm(1 - (1 - conf.level) / 2)
+        # All pairwise
+        n_pairs <- nauc * (nauc - 1) / 2
+        rows <- character(n_pairs)
+        diff_vec <- numeric(n_pairs)
+        ci <- matrix(NA, nrow = n_pairs, ncol = 2)
+        p_vals <- numeric(n_pairs)
+        cors <- numeric(n_pairs)
         
+        ctr <- 1
         for (i in 1:(nauc - 1)) {
           for (j in (i + 1):nauc) {
-            tryCatch({
-              cor.auc[ctr] <- S[i, j] / sqrt(S[i, i] * S[j, j])
-              LSL <- t(c(1, -1)) %*% S[c(j, i), c(j, i)] %*% c(1, -1)
-              tmpz <- (aucdiff[ctr]) %*% MASS::ginv(LSL) %*% aucdiff[ctr]
-              pairp[ctr] <- 1 - pchisq(tmpz, df = qr(LSL)$rank)
-              ci[ctr, ] <- c(aucdiff[ctr] - quantil * sqrt(LSL),
-                           aucdiff[ctr] + quantil * sqrt(LSL))
-              rows[ctr] <- paste(i, j, sep = " vs. ")
-            }, error = function(e) {
-              cor.auc[ctr] <- NA
-              pairp[ctr] <- NA
-              ci[ctr, ] <- c(NA, NA)
-              rows[ctr] <- paste(i, j, sep = " vs. ")
-            })
+            # Difference
+            diff_val <- auc_values[i] - auc_values[j]
+            diff_vec[ctr] <- diff_val
+            
+            # Standard Error of Difference: sqrt(Var(A) + Var(B) - 2*Cov(A,B))
+            var_diff <- S[i,i] + S[j,j] - 2*S[i,j]
+            se_diff <- sqrt(max(0, var_diff)) # Ensure non-negative
+            
+            # Confidence Interval
+            ci[ctr, ] <- c(diff_val - quantil * se_diff, diff_val + quantil * se_diff)
+            
+            # P-value (Two-tailed Z-test)
+            if (se_diff > 0) {
+                z_val <- diff_val / se_diff
+                p_vals[ctr] <- 2 * (1 - pnorm(abs(z_val)))
+            } else {
+                p_vals[ctr] <- if(abs(diff_val) < 1e-10) 1 else 0
+            }
+            
+            # Correlation
+            cors[ctr] <- S[i,j] / sqrt(S[i,i] * S[j,j])
+            
+            rows[ctr] <- paste(i, j, sep = ' vs. ')
             ctr <- ctr + 1
           }
         }
       } else {
-        cor.auc <- matrix(ncol = 1, nrow = nauc - 1)
-        ci <- matrix(ncol = 2, nrow = nauc - 1)
-        rows <- character(nauc - 1)
-        pairp <- matrix(nrow = nauc - 1, ncol = 1)
-        comp <- (1:nauc)[-ref]
-        quantil <- qnorm(1 - (1 - conf.level) / 2)
+        # Against reference
+        n_pairs <- nauc - 1
+        rows <- character(n_pairs)
+        diff_vec <- numeric(n_pairs)
+        ci <- matrix(NA, nrow = n_pairs, ncol = 2)
+        p_vals <- numeric(n_pairs)
+        cors <- numeric(n_pairs)
         
-        for (i in 1:(nauc - 1)) {
-          tryCatch({
-            cor.auc[i] <- S[ref, comp[i]] / sqrt(S[ref, ref] * S[comp[i], comp[i]])
-            LSL <- t(c(1, -1)) %*% S[c(ref, comp[i]), c(ref, comp[i])] %*% c(1, -1)
-            tmpz <- aucdiff[i] %*% MASS::ginv(LSL) %*% aucdiff[i]
-            pairp[i] <- 1 - pchisq(tmpz, df = qr(LSL)$rank)
-            ci[i, ] <- c(aucdiff[i] - quantil * sqrt(LSL),
-                        aucdiff[i] + quantil * sqrt(LSL))
-            rows[i] <- paste(ref, comp[i], sep = " vs. ")
-          }, error = function(e) {
-            cor.auc[i] <- NA
-            pairp[i] <- NA
-            ci[i, ] <- c(NA, NA)
-            rows[i] <- paste(ref, comp[i], sep = " vs. ")
-          })
+        comp <- (1:nauc)[-ref]
+        for (i in 1:n_pairs) {
+          idx <- comp[i]
+          
+          diff_val <- auc_values[ref] - auc_values[idx]
+          diff_vec[i] <- diff_val
+          
+          var_diff <- S[ref,ref] + S[idx,idx] - 2*S[ref,idx]
+          se_diff <- sqrt(max(0, var_diff))
+          
+          ci[i, ] <- c(diff_val - quantil * se_diff, diff_val + quantil * se_diff)
+          
+          if (se_diff > 0) {
+              z_val <- diff_val / se_diff
+              p_vals[i] <- 2 * (1 - pnorm(abs(z_val)))
+          } else {
+              p_vals[i] <- if(abs(diff_val) < 1e-10) 1 else 0
+          }
+          
+          cors[i] <- S[ref,idx] / sqrt(S[ref,ref] * S[idx,idx])
+          
+          rows[i] <- paste(ref, idx, sep = ' vs. ')
         }
       }
 
       # Enhanced results formatting
-      newres <- as.data.frame(cbind(aucdiff, ci, pairp, cor.auc))
-      names(newres) <- c("AUC Difference", "CI(lower)", "CI(upper)", "P.Value", "Correlation")
+      newres <- data.frame(
+         'AUC Difference' = diff_vec,
+         'CI(lower)' = ci[,1],
+         'CI(upper)' = ci[,2],
+         'P.Value' = p_vals,
+         'Correlation' = cors,
+         check.names = FALSE
+      )
       rownames(newres) <- rows
-      row.names(ci) <- row.names(cor.auc) <- row.names(aucdiff) <- row.names(pairp) <- rows
-      colnames(ci) <- c(paste0(100 * conf.level, "% CI (lower)"), paste0(100 * conf.level, "% CI (upper)"))
-      names(auc) <- 1:nauc
-      auc <- as.data.frame(cbind(auc, sqrt(aucvar), phalf, sqrt(diag(S)), pdelong))
-      colnames(auc) <- c("AUC", "SD(Hanley)", "P(H0: AUC=0.5)", "SD(DeLong)", "P(H0: AUC=0.5)")
+      colnames(newres) <- c('AUC Difference', 'CI(lower)', 'CI(upper)', 'P.Value', 'Correlation')
+
+      # Format AUC dataframe
+      # We use pROC's AUC and Variance, but calculate Hanley SD for backward compatibility
+      nn <- sum(classVar != pos_class)
+      np <- sum(classVar == pos_class)
+      
+      q1 <- auc_values / (2 - auc_values)
+      q2 <- 2 * auc_values^2 / (1 + auc_values)
+      aucvar_hanley <- (auc_values * (1 - auc_values) + (np - 1) * (q1 - auc_values^2) + (nn - 1) * (q2 - auc_values^2)) / (np * nn)
+      
+      sd_hanley <- sqrt(pmax(0, aucvar_hanley))
+      sd_delong <- sqrt(diag(S))
+      
+      auc_df <- data.frame(
+         'AUC' = auc_values,
+         'SD(Hanley)' = sd_hanley,
+         'P(H0: AUC=0.5)' = 2 * (1 - pnorm(abs(auc_values - 0.5) / sd_hanley)),
+         'SD(DeLong)' = sd_delong,
+         'P(H0: AUC=0.5)' = 2 * (1 - pnorm(abs(auc_values - 0.5) / sd_delong)),
+         check.names = FALSE
+      )
+      names(auc_df) <- c('AUC', 'SD(Hanley)', 'P(H0: AUC=0.5)', 'SD(DeLong)', 'P(H0: AUC=0.5)')
 
       ERG <- list(
-        AUC = auc,
+        AUC = auc_df,
         difference = newres,
         covariance = S,
-        global.z = z,
-        global.p = p
+        global.z = z_score,
+        global.p = global_p
       )
-      class(ERG) <- "EnhancedDeLong"
+      class(ERG) <- 'EnhancedDeLong'
       return(ERG)
     },
 
@@ -4165,7 +4493,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       vars <- self$options$dependentVars
       if (length(vars) < 2) return()
 
-      if (!self$results$effectSizeTable$isVisible) {
+      if (!self$results$effectSizeTable$visible) {
         self$results$effectSizeTable$setVisible(TRUE)
       }
 
@@ -4230,6 +4558,19 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
               effect_magnitude = effect_magnitude,
               clinical_importance = clinical_importance
             ))
+
+            # Set state for effect size plot
+            if (self$options$effectSizeAnalysis) {
+              image <- self$results$effectSizePlot$get(key=var1)
+              if (!is.null(image)) {
+                image$setState(list(
+                  ready = TRUE,
+                  comparison_var = var2,
+                  cohens_d = cohens_d,
+                  effect_magnitude = effect_magnitude
+                ))
+              }
+            }
           }, error = function(e) {
             # Skip problematic comparisons
           })
@@ -4240,18 +4581,29 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
     # Calculate power analysis for ROC studies
     .calculatePowerAnalysis = function(data, classVar, positiveClass) {
       vars <- self$options$dependentVars
-      
-      if (!self$results$powerAnalysisTable$isVisible) {
+
+      if (!self$results$powerAnalysisTable$visible) {
         self$results$powerAnalysisTable$setVisible(TRUE)
+
+        # Add method reference
+        self$results$powerAnalysisTable$setNote(
+          key = "method_reference",
+          note = "Power calculations based on: Obuchowski NA, McClish DK (1997). Sample size determination for diagnostic accuracy studies involving binormal ROC curve indices. Statistics in Medicine 16(13):1529-1542; Hanley JA, McNeil BJ (1982). The meaning and use of the area under a ROC curve. Radiology 143(1):29-36.",
+          init = FALSE
+        )
       }
 
       y <- as.numeric(data[, self$options$classVar] == positiveClass)
-      n_pos <- sum(y)
-      n_neg <- sum(1 - y)
+      n_pos <- sum(y, na.rm = TRUE)
+      n_neg <- sum(1 - y, na.rm = TRUE)
       n_total <- length(y)
-      
-      target_power <- self$options$targetPower / 100
-      target_effect_size <- self$options$targetEffectSize
+
+      # Use actual options from .a.yaml
+      target_power <- self$options$targetPower  # Already a proportion (0-1)
+      expected_auc_diff <- self$options$expectedAUCDifference  # Use this as effect size
+      significance_level <- self$options$significanceLevel
+      correlation <- self$options$correlationROCs
+      analysis_type <- self$options$powerAnalysisType  # post_hoc, prospective, sample_size
 
       for (var in vars) {
         x <- as.numeric(data[, var])
@@ -4267,40 +4619,118 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
             
             # Convert AUC to Cohen's d equivalent (approximate)
             observed_d <- 2 * qnorm(observed_auc)
-            
-            # Calculate observed power using normal approximation
-            se_auc <- sqrt((observed_auc * (1 - observed_auc) + 
+
+            # Standard error of AUC (Hanley-McNeil)
+            se_auc <- sqrt((observed_auc * (1 - observed_auc) +
                           (sum(y_complete) - 1) * (observed_auc / (2 - observed_auc) - observed_auc^2) +
-                          (sum(1 - y_complete) - 1) * (2 * observed_auc^2 / (1 + observed_auc) - observed_auc^2)) / 
+                          (sum(1 - y_complete) - 1) * (2 * observed_auc^2 / (1 + observed_auc) - observed_auc^2)) /
                           (sum(y_complete) * sum(1 - y_complete)))
-            
-            z_stat <- (observed_auc - 0.5) / se_auc
-            observed_power <- 1 - pnorm(1.96 - abs(z_stat))
-            
-            # Calculate required sample size for target power
-            # Using the formula for comparing AUC to 0.5
-            z_alpha <- qnorm(0.975)  # 0.05 two-tailed
+
+            z_alpha <- qnorm(1 - significance_level / 2)
             z_beta <- qnorm(target_power)
-            
-            required_n <- ceiling(((z_alpha + z_beta) / (2 * qnorm(0.5 + target_effect_size / 2) - 1))^2 * 
-                                (1 / (n_pos / n_total) + 1 / (n_neg / n_total)))
-            
-            power_adequacy <- if (observed_power >= target_power) "Adequate" else "Inadequate"
-            
-            recommendation <- if (observed_power < target_power) {
-              paste0("Increase sample size to n=", required_n, " for target power")
-            } else {
-              "Current sample size appears adequate"
+
+            # Switch logic based on analysis type
+            if (analysis_type == "post_hoc") {
+              # Post-hoc power: Calculate power for observed effect
+              z_stat <- (observed_auc - 0.5) / se_auc
+              observed_power <- 1 - pnorm(z_alpha - abs(z_stat))
+
+              # Required N for target power with observed effect
+              target_auc <- observed_auc
+              required_n <- ceiling(((z_alpha + z_beta) / (2 * qnorm(target_auc) - 1))^2 *
+                                  (1 / (n_pos / n_total) + 1 / (n_neg / n_total)))
+
+              power_adequacy <- if (observed_power >= target_power) "Adequate" else "Inadequate"
+              recommendation <- if (observed_power < target_power) {
+                paste0("Post-hoc power inadequate. Would need n=", required_n, " for ", target_power*100, "% power with observed AUC=", round(observed_auc, 3))
+              } else {
+                paste0("Post-hoc power adequate (", round(observed_power*100, 1), "%) for observed AUC=", round(observed_auc, 3))
+              }
+
+            } else if (analysis_type == "prospective") {
+              # Prospective power: Calculate power for expected effect with current N
+              expected_auc <- 0.5 + expected_auc_diff
+
+              # Adjust for correlation if comparing two tests
+              if (length(vars) > 1 && correlation != 0) {
+                # Correlation adjustment for paired comparison
+                adjustment_factor <- sqrt(2 * (1 - correlation))
+              } else {
+                adjustment_factor <- 1
+              }
+
+              expected_se <- sqrt((expected_auc * (1 - expected_auc) +
+                                 (n_pos - 1) * (expected_auc / (2 - expected_auc) - expected_auc^2) +
+                                 (n_neg - 1) * (2 * expected_auc^2 / (1 + expected_auc) - expected_auc^2)) /
+                                 (n_pos * n_neg)) * adjustment_factor
+
+              z_stat_expected <- (expected_auc - 0.5) / expected_se
+              observed_power <- 1 - pnorm(z_alpha - abs(z_stat_expected))
+
+              required_n <- ceiling(((z_alpha + z_beta) / (2 * qnorm(expected_auc) - 1))^2 *
+                                  (1 / (n_pos / n_total) + 1 / (n_neg / n_total)) *
+                                  adjustment_factor^2)
+
+              power_adequacy <- if (observed_power >= target_power) "Adequate" else "Inadequate"
+              recommendation <- if (observed_power < target_power) {
+                paste0("Need n=", required_n, " for ", target_power*100, "% power to detect AUC difference of ", expected_auc_diff)
+              } else {
+                paste0("Current n=", n_total, " provides ", round(observed_power*100, 1), "% power to detect AUC difference of ", expected_auc_diff)
+              }
+
+            } else {  # sample_size
+              # Sample size calculation: N needed for target power and expected effect
+              expected_auc <- 0.5 + expected_auc_diff
+
+              # Correlation adjustment
+              if (length(vars) > 1 && correlation != 0) {
+                adjustment_factor <- sqrt(2 * (1 - correlation))
+              } else {
+                adjustment_factor <- 1
+              }
+
+              required_n <- ceiling(((z_alpha + z_beta) / (2 * qnorm(expected_auc) - 1))^2 *
+                                  (1 / (n_pos / n_total) + 1 / (n_neg / n_total)) *
+                                  adjustment_factor^2)
+
+              # Calculate what power we would have with current N
+              current_se <- sqrt((expected_auc * (1 - expected_auc) +
+                                (n_pos - 1) * (expected_auc / (2 - expected_auc) - expected_auc^2) +
+                                (n_neg - 1) * (2 * expected_auc^2 / (1 + expected_auc) - expected_auc^2)) /
+                                (n_pos * n_neg)) * adjustment_factor
+              z_stat_current <- (expected_auc - 0.5) / current_se
+              observed_power <- 1 - pnorm(z_alpha - abs(z_stat_current))
+
+              power_adequacy <- if (n_total >= required_n) "Adequate" else "Inadequate"
+              recommendation <- paste0("Need n=", required_n, " (current n=", n_total, ") for ", target_power*100,
+                                     "% power to detect AUC difference of ", expected_auc_diff,
+                                     if (correlation != 0) paste0(" (correlation=", correlation, ")") else "")
             }
-            
+
+            power_adequacy <- if (observed_power >= target_power) "Adequate" else "Inadequate"
+
             self$results$powerAnalysisTable$addRow(rowKey = var, values = list(
               variable = var,
               observed_power = observed_power,
               required_n = required_n,
-              target_effect_size = target_effect_size,
+              target_effect_size = expected_auc_diff,
               power_adequacy = power_adequacy,
               recommendation = recommendation
             ))
+
+            # Set state for power curve plot
+            if (self$options$powerAnalysis) {
+              image <- self$results$powerCurvePlot$get(key=var)
+              if (!is.null(image)) {
+                image$setState(list(
+                  ready = TRUE,
+                  observed_power = observed_power,
+                  target_power = target_power,
+                  significance_level = significance_level,
+                  n_total = n_total
+                ))
+              }
+            }
           }
         }, error = function(e) {
           # Skip problematic variables
@@ -4308,38 +4738,53 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       }
     },
 
-    # Calculate Bayesian ROC analysis  
+    # Calculate Bootstrap ROC analysis with prior weighting
+    # NOTE: This is NOT true Bayesian MCMC - it uses bootstrap simulation
     .calculateBayesianROC = function(data, classVar, positiveClass) {
       vars <- self$options$dependentVars
-      
-      if (!self$results$bayesianROCTable$isVisible) {
+
+      if (!self$results$bayesianROCTable$visible) {
         self$results$bayesianROCTable$setVisible(TRUE)
+
+        # Add methodology clarification
+        self$results$bayesianROCTable$setNote(
+          key = "methodology_note",
+          note = "NOTE: This analysis uses bootstrap resampling with optional prior weighting, not full Bayesian MCMC. The 'credible intervals' shown are bootstrap percentile confidence intervals. For true Bayesian inference, consider using specialized software like Stan or JAGS.",
+          init = FALSE
+        )
       }
 
       y <- as.numeric(data[, self$options$classVar] == positiveClass)
-      mcmc_samples <- self$options$mcmcSamples
-      
+
+      # Use options from .a.yaml
+      prior_auc <- self$options$priorAUC  # Prior belief about AUC (0.5-1.0)
+      prior_precision <- self$options$priorPrecision  # Precision of prior (1-100)
+      mcmc_samples <- 2000  # Fixed number of bootstrap samples for posterior
+
       for (var in vars) {
         x <- as.numeric(data[, var])
         complete_cases <- complete.cases(x, y)
         x_complete <- x[complete_cases]
         y_complete <- y[complete_cases]
-        
+
         tryCatch({
           if (requireNamespace("pROC", quietly = TRUE)) {
             # Basic Bayesian approach using bootstrap simulation
             # This is a simplified implementation - real Bayesian ROC would use MCMC
-            
+
             roc_obj <- pROC::roc(y_complete, x_complete, quiet = TRUE)
             observed_auc <- as.numeric(pROC::auc(roc_obj))
-            
+
             # Simulate posterior distribution using bootstrap
             bootstrap_aucs <- numeric(mcmc_samples)
             n <- length(y_complete)
-            
-            # Set up prior (Beta distribution parameters)
-            prior_alpha <- if (self$options$bayesianPrior == "informative") 2 else 1
-            prior_beta <- if (self$options$bayesianPrior == "informative") 2 else 1
+
+            # Set up prior using Beta distribution
+            # Convert prior AUC and precision to Beta parameters
+            prior_mean <- prior_auc
+            prior_variance <- 1 / prior_precision
+            prior_alpha <- prior_mean * (prior_mean * (1 - prior_mean) / prior_variance - 1)
+            prior_beta <- (1 - prior_mean) * (prior_mean * (1 - prior_mean) / prior_variance - 1)
             
             for (i in 1:mcmc_samples) {
               # Bootstrap sample
@@ -4369,9 +4814,12 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
             evidence_strength <- if (bayes_factor > 10) "Strong evidence" else
                                if (bayes_factor > 3) "Moderate evidence" else
                                if (bayes_factor > 1) "Weak evidence" else "No evidence"
-            
-            prior_influence <- if (self$options$bayesianPrior == "informative") "Moderate" else "Minimal"
-            
+
+            # Determine prior influence based on precision
+            prior_influence <- if (prior_precision > 50) "Strong" else
+                             if (prior_precision > 20) "Moderate" else
+                             if (prior_precision > 5) "Weak" else "Minimal"
+
             self$results$bayesianROCTable$addRow(rowKey = var, values = list(
               variable = var,
               posterior_auc_mean = posterior_mean,
@@ -4381,6 +4829,20 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
               evidence_strength = evidence_strength,
               prior_influence = prior_influence
             ))
+
+            # Set state for Bayesian trace plot
+            if (self$options$bayesianAnalysis) {
+              image <- self$results$bayesianTracePlot$get(key=var)
+              if (!is.null(image)) {
+                image$setState(list(
+                  ready = TRUE,
+                  bootstrap_aucs = bootstrap_aucs,
+                  prior_auc = prior_auc,
+                  prior_precision = prior_precision,
+                  mcmc_samples = mcmc_samples
+                ))
+              }
+            }
           }
         }, error = function(e) {
           # Skip problematic variables
@@ -4392,22 +4854,32 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
     .calculateClinicalUtility = function(data, classVar, positiveClass) {
       vars <- self$options$dependentVars
       
-      if (!self$results$clinicalUtilityTable$isVisible) {
+      if (!self$results$clinicalUtilityTable$visible) {
         self$results$clinicalUtilityTable$setVisible(TRUE)
       }
       
-      if (!self$results$decisionCurveTable$isVisible) {
+      if (!self$results$decisionCurveTable$visible) {
         self$results$decisionCurveTable$setVisible(TRUE)
       }
 
       y <- as.numeric(data[, self$options$classVar] == positiveClass)
-      prevalence <- mean(y)
-      
-      treatment_benefit <- self$options$treatmentBenefit
-      treatment_harm <- self$options$treatmentHarm
-      
-      # Calculate threshold probability
-      threshold_prob <- treatment_harm / (treatment_benefit + treatment_harm)
+      prevalence <- mean(y, na.rm = TRUE)
+
+      # Use actual options from .a.yaml
+      harm_benefit_ratio <- self$options$harmBenefitRatio  # Default: 0.25
+      intervention_cost <- self$options$interventionCost  # Default: false
+
+      # Parse treatment threshold range (format: "min,max,step")
+      threshold_str <- self$options$treatmentThreshold  # Default: "0.05,0.5,0.05"
+      threshold_parts <- as.numeric(strsplit(threshold_str, ",")[[1]])
+      if (length(threshold_parts) == 3) {
+        threshold_range <- seq(threshold_parts[1], threshold_parts[2], by=threshold_parts[3])
+      } else {
+        threshold_range <- seq(0.05, 0.5, by=0.05)  # Fallback
+      }
+
+      # Use midpoint of threshold range as default for single analysis
+      threshold_prob <- median(threshold_range)
 
       for (var in vars) {
         x <- as.numeric(data[, var])
@@ -4481,7 +4953,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
                 clinical_value <- if (net_benefit_t > t * prevalence) "Beneficial" else "Not beneficial"
                 
                 self$results$decisionCurveTable$addRow(
-                  rowKey = paste0(var, "_", t), 
+                  rowKey = paste0(var, "_", t),
                   values = list(
                     variable = var,
                     threshold = t,
@@ -4491,6 +4963,20 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
                     clinical_value = clinical_value
                   )
                 )
+              }
+            }
+
+            # Set state for decision curve plot
+            if (self$options$clinicalUtilityAnalysis) {
+              image <- self$results$decisionCurvePlot$get(key=var)
+              if (!is.null(image)) {
+                image$setState(list(
+                  ready = TRUE,
+                  threshold_range = threshold_range,
+                  harm_benefit_ratio = harm_benefit_ratio,
+                  prevalence = prevalence,
+                  intervention_cost = intervention_cost
+                ))
               }
             }
           }
@@ -4504,10 +4990,54 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
     .calculateMetaAnalysis = function(data, classVar, positiveClass) {
       vars <- self$options$dependentVars
       if (length(vars) < 3) return()
-      
+
       if (!self$results$metaAnalysisTable$visible) {
         self$results$metaAnalysisTable$setVisible(TRUE)
       }
+
+      # BLOCK analysis instead of just warning - meta-analysis requires independent studies
+      if (!isTRUE(self$options$overrideMetaAnalysisWarning)) {
+        error_html <- paste0(
+          "<div style='padding: 15px; background-color: #f8d7da; border: 2px solid #f5c6cb; border-radius: 4px; color: #721c24;'>",
+          "<h4 style='margin-top: 0;'>⚠️ Meta-Analysis Not Recommended</h4>",
+          "<p><strong>Issue:</strong> Standard meta-analysis assumes <em>independent studies</em>. ",
+          "Comparing multiple markers from the <strong>same dataset</strong> violates this fundamental assumption.</p>",
+          "<p><strong>Consequences of proceeding:</strong></p>",
+          "<ul>",
+          "<li>❌ Artificially narrow confidence intervals</li>",
+          "<li>❌ Inflated Type I error rate (false positives)</li>",
+          "<li>❌ Invalid pooled estimates</li>",
+          "<li>❌ Misleading conclusions</li>",
+          "</ul>",
+          "<p><strong>✅ Recommended alternatives for within-study comparisons:</strong></p>",
+          "<ul>",
+          "<li><strong>DeLong's test</strong> - Statistically valid method for comparing AUCs from the same dataset</li>",
+          "<li><strong>IDI/NRI analysis</strong> - Model improvement indices for comparing predictors</li>",
+          "<li><strong>Effect size analysis</strong> - Standardized differences between markers</li>",
+          "</ul>",
+          "<p><strong>Note:</strong> If you have <em>multiple independent datasets</em> (e.g., different hospitals, cohorts, or time periods), ",
+          "analyze each separately, then perform meta-analysis on those independent results.</p>",
+          "<p style='margin-bottom: 0; font-size: 0.9em;'><em>Advanced users only: To override this protection and proceed anyway, ",
+          "set <code>overrideMetaAnalysisWarning = TRUE</code> in analysis options. Results should NOT be used for formal inference.</em></p>",
+          "</div>"
+        )
+
+        self$results$metaAnalysisWarning$setVisible(TRUE)
+        self$results$metaAnalysisWarning$setContent(error_html)
+        self$results$metaAnalysisTable$setVisible(FALSE)
+        return()
+      }
+
+      # User overrode warning - hide warning and show table
+      self$results$metaAnalysisWarning$setVisible(FALSE)
+      self$results$metaAnalysisTable$setVisible(TRUE)
+
+      # If user explicitly overrides, add strong warning
+      self$results$metaAnalysisTable$setNote(
+        key = "override_warning",
+        note = "⚠️ USER OVERRIDE ACTIVE: Meta-analysis performed on non-independent data despite violation of independence assumption. These results should NOT be used for formal statistical inference. Provided for exploratory purposes only with full awareness of statistical invalidity.",
+        init = FALSE
+      )
 
       y <- as.numeric(data[, self$options$classVar] == positiveClass)
       
@@ -4613,7 +5143,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
     .calculateSensitivityAnalysis = function(data, classVar, positiveClass) {
       vars <- self$options$dependentVars
       
-      if (!self$results$sensitivityAnalysisTable$isVisible) {
+      if (!self$results$sensitivityAnalysisTable$visible) {
         self$results$sensitivityAnalysisTable$setVisible(TRUE)
       }
 
@@ -4723,11 +5253,24 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
       }
       
       # Enhanced validation for IDI/NRI
-      if ((self$options$calculateIDI || self$options$calculateNRI) && 
+      if ((self$options$calculateIDI || self$options$calculateNRI) &&
           length(self$options$dependentVars) < 2) {
         return("Please specify at least two dependent variables for IDI/NRI calculations.")
       }
-      
+
+      # Validation for refVar when IDI/NRI is requested
+      if ((self$options$calculateIDI || self$options$calculateNRI)) {
+        if (is.null(self$options$refVar) || self$options$refVar == "") {
+          # Will use first dependent variable as default - this is OK
+          # Just document this behavior for users
+        } else {
+          # Verify refVar is in dependentVars
+          if (!self$options$refVar %in% self$options$dependentVars) {
+            return("Reference variable for IDI/NRI must be one of the selected test variables.")
+          }
+        }
+      }
+
       # Enhanced validation for subgroup analysis with DeLong
       if (self$options$delongTest && !is.null(self$options$subGroup)) {
         return("DeLong's test does not currently support the group variable. Please remove grouping or disable DeLong test.")
@@ -5082,6 +5625,7 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         return(TRUE)
       } else {
         # Ensure meta-analysis tables remain hidden with insufficient variables
+        self$results$metaAnalysisWarning$setVisible(FALSE)
         self$results$metaAnalysisTable$setVisible(FALSE)
         self$results$metaAnalysisForestPlot$setVisible(FALSE)
         
@@ -5103,5 +5647,30 @@ psychopdaROCClass <- if (requireNamespace('jmvcore')) R6::R6Class(
         return(FALSE)
       }
     }
-  )
+  ), # End of private list
+  public = list(
+      #' @description
+      #' Generate R source code for psychopdaROC analysis
+      #' @return Character string with R syntax for reproducible analysis
+      asSource = function() {
+          dependentVars <- self$options$dependentVars
+          if (is.null(dependentVars) || length(dependentVars) == 0)
+              return('')
+
+          # Get arguments using base helper (if available)
+          args <- ''
+          if (!is.null(private$.asArgs)) {
+              args <- private$.asArgs(incData = FALSE)
+          }
+          if (args != '')
+              args <- paste0(',\n    ', args)
+
+          # Get package name dynamically
+          pkg_name <- utils::packageName()
+          if (is.null(pkg_name)) pkg_name <- "ClinicoPath"  # fallback
+
+          # Build complete function call
+          paste0(pkg_name, '::psychopdaROC(\n    data = data', args, ')')
+      }
+  ) # End of public list
 )

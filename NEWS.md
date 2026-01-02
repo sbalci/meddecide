@@ -1,3 +1,31 @@
+# meddecide 0.0.32.69 (2026-01-02)
+
+## New Features
+
+* **`bootstrapNRI()`**: Exported bootstrapNRI function for Net Reclassification Improvement (NRI) bootstrap confidence interval estimation
+  - Enables direct access to NRI bootstrap analysis
+  - Provides robust confidence intervals for categorical and continuous NRI
+  - Supports custom thresholds for risk category definitions
+  - Configurable bootstrap iterations and confidence levels
+
+## Bug Fixes
+
+* Fixed critical bug in `computeNRI()` where risk category labels were incorrectly calculated
+  - Corrected the labels vector calculation from `1:length(breaks - 1)` to `1:(length(breaks) - 1)`
+  - This fix ensures proper risk categorization in NRI calculations
+  - Affects categorical NRI computations in ROC and psychoPDA analyses
+  
+* **`agreement()`**: Fixed stability issues and hanging during initial run
+  - Refactored `agreement.b.R` to ensure responsiveness
+  - Maintained support for numeric variables in agreement analysis
+
+## Minor Changes
+
+* Updated package version to 0.0.32.69
+* Synchronized version across DESCRIPTION and jamovi module files (jamovi/0000.yaml)
+
+---
+
 # meddecide 0.0.31.84 (2025-10-03)
 
 ## Major Changes

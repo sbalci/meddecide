@@ -9,13 +9,17 @@ sequentialtests(
   test1_name = "Screening Test",
   test1_sens = 0.95,
   test1_spec = 0.7,
+  test1_cost = 0,
   test2_name = "Confirmatory Test",
   test2_sens = 0.8,
   test2_spec = 0.98,
+  test2_cost = 0,
   strategy = "serial_positive",
   prevalence = 0.1,
-  show_explanation = TRUE,
+  population_size = 1000,
+  show_explanation = FALSE,
   show_formulas = FALSE,
+  show_cost_analysis = FALSE,
   show_nomogram = FALSE
 )
 }
@@ -30,35 +34,48 @@ literature.}
 
 \item{test1_spec}{.}
 
+\item{test1_cost}{.}
+
 \item{test2_name}{.}
 
 \item{test2_sens}{.}
 
 \item{test2_spec}{.}
 
+\item{test2_cost}{.}
+
 \item{strategy}{.}
 
 \item{prevalence}{.}
 
+\item{population_size}{Population size used to illustrate population flow
+counts. Does not affect probabilities.}
+
 \item{show_explanation}{.}
 
 \item{show_formulas}{.}
+
+\item{show_cost_analysis}{.}
 
 \item{show_nomogram}{.}
 }
 \value{
 A results object containing:
 \tabular{llllll}{
+\code{results$plain_summary} \tab \tab \tab \tab \tab a html \cr
 \code{results$summary_table} \tab \tab \tab \tab \tab a table \cr
 \code{results$individual_tests_table} \tab \tab \tab \tab \tab a table \cr
 \code{results$population_flow_table} \tab \tab \tab \tab \tab a table \cr
+\code{results$cost_analysis_table} \tab \tab \tab \tab \tab a table \cr
 \code{results$explanation_text} \tab \tab \tab \tab \tab a html \cr
 \code{results$formulas_text} \tab \tab \tab \tab \tab a html \cr
 \code{results$plot_flow_diagram} \tab \tab \tab \tab \tab an image \cr
 \code{results$plot_performance} \tab \tab \tab \tab \tab an image \cr
 \code{results$plot_probability} \tab \tab \tab \tab \tab an image \cr
 \code{results$plot_population_flow} \tab \tab \tab \tab \tab an image \cr
+\code{results$plot_sensitivity_analysis} \tab \tab \tab \tab \tab an image \cr
 \code{results$clinical_guidance} \tab \tab \tab \tab \tab a html \cr
+\code{results$notices} \tab \tab \tab \tab \tab a html \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

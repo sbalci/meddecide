@@ -4,6 +4,11 @@ title: Sequential Testing Analysis
 jrs: '1.1'
 
 items:
+    - name: plain_summary
+      title: 'Summary (Plain Language)'
+      type: Html
+      visible: (show_explanation)
+
     - name: summary_table
       title: 'Summary of Testing Strategy'
       type: Table
@@ -38,6 +43,9 @@ items:
           title: 'Combined NPV'
           type: number
           format: pc
+        - name: nnt
+          title: 'Number Needed to Screen'
+          type: integer
 
     - name: individual_tests_table
       title: 'Individual Test Performance'
@@ -106,6 +114,25 @@ items:
           title: 'True Negatives'
           type: number
 
+    - name: cost_analysis_table
+      title: 'Cost Analysis (Per 1000 Patients)'
+      type: Table
+      visible: (show_cost_analysis)
+      rows: 0
+      columns:
+        - name: item
+          title: 'Item'
+          type: text
+        - name: unit_cost
+          title: 'Unit Cost'
+          type: number
+        - name: number_tests
+          title: 'Number of Tests'
+          type: integer
+        - name: total_cost
+          title: 'Total Cost'
+          type: number
+
     - name: explanation_text
       title: 'Explanation'
       type: Html
@@ -148,11 +175,29 @@ items:
       renderFun: .plot_population_flow
       visible: (show_nomogram)
 
+    - name: plot_sensitivity_analysis
+      title: 'Sensitivity Analysis: PPV/NPV vs Prevalence'
+      type: Image
+      width: 600
+      height: 400
+      renderFun: .plot_sensitivity_analysis
+      visible: (show_nomogram)
+
     - name: clinical_guidance
       title: 'Clinical Guidance'
       type: Html
 
-
+    # Notice outputs converted to HTML to avoid serialization errors
+    - name: notices
+      title: Important Information
+      type: Html
+      clearWith:
+         - strategy_type
+         - prevalence
+         - sens_first
+         - spec_first
+         - sens_second
+         - spec_second
 
 
 refs:

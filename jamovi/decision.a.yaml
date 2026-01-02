@@ -71,7 +71,27 @@ options:
           R: >
             The level representing a positive result for the test under evaluation.
 
+    - name: goldNegative
+      title: Disease Absent Level
+      type: Level
+      variable: (gold)
+      description:
+          ui: >
+            Select the level that indicates disease is absent in your gold standard variable.
+            If not specified, all levels other than the Disease Present level will be treated as negative.
+          R: >
+            The level indicating absence of disease in the gold standard variable.
 
+    - name: testNegative
+      title: Test Negative Level
+      type: Level
+      variable: (newtest)
+      description:
+          ui: >
+            Select the level that represents a negative test result.
+            If not specified, all levels other than the Test Positive level will be treated as negative.
+          R: >
+            The level representing a negative result for the test under evaluation.
 
 
 
@@ -151,7 +171,7 @@ options:
     - name: showNaturalLanguage
       title: 'Show Clinical Summary'
       type: Bool
-      default: true
+      default: false
       description:
           ui: >
             Display a natural language clinical summary of the diagnostic test performance.
@@ -162,7 +182,7 @@ options:
     - name: showClinicalInterpretation
       title: 'Show Clinical Interpretation Guide'
       type: Bool
-      default: true
+      default: false
       description:
           ui: >
             Display detailed clinical interpretation with likelihood ratio guidance.
@@ -192,6 +212,50 @@ options:
           R: >
             Boolean selection whether to show the about analysis section.
 
+    - name: showMisclassified
+      title: 'Show Misclassified Cases Analysis'
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display detailed tables of false positive and false negative cases.
+            Helps identify patterns in diagnostic errors and understand which cases
+            are being misclassified by the test. Inspired by Orange Data Mining's
+            interactive confusion matrix feature, adapted for static jamovi output.
+          R: >
+            Boolean selection whether to show detailed misclassified cases tables.
+
+    - name: maxCasesShow
+      title: 'Maximum Cases to Display'
+      type: Integer
+      default: 50
+      min: 10
+      max: 500
+      description:
+          ui: >
+            Maximum number of misclassified cases to display in each table.
+            Large datasets may have many misclassifications; this limits the output.
+          R: >
+            Maximum number of misclassified cases to display in tables.
+
+    - name: saveClassifications
+      title: 'Save Classifications to Data'
+      type: Output
+      varTitle: "Classification Group"
+      varDescription: "Classification of each case: True Positive, False Positive, False Negative, or True Negative"
+      measureType: nominal
+      clearWith:
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+      description:
+          ui: >
+            Save the classification results (True Positive, False Positive, False Negative, True Negative)
+            as a new column in your dataset. This allows you to use the classification groups
+            in other analyses.
+          R: >
+            Output variable to save classification results to the dataset.
 
 
 

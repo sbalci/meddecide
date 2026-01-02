@@ -5,6 +5,37 @@ jrs:   '1.1'
 
 items:
 
+    - name: welcome
+      title: 'Getting Started'
+      type: Html
+      visible: (!(gold && newtest && goldPositive && testPositive))
+      clearWith:
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+        - goldNegative
+        - testNegative
+
+    # Notice outputs converted to HTML to avoid serialization errors
+    - name: notices
+      title: 'Important Information'
+      type: Html
+      clearWith:
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+        - pp
+        - pprob
+        - ci
+        - showMisclassified
+        - maxCasesShow
+
     # - name:  todo
     #   title: To Do
     #   type:  Html
@@ -43,6 +74,8 @@ items:
         - newtest
         - goldPositive
         - testPositive
+        - goldNegative
+        - testNegative
 
     - name: rawCounts
       title: Raw Combination Counts
@@ -401,17 +434,83 @@ items:
       type: Html
       visible: (showAboutAnalysis)
 
+    # Misclassified Cases Analysis ----
 
+    - name: misclassifiedHeading
+      title: 'Misclassified Cases Analysis'
+      type: Html
+      visible: (showMisclassified)
 
+    - name: confusionMatrixSummary
+      title: 'Confusion Matrix Summary'
+      type: Table
+      visible: (showMisclassified)
+      rows: 0
+      columns:
+        - name: classification
+          title: 'Classification'
+          type: text
+        - name: count
+          title: 'Count'
+          type: integer
+        - name: percentage
+          title: 'Percentage'
+          type: number
+          format: pc
 
+    - name: falsePositiveTable
+      title: 'False Positive Cases (Test+ but Disease-)'
+      type: Table
+      visible: (showMisclassified)
+      rows: 0
+      columns:
+        - name: case_id
+          title: 'Row'
+          type: integer
+        - name: gold_value
+          title: 'True Status'
+          type: text
+        - name: test_value
+          title: 'Test Result'
+          type: text
+
+    - name: falseNegativeTable
+      title: 'False Negative Cases (Test- but Disease+)'
+      type: Table
+      visible: (showMisclassified)
+      rows: 0
+      columns:
+        - name: case_id
+          title: 'Row'
+          type: integer
+        - name: gold_value
+          title: 'True Status'
+          type: text
+        - name: test_value
+          title: 'Test Result'
+          type: text
+
+    - name: misclassificationInterpretation
+      title: 'Interpretation of Misclassified Cases'
+      type: Html
+      visible: (showMisclassified)
+
+    - name: saveClassifications
+      title: 'Classification Groups'
+      type: Output
+      varTitle: "Classification Group"
+      varDescription: "Classification of each case: True Positive, False Positive, False Negative, or True Negative"
+      measureType: nominal
+      clearWith:
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
 
 
 refs:
     - DiagnosticTests
     - ClinicoPathJamoviModule
     - epiR
-
-
-
 
 ...

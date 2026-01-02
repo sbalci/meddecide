@@ -18,6 +18,11 @@ items:
     # ==========================================
     # SUMMARY RESULTS - Most important information first
     # ==========================================
+    - name: runSummary
+      title: Analysis Status
+      type: Html
+      visible: true
+
     - name: simpleResultsTable
       title: ROC Analysis Summary
       type: Table
@@ -699,6 +704,16 @@ items:
         - Vickers2006
         - Steyerberg2010
 
+    - name: metaAnalysisWarning
+      title: Meta-Analysis Warning
+      type: Html
+      visible: (metaAnalysis)
+      clearWith:
+        - dependentVars
+        - classVar
+        - positiveClass
+        - overrideMetaAnalysisWarning
+
     - name: metaAnalysisTable
       title: Meta-Analysis Results
       type: Table
@@ -1021,6 +1036,5 @@ refs:
     # - Steyerberg2010
     # - Higgins2003
     # - DerSimonian1986
-
 
 ...

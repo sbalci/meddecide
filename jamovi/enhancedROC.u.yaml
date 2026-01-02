@@ -142,6 +142,18 @@ children:
                     name: bootstrapSamples
                     format: number
                     enable: (useBootstrap)
+                  - type: ComboBox
+                    name: bootstrapMethod
+                    enable: (useBootstrap)
+                  - type: CheckBox
+                    name: stratifiedBootstrap
+                    enable: (useBootstrap)
+                  - type: CheckBox
+                    name: bootstrapCutoffCI
+                    enable: (useBootstrap)
+                  - type: CheckBox
+                    name: bootstrapPartialAUC
+                    enable: (useBootstrap && partialAuc)
           - type: LayoutBox
             cell:
               column: 1
@@ -155,6 +167,26 @@ children:
                   - type: ComboBox
                     name: comparisonMethod
                     enable: (pairwiseComparisons)
+  - type: CollapseBox
+    label: Class Imbalance Detection
+    collapsed: false
+    stretchFactor: 1
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: detectImbalance
+          - type: TextBox
+            name: imbalanceThreshold
+            format: number
+            enable: (detectImbalance)
+          - type: CheckBox
+            name: showImbalanceWarning
+            enable: (detectImbalance)
+          - type: CheckBox
+            name: recommendPRC
+            enable: (detectImbalance)
   - type: CollapseBox
     label: Clinical Context
     collapsed: true
@@ -176,6 +208,11 @@ children:
                   - type: TextBox
                     name: prevalence
                     format: number
+              - type: LayoutBox
+                margin: large
+                children:
+                  - type: CheckBox
+                    name: useObservedPrevalence
           - type: LayoutBox
             cell:
               column: 1
@@ -188,10 +225,27 @@ children:
                     name: smoothMethod
                   - type: CheckBox
                     name: partialAuc
+                  - type: ComboBox
+                    name: partialAucType
+                    enable: (partialAuc)
                   - type: TextBox
                     name: partialRange
                     format: string
                     enable: (partialAuc)
+                  - type: CheckBox
+                    name: crocAnalysis
+                  - type: TextBox
+                    name: crocAlpha
+                    format: number
+                    enable: (crocAnalysis)
+                  - type: CheckBox
+                    name: convexHull
+                  - type: ComboBox
+                    name: tiedScoreHandling
+                  - type: TextBox
+                    name: splineKnots
+                    format: number
+                    enable: (smoothMethod)
   - type: CollapseBox
     label: Advanced Output
     collapsed: true
@@ -204,6 +258,132 @@ children:
             name: comprehensive_output
           - type: CheckBox
             name: clinical_interpretation
+  - type: CollapseBox
+    label: Calibration Analysis
+    collapsed: true
+    stretchFactor: 1
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: LayoutBox
+            cell:
+              column: 0
+              row: 0
+            children:
+              - type: Label
+                label: Calibration Assessment
+                children:
+                  - type: CheckBox
+                    name: calibrationAnalysis
+                  - type: CheckBox
+                    name: calibrationPlot
+                    enable: (calibrationAnalysis)
+                  - type: CheckBox
+                    name: brierScore
+                    enable: (calibrationAnalysis)
+                  - type: CheckBox
+                    name: calibrationMetrics
+                    enable: (calibrationAnalysis)
+              - type: LayoutBox
+                margin: large
+                children:
+                  - type: CheckBox
+                    name: splineCalibration
+                  - type: CheckBox
+                    name: eoRatio
+                    enable: (calibrationAnalysis)
+                  - type: CheckBox
+                    name: namDagostino
+                    enable: (calibrationAnalysis)
+                  - type: CheckBox
+                    name: greenwoodNam
+                    enable: (calibrationAnalysis)
+                  - type: CheckBox
+                    name: calibrationBelt
+                    enable: (calibrationAnalysis)
+                  - type: CheckBox
+                    name: calibrationDensity
+                    enable: (calibrationAnalysis)
+          - type: LayoutBox
+            cell:
+              column: 1
+              row: 0
+            children:
+              - type: Label
+                label: Goodness-of-Fit
+                children:
+                  - type: CheckBox
+                    name: hosmerLemeshow
+                    enable: (calibrationAnalysis)
+                  - type: TextBox
+                    name: hlGroups
+                    format: number
+                    enable: (calibrationAnalysis && hosmerLemeshow)
+  - type: CollapseBox
+    label: Multi-Class ROC
+    collapsed: true
+    stretchFactor: 1
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: multiClassROC
+          - type: ComboBox
+            name: multiClassStrategy
+            enable: (multiClassROC)
+          - type: ComboBox
+            name: multiClassAveraging
+            enable: (multiClassROC)
+  # - type: CollapseBox
+  #   label: Time-Dependent ROC
+  #   collapsed: true
+  #   stretchFactor: 1
+  #   children:
+  #     - type: LayoutBox
+  #       margin: large
+  #       children:
+  #         - type: CheckBox
+  #           name: timeDependentROC
+  #         - type: TextBox
+  #           name: timePoints
+  #           format: string
+  #           enable: (timeDependentROC)
+  #         - type: ComboBox
+  #           name: tdRocMethod
+  #           enable: (timeDependentROC)
+  - type: CollapseBox
+    label: Clinical Impact
+    collapsed: true
+    stretchFactor: 1
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: clinicalImpact
+          - type: CheckBox
+            name: nntCalculation
+            enable: (clinicalImpact)
+          - type: CheckBox
+            name: clinicalUtilityCurve
+            enable: (clinicalImpact)
+          - type: CheckBox
+            name: decisionImpactTable
+            enable: (clinicalImpact)
+          # - type: CheckBox
+          #   name: survivalROC
+          - type: CheckBox
+            name: harrellCIndex
+          - type: CheckBox
+            name: unoCStatistic
+          - type: CheckBox
+            name: incidentDynamic
+          - type: CheckBox
+            name: cumulativeDynamic
+          - type: CheckBox
+            name: competingRisksConcordance
   - type: CollapseBox
     label: Plot Settings
     collapsed: true
@@ -218,3 +398,43 @@ children:
           - type: TextBox
             name: plotHeight
             format: number
+  - type: CollapseBox
+    label: Validation & Model Performance
+    collapsed: true
+    stretchFactor: 1
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: LayoutBox
+            cell:
+              column: 0
+              row: 0
+            children:
+              - type: Label
+                label: Validation Settings
+                children:
+                  - type: ComboBox
+                    name: validationMethod
+                  - type: CheckBox
+                    name: optimismCorrection
+                  - type: CheckBox
+                    name: externalValidation
+                  - type: CheckBox
+                    name: internalValidation
+          - type: LayoutBox
+            cell:
+              column: 1
+              row: 0
+            children:
+              - type: Label
+                label: Advanced Performance Analysis
+                children:
+                  - type: CheckBox
+                    name: decisionImpactCurves
+                  - type: CheckBox
+                    name: netBenefitRegression
+                  - type: CheckBox
+                    name: modelUpdating
+                  - type: CheckBox
+                    name: transportability
