@@ -119,11 +119,32 @@ items:
       type: Image
       width: 500
       height: 400
+      renderFun: .blandAltman
       visible: (blandAltmanPlot)
       requiresData: true
       clearWith:
           - vars
           - baConfidenceLevel
+
+    - name: agreementHeatmapPlot
+      title: 'Agreement Heatmap (Confusion Matrix)'
+      type: Image
+      width: 600
+      height: 500
+      renderFun: .agreementHeatmap
+      visible: (agreementHeatmap)
+      requiresData: true
+      clearWith:
+          - vars
+          - heatmapColorScheme
+          - heatmapShowPercentages
+          - heatmapShowCounts
+          - heatmapAnnotationSize
+
+    - name: agreementHeatmapExplanation
+      title: "About Agreement Heatmap"
+      type: Html
+      visible: ((agreementHeatmap || showAgreementHeatmapGuide) && showAbout)
 
     - name: blandAltmanStats
       title: 'Bland-Altman Statistics'
@@ -201,10 +222,904 @@ items:
           - krippMethod
           - bootstrap
 
+    - name: lightKappaTable
+      title: "Light's Kappa Results"
+      type: Table
+      visible: (lightKappa)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: kappa
+          title: "Kappa"
+          type: number
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+      clearWith:
+          - vars
+
+    - name: lightKappaExplanation
+      title: "About Light's Kappa"
+      type: Html
+      visible: (lightKappa && showAbout)
+
+    - name: finnTable
+      title: "Finn Coefficient Results (Variance-Based Agreement)"
+      type: Table
+      visible: (finn)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: levels
+          title: 'Categories'
+          type: integer
+        - name: finn_value
+          title: 'Finn Coefficient'
+          type: number
+        - name: f_statistic
+          title: 'F-statistic'
+          type: number
+        - name: df
+          title: 'df'
+          type: text
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - finnLevels
+          - finnModel
+
+    - name: finnExplanation
+      title: "About Finn Coefficient"
+      type: Html
+      visible: (finn && showAbout)
+
+    - name: kendallWTable
+      title: "Kendall's Coefficient of Concordance (W) Results"
+      type: Table
+      visible: (kendallW)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: w
+          title: "W"
+          type: number
+        - name: chisq
+          title: 'Chi-square'
+          type: number
+        - name: df
+          title: 'df'
+          type: integer
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+      clearWith:
+          - vars
+
+    - name: kendallWExplanation
+      title: "About Kendall's W"
+      type: Html
+      visible: (kendallW && showAbout)
+
+    - name: robinsonATable
+      title: "Robinson's A (Ordinal Agreement Index) Results"
+      type: Table
+      visible: (robinsonA)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: robinsonA
+          title: "A"
+          type: number
+        - name: se
+          title: 'SE'
+          type: number
+        - name: z
+          title: 'z-value'
+          type: number
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: robinsonAExplanation
+      title: "About Robinson's A"
+      type: Html
+      visible: ((robinsonA || showRobinsonAGuide) && showAbout)
+
+    - name: meanSpearmanTable
+      title: "Mean Spearman Rho (Average Rank Correlation) Results"
+      type: Table
+      visible: (meanSpearman)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: meanRho
+          title: "Mean ρ"
+          type: number
+        - name: minRho
+          title: 'Min ρ'
+          type: number
+        - name: maxRho
+          title: 'Max ρ'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: meanSpearmanExplanation
+      title: "About Mean Spearman Rho"
+      type: Html
+      visible: ((meanSpearman || showMeanSpearmanGuide) && showAbout)
+
+    - name: raterBiasTable
+      title: "Rater Bias Test Results"
+      type: Table
+      visible: (raterBias)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Test'
+          type: text
+        - name: chisq
+          title: 'Chi-square'
+          type: number
+        - name: df
+          title: 'df'
+          type: integer
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+      clearWith:
+          - vars
+
+    - name: raterBiasExplanation
+      title: "About Rater Bias Test"
+      type: Html
+      visible: (raterBias && showAbout)
+
+    - name: bhapkarTable
+      title: "Bhapkar Test for Marginal Homogeneity"
+      type: Table
+      visible: (bhapkar)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Test'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: chisq
+          title: 'Chi-square'
+          type: number
+        - name: df
+          title: 'df'
+          type: integer
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: bhapkarExplanation
+      title: "About Bhapkar Test"
+      type: Html
+      visible: (bhapkar && showAbout)
+
+    - name: stuartMaxwellTable
+      title: "Stuart-Maxwell Test for Marginal Homogeneity"
+      type: Table
+      visible: (stuartMaxwell)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Test'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: chisq
+          title: 'Chi-square'
+          type: number
+        - name: df
+          title: 'df'
+          type: integer
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: stuartMaxwellExplanation
+      title: "About Stuart-Maxwell Test"
+      type: Html
+      visible: (stuartMaxwell && showAbout)
+
+    - name: pairwiseKappaTable
+      title: "Pairwise Kappa (Each Rater vs Reference)"
+      type: Table
+      visible: (pairwiseKappa)
+      rows: 0
+      columns:
+        - name: rater
+          title: 'Rater'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: kappa
+          title: 'Kappa'
+          type: number
+        - name: z
+          title: 'z'
+          type: number
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: rank
+          title: 'Rank'
+          type: integer
+          visible: (rankRaters)
+      clearWith:
+          - vars
+          - referenceRater
+          - rankRaters
+
+    - name: pairwiseKappaExplanation
+      title: "About Pairwise Kappa Analysis"
+      type: Html
+      visible: (pairwiseKappa && showAbout)
+
+    - name: hierarchicalOverallTable
+      title: "Hierarchical Kappa - Overall Agreement"
+      type: Table
+      visible: (hierarchicalKappa)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: cases
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: clusters
+          title: 'Clusters'
+          type: integer
+        - name: overall_kappa
+          title: 'Overall Kappa'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+      clearWith:
+          - vars
+          - clusterVariable
+
+    - name: clusterSpecificTable
+      title: "Cluster-Specific Kappa Estimates"
+      type: Table
+      visible: (hierarchicalKappa && clusterSpecificKappa)
+      rows: 0
+      columns:
+        - name: cluster
+          title: 'Cluster/Institution'
+          type: text
+        - name: n_cases
+          title: 'N Cases'
+          type: integer
+        - name: n_raters
+          title: 'N Raters'
+          type: integer
+        - name: kappa
+          title: 'Kappa'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: shrinkage_kappa
+          title: 'Shrinkage Kappa'
+          type: number
+          visible: (shrinkageEstimates)
+        - name: rank
+          title: 'Rank'
+          type: integer
+          visible: (clusterRankings)
+      clearWith:
+          - vars
+          - clusterVariable
+
+    - name: varianceDecompositionTable
+      title: "Variance Component Decomposition"
+      type: Table
+      visible: (hierarchicalKappa && varianceDecomposition)
+      rows: 0
+      columns:
+        - name: component
+          title: 'Variance Component'
+          type: text
+        - name: variance
+          title: 'Variance'
+          type: number
+        - name: sd
+          title: 'SD'
+          type: number
+        - name: proportion
+          title: 'Proportion of Total'
+          type: number
+          format: pc
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - clusterVariable
+
+    - name: hierarchicalICCTable
+      title: "Hierarchical ICC Decomposition"
+      type: Table
+      visible: (hierarchicalKappa && iccHierarchical)
+      rows: 0
+      columns:
+        - name: icc_type
+          title: 'ICC Type'
+          type: text
+        - name: icc_value
+          title: 'ICC'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - clusterVariable
+
+    - name: homogeneityTestTable
+      title: "Cluster Homogeneity Test Results"
+      type: Table
+      visible: (hierarchicalKappa && testClusterHomogeneity)
+      rows: 1
+      columns:
+        - name: test_name
+          title: 'Test'
+          type: text
+        - name: statistic
+          title: 'Test Statistic'
+          type: number
+        - name: df
+          title: 'df'
+          type: integer
+        - name: p_value
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: conclusion
+          title: 'Conclusion'
+          type: text
+      clearWith:
+          - vars
+          - clusterVariable
+
+    - name: hierarchicalExplanation
+      title: "About Hierarchical/Multilevel Kappa"
+      type: Html
+      visible: (hierarchicalKappa && showAbout)
+
+    - name: gwetTable
+      title: "Gwet's AC1/AC2 Results"
+      type: Table
+      visible: (gwet)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: coefficient
+          title: 'Coefficient'
+          type: number
+        - name: se
+          title: 'Std. Error'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+      clearWith:
+          - vars
+          - gwetWeights
+
+    - name: gwetExplanation
+      title: "About Gwet's AC Coefficient"
+      type: Html
+      visible: (gwet && showAbout)
+
+    - name: iccTable
+      title: "Intraclass Correlation Coefficient (ICC) Results"
+      type: Table
+      visible: (icc)
+      rows: 1
+      columns:
+        - name: model
+          title: 'ICC Model'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: icc_value
+          title: 'ICC'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: f_value
+          title: 'F'
+          type: number
+        - name: df1
+          title: 'df1'
+          type: integer
+        - name: df2
+          title: 'df2'
+          type: integer
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+      clearWith:
+          - vars
+          - iccType
+
+    - name: iccExplanation
+      title: "About Intraclass Correlation Coefficient (ICC)"
+      type: Html
+      visible: (icc && showAbout)
+
+    - name: meanPearsonTable
+      title: "Mean Pearson Correlation (Linear Association) Results"
+      type: Table
+      visible: (meanPearson)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: meanR
+          title: "Mean r"
+          type: number
+        - name: minR
+          title: 'Min r'
+          type: number
+        - name: maxR
+          title: 'Max r'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: meanPearsonExplanation
+      title: "About Mean Pearson Correlation"
+      type: Html
+      visible: ((meanPearson || showMeanPearsonGuide) && showAbout)
+
+    - name: linCCCTable
+      title: "Lin's Concordance Correlation Coefficient (CCC)"
+      type: Table
+      visible: (linCCC)
+      rows: 0
+      columns:
+        - name: comparison
+          title: 'Comparison'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: ccc
+          title: 'CCC'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: pearson_r
+          title: 'Precision (r)'
+          type: number
+        - name: bias_factor
+          title: 'Accuracy (Cb)'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: linCCCExplanation
+      title: "About Lin's Concordance Correlation Coefficient"
+      type: Html
+      visible: ((linCCC || showLinCCCGuide) && showAbout)
+
+    - name: tdiTable
+      title: "Total Deviation Index (TDI) - Acceptable Agreement Limits"
+      type: Table
+      visible: (tdi)
+      rows: 0
+      columns:
+        - name: comparison
+          title: 'Comparison'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: tdi_estimate
+          title: 'TDI Estimate'
+          type: number
+        - name: coverage_prob
+          title: 'Coverage %'
+          type: number
+          format: pc
+        - name: acceptable_limit
+          title: 'Acceptable Limit'
+          type: number
+        - name: meets_criteria
+          title: 'Acceptable?'
+          type: text
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - tdiCoverage
+          - tdiLimit
+
+    - name: tdiExplanation
+      title: "About Total Deviation Index (TDI)"
+      type: Html
+      visible: ((tdi || showTDIGuide) && showAbout)
+
+    - name: maxwellRETable
+      title: "Maxwell's Random Error (RE) Index - Error Decomposition"
+      type: Table
+      visible: (maxwellRE)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters/Methods'
+          type: integer
+        - name: re_value
+          title: 'RE Index'
+          type: number
+        - name: systematic_prop
+          title: 'Systematic %'
+          type: number
+          format: pc
+        - name: random_prop
+          title: 'Random %'
+          type: number
+          format: pc
+        - name: total_variance
+          title: 'Total Variance'
+          type: number
+        - name: systematic_var
+          title: 'Systematic Variance'
+          type: number
+        - name: random_var
+          title: 'Random Variance'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: maxwellREExplanation
+      title: "About Maxwell's Random Error Index"
+      type: Html
+      visible: ((maxwellRE || showMaxwellREGuide) && showAbout)
+
+    - name: interIntraRaterIntraTable
+      title: "Intra-Rater Reliability (Test-Retest Consistency)"
+      type: Table
+      visible: (interIntraRater)
+      rows: 0
+      columns:
+        - name: rater
+          title: 'Rater'
+          type: text
+        - name: n_cases
+          title: 'N Cases'
+          type: integer
+        - name: n_timepoints
+          title: 'Time Points'
+          type: integer
+        - name: statistic_name
+          title: 'Statistic'
+          type: text
+        - name: value
+          title: 'Value'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - interIntraSeparator
+
+    - name: interIntraRaterInterTable
+      title: "Inter-Rater Reliability (Between Raters)"
+      type: Table
+      visible: (interIntraRater)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: n_cases
+          title: 'N Cases'
+          type: integer
+        - name: n_raters
+          title: 'N Raters'
+          type: integer
+        - name: statistic_name
+          title: 'Statistic'
+          type: text
+        - name: value
+          title: 'Value'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - interIntraSeparator
+
+    - name: interIntraRaterExplanation
+      title: "About Inter/Intra-Rater Reliability"
+      type: Html
+      visible: ((interIntraRater || showInterIntraRaterGuide) && showAbout)
+
+    - name: iotaTable
+      title: "Iota Coefficient Results (Multivariate Agreement)"
+      type: Table
+      visible: (iota)
+      rows: 1
+      columns:
+        - name: method
+          title: 'Method'
+          type: text
+        - name: subjects
+          title: 'Cases'
+          type: integer
+        - name: raters
+          title: 'Raters'
+          type: integer
+        - name: variables
+          title: 'Variables'
+          type: integer
+        - name: iota_value
+          title: 'Iota'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+
+    - name: iotaExplanation
+      title: "About Iota Coefficient"
+      type: Html
+      visible: (iota && showAbout)
+
     - name: weightedKappaGuide
       title: "Weighted Kappa Interpretation Guide"
       type: Html
       visible: (showAbout && (wght:unweighted == FALSE))
+
+    - name: specificAgreementTable
+      title: "Specific Agreement Indices (Category-Focused Agreement)"
+      type: Table
+      visible: (specificAgreement)
+      rows: 0
+      columns:
+        - name: category
+          title: 'Category'
+          type: text
+        - name: rater_pair
+          title: 'Rater Pair'
+          type: text
+        - name: n_both_positive
+          title: 'Both Positive'
+          type: integer
+        - name: n_total_positive
+          title: 'Total Positive'
+          type: integer
+        - name: specific_agreement
+          title: 'Specific Agreement'
+          type: number
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - specificPositiveCategory
+          - specificAllCategories
+
+    - name: specificAgreementExplanation
+      title: "About Specific Agreement Indices"
+      type: Html
+      visible: ((specificAgreement || showSpecificAgreementGuide) && showAbout)
+
+    - name: levelInfoTable
+      title: "Level Ordering Information"
+      type: Table
+      visible: (showLevelInfo)
+      rows: 0
+      columns:
+        - name: variable
+          title: 'Variable'
+          type: text
+        - name: levels
+          title: 'Levels (in order)'
+          type: text
+        - name: n_levels
+          title: 'N Levels'
+          type: integer
+        - name: data_type
+          title: 'Type'
+          type: text
+        - name: note
+          title: 'Note'
+          type: text
+      clearWith:
+          - vars
 
     - name: summary
       title: "Summary"
@@ -216,9 +1131,293 @@ items:
       type: Html
       visible: (showAbout)
 
+    - name: clinicalUseCases
+      title: "Clinical Use Cases & Method Selection Guide"
+      type: Html
+      visible: (showAbout)
 
+    - name: consensusTable
+      title: "Consensus Variable Summary"
+      type: Table
+      visible: (consensusVar)
+      rows: 0
+      columns:
+        - name: category
+          title: 'Category'
+          type: text
+        - name: consensus_count
+          title: 'N Cases (Consensus)'
+          type: integer
+        - name: percentage
+          title: 'Percentage'
+          type: number
+          format: pc
+        - name: avg_agreement
+          title: 'Avg Agreement %'
+          type: number
+          format: pc
+      clearWith:
+          - vars
+          - consensusRule
+          - tieBreaker
 
+    - name: loaTable
+      title: "Level of Agreement Distribution"
+      type: Table
+      visible: (loaVariable && showLoaTable)
+      rows: 0
+      columns:
+        - name: loa_category
+          title: 'LoA Category'
+          type: text
+        - name: count
+          title: 'N Cases'
+          type: integer
+        - name: percentage
+          title: 'Percentage'
+          type: number
+          format: pc
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - loaThresholds
+          - loaHighThreshold
+          - loaLowThreshold
 
+    - name: loaDetailTable
+      title: "Case-Level Agreement Details"
+      type: Table
+      visible: (loaVariable)
+      rows: 0
+      columns:
+        - name: case_id
+          title: 'Case'
+          type: integer
+        - name: loa_category
+          title: 'LoA Category'
+          type: text
+        - name: agreement_pct
+          title: 'Agreement %'
+          type: number
+          format: pc
+        - name: modal_rating
+          title: 'Modal Rating'
+          type: text
+        - name: n_agreeing
+          title: 'N Agreeing'
+          type: integer
+      clearWith:
+          - vars
+          - loaThresholds
+          - loaHighThreshold
+          - loaLowThreshold
+
+    - name: computedVariablesInfo
+      title: "Computed Variables Added to Dataset"
+      type: Html
+      visible: (consensusVar || loaVariable)
+
+    # Output Variables (Computed Columns Added to Dataset)
+    - name: consensusVar
+      title: Add Consensus Variable to Data
+      type: Output
+      varTitle: '`{consensusName}`'
+      varDescription: 'Consensus (modal) rating across raters based on selected consensus rule'
+      measureType: nominal
+      clearWith:
+          - vars
+          - consensusRule
+          - tieBreaker
+          - consensusName
+
+    - name: loaOutput
+      title: Add Case Agreement Categorization to Data
+      type: Output
+      varTitle: '`{loaVariableName}`'
+      varDescription: 'Case agreement categorization. Simple mode: All Agreed (100%), Majority Agreed (≥threshold%), No Agreement. Detailed mode: Absolute (100%), High, Moderate, Low, Poor based on agreement thresholds.'
+      measureType: nominal
+      clearWith:
+          - vars
+          - detailLevel
+          - simpleThreshold
+          - loaThresholds
+          - loaHighThreshold
+          - loaLowThreshold
+          - loaVariableName
+
+    # ---- Rater Profile Plots ----
+
+    - name: raterProfilePlot
+      title: 'Rater Profile Plots (Rating Distribution by Rater)'
+      type: Image
+      width: 600
+      height: 450
+      renderFun: .raterProfilePlot
+      visible: (raterProfiles)
+      requiresData: true
+      clearWith:
+          - vars
+          - raterProfileType
+          - raterProfileShowPoints
+
+    - name: raterProfileExplanation
+      title: "About Rater Profile Plots"
+      type: Html
+      visible: ((raterProfiles || showRaterProfileGuide) && showAbout)
+
+    # ---- Agreement by Subgroup ----
+
+    - name: subgroupAgreementTable
+      title: "Agreement by Subgroup (Stratified Analysis)"
+      type: Table
+      visible: (agreementBySubgroup)
+      rows: 0
+      columns:
+        - name: subgroup
+          title: 'Subgroup'
+          type: text
+        - name: n_cases
+          title: 'N Cases'
+          type: integer
+        - name: n_raters
+          title: 'N Raters'
+          type: integer
+        - name: agreement_stat
+          title: 'Agreement'
+          type: number
+        - name: stat_type
+          title: 'Statistic'
+          type: text
+        - name: ci_lower
+          title: '95% CI Lower'
+          type: number
+        - name: ci_upper
+          title: '95% CI Upper'
+          type: number
+        - name: interpretation
+          title: 'Interpretation'
+          type: text
+      clearWith:
+          - vars
+          - subgroupVariable
+
+    - name: subgroupForestPlotImage
+      title: 'Forest Plot of Agreement by Subgroup'
+      type: Image
+      width: 600
+      height: 450
+      renderFun: .subgroupForestPlot
+      visible: (agreementBySubgroup && subgroupForestPlot)
+      requiresData: true
+      clearWith:
+          - vars
+          - subgroupVariable
+
+    - name: subgroupExplanation
+      title: "About Agreement by Subgroup"
+      type: Html
+      visible: ((agreementBySubgroup || showSubgroupGuide) && showAbout)
+
+    # ---- Rater Clustering ----
+
+    - name: raterClusterTable
+      title: "Rater Cluster Assignments"
+      type: Table
+      visible: (raterClustering)
+      rows: 0
+      columns:
+        - name: rater
+          title: 'Rater'
+          type: text
+        - name: cluster
+          title: 'Cluster'
+          type: integer
+        - name: cluster_size
+          title: 'Cluster Size'
+          type: integer
+        - name: avg_similarity
+          title: 'Avg Within-Cluster Similarity'
+          type: number
+      clearWith:
+          - vars
+          - clusterMethod
+          - clusterDistance
+          - clusterLinkage
+          - nClusters
+
+    - name: raterDendrogram
+      title: 'Rater Clustering Dendrogram'
+      type: Image
+      width: 700
+      height: 500
+      renderFun: .raterDendrogram
+      visible: (raterClustering && clusterMethod:hierarchical && showDendrogram)
+      requiresData: true
+      clearWith:
+          - vars
+          - clusterDistance
+          - clusterLinkage
+
+    - name: raterClusterHeatmap
+      title: 'Rater Similarity Heatmap with Clusters'
+      type: Image
+      width: 600
+      height: 550
+      renderFun: .raterClusterHeatmap
+      visible: (raterClustering && showClusterHeatmap)
+      requiresData: true
+      clearWith:
+          - vars
+          - clusterMethod
+          - clusterDistance
+          - clusterLinkage
+          - nClusters
+
+    - name: raterClusterExplanation
+      title: "About Rater Clustering"
+      type: Html
+      visible: ((raterClustering || showRaterClusterGuide) && showAbout)
+
+    - name: caseClusterTable
+      title: "Case Cluster Assignments"
+      type: Table
+      visible: (caseClustering)
+      rows: 0
+      columns:
+        - name: case_id
+          title: 'Case ID'
+          type: text
+        - name: cluster
+          title: 'Cluster'
+          type: integer
+        - name: avg_similarity
+          title: 'Avg Within-Cluster Similarity'
+          type: number
+
+    - name: caseDendrogram
+      title: 'Case Clustering Dendrogram'
+      type: Image
+      width: 700
+      height: 500
+      renderFun: .caseDendrogram
+      visible: (caseClustering && caseClusterMethod:hierarchical && showCaseDendrogram)
+      requiresData: true
+
+    - name: caseClusterHeatmap
+      title: 'Case Similarity Heatmap with Clusters'
+      type: Image
+      width: 700
+      height: 600
+      renderFun: .caseClusterHeatmap
+      visible: (caseClustering && showCaseClusterHeatmap)
+      requiresData: true
+
+    - name: caseClusterExplanation
+      title: "About Case Clustering"
+      type: Html
+      visible: ((caseClustering || showCaseClusterGuide) && showAbout)
 
 refs:
     - irr

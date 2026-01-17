@@ -3,7 +3,7 @@ name:  agreement
 title: Interrater Reliability
 menuGroup: meddecide
 menuSubgroup: Agreement
-version: '0.0.32'
+version: '0.0.33'
 jas: '1.2'
 
 description:
@@ -24,12 +24,10 @@ options:
     - name: vars
       title: Raters
       type: Variables
-      # suggested: [ ordinal, nominal ]
-      # permitted: [ factor ]
       description:
           R: >
             A string naming the variable from `data` that contains the
-            diagnosis given by the observer, variable can be categorical or ordinal.
+            diagnosis given by the observer. 
 
 
 
@@ -63,6 +61,79 @@ options:
             Generate Bland-Altman plot for continuous agreement analysis.
             Displays mean difference and limits of agreement between the first two raters.
             Only applicable when raters provide continuous measurements (e.g., tumor size in mm).
+
+    - name: agreementHeatmap
+      title: 'Agreement Heatmap (Confusion Matrix)'
+      type: Bool
+      default: false
+      description:
+          R: >
+            Generate heatmap visualization of agreement patterns for categorical data.
+            Creates confusion matrices showing how each rater pair's classifications correspond.
+            Color-coded cells reveal agreement (diagonal) and specific disagreement patterns
+            (off-diagonal). Essential for identifying systematic biases, problematic categories,
+            and training needs. Shows where raters agree strongly, where they consistently disagree,
+            and which category confusions are most common. Particularly valuable for multi-category
+            classifications with complex disagreement patterns.
+
+    - name: heatmapColorScheme
+      title: "Heatmap Color Scheme"
+      type: List
+      options:
+        - title: 'Blue-Red Diverging (Agreement Focus)'
+          name: bluered
+        - title: 'Green-Yellow-Red (Traffic Light)'
+          name: traffic
+        - title: 'Viridis (Colorblind-Friendly)'
+          name: viridis
+        - title: 'Gray Scale (Print-Friendly)'
+          name: grayscale
+      default: bluered
+      description:
+          R: >
+            Color palette for heatmap visualization. Blue-Red highlights diagonal agreement
+            with strong contrast. Traffic light uses intuitive color coding. Viridis is
+            perceptually uniform and colorblind-safe. Grayscale for black-and-white printing.
+
+    - name: heatmapShowPercentages
+      title: "Show Percentages in Cells"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Display percentage values within heatmap cells (percentage of total cases).
+            Helps interpret relative frequency of each rater combination. Essential
+            when comparing heatmaps with different sample sizes.
+
+    - name: heatmapShowCounts
+      title: "Show Counts in Cells"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Display absolute counts within heatmap cells (number of cases).
+            Shows actual sample sizes for each cell. Useful for identifying
+            cells with insufficient data and assessing statistical reliability.
+
+    - name: heatmapAnnotationSize
+      title: "Cell Annotation Size"
+      type: Number
+      default: 3.5
+      min: 2
+      max: 6
+      description:
+          R: >
+            Text size for cell annotations (counts and percentages).
+            Adjust for readability with different numbers of categories.
+            Larger for few categories, smaller for many categories.
+
+    - name: showAgreementHeatmapGuide
+      title: "When to use Agreement Heatmap"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Agreement Heatmap before running analysis.
 
 
 
@@ -104,6 +175,16 @@ options:
             Recommended for small sample sizes (< 30 cases) with 3 or more raters.
             Note: Not applicable for 2-rater analysis (use Cohen's kappa).
 
+    - name: showLevelInfo
+      title: "Show Level Ordering Information"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display information about how categorical levels are currently ordered in your variables.
+            Essential for weighted kappa analysis to ensure ordinal levels are properly ordered
+            (e.g., G1 → G2 → G3 for tumor grades).
+
     - name: kripp
       title: "Calculate Krippendorff's Alpha"
       type: Bool
@@ -138,138 +219,538 @@ options:
           R: >
             Calculate bootstrap confidence intervals for Krippendorff's alpha.
 
+    - name: gwet
+      title: "Calculate Gwet's AC1/AC2"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Alternative agreement coefficient that is more stable than Cohen's kappa when dealing with
+            high agreement rates or unbalanced marginal distributions (e.g., rare tumor subtypes).
+            Gwet's AC corrects for the paradoxical behavior of kappa in extreme cases.
+
+    - name: gwetWeights
+      title: "Weights for Gwet's AC"
+      type: List
+      options:
+        - title: Unweighted (AC1 for nominal)
+          name: unweighted
+        - title: Linear Weights (ordinal)
+          name: linear
+        - title: Quadratic Weights (ordinal)
+          name: quadratic
+      default: unweighted
+      description:
+          R: >
+            Unweighted (AC1) for nominal categories. Linear or Quadratic weights (AC2) for ordinal data.
+
+    - name: icc
+      title: "Calculate ICC (Continuous Data)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Intraclass Correlation Coefficient for continuous measurements (e.g., tumor size in mm,
+            biomarker concentrations). Standard measure for assessing agreement with numeric data.
+            Complements Bland-Altman analysis.
+
+    - name: iccType
+      title: "ICC Model"
+      type: List
+      options:
+        - title: 'ICC(1,1) - One-way random, single rater'
+          name: icc11
+        - title: 'ICC(2,1) - Two-way random, single rater'
+          name: icc21
+        - title: 'ICC(3,1) - Two-way mixed, single rater'
+          name: icc31
+        - title: 'ICC(1,k) - One-way random, average raters'
+          name: icc1k
+        - title: 'ICC(2,k) - Two-way random, average raters'
+          name: icc2k
+        - title: 'ICC(3,k) - Two-way mixed, average raters'
+          name: icc3k
+      default: icc21
+      description:
+          R: >
+            ICC model selection. One-way: each subject rated by different raters.
+            Two-way: all subjects rated by same raters. Random: raters are random sample.
+            Mixed: raters are fixed. Single: reliability of individual rater. Average (k): reliability of mean rating.
+
+    - name: meanPearson
+      title: "Calculate Mean Pearson Correlation (Linear Association)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Mean Pearson Correlation calculates the average linear correlation coefficient across all
+            rater pairs for continuous measurements. Pearson's r measures linear association between
+            variables, ranging from -1 (perfect negative) to +1 (perfect positive correlation).
+            For interrater agreement, high positive correlations indicate raters' measurements vary
+            together linearly. Particularly useful for continuous scales (tumor size, biomarker levels,
+            quantitative scores), assumes linear relationship and normality. Complements ICC by
+            focusing on correlation rather than absolute agreement. Simple, interpretable measure
+            for assessing whether raters rank and scale measurements similarly.
+
+    - name: showMeanPearsonGuide
+      title: "When to use Mean Pearson Correlation"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Mean Pearson Correlation before running analysis.
+
+    - name: linCCC
+      title: "Lin's Concordance Correlation Coefficient (CCC)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Lin's Concordance Correlation Coefficient (CCC) measures both precision and accuracy for continuous
+            data, making it superior to Pearson's r for method comparison and agreement studies. CCC ranges from
+            -1 to +1 (perfect concordance) and equals the product of Pearson's r (precision) and a bias correction
+            factor (accuracy). Unlike Pearson's r which only measures linear association, CCC penalizes systematic
+            bias. Essential for method comparison (manual vs. automated), instrument validation, and assessing
+            measurement agreement. Requires 2 raters/methods for pairwise comparison; calculates all pairwise CCCs
+            for 3+ raters.
+
+    - name: showLinCCCGuide
+      title: "When to use Lin's CCC"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Lin's Concordance Correlation Coefficient before running analysis.
+
+    - name: tdi
+      title: "Total Deviation Index (TDI)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Total Deviation Index (TDI) quantifies the limits within which a specified proportion of differences
+            between two measurement methods will fall. Unlike Bland-Altman which assumes constant variability,
+            TDI accounts for heteroscedastic errors (variance increasing with magnitude). Provides a single index
+            for acceptable agreement based on predefined clinically acceptable limits. Essential for medical device
+            validation, laboratory method comparison, and biomarker assay validation where regulatory agencies
+            require demonstration that a specified percentage of measurements fall within acceptable limits.
+            Requires 2 raters/methods. Particularly useful when establishing equivalence between manual and
+            automated measurements or between different measurement platforms.
+
+    - name: tdiCoverage
+      title: "Coverage Probability (%)"
+      type: Number
+      default: 90
+      min: 50
+      max: 99
+      description:
+          R: >
+            The proportion of differences that should fall within TDI limits (default: 90%).
+            Common values: 90% for general agreement, 95% for stringent requirements.
+            This defines what percentage of future measurements must fall within acceptable limits.
+
+    - name: tdiLimit
+      title: "Acceptable Limit"
+      type: Number
+      default: 10
+      min: 0.1
+      max: 1000
+      description:
+          R: >
+            Maximum acceptable difference between methods in original units.
+            Example: For tumor size, 5mm might be clinically acceptable.
+            TDI should be smaller than this limit for methods to be considered equivalent.
+
+    - name: showTDIGuide
+      title: "When to use TDI"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Total Deviation Index before running analysis.
+
+    - name: iota
+      title: "Calculate Iota Coefficient (Multivariate Agreement)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Iota coefficient for multivariate interrater agreement. Measures agreement when raters assess
+            multiple variables simultaneously (e.g., tumor size + grade + mitotic count). Unlike ICC which
+            analyzes one variable at a time, Iota provides a single chance-corrected agreement index across
+            all variables. Supports both quantitative (continuous) and nominal (categorical) data. Reduces
+            to Fleiss' kappa for single categorical variable.
+
+    - name: iotaStandardize
+      title: "Standardize Variables (Iota)"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Z-standardize quantitative variables before computing Iota. Recommended when variables are on
+            different scales (e.g., tumor size in mm vs. Ki-67 percentage). Ensures each variable contributes
+            equally to the overall agreement measure.
+
+    - name: finn
+      title: "Calculate Finn Coefficient (Variance-Based Agreement)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Finn coefficient for interrater reliability of categorical data. Variance-based agreement measure
+            especially useful when variance between raters is low (i.e., agreement is high). Alternative to
+            traditional kappa-based measures. Works with ordered categorical ratings.
+
+    - name: finnLevels
+      title: "Number of Rating Categories (Finn)"
+      type: Integer
+      min: 2
+      max: 20
+      default: 3
+      description:
+          R: >
+            The number of different rating categories for Finn coefficient calculation (e.g., 3 for low/medium/high,
+            5 for 5-point Likert scale). Must specify the total number of distinct categories in your rating scale.
+
+    - name: finnModel
+      title: "Finn Model Type"
+      type: List
+      options:
+        - title: 'One-way (subjects random)'
+          name: oneway
+        - title: 'Two-way (subjects and raters random)'
+          name: twoway
+      default: oneway
+      description:
+          R: >
+            Model specification for Finn coefficient. One-way: only subjects are random effects (each subject
+            may be rated by different raters). Two-way: both subjects and raters are random (subjects and raters
+            randomly chosen from larger populations).
+
+    - name: lightKappa
+      title: "Calculate Light's Kappa (3+ Raters)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Alternative agreement measure for 3 or more raters. Calculates the average of all pairwise
+            kappas between raters. More robust than Fleiss' kappa when raters have different marginal
+            distributions or when assumptions of Fleiss' kappa are questionable.
+
+    - name: kendallW
+      title: "Calculate Kendall's W (Concordance for Rankings)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Kendall's coefficient of concordance (W) measures agreement among raters when rating or
+            ranking ordinal data. W ranges from 0 (no agreement) to 1 (perfect agreement). Particularly
+            useful for ranked data, severity scores, and ordinal grading systems where you want to know
+            if raters rank cases in similar order.
+
+    - name: robinsonA
+      title: "Calculate Robinson's A (Ordinal Agreement Index)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Robinson's A is an agreement coefficient for ordinal data based on the proportion of
+            concordant pairs. It ranges from -1 (complete disagreement) to 1 (perfect agreement),
+            with 0 indicating agreement no better than chance. Alternative to weighted kappa that
+            directly measures the degree of ordinal association between raters. Particularly useful
+            when ordinal categories have meaningful rank order (e.g., disease severity stages, tumor
+            grades). Less affected by marginal distribution imbalances than kappa-based measures.
+
+    - name: showRobinsonAGuide
+      title: "When to use Robinson's A"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Robinson's A before running analysis.
+
+    - name: meanSpearman
+      title: "Calculate Mean Spearman Rho (Average Rank Correlation)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Mean Spearman Rho calculates the average rank correlation across all rater pairs.
+            Spearman's rho is a nonparametric measure of monotonic association for ordinal data.
+            It ranges from -1 (perfect negative association) to +1 (perfect positive association),
+            with 0 indicating no association. When used for interrater agreement, high positive
+            values indicate raters rank cases similarly. Particularly useful for ordinal scales,
+            rankings, and severity ratings. Robust to outliers and does not assume linear
+            relationship. Complements other ordinal measures (Robinson's A, Kendall's W) by
+            focusing on rank-order correlation rather than exact concordance.
+
+    - name: showMeanSpearmanGuide
+      title: "When to use Mean Spearman Rho"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Mean Spearman Rho before running analysis.
+
+    - name: raterBias
+      title: "Test for Rater Bias (Systematic Differences)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Tests whether raters have systematically different rating patterns (e.g., one rater is more
+            lenient/strict than others). Uses chi-square test to detect if marginal frequencies differ
+            significantly across raters. Essential quality control tool to identify raters who consistently
+            over-diagnose or under-diagnose compared to their peers.
+
+    - name: bhapkar
+      title: "Bhapkar Test (Marginal Homogeneity for 2 Raters)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Bhapkar test for marginal homogeneity between two raters with multiple categories. More powerful
+            alternative to Stuart-Maxwell test. Like McNemar's test but for >2 categories. Tests if two raters
+            use rating categories with equal frequency. Essential for paired comparisons (e.g., pre-post training,
+            novice vs. expert, pathologist vs. AI algorithm) to detect systematic differences in category usage.
+
+    - name: stuartMaxwell
+      title: "Stuart-Maxwell Test (Marginal Homogeneity for 2 Raters)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Stuart-Maxwell test for marginal homogeneity between two raters with multiple categories. Classic test
+            for matched data analysis. Like McNemar's test but for >2 categories. Tests if two raters use rating
+            categories with equal frequency. Note: Bhapkar test is more powerful for large samples, but Stuart-Maxwell
+            is the traditional choice. Use for paired/matched comparisons to detect systematic category usage differences.
+
+    - name: maxwellRE
+      title: "Maxwell's RE (Random Error Index)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Maxwell's Random Error (RE) index decomposes total measurement variance into systematic
+            and random error components. RE represents the proportion of total disagreement attributable
+            to random measurement error rather than systematic differences between raters or methods.
+            Values range from 0 (all error is systematic) to 1 (all error is random). Essential for
+            understanding error sources in method comparison studies, diagnostic test validation, and
+            measurement reliability assessment. Typically used with continuous or ordinal data requiring
+            2+ raters/methods.
+
+    - name: showMaxwellREGuide
+      title: "When to use Maxwell's RE"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Maxwell's RE before running analysis.
+
+    - name: interIntraRater
+      title: "Inter/Intra-Rater Reliability (Test-Retest)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Simultaneous assessment of inter-rater and intra-rater reliability for test-retest studies.
+            Calculates intra-rater reliability (same rater consistency across time) and inter-rater
+            reliability (agreement between different raters). Requires paired columns representing
+            the same rater at different time points (e.g., Rater1_Time1, Rater1_Time2). Essential
+            for training evaluation, fatigue studies, and long-term reliability assessment. Reports
+            both within-rater consistency and between-rater agreement.
+
+    - name: interIntraSeparator
+      title: "Column Name Separator (Inter/Intra)"
+      type: String
+      default: "_"
+      description:
+          R: >
+            Character separating rater ID from time point in column names (default: underscore).
+            Example: With separator "_", columns named "Rater1_T1" and "Rater1_T2" are recognized
+            as the same rater at two time points. Common patterns: underscore (_), dot (.), dash (-).
+
+    - name: showInterIntraRaterGuide
+      title: "When to use Inter/Intra-Rater Reliability"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Inter/Intra-Rater Reliability before running analysis.
+
+    - name: pairwiseKappa
+      title: "Calculate Pairwise Kappa (vs Reference)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Compare each rater individually against a reference rater (e.g., gold standard, consensus score,
+            senior pathologist). Produces individual kappa values for each rater-vs-reference comparison.
+            Essential for training assessment, rater certification, and performance monitoring.
+
+    - name: referenceRater
+      title: "Reference Rater Variable"
+      type: Variable
+      suggested: [ordinal, nominal]
+      permitted: [factor, numeric]
+      default: NULL
+      description:
+          R: >
+            Select the reference rater variable (e.g., consensus score, gold standard diagnosis, senior
+            pathologist ratings). Each rater in the main variable list will be compared pairwise with
+            this reference using Cohen's kappa.
+
+    - name: rankRaters
+      title: "Rank Raters by Performance"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Rank raters from highest to lowest kappa (relative to reference). Shows best and worst
+            performing raters for quality control and training needs. Useful for identifying raters
+            who need additional training or those ready for certification.
+
+    # Hierarchical/Multilevel Agreement Analysis
+    - name: hierarchicalKappa
+      title: "Hierarchical/Multilevel Kappa"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Enable hierarchical (multilevel) kappa analysis for nested data structures
+            (e.g., pathologists nested within institutions, readers nested within centers).
+            Accounts for clustering effects and provides institution/cluster-specific agreement
+            estimates. Essential for multi-center reliability studies.
+
+    - name: clusterVariable
+      title: "Cluster/Institution Variable"
+      type: Variable
+      suggested: [nominal, ordinal]
+      permitted: [factor, numeric]
+      default: NULL
+      description:
+          R: >
+            Variable defining clusters/institutions/centers. For example, hospital ID,
+            institution name, or scanner ID. Raters are nested within these clusters.
+
+    - name: iccHierarchical
+      title: "Hierarchical ICC Decomposition"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate intraclass correlation coefficients for hierarchical data.
+            ICC(1): between-cluster agreement, ICC(2): reliability of cluster means,
+            ICC(3): within-cluster agreement. Decomposes variance into cluster-level
+            and rater-level components.
+
+    - name: clusterSpecificKappa
+      title: "Cluster-Specific Kappa Estimates"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Calculate kappa separately for each cluster/institution to identify
+            sites with poor agreement. Useful for quality control in multi-center studies.
+
+    - name: varianceDecomposition
+      title: "Variance Component Decomposition"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Decompose total variance into between-cluster and within-cluster components.
+            Large between-cluster variance indicates institutional heterogeneity.
+            Comparison informs whether issues are local or systematic.
+
+    - name: shrinkageEstimates
+      title: "Shrinkage (Empirical Bayes) Estimates"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate shrinkage estimates for cluster-specific kappas. Shrinks extreme
+            estimates toward overall mean, providing more stable estimates for small clusters.
+            Recommended when cluster sizes vary substantially.
+
+    - name: testClusterHomogeneity
+      title: "Test Cluster Homogeneity"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Test whether agreement is homogeneous across clusters (null hypothesis:
+            all clusters have equal kappa). Significant result indicates heterogeneity
+            requiring investigation.
+
+    - name: clusterRankings
+      title: "Cluster Performance Rankings"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Rank clusters/institutions by agreement performance with confidence intervals.
+            Identifies best and worst performing sites. Use cautiously to avoid
+            unfair comparisons when cluster sizes differ substantially.
 
 
-#     - name: gwet
-#       title: "Calculate Gwet's AC1/AC2"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Alternative agreement coefficient that is more stable than Cohen's kappa when dealing with
-#             high agreement rates or unbalanced marginal distributions (e.g., rare tumor subtypes).
-#             Gwet's AC corrects for the paradoxical behavior of kappa in extreme cases.
-
-#     - name: gwetWeights
-#       title: "Weights for Gwet's AC"
-#       type: List
-#       options:
-#         - title: Unweighted (AC1 for nominal)
-#           name: unweighted
-#         - title: Linear Weights (ordinal)
-#           name: linear
-#         - title: Quadratic Weights (ordinal)
-#           name: quadratic
-#       default: unweighted
-#       description:
-#           R: >
-#             Unweighted (AC1) for nominal categories. Linear or Quadratic weights (AC2) for ordinal data.
-
-#     - name: showLevelInfo
-#       title: "Show Level Ordering Information"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Display information about how categorical levels are currently ordered in your variables.
-#             Essential for weighted kappa analysis to ensure ordinal levels are properly ordered
-#             (e.g., G1 → G2 → G3 for tumor grades).
-
-#     # Hierarchical/Multilevel Agreement Analysis
-#     - name: hierarchicalKappa
-#       title: "Hierarchical/Multilevel Kappa"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Enable hierarchical (multilevel) kappa analysis for nested data structures
-#             (e.g., pathologists nested within institutions, readers nested within centers).
-#             Accounts for clustering effects and provides institution/cluster-specific agreement
-#             estimates. Essential for multi-center reliability studies.
-
-#     - name: clusterVariable
-#       title: "Cluster/Institution Variable"
-#       type: Variable
-#       default: null
-#       suggested: [nominal, ordinal]
-#       permitted: [factor]
-#       description:
-#           R: >
-#             Variable defining clusters/institutions/centers. For example, hospital ID,
-#             institution name, or scanner ID. Raters are nested within these clusters.
-
-#     - name: iccHierarchical
-#       title: "Hierarchical ICC"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Calculate intraclass correlation coefficients for hierarchical data.
-#             ICC(1): between-cluster agreement, ICC(2): reliability of cluster means,
-#             ICC(3): within-cluster agreement. Decomposes variance into cluster-level
-#             and rater-level components.
-
-#     - name: clusterSpecificKappa
-#       title: "Cluster-Specific Kappa Estimates"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Calculate kappa separately for each cluster/institution to identify
-#             sites with poor agreement. Useful for quality control in multi-center studies.
-
-#     - name: betweenClusterVariance
-#       title: "Between-Cluster Variance Component"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Estimate variance component for between-cluster differences in agreement.
-#             Large between-cluster variance indicates institutional heterogeneity
-#             requiring investigation (different protocols, training, etc.).
-
-#     - name: withinClusterVariance
-#       title: "Within-Cluster Variance Component"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Estimate variance component for within-cluster rater disagreement.
-#             Comparison of within vs between variance informs whether issues are
-#             local (within institutions) or systematic (between institutions).
-
-#     - name: shrinkageEstimates
-#       title: "Shrinkage (Empirical Bayes) Estimates"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Calculate shrinkage estimates for cluster-specific kappas. Shrinks extreme
-#             estimates toward overall mean, providing more stable estimates for small clusters.
-
-#     - name: testClusterHomogeneity
-#       title: "Test Cluster Homogeneity"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Test whether agreement is homogeneous across clusters (null hypothesis:
-#             all clusters have equal kappa). Significant result indicates heterogeneity
-#             requiring investigation.
-
-#     - name: clusterRankings
-#       title: "Cluster Performance Rankings"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Rank clusters/institutions by agreement performance with confidence intervals.
-#             Identifies best and worst performing sites. Use cautiously to avoid
-#             unfair comparisons when cluster sizes differ substantially.
 
 
 
+    - name: specificAgreement
+      title: "Specific Agreement Indices (Category-Focused)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate category-specific agreement indices for binary or multi-category data.
+            For binary data: Positive Specific Agreement (PSA) and Negative Specific Agreement (NSA).
+            For multi-category data: Agreement indices for each category separately.
+            Essential when some categories are more clinically important than others (e.g., cancer
+            diagnosis, adverse events, critical findings). Unlike overall kappa which treats all
+            disagreements equally, specific agreement focuses on agreement within each category,
+            revealing which categories have reliable agreement and which need attention.
 
+    - name: specificPositiveCategory
+      title: "Positive Category (Binary Analysis)"
+      type: String
+      default: ""
+      description:
+          R: >
+            For binary specific agreement: Specify which category should be treated as "positive"
+            (e.g., "Cancer", "Malignant", "Present", "Yes", "1"). Leave blank to calculate
+            specific agreement for all categories. Required for PSA/NSA interpretation.
+            Example: If categories are "Benign" and "Malignant", enter "Malignant".
+
+    - name: specificAllCategories
+      title: "Calculate for All Categories"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Calculate specific agreement for each category separately (recommended).
+            When enabled, provides agreement indices for every category in your data,
+            identifying which specific diagnoses/classifications have strong agreement
+            and which may need improved training or criteria clarification.
+
+    - name: specificConfidenceIntervals
+      title: "Include Confidence Intervals"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Calculate 95% confidence intervals for specific agreement indices using
+            Wilson score method. Recommended for publication and when sample sizes vary
+            across categories. Helps distinguish true differences in category-specific
+            agreement from random variation.
+
+    - name: showSpecificAgreementGuide
+      title: "When to use Specific Agreement Indices"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Show educational guide and clinical use cases for Specific Agreement Indices before running analysis.
 
     - name: showSummary
       title: "Show Plain-Language Summary"
@@ -288,285 +769,477 @@ options:
           R: >
             Display an explanatory panel describing what this analysis does, when to use it, and how to interpret results.
 
+    - name: consensusName
+      title: "Consensus Variable Name"
+      type: String
+      default: "consensus_rating"
+      description:
+          R: >
+            Name of the new computed variable containing consensus ratings.
+            Will be added to the dataset and available for downstream analyses.
+
+    # Create Consensus Variable
+    - name: consensusVar
+      title: "Create Consensus Variable"
+      type: Output
+      description:
+          R: >
+            Calculate consensus (modal) rating across raters and add as new computed column.
+            Essential for creating reference standards from multi-rater panels.
+            Adds new variable to dataset with most common rating for each case.
+
+    - name: consensusRule
+      title: "Consensus Rule"
+      type: List
+      options:
+        - title: 'Simple Majority (>50%)'
+          name: majority
+        - title: 'Supermajority (≥75%)'
+          name: supermajority
+        - title: 'Unanimous (100%)'
+          name: unanimous
+      default: majority
+      description:
+          R: >
+            Rule for defining consensus. Simple majority = modal category with >50% of votes.
+            Supermajority requires ≥75% agreement. Unanimous requires 100% agreement.
+            Cases not meeting threshold are set to NA in consensus variable.
+
+    - name: tieBreaker
+      title: "Tie Handling"
+      type: List
+      options:
+        - title: 'Set to NA (exclude case)'
+          name: exclude
+        - title: 'Use first occurring mode'
+          name: first
+        - title: 'Use lowest category'
+          name: lowest
+        - title: 'Use highest category'
+          name: highest
+      default: exclude
+      description:
+          R: >
+            How to handle ties when no single category meets the consensus threshold
+            (e.g., 2-2 split with 4 raters). Exclude = set consensus to NA for tied cases.
+            First = use first category that appears. Lowest/Highest = use min/max of tied categories.
 
 
+    # Case Agreement Categorization (Consolidated Feature)
+    - name: loaVariable
+      title: "Create Case Agreement Categorization"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate agreement level for each case and add as new computed column.
+            Choose between Simple (3 categories) or Detailed (5 categories) classification.
+            Useful for identifying difficult cases and quality control.
+
+    - name: detailLevel
+      title: "Detail Level"
+      type: List
+      options:
+        - title: Simple (3 categories)
+          name: simple
+        - title: Detailed (5 categories)
+          name: detailed
+      default: detailed
+      description:
+          R: >
+            Simple mode: All Agreed (100%), Majority Agreed (≥threshold%), No Agreement (<threshold%).
+            Detailed mode: Absolute (100%), High, Moderate, Low, Poor (based on custom/data-driven thresholds).
+            Simple mode replicates the former "Agreement Status" feature.
+
+    - name: simpleThreshold
+      title: "Majority Threshold (%) - Simple Mode"
+      type: Number
+      default: 50
+      min: 50
+      max: 100
+      description:
+          R: >
+            For Simple mode only: Minimum % for "Majority Agreed" status.
+            50% = simple majority, 75% = supermajority, 100% = unanimous.
+
+    - name: loaThresholds
+      title: "Categorization Method - Detailed Mode"
+      type: List
+      options:
+        - title: Custom Thresholds
+          name: custom
+        - title: Quartiles (Data-Driven)
+          name: quartiles
+        - title: Tertiles (Data-Driven)
+          name: tertiles
+      default: custom
+      description:
+          R: >
+            For Detailed mode only: How to define 5 LoA categories.
+            Custom = user-defined cutpoints. Quartiles/Tertiles = data-driven splits.
+
+    - name: loaHighThreshold
+      title: "High Threshold (%) - Detailed Mode"
+      type: Number
+      default: 75
+      min: 50
+      max: 99
+      description:
+          R: >
+            For Detailed mode with Custom thresholds only:
+            Minimum % for "High" classification (e.g., 75% = ≥12/16 raters).
+            Cases ≥ this threshold are "High Agreement".
+
+    - name: loaLowThreshold
+      title: "Low Threshold (%) - Detailed Mode"
+      type: Number
+      default: 56
+      min: 30
+      max: 75
+      description:
+          R: >
+            For Detailed mode with Custom thresholds only:
+            Minimum % for "Low" classification (e.g., 56% = ≥9/16 raters).
+            Below = "Poor", between Low and High = "Moderate".
+
+    - name: loaVariableName
+      title: "Variable Name for LoA"
+      type: String
+      default: 'agreement_level'
+      description:
+          R: >
+            Name for the computed Level of Agreement variable added to the dataset.
+            Default: 'agreement_level'. Will contain categories like 'Absolute', 'High', 'Moderate', 'Low', 'Poor'.
+
+    - name: showLoaTable
+      title: "Show LoA Distribution Table"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Display summary table showing distribution of cases across LoA categories
+            with counts and percentages. Useful for quality control reporting.
+
+    # ---- Rater Profile Plots ----
+
+    - name: raterProfiles
+      title: "Rater Profile Plots (Distribution Comparison)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Generate box plots or violin plots showing the distribution of ratings for each rater.
+            For categorical data: bar plots showing category distribution per rater.
+            For continuous data: box plots/violin plots showing rating distribution per rater.
+            Essential for identifying raters with systematically different rating patterns (e.g.,
+            consistently higher/lower scores, restricted range use, bimodal distributions).
+            Reveals rating style differences, scale use patterns, and potential training needs.
+            Particularly valuable when agreement is low - helps determine if disagreement stems
+            from systematic differences in rating distributions or random variation.
+
+    - name: raterProfileType
+      title: "Profile Plot Type"
+      type: List
+      options:
+        - title: 'Box Plot (Median + IQR)'
+          name: boxplot
+        - title: 'Violin Plot (Full Distribution)'
+          name: violin
+        - title: 'Bar Plot (Category Frequencies)'
+          name: barplot
+      default: boxplot
+      description:
+          R: >
+            For continuous data: Choose between box plots (shows median, quartiles, outliers)
+            or violin plots (shows full distribution shape including multimodality).
+            For categorical data: Automatically uses bar plots showing category frequencies.
+
+    - name: raterProfileShowPoints
+      title: "Show Individual Data Points"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Overlay individual rating observations on box/violin plots.
+            Useful for smaller datasets (N < 100) to show actual data distribution.
+            Not recommended for large datasets due to overplotting.
+
+    - name: showRaterProfileGuide
+      title: "When to use Rater Profile Plots"
+      type: Bool
+      default: false
+
+    # ---- Agreement by Subgroup ----
+
+    - name: agreementBySubgroup
+      title: "Agreement by Subgroup (Stratified Analysis)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate agreement statistics separately for each level of a subgroup variable
+            (e.g., tumor type, disease stage, specimen type, difficulty level).
+            Generates forest plot showing kappa/ICC values with confidence intervals across subgroups.
+            Essential for determining whether agreement is consistent across different contexts or
+            varies by case characteristics. Common use cases: comparing agreement for benign vs.
+            malignant cases, early vs. advanced stage, different anatomical sites, or
+            easy vs. difficult cases. Reveals whether rater training is adequate for all case types
+            or whether specific subgroups need targeted attention.
+
+    - name: subgroupVariable
+      title: "Subgroup Variable"
+      type: Variable
+      suggested:
+        - nominal
+        - ordinal
+      permitted:
+        - factor
+      default: NULL
+      description:
+          R: >
+            Categorical variable defining subgroups for stratified analysis.
+            Examples: tumor_type, disease_stage, specimen_site, difficulty_level.
+            Agreement will be calculated separately for each level of this variable.
+
+    - name: subgroupForestPlot
+      title: "Generate Forest Plot"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Create forest plot showing agreement estimates (kappa/ICC) with confidence intervals
+            for each subgroup. Facilitates visual comparison of agreement across subgroups.
+
+    - name: subgroupMinCases
+      title: "Minimum Cases per Subgroup"
+      type: Number
+      default: 10
+      min: 5
+      max: 100
+      description:
+          R: >
+            Minimum number of cases required in a subgroup to calculate agreement statistics.
+            Subgroups with fewer cases will be excluded with a warning message.
+            Default: 10 cases (reasonable for kappa estimation).
+
+    - name: showSubgroupGuide
+      title: "When to use Agreement by Subgroup"
+      type: Bool
+      default: false
+
+    # ---- Rater Clustering ----
+
+    - name: raterClustering
+      title: "Rater Clustering (Identify Rating Pattern Groups)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Cluster raters based on their rating patterns to identify groups of raters with similar
+            rating behavior. For continuous data: clustering based on correlation or Euclidean distance
+            of ratings. For categorical data: clustering based on agreement patterns or confusion matrices.
+            Essential for identifying subgroups of raters who rate similarly, detecting outlier raters,
+            understanding rater training backgrounds, and optimizing panel composition. Reveals whether
+            raters form natural groups (e.g., experienced vs. novice, different training backgrounds)
+            or rate independently. Useful for targeted training interventions and understanding sources
+            of disagreement.
+
+    - name: clusterMethod
+      title: "Clustering Method"
+      type: List
+      options:
+        - title: 'Hierarchical (Dendrogram)'
+          name: hierarchical
+        - title: 'K-means (Requires K)'
+          name: kmeans
+      default: hierarchical
+      description:
+          R: >
+            Hierarchical clustering: Creates dendrogram showing nested rater groupings at all similarity levels.
+            Best for exploring natural groupings without pre-specifying number of clusters.
+            K-means: Partitions raters into K distinct clusters. Requires specifying number of clusters.
+            Best when number of groups is known a priori (e.g., 2 training cohorts, 3 experience levels).
+
+    - name: clusterDistance
+      title: "Distance Metric"
+      type: List
+      options:
+        - title: 'Correlation (1 - r)'
+          name: correlation
+        - title: 'Euclidean Distance'
+          name: euclidean
+        - title: 'Manhattan Distance'
+          name: manhattan
+        - title: 'Agreement-Based (Categorical)'
+          name: agreement
+      default: correlation
+      description:
+          R: >
+            For continuous data:
+            - Correlation: Groups raters with similar relative rating patterns (recommended for most cases)
+            - Euclidean: Groups raters with similar absolute rating values
+            - Manhattan: Like Euclidean but less sensitive to outliers
+            For categorical data:
+            - Agreement-based: Distance = 1 - pairwise agreement proportion
+            Correlation is recommended for most applications as it captures rating pattern similarity
+            regardless of systematic shifts (one rater consistently 10% higher).
+
+    - name: clusterLinkage
+      title: "Linkage Method (Hierarchical)"
+      type: List
+      options:
+        - title: 'Average Linkage (UPGMA)'
+          name: average
+        - title: 'Complete Linkage (Furthest Neighbor)'
+          name: complete
+        - title: 'Single Linkage (Nearest Neighbor)'
+          name: single
+        - title: 'Ward Linkage (Minimum Variance)'
+          name: ward
+      default: average
+      description:
+          R: >
+            How to measure distance between clusters:
+            - Average: Distance between cluster means (balanced, recommended for most cases)
+            - Complete: Maximum distance between any two points (compact clusters)
+            - Single: Minimum distance between any two points (can create chain-like clusters)
+            - Ward: Minimizes within-cluster variance (tends to create equal-sized clusters)
+
+    - name: nClusters
+      title: "Number of Clusters (K-means)"
+      type: Number
+      default: 3
+      min: 2
+      max: 10
+      description:
+          R: >
+            Number of clusters to create for k-means clustering.
+            Consider: number of training cohorts, experience levels, or institutions.
+            For hierarchical clustering, this is ignored but dendrogram can be cut at any height.
+
+    - name: showDendrogram
+      title: "Show Dendrogram"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Display hierarchical clustering dendrogram showing rater groupings at all similarity levels.
+            Height of joins indicates dissimilarity. Raters joined at lower heights are more similar.
+            Useful for identifying natural number of clusters and understanding rater relationships.
+
+    - name: showClusterHeatmap
+      title: "Show Cluster Heatmap"
+      type: Bool
+      default: true
+      description:
+          R: >
+            Display heatmap of pairwise rater similarities with cluster memberships annotated.
+            Helps visualize which raters are most similar and validates cluster assignments.
+            For continuous data: correlation matrix. For categorical data: agreement matrix.
+
+    - name: showRaterClusterGuide
+      title: "When to use Rater Clustering"
+      type: Bool
+      default: false
+
+    # ---- Case Clustering ----
+
+    - name: caseClustering
+      title: "Case Clustering (Identify Rating Pattern Groups)"
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform clustering of cases based on rating patterns across raters.
+            Identifies groups of cases that received similar ratings.
+
+    - name: caseClusterMethod
+      title: "Clustering Method"
+      type: List
+      options:
+        - title: 'Hierarchical (Dendrogram)'
+          name: hierarchical
+        - title: 'K-means (Requires K)'
+          name: kmeans
+      default: hierarchical
+      description:
+          R: >
+            Hierarchical: Creates a dendrogram showing nested groupings at all similarity levels.
+            K-means: Partitions cases into K distinct clusters (continuous data only).
+
+    - name: caseClusterDistance
+      title: "Distance Metric"
+      type: List
+      options:
+        - title: 'Correlation (1 - r)'
+          name: correlation
+        - title: 'Euclidean Distance'
+          name: euclidean
+        - title: 'Manhattan Distance'
+          name: manhattan
+        - title: 'Agreement-Based (Categorical)'
+          name: agreement
+      default: correlation
+      description:
+          R: >
+            Correlation (1 - r): Based on correlation between rating vectors (continuous).
+            Euclidean: Straight-line distance in rating space.
+            Manhattan: City-block distance (sum of absolute differences).
+            Agreement-Based: Proportion of disagreeing raters (categorical).
+
+    - name: caseClusterLinkage
+      title: "Linkage Method (Hierarchical)"
+      type: List
+      options:
+        - title: 'Average Linkage (UPGMA)'
+          name: average
+        - title: 'Complete Linkage (Furthest Neighbor)'
+          name: complete
+        - title: 'Single Linkage (Nearest Neighbor)'
+          name: single
+        - title: 'Ward Linkage (Minimum Variance)'
+          name: ward
+      default: average
+      description:
+          R: >
+            Average: Uses average distance between all pairs.
+            Complete: Uses maximum distance between pairs.
+            Single: Uses minimum distance between pairs.
+            Ward: Minimizes within-cluster variance.
+
+    - name: nCaseClusters
+      title: "Number of Clusters (K-means)"
+      type: Number
+      default: 3
+      min: 2
+      max: 20
+      description:
+          R: Number of clusters to create for k-means clustering.
+
+    - name: showCaseDendrogram
+      title: "Show Dendrogram"
+      type: Bool
+      default: true
+      description:
+          R: Display hierarchical clustering dendrogram for cases.
+
+    - name: showCaseClusterHeatmap
+      title: "Show Cluster Heatmap"
+      type: Bool
+      default: true
+      description:
+          R: Display similarity matrix heatmap with cluster boundaries.
+
+    - name: showCaseClusterGuide
+      title: "When to use Case Clustering"
+      type: Bool
+      default: false
+      description:
+          R: Show educational guide about case clustering analysis.
 
 
-#     # Consensus Score Derivation
-#     - name: consensusVar
-#       title: "Create Consensus Variable"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Calculate consensus (modal) score across raters and add as new computed column.
-#             Essential for multi-rater studies requiring a reference standard.
-
-#     - name: consensusRule
-#       title: "Consensus Rule"
-#       type: List
-#       options:
-#         - title: Simple Majority (>50%)
-#           name: majority
-#         - title: Supermajority (≥75%)
-#           name: supermajority
-#         - title: Unanimous (100%)
-#           name: unanimous
-#       default: majority
-#       description:
-#           R: >
-#             Rule for defining consensus. Simple majority = modal category with >50% of votes.
-#             Supermajority requires ≥75% agreement. Unanimous requires 100% agreement.
-
-#     - name: tieBreaker
-#       title: "Tie Handling"
-#       type: List
-#       options:
-#         - title: Exclude case (set to NA)
-#           name: exclude
-#         - title: Use first occurring mode
-#           name: first
-#         - title: Use lowest category
-#           name: lowest
-#         - title: Use highest category
-#           name: highest
-#       default: exclude
-#       description:
-#           R: >
-#             How to handle ties (e.g., 50-50 split). Exclude = set consensus to NA for tied cases.
-#             First = use first category that appears. Lowest/Highest = use min/max of tied categories.
-
-#     - name: consensusName
-#       title: "Consensus Variable Name"
-#       type: String
-#       default: "consensus_score"
-#       description:
-#           R: >
-#             Name of the new computed variable to be added to the dataset.
-
-#     # Pairwise Kappa Analysis
-#     - name: referenceRater
-#       title: "Reference Rater"
-#       type: Variable
-#       default: null
-#       suggested: [ordinal, nominal]
-#       permitted: [factor]
-#       description:
-#           R: >
-#             Select a reference rater (e.g., consensus score, gold standard, senior pathologist).
-#             Each selected rater will be compared pairwise with this reference, producing individual kappas.
-#             Essential for training assessment, rater certification, and performance monitoring.
-
-#     - name: rankRaters
-#       title: "Rank Raters by Kappa"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Rank raters from highest to lowest kappa (relative to reference).
-#             Shows best and worst performing raters for quality control and training needs.
-
-#     # Level of Agreement Categorization
-#     - name: loaVariable
-#       title: "Create Level of Agreement Variable"
-#       type: Bool
-#       default: false
-#       description:
-#           R: >
-#             Calculate level of agreement (LoA) for each case and add as new computed column.
-#             Categorizes cases as Absolute/High/Moderate/Low/Poor agreement based on proportion
-#             of raters agreeing. Useful for identifying difficult cases and quality control.
-
-#     - name: loaThresholds
-#       title: "LoA Thresholds"
-#       type: List
-#       options:
-#         - title: Custom
-#           name: custom
-#         - title: Quartiles
-#           name: quartiles
-#         - title: Tertiles
-#           name: tertiles
-#       default: custom
-#       description:
-#           R: >
-#             How to define LoA categories. Custom = user-defined cutpoints.
-#             Quartiles/Tertiles = data-driven splits.
-
-#     - name: loaHighThreshold
-#       title: "High LoA Threshold (%)"
-#       type: Number
-#       default: 75
-#       min: 50
-#       max: 99
-#       description:
-#           R: >
-#             Minimum % agreement for "High" LoA (e.g., 75% = ≥12/16 raters for N=16).
-
-#     - name: loaLowThreshold
-#       title: "Low LoA Threshold (%)"
-#       type: Number
-#       default: 56
-#       min: 30
-#       max: 75
-#       description:
-#           R: >
-#             Minimum % agreement for "Low" LoA (e.g., 56% = ≥9/16 raters for N=16).
 
 
 
 ...
 
-
-
-# TODO: Add more options
-
-# 📚 Complete Feature Implementation List
-# Already Commented & Ready to Implement (from agreement.a.yaml)
-# Tier 1: High Clinical Value ⭐⭐⭐
-# Gwet's AC1/AC2 (lines 143-166)
-# Status: Commented, ready to uncomment
-# Value: Solves kappa's paradox with high agreement/rare categories
-# Effort: Medium (2-3 hours)
-# Use case: Rare tumor subtypes, unbalanced diagnoses
-# Level Ordering Information (lines 168-176)
-# Status: Commented, ready to uncomment
-# Value: Essential validation for weighted kappa
-# Effort: Low (30 min) ⚡ QUICK WIN
-# Use case: Verify G1 < G2 < G3 ordering
-# Consensus Score Derivation (lines 296-345)
-# Status: Commented, ready to uncomment
-# Value: Creates reference standard from panel
-# Effort: Medium-High (3-4 hours)
-# Use case: Multi-pathologist consensus diagnosis
-# Tier 2: Advanced Multi-Rater
-# Pairwise Kappa Analysis (lines 348-368)
-# Compare each rater vs reference/gold standard
-# Rank raters by performance
-# Use case: Trainee assessment, QC
-# Level of Agreement Variable (lines 370-415)
-# Case-level agreement categorization
-# Identify difficult/controversial cases
-# Use case: Quality control
-# Tier 3: Multi-Center Studies (Complex)
-# Hierarchical/Multilevel Kappa (lines 179-269)
-# Raters nested within institutions
-# ICC decomposition, cluster-specific kappas
-# Shrinkage estimates, homogeneity tests
-# Use case: Multi-center trials
-# From irr Package (Not Yet Implemented) 📦
-# Priority A: Continuous Data Agreement
-# ICC - Intraclass Correlation ⭐⭐⭐
-# 6 models: ICC(1,1), ICC(2,1), ICC(3,1), ICC(1,k), ICC(2,k), ICC(3,k)
-# Oneway/twoway, random/mixed effects
-# Effort: Medium (2-3 hours)
-# Use case: Tumor size, biomarker quantification
-# Complements: Bland-Altman (already implemented)
-# Iota Coefficient
-# Chance-corrected agreement for quantitative data
-# Alternative to ICC
-# Use case: Continuous measurements
-# Priority B: Alternative Kappa Methods
-# Light's Kappa (kappam.light) ⭐⭐
-# For 3+ raters
-# Alternative to Fleiss' kappa
-# Average of all pairwise kappas
-# Effort: Low (1 hour)
-# Use case: When Fleiss' assumptions questionable
-# Finn Coefficient
-# Variance-based agreement
-# Use case: Alternative categorical agreement measure
-# Priority C: Systematic Bias Detection
-# Rater Bias Test (rater.bias) ⭐⭐
-# Detect systematic over/under-diagnosis
-# Chi-square test for marginal frequencies
-# Effort: Low-Medium (1-2 hours)
-# Use case: Identify lenient/strict raters
-# Bhapkar Test
-# Marginal homogeneity for >2 categories
-# Like McNemar but for multiple categories
-# Use case: Test if raters use categories equally
-# Stuart-Maxwell-MH Test
-# Tests marginal homogeneity
-# Use case: Matched data analysis
-# Priority D: Ordinal/Ranked Data
-# Kendall's W (kendall) ⭐
-# Coefficient of concordance for rankings
-# Effort: Low (1 hour)
-# Use case: Pathology grading, severity rankings
-# Robinson's A
-# Agreement index for ordinal scales
-# Use case: Alternative to weighted kappa
-# Mean Spearman Rho (meanrho)
-# Average rank correlation
-# Use case: Ordinal agreement
-# Priority E: Correlation-Based
-# Mean Pearson Correlation (meancor)
-# Average correlation among raters
-# Use case: Continuous data, simple measure
-# Priority F: Advanced Designs
-# Inter/Intra-Rater Reliability (relInterIntra)
-# When same raters rate same cases twice
-# Simultaneous inter- and intra-rater assessment
-# Effort: Medium-High (3-4 hours)
-# Use case: Test-retest reliability studies
-# Maxwell's RE
-# Random error index
-# Use case: Decompose error sources
-# Additional Useful Features (Not in irr)
-# Clinical Utility
-# Lin's Concordance Correlation (CCC)
-# Better than Pearson's r for agreement
-# Package: epiR or DescTools
-# Use case: Method comparison
-# Total Deviation Index (TDI)
-# Probability-based agreement
-# Package: MethComp
-# Use case: Acceptable limits
-# Specific Agreement Indices
-# Positive/negative specific agreement
-# Category-specific measures
-# Use case: Focus on critical categories
-# Visualization
-# Agreement Heatmap
-# Confusion matrix visualization
-# Color-coded patterns
-# Effort: Low (1 hour)
-# Rater Profile Plots
-# Distribution comparison
-# Box plots per rater
-# Effort: Low (1 hour)
-# Agreement by Subgroup
-# Stratified analysis
-# Forest plot of kappas
-# Use case: Compare agreement across tumor types
-# 🎯 Recommended Implementation Priority
-# Phase 1: Essential (1-2 days)
-# ✅ Level Ordering Info (30 min)
-# ✅ ICC (2-3 hours) - Most requested
-# ✅ Gwet's AC1/AC2 (2-3 hours) - Solves real problem
-# Phase 2: High Value (2-3 days)
-# ✅ Consensus Score (3-4 hours) - Creates output variable
-# ✅ Rater Bias Test (1-2 hours) - QC essential
-# ✅ Light's Kappa (1 hour) - Alternative method
-# ✅ Kendall's W (1 hour) - Ordinal data
-# Phase 3: Advanced (1 week)
-# ✅ Pairwise Analysis (2-3 hours)
-# ✅ Level of Agreement Variable (2-3 hours)
-# ✅ Inter/Intra-Rater (3-4 hours)
-# ✅ Hierarchical Kappa (1-2 days) - Complex
-# Phase 4: Enhancements (ongoing)
-# ✅ Visualization tools
-# ✅ Subgroup analysis
-# ✅ Additional coefficients as needed
-# 💡 Top 5 Most Impactful
-# Based on clinical pathology research:
-# ICC - Standard for continuous data, complements Bland-Altman
-# Gwet's AC1 - Solves kappa paradox (high agreement, rare categories)
-# Level Ordering Info - Prevents errors, essential validation
-# Consensus Variable - Creates usable output for downstream analysis
-# Rater Bias Test - QC tool to identify problematic raters
-# Which feature(s) would you like to implement next? My recommendation for maximum impact with minimum effort:
-# Quick wins: Level Ordering Info + Light's Kappa (90 min total)
-# High impact: ICC + Gwet's AC1 (4-6 hours total)
-# Most requested: Consensus Score Derivation (3-4 hours)
