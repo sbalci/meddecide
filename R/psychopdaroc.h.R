@@ -1911,7 +1911,7 @@ psychopdaROCBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "psychopdaROC",
-                version = c(0,0,33),
+                version = c(0,0,34),
                 options = options,
                 results = psychopdaROCResults$new(options=options),
                 data = data,

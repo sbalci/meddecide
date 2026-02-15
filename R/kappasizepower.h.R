@@ -52,7 +52,8 @@ kappaSizePowerOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
                     "2",
                     "3",
                     "4",
-                    "5"),
+                    "5",
+                    "6"),
                 default="2")
             private$..alpha <- jmvcore::OptionNumber$new(
                 "alpha",
@@ -98,6 +99,7 @@ kappaSizePowerResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
     inherit = jmvcore::Group,
     active = list(
         text1 = function() private$.items[["text1"]],
+        text_summary = function() private$.items[["text_summary"]],
         text2 = function() private$.items[["text2"]]),
     private = list(),
     public=list(
@@ -115,6 +117,10 @@ kappaSizePowerResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
                 title="Analysis result"))
             self$add(jmvcore::Preformatted$new(
                 options=options,
+                name="text_summary",
+                title="Summary"))
+            self$add(jmvcore::Preformatted$new(
+                options=options,
                 name="text2",
                 title="Study Explanation"))}))
 
@@ -126,7 +132,7 @@ kappaSizePowerBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             super$initialize(
                 package = "meddecide",
                 name = "kappaSizePower",
-                version = c(0,0,33),
+                version = c(0,0,34),
                 options = options,
                 results = kappaSizePowerResults$new(options=options),
                 data = data,
@@ -158,6 +164,7 @@ kappaSizePowerBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$text1} \tab \tab \tab \tab \tab a preformatted \cr
+#'   \code{results$text_summary} \tab \tab \tab \tab \tab a preformatted \cr
 #'   \code{results$text2} \tab \tab \tab \tab \tab a preformatted \cr
 #' }
 #'
