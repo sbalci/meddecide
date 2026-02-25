@@ -7065,15 +7065,6 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             # Calculate Gwet's AC1 (unweighted) or AC2 (weighted) coefficient
             # More stable than kappa for high agreement or rare categories
 
-            # Check if irrCAC package is available
-            if (!requireNamespace("irrCAC", quietly = TRUE)) {
-                self$results$gwetTable$setNote(
-                    "error",
-                    "The 'irrCAC' package is required for Gwet's AC calculation but is not installed. Please install it with: install.packages('irrCAC')"
-                )
-                return()
-            }
-
             # Get weights option
             weights <- self$options$gwetWeights
 
