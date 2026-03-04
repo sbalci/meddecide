@@ -1,10 +1,10 @@
 ---
 name: enhancedROC
 title: Clinical ROC Analysis
-menuGroup: meddecide
+menuGroup: meddecideT
 menuSubgroup: ROC
 menuSubtitle: "Clinical ROC analysis with diagnostic metrics and optimal cutoffs"
-version: '0.0.34'
+version: '0.0.36'
 jas: '1.2'
 
 description:
@@ -323,8 +323,8 @@ options:
     - name: useObservedPrevalence
       title: 'Use Observed Prevalence'
       type: Bool
-      default: false
-      description: 'Use the prevalence observed in the data for PPV/NPV and clinical impact calculations (recommended)'
+      default: true
+      description: 'Use the prevalence observed in the data for PPV/NPV and clinical impact calculations (recommended for most analyses)'
 
     - name: clinicalContext
       title: 'Clinical Context'

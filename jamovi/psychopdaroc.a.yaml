@@ -1,10 +1,10 @@
 ---
 name: psychopdaROC
 title: Advanced ROC Analysis
-menuGroup: meddecide
+menuGroup: meddecideT
 menuSubgroup: ROC
 menuSubtitle: Advanced ROC analysis with statistical comparisons and effect sizes
-version: '0.0.34'
+version: '0.0.36'
 jas: '1.2'
 
 description:
@@ -435,13 +435,6 @@ options:
           R: >
             Label curves directly on the plot instead of using a legend.
 
-    - name: interactiveROC
-      title: Create Interactive Plot
-      type: Bool
-      default: false
-      description:
-          R: >
-            Create an interactive HTML ROC plot (requires plotROC package).
 
     # ==========================================
     # ADDITIONAL PLOTS

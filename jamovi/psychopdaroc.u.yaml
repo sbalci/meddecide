@@ -148,8 +148,7 @@ children:
             label: Metric Tolerance
             enable: >-
               (method:maximize_metric || method:minimize_metric ||
-              method:maximize_loess_metric || method:minimize_loess_metric ||
-              method:maximize_spline_metric || method:minimize_spline_metric)
+              method:maximize_loess_metric || method:minimize_loess_metric)
           - type: ComboBox
             name: break_ties
             label: Tie Breaking Method
@@ -252,10 +251,6 @@ children:
             name: displaySE
             label: Show standard error bands
             enable: (plotROC && smoothing && !cleanPlot)
-          - type: CheckBox
-            name: interactiveROC
-            label: Create interactive plot
-            enable: (plotROC)
       - type: LayoutBox
         margin: large
         children:

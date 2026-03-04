@@ -14,7 +14,8 @@ items:
             type: Html
             clearWith:
                - outcome
-               - predictor
+               - positiveClass
+               - predictors
                - detectImbalance
                - analysisType
 

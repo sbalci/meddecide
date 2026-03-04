@@ -5,7 +5,8 @@
       "Bash(R:*)",
       "Bash(Rscript:*)",
       "Bash(ls:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(cat:*)"
     ],
     "deny": []
   }

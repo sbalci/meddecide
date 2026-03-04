@@ -350,20 +350,6 @@ items:
           - showConfidenceBands
           - quantileCIs
 
-    - name: interactivePlot
-      title: Interactive ROC Plot
-      type: Image
-      width: 650
-      height: 500
-      renderFun: .plotInteractiveROC
-      visible: (interactiveROC)
-      clearWith:
-        - dependentVars
-        - classVar
-        - positiveClass
-        - subGroup
-      refs: 
-        - plotROC
 
     - name: fixedSensSpecROC
       title: Fixed Sensitivity/Specificity ROC Curves
@@ -597,7 +583,7 @@ items:
         - classVar
         - positiveClass
         - targetPower
-        - targetEffectSize
+        - expectedAUCDifference
       columns:
         - name: variable
           title: Variable
@@ -631,8 +617,8 @@ items:
         - dependentVars
         - classVar
         - positiveClass
-        - bayesianPrior
-        - mcmcSamples
+        - priorAUC
+        - bootstrapReps
       columns:
         - name: variable
           title: Variable
@@ -671,8 +657,8 @@ items:
         - dependentVars
         - classVar
         - positiveClass
-        - treatmentBenefit
-        - treatmentHarm
+        - treatmentThreshold
+        - harmBenefitRatio
       columns:
         - name: variable
           title: Variable
@@ -793,8 +779,8 @@ items:
         - dependentVars
         - classVar
         - positiveClass
-        - treatmentBenefit
-        - treatmentHarm
+        - treatmentThreshold
+        - harmBenefitRatio
       columns:
         - name: variable
           title: Variable
@@ -953,7 +939,7 @@ items:
           - classVar
           - positiveClass
           - targetPower
-          - targetEffectSize
+          - expectedAUCDifference
 
     - name: bayesianTracePlot
       title: Bayesian MCMC Traces
@@ -968,7 +954,7 @@ items:
           - dependentVars
           - classVar
           - positiveClass
-          - mcmcSamples
+          - bootstrapReps
 
     - name: decisionCurvePlot
       title: Decision Curve Analysis
@@ -983,8 +969,8 @@ items:
           - dependentVars
           - classVar
           - positiveClass
-          - treatmentBenefit
-          - treatmentHarm
+          - treatmentThreshold
+          - harmBenefitRatio
 
     - name: metaAnalysisForestPlot
       title: Meta-Analysis Forest Plot
@@ -1026,15 +1012,12 @@ refs:
     - ClinicoPathJamoviModule
     - cutpointr
     - pROC
-    - plotROC
-    # - Cohen1988
-    # - Hedges1981
-    # - Faul2007
-    # - Kruschke2014
-    # - McElreath2020
-    # - Vickers2006
-    # - Steyerberg2010
-    # - Higgins2003
-    # - DerSimonian1986
+    - Cohen1988
+    - Hedges1981
+    - Faul2007
+    - Vickers2006
+    - Steyerberg2010
+    - Higgins2003
+    - DerSimonian1986
 
 ...
