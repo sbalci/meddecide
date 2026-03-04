@@ -75,7 +75,8 @@ decisioncombineOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             private$..test3Positive <- jmvcore::OptionLevel$new(
                 "test3Positive",
                 test3Positive,
-                variable="(test3)")
+                variable="(test3)",
+                allowNone=TRUE)
             private$..showIndividual <- jmvcore::OptionBool$new(
                 "showIndividual",
                 showIndividual,
@@ -310,7 +311,7 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             self$add(jmvcore::Table$new(
                 options=options,
                 name="combinationTableCI",
-                title="Combination Statistics with 95% Confidence Intervals",
+                title="Combination Statistics with 95 percent Confidence Intervals",
                 rows=0,
                 columns=list(
                     list(
@@ -329,13 +330,13 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% CI", 
+                        `superTitle`="95 percent CI", 
                         `type`="number", 
                         `format`="number"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% CI", 
+                        `superTitle`="95 percent CI", 
                         `type`="number", 
                         `format`="number"))))
             self$add(jmvcore::Table$new(
@@ -665,6 +666,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' 
 #'
 #' @examples
+#' \donttest{
 #' # Two-test combination analysis
 #' result <- decisioncombine(
 #'   data = histopathology,
@@ -674,9 +676,10 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #'   test1Positive = "1",
 #'   test2 = "Rater 1",
 #'   test2Positive = "1",
+#'   test3Positive = "1",
 #'   showIndividual = TRUE
 #' )
-#'
+#'}
 #' @param data The data as a data frame.
 #' @param gold The gold standard reference variable representing true disease
 #'   status.
@@ -705,7 +708,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$combinationTable} \tab \tab \tab \tab \tab Counts and diagnostic performance metrics for each test combination pattern and clinical strategy, including prevalence, balanced accuracy, Youden's J, likelihood ratios, and diagnostic odds ratios \cr
-#'   \code{results$combinationTableCI} \tab \tab \tab \tab \tab 95\% confidence intervals for diagnostic metrics. Wilson intervals are used for proportions, and log-scale intervals for likelihood ratios and diagnostic odds ratios. \cr
+#'   \code{results$combinationTableCI} \tab \tab \tab \tab \tab 95 percent confidence intervals for diagnostic metrics. Wilson intervals are used for proportions, and log-scale intervals for likelihood ratios and diagnostic odds ratios. \cr
 #'   \code{results$goldFreqTable} \tab \tab \tab \tab \tab Frequency distribution of the gold standard (reference) test showing counts and percentages for each level \cr
 #'   \code{results$crossTabTable} \tab \tab \tab \tab \tab Cross-tabulation showing how test combination patterns align with gold standard results \cr
 #'   \code{results$individualTest1$test1Contingency} \tab \tab \tab \tab \tab a table \cr
@@ -716,7 +719,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #'   \code{results$individualTest3$test3Stats} \tab \tab \tab \tab \tab a table \cr
 #'   \code{results$barPlot} \tab \tab \tab \tab \tab Grouped bar chart comparing sensitivity, specificity, PPV, NPV, and accuracy across test combinations \cr
 #'   \code{results$heatmapPlot} \tab \tab \tab \tab \tab Color-coded heatmap showing all diagnostic metrics for each test pattern \cr
-#'   \code{results$forestPlot} \tab \tab \tab \tab \tab Forest plot displaying 95\% confidence intervals for key diagnostic metrics \cr
+#'   \code{results$forestPlot} \tab \tab \tab \tab \tab Forest plot displaying 95 percent confidence intervals for key diagnostic metrics \cr
 #'   \code{results$decisionTreePlot} \tab \tab \tab \tab \tab Hierarchical decision tree showing test patterns with performance-based recommendations \cr
 #'   \code{results$recommendationTable} \tab \tab \tab \tab \tab Recommended optimal test combination pattern based on Youden index and clinical performance metrics \cr
 #'   \code{results$notices} \tab \tab \tab \tab \tab a html \cr

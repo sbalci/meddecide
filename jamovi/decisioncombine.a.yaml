@@ -14,7 +14,7 @@ description:
         standard to identify optimal testing strategies. Calculates sensitivity,
         specificity, PPV, NPV, and accuracy for each pattern combination.
     R:
-        dontrun: false
+        dontrun: true
         usage: |
             # Two-test combination analysis
             result <- decisioncombine(
@@ -25,6 +25,7 @@ description:
               test1Positive = "1",
               test2 = "Rater 1",
               test2Positive = "1",
+              test3Positive = "1",
               showIndividual = TRUE
             )
 

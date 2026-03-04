@@ -5,7 +5,7 @@
 \alias{\%!in\%}
 \title{Alternative not-in operator}
 \usage{
-lhs \%!in\% rhs
+x \%!in\% table
 }
 \description{
 Alternative not-in operator

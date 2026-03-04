@@ -27,7 +27,7 @@ description:
               FP = 20   # False positives
             )
             
-            # Include 95% confidence intervals
+            # Include 95 percent confidence intervals
             result2 <- decisioncalculator(
               TP = 90, FN = 10, TN = 80, FP = 20,
               ci = TRUE
@@ -122,15 +122,15 @@ options:
             Boolean selection whether to show detailed explanatory footnotes.
 
     - name: ci
-      title: '95% Confidence Intervals'
+      title: '95 percent Confidence Intervals'
       type: Bool
       default: false
       description:
           ui: >
-            Calculate and display 95% confidence intervals for all diagnostic statistics.
+            Calculate and display 95 percent confidence intervals for all diagnostic statistics.
             Provides uncertainty estimates around point estimates.
           R: >
-            Boolean selection whether to calculate 95% confidence intervals.
+            Boolean selection whether to calculate 95 percent confidence intervals.
 
 
     - name: fagan

@@ -280,13 +280,13 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"))))
             self$add(jmvcore::Table$new(
@@ -331,13 +331,13 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"))))
             self$add(jmvcore::Table$new(
@@ -382,13 +382,13 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"))))
             self$add(jmvcore::Table$new(
@@ -470,7 +470,7 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             self$add(jmvcore::Table$new(
                 options=options,
                 name="diffTable",
-                title="Differences with 95% Confidence Intervals",
+                title="Differences with 95 percent Confidence Intervals",
                 visible="(statComp)",
                 rows=0,
                 columns=list(
@@ -490,13 +490,13 @@ decisioncompareResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"))))
             self$add(jmvcore::Image$new(
@@ -600,8 +600,8 @@ decisioncompareBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' 
 #'
 #' @examples
+#' \donttest{
 #' # Basic comparison of two diagnostic tests
-#' library(ClinicoPath)
 #' data('histopathology')
 #'
 #' # Example 1: Compare imaging vs blood test performance
@@ -613,6 +613,7 @@ decisioncompareBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #'     test1Positive = "1",
 #'     test2 = "Rater 1",
 #'     test2Positive = "1",
+#'     test3Positive = "1",
 #'     ci = TRUE,
 #'     plot = TRUE
 #' )
@@ -641,11 +642,12 @@ decisioncompareBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #'     test1Positive = "1",
 #'     test2 = "Rater 1",
 #'     test2Positive = "1",
+#'     test3Positive = "1",
 #'     pp = TRUE,
-#'     pprob = 0.15,  # 15\% prevalence in screening population
+#'     pprob = 0.15,  # 15 percent prevalence in screening population
 #'     od = TRUE      # Show original frequency tables
 #' )
-#'
+#'}
 #' @param data The data as a data frame.
 #' @param gold The gold standard reference variable representing true disease
 #'   status.

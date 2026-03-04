@@ -1057,7 +1057,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="percent_change", 
-                                    `title`="% Change", 
+                                    `title`="percent Change", 
                                     `type`="number", 
                                     `format`="pc"),
                                 list(
@@ -1236,7 +1236,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="sensitivity_ci", 
-                                    `title`="Sensitivity 95% CI", 
+                                    `title`="Sensitivity 95 percent CI", 
                                     `type`="text"),
                                 list(
                                     `name`="specificity", 
@@ -1245,7 +1245,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="specificity_ci", 
-                                    `title`="Specificity 95% CI", 
+                                    `title`="Specificity 95 percent CI", 
                                     `type`="text"),
                                 list(
                                     `name`="accuracy", 
@@ -1811,7 +1811,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="tested_positive", 
-                                    `title`="Tested Positive (%)", 
+                                    `title`="Tested Positive (percent)", 
                                     `type`="number", 
                                     `format`="pc"),
                                 list(

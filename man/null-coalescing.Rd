@@ -5,7 +5,7 @@
 \alias{\%||\%}
 \title{Null-coalescing operator}
 \usage{
-lhs \%||\% rhs
+x \%||\% y
 }
 \description{
 Null-coalescing operator

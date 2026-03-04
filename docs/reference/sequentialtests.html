@@ -17,7 +17,7 @@ analysis including population flow, cost implications, and Fagan nomograms."></h
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,11 +73,14 @@ analysis including population flow, cost implications, and Fagan nomograms."></h
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -112,13 +115,17 @@ analysis including population flow, cost implications, and Fagan nomograms.</p>
 <span>  test1_name <span class="op">=</span> <span class="st">"Screening Test"</span>,</span>
 <span>  test1_sens <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  test1_spec <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>  test1_cost <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  test2_name <span class="op">=</span> <span class="st">"Confirmatory Test"</span>,</span>
 <span>  test2_sens <span class="op">=</span> <span class="fl">0.8</span>,</span>
 <span>  test2_spec <span class="op">=</span> <span class="fl">0.98</span>,</span>
+<span>  test2_cost <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  strategy <span class="op">=</span> <span class="st">"serial_positive"</span>,</span>
 <span>  prevalence <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span>  show_explanation <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  population_size <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  show_explanation <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  show_formulas <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  show_cost_analysis <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  show_nomogram <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -145,6 +152,10 @@ literature.</p></dd>
 <dd><p>.</p></dd>
 
 
+<dt id="arg-test-cost">test1_cost<a class="anchor" aria-label="anchor" href="#arg-test-cost"></a></dt>
+<dd><p>.</p></dd>
+
+
 <dt id="arg-test-name">test2_name<a class="anchor" aria-label="anchor" href="#arg-test-name"></a></dt>
 <dd><p>.</p></dd>
 
@@ -157,12 +168,21 @@ literature.</p></dd>
 <dd><p>.</p></dd>
 
 
+<dt id="arg-test-cost">test2_cost<a class="anchor" aria-label="anchor" href="#arg-test-cost"></a></dt>
+<dd><p>.</p></dd>
+
+
 <dt id="arg-strategy">strategy<a class="anchor" aria-label="anchor" href="#arg-strategy"></a></dt>
 <dd><p>.</p></dd>
 
 
 <dt id="arg-prevalence">prevalence<a class="anchor" aria-label="anchor" href="#arg-prevalence"></a></dt>
 <dd><p>.</p></dd>
+
+
+<dt id="arg-population-size">population_size<a class="anchor" aria-label="anchor" href="#arg-population-size"></a></dt>
+<dd><p>Population size used to illustrate population flow
+counts. Does not affect probabilities.</p></dd>
 
 
 <dt id="arg-show-explanation">show_explanation<a class="anchor" aria-label="anchor" href="#arg-show-explanation"></a></dt>
@@ -173,13 +193,17 @@ literature.</p></dd>
 <dd><p>.</p></dd>
 
 
+<dt id="arg-show-cost-analysis">show_cost_analysis<a class="anchor" aria-label="anchor" href="#arg-show-cost-analysis"></a></dt>
+<dd><p>.</p></dd>
+
+
 <dt id="arg-show-nomogram">show_nomogram<a class="anchor" aria-label="anchor" href="#arg-show-nomogram"></a></dt>
 <dd><p>.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A results object containing:</p><table class="table table"><tr><td><code>results$summary_table</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$individual_tests_table</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$population_flow_table</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$explanation_text</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$formulas_text</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$plot_flow_diagram</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plot_performance</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plot_probability</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plot_population_flow</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$clinical_guidance</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
+    <p>A results object containing:</p><table class="table table"><tr><td><code>results$plain_summary</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$summary_table</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$individual_tests_table</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$population_flow_table</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cost_analysis_table</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$explanation_text</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$formulas_text</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$plot_flow_diagram</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plot_performance</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plot_probability</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plot_population_flow</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plot_sensitivity_analysis</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$clinical_guidance</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$notices</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
 <p><code>results$summary_table$asDF</code></p>
 <p><code>as.data.frame(results$summary_table)</code></p>
     </div>
@@ -195,47 +219,9 @@ literature.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># COVID-19 testing: Rapid antigen followed by RT-PCR confirmation</span></span></span>
-<span class="r-in"><span><span class="co"># Shows how serial positive strategy improves specificity</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sequential_testing_examples</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘sequential_testing_examples’ not found</span>
-<span class="r-in"><span><span class="va">covid_example</span> <span class="op">&lt;-</span> <span class="va">sequential_testing_examples</span><span class="op">[</span></span></span>
-<span class="r-in"><span>  <span class="va">sequential_testing_examples</span><span class="op">$</span><span class="va">scenario</span> <span class="op">==</span> <span class="st">"COVID-19 Testing"</span> <span class="op">&amp;</span></span></span>
-<span class="r-in"><span>  <span class="va">sequential_testing_examples</span><span class="op">$</span><span class="va">clinical_setting</span> <span class="op">==</span> <span class="st">"Community screening"</span>, <span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sequential_testing_examples' not found</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Cancer screening: Mammography followed by tissue biopsy</span></span></span>
-<span class="r-in"><span><span class="co"># Demonstrates cost-effective screening with definitive diagnosis</span></span></span>
-<span class="r-in"><span><span class="va">breast_cancer</span> <span class="op">&lt;-</span> <span class="va">sequential_testing_examples</span><span class="op">[</span></span></span>
-<span class="r-in"><span>  <span class="va">sequential_testing_examples</span><span class="op">$</span><span class="va">scenario</span> <span class="op">==</span> <span class="st">"Breast Cancer Screening"</span>, <span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sequential_testing_examples' not found</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Emergency medicine: Parallel testing for rapid diagnosis</span></span></span>
-<span class="r-in"><span><span class="co"># Shows how parallel strategy maximizes sensitivity</span></span></span>
-<span class="r-in"><span><span class="va">emergency_example</span> <span class="op">&lt;-</span> <span class="va">sequential_testing_examples</span><span class="op">[</span></span></span>
-<span class="r-in"><span>  <span class="va">sequential_testing_examples</span><span class="op">$</span><span class="va">scenario</span> <span class="op">==</span> <span class="st">"Myocardial Infarction Rule-out"</span>, <span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sequential_testing_examples' not found</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Strategy comparison across different prevalence settings</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">strategy_comparison</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘strategy_comparison’ not found</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Cost-effectiveness analysis for resource planning</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cost_effectiveness_examples</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘cost_effectiveness_examples’ not found</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Load example datasets for realistic clinical scenarios</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">sequential_testing_examples</span><span class="op">)</span>  <span class="co"># 15+ clinical scenarios across specialties</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘sequential_testing_examples’ not found</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">strategy_comparison</span><span class="op">)</span>          <span class="co"># Strategy performance comparisons</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘strategy_comparison’ not found</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">cost_effectiveness_examples</span><span class="op">)</span>  <span class="co"># Economic analysis examples</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘cost_effectiveness_examples’ not found</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">teaching_examples</span><span class="op">)</span>            <span class="co"># Educational scenarios</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘teaching_examples’ not found</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">common_test_combinations</span><span class="op">)</span>     <span class="co"># Reference test characteristics</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘common_test_combinations’ not found</span>
-<span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># example will be added</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

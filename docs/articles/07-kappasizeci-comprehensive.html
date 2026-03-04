@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,11 +78,14 @@
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -204,9 +207,10 @@ repeated calculations</li>
 <span><span class="co">## </span></span>
 <span><span class="co">##     intersect, setdiff, setequal, union</span></span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Set options for better output</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: package 'knitr' was built under R version 4.5.2</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Set options for better output</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html" class="external-link">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span></span>
 <span>  fig.width <span class="op">=</span> <span class="fl">12</span>,</span>
@@ -269,7 +273,7 @@ sum to 1.0)</li>
 <div class="section level3">
 <h3 id="parameter-relationships">Parameter Relationships<a class="anchor" aria-label="anchor" href="#parameter-relationships"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create parameter relationship examples</span></span>
 <span><span class="va">param_examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Study_Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -307,7 +311,7 @@ sum to 1.0)</li>
 </h3>
 <p>The simplest case involves binary classifications (e.g., Disease/No
 Disease):</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example: Mammography screening agreement</span></span>
 <span><span class="co"># Two radiologists reviewing mammograms for suspicious findings</span></span>
 <span></span>
@@ -358,7 +362,7 @@ require κ &gt; 0.70 for clinical acceptability</p>
 <h3 id="three-category-outcomes">Three-Category Outcomes<a class="anchor" aria-label="anchor" href="#three-category-outcomes"></a>
 </h3>
 <p>Many clinical assessments use three-level classifications:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example: Cancer grading study</span></span>
 <span><span class="co"># Pathologists grading tumor differentiation</span></span>
 <span></span>
@@ -397,7 +401,7 @@ require κ &gt; 0.70 for clinical acceptability</p>
 </h3>
 <p>Four-category systems are common in radiology and quality
 assessments:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example: BI-RADS assessment</span></span>
 <span><span class="co"># Radiologists using BI-RADS classification</span></span>
 <span></span>
@@ -433,7 +437,7 @@ assessments:</p>
 </h3>
 <p>Five-category systems are often used in psychological assessments and
 Likert scales:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Example: Pain assessment study</span></span>
 <span><span class="co"># Nurses rating pain using behavioral indicators</span></span>
 <span></span>
@@ -473,7 +477,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="diagnostic-agreement-studies">Diagnostic Agreement Studies<a class="anchor" aria-label="anchor" href="#diagnostic-agreement-studies"></a>
 </h4>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Collection of diagnostic agreement scenarios</span></span>
 <span><span class="va">diagnostic_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  </span>
@@ -530,7 +534,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="multi-category-medical-assessments">Multi-Category Medical Assessments<a class="anchor" aria-label="anchor" href="#multi-category-medical-assessments"></a>
 </h4>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Medical severity and staging studies</span></span>
 <span><span class="va">severity_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  </span>
@@ -583,7 +587,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="mental-health-assessments">Mental Health Assessments<a class="anchor" aria-label="anchor" href="#mental-health-assessments"></a>
 </h4>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Psychological assessment scenarios</span></span>
 <span><span class="va">psych_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  </span>
@@ -636,7 +640,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="behavioral-observation-studies">Behavioral Observation Studies<a class="anchor" aria-label="anchor" href="#behavioral-observation-studies"></a>
 </h4>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Behavioral observation scenarios</span></span>
 <span><span class="va">behavioral_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Study_Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -687,7 +691,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="manufacturing-and-production">Manufacturing and Production<a class="anchor" aria-label="anchor" href="#manufacturing-and-production"></a>
 </h4>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Quality control scenarios</span></span>
 <span><span class="va">qc_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  </span>
@@ -748,7 +752,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="genomic-classification-studies">Genomic Classification Studies<a class="anchor" aria-label="anchor" href="#genomic-classification-studies"></a>
 </h4>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Precision medicine scenarios requiring agreement studies</span></span>
 <span><span class="va">precision_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  </span>
@@ -805,7 +809,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="qualitative-research-applications">Qualitative Research Applications<a class="anchor" aria-label="anchor" href="#qualitative-research-applications"></a>
 </h4>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Content analysis scenarios</span></span>
 <span><span class="va">content_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  </span>
@@ -872,7 +876,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="determining-precision-requirements">Determining Precision Requirements<a class="anchor" aria-label="anchor" href="#determining-precision-requirements"></a>
 </h4>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Precision requirement guidelines</span></span>
 <span><span class="va">precision_guide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Study_Purpose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -931,7 +935,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="rater-selection-and-training">Rater Selection and Training<a class="anchor" aria-label="anchor" href="#rater-selection-and-training"></a>
 </h4>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Rater selection guidelines</span></span>
 <span><span class="va">rater_guide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Number_of_Raters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>, <span class="st">"5"</span><span class="op">)</span>,</span>
@@ -974,7 +978,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="effect-of-prevalence-on-sample-size">Effect of Prevalence on Sample Size<a class="anchor" aria-label="anchor" href="#effect-of-prevalence-on-sample-size"></a>
 </h4>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create examples showing prevalence effects</span></span>
 <span><span class="va">prevalence_examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1020,7 +1024,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="category-distribution-optimization">Category Distribution Optimization<a class="anchor" aria-label="anchor" href="#category-distribution-optimization"></a>
 </h4>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Guidelines for optimal category distributions</span></span>
 <span><span class="va">distribution_guide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Scenario <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1072,7 +1076,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="pre-study-planning">Pre-Study Planning<a class="anchor" aria-label="anchor" href="#pre-study-planning"></a>
 </h4>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Comprehensive planning checklist</span></span>
 <span><span class="va">planning_checklist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Phase <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1132,7 +1136,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="common-pitfalls-and-solutions">Common Pitfalls and Solutions<a class="anchor" aria-label="anchor" href="#common-pitfalls-and-solutions"></a>
 </h4>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Common pitfalls and their solutions</span></span>
 <span><span class="va">pitfalls_guide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Common_Pitfall <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1189,7 +1193,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="kappa-interpretation-in-context">Kappa Interpretation in Context<a class="anchor" aria-label="anchor" href="#kappa-interpretation-in-context"></a>
 </h4>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Context-specific interpretation guidelines</span></span>
 <span><span class="va">interpretation_guide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Clinical_Context <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1234,7 +1238,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="reporting-standards">Reporting Standards<a class="anchor" aria-label="anchor" href="#reporting-standards"></a>
 </h4>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Comprehensive reporting standards</span></span>
 <span><span class="va">reporting_elements</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Report_Section <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1299,7 +1303,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="common-parameter-errors">Common Parameter Errors<a class="anchor" aria-label="anchor" href="#common-parameter-errors"></a>
 </h4>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Common parameter validation errors and solutions</span></span>
 <span><span class="va">validation_errors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Error_Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1348,7 +1352,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="proportion-specification-challenges">Proportion Specification Challenges<a class="anchor" aria-label="anchor" href="#proportion-specification-challenges"></a>
 </h4>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Proportion specification guidance</span></span>
 <span><span class="va">proportion_guidance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Challenge <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1393,7 +1397,7 @@ Likert scales:</p>
 <div class="section level4">
 <h4 id="large-study-considerations">Large Study Considerations<a class="anchor" aria-label="anchor" href="#large-study-considerations"></a>
 </h4>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Optimization strategies for large studies</span></span>
 <span><span class="va">optimization_strategies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Study_Size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -1568,7 +1572,7 @@ research or implementation</li>
 <li>Review the performance optimization features for large-scale
 studies</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>

@@ -11,7 +11,7 @@ positive, both positive, both negative)."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,11 +67,14 @@ positive, both positive, both negative)."></head><body>
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -103,7 +106,7 @@ positive, both positive, both negative).</p>
 <span>  test1_spec <span class="op">=</span> <span class="fl">0.9</span>,</span>
 <span>  test2_sens <span class="op">=</span> <span class="fl">0.75</span>,</span>
 <span>  test2_spec <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  indep <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  indep <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  cond_dep_pos <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  cond_dep_neg <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  prevalence <span class="op">=</span> <span class="fl">0.1</span>,</span>
@@ -134,7 +137,8 @@ positive, both positive, both negative).</p>
 
 
 <dt id="arg-indep">indep<a class="anchor" aria-label="anchor" href="#arg-indep"></a></dt>
-<dd><p>Assume tests are conditionally independent (default is true).</p></dd>
+<dd><p>Assume tests are conditionally independent (default is false
+for safety). Use true only if tests measure completely different phenomena.</p></dd>
 
 
 <dt id="arg-cond-dep-pos">cond_dep_pos<a class="anchor" aria-label="anchor" href="#arg-cond-dep-pos"></a></dt>
@@ -169,7 +173,7 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A results object containing:</p><table class="table table"><tr><td><code>results$testParamsTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cotestResultsTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$dependenceInfo</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$dependenceExplanation</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$explanation</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$plot1</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
+    <p>A results object containing:</p><table class="table table"><tr><td><code>results$instructions</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$notices</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$testParamsTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cotestResultsTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$dependenceInfo</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$dependenceExplanation</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$explanation</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$plot1</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
 <p><code>results$testParamsTable$asDF</code></p>
 <p><code>as.data.frame(results$testParamsTable)</code></p>
     </div>
@@ -189,6 +193,59 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  CO-TESTING ANALYSIS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style="max-width: 900px; font-family: sans-serif;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Welcome to Co-Testing Analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Purpose: This analysis evaluates the combined diagnostic performance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  of two tests when used together, accounting for potential dependence</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  between tests.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Quick Start Guide</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Choose a Clinical Preset (optional): Select from evidence-based</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  scenarios like HPV+Pap, PSA+DRE, Troponin+ECG, etc. to auto-populate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  all parameters with published values.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Enter Custom Test Parameters: Input sensitivity and specificity for</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  each test, or use preset values.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Set Disease Prevalence: Enter the pre-test probability of disease in</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  your population.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Configure Test Independence: Specify whether tests are conditionally</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  independent or dependent (see "Understanding Test Dependence" section</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  for guidance).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Review Results: The analysis provides post-test probabilities for all</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  test combination outcomes, including the critical *Either Test</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Positive (Parallel Rule)* used in clinical co-testing algorithms.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Key Clinical Scenarios</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Either Test Positive (Parallel Rule): At least one test is positive →</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  rule in disease (high sensitivity strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Both Tests Positive: Maximum certainty for disease presence (high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  specificity strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Both Tests Negative: Strong evidence against disease (rule out</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Single Positive: Only one test positive → intermediate probability</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  requiring clinical judgment</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Preset Scenarios Include</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HPV + Pap Smear: Cervical cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  PSA + DRE: Prostate cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Troponin + ECG: Acute coronary syndrome (independent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mammogram + Ultrasound: Breast cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  COVID Antigen + PCR: SARS-CoV-2 diagnosis (independent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Chest X-ray + Sputum Culture: Tuberculosis diagnosis (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Data provenance: Preset values are literature-informed exemplars;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  confirm against your local population and guideline updates.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Prevalence and test performance are treated as fixed without</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  confidence intervals—interpret cautiously.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Tip: Enable "Display Footnotes" for detailed explanations of each</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  metric. Enable "Fagan Nomogram" for visual representation of</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  probability updates.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Test Parameters                                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────────────────── </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Test      Sensitivity    Specificity    Positive LR    Negative LR   </span>
@@ -198,15 +255,16 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────────────────── </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Co-Testing Results                                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Scenario                Post-test Probability    Relative to Prevalence    Post-test Odds   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 1 Positive Only                 18.95735                1.89573460       0.233918129   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2 Positive Only                 27.02703                2.70270270       0.370370370   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Positive                  93.02326                9.30232558      13.333333333   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Negative                   0.64558                0.06455778       0.006497726   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Co-Testing Results                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Scenario                                Post-test Probability    Relative to Prevalence    Post-test Odds   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Either Test Positive (Parallel Rule)                 42.12860                4.21286031       0.727969349   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 1 Positive Only                                 18.95735                1.89573460       0.233918129   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2 Positive Only                                 27.02703                2.70270270       0.370370370   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Positive                                  93.02326                9.30232558      13.333333333   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Negative                                   0.64558                0.06455778       0.006497726   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
@@ -244,12 +302,16 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Dependent Tests: When tests are dependent, we adjust these</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  probabilities using a correlation parameter (denoted as ρ or ψ) that</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ranges from 0 (independence) to 1 (maximum possible dependence):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ranges from -1 (inverse correlation) to 1 (maximum possible</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  dependence):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  P(Test1+ and Test2+ | Disease+) = (Sens₁ × Sens₂) + ρᵨₒₛ × √(Sens₁ ×</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  (1−Sens₁) × Sens₂ × (1−Sens₂))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  P(Test1+ and Test2+ | Disease−) = ((1−Spec₁) × (1−Spec₂)) + ρₙₑ𝑔 ×</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  √((1−Spec₁) × Spec₁ × (1−Spec₂) × Spec₂)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Extreme values are automatically truncated to stay within feasible</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  joint bounds; the realized correlation after truncation is reported.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Note: Similar adjustments are made for the other joint probabilities.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -338,11 +400,11 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> === Fagan Nomogram Results ===</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Prevalence = 10% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sensitivity = 94% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Specificity = 99% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Positive LR = 120 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sensitivity = 95% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Specificity = 86% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Positive LR = 6.55 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Negative LR = 0.0585 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Post-test probability (positive test) = 93% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Post-test probability (positive test) = 42% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Post-test probability (negative test) = 1% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===============================</span>
 <span class="r-plt img"><img src="cotest-1.png" alt="" width="700" height="433"></span>
@@ -361,6 +423,59 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  CO-TESTING ANALYSIS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style="max-width: 900px; font-family: sans-serif;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Welcome to Co-Testing Analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Purpose: This analysis evaluates the combined diagnostic performance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  of two tests when used together, accounting for potential dependence</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  between tests.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Quick Start Guide</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Choose a Clinical Preset (optional): Select from evidence-based</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  scenarios like HPV+Pap, PSA+DRE, Troponin+ECG, etc. to auto-populate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  all parameters with published values.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Enter Custom Test Parameters: Input sensitivity and specificity for</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  each test, or use preset values.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Set Disease Prevalence: Enter the pre-test probability of disease in</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  your population.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Configure Test Independence: Specify whether tests are conditionally</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  independent or dependent (see "Understanding Test Dependence" section</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  for guidance).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Review Results: The analysis provides post-test probabilities for all</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  test combination outcomes, including the critical *Either Test</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Positive (Parallel Rule)* used in clinical co-testing algorithms.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Key Clinical Scenarios</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Either Test Positive (Parallel Rule): At least one test is positive →</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  rule in disease (high sensitivity strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Both Tests Positive: Maximum certainty for disease presence (high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  specificity strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Both Tests Negative: Strong evidence against disease (rule out</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Single Positive: Only one test positive → intermediate probability</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  requiring clinical judgment</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Preset Scenarios Include</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HPV + Pap Smear: Cervical cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  PSA + DRE: Prostate cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Troponin + ECG: Acute coronary syndrome (independent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mammogram + Ultrasound: Breast cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  COVID Antigen + PCR: SARS-CoV-2 diagnosis (independent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Chest X-ray + Sputum Culture: Tuberculosis diagnosis (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Data provenance: Preset values are literature-informed exemplars;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  confirm against your local population and guideline updates.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Prevalence and test performance are treated as fixed without</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  confidence intervals—interpret cautiously.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Tip: Enable "Display Footnotes" for detailed explanations of each</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  metric. Enable "Fagan Nomogram" for visual representation of</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  probability updates.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Test Parameters                                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────────────────── </span>
@@ -381,18 +496,18 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Co-Testing Results                                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Scenario                Post-test Probability    Relative to Prevalence    Post-test Odds   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 1 Positive Only                6.42043 ᵃ              1.28408660 ᵇ       0.068609347   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2 Positive Only                8.04881 ᵃ              1.60976225 ᵇ       0.087533520   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Positive                67.22155 ᵃ             13.44431051 ᵇ       2.050785129   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Negative                 0.30503 ᵃ              0.06100646 ᵇ       0.003059656   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Co-Testing Results                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Scenario                                Post-test Probability    Relative to Prevalence    Post-test Odds   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Either Test Positive (Parallel Rule)               21.63358                4.32671688         0.276056831   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 1 Positive Only                                6.42043 ᵃ              1.28408660 ᵇ       0.068609347   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2 Positive Only                                8.04881 ᵃ              1.60976225 ᵇ       0.087533520   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Positive                                67.22155 ᵃ             13.44431051 ᵇ       2.050785129   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Negative                                 0.30503 ᵃ              0.06100646 ᵇ       0.003059656   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ᵃ Probability of disease after obtaining this test result combination</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ᵇ How many times more (or less) likely disease is after testing compared to before</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    testing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ᵇ How many times more (or less) likely disease is after testing compared to before testing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Tests are modeled with conditional dependence:</span>
@@ -400,6 +515,10 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Dependence for subjects with disease: 0.15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Dependence for subjects without disease: 0.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Realized phi (disease): 0.15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Realized phi (no disease): 0.10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Joint probabilities after accounting for dependence:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -452,12 +571,16 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Dependent Tests: When tests are dependent, we adjust these</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  probabilities using a correlation parameter (denoted as ρ or ψ) that</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ranges from 0 (independence) to 1 (maximum possible dependence):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ranges from -1 (inverse correlation) to 1 (maximum possible</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  dependence):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  P(Test1+ and Test2+ | Disease+) = (Sens₁ × Sens₂) + ρᵨₒₛ × √(Sens₁ ×</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  (1−Sens₁) × Sens₂ × (1−Sens₂))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  P(Test1+ and Test2+ | Disease−) = ((1−Spec₁) × (1−Spec₂)) + ρₙₑ𝑔 ×</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  √((1−Spec₁) × Spec₁ × (1−Spec₂) × Spec₂)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Extreme values are automatically truncated to stay within feasible</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  joint bounds; the realized correlation after truncation is reported.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Note: Similar adjustments are made for the other joint probabilities.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -554,6 +677,59 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  CO-TESTING ANALYSIS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style="max-width: 900px; font-family: sans-serif;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Welcome to Co-Testing Analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Purpose: This analysis evaluates the combined diagnostic performance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  of two tests when used together, accounting for potential dependence</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  between tests.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Quick Start Guide</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Choose a Clinical Preset (optional): Select from evidence-based</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  scenarios like HPV+Pap, PSA+DRE, Troponin+ECG, etc. to auto-populate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  all parameters with published values.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Enter Custom Test Parameters: Input sensitivity and specificity for</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  each test, or use preset values.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Set Disease Prevalence: Enter the pre-test probability of disease in</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  your population.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Configure Test Independence: Specify whether tests are conditionally</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  independent or dependent (see "Understanding Test Dependence" section</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  for guidance).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Review Results: The analysis provides post-test probabilities for all</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  test combination outcomes, including the critical *Either Test</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Positive (Parallel Rule)* used in clinical co-testing algorithms.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Key Clinical Scenarios</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Either Test Positive (Parallel Rule): At least one test is positive →</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  rule in disease (high sensitivity strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Both Tests Positive: Maximum certainty for disease presence (high</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  specificity strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Both Tests Negative: Strong evidence against disease (rule out</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  strategy)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Single Positive: Only one test positive → intermediate probability</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  requiring clinical judgment</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Preset Scenarios Include</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  HPV + Pap Smear: Cervical cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  PSA + DRE: Prostate cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Troponin + ECG: Acute coronary syndrome (independent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mammogram + Ultrasound: Breast cancer screening (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  COVID Antigen + PCR: SARS-CoV-2 diagnosis (independent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Chest X-ray + Sputum Culture: Tuberculosis diagnosis (dependent tests)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Data provenance: Preset values are literature-informed exemplars;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  confirm against your local population and guideline updates.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Prevalence and test performance are treated as fixed without</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  confidence intervals—interpret cautiously.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Tip: Enable "Display Footnotes" for detailed explanations of each</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  metric. Enable "Fagan Nomogram" for visual representation of</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  probability updates.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Test Parameters                                                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────────────────────────────────────── </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Test      Sensitivity    Specificity    Positive LR    Negative LR    </span>
@@ -573,18 +749,18 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Co-Testing Results                                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Scenario                Post-test Probability    Relative to Prevalence    Post-test Odds   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 1 Positive Only                1.41580 ᵃ             0.707898659 ᵇ        0.01436130   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2 Positive Only                1.06888 ᵃ             0.534441805 ᵇ        0.01080432   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Positive                53.77358 ᵃ            26.886792453 ᵇ        1.16326531   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Negative             1.333689e-4 ᵃ             0.006668445 ᵇ       1.333867e-4   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Co-Testing Results                                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Scenario                                Post-test Probability    Relative to Prevalence    Post-test Odds   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Either Test Positive (Parallel Rule)                7.95364               3.976818545          0.08640903   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 1 Positive Only                                1.41580 ᵃ             0.707898659 ᵇ        0.01436130   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test 2 Positive Only                                1.06888 ᵃ             0.534441805 ᵇ        0.01080432   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Positive                                53.77358 ᵃ            26.886792453 ᵇ        1.16326531   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Both Tests Negative                             1.333689e-4 ᵃ             0.006668445 ᵇ       1.333867e-4   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ᵃ Probability of disease after obtaining this test result combination</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ᵇ How many times more (or less) likely disease is after testing compared to before</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    testing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ᵇ How many times more (or less) likely disease is after testing compared to before testing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
@@ -622,12 +798,16 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Dependent Tests: When tests are dependent, we adjust these</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  probabilities using a correlation parameter (denoted as ρ or ψ) that</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ranges from 0 (independence) to 1 (maximum possible dependence):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ranges from -1 (inverse correlation) to 1 (maximum possible</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  dependence):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  P(Test1+ and Test2+ | Disease+) = (Sens₁ × Sens₂) + ρᵨₒₛ × √(Sens₁ ×</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  (1−Sens₁) × Sens₂ × (1−Sens₂))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  P(Test1+ and Test2+ | Disease−) = ((1−Spec₁) × (1−Spec₂)) + ρₙₑ𝑔 ×</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  √((1−Spec₁) × Spec₁ × (1−Spec₂) × Spec₂)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Extreme values are automatically truncated to stay within feasible</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  joint bounds; the realized correlation after truncation is reported.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Note: Similar adjustments are made for the other joint probabilities.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -712,11 +892,11 @@ with appropriate dependence parameters and prevalence estimates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> === Fagan Nomogram Results ===</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Prevalence = 2% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sensitivity = 99% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Specificity = 98% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Positive LR = 57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sensitivity = 100% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Specificity = 76% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Positive LR = 4.23 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Negative LR = 0.00654 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Post-test probability (positive test) = 54% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Post-test probability (positive test) = 8% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Post-test probability (negative test) = 0% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===============================</span>
 <span class="r-plt img"><img src="cotest-2.png" alt="" width="700" height="433"></span>

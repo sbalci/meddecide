@@ -5,7 +5,7 @@
 \alias{\%|\%}
 \title{NA-coalescing operator}
 \usage{
-lhs \%|\% rhs
+x \%|\% y
 }
 \description{
 NA-coalescing operator

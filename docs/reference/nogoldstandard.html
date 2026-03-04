@@ -15,7 +15,7 @@ reference test exists."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,11 +71,14 @@ reference test exists."></head><body>
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -200,9 +203,9 @@ and method recommendations.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A results object containing:</p><table class="table table"><tr><td><code>results$instructions</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$clinical_summary</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$method_guide</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$prevalence</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$test_metrics</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$model_fit</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$crosstab</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$agreement_plot</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$agreement_plot2</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
-<p><code>results$prevalence$asDF</code></p>
-<p><code>as.data.frame(results$prevalence)</code></p>
+    <p>A results object containing:</p><table class="table table"><tr><td><code>results$instructions</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$agreement_stats</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$clinical_summary</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$method_guide</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$prevalence</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$test_metrics</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$model_fit</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$crosstab</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$agreement_plot</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$agreement_plot2</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
+<p><code>results$agreement_stats$asDF</code></p>
+<p><code>as.data.frame(results$agreement_stats)</code></p>
     </div>
 
     <div class="section level2">
@@ -213,7 +216,7 @@ and method recommendations.</p></dd>
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Simulate disease status (latent, unknown)</span></span></span>
-<span class="r-in"><span><span class="va">disease</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fl">0.3</span><span class="op">)</span>  <span class="co"># 30\% prevalence</span></span></span>
+<span class="r-in"><span><span class="va">disease</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fl">0.3</span><span class="op">)</span>  <span class="co"># 30 percent prevalence</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Simulate test results with known sensitivity/specificity</span></span></span>
 <span class="r-in"><span><span class="va">test1_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">disease</span> <span class="op">==</span> <span class="fl">1</span>,</span></span>
@@ -239,9 +242,143 @@ and method recommendations.</p></dd>
 <span class="r-in"><span>    test1Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
 <span class="r-in"><span>    test2 <span class="op">=</span> <span class="st">"Test2"</span>,</span></span>
 <span class="r-in"><span>    test2Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
-<span class="r-in"><span>    method <span class="op">=</span> <span class="st">"latent_class"</span></span></span>
+<span class="r-in"><span>    test3Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
+<span class="r-in"><span>    test4Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
+<span class="r-in"><span>    test5Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
+<span class="r-in"><span>    method <span class="op">=</span> <span class="st">"composite"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nogoldstandard(data = test_data, test1 = "Test1", test1Positive = "Positive",     test2 = "Test2", test2Positive = "Positive", method = "latent_class"):</span> argument "test3Positive" is missing, with no default</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ANALYSIS WITHOUT GOLD STANDARD</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Composite reference with even number of tests may result in ties.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Consider using an odd number of tests or a different method.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Agreement Statistics (Cohen's Kappa)                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test Pair         Kappa        p-value       Agreement   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1 vs Test2    0.5038900    &lt; .0000001     78.00000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div class='clinical-summary' style='background: #f0f8ff; padding:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  15px; border-radius: 8px; margin: 10px 0;'&gt;&lt;h4 style='color: #1565c0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  margin-top: 0;'&gt;📋 Clinical Summary</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Analysis: No gold standard analysis using composite method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Tests analyzed: Test1, Test2 (N=2)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Disease prevalence: 44.0%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test sensitivities: Range from 69.3% to 80.7%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Clinical interpretation: High prevalence setting - high PPV expected,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  focus on confirming disease</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='background: #f8f9fa; padding: 20px; border-radius: 8px;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  margin: 15px 0; border-left: 4px solid #007bff;'&gt;&lt;h3 style='color:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  #007bff; margin-top: 0;'&gt;📖 Method Selection Guide</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #e8f5e8;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #2e7d32; margin-top: 0;'&gt;🏆</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Latent Class Analysis (Recommended)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Most robust method using mixture models. Estimates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  disease prevalence and test parameters simultaneously.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Diagnostic validation studies with 3+ tests and N≥100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: Handles conditional dependence, provides model fit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  statistics, most statistically rigorous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #e3f2fd;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #1565c0; margin-top: 0;'&gt;📊</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Bayesian Analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Incorporates prior knowledge about test performance using</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Bayesian methods.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Studies where you have prior information about expected</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  sensitivity/specificity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: Uses prior knowledge, handles uncertainty well, good for</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  smaller samples</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #fff3e0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #ef6c00; margin-top: 0;'&gt;🗳️</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Composite Reference</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Uses majority vote of available tests as pseudo-gold</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  standard.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Inter-rater agreement studies with 3+ tests, exploratory</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: Simple and intuitive, requires minimal assumptions, good</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  starting point</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #fce4ec;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #c2185b; margin-top: 0;'&gt;🔒 All</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Tests Positive</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Conservative approach - disease present only if ALL tests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  are positive.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Highly specific diagnoses where false positives are very</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  costly</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: High specificity reference, minimizes false positives</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #e8f5e8;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #388e3c; margin-top: 0;'&gt;🔓 Any</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test Positive</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Liberal approach - disease present if ANY test is</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  positive.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Population screening scenarios where missing cases is costly</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: High sensitivity reference, minimizes false negatives</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 10px; background: #fff8e1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px; border-left: 3px solid #ffb300;'&gt;&lt;h4 style='color:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  #e65100; margin-top: 0;'&gt;💡 Selection Tips</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Start with Latent Class Analysis for most diagnostic studiesUse</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Composite Reference for quick exploratory analysisChoose All/Any Tests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Positive based on clinical consequences of errorsConsider Bayesian if</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  you have strong prior information</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Disease Prevalence                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Estimate     Lower CI     Upper CI    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     44.00000     37.12055     50.87945   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test Performance Metrics                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test     Sensitivity    Lower CI     Upper CI     Specificity    Lower CI     Upper CI     PPV          NPV         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1       80.68182     75.21035     86.15329      100.00000    100.00000    100.00000    100.00000     86.82171   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test2       69.31818     62.92676     75.70960      100.00000    100.00000    100.00000    100.00000     80.57554   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test Cross-Tabulation                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test Combination    Count    Percentage   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1-, Test2-        112      56.00000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1+, Test2+         44      22.00000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1+, Test2-         27      13.50000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1-, Test2+         17       8.50000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-plt img"><img src="nogoldstandard-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="nogoldstandard-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With bootstrap confidence intervals</span></span></span>
 <span class="r-in"><span><span class="fu">nogoldstandard</span><span class="op">(</span></span></span>
@@ -250,12 +387,308 @@ and method recommendations.</p></dd>
 <span class="r-in"><span>    test1Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
 <span class="r-in"><span>    test2 <span class="op">=</span> <span class="st">"Test2"</span>,</span></span>
 <span class="r-in"><span>    test2Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
-<span class="r-in"><span>    method <span class="op">=</span> <span class="st">"latent_class"</span>,</span></span>
+<span class="r-in"><span>    test3Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
+<span class="r-in"><span>    test4Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
+<span class="r-in"><span>    test5Positive <span class="op">=</span> <span class="st">"Positive"</span>,</span></span>
+<span class="r-in"><span>    method <span class="op">=</span> <span class="st">"composite"</span>,</span></span>
 <span class="r-in"><span>    bootstrap <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>    nboot <span class="op">=</span> <span class="fl">500</span>,</span></span>
 <span class="r-in"><span>    verbose <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nogoldstandard(data = test_data, test1 = "Test1", test1Positive = "Positive",     test2 = "Test2", test2Positive = "Positive", method = "latent_class",     bootstrap = TRUE, nboot = 500, verbose = TRUE):</span> argument "test3Positive" is missing, with no default</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Analysis ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Starting bootstrap with 500 iterations for composite method</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Estimating confidence intervals for prevalence</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   25/500 (5.0%) - 25 successful, 0 errors - 0.0 sec elapsed, ~0.2 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   50/500 (10.0%) - 50 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   75/500 (15.0%) - 75 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   100/500 (20.0%) - 100 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   125/500 (25.0%) - 125 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   150/500 (30.0%) - 150 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   175/500 (35.0%) - 175 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   200/500 (40.0%) - 200 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   225/500 (45.0%) - 225 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   250/500 (50.0%) - 250 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   275/500 (55.0%) - 275 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   300/500 (60.0%) - 300 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   325/500 (65.0%) - 325 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   350/500 (70.0%) - 350 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   375/500 (75.0%) - 375 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   400/500 (80.0%) - 400 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   425/500 (85.0%) - 425 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   450/500 (90.0%) - 450 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   475/500 (95.0%) - 475 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   500/500 (100.0%) - 500 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Complete ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Total time: 0.1 seconds (5023.52 iterations/sec)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Successful iterations: 500 (100.0%)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Failed iterations: 0 (0.0%)</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>2 arguments not used by format 'Confidence interval (%.1f%%):'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Confidence interval (95.0%):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Analysis ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Starting bootstrap with 500 iterations for composite method</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Estimating confidence intervals for sensitivity</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Test index: 1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   25/500 (5.0%) - 25 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   50/500 (10.0%) - 50 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   75/500 (15.0%) - 75 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   100/500 (20.0%) - 100 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   125/500 (25.0%) - 125 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   150/500 (30.0%) - 150 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   175/500 (35.0%) - 175 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   200/500 (40.0%) - 200 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   225/500 (45.0%) - 225 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   250/500 (50.0%) - 250 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   275/500 (55.0%) - 275 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   300/500 (60.0%) - 300 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   325/500 (65.0%) - 325 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   350/500 (70.0%) - 350 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   375/500 (75.0%) - 375 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   400/500 (80.0%) - 400 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   425/500 (85.0%) - 425 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   450/500 (90.0%) - 450 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   475/500 (95.0%) - 475 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   500/500 (100.0%) - 500 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Complete ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Total time: 0.1 seconds (5662.19 iterations/sec)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Successful iterations: 500 (100.0%)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Failed iterations: 0 (0.0%)</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>2 arguments not used by format 'Confidence interval (%.1f%%):'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Confidence interval (95.0%):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Analysis ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Starting bootstrap with 500 iterations for composite method</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Estimating confidence intervals for specificity</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Test index: 1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   25/500 (5.0%) - 25 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   50/500 (10.0%) - 50 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   75/500 (15.0%) - 75 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   100/500 (20.0%) - 100 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   125/500 (25.0%) - 125 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   150/500 (30.0%) - 150 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   175/500 (35.0%) - 175 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   200/500 (40.0%) - 200 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   225/500 (45.0%) - 225 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   250/500 (50.0%) - 250 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   275/500 (55.0%) - 275 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   300/500 (60.0%) - 300 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   325/500 (65.0%) - 325 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   350/500 (70.0%) - 350 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   375/500 (75.0%) - 375 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   400/500 (80.0%) - 400 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   425/500 (85.0%) - 425 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   450/500 (90.0%) - 450 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   475/500 (95.0%) - 475 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   500/500 (100.0%) - 500 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Complete ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Total time: 0.1 seconds (6071.50 iterations/sec)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Successful iterations: 500 (100.0%)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Failed iterations: 0 (0.0%)</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>2 arguments not used by format 'Confidence interval (%.1f%%):'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Confidence interval (95.0%):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Analysis ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Starting bootstrap with 500 iterations for composite method</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Estimating confidence intervals for sensitivity</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Test index: 2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   25/500 (5.0%) - 25 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   50/500 (10.0%) - 50 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   75/500 (15.0%) - 75 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   100/500 (20.0%) - 100 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   125/500 (25.0%) - 125 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   150/500 (30.0%) - 150 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   175/500 (35.0%) - 175 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   200/500 (40.0%) - 200 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   225/500 (45.0%) - 225 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   250/500 (50.0%) - 250 successful, 0 errors - 0.1 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   275/500 (55.0%) - 275 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   300/500 (60.0%) - 300 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   325/500 (65.0%) - 325 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   350/500 (70.0%) - 350 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   375/500 (75.0%) - 375 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   400/500 (80.0%) - 400 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   425/500 (85.0%) - 425 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   450/500 (90.0%) - 450 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   475/500 (95.0%) - 475 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   500/500 (100.0%) - 500 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Complete ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Total time: 0.1 seconds (5985.38 iterations/sec)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Successful iterations: 500 (100.0%)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Failed iterations: 0 (0.0%)</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>2 arguments not used by format 'Confidence interval (%.1f%%):'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Confidence interval (95.0%):</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Analysis ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Starting bootstrap with 500 iterations for composite method</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Estimating confidence intervals for specificity</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Test index: 2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   25/500 (5.0%) - 25 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   50/500 (10.0%) - 50 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   75/500 (15.0%) - 75 successful, 0 errors - 0.0 sec elapsed, ~0.1 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   100/500 (20.0%) - 100 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   125/500 (25.0%) - 125 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   150/500 (30.0%) - 150 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   175/500 (35.0%) - 175 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   200/500 (40.0%) - 200 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   225/500 (45.0%) - 225 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   250/500 (50.0%) - 250 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   275/500 (55.0%) - 275 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   300/500 (60.0%) - 300 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   325/500 (65.0%) - 325 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   350/500 (70.0%) - 350 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   375/500 (75.0%) - 375 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   400/500 (80.0%) - 400 successful, 0 errors - 0.0 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   425/500 (85.0%) - 425 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   450/500 (90.0%) - 450 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   475/500 (95.0%) - 475 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   500/500 (100.0%) - 500 successful, 0 errors - 0.1 sec elapsed, ~0.0 sec remaining</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> === Bootstrap Complete ===</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Total time: 0.1 seconds (6891.14 iterations/sec)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Successful iterations: 500 (100.0%)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Failed iterations: 0 (0.0%)</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>2 arguments not used by format 'Confidence interval (%.1f%%):'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Confidence interval (95.0%):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ANALYSIS WITHOUT GOLD STANDARD</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Composite reference with even number of tests may result in ties.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Consider using an odd number of tests or a different method.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Clinical validation: 2 tests analyzed with N=200 using composite</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Agreement Statistics (Cohen's Kappa)                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test Pair         Kappa        p-value       Agreement   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1 vs Test2    0.5038900    &lt; .0000001     78.00000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div class='clinical-summary' style='background: #f0f8ff; padding:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  15px; border-radius: 8px; margin: 10px 0;'&gt;&lt;h4 style='color: #1565c0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  margin-top: 0;'&gt;📋 Clinical Summary</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Analysis: No gold standard analysis using composite method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Tests analyzed: Test1, Test2 (N=2)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Disease prevalence: 44.0%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test sensitivities: Range from 69.3% to 80.7%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Clinical interpretation: High prevalence setting - high PPV expected,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  focus on confirming disease</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='background: #f8f9fa; padding: 20px; border-radius: 8px;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  margin: 15px 0; border-left: 4px solid #007bff;'&gt;&lt;h3 style='color:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  #007bff; margin-top: 0;'&gt;📖 Method Selection Guide</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #e8f5e8;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #2e7d32; margin-top: 0;'&gt;🏆</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Latent Class Analysis (Recommended)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Most robust method using mixture models. Estimates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  disease prevalence and test parameters simultaneously.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Diagnostic validation studies with 3+ tests and N≥100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: Handles conditional dependence, provides model fit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  statistics, most statistically rigorous</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #e3f2fd;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #1565c0; margin-top: 0;'&gt;📊</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Bayesian Analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Incorporates prior knowledge about test performance using</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Bayesian methods.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Studies where you have prior information about expected</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  sensitivity/specificity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: Uses prior knowledge, handles uncertainty well, good for</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  smaller samples</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #fff3e0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #ef6c00; margin-top: 0;'&gt;🗳️</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Composite Reference</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Uses majority vote of available tests as pseudo-gold</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  standard.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Inter-rater agreement studies with 3+ tests, exploratory</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  analysis</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: Simple and intuitive, requires minimal assumptions, good</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  starting point</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #fce4ec;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #c2185b; margin-top: 0;'&gt;🔒 All</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Tests Positive</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Conservative approach - disease present only if ALL tests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  are positive.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Highly specific diagnoses where false positives are very</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  costly</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: High specificity reference, minimizes false positives</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 15px; background: #e8f5e8;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px;'&gt;&lt;h4 style='color: #388e3c; margin-top: 0;'&gt;🔓 Any</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test Positive</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Description: Liberal approach - disease present if ANY test is</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  positive.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Best for: Population screening scenarios where missing cases is costly</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Strengths: High sensitivity reference, minimizes false negatives</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;div style='margin: 15px 0; padding: 10px; background: #fff8e1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  border-radius: 5px; border-left: 3px solid #ffb300;'&gt;&lt;h4 style='color:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  #e65100; margin-top: 0;'&gt;💡 Selection Tips</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Start with Latent Class Analysis for most diagnostic studiesUse</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Composite Reference for quick exploratory analysisChoose All/Any Tests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Positive based on clinical consequences of errorsConsider Bayesian if</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  you have strong prior information</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Disease Prevalence                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Estimate     Lower CI     Upper CI    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     44.00000     37.00000     51.00000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test Performance Metrics                                                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test     Sensitivity    Lower CI     Upper CI     Specificity    Lower CI     Upper CI     PPV          NPV         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1       80.68182     72.56270     87.95732      100.00000    100.00000    100.00000    100.00000     86.82171   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test2       69.31818     59.23367     78.44685      100.00000    100.00000    100.00000    100.00000     80.57554   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Test Cross-Tabulation                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test Combination    Count    Percentage   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1-, Test2-        112      56.00000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1+, Test2+         44      22.00000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1+, Test2-         27      13.50000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Test1-, Test2+         17       8.50000   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ─────────────────────────────────────────── </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-plt img"><img src="nogoldstandard-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="nogoldstandard-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

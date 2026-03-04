@@ -446,13 +446,13 @@ decisionResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc")),
                 clearWith=list(
@@ -477,12 +477,12 @@ decisionResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number")),
                 clearWith=list(
                     "pp",
@@ -657,7 +657,7 @@ decisionBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param od Boolean selection whether to show original data frequency tables.
 #' @param fnote Boolean selection whether to show detailed explanatory
 #'   footnotes.
-#' @param ci Boolean selection whether to calculate and display 95\%
+#' @param ci Boolean selection whether to calculate and display 95 percent
 #'   confidence intervals.
 #' @param fagan Boolean selection whether to generate a Fagan nomogram plot.
 #' @param showNaturalLanguage Boolean selection whether to show the natural

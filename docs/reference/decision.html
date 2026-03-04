@@ -9,7 +9,7 @@ Predictive Value, Negative Predictive Value."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,11 +65,14 @@ Predictive Value, Negative Predictive Value."></head><body>
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -101,16 +104,20 @@ Predictive Value, Negative Predictive Value.</p>
 <span>  <span class="va">goldPositive</span>,</span>
 <span>  <span class="va">newtest</span>,</span>
 <span>  <span class="va">testPositive</span>,</span>
+<span>  <span class="va">goldNegative</span>,</span>
+<span>  <span class="va">testNegative</span>,</span>
 <span>  pp <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  pprob <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>  od <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  fnote <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  ci <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  fagan <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  showNaturalLanguage <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  showClinicalInterpretation <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  showNaturalLanguage <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  showClinicalInterpretation <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  showReportTemplate <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  showAboutAnalysis <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  showAboutAnalysis <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  showMisclassified <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  maxCasesShow <span class="op">=</span> <span class="fl">50</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -143,6 +150,16 @@ performance.</p></dd>
 under evaluation.</p></dd>
 
 
+<dt id="arg-goldnegative">goldNegative<a class="anchor" aria-label="anchor" href="#arg-goldnegative"></a></dt>
+<dd><p>The level indicating absence of disease in the gold
+standard variable.</p></dd>
+
+
+<dt id="arg-testnegative">testNegative<a class="anchor" aria-label="anchor" href="#arg-testnegative"></a></dt>
+<dd><p>The level representing a negative result for the test
+under evaluation.</p></dd>
+
+
 <dt id="arg-pp">pp<a class="anchor" aria-label="anchor" href="#arg-pp"></a></dt>
 <dd><p>Boolean selection whether to use known population prevalence
 instead of study prevalence.</p></dd>
@@ -163,7 +180,7 @@ footnotes.</p></dd>
 
 
 <dt id="arg-ci">ci<a class="anchor" aria-label="anchor" href="#arg-ci"></a></dt>
-<dd><p>Boolean selection whether to calculate and display 95\<!-- % -->
+<dd><p>Boolean selection whether to calculate and display 95 percent
 confidence intervals.</p></dd>
 
 
@@ -190,10 +207,20 @@ report template.</p></dd>
 <dd><p>Boolean selection whether to show the about
 analysis section.</p></dd>
 
+
+<dt id="arg-showmisclassified">showMisclassified<a class="anchor" aria-label="anchor" href="#arg-showmisclassified"></a></dt>
+<dd><p>Boolean selection whether to show detailed
+misclassified cases tables.</p></dd>
+
+
+<dt id="arg-maxcasesshow">maxCasesShow<a class="anchor" aria-label="anchor" href="#arg-maxcasesshow"></a></dt>
+<dd><p>Maximum number of misclassified cases to display in
+tables.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A results object containing:</p><table class="table table"><tr><td><code>results$rawContingency</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$rawCounts</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$nTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$ratioTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$missingDataSummary</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$epirTable_ratio</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable_number</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$plot1</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$naturalLanguageSummary</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$clinicalInterpretation</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$reportTemplate</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$aboutAnalysis</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
+    <p>A results object containing:</p><table class="table table"><tr><td><code>results$welcome</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$notices</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$rawContingency</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$rawCounts</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$nTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$ratioTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$missingDataSummary</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$epirTable_ratio</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable_number</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$plot1</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$naturalLanguageSummary</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$clinicalInterpretation</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$reportTemplate</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$aboutAnalysis</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$misclassifiedHeading</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$confusionMatrixSummary</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$falsePositiveTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$falseNegativeTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$misclassificationInterpretation</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$saveClassifications</code></td><td></td><td></td><td></td><td></td><td>an output</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
 <p><code>results$rawContingency$asDF</code></p>
 <p><code>as.data.frame(results$rawContingency)</code></p>
     </div>

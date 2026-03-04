@@ -122,8 +122,8 @@ standard. Includes statistical comparison using McNemar's test and
 confidence intervals for differences.
 }
 \examples{
+\donttest{
 # Basic comparison of two diagnostic tests
-library(ClinicoPath)
 data('histopathology')
 
 # Example 1: Compare imaging vs blood test performance
@@ -135,6 +135,7 @@ result1 <- decisioncompare(
     test1Positive = "1",
     test2 = "Rater 1",
     test2Positive = "1",
+    test3Positive = "1",
     ci = TRUE,
     plot = TRUE
 )
@@ -163,9 +164,10 @@ result3 <- decisioncompare(
     test1Positive = "1",
     test2 = "Rater 1",
     test2Positive = "1",
+    test3Positive = "1",
     pp = TRUE,
-    pprob = 0.15,  # 15\\% prevalence in screening population
+    pprob = 0.15,  # 15 percent prevalence in screening population
     od = TRUE      # Show original frequency tables
 )
-
+}
 }

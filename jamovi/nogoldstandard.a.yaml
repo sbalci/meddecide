@@ -20,7 +20,7 @@ description:
             n <- 200
             
             # Simulate disease status (latent, unknown)
-            disease <- rbinom(n, 1, 0.3)  # 30% prevalence
+            disease <- rbinom(n, 1, 0.3)  # 30 percent prevalence
             
             # Simulate test results with known sensitivity/specificity
             test1_result <- ifelse(disease == 1, 
@@ -43,20 +43,26 @@ description:
             nogoldstandard(
                 data = test_data,
                 test1 = "Test1",
-                test1Positive = "Positive", 
+                test1Positive = "Positive",
                 test2 = "Test2",
                 test2Positive = "Positive",
-                method = "latent_class"
+                test3Positive = "Positive",
+                test4Positive = "Positive",
+                test5Positive = "Positive",
+                method = "composite"
             )
-            
+
             # With bootstrap confidence intervals
             nogoldstandard(
                 data = test_data,
                 test1 = "Test1",
                 test1Positive = "Positive",
-                test2 = "Test2", 
+                test2 = "Test2",
                 test2Positive = "Positive",
-                method = "latent_class",
+                test3Positive = "Positive",
+                test4Positive = "Positive",
+                test5Positive = "Positive",
+                method = "composite",
                 bootstrap = TRUE,
                 nboot = 500,
                 verbose = TRUE

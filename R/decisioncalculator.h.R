@@ -446,13 +446,13 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number", 
                         `format`="pc")),
                 clearWith=list(
@@ -479,12 +479,12 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95% Confidence Interval", 
+                        `superTitle`="95 percent Confidence Interval", 
                         `type`="number")),
                 clearWith=list(
                     "pp",
@@ -607,7 +607,7 @@ decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
 #'   FP = 20   # False positives
 #' )
 #'
-#' # Include 95\% confidence intervals
+#' # Include 95 percent confidence intervals
 #' result2 <- decisioncalculator(
 #'   TP = 90, FN = 10, TN = 80, FP = 20,
 #'   ci = TRUE
@@ -628,7 +628,8 @@ decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
 #'   Requires a value between 0.001 and 0.999, default 0.300.
 #' @param fnote Boolean selection whether to show detailed explanatory
 #'   footnotes.
-#' @param ci Boolean selection whether to calculate 95\% confidence intervals.
+#' @param ci Boolean selection whether to calculate 95 percent confidence
+#'   intervals.
 #' @param fagan Boolean selection whether to generate a Fagan nomogram plot.
 #' @param showWelcome Boolean selection whether to show welcome message.
 #' @param showSummary Boolean selection whether to show plain-language summary

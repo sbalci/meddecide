@@ -49,12 +49,12 @@ items:
           format: pc
         - name: lower
           title: 'Lower'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
         - name: upper
           title: 'Upper'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
 
@@ -93,12 +93,12 @@ items:
           format: pc
         - name: lower
           title: 'Lower'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
         - name: upper
           title: 'Upper'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
 
@@ -137,12 +137,12 @@ items:
           format: pc
         - name: lower
           title: 'Lower'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
         - name: upper
           title: 'Upper'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
 
@@ -215,7 +215,7 @@ items:
           type: text
 
     - name: diffTable
-      title: 'Differences with 95% Confidence Intervals'
+      title: 'Differences with 95 percent Confidence Intervals'
       type: Table
       visible: (statComp)
       rows: 0
@@ -232,12 +232,12 @@ items:
           format: pc
         - name: lower
           title: 'Lower'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
         - name: upper
           title: 'Upper'
-          superTitle: '95% Confidence Interval'
+          superTitle: '95 percent Confidence Interval'
           type: number
           format: pc
 

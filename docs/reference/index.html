@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,11 +63,14 @@
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -115,6 +118,12 @@
         <dd>Statistical Utility Functions</dd>
       </dl><dl><dt>
 
+          <code><a href="bayesdca_test_data.html">bayesdca_test_data</a></code>
+
+        </dt>
+        <dd>Bayesian DCA test dataset</dd>
+      </dl><dl><dt>
+
           <code><a href="bootstrapIDI.html">bootstrapIDI()</a></code>
 
         </dt>
@@ -133,6 +142,18 @@
         <dd>Bootstrap confidence intervals for diagnostic metrics</dd>
       </dl><dl><dt>
 
+          <code><a href="breast_cancer_data.html">breast_cancer_data</a></code>
+
+        </dt>
+        <dd>Breast cancer diagnostic dataset</dd>
+      </dl><dl><dt>
+
+          <code><a href="breast_data.html">breast_data</a></code>
+
+        </dt>
+        <dd>Breast pathology diagnostic styles dataset</dd>
+      </dl><dl><dt>
+
           <code><a href="calculateCEAC.html">calculateCEAC()</a></code>
 
         </dt>
@@ -143,12 +164,6 @@
 
         </dt>
         <dd>Calculate Expected Value of Perfect Information (EVPI)</dd>
-      </dl><dl><dt>
-
-          <code><a href="calculateMarkovTransitionMatrix.html">calculateMarkovTransitionMatrix()</a></code>
-
-        </dt>
-        <dd>Calculate Markov Transition Matrix</dd>
       </dl><dl><dt>
 
           <code><a href="calculate_auc.html">calculate_auc()</a></code>
@@ -193,10 +208,52 @@
         <dd>Calculate diagnostic specificity</dd>
       </dl><dl><dt>
 
+          <code><a href="cancer_data.html">cancer_data</a></code>
+
+        </dt>
+        <dd>Cancer diagnostic dataset</dd>
+      </dl><dl><dt>
+
+          <code><a href="cardiac_data.html">cardiac_data</a></code>
+
+        </dt>
+        <dd>Cardiac diagnostic dataset</dd>
+      </dl><dl><dt>
+
+          <code><a href="clear_error_log.html">clear_error_log()</a></code>
+
+        </dt>
+        <dd>Clear Error Log</dd>
+      </dl><dl><dt>
+
+          <code><a href="clinicopath_cleanup.html">clinicopath_cleanup()</a></code>
+
+        </dt>
+        <dd>Function Cleanup</dd>
+      </dl><dl><dt>
+
+          <code><a href="clinicopath_error_handler.html">clinicopath_error_handler()</a></code>
+
+        </dt>
+        <dd>ClinicoPath Error Handler</dd>
+      </dl><dl><dt>
+
+          <code><a href="clinicopath_init.html">clinicopath_init()</a></code>
+
+        </dt>
+        <dd>Initialize ClinicoPath Error Handling System</dd>
+      </dl><dl><dt>
+
           <code><a href="clinicopath_startup_message.html">clinicopath_startup_message()</a></code>
 
         </dt>
         <dd>Package startup message</dd>
+      </dl><dl><dt>
+
+          <code><a href="clinicopath_warning_handler.html">clinicopath_warning_handler()</a></code>
+
+        </dt>
+        <dd>ClinicoPath Warning Handler</dd>
       </dl><dl><dt>
 
           <code><a href="computeNRI.html">computeNRI()</a></code>
@@ -221,6 +278,12 @@
 
         </dt>
         <dd>Create Error-Safe HTML Content</dd>
+      </dl><dl><dt>
+
+          <code><a href="create_enhanced_result.html">create_enhanced_result()</a></code>
+
+        </dt>
+        <dd>Enhanced Result Structure</dd>
       </dl><dl><dt>
 
           <code><a href="decision.html">decision()</a></code>
@@ -271,10 +334,112 @@
         <dd>Compare Medical Decision Tests</dd>
       </dl><dl><dt>
 
-          <code><a href="dot-escapeVariableNames.html">.escapeVariableNames()</a></code>
+          <code><a href="dot-calculate2x2Metrics.html">.calculate2x2Metrics()</a></code>
 
         </dt>
-        <dd>Analysis Without Gold Standard</dd>
+        <dd>Comprehensive 2x2 Diagnostic Metrics Calculator</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateAccuracy.html">.calculateAccuracy()</a></code>
+
+        </dt>
+        <dd>Calculate Accuracy</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateDOR.html">.calculateDOR()</a></code>
+
+        </dt>
+        <dd>Calculate Diagnostic Odds Ratio</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateF1Score.html">.calculateF1Score()</a></code>
+
+        </dt>
+        <dd>Calculate F1 Score (Harmonic Mean of Precision and Recall)</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateLRMinus.html">.calculateLRMinus()</a></code>
+
+        </dt>
+        <dd>Calculate Negative Likelihood Ratio</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateLRPlus.html">.calculateLRPlus()</a></code>
+
+        </dt>
+        <dd>Calculate Positive Likelihood Ratio</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateMCC.html">.calculateMCC()</a></code>
+
+        </dt>
+        <dd>Calculate Matthews Correlation Coefficient</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateNPV.html">.calculateNPV()</a></code>
+
+        </dt>
+        <dd>Calculate Negative Predictive Value</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculatePPV.html">.calculatePPV()</a></code>
+
+        </dt>
+        <dd>Calculate Positive Predictive Value (Precision)</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateSensitivity.html">.calculateSensitivity()</a></code>
+
+        </dt>
+        <dd>Calculate Sensitivity (True Positive Rate)</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateSpecificity.html">.calculateSpecificity()</a></code>
+
+        </dt>
+        <dd>Calculate Specificity (True Negative Rate)</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-calculateYouden.html">.calculateYouden()</a></code>
+
+        </dt>
+        <dd>Calculate Youden's J Index</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-clinicopath_errors.html">.clinicopath_errors</a></code>
+
+        </dt>
+        <dd>ClinicoPath Enhanced Error Handling Framework</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-formatDiagnosticTable.html">.formatDiagnosticTable()</a></code>
+
+        </dt>
+        <dd>Format Diagnostic Metrics Table for Display</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-interpretDOR.html">.interpretDOR()</a></code>
+
+        </dt>
+        <dd>Interpret Diagnostic Odds Ratio</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-interpretLR.html">.interpretLR()</a></code>
+
+        </dt>
+        <dd>Interpret Likelihood Ratio Values</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-sensitivityCI.html">.sensitivityCI()</a></code>
+
+        </dt>
+        <dd>Calculate Confidence Interval for Sensitivity</dd>
+      </dl><dl><dt>
+
+          <code><a href="dot-specificityCI.html">.specificityCI()</a></code>
+
+        </dt>
+        <dd>Calculate Confidence Interval for Specificity</dd>
       </dl><dl><dt>
 
           <code><a href="enhancedROC.html">enhancedROC()</a></code>
@@ -287,6 +452,36 @@
 
         </dt>
         <dd>Enhanced ROC Analysis Class</dd>
+      </dl><dl><dt>
+
+          <code><a href="generate_user_friendly_error.html">generate_user_friendly_error()</a></code>
+
+        </dt>
+        <dd>Generate User-Friendly Error Message</dd>
+      </dl><dl><dt>
+
+          <code><a href="generate_user_friendly_warning.html">generate_user_friendly_warning()</a></code>
+
+        </dt>
+        <dd>Generate User-Friendly Warning Message</dd>
+      </dl><dl><dt>
+
+          <code><a href="get_clinical_context.html">get_clinical_context()</a></code>
+
+        </dt>
+        <dd>Clinical Context Wrapper</dd>
+      </dl><dl><dt>
+
+          <code><a href="get_error_summary.html">get_error_summary()</a></code>
+
+        </dt>
+        <dd>Get Error Summary</dd>
+      </dl><dl><dt>
+
+          <code><a href="histopathology.html">histopathology</a></code>
+
+        </dt>
+        <dd>Histopathology example dataset</dd>
       </dl><dl><dt>
 
           <code><a href="is_in_range.html">is_in_range()</a></code>
@@ -337,6 +532,18 @@
         <dd>Load required packages with error handling</dd>
       </dl><dl><dt>
 
+          <code><a href="lymphoma_data.html">lymphoma_data</a></code>
+
+        </dt>
+        <dd>Lymphoma diagnostic styles dataset</dd>
+      </dl><dl><dt>
+
+          <code><a href="master_data.html">master_data</a></code>
+
+        </dt>
+        <dd>Master dataset collection</dd>
+      </dl><dl><dt>
+
           <code><a href="meddecide-package.html">meddecide-package</a></code> <code><a href="meddecide-package.html">meddecide</a></code>
 
         </dt>
@@ -358,13 +565,13 @@
           <code><a href="performMonteCarloSimulation.html">performMonteCarloSimulation()</a></code>
 
         </dt>
-        <dd>Perform Monte Carlo Simulation for PSA</dd>
+        <dd>Perform Monte Carlo Simulation for PSA (Deprecated)</dd>
       </dl><dl><dt>
 
           <code><a href="print.sensSpecTable.html">print(<i>&lt;sensSpecTable&gt;</i>)</a></code>
 
         </dt>
-        <dd>Print formatted HTML table for sensitivity/specificity results</dd>
+        <dd>Format HTML table for sensitivity/specificity results</dd>
       </dl><dl><dt>
 
           <code><a href="prop_to_percent.html">prop_to_percent()</a></code>
@@ -397,6 +604,18 @@
         <dd>Safe division function</dd>
       </dl><dl><dt>
 
+          <code><a href="safe_execute.html">safe_execute()</a></code>
+
+        </dt>
+        <dd>Safe Execution Wrapper</dd>
+      </dl><dl><dt>
+
+          <code><a href="sepsis_data.html">sepsis_data</a></code>
+
+        </dt>
+        <dd>Sepsis diagnostic dataset</dd>
+      </dl><dl><dt>
+
           <code><a href="sequentialtests.html">sequentialtests()</a></code>
 
         </dt>
@@ -409,6 +628,18 @@
         <dd>Sequential Testing Analysis</dd>
       </dl><dl><dt>
 
+          <code><a href="thyroid_data.html">thyroid_data</a></code>
+
+        </dt>
+        <dd>Thyroid diagnostic dataset</dd>
+      </dl><dl><dt>
+
+          <code><a href="thyroid_function_data.html">thyroid_function_data</a></code>
+
+        </dt>
+        <dd>Thyroid function test dataset</dd>
+      </dl><dl><dt>
+
           <code><a href="validateDecisionAnalysisInputs.html">validateDecisionAnalysisInputs()</a></code>
 
         </dt>
@@ -419,6 +650,12 @@
 
         </dt>
         <dd>Validate inputs for ROC analysis</dd>
+      </dl><dl><dt>
+
+          <code><a href="validate_clinical_data.html">validate_clinical_data()</a></code>
+
+        </dt>
+        <dd>Validate Data with Clinical Context</dd>
       </dl></div>
   </main></div>
 

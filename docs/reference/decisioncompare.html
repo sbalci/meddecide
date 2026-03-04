@@ -15,7 +15,7 @@ confidence intervals for differences."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,11 +71,14 @@ confidence intervals for differences."></head><body>
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -120,6 +123,7 @@ confidence intervals for differences.</p>
 <span>  fnote <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  ci <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  excludeIndeterminate <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  radarplot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  statComp <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  showSummary <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -199,6 +203,12 @@ Requires a value between 0.001 and 0.999, default 0.300.</p></dd>
 <dd><p>Generate comparison plot showing test performance metrics.</p></dd>
 
 
+<dt id="arg-excludeindeterminate">excludeIndeterminate<a class="anchor" aria-label="anchor" href="#arg-excludeindeterminate"></a></dt>
+<dd><p>If TRUE, drop rows where test/gold values are
+neither the specified positive level nor a clear negative level to avoid
+inflating specificity/NPV from equivocal results.</p></dd>
+
+
 <dt id="arg-radarplot">radarplot<a class="anchor" aria-label="anchor" href="#arg-radarplot"></a></dt>
 <dd><p>Generate radar plot for comprehensive test comparison
 visualization.</p></dd>
@@ -225,16 +235,15 @@ educational content.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A results object containing:</p><table class="table table"><tr><td><code>results$text1</code></td><td></td><td></td><td></td><td></td><td>a preformatted</td></tr><tr><td><code>results$text2</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$cTable1</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable1</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cTable2</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable2</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cTable3</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable3</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$comparisonTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$mcnemarTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$diffTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$plot1</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plotRadar</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$summaryReport</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$reportSentence</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$explanationsContent</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$clinicalReport</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$aboutAnalysis</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
+    <p>A results object containing:</p><table class="table table"><tr><td><code>results$text1</code></td><td></td><td></td><td></td><td></td><td>a preformatted</td></tr><tr><td><code>results$text2</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$cTable1</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable1</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cTable2</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable2</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$cTable3</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$epirTable3</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$comparisonTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$mcnemarTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$diffTable</code></td><td></td><td></td><td></td><td></td><td>a table</td></tr><tr><td><code>results$plot1</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$plotRadar</code></td><td></td><td></td><td></td><td></td><td>an image</td></tr><tr><td><code>results$summaryReport</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$reportSentence</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$explanationsContent</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$clinicalReport</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$aboutAnalysis</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr><tr><td><code>results$notices</code></td><td></td><td></td><td></td><td></td><td>a html</td></tr></table><p>Tables can be converted to data frames with <code>asDF</code> or <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>. For example:</p>
 <p><code>results$cTable1$asDF</code></p>
 <p><code>as.data.frame(results$cTable1)</code></p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Basic comparison of two diagnostic tests</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ClinicoPath</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in library(ClinicoPath):</span> there is no package called ‘ClinicoPath’</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Basic comparison of two diagnostic tests</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">'histopathology'</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 1: Compare imaging vs blood test performance</span></span></span>
@@ -246,10 +255,10 @@ educational content.</p></dd>
 <span class="r-in"><span>    test1Positive <span class="op">=</span> <span class="st">"1"</span>,</span></span>
 <span class="r-in"><span>    test2 <span class="op">=</span> <span class="st">"Rater 1"</span>,</span></span>
 <span class="r-in"><span>    test2Positive <span class="op">=</span> <span class="st">"1"</span>,</span></span>
+<span class="r-in"><span>    test3Positive <span class="op">=</span> <span class="st">"1"</span>,</span></span>
 <span class="r-in"><span>    ci <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>    plot <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in decisioncompare(data = histopathology, gold = "Golden Standart",     goldPositive = "1", test1 = "New Test", test1Positive = "1",     test2 = "Rater 1", test2Positive = "1", ci = TRUE, plot = TRUE):</span> argument "test3Positive" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example 2: Three-test comparison with statistical analysis</span></span></span>
 <span class="r-in"><span><span class="va">result2</span> <span class="op">&lt;-</span> <span class="fu">decisioncompare</span><span class="op">(</span></span></span>
@@ -265,7 +274,6 @@ educational content.</p></dd>
 <span class="r-in"><span>    statComp <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>    radarplot <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 1 rows with missing values</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Performing 3 pairwise comparisons with Holm-Bonferroni correction...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Statistical comparisons completed (3 comparisons, Holm-Bonferroni corrected).</span>
 <span class="r-in"><span></span></span>
@@ -278,12 +286,12 @@ educational content.</p></dd>
 <span class="r-in"><span>    test1Positive <span class="op">=</span> <span class="st">"1"</span>,</span></span>
 <span class="r-in"><span>    test2 <span class="op">=</span> <span class="st">"Rater 1"</span>,</span></span>
 <span class="r-in"><span>    test2Positive <span class="op">=</span> <span class="st">"1"</span>,</span></span>
+<span class="r-in"><span>    test3Positive <span class="op">=</span> <span class="st">"1"</span>,</span></span>
 <span class="r-in"><span>    pp <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>    pprob <span class="op">=</span> <span class="fl">0.15</span>,  <span class="co"># 15\% prevalence in screening population</span></span></span>
+<span class="r-in"><span>    pprob <span class="op">=</span> <span class="fl">0.15</span>,  <span class="co"># 15 percent prevalence in screening population</span></span></span>
 <span class="r-in"><span>    od <span class="op">=</span> <span class="cn">TRUE</span>      <span class="co"># Show original frequency tables</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in decisioncompare(data = histopathology, gold = "Golden Standart",     goldPositive = "1", test1 = "New Test", test1Positive = "1",     test2 = "Rater 1", test2Positive = "1", pp = TRUE, pprob = 0.15,     od = TRUE):</span> argument "test3Positive" is missing, with no default</span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

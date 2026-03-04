@@ -6,7 +6,11 @@
       "Bash(Rscript:*)",
       "Bash(ls:*)",
       "Bash(grep:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(xxd:*)",
+      "Bash(done)",
+      "Bash(do:*)",
+      "Bash(awk:*)"
     ],
     "deny": []
   }

@@ -13,10 +13,9 @@ description:
         negative predictive value, and other metrics between different tests against the same golden standard.
         Includes statistical comparison using McNemar's test and confidence intervals for differences.
     R:
-        dontrun: false
+        dontrun: true
         usage: |
             # Basic comparison of two diagnostic tests
-            library(ClinicoPath)
             data('histopathology')
             
             # Example 1: Compare imaging vs blood test performance
@@ -24,10 +23,11 @@ description:
                 data = histopathology,
                 gold = "Golden Standart",
                 goldPositive = "1",
-                test1 = "New Test", 
+                test1 = "New Test",
                 test1Positive = "1",
                 test2 = "Rater 1",
                 test2Positive = "1",
+                test3Positive = "1",
                 ci = TRUE,
                 plot = TRUE
             )
@@ -53,11 +53,12 @@ description:
                 gold = "Golden Standart",
                 goldPositive = "1",
                 test1 = "New Test",
-                test1Positive = "1", 
+                test1Positive = "1",
                 test2 = "Rater 1",
                 test2Positive = "1",
+                test3Positive = "1",
                 pp = TRUE,
-                pprob = 0.15,  # 15% prevalence in screening population
+                pprob = 0.15,  # 15 percent prevalence in screening population
                 od = TRUE      # Show original frequency tables
             )
 
@@ -203,7 +204,7 @@ options:
       default: false
 
     - name: ci
-      title: '95% CI'
+      title: '95 percent CI'
       type: Bool
       default: false
 

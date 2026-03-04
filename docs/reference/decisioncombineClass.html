@@ -9,7 +9,7 @@ Combine Medical Decision Tests"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,11 +65,14 @@ Combine Medical Decision Tests"></head><body>
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -104,7 +107,8 @@ Combine Medical Decision Tests"></head><body>
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
-<ul><li><p><a href="#method-decisioncombineClass-clone"><code>decisioncombineClass$clone()</code></a></p></li>
+<ul><li><p><a href="#method-decisioncombineClass-asSource"><code>decisioncombineClass$asSource()</code></a></p></li>
+<li><p><a href="#method-decisioncombineClass-clone"><code>decisioncombineClass$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id=".createImage"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-.createImage"><code>jmvcore::Analysis$.createImage()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id=".createImages"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-.createImages"><code>jmvcore::Analysis$.createImages()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id=".createPlotObject"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-.createPlotObject"><code>jmvcore::Analysis$.createPlotObject()</code></a></span></li>
@@ -120,7 +124,6 @@ Combine Medical Decision Tests"></head><body>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id=".setStatePathSource"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-.setStatePathSource"><code>jmvcore::Analysis$.setStatePathSource()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="addAddon"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-addAddon"><code>jmvcore::Analysis$addAddon()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="asProtoBuf"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-asProtoBuf"><code>jmvcore::Analysis$asProtoBuf()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="asSource"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-asSource"><code>jmvcore::Analysis$asSource()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="check"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-check"><code>jmvcore::Analysis$check()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="init"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-init"><code>jmvcore::Analysis$init()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="optionsChangedHandler"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-optionsChangedHandler"><code>jmvcore::Analysis$optionsChangedHandler()</code></a></span></li>
@@ -133,10 +136,22 @@ Combine Medical Decision Tests"></head><body>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="setStatus"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-setStatus"><code>jmvcore::Analysis$setStatus()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="jmvcore" data-topic="Analysis" data-id="translate"><a href="https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-translate"><code>jmvcore::Analysis$translate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="meddecide" data-topic="decisioncombineBase" data-id="initialize"><a href="decisioncombineBase.html#method-initialize"><code>meddecide::decisioncombineBase$initialize()</code></a></span></li>
-</ul></details></p><hr><a id="method-decisioncombineClass-clone"></a><div class="section">
+</ul></details></p><hr><a id="method-decisioncombineClass-asSource"></a><div class="section">
+<h3 id="method-assource-">Method <code>asSource()</code><a class="anchor" aria-label="anchor" href="#method-assource-"></a></h3>
+<p>Generate R source code for decisioncombine analysis</p><div class="section">
+<h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">decisioncombineClass</span><span class="op">$</span><span class="fu">asSource</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>Character string with R syntax for reproducible analysis</p>
+</div>
+
+</div><p></p><hr><a id="method-decisioncombineClass-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
+<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">decisioncombineClass</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 

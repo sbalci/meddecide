@@ -1,6 +1,9 @@
-#' @title Analysis Without Gold Standard
+#' Nogoldstandard internals
 #' @importFrom R6 R6Class
 #' @import jmvcore
+#' @keywords internal
+#' @name nogoldstandard-internals
+NULL
 
 # Helper function to escape variable names with special characters for formulas
 .escapeVariableNames <- function(var_names) {

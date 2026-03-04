@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.32.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,11 +63,14 @@
     <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
+    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -85,6 +88,38 @@
       <small>Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.0.32.69" id="meddecide-003269-2026-01-02">meddecide 0.0.32.69 (2026-01-02)<a class="anchor" aria-label="anchor" href="#meddecide-003269-2026-01-02"></a></h2>
+<div class="section level3">
+<h3 id="new-features-0-0-32-69">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-0-32-69"></a></h3>
+<ul><li>
+<strong><code><a href="../reference/bootstrapNRI.html">bootstrapNRI()</a></code></strong>: Exported bootstrapNRI function for Net Reclassification Improvement (NRI) bootstrap confidence interval estimation
+<ul><li>Enables direct access to NRI bootstrap analysis</li>
+<li>Provides robust confidence intervals for categorical and continuous NRI</li>
+<li>Supports custom thresholds for risk category definitions</li>
+<li>Configurable bootstrap iterations and confidence levels</li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-0-32-69">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-0-32-69"></a></h3>
+<ul><li>Fixed critical bug in <code><a href="../reference/computeNRI.html">computeNRI()</a></code> where risk category labels were incorrectly calculated
+<ul><li>Corrected the labels vector calculation from <code>1:length(breaks - 1)</code> to <code>1:(length(breaks) - 1)</code>
+</li>
+<li>This fix ensures proper risk categorization in NRI calculations</li>
+<li>Affects categorical NRI computations in ROC and psychoPDA analyses</li>
+</ul></li>
+<li>
+<strong><code><a href="../reference/agreement.html">agreement()</a></code></strong>: Fixed stability issues and hanging during initial run
+<ul><li>Refactored <code>agreement.b.R</code> to ensure responsiveness</li>
+<li>Maintained support for numeric variables in agreement analysis</li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-0-0-32-69">Minor Changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-0-32-69"></a></h3>
+<ul><li>Updated package version to 0.0.32.69</li>
+<li>Synchronized version across DESCRIPTION and jamovi module files (jamovi/0000.yaml)</li>
+</ul><hr></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.31.84" id="meddecide-003184-2025-10-03">meddecide 0.0.31.84 (2025-10-03)<a class="anchor" aria-label="anchor" href="#meddecide-003184-2025-10-03"></a></h2>
 <div class="section level3">

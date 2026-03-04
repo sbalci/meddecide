@@ -37,7 +37,7 @@ load_required_package("magrittr")
 #' @keywords internal
 #' @export
 #' @importFrom rlang %||%
-#' @usage lhs \%||\% rhs
+#' @usage x \%||\% y
 `%||%` <- rlang::`%||%`
 
 #' NA-coalescing operator
@@ -45,7 +45,7 @@ load_required_package("magrittr")
 #' @rdname na-coalescing
 #' @keywords internal
 #' @export
-#' @usage lhs \%|\% rhs
+#' @usage x \%|\% y
 `%|%` <- function(x, y) {
     if (is.na(x)) y else x
 }
@@ -55,16 +55,20 @@ load_required_package("magrittr")
 #' @rdname not-in
 #' @keywords internal
 #' @export
-#' @usage lhs \%notin\% rhs
-`%notin%` <- Negate("%in%")
+#' @usage x \%notin\% table
+`%notin%` <- function(x, table) {
+    !(x %in% table)
+}
 
 #' Alternative not-in operator
 #' @name not-in-alt
 #' @rdname not-in-alt
 #' @keywords internal
 #' @export
-#' @usage lhs \%!in\% rhs
-`%!in%` <- Negate("%in%")
+#' @usage x \%!in\% table
+`%!in%` <- function(x, table) {
+    !(x %in% table)
+}
 
 #' Pipe operator
 #' @name %>%

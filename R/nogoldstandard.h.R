@@ -404,7 +404,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #' n <- 200
 #'
 #' # Simulate disease status (latent, unknown)
-#' disease <- rbinom(n, 1, 0.3)  # 30\% prevalence
+#' disease <- rbinom(n, 1, 0.3)  # 30 percent prevalence
 #'
 #' # Simulate test results with known sensitivity/specificity
 #' test1_result <- ifelse(disease == 1,
@@ -430,7 +430,10 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #'     test1Positive = "Positive",
 #'     test2 = "Test2",
 #'     test2Positive = "Positive",
-#'     method = "latent_class"
+#'     test3Positive = "Positive",
+#'     test4Positive = "Positive",
+#'     test5Positive = "Positive",
+#'     method = "composite"
 #' )
 #'
 #' # With bootstrap confidence intervals
@@ -440,7 +443,10 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #'     test1Positive = "Positive",
 #'     test2 = "Test2",
 #'     test2Positive = "Positive",
-#'     method = "latent_class",
+#'     test3Positive = "Positive",
+#'     test4Positive = "Positive",
+#'     test5Positive = "Positive",
+#'     method = "composite",
 #'     bootstrap = TRUE,
 #'     nboot = 500,
 #'     verbose = TRUE
