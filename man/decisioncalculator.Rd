@@ -120,6 +120,7 @@ post-test probabilities. Supports confidence interval estimation and
 Fagan nomogram visualization for clinical decision making.
 }
 \examples{
+\donttest{
 # Basic diagnostic test evaluation with known counts
 result1 <- decisioncalculator(
   TP = 90,  # True positives
@@ -139,5 +140,5 @@ result3 <- decisioncalculator(
   TP = 90, FN = 10, TN = 80, FP = 20,
   ci = TRUE, pp = TRUE, pprob = 0.15, fagan = TRUE
 )
-
+}
 }

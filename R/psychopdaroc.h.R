@@ -840,12 +840,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1118,12 +1118,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1153,12 +1153,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1343,12 +1343,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1398,12 +1398,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1522,12 +1522,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="credible_lower", 
-                        `title`="95 percent Bootstrap CI Lower", 
+                        `title`="95% Bootstrap CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="credible_upper", 
-                        `title`="95 percent Bootstrap CI Upper", 
+                        `title`="95% Bootstrap CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1628,12 +1628,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1728,12 +1728,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -1769,12 +1769,12 @@ psychopdaROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"))))
             self$add(jmvcore::Table$new(
@@ -1909,7 +1909,7 @@ psychopdaROCBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "psychopdaROC",
-                version = c(0,0,36),
+                version = c(0,0,37),
                 options = options,
                 results = psychopdaROCResults$new(options=options),
                 data = data,

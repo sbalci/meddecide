@@ -45,11 +45,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
         - name: p
@@ -298,11 +298,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
         - name: p
@@ -328,11 +328,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
         - name: z
@@ -520,11 +520,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
         - name: p
@@ -567,11 +567,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
         - name: p
@@ -677,11 +677,11 @@ items:
           type: number
           format: zto
         - name: credible_lower
-          title: 95 percent Bootstrap CI Lower
+          title: 95% Bootstrap CI Lower
           type: number
           format: zto
         - name: credible_upper
-          title: 95 percent Bootstrap CI Upper
+          title: 95% Bootstrap CI Upper
           type: number
           format: zto
         - name: bayes_factor
@@ -769,11 +769,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
         - name: heterogeneity_i2
@@ -857,11 +857,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
         - name: spec_range
@@ -892,11 +892,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: 95 percent CI Lower
+          title: 95% CI Lower
           type: number
           format: zto
         - name: ci_upper
-          title: 95 percent CI Upper
+          title: 95% CI Upper
           type: number
           format: zto
 

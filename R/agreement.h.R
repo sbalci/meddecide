@@ -1485,7 +1485,7 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="integer"),
                     list(
                         `name`="peragree", 
-                        `title`="Agreement percent", 
+                        `title`="Agreement %", 
                         `type`="integer"),
                     list(
                         `name`="kappa", 
@@ -2146,11 +2146,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number")),
                 clearWith=list(
                     "vars",
@@ -2180,11 +2180,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="shrinkage_kappa", 
@@ -2247,11 +2247,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="interpretation", 
@@ -2333,11 +2333,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="t_value", 
@@ -2485,11 +2485,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="boot_bias", 
@@ -2612,11 +2612,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="p", 
@@ -2714,11 +2714,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="f_value", 
@@ -2812,11 +2812,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="pearson_r", 
@@ -2860,7 +2860,7 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="coverage_prob", 
-                        `title`="Coverage percent", 
+                        `title`="Coverage %", 
                         `type`="number", 
                         `format`="pc"),
                     list(
@@ -2873,11 +2873,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="text"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="interpretation", 
@@ -2931,12 +2931,12 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="systematic_prop", 
-                        `title`="Systematic percent", 
+                        `title`="Systematic %", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="random_prop", 
-                        `title`="Random percent", 
+                        `title`="Random %", 
                         `type`="number", 
                         `format`="pc"),
                     list(
@@ -2993,11 +2993,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="p", 
@@ -3040,11 +3040,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="p", 
@@ -3151,11 +3151,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="number"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="interpretation", 
@@ -3252,7 +3252,7 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `format`="pc"),
                     list(
                         `name`="avg_agreement", 
-                        `title`="Avg Agreement percent", 
+                        `title`="Avg Agreement %", 
                         `type`="number", 
                         `format`="pc")),
                 clearWith=list(
@@ -3307,7 +3307,7 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="text"),
                     list(
                         `name`="agreement_pct", 
-                        `title`="Agreement percent", 
+                        `title`="Agreement %", 
                         `type`="number", 
                         `format`="pc"),
                     list(
@@ -3350,7 +3350,7 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                 name="loaOutput",
                 title="Add Case Agreement Categorization to Data",
                 varTitle="`{loaVariableName}`",
-                varDescription="Case agreement categorization. Simple mode: All Agreed (100 percent), Majority Agreed (above threshold percent), No Agreement. Detailed mode: Absolute (100 percent), High, Moderate, Low, Poor based on agreement thresholds.",
+                varDescription="Case agreement categorization. Simple mode: All Agreed (100%), Majority Agreed (\u2265threshold%), No Agreement. Detailed mode: Absolute (100%), High, Moderate, Low, Poor based on agreement thresholds.",
                 measureType="nominal",
                 clearWith=list(
                     "vars",
@@ -3409,11 +3409,11 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `type`="text"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number"),
                     list(
                         `name`="interpretation", 
@@ -3614,12 +3614,12 @@ agreementResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                         `format`="zto"),
                     list(
                         `name`="ci_lower", 
-                        `title`="95 percent CI Lower", 
+                        `title`="95% CI Lower", 
                         `type`="number", 
                         `format`="zto"),
                     list(
                         `name`="ci_upper", 
-                        `title`="95 percent CI Upper", 
+                        `title`="95% CI Upper", 
                         `type`="number", 
                         `format`="zto"),
                     list(
@@ -3676,7 +3676,7 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "agreement",
-                version = c(0,0,36),
+                version = c(0,0,37),
                 options = options,
                 results = agreementResults$new(options=options),
                 data = data,
@@ -4093,18 +4093,18 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'   Absolute (100 percent), High, Moderate, Low, Poor (based on
 #'   custom/data-driven thresholds). Simple mode replicates the former
 #'   "Agreement Status" feature.
-#' @param simpleThreshold For Simple mode only: Minimum percent for "Majority
+#' @param simpleThreshold For Simple mode only: Minimum  percent for "Majority
 #'   Agreed" status. 50 percent = simple majority, 75 percent = supermajority,
 #'   100 percent = unanimous.
 #' @param loaThresholds For Detailed mode only: How to define 5 LoA
 #'   categories. Custom = user-defined cutpoints. Quartiles/Tertiles =
 #'   data-driven splits.
 #' @param loaHighThreshold For Detailed mode with Custom thresholds only:
-#'   Minimum percent for "High" classification (e.g., 75 percent = ≥12/16
+#'   Minimum  percent for "High" classification (e.g., 75 percent = ≥12/16
 #'   raters). Cases ≥ this threshold are "High Agreement".
 #' @param loaLowThreshold For Detailed mode with Custom thresholds only:
-#'   Minimum percent for "Low" classification (e.g., 56 percent = ≥9/16 raters).
-#'   Below = "Poor", between Low and High = "Moderate".
+#'   Minimum  percent for "Low" classification (e.g., 56 percent = ≥9/16
+#'   raters). Below = "Poor", between Low and High = "Moderate".
 #' @param loaVariableName Name for the computed Level of Agreement variable
 #'   added to the dataset. Default: 'agreement_level'. Will contain categories
 #'   like 'Absolute', 'High', 'Moderate', 'Low', 'Poor'.

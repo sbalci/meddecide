@@ -78,7 +78,7 @@ items:
           title: 'Raters'
           type: integer
         - name: peragree
-          title: 'Agreement percent'
+          title: 'Agreement %'
           type: integer
         - name: kappa
           title: 'Kappa'
@@ -674,10 +674,10 @@ items:
           title: 'Overall Kappa'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
       clearWith:
           - vars
@@ -702,10 +702,10 @@ items:
           title: 'Kappa'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: shrinkage_kappa
           title: 'Shrinkage Kappa'
@@ -758,10 +758,10 @@ items:
           title: 'ICC'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: interpretation
           title: 'Interpretation'
@@ -833,10 +833,10 @@ items:
           title: 'SE'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: t_value
           title: 't'
@@ -961,10 +961,10 @@ items:
           title: 'Boot SE'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: boot_bias
           title: 'Bias'
@@ -1070,10 +1070,10 @@ items:
           title: 'Std. Error'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: p
           title: 'p-value'
@@ -1158,10 +1158,10 @@ items:
           title: 'ICC'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: f_value
           title: 'F'
@@ -1240,10 +1240,10 @@ items:
           title: 'CCC'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: pearson_r
           title: 'Precision (r)'
@@ -1280,7 +1280,7 @@ items:
           title: 'TDI Estimate'
           type: number
         - name: coverage_prob
-          title: 'Coverage percent'
+          title: 'Coverage %'
           type: number
           format: pc
         - name: acceptable_limit
@@ -1290,10 +1290,10 @@ items:
           title: 'Acceptable?'
           type: text
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: interpretation
           title: 'Interpretation'
@@ -1341,11 +1341,11 @@ items:
           title: 'RE Index'
           type: number
         - name: systematic_prop
-          title: 'Systematic percent'
+          title: 'Systematic %'
           type: number
           format: pc
         - name: random_prop
-          title: 'Random percent'
+          title: 'Random %'
           type: number
           format: pc
         - name: total_variance
@@ -1392,10 +1392,10 @@ items:
           title: 'Value'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: p
           title: 'p-value'
@@ -1430,10 +1430,10 @@ items:
           title: 'Value'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: p
           title: 'p-value'
@@ -1526,10 +1526,10 @@ items:
           title: 'Specific Agreement'
           type: number
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: interpretation
           title: 'Interpretation'
@@ -1616,7 +1616,7 @@ items:
           type: number
           format: pc
         - name: avg_agreement
-          title: 'Avg Agreement percent'
+          title: 'Avg Agreement %'
           type: number
           format: pc
       clearWith:
@@ -1664,7 +1664,7 @@ items:
           title: 'LoA Category'
           type: text
         - name: agreement_pct
-          title: 'Agreement percent'
+          title: 'Agreement %'
           type: number
           format: pc
         - name: modal_rating
@@ -1706,7 +1706,7 @@ items:
       title: Add Case Agreement Categorization to Data
       type: Output
       varTitle: '`{loaVariableName}`'
-      varDescription: 'Case agreement categorization. Simple mode: All Agreed (100 percent), Majority Agreed (above threshold percent), No Agreement. Detailed mode: Absolute (100 percent), High, Moderate, Low, Poor based on agreement thresholds.'
+      varDescription: 'Case agreement categorization. Simple mode: All Agreed (100%), Majority Agreed (≥threshold%), No Agreement. Detailed mode: Absolute (100%), High, Moderate, Low, Poor based on agreement thresholds.'
       measureType: nominal
       clearWith:
           - vars
@@ -1763,10 +1763,10 @@ items:
           title: 'Statistic'
           type: text
         - name: ci_lower
-          title: '95 percent CI Lower'
+          title: '95% CI Lower'
           type: number
         - name: ci_upper
-          title: '95 percent CI Upper'
+          title: '95% CI Upper'
           type: number
         - name: interpretation
           title: 'Interpretation'
@@ -1960,11 +1960,11 @@ items:
           type: number
           format: zto
         - name: ci_lower
-          title: "95 percent CI Lower"
+          title: "95% CI Lower"
           type: number
           format: zto
         - name: ci_upper
-          title: "95 percent CI Upper"
+          title: "95% CI Upper"
           type: number
           format: zto
         - name: p_value

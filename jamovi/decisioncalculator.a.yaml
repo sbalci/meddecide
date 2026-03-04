@@ -4,7 +4,7 @@ title: Medical Decision Calculator
 menuGroup: meddecide
 menuSubgroup: Decision Calculators
 menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
-version: '0.0.36'
+version: '0.0.37'
 jas: '1.2'
 
 description:
@@ -17,7 +17,7 @@ description:
         post-test probabilities. Supports confidence interval estimation and 
         Fagan nomogram visualization for clinical decision making.
     R:
-        dontrun: false
+        dontrun: true
         usage: |
             # Basic diagnostic test evaluation with known counts
             result1 <- decisioncalculator(

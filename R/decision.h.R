@@ -446,13 +446,13 @@ decisionResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number", 
                         `format`="pc")),
                 clearWith=list(
@@ -477,12 +477,12 @@ decisionResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number")),
                 clearWith=list(
                     "pp",
@@ -613,7 +613,7 @@ decisionBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "decision",
-                version = c(0,0,36),
+                version = c(0,0,37),
                 options = options,
                 results = decisionResults$new(options=options),
                 data = data,

@@ -4,7 +4,7 @@ title: Analysis Without Gold Standard
 menuGroup: meddecide
 menuSubgroup: Decision
 menuSubtitle: Multiple Test Analysis Without Gold Standard
-version: '0.0.36'
+version: '0.0.37'
 jas: '1.2'
 
 description:
@@ -43,26 +43,20 @@ description:
             nogoldstandard(
                 data = test_data,
                 test1 = "Test1",
-                test1Positive = "Positive",
+                test1Positive = "Positive", 
                 test2 = "Test2",
                 test2Positive = "Positive",
-                test3Positive = "Positive",
-                test4Positive = "Positive",
-                test5Positive = "Positive",
-                method = "composite"
+                method = "latent_class"
             )
-
+            
             # With bootstrap confidence intervals
             nogoldstandard(
                 data = test_data,
                 test1 = "Test1",
                 test1Positive = "Positive",
-                test2 = "Test2",
+                test2 = "Test2", 
                 test2Positive = "Positive",
-                test3Positive = "Positive",
-                test4Positive = "Positive",
-                test5Positive = "Positive",
-                method = "composite",
+                method = "latent_class",
                 bootstrap = TRUE,
                 nboot = 500,
                 verbose = TRUE

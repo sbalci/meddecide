@@ -1057,7 +1057,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="percent_change", 
-                                    `title`="percent Change", 
+                                    `title`="% Change", 
                                     `type`="number", 
                                     `format`="pc"),
                                 list(
@@ -1236,7 +1236,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="sensitivity_ci", 
-                                    `title`="Sensitivity 95 percent CI", 
+                                    `title`="Sensitivity 95% CI", 
                                     `type`="text"),
                                 list(
                                     `name`="specificity", 
@@ -1245,7 +1245,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="specificity_ci", 
-                                    `title`="Specificity 95 percent CI", 
+                                    `title`="Specificity 95% CI", 
                                     `type`="text"),
                                 list(
                                     `name`="accuracy", 
@@ -1811,7 +1811,7 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                                     `format`="zto"),
                                 list(
                                     `name`="tested_positive", 
-                                    `title`="Tested Positive (percent)", 
+                                    `title`="Tested Positive (%)", 
                                     `type`="number", 
                                     `format`="pc"),
                                 list(
@@ -1891,7 +1891,7 @@ enhancedROCBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "enhancedROC",
-                version = c(0,0,36),
+                version = c(0,0,37),
                 options = options,
                 results = enhancedROCResults$new(options=options),
                 data = data,

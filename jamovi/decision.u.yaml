@@ -43,7 +43,7 @@ children:
         children:
           - type: CheckBox
             name: ci
-            label: 95 percent Confidence Intervals
+            label: 95% Confidence Intervals
             enable: (!pp)
           - type: CheckBox
             name: fnote

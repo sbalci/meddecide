@@ -121,10 +121,7 @@ nogoldstandard(
     test1Positive = "Positive",
     test2 = "Test2",
     test2Positive = "Positive",
-    test3Positive = "Positive",
-    test4Positive = "Positive",
-    test5Positive = "Positive",
-    method = "composite"
+    method = "latent_class"
 )
 
 # With bootstrap confidence intervals
@@ -134,10 +131,7 @@ nogoldstandard(
     test1Positive = "Positive",
     test2 = "Test2",
     test2Positive = "Positive",
-    test3Positive = "Positive",
-    test4Positive = "Positive",
-    test5Positive = "Positive",
-    method = "composite",
+    method = "latent_class",
     bootstrap = TRUE,
     nboot = 500,
     verbose = TRUE

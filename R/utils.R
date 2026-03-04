@@ -12,6 +12,24 @@
 #' @importFrom utils install.packages sessionInfo tail
 NULL
 
+# Suppress R CMD CHECK notes for global variables used in NSE / auto-generated
+# class references that are defined in other sub-packages or lazily.
+utils::globalVariables(c(
+    # Auto-generated R6 class references (defined in sub-packages / lazy loading)
+    "alluvial2Class",
+    "alluvial3Class",
+    "diagnosticperformanceClass",
+    "intervalcensorcureClass",
+    "jjriverplotClass",
+    "thresholdregressionClass",
+    "treatmentswitchingClass",
+    # NSE / ggplot2 aesthetics used inside functions
+    "label",
+    "lo_y",
+    "type",
+    "x"
+))
+
 #' Load required packages with error handling
 #' @param package_name Character string with package name
 #' @param install_if_missing Logical, whether to install if package is missing
@@ -32,20 +50,22 @@ load_required_package("rlang")
 load_required_package("magrittr")
 
 #' Null-coalescing operator
-#' @name null-coalescing
-#' @rdname null-coalescing
+#' @name null_coalescing
+#' @aliases %||%
+#' @param x Left-hand side value
+#' @param y Right-hand side default value
 #' @keywords internal
 #' @export
 #' @importFrom rlang %||%
-#' @usage x \%||\% y
 `%||%` <- rlang::`%||%`
 
 #' NA-coalescing operator
 #' @name na-coalescing
 #' @rdname na-coalescing
+#' @param x Left-hand side value
+#' @param y Right-hand side default value
 #' @keywords internal
 #' @export
-#' @usage x \%|\% y
 `%|%` <- function(x, y) {
     if (is.na(x)) y else x
 }
@@ -53,22 +73,20 @@ load_required_package("magrittr")
 #' Not-in operator
 #' @name not-in
 #' @rdname not-in
+#' @param x Values to check
+#' @param table Values to check against
 #' @keywords internal
 #' @export
-#' @usage x \%notin\% table
-`%notin%` <- function(x, table) {
-    !(x %in% table)
-}
+`%notin%` <- function(x, table) !(x %in% table)
 
 #' Alternative not-in operator
 #' @name not-in-alt
 #' @rdname not-in-alt
+#' @param x Values to check
+#' @param table Values to check against
 #' @keywords internal
 #' @export
-#' @usage x \%!in\% table
-`%!in%` <- function(x, table) {
-    !(x %in% table)
-}
+`%!in%` <- function(x, table) !(x %in% table)
 
 #' Pipe operator
 #' @name %>%

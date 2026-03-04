@@ -446,13 +446,13 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number", 
                         `format`="pc"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number", 
                         `format`="pc")),
                 clearWith=list(
@@ -479,12 +479,12 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95 percent Confidence Interval", 
+                        `superTitle`="95% Confidence Interval", 
                         `type`="number")),
                 clearWith=list(
                     "pp",
@@ -574,7 +574,7 @@ decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             super$initialize(
                 package = "meddecide",
                 name = "decisioncalculator",
-                version = c(0,0,36),
+                version = c(0,0,37),
                 options = options,
                 results = decisioncalculatorResults$new(options=options),
                 data = data,
@@ -599,6 +599,7 @@ decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
 #' 
 #'
 #' @examples
+#' \donttest{
 #' # Basic diagnostic test evaluation with known counts
 #' result1 <- decisioncalculator(
 #'   TP = 90,  # True positives
@@ -618,7 +619,7 @@ decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
 #'   TP = 90, FN = 10, TN = 80, FP = 20,
 #'   ci = TRUE, pp = TRUE, pprob = 0.15, fagan = TRUE
 #' )
-#'
+#'}
 #' @param TP True Positive count: cases with disease that tested positive.
 #' @param TN True Negative count: cases without disease that tested negative.
 #' @param FP False Positive count: cases without disease that tested positive.

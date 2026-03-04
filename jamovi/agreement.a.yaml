@@ -3,7 +3,7 @@ name:  agreement
 title: Interrater Reliability
 menuGroup: meddecide
 menuSubgroup: Agreement
-version: '0.0.36'
+version: '0.0.37'
 jas: '1.2'
 
 description:
@@ -401,7 +401,7 @@ options:
             automated measurements or between different measurement platforms.
 
     - name: tdiCoverage
-      title: "Coverage Probability (%)"
+      title: "Coverage Probability ( percent)"
       type: Number
       default: 90
       min: 50
@@ -1144,14 +1144,14 @@ options:
             Simple mode replicates the former "Agreement Status" feature.
 
     - name: simpleThreshold
-      title: "Majority Threshold (%) - Simple Mode"
+      title: "Majority Threshold ( percent) - Simple Mode"
       type: Number
       default: 50
       min: 50
       max: 100
       description:
           R: >
-            For Simple mode only: Minimum percent for "Majority Agreed" status.
+            For Simple mode only: Minimum  percent for "Majority Agreed" status.
             50 percent = simple majority, 75 percent = supermajority, 100 percent = unanimous.
 
     - name: loaThresholds
@@ -1171,7 +1171,7 @@ options:
             Custom = user-defined cutpoints. Quartiles/Tertiles = data-driven splits.
 
     - name: loaHighThreshold
-      title: "High Threshold (%) - Detailed Mode"
+      title: "High Threshold ( percent) - Detailed Mode"
       type: Number
       default: 75
       min: 50
@@ -1179,11 +1179,11 @@ options:
       description:
           R: >
             For Detailed mode with Custom thresholds only:
-            Minimum percent for "High" classification (e.g., 75 percent = ≥12/16 raters).
+            Minimum  percent for "High" classification (e.g., 75 percent = ≥12/16 raters).
             Cases ≥ this threshold are "High Agreement".
 
     - name: loaLowThreshold
-      title: "Low Threshold (%) - Detailed Mode"
+      title: "Low Threshold ( percent) - Detailed Mode"
       type: Number
       default: 56
       min: 30
@@ -1191,7 +1191,7 @@ options:
       description:
           R: >
             For Detailed mode with Custom thresholds only:
-            Minimum percent for "Low" classification (e.g., 56 percent = ≥9/16 raters).
+            Minimum  percent for "Low" classification (e.g., 56 percent = ≥9/16 raters).
             Below = "Poor", between Low and High = "Moderate".
 
     - name: loaVariableName

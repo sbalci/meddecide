@@ -228,7 +228,7 @@ items:
                   type: number
                   format: zto
                 - name: percent_change
-                  title: 'percent Change'
+                  title: '% Change'
                   type: number
                   format: pc
                 - name: p_value
@@ -389,14 +389,14 @@ items:
                   type: number
                   format: zto
                 - name: sensitivity_ci
-                  title: 'Sensitivity 95 percent CI'
+                  title: 'Sensitivity 95% CI'
                   type: text
                 - name: specificity
                   title: 'Specificity'
                   type: number
                   format: zto
                 - name: specificity_ci
-                  title: 'Specificity 95 percent CI'
+                  title: 'Specificity 95% CI'
                   type: text
                 - name: accuracy
                   title: 'Accuracy'
@@ -942,7 +942,7 @@ items:
                   type: number
                   format: zto
                 - name: tested_positive
-                  title: 'Tested Positive (percent)'
+                  title: 'Tested Positive (%)'
                   type: number
                   format: pc
                 - name: true_positive_rate

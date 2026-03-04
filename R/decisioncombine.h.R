@@ -311,7 +311,7 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             self$add(jmvcore::Table$new(
                 options=options,
                 name="combinationTableCI",
-                title="Combination Statistics with 95 percent Confidence Intervals",
+                title="Combination Statistics with 95% Confidence Intervals",
                 rows=0,
                 columns=list(
                     list(
@@ -330,13 +330,13 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     list(
                         `name`="lower", 
                         `title`="Lower", 
-                        `superTitle`="95 percent CI", 
+                        `superTitle`="95% CI", 
                         `type`="number", 
                         `format`="number"),
                     list(
                         `name`="upper", 
                         `title`="Upper", 
-                        `superTitle`="95 percent CI", 
+                        `superTitle`="95% CI", 
                         `type`="number", 
                         `format`="number"))))
             self$add(jmvcore::Table$new(
@@ -642,7 +642,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
             super$initialize(
                 package = "meddecide",
                 name = "decisioncombine",
-                version = c(0,0,36),
+                version = c(0,0,37),
                 options = options,
                 results = decisioncombineResults$new(options=options),
                 data = data,
@@ -676,7 +676,6 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #'   test1Positive = "1",
 #'   test2 = "Rater 1",
 #'   test2Positive = "1",
-#'   test3Positive = "1",
 #'   showIndividual = TRUE
 #' )
 #'}

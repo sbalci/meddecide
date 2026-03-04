@@ -7,6 +7,11 @@
 \usage{
 x \%!in\% table
 }
+\arguments{
+\item{x}{Values to check}
+
+\item{table}{Values to check against}
+}
 \description{
 Alternative not-in operator
 }

@@ -338,12 +338,12 @@ items:
           format: pc
         - name: lower
           title: 'Lower'
-          superTitle: '95 percent Confidence Interval'
+          superTitle: '95% Confidence Interval'
           type: number
           format: pc
         - name: upper
           title: 'Upper'
-          superTitle: '95 percent Confidence Interval'
+          superTitle: '95% Confidence Interval'
           type: number
           format: pc
       clearWith:
@@ -367,11 +367,11 @@ items:
           type: number
         - name: lower
           title: 'Lower'
-          superTitle: '95 percent Confidence Interval'
+          superTitle: '95% Confidence Interval'
           type: number
         - name: upper
           title: 'Upper'
-          superTitle: '95 percent Confidence Interval'
+          superTitle: '95% Confidence Interval'
           type: number
       clearWith:
           - pp

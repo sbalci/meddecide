@@ -7,6 +7,11 @@
 \usage{
 x \%|\% y
 }
+\arguments{
+\item{x}{Left-hand side value}
+
+\item{y}{Right-hand side default value}
+}
 \description{
 NA-coalescing operator
 }

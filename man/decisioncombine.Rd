@@ -117,7 +117,6 @@ result <- decisioncombine(
   test1Positive = "1",
   test2 = "Rater 1",
   test2Positive = "1",
-  test3Positive = "1",
   showIndividual = TRUE
 )
 }

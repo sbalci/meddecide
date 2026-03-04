@@ -375,7 +375,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             super$initialize(
                 package = "meddecide",
                 name = "nogoldstandard",
-                version = c(0,0,36),
+                version = c(0,0,37),
                 options = options,
                 results = nogoldstandardResults$new(options=options),
                 data = data,
@@ -430,10 +430,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #'     test1Positive = "Positive",
 #'     test2 = "Test2",
 #'     test2Positive = "Positive",
-#'     test3Positive = "Positive",
-#'     test4Positive = "Positive",
-#'     test5Positive = "Positive",
-#'     method = "composite"
+#'     method = "latent_class"
 #' )
 #'
 #' # With bootstrap confidence intervals
@@ -443,10 +440,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #'     test1Positive = "Positive",
 #'     test2 = "Test2",
 #'     test2Positive = "Positive",
-#'     test3Positive = "Positive",
-#'     test4Positive = "Positive",
-#'     test5Positive = "Positive",
-#'     method = "composite",
+#'     method = "latent_class",
 #'     bootstrap = TRUE,
 #'     nboot = 500,
 #'     verbose = TRUE

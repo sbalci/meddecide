@@ -650,7 +650,7 @@ Absolute (100 percent), High, Moderate, Low, Poor (based on
 custom/data-driven thresholds). Simple mode replicates the former
 "Agreement Status" feature.}
 
-\item{simpleThreshold}{For Simple mode only: Minimum percent for "Majority
+\item{simpleThreshold}{For Simple mode only: Minimum  percent for "Majority
 Agreed" status. 50 percent = simple majority, 75 percent = supermajority,
 100 percent = unanimous.}
 
@@ -659,12 +659,12 @@ categories. Custom = user-defined cutpoints. Quartiles/Tertiles =
 data-driven splits.}
 
 \item{loaHighThreshold}{For Detailed mode with Custom thresholds only:
-Minimum percent for "High" classification (e.g., 75 percent = ≥12/16
+Minimum  percent for "High" classification (e.g., 75 percent = ≥12/16
 raters). Cases ≥ this threshold are "High Agreement".}
 
 \item{loaLowThreshold}{For Detailed mode with Custom thresholds only:
-Minimum percent for "Low" classification (e.g., 56 percent = ≥9/16 raters).
-Below = "Poor", between Low and High = "Moderate".}
+Minimum  percent for "Low" classification (e.g., 56 percent = ≥9/16
+raters). Below = "Poor", between Low and High = "Moderate".}
 
 \item{loaVariableName}{Name for the computed Level of Agreement variable
 added to the dataset. Default: 'agreement_level'. Will contain categories
