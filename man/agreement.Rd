@@ -8,7 +8,9 @@ agreement(
   data,
   vars,
   baConfidenceLevel = 0.95,
+  confLevel = 0.95,
   proportionalBias = FALSE,
+  showBlandAltmanGuide = FALSE,
   blandAltmanPlot = FALSE,
   agreementHeatmap = FALSE,
   heatmapColorScheme = "bluered",
@@ -23,9 +25,14 @@ agreement(
   kripp = FALSE,
   krippMethod = "nominal",
   bootstrap = FALSE,
+  showKrippGuide = FALSE,
   gwet = FALSE,
   gwetWeights = "unweighted",
+  showGwetGuide = FALSE,
+  pabak = FALSE,
+  showPABAKGuide = FALSE,
   icc = FALSE,
+  showICCGuide = FALSE,
   iccType = "icc21",
   meanPearson = FALSE,
   showMeanPearsonGuide = FALSE,
@@ -37,18 +44,25 @@ agreement(
   showTDIGuide = FALSE,
   iota = FALSE,
   iotaStandardize = TRUE,
+  showIotaGuide = FALSE,
   finn = FALSE,
   finnLevels = 3,
   finnModel = "oneway",
+  showFinnGuide = FALSE,
   lightKappa = FALSE,
+  showLightKappaGuide = FALSE,
   kendallW = FALSE,
+  showKendallWGuide = FALSE,
   robinsonA = FALSE,
   showRobinsonAGuide = FALSE,
   meanSpearman = FALSE,
   showMeanSpearmanGuide = FALSE,
   raterBias = FALSE,
+  showRaterBiasGuide = FALSE,
   bhapkar = FALSE,
+  showBhapkarGuide = FALSE,
   stuartMaxwell = FALSE,
+  showStuartMaxwellGuide = FALSE,
   maxwellRE = FALSE,
   showMaxwellREGuide = FALSE,
   interIntraRater = FALSE,
@@ -57,6 +71,7 @@ agreement(
   pairwiseKappa = FALSE,
   referenceRater = NULL,
   rankRaters = FALSE,
+  showPairwiseKappaGuide = FALSE,
   hierarchicalKappa = FALSE,
   clusterVariable = NULL,
   iccHierarchical = FALSE,
@@ -65,6 +80,20 @@ agreement(
   shrinkageEstimates = FALSE,
   testClusterHomogeneity = TRUE,
   clusterRankings = FALSE,
+  showHierarchicalGuide = FALSE,
+  conditionVariable = NULL,
+  mixedEffectsComparison = FALSE,
+  multipleTestCorrection = "none",
+  showMixedEffectsGuide = FALSE,
+  confusionMatrix = FALSE,
+  confusionNormalize = "none",
+  showConfusionMatrixGuide = FALSE,
+  bootstrapCI = FALSE,
+  nBoot = 1000,
+  showBootstrapCIGuide = FALSE,
+  multiAnnotatorConcordance = FALSE,
+  predictionColumn = 1,
+  showConcordanceF1Guide = FALSE,
   specificAgreement = FALSE,
   specificPositiveCategory = "",
   specificAllCategories = TRUE,
@@ -107,7 +136,20 @@ agreement(
   nCaseClusters = 3,
   showCaseDendrogram = TRUE,
   showCaseClusterHeatmap = TRUE,
-  showCaseClusterGuide = FALSE
+  showCaseClusterGuide = FALSE,
+  pairedAgreementTest = FALSE,
+  conditionBVars,
+  pairedBootN = 2000,
+  showPairedAgreementGuide = FALSE,
+  agreementSampleSize = FALSE,
+  ssMetric = "kappa",
+  ssKappaNull = 0.4,
+  ssKappaAlt = 0.7,
+  ssNRaters = 2,
+  ssNCategories = 4,
+  ssAlpha = 0.05,
+  ssPower = 0.8,
+  showSampleSizeGuide = FALSE
 )
 }
 \arguments{
@@ -120,9 +162,15 @@ diagnosis given by the observer.}
 \item{baConfidenceLevel}{Confidence level for Bland-Altman limits of
 agreement (LoA). Typically 0.95 for 95\\% confidence intervals.}
 
+\item{confLevel}{Confidence level for confidence intervals in ICC, CCC,
+bootstrap CIs, and other agreement statistics. Default is 0.95 (95\\% CI).}
+
 \item{proportionalBias}{Test whether the difference between raters changes
 systematically with the magnitude of measurement (proportional bias). Uses
 linear regression of difference vs. mean.}
+
+\item{showBlandAltmanGuide}{Show educational guide explaining Bland-Altman
+limits of agreement for method comparison studies.}
 
 \item{blandAltmanPlot}{Generate Bland-Altman plot for continuous agreement
 analysis. Displays mean difference and limits of agreement between the
@@ -189,6 +237,10 @@ calculation.}
 \item{bootstrap}{Calculate bootstrap confidence intervals for
 Krippendorff's alpha.}
 
+\item{showKrippGuide}{Show educational guide explaining when to use
+Krippendorff's Alpha including handling missing data and data type
+selection.}
+
 \item{gwet}{Alternative agreement coefficient that is more stable than
 Cohen's kappa when dealing with high agreement rates or unbalanced marginal
 distributions (e.g., rare tumor subtypes). Gwet's AC corrects for the
@@ -197,9 +249,25 @@ paradoxical behavior of kappa in extreme cases.}
 \item{gwetWeights}{Unweighted (AC1) for nominal categories. Linear or
 Quadratic weights (AC2) for ordinal data.}
 
+\item{showGwetGuide}{Show educational guide explaining when Gwet's AC is
+preferred over Cohen's kappa, especially for high agreement rates.}
+
+\item{pabak}{Prevalence-Adjusted Bias-Adjusted Kappa (PABAK) corrects
+Cohen's kappa for the effects of prevalence and bias. Also reports the
+prevalence index (PI) and bias index (BI). Useful when kappa is
+paradoxically low despite high agreement (Byrt et al. 1993). Requires
+exactly 2 raters with categorical data.}
+
+\item{showPABAKGuide}{Show educational guide explaining PABAK, the kappa
+paradox, and when prevalence/bias adjustment is needed.}
+
 \item{icc}{Intraclass Correlation Coefficient for continuous measurements
 (e.g., tumor size in mm, biomarker concentrations). Standard measure for
 assessing agreement with numeric data. Complements Bland-Altman analysis.}
+
+\item{showICCGuide}{Show educational guide explaining when and how to use
+the Intraclass Correlation Coefficient, including ICC model selection,
+interpretation thresholds, and clinical examples.}
 
 \item{iccType}{ICC model selection. One-way: each subject rated by
 different raters. Two-way: all subjects rated by same raters. Random:
@@ -270,6 +338,9 @@ computing Iota. Recommended when variables are on different scales (e.g.,
 tumor size in mm vs. Ki-67 percentage). Ensures each variable contributes
 equally to the overall agreement measure.}
 
+\item{showIotaGuide}{Show educational guide explaining the Iota coefficient
+for multivariate agreement assessment.}
+
 \item{finn}{Finn coefficient for interrater reliability of categorical
 data. Variance-based agreement measure especially useful when variance
 between raters is low (i.e., agreement is high). Alternative to traditional
@@ -285,16 +356,25 @@ subjects are random effects (each subject may be rated by different
 raters). Two-way: both subjects and raters are random (subjects and raters
 randomly chosen from larger populations).}
 
+\item{showFinnGuide}{Show educational guide explaining the Finn coefficient
+and variance-based agreement measurement.}
+
 \item{lightKappa}{Alternative agreement measure for 3 or more raters.
 Calculates the average of all pairwise kappas between raters. More robust
 than Fleiss' kappa when raters have different marginal distributions or
 when assumptions of Fleiss' kappa are questionable.}
+
+\item{showLightKappaGuide}{Show educational guide explaining when Light's
+Kappa is preferred for 3+ rater studies.}
 
 \item{kendallW}{Kendall's coefficient of concordance (W) measures agreement
 among raters when rating or ranking ordinal data. W ranges from 0 (no
 agreement) to 1 (perfect agreement). Particularly useful for ranked data,
 severity scores, and ordinal grading systems where you want to know if
 raters rank cases in similar order.}
+
+\item{showKendallWGuide}{Show educational guide explaining Kendall's W for
+ordinal concordance and ranking agreement.}
 
 \item{robinsonA}{Robinson's A is an agreement coefficient for ordinal data
 based on the proportion of concordant pairs. It ranges from -1 (complete
@@ -328,12 +408,18 @@ chi-square test to detect if marginal frequencies differ significantly
 across raters. Essential quality control tool to identify raters who
 consistently over-diagnose or under-diagnose compared to their peers.}
 
+\item{showRaterBiasGuide}{Show educational guide for detecting systematic
+rater bias in quality control.}
+
 \item{bhapkar}{Bhapkar test for marginal homogeneity between two raters
 with multiple categories. More powerful alternative to Stuart-Maxwell test.
 Like McNemar's test but for >2 categories. Tests if two raters use rating
 categories with equal frequency. Essential for paired comparisons (e.g.,
 pre-post training, novice vs. expert, pathologist vs. AI algorithm) to
 detect systematic differences in category usage.}
+
+\item{showBhapkarGuide}{Show educational guide for the Bhapkar test of
+marginal homogeneity.}
 
 \item{stuartMaxwell}{Stuart-Maxwell test for marginal homogeneity between
 two raters with multiple categories. Classic test for matched data
@@ -342,6 +428,9 @@ use rating categories with equal frequency. Note: Bhapkar test is more
 powerful for large samples, but Stuart-Maxwell is the traditional choice.
 Use for paired/matched comparisons to detect systematic category usage
 differences.}
+
+\item{showStuartMaxwellGuide}{Show educational guide for the Stuart-Maxwell
+test of marginal homogeneity.}
 
 \item{maxwellRE}{Maxwell's Random Error (RE) index decomposes total
 measurement variance into systematic and random error components. RE
@@ -388,6 +477,9 @@ reference). Shows best and worst performing raters for quality control and
 training needs. Useful for identifying raters who need additional training
 or those ready for certification.}
 
+\item{showPairwiseKappaGuide}{Show educational guide for pairwise kappa
+analysis against a reference rater.}
+
 \item{hierarchicalKappa}{Enable hierarchical (multilevel) kappa analysis
 for nested data structures (e.g., pathologists nested within institutions,
 readers nested within centers). Accounts for clustering effects and
@@ -425,6 +517,74 @@ result indicates heterogeneity requiring investigation.}
 with confidence intervals. Identifies best and worst performing sites. Use
 cautiously to avoid unfair comparisons when cluster sizes differ
 substantially.}
+
+\item{showHierarchicalGuide}{Show educational guide for
+hierarchical/multilevel kappa in multi-center studies.}
+
+\item{conditionVariable}{Variable distinguishing measurement conditions
+(e.g., AI-assisted vs. conventional, pre-training vs. post-training).
+Enables mixed-effects comparison that accounts for rater and case random
+effects. Each case-rater pair should have one observation per condition
+level.}
+
+\item{mixedEffectsComparison}{Fit a linear mixed model to compare
+measurement conditions while accounting for rater and case random effects.
+Model: score ~ condition + (1|rater) + (1|case). Provides condition effect
+estimate with CI, variance components, and ICC. More powerful than paired
+t-tests or Wilcoxon tests when data has a crossed rater x case x condition
+design (e.g., Dy et al. 2024 Ki-67 AI study).}
+
+\item{multipleTestCorrection}{Correction method for multiple comparisons
+when testing agreement across multiple strata or clusters. Applied to
+cluster-specific p-values in the hierarchical analysis and to per-condition
+comparisons when multiple conditions are present.}
+
+\item{showMixedEffectsGuide}{Show educational guide for mixed-effects
+condition comparison in AI validation studies.}
+
+\item{confusionMatrix}{Display a formal N×N confusion matrix comparing
+first two raters (or reference vs predicted). Includes row/column
+normalization options and per-class precision, recall, and F1 scores.
+Essential for multi-category classification studies (e.g., HER2 0/1+/2+/3+
+scoring).}
+
+\item{confusionNormalize}{How to normalize the confusion matrix. None shows
+raw counts. Row-normalized shows proportions within each reference category
+(equivalent to recall/sensitivity per class). Column-normalized shows
+proportions within each predicted category (equivalent to precision/PPV per
+class).}
+
+\item{showConfusionMatrixGuide}{Show educational guide for multi-class
+confusion matrix interpretation and per-class metrics.}
+
+\item{bootstrapCI}{Calculate bootstrap confidence intervals for agreement
+metrics (kappa, Fleiss kappa, Krippendorff alpha, ICC, percent agreement).
+Uses case resampling with BCa (bias-corrected and accelerated) method.
+Recommended when analytical CIs are unavailable or when distributions may
+be non-normal (e.g., skewed kappa distributions with few categories).}
+
+\item{nBoot}{Number of bootstrap resamples for confidence interval
+estimation. 1000 is adequate for 95\\% CIs. Use 5000-10000 for
+publication-quality 99\\% CIs or when metrics are near boundary values (0 or
+1).}
+
+\item{showBootstrapCIGuide}{Show educational guide for bootstrap confidence
+intervals and when they are preferred over analytical CIs.}
+
+\item{multiAnnotatorConcordance}{Compute concordance metrics where a
+prediction is considered correct if it matches ANY of the reference
+annotators. Useful for AI validation studies where multiple pathologists
+annotate the same cases and no single ground truth exists (e.g., Ottl et
+al. 2025 HER2 scoring). Reports concordance accuracy, per-class concordance
+F1, and comparison to strict consensus-based evaluation.}
+
+\item{predictionColumn}{Which rater column contains the predictions to
+evaluate. Default is column 1 (first rater). Remaining columns are treated
+as reference annotators. For AI validation, set this to the column
+containing AI predictions.}
+
+\item{showConcordanceF1Guide}{Show educational guide for concordance
+metrics in AI validation with multiple reference annotators.}
 
 \item{specificAgreement}{Calculate category-specific agreement indices for
 binary or multi-category data. For binary data: Positive Specific Agreement
@@ -638,19 +798,63 @@ cluster boundaries.}
 
 \item{showCaseClusterGuide}{Show educational guide about case clustering
 analysis.}
+
+\item{pairedAgreementTest}{Perform a bootstrap test comparing interobserver
+agreement (kappa and percent agreement) between two conditions (e.g.,
+manual vs AI-assisted scoring of the same cases).}
+
+\item{conditionBVars}{Rater columns for the second condition (e.g.,
+AI-assisted). The main rater variables serve as Condition A.}
+
+\item{pairedBootN}{Number of bootstrap replications for paired comparison
+test.}
+
+\item{showPairedAgreementGuide}{Show educational guide for comparing
+agreement between two conditions.}
+
+\item{agreementSampleSize}{Compute the required sample size (number of
+subjects) for a prospective agreement study based on kappa or ICC.}
+
+\item{ssMetric}{The agreement metric to power the study for.}
+
+\item{ssKappaNull}{The kappa (or ICC) value under the null hypothesis.
+Common choices - 0.4 (moderate), 0.6 (substantial).}
+
+\item{ssKappaAlt}{The kappa (or ICC) value under the alternative
+hypothesis. This is the minimum clinically meaningful agreement.}
+
+\item{ssNRaters}{Planned number of raters in the study.}
+
+\item{ssNCategories}{Number of rating categories (e.g., 4 for HER2
+0/1+/2+/3+).}
+
+\item{ssAlpha}{Type I error rate (two-sided).}
+
+\item{ssPower}{Target power (1 - Type II error rate).}
+
+\item{showSampleSizeGuide}{Show educational guide for planning agreement
+study sample size.}
 }
 \value{
 A results object containing:
 \tabular{llllll}{
 \code{results$welcome} \tab \tab \tab \tab \tab a html \cr
+\code{results$irrtableHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$irrtable} \tab \tab \tab \tab \tab a table \cr
+\code{results$contingencyTableHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$contingencyTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$ratingCombinationsTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$contingencyTableExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$blandAltmanHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$blandAltman} \tab \tab \tab \tab \tab an image \cr
 \code{results$agreementHeatmapPlot} \tab \tab \tab \tab \tab an image \cr
 \code{results$agreementHeatmapExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$blandAltmanExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$blandAltmanStats} \tab \tab \tab \tab \tab a table \cr
+\code{results$krippTableHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$krippTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$krippExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$lightKappaTableHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$lightKappaTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$lightKappaExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$finnTable} \tab \tab \tab \tab \tab a table \cr
@@ -661,6 +865,7 @@ A results object containing:
 \code{results$robinsonAExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$meanSpearmanTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$meanSpearmanExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$raterBiasHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$raterBiasTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$raterBiasExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$bhapkarTable} \tab \tab \tab \tab \tab a table \cr
@@ -669,14 +874,31 @@ A results object containing:
 \code{results$stuartMaxwellExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$pairwiseKappaTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$pairwiseKappaExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$hierarchicalHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$hierarchicalOverallTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$clusterSpecificTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$varianceDecompositionTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$hierarchicalICCTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$homogeneityTestTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$hierarchicalExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$advancedHeading} \tab \tab \tab \tab \tab a preformatted \cr
+\code{results$mixedEffectsTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$mixedEffectsVarianceTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$mixedEffectsExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$confusionMatrixTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$perClassMetricsTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$confusionMatrixExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$bootstrapCITable} \tab \tab \tab \tab \tab a table \cr
+\code{results$bootstrapCIExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$concordanceF1Table} \tab \tab \tab \tab \tab a table \cr
+\code{results$concordanceF1PerClassTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$concordanceF1Explanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$gwetHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$gwetTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$gwetExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$pabakTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$pabakExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$iccHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$iccTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$iccExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$meanPearsonTable} \tab \tab \tab \tab \tab a table \cr
@@ -685,6 +907,7 @@ A results object containing:
 \code{results$linCCCExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$tdiTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$tdiExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$maxwellREHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$maxwellRETable} \tab \tab \tab \tab \tab a table \cr
 \code{results$maxwellREExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$interIntraRaterIntraTable} \tab \tab \tab \tab \tab a table \cr
@@ -693,12 +916,14 @@ A results object containing:
 \code{results$iotaTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$iotaExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$weightedKappaGuide} \tab \tab \tab \tab \tab a html \cr
+\code{results$specificAgreementHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$specificAgreementTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$specificAgreementExplanation} \tab \tab \tab \tab \tab a html \cr
 \code{results$levelInfoTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$summary} \tab \tab \tab \tab \tab a html \cr
 \code{results$about} \tab \tab \tab \tab \tab a html \cr
 \code{results$clinicalUseCases} \tab \tab \tab \tab \tab a html \cr
+\code{results$computedVariablesHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$consensusTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$loaTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$loaDetailTable} \tab \tab \tab \tab \tab a table \cr
@@ -710,6 +935,7 @@ A results object containing:
 \code{results$subgroupAgreementTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$subgroupForestPlotImage} \tab \tab \tab \tab \tab an image \cr
 \code{results$subgroupExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$raterClusterHeading} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$raterClusterTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$raterDendrogram} \tab \tab \tab \tab \tab an image \cr
 \code{results$raterClusterHeatmap} \tab \tab \tab \tab \tab an image \cr
@@ -718,6 +944,11 @@ A results object containing:
 \code{results$caseDendrogram} \tab \tab \tab \tab \tab an image \cr
 \code{results$caseClusterHeatmap} \tab \tab \tab \tab \tab an image \cr
 \code{results$caseClusterExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$pairedAgreementHeading} \tab \tab \tab \tab \tab a preformatted \cr
+\code{results$pairedAgreementTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$pairedAgreementExplanation} \tab \tab \tab \tab \tab a html \cr
+\code{results$agreementSampleSizeTable} \tab \tab \tab \tab \tab a table \cr
+\code{results$agreementSampleSizeExplanation} \tab \tab \tab \tab \tab a html \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:

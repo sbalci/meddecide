@@ -574,7 +574,7 @@ decisioncalculatorBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             super$initialize(
                 package = "meddecide",
                 name = "decisioncalculator",
-                version = c(0,0,34),
+                version = c(0,0,36),
                 options = options,
                 results = decisioncalculatorResults$new(options=options),
                 data = data,

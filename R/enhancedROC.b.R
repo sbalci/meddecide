@@ -7,7 +7,6 @@
 #' @import pROC
 #' @importFrom caret confusionMatrix
 #' @importFrom stats quantile binom.test glm predict
-#' @importFrom dplyr arrange desc
 #' @export
 
 enhancedROCClass <- R6::R6Class(
@@ -45,7 +44,6 @@ enhancedROCClass <- R6::R6Class(
           text <- gsub(">", "&gt;", text, fixed = TRUE)
           text <- gsub("\"", "&quot;", text, fixed = TRUE)
           text <- gsub("'", "&#x27;", text, fixed = TRUE)
-          text <- gsub("/", "&#x2F;", text, fixed = TRUE)
           return(text)
         },
 
@@ -98,7 +96,7 @@ enhancedROCClass <- R6::R6Class(
 
         .init = function() {
             # Initialize error handling
-            if (exists("clinicopath_init")) {
+            if (exists("clinicopath_init", mode = "function")) {
                 clinicopath_init("enhancedROC", self$options$clinicalContext)
             }
 
@@ -115,9 +113,11 @@ enhancedROCClass <- R6::R6Class(
         },
 
         .run = function() {
-            # Reset notice list and instructions accumulator at start of every run
+            # Reset notice list, instructions, summary, and preset config at start of every run
             private$.noticeList <- list()
             private$.instructionsHtml <- private$.getInstructions()
+            private$.presetConfig <- NULL
+            private$.analysisSummaryHtml <- ""
 
             # Check if we have required data
             if (is.null(private$.outcome) || is.null(private$.predictors) || length(private$.predictors) == 0) {
@@ -126,6 +126,7 @@ enhancedROCClass <- R6::R6Class(
                     title = "Missing Variables",
                     content = "Please select an outcome variable and at least one predictor variable for ROC analysis. • Outcome variable: required (binary/factor). • Predictor variables: at least one numeric variable required for ROC curve calculation."
                 )
+                private$.renderNotices()
                 return()
             }
 
@@ -134,7 +135,10 @@ enhancedROCClass <- R6::R6Class(
 
             # Prepare and validate data
             analysisData <- private$.prepareData()
-            if (is.null(analysisData)) return()
+            if (is.null(analysisData)) {
+                private$.renderNotices()
+                return()
+            }
 
             # CRITICAL FIX: Store cleaned data in private$.data
             # This ensures all downstream confusion matrix and metric calculations
@@ -162,13 +166,7 @@ enhancedROCClass <- R6::R6Class(
                 private$.populateAUCSummary()
             }
 
-            # Determine if optimization should be run
-            use_optimization <- self$options$youdenOptimization
-            if (!is.null(private$.presetConfig)) {
-                use_optimization <- TRUE
-            }
-
-            if (self$options$optimalCutoffs && use_optimization) {
+            if (self$options$optimalCutoffs) {
                 private$.checkpoint()
                 private$.populateOptimalCutoffs()
             }
@@ -266,7 +264,6 @@ enhancedROCClass <- R6::R6Class(
             if (isTRUE(self$options$transportability)) unimplemented <- c(unimplemented, "Transportability")
             if (isTRUE(self$options$bootstrapPartialAUC)) unimplemented <- c(unimplemented, "Bootstrap CI for Partial AUC")
             if (isTRUE(self$options$bootstrapCutoffCI)) unimplemented <- c(unimplemented, "Bootstrap CI for Cutoffs")
-            if (isTRUE(self$options$nntCalculation)) unimplemented <- c(unimplemented, "NNT Calculation")
             if (self$options$multiClassAveraging != "macro" && isTRUE(self$options$multiClassROC)) unimplemented <- c(unimplemented, "Weighted/Micro Multi-Class AUC Averaging")
 
             if (length(unimplemented) > 0) {
@@ -325,29 +322,21 @@ enhancedROCClass <- R6::R6Class(
 
         .prepareData = function() {
             # Validate data using enhanced error handling if available
-            validation_result <- if (exists("validate_clinical_data")) {
-                validate_clinical_data(
+            if (exists("validate_clinical_data", mode = "function")) {
+                validation_result <- validate_clinical_data(
                     data = self$data,
                     required_vars = c(private$.outcome, private$.predictors),
                     min_observations = 20,
                     clinical_checks = TRUE
                 )
-            } else {
-                # Basic validation
-                list(
-                    valid = !is.null(self$data) && nrow(self$data) >= 20,
-                    errors = if(is.null(self$data) || nrow(self$data) < 20) c(.("Insufficient data")) else c(),
-                    warnings = c(),
-                    n_observations = ifelse(is.null(self$data), 0, nrow(self$data))
-                )
-            }
 
-            if (!validation_result$valid) {
-                self$results$results$instructions$setContent(
-                    paste("<p>Data validation failed:",
-                          private$.safeHtmlOutput(paste(validation_result$errors, collapse = "; ")), "</p>")
-                )
-                return(NULL)
+                if (!validation_result$valid) {
+                    self$results$results$instructions$setContent(
+                        paste("<p>Data validation failed:",
+                              private$.safeHtmlOutput(paste(validation_result$errors, collapse = "; ")), "</p>")
+                    )
+                    return(NULL)
+                }
             }
 
             # Validate partialRange if specified
@@ -622,9 +611,9 @@ enhancedROCClass <- R6::R6Class(
                     if (direction_param == "auto") {
                         direction <- "auto"  # Let pROC::roc() auto-detect based on AUC maximization
                     } else if (direction_param == "higher") {
-                        direction <- ">"
+                        direction <- "<"   # pROC: "<" means controls < cases (higher values = positive)
                     } else if (direction_param == "lower") {
-                        direction <- "<"
+                        direction <- ">"   # pROC: ">" means controls > cases (lower values = positive)
                     } else {
                         direction <- "auto"  # Fallback to auto-detection
                     }
@@ -717,7 +706,7 @@ enhancedROCClass <- R6::R6Class(
 
                     # Surface the auto-detected direction for clinical safety
                     if (direction_param == "auto") {
-                        dir_label <- if (roc_obj$direction == "<") "lower predictor values classify as positive (disease)" else "higher predictor values classify as positive (disease)"
+                        dir_label <- if (roc_obj$direction == "<") "higher predictor values classify as positive (disease)" else "lower predictor values classify as positive (disease)"
                         private$.addNotice(type = "INFO",
                             title = paste0("Direction Auto-Detected: ", predictor),
                             content = paste0("ROC direction for ", predictor, ": ", dir_label, ". Verify this matches your biomarker's expected behavior."))
@@ -843,14 +832,14 @@ enhancedROCClass <- R6::R6Class(
             }
         },
 
-        # CRITICAL FIX: Helper function to apply cutoff respecting ROC direction
+        # Helper function to apply cutoff respecting pROC direction convention
         .applyDirectionCutoff = function(predictor_values, cutoff, roc_direction) {
-            # When direction is "<", lower values predict positive outcome
-            # When direction is ">", higher values predict positive outcome
+            # pROC direction "<" means controls < cases: HIGHER values = positive (disease)
+            # pROC direction ">" means controls > cases: LOWER values = positive (disease)
             if (roc_direction == "<") {
-                return(predictor_values < cutoff)
-            } else {
                 return(predictor_values >= cutoff)
+            } else {
+                return(predictor_values < cutoff)
             }
         },
 
@@ -893,6 +882,9 @@ enhancedROCClass <- R6::R6Class(
                 cm <- caret::confusionMatrix(predictions, data[[private$.outcome]],
                                             positive = levels(data[[private$.outcome]])[2])
 
+                # Access confusion matrix by level name for robustness
+                pos_lvl <- levels(data[[private$.outcome]])[2]
+                neg_lvl <- levels(data[[private$.outcome]])[1]
                 return(list(
                     cutoff = coords_result$threshold,
                     sensitivity = coords_result$sensitivity,
@@ -900,10 +892,10 @@ enhancedROCClass <- R6::R6Class(
                     youden_index = coords_result$sensitivity + coords_result$specificity - 1,
                     accuracy = as.numeric(cm$overall["Accuracy"]),
                     confusion_matrix = cm,
-                    true_positive = cm$table[2, 2],
-                    true_negative = cm$table[1, 1],
-                    false_positive = cm$table[2, 1],
-                    false_negative = cm$table[1, 2]
+                    true_positive = cm$table[pos_lvl, pos_lvl],
+                    true_negative = cm$table[neg_lvl, neg_lvl],
+                    false_positive = cm$table[pos_lvl, neg_lvl],
+                    false_negative = cm$table[neg_lvl, pos_lvl]
                 ))
             }
             
@@ -950,6 +942,9 @@ enhancedROCClass <- R6::R6Class(
             cm <- caret::confusionMatrix(predictions, data[[private$.outcome]],
                                         positive = levels(data[[private$.outcome]])[2])
 
+            # Access confusion matrix by level name for robustness
+            pos_lvl <- levels(data[[private$.outcome]])[2]
+            neg_lvl <- levels(data[[private$.outcome]])[1]
             return(list(
                 cutoff = optimal_cutoff,
                 sensitivity = optimal_sens,
@@ -957,10 +952,10 @@ enhancedROCClass <- R6::R6Class(
                 youden_index = optimal_youden,
                 accuracy = as.numeric(cm$overall["Accuracy"]),
                 confusion_matrix = cm,
-                true_positive = cm$table[2, 2],
-                true_negative = cm$table[1, 1],
-                false_positive = cm$table[2, 1],
-                false_negative = cm$table[1, 2]
+                true_positive = cm$table[pos_lvl, pos_lvl],
+                true_negative = cm$table[neg_lvl, neg_lvl],
+                false_positive = cm$table[pos_lvl, neg_lvl],
+                false_negative = cm$table[neg_lvl, pos_lvl]
             ))
         },
 
@@ -1043,7 +1038,13 @@ enhancedROCClass <- R6::R6Class(
                     auc = auc_value,
                     auc_lower = if(!is.null(roc_obj$ci)) roc_obj$ci[1] else NA,
                     auc_upper = if(!is.null(roc_obj$ci)) roc_obj$ci[3] else NA,
-                    std_error = if(!is.null(roc_obj$ci) && !self$options$useBootstrap) (roc_obj$ci[3] - roc_obj$ci[1]) / (2 * qnorm((1 + self$options$confidenceLevel / 100) / 2)) else NA,
+                    std_error = tryCatch({
+                        if (!self$options$useBootstrap) {
+                            sqrt(pROC::var(roc_obj))
+                        } else {
+                            NA_real_
+                        }
+                    }, error = function(e) NA_real_),
                     auc_interpretation = auc_interp,
                     clinical_utility = clinical_utility
                 )
@@ -1088,12 +1089,12 @@ enhancedROCClass <- R6::R6Class(
             roc_obj <- roc_result$roc
             
             # Use ROC direction to determine how to apply cutoff
+            # pROC direction "<" means controls < cases: higher values = positive
+            # pROC direction ">" means controls > cases: lower values = positive
             if (roc_obj$direction == "<") {
-                # Lower values predict positive outcome
-                predicted_positive <- predictor_data < cutoff
-            } else {
-                # Higher values predict positive outcome  
                 predicted_positive <- predictor_data >= cutoff
+            } else {
+                predicted_positive <- predictor_data < cutoff
             }
             
             # Determine actual positive based on positive class selection
@@ -1266,28 +1267,66 @@ enhancedROCClass <- R6::R6Class(
                 sens <- optimal$sensitivity
                 spec <- optimal$specificity
 
-                ppv <- (sens * prevalence) / ((sens * prevalence) + ((1 - spec) * (1 - prevalence)))
-                npv <- (spec * (1 - prevalence)) / (((1 - sens) * prevalence) + (spec * (1 - prevalence)))
+                ppv_denom <- (sens * prevalence) + ((1 - spec) * (1 - prevalence))
+                ppv <- if (ppv_denom > 1e-10) (sens * prevalence) / ppv_denom else NA_real_
+                npv_denom <- ((1 - sens) * prevalence) + (spec * (1 - prevalence))
+                npv <- if (npv_denom > 1e-10) (spec * (1 - prevalence)) / npv_denom else NA_real_
 
                 # Calculate likelihood ratios (with division-by-zero guards)
                 lr_pos <- if (abs(1 - spec) < 1e-10) Inf else sens / (1 - spec)
-                lr_neg <- if (abs(spec) < 1e-10) Inf else (1 - sens) / spec
+                lr_neg <- if (abs(spec) < 1e-10 && abs(1 - sens) < 1e-10) NA_real_
+                         else if (abs(spec) < 1e-10) Inf
+                         else (1 - sens) / spec
 
                 # Diagnostic odds ratio
-                dor <- if (is.infinite(lr_pos) || is.infinite(lr_neg) || abs(lr_neg) < 1e-10) NA_real_ else lr_pos / lr_neg
+                dor <- if (is.na(lr_pos) || is.na(lr_neg)) {
+                    NA_real_
+                } else if (is.infinite(lr_pos) && is.infinite(lr_neg)) {
+                    NA_real_  # Inf/Inf is indeterminate
+                } else if (is.infinite(lr_pos) && lr_neg > 0) {
+                    Inf  # Perfect rule-in (spec=1)
+                } else if (!is.infinite(lr_neg) && abs(lr_neg) < 1e-10 && lr_pos > 0) {
+                    Inf  # Perfect discrimination (sens=1)
+                } else if (is.infinite(lr_neg)) {
+                    0  # LR+/Inf = 0
+                } else {
+                    lr_pos / lr_neg
+                }
 
                 # Clinical interpretation
                 clinical_interp <- private$.interpretClinicalMetrics(ppv, npv, lr_pos, lr_neg,
                                                                    self$options$clinicalContext)
+
+                # Handle Inf LR values for numeric table columns
+                # Cap at large value and annotate clinical interpretation
+                lr_pos_display <- lr_pos
+                lr_neg_display <- lr_neg
+                lr_notes <- ""
+                if (is.infinite(lr_pos) && lr_pos > 0) {
+                    lr_pos_display <- 9999
+                    lr_notes <- paste0(lr_notes, " LR+ is infinite (perfect rule-in: specificity = 100%).")
+                }
+                if (is.infinite(lr_neg)) {
+                    lr_neg_display <- 9999
+                    lr_notes <- paste0(lr_notes, " LR- is infinite (test never correctly classifies negatives: specificity = 0%).")
+                }
+                dor_display <- dor
+                if (!is.na(dor) && is.infinite(dor)) {
+                    dor_display <- 9999
+                    lr_notes <- paste0(lr_notes, " DOR is infinite (perfect discrimination at this cutoff).")
+                }
+                if (nchar(lr_notes) > 0) {
+                    clinical_interp <- paste0(clinical_interp, lr_notes)
+                }
 
                 row <- list(
                     predictor = predictor,
                     prevalence = prevalence,
                     ppv = ppv,
                     npv = npv,
-                    lr_positive = lr_pos,
-                    lr_negative = lr_neg,
-                    diagnostic_odds_ratio = dor,
+                    lr_positive = lr_pos_display,
+                    lr_negative = lr_neg_display,
+                    diagnostic_odds_ratio = dor_display,
                     clinical_interpretation = clinical_interp
                 )
 
@@ -1310,11 +1349,10 @@ enhancedROCClass <- R6::R6Class(
                     pred1 <- predictors[i]
                     pred2 <- predictors[j]
 
-                    # Remove tryCatch to expose errors
-                    # Perform ROC comparison
+                    tryCatch({
                     roc1 <- private$.rocResults[[pred1]]$roc
                     roc2 <- private$.rocResults[[pred2]]$roc
-                    
+
                     comparison <- pROC::roc.test(roc1, roc2, method = self$options$comparisonMethod)
 
                     auc_diff <- as.numeric(roc1$auc) - as.numeric(roc2$auc)
@@ -1335,6 +1373,10 @@ enhancedROCClass <- R6::R6Class(
                     )
 
                     compTable$addRow(rowKey = paste(private$.escapeVar(pred1), private$.escapeVar(pred2), sep = "_vs_"), values = row)
+                    }, error = function(e) {
+                        private$.addNotice(type = "WARNING", title = paste0("Comparison Error: ", pred1, " vs ", pred2),
+                            content = paste0("ROC comparison failed: ", e$message))
+                    })
                 }
             }
         },
@@ -1354,14 +1396,13 @@ enhancedROCClass <- R6::R6Class(
                     pred1 <- predictors[i]
                     pred2 <- predictors[j]
                     
-                    # Remove tryCatch to expose errors
-                    # Get results for both predictors
+                    tryCatch({
                     result1 <- private$.rocResults[[pred1]]
                     result2 <- private$.rocResults[[pred2]]
-                    
+
                     # Compare various metrics
                     metrics <- c("AUC", "Sensitivity", "Specificity", "Accuracy")
-                    
+
                     for (metric in metrics) {
                         if (metric == "AUC") {
                             val1 <- as.numeric(result1$roc$auc)
@@ -1376,23 +1417,23 @@ enhancedROCClass <- R6::R6Class(
                             val1 <- result1$optimal_cutoff$accuracy
                             val2 <- result2$optimal_cutoff$accuracy
                         }
-                        
+
                         if (!is.na(val1) && !is.na(val2)) {
                             diff <- val2 - val1
-                            percent_change <- (diff / val1) * 100
-                            
+                            percent_change <- if (abs(val1) < 1e-10) NA_real_ else (diff / val1) * 100
+
                             # Calculate p-value using appropriate statistical test
                             p_value <- private$.calculateMetricPValue(metric, result1, result2, pred1, pred2)
-                            
+
                             # Determine clinical interpretation
-                            interpretation <- if (abs(percent_change) > 20) {
+                            interpretation <- if (!is.na(percent_change) && abs(percent_change) > 20) {
                                 .("Clinically significant difference")
-                            } else if (abs(percent_change) > 10) {
+                            } else if (!is.na(percent_change) && abs(percent_change) > 10) {
                                 .("Moderate difference")
                             } else {
                                 .("Minimal difference")
                             }
-                            
+
                             row <- list(
                                 metric = paste(metric, "(", pred1, "vs", pred2, ")"),
                                 model1_value = val1,
@@ -1403,10 +1444,14 @@ enhancedROCClass <- R6::R6Class(
                                 effect_size = abs(diff),
                                 interpretation = interpretation
                             )
-                            
+
                             detailTable$addRow(rowKey = paste(private$.escapeVar(pred1), private$.escapeVar(pred2), metric, sep = "_"), values = row)
                         }
                     }
+                    }, error = function(e) {
+                        private$.addNotice(type = "WARNING", title = paste0("Detailed Comparison Error: ", pred1, " vs ", pred2),
+                            content = paste0("Detailed comparison failed: ", e$message))
+                    })
                 }
             }
         },
@@ -1426,11 +1471,10 @@ enhancedROCClass <- R6::R6Class(
                     pred1 <- predictors[i]
                     pred2 <- predictors[j]
                     
-                    # Remove tryCatch to expose errors
-                    # Get ROC objects for comparison
+                    tryCatch({
                     roc1 <- private$.rocResults[[pred1]]$roc
                     roc2 <- private$.rocResults[[pred2]]$roc
-                    
+
                     # Perform statistical test for AUC comparison
                     if (self$options$comparisonMethod == "delong") {
                         test_result <- pROC::roc.test(roc1, roc2, method = "delong")
@@ -1438,20 +1482,20 @@ enhancedROCClass <- R6::R6Class(
                         test_stat <- test_result$statistic
                         p_val <- test_result$p.value
                     } else if (self$options$comparisonMethod == "bootstrap") {
-                        test_result <- pROC::roc.test(roc1, roc2, method = "bootstrap", 
+                        test_result <- pROC::roc.test(roc1, roc2, method = "bootstrap",
                                                     boot.n = self$options$bootstrapSamples)
                         test_name <- .("Bootstrap Test for AUC Comparison")
                         test_stat <- test_result$statistic
                         p_val <- test_result$p.value
                     } else {
                         # Venkatraman test
-                        test_result <- pROC::roc.test(roc1, roc2, method = "venkatraman", 
+                        test_result <- pROC::roc.test(roc1, roc2, method = "venkatraman",
                                                     boot.n = self$options$bootstrapSamples)
                         test_name <- .("Venkatraman Test for AUC Comparison")
                         test_stat <- test_result$statistic
                         p_val <- test_result$p.value
                     }
-                    
+
                     # Determine statistical conclusion
                     conclusion <- if (p_val < 0.001) {
                         .("Highly significant difference (p < 0.001)")
@@ -1460,9 +1504,9 @@ enhancedROCClass <- R6::R6Class(
                     } else if (p_val < 0.05) {
                         .("Significant difference (p < 0.05)")
                     } else {
-                        .("No significant difference (p ≥ 0.05)")
+                        .("No significant difference (p >= 0.05)")
                     }
-                    
+
                     # Determine effect magnitude
                     auc_diff <- abs(as.numeric(roc2$auc) - as.numeric(roc1$auc))
                     effect_magnitude <- if (auc_diff > 0.2) {
@@ -1474,7 +1518,7 @@ enhancedROCClass <- R6::R6Class(
                     } else {
                         .("Minimal effect")
                     }
-                    
+
                     row <- list(
                         test_name = paste(test_name, "(", pred1, "vs", pred2, ")"),
                         test_statistic = test_stat,
@@ -1482,8 +1526,12 @@ enhancedROCClass <- R6::R6Class(
                         conclusion = conclusion,
                         effect_magnitude = effect_magnitude
                     )
-                    
+
                     statSummaryTable$addRow(rowKey = paste(private$.escapeVar(pred1), private$.escapeVar(pred2), "stat", sep = "_"), values = row)
+                    }, error = function(e) {
+                        private$.addNotice(type = "WARNING", title = paste0("Statistical Summary Error: ", pred1, " vs ", pred2),
+                            content = paste0("Statistical comparison failed: ", e$message))
+                    })
                 }
             }
         },
@@ -1508,35 +1556,28 @@ enhancedROCClass <- R6::R6Class(
                     roc_obj <- private$.rocObjects[[predictor]]
 
                     # Calculate partial AUC based on type
+                    # pROC requires partial.auc in DESCENDING order: c(max, min)
                     if (range_type_name == "sensitivity") {
-                        # Calculate pAUC over sensitivity range
-                        # pROC uses partial.auc.focus to specify sensitivity-based pAUC
                         pauc <- pROC::auc(roc_obj,
-                                         partial.auc = c(range_min, range_max),
+                                         partial.auc = c(range_max, range_min),
                                          partial.auc.focus = "sensitivity")
                         range_display <- "Sensitivity"
                     } else {
-                        # Calculate pAUC over specificity range (default)
                         pauc <- pROC::auc(roc_obj,
-                                         partial.auc = c(range_min, range_max),
+                                         partial.auc = c(range_max, range_min),
                                          partial.auc.focus = "specificity")
                         range_display <- "Specificity"
                     }
 
-                    # McClish (1989) normalized partial AUC (standardized to 0.5-1.0 scale)
-                    # Formula differs by focus type because the chance-line geometry differs
-                    range_width <- range_max - range_min
-                    if (range_type_name == "sensitivity") {
-                        # Sensitivity range [a,b]: chance-line pAUC = integral of (1-t) dt from a to b
-                        # = (b-a) - 0.5*(b^2 - a^2)
-                        min_pauc <- range_width - 0.5 * (range_max^2 - range_min^2)
-                    } else {
-                        # Specificity range [a,b]: FPR range [1-b, 1-a]
-                        # chance-line = integral of x from (1-b) to (1-a) = 0.5*(b-a)*(2-a-b)
-                        min_pauc <- 0.5 * range_width * (2 - range_min - range_max)
-                    }
-                    max_pauc <- range_width
-                    normalized_pauc <- (1 + (as.numeric(pauc) - min_pauc) / (max_pauc - min_pauc)) / 2
+                    # McClish (1989) normalized partial AUC via pROC's built-in correction
+                    # This maps pAUC to [0.5, 1.0] scale where 0.5 = chance, 1.0 = perfect
+                    normalized_pauc <- tryCatch({
+                        pauc_corrected <- pROC::auc(roc_obj,
+                                                    partial.auc = c(range_max, range_min),
+                                                    partial.auc.focus = range_type_name,
+                                                    partial.auc.correct = TRUE)
+                        as.numeric(pauc_corrected)
+                    }, error = function(e) NA_real_)
 
                     clinical_relevance <- private$.assessPartialAUCRelevance(
                         pauc, range_min, range_max, self$options$clinicalContext, range_type_name)
@@ -1573,7 +1614,9 @@ enhancedROCClass <- R6::R6Class(
                     # Get original ROC AUC
                     roc_auc <- as.numeric(roc_obj$auc)
 
-                    # Calculate early retrieval gain
+                    # Calculate early retrieval emphasis (CROC AUC - standard AUC)
+                    # Note: this is a measure of how much the classifier benefits from
+                    # early-retrieval weighting, not a direct AUC gain
                     early_retrieval_gain <- croc_result$croc_auc - roc_auc
 
                     # Interpretation
@@ -1651,8 +1694,14 @@ enhancedROCClass <- R6::R6Class(
             croc_auc <- sum(diff(croc_fpr_sorted) *
                            (croc_tpr_sorted[-1] + croc_tpr_sorted[-length(croc_tpr_sorted)]) / 2)
 
+            # Guard: negative integration indicates data ordering issue
+            if (croc_auc < -1e-10) {
+                private$.addNotice(type = "WARNING",
+                    title = "CROC Integration Warning",
+                    content = "CROC AUC integration yielded a negative value, which may indicate data ordering issues. Using absolute value.")
+            }
             return(list(
-                croc_auc = abs(croc_auc),
+                croc_auc = max(croc_auc, 0),
                 croc_fpr = croc_fpr,
                 croc_tpr = tpr,
                 alpha = alpha
@@ -1683,7 +1732,7 @@ enhancedROCClass <- R6::R6Class(
             # The upper hull connects (0,0) to (1,1) via points above the diagonal
             # For ROC, we need points where TPR >= FPR (above diagonal)
             # Plus the endpoints (0,0) and (1,1) which are on the diagonal
-            upper_mask <- hull_tpr_sorted >= hull_fpr_sorted
+            upper_mask <- hull_tpr_sorted >= hull_fpr_sorted - 1e-10
             # Always include the endpoints
             upper_mask[1] <- TRUE
             upper_mask[length(upper_mask)] <- TRUE
@@ -1692,9 +1741,9 @@ enhancedROCClass <- R6::R6Class(
 
             # Remove duplicates at same FPR, keeping max TPR
             if (length(hull_fpr_upper) > 1) {
-                dup <- duplicated(hull_fpr_upper)
-                hull_fpr_upper <- hull_fpr_upper[!dup]
-                hull_tpr_upper <- hull_tpr_upper[!dup]
+                agg <- aggregate(hull_tpr_upper, by = list(hull_fpr_upper), FUN = max)
+                hull_fpr_upper <- agg[, 1]
+                hull_tpr_upper <- agg[, 2]
             }
 
             # Calculate upper hull AUC using trapezoidal rule
@@ -2110,12 +2159,15 @@ enhancedROCClass <- R6::R6Class(
             return(bt$conf.int)
         },
 
-        .computePRMetrics = function(scores, labels, positive_label) {
+        .computePRMetrics = function(scores, labels, positive_label, roc_direction = "<") {
             # Simple PR curve and AUPRC calculation without extra dependencies
             y <- as.integer(labels == positive_label)
             if (length(unique(y)) < 2) {
                 return(NULL)
             }
+            # pROC direction "<" means higher values = positive (sort descending)
+            # pROC direction ">" means lower values = positive (negate to sort descending)
+            if (roc_direction == ">") scores <- -scores
             ord <- order(scores, decreasing = TRUE)
             y_sorted <- y[ord]
             tp_cum <- cumsum(y_sorted)
@@ -2129,8 +2181,10 @@ enhancedROCClass <- R6::R6Class(
             precision <- c(1, precision)
 
             auprc <- sum(diff(recall) * precision[-1], na.rm = TRUE)
-            f1_scores <- 2 * precision * recall / (precision + recall)
+            f1_denom <- precision + recall
+            f1_scores <- ifelse(f1_denom > 0, 2 * precision * recall / f1_denom, NA_real_)
             best_f1 <- max(f1_scores, na.rm = TRUE)
+            if (is.infinite(best_f1)) best_f1 <- NA_real_
 
             list(
                 auprc = auprc,
@@ -2149,8 +2203,10 @@ enhancedROCClass <- R6::R6Class(
 
             for (predictor in private$.predictors) {
                 scores <- analysisData[[predictor]]
+                roc_dir <- if (!is.null(private$.rocObjects[[predictor]])) private$.rocObjects[[predictor]]$direction else "<"
                 pr <- private$.computePRMetrics(scores, outcome,
-                                               private$.positiveClass %||% levels(outcome)[2])
+                                               private$.positiveClass %||% levels(outcome)[2],
+                                               roc_dir)
                 if (!is.null(pr)) {
                     prTable$addRow(rowKey = private$.escapeVar(predictor), values = list(
                         predictor = predictor,
@@ -2371,8 +2427,16 @@ enhancedROCClass <- R6::R6Class(
                                    ifelse(best_cutoff$specificity >= 0.8, .("high"), ifelse(best_cutoff$specificity >= 0.7, .("moderate"), .("low"))),
                                    best_cutoff$specificity * 100,
                                    best_cutoff$youden_index)
-            
-            report_html <- paste0(report_html, results_text, "</div>")
+
+            # Add NND (Number Needed to Diagnose) = 1 / Youden Index
+            nnd_text <- ""
+            if (!is.na(best_cutoff$youden_index) && best_cutoff$youden_index > 0) {
+                nnd <- ceiling(1 / best_cutoff$youden_index)
+                nnd_text <- sprintf(.(" The Number Needed to Diagnose (NND) was %d, meaning on average %d patients need to be tested to correctly identify one additional true positive beyond chance."),
+                                   nnd, nnd)
+            }
+
+            report_html <- paste0(report_html, results_text, nnd_text, "</div>")
             
             # Clinical interpretation
             report_html <- paste0(report_html, "<h5>", .("Clinical Interpretation"), ":</h5>")
@@ -2478,8 +2542,6 @@ enhancedROCClass <- R6::R6Class(
             
             return(warnings)
         },
-        
-        # .createClinicalInterpreter removed (orphaned; .interpretAUC/.assessClinicalUtility/.generateClinicalRecommendation are used instead)
 
         .calculateMetricPValue = function(metric, result1, result2, pred1, pred2) {
             # Calculate p-value for metric comparison based on the metric type
@@ -2501,18 +2563,18 @@ enhancedROCClass <- R6::R6Class(
                         pred2_vals <- data[[pred2]]
 
                         # Classify each subject by both predictors at their optimal cutoffs
-                        # Must match .applyDirectionCutoff(): "<" means lower values predict positive
+                        # pROC: "<" means controls < cases (higher values = positive)
                         dir1 <- result1$roc$direction
                         dir2 <- result2$roc$direction
                         if (dir1 == "<") {
-                            class1 <- pred1_vals < cutoff1$cutoff
-                        } else {
                             class1 <- pred1_vals >= cutoff1$cutoff
+                        } else {
+                            class1 <- pred1_vals < cutoff1$cutoff
                         }
                         if (dir2 == "<") {
-                            class2 <- pred2_vals < cutoff2$cutoff
-                        } else {
                             class2 <- pred2_vals >= cutoff2$cutoff
+                        } else {
+                            class2 <- pred2_vals < cutoff2$cutoff
                         }
 
                         # Subset based on metric
@@ -2540,7 +2602,7 @@ enhancedROCClass <- R6::R6Class(
                             # McNemar's test: are the two predictors equally accurate on paired data?
                             cont_table <- table(Pred1 = c1, Pred2 = c2)
                             if (nrow(cont_table) == 2 && ncol(cont_table) == 2) {
-                                mcnemar_result <- stats::mcnemar.test(cont_table, correct = TRUE)
+                                mcnemar_result <- stats::mcnemar.test(cont_table, correct = FALSE)
                                 return(mcnemar_result$p.value)
                             }
                         }
@@ -2590,10 +2652,11 @@ enhancedROCClass <- R6::R6Class(
                 "<div style='display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0;'>",
                 "<div style='background: #fff3cd; padding: 10px; border-radius: 4px; flex: 1; min-width: 250px;'>",
                 "<strong>AUC (Area Under Curve):</strong><br>",
-                "• 0.5 = No discrimination<br>",
-                "• 0.7-0.8 = Acceptable<br>",
-                "• 0.8-0.9 = Excellent<br>",
-                "• >0.9 = Outstanding",
+                "• Below 0.60 = No discrimination<br>",
+                "• 0.60-0.69 = Poor<br>",
+                "• 0.70-0.79 = Fair<br>",
+                "• 0.80-0.89 = Good<br>",
+                "• 0.90-1.00 = Excellent",
                 "</div>",
                 "<div style='background: #d1ecf1; padding: 10px; border-radius: 4px; flex: 1; min-width: 250px;'>",
                 "<strong>Youden Index:</strong><br>",
@@ -2682,7 +2745,7 @@ enhancedROCClass <- R6::R6Class(
                         color = "Predictor"
                     ) +
                     ggplot2::xlim(0, 1) + ggplot2::ylim(0, 1) +
-                    ggplot2::theme_minimal() +
+                    ggtheme +
                     ggplot2::theme(
                         plot.title = ggplot2::element_text(hjust = 0.5, size = 14, face = "bold"),
                         legend.position = "bottom"
@@ -2834,7 +2897,7 @@ enhancedROCClass <- R6::R6Class(
                         subtitle = "ROC curves with AUC values for comparison",
                         color = "Predictor (AUC)"
                     ) +
-                    ggplot2::theme_minimal() +
+                    ggtheme +
                     ggplot2::theme(
                         plot.title = ggplot2::element_text(hjust = 0.5, size = 14, face = "bold"),
                         plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 11),
@@ -2943,23 +3006,23 @@ enhancedROCClass <- R6::R6Class(
                 }
 
                 # Create the plot
-                p <- ggplot(plot_data, aes(x = Threshold, y = Value, color = Metric)) +
-                    geom_line(linewidth = 1) +
-                    labs(
+                p <- ggplot2::ggplot(plot_data, ggplot2::aes(x = Threshold, y = Value, color = Metric)) +
+                    ggplot2::geom_line(linewidth = 1) +
+                    ggplot2::labs(
                         x = "Threshold",
                         y = "Performance Metric",
                         title = "Sensitivity and Specificity vs Threshold",
                         color = "Metric"
                     ) +
-                    ylim(0, 1) +
-                    theme_minimal() +
-                    theme(
-                        plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+                    ggplot2::ylim(0, 1) +
+                    ggplot2::theme_minimal() +
+                    ggplot2::theme(
+                        plot.title = ggplot2::element_text(hjust = 0.5, size = 14, face = "bold"),
                         legend.position = "bottom"
                     )
 
                 if (length(names(private$.rocResults)) > 1) {
-                    p <- p + facet_wrap(~Predictor, scales = "free_x")
+                    p <- p + ggplot2::facet_wrap(~Predictor, scales = "free_x")
                 }
 
                 print(p)
@@ -3004,18 +3067,18 @@ enhancedROCClass <- R6::R6Class(
                 }
 
                 # Create the plot
-                p <- ggplot(plot_data, aes(x = Threshold, y = YoudenIndex, color = Predictor)) +
-                    geom_line(linewidth = 1.2) +
-                    geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
-                    labs(
+                p <- ggplot2::ggplot(plot_data, ggplot2::aes(x = Threshold, y = YoudenIndex, color = Predictor)) +
+                    ggplot2::geom_line(linewidth = 1.2) +
+                    ggplot2::geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+                    ggplot2::labs(
                         x = "Threshold",
                         y = "Youden Index (Sensitivity + Specificity - 1)",
                         title = "Youden Index vs Threshold",
                         color = "Predictor"
                     ) +
-                    theme_minimal() +
-                    theme(
-                        plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+                    ggplot2::theme_minimal() +
+                    ggplot2::theme(
+                        plot.title = ggplot2::element_text(hjust = 0.5, size = 14, face = "bold"),
                         legend.position = "bottom"
                     )
 
@@ -3029,7 +3092,7 @@ enhancedROCClass <- R6::R6Class(
                         Predictor = predictor
                     ))
                 }
-                p <- p + geom_point(data = optimal_data, size = 3, shape = 16)
+                p <- p + ggplot2::geom_point(data = optimal_data, size = 3, shape = 16)
 
                 print(p)
                 TRUE
@@ -3168,8 +3231,9 @@ enhancedROCClass <- R6::R6Class(
                     recall <- coords$sensitivity
                     
                     # Handle division by zero/NaNs at extremes
-                    precision[is.na(precision)] <- 1 # Usually at threshold 1 where TP=0, FP=0? 
-                    # If TP+FP=0, it means no positive predictions. Precision is undefined but often treated as 1 or 0.
+                    # When TP+FP=0 (no positive predictions), precision is undefined.
+                    # Convention: set to 1 (no false positives were made) per scikit-learn standard.
+                    precision[is.na(precision)] <- 1
                     
                     pr_df <- data.frame(
                         Recall = recall,
@@ -3380,14 +3444,28 @@ enhancedROCClass <- R6::R6Class(
                     # Ensure outcome is binary 0/1
                     y_binary <- as.numeric(outcome == levels(outcome)[2])
                     
-                    # Get probabilities
-                    # If predictor is already a probability (0-1), use it directly?
-                    # For safety, we'll fit a logistic regression to get calibrated probabilities
-                    # unless the user explicitly provides probabilities (which we can't easily check here)
-                    # So we will fit a model.
-                    
-                    model <- glm(y_binary ~ pred_vals, family = binomial)
-                    probs <- predict(model, type = "response")
+                    # Get probabilities: if predictor is already in [0,1] range,
+                    # use values directly (assumes pre-calibrated probabilities).
+                    # Otherwise, fit logistic regression to map to probabilities.
+                    pred_range <- range(pred_vals, na.rm = TRUE)
+                    if (pred_range[1] >= 0 && pred_range[2] <= 1) {
+                        probs <- pred_vals
+                        private$.addNotice(type = "INFO",
+                            title = paste0("Calibration: ", predictor),
+                            content = "Predictor values are in [0,1] range - treated as pre-calibrated probabilities.")
+                    } else {
+                        model <- glm(y_binary ~ pred_vals, family = binomial)
+                        probs <- predict(model, type = "response")
+                        private$.addNotice(type = "STRONG_WARNING",
+                            title = paste0("Calibration: Non-Probability Predictor '", predictor, "'"),
+                            content = paste0(
+                                "The predictor '", predictor, "' values are not in the [0,1] probability range ",
+                                "(observed range: ", round(pred_range[1], 2), " to ", round(pred_range[2], 2), "). ",
+                                "A logistic regression model was fitted to obtain predicted probabilities for calibration assessment. ",
+                                "These calibration results reflect the fitted model's calibration, NOT the raw biomarker's calibration. ",
+                                "For proper calibration assessment, provide predicted probabilities from your prediction model."
+                            ))
+                    }
                     
                     # Brier Score (only compute if brierScore option is enabled)
                     brier <- NA
@@ -3397,7 +3475,7 @@ enhancedROCClass <- R6::R6Class(
                         # Scaled Brier Score (1 - Brier / Brier_max)
                         prev <- mean(y_binary)
                         brier_max <- prev * (1 - prev)^2 + (1 - prev) * prev^2
-                        scaled_brier <- 1 - (brier / brier_max)
+                        scaled_brier <- if (brier_max > 1e-10) 1 - (brier / brier_max) else NA_real_
                     }
 
                     # Calibration Slope, Intercept, and Calibration-in-the-large
@@ -3443,32 +3521,29 @@ enhancedROCClass <- R6::R6Class(
                         # Create groups based on quantiles
                         # Use cut2 or manual quantile cutting
                         # Handle potential duplicate quantiles
-                        breaks <- unique(quantile(probs, probs = seq(0, 1, length.out = n_groups + 1)))
+                        breaks <- unique(quantile(probs, probs = seq(0, 1, length.out = n_groups + 1), na.rm = TRUE))
                         if (length(breaks) < 3) {
-                             # Fallback for very few unique values
-                             groups <- as.numeric(as.factor(probs))
-                             actual_groups <- length(unique(groups))
-                             if (actual_groups <= 2) {
-                                 private$.addNotice(type = "WARNING",
-                                     title = paste0("HL Test Skipped: ", predictor),
-                                     content = "Too few distinct predicted probabilities for Hosmer-Lemeshow test (need >2 groups).")
-                                 next
-                             }
-                        } else {
-                             groups <- cut(probs, breaks = breaks, include.lowest = TRUE, labels = FALSE)
-                             actual_groups <- length(unique(groups))
+                             # Too few unique predicted probability values for meaningful grouping
+                             private$.addNotice(type = "WARNING",
+                                 title = paste0("HL Test Skipped: ", predictor),
+                                 content = "Insufficient unique predicted probability values for Hosmer-Lemeshow grouping (need at least 3 distinct break points). This typically occurs when the predictor has very few unique values.")
+                             next
                         }
+                        groups <- cut(probs, breaks = breaks, include.lowest = TRUE, labels = FALSE)
+                        actual_groups <- length(levels(factor(groups)))
                         
                         obs <- tapply(y_binary, groups, sum)
                         exp <- tapply(probs, groups, sum)
                         n_cnt <- tapply(y_binary, groups, length)
                         
-                        # Calculate Chi-Square statistic
-                        hl_stat <- sum((obs - exp)^2 / (exp * (1 - exp/n_cnt)), na.rm = TRUE)
+                        # Calculate Chi-Square statistic (guard against zero denominators)
+                        denom <- exp * (1 - exp/n_cnt)
+                        valid <- !is.na(denom) & abs(denom) > 1e-10
+                        hl_stat <- if (any(valid)) sum((obs[valid] - exp[valid])^2 / denom[valid]) else NA
                         df <- actual_groups - 2
-                        p_val <- 1 - pchisq(hl_stat, df = df)
-                        
-                        conclusion <- if (p_val < 0.05) "Significant lack of fit" else "Good fit"
+                        p_val <- if (!is.na(hl_stat) && df > 0) 1 - pchisq(hl_stat, df = df) else NA
+
+                        conclusion <- if (!is.na(p_val) && p_val < 0.05) "Significant lack of fit" else if (!is.na(p_val)) "Good fit" else "Could not compute"
                         
                         hl_row <- list(
                             predictor = predictor,
@@ -3596,42 +3671,28 @@ enhancedROCClass <- R6::R6Class(
                         levels = levels(outcome)
                     )
                     
-                    # Populate Average Table
+                    # Hand-Till pairwise AUC from pROC::multiclass.roc
                     mc_auc_val <- as.numeric(mc_roc$auc)
                     mc_interp <- private$.interpretAUC(mc_auc_val)
-                    avgTable$setRow(rowNo = 1, values = list(
-                        averaging_method = "Hand & Till (Pairwise)",
-                        macro_auc = mc_auc_val,
-                        weighted_auc = NA, # Not directly provided by pROC default
-                        micro_auc = NA,
-                        interpretation = mc_interp
-                    ))
-                    
-                    # Populate Pairwise/Class-specific AUCs if available
-                    # pROC returns pairwise comparisons
-                    # We can iterate through them
-                    
-                    # Note: pROC multiclass.roc returns a list of ROC curves for pairwise comparisons
-                    # We can try to map these to the table structure
-                    
-                    # The table structure expects "class" and "strategy" (e.g. One-vs-Rest)
-                    # pROC does pairwise (One-vs-One) by default
-                    
-                    # If we want One-vs-Rest, we need to calculate it manually
+
+                    # If we want One-vs-Rest, compute OVR macro average separately
                     if (self$options$multiClassStrategy == "ovr") {
-                        for (lvl in levels(outcome)) {
+                        ovr_aucs <- numeric(nlevels(outcome))
+                        for (j in seq_along(levels(outcome))) {
+                            lvl <- levels(outcome)[j]
                             # Create binary outcome: Class vs Rest
-                            binary_outcome <- factor(ifelse(outcome == lvl, "Positive", "Negative"), 
+                            binary_outcome <- factor(ifelse(outcome == lvl, "Positive", "Negative"),
                                                    levels = c("Negative", "Positive"))
-                            
+
                             # Calculate ROC
-                            roc_obj <- pROC::roc(response = binary_outcome, predictor = pred_vals, 
+                            roc_obj <- pROC::roc(response = binary_outcome, predictor = pred_vals,
                                                direction = "auto", quiet = TRUE)
-                            
+                            ovr_aucs[j] <- as.numeric(roc_obj$auc)
+
                             row <- list(
                                 class = lvl,
                                 strategy = "One-vs-Rest",
-                                auc = as.numeric(roc_obj$auc),
+                                auc = ovr_aucs[j],
                                 auc_lower = if(self$options$useBootstrap) as.numeric(pROC::ci.auc(roc_obj)[1]) else NA,
                                 auc_upper = if(self$options$useBootstrap) as.numeric(pROC::ci.auc(roc_obj)[3]) else NA,
                                 n_positive = sum(outcome == lvl),
@@ -3639,11 +3700,28 @@ enhancedROCClass <- R6::R6Class(
                             )
                             aucTable$addRow(rowKey = paste0(private$.escapeVar(predictor), "_", private$.escapeVar(lvl)), values = row)
                         }
+
+                        # OVR Macro Average
+                        ovr_macro_auc <- mean(ovr_aucs, na.rm = TRUE)
+                        ovr_interp <- private$.interpretAUC(ovr_macro_auc)
+                        avgTable$setRow(rowNo = 1, values = list(
+                            averaging_method = "OVR Macro Average",
+                            macro_auc = ovr_macro_auc,
+                            weighted_auc = mc_auc_val,  # Hand-Till pairwise for reference
+                            micro_auc = NA,
+                            interpretation = paste0(ovr_interp, " (Hand-Till pairwise: ", round(mc_auc_val, 3), ")")
+                        ))
                     } else {
-                        # One-vs-One (Pairwise)
-                        # We can extract from mc_roc$rocs if available, or re-calculate
-                        # mc_roc$rocs is a list of lists of roc objects
-                        
+                        # One-vs-One (Pairwise) — Hand-Till method
+                        avgTable$setRow(rowNo = 1, values = list(
+                            averaging_method = "Hand-Till Pairwise",
+                            macro_auc = mc_auc_val,
+                            weighted_auc = NA,
+                            micro_auc = NA,
+                            interpretation = mc_interp
+                        ))
+
+                        # Per-pair AUC breakdown
                         pairs <- combn(levels(outcome), 2)
                         for (i in 1:ncol(pairs)) {
                             class1 <- pairs[1, i]
@@ -3695,10 +3773,17 @@ enhancedROCClass <- R6::R6Class(
                 }
                 
                 if (nlevels(outcome) < 3) return(FALSE)
-                
+
+                if (self$options$multiClassStrategy == "ovo") {
+                    private$.addNotice(type = "INFO",
+                        title = "Multi-Class ROC Plot",
+                        content = "One-vs-One (OVO) ROC plots are not yet supported. Switch to One-vs-Rest (OVR) strategy for ROC curve visualization.")
+                    return(FALSE)
+                }
+
                 for (predictor in private$.predictors) {
                     pred_vals <- private$.data[[predictor]]
-                    
+
                     if (self$options$multiClassStrategy == "ovr") {
                         for (lvl in levels(outcome)) {
                             binary_outcome <- factor(ifelse(outcome == lvl, "Positive", "Negative"), 
@@ -3722,25 +3807,25 @@ enhancedROCClass <- R6::R6Class(
                 
                 if (nrow(plot_data) == 0) return(FALSE)
                 
-                p <- ggplot(plot_data, aes(x = FPR, y = TPR, color = Class)) +
-                    geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "gray50") +
-                    geom_line(linewidth = 1) +
-                    labs(
+                p <- ggplot2::ggplot(plot_data, ggplot2::aes(x = FPR, y = TPR, color = Class)) +
+                    ggplot2::geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "gray50") +
+                    ggplot2::geom_line(linewidth = 1) +
+                    ggplot2::labs(
                         x = "False Positive Rate",
                         y = "True Positive Rate",
                         title = "Multi-Class ROC Curves (One-vs-Rest)",
                         color = "Class"
                     ) +
-                    xlim(0, 1) + ylim(0, 1) +
-                    coord_fixed() +
-                    theme_minimal() +
-                    theme(
-                        plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+                    ggplot2::xlim(0, 1) + ggplot2::ylim(0, 1) +
+                    ggplot2::coord_fixed() +
+                    ggplot2::theme_minimal() +
+                    ggplot2::theme(
+                        plot.title = ggplot2::element_text(hjust = 0.5, size = 14, face = "bold"),
                         legend.position = "bottom"
                     )
-                
+
                 if (length(private$.predictors) > 1) {
-                    p <- p + facet_wrap(~Predictor)
+                    p <- p + ggplot2::facet_wrap(~Predictor)
                 }
                 
                 print(p)
@@ -3753,60 +3838,6 @@ enhancedROCClass <- R6::R6Class(
                 FALSE
             })
         },
-
-        # NOT IMPLEMENTED - Time-Dependent ROC Stub Functions (commented out)
-        # .plotTimeDependentROC = function(image, ggtheme, theme, ...) {
-        #     # Stub for Time-Dependent ROC Plot
-        #     # Currently not supported, as indicated by the warning in .run()
-        #     # Returns FALSE to indicate no plot generated, or generates a placeholder
-        #
-        #     if (!self$options$timeDependentROC) return(FALSE)
-        #
-        #     width <- self$options$plotWidth %||% 600
-        #     height <- self$options$plotHeight %||% 600
-        #     image$setState(list(width = width, height = height))
-        #
-        #     tryCatch({
-        #         library(ggplot2)
-        #
-        #         # Create a placeholder plot
-        #         df <- data.frame(x = 0.5, y = 0.5, label = "Time-Dependent ROC\nCurrently Not Supported")
-        #         p <- ggplot(df, aes(x=x, y=y, label=label)) +
-        #             geom_text(size = 6) +
-        #             theme_void() +
-        #             theme(plot.background = element_rect(fill = "white", color = NA))
-        #
-        #         print(p)
-        #         TRUE
-        #     }, error = function(e) {
-        #         FALSE
-        #     })
-        # },
-        #
-        # .plotAUCTimeCourse = function(image, ggtheme, theme, ...) {
-        #     # Stub for AUC Time Course Plot
-        #     if (!self$options$timeDependentROC) return(FALSE)
-        #
-        #     width <- self$options$plotWidth %||% 600
-        #     height <- self$options$plotHeight %||% 600
-        #     image$setState(list(width = width, height = height))
-        #
-        #     tryCatch({
-        #         library(ggplot2)
-        #
-        #         # Create a placeholder plot
-        #         df <- data.frame(x = 0.5, y = 0.5, label = "AUC Time Course\nCurrently Not Supported")
-        #         p <- ggplot(df, aes(x=x, y=y, label=label)) +
-        #             geom_text(size = 6) +
-        #             theme_void() +
-        #             theme(plot.background = element_rect(fill = "white", color = NA))
-        #
-        #         print(p)
-        #         TRUE
-        #     }, error = function(e) {
-        #         FALSE
-        #     })
-        # },
 
         .populateClinicalImpact = function() {
             if (!self$options$clinicalImpact) return()
@@ -3850,15 +3881,26 @@ enhancedROCClass <- R6::R6Class(
                     spec <- ifelse((tn + fp) > 0, tn / (tn + fp), NA)
                     youden <- if (!is.na(sens) && !is.na(spec)) sens + spec - 1 else NA
                     nnd <- if (!is.na(youden) && youden > 0) 1 / youden else NA
-                    
+
+                    # NNT (Number Needed to Test/Screen): inverse of net benefit
+                    # NNT = 1 / (TP/n - FP/n * pt/(1-pt)) where pt = threshold probability
+                    # This is the number of patients that need to be tested for one
+                    # additional true positive at the given decision threshold
+                    net_benefit_local <- (tp / n) - (fp / n) * (threshold_prob / (1 - threshold_prob))
+                    nnt <- if (!is.na(net_benefit_local) && net_benefit_local > 0) {
+                        round(1 / net_benefit_local)
+                    } else {
+                        NA
+                    }
+
                     tested_positive <- (tp + fp) / n
                     false_positive_rate <- 1 - spec
-                    net_benefit <- (tp / n) - (fp / n) * (threshold_prob / (1 - threshold_prob))
-                    
+                    net_benefit <- net_benefit_local
+
                     row <- list(
                         predictor = predictor,
                         threshold = threshold_prob,
-                        nnt = NA,
+                        nnt = nnt,
                         nnd = nnd,
                         tested_positive = tested_positive,
                         true_positive_rate = sens,
@@ -3917,9 +3959,8 @@ enhancedROCClass <- R6::R6Class(
                     y_binary <- as.numeric(outcome == levels(outcome)[2])
                     n <- length(y_binary)
                     
-                    # Fit model to get probabilities if needed, or use raw if 0-1
-                    # Assuming raw for now if 0-1, else fit
-                    if (all(pred_vals >= 0 & pred_vals <= 1)) {
+                    # Use raw values if already in [0,1] probability range, else fit logistic model
+                    if (all(pred_vals >= 0 & pred_vals <= 1, na.rm = TRUE)) {
                         probs <- pred_vals
                     } else {
                         model <- glm(y_binary ~ pred_vals, family = binomial)
@@ -4001,6 +4042,16 @@ enhancedROCClass <- R6::R6Class(
         .populateInternalValidation = function() {
             if (!self$options$internalValidation) return()
 
+            private$.addNotice(
+                type = "INFO",
+                title = "Internal Validation Note",
+                content = paste0(
+                    "Bootstrap optimism correction is most informative when evaluating a fitted prediction model. ",
+                    "For a single raw biomarker, optimism from model fitting is minimal. ",
+                    "The correction shown reflects optimism from a logistic regression model fitted to the data."
+                )
+            )
+
             val_method <- self$options$validationMethod
 
             summary_text <- paste0("<h3>Internal Validation (", private$.safeHtmlOutput(val_method), ")</h3>")
@@ -4075,8 +4126,12 @@ enhancedROCClass <- R6::R6Class(
                         # Cross-validation: train logistic regression on training fold,
                         # predict on test fold, compute AUC on test predictions
                         k <- 10
-                        folds <- cut(seq(1, n), breaks = k, labels = FALSE)
-                        folds <- sample(folds)
+                        # Stratified CV: maintain class proportions in each fold
+                        pos_idx <- which(y_binary == 1)
+                        neg_idx <- which(y_binary == 0)
+                        folds <- integer(n)
+                        folds[pos_idx] <- sample(rep(1:k, length.out = length(pos_idx)))
+                        folds[neg_idx] <- sample(rep(1:k, length.out = length(neg_idx)))
 
                         cv_aucs <- numeric(k)
 
@@ -4122,7 +4177,8 @@ enhancedROCClass <- R6::R6Class(
             }
 
             # Append validation results to existing analysis summary (not overwrite)
-            private$.analysisSummaryHtml <- paste0(private$.analysisSummaryHtml, "<br>", summary_text)
+            separator <- if (nchar(private$.analysisSummaryHtml) > 0) "<br>" else ""
+            private$.analysisSummaryHtml <- paste0(private$.analysisSummaryHtml, separator, summary_text)
             self$results$results$analysisSummary$setContent(private$.analysisSummaryHtml)
         }
     ), # End of private list

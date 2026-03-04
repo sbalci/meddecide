@@ -366,7 +366,6 @@ A results object containing:
 \code{results$clinicalUtilityTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$metaAnalysisWarning} \tab \tab \tab \tab \tab a html \cr
 \code{results$metaAnalysisTable} \tab \tab \tab \tab \tab a table \cr
-\code{results$sensitivityAnalysisTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$decisionCurveTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$partialAUCTable} \tab \tab \tab \tab \tab a table \cr
 \code{results$bootstrapCITable} \tab \tab \tab \tab \tab a table \cr
@@ -376,7 +375,6 @@ A results object containing:
 \code{results$bayesianTracePlot} \tab \tab \tab \tab \tab an array of images \cr
 \code{results$decisionCurvePlot} \tab \tab \tab \tab \tab an array of images \cr
 \code{results$metaAnalysisForestPlot} \tab \tab \tab \tab \tab an array of images \cr
-\code{results$sensitivityAnalysisPlot} \tab \tab \tab \tab \tab an array of images \cr
 }
 
 Tables can be converted to data frames with \code{asDF} or \code{\link{as.data.frame}}. For example:
