@@ -15,3 +15,6 @@ jamovi
 ^docs$
 ^pkgdown$
 vignettes/
+^\.claude$
+^CLAUDE\.md$
+^CITATION\.cff$

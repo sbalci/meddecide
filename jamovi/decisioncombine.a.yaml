@@ -112,6 +112,7 @@ options:
       title: Test 3 Positive Level
       type: Level
       variable: (test3)
+      allowNone: true
       description:
           R: >
             The level representing a positive result for Test 3.
