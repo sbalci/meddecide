@@ -6,7 +6,7 @@ jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-03-04'
+date: '2026-03-05'
 type: R
 description: |-
   A comprehensive toolkit for medical decision analysis and reliability
