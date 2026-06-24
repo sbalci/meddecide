@@ -1891,7 +1891,7 @@ enhancedROCBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "enhancedROC",
-                version = c(0,0,42),
+                version = c(0,0,43),
                 options = options,
                 results = enhancedROCResults$new(options=options),
                 data = data,
