@@ -140,7 +140,7 @@ kappaSizePower(
 - **Selection**: Based on field standards and consequence of errors
 
 ### `power`: Desired Power
-- **Range**: 0.01 to 0.99, typically ≥ 0.80
+- **Range**: 0.01 to 0.99, typically >= 0.80
 - **Common values**: 0.80 (80%), 0.90 (90%)
 - **Impact**: Higher power requires larger sample sizes
 - **Minimum**: Should be at least 0.50 for meaningful analysis

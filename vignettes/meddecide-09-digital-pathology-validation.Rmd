@@ -69,7 +69,7 @@ consensus_result <- meddecide::agreement(
   data = her2_agreement_data,
   vars = c("pathologist_a", "pathologist_b", "pathologist_c"),
   consensus = TRUE,
-  consensus_method = "majority",  # ≥50% agreement
+  consensus_method = "majority",  # >=50% agreement
   tie_breaking = "exclude",       # Exclude tied cases
   show_consensus_table = TRUE,
   wght = "unweighted",
@@ -152,7 +152,7 @@ consensus_analysis <- meddecide::agreement(
   data = pathology_consensus_study,
   vars = c("pathologist_1", "pathologist_2", "pathologist_3", "pathologist_4"),
   consensus = TRUE,
-  consensus_method = "super_majority",      # Require ≥2/3 agreement  
+  consensus_method = "super_majority",      # Require >=2/3 agreement  
   tie_breaking = "arbitration",             # Flag ties for expert review
   show_consensus_table = TRUE,
   sft = TRUE,                              # Show frequency tables
@@ -178,12 +178,12 @@ consensus_analysis <- meddecide::agreement(
 - **0.81-1.00**: Almost Perfect - Suitable for clinical use
 - **0.61-0.80**: Substantial - Generally acceptable, monitor closely  
 - **0.41-0.60**: Moderate - May require additional training/calibration
-- **≤0.40**: Poor - Significant intervention needed
+- **<=0.40**: Poor - Significant intervention needed
 
 ### Consensus Achievement Rates
 - **Unanimous (100%)**: Highest confidence cases
-- **Super-majority (≥67%)**: High confidence, suitable for reporting
-- **Majority (≥50%)**: Acceptable but monitor discordant cases
+- **Super-majority (>=67%)**: High confidence, suitable for reporting
+- **Majority (>=50%)**: Acceptable but monitor discordant cases
 - **No consensus**: Require expert arbitration or additional sampling
 
 ## Advanced Features

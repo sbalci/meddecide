@@ -83,21 +83,25 @@
 ### Primary Option Usage Locations
 
 **`self$options$clinicalPreset`**
+
 - **Code Location**: `.applyPreset()`, `.showWelcomeMessage()`
 - **Logic Summary**: Applies preset configurations and displays guidance
 - **Result Population**: Updates `instructions` HTML with preset information
 
 **`self$options$method`**
+
 - **Code Location**: `.run()`, `.getMethodSpecificContent()`, `.performAnalysis()`
 - **Logic Summary**: Controls analysis pathway - branches to different statistical methods
 - **Result Population**: Affects `test_metrics`, `prevalence`, `model_fit` tables; shows/hides method-specific outputs
 
 **`self$options$test1, test2, test3, test4, test5`**
+
 - **Code Location**: `.getTestVariables()`, data processing sections
 - **Logic Summary**: Extracts test variables, validates data, creates analysis dataset
 - **Result Population**: Drives `crosstab` table and all performance metric calculations
 
 **`self$options$bootstrap, nboot, alpha, verbose`**
+
 - **Code Location**: `.performBootstrap()`, CI calculation sections
 - **Logic Summary**: Controls bootstrap confidence interval estimation
 - **Result Population**: Updates CI columns in `test_metrics` and `prevalence` tables
@@ -328,7 +332,7 @@ flowchart TD
 ### Recommended Defaults
 
 - **Method: latent_class** for robust estimation with 3+ tests
-- **Bootstrap: true** for research publications (with nboot ≥ 1000)  
+- **Bootstrap: true** for research publications (with nboot >= 1000)  
 - **Alpha: 0.05** for standard 95% confidence intervals
 - **Verbose: false** for cleaner output (enable for debugging)
 

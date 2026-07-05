@@ -1,3 +1,11 @@
+# meddecide 0.0.47 (2026-07-05)
+
+## Bug Fixes
+
+* **Restored correct inter-rater agreement statistics on jamovi installs.** `vcd` and `lme4` are used by `agreement()` but were missing from the package `Imports`. Because jamovi installs only a package's `Imports`, on a clean install they were unavailable: pairwise kappa confidence intervals silently fell back to the narrower `irr::kappa2` null-SE method, and the entire ICC / Lin's CCC / continuous-agreement suite (which relies on `lme4`) was non-functional. Both are now declared, so agreement CIs use the intended `vcd::Kappa` asymptotic-SE method and the continuous-agreement measures work.
+* Clarified the all-pairs kappa fallback note so it distinguishes a missing `vcd` package (with install guidance) from a genuinely near-degenerate table.
+* Declared `DescTools` and `lmerTest`, previously used via `::` but undeclared.
+
 # meddecide 0.0.46 (2026-07-04)
 
 This release consolidates every change since 0.0.32.69 (unreleased versions 0.0.33 through 0.0.46 roll into this entry). The headline is a large expansion of **`agreement()`** into a comprehensive interrater/intrarater reliability suite (20+ new agreement statistics, tests, and visualizations), robustness and input-validation hardening of the ROC modules, one-sided confidence-interval support in the kappa sample-size tools, and package infrastructure updates (minimum jamovi app raised to 2.7.27, new imports, dataset cleanup).

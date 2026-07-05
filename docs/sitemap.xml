@@ -54,6 +54,8 @@
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-05-decisiongraph-comprehensive.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-09-digital-pathology-validation.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-15-multiclass-diagnostics-comprehensive.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-31-latentbiomarker.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-32-ysrb-interobserver.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-enhancedroc-comprehensive.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-psychopdaroc-comprehensive.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/authors.html</loc></url>
@@ -100,6 +102,8 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncombineClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncompare.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncompareClass.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/dot-asSurvivalFormula.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/dot-buildSurvivalFormula.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-calculate2x2Metrics.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-calculateAccuracy.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-calculateDOR.html</loc></url>
@@ -146,6 +150,7 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/not-in-alt.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/not-in.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/null-coalescing.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/null_coalescing.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/performMonteCarloSimulation.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/pipe.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/print.sensSpecTable.html</loc></url>

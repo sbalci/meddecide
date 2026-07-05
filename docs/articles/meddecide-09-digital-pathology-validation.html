@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Digital Pathology Validation: Agreement Analysis and Modality Comparison • meddecide</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Digital Pathology Validation: Agreement Analysis and Modality Comparison">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.47</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,6 +84,8 @@
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-31-latentbiomarker.html">Latent biomarker constructs and survival</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-32-ysrb-interobserver.html">Interobserver reliability beyond a single kappa</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul>
@@ -111,7 +113,7 @@
       <h1>Digital Pathology Validation: Agreement Analysis and Modality Comparison</h1>
                         <h4 data-toc-skip class="author">meddecide</h4>
             
-            <h4 data-toc-skip class="date">2026-03-04</h4>
+            <h4 data-toc-skip class="date">2026-07-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/meddecide-09-digital-pathology-validation.Rmd" class="external-link"><code>vignettes/meddecide-09-digital-pathology-validation.Rmd</code></a></small>
       <div class="d-none name"><code>meddecide-09-digital-pathology-validation.Rmd</code></div>
@@ -178,7 +180,7 @@ the original study.</p>
 <span>  data <span class="op">=</span> <span class="va">her2_agreement_data</span>,</span>
 <span>  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pathologist_a"</span>, <span class="st">"pathologist_b"</span>, <span class="st">"pathologist_c"</span><span class="op">)</span>,</span>
 <span>  consensus <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  consensus_method <span class="op">=</span> <span class="st">"majority"</span>,  <span class="co"># ≥50% agreement</span></span>
+<span>  consensus_method <span class="op">=</span> <span class="st">"majority"</span>,  <span class="co"># &gt;=50% agreement</span></span>
 <span>  tie_breaking <span class="op">=</span> <span class="st">"exclude"</span>,       <span class="co"># Exclude tied cases</span></span>
 <span>  show_consensus_table <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  wght <span class="op">=</span> <span class="st">"unweighted"</span>,</span>
@@ -258,7 +260,7 @@ cases.</p>
 <span>  data <span class="op">=</span> <span class="va">pathology_consensus_study</span>,</span>
 <span>  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pathologist_1"</span>, <span class="st">"pathologist_2"</span>, <span class="st">"pathologist_3"</span>, <span class="st">"pathologist_4"</span><span class="op">)</span>,</span>
 <span>  consensus <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  consensus_method <span class="op">=</span> <span class="st">"super_majority"</span>,      <span class="co"># Require ≥2/3 agreement  </span></span>
+<span>  consensus_method <span class="op">=</span> <span class="st">"super_majority"</span>,      <span class="co"># Require &gt;=2/3 agreement  </span></span>
 <span>  tie_breaking <span class="op">=</span> <span class="st">"arbitration"</span>,             <span class="co"># Flag ties for expert review</span></span>
 <span>  show_consensus_table <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  sft <span class="op">=</span> <span class="cn">TRUE</span>,                              <span class="co"># Show frequency tables</span></span>
@@ -317,7 +319,8 @@ monitor closely<br>
 <strong>0.41-0.60</strong>: Moderate - May require additional
 training/calibration</li>
 <li>
-<strong>≤0.40</strong>: Poor - Significant intervention needed</li>
+<strong>&lt;=0.40</strong>: Poor - Significant intervention
+needed</li>
 </ul>
 </div>
 <div class="section level3">
@@ -327,11 +330,11 @@ training/calibration</li>
 <li>
 <strong>Unanimous (100%)</strong>: Highest confidence cases</li>
 <li>
-<strong>Super-majority (≥67%)</strong>: High confidence, suitable
-for reporting</li>
+<strong>Super-majority (&gt;=67%)</strong>: High confidence,
+suitable for reporting</li>
 <li>
-<strong>Majority (≥50%)</strong>: Acceptable but monitor discordant
-cases</li>
+<strong>Majority (&gt;=50%)</strong>: Acceptable but monitor
+discordant cases</li>
 <li>
 <strong>No consensus</strong>: Require expert arbitration or
 additional sampling</li>
@@ -452,7 +455,7 @@ validation capabilities in meddecide v2.0+</em></p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

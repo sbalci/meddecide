@@ -475,7 +475,7 @@ n_events <- sum(clinical_data$outcome == "Yes")
 n_predictors <- length(predictor_variables)
 epv <- n_events / n_predictors
 
-# Rule of thumb: EPV should be ≥ 10
+# Rule of thumb: EPV should be >= 10
 if (epv < 10) {
   warning("Events per variable (EPV) is low. Consider reducing predictors or increasing sample size.")
 }
@@ -877,7 +877,7 @@ secondary_outcome <- modelbuilder(
 
 ### Model Validation Checklist
 
--   [ ] **Sample Size**: Adequate events per variable (EPV ≥ 10)
+-   [ ] **Sample Size**: Adequate events per variable (EPV >= 10)
 -   [ ] **Data Quality**: Missing data patterns assessed and handled
 -   [ ] **Variable Selection**: Clinically relevant predictors included
 -   [ ] **Model Fitting**: Convergence achieved, no separation issues

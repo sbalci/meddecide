@@ -115,7 +115,7 @@ kappaSizeFixedN(
 - **Selection**: Based on field standards and study importance
 
 ### `n`: Available Sample Size
-- **Requirements**: Positive integer ≥ 10
+- **Requirements**: Positive integer >= 10
 - **Reality check**: Must reflect actual constraints (budget, time, access)
 
 # Clinical Applications and Examples

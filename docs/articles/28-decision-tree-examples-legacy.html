@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Decision Tree and Markov Chain Analysis Examples • meddecide</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Decision Tree and Markov Chain Analysis Examples">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.47</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,6 +84,8 @@
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-31-latentbiomarker.html">Latent biomarker constructs and survival</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-32-ysrb-interobserver.html">Interobserver reliability beyond a single kappa</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul>
@@ -112,7 +114,7 @@
                         <h4 data-toc-skip class="author">ClinicoPath
 Development Team</h4>
             
-            <h4 data-toc-skip class="date">2026-03-04</h4>
+            <h4 data-toc-skip class="date">2026-07-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/28-decision-tree-examples-legacy.Rmd" class="external-link"><code>vignettes/28-decision-tree-examples-legacy.Rmd</code></a></small>
       <div class="d-none name"><code>28-decision-tree-examples-legacy.Rmd</code></div>
@@ -310,7 +312,7 @@ cost-effectiveness of different heart disease management strategies?</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Add transition probabilities</span></span>
-<span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">prob_asymp_to_symp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">prob_asymp_to_symp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Standard Care"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.08</span>, <span class="fl">0.12</span><span class="op">)</span>,</span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Intensive Monitoring"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.05</span>, <span class="fl">0.08</span><span class="op">)</span>,</span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Preventive Surgery"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span><span class="op">)</span></span>
@@ -319,7 +321,7 @@ cost-effectiveness of different heart disease management strategies?</p>
 <span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">prob_asymp_to_death</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.01</span>, <span class="fl">0.02</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># From Symptomatic state</span></span>
-<span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">prob_symp_to_hf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">prob_symp_to_hf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Standard Care"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.15</span>, <span class="fl">0.25</span><span class="op">)</span>,</span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Intensive Monitoring"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.10</span>, <span class="fl">0.18</span><span class="op">)</span>,</span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Preventive Surgery"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.05</span>, <span class="fl">0.12</span><span class="op">)</span></span>
@@ -331,7 +333,7 @@ cost-effectiveness of different heart disease management strategies?</p>
 <span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">prob_hf_to_death</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">0.12</span>, <span class="fl">0.20</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># STATE-SPECIFIC ANNUAL COSTS</span></span>
-<span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">cost_asymptomatic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span><span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">cost_asymptomatic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Standard Care"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">2000</span>, <span class="fl">300</span><span class="op">)</span>,</span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Intensive Monitoring"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">4000</span>, <span class="fl">500</span><span class="op">)</span>,</span>
 <span>  <span class="va">heart_disease_markov_data</span><span class="op">$</span><span class="va">management_strategy</span> <span class="op">==</span> <span class="st">"Preventive Surgery"</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n_strategies</span>, <span class="fl">8000</span>, <span class="fl">1000</span><span class="op">)</span></span>
@@ -587,7 +589,7 @@ used to practice both analysis types in jamovi.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

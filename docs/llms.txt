@@ -1,0 +1,584 @@
+# meddecide
+
+**Medical Decision Analysis and Reliability Assessment Tools for
+Clinical Research**
+
+## Abstract
+
+`meddecide` is a comprehensive R package and jamovi module that bridges
+the gap between complex statistical methodology and practical clinical
+research. It provides an intuitive toolkit for medical professionals and
+researchers to perform diagnostic test evaluations, reliability
+assessments, and evidence-based decision analyses without requiring
+extensive programming knowledge. By offering both a traditional R
+interface and a user-friendly jamovi GUI, the package democratizes
+access to advanced statistical methods essential for modern medical
+research and clinical decision-making.
+
+## Overview
+
+The `meddecide` package serves as the computational engine for the
+ClinicoPath jamovi Module, offering dual functionality:
+
+- **As an R Package**: Direct access to all functions through R scripts
+  and console
+- **As a jamovi Module**: Point-and-click interface for statistical
+  analyses without coding
+
+See full documentation at
+<https://sbalci.github.io/ClinicoPathJamoviModule/>
+
+[![CRAN
+Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
+[![R-CMD-check](https://github.com/sbalci/meddecide/workflows/R-CMD-check/badge.svg)](https://github.com/sbalci/meddecide/actions)
+[![License: GPL (\>=
+2)](https://img.shields.io/badge/License-GPL%20(%3E=%202)-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
+[![jamovi
+Module](https://img.shields.io/badge/jamovi-module-brightgreen.svg?logo=jamovi)](https://www.jamovi.org/)
+[![jamovi
+Version](https://img.shields.io/badge/jamovi-%E2%89%A5%201.8.1-orange.svg)](https://www.jamovi.org/)
+[![R
+Version](https://img.shields.io/badge/R-%E2%89%A5%204.1.0-blue.svg)](https://www.r-project.org/)
+
+[![GitHub
+Release](https://img.shields.io/github/v/release/sbalci/meddecide)](https://github.com/sbalci/meddecide/releases)
+[![GitHub
+Issues](https://img.shields.io/github/issues/sbalci/ClinicoPathJamoviModule)](https://github.com/sbalci/ClinicoPathJamoviModule/issues)
+[![GitHub
+Stars](https://img.shields.io/github/stars/sbalci/meddecide?style=social)](https://github.com/sbalci/meddecide)
+
+[![Medical Decision
+Analysis](https://img.shields.io/badge/Focus-Medical%20Decision%20Analysis-red.svg)](https://github.com/sbalci/meddecide)
+[![Reliability
+Assessment](https://img.shields.io/badge/Focus-Reliability%20Assessment-green.svg)](https://github.com/sbalci/meddecide)
+[![ROC
+Analysis](https://img.shields.io/badge/Feature-ROC%20Analysis-purple.svg)](https://github.com/sbalci/meddecide)
+[![Kappa
+Statistics](https://img.shields.io/badge/Feature-Kappa%20Statistics-orange.svg)](https://github.com/sbalci/meddecide)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3997188.svg)](https://doi.org/10.5281/zenodo.3997188)
+[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://sbalci.github.io/ClinicoPathJamoviModule/)
+[![Clinical
+Research](https://img.shields.io/badge/Domain-Clinical%20Research-darkblue.svg)](https://github.com/sbalci/meddecide)
+
+## Key Features
+
+### 🏥 Medical Decision Analysis
+
+- **Diagnostic Test Evaluation**: Calculate sensitivity, specificity,
+  predictive values, and likelihood ratios
+- **Test Comparison**: Compare multiple diagnostic tests against a gold
+  standard with statistical significance testing
+- **Test Combination**: Systematically evaluate all possible patterns
+  from 2-3 diagnostic tests to identify optimal strategies
+- **Decision Calculator**: Interactive tool for exploring how test
+  characteristics affect clinical decisions
+- **Co-Testing Analysis**: Analyze combined results of concurrent
+  diagnostic tests (parallel strategies)
+- **Sequential Testing**: Evaluate serial testing strategies
+  (confirmation and exclusion approaches)
+- **Bayesian Updates**: Fagan nomograms for visualizing post-test
+  probability calculations
+
+### 📊 ROC Analysis
+
+- **ROC Curve Generation**: Create and visualize receiver operating
+  characteristic curves
+- **AUC Calculation**: Compute area under the curve with confidence
+  intervals
+- **Optimal Cutpoint Detection**: Determine best thresholds using
+  various optimization methods
+- **Multiple Comparison**: Compare ROC curves from different diagnostic
+  tests
+
+### 🤝 Reliability Assessment
+
+- **Cohen’s Kappa**: Calculate inter-rater agreement for two raters
+- **Fleiss’ Kappa**: Assess agreement among multiple raters
+- **Weighted Kappa**: Account for ordinal data with custom weighting
+  schemes
+- **Agreement Visualization**: Generate plots to visualize rater
+  concordance patterns
+
+### 📐 Sample Size Calculations
+
+- **Power-Based**: Determine sample size for desired statistical power
+- **Precision-Based**: Calculate sample size for confidence interval
+  width
+- **Fixed N Analysis**: Evaluate achievable power with predetermined
+  sample size
+- **Multiple Scenarios**: Compare sample size requirements across
+  different study designs
+
+### 🔬 Advanced Analysis
+
+- **No Gold Standard**: Analyze diagnostic tests when reference standard
+  is imperfect
+- **Latent Class Analysis**: Estimate test performance without gold
+  standard
+- **Bootstrap Methods**: Generate robust confidence intervals
+- **Missing Data Handling**: Appropriate methods for incomplete datasets
+
+### 📈 Visualization Tools
+
+- **Fagan Nomograms**: Interactive Bayesian probability calculators for
+  sequential testing
+- **Forest Plots**: Compare diagnostic metrics across studies with
+  confidence intervals
+- **Agreement Plots**: Visualize inter-rater reliability patterns
+- **ROC Space**: Multi-test comparison in ROC coordinate system
+- **Radar Plots**: Comprehensive multi-metric test comparison
+  visualization
+- **Heatmaps**: Color-coded performance matrices for test combinations
+- **Decision Trees**: Hierarchical visualization of test combination
+  strategies
+- **Comparison Bar Charts**: Side-by-side performance metric comparisons
+
+## Installation
+
+### As an R Package
+
+``` r
+
+# Install from GitHub
+devtools::install_github("sbalci/meddecide")
+
+# Load the package
+library(meddecide)
+```
+
+### As a jamovi Module
+
+1.  Open jamovi (\>= 1.8.1)
+2.  Click the modules menu (⋮) in the top right
+3.  Select “jamovi library”
+4.  Search for “ClinicoPath”
+5.  Click Install
+
+## Quick Start Examples
+
+### Basic Diagnostic Test Evaluation
+
+``` r
+
+library(meddecide)
+
+# Single test evaluation
+result <- decision(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  newtest = "New Test",
+  testPositive = "1"
+)
+```
+
+### Compare Multiple Tests
+
+``` r
+
+# Compare two diagnostic tests
+comparison <- decisioncompare(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  test1 = "New Test",
+  test1Positive = "1",
+  test2 = "Rater 1",
+  test2Positive = "1",
+  ci = TRUE,
+  plot = TRUE,
+  statComp = TRUE
+)
+```
+
+### Evaluate Test Combinations
+
+``` r
+
+# Analyze all possible patterns from 2 tests
+combinations <- decisioncombine(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  test1 = "New Test",
+  test1Positive = "1",
+  test2 = "Rater 1",
+  test2Positive = "1",
+  showIndividual = TRUE,
+  showHeatmap = TRUE,
+  showRecommendation = TRUE
+)
+```
+
+### Sequential Testing Analysis
+
+``` r
+
+# Evaluate serial testing strategies
+sequential <- sequentialtests(
+  data = histopathology,
+  gold = "Golden Standart",
+  goldPositive = "1",
+  test1 = "New Test",
+  test1Positive = "1",
+  test2 = "Rater 1",
+  test2Positive = "1",
+  showFagan = TRUE
+)
+```
+
+### ROC Analysis
+
+``` r
+
+# ROC curve with optimal cutpoint
+roc_result <- psychopdaROC(
+  data = biomarker_data,
+  class = "diagnosis",
+  value = "biomarker_level"
+)
+```
+
+### Interrater Reliability
+
+``` r
+
+# Cohen's Kappa for two raters
+agreement_result <- agreement(
+  data = rating_data
+)
+```
+
+## Example Datasets
+
+Small CSV files are provided in `inst/extdata` to illustrate the main
+functions:
+
+- `decision_example.csv`: Basic medical decision analysis
+- `roc_example.csv`: ROC curve analysis
+- `agreement_example.csv`: Interrater reliability
+
+Access via:
+`system.file("extdata", "filename.csv", package = "meddecide")`
+
+## Citation
+
+If you use meddecide in your research, please cite the main ClinicoPath
+project:
+
+    Serdar Balci (2025). ClinicoPath jamovi Module. doi:10.5281/zenodo.3997188
+    [R package]. Retrieved from https://github.com/sbalci/ClinicoPathJamoviModule
+
+# Package index
+
+## All functions
+
+- [`agreement()`](https://www.serdarbalci.com/meddecide/reference/agreement.md)
+  : Interrater Reliability
+- [`agreementClass`](https://www.serdarbalci.com/meddecide/reference/agreementClass.md)
+  : Interrater Reliability Analysis
+- [`auc_ci()`](https://www.serdarbalci.com/meddecide/reference/auc_ci.md)
+  : Statistical Utility Functions
+- [`bayesdca_test_data`](https://www.serdarbalci.com/meddecide/reference/bayesdca_test_data.md)
+  : Bayesian DCA test dataset
+- [`bootstrapIDI()`](https://www.serdarbalci.com/meddecide/reference/bootstrapIDI.md)
+  : Bootstrap IDI calculation with confidence intervals
+- [`bootstrapNRI()`](https://www.serdarbalci.com/meddecide/reference/bootstrapNRI.md)
+  : Bootstrap NRI calculation with confidence intervals
+- [`bootstrap_ci()`](https://www.serdarbalci.com/meddecide/reference/bootstrap_ci.md)
+  : Bootstrap confidence intervals for diagnostic metrics
+- [`breast_cancer_data`](https://www.serdarbalci.com/meddecide/reference/breast_cancer_data.md)
+  : Breast cancer diagnostic dataset
+- [`breast_data`](https://www.serdarbalci.com/meddecide/reference/breast_data.md)
+  : Breast pathology diagnostic styles dataset
+- [`calculateCEAC()`](https://www.serdarbalci.com/meddecide/reference/calculateCEAC.md)
+  : Calculate Cost-Effectiveness Acceptability Curve (CEAC)
+- [`calculateEVPI()`](https://www.serdarbalci.com/meddecide/reference/calculateEVPI.md)
+  : Calculate Expected Value of Perfect Information (EVPI)
+- [`calculate_auc()`](https://www.serdarbalci.com/meddecide/reference/calculate_auc.md)
+  : Calculate AUC from sensitivity and specificity
+- [`calculate_nlr()`](https://www.serdarbalci.com/meddecide/reference/calculate_nlr.md)
+  : Calculate negative likelihood ratio
+- [`calculate_npv()`](https://www.serdarbalci.com/meddecide/reference/calculate_npv.md)
+  : Calculate negative predictive value (NPV)
+- [`calculate_plr()`](https://www.serdarbalci.com/meddecide/reference/calculate_plr.md)
+  : Calculate positive likelihood ratio
+- [`calculate_ppv()`](https://www.serdarbalci.com/meddecide/reference/calculate_ppv.md)
+  : Calculate positive predictive value (PPV)
+- [`calculate_sensitivity()`](https://www.serdarbalci.com/meddecide/reference/calculate_sensitivity.md)
+  : Calculate diagnostic sensitivity
+- [`calculate_specificity()`](https://www.serdarbalci.com/meddecide/reference/calculate_specificity.md)
+  : Calculate diagnostic specificity
+- [`cancer_data`](https://www.serdarbalci.com/meddecide/reference/cancer_data.md)
+  : Cancer diagnostic dataset
+- [`cardiac_data`](https://www.serdarbalci.com/meddecide/reference/cardiac_data.md)
+  : Cardiac diagnostic dataset
+- [`clear_error_log()`](https://www.serdarbalci.com/meddecide/reference/clear_error_log.md)
+  : Clear Error Log
+- [`clinicopath_cleanup()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_cleanup.md)
+  : Function Cleanup
+- [`clinicopath_error_handler()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_error_handler.md)
+  : ClinicoPath Error Handler
+- [`clinicopath_init()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_init.md)
+  : Initialize ClinicoPath Error Handling System
+- [`clinicopath_startup_message()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_startup_message.md)
+  : Package startup message
+- [`clinicopath_warning_handler()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_warning_handler.md)
+  : ClinicoPath Warning Handler
+- [`computeNRI()`](https://www.serdarbalci.com/meddecide/reference/computeNRI.md)
+  : Compute Net Reclassification Index (NRI)
+- [`cotest()`](https://www.serdarbalci.com/meddecide/reference/cotest.md)
+  : Co-Testing Analysis
+- [`cotestClass`](https://www.serdarbalci.com/meddecide/reference/cotestClass.md)
+  : Co-Testing Analysis
+- [`createDecisionTreePlot()`](https://www.serdarbalci.com/meddecide/reference/createDecisionTreePlot.md)
+  : Create Decision Tree Plot
+- [`createSafeHTMLContent()`](https://www.serdarbalci.com/meddecide/reference/createSafeHTMLContent.md)
+  : Create Error-Safe HTML Content
+- [`create_enhanced_result()`](https://www.serdarbalci.com/meddecide/reference/create_enhanced_result.md)
+  : Enhanced Result Structure
+- [`decision()`](https://www.serdarbalci.com/meddecide/reference/decision.md)
+  : Medical Decision
+- [`decisionClass`](https://www.serdarbalci.com/meddecide/reference/decisionClass.md)
+  : Medical Decision Analysis
+- [`decisioncalculator()`](https://www.serdarbalci.com/meddecide/reference/decisioncalculator.md)
+  : Medical Decision Calculator
+- [`decisioncalculatorClass`](https://www.serdarbalci.com/meddecide/reference/decisioncalculatorClass.md)
+  : Decision Calculator
+- [`decisioncombine()`](https://www.serdarbalci.com/meddecide/reference/decisioncombine.md)
+  : Combine Medical Decision Tests
+- [`decisioncombineClass`](https://www.serdarbalci.com/meddecide/reference/decisioncombineClass.md)
+  : Combine Medical Decision Tests
+- [`decisioncompare()`](https://www.serdarbalci.com/meddecide/reference/decisioncompare.md)
+  : Compare Medical Decision Tests
+- [`decisioncompareClass`](https://www.serdarbalci.com/meddecide/reference/decisioncompareClass.md)
+  : Compare Medical Decision Tests
+- [`.calculate2x2Metrics()`](https://www.serdarbalci.com/meddecide/reference/dot-calculate2x2Metrics.md)
+  : Comprehensive 2x2 Diagnostic Metrics Calculator
+- [`.calculateAccuracy()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateAccuracy.md)
+  : Calculate Accuracy
+- [`.calculateDOR()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateDOR.md)
+  : Calculate Diagnostic Odds Ratio
+- [`.calculateF1Score()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateF1Score.md)
+  : Calculate F1 Score (Harmonic Mean of Precision and Recall)
+- [`.calculateLRMinus()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateLRMinus.md)
+  : Calculate Negative Likelihood Ratio
+- [`.calculateLRPlus()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateLRPlus.md)
+  : Calculate Positive Likelihood Ratio
+- [`.calculateMCC()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateMCC.md)
+  : Calculate Matthews Correlation Coefficient
+- [`.calculateNPV()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateNPV.md)
+  : Calculate Negative Predictive Value
+- [`.calculatePPV()`](https://www.serdarbalci.com/meddecide/reference/dot-calculatePPV.md)
+  : Calculate Positive Predictive Value (Precision)
+- [`.calculateSensitivity()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateSensitivity.md)
+  : Calculate Sensitivity (True Positive Rate)
+- [`.calculateSpecificity()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateSpecificity.md)
+  : Calculate Specificity (True Negative Rate)
+- [`.calculateYouden()`](https://www.serdarbalci.com/meddecide/reference/dot-calculateYouden.md)
+  : Calculate Youden's J Index
+- [`.clinicopath_errors`](https://www.serdarbalci.com/meddecide/reference/dot-clinicopath_errors.md)
+  : ClinicoPath Enhanced Error Handling Framework
+- [`.formatDiagnosticTable()`](https://www.serdarbalci.com/meddecide/reference/dot-formatDiagnosticTable.md)
+  : Format Diagnostic Metrics Table for Display
+- [`.interpretDOR()`](https://www.serdarbalci.com/meddecide/reference/dot-interpretDOR.md)
+  : Interpret Diagnostic Odds Ratio
+- [`.interpretLR()`](https://www.serdarbalci.com/meddecide/reference/dot-interpretLR.md)
+  : Interpret Likelihood Ratio Values
+- [`.sensitivityCI()`](https://www.serdarbalci.com/meddecide/reference/dot-sensitivityCI.md)
+  : Calculate Confidence Interval for Sensitivity
+- [`.specificityCI()`](https://www.serdarbalci.com/meddecide/reference/dot-specificityCI.md)
+  : Calculate Confidence Interval for Specificity
+- [`enhancedROC()`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)
+  : Clinical ROC Analysis
+- [`enhancedROCClass`](https://www.serdarbalci.com/meddecide/reference/enhancedROCClass.md)
+  : Enhanced ROC Analysis Class
+- [`generate_user_friendly_error()`](https://www.serdarbalci.com/meddecide/reference/generate_user_friendly_error.md)
+  : Generate User-Friendly Error Message
+- [`generate_user_friendly_warning()`](https://www.serdarbalci.com/meddecide/reference/generate_user_friendly_warning.md)
+  : Generate User-Friendly Warning Message
+- [`get_clinical_context()`](https://www.serdarbalci.com/meddecide/reference/get_clinical_context.md)
+  : Clinical Context Wrapper
+- [`get_error_summary()`](https://www.serdarbalci.com/meddecide/reference/get_error_summary.md)
+  : Get Error Summary
+- [`histopathology`](https://www.serdarbalci.com/meddecide/reference/histopathology.md)
+  : Histopathology example dataset
+- [`is_in_range()`](https://www.serdarbalci.com/meddecide/reference/is_in_range.md)
+  : Check if value is within valid range
+- [`kappaSizeCI()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md)
+  : Confidence Interval Approach for the Number of Subjects Required
+- [`kappaSizeCIClass`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCIClass.md)
+  : Confidence Interval Approach for the Number of Subjects Required
+- [`kappaSizeFixedN()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md)
+  : Lowest Expected Value for a fixed sample size
+- [`kappaSizeFixedNClass`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedNClass.md)
+  : Lowest Expected Value for a fixed sample size
+- [`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+  : Power Approach for the Number of Subjects Required
+- [`kappaSizePowerClass`](https://www.serdarbalci.com/meddecide/reference/kappaSizePowerClass.md)
+  : Power Approach for the Number of Subjects Required
+- [`load_required_package()`](https://www.serdarbalci.com/meddecide/reference/load_required_package.md)
+  : Check whether a required package is available
+- [`lymphoma_data`](https://www.serdarbalci.com/meddecide/reference/lymphoma_data.md)
+  : Lymphoma diagnostic styles dataset
+- [`master_data`](https://www.serdarbalci.com/meddecide/reference/master_data.md)
+  : Master dataset collection
+- [`meddecide-package`](https://www.serdarbalci.com/meddecide/reference/meddecide-package.md)
+  [`meddecide`](https://www.serdarbalci.com/meddecide/reference/meddecide-package.md)
+  : Functions for Medical Decision Making in ClinicoPath jamovi Module
+- [`nogoldstandard()`](https://www.serdarbalci.com/meddecide/reference/nogoldstandard.md)
+  : Analysis Without Gold Standard
+- [`nomogrammer()`](https://www.serdarbalci.com/meddecide/reference/nomogrammer.md)
+  : Fagan Nomogram for Diagnostic Test Analysis
+- [`performMonteCarloSimulation()`](https://www.serdarbalci.com/meddecide/reference/performMonteCarloSimulation.md)
+  : Perform Monte Carlo Simulation for PSA (Deprecated)
+- [`print(`*`<sensSpecTable>`*`)`](https://www.serdarbalci.com/meddecide/reference/print.sensSpecTable.md)
+  : Format HTML table for sensitivity/specificity results
+- [`prop_to_percent()`](https://www.serdarbalci.com/meddecide/reference/prop_to_percent.md)
+  : Convert proportion to percentage string
+- [`psychopdaROC()`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)
+  : Advanced ROC Analysis
+- [`psychopdaROCClass`](https://www.serdarbalci.com/meddecide/reference/psychopdaROCClass.md)
+  : Comprehensive ROC Analysis with Advanced Features
+- [`raw_to_prob()`](https://www.serdarbalci.com/meddecide/reference/raw_to_prob.md)
+  : Convert raw test values to predicted probabilities using ROC curve
+- [`safe_divide()`](https://www.serdarbalci.com/meddecide/reference/safe_divide.md)
+  : Safe division function
+- [`safe_execute()`](https://www.serdarbalci.com/meddecide/reference/safe_execute.md)
+  : Safe Execution Wrapper
+- [`sepsis_data`](https://www.serdarbalci.com/meddecide/reference/sepsis_data.md)
+  : Sepsis diagnostic dataset
+- [`sequentialtests()`](https://www.serdarbalci.com/meddecide/reference/sequentialtests.md)
+  : Sequential Testing Analysis
+- [`sequentialtestsClass`](https://www.serdarbalci.com/meddecide/reference/sequentialtestsClass.md)
+  : Sequential Testing Analysis
+- [`thyroid_data`](https://www.serdarbalci.com/meddecide/reference/thyroid_data.md)
+  : Thyroid diagnostic dataset
+- [`thyroid_function_data`](https://www.serdarbalci.com/meddecide/reference/thyroid_function_data.md)
+  : Thyroid function test dataset
+- [`validateDecisionAnalysisInputs()`](https://www.serdarbalci.com/meddecide/reference/validateDecisionAnalysisInputs.md)
+  : Validate Decision Analysis Inputs
+- [`validateROCInputs()`](https://www.serdarbalci.com/meddecide/reference/validateROCInputs.md)
+  : Validate inputs for ROC analysis
+- [`validate_clinical_data()`](https://www.serdarbalci.com/meddecide/reference/validate_clinical_data.md)
+  : Validate Data with Clinical Context
+
+# Articles
+
+### All vignettes
+
+- [MedDecide 01: Introduction to Medical Decision Analysis for
+  Pathologists](https://www.serdarbalci.com/meddecide/articles/01-introduction.md):
+- [meddecide: Medical Decision Making in
+  R](https://www.serdarbalci.com/meddecide/articles/02-comprehensive-guide.md):
+- [Advanced Features in Interrater Agreement
+  Analysis](https://www.serdarbalci.com/meddecide/articles/03-agreement-advanced-features.md):
+- [Inter-Rater Agreement and Reliability Analysis in
+  Pathology](https://www.serdarbalci.com/meddecide/articles/03-agreement-analysis.md):
+- [ROC Curve
+  Analysis](https://www.serdarbalci.com/meddecide/articles/03-roc-analysis.md):
+- [Medical Decision Tree - Clinical Implementation
+  Guide](https://www.serdarbalci.com/meddecide/articles/04-decision-tree-guide.md):
+- [Decision Tree Graph Analysis: Comprehensive Guide and
+  Testing](https://www.serdarbalci.com/meddecide/articles/05-decision-tree-analysis.md):
+- [Decision Tree vs Markov Chain Analysis: Complete
+  Guide](https://www.serdarbalci.com/meddecide/articles/06-decision-tree-vs-markov.md):
+- [Jamovi Workflow Examples for Decision Tree and Markov
+  Analysis](https://www.serdarbalci.com/meddecide/articles/06-jamovi-workflow-examples.md):
+- [Bayesian Decision Curve Analysis - Advanced Clinical Decision
+  Making](https://www.serdarbalci.com/meddecide/articles/07-bayesian-decision-curve-analysis.md):
+- [Decision Tree and Markov Chain Analysis
+  Examples](https://www.serdarbalci.com/meddecide/articles/07-decision-trees.md):
+- [Sample Size Calculations for Interobserver Agreement
+  Studies](https://www.serdarbalci.com/meddecide/articles/07-kappasizeci-comprehensive.md):
+- [Clinical Applications of Decision Panel
+  Optimization](https://www.serdarbalci.com/meddecide/articles/08-decision-panel-clinical.md):
+- [Complete Guide to kappasizefixedn: Fixed Sample Size Kappa Power
+  Analysis](https://www.serdarbalci.com/meddecide/articles/08-kappasizefixedn-comprehensive.md):
+- [Advanced Features and Customization in Decision Panel
+  Optimization](https://www.serdarbalci.com/meddecide/articles/09-decision-panel-advanced.md):
+- [Complete Guide to kappasizepower: Power Analysis for Inter-rater
+  Agreement
+  Studies](https://www.serdarbalci.com/meddecide/articles/09-kappasizepower-comprehensive.md):
+- [Introduction to Decision Panel
+  Optimization](https://www.serdarbalci.com/meddecide/articles/10-decision-panel-optimization.md):
+- [Precision Oncology: Biomarker-Guided Treatment Selection and Outcome
+  Analysis](https://www.serdarbalci.com/meddecide/articles/11-precision-oncology.md):
+- [Analyzing Diagnostic Tests without a Gold
+  Standard](https://www.serdarbalci.com/meddecide/articles/12-nogoldstandard.md):
+- [Diagnostic Test
+  Evaluation](https://www.serdarbalci.com/meddecide/articles/13-diagnostic-tests.md):
+- [Quick Guide: Diagnostic Style Clustering in
+  jamovi](https://www.serdarbalci.com/meddecide/articles/14-diagnostic-style-quick-guide.md):
+- [Diagnostic Style Clustering: Identifying Pathologist 'Schools' and
+  Diagnostic
+  Preferences](https://www.serdarbalci.com/meddecide/articles/15-diagnostic-style-clustering.md):
+- [Use meddecide in
+  R](https://www.serdarbalci.com/meddecide/articles/16-use-in-r.md):
+- [meddecide: Introduction to Medical Decision
+  Analysis](https://www.serdarbalci.com/meddecide/articles/17-introduction-legacy.md):
+- [ROC Curve
+  Analysis](https://www.serdarbalci.com/meddecide/articles/18-roc-analysis-legacy.md):
+- [Advanced Features and Customization in Decision Panel
+  Optimization](https://www.serdarbalci.com/meddecide/articles/19-decisionpanel-advanced-legacy.md):
+- [Clinical Applications of Decision Panel
+  Optimization](https://www.serdarbalci.com/meddecide/articles/20-decisionpanel-clinical-legacy.md):
+- [Introduction to Decision Panel
+  Optimization](https://www.serdarbalci.com/meddecide/articles/21-decisionpanel-optimization-legacy.md):
+- [Diagnostic Style Clustering: Identifying Pathologist 'Schools' and
+  Diagnostic
+  Preferences](https://www.serdarbalci.com/meddecide/articles/22-diagnostic-style-clustering-legacy.md):
+- [Quick Guide: Diagnostic Style Clustering in
+  jamovi](https://www.serdarbalci.com/meddecide/articles/23-diagnostic-style-quick-guide-legacy.md):
+- [Inter-Rater Agreement and Reliability Analysis in
+  Pathology](https://www.serdarbalci.com/meddecide/articles/24-agreement-analysis-legacy.md):
+- [Diagnostic Test
+  Evaluation](https://www.serdarbalci.com/meddecide/articles/25-diagnostic-tests-legacy.md):
+- [Jamovi Workflow Examples for Decision Tree and Markov
+  Analysis](https://www.serdarbalci.com/meddecide/articles/25-jamovi-workflow-examples-legacy.md):
+- [Medical Decision Tree - Clinical Implementation
+  Guide](https://www.serdarbalci.com/meddecide/articles/26-medical-decision-tree-guide-legacy.md):
+- [Analyzing Diagnostic Tests without a Gold
+  Standard](https://www.serdarbalci.com/meddecide/articles/27-nogoldstandard-legacy.md):
+- [Decision Tree and Markov Chain Analysis
+  Examples](https://www.serdarbalci.com/meddecide/articles/28-decision-tree-examples-legacy.md):
+- [Decision Tree vs Markov Chain Analysis: Complete
+  Guide](https://www.serdarbalci.com/meddecide/articles/29-decision-tree-vs-markov-analysis-legacy.md):
+- [Decision Tree Graph Analysis: Comprehensive Guide and
+  Testing](https://www.serdarbalci.com/meddecide/articles/30-decisiontree-analysis-vignette-legacy.md):
+- [Precision Oncology: Biomarker-Guided Treatment Selection and Outcome
+  Analysis](https://www.serdarbalci.com/meddecide/articles/31-precision-oncology-biomarkers-legacy.md):
+- [meddecide: Medical Decision Making in
+  R](https://www.serdarbalci.com/meddecide/articles/32-vignettes-legacy.md):
+- [Use meddecide in
+  R](https://www.serdarbalci.com/meddecide/articles/33-use-in-r-legacy.md):
+- [Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical
+  Decision
+  Making](https://www.serdarbalci.com/meddecide/articles/34-cotest-analysis.md):
+- [Screening Test Calculator: A Comprehensive
+  Guide](https://www.serdarbalci.com/meddecide/articles/35-screening-calculator-comprehensive.md):
+- [Sequential Testing Analysis: A Comprehensive
+  Guide](https://www.serdarbalci.com/meddecide/articles/36-sequential-testing-comprehensive.md):
+- [Clinical Prediction Model
+  Builder](https://www.serdarbalci.com/meddecide/articles/38-modelbuilder-comprehensive.md):
+- [Interrater Reliability & Agreement Analysis - Comprehensive
+  Guide](https://www.serdarbalci.com/meddecide/articles/clinicopath-descriptives-agreement-comprehensive.md):
+- [Decision Panel Threshold Calculator
+  (p_t)](https://www.serdarbalci.com/meddecide/articles/decisionpanel_threshold_calculator.md):
+- [meddecide: Medical Decision Analysis with Oncology
+  Data](https://www.serdarbalci.com/meddecide/articles/meddecide-01-oncodatasets-examples.md):
+- [Decision Tree Analysis with decisiongraph: A Comprehensive
+  Guide](https://www.serdarbalci.com/meddecide/articles/meddecide-05-decisiongraph-comprehensive.md):
+- [Digital Pathology Validation: Agreement Analysis and Modality
+  Comparison](https://www.serdarbalci.com/meddecide/articles/meddecide-09-digital-pathology-validation.md):
+- [Multi-class Diagnostic Performance
+  Evaluation](https://www.serdarbalci.com/meddecide/articles/meddecide-15-multiclass-diagnostics-comprehensive.md):
+- [Latent biomarker constructs and
+  survival](https://www.serdarbalci.com/meddecide/articles/meddecide-31-latentbiomarker.md):
+- [Interobserver reliability beyond a single
+  kappa](https://www.serdarbalci.com/meddecide/articles/meddecide-32-ysrb-interobserver.md):
+- [Clinical ROC Analysis (enhancedROC) - Comprehensive
+  Guide](https://www.serdarbalci.com/meddecide/articles/meddecide-enhancedroc-comprehensive.md):
+- [Advanced ROC Analysis (psychopdaROC) - Comprehensive
+  Guide](https://www.serdarbalci.com/meddecide/articles/meddecide-psychopdaroc-comprehensive.md):

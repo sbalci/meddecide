@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>MedDecide 01: Introduction to Medical Decision Analysis for Pathologists • meddecide</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="MedDecide 01: Introduction to Medical Decision Analysis for Pathologists">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.47</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,6 +84,8 @@
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-31-latentbiomarker.html">Latent biomarker constructs and survival</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-32-ysrb-interobserver.html">Interobserver reliability beyond a single kappa</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul>
@@ -112,7 +114,7 @@
                         <h4 data-toc-skip class="author">ClinicoPath
 Development Team</h4>
             
-            <h4 data-toc-skip class="date">2026-03-04</h4>
+            <h4 data-toc-skip class="date">2026-07-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/01-introduction.Rmd" class="external-link"><code>vignettes/01-introduction.Rmd</code></a></small>
       <div class="d-none name"><code>01-introduction.Rmd</code></div>
@@ -249,7 +251,7 @@ or Power Analysis</li>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"devtools"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sbalci/meddecide"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sbalci/meddecide"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Load the package</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sbalci/ClinicoPathJamoviModule/" class="external-link">meddecide</a></span><span class="op">)</span></span></code></pre></div>
@@ -324,7 +326,7 @@ assessment.</p>
 <span>  <span class="kw">for</span><span class="op">(</span><span class="va">cutpoint</span> <span class="kw">in</span> <span class="va">cutpoints</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">sens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pROC/man/coords.html" class="external-link">coords</a></span><span class="op">(</span><span class="va">roc_pdl1</span>, <span class="va">cutpoint</span>, ret <span class="op">=</span> <span class="st">"sensitivity"</span><span class="op">)</span></span>
 <span>    <span class="va">spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pROC/man/coords.html" class="external-link">coords</a></span><span class="op">(</span><span class="va">roc_pdl1</span>, <span class="va">cutpoint</span>, ret <span class="op">=</span> <span class="st">"specificity"</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"PD-L1 ≥"</span>, <span class="va">cutpoint</span>, <span class="st">"%: Sensitivity = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">sens</span>, <span class="fl">3</span><span class="op">)</span>, </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"PD-L1 &gt;="</span>, <span class="va">cutpoint</span>, <span class="st">"%: Sensitivity = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">sens</span>, <span class="fl">3</span><span class="op">)</span>, </span>
 <span>              <span class="st">", Specificity = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">spec</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span>
@@ -335,16 +337,16 @@ assessment.</p>
 <span><span class="va">prevalence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">n_positive</span> <span class="op">/</span> <span class="va">n_total</span> <span class="op">*</span> <span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nDiagnostic Test Characteristics:\n"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"PD-L1 ≥50% prevalence:"</span>, <span class="va">prevalence</span>, <span class="st">"%\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"PD-L1 &gt;=50% prevalence:"</span>, <span class="va">prevalence</span>, <span class="st">"%\n"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Sample size:"</span>, <span class="va">n_total</span>, <span class="st">"patients\n"</span><span class="op">)</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="threshold-selection">Threshold Selection<a class="anchor" aria-label="anchor" href="#threshold-selection"></a>
 </h4>
 <ul>
 <li>For rule‑out (don’t miss disease): choose a threshold with very high
-Sensitivity (e.g., ≥0.95), accepting lower Specificity.</li>
+Sensitivity (e.g., &gt;=0.95), accepting lower Specificity.</li>
 <li>For rule‑in (avoid overtreatment): choose a threshold with very high
-Specificity (e.g., ≥0.95), accepting lower Sensitivity.</li>
+Specificity (e.g., &gt;=0.95), accepting lower Sensitivity.</li>
 <li>Consider prevalence and clinical consequences when selecting
 cutpoints; Youden’s J maximizes overall discrimination but may not
 reflect your clinical goal.</li>
@@ -493,7 +495,7 @@ evaluation.</p>
 <span>    test_pdl1 <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co"># Universal PD-L1 testing</span></span>
 <span>    </span>
 <span>    <span class="co"># Treatment assignment based on biomarkers</span></span>
-<span>    recommended_treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    recommended_treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">EGFR_Mutation</span> <span class="op">==</span> <span class="st">"Positive"</span> <span class="op">~</span> <span class="st">"EGFR_TKI"</span>,</span>
 <span>      <span class="va">PD_L1_TPS</span> <span class="op">&gt;=</span> <span class="fl">50</span> <span class="op">~</span> <span class="st">"Anti_PD1_Mono"</span>,</span>
 <span>      <span class="va">PD_L1_TPS</span> <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Combo_Immuno"</span>,</span>
@@ -501,7 +503,7 @@ evaluation.</p>
 <span>    <span class="op">)</span>,</span>
 <span>    </span>
 <span>    <span class="co"># Estimate treatment costs</span></span>
-<span>    treatment_cost <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    treatment_cost <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">recommended_treatment</span> <span class="op">==</span> <span class="st">"EGFR_TKI"</span> <span class="op">~</span> <span class="fl">120000</span>,</span>
 <span>      <span class="va">recommended_treatment</span> <span class="op">==</span> <span class="st">"Anti_PD1_Mono"</span> <span class="op">~</span> <span class="fl">150000</span>,</span>
 <span>      <span class="va">recommended_treatment</span> <span class="op">==</span> <span class="st">"Combo_Immuno"</span> <span class="op">~</span> <span class="fl">200000</span>,</span>
@@ -803,7 +805,7 @@ techniques and advanced applications.</em></p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

@@ -51,8 +51,8 @@
 | Total Cases | Toplam Olgu |
 | Consensus Achieved | Uzlaşma Sağlandı |
 | Unanimous Agreement | Oybirliği Uyumu |
-| Super Majority (≥2/3) | Üstün Çoğunluk (≥2/3) |
-| Majority (≥50%) | Çoğunluk (≥%50) |
+| Super Majority (>=2/3) | Üstün Çoğunluk (>=2/3) |
+| Majority (>=50%) | Çoğunluk (>=%50) |
 | Tied Cases | Berabere Olgular |
 | Insufficient | Yetersiz |
 | Multiple ties | Çoklu beraberlik |
@@ -99,27 +99,31 @@
 
 4. **Percentage Symbols**: Use Turkish convention: %50 instead of 50%
 
-5. **Mathematical Operators**: Keep mathematical symbols (≥, <, >, =) as they are universal.
+5. **Mathematical Operators**: Keep mathematical symbols (>=, <, >, =) as they are universal.
 
 ## Implementation Priority
 
 **High Priority (Core functionality):**
+
 - Statistical method names
 - Agreement levels
 - Error messages
 - Consensus terminology
 
 **Medium Priority (User experience):**
+
 - Clinical interpretations
 - Notes and warnings
 
 **Low Priority (Advanced features):**
+
 - Diagnostic style analysis terms
 - Specialized error messages
 
 ## Translation Validation
 
 Before implementing, consider:
+
 1. Medical terminology consistency with Turkish medical literature
 2. Statistical terminology used in Turkish academic publications
 3. User interface conventions in Turkish software applications

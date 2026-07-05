@@ -1,0 +1,3 @@
+# Nogoldstandard internals
+
+Nogoldstandard internals

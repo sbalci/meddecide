@@ -116,7 +116,7 @@ biomarker_summary <- precision_oncology_data %>%
 # Convert to percentages and create summary table
 biomarker_table <- data.frame(
   Biomarker = c("EGFR Mutation", "HER2 Amplification", "BRAF Mutation", 
-                "ALK Fusion", "MSI-High", "PD-L1 ≥50%", "PD-L1 ≥1%",
+                "ALK Fusion", "MSI-High", "PD-L1 >=50%", "PD-L1 >=1%",
                 "Any Targeted Therapy", "Any Immunotherapy"),
   Count = c(biomarker_summary$egfr_positive, biomarker_summary$her2_amplified,
             biomarker_summary$braf_positive, biomarker_summary$alk_positive,

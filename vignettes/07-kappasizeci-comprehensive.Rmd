@@ -699,13 +699,13 @@ precision_guide <- data.frame(
   ),
   
   Minimum_Kappa = c(
-    "≥0.80",
-    "≥0.70",
-    "≥0.60", 
-    "≥0.50",
-    "≥0.60",
-    "≥0.60",
-    "≥0.40"
+    ">=0.80",
+    ">=0.70",
+    ">=0.60", 
+    ">=0.50",
+    ">=0.60",
+    ">=0.60",
+    ">=0.40"
   ),
   
   Typical_Sample_Size = c(
@@ -997,12 +997,12 @@ interpretation_guide <- data.frame(
   ),
   
   Minimum_Acceptable_Kappa = c(
-    "≥0.80",
-    "≥0.70",
-    "≥0.60",
-    "≥0.60", 
-    "≥0.50",
-    "≥0.60"
+    ">=0.80",
+    ">=0.70",
+    ">=0.60",
+    ">=0.60", 
+    ">=0.50",
+    ">=0.60"
   ),
   
   Interpretation_Considerations = c(

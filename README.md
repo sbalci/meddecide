@@ -100,7 +100,7 @@ library(meddecide)
 
 ### As a jamovi Module
 
-1. Open jamovi (≥ 1.8.1)
+1. Open jamovi (>= 1.8.1)
 2. Click the modules menu (⋮) in the top right
 3. Select "jamovi library"
 4. Search for "ClinicoPath"

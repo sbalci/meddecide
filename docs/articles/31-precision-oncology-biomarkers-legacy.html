@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis • meddecide</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.47</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,6 +84,8 @@
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-31-latentbiomarker.html">Latent biomarker constructs and survival</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-32-ysrb-interobserver.html">Interobserver reliability beyond a single kappa</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul>
@@ -112,7 +114,7 @@
                         <h4 data-toc-skip class="author">ClinicoPath
 Development Team</h4>
             
-            <h4 data-toc-skip class="date">2026-03-04</h4>
+            <h4 data-toc-skip class="date">2026-07-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/31-precision-oncology-biomarkers-legacy.Rmd" class="external-link"><code>vignettes/31-precision-oncology-biomarkers-legacy.Rmd</code></a></small>
       <div class="d-none name"><code>31-precision-oncology-biomarkers-legacy.Rmd</code></div>
@@ -240,7 +242,7 @@ representing real-world precision oncology scenarios.</p>
 <span><span class="co"># Convert to percentages and create summary table</span></span>
 <span><span class="va">biomarker_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Biomarker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"EGFR Mutation"</span>, <span class="st">"HER2 Amplification"</span>, <span class="st">"BRAF Mutation"</span>, </span>
-<span>                <span class="st">"ALK Fusion"</span>, <span class="st">"MSI-High"</span>, <span class="st">"PD-L1 ≥50%"</span>, <span class="st">"PD-L1 ≥1%"</span>,</span>
+<span>                <span class="st">"ALK Fusion"</span>, <span class="st">"MSI-High"</span>, <span class="st">"PD-L1 &gt;=50%"</span>, <span class="st">"PD-L1 &gt;=1%"</span>,</span>
 <span>                <span class="st">"Any Targeted Therapy"</span>, <span class="st">"Any Immunotherapy"</span><span class="op">)</span>,</span>
 <span>  Count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">biomarker_summary</span><span class="op">$</span><span class="va">egfr_positive</span>, <span class="va">biomarker_summary</span><span class="op">$</span><span class="va">her2_amplified</span>,</span>
 <span>            <span class="va">biomarker_summary</span><span class="op">$</span><span class="va">braf_positive</span>, <span class="va">biomarker_summary</span><span class="op">$</span><span class="va">alk_positive</span>,</span>
@@ -315,7 +317,7 @@ representing real-world precision oncology scenarios.</p>
 <span><span class="va">precision_oncology_data</span> <span class="op">&lt;-</span> <span class="va">precision_oncology_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="co"># Primary treatment recommendation based on biomarkers</span></span>
-<span>    primary_treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    primary_treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">EGFR_Mutation</span> <span class="op">==</span> <span class="st">"Positive"</span> <span class="op">~</span> <span class="st">"EGFR TKI"</span>,</span>
 <span>      <span class="va">HER2_FISH_Status</span> <span class="op">==</span> <span class="st">"Amplified"</span> <span class="op">~</span> <span class="st">"HER2-Targeted Therapy"</span>,</span>
 <span>      <span class="va">BRAF_Mutation</span> <span class="op">==</span> <span class="st">"Positive"</span> <span class="op">&amp;</span> <span class="va">Tumor_Type</span> <span class="op">==</span> <span class="st">"Melanoma"</span> <span class="op">~</span> <span class="st">"BRAF Inhibitor"</span>,</span>
@@ -324,7 +326,7 @@ representing real-world precision oncology scenarios.</p>
 <span>    <span class="op">)</span>,</span>
 <span>    </span>
 <span>    <span class="co"># Immunotherapy candidacy</span></span>
-<span>    immunotherapy_candidate <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    immunotherapy_candidate <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">MSI_Status</span> <span class="op">==</span> <span class="st">"MSI-High"</span> <span class="op">~</span> <span class="st">"First-line Immunotherapy"</span>,</span>
 <span>      <span class="va">PD_L1_TPS</span> <span class="op">&gt;=</span> <span class="fl">50</span> <span class="op">~</span> <span class="st">"First-line Anti-PD-1"</span>,</span>
 <span>      <span class="va">PD_L1_TPS</span> <span class="op">&gt;=</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Combination Therapy"</span>,</span>
@@ -332,7 +334,7 @@ representing real-world precision oncology scenarios.</p>
 <span>    <span class="op">)</span>,</span>
 <span>    </span>
 <span>    <span class="co"># Treatment complexity score</span></span>
-<span>    treatment_complexity <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    treatment_complexity <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">EGFR_Mutation</span> <span class="op">==</span> <span class="st">"Positive"</span> <span class="op">|</span> <span class="va">ALK_Fusion</span> <span class="op">==</span> <span class="st">"Positive"</span> <span class="op">~</span> <span class="st">"High"</span>,</span>
 <span>      <span class="va">HER2_FISH_Status</span> <span class="op">==</span> <span class="st">"Amplified"</span> <span class="op">|</span> <span class="va">MSI_Status</span> <span class="op">==</span> <span class="st">"MSI-High"</span> <span class="op">~</span> <span class="st">"High"</span>, </span>
 <span>      <span class="va">PD_L1_TPS</span> <span class="op">&gt;=</span> <span class="fl">50</span> <span class="op">~</span> <span class="st">"Medium"</span>,</span>
@@ -366,7 +368,7 @@ representing real-world precision oncology scenarios.</p>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">MSI_Status</span> <span class="op">==</span> <span class="st">"MSI-High"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">PD_L1_TPS</span> <span class="op">&gt;=</span> <span class="fl">50</span><span class="op">)</span>,</span>
 <span>    </span>
-<span>    biomarker_category <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    biomarker_category <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">biomarker_count</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"No Actionable Biomarkers"</span>,</span>
 <span>      <span class="va">biomarker_count</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Single Biomarker"</span>,</span>
 <span>      <span class="va">biomarker_count</span> <span class="op">&gt;=</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"Multiple Biomarkers"</span></span>
@@ -624,7 +626,7 @@ representing real-world precision oncology scenarios.</p>
 <span><span class="va">precision_oncology_data</span> <span class="op">&lt;-</span> <span class="va">precision_oncology_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="co"># Estimate treatment costs based on therapy type</span></span>
-<span>    treatment_cost <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    treatment_cost <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">primary_treatment</span> <span class="op">==</span> <span class="st">"EGFR TKI"</span> <span class="op">~</span> <span class="fl">120000</span>,</span>
 <span>      <span class="va">primary_treatment</span> <span class="op">==</span> <span class="st">"HER2-Targeted Therapy"</span> <span class="op">~</span> <span class="fl">150000</span>,</span>
 <span>      <span class="va">primary_treatment</span> <span class="op">==</span> <span class="st">"BRAF Inhibitor"</span> <span class="op">~</span> <span class="fl">140000</span>,</span>
@@ -635,7 +637,7 @@ representing real-world precision oncology scenarios.</p>
 <span>    <span class="op">)</span>,</span>
 <span>    </span>
 <span>    <span class="co"># Estimate testing costs</span></span>
-<span>    testing_cost <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    testing_cost <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">biomarker_count</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="fl">0</span>,</span>
 <span>      <span class="va">biomarker_count</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="fl">1500</span>,</span>
 <span>      <span class="va">biomarker_count</span> <span class="op">&gt;=</span> <span class="fl">2</span> <span class="op">~</span> <span class="fl">3000</span></span>
@@ -645,7 +647,7 @@ representing real-world precision oncology scenarios.</p>
 <span>    total_cost <span class="op">=</span> <span class="va">treatment_cost</span> <span class="op">+</span> <span class="va">testing_cost</span>,</span>
 <span>    </span>
 <span>    <span class="co"># Quality-adjusted life years (QALYs) based on response and survival</span></span>
-<span>    qalys <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
+<span>    qalys <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
 <span>      <span class="va">Treatment_Response</span> <span class="op">==</span> <span class="st">"Complete_Response"</span> <span class="op">~</span> <span class="va">PFS_Months</span> <span class="op">*</span> <span class="fl">0.9</span> <span class="op">/</span> <span class="fl">12</span>,</span>
 <span>      <span class="va">Treatment_Response</span> <span class="op">==</span> <span class="st">"Partial_Response"</span> <span class="op">~</span> <span class="va">PFS_Months</span> <span class="op">*</span> <span class="fl">0.8</span> <span class="op">/</span> <span class="fl">12</span>,</span>
 <span>      <span class="va">Treatment_Response</span> <span class="op">==</span> <span class="st">"Stable_Disease"</span> <span class="op">~</span> <span class="va">PFS_Months</span> <span class="op">*</span> <span class="fl">0.7</span> <span class="op">/</span> <span class="fl">12</span>,</span>
@@ -908,7 +910,7 @@ analysis.</em></p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

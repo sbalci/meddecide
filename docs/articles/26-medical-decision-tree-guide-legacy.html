@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Medical Decision Tree - Clinical Implementation Guide • meddecide</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Medical Decision Tree - Clinical Implementation Guide">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.36</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.47</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,6 +84,8 @@
     <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-31-latentbiomarker.html">Latent biomarker constructs and survival</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-32-ysrb-interobserver.html">Interobserver reliability beyond a single kappa</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
   </ul>
@@ -240,11 +242,11 @@ for each patient - Key predictive factors - Clinical decision thresholds
 </h3>
 <ul>
 <li>
-<strong>Excellent</strong>: Sensitivity/Specificity ≥ 0.90</li>
+<strong>Excellent</strong>: Sensitivity/Specificity &gt;= 0.90</li>
 <li>
-<strong>Good</strong>: Sensitivity/Specificity ≥ 0.80</li>
+<strong>Good</strong>: Sensitivity/Specificity &gt;= 0.80</li>
 <li>
-<strong>Adequate</strong>: Sensitivity/Specificity ≥ 0.70</li>
+<strong>Adequate</strong>: Sensitivity/Specificity &gt;= 0.70</li>
 <li>
 <strong>Poor</strong>: Sensitivity/Specificity &lt; 0.70</li>
 </ul>
@@ -253,11 +255,12 @@ for each patient - Key predictive factors - Clinical decision thresholds
 <h3 id="likelihood-ratio-interpretation">Likelihood Ratio Interpretation<a class="anchor" aria-label="anchor" href="#likelihood-ratio-interpretation"></a>
 </h3>
 <ul>
-<li><p><strong>LR+ ≥ 10</strong>: Strong evidence for disease</p></li>
+<li><p><strong>LR+ &gt;= 10</strong>: Strong evidence for
+disease</p></li>
 <li><p><strong>LR+ 5-10</strong>: Moderate evidence for disease</p></li>
 <li><p><strong>LR+ 2-5</strong>: Weak evidence for disease</p></li>
 <li><p><strong>LR+ &lt; 2</strong>: Minimal diagnostic value</p></li>
-<li><p><strong>LR- ≤ 0.1</strong>: Strong evidence against
+<li><p><strong>LR- &lt;= 0.1</strong>: Strong evidence against
 disease</p></li>
 <li><p><strong>LR- 0.1-0.2</strong>: Moderate evidence against
 disease</p></li>
@@ -274,9 +277,9 @@ disease</p></li>
 </h4>
 <ul>
 <li>
-<strong>Priority</strong>: High sensitivity (≥ 0.90)</li>
+<strong>Priority</strong>: High sensitivity (&gt;= 0.90)</li>
 <li>
-<strong>Acceptable</strong>: Lower specificity (≥ 0.70)</li>
+<strong>Acceptable</strong>: Lower specificity (&gt;= 0.70)</li>
 <li>
 <strong>Rationale</strong>: Missing cancer cases has severe
 consequences</li>
@@ -287,9 +290,9 @@ consequences</li>
 </h4>
 <ul>
 <li>
-<strong>Priority</strong>: High specificity (≥ 0.90)</li>
+<strong>Priority</strong>: High specificity (&gt;= 0.90)</li>
 <li>
-<strong>Acceptable</strong>: Moderate sensitivity (≥ 0.80)</li>
+<strong>Acceptable</strong>: Moderate sensitivity (&gt;= 0.80)</li>
 <li>
 <strong>Rationale</strong>: Avoid unnecessary
 treatments/anxiety</li>
@@ -317,9 +320,9 @@ treatments/anxiety</li>
 </h3>
 <ul>
 <li>
-<strong>Sample Size</strong>: ≥ 50 cases for reliable trees</li>
+<strong>Sample Size</strong>: &gt;= 50 cases for reliable trees</li>
 <li>
-<strong>Events</strong>: ≥ 10 per predictor variable</li>
+<strong>Events</strong>: &gt;= 10 per predictor variable</li>
 <li>
 <strong>Validation</strong>: Independent test set or
 cross-validation</li>
@@ -536,17 +539,17 @@ outcomes</p>
 <h3 id="model-performance-standards">Model Performance Standards<a class="anchor" aria-label="anchor" href="#model-performance-standards"></a>
 </h3>
 <pre><code>Minimum Acceptable Performance:
-- Screening Applications: Sensitivity ≥ 0.85, NPV ≥ 0.95
-- Diagnostic Applications: Specificity ≥ 0.85, PPV ≥ 0.80
-- Prognostic Applications: C-index ≥ 0.70, Calibration slope 0.8-1.2
+- Screening Applications: Sensitivity &gt;= 0.85, NPV &gt;= 0.95
+- Diagnostic Applications: Specificity &gt;= 0.85, PPV &gt;= 0.80
+- Prognostic Applications: C-index &gt;= 0.70, Calibration slope 0.8-1.2
 - Treatment Selection: Clinical utility &gt; standard care</code></pre>
 </div>
 <div class="section level3">
 <h3 id="validation-requirements">Validation Requirements<a class="anchor" aria-label="anchor" href="#validation-requirements"></a>
 </h3>
 <pre><code>Internal Validation:
-- Cross-validation (k-fold ≥ 5)
-- Bootstrap validation (≥ 200 iterations)
+- Cross-validation (k-fold &gt;= 5)
+- Bootstrap validation (&gt;= 200 iterations)
 - Temporal validation (if longitudinal data)
 
 External Validation:
@@ -800,7 +803,7 @@ human elements of medical care.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

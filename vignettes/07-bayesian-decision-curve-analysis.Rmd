@@ -76,7 +76,6 @@ The **decision threshold** represents the probability at which a clinician would
 ## Load Required Libraries
 
 ```{r setup, message=FALSE, warning=FALSE}
-
 library(dplyr)
 library(ggplot2)
 
@@ -85,22 +84,25 @@ library(ggplot2)
 if (exists("histopathology")) {
   mydata <- histopathology
 } else {
-  tryCatch({
-    data("histopathology", package = "meddecide")
-    mydata <- histopathology
-  }, error = function(e) {
-    # Create a simple synthetic dataset for demonstration if data loading fails
-    set.seed(123)
-    n <- 200
-    mydata <<- data.frame(
-      Age = rnorm(n, 60, 15),
-      Grade = sample(c("Low", "Medium", "High"), n, replace = TRUE),
-      TStage = sample(c("T1", "T2", "T3", "T4"), n, replace = TRUE),
-      MeasurementA = rnorm(n, 50, 20),
-      MeasurementB = rnorm(n, 100, 30),
-      Death = sample(0:1, n, replace = TRUE, prob = c(0.7, 0.3))
-    )
-  })
+  tryCatch(
+    {
+      data("histopathology", package = "meddecide")
+      mydata <- histopathology
+    },
+    error = function(e) {
+      # Create a simple synthetic dataset for demonstration if data loading fails
+      set.seed(123)
+      n <- 200
+      mydata <<- data.frame(
+        Age = rnorm(n, 60, 15),
+        Grade = sample(c("Low", "Medium", "High"), n, replace = TRUE),
+        TStage = sample(c("T1", "T2", "T3", "T4"), n, replace = TRUE),
+        MeasurementA = rnorm(n, 50, 20),
+        MeasurementB = rnorm(n, 100, 30),
+        Death = sample(0:1, n, replace = TRUE, prob = c(0.7, 0.3))
+      )
+    }
+  )
 }
 
 # Display basic dataset information
@@ -131,12 +133,12 @@ bayesdca(
   data = mydata,
   outcomes = "Death",
   predictors = c("Age", "MeasurementA", "MeasurementB"),
-  thresholdMin = 0.05,     # 5% minimum threshold
-  thresholdMax = 0.40,     # 40% maximum threshold
-  thresholdPoints = 30,    # 30 evaluation points
+  thresholdMin = 0.05, # 5% minimum threshold
+  thresholdMax = 0.40, # 40% maximum threshold
+  thresholdPoints = 30, # 30 evaluation points
   bayesianAnalysis = TRUE,
-  nDraws = 2000,          # Number of posterior draws
-  priorStrength = 2       # Weak prior
+  nDraws = 2000, # Number of posterior draws
+  priorStrength = 2 # Weak prior
 )
 ```
 
@@ -154,14 +156,14 @@ For comparison, run the same analysis using frequentist methods:
 # Frequentist DCA with bootstrap confidence intervals
 bayesdca(
   data = mydata,
-  outcomes = "Death", 
+  outcomes = "Death",
   predictors = c("Age", "MeasurementA", "MeasurementB"),
   thresholdMin = 0.05,
   thresholdMax = 0.40,
   thresholdPoints = 30,
-  bayesianAnalysis = FALSE,  # Use frequentist approach
+  bayesianAnalysis = FALSE, # Use frequentist approach
   bootstrapCI = TRUE,
-  bootstrapReps = 2000      # Bootstrap replications
+  bootstrapReps = 2000 # Bootstrap replications
 )
 ```
 
@@ -212,8 +214,8 @@ bayesdca(
   thresholdMin = 0.05,
   thresholdMax = 0.35,
   useExternalPrevalence = TRUE,
-  externalCases = 150,      # Known cases in target population
-  externalTotal = 1000,     # Total target population
+  externalCases = 150, # Known cases in target population
+  externalTotal = 1000, # Total target population
   bayesianAnalysis = TRUE
 )
 ```
@@ -238,8 +240,8 @@ bayesdca(
   thresholdMin = 0.05,
   thresholdMax = 0.40,
   bayesianAnalysis = TRUE,
-  calculateEVPI = TRUE,    # Enable EVPI calculation
-  nDraws = 3000           # More draws for stable EVPI
+  calculateEVPI = TRUE, # Enable EVPI calculation
+  nDraws = 3000 # More draws for stable EVPI
 )
 ```
 
@@ -259,7 +261,7 @@ bayesdca(
   data = mydata,
   outcomes = "Death",
   predictors = "MeasurementB",
-  directionIndicator = "<=",  # Lower values = positive prediction
+  directionIndicator = "<=", # Lower values = positive prediction
   thresholdMin = 0.10,
   thresholdMax = 0.40,
   bayesianAnalysis = TRUE
@@ -280,16 +282,16 @@ bayesdca(
   data = mydata,
   outcomes = "Death",
   predictors = "Age",
-  priorStrength = 2,      # Weak prior
+  priorStrength = 2, # Weak prior
   bayesianAnalysis = TRUE
 )
 
 # Strong prior (more conservative)
 bayesdca(
   data = mydata,
-  outcomes = "Death", 
+  outcomes = "Death",
   predictors = "Age",
-  priorStrength = 10,     # Strong prior
+  priorStrength = 10, # Strong prior
   bayesianAnalysis = TRUE
 )
 ```
@@ -310,25 +312,25 @@ Let's work through a complete analysis for a cancer treatment decision model:
 # Comprehensive cancer treatment decision analysis
 cancer_dca <- bayesdca(
   data = mydata,
-  
+
   # Core variables
   outcomes = "Death",
   predictors = c("Age", "TStage", "MeasurementA", "MeasurementB"),
-  
+
   # Threshold settings (5% to 40% - typical for cancer treatment)
   thresholdMin = 0.05,
   thresholdMax = 0.40,
   thresholdPoints = 35,
-  
+
   # Bayesian analysis with EVPI
   bayesianAnalysis = TRUE,
   nDraws = 3000,
   priorStrength = 2,
   calculateEVPI = TRUE,
-  
+
   # External prevalence (if applicable)
   useExternalPrevalence = FALSE,
-  
+
   # Classification direction
   directionIndicator = ">="
 )
@@ -362,37 +364,37 @@ cancer_dca <- bayesdca(
 
 ```{r parameter-reference, eval=FALSE}
 bayesdca(
-  data = mydata,                    # Required: Data frame
-  
+  data = mydata, # Required: Data frame
+
   # Required variables
-  outcomes = "Death",               # Binary outcome (0/1 or factor)
-  outcomePos = "Yes",              # Positive level (if factor)
-  predictors = c("Age", "Test1"),   # Models/tests to evaluate
-  
+  outcomes = "Death", # Binary outcome (0/1 or factor)
+  outcomePos = "Yes", # Positive level (if factor)
+  predictors = c("Age", "Test1"), # Models/tests to evaluate
+
   # Threshold settings
-  thresholdMin = 0.01,             # Minimum threshold (0.1-50%)
-  thresholdMax = 0.50,             # Maximum threshold (1-99%)
-  thresholdPoints = 50,            # Number of evaluation points
-  
+  thresholdMin = 0.01, # Minimum threshold (0.1-50%)
+  thresholdMax = 0.50, # Maximum threshold (1-99%)
+  thresholdPoints = 50, # Number of evaluation points
+
   # Analysis type
-  bayesianAnalysis = TRUE,         # TRUE=Bayesian, FALSE=Frequentist
-  
+  bayesianAnalysis = TRUE, # TRUE=Bayesian, FALSE=Frequentist
+
   # Bayesian settings
-  nDraws = 2000,                   # Posterior draws (500-10000)
-  priorStrength = 2,               # Prior strength (0.1-10)
-  calculateEVPI = FALSE,           # Enable EVPI calculation
-  
-  # Frequentist settings  
-  bootstrapCI = TRUE,              # Bootstrap confidence intervals
-  bootstrapReps = 2000,            # Bootstrap replications
-  
+  nDraws = 2000, # Posterior draws (500-10000)
+  priorStrength = 2, # Prior strength (0.1-10)
+  calculateEVPI = FALSE, # Enable EVPI calculation
+
+  # Frequentist settings
+  bootstrapCI = TRUE, # Bootstrap confidence intervals
+  bootstrapReps = 2000, # Bootstrap replications
+
   # External prevalence
-  useExternalPrevalence = FALSE,   # Use external prevalence data
-  externalCases = 100,             # Cases in external data
-  externalTotal = 500,             # Total in external data
-  
+  useExternalPrevalence = FALSE, # Use external prevalence data
+  externalCases = 100, # Cases in external data
+  externalTotal = 500, # Total in external data
+
   # Technical settings
-  directionIndicator = ">="        # Prediction direction
+  directionIndicator = ">=" # Prediction direction
 )
 ```
 
@@ -421,8 +423,8 @@ bayesdca(
 | Sample Size | Recommended Settings | Notes |
 |-------------|---------------------|-------|
 | **n < 100** | priorStrength = 5-10 | Use stronger priors |
-| **100 ≤ n < 500** | priorStrength = 2-5 | Moderate priors |
-| **n ≥ 500** | priorStrength = 1-2 | Weak priors, data-driven |
+| **100 <= n < 500** | priorStrength = 2-5 | Moderate priors |
+| **n >= 500** | priorStrength = 1-2 | Weak priors, data-driven |
 
 # Interpretation Guidelines
 
@@ -439,7 +441,7 @@ bayesdca(
 # Interpretation: Strong evidence for using this model
 
 # Pattern 2: Threshold-dependent
-# Different models optimal at different thresholds  
+# Different models optimal at different thresholds
 # Interpretation: Threshold selection matters
 
 # Pattern 3: Minimal differences
@@ -488,19 +490,18 @@ screening_analysis <- bayesdca(
   data = screening_cohort,
   outcomes = "Cancer",
   predictors = c("Biomarker_Panel", "Clinical_Score", "Imaging_Result"),
-  
+
   # Low thresholds appropriate for screening
-  thresholdMin = 0.01,     # 1% - very sensitive
-  thresholdMax = 0.10,     # 10% - still screening range
+  thresholdMin = 0.01, # 1% - very sensitive
+  thresholdMax = 0.10, # 10% - still screening range
   thresholdPoints = 20,
-  
   bayesianAnalysis = TRUE,
   calculateEVPI = TRUE,
-  
+
   # External prevalence from cancer registry
   useExternalPrevalence = TRUE,
-  externalCases = 50,      # Registry cancer rate
-  externalTotal = 1000     # Registry population
+  externalCases = 50, # Registry cancer rate
+  externalTotal = 1000 # Registry population
 )
 ```
 
@@ -515,16 +516,15 @@ screening_analysis <- bayesdca(
 # Personalized treatment selection model
 treatment_analysis <- bayesdca(
   data = treatment_cohort,
-  outcomes = "TreatmentFailure", 
+  outcomes = "TreatmentFailure",
   predictors = c("GenomicScore", "ClinicalModel", "Combined_Score"),
-  
+
   # Moderate thresholds for treatment decisions
-  thresholdMin = 0.15,     # 15% - consider treatment
-  thresholdMax = 0.45,     # 45% - high-risk threshold
+  thresholdMin = 0.15, # 15% - consider treatment
+  thresholdMax = 0.45, # 45% - high-risk threshold
   thresholdPoints = 30,
-  
   bayesianAnalysis = TRUE,
-  priorStrength = 3,       # Moderate prior for treatment
+  priorStrength = 3, # Moderate prior for treatment
   calculateEVPI = TRUE
 )
 ```
@@ -542,15 +542,14 @@ diagnostic_analysis <- bayesdca(
   data = diagnostic_cohort,
   outcomes = "Disease",
   predictors = c("Rapid_Test", "Standard_Test", "Combined_Tests"),
-  
+
   # Broad threshold range for diagnostic evaluation
   thresholdMin = 0.05,
   thresholdMax = 0.50,
   thresholdPoints = 45,
-  
   bayesianAnalysis = TRUE,
   calculateEVPI = TRUE,
-  
+
   # Direction: positive test results indicate disease
   directionIndicator = ">="
 )
@@ -616,20 +615,20 @@ set.seed(123)
 folds <- createFolds(mydata$Death, k = 5)
 
 cv_results <- list()
-for(i in 1:5) {
+for (i in 1:5) {
   train_data <- mydata[-folds[[i]], ]
   test_data <- mydata[folds[[i]], ]
-  
+
   # Fit model on training data
   model <- glm(Death ~ Age + MeasurementA, data = train_data, family = binomial)
-  
+
   # Predict on test data
   test_data$predictions <- predict(model, test_data, type = "response")
-  
+
   # Run DCA on test predictions
   cv_results[[i]] <- bayesdca(
     data = test_data,
-    outcomes = "Death", 
+    outcomes = "Death",
     predictors = "predictions",
     bayesianAnalysis = TRUE
   )
@@ -643,17 +642,16 @@ for(i in 1:5) {
 external_results <- bayesdca(
   data = external_cohort,
   outcomes = "Death",
-  predictors = "model_predictions",  # From original model
-  
+  predictors = "model_predictions", # From original model
+
   # May need different threshold range
   thresholdMin = 0.05,
   thresholdMax = 0.35,
-  
+
   # Account for different prevalence
   useExternalPrevalence = TRUE,
   externalCases = external_cases,
   externalTotal = external_total,
-  
   bayesianAnalysis = TRUE
 )
 ```
@@ -713,7 +711,7 @@ imputed_data <- complete(mice(mydata))
 ```{r threshold-selection, eval=FALSE}
 # Solution: Use clinical guidelines or literature
 # For cancer: often 5-20%
-# For screening: often 1-10% 
+# For screening: often 1-10%
 # For surgery: often 20-50%
 
 # Start broad and narrow based on results
@@ -757,10 +755,10 @@ bayesdca(..., thresholdMin = 0.01, thresholdMax = 0.50)
 # Consider reducing computational burden
 
 # Reduce posterior draws for initial exploration
-bayesdca(..., nDraws = 1000)  # Instead of 2000+
+bayesdca(..., nDraws = 1000) # Instead of 2000+
 
 # Reduce threshold points for initial analysis
-bayesdca(..., thresholdPoints = 20)  # Instead of 50+
+bayesdca(..., thresholdPoints = 20) # Instead of 50+
 
 # Use frequentist approach for speed
 bayesdca(..., bayesianAnalysis = FALSE, bootstrapCI = TRUE)
@@ -841,7 +839,7 @@ decision_tree_analysis <- decisiongraph(...)
 # The Bayesian DCA module produces publication-ready plots
 # with proper formatting:
 # - Professional color schemes
-# - Percentage formatting for thresholds  
+# - Percentage formatting for thresholds
 # - Appropriate confidence bands
 # - Clear legends and labels
 

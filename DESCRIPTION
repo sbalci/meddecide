@@ -29,11 +29,11 @@ URL: https://github.com/sbalci/ClinicoPathJamoviModule/,
         https://www.serdarbalci.com/meddecide/
 BugReports: https://github.com/sbalci/ClinicoPathJamoviModule/issues/
 Depends: R (>= 4.1.0)
-Imports: boot, caret, cutpointr, dplyr, e1071, epiR, forcats, ggplot2,
-        ggraph, glue, grDevices, graphics, grid, gridExtra, htmlTable,
-        htmltools, igraph, irr, irrCAC, jmvcore, kappaSize, knitr,
+Imports: boot, caret, cutpointr, DescTools, dplyr, e1071, epiR, forcats,
+        ggplot2, ggraph, glue, grDevices, graphics, grid, gridExtra, htmlTable,
+        htmltools, igraph, irr, irrCAC, jmvcore, kappaSize, knitr, lme4, lmerTest,
         magrittr, MASS, Matrix, poLCA, pROC, psych, R6, RColorBrewer,
-        reshape2, rlang, scales, stats, tibble, tidyr, tools, utils
+        reshape2, rlang, scales, stats, tibble, tidyr, tools, utils, vcd
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   eval = FALSE,
   collapse = TRUE,
   comment = "#>",
-    echo = TRUE,
+  echo = TRUE,
   eval = FALSE
 )
 ```
@@ -105,18 +105,18 @@ Options:
 ## Clinical Interpretation Guidelines
 
 ### Performance Thresholds
-- **Excellent**: Sensitivity/Specificity ≥ 0.90
-- **Good**: Sensitivity/Specificity ≥ 0.80
-- **Adequate**: Sensitivity/Specificity ≥ 0.70
+- **Excellent**: Sensitivity/Specificity >= 0.90
+- **Good**: Sensitivity/Specificity >= 0.80
+- **Adequate**: Sensitivity/Specificity >= 0.70
 - **Poor**: Sensitivity/Specificity < 0.70
 
 ### Likelihood Ratio Interpretation
-- **LR+ ≥ 10**: Strong evidence for disease
+- **LR+ >= 10**: Strong evidence for disease
 - **LR+ 5-10**: Moderate evidence for disease
 - **LR+ 2-5**: Weak evidence for disease
 - **LR+ < 2**: Minimal diagnostic value
 
-- **LR- ≤ 0.1**: Strong evidence against disease
+- **LR- <= 0.1**: Strong evidence against disease
 - **LR- 0.1-0.2**: Moderate evidence against disease
 - **LR- 0.2-0.5**: Weak evidence against disease
 - **LR- > 0.5**: Minimal diagnostic value
@@ -124,13 +124,13 @@ Options:
 ### Clinical Context Recommendations
 
 #### Cancer Screening
-- **Priority**: High sensitivity (≥ 0.90)
-- **Acceptable**: Lower specificity (≥ 0.70)
+- **Priority**: High sensitivity (>= 0.90)
+- **Acceptable**: Lower specificity (>= 0.70)
 - **Rationale**: Missing cancer cases has severe consequences
 
 #### Diagnostic Confirmation
-- **Priority**: High specificity (≥ 0.90)
-- **Acceptable**: Moderate sensitivity (≥ 0.80)
+- **Priority**: High specificity (>= 0.90)
+- **Acceptable**: Moderate sensitivity (>= 0.80)
 - **Rationale**: Avoid unnecessary treatments/anxiety
 
 #### Prognosis Assessment
@@ -141,8 +141,8 @@ Options:
 ## Quality Assurance
 
 ### Minimum Requirements
-- **Sample Size**: ≥ 50 cases for reliable trees
-- **Events**: ≥ 10 per predictor variable
+- **Sample Size**: >= 50 cases for reliable trees
+- **Events**: >= 10 per predictor variable
 - **Validation**: Independent test set or cross-validation
 - **Missing Data**: < 20% per variable
 
@@ -287,17 +287,17 @@ Enhance study design with:
 ### Model Performance Standards
 ```
 Minimum Acceptable Performance:
-- Screening Applications: Sensitivity ≥ 0.85, NPV ≥ 0.95
-- Diagnostic Applications: Specificity ≥ 0.85, PPV ≥ 0.80
-- Prognostic Applications: C-index ≥ 0.70, Calibration slope 0.8-1.2
+- Screening Applications: Sensitivity >= 0.85, NPV >= 0.95
+- Diagnostic Applications: Specificity >= 0.85, PPV >= 0.80
+- Prognostic Applications: C-index >= 0.70, Calibration slope 0.8-1.2
 - Treatment Selection: Clinical utility > standard care
 ```
 
 ### Validation Requirements
 ```
 Internal Validation:
-- Cross-validation (k-fold ≥ 5)
-- Bootstrap validation (≥ 200 iterations)
+- Cross-validation (k-fold >= 5)
+- Bootstrap validation (>= 200 iterations)
 - Temporal validation (if longitudinal data)
 
 External Validation:
