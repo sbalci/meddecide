@@ -387,7 +387,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             super$initialize(
                 package = "meddecide",
                 name = "nogoldstandard",
-                version = c(0,0,46),
+                version = c(0,0,47),
                 options = options,
                 results = nogoldstandardResults$new(options=options),
                 data = data,

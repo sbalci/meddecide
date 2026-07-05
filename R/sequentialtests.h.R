@@ -438,7 +438,7 @@ sequentialtestsBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
             super$initialize(
                 package = "meddecide",
                 name = "sequentialtests",
-                version = c(0,0,46),
+                version = c(0,0,47),
                 options = options,
                 results = sequentialtestsResults$new(options=options),
                 data = data,

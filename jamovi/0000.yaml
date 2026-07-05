@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.46
+version: 0.0.47
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-07-04'
+date: '2026-07-05'
 type: R
 description: |-
   A comprehensive toolkit for medical decision analysis and reliability
