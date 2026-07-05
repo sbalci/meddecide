@@ -132,7 +132,7 @@ kappaSizePowerBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             super$initialize(
                 package = "meddecide",
                 name = "kappaSizePower",
-                version = c(0,0,43),
+                version = c(0,0,46),
                 options = options,
                 results = kappaSizePowerResults$new(options=options),
                 data = data,

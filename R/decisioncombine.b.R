@@ -46,8 +46,8 @@ decisioncombineClass <- if (requireNamespace("jmvcore"))
 
                     html <- paste0(html,
                         '<div style="background-color: ', color, '; color: white; padding: 10px; margin: 5px 0; border-radius: 4px;">',
-                        '<strong>', icon, ' ', notice$title, ':</strong> ',
-                        notice$content,
+                        '<strong>', icon, ' ', htmltools::htmlEscape(notice$title), ':</strong> ',
+                        htmltools::htmlEscape(notice$content),
                         '</div>'
                     )
                 }
@@ -56,16 +56,17 @@ decisioncombineClass <- if (requireNamespace("jmvcore"))
                 self$results$notices$setContent(html)
             },
 
-            .escapeVariableNames = function(var_names) {
-                # Escape variable names with spaces/special characters
-                sapply(var_names, function(x) {
-                    if (grepl("[^A-Za-z0-9_.]", x)) {
-                        paste0("`", x, "`")
-                    } else {
-                        x
-                    }
-                }, USE.NAMES = FALSE)
-            },
+            # TODO [meddecide audit 2026-05-14] — see docs/audit/MODULE_AUDIT_REPORT_20260514-1847.md
+            #   [hygiene/notices] custom private$.addNotice/private$.renderNotices duplicates jmvcore::Notice — consolidate
+            #     reference impl: decisioncalculator.b.R (17 jmvcore::Notice uses)
+            #   [hygiene/jmvcore] ~5 bare stop() calls — /jamovify-function decisioncombine --pattern=error --apply
+            #   [hygiene/term] private$.escapeVariableNames (~L59) is similar to jmvcore::composeTerm — swap to jmvcore
+            #   [integration] 72 declared outputs vs 21 setters (3.4×) — many pattern-specific placeholders
+            #     run /check-function-full decisioncombine to verify 2-test/3-test scenarios
+            #   [hygiene/notices] low-cell-count STRONG_WARNING is not quantified — add actual counts
+            #   [i18n] 0 .() wraps; bootstrap jamovi/i18n/ then /prepare-translation decisioncombine
+            #   [statistical-validation] /review-function decisioncombine — pattern enumeration math
+            #   [testing] no tests/testthat/test-decisioncombine.R
 
             .init = function() {
                 # Minimal initialization

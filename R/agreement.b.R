@@ -22,6 +22,15 @@
 agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
     inherit = agreementBase, private = list(
 
+        # TODO [meddecide audit 2026-05-14] — see docs/audit/MODULE_AUDIT_REPORT_20260514-1847.md
+        #   [hygiene/jmvcore] replace na.omit(ratings) with jmvcore::naOmit (preserves jamovi attrs)
+        #   [hygiene/jmvcore] replace bare stop() / setNote("error", …) with jmvcore::Notice ERROR (top-banner)
+        #   [hygiene/notices] 0 jmvcore::Notice uses in 10,559 LOC; reference impl: decisioncalculator.b.R / sequentialtests.b.R
+        #   [i18n] only 3 .() wraps in 10,559 LOC; bootstrap jamovi/i18n/ then /prepare-translation agreement
+        #   [integration] 396 declared outputs vs 131 setters (3.0×); verify each show*Guide flag — /check-function-full agreement
+        #   [statistical-validation] /review-function agreement — kappa2/ICC/kripp.alpha/Gwet parity vs irr/psych/irrCAC
+        #   [architecture] split 10,559-LOC monolith per analysis family (agreement_kappa.R, _icc.R, _kripp.R, …)
+        #   [testing] no tests/testthat/test-agreement.R — add unit + integration tests against histopathology dataset
         .init = function() {
             # Pre-initialize tables with column formatting and notes
 
@@ -957,7 +966,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$lightKappaTable$setNote(
                     "error",
-                    sprintf("Error calculating Light's kappa: %s", e$message)
+                    sprintf("Error calculating Light's kappa: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -1244,7 +1253,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 self$results$finnTable$setNote(
                     "error",
                     sprintf("Error calculating Finn coefficient: %s. Ensure data are categorical and properly coded (1 to %d).",
-                            e$message, n_levels)
+                            htmltools::htmlEscape(e$message), n_levels)
                 )
             })
         },
@@ -1477,7 +1486,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$kendallWTable$setNote(
                     "error",
-                    sprintf("Error calculating Kendall's W: %s", e$message)
+                    sprintf("Error calculating Kendall's W: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -1759,7 +1768,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$robinsonATable$setNote(
                     "error",
-                    sprintf("Error calculating Robinson's A: %s", e$message)
+                    sprintf("Error calculating Robinson's A: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -2097,7 +2106,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$meanSpearmanTable$setNote(
                     "error",
-                    sprintf("Error calculating Mean Spearman Rho: %s", e$message)
+                    sprintf("Error calculating Mean Spearman Rho: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -2385,7 +2394,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$meanPearsonTable$setNote(
                     "error",
-                    sprintf("Error calculating Mean Pearson Correlation: %s", e$message)
+                    sprintf("Error calculating Mean Pearson Correlation: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -2819,7 +2828,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$linCCCTable$setNote(
                     "error",
-                    sprintf("Error calculating Lin's CCC: %s", e$message)
+                    sprintf("Error calculating Lin's CCC: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -3093,7 +3102,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$tdiTable$setNote(
                     "error",
-                    sprintf("Error calculating TDI: %s", e$message)
+                    sprintf("Error calculating TDI: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -3255,6 +3264,14 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
 
             tryCatch({
                 # Get user options
+                # TODO (security, forward-looking): `specificPositiveCategory` and
+                # `interIntraSeparator` (used at L5335) are free-text OptionString
+                # values. Today they only flow into data filtering / string-split
+                # paths — not into HTML setContent or setNote. If future changes
+                # interpolate either value into HTML output (e.g., a "Filtered to
+                # category: <X>" panel), wrap with htmltools::htmlEscape() at the
+                # rendering boundary. Pattern is identical to L7737/L7747/L7755
+                # (consensusName / loaVariableName) which already escape on render.
                 positive_category <- self$options$specificPositiveCategory
                 all_categories <- self$options$specificAllCategories
                 include_ci <- self$options$specificConfidenceIntervals
@@ -3415,7 +3432,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$specificAgreementTable$setNote(
                     "error",
-                    sprintf("Error calculating specific agreement: %s", e$message)
+                    sprintf("Error calculating specific agreement: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -3631,7 +3648,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 ))
 
             }, error = function(e) {
-                self$results$agreementHeatmapPlot$setError(sprintf("Error generating heatmap: %s", e$message))
+                self$results$agreementHeatmapPlot$setError(sprintf("Error generating heatmap: %s", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -3953,7 +3970,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 ))
 
             }, error = function(e) {
-                self$results$raterProfilePlot$setError(sprintf("Error generating rater profile plot: %s", e$message))
+                self$results$raterProfilePlot$setError(sprintf("Error generating rater profile plot: %s", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -4144,7 +4161,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 }
 
             }, error = function(e) {
-                self$results$subgroupAgreementTable$setNote("error", sprintf("Error in subgroup analysis: %s", e$message))
+                self$results$subgroupAgreementTable$setNote("error", sprintf("Error in subgroup analysis: %s", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -4372,7 +4389,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 }
 
             }, error = function(e) {
-                self$results$raterClusterTable$setNote("error", sprintf("Error in rater clustering: %s", e$message))
+                self$results$raterClusterTable$setNote("error", sprintf("Error in rater clustering: %s", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -4656,7 +4673,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 }
 
             }, error = function(e) {
-                self$results$caseClusterTable$setNote("error", sprintf("Error in case clustering: %s", e$message))
+                self$results$caseClusterTable$setNote("error", sprintf("Error in case clustering: %s", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -5066,7 +5083,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$maxwellRETable$setNote(
                     "error",
-                    sprintf("Error calculating Maxwell's RE: %s", e$message)
+                    sprintf("Error calculating Maxwell's RE: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -5685,7 +5702,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$interIntraRaterIntraTable$setNote(
                     "error",
-                    sprintf("Error calculating Inter/Intra-Rater Reliability: %s", e$message)
+                    sprintf("Error calculating Inter/Intra-Rater Reliability: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -5888,7 +5905,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$raterBiasTable$setNote(
                     "error",
-                    sprintf("Error calculating Rater Bias Test: %s", e$message)
+                    sprintf("Error calculating Rater Bias Test: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -6176,7 +6193,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$bhapkarTable$setNote(
                     "error",
-                    sprintf("Error calculating Bhapkar test: %s", e$message)
+                    sprintf("Error calculating Bhapkar test: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -6470,7 +6487,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$stuartMaxwellTable$setNote(
                     "error",
-                    sprintf("Error calculating Stuart-Maxwell test: %s", e$message)
+                    sprintf("Error calculating Stuart-Maxwell test: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -6735,7 +6752,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 # Add interpretation or error note
                 if (!is.null(result$error)) {
                     pairwise_table$addFootnote(rowKey = result$rater, col = "kappa",
-                                               sprintf("Error: %s", result$error))
+                                               sprintf("Error: %s", htmltools::htmlEscape(result$error)))
                 } else if (!is.na(result$kappa)) {
                     # Add interpretation
                     kappa_val <- result$kappa
@@ -6764,6 +6781,317 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                     sprintf("Average kappa across %d raters: %.3f. Raters are compared individually against the reference rater using Cohen's kappa.",
                             n_valid, mean_kappa)
                 )
+            }
+        },
+
+        .populateAllPairsKappaExplanation = function() {
+            html_content <- "
+            <div style='font-family: Arial, sans-serif; max-width: 800px; line-height: 1.6;'>
+                <div style='background: #f9f9f9; border-left: 4px solid #333; padding: 15px; margin-bottom: 20px;'>
+                    <h3 style='margin: 0 0 10px 0; color: #333;'>What is the All-Pairs Kappa table?</h3>
+                    <p style='margin: 0; color: #333;'>
+                        For studies with three or more raters, the All-Pairs table reports
+                        Cohen's kappa, observed agreement, standard error, 95% confidence
+                        interval, z, and p-value for <strong>every pair</strong> of raters
+                        (C(k,2) rows). This is the conventional supplementary table in
+                        interobserver reliability studies, complementing the single overall
+                        Fleiss kappa.
+                    </p>
+                </div>
+                <div style='background: #f9f9f9; border-left: 4px solid #333; padding: 15px; margin-bottom: 20px;'>
+                    <h4 style='margin: 0 0 10px 0; color: #333;'>When to use it</h4>
+                    <ul style='margin: 0; padding-left: 20px;'>
+                        <li>Identifying which rater pairs disagree most (training needs)</li>
+                        <li>Reporting in agreement studies that follow Layfield et al. 2020 or Boler et al. 2022 conventions</li>
+                        <li>Detecting outlier raters whose pairwise kappas are systematically lower</li>
+                    </ul>
+                </div>
+                <div style='background: #fff3cd; border-left: 4px solid #856404; padding: 15px; margin-bottom: 20px;'>
+                    <h4 style='margin: 0 0 10px 0; color: #856404;'>Multiplicity caveat</h4>
+                    <p style='margin: 0; color: #856404;'>
+                        With k raters you compute C(k,2) p-values. For k=4 that is 6 tests; for
+                        k=6 it is 15. Enable a multiple-testing correction (Bonferroni, BH, or
+                        Holm) under <em>Mixed-Effects Comparison &rarr; Multiple Testing
+                        Correction</em> to control familywise error or FDR.
+                    </p>
+                </div>
+                <p style='font-size: 0.9em; color: #666;'>
+                    Weights for ordinal categories follow the <em>Weighted Kappa</em> option
+                    (unweighted / linear / squared). Confidence intervals use the non-null
+                    asymptotic standard error (via <code>vcd::Kappa</code>), so they agree with
+                    <code>psych::cohen.kappa()</code>; <em>z</em> and <em>p</em> are reported as
+                    kappa / SE against the no-agreement null.
+                </p>
+            </div>"
+            self$results$allPairsKappaExplanation$setContent(html_content)
+        },
+
+        # Per-pair Cohen's kappa with a CONFIDENCE-INTERVAL-appropriate SE.
+        #
+        # irr::kappa2()$statistic is the H0:kappa=0 test z, built from the
+        # NULL-hypothesis SE; recovering se = kappa/z therefore yields the null
+        # SE, which underestimates the width of a confidence interval (and is
+        # unstable when kappa ~ 0). vcd::Kappa() returns the non-null asymptotic
+        # SE (ASE) -- the correct SE for a Wald CI -- and matches
+        # psych::cohen.kappa() exactly. We compute se, CI, z and p from that
+        # single ASE so the reported row is internally consistent
+        # (z = kappa/se, ci = kappa +/- z*se). irr::kappa2() is kept as a
+        # fallback for degenerate tables where vcd::Kappa() cannot return a
+        # finite ASE (e.g. perfect agreement).
+        .pairKappaWithCI = function(sub, irr_weight) {
+            a <- as.character(sub[[1]])
+            b <- as.character(sub[[2]])
+            peragree <- mean(a == b)
+            lv <- sort(unique(c(a, b)))
+
+            res <- NULL
+            if (length(lv) >= 2) {
+                res <- tryCatch({
+                    tab <- table(factor(a, levels = lv), factor(b, levels = lv))
+                    vk <- if (identical(irr_weight, "equal"))
+                              vcd::Kappa(tab, weights = "Equal-Spacing")
+                          else if (identical(irr_weight, "squared"))
+                              vcd::Kappa(tab, weights = "Fleiss-Cohen")
+                          else
+                              vcd::Kappa(tab)
+                    comp <- if (identical(irr_weight, "unweighted"))
+                                vk$Unweighted else vk$Weighted
+                    kappa <- unname(comp[["value"]])
+                    ase   <- unname(comp[["ASE"]])
+                    if (is.na(kappa) || is.na(ase) || ase <= 0)
+                        stop("non-finite kappa or ASE")
+                    z  <- kappa / ase
+                    zc <- stats::qnorm(0.975)
+                    list(kappa = kappa, se = ase,
+                         ci_lower = kappa - zc * ase,
+                         ci_upper = kappa + zc * ase,
+                         z = z, p = 2 * stats::pnorm(-abs(z)),
+                         peragree = peragree, method = "vcd")
+                }, error = function(e) NULL)
+            }
+
+            if (!is.null(res)) return(res)
+
+            # Fallback: irr::kappa2 (null-SE based CI -- approximate)
+            kres <- tryCatch(irr::kappa2(sub, weight = irr_weight),
+                             error = function(e) NULL)
+            if (is.null(kres) || is.na(kres$value))
+                return(list(kappa = NA_real_, se = NA_real_,
+                            ci_lower = NA_real_, ci_upper = NA_real_,
+                            z = NA_real_, p = NA_real_,
+                            peragree = peragree, method = "failed"))
+            se <- if (!is.null(kres$statistic) && !is.na(kres$statistic) &&
+                      abs(kres$statistic) > .Machine$double.eps)
+                      kres$value / kres$statistic else NA_real_
+            zc <- stats::qnorm(0.975)
+            ci <- if (!is.na(se)) kres$value + c(-1, 1) * zc * se
+                  else c(NA_real_, NA_real_)
+            list(kappa = kres$value, se = se,
+                 ci_lower = ci[1], ci_upper = ci[2],
+                 z = kres$statistic, p = kres$p.value,
+                 peragree = peragree, method = "irr-fallback")
+        },
+
+        .calculateAllPairsKappa = function(ratings) {
+            tbl <- self$results$allPairsKappaTable
+
+            if (is.null(ratings) || ncol(ratings) < 3) {
+                tbl$setNote("n_raters",
+                    "All-Pairs Kappa requires at least 3 raters. With 2 raters use the standard Cohen's kappa shown in the main table.")
+                return(invisible(NULL))
+            }
+
+            rater_names <- colnames(ratings)
+            n_raters <- ncol(ratings)
+            wght <- self$options$wght
+            irr_weight <- if (identical(wght, "equal")) "equal"
+                          else if (identical(wght, "squared")) "squared"
+                          else "unweighted"
+
+            pairs <- utils::combn(n_raters, 2, simplify = FALSE)
+            rows <- list()
+
+            for (pp in pairs) {
+                a <- pp[1]; b <- pp[2]
+                sub <- ratings[, c(a, b), drop = FALSE]
+                sub <- sub[stats::complete.cases(sub), , drop = FALSE]
+                n_pair <- nrow(sub)
+                key <- paste(rater_names[a], rater_names[b], sep = "__")
+
+                if (n_pair < 5) {
+                    rows[[key]] <- list(
+                        rater_a = rater_names[a], rater_b = rater_names[b],
+                        n = n_pair, peragree = NA_real_, kappa = NA_real_,
+                        se = NA_real_, ci_lower = NA_real_, ci_upper = NA_real_,
+                        z = NA_real_, p = NA_real_, p_adj = NA_real_,
+                        error = "Fewer than 5 complete pairs"
+                    )
+                    next
+                }
+
+                kc <- private$.pairKappaWithCI(sub, irr_weight)
+
+                if (is.na(kc$kappa)) {
+                    rows[[key]] <- list(
+                        rater_a = rater_names[a], rater_b = rater_names[b],
+                        n = n_pair, peragree = kc$peragree, kappa = NA_real_,
+                        se = NA_real_, ci_lower = NA_real_, ci_upper = NA_real_,
+                        z = NA_real_, p = NA_real_, p_adj = NA_real_,
+                        error = "kappa undefined"
+                    )
+                    next
+                }
+
+                rows[[key]] <- list(
+                    rater_a = rater_names[a],
+                    rater_b = rater_names[b],
+                    n = n_pair,
+                    peragree = kc$peragree,
+                    kappa = kc$kappa,
+                    se = kc$se,
+                    ci_lower = kc$ci_lower,
+                    ci_upper = kc$ci_upper,
+                    z = kc$z,
+                    p = kc$p,
+                    p_adj = NA_real_,
+                    error = if (identical(kc$method, "irr-fallback"))
+                                "CI via irr::kappa2 fallback; vcd::Kappa could not return a finite SE for this table"
+                            else NULL
+                )
+            }
+
+            corr <- self$options$multipleTestCorrection
+            if (!identical(corr, "none") && length(rows) > 1) {
+                pvals <- vapply(rows, function(r) r$p, numeric(1))
+                method <- switch(corr,
+                    bonferroni = "bonferroni",
+                    bh         = "BH",
+                    holm       = "holm",
+                    "none")
+                if (!identical(method, "none")) {
+                    padj <- stats::p.adjust(pvals, method = method)
+                    for (k in seq_along(rows)) rows[[k]]$p_adj <- padj[k]
+                }
+            }
+
+            for (k in seq_along(rows)) {
+                r <- rows[[k]]
+                values <- list(
+                    rater_a = r$rater_a, rater_b = r$rater_b, n = r$n,
+                    peragree = r$peragree, kappa = r$kappa, se = r$se,
+                    ci_lower = r$ci_lower, ci_upper = r$ci_upper,
+                    z = r$z, p = r$p, p_adj = r$p_adj
+                )
+                tbl$addRow(rowKey = names(rows)[k], values = values)
+                if (!is.null(r$error)) {
+                    tbl$addFootnote(rowKey = names(rows)[k], col = "kappa", r$error)
+                }
+            }
+
+            note_bits <- c(
+                sprintf("%d rater pairs evaluated.", length(rows)),
+                if (!identical(irr_weight, "unweighted"))
+                    sprintf("Weights: %s.", irr_weight),
+                if (!identical(corr, "none"))
+                    sprintf("p-values adjusted using %s.", corr)
+            )
+            if (length(note_bits) > 0)
+                tbl$setNote("summary", paste(note_bits, collapse = " "))
+        },
+
+        .populateItemModalAgreementExplanation = function() {
+            html_content <- "
+            <div style='font-family: Arial, sans-serif; max-width: 800px; line-height: 1.6;'>
+                <div style='background: #f9f9f9; border-left: 4px solid #333; padding: 15px; margin-bottom: 20px;'>
+                    <h3 style='margin: 0 0 10px 0; color: #333;'>What is item-modal-category agreement?</h3>
+                    <p style='margin: 0; color: #333;'>
+                        For each rating category <em>c</em>, this metric reports the mean
+                        within-case agreement rate <em>across raters</em> on the cases whose
+                        modal rating is <em>c</em>. In a 4-rater study, a case all 4 raters
+                        score the same gets agreement 1.00; a 3-1 split gets 0.75; a 2-2 split
+                        has no unique mode and is excluded.
+                    </p>
+                </div>
+                <div style='background: #f9f9f9; border-left: 4px solid #333; padding: 15px; margin-bottom: 20px;'>
+                    <h4 style='margin: 0 0 10px 0; color: #333;'>When to use it</h4>
+                    <ul style='margin: 0; padding-left: 20px;'>
+                        <li>Identifying which categories are the agreement bottleneck (e.g., YSRB Category IV 'suspicious' in breast cytology)</li>
+                        <li>Reporting per-category agreement alongside an overall Fleiss kappa</li>
+                        <li>Quality assurance: where should category-specific training focus?</li>
+                    </ul>
+                </div>
+                <p style='font-size: 0.9em; color: #666;'>
+                    Cases with no unique mode (ties) are excluded and reported in a footnote.
+                    95% CIs are normal-approximation Wald intervals on the case-level mean
+                    agreement, bounded to [0, 1].
+                </p>
+            </div>"
+            self$results$itemModalAgreementExplanation$setContent(html_content)
+        },
+
+        .calculateItemModalAgreement = function(ratings) {
+            tbl <- self$results$itemModalAgreementTable
+
+            if (is.null(ratings) || ncol(ratings) < 2) {
+                tbl$setNote("n_raters",
+                    "Item-modal agreement requires at least 2 raters.")
+                return(invisible(NULL))
+            }
+
+            df <- as.data.frame(ratings, stringsAsFactors = FALSE)
+            df <- df[stats::complete.cases(df), , drop = FALSE]
+            if (nrow(df) < 5) {
+                tbl$setNote("n_cases",
+                    "At least 5 complete cases are required for item-modal agreement.")
+                return(invisible(NULL))
+            }
+
+            char_df <- as.data.frame(lapply(df, as.character), stringsAsFactors = FALSE)
+
+            modal_info <- lapply(seq_len(nrow(char_df)), function(i) {
+                vals <- unlist(char_df[i, ], use.names = FALSE)
+                tab <- table(vals)
+                top <- max(tab)
+                mode_vals <- names(tab)[tab == top]
+                list(mode = if (length(mode_vals) == 1) mode_vals else NA_character_,
+                     agree = top / length(vals))
+            })
+
+            modes <- vapply(modal_info, function(x) x$mode, character(1))
+            agrees <- vapply(modal_info, function(x) x$agree, numeric(1))
+
+            n_ties <- sum(is.na(modes))
+            keep <- !is.na(modes)
+            modes <- modes[keep]
+            agrees <- agrees[keep]
+
+            if (length(modes) == 0) {
+                tbl$setNote("all_ties",
+                    "All cases had tied modes; no per-category summary computable.")
+                return(invisible(NULL))
+            }
+
+            cats <- sort(unique(modes))
+            z975 <- stats::qnorm(0.975)
+
+            for (cat in cats) {
+                idx <- which(modes == cat)
+                m <- mean(agrees[idx])
+                se <- if (length(idx) > 1) stats::sd(agrees[idx]) / sqrt(length(idx)) else 0
+                ci <- m + c(-1, 1) * z975 * se
+                ci <- pmax(0, pmin(1, ci))
+                tbl$addRow(rowKey = cat, values = list(
+                    category       = as.character(cat),
+                    n_cases        = length(idx),
+                    mean_agreement = m,
+                    ci_lower       = ci[1],
+                    ci_upper       = ci[2]
+                ))
+            }
+
+            if (n_ties > 0) {
+                tbl$setNote("ties",
+                    sprintf("%d case(s) had no unique mode and were excluded.", n_ties))
             }
         },
 
@@ -7047,7 +7375,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$iccTable$setNote(
                     "error",
-                    sprintf("Error calculating ICC: %s", e$message)
+                    sprintf("Error calculating ICC: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -7152,7 +7480,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$iotaTable$setNote(
                     "error",
-                    sprintf("Error calculating Iota: %s", e$message)
+                    sprintf("Error calculating Iota: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -7318,7 +7646,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$pabakTable$setNote(
                     "error",
-                    paste("Error calculating PABAK:", e$message)
+                    paste("Error calculating PABAK:", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -7419,7 +7747,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
             }, error = function(e) {
                 self$results$gwetTable$setNote(
                     "error",
-                    sprintf("Error calculating Gwet's AC: %s", e$message)
+                    sprintf("Error calculating Gwet's AC: %s", htmltools::htmlEscape(e$message))
                 )
             })
         },
@@ -7734,7 +8062,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                     "unanimous" = "Unanimous (100%)"
                 )
                 info_html <- paste0(info_html,
-                    "<li><strong>", var_name, "</strong>: Consensus rating (", rule_text, ")</li>")
+                    "<li><strong>", htmltools::htmlEscape(var_name), "</strong>: Consensus rating (", rule_text, ")</li>")
             }
 
             if (self$options$loaVariable) {
@@ -7744,7 +8072,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 if (detail_mode == "simple") {
                     threshold <- self$options$simpleThreshold
                     info_html <- paste0(info_html,
-                        "<li><strong>", var_name, "</strong>: Case Agreement (Simple mode - threshold: ", threshold, "%)</li>")
+                        "<li><strong>", htmltools::htmlEscape(var_name), "</strong>: Case Agreement (Simple mode - threshold: ", threshold, "%)</li>")
                 } else {
                     method_text <- switch(self$options$loaThresholds,
                         "custom" = paste0("Custom (High: ", self$options$loaHighThreshold, "%, Low: ", self$options$loaLowThreshold, "%)"),
@@ -7752,7 +8080,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                         "tertiles" = "Tertile-based (data-driven)"
                     )
                     info_html <- paste0(info_html,
-                        "<li><strong>", var_name, "</strong>: Case Agreement (Detailed mode - ", method_text, ")</li>")
+                        "<li><strong>", htmltools::htmlEscape(var_name), "</strong>: Case Agreement (Detailed mode - ", method_text, ")</li>")
                 }
             }
 
@@ -8041,7 +8369,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 }, error = function(e2) {
                     self$results$hierarchicalOverallTable$setNote(
                         "error",
-                        paste0("Mixed model fitting failed: ", e2$message,
+                        paste0("Mixed model fitting failed: ", htmltools::htmlEscape(e2$message),
                                ". Data may have insufficient variability.")
                     )
                 })
@@ -8341,7 +8669,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                         statistic = NA,
                         df = NA,
                         p_value = NA,
-                        conclusion = paste0("Test could not be computed: ", e$message)
+                        conclusion = paste0("Test could not be computed: ", htmltools::htmlEscape(e$message))
                     ))
                 })
             }
@@ -8478,7 +8806,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 }, error = function(e2) {
                     self$results$mixedEffectsTable$setNote(
                         "error",
-                        paste0("Model fitting failed: ", e2$message)
+                        paste0("Model fitting failed: ", htmltools::htmlEscape(e2$message))
                     )
                 })
             })
@@ -8724,7 +9052,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                     interpretation = paste0("Overall accuracy: ", round(sum(diag(cm))/sum(cm)*100, 1), "%")
                 ))
             }, error = function(e) {
-                self$results$confusionMatrixTable$setNote("error", paste("Confusion matrix error:", e$message))
+                self$results$confusionMatrixTable$setNote("error", paste("Confusion matrix error:", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -8883,7 +9211,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
 
                 table$setNote("boot", paste0("Based on ", n_boot, " bootstrap resamples (case resampling). Seed: 42 for reproducibility."))
             }, error = function(e) {
-                self$results$bootstrapCITable$setNote("error", paste("Bootstrap CI error:", e$message))
+                self$results$bootstrapCITable$setNote("error", paste("Bootstrap CI error:", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -9035,7 +9363,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 table$setNote("method", paste0("Prediction column: ", rater_names[pred_col],
                     ". Reference annotators: ", paste(rater_names[ref_cols], collapse = ", "), "."))
             }, error = function(e) {
-                self$results$concordanceF1Table$setNote("error", paste("Concordance F1 error:", e$message))
+                self$results$concordanceF1Table$setNote("error", paste("Concordance F1 error:", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -9143,7 +9471,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
 
                 table$setNote("info", paste0("Bootstrap test with ", n_boot, " replications (seed = 42). N = ", n_cases, " cases."))
             }, error = function(e) {
-                self$results$pairedAgreementTable$setNote("error", paste("Paired agreement error:", e$message))
+                self$results$pairedAgreementTable$setNote("error", paste("Paired agreement error:", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -9269,7 +9597,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                     "Two-sided test."
                 ))
             }, error = function(e) {
-                self$results$agreementSampleSizeTable$setNote("error", paste("Sample size error:", e$message))
+                self$results$agreementSampleSizeTable$setNote("error", paste("Sample size error:", htmltools::htmlEscape(e$message)))
             })
         },
 
@@ -9583,6 +9911,26 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
 
         .run = function() {
 
+        # TODO (UX, file-wide): error reporting in this function uses
+        # `self$results$<table>$setNote("error", "...")` + `return()` rather than
+        # `jmvcore::reject(...)`. Confirmed at 20 sites including L4016, L4147,
+        # L4264, L4328, L4375, L4508, L4569, L4588, L4659, L8727 (grep
+        # `setNote\("error"` for the full list). The current pattern attaches an
+        # "error" note to a Table cell while letting the analysis continue with
+        # NA-filled placeholders — users see results that look fine until they
+        # spot the small cell-note. jmvcore::reject would halt and surface
+        # jamovi's structured error UI instead.
+        # Decision is methodological:
+        #   - Keep current pattern if the design intent is "best-effort, partial
+        #     results when one analysis fails" (e.g., subgroup analyses where
+        #     one subgroup's failure shouldn't cancel the rest).
+        #   - Switch to jmvcore::reject (or private$.addNotice("ERROR", ...))
+        #     for hard validation failures where continuing produces meaningless
+        #     output (e.g., L9587 missing-vars guard, L9766 weighted-kappa
+        #     pre-conditions, L9770 exact-kappa rater-count requirement).
+        # Hybrid is also fine: reject for input validation, setNote for
+        # per-subgroup/per-cluster failures inside loops.
+
         # Validate input ----
         if (is.null(self$options$vars) || length(self$options$vars) < 2) {
             self$results$welcome$setVisible(TRUE)
@@ -9820,6 +10168,32 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                     "Note: Exact Kappa (Conger, 1980) does not provide statistical test. Use Fleiss' Kappa for hypothesis testing (H0: Kappa=0)."
                 )
             }
+
+            # Imbalanced-prevalence (kappa-paradox) advisory ----
+            # A rare rating category can make kappa paradoxically low despite high
+            # observed agreement. Flag it and point to the prevalence-robust
+            # alternatives this analysis already offers (Gwet's AC1/AC2, PABAK).
+            prev_note <- tryCatch({
+                all_vals <- unlist(lapply(ratings, as.character), use.names = FALSE)
+                all_vals <- all_vals[!is.na(all_vals)]
+                n_obs <- length(all_vals)
+                if (n_obs > 0) {
+                    cat_tab <- table(all_vals)
+                    rare <- cat_tab[cat_tab < 5 | (cat_tab / n_obs) < 0.05]
+                    if (length(rare) > 0) {
+                        sprintf(paste0(
+                            "Low-prevalence categor%s detected (%s). Kappa can be paradoxically ",
+                            "low when a category is rare, even with high observed agreement. ",
+                            "Consider Gwet's AC1/AC2 or PABAK (both available in this analysis) ",
+                            "as prevalence-robust sensitivity analyses."),
+                            if (length(rare) == 1L) "y" else "ies",
+                            paste(sprintf("%s: n=%d", names(rare), as.integer(rare)),
+                                  collapse = "; "))
+                    } else NULL
+                } else NULL
+            }, error = function(e) NULL)
+            if (!is.null(prev_note))
+                self$results$irrtable$setNote("prevalence", prev_note)
 
             }  # end of categorical kappa block
 
@@ -10105,7 +10479,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
 
             }, error = function(e) {
                 # Handle any errors that occur during calculation
-                errorMessage <- paste("Error calculating Krippendorff's alpha:", e$message)
+                errorMessage <- paste("Error calculating Krippendorff's alpha:", htmltools::htmlEscape(e$message))
                 warning(errorMessage)
 
                 # Initialize values list for error case
@@ -10127,7 +10501,7 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                 krippTable$setRow(rowNo = 1, values = values_list)
 
                 # Add error message as footnote
-                krippTable$addFootnote(rowNo = 1, col = "alpha", paste0("Error calculating Krippendorff's alpha: ", e$message))
+                krippTable$addFootnote(rowNo = 1, col = "alpha", paste0("Error calculating Krippendorff's alpha: ", htmltools::htmlEscape(e$message)))
             })
         }
 
@@ -10256,6 +10630,36 @@ agreementClass <- if (requireNamespace("jmvcore")) R6::R6Class("agreementClass",
                         "Please select a reference rater variable to perform pairwise kappa analysis."
                     )
                 }
+            }
+        }
+
+        private$.checkpoint()
+
+        # All-Pairs Cohen's Kappa (if requested) ----
+        if (self$options$showAllPairsKappaGuide) {
+            private$.populateAllPairsKappaExplanation()
+        }
+        if (self$options$allPairsKappa) {
+            if (is_continuous && n_unique_vals > 20) {
+                self$results$allPairsKappaTable$setNote("type_error",
+                    "All-Pairs Kappa requires categorical data. Your data appears to be continuous. Consider ICC or Lin's CCC instead.")
+            } else {
+                private$.calculateAllPairsKappa(ratings)
+            }
+        }
+
+        private$.checkpoint()
+
+        # Per-Category Item-Modal Agreement (if requested) ----
+        if (self$options$showItemModalGuide) {
+            private$.populateItemModalAgreementExplanation()
+        }
+        if (self$options$itemModalCategoryAgreement) {
+            if (is_continuous && n_unique_vals > 20) {
+                self$results$itemModalAgreementTable$setNote("type_error",
+                    "Item-modal agreement requires categorical data. Your data appears to be continuous.")
+            } else {
+                private$.calculateItemModalAgreement(ratings)
             }
         }
 
