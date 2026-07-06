@@ -256,31 +256,6 @@ scenarios.</p></dd>
 <p><code>as.data.frame(results$cTable)</code></p>
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
-<span class="r-in"><span><span class="co"># Basic diagnostic test evaluation with known counts</span></span></span>
-<span class="r-in"><span><span class="va">result1</span> <span class="op">&lt;-</span> <span class="fu">decisioncalculator</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  TP <span class="op">=</span> <span class="fl">90</span>,  <span class="co"># True positives</span></span></span>
-<span class="r-in"><span>  FN <span class="op">=</span> <span class="fl">10</span>,  <span class="co"># False negatives</span></span></span>
-<span class="r-in"><span>  TN <span class="op">=</span> <span class="fl">80</span>,  <span class="co"># True negatives</span></span></span>
-<span class="r-in"><span>  FP <span class="op">=</span> <span class="fl">20</span>   <span class="co"># False positives</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Include 95 percent confidence intervals</span></span></span>
-<span class="r-in"><span><span class="va">result2</span> <span class="op">&lt;-</span> <span class="fu">decisioncalculator</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  TP <span class="op">=</span> <span class="fl">90</span>, FN <span class="op">=</span> <span class="fl">10</span>, TN <span class="op">=</span> <span class="fl">80</span>, FP <span class="op">=</span> <span class="fl">20</span>,</span></span>
-<span class="r-in"><span>  ci <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Complete analysis with Fagan nomogram</span></span></span>
-<span class="r-in"><span><span class="va">result3</span> <span class="op">&lt;-</span> <span class="fu">decisioncalculator</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  TP <span class="op">=</span> <span class="fl">90</span>, FN <span class="op">=</span> <span class="fl">10</span>, TN <span class="op">=</span> <span class="fl">80</span>, FP <span class="op">=</span> <span class="fl">20</span>,</span></span>
-<span class="r-in"><span>  ci <span class="op">=</span> <span class="cn">TRUE</span>, pp <span class="op">=</span> <span class="cn">TRUE</span>, pprob <span class="op">=</span> <span class="fl">0.15</span>, fagan <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

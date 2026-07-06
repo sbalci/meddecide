@@ -1281,11 +1281,3 @@ example:
 `results$irrtable$asDF`
 
 `as.data.frame(results$irrtable)`
-
-## Examples
-
-``` r
-# \donttest{
-# example will be added
-# }
-```

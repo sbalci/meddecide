@@ -149,11 +149,3 @@ example:
 `results$rawContingency$asDF`
 
 `as.data.frame(results$rawContingency)`
-
-## Examples
-
-``` r
-# \donttest{
-# example will be added
-# }
-```

@@ -50,11 +50,3 @@ A results object containing:
 | `results$text1`        |     |     |     |     | a preformatted |
 | `results$text_summary` |     |     |     |     | a preformatted |
 | `results$text2`        |     |     |     |     | a preformatted |
-
-## Examples
-
-``` r
-# \donttest{
-# example will be added
-# }
-```
