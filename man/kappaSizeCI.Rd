@@ -43,8 +43,3 @@ A results object containing:
 \description{
 Power Analysis for Interobserver Agreement Analysis.
 }
-\examples{
-\dontrun{
-# example will be added
-}
-}

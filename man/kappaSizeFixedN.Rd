@@ -37,8 +37,3 @@ A results object containing:
 \description{
 Lowest Expected Value for a fixed sample size.
 }
-\examples{
-\dontrun{
-# example will be added
-}
-}
