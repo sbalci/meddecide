@@ -231,11 +231,11 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] meddecide_0.0.47
+    ## [1] meddecide_0.0.5
     ## 
     ## loaded via a namespace (and not attached):
     ##   [1] DBI_1.3.0               pROC_1.19.0.1           gridExtra_2.3.1        
-    ##   [4] BiasedUrn_2.0.12        rlang_1.2.0             magrittr_2.0.5         
+    ##   [4] BiasedUrn_2.0.12        rlang_1.3.0             magrittr_2.0.5         
     ##   [7] otel_0.2.0              e1071_1.7-17            compiler_4.6.0         
     ##  [10] systemfonts_1.3.2       vctrs_0.7.3             reshape2_1.4.5         
     ##  [13] stringr_1.6.0           cutpointr_1.2.1         pkgconfig_2.0.3        
@@ -247,14 +247,14 @@ sessionInfo()
     ##  [31] vcd_1.4-13              bslib_0.11.0            stringi_1.8.7          
     ##  [34] RColorBrewer_1.1-3      parallelly_1.48.0       boot_1.3-32            
     ##  [37] rpart_4.1.27            lmtest_0.9-40           lubridate_1.9.5        
-    ##  [40] jquerylib_0.1.4         Rcpp_1.1.1-1.1          iterators_1.0.14       
+    ##  [40] jquerylib_0.1.4         Rcpp_1.1.2              iterators_1.0.14       
     ##  [43] knitr_1.51              future.apply_1.20.2     zoo_1.8-15             
     ##  [46] Matrix_1.7-5            splines_4.6.0           nnet_7.3-20            
     ##  [49] timechange_0.4.0        tidyselect_1.2.1        rstudioapi_0.19.0      
     ##  [52] yaml_2.3.12             timeDate_4052.112       codetools_0.2-20       
     ##  [55] listenv_1.0.0           lattice_0.22-9          tibble_3.3.1           
     ##  [58] plyr_1.8.9              withr_3.0.3             S7_0.2.2               
-    ##  [61] flextable_0.9.12        askpass_1.2.1           evaluate_1.0.5         
+    ##  [61] flextable_0.10.0        askpass_1.2.1           evaluate_1.0.5         
     ##  [64] future_1.70.0           desc_1.4.3              survival_3.8-6         
     ##  [67] sf_1.1-1                units_1.0-1             proxy_0.4-29           
     ##  [70] zip_3.0.0               xml2_1.6.0              lpSolve_5.6.23         

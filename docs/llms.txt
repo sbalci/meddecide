@@ -418,6 +418,10 @@ project:
   : Power Approach for the Number of Subjects Required
 - [`kappaSizePowerClass`](https://www.serdarbalci.com/meddecide/reference/kappaSizePowerClass.md)
   : Power Approach for the Number of Subjects Required
+- [`lassologistic()`](https://www.serdarbalci.com/meddecide/reference/lassologistic.md)
+  : LASSO Logistic Regression
+- [`lassologisticClass`](https://www.serdarbalci.com/meddecide/reference/lassologisticClass.md)
+  : LASSO Logistic Regression for Binary Classification
 - [`load_required_package()`](https://www.serdarbalci.com/meddecide/reference/load_required_package.md)
   : Check whether a required package is available
 - [`lymphoma_data`](https://www.serdarbalci.com/meddecide/reference/lymphoma_data.md)
