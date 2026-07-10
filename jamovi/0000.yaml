@@ -1,16 +1,18 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.47
+version: 0.0.5
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-07-05'
+date: '2026-07-10'
 type: R
-description: |-
+description: >-
   A comprehensive toolkit for medical decision analysis and reliability
+
   assessment, implemented as a jamovi module. The package provides tools for:
+
   * Interrater and intrarater reliability analysis using Cohen's Kappa and
     Fleiss' Kappa statistics
   * Diagnostic test evaluation with sensitivity, specificity, predictive values,
@@ -22,7 +24,12 @@ description: |-
   * Power analysis for interobserver agreement studies with support for
     multiple raters and outcome categories
   Tools are provided through an intuitive graphical interface in jamovi, making
+
   complex medical decision analyses accessible to clinical researchers.
+
+  For comments, suggestions, feature requests or reporting bugs, please open an
+  issue <a href="https://github.com/sbalci/ClinicoPathJamoviModule/issues/"
+  target="_blank">here</a>. 
 analyses:
   - title: Interrater Reliability
     name: agreement
@@ -199,6 +206,21 @@ analyses:
       standard to identify optimal testing strategies. Calculates sensitivity,
 
       specificity, PPV, NPV, and accuracy for each pattern combination.
+  - title: LASSO Logistic Regression
+    name: lassologistic
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Prediction Models
+    menuTitle: LASSO Logistic
+    menuSubtitle: Penalized feature selection for binary classification
+    description: >
+      Performs LASSO-penalized logistic regression for variable selection in
+      binary
+
+      classification problems. Ideal for diagnostic pathology studies that build
+
+      classifiers (e.g., tumor type A vs B) with automatic feature selection.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

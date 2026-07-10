@@ -2,8 +2,8 @@ Type: Package
 Package: meddecide
 Title: Medical Decision Analysis and Reliability Assessment Tools in
         ClinicoPath jamovi Module
-Version: 0.0.47
-Date: 2026-07-05
+Version: 0.0.5
+Date: 2026-07-10
 Authors@R: person(given = "Serdar", family = "Balci", role = c("aut",
         "cre"), email = "serdarbalci@serdarbalci.com", comment =
         c(ORCID = "0000-0002-7852-3851"))
@@ -21,7 +21,7 @@ Description: A comprehensive toolkit for medical decision analysis and
         for multiple raters and outcome categories Tools are provided
         through an intuitive graphical interface in jamovi, making
         complex medical decision analyses accessible to clinical
-        researchers.
+        researchers. For comments, suggestions, feature requests or reporting bugs, please open an issue <a href="https://github.com/sbalci/ClinicoPathJamoviModule/issues/" target="_blank">here</a>.
 License: GPL (>= 2)
 URL: https://github.com/sbalci/ClinicoPathJamoviModule/,
         https://github.com/sbalci/meddecision/,
