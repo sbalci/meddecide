@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 0.0.5
+version: 0.0.51
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-07-10'
+date: '2026-07-11'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -28,8 +28,7 @@ description: >-
   complex medical decision analyses accessible to clinical researchers.
 
   For comments, suggestions, feature requests or reporting bugs, please open an
-  issue <a href="https://github.com/sbalci/ClinicoPathJamoviModule/issues/"
-  target="_blank">here</a>. 
+  issue at https://github.com/sbalci/ClinicoPathJamoviModule/issues/.
 analyses:
   - title: Interrater Reliability
     name: agreement
