@@ -28,7 +28,7 @@ description: >-
   complex medical decision analyses accessible to clinical researchers.
 
   For comments, suggestions, feature requests or reporting bugs, please open an
-  issue at https://github.com/sbalci/ClinicoPathJamoviModule/issues/.
+  issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.
 analyses:
   - title: Interrater Reliability
     name: agreement
@@ -72,7 +72,7 @@ analyses:
     name: kappaSizePower
     ns: meddecide
     menuGroup: Power
-    menuSubgroup: Power Analysis
+    menuSubgroup: Power Analysis by meddecide
     menuSubtitle: Find sample size based on power
     menuTitle: Power Approach for the Number of Subjects Required
     description: |
@@ -84,7 +84,7 @@ analyses:
     ns: meddecide
     menuGroup: Power
     menuTitle: Confidence Interval Approach for the Number of Subjects Required
-    menuSubgroup: Power Analysis
+    menuSubgroup: Power Analysis by meddecide
     menuSubtitle: Find sample size based on Kappa confidence
     description: |
       Power Analysis for Interobserver Agreement Analysis.
@@ -95,7 +95,7 @@ analyses:
     ns: meddecide
     menuGroup: Power
     menuTitle: Lowest Expected Value for a fixed sample size
-    menuSubgroup: Power Analysis
+    menuSubgroup: Power Analysis by meddecide
     menuSubtitle: Find lower Kappa based on sample size
     description: |
       Lowest Expected Value for a fixed sample size.
