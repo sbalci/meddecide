@@ -25,7 +25,7 @@
         `url`="https://github.com/achekroud/nomogrammer"), 
     `Fagan2`=list(
         `type`="article", 
-        `author`="", 
+        `author`="Simon, S.", 
         `title`="StATS: What is a Fagan nomogram?", 
         `publisher`="website", 
         `year`=2020, 
@@ -34,7 +34,7 @@
         `type`="article", 
         `title`="Pathologists should probably forget about kappa. Percent agreement, diagnostic specificity and related metrics provide more clinically applicable measures of interobserver variability", 
         `year`=2020, 
-        `author`="", 
+        `author`="Marchevsky, A. M., & Thunnissen, E.", 
         `publisher`="Annals of Diagnostic Pathology", 
         `volume`=47, 
         `url`="https://www.sciencedirect.com/science/article/abs/pii/S1092913420301040"), 
