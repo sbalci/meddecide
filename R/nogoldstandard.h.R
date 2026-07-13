@@ -212,7 +212,6 @@ nogoldstandardResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
                 name="",
                 title="Analysis Without Gold Standard",
                 refs=list(
-                    "NoGoldDiagnostic",
                     "ClinicoPathJamoviModule",
                     "poLCA"))
             self$add(jmvcore::Preformatted$new(
@@ -395,7 +394,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             super$initialize(
                 package = "meddecide",
                 name = "nogoldstandard",
-                version = c(0,0,51),
+                version = c(1,0,0),
                 options = options,
                 results = nogoldstandardResults$new(options=options),
                 data = data,
