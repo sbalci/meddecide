@@ -18,3 +18,5 @@ vignettes/
 ^\.claude$
 ^CLAUDE\.md$
 ^CITATION\.cff$
+^data/.*\.omv$
+^inst/extdata/.*\.omv$
