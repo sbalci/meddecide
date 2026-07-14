@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: "ClinicoPath jamovi Module"
+title: "meddecide: Medical Decision and Reliability Analysis for jamovi"
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -12,8 +12,8 @@ authors:
     family-names: Balci
     email: serdarbalci@serdarbalci.com
     orcid: 'https://orcid.org/0000-0002-7852-3851'
-date-released: '2026-01-02'
-version: "0.0.32.69"
+date-released: '2026-07-13'
+version: "1.0.0"
 identifiers:
   - type: doi
     value: 10.5281/zenodo.3997188
@@ -46,15 +46,12 @@ identifiers:
   - type: url
     value: 'https://github.com/sbalci/OncoPath'
     description: OncoPath
-repository-code: 'https://github.com/sbalci/ClinicoPathJamoviModule/'
-url: 'https://www.serdarbalci.com/ClinicoPathJamoviModule'
+repository-code: 'https://github.com/sbalci/meddecide/'
+url: 'https://www.serdarbalci.com/meddecide/'
 abstract: >-
-  Comprehensive Analysis for Clinicopathological Research: ClinicoPath
-  is a jamovi module that helps researchers generate natural language
-  summaries of their datasets, create cross tables with statistical tests,
-  perform survival analyses with tables and plots, conduct medical decision
-  analysis, create statistical visualizations, and perform specialized
-  oncological patient follow-up analyses including waterfall and swimmer plots. 
+  Medical decision and reliability analysis for jamovi, including diagnostic
+  test evaluation, ROC analysis, interrater agreement, sample-size estimation,
+  sequential testing, and regularized logistic regression.
 keywords:
   - jamovi
   - module
