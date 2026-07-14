@@ -89,6 +89,7 @@ A results object containing:
 \code{results$forestPlot} \tab \tab \tab \tab \tab Forest plot displaying 95 percent confidence intervals for key diagnostic metrics \cr
 \code{results$decisionTreePlot} \tab \tab \tab \tab \tab Hierarchical decision tree showing test patterns with performance-based recommendations \cr
 \code{results$recommendationTable} \tab \tab \tab \tab \tab Recommended optimal test combination pattern based on Youden index and clinical performance metrics \cr
+\code{results$addedPattern} \tab \tab \tab \tab \tab an output \cr
 \code{results$notices} \tab \tab \tab \tab \tab a html \cr
 }
 
