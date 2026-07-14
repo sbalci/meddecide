@@ -33,6 +33,7 @@ Imports: boot, caret, cutpointr, DescTools, dplyr, e1071, epiR, forcats,
         htmltools, igraph, irr, irrCAC, jmvcore, kappaSize, knitr, lme4, lmerTest,
         magrittr, MASS, Matrix, poLCA, pROC, psych, R6, RColorBrewer,
         reshape2, rlang, scales, stats, tibble, tidyr, tools, utils, vcd, withr
+Suggests: testthat
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
