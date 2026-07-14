@@ -12,7 +12,7 @@ tests, and survival analysis with survival tables, survival plots,
 and natural language summaries.
 
 For more documentation, see the
-\href{https://sbalci.github.io/ClinicoPathJamoviModule/}{Website}.
+\href{https://www.serdarbalci.com/ClinicoPathJamoviModule/}{Website}.
 }
 \details{
 \code{meddecide}
@@ -21,8 +21,8 @@ For more documentation, see the
 Useful links:
 \itemize{
   \item \url{https://github.com/sbalci/ClinicoPathJamoviModule/}
-  \item \url{https://github.com/sbalci/meddecision/}
-  \item \url{https://sbalci.github.io/ClinicoPathJamoviModule/}
+  \item \url{https://github.com/sbalci/meddecide/}
+  \item \url{https://www.serdarbalci.com/ClinicoPathJamoviModule/}
   \item \url{https://www.serdarbalci.com/meddecide/}
   \item Report bugs at \url{https://github.com/sbalci/ClinicoPathJamoviModule/issues/}
 }

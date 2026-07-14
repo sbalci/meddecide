@@ -13,7 +13,7 @@ The `meddecide` package serves as the computational engine for the ClinicoPath j
 - **As an R Package**: Direct access to all functions through R scripts and console
 - **As a jamovi Module**: Point-and-click interface for statistical analyses without coding
 
-See full documentation at <https://sbalci.github.io/ClinicoPathJamoviModule/>
+See full documentation at <https://www.serdarbalci.com/ClinicoPathJamoviModule/>
 
 [![CRAN Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
 [![R-CMD-check](https://github.com/sbalci/meddecide/workflows/R-CMD-check/badge.svg)](https://github.com/sbalci/meddecide/actions)
@@ -32,7 +32,7 @@ See full documentation at <https://sbalci.github.io/ClinicoPathJamoviModule/>
 [![Kappa Statistics](https://img.shields.io/badge/Feature-Kappa%20Statistics-orange.svg)](https://github.com/sbalci/meddecide)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3997188.svg)](https://doi.org/10.5281/zenodo.3997188)
-[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://sbalci.github.io/ClinicoPathJamoviModule/)
+[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://www.serdarbalci.com/ClinicoPathJamoviModule/)
 [![Clinical Research](https://img.shields.io/badge/Domain-Clinical%20Research-darkblue.svg)](https://github.com/sbalci/meddecide)
 
 ## Key Features

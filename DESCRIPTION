@@ -4,35 +4,36 @@ Title: Medical Decision and Reliability Analysis for 'jamovi'
 Version: 1.0.0
 Date: 2026-07-13
 Authors@R: person(given = "Serdar", family = "Balci", role = c("aut",
-        "cre", "cph"), email = "serdarbalci@serdarbalci.com", comment =
-        c(ORCID = "0000-0002-7852-3851"))
+ "cre", "cph"), email = "serdarbalci@serdarbalci.com", comment =
+ c(ORCID = "0000-0002-7852-3851"))
 Maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
 Description: A comprehensive toolkit for medical decision analysis and
-        reliability assessment, implemented as a jamovi module. The
-        package provides tools for: * Interrater and intrarater
-        reliability analysis using Cohen's Kappa and Fleiss' Kappa
-        statistics * Diagnostic test evaluation with sensitivity,
-        specificity, predictive values, and likelihood ratios * Sample
-        size calculations for reliability studies using confidence
-        interval and power-based approaches * Visualization tools
-        including Fagan nomograms for Bayesian probability updates *
-        Power analysis for interobserver agreement studies with support
-        for multiple raters and outcome categories Tools are provided
-        through an intuitive graphical interface in jamovi, making
-        complex medical decision analyses accessible to clinical
-        researchers. For comments, suggestions, feature requests or reporting bugs, please open an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.
+ reliability assessment, implemented as a jamovi module. The
+ package provides tools for: * Interrater and intrarater
+ reliability analysis using Cohen's Kappa and Fleiss' Kappa
+ statistics * Diagnostic test evaluation with sensitivity,
+ specificity, predictive values, and likelihood ratios * Sample
+ size calculations for reliability studies using confidence
+ interval and power-based approaches * Visualization tools
+ including Fagan nomograms for Bayesian probability updates *
+ Power analysis for interobserver agreement studies with support
+ for multiple raters and outcome categories Tools are provided
+ through an intuitive graphical interface in jamovi, making
+ complex medical decision analyses accessible to clinical
+ researchers. For comments, suggestions, feature requests or reporting bugs, please open an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.
 License: GPL (>= 2)
 URL: https://github.com/sbalci/ClinicoPathJamoviModule/,
-        https://github.com/sbalci/meddecision/,
-        https://sbalci.github.io/ClinicoPathJamoviModule/,
+        https://github.com/sbalci/meddecide/,
+        https://www.serdarbalci.com/ClinicoPathJamoviModule/,
         https://www.serdarbalci.com/meddecide/
 BugReports: https://github.com/sbalci/ClinicoPathJamoviModule/issues/
 Depends: R (>= 4.1.0)
 Imports: boot, caret, cutpointr, DescTools, dplyr, e1071, epiR, forcats,
-        ggplot2, ggraph, glmnet, glue, grDevices, graphics, grid, gridExtra, htmlTable,
-        htmltools, igraph, irr, irrCAC, jmvcore, kappaSize, knitr, lme4, lmerTest,
-        magrittr, MASS, Matrix, poLCA, pROC, psych, R6, RColorBrewer,
-        reshape2, rlang, scales, stats, tibble, tidyr, tools, utils, vcd, withr
+        ggplot2, ggraph, glmnet, glue, graphics, grDevices, grid, gridExtra,
+        htmlTable, htmltools, igraph, irr, irrCAC, jmvcore, kappaSize, knitr,
+        lme4, lmerTest, magrittr, MASS, Matrix, poLCA, pROC, psych, R6,
+        RColorBrewer, reshape2, rlang, scales, stats, tibble, tidyr, tools,
+        utils, vcd, withr
 Suggests: testthat
 Encoding: UTF-8
 LazyData: true
