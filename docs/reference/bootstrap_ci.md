@@ -2,13 +2,9 @@
 
 Bootstrap confidence intervals for diagnostic metrics
 
-Bootstrap confidence intervals for diagnostic metrics
-
 ## Usage
 
 ``` r
-bootstrap_ci(data, metric, R = 1000)
-
 bootstrap_ci(data, metric, R = 1000)
 ```
 
@@ -27,7 +23,5 @@ bootstrap_ci(data, metric, R = 1000)
   Number of bootstrap iterations
 
 ## Value
-
-List containing point estimate and confidence intervals
 
 List containing point estimate and confidence intervals

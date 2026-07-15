@@ -767,5 +767,5 @@ effectively.
 
 ------------------------------------------------------------------------
 
-*This vignette was generated using meddecide version 0.0.5 on
-2026-07-10.*
+*This vignette was generated using meddecide version 1.0.0 on
+2026-07-15.*

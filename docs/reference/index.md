@@ -25,7 +25,7 @@
 - [`calculateEVPI()`](https://www.serdarbalci.com/meddecide/reference/calculateEVPI.md)
   : Calculate Expected Value of Perfect Information (EVPI)
 - [`calculate_auc()`](https://www.serdarbalci.com/meddecide/reference/calculate_auc.md)
-  : Calculate AUC from sensitivity and specificity
+  : Approximate AUC from sensitivity and specificity
 - [`calculate_nlr()`](https://www.serdarbalci.com/meddecide/reference/calculate_nlr.md)
   : Calculate negative likelihood ratio
 - [`calculate_npv()`](https://www.serdarbalci.com/meddecide/reference/calculate_npv.md)
@@ -35,9 +35,9 @@
 - [`calculate_ppv()`](https://www.serdarbalci.com/meddecide/reference/calculate_ppv.md)
   : Calculate positive predictive value (PPV)
 - [`calculate_sensitivity()`](https://www.serdarbalci.com/meddecide/reference/calculate_sensitivity.md)
-  : Calculate diagnostic sensitivity
+  : Calculate test sensitivity
 - [`calculate_specificity()`](https://www.serdarbalci.com/meddecide/reference/calculate_specificity.md)
-  : Calculate diagnostic specificity
+  : Calculate test specificity
 - [`cancer_data`](https://www.serdarbalci.com/meddecide/reference/cancer_data.md)
   : Cancer diagnostic dataset
 - [`cardiac_data`](https://www.serdarbalci.com/meddecide/reference/cardiac_data.md)

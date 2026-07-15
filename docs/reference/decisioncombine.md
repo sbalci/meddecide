@@ -15,7 +15,7 @@ decisioncombine(
   goldPositive,
   test1,
   test1Positive,
-  test2,
+  test2 = NULL,
   test2Positive,
   test3 = NULL,
   test3Positive,
@@ -92,7 +92,8 @@ decisioncombine(
 
 - showDecisionTree:
 
-  Boolean to display decision tree visualization.
+  Boolean to display the decision-space (sensitivity vs specificity)
+  scatter plot.
 
 - showRecommendation:
 
@@ -104,11 +105,13 @@ decisioncombine(
 
 - filterStatistic:
 
-  Character indicating which statistic to display (default: all).
+  Character indicating which statistic to display in the plots (default:
+  all).
 
 - filterPattern:
 
-  Character indicating which pattern type to display (default: all).
+  Character indicating which pattern type to display in the plots
+  (default: all).
 
 ## Value
 
@@ -129,8 +132,9 @@ A results object containing:
 | `results$barPlot` |  |  |  |  | Grouped bar chart comparing sensitivity, specificity, PPV, NPV, and accuracy across test combinations |
 | `results$heatmapPlot` |  |  |  |  | Color-coded heatmap showing all diagnostic metrics for each test pattern |
 | `results$forestPlot` |  |  |  |  | Forest plot displaying 95 percent confidence intervals for key diagnostic metrics |
-| `results$decisionTreePlot` |  |  |  |  | Hierarchical decision tree showing test patterns with performance-based recommendations |
+| `results$decisionTreePlot` |  |  |  |  | Decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J |
 | `results$recommendationTable` |  |  |  |  | Recommended optimal test combination pattern based on Youden index and clinical performance metrics |
+| `results$addedPattern` |  |  |  |  | an output |
 | `results$notices` |  |  |  |  | a html |
 
 Tables can be converted to data frames with `asDF` or

@@ -25,7 +25,7 @@ sequentialtests(
   show_explanation = FALSE,
   show_formulas = FALSE,
   show_cost_analysis = FALSE,
-  show_nomogram = FALSE
+  show_plots = FALSE
 )
 ```
 
@@ -94,7 +94,7 @@ sequentialtests(
 
   .
 
-- show_nomogram:
+- show_plots:
 
   .
 

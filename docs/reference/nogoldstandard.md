@@ -26,7 +26,8 @@ nogoldstandard(
   bootstrap = FALSE,
   nboot = 1000,
   alpha = 0.05,
-  verbose = FALSE
+  verbose = FALSE,
+  seed = 0
 )
 ```
 
@@ -100,6 +101,13 @@ nogoldstandard(
 - verbose:
 
   Show detailed progress messages during bootstrap analysis.
+
+- seed:
+
+  Base random seed for the reproducible latent-class multi-start search.
+  Each start is offset from this base, so changing it shifts the whole
+  reproducible sequence; the default (0) reproduces the previous
+  behaviour.
 
 ## Value
 

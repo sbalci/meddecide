@@ -57,6 +57,7 @@ A results object containing:
 
 |                        |     |     |     |     |                |
 |------------------------|-----|-----|-----|-----|----------------|
+| `results$notices`      |     |     |     |     | a html         |
 | `results$text1`        |     |     |     |     | a preformatted |
 | `results$text_summary` |     |     |     |     | a preformatted |
 | `results$text2`        |     |     |     |     | a preformatted |

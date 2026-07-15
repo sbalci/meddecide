@@ -1,16 +1,10 @@
-# Calculate diagnostic sensitivity
-
-Utility functions for basic diagnostic test statistics.
+# Calculate test sensitivity
 
 Calculates sensitivity (true positive rate) from confusion matrix values
 
 ## Usage
 
 ``` r
-calculate_sensitivity(tp, fn)
-
-calculate_sensitivity(tp, fn)
-
 calculate_sensitivity(tp, fn)
 ```
 
@@ -25,9 +19,5 @@ calculate_sensitivity(tp, fn)
   Number of false negatives
 
 ## Value
-
-Sensitivity as a proportion
-
-Numeric sensitivity value or `NA` when inputs are not valid.
 
 Numeric sensitivity value or NA when inputs are not valid

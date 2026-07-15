@@ -26,7 +26,7 @@ ClinicoPath jamovi Module, offering dual functionality:
   analyses without coding
 
 See full documentation at
-<https://sbalci.github.io/ClinicoPathJamoviModule/>
+<https://www.serdarbalci.com/ClinicoPathJamoviModule/>
 
 [![CRAN
 Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
@@ -57,7 +57,7 @@ Analysis](https://img.shields.io/badge/Feature-ROC%20Analysis-purple.svg)](https
 Statistics](https://img.shields.io/badge/Feature-Kappa%20Statistics-orange.svg)](https://github.com/sbalci/meddecide)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3997188.svg)](https://doi.org/10.5281/zenodo.3997188)
-[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://sbalci.github.io/ClinicoPathJamoviModule/)
+[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://www.serdarbalci.com/ClinicoPathJamoviModule/)
 [![Clinical
 Research](https://img.shields.io/badge/Domain-Clinical%20Research-darkblue.svg)](https://github.com/sbalci/meddecide)
 
@@ -297,7 +297,7 @@ project:
 - [`calculateEVPI()`](https://www.serdarbalci.com/meddecide/reference/calculateEVPI.md)
   : Calculate Expected Value of Perfect Information (EVPI)
 - [`calculate_auc()`](https://www.serdarbalci.com/meddecide/reference/calculate_auc.md)
-  : Calculate AUC from sensitivity and specificity
+  : Approximate AUC from sensitivity and specificity
 - [`calculate_nlr()`](https://www.serdarbalci.com/meddecide/reference/calculate_nlr.md)
   : Calculate negative likelihood ratio
 - [`calculate_npv()`](https://www.serdarbalci.com/meddecide/reference/calculate_npv.md)
@@ -307,9 +307,9 @@ project:
 - [`calculate_ppv()`](https://www.serdarbalci.com/meddecide/reference/calculate_ppv.md)
   : Calculate positive predictive value (PPV)
 - [`calculate_sensitivity()`](https://www.serdarbalci.com/meddecide/reference/calculate_sensitivity.md)
-  : Calculate diagnostic sensitivity
+  : Calculate test sensitivity
 - [`calculate_specificity()`](https://www.serdarbalci.com/meddecide/reference/calculate_specificity.md)
-  : Calculate diagnostic specificity
+  : Calculate test specificity
 - [`cancer_data`](https://www.serdarbalci.com/meddecide/reference/cancer_data.md)
   : Cancer diagnostic dataset
 - [`cardiac_data`](https://www.serdarbalci.com/meddecide/reference/cardiac_data.md)
