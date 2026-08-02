@@ -1,3 +1,29 @@
+# meddecide 1.0.2 (2026-08-02)
+
+## Fixed
+
+- **`decision` crashed whenever "Disease Absent Level" or "Test Negative Level" was left unset.**
+  `dplyr::case_when()` evaluates every branch regardless of which one matches, so the unreachable
+  `test == <negative level>` comparison still ran with the level `NULL`, produced a zero-length
+  condition, and aborted the analysis with `Can't recycle ... size 0`. Both levels now use
+  `NA_character_` as the "unset" sentinel, which compares to a full-length, never-matching
+  condition. Behaviour with the levels *set* is unchanged: an explicitly chosen negative level
+  still restricts the analysis to those two levels and drops rows with any other level.
+- **Test and gold-standard variables were required arguments of the R function.** An option with
+  no default in its jamovi definition compiles to a bare parameter, so calling the analysis from
+  R without it failed with `argument "X" is missing, with no default` before the analysis's own
+  validation could produce a usable message. Now defaulting to `NULL`: `agreement` (`vars`),
+  `decision` (`gold`, `newtest`), `decisioncombine` (`gold`, `test1`), `decisioncompare`
+  (`gold`, `test1`, `test2`) and `nogoldstandard` (`test2`). Behaviour in the jamovi GUI is
+  unchanged; no statistical method was altered.
+
+## Added
+
+- **Automated GitHub release (`.github/workflows/release.yaml`).** A push to the default branch
+  touching `DESCRIPTION` or `jamovi/0000.yaml` cross-checks the two version strings, refuses to
+  proceed if they disagree, and — if the tag does not already exist — tags `v<version>` and
+  publishes a release whose notes are the matching section of this file.
+
 # meddecide 0.0.47 (2026-07-05)
 
 ## Bug Fixes

@@ -54,6 +54,7 @@ nogoldstandardOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Cl
             private$..test2 <- jmvcore::OptionVariable$new(
                 "test2",
                 test2,
+                default=NULL,
                 suggested=list(
                     "nominal"),
                 permitted=list(
@@ -523,7 +524,7 @@ nogoldstandardBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             super$initialize(
                 package = "meddecide",
                 name = "nogoldstandard",
-                version = c(1,0,1),
+                version = c(1,0,2),
                 options = options,
                 results = nogoldstandardResults$new(options=options),
                 data = data,
@@ -593,7 +594,7 @@ nogoldstandard <- function(
     clinicalPreset = "none",
     test1,
     test1Positive,
-    test2,
+    test2 = NULL,
     test2Positive,
     test3 = NULL,
     test3Positive,
