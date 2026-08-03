@@ -1,6 +1,27 @@
-# meddecide 1.0.2 (2026-08-02)
+# meddecide 1.0.2 (2026-08-03)
 
 ## Fixed
+
+- **Three analyses named the wrong confidence-interval method.** `epiR::epi.tests()` — the source
+  of the sensitivity, specificity and predictive-value intervals in `decision`,
+  `decisioncalculator` and `decisioncompare` — defaults to `method = "exact"`, which is the
+  Clopper-Pearson interval, not Wilson. On a 2×2 of 67/56/38/79 the two differ in the third
+  decimal (sensitivity 0.5385–0.7296 exact against 0.5428–0.7236 Wilson). The footnotes in
+  `decision` and `decisioncompare` said "Wilson score method" and now name Clopper-Pearson. **No
+  interval changed** — only the label was wrong. `decisioncombine` was checked and left alone: its
+  own `.calcWilsonCI()` genuinely is Wilson and genuinely populates the CI table it describes, so
+  its labelling was already correct.
+- **`decisioncompare` advertised likelihood-ratio confidence intervals it never computes.** The
+  per-test table is filtered to a row set that excludes `lr.pos`/`lr.neg`, and the LRP/LRN columns
+  carry no lower/upper bounds — so no likelihood-ratio interval is rendered anywhere in that
+  analysis. The Assumptions panel now states that likelihood ratios are point estimates only, and
+  describes the intervals that *are* shown: Clopper-Pearson for the proportions, the user's chosen
+  method (Wilson by default) for Overall Percent Agreement, and Wald for paired differences.
+- **`decisioncalculator` overstated the reach of its continuity correction.** The notice said the
+  Haldane-Anscombe 0.5 correction was applied to "likelihood ratios, diagnostic odds ratio, and
+  confidence intervals". It is applied to the point estimates only — `epi.tests()` is fed the raw
+  table — so the intervals are uncorrected and may be undefined for those statistics when a cell
+  is zero. The notice now says which is which.
 
 - **`decision` crashed whenever "Disease Absent Level" or "Test Negative Level" was left unset.**
   `dplyr::case_when()` evaluates every branch regardless of which one matches, so the unreachable
