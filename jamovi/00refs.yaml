@@ -1,5 +1,13 @@
 ---
 refs:
+    dplyr:
+        type: 'software'
+        author: Hadley Wickham
+        year: 2023
+        title: "dplyr: A Grammar of Data Manipulation"
+        publisher: '[R package version 1.1.4]. Retrieved from https://CRAN.R-project.org/package=dplyr'
+        url: https://CRAN.R-project.org/package=dplyr
+
     ggplot2:
         type: 'software'
         author: Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., & RStudio
@@ -7,6 +15,14 @@ refs:
         title: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
         publisher: '[R package]. Retrieved from https://CRAN.R-project.org/package=ggplot2'
         url: https://CRAN.R-project.org/package=ggplot2
+
+    survival:
+        type: 'software'
+        author: Terry M Therneau
+        year: 2026
+        title: "survival: Survival Analysis"
+        publisher: '[R package version 3.8-6]. Retrieved from https://CRAN.R-project.org/package=survival'
+        url: https://CRAN.R-project.org/package=survival
 
     epiR:
         type: 'software'
@@ -116,6 +132,14 @@ refs:
         publisher: '[R package version 4.1-10]. Retrieved from https://CRAN.R-project.org/package=glmnet'
         url: https://CRAN.R-project.org/package=glmnet
 
+    tidyr:
+        type: 'software'
+        author: "Hadley Wickham, Davis Vaughan, Maximilian Girlich"
+        year: 2025
+        title: "tidyr: R package"
+        publisher: '[R package]. Retrieved from https://CRAN.R-project.org/package=tidyr'
+        url: https://CRAN.R-project.org/package=tidyr
+
     pROC:
         type: 'software'
         author: Xavier Robin
@@ -123,6 +147,14 @@ refs:
         title: "pROC: Display and Analyze ROC Curves"
         publisher: '[R package version 1.19.0.1]. Retrieved from https://CRAN.R-project.org/package=pROC'
         url: https://CRAN.R-project.org/package=pROC
+
+    rms:
+        type: 'software'
+        author: Frank E Harrell Jr
+        year: 2023
+        title: "rms: Regression Modeling Strategies"
+        publisher: '[R package]. Retrieved from https://CRAN.R-project.org/package=rms'
+        url: https://CRAN.R-project.org/package=rms
 
     poLCA:
         type: 'software'
@@ -266,4 +298,18 @@ refs:
         year: 2020
         title: "Statistical Rethinking: A Bayesian Course with Examples in R and Stan (2nd ed.)"
         publisher: "CRC Press"
+    DecisionCurve:
+        type: 'software'
+        author:
+        year:
+        title: "DecisionCurve: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=DecisionCurve"
+        url: https://CRAN.R-project.org/package=DecisionCurve
+    rmda:
+        type: 'software'
+        author:
+        year:
+        title: "rmda: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=rmda"
+        url: https://CRAN.R-project.org/package=rmda
 ...

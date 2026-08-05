@@ -1,7 +1,7 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.0.3
+version: 1.0.4
 jms: '1.0'
 authors:
   - Serdar Balci
@@ -220,6 +220,111 @@ analyses:
       classification problems. Ideal for diagnostic pathology studies that build
 
       classifiers (e.g., tumor type A vs B) with automatic feature selection.
+  - title: Clinical Scoring System Generator
+    name: clinicalscore
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecideT
+    menuSubgroup: Prediction Models
+    menuTitle: Clinical Score Builder
+    menuSubtitle: Build, validate, and compare integer-point scoring systems
+    description: |
+      Builds clinical integer-point scoring systems from regression models using
+      three published methods (Sullivan/D'Agostino, Schneeweiss, Beta10).
+      Supports logistic, Cox, linear, and ordinal regression with automatic
+      variable categorization, calibration, discrimination, nomogram generation,
+      and TRIPOD compliance.
+  - title: Decision Curve Analysis
+    name: decisioncurve
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecideT
+    menuSubgroup: Decision Curve Analysis
+    menuTitle: Decision Curve Analysis
+    menuSubtitle: Clinical Utility, Net Benefit, Threshold Analysis
+    description: >
+      Decision Curve Analysis for evaluating the clinical utility of prediction
+      models and diagnostic tests. Calculates net benefit across threshold
+      probabilities to determine if using a model provides more benefit than
+      default strategies.
+  - title: Latent Biomarker Construct + Cox Regression
+    name: latentbiomarker
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecideT
+    menuSubgroup: Biomarkers
+    menuTitle: Latent Biomarker Construct + Cox Regression
+    menuSubtitle: Reflective CFA on biomarker indicators + survival
+    description: >-
+      Estimate a single reflective latent biomarker construct from 3+ indicators
+      and relate it to a right-censored survival outcome via Cox regression.
+      Auto-selects MLR (continuous) or WLSMV (ordinal/binary) estimation.
+      Refuses inappropriate inputs with explanatory messages.
+  - title: Leave-One-Center-Out Cross-Validation
+    name: leaveonecenterout
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecideT
+    menuSubgroup: Prediction Models
+    menuTitle: Leave-One-Center-Out CV
+    menuSubtitle: Internal-external validation for multi-institutional models
+    description: |
+      Performs leave-one-center-out cross-validation for multi-institutional
+      prediction models. Trains on all-but-one center and evaluates on the
+      held-out center, repeating for each center. Provides internal-external
+      validation recommended by TRIPOD and Debray et al. (2015).
+  - title: Magee Equation - Oncotype DX Estimator
+    name: mageeequation
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecideT
+    menuSubgroup: Prediction Models
+    menuTitle: Magee Equation (Oncotype DX)
+    menuSubtitle: Estimate Oncotype DX Recurrence Score from pathology variables
+    description: |
+      Implements the Magee Equations (Klein et al. 2013, PMID: 23503643) for
+      estimating Oncotype DX Recurrence Score from standard pathology variables.
+      Provides all four published equations (Original + 3 new) with risk
+      category classification and concordance analysis.
+  - title: Misclassification Bias Sensitivity Analysis
+    name: misclassificationbias
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecideT
+    menuSubgroup: Decision Support
+    menuTitle: Misclassification Bias
+    menuSubtitle: Assess impact of classification errors on effect estimates
+    description: |
+      Assesses how non-differential or differential misclassification of an
+      exposure or outcome affects observed effect estimates (OR, RR, RD).
+      Essential for studies relying on subjective classification methods
+      (e.g., Ki-67 visual estimation, morphologic grading, IHC scoring).
+  - title: Time-Dependent Decision Curve Analysis
+    name: timedependentdca
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecideT
+    menuSubgroup: Decision Curve Analysis
+    menuTitle: Time-Dependent DCA
+    menuSubtitle: Net benefit for survival and longitudinal data
+    description: >
+      Perform time-dependent Decision Curve Analysis (DCA) for survival data 
+
+      using the dcurves package. This method extends standard DCA to evaluate
+
+      the clinical utility of prognostic models with time-to-event outcomes.
+
+      It calculates net benefit at specific time points, accounting for
+
+      censoring and time-varying risk predictions. It's essential for evaluating
+
+      survival models, recurrence prediction models, and other longitudinal
+      outcomes. 
+
+      Common applications: Serial biopsy surveillance, recurrence vs death
+      prediction,
+
+      time-varying treatment decisions.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv
