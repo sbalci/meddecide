@@ -20,3 +20,8 @@ vignettes/
 ^CITATION\.cff$
 ^data/.*\.omv$
 ^inst/extdata/.*\.omv$
+^temp$
+^temp/
+^temp.*$
+^backups$
+^backups/
