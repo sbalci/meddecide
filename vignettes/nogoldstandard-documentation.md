@@ -26,7 +26,7 @@
 | `test4Positive` | LevelSelector | - | `test4Positive` | - | Enabled when `test4` selected |
 | `test5` | VariablesListBox | Test 5 (Optional) | `test5` | Optional, maxItemCount: 1 | Always visible |
 | `test5Positive` | LevelSelector | - | `test5Positive` | - | Enabled when `test5` selected |
-| `method` | ComboBox | Analysis Method | `method` | Default: all_positive | Always visible |
+| `method` | ComboBox | Analysis Method | `method` | Default: latent_class | Always visible |
 | `bootstrap` | CheckBox | - | `bootstrap` | Default: false | Always visible |
 | `nboot` | TextBox | Samples | `nboot` | Default: 1000, Range: 100-10000 | Enabled when `bootstrap` true |
 | `alpha` | TextBox | Alpha | `alpha` | Default: 0.05, Range: 0.01-0.20 | Enabled when `bootstrap` true |
@@ -55,10 +55,17 @@
 
 ### Analysis Method Options
 
-- **method** / List / Default: all_positive
+- **method** / List / Default: latent_class
   - Description: Statistical approach for analysis without gold standard
   - Options: latent_class, bayesian, composite, all_positive, any_positive
   - Downstream Effects: Controls analysis path in `.run()`, affects method-specific implementations
+  - Changed in 1.0.4: the default was `all_positive`, which defines the reference standard as
+    "every test positive" and therefore fixes sensitivity and NPV at 1 for every test on every
+    dataset - it cannot estimate accuracy, which is the point of the analysis. `latent_class` is
+    the only method here that estimates sensitivity and specificity without building the reference
+    standard out of the tests themselves. It requires three or more tests, so a two-test analysis
+    that previously returned (meaningless) results now refuses and explains why. Pass
+    `method = "all_positive"` explicitly to restore the old behaviour.
 
 ### Bootstrap Options
 

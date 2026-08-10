@@ -1,5 +1,11 @@
 # Decision Panel: Clinician Guide
 
+> **Not yet released in meddecide.** This article documents `decisionpanel`, which is not part of the
+> meddecide 1.0.4 release. It is documented here ahead of a future release, so the
+> options, defaults and output described below are subject to change and the analysis
+> will not appear in your jamovi menu yet. For the analyses that ship today see the
+> [meddecide articles index](https://www.serdarbalci.com/meddecide/articles/).
+
 ## Purpose
 
 Evaluate test/model utility across thresholds using net benefit (Decision Curve Analysis).

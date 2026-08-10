@@ -1,5 +1,11 @@
 # Screening Calculator: Clinician Guide
 
+> **Not yet released in meddecide.** This article documents `screeningcalculator`, which is not part of the
+> meddecide 1.0.4 release. It is documented here ahead of a future release, so the
+> options, defaults and output described below are subject to change and the analysis
+> will not appear in your jamovi menu yet. For the analyses that ship today see the
+> [meddecide articles index](https://www.serdarbalci.com/meddecide/articles/).
+
 ## Purpose
 Estimate PPV/NPV from sensitivity, specificity, and prevalence; explore sequential testing.
 

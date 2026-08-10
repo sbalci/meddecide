@@ -43,34 +43,40 @@ importFrom(Matrix,nearPD)
 importFrom(R6,R6Class)
 importFrom(caret,confusionMatrix)
 importFrom(cutpointr,cutpointr)
-importFrom(dplyr,"%>%")
-importFrom(dplyr,case_when)
-importFrom(dplyr,count)
-importFrom(dplyr,group_by)
-importFrom(dplyr,mutate)
+importFrom(dplyr,
+  "%>%",
+  case_when,
+  count,
+  group_by,
+  mutate
+)
 importFrom(epiR,epi.tests)
-importFrom(forcats,as_factor)
-importFrom(forcats,fct_relevel)
-importFrom(ggplot2,aes)
-importFrom(ggplot2,annotate)
-importFrom(ggplot2,element_blank)
-importFrom(ggplot2,element_text)
-importFrom(ggplot2,geom_line)
-importFrom(ggplot2,geom_point)
-importFrom(ggplot2,geom_text)
-importFrom(ggplot2,geom_vline)
-importFrom(ggplot2,ggplot)
-importFrom(ggplot2,ggtitle)
-importFrom(ggplot2,labs)
-importFrom(ggplot2,margin)
-importFrom(ggplot2,rel)
-importFrom(ggplot2,scale_color_manual)
-importFrom(ggplot2,scale_x_continuous)
-importFrom(ggplot2,scale_y_continuous)
-importFrom(ggplot2,sec_axis)
-importFrom(ggplot2,theme)
-importFrom(ggplot2,theme_bw)
-importFrom(ggplot2,theme_void)
+importFrom(forcats,
+  as_factor,
+  fct_relevel
+)
+importFrom(ggplot2,
+  aes,
+  annotate,
+  element_blank,
+  element_text,
+  geom_line,
+  geom_point,
+  geom_text,
+  geom_vline,
+  ggplot,
+  ggtitle,
+  labs,
+  margin,
+  rel,
+  scale_color_manual,
+  scale_x_continuous,
+  scale_y_continuous,
+  sec_axis,
+  theme,
+  theme_bw,
+  theme_void
+)
 importFrom(ggraph,ggraph)
 importFrom(glmnet,cv.glmnet)
 importFrom(glue,glue)
@@ -80,9 +86,11 @@ importFrom(grid,arrow)
 importFrom(gridExtra,grid.arrange)
 importFrom(htmlTable,htmlTable)
 importFrom(igraph,graph_from_data_frame)
-importFrom(irr,agree)
-importFrom(irr,kappa2)
-importFrom(irr,kappam.fleiss)
+importFrom(irr,
+  agree,
+  kappa2,
+  kappam.fleiss
+)
 importFrom(irrCAC,gwet.ac1.raw)
 importFrom(kappaSize,PowerBinary)
 importFrom(knitr,kable)
@@ -92,24 +100,30 @@ importFrom(magrittr,"%>%")
 importFrom(pROC,roc)
 importFrom(poLCA,poLCA)
 importFrom(psych,cohen.kappa)
-importFrom(rlang,"%||%")
-importFrom(rlang,.data)
+importFrom(rlang,
+  "%||%",
+  .data
+)
 importFrom(scales,percent_format)
-importFrom(stats,binom.test)
-importFrom(stats,binomial)
-importFrom(stats,cov)
-importFrom(stats,glm)
-importFrom(stats,line)
-importFrom(stats,predict)
-importFrom(stats,qbeta)
-importFrom(stats,qnorm)
-importFrom(stats,quantile)
-importFrom(stats,var)
+importFrom(stats,
+  binom.test,
+  binomial,
+  cov,
+  glm,
+  line,
+  predict,
+  qbeta,
+  qnorm,
+  quantile,
+  var
+)
 importFrom(tibble,rownames_to_column)
 importFrom(tidyr,pivot_longer)
 importFrom(tools,toTitleCase)
-importFrom(utils,data)
-importFrom(utils,sessionInfo)
-importFrom(utils,tail)
+importFrom(utils,
+  data,
+  sessionInfo,
+  tail
+)
 importFrom(vcd,Kappa)
 importFrom(withr,local_seed)

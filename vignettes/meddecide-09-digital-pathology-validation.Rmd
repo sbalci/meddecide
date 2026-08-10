@@ -22,6 +22,33 @@ knitr::opts_chunk$set(
 )
 ```
 
+> **These `agreement()` code examples predate the current API.** The R chunks below were written
+> against an older argument list (`rater1_var`, `agreement_type`, `pathologyContext`,
+> `diagnosticStyleAnalysis`, and similar) that no longer exists, so copying them will produce
+> `unused argument` errors. The narrative, the statistics and the clinical guidance remain
+> correct; only the argument names are stale. All chunks are set to `eval = FALSE`, so nothing
+> here is executed when the article is built. A rewrite against the current API is planned.
+>
+> For the real argument list see `?agreement`. A working call looks like this — verified against
+> meddecide 1.0.4, three pathologists rating 60 cases on a three-level scale:
+>
+> ```r
+> agreement(
+>   data  = ratings,
+>   vars  = c("Pathologist_1", "Pathologist_2", "Pathologist_3"),
+>   wght  = "unweighted",       # or "squared" / "equal" for an ordinal scale
+>   exct  = FALSE,
+>   kripp = TRUE,               # Krippendorff's alpha
+>   krippMethod = "nominal",
+>   confLevel = 0.95,
+>   agreementHeatmap = TRUE,
+>   pairwiseKappa = TRUE
+> )
+> #> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001
+> #> Krippendorff's Alpha (nominal)                                   alpha 0.735
+> ```
+
+
 ## Introduction
 
 This vignette demonstrates the enhanced agreement analysis and new modality comparison functions in meddecide, specifically designed for digital pathology validation studies. These tools were developed based on the methodology from Xiao et al. (2025), who studied inter-observer variability in manual scoring of HER2 immunohistochemical stains on glass slides versus paired digital images.
