@@ -100,10 +100,7 @@ importFrom(magrittr,"%>%")
 importFrom(pROC,roc)
 importFrom(poLCA,poLCA)
 importFrom(psych,cohen.kappa)
-importFrom(rlang,
-  "%||%",
-  .data
-)
+importFrom(rlang,.data)
 importFrom(scales,percent_format)
 importFrom(stats,
   binom.test,
