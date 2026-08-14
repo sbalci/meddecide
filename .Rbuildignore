@@ -25,3 +25,4 @@ vignettes/
 ^temp.*$
 ^backups$
 ^backups/
+^data/.*\.csv$
