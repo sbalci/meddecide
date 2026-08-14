@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.52</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,6 +72,7 @@
     <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
     <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
     <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
     <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
     <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
@@ -113,7 +114,7 @@
       <h1>Digital Pathology Validation: Agreement Analysis and Modality Comparison</h1>
                         <h4 data-toc-skip class="author">meddecide</h4>
             
-            <h4 data-toc-skip class="date">2026-07-15</h4>
+            <h4 data-toc-skip class="date">2026-08-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/meddecide-09-digital-pathology-validation.Rmd" class="external-link"><code>vignettes/meddecide-09-digital-pathology-validation.Rmd</code></a></small>
       <div class="d-none name"><code>meddecide-09-digital-pathology-validation.Rmd</code></div>
@@ -121,6 +122,35 @@
 
     
     
+<blockquote>
+<p><strong>These <code><a href="../reference/agreement.html">agreement()</a></code> code examples predate the
+current API.</strong> The R chunks below were written against an older
+argument list (<code>rater1_var</code>, <code>agreement_type</code>,
+<code>pathologyContext</code>, <code>diagnosticStyleAnalysis</code>, and
+similar) that no longer exists, so copying them will produce
+<code>unused argument</code> errors. The narrative, the statistics and
+the clinical guidance remain correct; only the argument names are stale.
+All chunks are set to <code>eval = FALSE</code>, so nothing here is
+executed when the article is built. A rewrite against the current API is
+planned.</p>
+<p>For the real argument list see <code><a href="../reference/agreement.html">?agreement</a></code>. A working
+call looks like this — verified against meddecide 1.0.4, three
+pathologists rating 60 cases on a three-level scale:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
+<span>  data  <span class="op">=</span> <span class="va">ratings</span>,</span>
+<span>  vars  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pathologist_1"</span>, <span class="st">"Pathologist_2"</span>, <span class="st">"Pathologist_3"</span><span class="op">)</span>,</span>
+<span>  wght  <span class="op">=</span> <span class="st">"unweighted"</span>,       <span class="co"># or "squared" / "equal" for an ordinal scale</span></span>
+<span>  exct  <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  kripp <span class="op">=</span> <span class="cn">TRUE</span>,               <span class="co"># Krippendorff's alpha</span></span>
+<span>  krippMethod <span class="op">=</span> <span class="st">"nominal"</span>,</span>
+<span>  confLevel <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  agreementHeatmap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  pairwiseKappa <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p &lt;.001</span></span>
+<span><span class="co">#&gt; Krippendorff's Alpha (nominal)                                   alpha 0.735</span></span></code></pre></div>
+</blockquote>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
@@ -160,7 +190,7 @@ modalities) - Low-end category focus for HER2-low/null distinction</p>
 </h2>
 <p>This example replicates the inter-observer agreement analysis from
 the original study.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the HER2 agreement dataset</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sbalci/ClinicoPathJamoviModule/" class="external-link">meddecide</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"her2_agreement_data"</span><span class="op">)</span></span>
@@ -196,7 +226,7 @@ agreement: κ = 0.82-0.87 (near perfect) - Perfect concordance (3/3):
 </h2>
 <p>This example demonstrates the core finding of the original study -
 comparing agreement between glass slides and digital images.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the modality comparison dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"her2_modality_comparison"</span><span class="op">)</span></span>
 <span></span>
@@ -227,7 +257,7 @@ staining levels</p>
 </h2>
 <p>Focus analysis on the clinically critical distinction between
 HER2-null and HER2-ultralow categories.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Specialized low-end analysis</span></span>
 <span><span class="va">low_end_result</span> <span class="op">&lt;-</span> <span class="fu">meddecide</span><span class="fu">::</span><span class="fu">modalitycomparison</span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">her2_modality_comparison</span>,</span>
@@ -251,7 +281,7 @@ Ultralow</strong>: Potential ADC therapy eligibility - <strong>Ultralow
 </h2>
 <p>Demonstrate how consensus scoring helps with difficult diagnostic
 cases.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load general pathology consensus data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"pathology_consensus_study"</span><span class="op">)</span></span>
 <span></span>
@@ -349,7 +379,7 @@ additional sampling</li>
 </h3>
 <p>For ordered categories (HER2 scores), weighted kappa accounts for
 degree of disagreement:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Weighted kappa analysis</span></span>
 <span><span class="va">weighted_result</span> <span class="op">&lt;-</span> <span class="fu">meddecide</span><span class="fu">::</span><span class="fu">modalitycomparison</span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">her2_modality_comparison</span>,</span>
@@ -364,7 +394,7 @@ degree of disagreement:</p>
 </h3>
 <p>Systematic evaluation of whether one modality consistently scores
 higher:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Statistical test for systematic bias</span></span>
 <span><span class="va">bias_test</span> <span class="op">&lt;-</span> <span class="fu">meddecide</span><span class="fu">::</span><span class="fu">modalitycomparison</span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">her2_modality_comparison</span>,</span>
@@ -455,7 +485,7 @@ validation capabilities in meddecide v2.0+</em></p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

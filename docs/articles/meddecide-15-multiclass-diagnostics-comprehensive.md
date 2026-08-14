@@ -16,7 +16,7 @@ evaluation is essential for medical AI applications.
 ### Per-Class Metrics
 
 - Sensitivity (Recall) for each class
-- Specificity for each class  
+- Specificity for each class\
 - Positive Predictive Value (PPV)
 - Negative Predictive Value (NPV)
 - F1 Score
@@ -83,7 +83,7 @@ The function implements established diagnostic evaluation methods:
 ### AUC Values
 
 - 0.9-1.0: Excellent discrimination
-- 0.8-0.9: Good discrimination  
+- 0.8-0.9: Good discrimination\
 - 0.7-0.8: Fair discrimination
 - 0.6-0.7: Poor discrimination
 - 0.5-0.6: Fail (no discriminative ability)
@@ -116,5 +116,5 @@ Cohen, J. (1960). A coefficient of agreement for nominal scales
 
 - **Enhanced ROC Analysis**: For detailed ROC curve analysis with DeLong
   tests
-- **Decision Analysis**: For clinical decision-making applications  
+- **Decision Analysis**: For clinical decision-making applications\
 - **Cross-table Analysis**: For basic 2×2 table diagnostics

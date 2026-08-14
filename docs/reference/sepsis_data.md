@@ -1,6 +1,7 @@
-# Sepsis diagnostic dataset
+# sepsis_data: example dataset for the meddecide module
 
-Simulated sepsis biomarker data for diagnostic test evaluation.
+Example dataset distributed with the meddecide jamovi module for
+demonstration and testing.
 
 ## Usage
 
@@ -10,8 +11,44 @@ sepsis_data
 
 ## Format
 
-A data frame with 500 rows and 10 columns.
+A data frame with 500 rows and 10 variables:
 
-## Source
+- patient_id:
 
-Simulated data for package examples.
+  integer variable
+
+- age:
+
+  numeric variable
+
+- sex:
+
+  factor variable
+
+- procalcitonin:
+
+  numeric variable
+
+- crp:
+
+  numeric variable
+
+- wbc:
+
+  numeric variable
+
+- lactate:
+
+  numeric variable
+
+- sofa_score:
+
+  integer variable
+
+- admission_source:
+
+  factor variable
+
+- sepsis_status:
+
+  factor variable

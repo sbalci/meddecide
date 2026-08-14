@@ -13,7 +13,7 @@ classifiers (e.g., tumor type A vs B) with automatic feature selection."></head>
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.52</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,6 +63,7 @@ classifiers (e.g., tumor type A vs B) with automatic feature selection."></head>
     <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
     <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
     <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
     <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
     <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
@@ -126,6 +127,8 @@ classifiers (e.g., tumor type A vs B) with automatic feature selection.</p>
 <span>  scoringSystem <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  scoringMethod <span class="op">=</span> <span class="st">"schneeweiss"</span>,</span>
 <span>  scoringMaxPoints <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  scoreCutMethod <span class="op">=</span> <span class="st">"median"</span>,</span>
+<span>  scoreCutPoints <span class="op">=</span> <span class="st">""</span>,</span>
 <span>  scoreLookupTable <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  showSummary <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  showExplanations <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -238,6 +241,22 @@ coefficient scaling and ignores this value; the Schneeweiss method scales
 by the smallest coefficient and also ignores it.</p></dd>
 
 
+<dt id="arg-scorecutmethod">scoreCutMethod<a class="anchor" aria-label="anchor" href="#arg-scorecutmethod"></a></dt>
+<dd><p>How continuous predictors are dichotomized when
+awarding points. A predictor earns its points when the patient's value
+exceeds this cut. 'median' (the default) splits at the sample median, which
+is data-derived and will differ in another cohort. 'manual' lets you enter
+established clinical thresholds, which is what makes a score portable.</p></dd>
+
+
+<dt id="arg-scorecutpoints">scoreCutPoints<a class="anchor" aria-label="anchor" href="#arg-scorecutpoints"></a></dt>
+<dd><p>Cut points on the ORIGINAL measurement scale, as
+'variable=value' pairs separated by commas or semicolons, e.g. 'ki67=20,
+age=65'. Used when Cut Point method is 'manual'. Any continuous predictor
+not listed falls back to the sample median, and that fallback is reported.
+Binary predictors ignore this - they score when present.</p></dd>
+
+
 <dt id="arg-scorelookuptable">scoreLookupTable<a class="anchor" aria-label="anchor" href="#arg-scorelookuptable"></a></dt>
 <dd><p>Generate a lookup table mapping each possible total
 score to predicted probability of the positive class.</p></dd>
@@ -288,7 +307,7 @@ selected variables.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

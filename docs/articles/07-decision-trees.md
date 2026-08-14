@@ -208,7 +208,7 @@ head(heart_disease_markov_data, 5)
 **HEALTH STATES (Markov States):**
 
 1.  Asymptomatic Heart Disease
-2.  Symptomatic Heart Disease  
+2.  Symptomatic Heart Disease\
 3.  Heart Failure
 4.  Death (Absorbing State)
 

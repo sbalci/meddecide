@@ -11,9 +11,9 @@ pattern combination.
 ``` r
 decisioncombine(
   data,
-  gold,
+  gold = NULL,
   goldPositive,
-  test1,
+  test1 = NULL,
   test1Positive,
   test2 = NULL,
   test2Positive,
@@ -120,7 +120,8 @@ A results object containing:
 |  |  |  |  |  |  |
 |----|----|----|----|----|----|
 | `results$combinationTable` |  |  |  |  | Counts and diagnostic performance metrics for each test combination pattern and clinical strategy, including prevalence, balanced accuracy, Youden's J, likelihood ratios, and diagnostic odds ratios |
-| `results$combinationTableCI` |  |  |  |  | 95 percent confidence intervals for diagnostic metrics. Wilson intervals are used for proportions, and log-scale intervals for likelihood ratios and diagnostic odds ratios. |
+| `results$combinationTableCI` |  |  |  |  | Wilson score 95 percent confidence intervals for sensitivity, specificity, PPV, NPV and accuracy, shown as percentages to match the combination table above. Likelihood ratios and the diagnostic odds ratio are unbounded ratios rather than proportions, so they appear in their own table below. |
+| `results$combinationTableCIRatios` |  |  |  |  | Log-scale 95 percent confidence intervals for LR+, LR- and the diagnostic odds ratio. These are ratios on an unbounded scale, so they are reported separately from the proportions above rather than sharing a column with them. |
 | `results$goldFreqTable` |  |  |  |  | Frequency distribution of the gold standard (reference) test showing counts and percentages for each level |
 | `results$crossTabTable` |  |  |  |  | Cross-tabulation showing how test combination patterns align with gold standard results |
 | `results$individualTest1$test1Contingency` |  |  |  |  | a table |

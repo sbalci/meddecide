@@ -72,7 +72,7 @@ Sample size requirements depend on:
 
 1.  **Effect Size (κ₁ - κ₀)**: Larger differences require smaller
     samples
-2.  **Desired Power**: Higher power requires larger samples  
+2.  **Desired Power**: Higher power requires larger samples\
 3.  **Significance Level (α)**: Stricter levels require larger samples
 4.  **Number of Categories**: More categories generally require larger
     samples

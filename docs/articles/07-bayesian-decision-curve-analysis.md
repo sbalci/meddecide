@@ -1,5 +1,13 @@
 # Bayesian Decision Curve Analysis - Advanced Clinical Decision Making
 
+> **Not yet released in meddecide.** This article documents `bayesdca`
+> and `decisiongraph`, which is not part of the meddecide 1.0.4 release.
+> It is documented here ahead of a future release, so the options,
+> defaults and output described below are subject to change and the
+> analysis will not appear in your jamovi menu yet. For the analyses
+> that ship today see the [meddecide articles
+> index](https://www.serdarbalci.com/meddecide/articles/).
+
 ## Introduction to Decision Curve Analysis
 
 Decision Curve Analysis (DCA) is a powerful method for evaluating the
@@ -63,7 +71,7 @@ clinician would recommend intervention:
 - **Low thresholds (1-5%)**: Used when missing disease is very harmful
   (e.g., cancer screening)
 - **Medium thresholds (10-20%)**: Balanced scenarios (e.g., cardiac
-  interventions)  
+  interventions)\
 - **High thresholds (30-50%)**: Used when intervention has significant
   risks (e.g., major surgery)
 

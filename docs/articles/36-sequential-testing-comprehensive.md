@@ -474,7 +474,7 @@ kable(correlation_scenarios, caption = "Test Correlation Effects")
 
 Choose the appropriate testing strategy: - **Test all positives from
 first test** (Serial positive) - **Test all negatives from first test**
-(Serial negative)  
+(Serial negative)\
 - **Test all subjects with both tests** (Parallel)
 
 #### 3. **Display Options**
@@ -767,5 +767,5 @@ effectively.
 
 ------------------------------------------------------------------------
 
-*This vignette was generated using meddecide version 1.0.0 on
-2026-07-15.*
+*This vignette was generated using meddecide version 1.0.52 on
+2026-08-14.*

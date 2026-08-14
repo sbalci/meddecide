@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.52</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,6 +72,7 @@
     <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
     <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
     <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
     <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
     <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
@@ -240,8 +241,13 @@ repeated calculations</li>
 </h4>
 <ul>
 <li>
-<strong>kappa0</strong>: Null hypothesis value of kappa (expected
-agreement level)</li>
+<strong>kappa0</strong>: the kappa you <em>anticipate observing</em>
+— the preliminary value the interval will be centred on. It is
+<strong>not</strong> a null hypothesis value. (The
+<code>kappaSizePower</code> analysis also takes an argument called
+<code>kappa0</code>, but there it <em>is</em> the null being tested. The
+two analyses answer different questions, so the same number means
+different things in each.)</li>
 <li>
 <strong>kappaL</strong>: Lower bound of desired confidence
 interval</li>
@@ -249,9 +255,19 @@ interval</li>
 <strong>kappaU</strong>: Upper bound of desired confidence
 interval</li>
 </ul>
-<p>The confidence interval [kappaL, kappaU] defines the precision
-requirement: - Narrow intervals (e.g., ±0.05) require larger sample
-sizes - Wide intervals (e.g., ±0.20) require smaller sample sizes</p>
+<p>The interval [kappaL, kappaU] defines the precision requirement, but
+note <strong>which</strong> part of it drives the answer: the
+calculation sizes on whichever limit lies <em>nearer</em>
+<code>kappa0</code>, not on the full width. With
+<code>kappa0 = 0.60</code> and <code>kappaL = 0.55</code>, the required
+sample size is 1,625 for every <code>kappaU</code> from 0.65 all the way
+to 0.99 — widening the upper limit buys nothing. In one-sided mode
+<code>kappaU</code> is not used at all.</p>
+<p>Because the requirement grows as roughly one over the square of that
+distance, tightening the nearer limit is expensive: distances of 0.20,
+0.05 and 0.01 need about 118, 1,625 and 38,203 subjects respectively. An
+interval narrow enough to be unsizeable is refused with an explanation
+rather than left to compute indefinitely.</p>
 </div>
 <div class="section level4">
 <h4 id="study-design-parameters">Study Design Parameters<a class="anchor" aria-label="anchor" href="#study-design-parameters"></a>
@@ -261,13 +277,16 @@ sizes - Wide intervals (e.g., ±0.20) require smaller sample sizes</p>
 <strong>outcome</strong>: Number of outcome categories (2, 3, 4, or
 5)</li>
 <li>
-<strong>raters</strong>: Number of raters/observers (2, 3, 4, or
-5)</li>
+<strong>raters</strong>: Number of raters/observers (2, 3, 4, 5, or
+6)</li>
 <li>
 <strong>props</strong>: Proportions for each outcome category (must
-sum to 1.0)</li>
+sum to 1.0). Commas, semicolons, pipes or spaces all work as separators.
+Use a decimal <em>point</em> — <code>0,20 0,80</code> is reported as a
+decimal separator problem rather than silently misread.</li>
 <li>
-<strong>alpha</strong>: Significance level (typically 0.05)</li>
+<strong>alpha</strong>: Significance level (typically 0.05;
+permitted range 0.001 to 0.20)</li>
 </ul>
 </div>
 </div>
@@ -1588,7 +1607,7 @@ studies</li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

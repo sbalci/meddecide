@@ -1,6 +1,7 @@
-# Cancer diagnostic dataset
+# cancer_data: example dataset for the meddecide module
 
-Simulated cancer data with multiple biomarkers for ROC analysis.
+Example dataset distributed with the meddecide jamovi module for
+demonstration and testing.
 
 ## Usage
 
@@ -10,8 +11,48 @@ cancer_data
 
 ## Format
 
-A data frame with 500 rows and 11 columns.
+A data frame with 500 rows and 11 variables:
 
-## Source
+- patient_id:
 
-Simulated data for package examples.
+  integer variable
+
+- age:
+
+  numeric variable
+
+- age_group:
+
+  factor variable
+
+- sex:
+
+  factor variable
+
+- ca125:
+
+  numeric variable
+
+- he4:
+
+  numeric variable
+
+- cea:
+
+  numeric variable
+
+- ca199:
+
+  numeric variable
+
+- roma_score:
+
+  numeric variable
+
+- cancer_status:
+
+  factor variable
+
+- stage:
+
+  factor variable

@@ -1,4 +1,4 @@
-# breast_data: example dataset for the meddecide module
+# lymphoma_diagnostic_styles: example dataset for the meddecide module
 
 Example dataset distributed with the meddecide jamovi module for
 demonstration and testing.
@@ -6,7 +6,7 @@ demonstration and testing.
 ## Usage
 
 ``` r
-breast_data
+lymphoma_diagnostic_styles
 ```
 
 ## Format

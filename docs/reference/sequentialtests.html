@@ -4,12 +4,14 @@ sequence,
 comparing three different testing strategies: serial positive
 (confirmation),
 serial negative (exclusion), and parallel testing. Provides comprehensive
-analysis including population flow, cost implications, and Fagan nomograms."><meta property="og:description" content="Analyzes how diagnostic accuracy changes when applying two tests in
+analysis including population flow, cost implications, and diagnostic
+plots."><meta property="og:description" content="Analyzes how diagnostic accuracy changes when applying two tests in
 sequence,
 comparing three different testing strategies: serial positive
 (confirmation),
 serial negative (exclusion), and parallel testing. Provides comprehensive
-analysis including population flow, cost implications, and Fagan nomograms."></head><body>
+analysis including population flow, cost implications, and diagnostic
+plots."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -17,7 +19,7 @@ analysis including population flow, cost implications, and Fagan nomograms."></h
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.52</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,6 +69,7 @@ analysis including population flow, cost implications, and Fagan nomograms."></h
     <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
     <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
     <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
     <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
     <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
@@ -107,7 +110,8 @@ sequence,
 comparing three different testing strategies: serial positive
 (confirmation),
 serial negative (exclusion), and parallel testing. Provides comprehensive
-analysis including population flow, cost implications, and Fagan nomograms.</p>
+analysis including population flow, cost implications, and diagnostic
+plots.</p>
     </div>
 
     <div class="section level2">
@@ -138,8 +142,12 @@ analysis including population flow, cost implications, and Fagan nomograms.</p>
 
 <dl><dt id="arg-preset">preset<a class="anchor" aria-label="anchor" href="#arg-preset"></a></dt>
 <dd><p>Select a clinical preset or use custom values. Presets load
-evidence-based test parameters and optimal strategies from medical
-literature.</p></dd>
+illustrative test parameters for demonstration and teaching only. They are
+rounded, approximate figures chosen to show how each strategy behaves; they
+are NOT validated clinical parameters, are not drawn from any specific
+published study, and the prevalence will not match your population. Replace
+them with values from your own setting before drawing any clinical
+conclusion.</p></dd>
 
 
 <dt id="arg-test-name">test1_name<a class="anchor" aria-label="anchor" href="#arg-test-name"></a></dt>
@@ -228,7 +236,7 @@ counts. Does not affect probabilities.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

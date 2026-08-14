@@ -83,6 +83,8 @@
   Testing](https://www.serdarbalci.com/meddecide/articles/30-decisiontree-analysis-vignette-legacy.md):
 - [Precision Oncology: Biomarker-Guided Treatment Selection and Outcome
   Analysis](https://www.serdarbalci.com/meddecide/articles/31-precision-oncology-biomarkers-legacy.md):
+- [Advanced Decision Tree Analysis in
+  ClinicoPath](https://www.serdarbalci.com/meddecide/articles/31-treeadvanced-comprehensive.md):
 - [meddecide: Medical Decision Making in
   R](https://www.serdarbalci.com/meddecide/articles/32-vignettes-legacy.md):
 - [Use meddecide in

@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.52</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,6 +72,7 @@
     <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
     <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
     <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
     <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
     <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
@@ -114,7 +115,7 @@
                         <h4 data-toc-skip class="author">ClinicoPath
 Team</h4>
             
-            <h4 data-toc-skip class="date">2026-07-15</h4>
+            <h4 data-toc-skip class="date">2026-08-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/meddecide-01-oncodatasets-examples.Rmd" class="external-link"><code>vignettes/meddecide-01-oncodatasets-examples.Rmd</code></a></small>
       <div class="d-none name"><code>meddecide-01-oncodatasets-examples.Rmd</code></div>
@@ -150,6 +151,16 @@ cancer outcomes.</p>
 <span></span>
 <span><span class="co"># Dataset overview</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">PSAProstateCancer_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    97 obs. of  9 variables:</span></span>
+<span><span class="co">#&gt;  $ lcavol : num  -0.58 -0.994 -0.511 -1.204 0.751 ...</span></span>
+<span><span class="co">#&gt;  $ lweight: num  2.77 3.32 2.69 3.28 3.43 ...</span></span>
+<span><span class="co">#&gt;  $ age    : int  50 58 74 58 62 50 64 58 47 63 ...</span></span>
+<span><span class="co">#&gt;  $ lbph   : num  -1.39 -1.39 -1.39 -1.39 -1.39 ...</span></span>
+<span><span class="co">#&gt;  $ svi    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ lcp    : num  -1.39 -1.39 -1.39 -1.39 -1.39 ...</span></span>
+<span><span class="co">#&gt;  $ gleason: int  6 6 7 6 6 6 6 6 6 6 ...</span></span>
+<span><span class="co">#&gt;  $ pgg45  : int  0 0 20 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ lpsa   : num  -0.431 -0.163 -0.163 -0.163 0.372 ...</span></span>
 <span></span>
 <span><span class="co"># Create binary outcome for high-grade cancer</span></span>
 <span><span class="va">PSAProstateCancer_df</span><span class="op">$</span><span class="va">high_grade</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">PSAProstateCancer_df</span><span class="op">$</span><span class="va">gleason</span> <span class="op">&gt;=</span> <span class="fl">7</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
@@ -158,7 +169,12 @@ cancer outcomes.</p>
 <span><span class="va">PSAProstateCancer_df</span><span class="op">$</span><span class="va">psa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">PSAProstateCancer_df</span><span class="op">$</span><span class="va">lpsa</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">PSAProstateCancer_df</span><span class="op">$</span><span class="va">psa</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">PSAProstateCancer_df</span><span class="op">$</span><span class="va">high_grade</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">#&gt;    0.65    5.65   13.35   23.74   21.25  265.85</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">PSAProstateCancer_df</span><span class="op">$</span><span class="va">high_grade</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  0  1 </span></span>
+<span><span class="co">#&gt; 35 62</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="roc-analysis-for-psa">ROC Analysis for PSA<a class="anchor" aria-label="anchor" href="#roc-analysis-for-psa"></a>
 </h3>
@@ -212,6 +228,12 @@ probabilities:</p>
 <span></span>
 <span><span class="co"># Dataset structure (diagnostic accuracy studies)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">CA19PancreaticCancer_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Classes 'data.table' and 'data.frame':   22 obs. of  5 variables:</span></span>
+<span><span class="co">#&gt;  $ study: chr  "Andriulli" "Benini" "DelFavero" "Gupta" ...</span></span>
+<span><span class="co">#&gt;  $ TP   : int  64 23 18 13 74 27 20 11 19 32 ...</span></span>
+<span><span class="co">#&gt;  $ FP   : int  148 7 20 64 23 27 39 5 49 10 ...</span></span>
+<span><span class="co">#&gt;  $ FN   : int  12 2 6 4 21 13 4 3 6 5 ...</span></span>
+<span><span class="co">#&gt;  $ TN   : int  294 118 29 589 83 265 103 43 172 29 ...</span></span>
 <span></span>
 <span><span class="co"># Calculate sensitivity and specificity for each study</span></span>
 <span><span class="va">CA19PancreaticCancer_df</span> <span class="op">&lt;-</span> <span class="va">CA19PancreaticCancer_df</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
@@ -222,6 +244,46 @@ probabilities:</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">CA19PancreaticCancer_df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"study"</span>, <span class="st">"sensitivity"</span>, <span class="st">"specificity"</span>, <span class="st">"total_n"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">study</th>
+<th align="right">sensitivity</th>
+<th align="right">specificity</th>
+<th align="right">total_n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Andriulli</td>
+<td align="right">0.8421053</td>
+<td align="right">0.6651584</td>
+<td align="right">518</td>
+</tr>
+<tr class="even">
+<td align="left">Benini</td>
+<td align="right">0.9200000</td>
+<td align="right">0.9440000</td>
+<td align="right">150</td>
+</tr>
+<tr class="odd">
+<td align="left">DelFavero</td>
+<td align="right">0.7500000</td>
+<td align="right">0.5918367</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="left">Gupta</td>
+<td align="right">0.7647059</td>
+<td align="right">0.9019908</td>
+<td align="right">670</td>
+</tr>
+<tr class="odd">
+<td align="left">Haglund</td>
+<td align="right">0.7789474</td>
+<td align="right">0.7830189</td>
+<td align="right">201</td>
+</tr>
+</tbody>
+</table>
 <div class="section level3">
 <h3 id="meta-analysis-of-diagnostic-accuracy">Meta-analysis of Diagnostic Accuracy<a class="anchor" aria-label="anchor" href="#meta-analysis-of-diagnostic-accuracy"></a>
 </h3>
@@ -258,11 +320,31 @@ probabilities:</p>
 <span></span>
 <span><span class="co"># Dataset overview</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">LungNodulesDetected_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Classes 'data.table' and 'data.frame':   999 obs. of  8 variables:</span></span>
+<span><span class="co">#&gt;  $ sex          : Factor w/ 2 levels "F","M": 2 2 1 1 2 2 2 1 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ age          : num  84 53.9 75.5 66.1 47.8 38.6 77.9 77.5 46.6 67.8 ...</span></span>
+<span><span class="co">#&gt;  $ num.annotated: num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ location     : Factor w/ 6 levels "Lingular Segment",..: 5 1 5 5 4 1 2 3 3 6 ...</span></span>
+<span><span class="co">#&gt;  $ spiculate    : Factor w/ 2 levels "No","Yes": 1 1 1 1 1 1 1 2 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ smoke.status : Factor w/ 5 levels "current","exsmoke",..: 4 4 4 4 4 4 4 4 4 4 ...</span></span>
+<span><span class="co">#&gt;  $ diameter     : num  5 7 8 5 5 6 7 11 5 10 ...</span></span>
+<span><span class="co">#&gt;  $ malignant    : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  - attr(*, ".internal.selfref")=&lt;pointer: 0x0&gt;</span></span>
 <span></span>
 <span><span class="co"># Malignancy by nodule characteristics</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">LungNodulesDetected_df</span><span class="op">$</span><span class="va">spiculate</span>, <span class="va">LungNodulesDetected_df</span><span class="op">$</span><span class="va">malignant</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      </span></span>
+<span><span class="co">#&gt;         0   1</span></span>
+<span><span class="co">#&gt;   No  665  85</span></span>
+<span><span class="co">#&gt;   Yes 110 139</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">LungNodulesDetected_df</span><span class="op">$</span><span class="va">diameter</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span>, </span>
-<span>      <span class="va">LungNodulesDetected_df</span><span class="op">$</span><span class="va">malignant</span><span class="op">)</span></span></code></pre></div>
+<span>      <span class="va">LungNodulesDetected_df</span><span class="op">$</span><span class="va">malignant</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           </span></span>
+<span><span class="co">#&gt;              0   1</span></span>
+<span><span class="co">#&gt;   (0,5]    166   7</span></span>
+<span><span class="co">#&gt;   (5,10]   506  70</span></span>
+<span><span class="co">#&gt;   (10,20]  103 147</span></span>
+<span><span class="co">#&gt;   (20,Inf]   0   0</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="decision-tree-for-nodule-management">Decision Tree for Nodule Management<a class="anchor" aria-label="anchor" href="#decision-tree-for-nodule-management"></a>
 </h3>
@@ -532,7 +614,7 @@ validate decision support tools using real-world cancer data.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

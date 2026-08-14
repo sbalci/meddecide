@@ -22,7 +22,7 @@ Where: - $`p_o`$ = observed proportional agreement - $`p_e`$ = expected
 agreement by chance
 
 **Kappa Interpretation Guidelines:** - κ \< 0.00: Poor agreement (worse
-than chance) - κ = 0.00-0.20: Slight agreement  
+than chance) - κ = 0.00-0.20: Slight agreement\
 - κ = 0.21-0.40: Fair agreement - κ = 0.41-0.60: Moderate agreement - κ
 = 0.61-0.80: Substantial agreement - κ = 0.81-1.00: Almost perfect
 agreement
@@ -99,20 +99,38 @@ if (!requireNamespace("kappaSize", quietly = TRUE)) {
 
 #### Kappa Parameters
 
-- **kappa0**: Null hypothesis value of kappa (expected agreement level)
+- **kappa0**: the kappa you *anticipate observing* — the preliminary
+  value the interval will be centred on. It is **not** a null hypothesis
+  value. (The `kappaSizePower` analysis also takes an argument called
+  `kappa0`, but there it *is* the null being tested. The two analyses
+  answer different questions, so the same number means different things
+  in each.)
 - **kappaL**: Lower bound of desired confidence interval
 - **kappaU**: Upper bound of desired confidence interval
 
-The confidence interval \[kappaL, kappaU\] defines the precision
-requirement: - Narrow intervals (e.g., ±0.05) require larger sample
-sizes - Wide intervals (e.g., ±0.20) require smaller sample sizes
+The interval \[kappaL, kappaU\] defines the precision requirement, but
+note **which** part of it drives the answer: the calculation sizes on
+whichever limit lies *nearer* `kappa0`, not on the full width. With
+`kappa0 = 0.60` and `kappaL = 0.55`, the required sample size is 1,625
+for every `kappaU` from 0.65 all the way to 0.99 — widening the upper
+limit buys nothing. In one-sided mode `kappaU` is not used at all.
+
+Because the requirement grows as roughly one over the square of that
+distance, tightening the nearer limit is expensive: distances of 0.20,
+0.05 and 0.01 need about 118, 1,625 and 38,203 subjects respectively. An
+interval narrow enough to be unsizeable is refused with an explanation
+rather than left to compute indefinitely.
 
 #### Study Design Parameters
 
 - **outcome**: Number of outcome categories (2, 3, 4, or 5)
-- **raters**: Number of raters/observers (2, 3, 4, or 5)
-- **props**: Proportions for each outcome category (must sum to 1.0)
-- **alpha**: Significance level (typically 0.05)
+- **raters**: Number of raters/observers (2, 3, 4, 5, or 6)
+- **props**: Proportions for each outcome category (must sum to 1.0).
+  Commas, semicolons, pipes or spaces all work as separators. Use a
+  decimal *point* — `0,20 0,80` is reported as a decimal separator
+  problem rather than silently misread.
+- **alpha**: Significance level (typically 0.05; permitted range 0.001
+  to 0.20)
 
 ### Parameter Relationships
 

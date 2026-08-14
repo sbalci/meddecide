@@ -9,7 +9,7 @@ whether pathologists cluster based on:
 
 - **Training institution** (e.g., different medical schools create
   distinct diagnostic approaches)
-- **Experience level** (junior vs. senior pathologists)  
+- **Experience level** (junior vs. senior pathologists)\
 - **Geographic region** (regional diagnostic preferences)
 - **Specialty focus** (generalist vs. specialist approaches)
 - **Institutional culture** (academic vs. community practice patterns)
@@ -102,7 +102,7 @@ in original study)
 
 **Expected Results:** - **3 distinct diagnostic styles** identified -
 Style 1: Conservative (tend to undercall EIN) - Style 2: Moderate
-(balanced approach)  
+(balanced approach)\
 - Style 3: Aggressive (more likely to diagnose EIN)
 
 #### Step 3: Include Rater Characteristics
@@ -320,7 +320,7 @@ diagnostic approach - Identification of mentor-specific diagnostic
 
 **Analysis Approach:** 1. Identify expert pathologists representing
 different diagnostic styles 2. Select cases that demonstrate
-style-specific disagreements  
+style-specific disagreements\
 3. Focus consensus discussion on style-distinguishing features 4.
 Develop guidelines that address common style biases
 
@@ -549,7 +549,7 @@ identifying diagnostic “schools” or “styles,” this analysis offers
 insights into:
 
 - **Quality improvement opportunities**
-- **Training program effectiveness**  
+- **Training program effectiveness**\
 - **Consensus development priorities**
 - **Expert consultation strategies**
 

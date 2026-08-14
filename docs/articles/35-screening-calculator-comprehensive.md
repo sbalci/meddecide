@@ -1,5 +1,13 @@
 # Screening Test Calculator: A Comprehensive Guide
 
+> **Not yet released in meddecide.** This article documents
+> `screeningcalculator`, which is not part of the meddecide 1.0.4
+> release. It is documented here ahead of a future release, so the
+> options, defaults and output described below are subject to change and
+> the analysis will not appear in your jamovi menu yet. For the analyses
+> that ship today see the [meddecide articles
+> index](https://www.serdarbalci.com/meddecide/articles/).
+
 ## Introduction
 
 The Screening Test Calculator is a powerful tool for understanding how
@@ -108,7 +116,7 @@ kable(covid_data[, c("setting", "prevalence", "ppv", "npv", "interpretation")],
 1.  **Community screening** (2% prevalence): Only 26% of positive tests
     are true positives
 2.  **Outbreak testing** (15% prevalence): 78% of positive tests are
-    true positives  
+    true positives\
 3.  **Symptomatic patients** (40% prevalence): 94% of positive tests are
     true positives
 
@@ -274,7 +282,7 @@ kable(common_tests,
   Calculator**
 - Enter test characteristics:
   - **Sensitivity**: True positive rate (0.01 to 0.99)
-  - **Specificity**: True negative rate (0.01 to 0.99)  
+  - **Specificity**: True negative rate (0.01 to 0.99)\
   - **Prevalence**: Disease prevalence in your population (0.001 to
     0.999)
 
@@ -321,7 +329,7 @@ nomogram - Available for single tests and sequential testing scenarios
 #### Clinical Context
 
 Built-in examples from: - **COVID-19 testing** in different
-populations - **Cancer screening** across age groups  
+populations - **Cancer screening** across age groups\
 - **Cardiac stress testing** in various risk categories - **Infectious
 disease screening** and confirmation - **Biomarker testing** for cancer
 detection
@@ -419,7 +427,7 @@ kable(conversion_examples, caption = "Probability to Odds Conversion Examples")
 
 **Scenario**: 55-year-old man with elevated PSA (4.5 ng/mL)
 
-**Test Characteristics**: - Sensitivity: 70% - Specificity: 80%  
+**Test Characteristics**: - Sensitivity: 70% - Specificity: 80%\
 - Prevalence in this age group: 3%
 
 **Calculations**:
@@ -475,7 +483,7 @@ cat("\nRecommendation: Consider repeat testing or quarantine period\n")
 #### 2. **Using Wrong Prevalence**
 
 - **Population prevalence**: For screening scenarios
-- **Clinical prevalence**: For symptomatic patients  
+- **Clinical prevalence**: For symptomatic patients\
 - **Post-test prevalence**: For sequential testing
 
 #### 3. **Misinterpreting Results**
@@ -508,7 +516,7 @@ Extreme prevalence values - Clinically implausible combinations
 #### Mathematical Edge Cases
 
 - Perfect specificity → Infinite positive LR
-- Zero specificity → Infinite negative LR  
+- Zero specificity → Infinite negative LR\
 - Extreme prevalence → Undefined predictive values
 
 ## Best Practices and Recommendations
@@ -606,7 +614,7 @@ real-world medical decision-making.
 1.  **Prevalence is crucial**: Test performance depends heavily on
     disease prevalence
 2.  **Sequential testing is powerful**: Multiple tests can dramatically
-    improve diagnostic accuracy  
+    improve diagnostic accuracy\
 3.  **Context matters**: Screening vs. diagnostic contexts require
     different interpretation
 4.  **Clinical judgment remains essential**: Tests inform but don’t
@@ -622,6 +630,6 @@ real-world medical decision-making.
 ### Further Reading
 
 - Bayes’ theorem in medical diagnosis
-- Diagnostic test evaluation methodology  
+- Diagnostic test evaluation methodology\
 - Clinical decision-making under uncertainty
 - Evidence-based medicine principles

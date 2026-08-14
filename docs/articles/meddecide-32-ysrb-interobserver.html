@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.52</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,6 +72,7 @@
     <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
     <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
     <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
     <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
     <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
@@ -115,7 +116,7 @@
 and per-category bottlenecks (YSRB-style cytology)</h3>
                         <h4 data-toc-skip class="author">ClinicoPath</h4>
             
-            <h4 data-toc-skip class="date">2026-07-15</h4>
+            <h4 data-toc-skip class="date">2026-08-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/meddecide-32-ysrb-interobserver.Rmd" class="external-link"><code>vignettes/meddecide-32-ysrb-interobserver.Rmd</code></a></small>
       <div class="d-none name"><code>meddecide-32-ysrb-interobserver.Rmd</code></div>
@@ -257,18 +258,20 @@ pairwise tests.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">irrtable</span><span class="op">$</span><span class="va">asDF</span>, digits <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>             caption <span class="op">=</span> <span class="st">"Overall agreement (Fleiss' kappa across all four readers)"</span><span class="op">)</span></span></code></pre></div>
-<table style="width:100%;" class="table">
+<table class="table">
 <caption>Overall agreement (Fleiss’ kappa across all four
 readers)</caption>
 <colgroup>
-<col width="5%">
-<col width="38%">
-<col width="12%">
-<col width="10%">
-<col width="12%">
-<col width="8%">
-<col width="7%">
 <col width="4%">
+<col width="30%">
+<col width="10%">
+<col width="7%">
+<col width="10%">
+<col width="6%">
+<col width="10%">
+<col width="10%">
+<col width="5%">
+<col width="3%">
 </colgroup>
 <thead><tr class="header">
 <th align="left"></th>
@@ -277,6 +280,8 @@ readers)</caption>
 <th align="right">raters</th>
 <th align="right">peragree</th>
 <th align="right">kappa</th>
+<th align="right">ci_lower</th>
+<th align="right">ci_upper</th>
 <th align="right">z</th>
 <th align="right">p</th>
 </tr></thead>
@@ -287,6 +292,8 @@ readers)</caption>
 <td align="right">4</td>
 <td align="right">60.606</td>
 <td align="right">0.571</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 <td align="right">22.8</td>
 <td align="right">0</td>
 </tr></tbody>
@@ -523,14 +530,14 @@ do not read six raw p-values as if they were one.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## R version 4.6.0 (2026-04-24)</span></span>
 <span><span class="co">## Platform: aarch64-apple-darwin23</span></span>
-<span><span class="co">## Running under: macOS Tahoe 26.5.1</span></span>
+<span><span class="co">## Running under: macOS Tahoe 26.5.2</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Matrix products: default</span></span>
 <span><span class="co">## BLAS:   /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRblas.0.dylib </span></span>
 <span><span class="co">## LAPACK: /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## locale:</span></span>
-<span><span class="co">## [1] C.UTF-8/C.UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
+<span><span class="co">## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## time zone: Europe/Istanbul</span></span>
 <span><span class="co">## tzcode source: internal</span></span>
@@ -539,63 +546,63 @@ do not read six raw p-values as if they were one.</p>
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] meddecide_1.0.0</span></span>
+<span><span class="co">## [1] meddecide_1.0.52</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
 <span><span class="co">##   [1] splines_4.6.0           tibble_3.3.1            BiasedUrn_2.0.12       </span></span>
-<span><span class="co">##   [4] cellranger_1.1.0        jmvcore_2.7.35          polyclip_1.10-7        </span></span>
+<span><span class="co">##   [4] cellranger_1.1.0        jmvcore_2.7.38          polyclip_1.10-7        </span></span>
 <span><span class="co">##   [7] hardhat_1.4.3           pROC_1.19.0.1           rpart_4.1.27           </span></span>
-<span><span class="co">##  [10] lifecycle_1.0.5         Rdpack_2.6.6            sf_1.1-1               </span></span>
-<span><span class="co">##  [13] globals_0.19.1          lattice_0.22-9          MASS_7.3-65            </span></span>
-<span><span class="co">##  [16] vcd_1.4-13              backports_1.5.1         magrittr_2.0.5         </span></span>
+<span><span class="co">##  [10] lifecycle_1.0.5         Rdpack_2.6.6            sf_1.1-2               </span></span>
+<span><span class="co">##  [13] globals_0.19.1          lattice_0.22-9          MASS_7.3-66            </span></span>
+<span><span class="co">##  [16] vcd_1.4-14              backports_1.5.1         magrittr_2.0.5         </span></span>
 <span><span class="co">##  [19] sass_0.4.10             rmarkdown_2.31          jquerylib_0.1.4        </span></span>
 <span><span class="co">##  [22] yaml_2.3.12             otel_0.2.0              poLCA_1.6.0.2          </span></span>
-<span><span class="co">##  [25] zip_3.0.0               askpass_1.2.1           gld_2.6.8              </span></span>
+<span><span class="co">##  [25] zip_3.0.2               askpass_1.2.1           gld_2.6.8              </span></span>
 <span><span class="co">##  [28] DBI_1.3.0               minqa_1.2.8             RColorBrewer_1.1-3     </span></span>
 <span><span class="co">##  [31] lubridate_1.9.5         expm_1.0-0              purrr_1.2.2            </span></span>
-<span><span class="co">##  [34] ggraph_2.2.2            nnet_7.3-20             tweenr_2.0.3           </span></span>
+<span><span class="co">##  [34] ggraph_2.2.2            nnet_7.3-21             tweenr_2.0.3           </span></span>
 <span><span class="co">##  [37] ipred_0.9-15            gdtools_0.5.1           lava_1.9.2             </span></span>
 <span><span class="co">##  [40] ggrepel_0.9.8           listenv_1.0.0           units_1.0-1            </span></span>
-<span><span class="co">##  [43] parallelly_1.48.0       pkgdown_2.2.0           codetools_0.2-20       </span></span>
+<span><span class="co">##  [43] parallelly_1.48.0       pkgdown_2.2.1           codetools_0.2-20       </span></span>
 <span><span class="co">##  [46] xml2_1.6.0              ggforce_0.5.0           tidyselect_1.2.1       </span></span>
-<span><span class="co">##  [49] shape_1.4.6.1           farver_2.1.2            lme4_2.0-1             </span></span>
+<span><span class="co">##  [49] shape_1.4.6.1           farver_2.1.2            lme4_2.0-6             </span></span>
 <span><span class="co">##  [52] viridis_0.6.5           stats4_4.6.0            jsonlite_2.0.0         </span></span>
 <span><span class="co">##  [55] caret_7.0-1             e1071_1.7-17            tidygraph_1.3.1        </span></span>
-<span><span class="co">##  [58] survival_3.8-6          iterators_1.0.14        systemfonts_1.3.2      </span></span>
+<span><span class="co">##  [58] survival_3.8-9          iterators_1.0.14        systemfonts_1.3.2      </span></span>
 <span><span class="co">##  [61] foreach_1.5.2           tools_4.6.0             ragg_1.5.2             </span></span>
 <span><span class="co">##  [64] DescTools_0.99.60       Rcpp_1.1.2              glue_1.8.1             </span></span>
 <span><span class="co">##  [67] mnormt_2.1.2            prodlim_2026.03.11      gridExtra_2.3.1        </span></span>
-<span><span class="co">##  [70] xfun_0.59               dplyr_1.2.1             withr_3.0.3            </span></span>
+<span><span class="co">##  [70] xfun_0.60               dplyr_1.2.1             withr_3.0.3            </span></span>
 <span><span class="co">##  [73] numDeriv_2016.8-1.1     fastmap_1.2.0           boot_1.3-32            </span></span>
 <span><span class="co">##  [76] openssl_2.4.2           digest_0.6.39           timechange_0.4.0       </span></span>
-<span><span class="co">##  [79] R6_2.6.1                colorspace_2.1-2        textshaping_1.0.5      </span></span>
+<span><span class="co">##  [79] R6_2.6.1                colorspace_2.1-3        textshaping_1.0.5      </span></span>
 <span><span class="co">##  [82] kappaSize_1.2           lpSolve_5.6.23          tidyr_1.3.2            </span></span>
 <span><span class="co">##  [85] generics_0.1.4          fontLiberation_0.1.0    data.table_1.18.4      </span></span>
-<span><span class="co">##  [88] recipes_1.3.3           class_7.3-23            graphlayouts_1.2.4     </span></span>
+<span><span class="co">##  [88] recipes_1.3.3           class_7.3-24            graphlayouts_1.2.5     </span></span>
 <span><span class="co">##  [91] httr_1.4.8              htmlwidgets_1.6.4       scatterplot3d_0.3-45   </span></span>
 <span><span class="co">##  [94] ModelMetrics_1.2.2.2    pkgconfig_2.0.3         gtable_0.3.6           </span></span>
-<span><span class="co">##  [97] epiR_2.0.94             Exact_3.3               timeDate_4052.112      </span></span>
+<span><span class="co">##  [97] epiR_2.0.96             Exact_3.3               timeDate_4052.112      </span></span>
 <span><span class="co">## [100] lmtest_0.9-40           S7_0.2.2                htmltools_0.5.9        </span></span>
 <span><span class="co">## [103] fontBitstreamVera_0.1.1 scales_1.4.0            lmom_3.3               </span></span>
 <span><span class="co">## [106] gower_1.0.2             reformulas_0.4.4        knitr_1.51             </span></span>
 <span><span class="co">## [109] rstudioapi_0.19.0       tzdb_0.5.0              reshape2_1.4.5         </span></span>
-<span><span class="co">## [112] uuid_1.2-2              checkmate_2.3.4         nlme_3.1-169           </span></span>
+<span><span class="co">## [112] uuid_1.2-2              checkmate_2.3.4         nlme_3.1-170           </span></span>
 <span><span class="co">## [115] nloptr_2.2.1            proxy_0.4-29            cachem_1.1.0           </span></span>
-<span><span class="co">## [118] zoo_1.8-15              flextable_0.10.0        stringr_1.6.0          </span></span>
+<span><span class="co">## [118] zoo_1.9-0               flextable_0.10.0        stringr_1.6.0          </span></span>
 <span><span class="co">## [121] rootSolve_1.8.2.4       KernSmooth_2.23-26      parallel_4.6.0         </span></span>
 <span><span class="co">## [124] desc_1.4.3              pillar_1.11.1           grid_4.6.0             </span></span>
 <span><span class="co">## [127] vctrs_0.7.3             htmlTable_2.5.0         evaluate_1.0.5         </span></span>
-<span><span class="co">## [130] readr_2.2.0             mvtnorm_1.4-1           cli_3.6.6              </span></span>
+<span><span class="co">## [130] readr_2.2.0             mvtnorm_1.4-2           cli_3.6.6              </span></span>
 <span><span class="co">## [133] compiler_4.6.0          rlang_1.3.0             future.apply_1.20.2    </span></span>
 <span><span class="co">## [136] classInt_0.4-11         plyr_1.8.9              forcats_1.0.1          </span></span>
-<span><span class="co">## [139] fs_2.1.0                psych_2.6.5             stringi_1.8.7          </span></span>
+<span><span class="co">## [139] fs_2.1.0                psych_2.6.5             stringi_1.8.9          </span></span>
 <span><span class="co">## [142] pander_0.6.6            viridisLite_0.4.3       lmerTest_3.2-1         </span></span>
-<span><span class="co">## [145] glmnet_5.0              fontquiver_0.2.1        Matrix_1.7-5           </span></span>
-<span><span class="co">## [148] hms_1.1.4               patchwork_1.3.2         future_1.70.0          </span></span>
+<span><span class="co">## [145] glmnet_5.0              fontquiver_0.2.1        Matrix_1.7-6           </span></span>
+<span><span class="co">## [148] hms_1.1.4               patchwork_1.3.2         future_1.75.0          </span></span>
 <span><span class="co">## [151] ggplot2_4.0.3           cutpointr_1.2.1         haven_2.5.5            </span></span>
 <span><span class="co">## [154] rbibutils_2.4.1         igraph_2.3.3            memoise_2.0.1          </span></span>
-<span><span class="co">## [157] bslib_0.11.0            irrCAC_1.4              readxl_1.5.0           </span></span>
-<span><span class="co">## [160] officer_0.7.5           irr_0.85</span></span></code></pre>
+<span><span class="co">## [157] bslib_0.12.0            irrCAC_1.4              readxl_1.5.0           </span></span>
+<span><span class="co">## [160] officer_0.7.6           irr_0.85</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -608,7 +615,7 @@ do not read six raw p-values as if they were one.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

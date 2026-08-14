@@ -1,5 +1,38 @@
 # Digital Pathology Validation: Agreement Analysis and Modality Comparison
 
+> **These
+> [`agreement()`](https://www.serdarbalci.com/meddecide/reference/agreement.md)
+> code examples predate the current API.** The R chunks below were
+> written against an older argument list (`rater1_var`,
+> `agreement_type`, `pathologyContext`, `diagnosticStyleAnalysis`, and
+> similar) that no longer exists, so copying them will produce
+> `unused argument` errors. The narrative, the statistics and the
+> clinical guidance remain correct; only the argument names are stale.
+> All chunks are set to `eval = FALSE`, so nothing here is executed when
+> the article is built. A rewrite against the current API is planned.
+>
+> For the real argument list see
+> [`?agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md).
+> A working call looks like this — verified against meddecide 1.0.4,
+> three pathologists rating 60 cases on a three-level scale:
+>
+> ``` r
+>
+> agreement(
+>   data  = ratings,
+>   vars  = c("Pathologist_1", "Pathologist_2", "Pathologist_3"),
+>   wght  = "unweighted",       # or "squared" / "equal" for an ordinal scale
+>   exct  = FALSE,
+>   kripp = TRUE,               # Krippendorff's alpha
+>   krippMethod = "nominal",
+>   confLevel = 0.95,
+>   agreementHeatmap = TRUE,
+>   pairwiseKappa = TRUE
+> )
+> #> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001
+> #> Krippendorff's Alpha (nominal)                                   alpha 0.735
+> ```
+
 ## Introduction
 
 This vignette demonstrates the enhanced agreement analysis and new
@@ -16,7 +49,7 @@ glass slides versus paired digital images.
 The `agreement` function now includes **consensus scoring
 capabilities**: - Automated consensus determination using majority rule,
 super-majority, or unanimous methods - Tie-breaking algorithms for cases
-without clear consensus  
+without clear consensus\
 - Detailed consensus statistics and case-by-case results - Support for
 pathology-specific scoring systems (HER2, tumor grading)
 
@@ -124,7 +157,7 @@ low_end_result <- meddecide::modalitycomparison(
 ```
 
 **Clinical Significance:** - **Null → Ultralow**: Potential ADC therapy
-eligibility - **Ultralow → 1+**: Confirms ADC therapy candidacy  
+eligibility - **Ultralow → 1+**: Confirms ADC therapy candidacy\
 - **1+ → 2+**: May affect treatment decisions
 
 ## Example 4: Consensus Scoring for Challenging Cases
@@ -173,7 +206,7 @@ consensus_analysis <- meddecide::agreement(
 ### Agreement Levels (Kappa Values)
 
 - **0.81-1.00**: Almost Perfect - Suitable for clinical use
-- **0.61-0.80**: Substantial - Generally acceptable, monitor closely  
+- **0.61-0.80**: Substantial - Generally acceptable, monitor closely\
 - **0.41-0.60**: Moderate - May require additional training/calibration
 - **\<=0.40**: Poor - Significant intervention needed
 

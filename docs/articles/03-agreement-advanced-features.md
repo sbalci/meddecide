@@ -1,5 +1,38 @@
 # Advanced Features in Interrater Agreement Analysis
 
+> **These
+> [`agreement()`](https://www.serdarbalci.com/meddecide/reference/agreement.md)
+> code examples predate the current API.** The R chunks below were
+> written against an older argument list (`rater1_var`,
+> `agreement_type`, `pathologyContext`, `diagnosticStyleAnalysis`, and
+> similar) that no longer exists, so copying them will produce
+> `unused argument` errors. The narrative, the statistics and the
+> clinical guidance remain correct; only the argument names are stale.
+> All chunks are set to `eval = FALSE`, so nothing here is executed when
+> the article is built. A rewrite against the current API is planned.
+>
+> For the real argument list see
+> [`?agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md).
+> A working call looks like this — verified against meddecide 1.0.4,
+> three pathologists rating 60 cases on a three-level scale:
+>
+> ``` r
+>
+> agreement(
+>   data  = ratings,
+>   vars  = c("Pathologist_1", "Pathologist_2", "Pathologist_3"),
+>   wght  = "unweighted",       # or "squared" / "equal" for an ordinal scale
+>   exct  = FALSE,
+>   kripp = TRUE,               # Krippendorff's alpha
+>   krippMethod = "nominal",
+>   confLevel = 0.95,
+>   agreementHeatmap = TRUE,
+>   pairwiseKappa = TRUE
+> )
+> #> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001
+> #> Krippendorff's Alpha (nominal)                                   alpha 0.735
+> ```
+
 ## Introduction
 
 This vignette demonstrates the advanced features of the `agreement`
@@ -403,7 +436,7 @@ insights into:
 #### Kappa Values
 
 - **\< 0.20**: Poor agreement
-- **0.21-0.40**: Fair agreement  
+- **0.21-0.40**: Fair agreement\
 - **0.41-0.60**: Moderate agreement
 - **0.61-0.80**: Substantial agreement
 - **0.81-1.00**: Almost perfect agreement
@@ -443,8 +476,7 @@ metrics ensure clinical relevance.
 Key advantages include:
 
 - **Comprehensive Analysis**: Multiple reliability measures in one tool
-- **Pathology Focus**: Specialized features for diagnostic
-  applications  
+- **Pathology Focus**: Specialized features for diagnostic applications\
 - **Style Analysis**: Understanding of diagnostic patterns and bias
 - **Quality Control**: Tools for ongoing monitoring and improvement
 - **Research Support**: Robust methods for reliability studies

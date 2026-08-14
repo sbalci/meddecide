@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.52</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,6 +72,7 @@
     <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
     <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
     <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
+    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
     <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
     <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
     <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
@@ -116,7 +117,7 @@ Clustering, Pathology Context, and Usubutun Method</h3>
                         <h4 data-toc-skip class="author">ClinicoPath
 Development Team</h4>
             
-            <h4 data-toc-skip class="date">2026-07-15</h4>
+            <h4 data-toc-skip class="date">2026-08-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/03-agreement-advanced-features.Rmd" class="external-link"><code>vignettes/03-agreement-advanced-features.Rmd</code></a></small>
       <div class="d-none name"><code>03-agreement-advanced-features.Rmd</code></div>
@@ -124,6 +125,35 @@ Development Team</h4>
 
     
     
+<blockquote>
+<p><strong>These <code><a href="../reference/agreement.html">agreement()</a></code> code examples predate the
+current API.</strong> The R chunks below were written against an older
+argument list (<code>rater1_var</code>, <code>agreement_type</code>,
+<code>pathologyContext</code>, <code>diagnosticStyleAnalysis</code>, and
+similar) that no longer exists, so copying them will produce
+<code>unused argument</code> errors. The narrative, the statistics and
+the clinical guidance remain correct; only the argument names are stale.
+All chunks are set to <code>eval = FALSE</code>, so nothing here is
+executed when the article is built. A rewrite against the current API is
+planned.</p>
+<p>For the real argument list see <code><a href="../reference/agreement.html">?agreement</a></code>. A working
+call looks like this — verified against meddecide 1.0.4, three
+pathologists rating 60 cases on a three-level scale:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
+<span>  data  <span class="op">=</span> <span class="va">ratings</span>,</span>
+<span>  vars  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pathologist_1"</span>, <span class="st">"Pathologist_2"</span>, <span class="st">"Pathologist_3"</span><span class="op">)</span>,</span>
+<span>  wght  <span class="op">=</span> <span class="st">"unweighted"</span>,       <span class="co"># or "squared" / "equal" for an ordinal scale</span></span>
+<span>  exct  <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  kripp <span class="op">=</span> <span class="cn">TRUE</span>,               <span class="co"># Krippendorff's alpha</span></span>
+<span>  krippMethod <span class="op">=</span> <span class="st">"nominal"</span>,</span>
+<span>  confLevel <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span>  agreementHeatmap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  pairwiseKappa <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p &lt;.001</span></span>
+<span><span class="co">#&gt; Krippendorff's Alpha (nominal)                                   alpha 0.735</span></span></code></pre></div>
+</blockquote>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
@@ -157,7 +187,7 @@ bias patterns</li>
 </h2>
 <p>We’ll use the <code>histopathology</code> dataset which contains
 ratings from multiple observers.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the histopathology dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">histopathology</span><span class="op">)</span></span>
 <span></span>
@@ -180,7 +210,7 @@ ratings from multiple observers.</p>
 <div class="section level3">
 <h3 id="example-1-standard-kappa-analysis">Example 1: Standard Kappa Analysis<a class="anchor" aria-label="anchor" href="#example-1-standard-kappa-analysis"></a>
 </h3>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Basic agreement analysis with Cohen's kappa (2 raters)</span></span>
 <span><span class="va">basic_agreement</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -192,7 +222,7 @@ ratings from multiple observers.</p>
 <div class="section level3">
 <h3 id="example-2-fleiss-kappa-for-multiple-raters">Example 2: Fleiss’ Kappa for Multiple Raters<a class="anchor" aria-label="anchor" href="#example-2-fleiss-kappa-for-multiple-raters"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Agreement analysis with Fleiss' kappa (3+ raters)</span></span>
 <span><span class="va">fleiss_agreement</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -209,7 +239,7 @@ ratings from multiple observers.</p>
 <div class="section level3">
 <h3 id="example-3-intraclass-correlation-coefficient-icc">Example 3: Intraclass Correlation Coefficient (ICC)<a class="anchor" aria-label="anchor" href="#example-3-intraclass-correlation-coefficient-icc"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ICC analysis for ordinal data</span></span>
 <span><span class="va">icc_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -222,7 +252,7 @@ ratings from multiple observers.</p>
 <div class="section level3">
 <h3 id="example-4-krippendorffs-alpha">Example 4: Krippendorff’s Alpha<a class="anchor" aria-label="anchor" href="#example-4-krippendorffs-alpha"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Krippendorff's alpha for generalized reliability</span></span>
 <span><span class="va">kripp_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -242,7 +272,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-5-basic-diagnostic-style-analysis">Example 5: Basic Diagnostic Style Analysis<a class="anchor" aria-label="anchor" href="#example-5-basic-diagnostic-style-analysis"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Basic diagnostic style clustering</span></span>
 <span><span class="va">style_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -256,7 +286,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-6-advanced-style-analysis-with-rater-characteristics">Example 6: Advanced Style Analysis with Rater Characteristics<a class="anchor" aria-label="anchor" href="#example-6-advanced-style-analysis-with-rater-characteristics"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Advanced style analysis including rater characteristics</span></span>
 <span><span class="va">advanced_style</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -276,7 +306,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-7-different-clustering-methods-comparison">Example 7: Different Clustering Methods Comparison<a class="anchor" aria-label="anchor" href="#example-7-different-clustering-methods-comparison"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare different clustering methods</span></span>
 <span><span class="va">clustering_methods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ward"</span>, <span class="st">"complete"</span>, <span class="st">"average"</span><span class="op">)</span></span>
 <span><span class="va">distance_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"agreement"</span>, <span class="st">"correlation"</span>, <span class="st">"euclidean"</span><span class="op">)</span></span>
@@ -308,7 +338,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-8-diagnostic-accuracy-analysis">Example 8: Diagnostic Accuracy Analysis<a class="anchor" aria-label="anchor" href="#example-8-diagnostic-accuracy-analysis"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Pathology-specific analysis with gold standard</span></span>
 <span><span class="va">pathology_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -322,7 +352,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-9-biomarker-scoring-agreement">Example 9: Biomarker Scoring Agreement<a class="anchor" aria-label="anchor" href="#example-9-biomarker-scoring-agreement"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Simulate biomarker scoring data for demonstration</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">biomarker_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
@@ -351,7 +381,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-10-identifying-problematic-cases">Example 10: Identifying Problematic Cases<a class="anchor" aria-label="anchor" href="#example-10-identifying-problematic-cases"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Comprehensive outlier analysis</span></span>
 <span><span class="va">outlier_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -365,7 +395,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-11-quality-assurance-monitoring">Example 11: Quality Assurance Monitoring<a class="anchor" aria-label="anchor" href="#example-11-quality-assurance-monitoring"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create synthetic QA data for demonstration</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">456</span><span class="op">)</span></span>
 <span><span class="va">qa_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
@@ -399,7 +429,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-12-grading-agreement-with-weighted-kappa">Example 12: Grading Agreement with Weighted Kappa<a class="anchor" aria-label="anchor" href="#example-12-grading-agreement-with-weighted-kappa"></a>
 </h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create tumor grading data</span></span>
 <span><span class="va">grading_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  case_id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">150</span>,</span>
@@ -434,7 +464,7 @@ based on diagnostic patterns.</p>
 <div class="section level3">
 <h3 id="example-13-comprehensive-multi-rater-study">Example 13: Comprehensive Multi-Rater Study<a class="anchor" aria-label="anchor" href="#example-13-comprehensive-multi-rater-study"></a>
 </h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Comprehensive analysis with all features</span></span>
 <span><span class="va">comprehensive_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
@@ -694,7 +724,7 @@ GitHub repository</a>.</em></p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

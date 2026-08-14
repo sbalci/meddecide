@@ -1,6 +1,7 @@
-# Thyroid diagnostic dataset
+# thyroid_data: example dataset for the meddecide module
 
-Simulated thyroid function data for diagnostic analysis.
+Example dataset distributed with the meddecide jamovi module for
+demonstration and testing.
 
 ## Usage
 
@@ -10,8 +11,40 @@ thyroid_data
 
 ## Format
 
-A data frame with 500 rows and 9 columns.
+A data frame with 500 rows and 9 variables:
 
-## Source
+- patient_id:
 
-Simulated data for package examples.
+  integer variable
+
+- age:
+
+  numeric variable
+
+- sex:
+
+  factor variable
+
+- tsh:
+
+  numeric variable
+
+- ft4:
+
+  numeric variable
+
+- ft3:
+
+  numeric variable
+
+- anti_tpo:
+
+  numeric variable
+
+- symptom_score:
+
+  integer variable
+
+- thyroid_status:
+
+  factor variable

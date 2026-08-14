@@ -33,7 +33,7 @@ analysis
 1.  Check **✓ Diagnostic Style Clustering (Usubutun Method)**
 2.  Accept defaults:
     - Method: Ward’s Linkage
-    - Distance: Percentage Agreement  
+    - Distance: Percentage Agreement\
     - Groups: 3
 
 **✅ Expected:** See Style Groups (1, 2, 3) assigned to each pathologist
@@ -81,7 +81,7 @@ diagnostic approaches
 | Style 3     | 4       | 87%           | Academic_Western     |
 
 **🔍 Interpretation:** - **Style 1**: Conservative academics - **Style
-2**: Moderate community pathologists  
+2**: Moderate community pathologists\
 - **Style 3**: Aggressive specialists
 
 ### Discordant Cases
@@ -217,7 +217,7 @@ ClinicoPath includes three test datasets:
 
 ### Lymphoma Classification
 
-- **File**: `lymphoma_diagnostic_styles.csv`  
+- **File**: `lymphoma_diagnostic_styles.csv`\
 - **Cases**: 45 lymphoid lesions
 - **Pathologists**: 10 hematopathologists
 - **Categories**: Reactive, DLBCL, Follicular, Marginal Zone, Mantle

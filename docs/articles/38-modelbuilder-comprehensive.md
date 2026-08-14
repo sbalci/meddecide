@@ -1,5 +1,13 @@
 # Clinical Prediction Model Builder
 
+> **Not yet released in meddecide.** This article documents
+> `modelbuilder`, which is not part of the meddecide 1.0.4 release. It
+> is documented here ahead of a future release, so the options, defaults
+> and output described below are subject to change and the analysis will
+> not appear in your jamovi menu yet. For the analyses that ship today
+> see the [meddecide articles
+> index](https://www.serdarbalci.com/meddecide/articles/).
+
 ## Overview
 
 The `modelbuilder` function in ClinicoPath provides comprehensive
@@ -1050,5 +1058,5 @@ documentation](https://github.com/sbalci/ClinicoPathJamoviModule).
 
 ------------------------------------------------------------------------
 
-*This vignette was generated using meddecide version 1.0.0 on
-2026-07-15.*
+*This vignette was generated using meddecide version 1.0.52 on
+2026-08-14.*

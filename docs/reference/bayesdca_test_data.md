@@ -1,6 +1,7 @@
-# Bayesian DCA test dataset
+# bayesdca_test_data: example dataset for the meddecide module
 
-Simulated data for Bayesian decision curve analysis examples.
+Example dataset distributed with the meddecide jamovi module for
+demonstration and testing.
 
 ## Usage
 
@@ -10,24 +11,20 @@ bayesdca_test_data
 
 ## Format
 
-A data frame with 500 rows and 4 columns:
+A data frame with 500 rows and 4 variables:
 
 - outcome:
 
-  Binary outcome variable
+  character variable
 
 - model_prediction:
 
-  Model predicted probability
+  numeric variable
 
 - binary_test:
 
-  Binary test result
+  integer variable
 
 - weak_test:
 
-  Weak test result
-
-## Source
-
-Simulated data for package examples.
+  integer variable

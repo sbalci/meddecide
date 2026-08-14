@@ -7,7 +7,7 @@ Function for Interrater Reliability.
 ``` r
 agreement(
   data,
-  vars,
+  vars = NULL,
   baConfidenceLevel = 0.95,
   confLevel = 0.95,
   proportionalBias = FALSE,

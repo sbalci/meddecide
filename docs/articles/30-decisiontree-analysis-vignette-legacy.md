@@ -627,7 +627,7 @@ The Decision Tree Graph module provides a comprehensive toolkit for
 cost-effectiveness analysis in healthcare. Key strengths include:
 
 1.  **Flexibility**: Multiple tree types and configurations
-2.  **Visual Appeal**: Professional publication-ready graphics  
+2.  **Visual Appeal**: Professional publication-ready graphics\
 3.  **Economic Rigor**: Standard health economics calculations
 4.  **User-Friendly**: Intuitive jamovi interface
 5.  **Comprehensive Output**: Tables, plots, and sensitivity analysis

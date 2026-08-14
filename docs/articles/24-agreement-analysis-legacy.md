@@ -1,5 +1,38 @@
 # Inter-Rater Agreement and Reliability Analysis in Pathology
 
+> **These
+> [`agreement()`](https://www.serdarbalci.com/meddecide/reference/agreement.md)
+> code examples predate the current API.** The R chunks below were
+> written against an older argument list (`rater1_var`,
+> `agreement_type`, `pathologyContext`, `diagnosticStyleAnalysis`, and
+> similar) that no longer exists, so copying them will produce
+> `unused argument` errors. The narrative, the statistics and the
+> clinical guidance remain correct; only the argument names are stale.
+> All chunks are set to `eval = FALSE`, so nothing here is executed when
+> the article is built. A rewrite against the current API is planned.
+>
+> For the real argument list see
+> [`?agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md).
+> A working call looks like this — verified against meddecide 1.0.4,
+> three pathologists rating 60 cases on a three-level scale:
+>
+> ``` r
+>
+> agreement(
+>   data  = ratings,
+>   vars  = c("Pathologist_1", "Pathologist_2", "Pathologist_3"),
+>   wght  = "unweighted",       # or "squared" / "equal" for an ordinal scale
+>   exct  = FALSE,
+>   kripp = TRUE,               # Krippendorff's alpha
+>   krippMethod = "nominal",
+>   confLevel = 0.95,
+>   agreementHeatmap = TRUE,
+>   pairwiseKappa = TRUE
+> )
+> #> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001
+> #> Krippendorff's Alpha (nominal)                                   alpha 0.735
+> ```
+
 ## Introduction
 
 Inter-rater agreement and reliability analysis are fundamental to
@@ -63,7 +96,7 @@ head(breast_agreement_data)
 
 This dataset represents a multi-institutional study of breast cancer
 diagnosis agreement with: - **3 pathologists** with different experience
-levels - **200 cases** including various breast lesions  
+levels - **200 cases** including various breast lesions\
 - **4 diagnostic categories**: Benign, Atypical, DCIS, Invasive
 Carcinoma - **Institutional variability** across academic and community
 settings
@@ -179,6 +212,12 @@ plot(category_agreement, type = "category")
 ```
 
 ### 3. Continuous Measurements (ICC)
+
+> **Not yet released in meddecide.** The `icccoeff` analysis used in
+> this section is not part of the meddecide 1.0.4 release; it is
+> documented here ahead of a future release and will not appear in your
+> jamovi menu yet. Everything else in this article uses `agreement`,
+> which ships today.
 
 #### Intraclass Correlation Coefficient
 
@@ -325,9 +364,10 @@ print(power_multicat)
 # Sample size for desired precision (CI width)
 precision_analysis <- kappaSizeCI(
   outcome = "2",
-  kappa0 = 0.6, # Expected kappa
-  conf_level = 0.95, # Confidence level
-  width = 0.2, # Desired CI width (±0.1 around kappa)
+  kappa0 = 0.6, # Anticipated kappa - NOT a null hypothesis value
+  kappaL = 0.5, # Lower confidence limit wanted
+  kappaU = 0.7, # Upper confidence limit wanted
+  alpha = 0.05, # 1 - alpha is the confidence level; there is no conf_level argument
   props = "0.4, 0.6",
   raters = "2"
 )
@@ -345,7 +385,7 @@ fixed_n_result <- kappaSizeFixedN(
   kappa0 = 0.6,
   props = "0.3, 0.7",
   raters = "2",
-  conf_level = 0.95,
+  alpha = 0.05,
   n = 150 # Available sample size
 )
 

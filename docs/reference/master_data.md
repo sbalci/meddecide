@@ -1,7 +1,7 @@
-# Master dataset collection
+# master_data: example dataset for the meddecide module
 
-A list containing multiple diagnostic datasets (cancer, cardiac, sepsis,
-thyroid).
+Example dataset distributed with the meddecide jamovi module for
+demonstration and testing.
 
 ## Usage
 
@@ -11,8 +11,4 @@ master_data
 
 ## Format
 
-A list with 4 elements.
-
-## Source
-
-Simulated data for package examples.
+An object of class list of length 4.

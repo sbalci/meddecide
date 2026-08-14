@@ -17,7 +17,12 @@ head(df_roc)
 
 ``` r
 
-roc_res <- psychopdaROC(data = df_roc, class = df_roc$class, value = df_roc$value)
+roc_res <- psychopdaROC(
+  data = df_roc,
+  dependentVars = "value",   # the marker column(s), by NAME
+  classVar = "class",        # the outcome column, by NAME
+  positiveClass = "1"        # name the positive level; leaving it unset
+)                            # makes the analysis assume the last level
 roc_res$plot
 ```
 

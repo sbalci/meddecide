@@ -98,12 +98,11 @@ knitr::kable(res$irrtable$asDF, digits = 3,
              caption = "Overall agreement (Fleiss' kappa across all four readers)")
 ```
 
-|     | method                     | subjects | raters | peragree | kappa |    z |   p |
-|:----|:---------------------------|---------:|-------:|---------:|------:|-----:|----:|
-| “1” | Fleiss’ Kappa for m Raters |       99 |      4 |   60.606 | 0.571 | 22.8 |   0 |
+|  | method | subjects | raters | peragree | kappa | ci_lower | ci_upper | z | p |
+|:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|
+| “1” | Fleiss’ Kappa for m Raters | 99 | 4 | 60.606 | 0.571 | NA | NA | 22.8 | 0 |
 
-Overall agreement (Fleiss’ kappa across all four readers) {.table
-style="width:100%;"}
+Overall agreement (Fleiss’ kappa across all four readers) {.table}
 
 The overall kappa tells you the readers agree appreciably better than
 chance, but it hides *where* the agreement comes from and *where* it
@@ -215,14 +214,14 @@ sessionInfo()
 
     ## R version 4.6.0 (2026-04-24)
     ## Platform: aarch64-apple-darwin23
-    ## Running under: macOS Tahoe 26.5.1
+    ## Running under: macOS Tahoe 26.5.2
     ## 
     ## Matrix products: default
     ## BLAS:   /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRblas.0.dylib 
     ## LAPACK: /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
     ## 
     ## locale:
-    ## [1] C.UTF-8/C.UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8
+    ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
     ## 
     ## time zone: Europe/Istanbul
     ## tzcode source: internal
@@ -231,60 +230,60 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] meddecide_1.0.0
+    ## [1] meddecide_1.0.52
     ## 
     ## loaded via a namespace (and not attached):
     ##   [1] splines_4.6.0           tibble_3.3.1            BiasedUrn_2.0.12       
-    ##   [4] cellranger_1.1.0        jmvcore_2.7.35          polyclip_1.10-7        
+    ##   [4] cellranger_1.1.0        jmvcore_2.7.38          polyclip_1.10-7        
     ##   [7] hardhat_1.4.3           pROC_1.19.0.1           rpart_4.1.27           
-    ##  [10] lifecycle_1.0.5         Rdpack_2.6.6            sf_1.1-1               
-    ##  [13] globals_0.19.1          lattice_0.22-9          MASS_7.3-65            
-    ##  [16] vcd_1.4-13              backports_1.5.1         magrittr_2.0.5         
+    ##  [10] lifecycle_1.0.5         Rdpack_2.6.6            sf_1.1-2               
+    ##  [13] globals_0.19.1          lattice_0.22-9          MASS_7.3-66            
+    ##  [16] vcd_1.4-14              backports_1.5.1         magrittr_2.0.5         
     ##  [19] sass_0.4.10             rmarkdown_2.31          jquerylib_0.1.4        
     ##  [22] yaml_2.3.12             otel_0.2.0              poLCA_1.6.0.2          
-    ##  [25] zip_3.0.0               askpass_1.2.1           gld_2.6.8              
+    ##  [25] zip_3.0.2               askpass_1.2.1           gld_2.6.8              
     ##  [28] DBI_1.3.0               minqa_1.2.8             RColorBrewer_1.1-3     
     ##  [31] lubridate_1.9.5         expm_1.0-0              purrr_1.2.2            
-    ##  [34] ggraph_2.2.2            nnet_7.3-20             tweenr_2.0.3           
+    ##  [34] ggraph_2.2.2            nnet_7.3-21             tweenr_2.0.3           
     ##  [37] ipred_0.9-15            gdtools_0.5.1           lava_1.9.2             
     ##  [40] ggrepel_0.9.8           listenv_1.0.0           units_1.0-1            
-    ##  [43] parallelly_1.48.0       pkgdown_2.2.0           codetools_0.2-20       
+    ##  [43] parallelly_1.48.0       pkgdown_2.2.1           codetools_0.2-20       
     ##  [46] xml2_1.6.0              ggforce_0.5.0           tidyselect_1.2.1       
-    ##  [49] shape_1.4.6.1           farver_2.1.2            lme4_2.0-1             
+    ##  [49] shape_1.4.6.1           farver_2.1.2            lme4_2.0-6             
     ##  [52] viridis_0.6.5           stats4_4.6.0            jsonlite_2.0.0         
     ##  [55] caret_7.0-1             e1071_1.7-17            tidygraph_1.3.1        
-    ##  [58] survival_3.8-6          iterators_1.0.14        systemfonts_1.3.2      
+    ##  [58] survival_3.8-9          iterators_1.0.14        systemfonts_1.3.2      
     ##  [61] foreach_1.5.2           tools_4.6.0             ragg_1.5.2             
     ##  [64] DescTools_0.99.60       Rcpp_1.1.2              glue_1.8.1             
     ##  [67] mnormt_2.1.2            prodlim_2026.03.11      gridExtra_2.3.1        
-    ##  [70] xfun_0.59               dplyr_1.2.1             withr_3.0.3            
+    ##  [70] xfun_0.60               dplyr_1.2.1             withr_3.0.3            
     ##  [73] numDeriv_2016.8-1.1     fastmap_1.2.0           boot_1.3-32            
     ##  [76] openssl_2.4.2           digest_0.6.39           timechange_0.4.0       
-    ##  [79] R6_2.6.1                colorspace_2.1-2        textshaping_1.0.5      
+    ##  [79] R6_2.6.1                colorspace_2.1-3        textshaping_1.0.5      
     ##  [82] kappaSize_1.2           lpSolve_5.6.23          tidyr_1.3.2            
     ##  [85] generics_0.1.4          fontLiberation_0.1.0    data.table_1.18.4      
-    ##  [88] recipes_1.3.3           class_7.3-23            graphlayouts_1.2.4     
+    ##  [88] recipes_1.3.3           class_7.3-24            graphlayouts_1.2.5     
     ##  [91] httr_1.4.8              htmlwidgets_1.6.4       scatterplot3d_0.3-45   
     ##  [94] ModelMetrics_1.2.2.2    pkgconfig_2.0.3         gtable_0.3.6           
-    ##  [97] epiR_2.0.94             Exact_3.3               timeDate_4052.112      
+    ##  [97] epiR_2.0.96             Exact_3.3               timeDate_4052.112      
     ## [100] lmtest_0.9-40           S7_0.2.2                htmltools_0.5.9        
     ## [103] fontBitstreamVera_0.1.1 scales_1.4.0            lmom_3.3               
     ## [106] gower_1.0.2             reformulas_0.4.4        knitr_1.51             
     ## [109] rstudioapi_0.19.0       tzdb_0.5.0              reshape2_1.4.5         
-    ## [112] uuid_1.2-2              checkmate_2.3.4         nlme_3.1-169           
+    ## [112] uuid_1.2-2              checkmate_2.3.4         nlme_3.1-170           
     ## [115] nloptr_2.2.1            proxy_0.4-29            cachem_1.1.0           
-    ## [118] zoo_1.8-15              flextable_0.10.0        stringr_1.6.0          
+    ## [118] zoo_1.9-0               flextable_0.10.0        stringr_1.6.0          
     ## [121] rootSolve_1.8.2.4       KernSmooth_2.23-26      parallel_4.6.0         
     ## [124] desc_1.4.3              pillar_1.11.1           grid_4.6.0             
     ## [127] vctrs_0.7.3             htmlTable_2.5.0         evaluate_1.0.5         
-    ## [130] readr_2.2.0             mvtnorm_1.4-1           cli_3.6.6              
+    ## [130] readr_2.2.0             mvtnorm_1.4-2           cli_3.6.6              
     ## [133] compiler_4.6.0          rlang_1.3.0             future.apply_1.20.2    
     ## [136] classInt_0.4-11         plyr_1.8.9              forcats_1.0.1          
-    ## [139] fs_2.1.0                psych_2.6.5             stringi_1.8.7          
+    ## [139] fs_2.1.0                psych_2.6.5             stringi_1.8.9          
     ## [142] pander_0.6.6            viridisLite_0.4.3       lmerTest_3.2-1         
-    ## [145] glmnet_5.0              fontquiver_0.2.1        Matrix_1.7-5           
-    ## [148] hms_1.1.4               patchwork_1.3.2         future_1.70.0          
+    ## [145] glmnet_5.0              fontquiver_0.2.1        Matrix_1.7-6           
+    ## [148] hms_1.1.4               patchwork_1.3.2         future_1.75.0          
     ## [151] ggplot2_4.0.3           cutpointr_1.2.1         haven_2.5.5            
     ## [154] rbibutils_2.4.1         igraph_2.3.3            memoise_2.0.1          
-    ## [157] bslib_0.11.0            irrCAC_1.4              readxl_1.5.0           
-    ## [160] officer_0.7.5           irr_0.85
+    ## [157] bslib_0.12.0            irrCAC_1.4              readxl_1.5.0           
+    ## [160] officer_0.7.6           irr_0.85

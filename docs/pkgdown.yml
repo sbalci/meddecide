@@ -1,5 +1,5 @@
-pandoc: 3.8.2.1
-pkgdown: 2.2.0
+pandoc: '3.10'
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   01-introduction: 01-introduction.html
@@ -41,6 +41,7 @@ articles:
   29-decision-tree-vs-markov-analysis-legacy: 29-decision-tree-vs-markov-analysis-legacy.html
   30-decisiontree-analysis-vignette-legacy: 30-decisiontree-analysis-vignette-legacy.html
   31-precision-oncology-biomarkers-legacy: 31-precision-oncology-biomarkers-legacy.html
+  31-treeadvanced-comprehensive: 31-treeadvanced-comprehensive.html
   32-vignettes-legacy: 32-vignettes-legacy.html
   33-use-in-r-legacy: 33-use-in-r-legacy.html
   34-cotest-analysis: 34-cotest-analysis.html
@@ -57,7 +58,7 @@ articles:
   meddecide-32-ysrb-interobserver: meddecide-32-ysrb-interobserver.html
   meddecide-enhancedroc-comprehensive: meddecide-enhancedroc-comprehensive.html
   meddecide-psychopdaroc-comprehensive: meddecide-psychopdaroc-comprehensive.html
-last_built: 2026-07-15T05:55Z
+last_built: 2026-08-14T13:07Z
 urls:
   reference: https://www.serdarbalci.com/meddecide/reference
   article: https://www.serdarbalci.com/meddecide/articles

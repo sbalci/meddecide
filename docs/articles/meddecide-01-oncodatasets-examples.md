@@ -28,6 +28,16 @@ data("PSAProstateCancer_df")
 
 # Dataset overview
 str(PSAProstateCancer_df)
+#> 'data.frame':    97 obs. of  9 variables:
+#>  $ lcavol : num  -0.58 -0.994 -0.511 -1.204 0.751 ...
+#>  $ lweight: num  2.77 3.32 2.69 3.28 3.43 ...
+#>  $ age    : int  50 58 74 58 62 50 64 58 47 63 ...
+#>  $ lbph   : num  -1.39 -1.39 -1.39 -1.39 -1.39 ...
+#>  $ svi    : int  0 0 0 0 0 0 0 0 0 0 ...
+#>  $ lcp    : num  -1.39 -1.39 -1.39 -1.39 -1.39 ...
+#>  $ gleason: int  6 6 7 6 6 6 6 6 6 6 ...
+#>  $ pgg45  : int  0 0 20 0 0 0 0 0 0 0 ...
+#>  $ lpsa   : num  -0.431 -0.163 -0.163 -0.163 0.372 ...
 
 # Create binary outcome for high-grade cancer
 PSAProstateCancer_df$high_grade <- ifelse(PSAProstateCancer_df$gleason >= 7, 1, 0)
@@ -36,7 +46,12 @@ PSAProstateCancer_df$high_grade <- ifelse(PSAProstateCancer_df$gleason >= 7, 1, 
 PSAProstateCancer_df$psa <- exp(PSAProstateCancer_df$lpsa)
 
 summary(PSAProstateCancer_df$psa)
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#>    0.65    5.65   13.35   23.74   21.25  265.85
 table(PSAProstateCancer_df$high_grade)
+#> 
+#>  0  1 
+#> 35 62
 ```
 
 ### ROC Analysis for PSA
@@ -96,6 +111,12 @@ data("CA19PancreaticCancer_df")
 
 # Dataset structure (diagnostic accuracy studies)
 str(CA19PancreaticCancer_df)
+#> Classes 'data.table' and 'data.frame':   22 obs. of  5 variables:
+#>  $ study: chr  "Andriulli" "Benini" "DelFavero" "Gupta" ...
+#>  $ TP   : int  64 23 18 13 74 27 20 11 19 32 ...
+#>  $ FP   : int  148 7 20 64 23 27 39 5 49 10 ...
+#>  $ FN   : int  12 2 6 4 21 13 4 3 6 5 ...
+#>  $ TN   : int  294 118 29 589 83 265 103 43 172 29 ...
 
 # Calculate sensitivity and specificity for each study
 CA19PancreaticCancer_df <- CA19PancreaticCancer_df %>%
@@ -107,6 +128,14 @@ CA19PancreaticCancer_df <- CA19PancreaticCancer_df %>%
 
 kable(CA19PancreaticCancer_df[1:5, c("study", "sensitivity", "specificity", "total_n")])
 ```
+
+| study     | sensitivity | specificity | total_n |
+|:----------|------------:|------------:|--------:|
+| Andriulli |   0.8421053 |   0.6651584 |     518 |
+| Benini    |   0.9200000 |   0.9440000 |     150 |
+| DelFavero |   0.7500000 |   0.5918367 |      73 |
+| Gupta     |   0.7647059 |   0.9019908 |     670 |
+| Haglund   |   0.7789474 |   0.7830189 |     201 |
 
 ### Meta-analysis of Diagnostic Accuracy
 
@@ -146,11 +175,31 @@ data("LungNodulesDetected_df")
 
 # Dataset overview
 str(LungNodulesDetected_df)
+#> Classes 'data.table' and 'data.frame':   999 obs. of  8 variables:
+#>  $ sex          : Factor w/ 2 levels "F","M": 2 2 1 1 2 2 2 1 1 2 ...
+#>  $ age          : num  84 53.9 75.5 66.1 47.8 38.6 77.9 77.5 46.6 67.8 ...
+#>  $ num.annotated: num  0 0 0 0 0 0 0 0 0 0 ...
+#>  $ location     : Factor w/ 6 levels "Lingular Segment",..: 5 1 5 5 4 1 2 3 3 6 ...
+#>  $ spiculate    : Factor w/ 2 levels "No","Yes": 1 1 1 1 1 1 1 2 1 1 ...
+#>  $ smoke.status : Factor w/ 5 levels "current","exsmoke",..: 4 4 4 4 4 4 4 4 4 4 ...
+#>  $ diameter     : num  5 7 8 5 5 6 7 11 5 10 ...
+#>  $ malignant    : num  0 0 0 0 0 0 0 0 0 0 ...
+#>  - attr(*, ".internal.selfref")=<pointer: 0x0>
 
 # Malignancy by nodule characteristics
 table(LungNodulesDetected_df$spiculate, LungNodulesDetected_df$malignant)
+#>      
+#>         0   1
+#>   No  665  85
+#>   Yes 110 139
 table(cut(LungNodulesDetected_df$diameter, c(0, 5, 10, 20, Inf)), 
       LungNodulesDetected_df$malignant)
+#>           
+#>              0   1
+#>   (0,5]    166   7
+#>   (5,10]   506  70
+#>   (10,20]  103 147
+#>   (20,Inf]   0   0
 ```
 
 ### Decision Tree for Nodule Management

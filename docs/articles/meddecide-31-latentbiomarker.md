@@ -1,5 +1,13 @@
 # Latent biomarker constructs and survival
 
+> **Not yet released in meddecide.** This article documents
+> `latentbiomarker`, which is not part of the meddecide 1.0.4 release.
+> It is documented here ahead of a future release, so the options,
+> defaults and output described below are subject to change and the
+> analysis will not appear in your jamovi menu yet. For the analyses
+> that ship today see the [meddecide articles
+> index](https://www.serdarbalci.com/meddecide/articles/).
+
 ## When to use this function
 
 Clinical research regularly confronts a frustrating mismatch: the
@@ -309,6 +317,7 @@ if (requireNamespace("lavaan", quietly = TRUE)) {
     ##   p53_score                       0.588 0.054 0
     ##  ki67_score                       0.655 0.047 0
     ##  her2_score                       0.655 0.051 0
+
     ## 
     ## Fit indices (WLSMV):
     ##   cfi.robust   tli.robust rmsea.robust 
@@ -432,10 +441,10 @@ if (requireNamespace("lavaan", quietly = TRUE)) {
 ```
 
     ##    Indicator Std_Loading    SE p
-    ##  cd8_density       0.711 2.423 0
-    ##     pdl1_cps       0.531 1.120 0
-    ##    ihc_score       0.682 0.048 0
-    ##         mmrd       0.598 0.048 0
+    ##  cd8_density       0.598 2.287 0
+    ##     pdl1_cps       0.594 1.210 0
+    ##    ihc_score       0.702 0.052 0
+    ##         mmrd       0.509 0.055 0
 
 The key takeaway: you can mix assay types freely as long as every
 indicator reflects the same construct. The estimator choice is driven by
