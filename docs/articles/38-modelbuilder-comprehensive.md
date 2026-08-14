@@ -1058,5 +1058,5 @@ documentation](https://github.com/sbalci/ClinicoPathJamoviModule).
 
 ------------------------------------------------------------------------
 
-*This vignette was generated using meddecide version 1.0.52 on
+*This vignette was generated using meddecide version 1.0.53.1 on
 2026-08-14.*

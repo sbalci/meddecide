@@ -230,7 +230,7 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] meddecide_1.0.52
+    ## [1] meddecide_1.0.53.01
     ## 
     ## loaded via a namespace (and not attached):
     ##   [1] splines_4.6.0           tibble_3.3.1            BiasedUrn_2.0.12       

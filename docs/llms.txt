@@ -278,8 +278,6 @@ project:
   : Interrater Reliability
 - [`agreementClass`](https://www.serdarbalci.com/meddecide/reference/agreementClass.md)
   : Interrater Reliability Analysis
-- [`bootstrapIDI()`](https://www.serdarbalci.com/meddecide/reference/bootstrapIDI.md)
-  : Bootstrap IDI calculation with confidence intervals
 - [`bootstrapNRI()`](https://www.serdarbalci.com/meddecide/reference/bootstrapNRI.md)
   : Bootstrap NRI calculation with confidence intervals
 - [`clear_error_log()`](https://www.serdarbalci.com/meddecide/reference/clear_error_log.md)
@@ -290,8 +288,6 @@ project:
   : ClinicoPath Error Handler
 - [`clinicopath_init()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_init.md)
   : Initialize ClinicoPath Error Handling System
-- [`clinicopath_startup_message()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_startup_message.md)
-  : Package startup message
 - [`clinicopath_warning_handler()`](https://www.serdarbalci.com/meddecide/reference/clinicopath_warning_handler.md)
   : ClinicoPath Warning Handler
 - [`computeNRI()`](https://www.serdarbalci.com/meddecide/reference/computeNRI.md)
@@ -359,8 +355,6 @@ project:
   : Advanced ROC Analysis
 - [`psychopdaROCClass`](https://www.serdarbalci.com/meddecide/reference/psychopdaROCClass.md)
   : Comprehensive ROC Analysis with Advanced Features
-- [`raw_to_prob()`](https://www.serdarbalci.com/meddecide/reference/raw_to_prob.md)
-  : Convert raw test values to predicted probabilities using ROC curve
 - [`safe_execute()`](https://www.serdarbalci.com/meddecide/reference/safe_execute.md)
   : Safe Execution Wrapper
 - [`sequentialtests()`](https://www.serdarbalci.com/meddecide/reference/sequentialtests.md)

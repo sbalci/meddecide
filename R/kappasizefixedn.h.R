@@ -155,7 +155,7 @@ kappaSizeFixedNBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
             super$initialize(
                 package = "meddecide",
                 name = "kappaSizeFixedN",
-                version = c(1,0,52),
+                version = c(1,0,6),
                 options = options,
                 results = kappaSizeFixedNResults$new(options=options),
                 data = data,
