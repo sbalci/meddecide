@@ -19,7 +19,7 @@ dataset.
 ### Key Features Covered
 
 - **Simple Decision Trees**: Basic treatment comparisons
-- **Markov Models**: Long-term health state modeling\
+- **Markov Models**: Long-term health state modeling  
 - **Cost-Effectiveness Analysis**: Economic evaluation with ICER and NMB
 - **Sensitivity Analysis**: One-way and probabilistic sensitivity
   analysis
@@ -99,7 +99,7 @@ simple_analysis <- decisiongraph(
 The simple decision tree shows:
 
 - **Decision nodes** (squares): Treatment strategy choices
-- **Chance nodes** (circles): Probability of recovery\
+- **Chance nodes** (circles): Probability of recovery  
 - **Terminal nodes** (triangles): Final outcomes with costs and
   utilities
 - **Expected values**: Calculated for each treatment path
@@ -381,7 +381,7 @@ could receive treatment - **Market penetration**: Proportion actually
 receiving new treatment - **Budget impact**:
 `(New treatment cost - Current cost) × Penetration × Population`
 
-**Applications:** - Healthcare system planning - Formulary decisions\
+**Applications:** - Healthcare system planning - Formulary decisions  
 - Resource allocation - Policy impact assessment
 
 ## 7. Advanced Features and Customization
@@ -451,7 +451,7 @@ custom_analysis <- decisiongraph(
 #### For Simple Decision Trees:
 
 1.  **Highest Expected Utility**: Best clinical outcomes
-2.  **Lowest Expected Cost**: Most economical option\
+2.  **Lowest Expected Cost**: Most economical option  
 3.  **Best Utility-Cost Ratio**: Balance of effectiveness and cost
 
 #### For Cost-Effectiveness Analysis:
@@ -538,7 +538,7 @@ cat("Data validation complete. Cleaned dataset has", nrow(covid_data_clean), "ro
 **Validation Checklist:**
 
 - ✅ Probabilities between 0 and 1
-- ✅ Costs are non-negative\
+- ✅ Costs are non-negative  
 - ✅ Utilities typically between 0 and 1
 - ✅ Transition probabilities sum to 1 (Markov models)
 - ✅ Time horizon is reasonable for condition
@@ -587,7 +587,7 @@ messages - **Performance**: Optimized for large-scale analyses with
 memory management
 
 **Applications:** - Clinical treatment guidelines - Healthcare
-technology assessment\
+technology assessment  
 - Formulary and coverage decisions - Research prioritization - Policy
 analysis
 

@@ -96,7 +96,7 @@ head(breast_agreement_data)
 
 This dataset represents a multi-institutional study of breast cancer
 diagnosis agreement with: - **3 pathologists** with different experience
-levels - **200 cases** including various breast lesions\
+levels - **200 cases** including various breast lesions  
 - **4 diagnostic categories**: Benign, Atypical, DCIS, Invasive
 Carcinoma - **Institutional variability** across academic and community
 settings

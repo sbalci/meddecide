@@ -71,7 +71,7 @@ clinician would recommend intervention:
 - **Low thresholds (1-5%)**: Used when missing disease is very harmful
   (e.g., cancer screening)
 - **Medium thresholds (10-20%)**: Balanced scenarios (e.g., cardiac
-  interventions)\
+  interventions)  
 - **High thresholds (30-50%)**: Used when intervention has significant
   risks (e.g., major surgery)
 

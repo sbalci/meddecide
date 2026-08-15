@@ -133,7 +133,7 @@ enhancedROC(
   predictors = vars(established_marker, novel_marker1),
   analysisType = "comparative",
   comparisonMethod = "bootstrap",
-  bootstrapSamples = 200,
+  bootstrapSamples = 100,
   showMetricsDiff = TRUE,
   statisticalComparison = TRUE,
   customCutoffs = NULL
@@ -175,7 +175,7 @@ enhancedROC(
   positiveClass = "Disease",
   predictors = "biomarker1",
   useBootstrap = TRUE,
-  bootstrapSamples = 200,
+  bootstrapSamples = 100,
   bootstrapMethod = "bca",
   customCutoffs = NULL
 )
@@ -193,7 +193,7 @@ enhancedROC(
   positiveClass = "Disease",
   predictors = "biomarker1",
   useBootstrap = TRUE,
-  bootstrapSamples = 200,
+  bootstrapSamples = 100,
   bootstrapMethod = "percentile",
   stratifiedBootstrap = TRUE,
   customCutoffs = NULL
@@ -213,7 +213,7 @@ enhancedROC(
   predictors = "biomarker1",
   confidenceLevel = 90,
   useBootstrap = TRUE,
-  bootstrapSamples = 200,
+  bootstrapSamples = 100,
   bootstrapCutoffCI = TRUE,
   bootstrapPartialAUC = TRUE,
   partialAuc = TRUE,
@@ -786,7 +786,7 @@ enhancedROC(
   positiveClass = "Positive",
   predictors = "marker",
   useBootstrap = TRUE,
-  bootstrapSamples = 200,
+  bootstrapSamples = 100,
   customCutoffs = NULL
 )
 #> Error:

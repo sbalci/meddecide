@@ -17,7 +17,7 @@ This function is particularly valuable in research scenarios where:
 - **Sample size is constrained** by practical limitations (e.g., rare
   diseases, expensive procedures)
 - **Retrospective studies** using existing databases or specimen
-  collections\
+  collections  
 - **Pilot studies** with limited resources
 - **Multi-site studies** where contributing sites have varying patient
   volumes
@@ -431,7 +431,7 @@ power.
 #### Clinical Decision Making
 
 Use the results to: - **Justify feasibility** in grant applications -
-**Set realistic expectations** for stakeholders\
+**Set realistic expectations** for stakeholders  
 - **Inform protocol modifications** if power is inadequate - **Support
 statistical analysis plans**
 
@@ -543,7 +543,7 @@ Key takeaways:
 
 1.  **Use when sample size is constrained** by practical limitations
 2.  **Provides lower confidence bounds** for detectable agreement
-    levels\
+    levels  
 3.  **Supports 2-5 categories** and 2-5 raters
 4.  **Requires realistic parameter estimates** for meaningful results
 5.  **Integrates with comprehensive study planning** workflows

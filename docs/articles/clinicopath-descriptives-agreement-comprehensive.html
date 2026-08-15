@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.53.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -305,7 +305,7 @@ kappa (3+ raters) with percent agreement.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span></span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> object 'agreement_pathology' not found</span></span></code></pre></div>
@@ -317,7 +317,7 @@ kappa (3+ raters) with percent agreement.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    sft <span class="op">=</span> <span class="cn">TRUE</span>,                     <span class="co"># Show contingency (frequency) table</span></span>
 <span>    pabak <span class="op">=</span> <span class="cn">TRUE</span>,                   <span class="co"># Prevalence-Adjusted Bias-Adjusted Kappa</span></span>
 <span>    gwet <span class="op">=</span> <span class="cn">TRUE</span>,                    <span class="co"># Gwet's AC1/AC2 (stable with prevalence imbalance)</span></span>
@@ -344,7 +344,7 @@ kappa (3+ raters) with percent agreement.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    agreementBySubgroup <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    subgroupVariable <span class="op">=</span> <span class="va">specimen_type</span>,   <span class="co"># Compare kappa across specimen types</span></span>
 <span>    subgroupForestPlot <span class="op">=</span> <span class="cn">TRUE</span>,          <span class="co"># Forest plot of subgroup kappas</span></span>
@@ -369,7 +369,7 @@ kappa (3+ raters) with percent agreement.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_binary</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PathologistX</span>, <span class="va">PathologistY</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">PathologistX</span>, <span class="va">PathologistY</span><span class="op">)</span>,</span>
 <span>    specificAgreement <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    specificPositiveCategory <span class="op">=</span> <span class="st">"Positive"</span>,  <span class="co"># Category for PSA/NSA</span></span>
 <span>    specificConfidenceIntervals <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -410,7 +410,7 @@ penalized more heavily than Grade 1 vs Grade 2.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_ordinal</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
 <span>    wght <span class="op">=</span> <span class="st">"equal"</span>,              <span class="co"># Linear weights</span></span>
 <span>    showLevelInfo <span class="op">=</span> <span class="cn">TRUE</span>,        <span class="co"># Show category-level details</span></span>
 <span>    kendallW <span class="op">=</span> <span class="cn">TRUE</span>,             <span class="co"># Kendall's W (coefficient of concordance)</span></span>
@@ -424,7 +424,7 @@ penalized more heavily than Grade 1 vs Grade 2.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_ordinal</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
 <span>    wght <span class="op">=</span> <span class="st">"squared"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -447,7 +447,7 @@ kappa. Light’s kappa is the average of all pairwise Cohen’s kappas.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_threeRater</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
 <span>    exct <span class="op">=</span> <span class="cn">TRUE</span>,                        <span class="co"># Exact kappa (small samples)</span></span>
 <span>    lightKappa <span class="op">=</span> <span class="cn">TRUE</span>,                  <span class="co"># Light's Kappa (mean pairwise)</span></span>
 <span>    finn <span class="op">=</span> <span class="cn">TRUE</span>,                        <span class="co"># Finn coefficient</span></span>
@@ -474,7 +474,7 @@ kappa. Light’s kappa is the average of all pairwise Cohen’s kappas.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_multiRater</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">SeniorPath1</span>, <span class="va">SeniorPath2</span>, <span class="va">MidLevelPath</span>, <span class="va">JuniorPath1</span>, <span class="va">JuniorPath2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">SeniorPath1</span>, <span class="va">SeniorPath2</span>, <span class="va">MidLevelPath</span>, <span class="va">JuniorPath1</span>, <span class="va">JuniorPath2</span><span class="op">)</span>,</span>
 <span>    lightKappa <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    <span class="co"># Rater clustering</span></span>
 <span>    raterClustering <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -527,7 +527,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    <span class="co"># Intraclass Correlation Coefficient</span></span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    iccType <span class="op">=</span> <span class="st">"icc21"</span>,          <span class="co"># ICC(2,1) two-way random, single measures</span></span>
@@ -563,7 +563,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>, iccType <span class="op">=</span> <span class="st">"icc11"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -573,7 +573,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>, iccType <span class="op">=</span> <span class="st">"icc21"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -583,7 +583,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>, iccType <span class="op">=</span> <span class="st">"icc31"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -593,7 +593,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>, iccType <span class="op">=</span> <span class="st">"icc1k"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -603,7 +603,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>, iccType <span class="op">=</span> <span class="st">"icc2k"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -613,7 +613,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>, iccType <span class="op">=</span> <span class="st">"icc3k"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -633,7 +633,7 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">pathology_multi</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Ki67_HALO</span>, <span class="va">Ki67_Aiforia</span>, <span class="va">Ki67_ImageJ</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Ki67_HALO</span>, <span class="va">Ki67_Aiforia</span>, <span class="va">Ki67_ImageJ</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    meanPearson <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    raterProfiles <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -657,12 +657,12 @@ and CCC.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">pathology_multi</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Ki67_HALO</span>, <span class="va">Ki67_Aiforia</span>, <span class="va">Ki67_ImageJ</span>, <span class="va">Ki67_Manual</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Ki67_HALO</span>, <span class="va">Ki67_Aiforia</span>, <span class="va">Ki67_ImageJ</span>, <span class="va">Ki67_Manual</span><span class="op">)</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    raterClustering <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    caseClustering <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    nBoot <span class="op">=</span> <span class="fl">200</span></span>
+<span>    nBoot <span class="op">=</span> <span class="fl">100</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> object 'pathology_multi' not found</span></span></code></pre></div>
@@ -689,12 +689,12 @@ statistic.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_missing</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
 <span>    kripp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    krippMethod <span class="op">=</span> <span class="st">"nominal"</span>,    <span class="co"># "nominal", "ordinal", "interval", "ratio"</span></span>
 <span>    bootstrap <span class="op">=</span> <span class="cn">TRUE</span>,           <span class="co"># Bootstrap CI for Krippendorff's alpha</span></span>
 <span>    bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    nBoot <span class="op">=</span> <span class="fl">200</span></span>
+<span>    nBoot <span class="op">=</span> <span class="fl">100</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> object 'agreement_missing' not found</span></span></code></pre></div>
@@ -713,7 +713,7 @@ statistic.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">pathology_missing</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">HALO_Score</span>, <span class="va">Aiforia_Score</span>, <span class="va">ImageJ_Score</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">HALO_Score</span>, <span class="va">Aiforia_Score</span>, <span class="va">ImageJ_Score</span><span class="op">)</span>,</span>
 <span>    kripp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    krippMethod <span class="op">=</span> <span class="st">"interval"</span>,   <span class="co"># Continuous measurement level</span></span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>                  <span class="co"># Compare with ICC</span></span>
@@ -738,7 +738,7 @@ PABAK adjusts for both prevalence and bias.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_poor</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
 <span>    gwet <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    gwetWeights <span class="op">=</span> <span class="st">"unweighted"</span>,     <span class="co"># "unweighted", "linear", "quadratic"</span></span>
 <span>    pabak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -774,7 +774,7 @@ standard kappa or cluster-specific kappa analyses.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">digital_path_hier</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Ki67_Manual</span>, <span class="va">Ki67_AI_Assisted</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Ki67_Manual</span>, <span class="va">Ki67_AI_Assisted</span><span class="op">)</span>,</span>
 <span>    hierarchicalKappa <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    clusterVariable <span class="op">=</span> <span class="va">Institution</span>,           <span class="co"># Nesting variable</span></span>
 <span>    clusterSpecificKappa <span class="op">=</span> <span class="cn">TRUE</span>,             <span class="co"># Kappa per center</span></span>
@@ -802,7 +802,7 @@ standard kappa or cluster-specific kappa analyses.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_hierarchical</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span></span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span></span>
 <span>        <span class="va">HospitalA_Rater1</span>, <span class="va">HospitalA_Rater2</span>,</span>
 <span>        <span class="va">HospitalB_Rater1</span>, <span class="va">HospitalB_Rater2</span>,</span>
 <span>        <span class="va">HospitalC_Rater1</span>, <span class="va">HospitalC_Rater2</span></span>
@@ -828,7 +828,7 @@ standard kappa or cluster-specific kappa analyses.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">comprehensive</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater_1</span>, <span class="va">Rater_2</span>, <span class="va">Rater_3</span>, <span class="va">Rater_4</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater_1</span>, <span class="va">Rater_2</span>, <span class="va">Rater_3</span>, <span class="va">Rater_4</span><span class="op">)</span>,</span>
 <span>    pairwiseKappa <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    referenceRater <span class="op">=</span> <span class="va">Rater_1</span>,       <span class="co"># Compare all raters against this one</span></span>
 <span>    rankRaters <span class="op">=</span> <span class="cn">TRUE</span>,              <span class="co"># Rank raters by agreement with reference</span></span>
@@ -857,7 +857,7 @@ suffixes in variable names (e.g., <code>Rater1_T1</code>,
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_testRetest</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1_T1</span>, <span class="va">Rater1_T2</span>, <span class="va">Rater2_T1</span>, <span class="va">Rater2_T2</span>, <span class="va">Rater3_T1</span>, <span class="va">Rater3_T2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1_T1</span>, <span class="va">Rater1_T2</span>, <span class="va">Rater2_T1</span>, <span class="va">Rater2_T2</span>, <span class="va">Rater3_T1</span>, <span class="va">Rater3_T2</span><span class="op">)</span>,</span>
 <span>    interIntraRater <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    interIntraSeparator <span class="op">=</span> <span class="st">"_"</span>,      <span class="co"># Character separating rater from timepoint</span></span>
 <span>    finn <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -883,8 +883,8 @@ using a bootstrap test of kappa difference.</p>
 <span></span>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_paired</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Manual_Rater1</span>, <span class="va">Manual_Rater2</span><span class="op">)</span>,</span>
-<span>    conditionBVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">AI_Rater1</span>, <span class="va">AI_Rater2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Manual_Rater1</span>, <span class="va">Manual_Rater2</span><span class="op">)</span>,</span>
+<span>    conditionBVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">AI_Rater1</span>, <span class="va">AI_Rater2</span><span class="op">)</span>,</span>
 <span>    pairedAgreementTest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    pairedBootN <span class="op">=</span> <span class="fl">200</span>,              <span class="co"># Number of bootstrap replicates</span></span>
 <span>    agreementBySubgroup <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -912,7 +912,7 @@ dataset.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_mixed</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span><span class="op">)</span>,</span>
 <span>    mixedEffectsComparison <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    conditionVariable <span class="op">=</span> <span class="va">condition</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -935,7 +935,7 @@ dataset.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">digital_path</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Ki67_Manual</span>, <span class="va">Ki67_AI_Assisted</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Ki67_Manual</span>, <span class="va">Ki67_AI_Assisted</span><span class="op">)</span>,</span>
 <span>    mixedEffectsComparison <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    conditionVariable <span class="op">=</span> <span class="va">Pathologist_Experience</span>,</span>
 <span>    blandAltmanPlot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -962,7 +962,7 @@ dataset.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">pathology_ai</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Ki67_AI</span>, <span class="va">Ki67_Pathologist</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Ki67_AI</span>, <span class="va">Ki67_Pathologist</span><span class="op">)</span>,</span>
 <span>    blandAltmanPlot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    linCCC <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -1003,7 +1003,7 @@ dataset.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_heatmap</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Scorer_A</span>, <span class="va">Scorer_B</span>, <span class="va">Scorer_C</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Scorer_A</span>, <span class="va">Scorer_B</span>, <span class="va">Scorer_C</span><span class="op">)</span>,</span>
 <span>    wght <span class="op">=</span> <span class="st">"equal"</span>,                     <span class="co"># Linear weights for ordinal HER2</span></span>
 <span>    sft <span class="op">=</span> <span class="cn">TRUE</span>,                         <span class="co"># Contingency table</span></span>
 <span>    agreementHeatmap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -1025,7 +1025,7 @@ dataset.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    confusionMatrix <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    confusionNormalize <span class="op">=</span> <span class="st">"none"</span>     <span class="co"># "none", "row", "column"</span></span>
 <span><span class="op">)</span></span>
@@ -1036,7 +1036,7 @@ dataset.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    confusionMatrix <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    confusionNormalize <span class="op">=</span> <span class="st">"row"</span></span>
 <span><span class="op">)</span></span>
@@ -1059,9 +1059,9 @@ all agreement statistics.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_small</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span><span class="op">)</span>,</span>
 <span>    bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    nBoot <span class="op">=</span> <span class="fl">200</span>,                    <span class="co"># Number of bootstrap replicates (50-5000)</span></span>
+<span>    nBoot <span class="op">=</span> <span class="fl">100</span>,                    <span class="co"># Number of bootstrap replicates (100-5000)</span></span>
 <span>    confLevel <span class="op">=</span> <span class="fl">0.95</span>                <span class="co"># Confidence level</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -1079,7 +1079,7 @@ consensus of the other annotators.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_threeRater</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
 <span>    multiAnnotatorConcordance <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    predictionColumn <span class="op">=</span> <span class="fl">1</span>            <span class="co"># Which rater is the "prediction" (1-indexed)</span></span>
 <span><span class="op">)</span></span>
@@ -1098,7 +1098,7 @@ misleading due to prevalence effects.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_binary</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PathologistX</span>, <span class="va">PathologistY</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">PathologistX</span>, <span class="va">PathologistY</span><span class="op">)</span>,</span>
 <span>    specificAgreement <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    specificPositiveCategory <span class="op">=</span> <span class="st">"Positive"</span>,  <span class="co"># Target category for PSA/NSA</span></span>
 <span>    specificAllCategories <span class="op">=</span> <span class="cn">TRUE</span>,           <span class="co"># Show all categories</span></span>
@@ -1121,7 +1121,7 @@ misleading due to prevalence effects.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_threeRater</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span>, <span class="va">Rater3</span><span class="op">)</span>,</span>
 <span>    consensusName <span class="op">=</span> <span class="st">"consensus_rating"</span>,</span>
 <span>    consensusRule <span class="op">=</span> <span class="st">"majority"</span>,     <span class="co"># "majority", "supermajority", "unanimous"</span></span>
 <span>    tieBreaker <span class="op">=</span> <span class="st">"exclude"</span>          <span class="co"># "exclude", "first", "lowest", "highest"</span></span>
@@ -1138,7 +1138,7 @@ misleading due to prevalence effects.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    loaVariable <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    detailLevel <span class="op">=</span> <span class="st">"detailed"</span>,       <span class="co"># "simple" or "detailed"</span></span>
 <span>    loaThresholds <span class="op">=</span> <span class="st">"custom"</span>,       <span class="co"># "custom", "quartiles", "tertiles"</span></span>
@@ -1166,7 +1166,7 @@ misleading due to prevalence effects.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_perfect</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">RaterA</span>, <span class="va">RaterB</span><span class="op">)</span></span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">RaterA</span>, <span class="va">RaterB</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> object 'agreement_perfect' not found</span></span>
@@ -1179,7 +1179,7 @@ misleading due to prevalence effects.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_poor</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">PathologistA</span>, <span class="va">PathologistB</span><span class="op">)</span>,</span>
 <span>    gwet <span class="op">=</span> <span class="cn">TRUE</span>      <span class="co"># Gwet's AC is stable even when kappa is paradoxically low</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -1192,9 +1192,9 @@ misleading due to prevalence effects.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_small</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Rater1</span>, <span class="va">Rater2</span><span class="op">)</span>,</span>
 <span>    bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    nBoot <span class="op">=</span> <span class="fl">200</span></span>
+<span>    nBoot <span class="op">=</span> <span class="fl">100</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> object 'agreement_small' not found</span></span></code></pre></div>
@@ -1211,7 +1211,7 @@ requires the analysis options to be set.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,         <span class="co"># Any dataset (not used for calculation)</span></span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    agreementSampleSize <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    ssMetric <span class="op">=</span> <span class="st">"kappa"</span>,                 <span class="co"># "kappa", "fleiss", "icc"</span></span>
 <span>    ssKappaNull <span class="op">=</span> <span class="fl">0.4</span>,                  <span class="co"># Null hypothesis kappa</span></span>
@@ -1228,7 +1228,7 @@ requires the analysis options to be set.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    agreementSampleSize <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    ssMetric <span class="op">=</span> <span class="st">"icc"</span>,</span>
 <span>    ssKappaNull <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -1252,7 +1252,7 @@ requires the analysis options to be set.</p>
 <span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    confLevel <span class="op">=</span> <span class="fl">0.90</span>       <span class="co"># Applies to all CI calculations</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -1267,7 +1267,7 @@ requires the analysis options to be set.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_pathology</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">Pathologist1</span>, <span class="va">Pathologist2</span><span class="op">)</span>,</span>
 <span>    <span class="co"># Display</span></span>
 <span>    sft <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span></span>
@@ -1297,7 +1297,7 @@ requires the analysis options to be set.</p>
 <span>    agreementHeatmap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    <span class="co"># Bootstrap</span></span>
 <span>    bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    nBoot <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>    nBoot <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>    <span class="co"># Subgroup</span></span>
 <span>    agreementBySubgroup <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    subgroupVariable <span class="op">=</span> <span class="va">specimen_type</span>,</span>
@@ -1335,7 +1335,7 @@ requires the analysis options to be set.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">agreement_continuous</span>,</span>
 <span>    conditionBVars <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>    vars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
+<span>    vars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">MeasurementA</span>, <span class="va">MeasurementB</span><span class="op">)</span>,</span>
 <span>    confLevel <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>    <span class="co"># ICC</span></span>
 <span>    icc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -1359,7 +1359,7 @@ requires the analysis options to be set.</p>
 <span>    krippMethod <span class="op">=</span> <span class="st">"interval"</span>,</span>
 <span>    <span class="co"># Bootstrap</span></span>
 <span>    bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    nBoot <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>    nBoot <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>    <span class="co"># Rater profiles</span></span>
 <span>    raterProfiles <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    raterProfileType <span class="op">=</span> <span class="st">"violin"</span>,</span>

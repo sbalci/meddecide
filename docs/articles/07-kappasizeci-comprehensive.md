@@ -22,7 +22,7 @@ Where: - $`p_o`$ = observed proportional agreement - $`p_e`$ = expected
 agreement by chance
 
 **Kappa Interpretation Guidelines:** - κ \< 0.00: Poor agreement (worse
-than chance) - κ = 0.00-0.20: Slight agreement\
+than chance) - κ = 0.00-0.20: Slight agreement  
 - κ = 0.21-0.40: Fair agreement - κ = 0.41-0.60: Moderate agreement - κ
 = 0.61-0.80: Substantial agreement - κ = 0.81-1.00: Almost perfect
 agreement

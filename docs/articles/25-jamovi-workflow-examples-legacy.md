@@ -48,7 +48,7 @@ Configure the following variables:
 Enable the following options:
 
 - ☑ Show Node Shapes
-- ☑ Show Probabilities\
+- ☑ Show Probabilities  
 - ☑ Show Costs
 - ☑ Show Utilities
 - ☑ Show Node Labels

@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.53.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -463,7 +463,7 @@ optimal cutpoint.</p>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
 <span>  dependentVars <span class="op">=</span> <span class="st">"biomarker"</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"maximize_boot_metric"</span>,</span>
-<span>  boot_runs <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  boot_runs <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
@@ -644,7 +644,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span>, <span class="va">combined_score</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span>, <span class="va">combined_score</span><span class="op">)</span>,</span>
 <span>  plotROC <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  combinePlots <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -660,7 +660,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
 <span>  delongTest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
@@ -679,7 +679,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">cardiac_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"mi_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"MI"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">troponin</span>, <span class="va">creatinine</span>, <span class="va">bnp</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">troponin</span>, <span class="va">creatinine</span>, <span class="va">bnp</span><span class="op">)</span>,</span>
 <span>  combinePlots <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  delongTest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -748,7 +748,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
 <span>  combinePlots <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  legendPosition <span class="op">=</span> <span class="st">"bottom"</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -764,7 +764,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
 <span>  combinePlots <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  directLabel <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -928,7 +928,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">large_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"disease_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">biomarker1</span>, <span class="va">biomarker2</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">biomarker1</span>, <span class="va">biomarker2</span><span class="op">)</span>,</span>
 <span>  subGroup <span class="op">=</span> <span class="st">"site"</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
@@ -999,7 +999,7 @@ optimal cutpoint.</p>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
 <span>  dependentVars <span class="op">=</span> <span class="st">"biomarker"</span>,</span>
 <span>  bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  bootstrapReps <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bootstrapReps <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -1114,10 +1114,10 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
 <span>  calculateIDI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  idiNriBootRuns <span class="op">=</span> <span class="fl">200</span></span>
+<span>  idiNriBootRuns <span class="op">=</span> <span class="fl">100</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> object 'multi_data' not found</span></span></code></pre></div>
@@ -1130,7 +1130,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
 <span>  calculateNRI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  nriThresholds <span class="op">=</span> <span class="st">"0.3,0.7"</span></span>
@@ -1146,7 +1146,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
 <span>  calculateNRI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  nriThresholds <span class="op">=</span> <span class="st">""</span></span>
@@ -1162,7 +1162,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span><span class="op">)</span>,</span>
 <span>  compareClassifiers <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
@@ -1336,7 +1336,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">advanced_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker_excellent</span>, <span class="va">marker_good</span>, <span class="va">marker_moderate</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker_excellent</span>, <span class="va">marker_good</span>, <span class="va">marker_moderate</span>,</span>
 <span>                       <span class="va">marker_fair</span>, <span class="va">marker_poor</span><span class="op">)</span>,</span>
 <span>  metaAnalysis <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  metaAnalysisMethod <span class="op">=</span> <span class="st">"both"</span>,</span>
@@ -1355,7 +1355,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">advanced_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker_excellent</span>, <span class="va">marker_good</span>, <span class="va">marker_moderate</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker_excellent</span>, <span class="va">marker_good</span>, <span class="va">marker_moderate</span>,</span>
 <span>                       <span class="va">marker_fair</span>, <span class="va">marker_poor</span><span class="op">)</span>,</span>
 <span>  metaAnalysis <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  metaAnalysisMethod <span class="op">=</span> <span class="st">"both"</span>,</span>
@@ -1374,7 +1374,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">advanced_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker_excellent</span>, <span class="va">marker_good</span>, <span class="va">marker_moderate</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker_excellent</span>, <span class="va">marker_good</span>, <span class="va">marker_moderate</span><span class="op">)</span>,</span>
 <span>  metaAnalysis <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  metaAnalysisMethod <span class="op">=</span> <span class="st">"fixed"</span>,</span>
 <span>  overrideMetaAnalysisWarning <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -1614,7 +1614,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">missing_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">test_a</span>, <span class="va">test_b</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">test_a</span>, <span class="va">test_b</span><span class="op">)</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -1642,7 +1642,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">large_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"disease_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">biomarker1</span>, <span class="va">biomarker2</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">biomarker1</span>, <span class="va">biomarker2</span><span class="op">)</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
@@ -1665,7 +1665,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">timedep_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"outcome"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Event"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">baseline_marker</span>, <span class="va">followup_marker</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">baseline_marker</span>, <span class="va">followup_marker</span><span class="op">)</span>,</span>
 <span>  delongTest <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  combinePlots <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -1702,7 +1702,7 @@ optimal cutpoint.</p>
 <span>  data <span class="op">=</span> <span class="va">multi_data</span>,</span>
 <span>  classVar <span class="op">=</span> <span class="st">"diagnosis"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  dependentVars <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span>, <span class="va">combined_score</span><span class="op">)</span>,</span>
+<span>  dependentVars <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">marker1</span>, <span class="va">marker2</span>, <span class="va">marker3</span>, <span class="va">combined_score</span><span class="op">)</span>,</span>
 <span>  clinicalMode <span class="op">=</span> <span class="st">"comprehensive"</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"maximize_metric"</span>,</span>
 <span>  metric <span class="op">=</span> <span class="st">"youden"</span>,</span>
@@ -1711,7 +1711,7 @@ optimal cutpoint.</p>
 <span>  calculateNRI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  refVar <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  bootstrapCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  bootstrapReps <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bootstrapReps <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  clinicalUtilityAnalysis <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  plotROC <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  combinePlots <span class="op">=</span> <span class="cn">TRUE</span>,</span>

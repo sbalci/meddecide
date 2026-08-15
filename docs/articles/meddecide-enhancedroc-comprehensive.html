@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.53.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -318,7 +318,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">comparative_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"cancer_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Cancer"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span>, <span class="va">novel_marker2</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span>, <span class="va">novel_marker2</span>,</span>
 <span>                    <span class="va">imaging_score</span>, <span class="va">genetic_risk_score</span><span class="op">)</span>,</span>
 <span>  analysisType <span class="op">=</span> <span class="st">"comparative"</span>,</span>
 <span>  pairwiseComparisons <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -336,10 +336,10 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">comparative_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"cancer_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Cancer"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span><span class="op">)</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span><span class="op">)</span>,</span>
 <span>  analysisType <span class="op">=</span> <span class="st">"comparative"</span>,</span>
 <span>  comparisonMethod <span class="op">=</span> <span class="st">"bootstrap"</span>,</span>
-<span>  bootstrapSamples <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bootstrapSamples <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  showMetricsDiff <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  statisticalComparison <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  customCutoffs <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -355,7 +355,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">comparative_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"cancer_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Cancer"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span>, <span class="va">novel_marker2</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span>, <span class="va">novel_marker2</span>,</span>
 <span>                    <span class="va">imaging_score</span>, <span class="va">genetic_risk_score</span><span class="op">)</span>,</span>
 <span>  analysisType <span class="op">=</span> <span class="st">"comprehensive"</span>,</span>
 <span>  comprehensive_output <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -380,7 +380,7 @@ DeLong’s test.</p>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
 <span>  predictors <span class="op">=</span> <span class="st">"biomarker1"</span>,</span>
 <span>  useBootstrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  bootstrapSamples <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bootstrapSamples <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  bootstrapMethod <span class="op">=</span> <span class="st">"bca"</span>,</span>
 <span>  customCutoffs <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
@@ -397,7 +397,7 @@ DeLong’s test.</p>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
 <span>  predictors <span class="op">=</span> <span class="st">"biomarker1"</span>,</span>
 <span>  useBootstrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  bootstrapSamples <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bootstrapSamples <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  bootstrapMethod <span class="op">=</span> <span class="st">"percentile"</span>,</span>
 <span>  stratifiedBootstrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  customCutoffs <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -416,7 +416,7 @@ DeLong’s test.</p>
 <span>  predictors <span class="op">=</span> <span class="st">"biomarker1"</span>,</span>
 <span>  confidenceLevel <span class="op">=</span> <span class="fl">90</span>,</span>
 <span>  useBootstrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  bootstrapSamples <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bootstrapSamples <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  bootstrapCutoffCI <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  bootstrapPartialAUC <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  partialAuc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -474,7 +474,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">comparative_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"cancer_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Cancer"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span><span class="op">)</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">established_marker</span>, <span class="va">novel_marker1</span><span class="op">)</span>,</span>
 <span>  analysisType <span class="op">=</span> <span class="st">"comparative"</span>,</span>
 <span>  rocCurve <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  customCutoffs <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -633,7 +633,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">tied_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"disease"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">ordinal_score</span>, <span class="va">rounded_lab</span>, <span class="va">composite_score</span><span class="op">)</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">ordinal_score</span>, <span class="va">rounded_lab</span>, <span class="va">composite_score</span><span class="op">)</span>,</span>
 <span>  tiedScoreHandling <span class="op">=</span> <span class="st">"average"</span>,</span>
 <span>  customCutoffs <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
@@ -702,7 +702,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">imbalanced_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"rare_disease"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">screening_marker</span>, <span class="va">confirmatory_marker</span><span class="op">)</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">screening_marker</span>, <span class="va">confirmatory_marker</span><span class="op">)</span>,</span>
 <span>  detectImbalance <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  imbalanceThreshold <span class="op">=</span> <span class="fl">3.0</span>,</span>
 <span>  showImbalanceWarning <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -789,7 +789,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">biomarker_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"disease_status"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Disease"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">biomarker1</span>, <span class="va">biomarker2</span>, <span class="va">clinical_risk_score</span><span class="op">)</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">biomarker1</span>, <span class="va">biomarker2</span>, <span class="va">clinical_risk_score</span><span class="op">)</span>,</span>
 <span>  clinicalPresets <span class="op">=</span> <span class="st">"research_comprehensive"</span>,</span>
 <span>  customCutoffs <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
@@ -829,7 +829,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">calibration_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"outcome"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Event"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">predicted_prob</span>, <span class="va">risk_score</span><span class="op">)</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">predicted_prob</span>, <span class="va">risk_score</span><span class="op">)</span>,</span>
 <span>  calibrationAnalysis <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  calibrationPlot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  brierScore <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -888,7 +888,7 @@ DeLong’s test.</p>
 <span>  data <span class="op">=</span> <span class="va">multiclass_data</span>,</span>
 <span>  outcome <span class="op">=</span> <span class="st">"disease_severity"</span>,</span>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Severe"</span>,</span>
-<span>  predictors <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">biomarker_A</span>, <span class="va">biomarker_B</span>, <span class="va">imaging_severity_score</span><span class="op">)</span>,</span>
+<span>  predictors <span class="op">=</span> <span class="fu">vars</span><span class="op">(</span><span class="va">biomarker_A</span>, <span class="va">biomarker_B</span>, <span class="va">imaging_severity_score</span><span class="op">)</span>,</span>
 <span>  multiClassROC <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  multiClassStrategy <span class="op">=</span> <span class="st">"ovr"</span>,</span>
 <span>  multiClassAveraging <span class="op">=</span> <span class="st">"macro"</span>,</span>
@@ -970,7 +970,7 @@ DeLong’s test.</p>
 <span>  positiveClass <span class="op">=</span> <span class="st">"Positive"</span>,</span>
 <span>  predictors <span class="op">=</span> <span class="st">"marker"</span>,</span>
 <span>  useBootstrap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  bootstrapSamples <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bootstrapSamples <span class="op">=</span> <span class="fl">100</span>,</span>
 <span>  customCutoffs <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>

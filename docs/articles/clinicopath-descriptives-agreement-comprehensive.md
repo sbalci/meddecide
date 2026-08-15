@@ -440,7 +440,7 @@ agreement(
     raterClustering = TRUE,
     caseClustering = TRUE,
     bootstrapCI = TRUE,
-    nBoot = 200
+    nBoot = 100
 )
 #> Error:
 #> ! object 'pathology_multi' not found
@@ -473,7 +473,7 @@ agreement(
     krippMethod = "nominal",    # "nominal", "ordinal", "interval", "ratio"
     bootstrap = TRUE,           # Bootstrap CI for Krippendorff's alpha
     bootstrapCI = TRUE,
-    nBoot = 200
+    nBoot = 100
 )
 #> Error:
 #> ! object 'agreement_missing' not found
@@ -869,7 +869,7 @@ agreement(
     conditionBVars = NULL,
     vars = vars(Rater1, Rater2),
     bootstrapCI = TRUE,
-    nBoot = 200,                    # Number of bootstrap replicates (50-5000)
+    nBoot = 100,                    # Number of bootstrap replicates (100-5000)
     confLevel = 0.95                # Confidence level
 )
 #> Error:
@@ -1013,7 +1013,7 @@ agreement(
     conditionBVars = NULL,
     vars = vars(Rater1, Rater2),
     bootstrapCI = TRUE,
-    nBoot = 200
+    nBoot = 100
 )
 #> Error:
 #> ! object 'agreement_small' not found
@@ -1123,7 +1123,7 @@ agreement(
     agreementHeatmap = TRUE,
     # Bootstrap
     bootstrapCI = TRUE,
-    nBoot = 200,
+    nBoot = 100,
     # Subgroup
     agreementBySubgroup = TRUE,
     subgroupVariable = specimen_type,
@@ -1187,7 +1187,7 @@ agreement(
     krippMethod = "interval",
     # Bootstrap
     bootstrapCI = TRUE,
-    nBoot = 200,
+    nBoot = 100,
     # Rater profiles
     raterProfiles = TRUE,
     raterProfileType = "violin",

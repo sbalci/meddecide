@@ -436,7 +436,7 @@ insights into:
 #### Kappa Values
 
 - **\< 0.20**: Poor agreement
-- **0.21-0.40**: Fair agreement\
+- **0.21-0.40**: Fair agreement  
 - **0.41-0.60**: Moderate agreement
 - **0.61-0.80**: Substantial agreement
 - **0.81-1.00**: Almost perfect agreement
@@ -476,7 +476,8 @@ metrics ensure clinical relevance.
 Key advantages include:
 
 - **Comprehensive Analysis**: Multiple reliability measures in one tool
-- **Pathology Focus**: Specialized features for diagnostic applications\
+- **Pathology Focus**: Specialized features for diagnostic
+  applications  
 - **Style Analysis**: Understanding of diagnostic patterns and bias
 - **Quality Control**: Tools for ongoing monitoring and improvement
 - **Research Support**: Robust methods for reliability studies

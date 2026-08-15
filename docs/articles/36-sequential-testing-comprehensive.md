@@ -474,7 +474,7 @@ kable(correlation_scenarios, caption = "Test Correlation Effects")
 
 Choose the appropriate testing strategy: - **Test all positives from
 first test** (Serial positive) - **Test all negatives from first test**
-(Serial negative)\
+(Serial negative)  
 - **Test all subjects with both tests** (Parallel)
 
 #### 3. **Display Options**

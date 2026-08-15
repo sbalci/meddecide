@@ -211,7 +211,7 @@ psychopdaROC(
   positiveClass = "Disease",
   dependentVars = "biomarker",
   method = "maximize_boot_metric",
-  boot_runs = 200,
+  boot_runs = 100,
   seed = 123,
   refVar = NULL
 )
@@ -773,7 +773,7 @@ psychopdaROC(
   positiveClass = "Disease",
   dependentVars = "biomarker",
   bootstrapCI = TRUE,
-  bootstrapReps = 200,
+  bootstrapReps = 100,
   refVar = NULL
 )
 #> Error:
@@ -895,7 +895,7 @@ psychopdaROC(
   dependentVars = vars(marker1, marker2, marker3),
   calculateIDI = TRUE,
   refVar = NULL,
-  idiNriBootRuns = 200
+  idiNriBootRuns = 100
 )
 #> Error:
 #> ! object 'multi_data' not found
@@ -1518,7 +1518,7 @@ psychopdaROC(
   calculateNRI = TRUE,
   refVar = NULL,
   bootstrapCI = TRUE,
-  bootstrapReps = 200,
+  bootstrapReps = 100,
   clinicalUtilityAnalysis = TRUE,
   plotROC = TRUE,
   combinePlots = TRUE,

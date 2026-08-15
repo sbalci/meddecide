@@ -49,7 +49,7 @@ glass slides versus paired digital images.
 The `agreement` function now includes **consensus scoring
 capabilities**: - Automated consensus determination using majority rule,
 super-majority, or unanimous methods - Tie-breaking algorithms for cases
-without clear consensus\
+without clear consensus  
 - Detailed consensus statistics and case-by-case results - Support for
 pathology-specific scoring systems (HER2, tumor grading)
 
@@ -157,7 +157,7 @@ low_end_result <- meddecide::modalitycomparison(
 ```
 
 **Clinical Significance:** - **Null → Ultralow**: Potential ADC therapy
-eligibility - **Ultralow → 1+**: Confirms ADC therapy candidacy\
+eligibility - **Ultralow → 1+**: Confirms ADC therapy candidacy  
 - **1+ → 2+**: May affect treatment decisions
 
 ## Example 4: Consensus Scoring for Challenging Cases
@@ -206,7 +206,7 @@ consensus_analysis <- meddecide::agreement(
 ### Agreement Levels (Kappa Values)
 
 - **0.81-1.00**: Almost Perfect - Suitable for clinical use
-- **0.61-0.80**: Substantial - Generally acceptable, monitor closely\
+- **0.61-0.80**: Substantial - Generally acceptable, monitor closely  
 - **0.41-0.60**: Moderate - May require additional training/calibration
 - **\<=0.40**: Poor - Significant intervention needed
 
