@@ -256,6 +256,9 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
       .aucList = list(), # Store AUC values for clinical interpretation
       .forestPlotData = NULL, # Store forest plot data for meta-analysis
       .assumedPositiveClass = NULL, # Set when no positive class was chosen and one was guessed
+      .modeInstructionsHtml = "", # Instructions written by .applyClinicalModeSettings(); the
+      # preset block runs straight afterwards and writes the SAME Html item, so it has to
+      # prepend this rather than overwrite it (only the last setContent() of a run survives).
       .CONFIDENCE_LEVEL = 0.95, # Default confidence level for tests
 
       # ============================================================================
@@ -324,23 +327,32 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
         # Adjust UI visibility based on clinical mode
         if (mode == "basic") {
           # Show only essential features for clinical users
-          self$results$instructions$setContent(.("
+          private$.modeInstructionsHtml <- .("
         <h3>Basic ROC Analysis</h3>
         <p>This simplified interface shows essential diagnostic performance metrics.
         Results include Area Under the Curve (AUC), optimal cutpoints, and performance statistics.</p>
-        <p><strong>AUC Interpretation:</strong> 0.9+ = Excellent, 0.8-0.9 = Good, 0.7-0.8 = Fair, &lt;0.7 = Poor</p>
-        "))
+        <p><strong>AUC Interpretation:</strong> 0.9+ = Excellent, 0.8-0.9 = Good, 0.7-0.8 = Fair, &lt;0.7 = Poor.
+        These labels describe discrimination in this sample only.</p>
+        <p><strong>Cutpoint caveat:</strong> unless you supplied the cutpoint yourself (Manual cutpoint method),
+        the optimal cutpoint is searched on these same data, so the sensitivity and specificity reported at it
+        are optimistically biased and will typically be lower in a new sample. The bias grows as the sample gets
+        smaller and as more candidate cutpoints are searched. The AUC is computed over all cutpoints and is not
+        affected by that search.</p>
+        ")
         } else if (mode == "advanced") {
-          self$results$instructions$setContent(.("
+          private$.modeInstructionsHtml <- .("
         <h3>Advanced ROC Analysis</h3>
         <p>Advanced interface with statistical comparisons, effect sizes, and additional metrics for research applications.</p>
-        "))
+        ")
         } else if (mode == "comprehensive") {
-          self$results$instructions$setContent(.("
+          private$.modeInstructionsHtml <- .("
         <h3>Comprehensive Statistical Analysis</h3>
         <p>Full research-grade analysis with all available statistical methods, Bayesian analysis, and publication-quality outputs.</p>
-        "))
+        ")
+        } else {
+          private$.modeInstructionsHtml <- ""
         }
+        self$results$instructions$setContent(private$.modeInstructionsHtml)
       },
 
       # Apply clinical preset settings
@@ -349,6 +361,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
 
         if (preset == "screening") {
           self$results$instructions$setContent(paste0(
+            private$.modeInstructionsHtml,
             "<h4>Screening Test Configuration</h4>",
             "<p>For screening, prioritize high sensitivity to minimize false negatives. ",
             "Consider using the 'Fixed Sensitivity/Specificity Analysis' section below to review performance at fixed sensitivity thresholds.</p>",
@@ -358,6 +371,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
           ))
         } else if (preset == "confirmation") {
           self$results$instructions$setContent(paste0(
+            private$.modeInstructionsHtml,
             "<h4>Confirmation Test Configuration</h4>",
             "<p>For confirmatory testing, prioritize high specificity to minimize false positives. ",
             "Consider using the 'Fixed Sensitivity/Specificity Analysis' section below to review performance at fixed specificity thresholds.</p>",
@@ -367,14 +381,16 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
           ))
         } else if (preset == "balanced") {
           self$results$instructions$setContent(paste0(
+            private$.modeInstructionsHtml,
             "<h4>Balanced Diagnostic Test</h4>",
             "<p>Youden's J index optimizes for balanced sensitivity and specificity. ",
-            "Suitable for general diagnostic applications.</p>",
+            "It weights one unit of sensitivity the same as one unit of specificity, so the cutpoint it returns does not favour either kind of error.</p>",
             "<p style='color: #856404;'><b>Note:</b> This preset provides guidance only. ",
             "The cutpoint method is still: <b>", self$options$method, "</b> with metric: <b>", self$options$metric, "</b>.</p>"
           ))
         } else if (preset == "research") {
           self$results$instructions$setContent(paste0(
+            private$.modeInstructionsHtml,
             "<h4>Research Analysis Configuration</h4>",
             "<p>Comprehensive statistical analysis suitable for research publications with ",
             "advanced metrics and comparisons.</p>",
@@ -403,13 +419,10 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
           return(.("Unable to assess"))
         }
 
-        if (auc >= 0.8) {
-          return(.("Suitable for clinical use with appropriate cutpoint"))
-        } else if (auc >= 0.7) {
-          return(.("May be useful in combination with other markers"))
-        } else {
-          return(.("Not recommended as standalone diagnostic marker"))
-        }
+        # Descriptive summary only - no fitness-for-care verdict. The AUC is computed over all
+        # cutpoints, so the cutpoint search does not bias it; it is simply an in-sample estimate
+        # with no internal or external validation behind it.
+        sprintf(.("In-sample AUC %.2f, estimated on these same data; not internally or externally validated"), auc)
       },
       .getDetailedInterpretation = function(auc, var) {
         if (is.na(auc) || is.null(auc)) {
@@ -418,15 +431,25 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
 
         interpretation <- sprintf(.("The test '%s' has an AUC of %.3f"), var, auc)
 
-        if (auc >= 0.9) {
-          interpretation <- paste(interpretation, .("indicating excellent discriminatory ability. This test can reliably distinguish between diseased and healthy patients."))
+        band <- if (auc >= 0.9) {
+          .("excellent")
         } else if (auc >= 0.8) {
-          interpretation <- paste(interpretation, .("indicating good discriminatory ability. This test performs well for clinical decision making."))
+          .("good")
         } else if (auc >= 0.7) {
-          interpretation <- paste(interpretation, .("indicating fair discriminatory ability. Consider combining with other clinical information."))
+          .("fair")
         } else {
-          interpretation <- paste(interpretation, .("indicating poor discriminatory ability. Alternative diagnostic approaches should be considered."))
+          .("poor")
         }
+
+        # With method = "oc_manual" the cut score comes from the user and nothing is searched,
+        # so the cutpoint-selection optimism does not apply. Same carve-out as .noteCutpointOptimism().
+        cut_clause <- if (identical(self$options$method, "oc_manual")) {
+          .("The sensitivity and specificity quoted at the cut score you supplied are a separate matter: those were not inflated by any cutpoint search, but they still carry ordinary sampling error.")
+        } else {
+          .("The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those are optimistic, because that cutpoint was searched for on these same data.")
+        }
+
+        interpretation <- paste(interpretation, sprintf(.("indicating %s discrimination in this sample: the marker ranks a randomly chosen case from the positive class ahead of a randomly chosen case from the negative class about %.0f%% of the time, in the classification direction in use. AUC is a ranking property of pairs, computed over all cutpoints; it does not depend on which cutpoint was selected, and it does not describe how reliably any single cutpoint classifies an individual patient, which also depends on the cutpoint and on disease prevalence. This AUC is an in-sample estimate that has not been internally or externally validated. %s"), band, auc * 100, cut_clause))
 
         return(interpretation)
       },
@@ -795,7 +818,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
 
         # Generate comprehensive explanation
         explanation <- paste0(
-          "<div style='background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 10px 0;'>",
+          "<div style='background-color: rgba(138, 155, 172, 0.06); padding: 15px; border-left: 4px solid #007bff; margin: 10px 0; color: inherit;'>",
           "<h4 style='color: #007bff; margin-top: 0;'> Fixed ", tools::toTitleCase(analysis_type), " Analysis Guide</h4>",
           "<h5 style='color: #495057; margin-top: 20px;'> Analysis Overview</h5>",
           "<p>This analysis determines the <strong>cutpoint threshold</strong> that achieves a target ", analysis_type, " of <strong>", round(target_value, 3), "</strong> (", round(target_value * 100, 1), "%). ",
@@ -814,8 +837,8 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
             "<li> <strong>Emergency Settings</strong>: When missing a case has severe consequences</li>",
             "<li> <strong>Cost Consideration</strong>: Accept more false positives to avoid missed diagnoses</li>",
             "</ul>",
-            "<div style='background-color: #d4edda; padding: 10px; border-radius: 5px; margin: 10px 0;'>",
-            "<strong> Clinical Pearl:</strong> High sensitivity = \"SnOUT\" (Sensitivity rules OUT) - a negative test with high sensitivity confidently excludes the condition.",
+            "<div style='background-color: rgba(33, 162, 64, 0.19); padding: 10px; border-radius: 5px; margin: 10px 0; color: inherit;'>",
+            "<strong> Clinical Pearl:</strong> High sensitivity = \"SnOUT\" (Sensitivity rules OUT). SnOUT only holds when specificity is also adequate: exclusion power is governed by the negative likelihood ratio (1 - sensitivity) / specificity, so check LR- before reading a negative result as exclusion.",
             "</div>"
           )
         } else {
@@ -828,8 +851,8 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
             "<li> <strong>Treatment Decision</strong>: Before starting costly or risky treatments</li>",
             "<li> <strong>Legal/Insurance</strong>: When false positives have significant consequences</li>",
             "</ul>",
-            "<div style='background-color: #d1ecf1; padding: 10px; border-radius: 5px; margin: 10px 0;'>",
-            "<strong> Clinical Pearl:</strong> High specificity = \"SpIN\" (Specificity rules IN) - a positive test with high specificity confidently confirms the condition.",
+            "<div style='background-color: rgba(33, 163, 188, 0.21); padding: 10px; border-radius: 5px; margin: 10px 0; color: inherit;'>",
+            "<strong> Clinical Pearl:</strong> High specificity = \"SpIN\" (Specificity rules IN). SpIN only holds when sensitivity is also adequate: confirmation power is governed by the positive likelihood ratio sensitivity / (1 - specificity), so check LR+ before reading a positive result as confirmation.",
             "</div>"
           )
         }
@@ -870,7 +893,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
             "<li> <strong>Conservative Approach</strong>: Errs on the side of caution</li>",
             "<li> <strong>Observed Data Only</strong>: Uses actual data points</li>",
             "<li> <strong>Meets/Exceeds Target</strong>: Ensures target is achieved or surpassed</li>",
-            "<li> <strong>Clinical Safety</strong>: Preferred when patient safety is paramount</li>",
+            "<li> <strong>Trade-off</strong>: because it will not interpolate between observed values, the achieved value usually overshoots the target rather than landing on it</li>",
             "</ul>"
           )
         }
@@ -879,14 +902,14 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
         explanation <- paste0(
           explanation,
           "<h5 style='color: #495057;'> Results Interpretation</h5>",
-          "<div style='background-color: #fff3cd; padding: 10px; border-radius: 5px; margin: 10px 0;'>",
+          "<div style='background-color: rgba(255, 202, 33, 0.23); padding: 10px; border-radius: 5px; margin: 10px 0; color: inherit;'>",
           "<p><strong>Key Metrics to Review:</strong></p>",
           "<ul style='margin-bottom: 0;'>",
           "<li><strong>Achieved Value</strong>: How close we got to the target ", analysis_type, "</li>",
           "<li><strong>Corresponding ", if (analysis_type == "sensitivity") "Specificity" else "Sensitivity", "</strong>: The trade-off metric</li>",
           "<li><strong>PPV/NPV</strong>: Predictive values depend on disease prevalence</li>",
           "<li><strong>Youden's J</strong>: Overall balance (Sensitivity + Specificity - 1)</li>",
-          "<li><strong>Cutpoint</strong>: The threshold value to use in practice</li>",
+          "<li><strong>Cutpoint</strong>: The test value at which the sensitivity and specificity in this table were measured. It was located in these same data, so those two figures are apparent (in-sample) values rather than validated estimates</li>",
           "</ul>",
           "</div>"
         )
@@ -894,16 +917,14 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
         # Add clinical decision framework
         explanation <- paste0(
           explanation,
-          "<h5 style='color: #495057;'> Clinical Decision Framework</h5>",
-          "<div style='background-color: #e2e3e5; padding: 10px; border-radius: 5px; margin: 10px 0;'>",
-          "<p><strong>Steps for Implementation:</strong></p>",
-          "<ol style='margin-bottom: 0;'>",
-          "<li><strong>Validate Performance</strong>: Confirm achieved ", analysis_type, " meets your requirements</li>",
-          "<li><strong>Assess Trade-offs</strong>: Evaluate the corresponding ", if (analysis_type == "sensitivity") "specificity" else "sensitivity", " value</li>",
-          "<li><strong>Consider Context</strong>: Factor in prevalence, costs, and consequences</li>",
-          "<li><strong>Pilot Testing</strong>: Test the cutpoint in your clinical setting</li>",
-          "<li><strong>Monitor Performance</strong>: Track real-world performance metrics</li>",
-          "</ol>",
+          "<h5 style='color: #495057;'> How to Read These Numbers</h5>",
+          "<div style='background-color: rgba(33, 41, 56, 0.13); padding: 10px; border-radius: 5px; margin: 10px 0; color: inherit;'>",
+          "<ul style='margin-bottom: 0;'>",
+          "<li><strong>Achieved is not guaranteed</strong>: the achieved ", analysis_type, " is what this sample produced at this cutpoint; it is not a level the test will reproduce in another sample</li>",
+          "<li><strong>The two move together</strong>: fixing ", analysis_type, " pins one number and lets the other float, and the corresponding ", if (analysis_type == "sensitivity") "specificity" else "sensitivity", " column is where that cost shows up</li>",
+          "<li><strong>Prevalence is not in these two numbers</strong>: sensitivity and specificity are computed within the diseased and non-diseased groups separately, so they do not shift with disease frequency, while PPV and NPV do</li>",
+          "<li><strong>Precision</strong>: each figure rests on the number of cases in one group only, so with few positives (or few negatives) it moves considerably from sample to sample</li>",
+          "</ul>",
           "</div>"
         )
 
@@ -911,7 +932,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
         explanation <- paste0(
           explanation,
           "<h5 style='color: #dc3545;'> Important Considerations</h5>",
-          "<div style='background-color: #f8d7da; padding: 10px; border-radius: 5px; margin: 10px 0;'>",
+          "<div style='background-color: rgba(216, 33, 50, 0.18); padding: 10px; border-radius: 5px; margin: 10px 0; color: inherit;'>",
           "<ul style='margin-bottom: 0;'>",
           "<li><strong>Population Specificity</strong>: Results may not generalize to different populations</li>",
           "<li><strong>Prevalence Impact</strong>: PPV and NPV change with disease prevalence</li>",
@@ -1397,6 +1418,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
         resultsTable <- self$results$resultsTable$get(key = var)
         private$.notePositiveClassGuess(resultsTable)
         private$.noteMetricTolerance(resultsTable)
+        private$.noteCutpointOptimism(resultsTable)
 
         # Clear existing rows
         resultsTable$deleteRows()
@@ -1845,31 +1867,18 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
 
       # Initialize the analysis
       .init = function() {
-        # Keep main tables visible but empty them to prevent loading animations
-        self$results$simpleResultsTable$setVisible(TRUE)
-        self$results$runSummary$setVisible(TRUE)
-        self$results$aucSummaryTable$setVisible(TRUE)
-        self$results$clinicalInterpretationTable$setVisible(TRUE)
-
-        # Hide optional elements initially
-        self$results$resultsTable$setVisible(FALSE)
-        self$results$sensSpecTable$setVisible(FALSE)
-        self$results$thresholdTable$setVisible(FALSE)
-        self$results$delongComparisonTable$setVisible(FALSE)
-        self$results$delongTest$setVisible(FALSE)
-        self$results$plotROC$setVisible(FALSE)
-        self$results$criterionPlot$setVisible(FALSE)
-        self$results$prevalencePlot$setVisible(FALSE)
-        self$results$dotPlot$setVisible(FALSE)
+        # Visibility is expressed declaratively in jamovi/psychopdaroc.r.yaml
+        # (`visible: (showCriterionPlot)`, `visible: (metaAnalysis)`, ...) and is
+        # NOT repeated here. An imperative setVisible(FALSE) in .init() overrides
+        # that binding for the run, so it has to be undone by a matching
+        # setVisible(TRUE) in .run() -- and the two halves drift. They did:
+        # criterionPlot, prevalencePlot, dotPlot and precisionRecallPlot were
+        # hidden here and never restored, so those four options computed a plot
+        # and silently threw it away. The declarative form cannot drift.
 
         # Apply clinical mode and preset configurations
         private$.applyClinicalModeSettings()
         private$.applyClinicalPresetSettings()
-        self$results$precisionRecallPlot$setVisible(FALSE)
-        self$results$procedureNotes$setVisible(FALSE)
-        self$results$metaAnalysisWarning$setVisible(FALSE)
-        self$results$metaAnalysisTable$setVisible(FALSE)
-        self$results$metaAnalysisForestPlot$setVisible(FALSE)
 
         # Initialize advanced plot states (enable rendering when data is ready)
         # These plots have renderFun defined in .r.yaml but need setState to activate
@@ -1987,7 +1996,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
               "<i>not</i> necessarily the cutpoint that maximises the metric, and its ",
               "sensitivity and specificity can differ appreciably from the maximum. Set the ",
               "tolerance to 0 to report the maximising cutpoint itself."),
-              format(tol), format(tol),
+              base::format(tol), base::format(tol),
               tryCatch(self$options$metric, error = function(e) "metric"),
               tryCatch(self$options$break_ties, error = function(e) "average"))),
           error = function(e) NULL)
@@ -2007,6 +2016,73 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
               "specificity, cutpoint and AUC below is reversed. Set Positive Class explicitly."),
               private$.assumedPositiveClass)),
           error = function(e) NULL)
+      },
+
+      # A cutpoint searched on the same data the sensitivity and specificity are then read off
+      # gives resubstitution estimates, which are optimistic. Say so beside them rather than only
+      # in the instructions panel. With method = "oc_manual" nothing is searched, so that branch
+      # gets the opposite (and correct) note.
+      .noteCutpointOptimism = function(table) {
+        method <- tryCatch(self$options$method, error = function(e) NULL)
+        if (identical(method, "oc_manual")) {
+          tryCatch(
+            table$setNote(
+              "cutpoint_optimism",
+              .("The cutpoint was supplied by you rather than searched for in these data, so the sensitivity and specificity reported at it are not inflated by cutpoint selection. They remain subject to ordinary sampling error.")),
+            error = function(e) NULL)
+          return(invisible(NULL))
+        }
+        # Only the maximize/minimize families actually use the Optimization Metric setting.
+        # The Youden-smoothing methods use their own criterion, and oc_cost_ratio /
+        # oc_equal_sens_spec / oc_closest_01 have their cutpoint recomputed afterwards
+        # without reading it (see the override block in .run()), so naming the metric
+        # for those methods would tell the user something untrue.
+        method_key <- if (is.null(method)) "" else method
+        metric_txt <- if (method_key %in% c("maximize_metric", "minimize_metric",
+                                            "maximize_loess_metric", "minimize_loess_metric",
+                                            "maximize_boot_metric", "minimize_boot_metric")) {
+          metric <- tryCatch(self$options$metric, error = function(e) NULL)
+          metric_titles <- c(
+            youden = "Youden Index (Sens + Spec - 1)",
+            sum_sens_spec = "Sum of sensitivity and specificity",
+            accuracy = "Overall accuracy",
+            sum_ppv_npv = "Sum of PPV and NPV",
+            prod_sens_spec = "Product of sensitivity and specificity",
+            prod_ppv_npv = "Product of PPV and NPV",
+            cohens_kappa = "Cohen's Kappa",
+            abs_d_sens_spec = "Minimize |Sens - Spec|",
+            abs_d_ppv_npv = "Minimize |PPV - NPV|",
+            F1_score = "F1 Score",
+            odds_ratio = "Diagnostic odds ratio",
+            risk_ratio = "Risk ratio",
+            misclassification_cost = "Misclassification cost",
+            total_utility = "Total utility",
+            roc01 = "Distance to (0,1) in ROC space",
+            p_chisquared = "Chi-squared statistic"
+          )
+          if (!is.null(metric) && nzchar(metric) && metric %in% names(metric_titles)) {
+            sprintf(.("the metric you chose under Optimization Metric (%s)"), metric_titles[[metric]])
+          } else {
+            .("the metric you chose under Optimization Metric")
+          }
+        } else if (method_key == "oc_youden_kernel") {
+          .("the Youden index (sensitivity + specificity - 1) read off a kernel-smoothed ROC curve; the Optimization Metric setting is not used by this method")
+        } else if (method_key == "oc_youden_normal") {
+          .("the Youden index (sensitivity + specificity - 1) computed under a normal-distribution model for the two groups; the Optimization Metric setting is not used by this method")
+        } else if (method_key == "oc_cost_ratio") {
+          .("expected misclassification cost, using the cost ratio you set for false positives against false negatives; the Optimization Metric setting is not used by this method")
+        } else if (method_key == "oc_equal_sens_spec") {
+          .("the balance between sensitivity and specificity, by taking the cutpoint at which the two come closest to being equal; the Optimization Metric setting is not used by this method")
+        } else if (method_key == "oc_closest_01") {
+          .("closeness to the top-left corner of the ROC plot, the point of perfect sensitivity and specificity; the Optimization Metric setting is not used by this method")
+        } else {
+          .("the criterion belonging to the cutpoint method you selected")
+        }
+        note <- sprintf(.("The cutpoint was chosen to optimise %s on these same data. The sensitivity, specificity and other metrics reported at that cutpoint are therefore optimistically biased and will typically be lower in a new sample; the bias grows as the sample gets smaller and as more candidate cutpoints are searched. Use bootstrap or split-sample validation before quoting these figures."), metric_txt)
+        if (isTRUE(self$options$allObserved)) {
+          note <- paste(note, .("This table lists every observed test value as a candidate cutpoint, not only the selected one; the bias above applies to whichever row you report as the cutpoint."))
+        }
+        tryCatch(table$setNote("cutpoint_optimism", note), error = function(e) NULL)
       },
 
       .clearTables = function() {
@@ -2099,30 +2175,15 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
             jmvcore::reject(val)
           }
 
-          # Hide instructions when inputs are provided
+          # Hide instructions when inputs are provided. This one is genuine
+          # option/data-driven visibility (the onboarding panel), not a failure
+          # signal, so it stays. The block that used to follow -- restoring
+          # procedureNotes, plotROC, resultsTable, thresholdTable, sensSpecTable,
+          # delongComparisonTable and delongTest -- only existed to undo the
+          # setVisible(FALSE) calls that .init() no longer makes. Each of those
+          # elements already carries the equivalent `visible:` expression in
+          # jamovi/psychopdaroc.r.yaml.
           self$results$instructions$setVisible(FALSE)
-
-          # Show procedure notes when analysis proceeds
-          self$results$procedureNotes$setVisible(TRUE)
-
-          # Make ROC plots visible if requested
-          if (self$options$plotROC) {
-            self$results$plotROC$setVisible(TRUE)
-          }
-
-          self$results$resultsTable$setVisible(TRUE)
-
-          # Make optional tables/plots visible based on options
-          if (self$options$showThresholdTable) {
-            self$results$thresholdTable$setVisible(TRUE)
-          }
-          if (self$options$sensSpecTable) {
-            self$results$sensSpecTable$setVisible(TRUE)
-          }
-          if (self$options$delongTest) {
-            self$results$delongComparisonTable$setVisible(TRUE)
-            self$results$delongTest$setVisible(TRUE)
-          }
 
           # Create procedure notes with analysis details
           procedureNotes <- paste0(
@@ -2279,7 +2340,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
 
         # Populate Run Summary
         run_summary_html <- paste0(
-          "<div style='padding: 10px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 15px;'>",
+          "<div style='padding: 10px; background-color: rgba(138, 155, 172, 0.06); border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 15px; color: inherit;'>",
           "<h4>Analysis Status</h4>",
           "<ul>",
           "<li><strong>Seed:</strong> ", self$options$seed, "</li>",
@@ -2290,7 +2351,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
         if (length(summary_status$warnings) > 0) {
           run_summary_html <- paste0(
             run_summary_html,
-            "</ul><div style='background-color: #fff3cd; color: #856404; padding: 10px; border-radius: 4px; margin-top: 10px;'>",
+            "</ul><div style='background-color: rgba(255, 202, 33, 0.23); color: inherit; padding: 10px; border-radius: 4px; margin-top: 10px;'>",
             "<strong>Warnings:</strong><ul>"
           )
           for (w in summary_status$warnings) {
@@ -2720,11 +2781,14 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
           if (self$options$showPrevalencePlot) {
             self$results$prevalencePlot$addItem(key = 1)
             prevImage <- self$results$prevalencePlot$get(key = 1)
-            prevImage$setTitle("Predictive Values vs. Prevalence: Combined")
+            prevImage$setTitle("Predictive Values vs. Prevalence")
 
-            # Use the first variable's data for demonstration
+            # Only the first test variable is plotted here, so name it in the title rather
+            # than labelling the panel "Combined" - the label named a different quantity
+            # from the one actually plotted.
             if (length(private$.optimalCriteriaList) > 0 && length(private$.prevalenceList) > 0) {
               firstVar <- names(private$.optimalCriteriaList)[1]
+              prevImage$setTitle(paste0("Predictive Values vs. Prevalence: ", firstVar))
               prevImage$setState(list(
                 optimal = private$.optimalCriteriaList[[firstVar]],
                 prevalence = private$.prevalenceList[[firstVar]]
@@ -4928,14 +4992,17 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
                 abs_d <- abs(cohens_d)
                 effect_magnitude <- if (abs_d < 0.2) "Negligible" else if (abs_d < 0.5) "Small" else if (abs_d < 0.8) "Medium" else "Large"
 
+                # Describe the size of the observed difference only: no interval and no test
+                # accompanies it, so "not meaningful" would be accepting the null from a point
+                # estimate.
                 clinical_importance <- if (abs_d < 0.2) {
-                  "Not clinically meaningful"
+                  .("Observed difference in Cohen's d under 0.20")
                 } else if (abs_d < 0.5) {
-                  "Possibly clinically meaningful"
+                  .("Observed difference in Cohen's d of 0.20 to 0.50")
                 } else if (abs_d < 0.8) {
-                  "Likely clinically meaningful"
+                  .("Observed difference in Cohen's d of 0.50 to 0.80")
                 } else {
-                  "Highly clinically meaningful"
+                  .("Observed difference in Cohen's d of 0.80 or more")
                 }
 
                 self$results$effectSizeTable$addRow(rowKey = paste0(var1, "_vs_", var2), values = list(
@@ -5030,12 +5097,17 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
                     NA
                   }
 
-                  power_adequacy <- if (observed_power >= target_power) "Adequate" else "Inadequate"
-                  recommendation <- if (observed_power < target_power) {
-                    paste0("Post-hoc power inadequate. Would need n=", required_n, " for ", target_power * 100, "% power with observed AUC=", round(observed_auc, 3))
-                  } else {
-                    paste0("Post-hoc power adequate (", round(observed_power * 100, 1), "%) for observed AUC=", round(observed_auc, 3))
-                  }
+                  power_adequacy <- "Not informative (post-hoc)"
+                  # Observed power computed from the observed effect is a one-to-one transform of
+                  # the p-value, so it can never say anything the p-value did not already say.
+                  recommendation <- paste0(
+                    "Observed (post-hoc) power is a deterministic function of the observed p-value and adds no ",
+                    "information about this study beyond it. To judge whether the study could have detected a ",
+                    "clinically meaningful AUC, use the confidence interval for the observed AUC (",
+                    round(observed_auc, 3), ") or a prospective calculation against a pre-specified target AUC. ",
+                    "For reference, n=", required_n, " would be required for ", target_power * 100,
+                    "% power against an AUC of ", round(observed_auc, 3), "."
+                  )
                 } else if (analysis_type == "prospective") {
                   # Prospective power: Calculate power for expected effect with current N
                   expected_auc <- 0.5 + expected_auc_diff
@@ -5109,7 +5181,15 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
                   )
                 }
 
-                power_adequacy <- if (!is.na(observed_power) && observed_power >= target_power) "Adequate" else if (!is.na(observed_power)) "Inadequate" else "Cannot compute"
+                power_adequacy <- if (analysis_type == "post_hoc") {
+                  "Not informative (post-hoc)"
+                } else if (!is.na(observed_power) && observed_power >= target_power) {
+                  "Adequate"
+                } else if (!is.na(observed_power)) {
+                  "Inadequate"
+                } else {
+                  "Cannot compute"
+                }
 
                 self$results$powerAnalysisTable$addRow(rowKey = var, values = list(
                   variable = var,
@@ -5310,12 +5390,15 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
                 # Standardized net benefit (guard against zero prevalence)
                 standardized_net_benefit <- if (prevalence > 1e-10) net_benefit / prevalence else NA
 
+                # Report what the net-benefit comparison shows at this one threshold, not a
+                # verdict on whether the marker should be used in patient care: the cutoff was
+                # found by Youden on these same data and no interval is attached.
                 clinical_utility <- if (net_benefit > max(treat_all_benefit, treat_none_benefit)) {
-                  "Clinically useful"
+                  .("Net benefit exceeds both treat-all and treat-none at this threshold")
                 } else if (net_benefit > treat_none_benefit) {
-                  "Limited clinical utility"
+                  .("Net benefit exceeds treat-none but not treat-all at this threshold")
                 } else {
-                  "Not clinically useful"
+                  .("Net benefit does not exceed treat-none at this threshold")
                 }
 
                 self$results$clinicalUtilityTable$addRow(rowKey = var, values = list(
@@ -5401,7 +5484,7 @@ psychopdaROCClass <- if (requireNamespace("jmvcore")) {
         # BLOCK analysis instead of just warning - meta-analysis requires independent studies
         if (!isTRUE(self$options$overrideMetaAnalysisWarning)) {
           error_html <- paste0(
-            "<div style='padding: 15px; background-color: #f8d7da; border: 2px solid #f5c6cb; border-radius: 4px; color: #721c24;'>",
+            "<div style='padding: 15px; background-color: rgba(216, 33, 50, 0.18); border: 2px solid #f5c6cb; border-radius: 4px; color: inherit;'>",
             "<h4 style='margin-top: 0;'> Meta-Analysis Not Recommended</h4>",
             "<p><strong>Issue:</strong> Standard meta-analysis assumes <em>independent studies</em>. ",
             "Comparing multiple markers from the <strong>same dataset</strong> violates this fundamental assumption.</p>",

@@ -484,7 +484,7 @@ enhancedROCClass <- R6::R6Class(
             if (levels_count < 2) {
                 self$results$results$instructions$setContent(
                     paste0(
-                        "<div style='padding: 10px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px;'>",
+                        "<div style='padding: 10px; background-color: rgba(216, 33, 50, 0.18); border: 1px solid #f5c6cb; border-radius: 4px; color: inherit;'>",
                         "<h4 style='color: #721c24; margin-top: 0;'>Insufficient Outcome Variable Levels</h4>",
                         "<p><strong>Error:</strong> Outcome variable '<code>", private$.safeHtmlOutput(private$.outcome),
                         "</code>' has only 1 unique value: '<code>", private$.safeHtmlOutput(levels(outcome_var)[1]), "</code>'</p>",
@@ -515,7 +515,7 @@ enhancedROCClass <- R6::R6Class(
 
                     # Inform user
                     info_msg <- paste0(
-                        "<div style='padding: 10px; background: #d1ecf1; border: 1px solid #bee5eb; border-radius: 4px; margin-top: 10px;'>",
+                        "<div style='padding: 10px; background-color: rgba(33, 163, 188, 0.21); border: 1px solid #bee5eb; border-radius: 4px; margin-top: 10px; color: inherit;'>",
                         "<h4 style='color: #0c5460; margin-top: 0;'> Multi-Class Analysis Enabled</h4>",
                         "<p>Outcome variable '<code>", private$.safeHtmlOutput(private$.outcome), "</code>' has ", levels_count, " levels.</p>",
                         "<p>Multi-Class ROC metrics will be calculated.</p>",
@@ -542,7 +542,7 @@ enhancedROCClass <- R6::R6Class(
                     if (is.null(positive_class) || positive_class == "" || !positive_class %in% available_levels) {
                         self$results$results$instructions$setContent(
                             paste0(
-                                "<div style='padding: 10px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px;'>",
+                                "<div style='padding: 10px; background-color: rgba(255, 202, 33, 0.23); border: 1px solid #ffeaa7; border-radius: 4px; color: inherit;'>",
                                 "<h4 style='color: #856404; margin-top: 0;'>Multi-level Outcome Variable Detected</h4>",
                                 "<p><strong>Issue:</strong> Outcome variable '<code>", private$.safeHtmlOutput(private$.outcome),
                                 "</code>' has ", levels_count, " levels for ROC analysis: <strong>", private$.safeHtmlOutput(paste(available_levels, collapse = ", ")), "</strong></p>",
@@ -568,7 +568,7 @@ enhancedROCClass <- R6::R6Class(
 
                     # Inform user about the conversion
                     info_msg <- paste0(
-                        "<div style='padding: 10px; background: #d4edda; border: 1px solid #c3e6cb; border-radius: 4px; margin-top: 10px;'>",
+                        "<div style='padding: 10px; background-color: rgba(33, 162, 64, 0.19); border: 1px solid #c3e6cb; border-radius: 4px; margin-top: 10px; color: inherit;'>",
                         "<h4 style='color: #155724; margin-top: 0;'> Outcome Variable Converted to Binary</h4>",
                         "<p><strong>Positive Class:</strong> '<code>", private$.safeHtmlOutput(positive_class), "</code>' (cases of interest)</p>",
                         "<p><strong>Negative Class:</strong> '<code>Other</code>' (combined: ",
@@ -591,7 +591,7 @@ enhancedROCClass <- R6::R6Class(
                     if (!positive_class %in% available_levels) {
                         self$results$results$instructions$setContent(
                             paste0(
-                                "<div style='padding: 10px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px;'>",
+                                "<div style='padding: 10px; background-color: rgba(216, 33, 50, 0.18); border: 1px solid #f5c6cb; border-radius: 4px; color: inherit;'>",
                                 "<h4 style='color: #721c24; margin-top: 0;'>Invalid Positive Class Selection</h4>",
                                 "<p><strong>Error:</strong> Selected positive class '<code>", private$.safeHtmlOutput(positive_class),
                                 "</code>' not found in outcome variable '<code>", private$.safeHtmlOutput(private$.outcome), "</code>'.</p>",
@@ -641,7 +641,7 @@ enhancedROCClass <- R6::R6Class(
             if (length(non_numeric_preds) > 0) {
                 self$results$results$instructions$setContent(
                     paste0(
-                        "<div style='padding: 10px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px;'>",
+                        "<div style='padding: 10px; background-color: rgba(216, 33, 50, 0.18); border: 1px solid #f5c6cb; border-radius: 4px; color: inherit;'>",
                         "<h4 style='color: #721c24; margin-top: 0;'>Non-numeric Predictor Variables</h4>",
                         "<p><strong>Error:</strong> The following predictor variable(s) are not numeric: <code>",
                         paste(vapply(non_numeric_preds, private$.safeHtmlOutput, character(1)), collapse = "</code>, <code>"),
@@ -674,7 +674,7 @@ enhancedROCClass <- R6::R6Class(
             warnings <- private$.validateClinicalAssumptions(data)
             if (length(warnings) > 0) {
                 warning_html <- paste0(
-                    "<div style='background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0;'>",
+                    "<div style='background-color: rgba(255, 202, 33, 0.23); border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0; color: inherit;'>",
                     "<h4 style='color: #856404; margin-top: 0;'>", .("Clinical Assumptions & Recommendations"), "</h4>",
                     paste(warnings, collapse = ""),
                     "</div>"
@@ -761,13 +761,14 @@ enhancedROCClass <- R6::R6Class(
                         # Create ROC object - always use DeLong CI initially
                         # Bootstrap CI is computed separately via pROC::ci.auc() so
                         # the user's bootstrap method choice (BCa/percentile/basic) takes effect
-                        roc_obj <- pROC::roc(
+                        roc_obj <- .quietly(pROC::roc(
                             response = response_var,
                             predictor = data[[predictor]],
                             direction = direction,
                             ci = TRUE,
-                            conf.level = self$options$confidenceLevel / 100
-                        )
+                            conf.level = self$options$confidenceLevel / 100,
+                            quiet = TRUE
+                        ))
 
                         # If bootstrap CI requested, recompute CI via ci.auc() with correct type
                         if (use_boot) {
@@ -1044,9 +1045,9 @@ enhancedROCClass <- R6::R6Class(
                 )
                 predictions <- factor(predictions, levels = levels(data[[private$.outcome]]))
 
-                cm <- caret::confusionMatrix(predictions, data[[private$.outcome]],
+                cm <- .quietly(caret::confusionMatrix(predictions, data[[private$.outcome]],
                     positive = levels(data[[private$.outcome]])[2]
-                )
+                ))
 
                 # Access confusion matrix by level name for robustness
                 pos_lvl <- levels(data[[private$.outcome]])[2]
@@ -1105,9 +1106,9 @@ enhancedROCClass <- R6::R6Class(
             )
             predictions <- factor(predictions, levels = levels(data[[private$.outcome]]))
 
-            cm <- caret::confusionMatrix(predictions, data[[private$.outcome]],
+            cm <- .quietly(caret::confusionMatrix(predictions, data[[private$.outcome]],
                 positive = levels(data[[private$.outcome]])[2]
-            )
+            ))
 
             # Access confusion matrix by level name for robustness
             pos_lvl <- levels(data[[private$.outcome]])[2]
@@ -1167,9 +1168,9 @@ enhancedROCClass <- R6::R6Class(
                         )
                         predictions <- factor(predictions, levels = levels(outcome_var))
 
-                        cm <- caret::confusionMatrix(predictions, outcome_var,
+                        cm <- .quietly(caret::confusionMatrix(predictions, outcome_var,
                             positive = levels(outcome_var)[2]
-                        )
+                        ))
 
                         # Store results
                         custom_results <- rbind(custom_results, data.frame(
@@ -1195,6 +1196,10 @@ enhancedROCClass <- R6::R6Class(
             aucTable <- self$results$results$aucSummary
             aucTable$deleteRows()   # jamovi re-runs .run() on the same object; addRow() would stack duplicates
             private$.noteDirection(aucTable, private$.rocObjects)
+            aucTable$setNote(
+                "context_reference",
+                .("The last column restates each AUC as what it actually is: the probability that a randomly chosen case scores higher than a randomly chosen non-case. Where the selected clinical context has a conventionally quoted reference level (0.75 for screening, 0.80 for diagnosis) it also says which side of that level this AUC falls; those levels are reporting conventions, not thresholds for patient care, and the AUC Interpretation column is the same number placed in the same kind of conventional band. Both are in-sample estimates from these data; the AUC Lower CI and AUC Upper CI columns show how precisely this sample pins the AUC down.")
+            )
 
             for (predictor in names(private$.rocResults)) {
                 result <- private$.rocResults[[predictor]]
@@ -1230,12 +1235,16 @@ enhancedROCClass <- R6::R6Class(
         .populateOptimalCutoffs = function() {
             cutoffTable <- self$results$results$optimalCutoffSummary
             cutoffTable$deleteRows()   # jamovi re-runs .run() on the same object; addRow() would stack duplicates
+            cutoffTable$setNote(
+                "cutpoint_optimism",
+                .("Sensitivity, specificity and accuracy are reported at a cutpoint that was searched for on these same data, so they are optimistic; they are not cross-validated or externally validated estimates.")
+            )
 
             for (predictor in names(private$.rocResults)) {
                 result <- private$.rocResults[[predictor]]
                 optimal <- result$optimal_cutoff
 
-                # Clinical recommendation based on context and performance
+                # Descriptive performance summary for the selected context (no clinical advice)
                 clinical_rec <- private$.generateClinicalRecommendation(
                     optimal, self$options$clinicalContext, predictor
                 )
@@ -1533,6 +1542,10 @@ enhancedROCClass <- R6::R6Class(
 
             compTable <- self$results$results$rocComparisons
             compTable$deleteRows()   # jamovi re-runs .run() on the same object; addRow() would stack duplicates
+            compTable$setNote(
+                "no_equivalence",
+                .("\"Not significantly different\" means no difference was detected in this sample; it does not establish that the two predictors perform equally, because the test may lack power to detect a difference of the size that would matter here.")
+            )
             predictors <- names(private$.rocResults)
 
             for (i in 1:(length(predictors) - 1)) {
@@ -1664,6 +1677,10 @@ enhancedROCClass <- R6::R6Class(
 
             statSummaryTable <- self$results$results$statisticalSummary
             statSummaryTable$deleteRows()   # jamovi re-runs .run() on the same object; addRow() would stack duplicates
+            statSummaryTable$setNote(
+                "no_equivalence",
+                .("\"No significant difference (p >= 0.05)\" means no difference between the two AUCs was detected in this sample; it does not establish that the two predictors perform equally, because the test may lack the power to detect a difference of the size that would matter here. The p-value is the probability of seeing a gap at least this large if the two AUCs were identical, not the probability that they are identical. The Effect Magnitude column reports only how far apart the two observed AUCs are, so a wide observed gap and a large p-value can appear on the same row when the sample is small.")
+            )
 
             # Get all predictor pairs
             predictors <- names(private$.rocResults)
@@ -2230,12 +2247,15 @@ enhancedROCClass <- R6::R6Class(
                     interpretation,
                     "<h4>AUC Interpretation Guidelines:</h4>",
                     "<ul>",
-                    "<li><strong>Excellent:</strong> AUC >= 0.90 - High clinical utility</li>",
-                    "<li><strong>Good:</strong> AUC 0.80-0.89 - Moderate clinical utility</li>",
-                    "<li><strong>Fair:</strong> AUC 0.70-0.79 - Limited clinical utility</li>",
-                    "<li><strong>Poor:</strong> AUC 0.60-0.69 - Minimal clinical utility</li>",
-                    "<li><strong>No discrimination:</strong> AUC <= 0.59 - No clinical utility</li>",
-                    "</ul>"
+                    "<li><strong>Excellent discrimination:</strong> AUC >= 0.90</li>",
+                    "<li><strong>Good discrimination:</strong> AUC 0.80-0.89</li>",
+                    "<li><strong>Fair discrimination:</strong> AUC 0.70-0.79</li>",
+                    "<li><strong>Poor discrimination:</strong> AUC 0.60-0.69</li>",
+                    "<li><strong>Minimal discrimination:</strong> AUC 0.50-0.59 - little separation on its own, although the marker may still contribute inside a multivariable model</li>",
+                    "<li><strong>Reversed:</strong> AUC &lt; 0.50 - the marker separates in the opposite direction to the one assumed; check the Direction setting</li>",
+                    "</ul>",
+                    "<p>AUC is the probability that a randomly chosen case scores above a randomly chosen non-case. ",
+                    "These bands are a conventional labelling of that probability, not a judgement of whether a marker is fit for patient care.</p>"
                 )
 
                 # Context-specific guidance
@@ -2320,55 +2340,77 @@ enhancedROCClass <- R6::R6Class(
             if (auc >= 0.60) {
                 return(.("Poor"))
             }
-            return(.("No discrimination"))
+            if (auc >= 0.50) {
+                return(.("Minimal"))
+            }
+            return(.("Below chance (reversed)"))
         },
         .assessClinicalUtility = function(auc, context) {
-            utility_level <- if (auc >= 0.80) {
-                .("High")
-            } else if (auc >= 0.70) {
-                .("Moderate")
-            } else if (auc >= 0.60) {
-                .("Limited")
-            } else {
-                .("Minimal")
+            # This column always says something about the AUC in front of the user: first the
+            # plain-language reading of the number itself (a ranking probability), then, for the
+            # contexts that have one, which side of the conventionally quoted reference level it
+            # falls. Contexts without such a convention say so rather than returning a blank cell.
+            if (is.na(auc)) {
+                return(.("AUC not available"))
             }
-
-            if (context == "screening" && auc < 0.75) {
-                return(paste(utility_level, .("- May not meet screening standards")))
-            } else if (context == "diagnosis" && auc < 0.80) {
-                return(paste(utility_level, .("- Consider combining with other markers")))
+            plain <- sprintf(.("Ranks a random case above a random non-case %.0f%% of the time"), auc * 100)
+            reference <- if (context == "screening") {
+                if (auc < 0.75) {
+                    .("below the 0.75 level conventionally quoted for screening")
+                } else {
+                    .("at or above the 0.75 level conventionally quoted for screening")
+                }
+            } else if (context == "diagnosis") {
+                if (auc < 0.80) {
+                    .("below the 0.80 level conventionally quoted for diagnosis")
+                } else {
+                    .("at or above the 0.80 level conventionally quoted for diagnosis")
+                }
             } else {
-                return(paste(utility_level, .("clinical utility")))
+                .("no single reference level is conventional for this context")
             }
+            return(paste0(plain, "; ", reference))
         },
         .generateClinicalRecommendation = function(optimal, context, predictor) {
             sens <- optimal$sensitivity
             spec <- optimal$specificity
 
             if (context == "screening") {
-                if (sens >= 0.90 && spec >= 0.70) {
-                    return(.("Suitable for screening - high sensitivity with acceptable specificity"))
-                } else if (sens >= 0.85) {
-                    return(.("Consider for screening - good sensitivity but monitor false positives"))
+                # PPV lives in the separate Clinical Metrics table, which is off by default,
+                # and its prevalence is either the observed one or the value the user typed.
+                prev_txt <- if (isTRUE(self$options$useObservedPrevalence)) {
+                    .("the prevalence observed in these data")
                 } else {
-                    return(.("Not recommended for screening - insufficient sensitivity"))
+                    sprintf(.("the prevalence you entered (%.3f)"), self$options$prevalence)
+                }
+                ppv_hint <- if (isTRUE(self$options$clinicalMetrics)) {
+                    sprintf(.("The Clinical Application Metrics table reports the PPV at %s."), prev_txt)
+                } else {
+                    sprintf(.("Switch on 'Clinical metrics' to see the PPV at %s in the Clinical Application Metrics table."), prev_txt)
+                }
+                if (sens >= 0.90 && spec >= 0.70) {
+                    return(paste(sprintf(.("Sensitivity %.2f, specificity %.2f: at this cutpoint few cases were missed in this sample. What share of the positive results are true positives is not fixed by these two numbers; it also depends on prevalence."), sens, spec), ppv_hint))
+                } else if (sens >= 0.85) {
+                    return(paste(sprintf(.("Sensitivity %.2f, specificity %.2f: the false-positive burden depends on prevalence."), sens, spec), ppv_hint))
+                } else {
+                    return(sprintf(.("Sensitivity %.2f, specificity %.2f: false negatives were not rare in this sample."), sens, spec))
                 }
             } else if (context == "diagnosis") {
                 if (sens >= 0.80 && spec >= 0.80) {
-                    return(.("Good diagnostic performance - balanced sensitivity and specificity"))
+                    return(sprintf(.("Sensitivity %.2f and specificity %.2f, both at or above 0.80 at this cutpoint."), sens, spec))
                 } else if (spec >= 0.90) {
-                    return(.("Suitable for confirmatory testing - high specificity"))
+                    return(sprintf(.("Specificity %.2f with sensitivity %.2f: few false positives in this sample."), spec, sens))
                 } else {
-                    return(.("Consider combining with additional markers"))
+                    return(sprintf(.("Sensitivity %.2f, specificity %.2f at this cutpoint."), sens, spec))
                 }
             } else {
                 youden <- optimal$youden_index
                 if (youden >= 0.6) {
-                    return("Strong discriminatory performance")
+                    return(sprintf(.("Youden index %.2f: strong separation at this cutpoint."), youden))
                 } else if (youden >= 0.4) {
-                    return("Moderate discriminatory performance")
+                    return(sprintf(.("Youden index %.2f: moderate separation at this cutpoint."), youden))
                 } else {
-                    return("Limited discriminatory performance")
+                    return(sprintf(.("Youden index %.2f: limited separation at this cutpoint."), youden))
                 }
             }
         },
@@ -2388,22 +2430,31 @@ enhancedROCClass <- R6::R6Class(
 
             # Add NPV/PPV context
             if (context == "screening") {
-                if (npv >= 0.95) {
-                    interpretation <- paste(interpretation, .("- Excellent rule-out capability"))
+                lr_neg_txt <- if (is.na(lr_neg)) {
+                    .("not estimable")
+                } else if (is.infinite(lr_neg)) {
+                    .("infinite")
                 } else {
-                    interpretation <- paste(interpretation, .("- Consider NPV for screening adequacy"))
+                    sprintf("%.2f", lr_neg)
                 }
+                interpretation <- paste(interpretation, sprintf(
+                    .("- NPV %.2f at the prevalence used in this table; at low prevalence a high NPV is expected even for a weak test, so LR- (%s) is the prevalence-independent rule-out measure."),
+                    npv, lr_neg_txt
+                ))
             }
 
             return(interpretation)
         },
         .assessClinicalSignificanceDifference = function(auc_diff, context) {
+            # Describe the size of the observed difference only. Whether a difference is
+            # absent cannot be read off a point estimate, and the table note already warns
+            # that a non-significant comparison does not establish equivalence.
             if (auc_diff >= 0.1) {
-                return(.("Clinically meaningful difference"))
+                return(.("Observed AUC difference of 0.10 or more"))
             } else if (auc_diff >= 0.05) {
-                return(.("Potentially meaningful difference"))
+                return(.("Observed AUC difference of 0.05 to 0.10"))
             } else {
-                return(.("Minimal clinical difference"))
+                return(.("Observed AUC difference under 0.05"))
             }
         },
         .assessPartialAUCRelevance = function(pauc, range_min, range_max, context, range_type = "specificity") {
@@ -2598,7 +2649,7 @@ enhancedROCClass <- R6::R6Class(
 
             # Generate summary paragraph
             summary_text <- paste0(
-                "<div style='background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 10px 0;'>",
+                "<div style='background-color: rgba(138, 155, 172, 0.06); padding: 15px; border-left: 4px solid #007bff; margin: 10px 0; color: inherit;'>",
                 "<h4 style='margin-top: 0; color: #007bff;'>", .("Analysis Summary"), "</h4>",
                 "<p><strong>", .("ROC Analysis Results:"), "</strong> ",
                 sprintf(
@@ -2611,35 +2662,28 @@ enhancedROCClass <- R6::R6Class(
                 interpretation <- private$.interpretAUC(best_auc)
                 clinical_utility <- private$.assessClinicalUtility(best_auc, context)
 
+                # .assessClinicalUtility() returns a full sentence fragment, so it is appended as
+                # its own sentence rather than folded into the parenthesis.
+                utility_clause <- if (nzchar(clinical_utility)) {
+                    paste0(" ", private$.safeHtmlOutput(clinical_utility), ".")
+                } else {
+                    ""
+                }
                 summary_text <- paste0(
                     summary_text,
                     sprintf(
-                        .("The best performing predictor was '%s' with an AUC of %.3f (%s performance, %s)."),
-                        private$.safeHtmlOutput(best_predictor), best_auc, private$.safeHtmlOutput(interpretation), private$.safeHtmlOutput(clinical_utility)
+                        .("The best performing predictor was '%s' with an AUC of %.3f (%s performance).%s"),
+                        private$.safeHtmlOutput(best_predictor), best_auc, private$.safeHtmlOutput(interpretation), utility_clause
                     ),
                     "</p>"
                 )
 
-                # Add clinical recommendation
-                if (context == "screening" && best_auc >= 0.8) {
-                    summary_text <- paste0(
-                        summary_text,
-                        "<p><strong>", .("Clinical Recommendation"), ":</strong> ",
-                        .("This predictor shows good potential for screening applications."), "</p>"
-                    )
-                } else if (context == "diagnosis" && best_auc >= 0.8) {
-                    summary_text <- paste0(
-                        summary_text,
-                        "<p><strong>", .("Clinical Recommendation"), ":</strong> ",
-                        .("This predictor demonstrates good diagnostic performance."), "</p>"
-                    )
-                } else {
-                    summary_text <- paste0(
-                        summary_text,
-                        "<p><strong>", .("Note"), ":</strong> ",
-                        .("Consider combining with additional markers or clinical information."), "</p>"
-                    )
-                }
+                # Describe what was estimated; no fitness-for-care verdict is issued here.
+                summary_text <- paste0(
+                    summary_text,
+                    "<p><strong>", .("Note"), ":</strong> ",
+                    .("This AUC is apparent (in-sample), and where a cutpoint was searched for on these data the cutpoint metrics are optimistic. Independent validation is needed before these figures describe performance in new patients."), "</p>"
+                )
             }
 
             summary_text <- paste0(summary_text, "</div>")
@@ -2682,7 +2726,7 @@ enhancedROCClass <- R6::R6Class(
             ci_upper <- if (!is.null(ci)) round(as.numeric(ci)[3], 3) else "N/A"
 
             # Generate report sections
-            report_html <- "<div style='background-color: #f0f8ff; border: 1px solid #0066cc; padding: 15px; margin: 10px 0;'>"
+            report_html <- "<div style='background-color: rgba(33, 152, 255, 0.07); border: 1px solid #0066cc; padding: 15px; margin: 10px 0; color: inherit;'>"
             report_html <- paste0(report_html, "<h4 style='color: #0066cc; margin-top: 0;'>", .("Clinical Report Sentences"), "</h4>")
             report_html <- paste0(report_html, "<p><em>", .("Copy and paste the sections below into your clinical reports or publications"), ":</em></p>")
 
@@ -2690,11 +2734,11 @@ enhancedROCClass <- R6::R6Class(
             report_html <- paste0(report_html, "<h5>", .("Methods Section"), ":</h5>")
             report_html <- paste0(report_html, "<div style='background-color: white; padding: 10px; border-left: 4px solid #0066cc; margin: 5px 0;'>")
             methods_text <- sprintf(
-                .("ROC analysis was performed to evaluate the diagnostic performance of %s in predicting %s using %d observations. The analysis was conducted using the pROC package in R, with AUC calculation and %d%% confidence intervals determined using %s methodology."),
+                .("ROC analysis was performed to evaluate the diagnostic performance of %s in predicting %s using %d observations. The analysis was conducted using the pROC package in R, with AUC calculation and %s%% confidence intervals determined using %s methodology."),
                 ifelse(n_predictors == 1, paste0("'", private$.safeHtmlOutput(best_predictor), "'"), paste(n_predictors, "predictors")),
                 private$.safeHtmlOutput(private$.outcome),
                 n_obs,
-                self$options$confidenceLevel,
+                format(self$options$confidenceLevel),
                 ifelse(self$options$useBootstrap, "bootstrap", "DeLong")
             )
             report_html <- paste0(report_html, methods_text, "</div>")
@@ -2704,10 +2748,11 @@ enhancedROCClass <- R6::R6Class(
             report_html <- paste0(report_html, "<div style='background-color: white; padding: 10px; border-left: 4px solid #28a745; margin: 5px 0;'>")
 
             results_text <- sprintf(
-                .("The %s predictor demonstrated %s diagnostic performance with an AUC of %.3f (95%% CI: %s--%s). At the optimal cutoff of %.3f, the test achieved %s sensitivity (%.1f%%) and %s specificity (%.1f%%), resulting in a Youden Index of %.3f."),
+                .("The %s predictor demonstrated %s diagnostic performance with an AUC of %.3f (%s%% CI: %s--%s). At the optimal cutoff of %.3f, the test achieved %s sensitivity (%.1f%%) and %s specificity (%.1f%%), resulting in a Youden Index of %.3f."),
                 private$.safeHtmlOutput(best_predictor),
                 private$.interpretAUC(best_auc),
                 best_auc,
+                format(self$options$confidenceLevel),
                 ci_lower, ci_upper,
                 best_cutoff$cutoff,
                 ifelse(best_cutoff$sensitivity >= 0.8, .("high"), ifelse(best_cutoff$sensitivity >= 0.7, .("moderate"), .("low"))),
@@ -2721,10 +2766,10 @@ enhancedROCClass <- R6::R6Class(
             nnd_text <- ""
             if (!is.na(best_cutoff$youden_index) && best_cutoff$youden_index > 0) {
                 nnd <- ceiling(1 / best_cutoff$youden_index)
-                nnd_text <- sprintf(
-                    .(" The Number Needed to Diagnose (NND) was %d, meaning on average %d patients need to be tested to correctly identify one additional true positive beyond chance."),
-                    nnd, nnd
-                )
+                nnd_text <- paste0(" ", jmvcore::format(
+                    .("The Number Needed to Diagnose (1/Youden) was {nnd}. This is a prevalence-free index of discriminating power, not a count of patients to test: the number that must actually be tested to find one additional case also depends on disease prevalence in the population."),
+                    nnd = nnd
+                ))
             }
 
             report_html <- paste0(report_html, results_text, nnd_text, "</div>")
@@ -2733,14 +2778,15 @@ enhancedROCClass <- R6::R6Class(
             report_html <- paste0(report_html, "<h5>", .("Clinical Interpretation"), ":</h5>")
             report_html <- paste0(report_html, "<div style='background-color: white; padding: 10px; border-left: 4px solid #ffc107; margin: 5px 0;'>")
 
-            clinical_utility <- private$.assessClinicalUtility(best_auc, context)
             interpretation_text <- sprintf(
-                .("These findings suggest that %s has %s for %s applications. The observed AUC indicates %s discriminatory ability, which %s for clinical implementation in this context."),
-                private$.safeHtmlOutput(best_predictor),
-                private$.safeHtmlOutput(clinical_utility),
+                .("In this %s sample, %s showed %s: the AUC was %.3f (%s%% CI: %s--%s). AUC is the probability that a randomly chosen case scores above a randomly chosen non-case; it is computed over all cutpoints and does not depend on which cutpoint was selected. This is an in-sample estimate with no internal or external validation behind it%s. The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those ARE optimistic, because that cutpoint was searched for on these same data."),
                 private$.safeHtmlOutput(context),
-                ifelse(best_auc >= 0.8, .("good to excellent"), ifelse(best_auc >= 0.7, .("fair to good"), .("limited"))),
-                ifelse(best_auc >= 0.8, .("supports consideration"), .("requires careful evaluation"))
+                private$.safeHtmlOutput(best_predictor),
+                ifelse(best_auc >= 0.8, .("good to excellent discrimination"), ifelse(best_auc >= 0.7, .("fair to good discrimination"), .("limited discrimination"))),
+                best_auc,
+                format(self$options$confidenceLevel),
+                ci_lower, ci_upper,
+                if (n_predictors > 1) sprintf(.(", and it is additionally optimistic because this predictor was picked as the highest-scoring of %d"), n_predictors) else ""
             )
 
             report_html <- paste0(report_html, interpretation_text, "</div>")
@@ -2749,16 +2795,17 @@ enhancedROCClass <- R6::R6Class(
             if (n_predictors > 1) {
                 report_html <- paste0(report_html, "<h5>", .("Comparative Analysis"), ":</h5>")
                 report_html <- paste0(report_html, "<div style='background-color: white; padding: 10px; border-left: 4px solid #dc3545; margin: 5px 0;'>")
-                if (isTRUE(self$options$pairwiseComparisons)) {
+                if (isTRUE(self$options$pairwiseComparisons) && identical(self$options$analysisType, "comparative")) {
                     comparative_text <- sprintf(
-                        .("Among the %d predictors evaluated, %s demonstrated superior performance. Pairwise comparisons were conducted using %s methodology to assess statistical significance of observed differences."),
+                        .("Among the %d predictors evaluated, %s had the highest observed AUC (%.3f). Pairwise comparisons using %s methodology are reported in the ROC Curve Comparisons table; a higher observed AUC is not a demonstrated difference unless the corresponding comparison is statistically significant, and a comparison that is not significant does not establish that two predictors perform equally."),
                         n_predictors,
                         private$.safeHtmlOutput(best_predictor),
+                        best_auc,
                         private$.safeHtmlOutput(self$options$comparisonMethod)
                     )
                 } else {
                     comparative_text <- sprintf(
-                        .("Among the %d predictors evaluated, %s demonstrated superior performance (AUC = %.3f). Enable pairwise comparisons to test whether observed AUC differences are statistically significant."),
+                        .("Among the %d predictors evaluated, %s had the highest observed AUC (%.3f). No pairwise test was run, so this ranking describes this sample only; enable pairwise comparisons, with Analysis Type set to comparative, to test whether the AUC differences are statistically significant."),
                         n_predictors,
                         private$.safeHtmlOutput(best_predictor),
                         best_auc
@@ -2944,7 +2991,7 @@ enhancedROCClass <- R6::R6Class(
             instructions <- paste0(
                 instructions,
                 "<h2 style='color: #2c5530;'>Enhanced ROC Analysis</h2>",
-                "<div style='background: #f8f9fa; padding: 15px; border-left: 4px solid #28a745; margin: 10px 0;'>",
+                "<div style='background-color: rgba(138, 155, 172, 0.06); padding: 15px; border-left: 4px solid #28a745; margin: 10px 0; color: inherit;'>",
                 "<p><strong>Purpose:</strong> ROC (Receiver Operating Characteristic) analysis evaluates how well continuous variables (biomarkers, test scores) can distinguish between two outcome groups (e.g., disease vs. healthy).</p>",
                 "</div>",
                 "<h3 style='color: #2c5530;'> Setup Instructions:</h3>",
@@ -2958,7 +3005,7 @@ enhancedROCClass <- R6::R6Class(
                 "<li><strong>Clinical Context:</strong> Select appropriate context for tailored interpretation</li>",
                 "</ol>",
                 "<h3 style='color: #2c5530;'> Quick Start Presets:</h3>",
-                "<div style='background: #e7f3ff; padding: 10px; border-radius: 4px; margin: 10px 0;'>",
+                "<div style='background-color: rgba(33, 144, 255, 0.11); padding: 10px; border-radius: 4px; margin: 10px 0; color: inherit;'>",
                 "<p><strong>Clinical Presets</strong> automatically configure analysis settings:</p>",
                 "<ul style='margin-left: 20px;'>",
                 "<li><strong>Biomarker Screening:</strong> High sensitivity (catch all cases)</li>",
@@ -2969,22 +3016,23 @@ enhancedROCClass <- R6::R6Class(
                 "</div>",
                 "<h3 style='color: #2c5530;'> Key Output Metrics:</h3>",
                 "<div style='display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0;'>",
-                "<div style='background: #fff3cd; padding: 10px; border-radius: 4px; flex: 1; min-width: 250px;'>",
+                "<div style='background-color: rgba(255, 202, 33, 0.23); padding: 10px; border-radius: 4px; flex: 1; min-width: 250px; color: inherit;'>",
                 "<strong>AUC (Area Under Curve):</strong><br>",
-                "\u{2022} Below 0.60 = No discrimination<br>",
+                "\u{2022} Below 0.50 = Reversed (check the Direction setting)<br>",
+                "\u{2022} 0.50-0.59 = Minimal<br>",
                 "\u{2022} 0.60-0.69 = Poor<br>",
                 "\u{2022} 0.70-0.79 = Fair<br>",
                 "\u{2022} 0.80-0.89 = Good<br>",
                 "\u{2022} 0.90-1.00 = Excellent",
                 "</div>",
-                "<div style='background: #d1ecf1; padding: 10px; border-radius: 4px; flex: 1; min-width: 250px;'>",
+                "<div style='background-color: rgba(33, 163, 188, 0.21); padding: 10px; border-radius: 4px; flex: 1; min-width: 250px; color: inherit;'>",
                 "<strong>Youden Index:</strong><br>",
                 "Optimal cutoff that maximizes<br>",
                 "(Sensitivity + Specificity - 1)<br>",
                 "Best balance of true/false rates",
                 "</div>",
                 "</div>",
-                "<details style='margin: 15px 0; padding: 10px; background: #f8f9fa; border-radius: 4px;'>",
+                "<details style='margin: 15px 0; padding: 10px; background-color: rgba(138, 155, 172, 0.06); border-radius: 4px; color: inherit;'>",
                 "<summary style='cursor: pointer; font-weight: bold; color: #495057;'> Statistical Terms Glossary</summary>",
                 "<div style='margin-top: 10px; padding-left: 20px;'>",
                 "<p><strong>Sensitivity (True Positive Rate):</strong> Proportion of actual positives correctly identified</p>",
@@ -2995,7 +3043,7 @@ enhancedROCClass <- R6::R6Class(
                 "<p><strong>LR- (Negative Likelihood Ratio):</strong> How much a negative test decreases odds of disease</p>",
                 "</div>",
                 "</details>",
-                "<div style='background: #d4edda; padding: 10px; border: 1px solid #c3e6cb; border-radius: 4px; margin: 10px 0;'>",
+                "<div style='background-color: rgba(33, 162, 64, 0.19); padding: 10px; border: 1px solid #c3e6cb; border-radius: 4px; margin: 10px 0; color: inherit;'>",
                 "<p style='margin: 0;'><strong> Tip:</strong> For clinical decision making, consider both statistical significance and clinical relevance of the cutoff thresholds.</p>",
                 "</div>",
                 "</div>"
@@ -4068,11 +4116,11 @@ enhancedROCClass <- R6::R6Class(
                         pred_vals <- data[[predictor]]
 
                         # Run Multi-class ROC
-                        mc_roc <- pROC::multiclass.roc(
+                        mc_roc <- .quietly(pROC::multiclass.roc(
                             response = outcome,
                             predictor = pred_vals,
                             levels = levels(outcome)
-                        )
+                        ))
 
                         # Hand-Till pairwise AUC from pROC::multiclass.roc
                         mc_auc_val <- as.numeric(mc_roc$auc)

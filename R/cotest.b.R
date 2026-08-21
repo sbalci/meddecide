@@ -40,10 +40,10 @@ cotestClass <- if (requireNamespace("jmvcore"))
 
 <h4>Key Clinical Scenarios</h4>
 <ul>
-<li><strong>Either Test Positive (Parallel Rule)</strong>: At least one test is positive \u{2192} rule in disease (high sensitivity strategy)</li>
-<li><strong>Both Tests Positive</strong>: Maximum certainty for disease presence (high specificity strategy)</li>
-<li><strong>Both Tests Negative</strong>: Strong evidence against disease (rule out strategy)</li>
-<li><strong>Single Positive</strong>: Only one test positive \u{2192} intermediate probability requiring clinical judgment</li>
+<li><strong>Either Test Positive (Parallel Rule)</strong>: At least one test is positive. This combination rule raises sensitivity relative to either test used alone, at the cost of specificity, so the complementary arm carries the rule-out information. The <em>Either Test Positive</em> row is the probability of disease given <em>at least one</em> positive result, so it pools single-positive and double-positive cases; when only one test is positive read the <em>Test 1 Positive Only</em> or <em>Test 2 Positive Only</em> row instead. How far a result moves the probability is set by its likelihood ratio: the positive and negative likelihood ratios of each test on its own are listed in the <em>Test Parameters</em> table, while the combined effect of a scenario is reported as its <em>Post-test Probability</em> and <em>Post-test Odds</em> in the <em>Co-Testing Results</em> table rather than as a separate combined likelihood ratio.</li>
+<li><strong>Both Tests Positive</strong>: Both tests are positive. The resulting post-test probability depends on the pre-test prevalence, on the positive likelihood ratios of both tests (listed in the <em>Test Parameters</em> table) and on any conditional dependence you specify. Read the resulting figure in the <em>Post-test Probability</em> column of the <em>Both Tests Positive</em> row.</li>
+<li><strong>Both Tests Negative</strong>: Neither test is positive. This is the arm the parallel rule is designed to act on. The <em>Both Tests Negative</em> row gives the resulting <em>Post-test Probability</em>; its <em>Relative to Prevalence</em> entry is that probability divided by the prevalence you entered, so a value of 0.20 means two negatives cut the probability of disease to one fifth of where it started. The combined negative likelihood ratio behind that shift is not printed as its own number.</li>
+<li><strong>Single Positive</strong>: Only one of the two tests is positive. This result is driven by the positive likelihood ratio of one test together with the negative likelihood ratio of the other; both are listed in the <em>Test Parameters</em> table. The resulting probability is in the <em>Test 1 Positive Only</em> or <em>Test 2 Positive Only</em> row of the <em>Co-Testing Results</em> table, and it can sit well below the <em>Both Tests Positive</em> row because the negative test pulls the probability back down.</li>
 </ul>
 
 <h4>Preset Scenarios Include</h4>
@@ -193,7 +193,7 @@ cotestClass <- if (requireNamespace("jmvcore"))
                 <li>Test 1 positive only: <strong>%.1f%%</strong> %s</li>
                 <li>Test 2 positive only: <strong>%.1f%%</strong> %s</li>
                 </ul>
-                <div style='background-color: #f0f8ff; padding: 10px; border-radius: 5px; margin-top: 15px;'>
+                <div style='background-color: rgba(33, 152, 255, 0.07); padding: 10px; border-radius: 5px; margin-top: 15px; color: inherit;'>
                 <p><strong>Copy-ready summary:</strong></p>
                 <p style='font-family: monospace; font-size: 12px;'>%s</p>
                 </div>",
@@ -277,15 +277,15 @@ cotestClass <- if (requireNamespace("jmvcore"))
                 
                 # Additional clinical validity checks
                 if (test1_sens + test1_spec < 1.1) {
-                    private$.addNotice("Test 1 has low discriminatory power (sensitivity plus specificity below 1.1). Consider if this test adds clinical value.", "warning")
+                    private$.addNotice("Test 1 has low discriminatory power (sensitivity plus specificity below 1.1, i.e. a Youden index below 0.1). Check its likelihood ratios in the results table: an operating point close to the chance diagonal can still give an informative LR+ or LR- when sensitivity and specificity are very unequal.", "warning")
                 }
                 if (test2_sens + test2_spec < 1.1) {
-                    private$.addNotice("Test 2 has low discriminatory power (sensitivity plus specificity below 1.1). Consider if this test adds clinical value.", "warning")
+                    private$.addNotice("Test 2 has low discriminatory power (sensitivity plus specificity below 1.1, i.e. a Youden index below 0.1). Check its likelihood ratios in the results table: an operating point close to the chance diagonal can still give an informative LR+ or LR- when sensitivity and specificity are very unequal.", "warning")
                 }
 
                 # Check for extreme prevalence that might cause numerical issues
                 if (prevalence < 0.001) {
-                    private$.addNotice("Very low prevalence (below 0.1%) may lead to unstable results. Consider if co-testing is appropriate for such rare conditions.", "warning")
+                    private$.addNotice("Very low prevalence (below 0.1%) may lead to unstable results; the computed post-test probabilities are highly sensitive to small changes in the entered prevalence.", "warning")
                 }
                 if (prevalence > 0.5) {
                     private$.addNotice("High prevalence (above 50%) detected. Ensure this reflects your actual clinical population.", "info")
@@ -899,7 +899,7 @@ cotestClass <- if (requireNamespace("jmvcore"))
                 }
 
                 notices_html <- paste0(
-                    '<div style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin: 10px 0;">',
+                    '<div style="background-color: rgba(138, 155, 172, 0.06); border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin: 10px 0; color: inherit;">',
                     '<h4 style="margin-top: 0;">Validation Notices</h4>',
                     '<ul style="margin-bottom: 0; padding-left: 20px;">',
                     items_html,

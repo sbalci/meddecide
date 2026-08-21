@@ -67,7 +67,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                 # Welcome message
                 welcome_html <- "
             <div style='font-family: Arial, sans-serif; max-width: 800px; line-height: 1.4;'>
-                <div style='background: #f5f5f5; border: 2px solid #333; padding: 20px; margin-bottom: 20px;'>
+                <div style='background-color: rgba(88, 88, 88, 0.06); border: 2px solid #333; padding: 20px; margin-bottom: 20px; color: inherit;'>
                 <h2 style='margin: 0 0 10px 0; font-size: 18px; color: #333;'>Medical Decision Calculator</h2>
                 <p style='margin: 0; font-size: 14px; color: #666;'>
                 Comprehensive diagnostic test evaluation for clinical decision-making
@@ -86,7 +86,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                     <li>Optionally enable summary, glossary, or about panels for additional guidance</li>
                 </ol>
 
-                <div style='background: #f9f9f9; border: 1px solid #ccc; padding: 12px; margin: 15px 0;'>
+                <div style='background-color: rgba(155, 155, 155, 0.06); border: 1px solid #ccc; padding: 12px; margin: 15px 0; color: inherit;'>
                     <p style='margin: 0; font-size: 13px;'><strong>Quick Example:</strong>
                     If you tested 200 patients (100 diseased, 100 healthy) and your test correctly
                     identified 90 diseased (TP=90) and 80 healthy (TN=80), you have FN=10 and FP=20.</p>
@@ -120,6 +120,23 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                     values = list(
                         newtest = "Total"
                     )
+                )
+
+                # The cut-off comparison always has exactly these three rows -- the two
+                # user-named scenarios and the current cut-off. Creating them here keeps the
+                # structure stable and leaves .run() setting only the computed cells.
+                multipleCutoffTable <- self$results$multipleCutoffTable
+                multipleCutoffTable$addRow(
+                    rowKey = 1,
+                    values = list(cutoffName = self$options$cutoff1)
+                )
+                multipleCutoffTable$addRow(
+                    rowKey = 2,
+                    values = list(cutoffName = self$options$cutoff2)
+                )
+                multipleCutoffTable$addRow(
+                    rowKey = 3,
+                    values = list(cutoffName = "Current (Reference)")
                 )
             },
             .run = function() {
@@ -463,7 +480,11 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
 
                     ratioTable$addFootnote(rowNo = 1, col = "Spec", "Specificity (True Negatives among Healthy)")
 
-                    ratioTable$addFootnote(rowNo = 1, col = "AccurT", "Accuracy (True Test Result Ratio)")
+                    ratioTable$addFootnote(rowNo = 1, col = "AccurT", sprintf(
+                        "Accuracy (proportion of all test results that were correct). Unlike sensitivity and specificity, accuracy depends on disease prevalence: it is computed here at the prevalence observed in this sample (%.1f%%)%s, and it will differ in a population with a different case mix.",
+                        PrevalenceD * 100,
+                        if (pp) ", not at the population prevalence shown in the Prevalence column" else ""
+                    ))
 
                     prev_note <- if (pp) {
                         "Prevalence used: the user-supplied population prevalence (prior probability), not the prevalence observed in this study sample."
@@ -677,7 +698,6 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                 # Multiple cut-off evaluation (DiagROC inspired)
                 if (self$options$multiplecuts) {
                     multipleCutoffTable <- self$results$multipleCutoffTable
-                    multipleCutoffTable$deleteRows()
 
                     # Helper function to calculate metrics for a cut-off
                     calculate_cutoff_metrics <- function(tp, fp, tn, fn, cutoff_name) {
@@ -712,22 +732,23 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                             msg <- sprintf('Cut-off "%s" has incomplete data.', cutoff_name)
                             if (diseased == 0) msg <- paste0(msg, " \u{2022} No diseased cases (TP+FN=0): Sensitivity is undefined.")
                             if (healthy == 0) msg <- paste0(msg, " \u{2022} No healthy cases (TN+FP=0): Specificity is undefined.")
-                            msg <- paste0(msg, " \u{2022} Consider this cut-off unreliable for clinical decisions.")
+                            msg <- paste0(msg, " \u{2022} The metrics shown for this cut-off are computed from incomplete counts.")
                             private$.addNotice("WARNING", "Incomplete Cut-off Data", msg)
                         }
 
-                        # Clinical recommendation based on Youden index and balanced metrics
-                        # Only make recommendations when all metrics are valid
+                        # Descriptive grade of the point estimates in THIS sample.
+                        # Not a recommendation: the counts carry no interval, and the
+                        # cut-offs are graded on the same data that produced them.
                         if (is.na(youden) || is.na(accuracy)) {
-                            recommendation <- "Incomplete data - Cannot recommend"
+                            recommendation <- "Incomplete data - cannot be graded"
                         } else if (youden > private$.YOUDEN_EXCELLENT && accuracy > private$.ACCURACY_EXCELLENT) {
-                            recommendation <- "Excellent performance - Recommended"
+                            recommendation <- "Excellent in this sample"
                         } else if (youden > private$.YOUDEN_GOOD && accuracy > private$.ACCURACY_GOOD) {
-                            recommendation <- "Good performance - Consider for use"
+                            recommendation <- "Good in this sample"
                         } else if (youden > private$.YOUDEN_FAIR) {
-                            recommendation <- "Fair performance - Use with caution"
+                            recommendation <- "Fair in this sample"
                         } else {
-                            recommendation <- "Poor performance - Not recommended"
+                            recommendation <- "Poor in this sample"
                         }
 
                         return(list(
@@ -761,13 +782,13 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                         return()
                     }
 
-                    # Add rows to comparison table
-                    multipleCutoffTable$addRow(
+                    # Rows are created in .init(); only the computed cells are set here.
+                    multipleCutoffTable$setRow(
                         rowKey = 1,
                         values = cutoff1_metrics
                     )
 
-                    multipleCutoffTable$addRow(
+                    multipleCutoffTable$setRow(
                         rowKey = 2,
                         values = cutoff2_metrics
                     )
@@ -867,11 +888,16 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                     }
 
                     multipleCutoffTable$setNote(
+                        "sameData",
+                        jmvcore::.("This column holds two different kinds of statement. On the two named cut-off rows it is a grade of that scenario's point estimates in this sample; the good and excellent grades require Youden's index AND accuracy to reach the band together, so a grade can be lower than either column on its own would suggest. On the Current (Reference) row it is not a grade at all: it reports which of the three cut-offs had the highest Youden's J, by how much, and whether that cut-off's accuracy interval still overlaps the current one's. Because all three cut-offs are judged on the same counts used to evaluate them, whichever row comes out ahead is optimistically biased; performance in independent data is generally lower.")
+                    )
+
+                    multipleCutoffTable$setNote(
                         "uncertainty",
                         jmvcore::.("Cut-offs are compared on point estimates only. A formal test would need to know, for each patient, how the two thresholds classified them; four summary counts per scenario cannot supply that. The accuracy intervals referred to above are Wilson 95% intervals computed separately per scenario, so overlap is a conservative signal that the counts do not separate the cut-offs.")
                     )
 
-                    multipleCutoffTable$addRow(
+                    multipleCutoffTable$setRow(
                         rowKey = 3,
                         values = list(
                             cutoffName = "Current (Reference)",
@@ -963,7 +989,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                 if (!is.null(fagan_item) && isTRUE(self$options$fagan)) {
                     if (!fagan_ok) {
                         fagan_item$setContent(paste0(
-                            "<div style='padding:12px;border-left:4px solid #c00;background:#fff5f5;'>",
+                            "<div style='padding:12px;border-left:4px solid #c00;background-color: rgba(255, 88, 88, 0.06); color: inherit;'>",
                             "<p>", .("No nomogram is drawn for this table."), " ",
                             sprintf(.("The positive likelihood ratio is %.3f, so a positive result lowers the probability of disease rather than raising it."), LRP),
                             "</p></div>"))
@@ -974,9 +1000,9 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                         src <- if (isTRUE(self$options$pp))
                             .("the population prevalence you supplied") else .("this study's own prevalence")
                         fagan_item$setContent(paste0(
-                            "<div style='padding:12px;border-left:4px solid #1565c0;background:#f5f9ff;'>",
+                            "<div style='padding:12px;border-left:4px solid #1565c0;background-color: rgba(88, 155, 255, 0.06); color: inherit;'>",
                             "<p><b>", .("Pre-test probability"), ":</b> ",
-                            sprintf("%.1f%%", 100 * pre), " &mdash; ", src, ".</p>",
+                            sprintf("%.1f%%", 100 * pre), " \u{2014} ", src, ".</p>",
                             "<p><b>", .("If the test is POSITIVE"), ":</b> ",
                             sprintf(.("likelihood ratio %.2f raises the probability from %.1f%% to <b>%.1f%%</b>."),
                                     LRP, 100 * pre, 100 * post_pos), "</p>",
@@ -1055,38 +1081,38 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                     "weak evidence against disease when test negative"
                 }
 
-                # Recommendation
+                # Descriptive performance summary (not a recommendation)
                 recommendation <- private$.getRecommendation(Youden, Accuracy, LRP, LRN)
 
                 sprintf(
                     "<div style='font-family: Arial, sans-serif; max-width: 800px; line-height: 1.4;'>
-                <div style='background: #f5f5f5; border: 2px solid #333; padding: 15px; margin-bottom: 15px;'>
+                <div style='background-color: rgba(88, 88, 88, 0.06); border: 2px solid #333; padding: 15px; margin-bottom: 15px; color: inherit;'>
                 <h3 style='margin: 0 0 5px 0; font-size: 16px; color: #333;'>Diagnostic Test Performance Summary</h3>
                 </div>
 
                 <div style='font-size: 14px; color: #333;'>
-                    <p style='margin: 10px 0;'><strong>Overall Assessment:</strong> This test demonstrates %s (Youden index: %.3f, Accuracy: %.1f%%).</p>
+                    <p style='margin: 10px 0;'><strong>Overall Assessment:</strong> This test demonstrates %s (Youden index: %.3f, Accuracy: %.1f%%). The good and excellent grades require Youden's index and accuracy to reach that band together, so the grade can be lower than either number on its own would suggest. Accuracy is computed at the prevalence observed in this sample and will differ where the case mix differs; Youden's index does not.</p>
 
                     <table style='width: 100%%; border-collapse: collapse; margin: 15px 0;'>
                     <tr>
-                        <td style='border: 1px solid #ccc; padding: 10px; background: #f9f9f9;'>
+                        <td style='border: 1px solid #ccc; padding: 10px; background-color: rgba(155, 155, 155, 0.06); color: inherit;'>
                         <strong>Sensitivity</strong><br>
                         <span style='font-size: 18px;'>%.1f%%</span><br>
                         <span style='font-size: 12px; color: #666;'>True positive rate</span>
                         </td>
-                        <td style='border: 1px solid #ccc; padding: 10px; background: #f9f9f9;'>
+                        <td style='border: 1px solid #ccc; padding: 10px; background-color: rgba(155, 155, 155, 0.06); color: inherit;'>
                         <strong>Specificity</strong><br>
                         <span style='font-size: 18px;'>%.1f%%</span><br>
                         <span style='font-size: 12px; color: #666;'>True negative rate</span>
                         </td>
                     </tr>
                     <tr>
-                        <td style='border: 1px solid #ccc; padding: 10px; background: #f9f9f9;'>
+                        <td style='border: 1px solid #ccc; padding: 10px; background-color: rgba(155, 155, 155, 0.06); color: inherit;'>
                         <strong>PPV</strong><br>
                         <span style='font-size: 18px;'>%.1f%%</span><br>
                         <span style='font-size: 12px; color: #666;'>At %.1f%% prevalence</span>
                         </td>
-                        <td style='border: 1px solid #ccc; padding: 10px; background: #f9f9f9;'>
+                        <td style='border: 1px solid #ccc; padding: 10px; background-color: rgba(155, 155, 155, 0.06); color: inherit;'>
                         <strong>NPV</strong><br>
                         <span style='font-size: 18px;'>%.1f%%</span><br>
                         <span style='font-size: 12px; color: #666;'>At %.1f%% prevalence</span>
@@ -1100,8 +1126,8 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                     <li>The negative likelihood ratio of %.3f indicates %s.</li>
                     </ul>
 
-                    <div style='background: #f9f9f9; border: 1px solid #ccc; padding: 12px; margin: 15px 0;'>
-                        <p style='margin: 0; font-weight: bold;'>Clinical Recommendation</p>
+                    <div style='background-color: rgba(155, 155, 155, 0.06); border: 1px solid #ccc; padding: 12px; margin: 15px 0; color: inherit;'>
+                        <p style='margin: 0; font-weight: bold;'>Performance Summary</p>
                         <p style='margin: 5px 0 0 0;'>%s</p>
                     </div>
                 </div>
@@ -1117,7 +1143,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
             },
             .createAboutPanel = function() {
                 "<div style='font-family: Arial, sans-serif; max-width: 800px; line-height: 1.4;'>
-            <div style='background: #f5f5f5; border: 2px solid #333; padding: 15px; margin-bottom: 15px;'>
+            <div style='background-color: rgba(88, 88, 88, 0.06); border: 2px solid #333; padding: 15px; margin-bottom: 15px; color: inherit;'>
             <h3 style='margin: 0 0 5px 0; font-size: 16px; color: #333;'>About Diagnostic Test Evaluation</h3>
             </div>
 
@@ -1194,19 +1220,19 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
                 }
 
                 warning_html <- if (length(warnings) > 0) {
-                    sprintf("<div style='background: #fff3cd; padding: 15px; margin: 10px 0; border-left: 4px solid #f0ad4e;'>
+                    sprintf("<div style='background-color: rgba(255, 202, 33, 0.23); padding: 15px; margin: 10px 0; border-left: 4px solid #f0ad4e; color: inherit;'>
                 <h4 style='margin-top: 0; color: #856404;'> Warnings</h4>
                 <ul style='margin: 10px 0; padding-left: 20px;'>%s</ul>
                 </div>", paste(warnings, collapse = "\n"))
                 } else {
-                    "<div style='background: #d4edda; padding: 15px; margin: 10px 0; border-left: 4px solid #28a745;'>
+                    "<div style='background-color: rgba(33, 162, 64, 0.19); padding: 15px; margin: 10px 0; border-left: 4px solid #28a745; color: inherit;'>
                 <p style='margin: 0; color: #155724;'><strong> No issues detected</strong> - Sample size and distribution appear adequate.</p>
                 </div>"
                 }
 
                 sprintf(
                     "<div style='font-family: Arial, sans-serif; max-width: 800px; line-height: 1.4;'>
-                <div style='background: #f5f5f5; border: 2px solid #333; padding: 15px; margin-bottom: 15px;'>
+                <div style='background-color: rgba(88, 88, 88, 0.06); border: 2px solid #333; padding: 15px; margin-bottom: 15px; color: inherit;'>
                 <h3 style='margin: 0 0 5px 0; font-size: 16px; color: #333;'>Assumptions & Caveats</h3>
                 </div>
 
@@ -1244,7 +1270,7 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
             },
             .createGlossary = function() {
                 "<div style='font-family: Arial, sans-serif; max-width: 800px; line-height: 1.4;'>
-            <div style='background: #f5f5f5; border: 2px solid #333; padding: 15px; margin-bottom: 15px;'>
+            <div style='background-color: rgba(88, 88, 88, 0.06); border: 2px solid #333; padding: 15px; margin-bottom: 15px; color: inherit;'>
             <h3 style='margin: 0 0 5px 0; font-size: 16px; color: #333;'>Clinical Terms Glossary</h3>
             </div>
 
@@ -1286,16 +1312,26 @@ decisioncalculatorClass <- if (requireNamespace("jmvcore")) {
             </div>
             </div>"
             },
+            # Describes where the point estimates fall. Deliberately issues no
+            # clinical verdict: the inputs are one 2x2 table at one cut-off, with
+            # no interval, no validation cohort and no account of spectrum or
+            # verification bias.
             .getRecommendation = function(Youden, Accuracy, LRP, LRN) {
-                if (Youden > private$.YOUDEN_EXCELLENT && Accuracy > private$.ACCURACY_EXCELLENT && LRP > 10 && LRN < 0.1) {
-                    "This test shows excellent performance across all metrics. Recommended for clinical use."
+                # PPV/NPV are Bayes-adjusted to the supplied prior when pp is on, so the
+                # prevalence they depend on is not this sample's; accuracy always is.
+                prev_source <- if (isTRUE(self$options$pp))
+                    "the population prevalence you supplied" else "the prevalence of this sample"
+                caveat <- paste0("These are single-cohort point estimates at one cut-off. Accuracy depends on the prevalence of this sample, and the predictive values on ", prev_source, ". They do not on their own establish how the test would perform elsewhere; the confidence intervals, the representativeness of the sample, and the quality and blinding of the reference standard all bear on that.")
+                band <- if (Youden > private$.YOUDEN_EXCELLENT && Accuracy > private$.ACCURACY_EXCELLENT && LRP > 10 && LRN < 0.1) {
+                    "Youden's index, accuracy and both likelihood ratios all fall in the highest bands in this sample."
                 } else if (Youden > private$.YOUDEN_GOOD && Accuracy > private$.ACCURACY_GOOD) {
-                    "This test shows good performance. Consider clinical implementation with appropriate quality controls."
+                    "Youden's index and accuracy both reach at least the good band in this sample."
                 } else if (Youden > private$.YOUDEN_FAIR) {
-                    "This test shows fair performance. Use with caution; consider combining with other diagnostic information."
+                    "Youden's index reaches at least the fair band in this sample, but Youden's index and accuracy do not both reach the good band."
                 } else {
-                    "This test shows limited discriminatory ability. Not recommended as standalone diagnostic tool. Consider alternative tests or additional validation."
+                    "Youden's index falls in the lowest band in this sample, so positive and negative results separate diseased from healthy patients only weakly."
                 }
+                paste(band, caveat)
             }
         )
     )

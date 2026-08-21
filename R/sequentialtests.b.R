@@ -38,6 +38,19 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                                  values = list(stage = "After First Test"))
                 flowTable$addRow(rowKey = "after_test2",
                                  values = list(stage = "After Second Test"))
+
+                # The cost table always has exactly these three rows. Creating them here
+                # (rather than adding them each run) keeps the structure visible before the
+                # analysis runs and removes the need to clear stale rows in .run(). The item
+                # labels are placeholders: .run() rewrites them because a clinical preset can
+                # override the test names.
+                costTable <- self$results$cost_analysis_table
+                costTable$addRow(rowKey = "test1",
+                                 values = list(item = paste0("Test 1: ", self$options$test1_name)))
+                costTable$addRow(rowKey = "test2",
+                                 values = list(item = paste0("Test 2: ", self$options$test2_name)))
+                costTable$addRow(rowKey = "total",
+                                 values = list(item = "Total Protocol Cost"))
             },
 
             .run = function() {
@@ -363,6 +376,16 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                     )
                 )
 
+                # Under positive conditional dependence the two combined figures move in
+                # OPPOSITE directions, so "too optimistic" is wrong for one of them in every
+                # run. serial_positive multiplies sensitivities (understates sens) and multiplies
+                # false-positive rates (overstates spec); serial_negative and parallel do the
+                # reverse. Name the direction that actually applies to this strategy.
+                dependence_caveat <- if (strategy == "serial_positive")
+                    "the combined specificity above is too high and the combined sensitivity too low"
+                else
+                    "the combined sensitivity above is too high and the combined specificity too low"
+
                 # Generate plain-language summary
                 if (self$options$show_explanation) {
                     strategy_desc <- if (strategy == "serial_positive") {
@@ -374,11 +397,11 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                     }
 
                     clinical_meaning <- if (strategy == "serial_positive") {
-                        "This strategy maximizes specificity and is best for ruling in disease when false positives are costly or harmful."
+                        "This strategy raises combined specificity above that of either test alone and lowers combined sensitivity: fewer false positives, more missed cases."
                     } else if (strategy == "serial_negative") {
-                        "This strategy maximizes sensitivity and is best for ruling out disease when false negatives are dangerous."
+                        "This strategy raises combined sensitivity above that of either test alone and lowers combined specificity: fewer missed cases, more false positives."
                     } else {
-                        "This strategy maximizes sensitivity and is best for rapid diagnosis when both tests can be performed simultaneously."
+                        "Parallel testing raises combined sensitivity above that of either test alone and lowers combined specificity: fewer missed cases, more false positives."
                     }
 
                     nnt_text <- if (!is.na(nnt)) {
@@ -388,7 +411,7 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                     }
 
                     summary <- sprintf(
-                        "<div style='background:#e8f4f8;padding:15px;border-left:4px solid #0077be;font-size:1.05em;line-height:1.6;'><strong>Clinical Summary:</strong> Using a %s with %s followed by %s, the combined test achieves %.1f%% sensitivity (detects %.0f of every 100 diseased individuals) and %.1f%% specificity (correctly rules out %.0f of every 100 healthy individuals). At your specified disease prevalence of %.1f%%, a positive result indicates a %s chance the person truly has the disease (PPV), while a negative result indicates a %s chance the person is truly disease-free (NPV).%s %s</div>",
+                        "<div style='background-color: rgba(33, 149, 188, 0.1);padding:15px;border-left:4px solid #0077be;font-size:1.05em;line-height:1.6; color: inherit;'><strong>Clinical Summary:</strong> Using a %s with %s followed by %s, the combined test achieves %.1f%% sensitivity (detects %.0f of every 100 diseased individuals) and %.1f%% specificity (correctly rules out %.0f of every 100 healthy individuals). At your specified disease prevalence of %.1f%%, a positive result indicates a %s chance the person truly has the disease (PPV), while a negative result indicates a %s chance the person is truly disease-free (NPV).%s %s <em>These combined figures assume the two tests are conditionally independent given disease status, and they treat the sensitivity, specificity and prevalence you entered as exact, so they carry no confidence interval. If the two tests measure related biology, %s.</em></div>",
                         strategy_desc,
                         private$.safeHtmlOutput(test1_name),
                         private$.safeHtmlOutput(test2_name),
@@ -398,7 +421,8 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                         format_percent(combined_ppv),
                         format_percent(combined_npv),
                         nnt_text,
-                        clinical_meaning
+                        clinical_meaning,
+                        dependence_caveat
                     )
                     self$results$plain_summary$setContent(summary)
                 }
@@ -585,24 +609,22 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                     costTable <- self$results$cost_analysis_table
                     costTable$setTitle(sprintf('Cost Analysis (Per %s Patients)', base::format(pop_size, big.mark = ',')))
 
-                    # Clear rows from any previous run before repopulating to avoid duplicates
-                    costTable$deleteRows()
-
-                    costTable$addRow(rowKey = "test1", values = list(
+                    # Rows are created in .init(); only the computed cells are set here.
+                    costTable$setRow(rowKey = "test1", values = list(
                         item = paste0("Test 1: ", test1_name),
                         unit_cost = test1_cost,
                         number_tests = as.integer(n_test1),
                         total_cost = total_cost1
                     ))
                     
-                    costTable$addRow(rowKey = "test2", values = list(
+                    costTable$setRow(rowKey = "test2", values = list(
                         item = paste0("Test 2: ", test2_name),
                         unit_cost = test2_cost,
                         number_tests = as.integer(n_test2),
                         total_cost = total_cost2
                     ))
                     
-                    costTable$addRow(rowKey = "total", values = list(
+                    costTable$setRow(rowKey = "total", values = list(
                         item = "Total Protocol Cost",
                         unit_cost = NA,
                         number_tests = as.integer(n_test1 + n_test2),
@@ -637,8 +659,7 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                         "Combined figures assume the two tests are <i>conditionally independent</i> ",
                         "\u{2014} that, among people with the same disease status, one test's result ",
                         "says nothing about the other's. Tests measuring related biology usually ",
-                        "violate this, and the combined sensitivity and specificity above are then ",
-                        "too optimistic."
+                        "violate this, and then ", dependence_caveat, "."
                     )
                 )
 
@@ -704,22 +725,12 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                         explanation <- paste0(explanation, "</ol>")
                         explanation <- paste0(
                             explanation,
-                            "<p>This strategy <strong>maximizes specificity</strong> at the expense of sensitivity. It's useful when:</p>"
+                            "<p>Because a case counts as positive only when both tests are positive, the two sensitivities multiply and the two false-positive rates multiply as well. That is why the Combined Specificity cell in the Summary of Testing Strategy table is higher than either single specificity in the Individual Test Performance table, while Combined Sensitivity is lower than either single sensitivity.</p>"
                         )
-                        explanation <- paste0(explanation, "<ul>")
                         explanation <- paste0(
                             explanation,
-                            "<li>The first test has good sensitivity but lower specificity</li>"
+                            "<p>What this does not mean: two positive results are not a confirmed diagnosis. The Combined PPV cell is the probability of disease after two positives, and at low prevalence it can stay modest even when both tests are accurate. The cases lost to the drop in sensitivity are counted in the False Negatives column of the Population Flow Analysis table below.</p>"
                         )
-                        explanation <- paste0(explanation,
-                                              "<li>The second test has high specificity</li>")
-                        explanation <- paste0(explanation,
-                                              "<li>You want to minimize false positives</li>")
-                        explanation <- paste0(
-                            explanation,
-                            "<li>The consequences of false positive results are serious (e.g., harmful or expensive treatments)</li>"
-                        )
-                        explanation <- paste0(explanation, "</ul>")
                     } else if (strategy == "serial_negative") {
                         explanation <- paste0(
                             explanation,
@@ -753,22 +764,12 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                         explanation <- paste0(explanation, "</ol>")
                         explanation <- paste0(
                             explanation,
-                            "<p>This strategy <strong>maximizes sensitivity</strong> at the expense of specificity. It's useful when:</p>"
+                            "<p>Because a case counts as negative only when both tests are negative, the two false-negative rates multiply and the two specificities multiply as well. That is why the Combined Sensitivity cell in the Summary of Testing Strategy table is higher than either single sensitivity in the Individual Test Performance table, while Combined Specificity is lower than either single specificity.</p>"
                         )
-                        explanation <- paste0(explanation, "<ul>")
                         explanation <- paste0(
                             explanation,
-                            "<li>The first test has good specificity but lower sensitivity</li>"
+                            "<p>What this does not mean: two negative results do not rule the disease out. The Combined NPV cell is the probability of being disease-free after two negatives, and it depends on the prevalence you entered as much as on the two tests. The extra false alarms that come with the higher sensitivity are counted in the False Positives column of the Population Flow Analysis table below.</p>"
                         )
-                        explanation <- paste0(explanation,
-                                              "<li>The second test has high sensitivity</li>")
-                        explanation <- paste0(explanation,
-                                              "<li>You want to minimize false negatives</li>")
-                        explanation <- paste0(
-                            explanation,
-                            "<li>The consequences of false negative results are serious (e.g., missing a serious diagnosis)</li>"
-                        )
-                        explanation <- paste0(explanation, "</ul>")
                     } else if (strategy == "parallel") {
                         explanation <- paste0(
                             explanation,
@@ -798,18 +799,12 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                         explanation <- paste0(explanation, "</ol>")
                         explanation <- paste0(
                             explanation,
-                            "<p>This strategy <strong>maximizes sensitivity</strong> at the expense of specificity. It's useful when:</p>"
+                            "<p>Because a case counts as positive when either test is positive, the two false-negative rates multiply and the two specificities multiply as well. That is why the Combined Sensitivity cell in the Summary of Testing Strategy table is higher than either single sensitivity in the Individual Test Performance table, while Combined Specificity is lower than either single specificity. These are the same accuracy formulas as the serial negative strategy; only the number of second tests performed differs.</p>"
                         )
-                        explanation <- paste0(explanation, "<ul>")
-                        explanation <- paste0(explanation,
-                                              "<li>You want to minimize false negatives</li>")
                         explanation <- paste0(
                             explanation,
-                            "<li>The tests complement each other by detecting different manifestations of the disease</li>"
+                            "<p>What this does not mean: the two sensitivities do not add up. The whole gain comes from cases the second test catches and the first misses, so two tests that fail on the same cases add very little. The extra false alarms that come with the higher sensitivity are counted in the False Positives column of the Population Flow Analysis table below.</p>"
                         )
-                        explanation <- paste0(explanation,
-                                              "<li>Missing the diagnosis has serious consequences</li>")
-                        explanation <- paste0(explanation, "</ul>")
                     }
 
                     # Results explanation
@@ -890,9 +885,10 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
 
                     # Add independence assumption note to explanation
                     independence_note <- paste0(
-                        "<div style='background-color:#f8f9fa;padding:10px;border-radius:6px;margin-top:8px;'>",
+                        "<div style='background-color: rgba(138, 155, 172, 0.06);padding:10px;border-radius:6px;margin-top:8px; color: inherit;'>",
                         "<strong>Assumption:</strong> Combined metrics assume conditional independence between tests. ",
-                        "If tests are correlated (similar biology/technology), combined PPV/NPV may be overstated.",
+                        "If tests are correlated (similar biology or technology), ", dependence_caveat,
+                        ", and the combined PPV and NPV shift accordingly.",
                         "</div>"
                     )
                     self$results$explanation_text$setContent(paste0(independence_note, explanation))
@@ -900,15 +896,15 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
 
                 # Populate clinical guidance
                 guidance_html <- paste0(
-                    "<div class='jmv-guidance' style='background-color:#f8f9fa;padding:15px;border-radius:6px;margin-top:10px;'>",
-                    "<h4>Clinical Decision Making Guide</h4>",
-                    "<p><strong>When to Use Each Strategy:</strong></p>",
+                    "<div class='jmv-guidance' style='background-color: rgba(138, 155, 172, 0.06);padding:15px;border-radius:6px;margin-top:10px; color: inherit;'>",
+                    "<h4>Testing Strategy Notes</h4>",
+                    "<p><strong>How Each Strategy Combines the Two Tests:</strong></p>",
                     "<ul>",
-                    "<li><strong>Serial Positive (Confirmation):</strong> Use when false positives are costly or harmful. First test should be sensitive, second test should be specific.</li>",
-                    "<li><strong>Serial Negative (Exclusion):</strong> Use when false negatives are dangerous. First test should be specific, second test should be sensitive.</li>",
-                    "<li><strong>Parallel Testing:</strong> Use when rapid diagnosis is critical and both tests can be performed simultaneously.</li>",
+                    "<li><strong>Serial Positive (Confirmation):</strong> The second test is applied to first-test positives, and a case counts as positive only if both tests are positive. Combined specificity is higher than either test alone; combined sensitivity is lower. Ordering: the more sensitive test is usually placed first and the more specific test second.</li>",
+                    "<li><strong>Serial Negative (Exclusion):</strong> The second test is applied to first-test negatives, and a case counts as positive if either test is positive. Combined sensitivity is higher than either test alone; combined specificity is lower. Ordering: the more specific test is usually placed first and the more sensitive test second.</li>",
+                    "<li><strong>Parallel Testing:</strong> Both tests are performed at the same time and a case counts as positive if either is positive. In accuracy this is algebraically identical to serial negative; the strategies differ only in how many second tests are performed.</li>",
                     "</ul>",
-                    "<p><strong>Clinical Examples:</strong></p>",
+                    "<p><strong>Examples of Test Pairs Used This Way:</strong></p>",
                     "<ul>"
                 )
 
@@ -1172,6 +1168,9 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                 if (!requireNamespace("ggplot2", quietly = TRUE)) return(TRUE)
 
                 plotData <- image$state
+
+                if (is.null(plotData))
+                    return(FALSE)
                 strategy <- plotData$Strategy
 
                 # Enhanced flow diagram with better visual design
@@ -1377,6 +1376,9 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
 
                 plotData <- image$state
 
+                if (is.null(plotData))
+                    return(FALSE)
+
                 # Create comparison data
                 perf_data <- data.frame(
                     Test = rep(c(plotData$Test1_Name, plotData$Test2_Name, "Combined"), 4),
@@ -1418,6 +1420,9 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                 if (!requireNamespace("ggplot2", quietly = TRUE)) return(TRUE)
 
                 plotData <- image$state
+
+                if (is.null(plotData))
+                    return(FALSE)
 
                 # Calculate probability progression
                 prevalence <- plotData$Prevalence
@@ -1489,6 +1494,9 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                 if (!requireNamespace("ggplot2", quietly = TRUE)) return(TRUE)
 
                 plotData <- image$state
+
+                if (is.null(plotData))
+                    return(FALSE)
 
                 # Create Sankey-like flow visualization
                 pop_size <- plotData$Pop_Size
@@ -1589,6 +1597,9 @@ sequentialtestsClass <- if (requireNamespace('jmvcore'))
                 if (!requireNamespace("ggplot2", quietly = TRUE)) return(TRUE)
 
                 plotData <- image$state
+
+                if (is.null(plotData))
+                    return(FALSE)
 
                 # Create prevalence range from 0.01 to 0.99
                 prev_range <- seq(0.01, 0.99, by = 0.01)

@@ -340,7 +340,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                         private$.addNotice(
                             type = "INFO",
                             title = "Analysis Completed Successfully",
-                            content = paste0(n_tests, " diagnostic tests compared using ", n_cases, " complete cases. Gold standard identified ", n_diseased, " diseased and ", n_healthy, " healthy cases. Review comparison tables and statistical tests below.")
+                            content = paste0(n_tests, " diagnostic tests compared using ", n_cases, " complete cases. Gold standard identified ", n_diseased, " diseased and ", n_healthy, " healthy cases. Review the comparison tables and statistical tests above.")
                         )
                     },
                     error = function(e) {
@@ -1222,17 +1222,17 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                 # class has zero cases), which would otherwise crash with "missing value
                 # where TRUE/FALSE needed".
                 if (isTRUE(sens_pct >= 95 && spec_pct >= 95)) {
-                    interpretations <- c(interpretations, "Excellent overall performance")
+                    interpretations <- c(interpretations, "High sensitivity and high specificity in this sample (both >=95%)")
                 } else if (isTRUE(sens_pct >= 95)) {
-                    interpretations <- c(interpretations, "Excellent for screening (rule-out)")
+                    interpretations <- c(interpretations, "High sensitivity (>=95%): few false negatives in this sample")
                 } else if (isTRUE(spec_pct >= 95)) {
-                    interpretations <- c(interpretations, "Excellent for confirmation (rule-in)")
+                    interpretations <- c(interpretations, "High specificity (>=95%): few false positives in this sample")
                 } else if (isTRUE(sens_pct >= 85 && spec_pct >= 85)) {
-                    interpretations <- c(interpretations, "Good balanced performance")
+                    interpretations <- c(interpretations, "Moderately high sensitivity and specificity in this sample (both >=85%)")
                 } else if (isTRUE(sens_pct >= 85)) {
-                    interpretations <- c(interpretations, "Good sensitivity for screening")
+                    interpretations <- c(interpretations, "Moderately high sensitivity (>=85%) in this sample")
                 } else if (isTRUE(spec_pct >= 85)) {
-                    interpretations <- c(interpretations, "Good specificity for confirmation")
+                    interpretations <- c(interpretations, "Moderately high specificity (>=85%) in this sample")
                 }
 
                 # Add likelihood ratio interpretation
@@ -1248,11 +1248,24 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     interpretations <- c(interpretations, "Moderate negative evidence")
                 }
 
-                # Combine interpretations or provide fallback
+                # Combine interpretations or provide fallback. The fallback also fires when
+                # every band test is NA (.computeRate returns NA when a gold class has no
+                # cases), so separate "measured and below the bands" from "not estimable".
                 if (length(interpretations) > 0) {
                     return(paste(interpretations, collapse = "; "))
+                } else if (is.na(sens_pct) || is.na(spec_pct)) {
+                    return(paste0(
+                        "Sensitivity and/or specificity could not be computed here: one gold-standard class has no cases, ",
+                        "so that rate has an empty denominator and is reported as blank rather than as a low value. ",
+                        "The 2x2 counts behind this row are in the Recoded Data table for this test"
+                    ))
                 } else {
-                    return("Limited diagnostic utility - consider combining with other tests")
+                    return(paste0(
+                        "In this sample neither sensitivity nor specificity reached 85%, and neither likelihood ratio ",
+                        "reached LR+ >= 5 or LR- <= 0.2. That describes these counts at this operating point, not the ",
+                        "test in general; the Confidence Intervals table for this test (95% CI option) shows how ",
+                        "precisely each rate is pinned down by this many cases"
+                    ))
                 }
             },
 
@@ -1493,7 +1506,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                             p_value < 0.001 ~ "Highly significant overall difference among tests (p<0.001)",
                             p_value < 0.01 ~ "Significant overall difference among tests (p<0.01)",
                             p_value < 0.05 ~ "Statistically significant overall difference among tests (p<0.05)",
-                            TRUE ~ "No significant overall difference among tests (p>=0.05)"
+                            TRUE ~ "No significant overall difference detected among tests (p>=0.05); this does not establish that the tests perform equally"
                         )
 
                         mcnemarTable$addRow(
@@ -1511,7 +1524,14 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                             mcnemarTable$addFootnote(
                                 rowKey = "cochran_q_global",
                                 col = "interpretation",
-                                "Cochran's Q test shows no significant difference. Pairwise comparisons below may not be meaningful."
+                                paste0(
+                                    "Cochran's Q is a single test of whether the tests differ in accuracy anywhere among them. ",
+                                    "It did not reach p < 0.05 here, which means these data did not separate the tests, not that ",
+                                    "the tests agree. The per-pair rows in this table are exploratory in that situation: read them ",
+                                    "alongside the paired differences and their 95% confidence intervals in the ",
+                                    "Differences with 95% Confidence Intervals table, which show how large a real difference ",
+                                    "is still compatible with this sample."
+                                )
                             )
                         }
                     },
@@ -1644,8 +1664,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                             p_to_interpret < private$P_THRESHOLD_STRONG ~ "Highly significant difference (p<0.001)",
                             p_to_interpret < 0.01 ~ "Significant difference (p<0.01)",
                             p_to_interpret < private$P_THRESHOLD_SIGNIFICANT ~ "Statistically significant difference (p<0.05)",
-                            p_to_interpret < 0.1 ~ "Marginally significant difference (p<0.1)",
-                            TRUE ~ "No significant difference (p>=0.1)"
+                            TRUE ~ "No significant difference detected at alpha = 0.05; this does not establish that the tests perform equally"
                         )
 
                         # Add suffix to interpretation if adjusted
@@ -2010,15 +2029,15 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     '<h2 style="color: #2c3e50; border-bottom: 2px solid #3498db;"> Clinical Summary</h2>',
                     results_section,
                     '<h3 style="color: #27ae60; margin-top: 30px;"> Report Sentences</h3>',
-                    '<div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #28a745; margin: 15px 0;">',
+                    '<div style="background-color: rgba(138, 155, 172, 0.06); padding: 15px; border-left: 4px solid #28a745; margin: 15px 0; color: inherit;">',
                     '<h4 style="margin-top: 0;">Methods Section:</h4>',
                     '<p style="font-style: italic; line-height: 1.6;">', methods_section, "</p>",
                     "</div>",
-                    '<div style="background-color: #e8f4f8; padding: 15px; border-left: 4px solid #3498db; margin: 15px 0;">',
+                    '<div style="background-color: rgba(33, 149, 188, 0.1); padding: 15px; border-left: 4px solid #3498db; margin: 15px 0; color: inherit;">',
                     '<h4 style="margin-top: 0;">Results Section:</h4>',
                     '<p style="font-style: italic; line-height: 1.6;">', results_section, "</p>",
                     "</div>",
-                    '<h3 style="color: #8e44ad; margin-top: 30px;"> Clinical Recommendations</h3>',
+                    '<h3 style="color: #8e44ad; margin-top: 30px;"> Performance Summary</h3>',
                     clinical_recommendations,
                     "</div>"
                 )
@@ -2052,7 +2071,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                         content = paste0(
                             paste(tied, collapse = " and "),
                             " scored identically on the combined Youden-plus-accuracy ranking used to pick a best test. ",
-                            tied[1], " is reported below purely because it comes first in the selection order; the data do not distinguish them. Choose between them on other grounds (cost, availability, turnaround time, harms)."
+                            tied[1], " is named as the best test purely because it comes first in the selection order; the data do not distinguish them."
                         )
                     )
                 }
@@ -2094,7 +2113,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     } else if (isFALSE(private$.any_significant_comparison)) {
                         " Statistical comparison (McNemar's/Cochran's test) did not reveal a statistically significant difference in test performance (detailed results in the comparison tables)."
                     } else {
-                        " Statistical comparisons between tests are reported in the comparison tables below."
+                        " Statistical comparisons between tests are reported in the comparison tables above."
                     }
                 } else {
                     ""
@@ -2114,25 +2133,47 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                 sens_ci <- fmt_ci(best$TP, best$TP + best$FN)
                 spec_ci <- fmt_ci(best$TN, best$TN + best$FP)
 
-                # "optimal" is only defensible once a test actually separates from the rest
+                # A ranking is only worth reading as a finding once a test actually
+                # separates from the rest; otherwise the caveat sentence at the end fires.
                 indistinguishable <- length(test_results) >= 2 &&
                     self$options$statComp && isFALSE(private$.any_significant_comparison)
-                lead <- if (indistinguishable) {
-                    sprintf("Among the tests evaluated, %s had the highest observed accuracy",
-                            private$.safeHtmlOutput(best_test))
+
+                # best_test comes from .findBestTest, which maximises Youden index plus
+                # accuracy -- that winner need not be the most accurate test, so the lead
+                # names the ranking rule that actually picked it.
+                lead <- sprintf(
+                    "Among the tests evaluated, %s ranked highest on the combined Youden-index-plus-accuracy score",
+                    private$.safeHtmlOutput(best_test))
+
+                # PPV/NPV are prevalence-dependent, and when the user supplies a
+                # population prevalence (pp) .calculateDiagnosticMetrics computes them by
+                # Bayes at THAT value while accuracy stays at the prevalence of this
+                # sample. The two therefore cannot be reported under one prevalence.
+                n_total_best <- best$TP + best$FN + best$TN + best$FP
+                sample_prev_pct <- if (isTRUE(n_total_best > 0)) (best$TP + best$FN) / n_total_best * 100 else NA_real_
+                use_pp <- isTRUE(self$options$pp) && !is.na(self$options$pprob)
+
+                predictive_sentence <- if (use_pp) {
+                    sprintf(
+                        "At the %.1f%% population prevalence supplied for this analysis, positive predictive value was %s%% and negative predictive value was %s%%; overall accuracy was %s%% at the prevalence of this sample. Predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.",
+                        self$options$pprob * 100, ppv_pct, npv_pct, acc_pct)
                 } else {
-                    sprintf("Among the tests evaluated, %s demonstrated optimal diagnostic performance",
-                            private$.safeHtmlOutput(best_test))
+                    prev_label <- if (is.na(sample_prev_pct)) {
+                        "the disease prevalence observed in this sample"
+                    } else {
+                        sprintf("the %.1f%% disease prevalence observed in this sample", sample_prev_pct)
+                    }
+                    sprintf(
+                        "At %s, %s%% positive predictive value, %s%% negative predictive value, and %s%% overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.",
+                        prev_label, ppv_pct, npv_pct, acc_pct)
                 }
 
                 results <- sprintf(
-                    "%s, with %s%% sensitivity%s, %s%% specificity%s, %s%% positive predictive value, %s%% negative predictive value, and %s%% overall accuracy.%s The likelihood ratio for positive results was %.2f and for negative results was %.2f.%s",
+                    "%s, with %s%% sensitivity%s and %s%% specificity%s. %s%s The likelihood ratio for positive results was %.2f and for negative results was %.2f.%s",
                     lead,
                     sens_pct, sens_ci,
                     spec_pct, spec_ci,
-                    ppv_pct,
-                    npv_pct,
-                    acc_pct,
+                    predictive_sentence,
                     significance_note,
                     best_metrics$LRP,
                     best_metrics$LRN,
@@ -2144,56 +2185,88 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                 return(results)
             },
 
-            # Generate clinical recommendations
+            # Summarise the highest-ranked test's measured performance. This panel
+            # describes what was computed; it does not tell the user what to do with it.
             .generateClinicalRecommendations = function(test_results, best_test) {
                 best_metrics <- test_results[[best_test]]$metrics
                 sens_pct <- best_metrics$Sens * 100
                 spec_pct <- best_metrics$Spec * 100
                 best_test_safe <- private$.safeHtmlOutput(best_test)
 
-                recommendations <- '<div style="background-color: #fff3cd; padding: 15px; border-radius: 8px;">'
+                recommendations <- '<div style="background-color: rgba(255, 202, 33, 0.23); padding: 15px; border-radius: 8px; color: inherit;">'
 
-                if (sens_pct >= 95 && spec_pct >= 95) {
+                if (isTRUE(sens_pct >= 95 && spec_pct >= 95)) {
                     recommendations <- paste0(
                         recommendations,
-                        "<p><strong>Clinical Use:</strong> ", best_test_safe, " shows excellent performance for both screening and confirmatory testing.</p>"
+                        "<p><strong>Measured performance:</strong> ", best_test_safe,
+                        sprintf(" had both high sensitivity (%.1f%%) and high specificity (%.1f%%) in this sample: few false negatives and few false positives.</p>", sens_pct, spec_pct)
                     )
-                } else if (sens_pct >= 95) {
+                } else if (isTRUE(sens_pct >= 95)) {
                     recommendations <- paste0(
                         recommendations,
-                        "<p><strong>Screening Application:</strong> ", best_test_safe, " is excellent for initial screening due to high sensitivity (low false negative rate).</p>"
+                        "<p><strong>Measured performance:</strong> ", best_test_safe,
+                        sprintf(" had high sensitivity (%.1f%%) but lower specificity (%.1f%%) in this sample: few false negatives, more false positives.</p>", sens_pct, spec_pct)
                     )
-                } else if (spec_pct >= 95) {
+                } else if (isTRUE(spec_pct >= 95)) {
                     recommendations <- paste0(
                         recommendations,
-                        "<p><strong>Confirmatory Application:</strong> ", best_test_safe, " is excellent for confirming diagnosis due to high specificity (low false positive rate).</p>"
+                        "<p><strong>Measured performance:</strong> ", best_test_safe,
+                        sprintf(" had high specificity (%.1f%%) but lower sensitivity (%.1f%%) in this sample: few false positives, more false negatives.</p>", spec_pct, sens_pct)
+                    )
+                } else if (is.na(sens_pct) || is.na(spec_pct)) {
+                    # The isTRUE() guards above route NA metrics here. Do not state a
+                    # numeric negative about a rate that has no denominator.
+                    recommendations <- paste0(
+                        recommendations,
+                        "<p><strong>Measured performance:</strong> sensitivity and/or specificity could not be computed for ",
+                        best_test_safe,
+                        " because one gold-standard class has no cases, so that rate has an empty denominator. ",
+                        "This test is named here only because the ranking had nothing else to compare; check the 2x2 counts in the ",
+                        "Recoded Data table before reading any other panel.</p>"
                     )
                 } else {
                     recommendations <- paste0(
                         recommendations,
-                        "<p><strong>Clinical Consideration:</strong> Consider using ", best_test_safe, " in combination with other tests for optimal diagnostic accuracy.</p>"
+                        "<p><strong>Measured performance:</strong> ", best_test_safe,
+                        sprintf(
+                            paste0(
+                                " reached neither 95%% sensitivity (%.1f%%) nor 95%% specificity (%.1f%%) in this sample, so at this ",
+                                "operating point it produces both false negatives and false positives at a rate you can read off the ",
+                                "Decision Test Comparison table. These are the rates observed in these particular cases, not a fixed ",
+                                "property of the test.</p>"
+                            ),
+                            sens_pct, spec_pct
+                        )
                     )
                 }
 
-                # The panel above recommends one named test. Say so plainly when the
-                # analysis could not actually separate it from the others -- otherwise
-                # a ranking driven by sampling noise reads as a clinical endorsement.
+                # The panel above names one test. Say so plainly when the analysis could
+                # not actually separate it from the others -- otherwise a ranking driven
+                # by sampling noise reads as a finding.
                 if (length(test_results) >= 2 && self$options$statComp &&
                     isFALSE(private$.any_significant_comparison)) {
                     recommendations <- paste0(
                         recommendations,
-                        '<p style="background-color: #f8d7da; padding: 10px; border-radius: 4px;">',
-                        "<strong>Caution:</strong> No statistically significant difference was found between the tests compared. ",
-                        best_test_safe, " is named here only because it ranked highest in this sample; the data do not establish ",
-                        "that it outperforms the others. Base any choice between these tests on cost, availability, turnaround ",
-                        "time, and harms as well as on these estimates.</p>"
+                        '<p style="background-color: rgba(216, 33, 50, 0.18); padding: 10px; border-radius: 4px; color: inherit;">',
+                        "<strong>Caution:</strong> No statistically significant difference was detected between the tests compared. ",
+                        best_test_safe, " is named here only because it ranked highest in this sample; the data neither establish ",
+                        "that it outperforms the others nor establish that the tests are equivalent, since a non-significant ",
+                        "result may simply reflect limited power. The confidence intervals above show how large a real ",
+                        "difference remains compatible with these data.</p>"
                     )
                 }
 
+                # Which prevalence PPV/NPV were computed at depends on the pp option --
+                # the same branch .calculateDiagnosticMetrics uses. Accuracy is always at
+                # the prevalence of this sample.
                 recommendations <- paste0(
                     recommendations,
-                    "<p><strong>Implementation Note:</strong> Results should be interpreted in the context of disease prevalence in your clinical population. ",
-                    "Consider local validation studies before implementation.</p></div>"
+                    "<p><strong>Scope of these estimates:</strong> PPV, NPV and overall accuracy all depend on disease prevalence. ",
+                    if (isTRUE(self$options$pp) && !is.na(self$options$pprob))
+                        "PPV and NPV were computed at the population prevalence you supplied; overall accuracy reflects the prevalence of this sample. "
+                    else
+                        "They were all computed at the prevalence of this sample. ",
+                    "These estimates are apparent performance in this dataset and have not been externally validated.</p></div>"
                 )
 
                 return(recommendations)
@@ -2217,7 +2290,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     "</div>",
 
                     # When to Use
-                    '<div style="background-color: #f1f8e9; border: 1px solid #8bc34a; padding: 20px; border-radius: 8px; margin: 20px 0;">',
+                    '<div style="background-color: rgba(114, 184, 33, 0.1); border: 1px solid #8bc34a; padding: 20px; border-radius: 8px; margin: 20px 0; color: inherit;">',
                     '<h3 style="color: #4a7c59; margin-top: 0;"> When to Use This Analysis</h3>',
                     '<ul style="line-height: 1.8; color: #4a7c59;">',
                     "<li><strong>Test Validation:</strong> Comparing new diagnostic methods against established standards</li>",
@@ -2229,7 +2302,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     "</div>",
 
                     # How to Use
-                    '<div style="background-color: #fff3e0; border: 1px solid #ff9800; padding: 20px; border-radius: 8px; margin: 20px 0;">',
+                    '<div style="background-color: rgba(255, 169, 33, 0.14); border: 1px solid #ff9800; padding: 20px; border-radius: 8px; margin: 20px 0; color: inherit;">',
                     '<h3 style="color: #e65100; margin-top: 0;"> How to Use This Analysis</h3>',
                     '<ol style="line-height: 1.8; color: #e65100;">',
                     "<li><strong>Select Gold Standard:</strong> Choose your most reliable reference test (e.g., biopsy, expert consensus)</li>",
@@ -2242,7 +2315,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     "</div>",
 
                     # Key Metrics Explained
-                    '<div style="background-color: #f3e5f5; border: 1px solid #9c27b0; padding: 20px; border-radius: 8px; margin: 20px 0;">',
+                    '<div style="background-color: rgba(153, 33, 170, 0.12); border: 1px solid #9c27b0; padding: 20px; border-radius: 8px; margin: 20px 0; color: inherit;">',
                     '<h3 style="color: #6a1b9a; margin-top: 0;"> Key Metrics Explained</h3>',
                     '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #6a1b9a;">',
                     "<div>",
@@ -2261,7 +2334,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     "</div>",
 
                     # Clinical Guidelines
-                    '<div style="background-color: #e8f5e8; border: 1px solid #4caf50; padding: 20px; border-radius: 8px; margin: 20px 0;">',
+                    '<div style="background-color: rgba(33, 159, 33, 0.1); border: 1px solid #4caf50; padding: 20px; border-radius: 8px; margin: 20px 0; color: inherit;">',
                     '<h3 style="color: #2e7d32; margin-top: 0;"> Clinical Interpretation Guidelines</h3>',
                     '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #2e7d32;">',
                     "<div>",
@@ -2276,7 +2349,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     "</div>",
 
                     # Assumptions and Limitations
-                    '<div style="background-color: #fff8e1; border: 1px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0;">',
+                    '<div style="background-color: rgba(255, 203, 33, 0.14); border: 1px solid #ffc107; padding: 20px; border-radius: 8px; margin: 20px 0; color: inherit;">',
                     '<h3 style="color: #f57f17; margin-top: 0;"> Important Assumptions & Limitations</h3>',
                     '<ul style="line-height: 1.6; color: #f57f17;">',
                     "<li><strong>Gold Standard:</strong> Assumes your reference test is truly accurate</li>",
@@ -2302,8 +2375,16 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
             .plot1 = function(image1, ggtheme, ...) {
                 plotData <- image1$state
 
+                if (is.null(plotData))
+                    return(FALSE)
+
                 # Optimized data frame building - pre-allocate and batch create
                 df <- private$.buildBarPlotData(plotData)
+
+                # .buildBarPlotData() returns a COLUMN-LESS data.frame() when the state
+                # is empty, and aes() below cannot resolve its variables against that.
+                if (nrow(df) == 0)
+                    return(FALSE)
 
                 # Create plot
                 plot <- ggplot2::ggplot(df, ggplot2::aes(x = metric, y = value, fill = test)) +
@@ -2325,8 +2406,17 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
             .plotRadar = function(imageRadar, ggtheme, ...) {
                 plotData <- imageRadar$state
 
+                if (is.null(plotData))
+                    return(FALSE)
+
                 # Optimized radar plot data building with clinical thresholds
                 df <- private$.buildRadarPlotData(plotData)
+
+                # .buildRadarPlotData() returns a COLUMN-LESS data.frame() when the
+                # state is empty, so aes(x = metric, ...) below could not resolve its
+                # variables. A NULL state and an empty state are different things.
+                if (nrow(df) == 0)
+                    return(FALSE)
 
                 # Ensure factor ordering for consistent radar plot
                 df$metric <- factor(df$metric,
@@ -2483,7 +2573,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                 n_tests <- length(test_results)
                 test_names <- names(test_results)
 
-                html <- "<div style='background-color:#f9f9f9; border-left:4px solid #2196F3; padding:15px; margin:10px 0;'>"
+                html <- "<div style='background-color: rgba(155, 155, 155, 0.06); border-left:4px solid #2196F3; padding:15px; margin:10px 0; color: inherit;'>"
                 html <- paste0(html, "<h4 style='margin-top:0;'> Summary</h4>")
 
                 if (n_tests == 3) {
@@ -2517,15 +2607,20 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                                 "<p><b>Clinical interpretation:</b> <span style='color:#1976d2;'><b>%s</b></span> ",
                                 private$.safeHtmlOutput(best_test)
                             ), sprintf(
-                                "shows the best overall diagnostic performance (accuracy %.1f%%). Review pairwise comparisons below to see which differences are statistically significant after multiple comparison correction.</p>",
+                                "ranked highest on the combined Youden-index-plus-accuracy score in this sample (accuracy %.1f%%); no significance test was performed on that composite ranking. Review the pairwise comparisons above to see which differences are statistically significant after multiple comparison correction.</p>",
                                 best_acc * 100
                             ))
                         } else {
                             html <- paste0(
                                 html,
-                                "<span style='color:#388e3c;'><b>found no significant differences</b></span> ",
-                                "among the three tests. All tests show similar diagnostic accuracy. ",
-                                "Selection can be based on practical considerations such as cost, turnaround time, or availability.</p>"
+                                "<span style='color:#388e3c;'><b>did not detect a significant difference</b></span> ",
+                                "among the three tests. This is not evidence that they perform equally: with this sample size a ",
+                                "clinically important accuracy difference could go undetected, and no test of one test against ",
+                                "another across a pre-specified equivalence margin was performed. (The noninferiority column in the ",
+                                "Overall Percent Agreement table uses a margin, but it compares each test on its own to a fixed ",
+                                "agreement threshold, not the tests to each other.) The confidence intervals for the paired ",
+                                "differences in the Differences with 95% Confidence Intervals table show how large a difference ",
+                                "remains compatible with these data.</p>"
                             )
                         }
                     }
@@ -2555,18 +2650,25 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                         ))
 
                         if (mcn_p < private$P_THRESHOLD_SIGNIFICANT) {
-                            # Shared best-test definition (Youden + accuracy) for consistency
-                            better_test <- private$.findBestTest(test_results)
+                            # McNemar tests diagnostic CORRECTNESS, so the test named here is
+                            # the one with the higher accuracy -- not the Youden-plus-accuracy
+                            # composite winner, which can be the other test.
+                            more_accurate <- if (isTRUE(acc1 >= acc2)) test1_name else test2_name
+                            less_accurate <- if (isTRUE(acc1 >= acc2)) test2_name else test1_name
                             html <- paste0(html, sprintf(
-                                "<span style='color:#d32f2f;'><b>Significant difference detected.</b></span> ",
-                                "%s shows significantly better overall diagnostic performance.</p>",
-                                private$.safeHtmlOutput(better_test)
+                                "<span style='color:#d32f2f;'><b>Significant difference detected.</b></span> %s classified significantly more cases correctly than %s (accuracy %.1f%% vs %.1f%%). McNemar's test compares overall correctness only; the two tests may still differ in the sensitivity/specificity balance.</p>",
+                                private$.safeHtmlOutput(more_accurate),
+                                private$.safeHtmlOutput(less_accurate),
+                                max(acc1, acc2) * 100, min(acc1, acc2) * 100
                             ))
                         } else {
                             html <- paste0(
                                 html,
-                                "<span style='color:#388e3c;'><b>No significant difference.</b></span> ",
-                                "Both tests perform similarly. Consider practical factors when choosing.</p>"
+                                "<span style='color:#388e3c;'><b>No significant difference detected.</b></span> ",
+                                "This is not evidence that the two tests are equivalent: McNemar's test uses only the discordant ",
+                                "pairs, so with few discordances it has little power to detect a real difference. Check the ",
+                                "confidence interval for the accuracy difference to see how large a difference remains ",
+                                "compatible with these data.</p>"
                             )
                         }
                     }
@@ -2581,14 +2683,14 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                 n_tests <- length(test_results)
                 test_names <- names(test_results)
 
-                html <- "<div style='background-color:#f0f0f0; padding:15px; border:1px solid #ccc; margin:10px 0;'>"
+                html <- "<div style='background-color: rgba(33, 33, 33, 0.07); padding:15px; border:1px solid #ccc; margin:10px 0; color: inherit;'>"
                 html <- paste0(html, "<h4 style='margin-top:0;'> Manuscript-Ready Report</h4>")
                 html <- paste0(
                     html, "<p style='font-size:10pt; color:#666; margin-bottom:10px;'>",
                     "Copy and adapt to your manuscript. Verify all statistical values and add clinical context.</p>"
                 )
 
-                html <- paste0(html, "<div style='background-color:#fff; padding:12px; font-family:serif; font-size:11pt; line-height:1.8;'>")
+                html <- paste0(html, "<div style='background-color: rgba(255, 255, 255, 0.06); padding:12px; font-family:serif; font-size:11pt; line-height:1.8; color: inherit;'>")
 
                 if (n_tests == 3) {
                     # Match the Cochran row by its KEY ("cochran_q_global"), not the cell value.
@@ -2600,10 +2702,21 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     q_p <- if (grepl("cochran", q_key, fixed = TRUE)) mcnemar_table$getCell(rowKey = q_row, col = "p")$value else NA
                     if (grepl("cochran", q_key, fixed = TRUE) && !is.na(q_stat) && !is.na(q_p)) {
                         report <- sprintf(
-                            "Cochran's Q test revealed %s significant difference in diagnostic accuracy among the three tests (\u{03C7}\u{00B2}(%d) = %.2f, p = %.3f). ",
-                            if (q_p < private$P_THRESHOLD_SIGNIFICANT) "a" else "no",
+                            "Cochran's Q test %s a significant difference in diagnostic accuracy among the three tests (\u{03C7}\u{00B2}(%d) = %.2f, p = %.3f). ",
+                            if (q_p < private$P_THRESHOLD_SIGNIFICANT) "revealed" else "did not detect",
                             q_df, q_stat, q_p
                         )
+                        if (q_p >= private$P_THRESHOLD_SIGNIFICANT) {
+                            report <- paste0(
+                                report,
+                                paste0(
+                                    "This does not establish that the tests perform equally; no test of one test against another ",
+                                    "across a pre-specified equivalence margin was performed. (The noninferiority column in the ",
+                                    "Overall Percent Agreement table does use a margin, but it compares each test on its own to a ",
+                                    "fixed agreement threshold, not the tests to each other.) "
+                                )
+                            )
+                        }
 
                         if (q_p < private$P_THRESHOLD_SIGNIFICANT) {
                             report <- paste0(
@@ -2615,7 +2728,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                             best_test <- private$.findBestTest(test_results)
 
                             report <- paste0(report, sprintf(
-                                "%s demonstrated the best overall diagnostic performance.",
+                                "%s ranked highest on a combined Youden-index-plus-accuracy score; no significance test was performed on that composite ranking.",
                                 private$.safeHtmlOutput(best_test)
                             ))
                         }
@@ -2634,21 +2747,32 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                         test2_name <- test_names[2]
 
                         report <- sprintf(
-                            "McNemar's test comparing %s and %s showed %s significant difference in diagnostic accuracy (\u{03C7}\u{00B2}(%d) = %.2f, p = %.3f).",
+                            "McNemar's test comparing %s and %s %s a significant difference in diagnostic accuracy (\u{03C7}\u{00B2}(%d) = %.2f, p = %.3f).",
                             private$.safeHtmlOutput(test1_name),
                             private$.safeHtmlOutput(test2_name),
-                            if (mcn_p < private$P_THRESHOLD_SIGNIFICANT) "a" else "no",
+                            if (mcn_p < private$P_THRESHOLD_SIGNIFICANT) "showed" else "did not detect",
                             mcn_df, mcn_stat, mcn_p
                         )
 
                         if (mcn_p < private$P_THRESHOLD_SIGNIFICANT) {
-                            # Shared best-test definition (Youden + accuracy) for consistency
-                            better_test <- private$.findBestTest(test_results)
+                            # McNemar tests diagnostic correctness, so report the test with the
+                            # higher accuracy rather than the Youden-plus-accuracy composite winner.
+                            acc1 <- test_results[[test1_name]]$metrics$AccurT
+                            acc2 <- test_results[[test2_name]]$metrics$AccurT
+                            more_accurate <- if (isTRUE(acc1 >= acc2)) test1_name else test2_name
+                            less_accurate <- if (isTRUE(acc1 >= acc2)) test2_name else test1_name
 
                             report <- paste0(report, sprintf(
-                                " %s demonstrated significantly better overall diagnostic performance.",
-                                private$.safeHtmlOutput(better_test)
+                                " %s classified significantly more cases correctly than %s (accuracy %.1f%% vs %.1f%%); McNemar's test compares overall correctness only.",
+                                private$.safeHtmlOutput(more_accurate),
+                                private$.safeHtmlOutput(less_accurate),
+                                max(acc1, acc2) * 100, min(acc1, acc2) * 100
                             ))
+                        } else {
+                            report <- paste0(
+                                report,
+                                " A non-significant McNemar result does not establish that the two tests perform equally; the test uses only the discordant pairs and may lack power to detect a clinically important difference."
+                            )
                         }
 
                         html <- paste0(html, report)
