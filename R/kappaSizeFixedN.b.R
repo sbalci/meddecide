@@ -16,6 +16,8 @@ kappaSizeFixedNClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
         # The separator set matches kappaSizeCI's so the same string is accepted by every
         # member of the family; a user moving between them should not have to retype it.
         .parsePropTokens = function(props) {
+            # U+00A0 (non-breaking space, what Word/Excel paste) is not in [:space:].
+            props <- gsub("\u{00A0}", " ", props, fixed = TRUE)
             toks <- unlist(strsplit(props, "[,;|[:space:]]+"), use.names = FALSE)
             toks[nzchar(toks)]
         },
@@ -99,7 +101,8 @@ kappaSizeFixedNClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Cla
             # separator first, as the two siblings do.
             if (any(props4 >= 1, na.rm = TRUE)) {
                 as_decimal <- suppressWarnings(as.numeric(trimws(unlist(strsplit(
-                    gsub("([0-9]),([0-9])", "\\1.\\2", self$options$props),
+                    gsub("([0-9]),([0-9])", "\\1.\\2",
+                         gsub("\u{00A0}", " ", self$options$props, fixed = TRUE)),
                     "[;|[:space:]]+")))))
                 as_decimal <- as_decimal[!is.na(as_decimal)]
                 if (length(as_decimal) > 0 && all(as_decimal > 0 & as_decimal < 1))

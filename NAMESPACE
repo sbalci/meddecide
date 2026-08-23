@@ -18,6 +18,7 @@ export(decision)
 export(decisioncalculator)
 export(decisioncombine)
 export(decisioncompare)
+export(decisioncurve)
 export(enhancedROC)
 export(enhancedROCClass)
 export(generate_user_friendly_error)
@@ -45,10 +46,13 @@ importFrom(caret,confusionMatrix)
 importFrom(cutpointr,cutpointr)
 importFrom(dplyr,
   "%>%",
+  arrange,
   case_when,
   count,
+  filter,
   group_by,
-  mutate
+  mutate,
+  summarise
 )
 importFrom(epiR,epi.tests)
 importFrom(forcats,
@@ -60,8 +64,12 @@ importFrom(ggplot2,
   annotate,
   element_blank,
   element_text,
+  facet_wrap,
+  geom_bar,
+  geom_hline,
   geom_line,
   geom_point,
+  geom_ribbon,
   geom_text,
   geom_vline,
   ggplot,
@@ -69,13 +77,19 @@ importFrom(ggplot2,
   labs,
   margin,
   rel,
+  scale_color_brewer,
   scale_color_manual,
+  scale_fill_manual,
   scale_x_continuous,
+  scale_x_discrete,
   scale_y_continuous,
   sec_axis,
   theme,
   theme_bw,
-  theme_void
+  theme_minimal,
+  theme_void,
+  xlim,
+  ylim
 )
 importFrom(ggraph,ggraph)
 importFrom(glmnet,cv.glmnet)
@@ -105,6 +119,7 @@ importFrom(scales,percent_format)
 importFrom(stats,
   binom.test,
   binomial,
+  complete.cases,
   cov,
   glm,
   line,
@@ -115,7 +130,10 @@ importFrom(stats,
   var
 )
 importFrom(tibble,rownames_to_column)
-importFrom(tidyr,pivot_longer)
+importFrom(tidyr,
+  gather,
+  pivot_longer
+)
 importFrom(tools,toTitleCase)
 importFrom(utils,
   data,

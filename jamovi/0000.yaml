@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.0.6.02
+version: 1.0.6.05
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-08-21'
+date: '2026-08-23'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -75,8 +75,12 @@ analyses:
     menuSubgroup: Power Analysis by meddecide
     menuSubtitle: Find sample size based on power
     menuTitle: Power Approach for the Number of Subjects Required
-    description: |
-      Power Analysis for Interobserver Agreement Analysis.
+    description: >
+      Sample size for an interobserver agreement study sized to reject a null
+      kappa (kappa0) in favour of an alternative kappa (kappa1) at a given
+      two-sided significance level and power - the power approach of the
+      kappaSize package. Use kappaSizeCI for a target confidence-interval width,
+      and kappaSizeFixedN when the number of subjects is already fixed.
     ribbon: analyses
     category: analyses
   - title: Confidence Interval Approach for the Number of Subjects Required
@@ -220,6 +224,21 @@ analyses:
       classification problems. Ideal for diagnostic pathology studies that build
 
       classifiers (e.g., tumor type A vs B) with automatic feature selection.
+  - title: Decision Curve Analysis
+    name: decisioncurve
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Curve Analysis
+    menuTitle: Decision Curve Analysis
+    menuSubtitle: Clinical Utility, Net Benefit, Threshold Analysis
+    description: >
+      Decision Curve Analysis for evaluating the clinical utility of prediction
+      models and diagnostic tests. Calculates net benefit across threshold
+      probabilities to determine if using a model provides more benefit than
+      default strategies. Inputs must be probabilities for a clearly defined
+      binary outcome and prediction horizon; calibration must be assessed
+      separately, and this analysis does not handle censoring.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

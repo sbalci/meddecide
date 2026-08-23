@@ -26,3 +26,4 @@ vignettes/
 ^backups$
 ^backups/
 ^data/.*\.csv$
+^.*\.tar\.gz$

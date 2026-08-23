@@ -1,0 +1,249 @@
+title: Decision Curve Analysis
+name: decisioncurve
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Outcome Variable
+        children:
+          - type: VariablesListBox
+            name: outcome
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: outcomePositive
+            label: Positive Outcome
+            enable: (outcome)
+      - type: TargetLayoutBox
+        label: Prediction Models/Variables
+        children:
+          - type: VariablesListBox
+            name: models
+            isTarget: true
+          - type: TextBox
+            name: modelNames
+            label: Model Names (optional)
+            format: string
+  - type: CollapseBox
+    label: Analysis Options
+    margin: normal
+    collapsed: false
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: Label
+            label: Threshold Range
+            children:
+              - type: ComboBox
+                name: thresholdRange
+                label: Threshold Range
+              - type: TextBox
+                name: thresholdMin
+                format: number
+                label: Minimum Threshold
+                enable: (thresholdRange:custom)
+              - type: TextBox
+                name: thresholdMax
+                format: number
+                label: Maximum Threshold
+                enable: (thresholdRange:custom)
+              - type: TextBox
+                name: thresholdStep
+                format: number
+                label: Step Size
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: Label
+            label: Clinical Decision Rule
+            children:
+              - type: CheckBox
+                name: clinicalDecisionRule
+                label: Include clinical decision rule
+              - type: VariablesListBox
+                name: decisionRuleVar
+                isTarget: true
+                maxItemCount: 1
+                enable: (clinicalDecisionRule)
+              - type: LevelSelector
+                name: decisionRulePositive
+                label: Positive rule level
+                enable: (clinicalDecisionRule && decisionRuleVar)
+              - type: TextBox
+                name: decisionRuleLabel
+                format: string
+                label: Decision rule label
+                enable: (clinicalDecisionRule)
+  - type: CollapseBox
+    label: Tables & Outputs
+    margin: normal
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: showTable
+            label: Show results table
+          - type: TextBox
+            name: selectedThresholds
+            format: string
+            label: Thresholds for table (comma-separated)
+            enable: (showTable)
+          - type: CheckBox
+            name: showBenefitRange
+            label: Range of benefit table
+          - type: CheckBox
+            name: showDecisionConsequences
+            label: Decision consequences table
+  - type: CollapseBox
+    label: Plots
+    margin: normal
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: showPlot
+            label: Decision curve plot
+          - type: ComboBox
+            name: plotStyle
+            label: Plot style
+            enable: (showPlot)
+          - type: CheckBox
+            name: showReferenceLinesLabels
+            label: Show reference line labels
+            enable: (showPlot)
+          - type: CheckBox
+            name: highlightRange
+            label: Highlight clinical range
+            enable: (showPlot)
+          - type: TextBox
+            name: highlightMin
+            format: number
+            label: Range minimum
+            enable: (highlightRange && showPlot)
+          - type: TextBox
+            name: highlightMax
+            format: number
+            label: Range maximum
+            enable: (highlightRange && showPlot)
+          - type: CheckBox
+            name: showClinicalImpactPlot
+            label: Clinical impact plot
+          - type: CheckBox
+            name: showNetBenefitCI
+            label: Net benefit confidence intervals
+          - type: CheckBox
+            name: showRelativeUtility
+            label: Relative utility plot
+          - type: CheckBox
+            name: showStandardizedNetBenefit
+            label: Standardized net benefit plot
+  - type: CollapseBox
+    label: Cost-Benefit Analysis
+    margin: normal
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: costBenefitAnalysis
+            label: Enable cost-benefit analysis
+          - type: TextBox
+            name: testCost
+            format: number
+            label: Cost per test
+            enable: (costBenefitAnalysis)
+          - type: TextBox
+            name: treatmentCost
+            format: number
+            label: Cost per treatment
+            enable: (costBenefitAnalysis)
+          - type: TextBox
+            name: benefitCorrectTreatment
+            format: number
+            label: Benefit of correct treatment
+            enable: (costBenefitAnalysis)
+          - type: TextBox
+            name: harmFalseTreatment
+            format: number
+            label: Harm of false treatment
+            enable: (costBenefitAnalysis)
+  - type: CollapseBox
+    label: Model Comparison
+    margin: normal
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: compareModels
+            label: Statistical comparison
+          - type: CheckBox
+            name: multiModelComparison
+            label: Enhanced pairwise comparison
+          - type: ComboBox
+            name: comparisonMethod
+            label: Test method
+            enable: (compareModels || multiModelComparison)
+          - type: CheckBox
+            name: weightedAUC
+            label: Average net benefit table
+  - type: CollapseBox
+    label: Clinical Impact
+    margin: normal
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: calculateClinicalImpact
+            label: Calculate impact metrics
+          - type: TextBox
+            name: populationSize
+            format: number
+            label: Population size
+            enable: (calculateClinicalImpact)
+          - type: CheckBox
+            name: showInterventionAvoided
+            label: Show interventions avoided
+            enable: (calculateClinicalImpact)
+          - type: CheckBox
+            name: resourceUtilization
+            label: Resource utilization
+  - type: CollapseBox
+    label: Bootstrap Confidence Intervals
+    margin: normal
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: confidenceIntervals
+            label: Calculate CIs
+          - type: TextBox
+            name: bootReps
+            format: number
+            label: Bootstrap replications
+            enable: (confidenceIntervals)
+          - type: TextBox
+            name: ciLevel
+            format: number
+            label: Confidence level
+            enable: (confidenceIntervals)
+          - type: TextBox
+            name: seed
+            format: number
+            label: Random seed
