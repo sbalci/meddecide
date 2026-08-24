@@ -11,7 +11,7 @@ kappaSizeCIOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             kappa0 = 0.6,
             kappaL = 0.4,
             kappaU = 0.8,
-            props = "0.20 , 0.80",
+            props = "0.20, 0.80",
             raters = "2",
             alpha = 0.05, ...) {
 
@@ -58,7 +58,7 @@ kappaSizeCIOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             private$..props <- jmvcore::OptionString$new(
                 "props",
                 props,
-                default="0.20 , 0.80")
+                default="0.20, 0.80")
             private$..raters <- jmvcore::OptionList$new(
                 "raters",
                 raters,
@@ -186,7 +186,7 @@ kappaSizeCIBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "kappaSizeCI",
-                version = c(1,0,6),
+                version = c(1,0,7),
                 options = options,
                 results = kappaSizeCIResults$new(options=options),
                 data = data,
@@ -262,7 +262,7 @@ kappaSizeCI <- function(
     kappa0 = 0.6,
     kappaL = 0.4,
     kappaU = 0.8,
-    props = "0.20 , 0.80",
+    props = "0.20, 0.80",
     raters = "2",
     alpha = 0.05) {
 

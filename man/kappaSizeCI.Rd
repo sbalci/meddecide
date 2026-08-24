@@ -10,7 +10,7 @@ kappaSizeCI(
   kappa0 = 0.6,
   kappaL = 0.4,
   kappaU = 0.8,
-  props = "0.20 , 0.80",
+  props = "0.20, 0.80",
   raters = "2",
   alpha = 0.05
 )
