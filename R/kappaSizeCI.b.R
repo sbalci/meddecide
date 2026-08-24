@@ -155,6 +155,82 @@ kappaSizeCIClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
             })
         },
 
+        # Expected probability of every goodness-of-fit cell at agreement rho. kappaSize's
+        # CI* engines grow n until the chi-square sum over AGREEMENT PATTERNS --
+        # (n P_j(kappa0) - n P_j(rho))^2 / (n P_j(rho)) -- exceeds the critical value at
+        # rho = kappaL and (two-sided) rho = kappaU. The expected counts in those denominators
+        # are where sparseness matters, NOT the outcome marginals that kappaSize's own
+        # print/summary check. Identical closed forms to R/kappaSizeFixedN.b.R:.gofCells and
+        # R/kappaSizePower.b.R:.gofCells, verified against every engine .CalcIT for raters 2-6.
+        .gofCells = function(outcome, raters, props, rho) {
+            if (outcome == 2) {
+                p <- props[1]
+                j <- 0:raters
+                choose(raters, j) * p^j * (1 - p)^(raters - j) * (1 - rho) +
+                    rho * ifelse(j == raters, p, ifelse(j == 0, 1 - p, 0))
+            } else {
+                i <- seq_len(raters) - 1
+                agree <- vapply(props, function(pj)
+                    prod((pj * (1 - rho) + i * rho) / ((1 - rho) + i * rho)), numeric(1))
+                c(1 - sum(agree), agree)
+            }
+        },
+
+        # Cochran's rule applied to each confidence limit SEPARATELY, reporting the numbers
+        # from the limit that is actually thinnest.
+        #
+        # An earlier version took the element-wise MINIMUM across kappaL and kappaU and counted
+        # over that. P_j(rho) moves in opposite directions across cells -- for a binary outcome
+        # the interior cells fall with rho while j = 0 and j = raters rise -- so the minimum was
+        # assembled from BOTH limits, summed to anything but 1 (measured range 0.098 to 0.968),
+        # and turned "k of m cells are below 5" into a union count that no single chi-square
+        # ever has. Verified: outcome 2, kappa0 0.60, limits 0.30/0.80, props 0.05/0.95, 2
+        # raters -> n = 181 and the notice claimed "2 of 3" where each limit alone has 1 of 3.
+        #
+        # A limit whose cells are not a valid probability vector is skipped rather than
+        # reported. props inside kappaSize's own 0.001 sum tolerance can exceed 1 (for example
+        # 0.99945, 0.0003, 0.0003 sums to 1.00005 and both the module validator and CI3Cats
+        # accept it), which drives the lumped P0 = 1 - sum(agree) negative; the notice used to
+        # print "the smallest expected count is -1".
+        .sparseVerdict = function(params, required_n) {
+            none <- list(sparse = FALSE, min = NA_real_,
+                         below5 = NA_integer_, total = NA_integer_)
+            if (!is.finite(required_n)) return(none)
+
+            rhos <- c(params$kappaL, params$kappaU)
+            rhos <- rhos[is.finite(rhos)]
+
+            per <- list()
+            for (rho in rhos) {
+                e <- private$.gofCells(params$outcome, params$raters, params$props, rho) *
+                     required_n
+                if (!all(is.finite(e)) || any(e < 0)) next   # degenerate here; not assessable
+                per[[length(per) + 1L]] <- list(
+                    sparse = any(e < 1) || mean(e < 5) > 0.2,
+                    min    = min(e),
+                    below5 = sum(e < 5),
+                    total  = length(e))
+            }
+            if (length(per) == 0) return(none)
+
+            # Flag if EITHER limit is sparse, but quote a single coherent limit: the sparsest
+            # of the ones that fired, so the numbers shown always justify the warning shown.
+            flagged <- Filter(function(x) isTRUE(x$sparse), per)
+            pool    <- if (length(flagged) > 0) flagged else per
+            worst   <- pool[[which.min(vapply(pool, function(x) x$min, numeric(1)))]]
+            worst$sparse <- length(flagged) > 0
+            worst
+        },
+
+        # Expected counts run from ~3e-06 to a few dozen, and signif() pasted straight into a
+        # sentence renders the small end as "8.9e-06" in prose aimed at pathologists. Rounding
+        # to fixed decimals instead would print "0.000", which is worse; say "below 0.01".
+        .fmtCount = function(x) {
+            if (!isTRUE(is.finite(x))) return("unavailable")
+            if (x < 0.01) return("below 0.01")
+            base::format(signif(x, 2), scientific = FALSE, trim = TRUE)
+        },
+
         .calculateParameterHash = function() {
             param_list <- list(
                 outcome = self$options$outcome,
@@ -412,7 +488,9 @@ kappaSizeCIClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
         # Build methodology (INFO) and large-sample (WARNING) notices as HTML.
         # Rendered via a dedicated Html output rather than jmvcore::Notice objects
         # to avoid the notice serialization / no-newline limitations in jamovi.
-        .buildNotices = function(required_n, sparse_cells = FALSE) {
+        .buildNotices = function(required_n, sparse_cells = FALSE,
+                                 sparse_min = NA_real_, sparse_below5 = NA_integer_,
+                                 sparse_total = NA_integer_) {
             info <- paste0(
                 "<div style='margin:6px 0; padding:8px 10px; border-left:3px solid #3c8dbc; background-color: rgba(72, 138, 188, 0.06); color: inherit;'>",
                 "<b>Methodology.</b> The required sample size is computed with the confidence-interval ",
@@ -425,22 +503,33 @@ kappaSizeCIClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
 
             warn <- ""
 
-            # kappaSize emits "At least one expected cell count is less than five" into its own
-            # summary text when a category is rare at the computed n. That is a real caveat about
-            # the asymptotics the method relies on, and it was reaching only the Summary pane.
-            if (!is.null(sparse_cells) && isTRUE(sparse_cells)) {
+            # Sparse goodness-of-fit cells, judged by Cochran's rule on the cells the engine
+            # actually divides by (see .gofCells / .sparseVerdict): no expected count below 1
+            # and at most one cell in five below 5. This replaces a grep for kappaSize's own
+            # "expected cell count is less than five" line, which tests the outcome MARGINALS
+            # and for a binary outcome only props[1]. That rule missed 7 of 10 realistic
+            # designs measured here -- the default six-rater binary study has 6 of 7 pattern
+            # cells below 5 with a minimum of 0.013 and produced no warning at all.
+            if (isTRUE(sparse_cells)) {
                 warn <- paste0(warn,
                     "<div style='margin:6px 0; padding:8px 10px; border-left:3px solid #ec971f; background-color: rgba(227, 144, 33, 0.07); color: inherit;'>",
-                    "<b>Sparse categories.</b> At the computed sample size at least one category is ",
-                    "expected to contain fewer than five subjects. The kappaSize calculation is based ",
-                    "on a large-sample approximation, so the required n is less dependable here. ",
-                    "Consider collapsing rare categories or recruiting more subjects than the figure shown.",
+                    "<b>Sparse categories.</b> At the computed sample size the agreement-pattern ",
+                    "cells (for example, exactly k of the raters calling the finding present, or all ",
+                    "raters agreeing on one category) are too sparse at the confidence limit where ",
+                    "they are thinnest: the smallest expected count is ",
+                    private$.fmtCount(sparse_min), " and ",
+                    sparse_below5, " of ", sparse_total, " cells are below 5. The calculation rests ",
+                    "on a large-sample chi-square approximation, so the required n is less ",
+                    "dependable here. Consider collapsing rare categories, using fewer raters, or ",
+                    "recruiting more subjects than the figure shown.",
                     "</div>"
                 )
             }
 
+            # NB: paste0(warn, ...), not paste0(...). Writing over `warn` here silently deleted
+            # the sparse-cell block whenever both conditions held.
             if (!is.na(required_n) && required_n > 1000) {
-                warn <- paste0(
+                warn <- paste0(warn,
                     "<div style='margin:6px 0; padding:8px 10px; border-left:3px solid #d9534f; background-color: rgba(222, 55, 55, 0.06); color: inherit;'>",
                     "<b>Warning.</b> The computed sample size (", required_n, ") is very large and may be ",
                     "impractical for a typical interobserver-agreement study. Consider a wider confidence ",
@@ -493,12 +582,18 @@ kappaSizeCIClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
                 # Generate explanation
                 explanation <- private$.generateExplanation(params)
 
-                # Methodology / large-sample notices. kappaSize reports sparse expected cells
-                # only inside its own summary text, so detect it there and surface it properly.
+                # Methodology / large-sample notices. Sparseness is judged on the
+                # agreement-pattern cells at the requested confidence limits (Cochran's rule),
+                # not on kappaSize's own marginal check -- see .gofCells. The engine's own
+                # marginal line is left untouched in the Summary pane.
                 required_n <- private$.extractRequiredN(raw_result)
-                sparse_cells <- any(grepl("expected cell count is less than five",
-                                          summary_text, ignore.case = TRUE))
-                notices_html <- private$.buildNotices(required_n, sparse_cells)
+                verdict <- private$.sparseVerdict(params, required_n)
+                notices_html <- private$.buildNotices(
+                    required_n,
+                    sparse_cells  = verdict$sparse,
+                    sparse_min    = verdict$min,
+                    sparse_below5 = verdict$below5,
+                    sparse_total  = verdict$total)
 
                 # Cache results
                 private$.cached_result <- formatted_result

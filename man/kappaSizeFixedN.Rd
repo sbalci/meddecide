@@ -6,28 +6,34 @@
 \usage{
 kappaSizeFixedN(
   outcome = "2",
-  kappa0 = 0.4,
-  props = "0.20 , 0.80",
+  kappa0 = 0.6,
+  props = "0.20, 0.80",
   raters = "2",
   alpha = 0.05,
   n = 100
 )
 }
 \arguments{
-\item{outcome}{Number of outcome level.}
+\item{outcome}{Number of outcome levels (categories) of the rated variable.}
 
 \item{kappa0}{The preliminary (anticipated) value of kappa - the agreement
 you expect to observe. kappaSize documents this argument as "the
 preliminary value of kappa". Contrast kappaSizePower, where kappa0 IS the
 null being tested.}
 
-\item{props}{Proportions of outcome level.}
+\item{props}{Anticipated share of subjects in each outcome category as a
+single string, separated by commas, semicolons or spaces, using a decimal
+point, and summing to 1 (for example "0.20, 0.80" for a finding present in
+one case in five). For a binary outcome a single prevalence is enough.
+Enter exactly one value per outcome level otherwise.}
 
-\item{raters}{Number of raters.}
+\item{raters}{Number of raters who will each rate every subject (2 to 6).}
 
-\item{alpha}{Significance level.}
+\item{alpha}{Significance level of the one-sided lower confidence bound
+(capped at 0.20).}
 
-\item{n}{Sample size.}
+\item{n}{Number of subjects available, each rated by all raters (at least
+11; the kappaSize engine refuses 10 or fewer).}
 }
 \value{
 A results object containing:
@@ -39,5 +45,23 @@ A results object containing:
 }
 }
 \description{
-Lowest Expected Value for a fixed sample size.
+For an interobserver agreement study whose number of subjects is already
+fixed, the lowest kappa the study would still be unable to rule out - the
+lower bound of the one-sided confidence interval around the anticipated
+kappa (kappa0); every value below it is excluded. Computed with the
+kappaSize package. Use kappaSizePower to size a study for a hypothesis test
+and kappaSizeCI to size it for a target interval width.
+}
+\examples{
+\dontrun{
+# kappaSize::FixedNBinary example: anticipated kappa 0.7, 100 subjects,
+# 4 raters, trait prevalence 0.50
+kappaSizeFixedN(
+    outcome = "2",
+    kappa0 = 0.7,
+    props = "0.50",
+    raters = "4",
+    alpha = 0.05,
+    n = 100)
+}
 }

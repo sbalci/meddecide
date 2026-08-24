@@ -90,8 +90,13 @@ analyses:
     menuTitle: Confidence Interval Approach for the Number of Subjects Required
     menuSubgroup: Power Analysis by meddecide
     menuSubtitle: Find sample size based on Kappa confidence
-    description: |
-      Power Analysis for Interobserver Agreement Analysis.
+    description: >
+      Number of subjects an interobserver agreement study needs for the
+      confidence interval around the anticipated kappa (kappa0) to reach the
+      requested precision - the confidence-interval approach of the kappaSize
+      package. This is NOT a power calculation and tests no hypothesis; use
+      kappaSizePower to size a study for a hypothesis test, and kappaSizeFixedN
+      when the number of subjects is already fixed.
     ribbon: analyses
     category: analyses
   - title: Lowest Expected Value for a fixed sample size
@@ -101,8 +106,13 @@ analyses:
     menuTitle: Lowest Expected Value for a fixed sample size
     menuSubgroup: Power Analysis by meddecide
     menuSubtitle: Find lower Kappa based on sample size
-    description: |
-      Lowest Expected Value for a fixed sample size.
+    description: >
+      For an interobserver agreement study whose number of subjects is already
+      fixed, the lowest kappa the study would still be unable to rule out - the
+      lower bound of the one-sided confidence interval around the anticipated
+      kappa (kappa0); every value below it is excluded. Computed with the
+      kappaSize package. Use kappaSizePower to size a study for a hypothesis
+      test and kappaSizeCI to size it for a target interval width.
     ribbon: analyses
     category: analyses
   - title: Analysis Without Gold Standard
