@@ -60,7 +60,6 @@ refs:
         doi: 10.1016/j.medj.2020.08.001
         url: https://www.cell.com/med/fulltext/S2666-6340(20)30016-7
 
-
     ConditionalDependenceDiagnosticTests:
         type: 'article'
         title: Conditional dependence between tests affects the diagnosis and surveillance of animal diseases

@@ -2581,8 +2581,8 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     # "cochran_q_global" (the word "Overall" only appears in the displayed
                     # comparison cell), so match the key, not the cell value.
                     mcnemar_table <- self$results$mcnemarTable
-                    q_key <- if (length(mcnemar_table$rowKeys) > 0) tolower(as.character(mcnemar_table$rowKeys[1])) else ""
-                    q_row <- if (length(mcnemar_table$rowKeys) > 0) mcnemar_table$rowKeys[1] else NULL
+                    q_key <- if (length(mcnemar_table$rowKeys) > 0) tolower(as.character(mcnemar_table$rowKeys[[1]])) else ""
+                    q_row <- if (length(mcnemar_table$rowKeys) > 0) mcnemar_table$rowKeys[[1]] else NULL
                     q_stat <- if (grepl("cochran", q_key, fixed = TRUE)) mcnemar_table$getCell(rowKey = q_row, col = "stat")$value else NA
                     q_p <- if (grepl("cochran", q_key, fixed = TRUE)) mcnemar_table$getCell(rowKey = q_row, col = "p")$value else NA
                     if (grepl("cochran", q_key, fixed = TRUE) && !is.na(q_stat) && !is.na(q_p)) {
@@ -2628,7 +2628,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                     # Extract McNemar results
                     mcnemar_table <- self$results$mcnemarTable
                     if (length(mcnemar_table$rowKeys) > 0) {
-                        mcn_row <- mcnemar_table$rowKeys[1]
+                        mcn_row <- mcnemar_table$rowKeys[[1]]
                         mcn_stat <- mcnemar_table$getCell(rowKey = mcn_row, col = "stat")$value
                         mcn_p <- mcnemar_table$getCell(rowKey = mcn_row, col = "p")$value
 
@@ -2695,8 +2695,8 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                 if (n_tests == 3) {
                     # Match the Cochran row by its KEY ("cochran_q_global"), not the cell value.
                     mcnemar_table <- self$results$mcnemarTable
-                    q_key <- if (length(mcnemar_table$rowKeys) > 0) tolower(as.character(mcnemar_table$rowKeys[1])) else ""
-                    q_row <- if (length(mcnemar_table$rowKeys) > 0) mcnemar_table$rowKeys[1] else NULL
+                    q_key <- if (length(mcnemar_table$rowKeys) > 0) tolower(as.character(mcnemar_table$rowKeys[[1]])) else ""
+                    q_row <- if (length(mcnemar_table$rowKeys) > 0) mcnemar_table$rowKeys[[1]] else NULL
                     q_stat <- if (grepl("cochran", q_key, fixed = TRUE)) mcnemar_table$getCell(rowKey = q_row, col = "stat")$value else NA
                     q_df <- if (grepl("cochran", q_key, fixed = TRUE)) mcnemar_table$getCell(rowKey = q_row, col = "df")$value else NA
                     q_p <- if (grepl("cochran", q_key, fixed = TRUE)) mcnemar_table$getCell(rowKey = q_row, col = "p")$value else NA
@@ -2738,7 +2738,7 @@ decisioncompareClass <- if (requireNamespace("jmvcore")) {
                 } else if (n_tests == 2) {
                     mcnemar_table <- self$results$mcnemarTable
                     if (length(mcnemar_table$rowKeys) > 0) {
-                        mcn_row <- mcnemar_table$rowKeys[1]
+                        mcn_row <- mcnemar_table$rowKeys[[1]]
                         mcn_stat <- mcnemar_table$getCell(rowKey = mcn_row, col = "stat")$value
                         mcn_df <- mcnemar_table$getCell(rowKey = mcn_row, col = "df")$value
                         mcn_p <- mcnemar_table$getCell(rowKey = mcn_row, col = "p")$value
