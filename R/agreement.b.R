@@ -4009,7 +4009,7 @@ agreementClass <- if (requireNamespace("jmvcore")) {
             </div>
             "
 
-                html <- jmvcore::format(html_content)
+                html <- .fmt(html_content)
                 self$results$raterProfileExplanation$setContent(html)
             },
             .raterProfilePlot = function(image, ggtheme, theme, ...) {
@@ -4170,7 +4170,7 @@ agreementClass <- if (requireNamespace("jmvcore")) {
                         <li>Evaluate agreement across anatomical sites</li>
                     </ul>
                 </div></div>"
-                self$results$subgroupExplanation$setContent(jmvcore::format(html))
+                self$results$subgroupExplanation$setContent(.fmt(html))
             },
             .subgroupForestPlot = function(image, ggtheme, theme, ...) {
                 plotState <- image$state
@@ -4439,7 +4439,7 @@ agreementClass <- if (requireNamespace("jmvcore")) {
                     <p style='margin: 0;'><strong>Dendrogram height:</strong> Lower = more similar. High first split = distinct rater groups.</p>
                     <p style='margin: 5px 0 0 0;'><strong>Cluster heatmap:</strong> Dark diagonal blocks = tight clusters. Off-diagonal = between-cluster differences.</p>
                 </div></div>"
-                self$results$raterClusterExplanation$setContent(jmvcore::format(html))
+                self$results$raterClusterExplanation$setContent(.fmt(html))
             },
             .raterDendrogram = function(image, ggtheme, theme, ...) {
                 oldpar <- graphics::par(no.readonly = TRUE)
@@ -4677,7 +4677,7 @@ agreementClass <- if (requireNamespace("jmvcore")) {
                     <p style='margin: 5px 0 0 0;'><strong>Cluster heatmap:</strong> Dark diagonal blocks = tight clusters (similar cases). Off-diagonal = between-cluster differences.</p>
                     <p style='margin: 5px 0 0 0;'><strong>Low within-cluster similarity:</strong> Cases in cluster are difficult/controversial - low agreement among raters.</p>
                 </div></div>"
-                self$results$caseClusterExplanation$setContent(jmvcore::format(html))
+                self$results$caseClusterExplanation$setContent(.fmt(html))
             },
             .caseDendrogram = function(image, ggtheme, theme, ...) {
                 oldpar <- graphics::par(no.readonly = TRUE)
