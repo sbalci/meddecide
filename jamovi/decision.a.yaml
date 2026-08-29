@@ -80,9 +80,14 @@ options:
       description:
           ui: >
             Select the level that indicates disease is absent in your gold standard variable.
-            If not specified, all levels other than the Disease Present level will be treated as negative.
+            Only the disease-present and disease-absent levels take part; cases at any other
+            level are excluded from the analysis, not counted as disease-absent. With a
+            two-level variable this is inferred; with three or more levels you must choose it.
           R: >
             The level indicating absence of disease in the gold standard variable.
+            The compiler forbids a default on a Level option, so R callers must pass it
+            explicitly; pass NULL only for a two-level variable, where it is inferred.
+            With three or more levels a NULL raises an error rather than pooling them.
 
     - name: testNegative
       title: Test negative level
@@ -91,9 +96,14 @@ options:
       description:
           ui: >
             Select the level that represents a negative test result.
-            If not specified, all levels other than the Test Positive level will be treated as negative.
+            Only the test-positive and test-negative levels take part; cases at any other
+            level are excluded from the analysis, not counted as negative. With a two-level
+            variable this is inferred; with three or more levels you must choose it.
           R: >
             The level representing a negative result for the test under evaluation.
+            The compiler forbids a default on a Level option, so R callers must pass it
+            explicitly; pass NULL only for a two-level variable, where it is inferred.
+            With three or more levels a NULL raises an error rather than pooling them.
 
 
 

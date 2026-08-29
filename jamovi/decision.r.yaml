@@ -64,13 +64,13 @@ items:
           type: text
         - name: gold_pos
           title: ''
-          type: number
+          type: integer
         - name: gold_neg
           title: ''
-          type: number
+          type: integer
         - name: row_total
           title: Total
-          type: number
+          type: integer
       clearWith:
         - gold
         - newtest
