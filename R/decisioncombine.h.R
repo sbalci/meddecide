@@ -21,7 +21,7 @@ decisioncombineOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             showForest = FALSE,
             showDecisionTree = FALSE,
             showRecommendation = FALSE,
-            addPatternToData = FALSE,
+            showAbout = FALSE,
             filterStatistic = "all",
             filterPattern = "all", ...) {
 
@@ -109,9 +109,11 @@ decisioncombineOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 "showRecommendation",
                 showRecommendation,
                 default=FALSE)
-            private$..addPatternToData <- jmvcore::OptionBool$new(
-                "addPatternToData",
-                addPatternToData,
+            private$..addedPattern <- jmvcore::OptionOutput$new(
+                "addedPattern")
+            private$..showAbout <- jmvcore::OptionBool$new(
+                "showAbout",
+                showAbout,
                 default=FALSE)
             private$..filterStatistic <- jmvcore::OptionList$new(
                 "filterStatistic",
@@ -155,7 +157,8 @@ decisioncombineOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
             self$.addOption(private$..showForest)
             self$.addOption(private$..showDecisionTree)
             self$.addOption(private$..showRecommendation)
-            self$.addOption(private$..addPatternToData)
+            self$.addOption(private$..addedPattern)
+            self$.addOption(private$..showAbout)
             self$.addOption(private$..filterStatistic)
             self$.addOption(private$..filterPattern)
         }),
@@ -175,7 +178,8 @@ decisioncombineOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         showForest = function() private$..showForest$value,
         showDecisionTree = function() private$..showDecisionTree$value,
         showRecommendation = function() private$..showRecommendation$value,
-        addPatternToData = function() private$..addPatternToData$value,
+        addedPattern = function() private$..addedPattern$value,
+        showAbout = function() private$..showAbout$value,
         filterStatistic = function() private$..filterStatistic$value,
         filterPattern = function() private$..filterPattern$value),
     private = list(
@@ -194,7 +198,8 @@ decisioncombineOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         ..showForest = NA,
         ..showDecisionTree = NA,
         ..showRecommendation = NA,
-        ..addPatternToData = NA,
+        ..addedPattern = NA,
+        ..showAbout = NA,
         ..filterStatistic = NA,
         ..filterPattern = NA)
 )
@@ -217,6 +222,8 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
         decisionTreePlot = function() private$.items[["decisionTreePlot"]],
         recommendationTable = function() private$.items[["recommendationTable"]],
         addedPattern = function() private$.items[["addedPattern"]],
+        about = function() private$.items[["about"]],
+        assumptions = function() private$.items[["assumptions"]],
         notices = function() private$.items[["notices"]]),
     private = list(),
     public=list(
@@ -226,13 +233,25 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 name="",
                 title="Combine Medical Decision Tests",
                 refs=list(
+                    "ClinicoPathJamoviModule",
                     "DiagnosticTests",
-                    "ClinicoPathJamoviModule"))
+                    "wilson1927",
+                    "youden1950",
+                    "haldane1956"))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="combinationTable",
                 title="Test Combination Performance",
                 rows=0,
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"),
                 columns=list(
                     list(
                         `name`="pattern", 
@@ -240,7 +259,7 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                         `type`="text"),
                     list(
                         `name`="rowType", 
-                        `title`="Row", 
+                        `title`="Row type", 
                         `type`="text"),
                     list(
                         `name`="tp", 
@@ -315,6 +334,15 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 name="combinationTableCI",
                 title="Proportions with 95% Confidence Intervals",
                 rows=0,
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"),
                 columns=list(
                     list(
                         `name`="pattern", 
@@ -346,6 +374,15 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 name="combinationTableCIRatios",
                 title="Likelihood Ratios with 95% Confidence Intervals",
                 rows=0,
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"),
                 columns=list(
                     list(
                         `name`="pattern", 
@@ -375,6 +412,15 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 title="Gold Standard Frequency Distribution",
                 rows=0,
                 visible="(showFrequency)",
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"),
                 columns=list(
                     list(
                         `name`="level", 
@@ -395,6 +441,15 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 title="Test Results Cross-Tabulation",
                 rows=0,
                 visible="(showFrequency)",
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"),
                 columns=list(
                     list(
                         `name`="testCombo", 
@@ -423,7 +478,16 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                         super$initialize(
                             options=options,
                             name="individualTest1",
-                            title="Test 1 Performance")
+                            title="Test 1 Performance",
+                            clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"))
                         self$add(jmvcore::Table$new(
                             options=options,
                             name="test1Contingency",
@@ -472,7 +536,16 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                         super$initialize(
                             options=options,
                             name="individualTest2",
-                            title="Test 2 Performance")
+                            title="Test 2 Performance",
+                            clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"))
                         self$add(jmvcore::Table$new(
                             options=options,
                             name="test2Contingency",
@@ -521,7 +594,16 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                         super$initialize(
                             options=options,
                             name="individualTest3",
-                            title="Test 3 Performance")
+                            title="Test 3 Performance",
+                            clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"))
                         self$add(jmvcore::Table$new(
                             options=options,
                             name="test3Contingency",
@@ -632,19 +714,26 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     "test2",
                     "test2Positive",
                     "test3",
-                    "test3Positive",
-                    "filterStatistic",
-                    "filterPattern")))
+                    "test3Positive")))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="recommendationTable",
-                title="Optimal Pattern Recommendation",
+                title="Descriptive Candidate-Rule Ranking",
                 rows=1,
                 visible="(showRecommendation)",
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive"),
                 columns=list(
                     list(
                         `name`="pattern", 
-                        `title`="Recommended Pattern", 
+                        `title`="Highest-Ranked Rule", 
                         `type`="text"),
                     list(
                         `name`="method", 
@@ -672,16 +761,39 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                         `format`="pc"),
                     list(
                         `name`="rationale", 
-                        `title`="Clinical Rationale", 
+                        `title`="Interpretation", 
                         `type`="text"))))
             self$add(jmvcore::Output$new(
                 options=options,
                 name="addedPattern",
-                title="Add Test Pattern to Data",
+                title="Test Pattern Column",
                 varTitle="Combined Test Pattern",
                 varDescription="Positive/negative result pattern across the selected diagnostic tests",
                 measureType="nominal",
                 clearWith=list(
+                    "addedPattern",
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive")))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="about",
+                title="About This Analysis",
+                visible="(showAbout)",
+                clearWith=list(
+                    "showAbout")))
+            self$add(jmvcore::Html$new(
+                options=options,
+                name="assumptions",
+                title="Assumptions and Caveats",
+                visible="(showAbout)",
+                clearWith=list(
+                    "showAbout",
                     "gold",
                     "goldPositive",
                     "test1",
@@ -704,7 +816,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
             super$initialize(
                 package = "meddecide",
                 name = "decisioncombine",
-                version = c(1,0,7),
+                version = c(1,0,8),
                 options = options,
                 results = decisioncombineResults$new(options=options),
                 data = data,
@@ -714,7 +826,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
                 pause = NULL,
                 completeWhenFilled = FALSE,
                 requiresMissings = FALSE,
-                weightsSupport = 'auto')
+                weightsSupport = 'none')
         }))
 
 #' Combine Medical Decision Tests
@@ -723,9 +835,31 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' possible
 #' test result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a 
 #' gold
-#' standard to identify optimal testing strategies. Calculates sensitivity,
-#' specificity, PPV, NPV, and accuracy for each pattern combination.
+#' standard and summarizes named parallel, serial, and majority strategies.
+#' Calculates sensitivity, specificity, predictive values, likelihood ratios,
+#' accuracy, and uncertainty intervals. Descriptive rankings are 
+#' sample-dependent
+#' analytical summaries, not clinical guides or validated recommendations.
 #' 
+#'
+#' @examples
+#' \donttest{
+#' # Illustrative example only; this is not a clinical guide.
+#' data(histopathology)
+#' result <- decisioncombine(
+#'     data = histopathology,
+#'     gold = "Golden Standart",
+#'     goldPositive = "1",
+#'     test1 = "New Test",
+#'     test1Positive = "1",
+#'     test2 = "Rater 1",
+#'     test2Positive = "1",
+#'     test3 = NULL,
+#'     test3Positive = NULL,
+#'     showIndividual = TRUE,
+#'     showRecommendation = TRUE
+#' )
+#'}
 #' @param data The data as a data frame.
 #' @param gold The gold standard reference variable representing true disease
 #'   status.
@@ -745,13 +879,14 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' @param showForest Boolean to display forest plot.
 #' @param showDecisionTree Boolean to display the decision-space (sensitivity
 #'   vs specificity) scatter plot.
-#' @param showRecommendation Boolean to show optimal pattern recommendation
-#'   table.
-#' @param addPatternToData Boolean to add test pattern column to the dataset.
+#' @param showRecommendation Boolean to show the descriptive candidate-rule
+#'   ranking table.
+#' @param showAbout Boolean to show the about-this-analysis and assumptions
+#'   panels.
 #' @param filterStatistic Character indicating which statistic to display in
-#'   the plots (default: all).
+#'   the plots; \code{all} uses each plot's default metric set.
 #' @param filterPattern Character indicating which pattern type to display in
-#'   the plots (default: all).
+#'   the bar chart, heatmap and forest plot (default: all).
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$combinationTable} \tab \tab \tab \tab \tab Counts and diagnostic performance metrics for each test combination pattern and clinical strategy, including prevalence, balanced accuracy, Youden's J, likelihood ratios, and diagnostic odds ratios \cr
@@ -769,8 +904,10 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #'   \code{results$heatmapPlot} \tab \tab \tab \tab \tab Color-coded heatmap showing all diagnostic metrics for each test pattern \cr
 #'   \code{results$forestPlot} \tab \tab \tab \tab \tab Forest plot displaying 95 percent confidence intervals for key diagnostic metrics \cr
 #'   \code{results$decisionTreePlot} \tab \tab \tab \tab \tab Decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J \cr
-#'   \code{results$recommendationTable} \tab \tab \tab \tab \tab Recommended optimal test combination pattern based on Youden index and clinical performance metrics \cr
+#'   \code{results$recommendationTable} \tab \tab \tab \tab \tab Sample-dependent descriptive ranking of eligible exact-pattern rules and named testing strategies by observed Youden index; this is not a clinical guide or validated recommendation \cr
 #'   \code{results$addedPattern} \tab \tab \tab \tab \tab an output \cr
+#'   \code{results$about} \tab \tab \tab \tab \tab a html \cr
+#'   \code{results$assumptions} \tab \tab \tab \tab \tab a html \cr
 #'   \code{results$notices} \tab \tab \tab \tab \tab a html \cr
 #' }
 #'
@@ -798,7 +935,7 @@ decisioncombine <- function(
     showForest = FALSE,
     showDecisionTree = FALSE,
     showRecommendation = FALSE,
-    addPatternToData = FALSE,
+    showAbout = FALSE,
     filterStatistic = "all",
     filterPattern = "all") {
 
@@ -838,7 +975,7 @@ decisioncombine <- function(
         showForest = showForest,
         showDecisionTree = showDecisionTree,
         showRecommendation = showRecommendation,
-        addPatternToData = addPatternToData,
+        showAbout = showAbout,
         filterStatistic = filterStatistic,
         filterPattern = filterPattern)
 

@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.0.7.04
+version: 1.0.8.03
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-08-28'
+date: '2026-08-29'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -64,7 +64,8 @@ analyses:
       diagnostic performance metrics including sensitivity, specificity, 
       positive and negative predictive values, likelihood ratios, and 
       post-test probabilities. Supports confidence interval estimation and 
-      Fagan nomogram visualization for clinical decision making.
+      Fagan nomogram visualization for educational interpretation. Presets and
+      examples are illustrative only and are not clinical guides.
     menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
     ribbon: analyses
     category: analyses
@@ -124,11 +125,11 @@ analyses:
     menuTitle: Analysis Without Gold Standard
     menuSubtitle: Multiple Test Analysis Without Gold Standard
     description: >
-      Analysis of diagnostic tests without a gold standard reference using
-      multiple statistical approaches. Implements Latent Class Analysis (Hui &
-      Walter, 1980), Bayesian methods (Joseph et al., 1995),  and composite
-      reference standards for estimating test performance when no perfect
-      reference test exists.
+      Analysis of multiple binary tests when no perfect reference exists.
+      Implements a conditional-independence two-class latent class model,
+      fixed-prior penalized EM point estimation, and descriptive agreement with
+      self-built composite reference rules. Latent classes are unlabeled, and
+      reference-rule results are not diagnostic-accuracy estimates.
     category: analyses
   - title: Compare Medical Decision Tests
     name: decisioncompare
@@ -140,7 +141,7 @@ analyses:
     description: >
       Function for comparing multiple Medical Decision Tests. Compares
       sensitivity, specificity, positive predictive value, negative predictive
-      value, and other metrics between different tests against the same golden
+      value, and other metrics between different tests against the same gold
       standard. Includes statistical comparison using McNemar's test and
       confidence intervals for differences.
     ribbon: analyses
@@ -177,11 +178,19 @@ analyses:
     menuGroup: meddecide
     menuSubgroup: Decision Calculators
     menuTitle: Co-Testing Analysis
-    menuSubtitle: Analyze combined test results
+    menuSubtitle: Two tests run in parallel
     description: >
-      Function for analyzing combined results of two concurrent diagnostic
-      tests. Calculates post-test probabilities based on various scenarios
-      (either test positive, both positive, both negative).
+      Analyses two diagnostic tests applied in parallel: both are performed on
+      the same subject at the same time, before either result is known, and the
+      two results are then combined. Reports the post-test probability of
+      disease for every result combination (either test positive, test 1 only,
+      test 2 only, both positive, both negative), optionally allowing the two
+      tests to be conditionally dependent. For tests performed one after
+      another, where the second is ordered only after a particular first result,
+      use Sequential Test Analysis instead. Note that Sequential Test Analysis
+      also offers a parallel strategy, but its combined figures assume
+      conditional independence; this analysis is the one that models conditional
+      dependence numerically.
   - title: Sequential Testing Analysis
     name: sequentialtests
     ns: meddecide
@@ -216,9 +225,14 @@ analyses:
       test result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a
       gold
 
-      standard to identify optimal testing strategies. Calculates sensitivity,
+      standard and summarizes named parallel, serial, and majority strategies.
 
-      specificity, PPV, NPV, and accuracy for each pattern combination.
+      Calculates sensitivity, specificity, predictive values, likelihood ratios,
+
+      accuracy, and uncertainty intervals. Descriptive rankings are
+      sample-dependent
+
+      analytical summaries, not clinical guides or validated recommendations.
   - title: LASSO Logistic Regression
     name: lassologistic
     ns: meddecide

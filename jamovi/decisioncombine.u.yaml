@@ -48,9 +48,11 @@ children:
             name: test3
             maxItemCount: 1
             isTarget: true
+            enable: (test2)
           - type: LevelSelector
             name: test3Positive
             label: Positive Level
+            enable: (test3)
 
   - type: CollapseBox
     label: Display Options
@@ -64,10 +66,12 @@ children:
         label: Frequency tables
       - type: CheckBox
         name: showRecommendation
-        label: Optimal pattern recommendation
+        label: Descriptive candidate-rule ranking
       - type: CheckBox
-        name: addPatternToData
-        label: Add test pattern to data
+        name: showAbout
+        label: About this analysis
+      - type: Output
+        name: addedPattern
       - type: Label
         label: Visualizations
         children:
@@ -82,7 +86,7 @@ children:
             label: Forest plot
           - type: CheckBox
             name: showDecisionTree
-            label: Decision space (sens vs spec)
+            label: Decision space (sensitivity vs specificity)
 
   - type: CollapseBox
     label: Filters
@@ -91,6 +95,8 @@ children:
       - type: ComboBox
         name: filterStatistic
         label: Statistic
+        enable: (showBarPlot || showHeatmap || showForest)
       - type: ComboBox
         name: filterPattern
         label: Pattern type
+        enable: (showBarPlot || showHeatmap || showForest)

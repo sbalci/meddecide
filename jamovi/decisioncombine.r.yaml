@@ -8,12 +8,21 @@ items:
       title: 'Test Combination Performance'
       type: Table
       rows: 0
+      clearWith: &analysisInputs
+        - gold
+        - goldPositive
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
       columns:
         - name: pattern
           title: 'Pattern'
           type: text
         - name: rowType
-          title: 'Row'
+          title: 'Row type'
           type: text
         - name: tp
           title: 'TP'
@@ -74,6 +83,7 @@ items:
       title: 'Proportions with 95% Confidence Intervals'
       type: Table
       rows: 0
+      clearWith: *analysisInputs
       columns:
         - name: pattern
           title: 'Pattern'
@@ -101,6 +111,7 @@ items:
       title: 'Likelihood Ratios with 95% Confidence Intervals'
       type: Table
       rows: 0
+      clearWith: *analysisInputs
       columns:
         - name: pattern
           title: 'Pattern'
@@ -126,6 +137,7 @@ items:
       type: Table
       rows: 0
       visible: (showFrequency)
+      clearWith: *analysisInputs
       columns:
         - name: level
           title: 'Level'
@@ -144,6 +156,7 @@ items:
       type: Table
       rows: 0
       visible: (showFrequency)
+      clearWith: *analysisInputs
       columns:
         - name: testCombo
           title: 'Test Pattern'
@@ -163,6 +176,7 @@ items:
       title: 'Test 1 Performance'
       type: Group
       visible: (showIndividual)
+      clearWith: *analysisInputs
       items:
         - name: test1Contingency
           title: 'Contingency Table'
@@ -198,6 +212,7 @@ items:
       title: 'Test 2 Performance'
       type: Group
       visible: (showIndividual)
+      clearWith: *analysisInputs
       items:
         - name: test2Contingency
           title: 'Contingency Table'
@@ -233,6 +248,7 @@ items:
       title: 'Test 3 Performance'
       type: Group
       visible: (showIndividual)
+      clearWith: *analysisInputs
       items:
         - name: test3Contingency
           title: 'Contingency Table'
@@ -331,6 +347,11 @@ items:
       height: 700
       visible: (showDecisionTree)
       renderFun: .plotDecisionTree
+      # The decision space plots every row at once so patterns can be compared against
+      # one another; its axes are fixed to sensitivity and specificity with point size
+      # scaled by Youden's J. Neither filter applies: filterStatistic has nowhere to go,
+      # and a pattern filter would reduce the scatter to a single point. Listing them
+      # here only forced an identical redraw, so they are deliberately omitted.
       clearWith:
         - gold
         - goldPositive
@@ -340,18 +361,17 @@ items:
         - test2Positive
         - test3
         - test3Positive
-        - filterStatistic
-        - filterPattern
       description: 'Decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden''s J'
 
     - name: recommendationTable
-      title: 'Optimal Pattern Recommendation'
+      title: 'Descriptive Candidate-Rule Ranking'
       type: Table
       rows: 1
       visible: (showRecommendation)
+      clearWith: *analysisInputs
       columns:
         - name: pattern
-          title: 'Recommended Pattern'
+          title: 'Highest-Ranked Rule'
           type: text
         - name: method
           title: 'Selection Method'
@@ -373,17 +393,39 @@ items:
           type: number
           format: pc
         - name: rationale
-          title: 'Clinical Rationale'
+          title: 'Interpretation'
           type: text
-      description: 'Recommended optimal test combination pattern based on Youden index and clinical performance metrics'
+      description: 'Sample-dependent descriptive ranking of eligible exact-pattern rules and named testing strategies by observed Youden index; this is not a clinical guide or validated recommendation'
 
     - name: addedPattern
-      title: 'Add Test Pattern to Data'
+      title: 'Test Pattern Column'
       type: Output
       varTitle: 'Combined Test Pattern'
       varDescription: 'Positive/negative result pattern across the selected diagnostic tests'
       measureType: nominal
       clearWith:
+        - addedPattern
+        - gold
+        - goldPositive
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+
+    - name: about
+      title: 'About This Analysis'
+      type: Html
+      visible: (showAbout)
+      clearWith: [showAbout]
+
+    - name: assumptions
+      title: 'Assumptions and Caveats'
+      type: Html
+      visible: (showAbout)
+      clearWith:
+        - showAbout
         - gold
         - goldPositive
         - test1
@@ -399,8 +441,11 @@ items:
       visible: true
 
 refs:
-    - DiagnosticTests
     - ClinicoPathJamoviModule
+    - DiagnosticTests
+    - wilson1927
+    - youden1950
+    - haldane1956
 
 
 ...

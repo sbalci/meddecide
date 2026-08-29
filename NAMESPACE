@@ -94,8 +94,16 @@ importFrom(ggplot2,
 importFrom(ggraph,ggraph)
 importFrom(glmnet,cv.glmnet)
 importFrom(glue,glue)
-importFrom(grDevices,colorRampPalette)
-importFrom(graphics,par)
+importFrom(grDevices,
+  colorRampPalette,
+  hcl.colors
+)
+importFrom(graphics,
+  axis,
+  box,
+  image,
+  par
+)
 importFrom(grid,arrow)
 importFrom(gridExtra,grid.arrange)
 importFrom(htmlTable,htmlTable)
@@ -106,6 +114,7 @@ importFrom(irr,
   kappam.fleiss
 )
 importFrom(irrCAC,gwet.ac1.raw)
+importFrom(jmvcore,.)
 importFrom(kappaSize,PowerBinary)
 importFrom(knitr,kable)
 importFrom(lme4,lmer)
@@ -125,7 +134,6 @@ importFrom(stats,
   line,
   predict,
   qbeta,
-  qnorm,
   quantile,
   var
 )
