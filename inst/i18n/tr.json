@@ -736,16 +736,40 @@
             "%.0f%% confidence intervals are not reported for latent-model response probabilities without bootstrap refitting. Ordinary binomial intervals omit uncertainty from estimating the latent classes and can be substantially too narrow. Enable Bootstrap CI to obtain intervals.": [
                 ""
             ],
+            "%.0f%% CV (threshold/2)": [
+                ""
+            ],
+            "%.0f%% CV threshold": [
+                ""
+            ],
             "%.0f%% intervals are bootstrap percentile intervals from %d resamples of the cases, refitting the model on each. Seed: %s.": [
                 ""
             ],
             "%.0f%% intervals are Wilson score intervals for agreement with the observed reference rule.": [
                 ""
             ],
+            "%.1f time units (n=%d responders)": [
+                ""
+            ],
+            "%.1f time units (n=%d with duration data)": [
+                ""
+            ],
             "%.3f (CI not estimable)": [
                 ""
             ],
             "%d case(s) with an incomplete set of measurements were excluded.": [
+                ""
+            ],
+            "%d cases analyzed with %d regional measurement each": [
+                ""
+            ],
+            "%d cases analyzed with %d regional measurement each plus a reference measurement": [
+                ""
+            ],
+            "%d cases analyzed with %d regional measurements each": [
+                ""
+            ],
+            "%d cases analyzed with %d regional measurements each plus a reference measurement": [
                 ""
             ],
             "%d competing event(s) are present. Counts and the minimum-event summaries below refer to the event of interest only; competing events are a separate terminal state, not events.": [
@@ -826,6 +850,9 @@
             "%d of %d selected variables have fewer than 5 positive cases (%s). The counts and percentages printed in the regions built from those variables rest on a handful of cases and move substantially when a single case changes. Report the raw counts next to the percentages, and consider collapsing categories or adding cases before reading anything into those regions.": [
                 ""
             ],
+            "%d of %d studies were excluded before analysis (%s). All results below are based on the remaining %d studies.": [
+                ""
+            ],
             "%d of %d supplied rows (%.1f%%) were excluded before analysis because of missing values in the selected variables. An intention-to-treat analysis retains all randomised participants, so these results are a COMPLETE-CASE analysis and should not be reported as ITT without imputation or another accounting for the missing outcomes.": [
                 ""
             ],
@@ -868,6 +895,15 @@
             "%d selected variable(s) had the same value in every case and were removed before fitting: %s. A constant carries no information and cannot be penalised or selected. %d variables remain and are shown as Variables analysed.": [
                 ""
             ],
+            "%d study/studies contain a zero cell. A continuity correction of 0.5 was applied to all studies so the model could be fitted. Continuity corrections shift the pooled estimate; compare the alternatives under Zero Cell Correction to see how sensitive your result is.": [
+                ""
+            ],
+            "%d study/studies contain a zero cell. A continuity correction of 0.5 was applied to those studies only so the model could be fitted. Continuity corrections shift the pooled estimate; compare the alternatives under Zero Cell Correction to see how sensitive your result is.": [
+                ""
+            ],
+            "%d study/studies contain a zero cell. No user correction is selected, so mada's default single-study 0.5 correction is applied inside the models; choose a Zero-Cell Correction option to see how sensitive the pooled estimates are.": [
+                ""
+            ],
             "%d time value%s infinite (Inf). Follow-up time must be a finite number; an infinite time makes total person-time, incidence rates and the restricted mean undefined. Replace the value with the observed follow-up duration, or leave the cell empty to have the subject excluded as missing.": [
                 ""
             ],
@@ -895,6 +931,15 @@
             "%d with a missing start or end time": [
                 ""
             ],
+            "%d with missing counts": [
+                ""
+            ],
+            "%d with negative counts": [
+                ""
+            ],
+            "%d with no diseased or no non-diseased participants": [
+                ""
+            ],
             "%d%% (%d of %d evaluable patients achieved complete or partial response)": [
                 ""
             ],
@@ -904,6 +949,24 @@
             "%s - see the main figure for the test statistic": [
                 ""
             ],
+            "%s (%s = %.2f) - Regional measurements are highly representative of one another.": [
+                ""
+            ],
+            "%s (%s = %.2f) - Regional measurements are highly representative of the reference region.": [
+                ""
+            ],
+            "%s (%s = %.2f) - Regional measurements may not fully represent one another.": [
+                ""
+            ],
+            "%s (%s = %.2f) - Regional measurements may not fully represent the reference region.": [
+                ""
+            ],
+            "%s (%s = %.2f) - Regional measurements show moderate agreement with one another.": [
+                ""
+            ],
+            "%s (%s = %.2f) - Regional measurements show moderate agreement with the reference region.": [
+                ""
+            ],
             "%s (%s = %s)": [
                 ""
             ],
@@ -911,6 +974,9 @@
                 ""
             ],
             "%s (continuous)": [
+                ""
+            ],
+            "%s (cumulative)": [
                 ""
             ],
             "%s (ordinal: %s)": [
@@ -946,6 +1012,9 @@
             "%s have bivariate residuals above the descriptive threshold. This is evidence that the conditional-independence model does not reproduce those pairwise tables. Because the residual is squared, it does not show the direction or cause of the dependence and cannot determine whether fitted response probabilities are biased upward or downward. Do not interpret the latent-class parameters as diagnostic accuracy without a dependence-sensitive model or a study-specific sensitivity analysis.": [
                 ""
             ],
+            "%s heterogeneity model failed: %s": [
+                ""
+            ],
             "%s is not available for competing-risks analysis: it assumes a single event type, and \"%s\" is coded 0/1/2, where 2 marks a competing event. \"Survival Type\" is not what put the analysis in this mode, so changing it will not bring this plot back. Read the cumulative incidence in the median and survival tables, which already account for the competing event, or supply an outcome with censored and event values only.": [
                 ""
             ],
@@ -955,7 +1024,13 @@
             "%s logistic regression with %s lambda selection and %d-fold cross-validation was applied to %d candidate predictors in %d patients (%d events, %d non-events). %d predictor(s) were retained: %s.": [
                 "%s lojistik regresyon, %s lambda seçimi ve %d-katlı çapraz doğrulama ile %d aday belirleyici üzerinde %d hastada (%d olay, %d olay-dışı) uygulandı. %d belirleyici korundu: %s."
             ],
+            "%s meta-regression failed": [
+                ""
+            ],
             "%s must be finite and zero or positive: %s ignored. Time is measured forward from the start of follow-up, so a negative or infinite time point is not valid.": [
+                ""
+            ],
+            "%s Positive LR %.2f and negative LR %.2f.": [
                 ""
             ],
             "%s regression": [
@@ -976,10 +1051,22 @@
             "%s, analysed separately within each level of %s": [
                 ""
             ],
+            "%s: F(%d, %.0f) = %.2f, p = %.4g": [
+                ""
+            ],
             "%s: net benefit is computed on the direction the data support, which is the opposite of the Classification Direction you selected. Under the direction you selected this marker performs worse than shown here.": [
                 ""
             ],
             "%s: p = %s (n = %d subjects)": [
+                ""
+            ],
+            "%s: QM(%d) = %.2f, p = %.4g": [
+                ""
+            ],
+            "%s%% confidence region (dashed)": [
+                ""
+            ],
+            "%s%% prediction region (dotted)": [
                 ""
             ],
             "• 2 groups, non-normal → Box plot + Wilcoxon": [
@@ -1204,6 +1291,9 @@
             "+ Enhanced Clinical Variables": [
                 ""
             ],
+            "+0.5 continuity correction applied to %d zero-cell study/studies (matching Deeks' test)": [
+                ""
+            ],
             "+0.5 to all cells of zero-cell studies": [
                 ""
             ],
@@ -1312,6 +1402,24 @@
             "<br><b>Landmark analysis at %s %s.</b>": [
                 ""
             ],
+            "<br><br><strong>Overall Summary:</strong> performance is <em>asymmetric</em> - pooled sensitivity (%.1f%%) and pooled specificity (%.1f%%) fall in different performance bands.": [
+                ""
+            ],
+            "<br><br><strong>Overall Summary:</strong> pooled sensitivity (%.1f%%, <em>%s</em>) and pooled specificity (%.1f%%, <em>%s</em>) do not both reach the <em>good</em> band.": [
+                ""
+            ],
+            "<br><br><strong>Overall Summary:</strong> pooled sensitivity (%.1f%%) and pooled specificity (%.1f%%) both fall in the <em>excellent</em> band.": [
+                ""
+            ],
+            "<br><br><strong>Overall Summary:</strong> pooled sensitivity (%.1f%%) and pooled specificity (%.1f%%) both fall in the <em>good</em> band or above.": [
+                ""
+            ],
+            "<br><br><strong>Your pooled specificity of %.1f%%%s</strong> is classified as <em>%s</em> for confirmatory testing. ": [
+                ""
+            ],
+            "<br><br><strong>Your positive LR of %.2f</strong> provides <em>%s</em> evidence FOR disease when test is positive. ": [
+                ""
+            ],
             "<br><br>Please check that:": [
                 ""
             ],
@@ -1391,6 +1499,9 @@
                 ""
             ],
             "<div style='padding: 12px 15px; background-color: rgba(33, 151, 33, 0.08); border-left: 4px solid #28a745; margin: 10px 0; color: inherit;'><h4 style='margin-top:0;'>Results Summary</h4><p>%s comparing %s across %d group(s) (n = %d). %s</p></div>": [
+                ""
+            ],
+            "<em>Note:</em> Zero-cell corrections can introduce bias, especially in large studies. Results should be interpreted with caution.": [
                 ""
             ],
             "<h3> Analysis Summary</h3>": [
@@ -2035,19 +2146,52 @@
             "<strong>Independence:</strong> Observations should be independent unless using appropriate methods for correlated data.": [
                 ""
             ],
+            "<strong>Interpretation:</strong> a negative result reduces, but does not remove, the possibility of disease at this sensitivity. ": [
+                ""
+            ],
+            "<strong>Interpretation:</strong> at this sensitivity a substantial proportion of diseased patients are expected to test negative. ": [
+                ""
+            ],
+            "<strong>Interpretation:</strong> at this specificity a large share of positive results are expected to be false positives. ": [
+                ""
+            ],
+            "<strong>Interpretation:</strong> at this specificity an appreciable share of positive results are expected to be false positives. ": [
+                ""
+            ],
             "<strong>Linearity:</strong> The relationship between variables is approximately linear.": [
+                ""
+            ],
+            "<strong>Method:</strong> %s": [
                 ""
             ],
             "<strong>Mitotic Score</strong> (1-3)": [
                 ""
             ],
+            "<strong>Negative Likelihood Ratio:</strong> %.2f - A negative test is %.1fx more likely in healthy than disease": [
+                ""
+            ],
+            "<strong>Negative Likelihood Ratio:</strong> %.2f - Interpretation unstable (sensitivity [[APPROX]] 100%%).": [
+                ""
+            ],
+            "<strong>Negative Likelihood Ratio:</strong> Not estimable with the current data. LR- is (1 - sensitivity) / specificity, so it needs a pooled specificity above zero and finite pooled estimates; here the pooled specificity is 0 or an estimate did not converge. Read the pooled specificity and its confidence interval in the summary above to see which.": [
+                ""
+            ],
             "<strong>Normality:</strong> Residuals are approximately normally distributed.": [
+                ""
+            ],
+            "<strong>Note:</strong> the confidence interval spans more than one performance category, so this classification is not firmly established by the pooled data. ": [
                 ""
             ],
             "<strong>Nuclear Grade</strong> (1-3)": [
                 ""
             ],
             "<strong>Ordered X-variable:</strong> Time points or sequence should have meaningful order.": [
+                ""
+            ],
+            "<strong>Positive Likelihood Ratio:</strong> %.2f - A positive test is %.1fx more likely in disease than healthy": [
+                ""
+            ],
+            "<strong>Positive Likelihood Ratio:</strong> Not estimable with the current data (specificity [[APPROX]] 100% or model unstable).": [
                 ""
             ],
             "<strong>PR H-Score</strong> (0-300) or Percentage (0-100)": [
@@ -2063,6 +2207,24 @@
                 ""
             ],
             "<strong>R² ≥ 0.50:</strong> Large effect - at least 50% of the variance accounted for": [
+                ""
+            ],
+            "<strong>Studies corrected:</strong> %d of %d (%s)": [
+                ""
+            ],
+            "<strong>Summary Statistics:</strong> Comprehensive summary metrics and clinical indicators": [
+                ""
+            ],
+            "<strong>Timeline Data:</strong> Complete patient timeline dataset with processed variables": [
+                ""
+            ],
+            "<strong>Usage:</strong> This text is formatted for direct use in manuscripts and clinical reports. Copy and paste into your document and adjust as needed for your specific requirements.": [
+                ""
+            ],
+            "<strong>Your negative LR of %.2f</strong> provides <em>%s</em> evidence AGAINST disease when test is negative. ": [
+                ""
+            ],
+            "<strong>Your pooled sensitivity of %.1f%%%s</strong> is classified as <em>%s</em> for screening purposes. ": [
                 ""
             ],
             "<ul>": [
@@ -2824,10 +2986,16 @@
             "A connection or relationship between two nodes (e.g., regulatory link, similarity score, co-occurrence). In arc diagrams, edges are visualized as curved arcs connecting nodes.": [
                 ""
             ],
+            "A continuity correction of 0.5 was applied to %d study/studies with a zero cell so the odds ratio was finite.": [
+                ""
+            ],
             "A departure this small relative to the MAD cut-offs, yet detectable by the chi-square test, is the pattern a localized cause produces: systematic rounding, preferred values, or a subset of records entered differently. The leading-digit bin listing below shows which digit combinations carry it.": [
                 ""
             ],
             "A distinct condition that describes a patient's health status in a Markov model (e.g., Healthy, Sick, Dead).": [
+                ""
+            ],
+            "A Fisher's exact test was not run where every patient fell into the same class (e.g. no responders in any group), so there is no contrast to test.": [
                 ""
             ],
             "A further {rows} row(s){events} were excluded from the model because the follow-up time or at least one selected covariate was missing; the outcome recode shown above counts the outcome column alone.": [
@@ -2896,7 +3064,16 @@
             "A negative result has a likelihood ratio of {lr} and lowers the probability from {prevalence} to {posttest}.": [
                 ""
             ],
+            "A negative result moderately decreases disease probability. ": [
+                ""
+            ],
             "A negative result multiplies pre-test odds by {lr}.": [
+                ""
+            ],
+            "A negative result multiplies the pre-test odds by %.2fx; the post-test probability also depends on the pre-test probability. ": [
+                ""
+            ],
+            "A negative result substantially decreases disease probability (divides pre-test odds by %.1fx). ": [
                 ""
             ],
             "A network where edges have numerical values representing connection strength, correlation, distance, or other quantitative measures. Weights influence how centrality measures are calculated.": [
@@ -2941,7 +3118,16 @@
             "A positive result has a likelihood ratio of {lr} and raises the probability from {prevalence} to {posttest}.": [
                 ""
             ],
+            "A positive result increases disease probability substantially (multiplies pre-test odds by %.1fx). ": [
+                ""
+            ],
+            "A positive result moderately increases disease probability. ": [
+                ""
+            ],
             "A positive result multiplies pre-test odds by {lr}.": [
+                ""
+            ],
+            "A positive result multiplies the pre-test odds by %.2fx; the post-test probability also depends on the pre-test probability. ": [
                 ""
             ],
             "a proportions table": [
@@ -3074,6 +3260,9 @@
                 ""
             ],
             "A way to model how patients move between different health states over time": [
+                ""
+            ],
+            "A zero-cell correction (%s) was applied to %d study/studies (%s). Corrected counts are used by all analyses and plots; the Individual Study Results table shows the raw counts.": [
                 ""
             ],
             "Aa (Mean)": [
@@ -4276,6 +4465,9 @@
             "Additional Regional Measurements": [
                 ""
             ],
+            "Additional regional measurements": [
+                ""
+            ],
             "Additional Survival Times": [
                 ""
             ],
@@ -4362,6 +4554,9 @@
             ],
             "Adequate Information:": [
                 "Yeterli Bilgi:"
+            ],
+            "Adequate power achieved": [
+                ""
             ],
             "Adequate sample size (n>=100): confidence intervals for ORR and DCR will be comparatively narrow.": [
                 ""
@@ -5323,6 +5518,15 @@
             "Agreement %": [
                 ""
             ],
+            "Agreement %s was high in this dataset (%s above 0.75): the measurements gave similar values.": [
+                ""
+            ],
+            "Agreement %s was low in this dataset (%s of 0.50 or below): the measurements differed substantially.": [
+                ""
+            ],
+            "Agreement %s was moderate in this dataset (%s above 0.50 and up to 0.75): appreciable variability remained.": [
+                ""
+            ],
             "Agreement Analysis Summary": [
                 ""
             ],
@@ -5374,6 +5578,9 @@
             "Agreement Level": [
                 ""
             ],
+            "Agreement Level:": [
+                ""
+            ],
             "Agreement Metric": [
                 ""
             ],
@@ -5404,6 +5611,12 @@
             "Agreement study sample size": [
                 ""
             ],
+            "Agreement thresholds (correlation \\u{2265} %s, CV \\u{2264} %s%%) may be met, but a clinically material systematic difference is present.": [
+                ""
+            ],
+            "AGREEMENT THRESHOLDS MET:": [
+                ""
+            ],
             "Agreement Trend Analysis": [
                 ""
             ],
@@ -5420,6 +5633,12 @@
                 ""
             ],
             "Agreement was assessed using %s.": [
+                ""
+            ],
+            "Agreement was assessed using Spearman rank correlation; an intraclass correlation coefficient could not be estimated from these data. ": [
+                ""
+            ],
+            "Agreement was assessed using the intraclass correlation coefficient (ICC(2,1), absolute agreement) and Spearman rank correlation. ": [
                 ""
             ],
             "agreement_level": [
@@ -6166,6 +6385,18 @@
             "Analysis could not be completed": [
                 ""
             ],
+            "Analysis data is missing or empty": [
+                ""
+            ],
+            "Analysis data is missing or empty, so heterogeneity could not be assessed.": [
+                ""
+            ],
+            "Analysis data is missing or empty, so meta-regression could not be run.": [
+                ""
+            ],
+            "Analysis data is missing or empty, so publication bias could not be assessed.": [
+                ""
+            ],
             "Analysis dataset:": [
                 ""
             ],
@@ -6394,6 +6625,9 @@
             "Analysis summary (sample size, missing data report)": [
                 "Analiz özeti (örneklem büyüklüğü, eksik veri raporu)"
             ],
+            "Analysis Summary in Plain Language": [
+                ""
+            ],
             "Analysis tailored to specific biomarker characteristics": [
                 ""
             ],
@@ -6616,7 +6850,7 @@
             "Annotation Tracks": [
                 ""
             ],
-            "Annotation Tracks (below the bars)": [
+            "Annotation tracks (below the bars)": [
                 ""
             ],
             "Annotation Type": [
@@ -6956,6 +7190,9 @@
                 ""
             ],
             "Area Under the ROC Curve": [
+                ""
+            ],
+            "Area under the SROC curve (AUC = 1/(1 + theta))": [
                 ""
             ],
             "Arial": [
@@ -7300,6 +7537,9 @@
             "At least 2 groups required for ridge plot comparison": [
                 ""
             ],
+            "At least 2 regional measurements are required for inter-regional heterogeneity analysis. With a reference (whole section) measurement selected, a single regional measurement is sufficient.": [
+                ""
+            ],
             "At least 2 rows of data required": [
                 ""
             ],
@@ -7327,10 +7567,16 @@
             "At least one strata variable is required": [
                 ""
             ],
+            "At least three finite studies are required for %s meta-regression.": [
+                ""
+            ],
             "At least three tests are required; the two-test model is not statistically identifiable.": [
                 ""
             ],
             "At least three tests are required. With exactly three tests the model is just-identified, so goodness-of-fit statistics cannot test its assumptions.": [
+                ""
+            ],
+            "At least two finite studies are required for %s": [
                 ""
             ],
             "At least two non-constant encoded predictor columns are required by this LASSO engine.": [
@@ -7894,6 +8140,15 @@
             "Average Cluster Size": [
                 ""
             ],
+            "Average correlation of %.2f suggests moderate relationships between %s.": [
+                ""
+            ],
+            "Average correlation of %.2f suggests strong relationships between %s.": [
+                ""
+            ],
+            "Average correlation of %.2f suggests weak relationships between %s.": [
+                ""
+            ],
             "Average distance from a node to all other nodes in the network. Higher closeness means the node can reach others more quickly. <strong>Note:</strong> May be infinite (Inf) for disconnected graphs.": [
                 ""
             ],
@@ -8269,6 +8524,9 @@
             "Bar Transparency": [
                 ""
             ],
+            "Bar transparency": [
+                ""
+            ],
             "Bar Type": [
                 ""
             ],
@@ -8352,9 +8610,6 @@
             ],
             "Based on Kaplan-Meier estimates": [
                 "Kaplan-Meier tahminlerine dayalı"
-            ],
-            "baseline": [
-                ""
             ],
             "Baseline": [
                 ""
@@ -8456,9 +8711,6 @@
                 ""
             ],
             "Baseline Reference": [
-                ""
-            ],
-            "baseline required": [
                 ""
             ],
             "Baseline Risk Model": [
@@ -9241,6 +9493,21 @@
             "Between Groups Comparison": [
                 ""
             ],
+            "between regional measurements": [
+                ""
+            ],
+            "between regions": [
+                ""
+            ],
+            "between the regions and the reference measurement": [
+                ""
+            ],
+            "Between-Case Variance": [
+                ""
+            ],
+            "Between-Case Variance (Regional Means)": [
+                ""
+            ],
             "Between-Group Agreement %": [
                 ""
             ],
@@ -9253,7 +9520,16 @@
             "Between-Study Heterogeneity Assessment": [
                 ""
             ],
+            "Between-study heterogeneity is substantial - the prediction interval spans a wide range of accuracy - so this pooled pair does not describe any single population or laboratory. Read the prediction region and the subgroup or meta-regression results rather than the pooled point.": [
+                ""
+            ],
             "Between-Study Heterogeneity Visualization": [
+                ""
+            ],
+            "Between-study variance (tau^2)": [
+                ""
+            ],
+            "Between-study variance components: tau-squared (logit sensitivity) = %.3f, tau-squared (logit false-positive rate) = %.3f; correlation between logit sensitivity and logit specificity = %.2f. A strongly negative correlation suggests a threshold effect (studies trading sensitivity for specificity).": [
                 ""
             ],
             "Between-Subgroup Heterogeneity": [
@@ -9325,6 +9601,12 @@
             "Bias Analysis": [
                 ""
             ],
+            "Bias analysis requires a reference (whole section) measurement.": [
+                ""
+            ],
+            "Bias analysis was not applicable because no reference measurement was supplied. ": [
+                ""
+            ],
             "Bias and Fairness Analysis": [
                 ""
             ],
@@ -9338,6 +9620,9 @@
                 ""
             ],
             "Bias Correction": [
+                ""
+            ],
+            "Bias Correction:": [
                 ""
             ],
             "Bias Direction": [
@@ -9365,6 +9650,9 @@
                 ""
             ],
             "Bias Severity": [
+                ""
+            ],
+            "Bias testing could not be performed due to limited paired observations. ": [
                 ""
             ],
             "Bias Type": [
@@ -9802,6 +10090,9 @@
             "Biomarker Validation Study": [
                 ""
             ],
+            "Biomarker Value": [
+                ""
+            ],
             "Biomarker Variable": [
                 ""
             ],
@@ -9856,6 +10147,18 @@
             "Biserial (binary-continuous)": [
                 ""
             ],
+            "Bivariate analysis disabled by user option": [
+                ""
+            ],
+            "Bivariate analysis error: %s": [
+                ""
+            ],
+            "Bivariate analysis was not enabled. Enable bivariate analysis for pooled estimates.": [
+                ""
+            ],
+            "Bivariate meta-analysis encountered an error. Check individual study results and data quality.": [
+                ""
+            ],
             "Bivariate Meta-Analysis Results": [
                 ""
             ],
@@ -9865,7 +10168,13 @@
             "Bivariate Model (Sens & Spec)": [
                 ""
             ],
+            "Bivariate model failed": [
+                ""
+            ],
             "Bivariate Normal Model": [
+                ""
+            ],
+            "Bivariate output missing": [
                 ""
             ],
             "Bivariate random-effects model": [
@@ -10100,6 +10409,9 @@
                 ""
             ],
             "Bootstrap CI for partial AUC": [
+                ""
+            ],
+            "Bootstrap CI for the median could not be computed.": [
                 ""
             ],
             "Bootstrap CI Lower": [
@@ -10682,6 +10994,9 @@
                 ""
             ],
             "Brown-Forsythe Test": [
+                ""
+            ],
+            "Brown-Forsythe test (spread of per-case CV)": [
                 ""
             ],
             "BSLMM (Bayesian Sparse Linear Mixed Model)": [
@@ -11596,6 +11911,9 @@
             "Calendar-aware (actual month lengths)": [
                 ""
             ],
+            "Calibrate the regional measurement before using it in place of the %s.": [
+                ""
+            ],
             "Calibration": [
                 ""
             ],
@@ -11776,6 +12094,9 @@
             "Candy Bright (9 colors)": [
                 ""
             ],
+            "Cannot access coefficients: %s": [
+                ""
+            ],
             "Cannot auto-detect data format: provide at least one strata variable": [
                 ""
             ],
@@ -11936,6 +12257,9 @@
                 ""
             ],
             "Case identifier for tracking predictions": [
+                ""
+            ],
+            "Case Number": [
                 ""
             ],
             "Case Pattern": [
@@ -13768,6 +14092,9 @@
             "CLIA Requirements": [
                 ""
             ],
+            "Click and drag to select text, then copy (Ctrl+C/Cmd+C) for use in reports.": [
+                ""
+            ],
             "Cliff's Delta": [
                 ""
             ],
@@ -13913,6 +14240,9 @@
                 ""
             ],
             "Clinical Assessment + CT (Illustrative)": [
+                ""
+            ],
+            "Clinical Assessment:": [
                 ""
             ],
             "Clinical Assumptions & Considerations": [
@@ -14093,6 +14423,9 @@
                 ""
             ],
             "Clinical Effect": [
+                ""
+            ],
+            "Clinical Events": [
                 ""
             ],
             "Clinical Evidence": [
@@ -15292,7 +15625,13 @@
             "Coefficient of Variation ( percent)": [
                 ""
             ],
+            "Coefficient of Variation (%)": [
+                ""
+            ],
             "Coefficient of Variation (CV)": [
+                ""
+            ],
+            "Coefficient of variation across sampling methods per case": [
                 ""
             ],
             "Coefficient of variation and reliability": [
@@ -15454,7 +15793,7 @@
             "Color Blind Friendly": [
                 ""
             ],
-            "Color By": [
+            "Color by": [
                 ""
             ],
             "Color by groups": [
@@ -17101,6 +17440,9 @@
             "Comprehensive analysis summary and interpretation": [
                 ""
             ],
+            "Comprehensive Analysis: All analysis modules (reproducibility, bias, variability, and power) have been enabled.": [
+                ""
+            ],
             "Comprehensive analytical method validation following CLSI EP15-A3, EP05-A3, and ISO 15189 guidelines. Validates precision, accuracy, linearity, measuring interval, and analytical measurement range for clinical laboratory methods. Supports regulatory submissions and laboratory accreditation. Essential for establishing method performance characteristics.": [
                 ""
             ],
@@ -18064,6 +18406,9 @@
             "Confirm every flag against your own study protocol before excluding or correcting a value.": [
                 ""
             ],
+            "Confirm findings in independent dataset": [
+                ""
+            ],
             "Confirm percentage calculation method: ((current - baseline) / baseline) \\u{00d7} 100": [
                 ""
             ],
@@ -18086,6 +18431,9 @@
                 ""
             ],
             "Confirmation Status (optional)": [
+                ""
+            ],
+            "Confirmation status (optional)": [
                 ""
             ],
             "Confirmation Time": [
@@ -18289,6 +18637,12 @@
             "Conservative/liberal reference standards": [
                 ""
             ],
+            "Consider 2-3 additional samples to reduce variability (current CV = %s%%, threshold = %s%%)": [
+                ""
+            ],
+            "Consider additional samples or sampling optimization.": [
+                ""
+            ],
             "Consider alternative data quality checks for narrow-range data": [
                 ""
             ],
@@ -18338,6 +18692,9 @@
                 ""
             ],
             "Consider if the study has sufficient power to detect clinically relevant differences.": [
+                ""
+            ],
+            "Consider moderate sample increase": [
                 ""
             ],
             "Consider patient attrition, competing risks, and time-varying covariates in interpretation.": [
@@ -19132,6 +19489,9 @@
             "Correlation and agreement statistics between scoring methods": [
                 ""
             ],
+            "Correlation and CV cannot detect a constant offset, so the agreement thresholds below do not by themselves establish that regional measurements may substitute for the %s.": [
+                ""
+            ],
             "Correlation and reliability metrics": [
                 ""
             ],
@@ -19163,6 +19523,9 @@
                 ""
             ],
             "Correlation coefficients and significance tests": [
+                ""
+            ],
+            "Correlation could not be estimated with the available data.": [
                 ""
             ],
             "Correlation does not imply causation.": [
@@ -19217,6 +19580,9 @@
                 ""
             ],
             "Correlation method for comparison": [
+                ""
+            ],
+            "Correlation metrics were not estimable with the available data. ": [
                 ""
             ],
             "Correlation Parameters": [
@@ -19289,6 +19655,9 @@
                 ""
             ],
             "Correlation-based Filter": [
+                ""
+            ],
+            "Correlation:": [
                 ""
             ],
             "Correlations are computed separately within each level of <strong>%s</strong>, matching the figure and the table. Pooling the groups would be misleading whenever they differ in direction.": [
@@ -19500,6 +19869,12 @@
             ],
             "Could not compute": [
                 "Hesaplanamadı"
+            ],
+            "Could not compute:": [
+                ""
+            ],
+            "Could not compute: insufficient data or computational error": [
+                ""
             ],
             "Could not create {requested} groups. Fell back to {actual} groups.": [
                 "{requested} grup oluşturulamadı. {actual} gruba geri dönüldü."
@@ -20953,6 +21328,9 @@
             "Current Sample Size": [
                 ""
             ],
+            "Current sampling appears adequate (CV = %s%% \\u{2264} %s%%)": [
+                ""
+            ],
             "Current Sigma Cost ($)": [
                 ""
             ],
@@ -21370,7 +21748,7 @@
             "Custom Rate Table": [
                 ""
             ],
-            "Custom Reference Date": [
+            "Custom reference date": [
                 ""
             ],
             "Custom reference in absolute mode:": [
@@ -21379,7 +21757,7 @@
             "Custom Reference Ranges": [
                 ""
             ],
-            "Custom Reference Time": [
+            "Custom reference time": [
                 ""
             ],
             "Custom Reporting": [
@@ -21763,6 +22141,9 @@
             "CV Threshold for Acceptable Variability": [
                 ""
             ],
+            "CV: %s%%": [
+                ""
+            ],
             "Cycle": [
                 ""
             ],
@@ -21940,6 +22321,9 @@
             "Data Handling Notes:": [
                 ""
             ],
+            "Data has been exported to the following outputs:": [
+                ""
+            ],
             "Data Information": [
                 "Veri Bilgisi"
             ],
@@ -21952,7 +22336,7 @@
             "Data Input Options:": [
                 ""
             ],
-            "Data Input Type": [
+            "Data input type": [
                 ""
             ],
             "Data Inputs": [
@@ -22228,6 +22612,9 @@
             "Data validation error": [
                 ""
             ],
+            "Data validation failed.": [
+                ""
+            ],
             "Data Validation Issues": [
                 "Veri Doğrulama Sorunları"
             ],
@@ -22247,6 +22634,12 @@
                 ""
             ],
             "Data Warnings": [
+                ""
+            ],
+            "Data were insufficient to characterize sampling reliability.": [
+                ""
+            ],
+            "Data were insufficient to evaluate overall sampling quality against predefined criteria. ": [
                 ""
             ],
             "DataExplorer (Comprehensive)": [
@@ -22379,9 +22772,6 @@
                 ""
             ],
             "Dates Read Into The Wrong Century": [
-                ""
-            ],
-            "dates with format": [
                 ""
             ],
             "DateTime conversion completed. • Processed {rows} rows from variable {name}. • Successfully parsed {parsed} of {nonmissing} non-missing values ({pct}%). • Added {added} component column(s) to the dataset. • Review the preview tables before proceeding with analysis.": [
@@ -22829,6 +23219,18 @@
                 ""
             ],
             "Decreasing Trend": [
+                ""
+            ],
+            "Deeks' Funnel Plot Asymmetry Test": [
+                ""
+            ],
+            "Deeks' Funnel Plot: Publication Bias Assessment": [
+                ""
+            ],
+            "Deeks' test is unreliable with fewer than 10 studies (k = %d here); treat the asymmetry result as descriptive only.": [
+                ""
+            ],
+            "Deeks' test: log diagnostic odds ratio regressed on 1/sqrt(effective sample size), weighted by effective sample size; slope referred to t on %d df (Deeks, Macaskill & Irwig 2005). Asymmetry is not by itself evidence of publication bias - it can also arise from between-study heterogeneity or a threshold effect.": [
                 ""
             ],
             "Deep Explainer (for neural networks)": [
@@ -23792,6 +24194,9 @@
                 ""
             ],
             "Diagnostic Accuracy Metrics (requires reference standard)": [
+                ""
+            ],
+            "Diagnostic accuracy parameter (theta)": [
                 ""
             ],
             "Diagnostic Accuracy Summary": [
@@ -25954,6 +26359,9 @@
             "Distribution of DAB intensity levels": [
                 ""
             ],
+            "Distribution of IHC biomarker values across tissue regions": [
+                ""
+            ],
             "Distribution of prediction confidence scores": [
                 ""
             ],
@@ -26615,6 +27023,9 @@
                 "Her satır, tam modeli o tek kovaryatın çıkarıldığı (diğerleri korunan) modelle karşılaştıran bir olabilirlik oranı testidir."
             ],
             "Each row is a piecewise occurrence/exposure rate for (previous endpoint, Time], with the first interval including time zero. Equal-width intervals span the observed follow-up; their number is limited to about one interval per 10 total events (maximum 10) to reduce sparsity. Person-time is calculated exactly from individual follow-up. Limits are Garwood Poisson 95% intervals conditional on the observed exposure. These are interval rates, not pointwise instantaneous hazards or Cox-model coefficients.": [
+                ""
+            ],
+            "Each row is a separate univariate random-effects model on the logit of that measure. The I-squared is therefore the proportion of variance in THAT margin alone that is not attributable to sampling error; it does not describe the bivariate model and should not be read as an overall heterogeneity figure (Zwinderman & Bossuyt 2008). In diagnostic accuracy meta-analysis a high I-squared is expected whenever studies used different positivity thresholds - it signals a threshold effect to be modelled by the SROC curve, not necessarily a defect. Use the prediction interval and the SROC prediction region for a model-consistent statement of between-study variability.": [
                 ""
             ],
             "Each row represents one patient episode or treatment course": [
@@ -27586,7 +27997,7 @@
             "End Run": [
                 ""
             ],
-            "End Time": [
+            "End time": [
                 ""
             ],
             "End Time (Required)": [
@@ -28462,6 +28873,9 @@
             "Error in difficulty analysis:": [
                 ""
             ],
+            "Error in enhanced plot: %s": [
+                ""
+            ],
             "Error in ggplot: {msg}": [
                 ""
             ],
@@ -28495,7 +28909,7 @@
             "Error occurred": [
                 ""
             ],
-            "Error parsing": [
+            "Error parsing %s dates with format %s.": [
                 ""
             ],
             "Error parsing dates with format {format}: {message}": [
@@ -29044,6 +29458,9 @@
             "Event Time Variable": [
                 ""
             ],
+            "Event time variable": [
+                ""
+            ],
             "Event Timeline Visualization": [
                 ""
             ],
@@ -29057,6 +29474,9 @@
                 ""
             ],
             "Event Type Variable": [
+                ""
+            ],
+            "Event type variable": [
                 ""
             ],
             "Event type variable (0=censored, 1=event of interest, 2=competing event, etc.)": [
@@ -29633,6 +30053,12 @@
                 ""
             ],
             "Excluded from analysis": [
+                ""
+            ],
+            "Excluded non-finite study rows from meta-regression (sensitivity: %d; specificity: %d). Choose a zero-cell correction to retain zero-cell studies.": [
+                ""
+            ],
+            "Excluded non-finite study rows from univariate heterogeneity models (sensitivity: %d; specificity: %d). Choose a zero-cell correction to retain zero-cell studies.": [
                 ""
             ],
             "Excluded Rate": [
@@ -30376,9 +30802,6 @@
             "Export Summary Statistics": [
                 ""
             ],
-            "Export summary statistics": [
-                ""
-            ],
             "Export Survival Data": [
                 ""
             ],
@@ -30395,9 +30818,6 @@
                 ""
             ],
             "Export Timeline Data": [
-                ""
-            ],
-            "Export timeline data": [
                 ""
             ],
             "Export to Excel": [
@@ -30956,6 +31376,9 @@
                 ""
             ],
             "False Positive Rate": [
+                ""
+            ],
+            "False Positive Rate (1 - Specificity)": [
                 ""
             ],
             "False Positives": [
@@ -31729,6 +32152,9 @@
             "Fixed Effects": [
                 ""
             ],
+            "Fixed effects": [
+                ""
+            ],
             "Fixed Effects (Categorical)": [
                 ""
             ],
@@ -31804,7 +32230,13 @@
             "Fixed Width Around Threshold": [
                 ""
             ],
+            "Fixed-effect confidence intervals were computed from the fitted Reitsma covariance matrix.": [
+                ""
+            ],
             "Fixed-Effect Model": [
+                ""
+            ],
+            "fixed-effects": [
                 ""
             ],
             "Fixed-Effects (All studies measure same true effect)": [
@@ -32078,9 +32510,6 @@
                 ""
             ],
             "Follow the standard decision analysis workflow": [
-                ""
-            ],
-            "follow-up": [
                 ""
             ],
             "Follow-up": [
@@ -32483,6 +32912,9 @@
                 ""
             ],
             "Forest Plot Visualization": [
+                ""
+            ],
+            "Forest Plot: Sensitivity and Specificity by Study": [
                 ""
             ],
             "Forest Plots": [
@@ -34174,6 +34606,12 @@
             "Good early retrieval performance": [
                 ""
             ],
+            "Good reliability": [
+                ""
+            ],
+            "Good representativeness": [
+                ""
+            ],
             "Good Threshold": [
                 ""
             ],
@@ -34573,6 +35011,9 @@
             "Group Comparison Tests": [
                 ""
             ],
+            "Group comparison tests need at least two groups, each with at least one evaluable patient.": [
+                ""
+            ],
             "Group Comparisons": [
                 ""
             ],
@@ -34745,6 +35186,9 @@
                 ""
             ],
             "Group Variable": [
+                ""
+            ],
+            "Group variable": [
                 ""
             ],
             "Group Variable (Optional)": [
@@ -35692,6 +36136,9 @@
             "Heterogeneity analysis": [
                 ""
             ],
+            "Heterogeneity analysis error: %s": [
+                ""
+            ],
             "Heterogeneity Assessment": [
                 ""
             ],
@@ -35708,6 +36155,9 @@
                 ""
             ],
             "Heterogeneity Level": [
+                ""
+            ],
+            "Heterogeneity level grades the mean per-case CV against your %.0f%% threshold: Low at or below %.0f%%, Moderate up to %.0f%%, High above it.": [
                 ""
             ],
             "Heterogeneity Measure": [
@@ -35887,7 +36337,19 @@
             "high": [
                 ""
             ],
+            "High": [
+                ""
+            ],
+            "High (>%.0f%%)": [
+                ""
+            ],
+            "High (CV = %.1f%%, graded against your %.0f%% threshold) - This indicates substantial heterogeneity.": [
+                ""
+            ],
             "High & Moderate Quality": [
+                ""
+            ],
+            "High between-case variance indicates true biological differences": [
                 ""
             ],
             "High Clinical Threshold": [
@@ -35900,6 +36362,9 @@
                 ""
             ],
             "High Contrast": [
+                ""
+            ],
+            "High contrast": [
                 ""
             ],
             "High Contrast (Accessibility)": [
@@ -35947,6 +36412,12 @@
             "High missingness": [
                 "Yüksek eksiklik oranı"
             ],
+            "High number of outliers detected (%s%%). Consider checking for measurement errors or data entry issues.": [
+                ""
+            ],
+            "High percentage of missing regional measurements (%s%%). This may affect reliability of heterogeneity assessment.": [
+                ""
+            ],
             "High prevalence (20 percent to 80 percent)": [
                 ""
             ],
@@ -35974,6 +36445,9 @@
             "High Risk Threshold": [
                 ""
             ],
+            "High sampling variability": [
+                ""
+            ],
             "High Threshold ( percent) - Detailed Mode": [
                 ""
             ],
@@ -35993,6 +36467,12 @@
                 ""
             ],
             "High Value Color": [
+                ""
+            ],
+            "High variability": [
+                ""
+            ],
+            "High within-case variance suggests sampling heterogeneity": [
                 ""
             ],
             "High-Dimensional Cox Regression": [
@@ -36067,10 +36547,19 @@
             "Higher is better": [
                 ""
             ],
+            "Higher negative bias": [
+                ""
+            ],
+            "Higher positive bias": [
+                ""
+            ],
             "Higher positive scores indicate higher risk of the event (positive class)": [
                 ""
             ],
             "Higher QALYs indicate better health outcomes. Used to compare different treatments": [
+                ""
+            ],
+            "Higher reliability (+%.2f)": [
                 ""
             ],
             "Higher scores": [
@@ -36092,6 +36581,9 @@
                 ""
             ],
             "Higher values indicate positive outcome": [
+                ""
+            ],
+            "Higher variability (+%.1f%%)": [
                 ""
             ],
             "Higher-Level Cluster": [
@@ -36182,6 +36674,9 @@
                 ""
             ],
             "highly connected": [
+                ""
+            ],
+            "Highly reproducible sampling": [
                 ""
             ],
             "Highly significant difference (p < 0.001)": [
@@ -36284,6 +36779,9 @@
                 ""
             ],
             "Holdout Validation": [
+                ""
+            ],
+            "Holling proportional-hazards SROC model fitted with adjusted profile maximum likelihood. The p-value for theta tests H0: theta = 1 (accuracy no better than chance); theta < 1 indicates discrimination and theta near 0 a near-perfect test (AUC = 1/(1 + theta)). No p-value is shown for the between-study variance: a Wald test of a variance against zero is invalid at the boundary of its parameter space.": [
                 ""
             ],
             "Holm": [
@@ -36775,6 +37273,9 @@
             "I(X;Y)": [
                 ""
             ],
+            "I\\u{00b2} is not reported here: a univariate I\\u{00b2} ignores the within-study correlation between sensitivity and specificity and does not describe the bivariate model (Zwinderman & Bossuyt 2008). The Heterogeneity Assessment table reports Q, tau-squared and a univariate I\\u{00b2} computed SEPARATELY for sensitivity and for specificity - read those as descriptive summaries of each margin, not as the heterogeneity of the bivariate model. For a model-consistent statement of how much studies differ, use the prediction interval above and the prediction region on the SROC plot.": [
+                ""
+            ],
             "I²": [
                 ""
             ],
@@ -36829,6 +37330,9 @@
             "ICC Model": [
                 ""
             ],
+            "ICC not estimable": [
+                ""
+            ],
             "ICC Results": [
                 ""
             ],
@@ -36868,6 +37372,9 @@
             "ICC(1,k) - One-way random, average raters": [
                 ""
             ],
+            "ICC(2,1) - absolute agreement": [
+                ""
+            ],
             "ICC(2,1) - Two-way random, single measures": [
                 ""
             ],
@@ -36878,6 +37385,9 @@
                 ""
             ],
             "ICC(2,k) - Two-way random, average raters": [
+                ""
+            ],
+            "ICC(3,1) - consistency (bias-blind)": [
                 ""
             ],
             "ICC(3,1) - Two-way mixed, single measures": [
@@ -37202,7 +37712,7 @@
                 ""
             ],
             "Ignores systematic offset; compare with absolute agreement above": [
-                ""
+                "Sistematik sapmayı yok sayar; yukarıdaki mutlak uyum ile karşılaştırın"
             ],
             "Ignoring PH violations can bias hazard ratio estimates": [
                 "PH ihlallerini göz ardı etmek tehlike oranı tahminlerini yanlı hale getirebilir"
@@ -37220,6 +37730,12 @@
                 ""
             ],
             "IHC Heterogeneity Analysis": [
+                ""
+            ],
+            "IHC Heterogeneity Analysis Report": [
+                ""
+            ],
+            "IHC heterogeneity analysis was performed on %d cases with %d regional measurements each. ": [
                 ""
             ],
             "IHC Immune Analysis": [
@@ -37678,6 +38194,18 @@
             "In this %s sample, %s showed %s: the AUC was %.3f (%s%% CI: %s--%s). AUC is the probability that a randomly chosen case scores above a randomly chosen non-case; it is computed over all cutpoints and does not depend on which cutpoint was selected. This is an in-sample estimate with no internal or external validation behind it%s. The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those ARE optimistic, because that cutpoint was searched for on these same data.": [
                 ""
             ],
+            "In this dataset, measurement variability exceeded the CV threshold set for this analysis.": [
+                ""
+            ],
+            "In this dataset, measurement variability was well within the CV threshold set for this analysis.": [
+                ""
+            ],
+            "In this dataset, measurement variability was within, but close to, the CV threshold set for this analysis.": [
+                ""
+            ],
+            "In this dataset, the available data were insufficient to quantify measurement variability.": [
+                ""
+            ],
             "In Training Set": [
                 ""
             ],
@@ -37694,6 +38222,9 @@
                 ""
             ],
             "In-situ Fraction (%) (optional)": [
+                ""
+            ],
+            "INADEQUATE SAMPLING:": [
                 ""
             ],
             "inches": [
@@ -38917,19 +39448,37 @@
             "Insufficient data for correlation interpretation.": [
                 ""
             ],
+            "Insufficient data for inter-regional heterogeneity analysis. At least 5 complete cases with regional measurements are required.": [
+                ""
+            ],
             "Insufficient data for joint modeling (minimum 50 observations required)": [
+                ""
+            ],
+            "Insufficient data for meta-analysis. Found %d studies, need at least 3": [
                 ""
             ],
             "Insufficient data for PCA. Need at least 3 complete observations.": [
                 ""
             ],
+            "Insufficient data for proportional-hazards SROC analysis": [
+                ""
+            ],
+            "Insufficient data for reference-based heterogeneity analysis. At least 5 complete cases with reference and regional measurements are required.": [
+                ""
+            ],
             "Insufficient data for residual normality testing.": [
+                ""
+            ],
+            "Insufficient data for sampling recommendation": [
                 ""
             ],
             "Insufficient data for Table One analysis. Check for missing values. Try selecting different variables or disabling missing-value exclusion.": [
                 "Tablo Bir analizi için yetersiz veri. Eksik değerleri kontrol edin. Farklı değişkenler seçmeyi veya eksik değer dışlamayı kapatmayı deneyin."
             ],
             "Insufficient data to evaluate discriminatory power": [
+                ""
+            ],
+            "INSUFFICIENT DATA:": [
                 ""
             ],
             "Insufficient data: {n} cases found": [
@@ -39044,6 +39593,9 @@
                 ""
             ],
             "Inter-Rater Reliability (Between Raters)": [
+                ""
+            ],
+            "Inter-Regional Measurements": [
                 ""
             ],
             "Inter/Intra-rater reliability (test-retest)": [
@@ -39371,6 +39923,9 @@
                 ""
             ],
             "Interpretation of Misclassified Cases": [
+                ""
+            ],
+            "Interpretation:": [
                 ""
             ],
             "Interpreting Simon-Makuch Plots": [
@@ -40579,6 +41134,12 @@
             "Kruskal-Wallis Test (2+ groups)": [
                 ""
             ],
+            "Kruskal-Wallis Test (Distribution)": [
+                ""
+            ],
+            "Kruskal-Wallis Test (Per-Case Means)": [
+                ""
+            ],
             "Kruskal-Wallis test is designed for 3+ groups, but only {} groups found. Consider using Mann-Whitney U test for 2 groups.": [
                 ""
             ],
@@ -40673,9 +41234,6 @@
                 ""
             ],
             "Label identifying the rare event/cell type in the event_type variable.": [
-                ""
-            ],
-            "Label large changes": [
                 ""
             ],
             "Label Overlap Tolerance": [
@@ -40975,7 +41533,7 @@
             "Landmark Window Size": [
                 ""
             ],
-            "Lane Width": [
+            "Lane width": [
                 ""
             ],
             "Laplace Approximation": [
@@ -40985,6 +41543,9 @@
                 ""
             ],
             "large": [
+                ""
+            ],
+            "Large (>15%)": [
                 ""
             ],
             "Large (0.5)": [
@@ -41026,6 +41587,9 @@
             "Large effect": [
                 ""
             ],
+            "Large Effect (r=0.5)": [
+                ""
+            ],
             "Large effect size": [
                 ""
             ],
@@ -41048,6 +41612,12 @@
                 ""
             ],
             "Large Risk Change (%)": [
+                ""
+            ],
+            "Large-change labels": [
+                ""
+            ],
+            "Large-dataset optimisation unavailable": [
                 ""
             ],
             "Largest Nodal Metastasis (mm)": [
@@ -41731,6 +42301,9 @@
             "Limited Information Maximum Likelihood": [
                 ""
             ],
+            "Limited representativeness": [
+                ""
+            ],
             "Limited variability in continuous explanatory variable. Consider treating as categorical.": [
                 "Sürekli açıklayıcı değişkende değişkenlik sınırlı. Kategorik olarak ele almayı değerlendirin."
             ],
@@ -42190,6 +42763,9 @@
             "Log Cumulative Hazard": [
                 ""
             ],
+            "Log Diagnostic Odds Ratio": [
+                ""
+            ],
             "Log DOR Mean": [
                 ""
             ],
@@ -42586,6 +43162,15 @@
             "low": [
                 ""
             ],
+            "Low": [
+                ""
+            ],
+            "Low (≤%.0f%%)": [
+                ""
+            ],
+            "Low (CV = %.1f%%, graded against your %.0f%% threshold) - This indicates consistent measurements across regions.": [
+                ""
+            ],
             "Low Clinical Threshold": [
                 ""
             ],
@@ -42658,6 +43243,12 @@
             "Low Risk Threshold": [
                 ""
             ],
+            "Low sampling variability": [
+                ""
+            ],
+            "Low SROC AUC": [
+                ""
+            ],
             "Low Threshold ( percent) - Detailed Mode": [
                 ""
             ],
@@ -42665,6 +43256,9 @@
                 ""
             ],
             "Low Value Color": [
+                ""
+            ],
+            "Low variability": [
                 ""
             ],
             "Low Variance Filter Threshold": [
@@ -42778,6 +43372,9 @@
             "Lower PI": [
                 ""
             ],
+            "Lower reliability (%.2f)": [
+                ""
+            ],
             "Lower Threshold": [
                 ""
             ],
@@ -42797,6 +43394,9 @@
                 ""
             ],
             "Lower values indicate positive outcome": [
+                ""
+            ],
+            "Lower variability (%.1f%%)": [
                 ""
             ],
             "Lower Warning Limit (LWL)": [
@@ -42967,6 +43567,9 @@
             "MAD: {mad} ({label})": [
                 ""
             ],
+            "mada package is not available": [
+                ""
+            ],
             "MAE": [
                 ""
             ],
@@ -43046,6 +43649,9 @@
                 ""
             ],
             "Major & Critical Only": [
+                ""
+            ],
+            "Major contributor": [
                 ""
             ],
             "Major Migration Flows": [
@@ -43432,7 +44038,10 @@
             "Marker Selection Results": [
                 ""
             ],
-            "Marker Size": [
+            "Marker shapes reused": [
+                ""
+            ],
+            "Marker size": [
                 ""
             ],
             "Marker Summary by Cluster": [
@@ -43861,6 +44470,9 @@
             "Maximum likelihood": [
                 ""
             ],
+            "maximum likelihood": [
+                ""
+            ],
             "Maximum Likelihood (JMbayes2)": [
                 ""
             ],
@@ -44215,6 +44827,15 @@
             "Mean Before": [
                 ""
             ],
+            "Mean Bias": [
+                ""
+            ],
+            "Mean Biomarker Value": [
+                ""
+            ],
+            "Mean biomarker values and variability by spatial region": [
+                ""
+            ],
             "Mean Brier Score": [
                 ""
             ],
@@ -44230,6 +44851,12 @@
             "Mean Clustering Index": [
                 ""
             ],
+            "Mean Coefficient of Variation (%) - between regions": [
+                ""
+            ],
+            "Mean Coefficient of Variation (%) - region vs reference": [
+                ""
+            ],
             "Mean Cohen Kappa": [
                 ""
             ],
@@ -44239,7 +44866,25 @@
             "Mean Confidence": [
                 ""
             ],
+            "mean correlation": [
+                ""
+            ],
+            "Mean correlation (ICC not estimable)": [
+                ""
+            ],
             "Mean Cost": [
+                ""
+            ],
+            "Mean CV (%)": [
+                ""
+            ],
+            "Mean CV = %s%% (High variability)": [
+                ""
+            ],
+            "Mean CV = %s%% (Low variability)": [
+                ""
+            ],
+            "Mean CV = %s%% (Moderate variability)": [
                 ""
             ],
             "Mean Decrease Gini": [
@@ -44258,6 +44903,12 @@
                 ""
             ],
             "Mean Difference (MD) - for continuous": [
+                ""
+            ],
+            "Mean difference = %s (Not significant)": [
+                ""
+            ],
+            "Mean difference = %s (Statistically significant)": [
                 ""
             ],
             "Mean Display": [
@@ -44299,6 +44950,9 @@
             "Mean Index": [
                 ""
             ],
+            "Mean Inter-Regional Correlation": [
+                ""
+            ],
             "Mean Intersections": [
                 ""
             ],
@@ -44327,6 +44981,9 @@
                 ""
             ],
             "Mean of Log": [
+                ""
+            ],
+            "Mean of Regions vs Reference": [
                 ""
             ],
             "Mean of this dataset": [
@@ -44381,6 +45038,9 @@
                 ""
             ],
             "Mean reference line": [
+                ""
+            ],
+            "Mean Regional-Reference Correlation": [
                 ""
             ],
             "Mean Residual": [
@@ -44522,6 +45182,9 @@
                 ""
             ],
             "Measurement Invariance": [
+                ""
+            ],
+            "Measurement Location": [
                 ""
             ],
             "Measurement model": [
@@ -44851,10 +45514,16 @@
             "Median Time (days)": [
                 ""
             ],
+            "Median time in response": [
+                ""
+            ],
             "Median Time in Response (first to last response visit)": [
                 ""
             ],
             "Median Time to Best Response": [
+                ""
+            ],
+            "Median time to best response": [
                 ""
             ],
             "Median Time to Event": [
@@ -44884,9 +45553,6 @@
             "Median time to first response (TTR)": [
                 ""
             ],
-            "Median Time to Response": [
-                ""
-            ],
             "Median Time-to-Event Analysis": [
                 ""
             ],
@@ -44903,6 +45569,12 @@
                 ""
             ],
             "Median Value": [
+                ""
+            ],
+            "Median: %.1f%%": [
+                ""
+            ],
+            "Median: %s": [
                 ""
             ],
             "Median/Mode Imputation": [
@@ -45004,6 +45676,9 @@
             "Medium effect": [
                 ""
             ],
+            "Medium Effect (r=0.3)": [
+                ""
+            ],
             "Medium effect size": [
                 ""
             ],
@@ -45097,6 +45772,9 @@
             "Meta-Analysis Model": [
                 ""
             ],
+            "Meta-analysis of %d diagnostic accuracy studies shows pooled sensitivity of %.1f%% and specificity of %.1f%%.": [
+                ""
+            ],
             "Meta-analysis of AUC values": [
                 ""
             ],
@@ -45107,6 +45785,9 @@
                 ""
             ],
             "Meta-analysis Ready Output": [
+                ""
+            ],
+            "Meta-analysis requires at least 3 studies with complete data. Current studies: %d. Please add more studies or use individual study analysis instead.": [
                 ""
             ],
             "Meta-Analysis Results": [
@@ -45142,10 +45823,31 @@
             "Meta-Regression Covariates": [
                 ""
             ],
+            "Meta-regression error: %s": [
+                ""
+            ],
+            "Meta-regression not run: %d studies cannot support a covariate contributing %d model parameter(s) - no residual degrees of freedom remain, so the model would fit perfectly and its confidence intervals would be meaningless. At least %d studies are needed for this covariate, and 10 per covariate is the usual recommendation.": [
+                ""
+            ],
+            "Meta-regression not run: fewer than three studies remain after removing missing covariate values.": [
+                ""
+            ],
+            "Meta-regression not run: the covariate takes the same value in every study, so it cannot explain any between-study variation.": [
+                ""
+            ],
+            "Meta-regression on %d studies with a covariate contributing %d model parameter(s) (%d residual degrees of freedom). The usual recommendation is at least 10 studies per covariate, so estimates may be unstable and confidence intervals unreliable. Report this as exploratory only.": [
+                ""
+            ],
             "Meta-Regression Plot": [
                 ""
             ],
+            "Meta-regression requires a covariate": [
+                ""
+            ],
             "Meta-Regression Results": [
+                ""
+            ],
+            "Meta-regression skipped": [
                 ""
             ],
             "Meta-Regression Variable (Optional)": [
@@ -45167,6 +45869,9 @@
                 ""
             ],
             "Method": [
+                ""
+            ],
+            "Method '%s' is not supported for bivariate diagnostic meta-analysis. Using REML instead.": [
                 ""
             ],
             "Method 1": [
@@ -45484,7 +46189,16 @@
             "Method Variables": [
                 ""
             ],
+            "Method Variance": [
+                ""
+            ],
+            "Method variance reflects systematic differences between sampling approaches": [
+                ""
+            ],
             "Method Verification": [
+                ""
+            ],
+            "method-of-moments": [
                 ""
             ],
             "Method-Specific Details": [
@@ -45551,6 +46265,9 @@
                 ""
             ],
             "Methods Section Template": [
+                ""
+            ],
+            "Methods Section:": [
                 ""
             ],
             "Methods:": [
@@ -45775,6 +46492,9 @@
             "Milestone-based clinical pathway analysis": [
                 ""
             ],
+            "Milestones": [
+                ""
+            ],
             "Milestones:": [
                 ""
             ],
@@ -45839,6 +46559,9 @@
                 ""
             ],
             "Minimal": [
+                ""
+            ],
+            "Minimal (<5%)": [
                 ""
             ],
             "Minimal (Clean)": [
@@ -45937,7 +46660,7 @@
             "Minimum 3-5 observations per group for reliable curves": [
                 ""
             ],
-            "Minimum Acceptable Correlation": [
+            "Minimum acceptable correlation": [
                 ""
             ],
             "Minimum acceptable OPA (%)": [
@@ -46189,7 +46912,7 @@
             "Minimum Required Specificity": [
                 ""
             ],
-            "Minimum Response for Labels ( percent)": [
+            "Minimum response for labels (percent)": [
                 ""
             ],
             "Minimum response value for labels to be displayed.": [
@@ -46280,6 +47003,12 @@
                 ""
             ],
             "Minor allele frequency for SNP-based survival analysis. Common range: 0.05-0.45.": [
+                ""
+            ],
+            "Minor contributor": [
+                ""
+            ],
+            "Minor method differences": [
                 ""
             ],
             "Minor Ticks": [
@@ -46526,6 +47255,9 @@
                 ""
             ],
             "Missing patterns plot (vis_miss)": [
+                ""
+            ],
+            "Missing required columns for proportional-hazards SROC analysis": [
                 ""
             ],
             "Missing required variables": [
@@ -47407,11 +48139,23 @@
             "Moderate": [
                 ""
             ],
+            "Moderate (%.0f-%.0f%%)": [
+                ""
+            ],
+            "Moderate (5-15%)": [
+                ""
+            ],
+            "Moderate (CV = %.1f%%, graded against your %.0f%% threshold) - This indicates moderate variation between regions.": [
+                ""
+            ],
             "Moderate activity by general phase II benchmarks (context-dependent)": [
                 ""
             ],
             "Moderate collinearity. LASSO may select one of several correlated columns, and that choice can be unstable. Consider Elastic Net if retaining correlated predictors is important.": [
                 "Orta düzeyde çoklu bağlantı. LASSO ilişkili sütunlardan birini seçebilir ve bu seçim kararsız olabilir. İlişkili yordayıcıların korunması önemliyse elastic net düşününüz."
+            ],
+            "Moderate contributor": [
+                ""
             ],
             "Moderate datetime parsing success rate: {pct}% • {parsed} of {total} non-missing values were successfully parsed. • Review the failed samples in the Quality Assessment panel. • Consider specifying the format manually if auto-detection is incorrect.": [
                 ""
@@ -47467,7 +48211,19 @@
             "Moderate Parsing Success Rate": [
                 ""
             ],
+            "Moderate reliability": [
+                ""
+            ],
             "Moderate sample size: Results provide reasonable evidence for preliminary conclusions.": [
+                ""
+            ],
+            "Moderate sampling variability": [
+                ""
+            ],
+            "MODERATE SAMPLING:": [
+                ""
+            ],
+            "Moderate variability": [
                 ""
             ],
             "moderate-to-strong": [
@@ -47477,6 +48233,9 @@
                 ""
             ],
             "moderately connected": [
+                ""
+            ],
+            "Moderately reproducible": [
                 ""
             ],
             "Moderator": [
@@ -47564,6 +48323,9 @@
                 ""
             ],
             "Monetary Value Assigned to a True Positive": [
+                ""
+            ],
+            "Monitor cases with CV > 30% for adequate sampling": [
                 ""
             ],
             "Monitor response patterns to optimize treatment selection and timing decisions.": [
@@ -48961,6 +49723,9 @@
             "Negative values = tumor shrinkage (improvement)": [
                 ""
             ],
+            "Negative values detected. Most IHC biomarkers should have non-negative values (e.g., Ki67 %, H-scores). Verify data coding.": [
+                ""
+            ],
             "Negative-Response Probability": [
                 ""
             ],
@@ -48971,6 +49736,9 @@
                 ""
             ],
             "negligible correlation": [
+                ""
+            ],
+            "Negligible method differences": [
                 ""
             ],
             "Neighborhood Distance Threshold": [
@@ -49501,6 +50269,9 @@
             "No Clustering": [
                 ""
             ],
+            "No comparison available": [
+                ""
+            ],
             "No Complete Cases": [
                 ""
             ],
@@ -49619,6 +50390,9 @@
                 "Uyumda saptanabilir iyileşme yok (p >= 0.05)"
             ],
             "No diagnostic predictor is available. Diagnostic metrics were skipped; the prediction nomogram can still be generated from the regression model.": [
+                ""
+            ],
+            "No difference in the spread of per-case CVs between compartments was detected; this does not establish that they are the same": [
                 ""
             ],
             "NO EVALUABLE PATIENTS": [
@@ -49828,7 +50602,13 @@
             "No selected variable has recorded values in a supported storage type. Select at least one numeric, categorical, text or logical variable with recorded values.": [
                 "Seçilen değişkenlerin hiçbirinde desteklenen bir veri türünde kaydedilmiş değer yok. Kaydedilmiş değerleri olan en az bir sayısal, kategorik, metin veya mantıksal değişken seçin."
             ],
+            "No significant asymmetry": [
+                ""
+            ],
             "No significant difference (p >= 0.05)": [
+                ""
+            ],
+            "No significant difference in per-case mean biomarker levels detected across compartments; this does not establish that the distributions are the same": [
                 ""
             ],
             "No significant validation issues detected. Data appears suitable for flow analysis.": [
@@ -49850,6 +50630,9 @@
                 ""
             ],
             "No Spending Function": [
+                ""
+            ],
+            "No SROC curve: the fixed-effects model assumes no between-study heterogeneity, so the curve is undefined. The summary point and its confidence region are shown. Choose REML for the curve.": [
                 ""
             ],
             "No statistically significant %s (p = %s, alpha = %s)": [
@@ -49880,6 +50663,9 @@
                 ""
             ],
             "No subjects remain after the landmark at %s %s: every subject's follow-up ended at or before that time (longest follow-up was %s %s). Choose a landmark inside the observed follow-up range.": [
+                ""
+            ],
+            "No systematic bias was detected between regional and reference measurements (p \\u{2265} 0.05); this does not establish that the two agree, as the test may lack power to detect a difference of relevant size. ": [
                 ""
             ],
             "No term can be dropped while preserving model hierarchy.": [
@@ -50608,11 +51394,20 @@
             "Normative Comparison": [
                 ""
             ],
+            "NOT ADEQUATE FOR SUBSTITUTION:": [
+                ""
+            ],
+            "Not an ICC - see note": [
+                ""
+            ],
             "Not assessable": [
                 ""
             ],
             "Not assessable (empty model)": [
                 "Değerlendirilemez (boş model)"
+            ],
+            "Not assessable (reference mean near zero)": [
+                ""
             ],
             "NOT assessed": [
                 ""
@@ -50626,10 +51421,22 @@
             "not available": [
                 "mevcut değil"
             ],
+            "Not available - agreement could not be estimated with the provided data.": [
+                ""
+            ],
+            "Not available - correlation metrics were not estimable.": [
+                ""
+            ],
+            "Not available - insufficient data to estimate variability.": [
+                ""
+            ],
             "Not available (insufficient data)": [
                 ""
             ],
             "not available for this digit setting": [
+                ""
+            ],
+            "Not available.": [
                 ""
             ],
             "Not beneficial": [
@@ -50653,8 +51460,11 @@
             "not defined": [
                 ""
             ],
-            "Not estimable": [
+            "Not enough paired observations to test for systematic bias.": [
                 ""
+            ],
+            "Not estimable": [
+                "Kestirilemiyor"
             ],
             "not estimable": [
                 ""
@@ -50663,6 +51473,9 @@
                 "Tahmin edilemez (terim eşdoğrusal)"
             ],
             "not estimable (zero variance)": [
+                ""
+            ],
+            "Not estimable: at least 3 studies with finite odds ratios are required": [
                 ""
             ],
             "not estimable: no gold-standard negative cases": [
@@ -50812,6 +51625,12 @@
             "Note:": [
                 "Not:"
             ],
+            "Note: 'psych' package not available. Install 'psych' for enhanced reliability metrics (ICC).": [
+                ""
+            ],
+            "Note: 'psych' package not available. Using correlation-based approximation (r = %s, 95%% CI [%s, %s]) instead of ICC(2,1). Install 'psych' for exact ICC calculations.": [
+                ""
+            ],
             "Note: %d cell(s) have expected counts < 5": [
                 ""
             ],
@@ -50828,6 +51647,9 @@
                 ""
             ],
             "Note: Cross-validation provides more robust performance estimates": [
+                ""
+            ],
+            "Note: Exported data can be accessed through the Output panel and used for external analysis.": [
                 ""
             ],
             "Note: Hyperparameter tuning may take several minutes": [
@@ -50855,6 +51677,12 @@
                 ""
             ],
             "Note: Standard-geometry fallback used because the requested raincloud layer was incompatible with the data.": [
+                ""
+            ],
+            "Note: Stratified sampling was reported. This analysis applies NO design-based adjustment: all estimates treat the measurements as a simple sample, so stratification effects (if any) remain in the results.": [
+                ""
+            ],
+            "Note: Systematic sampling may introduce spatial bias in heterogeneity estimates. Consider correlation with tissue architecture patterns.": [
                 ""
             ],
             "Note: the Bayesian test could not be computed for this data, so the plot carries no subtitle and NO test statistic, Bayes factor or effect size is shown. Choose a different Statistical approach (parametric, non-parametric or robust) to obtain a result.": [
@@ -52243,7 +53071,13 @@
             "Omitted Study": [
                 ""
             ],
+            "Omnibus test of the covariate effect - %s.": [
+                ""
+            ],
             "On Efficient Frontier?": [
+                ""
+            ],
+            "On the pooled estimate this test would detect about %.0f of 100 patients with disease, but the interval%s admits materially worse performance. ": [
                 ""
             ],
             "On-Treatment / Ongoing (optional)": [
@@ -52278,6 +53112,9 @@
             ],
             "One curve is produced for the whole cohort, each patient at their own observed covariate values. <i>%s</i> is <b>not</b> varied, so this output does <b>not</b> compare its levels.": [
                 "Her hasta kendi gözlenen kovaryat değerlerinde olacak şekilde tüm kohort için tek bir eğri üretilir. <i>%s</i> değiştirilmez; dolayısıyla bu çıktı düzeylerini karşılaştır<b>maz</b>."
+            ],
+            "One or more regional measurements show no variability (constant values). Check for data entry errors.": [
+                ""
             ],
             "One Proportion Test (Single Group Rate)": [
                 ""
@@ -52405,6 +53242,9 @@
             "Only {positive} reference-positive and {negative} reference-negative observations are available. Estimates will be imprecise; inspect confidence intervals and justify sample size for the intended precision. This warning is not a clinical adequacy threshold.": [
                 ""
             ],
+            "Only %d cases are available. Reliability and variance estimates from fewer than 10 cases are imprecise; treat every coefficient below as provisional.": [
+                ""
+            ],
             "Only %d cases in the smaller outcome class. Below about 10 per class the AUC, its confidence interval and the p-value are all unreliable, and the interval is far wider than it looks (Hanley & McNeil 1982; Obuchowski 2004). Treat every figure in this table as provisional.": [
                 ""
             ],
@@ -52412,6 +53252,9 @@
                 ""
             ],
             "Only %d observations remain in the table. The chi-square statistic relies on a large-sample approximation, so the p-value reported above is unreliable at this size. For the overall table, an exact test or a larger sample is needed before the p-value can be read at face value.": [
+                ""
+            ],
+            "Only %d studies available. At least 3 studies are required for meta-analysis.": [
                 ""
             ],
             "Only %d subject(s) have repeated observations, so the longitudinal connections shown may not be meaningful.": [
@@ -53328,6 +54171,9 @@
             ],
             "Other covariates' effects": [
                 "Diğer kovaryatların etkileri"
+            ],
+            "other regions": [
+                ""
             ],
             "Other requirements": [
                 ""
@@ -54278,6 +55124,9 @@
                 ""
             ],
             "P-values for each coefficient.": [
+                ""
+            ],
+            "P-values on the sensitivity and specificity rows test the null hypothesis that the parameter equals 50% (no better than chance), not that the test meets any clinical threshold. They are significant for essentially any usable assay and should not be read as evidence of adequate accuracy - use the confidence and prediction intervals for that. Sensitivity and specificity rows are percentages; likelihood ratios and the diagnostic odds ratio are ratios.": [
                 ""
             ],
             "P(>=1 lesion)": [
@@ -55876,6 +56725,9 @@
             "Penalty type": [
                 "Ceza türü"
             ],
+            "per 100 %s": [
+                ""
+            ],
             "Per Arm Sample Size": [
                 ""
             ],
@@ -55933,8 +56785,17 @@
             "Per-Stratum Standardized Ratios": [
                 ""
             ],
+            "Per-study intervals are Wilson score confidence intervals at the %d%% level - the same intervals drawn on the forest plot.": [
+                ""
+            ],
+            "Per-study intervals are Wilson score confidence intervals at the %d%% level, computed from the raw counts shown here.": [
+                ""
+            ],
             "Percent": [
                 "Yüzde"
+            ],
+            "percent": [
+                ""
             ],
             "Percent %": [
                 ""
@@ -57271,7 +58132,7 @@
             "Plot Coefficient Path": [
                 ""
             ],
-            "Plot Color Palette": [
+            "Plot color palette": [
                 ""
             ],
             "Plot Color Scheme": [
@@ -57464,6 +58325,9 @@
                 ""
             ],
             "Plot hierarchical SROC curves": [
+                ""
+            ],
+            "Plot horizon shorter than follow-up": [
                 ""
             ],
             "Plot Inclusion Probabilities": [
@@ -58066,6 +58930,9 @@
             "Pooled Estimate": [
                 ""
             ],
+            "POOLED ESTIMATE": [
+                ""
+            ],
             "Pooled Parameter Estimates (Rubin's Rules)": [
                 ""
             ],
@@ -58103,6 +58970,9 @@
                 ""
             ],
             "Poor Model Fit": [
+                ""
+            ],
+            "Poor reliability": [
                 ""
             ],
             "Populated": [
@@ -58534,6 +59404,9 @@
             "Post-Adaptation N": [
                 ""
             ],
+            "Post-hoc (observed) power - not evidence of adequacy": [
+                ""
+            ],
             "Post-hoc Adjustment Method": [
                 ""
             ],
@@ -58844,6 +59717,9 @@
                 ""
             ],
             "Power Analysis Visualization": [
+                ""
+            ],
+            "Power analysis was requested but requires a reference (whole section) measurement; it was skipped for this inter-regional design.": [
                 ""
             ],
             "Power and Sample Size Analysis": [
@@ -59414,6 +60290,9 @@
                 ""
             ],
             "Prediction Interval": [
+                ""
+            ],
+            "Prediction interval for a future study (%d%%, t distribution on %d df): sensitivity %.1f%%-%.1f%%, specificity %.1f%%-%.1f%%. This is where a NEW study or laboratory is expected to fall and includes between-study heterogeneity; the confidence intervals above describe only how precisely the pooled average is estimated.": [
                 ""
             ],
             "Prediction Intervals": [
@@ -60487,6 +61366,9 @@
             "Processed Data": [
                 ""
             ],
+            "Processed data unavailable for proportional-hazards SROC analysis": [
+                ""
+            ],
             "Processing data": [
                 ""
             ],
@@ -60976,7 +61858,34 @@
             "Proportional-hazards SROC analysis": [
                 ""
             ],
+            "Proportional-hazards SROC analysis error: %s": [
+                ""
+            ],
+            "Proportional-hazards SROC analysis requires at least 3 studies": [
+                ""
+            ],
+            "Proportional-hazards SROC coefficient format is not supported": [
+                ""
+            ],
+            "Proportional-hazards SROC coefficients are empty": [
+                ""
+            ],
+            "Proportional-hazards SROC fitting error: %s": [
+                ""
+            ],
+            "Proportional-hazards SROC fitting failed; check data quality": [
+                ""
+            ],
+            "Proportional-hazards SROC fitting failed: %s": [
+                ""
+            ],
             "Proportional-Hazards SROC Model Results": [
+                ""
+            ],
+            "Proportional-hazards SROC summary contains no coefficients": [
+                ""
+            ],
+            "Proportional-hazards SROC summary error: %s": [
                 ""
             ],
             "Proportional-Hazards Test (cox.zph)": [
@@ -61195,6 +62104,21 @@
             "PT Target Value": [
                 ""
             ],
+            "PT1        0     50          (baseline required)": [
+                ""
+            ],
+            "PT1        0     50          (baseline)": [
+                ""
+            ],
+            "PT1        2     25          (2 months)": [
+                ""
+            ],
+            "PT1        2     25          (follow-up)": [
+                ""
+            ],
+            "PT1        4     10          (4 months)": [
+                ""
+            ],
             "Public Health Action Summary": [
                 ""
             ],
@@ -61219,6 +62143,9 @@
             "Publication Bias": [
                 ""
             ],
+            "Publication bias analysis error: %s": [
+                ""
+            ],
             "Publication Bias Assessment": [
                 ""
             ],
@@ -61226,6 +62153,9 @@
                 ""
             ],
             "Publication bias assessment (Deeks' test)": [
+                ""
+            ],
+            "Publication bias caution": [
                 ""
             ],
             "Publication Bias Tests": [
@@ -61594,6 +62524,9 @@
             "Quality Control Thresholds": [
                 ""
             ],
+            "Quality Control:": [
+                ""
+            ],
             "Quality Flag": [
                 ""
             ],
@@ -61670,6 +62603,9 @@
                 ""
             ],
             "Quality Thresholds": [
+                ""
+            ],
+            "Quality thresholds were set at correlation \\u{2265}%s and CV \\u{2264}%s%%.": [
                 ""
             ],
             "Quality-Adjusted Life Year (QALY)": [
@@ -62665,6 +63601,9 @@
             "Raw p-value": [
                 ""
             ],
+            "Raw start and end values are taken as already expressed in %s; no conversion is applied.": [
+                ""
+            ],
             "Raw Values (numeric)": [
                 ""
             ],
@@ -63193,6 +64132,9 @@
             "Reference Lines": [
                 ""
             ],
+            "Reference lines": [
+                ""
+            ],
             "Reference lines help identify clinically significant thresholds": [
                 ""
             ],
@@ -63409,6 +64351,12 @@
             "Regime Type": [
                 ""
             ],
+            "Region %d": [
+                ""
+            ],
+            "Region %d vs Reference": [
+                ""
+            ],
             "Region ID": [
                 ""
             ],
@@ -63436,6 +64384,9 @@
             "Region/Tissue ID (Optional)": [
                 ""
             ],
+            "regional and reference measurements": [
+                ""
+            ],
             "Regional Level": [
                 ""
             ],
@@ -63451,10 +64402,46 @@
             "Regional Measurement 4 (Optional)": [
                 ""
             ],
+            "regional measurements": [
+                ""
+            ],
+            "Regional measurements agree with the %s in this dataset (correlation \\u{2265} %s, CV \\u{2264} %s%%), and no material systematic bias was detected.": [
+                ""
+            ],
+            "Regional measurements agree with the %s in this dataset (correlation \\u{2265} %s, CV \\u{2264} %s%%). Systematic bias could not be assessed in this run.": [
+                ""
+            ],
             "Regional Measurements Comparison": [
                 ""
             ],
+            "Regional measurements differ from the %s by %s on average (%s%% of the reference mean, p %s).": [
+                ""
+            ],
+            "Regional measurements show moderate agreement with %s (thresholds: correlation \\u{2265} %s, CV \\u{2264} %s%%).": [
+                ""
+            ],
+            "Regional measurements showed excellent correlation %s (r = %s). ": [
+                ""
+            ],
+            "Regional measurements showed good correlation %s (r = %s). ": [
+                ""
+            ],
+            "Regional measurements showed moderate correlation %s (r = %s). ": [
+                ""
+            ],
+            "Regional measurements showed poor correlation %s (r = %s). ": [
+                ""
+            ],
+            "Regional Method Variance": [
+                ""
+            ],
             "Regional Nodes": [
+                ""
+            ],
+            "Regional vs Reference Measurements": [
+                ""
+            ],
+            "Regions with fewer than 2 cases are not analysed: %s.": [
                 ""
             ],
             "Registry-Based Cohort": [
@@ -63644,6 +64631,15 @@
                 ""
             ],
             "REGULATORY USE PROHIBITED": [
+                ""
+            ],
+            "Reitsma bivariate model, %s estimation.": [
+                ""
+            ],
+            "Reitsma model failed - coefficient matrix missing": [
+                ""
+            ],
+            "Reitsma model returned unexpected coefficient structure": [
                 ""
             ],
             "REL %": [
@@ -64111,6 +65107,9 @@
             "Representative patients": [
                 ""
             ],
+            "Representativeness:": [
+                ""
+            ],
             "Reproducibility": [
                 ""
             ],
@@ -64468,10 +65467,16 @@
             "Response category above each bar": [
                 ""
             ],
+            "Response category column": [
+                ""
+            ],
             "Response Category Distribution": [
                 ""
             ],
             "Response Category Override (optional)": [
+                ""
+            ],
+            "Response category override (optional)": [
                 ""
             ],
             "RESPONSE CATEGORY OVERRIDE IGNORED": [
@@ -64597,7 +65602,7 @@
             "Response Value (Raw or Percentage Measurement)": [
                 ""
             ],
-            "Response Value (Raw or Percentage)": [
+            "Response value (raw or percentage)": [
                 ""
             ],
             "Response Value:": [
@@ -64744,6 +65749,9 @@
             "Results Section": [
                 ""
             ],
+            "Results Section:": [
+                ""
+            ],
             "Results should be interpreted with caution.": [
                 ""
             ],
@@ -64849,6 +65857,9 @@
             "Review false positive cases to identify common characteristics": [
                 ""
             ],
+            "Review sampling strategy and consider increased sampling.": [
+                ""
+            ],
             "Review the MAD and chi-square results in the Analysis Summary": [
                 ""
             ],
@@ -64859,6 +65870,9 @@
                 ""
             ],
             "Review the variable summaries and data quality metrics": [
+                ""
+            ],
+            "Review variance components table to understand sources of variability": [
                 ""
             ],
             "RF mtry Method": [
@@ -65911,6 +66925,9 @@
             "Row ID": [
                 ""
             ],
+            "Row identifiers were not preserved during preprocessing, so the covariate could not be aligned with the filtered studies.": [
+                ""
+            ],
             "Row Label Size": [
                 ""
             ],
@@ -66038,6 +67055,24 @@
                 ""
             ],
             "Rule-based (optimal panels only)": [
+                ""
+            ],
+            "Rule-in power is governed by the positive likelihood ratio rather than by specificity alone, and LR+ is not estimable here. ": [
+                ""
+            ],
+            "Rule-in power is governed by the positive likelihood ratio rather than by specificity alone; here LR+ = %.2f, which provides %s evidence for disease after a positive result. ": [
+                ""
+            ],
+            "Rule-in power is governed by the positive likelihood ratio rather than by specificity alone; here LR+ = %.2f, which raises the post-test odds substantially (the SpPin pattern). ": [
+                ""
+            ],
+            "Rule-out power is governed by the negative likelihood ratio rather than by sensitivity alone, and LR- is not estimable here. ": [
+                ""
+            ],
+            "Rule-out power is governed by the negative likelihood ratio rather than by sensitivity alone; here LR- = %.2f, which lowers the post-test odds substantially (the SnNout pattern). ": [
+                ""
+            ],
+            "Rule-out power is governed by the negative likelihood ratio rather than by sensitivity alone; here LR- = %.2f, which provides %s evidence against disease after a negative result. ": [
                 ""
             ],
             "Run": [
@@ -66328,6 +67363,9 @@
             "Sample size:": [
                 ""
             ],
+            "Sample Size:": [
+                ""
+            ],
             "Sample size: %d | Expected counts < 5: %d/%d cells | Expected counts < 1: %d cells": [
                 ""
             ],
@@ -66415,7 +67453,13 @@
             "Sampling Bias Analysis": [
                 ""
             ],
+            "Sampling Bias:": [
+                ""
+            ],
             "Sampling distribution of effect sizes": [
+                ""
+            ],
+            "Sampling does not meet quality thresholds (correlation \\u{2265} %s, CV \\u{2264} %s%%).": [
                 ""
             ],
             "Sampling Error & Efficiency Calculator": [
@@ -66442,9 +67486,6 @@
             "Sampling Protocol Settings": [
                 ""
             ],
-            "Sampling Strategy": [
-                ""
-            ],
             "Sampling strategy": [
                 ""
             ],
@@ -66452,6 +67493,24 @@
                 ""
             ],
             "Sampling Variability Analysis": [
+                ""
+            ],
+            "Sampling variability could not be estimated. ": [
+                ""
+            ],
+            "Sampling variability was high (mean CV = %s%%). ": [
+                ""
+            ],
+            "Sampling variability was low (mean CV = %s%%). ": [
+                ""
+            ],
+            "Sampling variability was moderate (mean CV = %s%%). ": [
+                ""
+            ],
+            "Sampling variability was quantified using the coefficient of variation (CV). ": [
+                ""
+            ],
+            "Sampling Variability:": [
                 ""
             ],
             "Sandwich Estimator": [
@@ -67369,6 +68428,9 @@
             "Select a numeric variable containing naturally occurring numbers": [
                 ""
             ],
+            "Select a Patient ID and a Response Value variable to run the analysis.": [
+                ""
+            ],
             "Select a second diagnostic test to compare with Test 1. This enables head-to-head  comparison analysis (e.g., new method vs standard method, or two different biomarkers).": [
                 ""
             ],
@@ -67613,6 +68675,9 @@
                 ""
             ],
             "Select the study design complexity. 'Simple' assumes a fixed follow-up period for all subjects. 'Complex' allows for accrual period and variable follow-up times.": [
+                ""
+            ],
+            "Select the study identifier and the TP, FP, FN and TN count variables to run the meta-analysis.": [
                 ""
             ],
             "Select the summary format style. summarytools options provide automated EDA analysis.": [
@@ -67866,6 +68931,9 @@
             ],
             "Sensitivity": [
                 "Duyarlılık"
+            ],
+            "sensitivity": [
+                ""
             ],
             "Sensitivity (%.2f) + Specificity (%.2f) = %.2f must be > 1 for bias correction to be valid.": [
                 ""
@@ -71065,6 +72133,9 @@
             "significant": [
                 ""
             ],
+            "Significant asymmetry detected": [
+                ""
+            ],
             "Significant Coefficients": [
                 ""
             ],
@@ -71083,10 +72154,19 @@
             "Significant difference (p < 0.05)": [
                 ""
             ],
+            "Significant difference in per-case mean biomarker levels across compartments": [
+                ""
+            ],
             "Significant differences between groups were detected (p < 0.05). Post-hoc testing is recommended to identify specific group differences.": [
                 ""
             ],
+            "Significant increase in sampling recommended (current CV = %s%% > %s%% threshold)": [
+                ""
+            ],
             "Significant Mediators (High-Dimensional)": [
+                ""
+            ],
+            "Significant method differences": [
                 ""
             ],
             "Significant optimization potential; classifier may benefit from recalibration": [
@@ -71125,7 +72205,16 @@
             "Silhouette Δ": [
                 ""
             ],
+            "Similar bias": [
+                ""
+            ],
             "Similar distributions between groups; Separation = distinct patterns": [
+                ""
+            ],
+            "Similar to other compartments": [
+                ""
+            ],
+            "Similar variability": [
                 ""
             ],
             "Similarity Measure": [
@@ -71530,6 +72619,9 @@
             "Small effect": [
                 ""
             ],
+            "Small Effect (r=0.1)": [
+                ""
+            ],
             "Small effect size": [
                 ""
             ],
@@ -71557,6 +72649,9 @@
             "SMALL SAMPLE": [
                 ""
             ],
+            "Small sample": [
+                ""
+            ],
             "Small Sample Correction": [
                 ""
             ],
@@ -71576,6 +72671,9 @@
                 ""
             ],
             "Small sample size (n=%d) may limit statistical power.": [
+                ""
+            ],
+            "Small sample size (n=%d) may reduce statistical power. Consider collecting more cases for reliable estimates.": [
                 ""
             ],
             "Small sample size after removing missing data: {n} observations. Results may be unreliable.": [
@@ -71875,7 +72973,7 @@
             "Sort bars by value or alphabetically.": [
                 ""
             ],
-            "Sort By": [
+            "Sort by": [
                 ""
             ],
             "Sort by Frequency": [
@@ -71893,7 +72991,7 @@
             "Sort by Value (Descending)": [
                 ""
             ],
-            "Sort By Variable": [
+            "Sort by variable": [
                 ""
             ],
             "Sort By Variable (Optional)": [
@@ -71926,7 +73024,7 @@
             "Sort decreasing": [
                 ""
             ],
-            "Sort Direction": [
+            "Sort direction": [
                 ""
             ],
             "Sort Estimates": [
@@ -72094,6 +73192,9 @@
             "Spatial Analysis": [
                 ""
             ],
+            "Spatial analysis requires at least 2 spatial regions with 2 or more cases each; the Spatial Region ID variable supplies %d usable region(s).": [
+                ""
+            ],
             "Spatial Analysis Results": [
                 ""
             ],
@@ -72193,6 +73294,9 @@
             "Spatial hotspot analysis using kernel density estimation": [
                 ""
             ],
+            "Spatial ID variable '%s' not found in data.": [
+                ""
+            ],
             "Spatial Model Type": [
                 ""
             ],
@@ -72278,6 +73382,12 @@
                 ""
             ],
             "Spearman Correlation (Rank-based)": [
+                ""
+            ],
+            "Spearman correlation = %s (Good agreement with %s at your %.2f threshold)": [
+                ""
+            ],
+            "Spearman correlation = %s (Limited agreement with %s at your %.2f threshold)": [
                 ""
             ],
             "Spearman only - for ordinal or non-normal data": [
@@ -72390,6 +73500,9 @@
             ],
             "Specificity": [
                 "Özgüllük"
+            ],
+            "specificity": [
+                ""
             ],
             "Specificity (%)": [
                 ""
@@ -72568,10 +73681,10 @@
             "Spider Plot (Tumor Size Over Time)": [
                 ""
             ],
-            "Spider Plot Color By": [
+            "Spider plot color by": [
                 ""
             ],
-            "Spider Plot Color Scheme": [
+            "Spider plot color scheme": [
                 ""
             ],
             "SPIDER PLOT NEEDS A TIME VARIABLE": [
@@ -72586,7 +73699,7 @@
             "Spider Plot Requirements and Guidelines": [
                 ""
             ],
-            "Spider Plot Time Unit Label": [
+            "Spider plot time unit label": [
                 ""
             ],
             "Spider Plot Visualization": [
@@ -72812,6 +73925,12 @@
                 ""
             ],
             "SRMR": [
+                ""
+            ],
+            "SROC AUC below chance": [
+                ""
+            ],
+            "SROC curve": [
                 ""
             ],
             "SROC Plot Explanation": [
@@ -73045,7 +74164,7 @@
             "Standard Coefficient": [
                 ""
             ],
-            "Standard Colors": [
+            "Standard colors": [
                 ""
             ],
             "Standard Cox (all variables)": [
@@ -73313,6 +74432,9 @@
                 ""
             ],
             "Start Time": [
+                ""
+            ],
+            "Start time": [
                 ""
             ],
             "Start Time (Required)": [
@@ -73607,6 +74729,9 @@
                 ""
             ],
             "Statistical Interpretation": [
+                ""
+            ],
+            "Statistical Interpretation:": [
                 ""
             ],
             "Statistical Justification": [
@@ -74518,6 +75643,12 @@
             "Studies": [
                 ""
             ],
+            "Studies (circles), pooled estimate (triangle)": [
+                ""
+            ],
+            "Studies excluded": [
+                ""
+            ],
             "Studies with at least three tests whose errors are plausibly independent within each latent class.": [
                 ""
             ],
@@ -74588,6 +75719,9 @@
                 ""
             ],
             "Study Identifier": [
+                ""
+            ],
+            "Study identifier": [
                 ""
             ],
             "Study included %d patients with %d timeline observations. Median observed duration was %.1f %s (range: %.1f to %.1f %s).": [
@@ -74881,8 +76015,14 @@
             "Substantial": [
                 ""
             ],
+            "Substantial between-study heterogeneity": [
+                ""
+            ],
             "Substantial missing data were present ({percent} of cases with at least one missing value).": [
                 "Önemli ölçüde eksik veri vardı (olguların {percent} kadarında en az bir eksik değer)."
+            ],
+            "Substantial sample increase recommended": [
+                ""
             ],
             "Subtitle": [
                 ""
@@ -74960,6 +76100,9 @@
                 ""
             ],
             "Sum Display Type": [
+                ""
+            ],
+            "Sum of all variance components": [
                 ""
             ],
             "Sum of follow-up time for all individuals (for example, person-years)": [
@@ -75745,6 +76888,9 @@
             "Survival Plots Explanations": [
                 "Sağkalım Grafikleri Açıklamaları"
             ],
+            "Survival plots stop at the Plot End Time ({end} {unit}) although follow-up extends to {max} {unit}. Increase Plot End Time under Plot Options to show the full curves; the tables are not affected.": [
+                ""
+            ],
             "Survival Power Analysis": [
                 ""
             ],
@@ -75967,6 +77113,9 @@
             "Swimmer Plot": [
                 ""
             ],
+            "Swimmer Plot (Simplified)": [
+                ""
+            ],
             "Swimmer Plot (Treatment Duration & Response)": [
                 ""
             ],
@@ -76079,6 +77228,18 @@
                 ""
             ],
             "Systematic bias assessment between methods": [
+                ""
+            ],
+            "Systematic bias detected - consider calibration or bias correction": [
+                ""
+            ],
+            "Systematic bias was detected between regional and reference measurements (p = %s). ": [
+                ""
+            ],
+            "SYSTEMATIC BIAS:": [
+                ""
+            ],
+            "Systematic difference from the reference measurement was tested with a paired t-test. ": [
                 ""
             ],
             "Systematic evaluation of diagnostic test combinations. Analyzes all possible\ntest result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a gold\nstandard and summarizes named parallel, serial, and majority strategies.\nCalculates sensitivity, specificity, predictive values, likelihood ratios,\naccuracy, and uncertainty intervals. Descriptive rankings are sample-dependent\nanalytical summaries, not clinical guides or validated recommendations.": [
@@ -77446,6 +78607,9 @@
             "Texture Interpretation Guide": [
                 ""
             ],
+            "That figure is the mean Spearman correlation rather than an ICC, because an ICC could not be fitted to these data. A correlation only asks whether the regions rank the cases in the same order, so two regions that rank identically but differ by a constant offset still score close to 1; the note under the Reproducibility Assessment table explains why the ICC was not estimable.": [
+                ""
+            ],
             "The 'Exclude missing values' box has no effect": [
                 ""
             ],
@@ -77569,6 +78733,9 @@
             "The bias grows as the sample gets smaller and as more candidate cutpoints are searched.": [
                 ""
             ],
+            "The biopsy sampling approach met the predefined quality criteria (correlation and CV thresholds set in the analysis options). ": [
+                ""
+            ],
             "The Blues (9 colors)": [
                 ""
             ],
@@ -77644,6 +78811,9 @@
             "The corrected AUC (%.3f) is below 0.500. This is a real result, not an error: the bootstrap replicates fit models that pick up chance associations, so the optimism (%.3f) exceeds what the model actually achieves. Read it as evidence that these predictors carry no usable signal at this sample size - the model performs no better than, and by this estimate slightly worse than, guessing.": [
                 ""
             ],
+            "The correlation is estimated at the boundary (+/-1), which with few studies usually means it cannot be estimated reliably - do not over-interpret it.": [
+                ""
+            ],
             "The correlation summary could not be computed. This is an unavailable diagnostic, not evidence that collinearity is absent.": [
                 "Korelasyon özeti hesaplanamadı. Bu, tanılamanın mevcut olmadığını gösterir; çoklu bağlantının olmadığını kanıtlamaz."
             ],
@@ -77706,6 +78876,9 @@
             ],
             "The data-derived cut-off point for {variable} is {cutoff}; it separates lower and higher marker values in this dataset.": [
                 "{variable} için veriden türetilen kesim noktası {cutoff} değeridir; bu veri kümesindeki daha düşük ve daha yüksek belirteç değerlerini ayırır."
+            ],
+            "The dataset contains no rows. Add data (or clear the active filter) and re-run.": [
+                ""
             ],
             "The dataset for advanced bar chart visualization.": [
                 ""
@@ -77872,6 +79045,9 @@
             "The ggpubr plot could not be created: {error}": [
                 ""
             ],
+            "the ggswim package is not installed": [
+                ""
+            ],
             "The global test across all markers could not be computed (%s); its statistic and p-value are left blank.": [
                 ""
             ],
@@ -77917,6 +79093,9 @@
             "The HR is the ratio of one variable's hazard ratio between the levels of the other; a small p indicates evidence that the effect of one variable <b>depends on</b> the other (effect modification).": [
                 "TO, bir değişkenin tehlike oranının diğerinin düzeyleri arasındaki oranıdır; küçük bir p, bir değişkenin etkisinin diğerine <b>bağlı olduğuna</b> (etki değişimi) dair kanıt gösterir."
             ],
+            "The ICC reported here is the absolute-agreement form: it is the share of the total variation in scores that comes from genuine differences between cases rather than from which region was measured, and a consistent offset between regions counts against it. It is not the proportion of cases whose scores matched, and it depends on how spread out your cohort is - the same measurement error yields a lower ICC when the cases have a narrow range of values. The 95%% CI Lower and 95%% CI Upper columns of the Reproducibility Assessment table show how precisely these %d cases pin the figure down.": [
+                ""
+            ],
             "The inline distribution plots could not be rendered, so a numeric summary table is shown instead. The descriptive estimates remain available; review the text summary for the same values.": [
                 "Satır içi dağılım grafikleri oluşturulamadığı için bunun yerine sayısal bir özet tablosu gösteriliyor. Tanımlayıcı tahminler kullanılabilir durumdadır; aynı değerler için metin özetini inceleyin."
             ],
@@ -77932,6 +79111,9 @@
             "The intraclass correlation could not be estimated (too few complete cases or measurements, zero variance, or the 'psych' package is unavailable). The value shown is the mean Spearman correlation, which is NOT an ICC: it is blind to systematic differences between measurements. Do not interpret it as a reliability coefficient.": [
                 ""
             ],
+            "The intraclass correlation could not be estimated; the reproducibility table shows a mean Spearman correlation instead, which is blind to systematic offsets and is not a reliability coefficient.": [
+                ""
+            ],
             "The Kaplan-Meier survival plot": [
                 ""
             ],
@@ -77939,6 +79121,9 @@
                 ""
             ],
             "The KMunicate-style plot follows the CI and risk-table options, but does not draw individual censoring marks or median reference lines. Those two display options apply to the standard Kaplan-Meier and cumulative-event plots; the KMunicate risk panel reports censoring counts when it is shown.": [
+                ""
+            ],
+            "The Kruskal-Wallis test compares ONE summary value per case (the mean of that case's reference and regional measurements) across compartments, so each patient contributes a single independent observation.": [
                 ""
             ],
             "The Lachin-Foulkes method cannot perform the '{calculation}' calculation. Select the Schoenfeld (events-based) method for this calculation type, or keep Lachin-Foulkes and choose 'Sample Size from Power' or 'Power from Sample Size' instead.": [
@@ -78007,6 +79192,9 @@
             "The log-rank p above is EXPLORATORY: the cut-points were selected from these same data, so it is the largest of many statistics reported as a single test and is optimistic. No selection-adjusted p-value is reported: a single-split maximally selected-rank test does not adjust a multiple-cutoff procedure. Validate every cut-point in independent data before clinical use.": [
                 "Yukarıdaki log-rank p değeri KEŞİFSELDİR: kesim noktaları aynı verilerden seçildiği için, çok sayıdaki istatistiğin en büyüğü tek bir testmiş gibi bildirilmiştir ve iyimserdir. Seçime göre düzeltilmiş p değeri bildirilmez; tek bölmeli maksimum seçilmiş sıra testi çoklu kesim noktası işlemini düzeltmez. Klinik kullanımdan önce her kesim noktasını bağımsız verilerde doğrulayın."
             ],
+            "The mada package is not available, so the proportional-hazards SROC model could not be fitted.": [
+                ""
+            ],
             "The main time-dependent variable of interest (e.g., treatment status, biomarker status, disease progression). This variable can change during follow-up.": [
                 ""
             ],
@@ -78041,6 +79229,15 @@
                 ""
             ],
             "The median time to the event of interest was not reached: the cumulative incidence of the event of interest stayed below 50%% within the observed follow-up (longest follow-up %.1f %s). With competing risks this is expected whenever the competing event is frequent, since the cumulative incidence can plateau below 50%% however long follow-up continues; it is not a statement that outcomes were good": [
+                ""
+            ],
+            "The metafor package is not available, so heterogeneity could not be assessed.": [
+                ""
+            ],
+            "The metafor package is not available, so meta-regression could not be run.": [
+                ""
+            ],
+            "The metafor package is not available, so publication bias could not be assessed.": [
                 ""
             ],
             "the metric you chose under Optimization Metric": [
@@ -78133,6 +79330,9 @@
             "The optimal threshold maximizes the Youden index on the same data used to fit the model, so sensitivity, specificity, accuracy, precision, and F1 are apparent (in-sample) and optimistic. Enable bootstrap validation for an optimism-corrected estimate of discrimination.": [
                 ""
             ],
+            "The optimised processing path failed (%s); the standard path was used instead, so results are unaffected.": [
+                ""
+            ],
             "The optional descriptive cohort summary could not be generated. The numerical tables above remain the authoritative results.": [
                 ""
             ],
@@ -78211,6 +79411,9 @@
             "The predicted risk is based on the total points from all variables": [
                 "Öngörülen risk tüm değişkenlerin toplam puanına dayanır"
             ],
+            "The prediction interval spans a wide range of accuracy (sensitivity %.0f%%-%.0f%%, specificity %.0f%%-%.0f%%). A single pooled sensitivity and specificity may not usefully describe this body of evidence: studies differ more than sampling error explains, commonly because of differing positivity thresholds, patient spectrum or reference standards. Prefer the SROC curve and the prediction region over the pooled point, and investigate the source of heterogeneity before applying these figures to your own practice.": [
+                ""
+            ],
             "The prediction nomogram was not generated because Firth penalized regression is selected. Diagnostic metrics, when available, remain unadjusted 2x2 estimates.": [
                 ""
             ],
@@ -78247,6 +79450,12 @@
             "The proportional-hazards diagnostic did not complete cleanly: {message}": [
                 "Orantılı hazard tanısı düzgün biçimde tamamlanmadı: {message}"
             ],
+            "The proportional-hazards SROC AUC is %.2f (< 0.70), indicating poor overall discrimination.": [
+                ""
+            ],
+            "The proportional-hazards SROC AUC is %.2f, below 0.5: the pooled test performs worse than chance. Check the TP/FP/FN/TN column assignment.": [
+                ""
+            ],
             "The proportional-hazards test plot could not be created: {message}": [
                 ""
             ],
@@ -78269,6 +79478,15 @@
                 ""
             ],
             "The reference standard and tests must use different variables. Select a different variable for: {variables}.": [
+                ""
+            ],
+            "The Reitsma bivariate model could not be fitted (%s). Pooled sensitivity and specificity are unavailable; the SROC plot and summary fall back to descriptive output.": [
+                ""
+            ],
+            "The Reitsma model did not return coefficient estimates, so pooled sensitivity and specificity are unavailable.": [
+                ""
+            ],
+            "The Reitsma model did not return the expected coefficient estimates, so pooled sensitivity and specificity are unavailable.": [
                 ""
             ],
             "The remaining values describe agreement with the rule and are not estimates of diagnostic accuracy.": [
@@ -78326,6 +79544,12 @@
                 ""
             ],
             "the sample median": [
+                ""
+            ],
+            "The sampling approach did not meet the predefined quality criteria. ": [
+                ""
+            ],
+            "The sampling approach met the correlation and CV criteria only after relaxing them to correlation \\u{2265} (threshold - 0.20) and CV \\u{2264} (1.5 \\u{00D7} threshold). ": [
                 ""
             ],
             "The scattermore package is required but not installed. Please install it using install.packages(\"scattermore\")": [
@@ -78424,6 +79648,9 @@
             "The spider plot draws each patient's tumour trajectory over time, so it requires a Time Variable. None is selected, so no spider plot can be produced. Assign the visit/assessment time column to \"Time Variable (Required for Spider Plot)\" to enable it.": [
                 ""
             ],
+            "The spread of per-case CVs differs between compartments (unequal variance of heterogeneity); this does not by itself mean one compartment is more heterogeneous on average": [
+                ""
+            ],
             "The standardised option averages predictions over all observed patients; the reference-profile option uses one mean/mode profile": [
                 "Standardize seçeneği öngörülerin ortalamasını tüm gözlenen hastalar üzerinde alır; referans profil seçeneği tek bir ortalama/mod profili kullanır"
             ],
@@ -78434,6 +79661,9 @@
                 ""
             ],
             "The study population should represent the intended-use population and relevant disease spectrum.": [
+                ""
+            ],
+            "The Summary ROC plot requires the bivariate random-effects (Reitsma) model. Enable 'Bivariate Analysis' to display the pooled summary point and study estimates.": [
                 ""
             ],
             "The summary table could not be produced. The variable summaries above are unaffected.": [
@@ -78631,10 +79861,16 @@
             "These are model-based predictions. They rely on the Cox model being correctly specified and on proportional hazards holding, and they adjust only for variables in the model - not for anything unmeasured.": [
                 "Bunlar modele dayalı öngörülerdir. Cox modelinin doğru belirlenmiş olmasına ve orantılı tehlikelerin sağlanmasına dayanırlar; yalnızca modeldeki değişkenlere göre düzeltme yaparlar, ölçülmemiş hiçbir şeye göre değil."
             ],
+            "These are pooled estimates from the included studies only; how far they carry to another setting depends on the prediction region and on how comparable the positivity thresholds, patient spectrum and reference standards are.": [
+                ""
+            ],
             "These are read from the single interaction model by relevel-and-refit: the model's implied conditional effects.": [
                 "Bunlar tek etkileşim modelinden yeniden düzeyleme ve yeniden uydurma ile okunur: modelin ima ettiği koşullu etkiler."
             ],
             "These are single-cohort estimates. Their practical meaning depends on intended use, error consequences, prevalence, patient spectrum, and reference-standard quality. This educational summary is not a clinical guide.": [
+                ""
+            ],
+            "These are summary statistics from this dataset alone; they are not an external validation and they do not describe agreement at the score thresholds used to classify cases.": [
                 ""
             ],
             "These cases carry a level that codes missingness rather than a result. They are excluded rather than counted as negative, which would have biased sensitivity and specificity.": [
@@ -78759,6 +79995,9 @@
             ],
             "This analysis fits a sparse development model. Its apparent performance and median-split survival curves require validation before clinical use.": [
                 "Bu analiz seyrek bir geliştirme modeli kurar. Görünür performansı ve medyana göre ayrılan sağkalım eğrileri klinik kullanımdan önce doğrulama gerektirir."
+            ],
+            "This analysis follows the biopsy simulation methodology from Zilenaite-Petrulaitiene et al. (2025) and international guidelines for diagnostic test evaluation in pathology.": [
+                ""
             ],
             "This analysis has %d group(s) and %d fill level(s). The raincloud (ggrain) layer is skipped above 15 groups or 5 fill levels to keep the plot readable, in which case standard violin, boxplot and point layers are drawn instead.": [
                 ""
@@ -78979,6 +80218,9 @@
             "This nomogram is derived and evaluated in the same data. It is not a point-of-care decision tool without calibration, internal validation, and external validation in the intended population.": [
                 "Bu nomogram aynı veride türetilip değerlendirilmiştir. Kalibrasyon, iç doğrulama ve amaçlanan popülasyonda dış doğrulama olmadan bakım noktasında karar aracı değildir."
             ],
+            "This number is a mean Spearman correlation, not an ICC, so the ICC reliability bands do not apply to it - see the note under the Reproducibility Assessment table.": [
+                ""
+            ],
             "This output is for model development only. Use bootstrap optimism correction or nested cross-validation that repeats preprocessing and tuning, followed by external validation, before considering clinical use.": [
                 "Bu çıktı yalnızca model geliştirme içindir. Klinik kullanımı düşünmeden önce ön işleme ve ayarlamayı tekrarlayan bootstrap iyimserlik düzeltmesi veya iç içe çapraz doğrulama, ardından dış doğrulama kullanınız."
             ],
@@ -79027,11 +80269,17 @@
             "This strategy raises combined specificity above that of either test alone and lowers combined sensitivity: fewer false positives, more missed cases.": [
                 ""
             ],
+            "This summary provides a simplified interpretation of the statistical results for clinical understanding.": [
+                ""
+            ],
             "This table lists every observed test value as a candidate cutpoint, not only the selected one; the bias above applies to whichever row you report as the cutpoint.": [
                 ""
             ],
             "This Table One summarizes baseline characteristics commonly reported in clinical research manuscripts.": [
                 "Bu Tablo Bir, klinik araştırma makalelerinde sıklıkla bildirilen başlangıç özelliklerini özetler."
+            ],
+            "This table shows the RAW counts and the accuracy computed from them; the pooled analyses and the forest plot use the zero-cell-corrected counts, so values for corrected studies differ slightly.": [
+                ""
             ],
             "This text is formatted for inclusion in clinical reports, research manuscripts, or case presentations. Adjust terminology as needed for your specific context.": [
                 ""
@@ -79408,7 +80656,7 @@
             "Time difference cannot be calculated. Make sure that time type in variables are correct. Currently it is: {format}": [
                 "Zaman farkı hesaplanamıyor. Değişkenlerdeki zaman türünün doğru olduğundan emin olun. Şu anda: {format}"
             ],
-            "Time Display Mode": [
+            "Time display mode": [
                 ""
             ],
             "Time Elapsed": [
@@ -79459,7 +80707,7 @@
             "Time Input Configuration": [
                 ""
             ],
-            "Time Input Type": [
+            "Time input type": [
                 ""
             ],
             "Time Interactions": [
@@ -79840,7 +81088,7 @@
             "Time Variable (optional)": [
                 ""
             ],
-            "Time Variable (Required for Spider Plot)": [
+            "Time variable (required for spider plot)": [
                 ""
             ],
             "Time Variable (Survival)": [
@@ -80194,6 +81442,9 @@
             "Timeline Analysis:": [
                 ""
             ],
+            "Timeline data": [
+                ""
+            ],
             "Timeline display options": [
                 ""
             ],
@@ -80354,6 +81605,9 @@
                 ""
             ],
             "To N+1 Samples": [
+                ""
+            ],
+            "To perform meta-regression analysis, please select a covariate variable (e.g., study year, population type, method) that may explain heterogeneity between studies. The covariate should be a study-level characteristic that varies across included studies.": [
                 ""
             ],
             "To specificity": [
@@ -82009,6 +83263,9 @@
             "Two dash": [
                 ""
             ],
+            "Two Fisher's exact tests (ORR and DCR) are reported with unadjusted p-values; interpret them jointly rather than as independent evidence.": [
+                ""
+            ],
             "Two Groups": [
                 "İki Grup"
             ],
@@ -82019,6 +83276,12 @@
                 ""
             ],
             "Two Sample (Group Comparison)": [
+                ""
+            ],
+            "Two separate UNIVARIATE meta-regression models were fitted (logit sensitivity and logit specificity), not a joint bivariate meta-regression, using %s estimation with the Knapp-Hartung adjustment (test statistics are t, not z).": [
+                ""
+            ],
+            "Two separate UNIVARIATE meta-regression models were fitted (logit sensitivity and logit specificity), not a joint bivariate meta-regression, using %s estimation.": [
                 ""
             ],
             "Two tests run in parallel": [
@@ -82389,6 +83652,9 @@
             ],
             "Unable to draw the PH plot (ggcoxzph): {error}": [
                 "PH grafiği çizilemedi (ggcoxzph): {error}"
+            ],
+            "Unable to evaluate sampling quality because correlation or variability estimates could not be computed.": [
+                ""
             ],
             "Unable to generate analysis suggestions:": [
                 ""
@@ -82984,6 +84250,9 @@
             "Univariate Analysis": [
                 ""
             ],
+            "Univariate auxiliary models used %s estimation.": [
+                ""
+            ],
             "Univariate Cox Regression": [
                 ""
             ],
@@ -83315,6 +84584,9 @@
                 ""
             ],
             "Usage Note:": [
+                ""
+            ],
+            "Usage:": [
                 ""
             ],
             "USD": [
@@ -84073,6 +85345,9 @@
             "Validation Type": [
                 ""
             ],
+            "Validation:": [
+                ""
+            ],
             "Validity Analysis": [
                 ""
             ],
@@ -84211,10 +85486,28 @@
             "Variability across spatial regions": [
                 ""
             ],
+            "Variability Analysis Focus: This analysis emphasizes variance components and spatial heterogeneity assessment.": [
+                ""
+            ],
             "Variability Assessment": [
                 ""
             ],
+            "Variability between measurements was high in this dataset (mean CV above your configured %.0f%% threshold).": [
+                ""
+            ],
+            "Variability between measurements was low in this dataset (mean CV at or below %.0f%%, half your configured threshold).": [
+                ""
+            ],
+            "Variability between measurements was moderate in this dataset (mean CV within your configured %.0f%% threshold).": [
+                ""
+            ],
+            "Variability Level": [
+                ""
+            ],
             "Variability plots": [
+                ""
+            ],
+            "Variability:": [
                 ""
             ],
             "Variable": [
@@ -84532,6 +85825,9 @@
             "Variable Ratio": [
                 ""
             ],
+            "Variable sampling": [
+                ""
+            ],
             "Variable Scaling": [
                 ""
             ],
@@ -84832,6 +86128,9 @@
             "Variables representing set membership (binary columns)": [
                 ""
             ],
+            "Variables required": [
+                ""
+            ],
             "Variables Selected": [
                 ""
             ],
@@ -84947,9 +86246,12 @@
                 ""
             ],
             "Variance component model could not be fitted to these data.": [
-                ""
+                "Varyans bileşeni modeli bu verilere uydurulamadı."
             ],
             "Variance Components": [
+                ""
+            ],
+            "Variance components": [
                 ""
             ],
             "Variance Components Analysis": [
@@ -85007,6 +86309,9 @@
                 ""
             ],
             "Variance threshold": [
+                ""
+            ],
+            "variance-components": [
                 ""
             ],
             "Variance/SE": [
@@ -85114,6 +86419,9 @@
             "Very few unique IDs relative to data size: Check if ID variable is correctly specified.": [
                 ""
             ],
+            "Very high biomarker values detected (max: %s). Verify if these are appropriate for your biomarker scale (e.g., percentages should be \\u{2264}100%%, H-scores \\u{2264}300).": [
+                ""
+            ],
             "Very high disease prevalence observed in this sample ({pct})": [
                 ""
             ],
@@ -85124,6 +86432,9 @@
                 ""
             ],
             "Very high sensitivity range - critical for screening/case-finding": [
+                ""
+            ],
+            "Very high variability (CV > 50%%) detected in %d cases. This may indicate measurement inconsistencies or high biological heterogeneity.": [
                 ""
             ],
             "Very large dataset detected ({n} rows)": [
@@ -85663,6 +86974,9 @@
             "Warning: Some percentage changes are outside typical range (%d%% to +500%%). Please verify data.": [
                 ""
             ],
+            "Warning: Unknown sampling strategy limits interpretation reliability. Consider documenting sampling methodology for future analyses.": [
+                ""
+            ],
             "Warning: Very high apparent AUC with small sample size suggests possible overfitting. Enable bootstrap validation to assess optimism.": [
                 ""
             ],
@@ -85709,6 +87023,9 @@
                 ""
             ],
             "Wave": [
+                ""
+            ],
+            "We analyzed <strong>%d tissue samples</strong> to understand how well measurements from <strong>%d different regions</strong> represent biomarker expression.": [
                 ""
             ],
             "We analyzed the distribution of {outcome} using descriptive statistics.": [
@@ -86407,6 +87724,9 @@
             "WHO/UN standard (0-4, 5-9, ... 85+)": [
                 ""
             ],
+            "whole section": [
+                ""
+            ],
             "Whole-cohort expected survival": [
                 "Tüm kohort için beklenen sağkalım"
             ],
@@ -86647,6 +87967,24 @@
             "Winter": [
                 ""
             ],
+            "With %.1f%% sensitivity, approximately %.0f out of 100 diseased patients will be correctly identified. ": [
+                ""
+            ],
+            "With %.1f%% sensitivity, this test will detect %.0f out of 100 patients with disease, missing only %.0f. ": [
+                ""
+            ],
+            "With %.1f%% sensitivity, up to %.0f out of 100 diseased patients may be missed. ": [
+                ""
+            ],
+            "With %.1f%% specificity, approximately %.0f out of 100 healthy individuals will be correctly classified. ": [
+                ""
+            ],
+            "With %.1f%% specificity, only %.0f out of 100 healthy individuals will test positive (false alarms). ": [
+                ""
+            ],
+            "With %.1f%% specificity, up to %.0f out of 100 healthy individuals may test positive. ": [
+                ""
+            ],
             "with %d event(s) and %d censored observation(s) among %d subjects (%.1f%% crude event proportion).": [
                 ""
             ],
@@ -86669,6 +88007,9 @@
                 ""
             ],
             "With only %d observations, results may be unstable. Consider %d+ observations for reliable ROC analysis.": [
+                ""
+            ],
+            "With only %d studies the test is underpowered (at least 10 are usually required), so a non-significant result does not establish that publication bias is absent.": [
                 ""
             ],
             "with only focal \\u{00D7} moderator in the model, they differ only because the interaction model uses a common baseline hazard across moderator levels while a subgroup-only fit uses a moderator-specific baseline (Cox's risk sets differ).": [
@@ -86701,6 +88042,9 @@
             "with weighted flow values": [
                 ""
             ],
+            "with whole-section measurements": [
+                ""
+            ],
             "Within Group Comparison": [
                 ""
             ],
@@ -86708,6 +88052,9 @@
                 ""
             ],
             "Within SS": [
+                ""
+            ],
+            "Within-Case Variance (Sampling)": [
                 ""
             ],
             "Within-Cluster Similarity": [
@@ -87370,7 +88717,13 @@
             "Z-value": [
                 ""
             ],
+            "Zero cells detected; a continuity correction of 0.5 was applied to the affected studies (matching the bivariate model), so results should be interpreted cautiously.": [
+                ""
+            ],
             "Zero cells detected; applied Haldane-Anscombe 0.5 continuity correction for LR/OR calculations (sensitivity/specificity still use observed counts).": [
+                ""
+            ],
+            "Zero cells present": [
                 ""
             ],
             "Zero cells were detected. An estimated sensitivity or specificity of 100% may reflect limited validation data.": [
@@ -87391,7 +88744,16 @@
             "Zero-cell correction": [
                 ""
             ],
-            "Zero-Cell Correction Method": [
+            "Zero-cell correction applied": [
+                ""
+            ],
+            "Zero-Cell Correction Applied": [
+                ""
+            ],
+            "Zero-cell correction applied (%s) to %d of %d studies (%s). Results should be interpreted with caution as corrections can introduce bias, especially in large studies.": [
+                ""
+            ],
+            "Zero-cell correction method": [
                 ""
             ],
             "Zero-Inflated Model": [
@@ -87497,6 +88859,9 @@
                 ""
             ],
             "χ² Tests": [
+                ""
+            ],
+            "%.1f%%, %.1f%%\u000495%% CI (Median):": [
                 ""
             ],
             "0,1\u0004Scale to": [
