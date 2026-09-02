@@ -103,6 +103,16 @@
         `title`="epiR: Tools for the Analysis of Epidemiological Data.", 
         `publisher`="[R package]. Retrieved from https://CRAN.R-project.org/package=epiR", 
         `url`="https://CRAN.R-project.org/package=epiR"), 
+    `AustinSteyerberg2019ICI`=list(
+        `type`="article", 
+        `author`="Austin, P. C., & Steyerberg, E. W.", 
+        `year`=2019, 
+        `title`="The Integrated Calibration Index (ICI) and related metrics for quantifying the calibration of logistic regression models", 
+        `publisher`="Statistics in Medicine", 
+        `volume`=38, 
+        `issue`=21, 
+        `pages`="4051-4065", 
+        `url`="https://doi.org/10.1002/sim.8281"), 
     `Fagan`=list(
         `type`="software", 
         `author`="Adam Chekroud", 
@@ -416,6 +426,15 @@
         `pages`="11", 
         `doi`="10.1186/s41512-023-00148-y", 
         `url`="https://doi.org/10.1186/s41512-023-00148-y"), 
+    `MandelBetensky2008`=list(
+        `type`="article", 
+        `author`="Mandel, M., & Betensky, R. A.", 
+        `year`=2008, 
+        `title`="Simultaneous confidence intervals based on the percentile bootstrap approach", 
+        `publisher`="Computational Statistics & Data Analysis", 
+        `volume`=52, 
+        `pages`="2158-2165", 
+        `url`="https://doi.org/10.1016/j.csda.2007.07.005"), 
     `Steyerberg2010`=list(
         `type`="article", 
         `author`="Steyerberg, E. W., Vickers, A. J., Cook, N. R., Gerds, T., Gonen, M., Obuchowski, N., Pencina, M. J., & Kattan, M. W.", 

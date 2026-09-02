@@ -125,6 +125,7 @@ importFrom(poLCA,poLCA)
 importFrom(psych,cohen.kappa)
 importFrom(rlang,.data)
 importFrom(scales,percent_format)
+importFrom(splines,ns)
 importFrom(stats,
   binom.test,
   binomial,
