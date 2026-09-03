@@ -105,14 +105,138 @@ test_that("audit-sensitive output strings remain export-safe", {
   )
   expect_match(
     no_gold_text,
-    'jmvcore::format(.("Error in plot: {msg}")',
+    '.fmt(.("Error in plot: {msg}")',
     fixed = TRUE
   )
   expect_match(
     no_gold_text,
-    'jmvcore::format(.("Error in ggplot: {msg}")',
+    '.fmt(.("Error in ggplot: {msg}")',
     fixed = TRUE
   )
+})
+
+test_that("agreement has no declared-but-unpopulated audit headings", {
+  root <- audit_source_root()
+  results_text <- paste(
+    readLines(file.path(root, "jamovi", "agreement.r.yaml"), warn = FALSE),
+    collapse = "\n"
+  )
+
+  expect_false(grepl("name: allPairsKappaHeading", results_text, fixed = TRUE))
+  expect_false(grepl("name: itemModalAgreementHeading", results_text, fixed = TRUE))
+})
+
+test_that("meddecide updater manifest includes all translation catalogs", {
+  root <- audit_source_root()
+  config_path <- file.path(root, "_updateModules_config.yaml")
+  if (!file.exists(config_path)) {
+    config_path <- file.path(root, "..", "ClinicoPathJamoviModule", "_updateModules_config.yaml")
+  }
+  testthat::skip_if_not(
+    file.exists(config_path),
+    "updater config not available"
+  )
+  config <- yaml::read_yaml(config_path)
+
+  expect_setequal(
+    unlist(config$modules$meddecide$i18n_files, use.names = FALSE),
+    c("catalog.pot", "en.po", "tr.po")
+  )
+  expect_true(isTRUE(config$modes$copy_i18n_files))
+})
+
+test_that("meddecide Boolean controls use state labels rather than action labels", {
+  root <- audit_source_root()
+  analyses <- c(
+    "agreement", "cotest", "decision", "decisioncalculator",
+    "decisioncombine", "decisioncompare", "decisioncurve", "enhancedROC",
+    "kappaSizeCI", "kappaSizeFixedN", "kappaSizePower", "lassologistic",
+    "nogoldstandard", "psychopdaROC", "sequentialtests"
+  )
+  action_label <- paste0(
+    "^(Show|Enable|Include|Export|Generate|Calculate|Highlight|Detect|Use|",
+    "Apply|Add|Create|Perform)\\b"
+  )
+
+  option_violations <- character(0)
+  ui_violations <- character(0)
+  inspect_ui <- function(node, analysis) {
+    if (!is.list(node))
+      return(invisible(NULL))
+    if (
+      identical(node$type, "CheckBox") &&
+      !is.null(node$label) &&
+      grepl(action_label, node$label)
+    ) {
+      ui_violations <<- c(
+        ui_violations,
+        paste(analysis, node$name, node$label, sep = ": ")
+      )
+    }
+    invisible(lapply(node, inspect_ui, analysis = analysis))
+  }
+
+  for (analysis in analyses) {
+    options <- yaml::read_yaml(
+      file.path(root, "jamovi", paste0(analysis, ".a.yaml"))
+    )$options
+    for (option in options) {
+      if (
+        identical(option$type, "Bool") &&
+        grepl(action_label, option$title)
+      ) {
+        option_violations <- c(
+          option_violations,
+          paste(analysis, option$name, option$title, sep = ": ")
+        )
+      }
+    }
+
+    ui <- yaml::read_yaml(
+      file.path(root, "jamovi", paste0(analysis, ".u.yaml"))
+    )
+    inspect_ui(ui, analysis)
+  }
+
+  expect_identical(option_violations, character(0))
+  expect_identical(ui_violations, character(0))
+})
+
+test_that("IDI and NRI consolidate unstable calibration warnings", {
+  actual <- rep(c(0, 1), each = 20)
+  reference <- c(seq(-20, -1), seq(1, 20))
+  candidate <- reference + seq_along(reference) / 100
+
+  raw <- expect_silent(raw_to_prob(reference, actual, warn = FALSE))
+  expect_gt(length(attr(raw, "fit_warnings")), 0L)
+
+  idi_warnings <- character(0)
+  set.seed(1708)
+  idi <- withCallingHandlers(
+    bootstrapIDI(candidate, reference, actual, n_boot = 30),
+    warning = function(w) {
+      idi_warnings <<- c(idi_warnings, conditionMessage(w))
+      invokeRestart("muffleWarning")
+    }
+  )
+  expect_lte(length(idi_warnings), 2L)
+  expect_true(any(grepl("Logistic calibration", idi_warnings, fixed = TRUE)))
+  expect_true(isTRUE(idi$fit_warning))
+  expect_equal(idi$fit_warning_boots, 30L)
+
+  nri_warnings <- character(0)
+  set.seed(1708)
+  nri <- withCallingHandlers(
+    bootstrapNRI(candidate, reference, actual, n_boot = 30),
+    warning = function(w) {
+      nri_warnings <<- c(nri_warnings, conditionMessage(w))
+      invokeRestart("muffleWarning")
+    }
+  )
+  expect_length(nri_warnings, 1L)
+  expect_match(nri_warnings, "Logistic calibration", fixed = TRUE)
+  expect_true(isTRUE(nri$fit_warning))
+  expect_equal(nri$fit_warning_boots, 30L)
 })
 
 test_that("meddecide sources do not request whole dependency namespaces", {
@@ -217,8 +341,13 @@ test_that("fixed decision tables are populated without changing row structure", 
     test2 = "test2",
     test2Positive = "pos",
     test3 = NULL,
-    test3Positive = NULL,
-    addPatternToData = TRUE
+    test3Positive = NULL
   )
+  # isFilled() alone is what masked the original defect: the backend stored the values, so
+  # this passed, while jmvcore's Output$enabled resolved through options$get("addedPattern")
+  # -- an option that did not exist -- and jamovi never wrote the column. `enabled` is
+  # driven by the Output control in the GUI and cannot be set through the R wrapper (a
+  # `type: Output` option is not a wrapper argument), so the schema half of that check
+  # lives in test-decisioncombine-release-review.R instead.
   expect_true(pattern_result$addedPattern$isFilled())
 })

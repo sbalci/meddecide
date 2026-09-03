@@ -105,7 +105,6 @@ importFrom(graphics,
   par
 )
 importFrom(grid,arrow)
-importFrom(gridExtra,grid.arrange)
 importFrom(htmlTable,htmlTable)
 importFrom(igraph,graph_from_data_frame)
 importFrom(irr,
