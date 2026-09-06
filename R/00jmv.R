@@ -127,6 +127,13 @@
         `publisher`="website", 
         `year`=2020, 
         `url`="http://www.pmean.com/definitions/fagan.htm"), 
+    `caret`=list(
+        `type`="software", 
+        `author`="Max Kuhn", 
+        `year`=2020, 
+        `title`="caret: Classification and Regression Training", 
+        `publisher`="[R package]. Retrieved from https://CRAN.R-project.org/package=caret", 
+        `url`="https://CRAN.R-project.org/package=caret"), 
     `PathologyKappa`=list(
         `type`="article", 
         `title`="Pathologists should probably forget about kappa. Percent agreement, diagnostic specificity and related metrics provide more clinically applicable measures of interobserver variability", 

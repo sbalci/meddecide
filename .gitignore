@@ -35,3 +35,4 @@ build
 *.jmo
 temp/
 
+i18n-plans/
