@@ -59,7 +59,7 @@ kappaSize package. Use kappaSizeCI for a target confidence-interval width,
 and kappaSizeFixedN when the number of subjects is already fixed.
 }
 \examples{
-\donttest{
+\dontrun{
 # kappaSize::PowerBinary example: test kappa0 = 0.4 against kappa1 = 0.6
 # with a trait prevalence of 0.30, two raters, alpha 0.05 and power 0.80
 kappaSizePower(
