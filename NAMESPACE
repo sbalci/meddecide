@@ -41,8 +41,10 @@ importFrom(DescTools,CCC)
 importFrom(MASS,ginv)
 importFrom(Matrix,nearPD)
 importFrom(R6,R6Class)
-importFrom(boot,boot)
-importFrom(boot,boot.ci)
+importFrom(boot,
+  boot,
+  boot.ci
+)
 importFrom(caret,confusionMatrix)
 importFrom(cutpointr,cutpointr)
 importFrom(dplyr,
@@ -107,7 +109,6 @@ importFrom(graphics,
 )
 importFrom(grid,arrow)
 importFrom(htmlTable,htmlTable)
-importFrom(htmltools,htmlEscape)
 importFrom(igraph,graph_from_data_frame)
 importFrom(irr,
   agree,

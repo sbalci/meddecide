@@ -44,7 +44,6 @@ Imports:
     grDevices,
     grid,
     htmlTable,
-    htmltools,
     igraph,
     irr,
     irrCAC,
