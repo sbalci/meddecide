@@ -43,7 +43,6 @@ Imports:
     graphics,
     grDevices,
     grid,
-    gridExtra,
     htmlTable,
     htmltools,
     igraph,
@@ -71,7 +70,7 @@ Imports:
     utils,
     vcd,
     withr
-Suggests: testthat
+Suggests: testthat, yaml
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
