@@ -174,7 +174,7 @@ standard. Includes statistical comparison using McNemar's test and
 confidence intervals for differences.
 }
 \examples{
-\dontrun{
+\donttest{
 # Level arguments are explicit in the generated R API. Pass NULL for
 # unused negative levels and for the optional third test selectors.
 decisioncompare(
