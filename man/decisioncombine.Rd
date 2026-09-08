@@ -116,7 +116,7 @@ sample-dependent
 analytical summaries, not clinical guides or validated recommendations.
 }
 \examples{
-\donttest{
+\dontrun{
 # Illustrative example only; this is not a clinical guide.
 data(histopathology)
 result <- decisioncombine(
