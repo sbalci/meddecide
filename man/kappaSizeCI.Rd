@@ -66,7 +66,7 @@ kappaSizePower to size a study for a hypothesis test, and kappaSizeFixedN
 when the number of subjects is already fixed.
 }
 \examples{
-\dontrun{
+\donttest{
 # kappaSize::CIBinary example: anticipated kappa 0.60 to be reported with a
 # 95 percent CI of [0.40, 0.80], 2 raters, trait prevalence 0.20
 kappaSizeCI(

@@ -53,7 +53,7 @@ kappaSize package. Use kappaSizePower to size a study for a hypothesis test
 and kappaSizeCI to size it for a target interval width.
 }
 \examples{
-\dontrun{
+\donttest{
 # kappaSize::FixedNBinary example: anticipated kappa 0.7, 100 subjects,
 # 4 raters, trait prevalence 0.50
 kappaSizeFixedN(
