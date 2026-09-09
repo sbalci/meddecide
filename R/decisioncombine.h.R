@@ -816,7 +816,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
             super$initialize(
                 package = "meddecide",
                 name = "decisioncombine",
-                version = c(1,0,8),
+                version = c(1,0,81),
                 options = options,
                 results = decisioncombineResults$new(options=options),
                 data = data,

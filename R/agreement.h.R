@@ -3882,7 +3882,7 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "agreement",
-                version = c(1,0,8),
+                version = c(1,0,81),
                 options = options,
                 results = agreementResults$new(options=options),
                 data = data,
