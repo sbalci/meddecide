@@ -782,7 +782,10 @@ enhancedROCResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                     "ClinicoPathJamoviModule",
                     "Swamidass2010",
                     "pROC",
-                    "AustinSteyerberg2019ICI"))
+                    "AustinSteyerberg2019ICI",
+                    "boot",
+                    "caret",
+                    "splines"))
             self$add(R6::R6Class(
                 inherit = jmvcore::Group,
                 active = list(

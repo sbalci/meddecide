@@ -237,7 +237,9 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     "DiagnosticTests",
                     "wilson1927",
                     "youden1950",
-                    "haldane1956"))
+                    "haldane1956",
+                    "epiR",
+                    "forcats"))
             self$add(jmvcore::Table$new(
                 options=options,
                 name="combinationTable",

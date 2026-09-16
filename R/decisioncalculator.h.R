@@ -247,7 +247,8 @@ decisioncalculatorResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::
                     "Fagan1975",
                     "STARD2015",
                     "Buderer1996",
-                    "HuiWalter1980"))
+                    "HuiWalter1980",
+                    "epiR"))
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="notices",
