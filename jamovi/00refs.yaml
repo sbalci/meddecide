@@ -478,14 +478,6 @@ refs:
         pages: 65-70
         url: "https://www.jstor.org/stable/4615733"
 
-    htmlTable:
-        type: software
-        author: Max Gordon , Stephen Gragg , Peter Konings
-        year: 2026
-        title: "htmlTable: R package"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=htmlTable"
-        url: "https://CRAN.R-project.org/package=htmlTable"
-
     irr:
         type: software
         author: Matthias Gamer, Jim Lemon, Ian Fellows, Puspendra Singh

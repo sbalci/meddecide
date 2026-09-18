@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="0 0 74 44" width="74" height="44">
+  <metadata>
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>meddecide module icon</dc:title>
+        <dc:creator><cc:Agent><dc:title>Serdar Balci</dc:title></cc:Agent></dc:creator>
+        <cc:license rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <!-- Axes: Net Benefit vs Threshold Probability -->
+  <path d="M 8 6 L 8 36 L 68 36" stroke="#3e6da9" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  
+  <!-- "Treat None" Reference Line (Horizontal Net Benefit = 0) -->
+  <line x1="8" y1="36" x2="68" y2="36" stroke="#9f9f9f" stroke-width="1.5" stroke-dasharray="2, 2"/>
+  
+  <!-- "Treat All" Strategy Line (Sloping downward) -->
+  <line x1="12" y1="10" x2="52" y2="36" stroke="#e6ac40" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Clinical Decision Model Curve (Net Benefit Curve - superior) -->
+  <path d="M 12 9 C 22 9, 36 14, 62 33" 
+        stroke="#6b9de8" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+        
+  <!-- Decision Threshold Optimum Point -->
+  <line x1="33" y1="14" x2="33" y2="36" stroke="#3e6da9" stroke-width="1.5" stroke-dasharray="1, 3"/>
+  <circle cx="33" cy="14" r="3.2" fill="#ffffff" stroke="#3e6da9" stroke-width="2.2"/>
+  
+  <!-- Comparison Benefit Marker -->
+  <circle cx="48" cy="22" r="2.8" fill="#ffffff" stroke="#e6ac40" stroke-width="2"/>
+</svg>

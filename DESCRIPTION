@@ -1,8 +1,8 @@
 Type: Package
 Package: meddecide
 Title: Medical Decision and Reliability Analysis for 'jamovi'
-Version: 1.0.82.02
-Date: 2026-09-16
+Version: 1.0.82.03
+Date: 2026-09-17
 Authors@R: person(given = "Serdar", family = "Balci", role = c("aut",
  "cre", "cph"), email = "serdarbalci@serdarbalci.com", comment =
  c(ORCID = "0000-0002-7852-3851"))
@@ -37,14 +37,10 @@ Imports:
     epiR,
     forcats,
     ggplot2,
-    ggraph,
     glmnet,
-    glue,
     graphics,
     grDevices,
     grid,
-    htmlTable,
-    igraph,
     irr,
     irrCAC,
     jmvcore,
@@ -54,7 +50,6 @@ Imports:
     lmerTest,
     magrittr,
     MASS,
-    Matrix,
     poLCA,
     pROC,
     psych,

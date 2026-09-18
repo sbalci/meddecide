@@ -39,7 +39,6 @@ export(validate_clinical_data)
 import(jmvcore)
 importFrom(DescTools,CCC)
 importFrom(MASS,ginv)
-importFrom(Matrix,nearPD)
 importFrom(R6,R6Class)
 importFrom(boot,
   boot,
@@ -94,9 +93,7 @@ importFrom(ggplot2,
   xlim,
   ylim
 )
-importFrom(ggraph,ggraph)
 importFrom(glmnet,cv.glmnet)
-importFrom(glue,glue)
 importFrom(grDevices,
   colorRampPalette,
   hcl.colors
@@ -108,8 +105,6 @@ importFrom(graphics,
   par
 )
 importFrom(grid,arrow)
-importFrom(htmlTable,htmlTable)
-importFrom(igraph,graph_from_data_frame)
 importFrom(irr,
   agree,
   kappa2,
