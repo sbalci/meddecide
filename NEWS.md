@@ -1,3 +1,39 @@
+# meddecide 1.0.83.03 (2026-09-23)
+
+This release is the result of an external review of the module. Most of it is
+about results that did not survive leaving the screen.
+
+* The meta-analysis forest plot in ROC analysis exported as a blank file, and
+  came back empty when a saved `.omv` was reopened. It now draws from the data
+  saved with the plot, so exporting and reopening give you the plot you saw.
+  If the plot cannot be built, you now get an explanation instead of the plot
+  silently disappearing.
+* ROC curve overlays (confidence bands, optimal-cutpoint markers, comparison
+  curves) had the same problem and are fixed the same way.
+* Tables and plots no longer redraw when you change an option that only affects
+  appearance, so the results panel stops blinking as you adjust display settings.
+* Analyses no longer leave a fixed random seed behind them. Previously, running
+  one analysis that used resampling could make the *next* analysis in the same
+  session draw from a fixed random stream.
+* Interrater Reliability (`agreement`) is back in the module after a period
+  out for testing, with the five packages it needs restored to the install list.
+* Five packages that no analysis actually used were dropped, so installing the
+  module pulls in less.
+* `caret` is now cited by the analyses whose sensitivity, specificity, PPV and
+  NPV figures it computes, so you can attribute those numbers.
+* The Turkish and English translation catalogues were inherited from a much
+  larger project and carried about 31,000 message IDs, most from analyses that
+  are not in this module. They are now trimmed to this module's own text
+  (roughly 4,000), which makes the download substantially smaller. Translatable
+  sentences that were previously split into fragments (`"ERROR: "`,
+  `", correlation adjustment = %.2f"`) are now whole sentences, which a
+  translator can actually work with. Some existing Turkish translations were
+  attached to the old fragments and will show in English until they are
+  re-translated.
+* The "Test method" control in Decision Curve Analysis offered a single choice;
+  its label and description now say plainly that only the bootstrap is
+  implemented.
+
 # meddecide 1.0.6.03 (2026-08-22)
 
 This release removes clinical advice from analysis output and corrects statistical statements that

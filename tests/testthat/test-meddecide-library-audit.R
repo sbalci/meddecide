@@ -142,7 +142,15 @@ test_that("meddecide updater manifest includes all translation catalogs", {
     unlist(config$modules$meddecide$i18n_files, use.names = FALSE),
     c("catalog.pot", "en.po", "tr.po")
   )
-  expect_true(isTRUE(config$modes$copy_i18n_files))
+  # The `modes: copy_i18n_files` gate was removed once the copy became unconditional
+  # in _updateModules_plan.R, so asserting the flag tested a key that no longer exists
+  # (isTRUE(NULL) is FALSE). Assert the actual guarantee: the plan copies i18n_files
+  # for every module, with no mode to switch it off.
+  expect_null(config$modes$copy_i18n_files)
+  # config_path is already resolved to the umbrella, which is the only tree that
+  # holds the updater sources -- the generated module has neither file.
+  plan_src <- readLines(file.path(dirname(config_path), "_updateModules_plan.R"), warn = FALSE)
+  expect_true(any(grepl("for (f in unlist(m$i18n_files))", plan_src, fixed = TRUE)))
 })
 
 test_that("meddecide Boolean controls use state labels rather than action labels", {
@@ -249,7 +257,7 @@ test_that("meddecide sources do not request whole dependency namespaces", {
       "decisioncombine.b.R",
       "enhancedROC.b.R",
       "psychopdaroc.b.R",
-      "nomogrammer.r"
+      "utils-nomogrammer.R"
     )
   )
   source_text <- paste(
@@ -848,4 +856,68 @@ test_that("fixed-row tables across meddecide are scaffolded before .run()", {
   dc <- after_init("decision", dd, gold = "gold", goldPositive = "Present", newtest = "test",
                    testPositive = "Positive", od = TRUE)
   expect_identical(dc("rawContingency"), c("test_pos", "test_neg", "total"))
+})
+
+
+# library-audit 2026-09-16 meddecide [LOW] PARTIAL: the fragment/whitespace finding named six sites -
+#   three severity prefixes ("ERROR: "), a leading-space NNT sentence and two leading-comma clauses.
+#   All six are fixed, and the sweep behind them covers three adjacent classes that are invisible in
+#   English and to every behaviour test: a braced \u{XXXX} inside a .() (the compiler stores the escape
+#   literally, so the msgid can never match), a msgid containing " [..]" (jmvcore's Translator cuts the
+#   string off there when untranslated), and a template with two or more sprintf conversions and no %n$
+#   (unreorderable, and the shape that made sprintf() raise in Turkish). This asserts the class, not the
+#   six sites, so a later edit cannot reintroduce it under a different name.
+test_that("no meddecide msgid is a fragment, carries padding, or cannot be reordered", {
+  root <- audit_source_root()
+  analyses <- c(
+    "agreement", "cotest", "decision", "decisioncalculator", "decisioncombine",
+    "decisioncompare", "decisioncurve", "enhancedROC", "kappaSizeCI", "kappaSizeFixedN",
+    "kappaSizePower", "lassologistic", "nogoldstandard", "psychopdaROC", "sequentialtests"
+  )
+  files <- file.path(root, "R", paste0(analyses, ".b.R"))
+  files <- files[file.exists(files)]
+  skip_if(length(files) == 0, "meddecide backends not present in this tree")
+
+  pad <- ctx <- braced <- unordered <- character(0)
+
+  for (f in files) {
+    src <- readLines(f, warn = FALSE)
+    code <- src[!grepl("^\\s*#", src)]
+    tag <- basename(f)
+
+    # a separator inside the msgid: leading space/comma/semicolon/colon, or a trailing space
+    hit <- grep('\\.\\(\\s*"(?:[\\s,;:])', code, perl = TRUE)
+    if (length(hit)) pad <- c(pad, paste0(tag, ":", hit))
+    hit <- grep('\\.\\(\\s*"[^"\n]*\\s"\\s*[,)]', code)
+    if (length(hit)) pad <- c(pad, paste0(tag, ":", hit))
+
+    # " [..]" anywhere in a msgid - the Translator splits on it and drops the remainder
+    hit <- grep('\\.\\(\\s*"(?:[^"\\\\]|\\\\.)* \\[[^"]*\\]', code, perl = TRUE)
+    if (length(hit)) ctx <- c(ctx, paste0(tag, ":", hit))
+
+    # \u{XXXX} inside a .() - resolved by R at parse time, stored literally in the catalog
+    hit <- grep('\\.\\(\\s*"[^"]*\\\\u\\{', code)
+    if (length(hit)) braced <- c(braced, paste0(tag, ":", hit))
+
+    # two or more sprintf conversions with no positional markers
+    lits <- regmatches(code, gregexpr('\\.\\(\\s*"(?:[^"\\\\]|\\\\.)*"', code, perl = TRUE))
+    for (i in seq_along(lits)) {
+      for (lit in lits[[i]]) {
+        body <- sub('^\\.\\(\\s*"', "", sub('"$', "", lit))
+        segs <- strsplit(body, "%%", fixed = TRUE)[[1]]
+        convs <- unlist(regmatches(
+          segs,
+          gregexpr("%(\\d+\\$)?[-+0# ]*(\\*|\\d+)?(\\.\\d+)?[sdifeEgGxX]", segs, perl = TRUE)
+        ))
+        if (length(convs) >= 2 && !any(grepl("\\$", convs))) {
+          unordered <- c(unordered, paste0(tag, ":", i))
+        }
+      }
+    }
+  }
+
+  expect_equal(pad, character(0))
+  expect_equal(ctx, character(0))
+  expect_equal(braced, character(0))
+  expect_equal(unordered, character(0))
 })

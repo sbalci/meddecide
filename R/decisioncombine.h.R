@@ -238,7 +238,6 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                     "wilson1927",
                     "youden1950",
                     "haldane1956",
-                    "epiR",
                     "forcats"))
             self$add(jmvcore::Table$new(
                 options=options,
@@ -808,7 +807,16 @@ decisioncombineResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6C
                 options=options,
                 name="notices",
                 title="Notices",
-                visible=TRUE))}))
+                visible=TRUE,
+                clearWith=list(
+                    "gold",
+                    "goldPositive",
+                    "test1",
+                    "test1Positive",
+                    "test2",
+                    "test2Positive",
+                    "test3",
+                    "test3Positive")))}))
 
 decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "decisioncombineBase",
@@ -818,7 +826,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
             super$initialize(
                 package = "meddecide",
                 name = "decisioncombine",
-                version = c(1,0,81),
+                version = c(1,0,83),
                 options = options,
                 results = decisioncombineResults$new(options=options),
                 data = data,
@@ -834,14 +842,12 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' Combine Medical Decision Tests
 #'
 #' Systematic evaluation of diagnostic test combinations. Analyzes all 
-#' possible
-#' test result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a 
-#' gold
-#' standard and summarizes named parallel, serial, and majority strategies.
-#' Calculates sensitivity, specificity, predictive values, likelihood ratios,
-#' accuracy, and uncertainty intervals. Descriptive rankings are 
-#' sample-dependent
-#' analytical summaries, not clinical guides or validated recommendations.
+#' possible test result patterns (2-test: 4 patterns, 3-test: 8 patterns) 
+#' against a gold standard and summarizes named parallel, serial, and majority 
+#' strategies. Calculates sensitivity, specificity, predictive values, 
+#' likelihood ratios, accuracy, and uncertainty intervals. Descriptive 
+#' rankings are sample-dependent analytical summaries, not clinical guides or 
+#' validated recommendations.
 #' 
 #'
 #' @examples
