@@ -314,6 +314,10 @@ project:
   : Compare Medical Decision Tests
 - [`decisioncompareClass`](https://www.serdarbalci.com/meddecide/reference/decisioncompareClass.md)
   : Compare Medical Decision Tests
+- [`decisioncurve()`](https://www.serdarbalci.com/meddecide/reference/decisioncurve.md)
+  : Decision Curve Analysis
+- [`decisioncurveClass`](https://www.serdarbalci.com/meddecide/reference/decisioncurveClass.md)
+  : Decision Curve Analysis
 - [`.clinicopath_errors`](https://www.serdarbalci.com/meddecide/reference/dot-clinicopath_errors.md)
   : ClinicoPath Enhanced Error Handling Framework
 - [`enhancedROC()`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)

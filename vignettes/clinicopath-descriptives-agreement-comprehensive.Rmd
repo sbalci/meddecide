@@ -594,7 +594,7 @@ agreement(
     vars = vars(Manual_Rater1, Manual_Rater2),
     conditionBVars = vars(AI_Rater1, AI_Rater2),
     pairedAgreementTest = TRUE,
-    pairedBootN = 200,              # Number of bootstrap replicates
+    pairedBootN = 500,              # Number of bootstrap replicates (minimum accepted is 500)
     agreementBySubgroup = TRUE,
     subgroupVariable = tumor_type
 )
@@ -621,7 +621,7 @@ agreement(
     mixedEffectsComparison = TRUE,
     conditionVariable = condition,
     icc = TRUE,
-    multipleTestCorrection = "BH"   # Benjamini-Hochberg
+    multipleTestCorrection = "bh"   # Benjamini-Hochberg (the option level is lower-case)
 )
 ```
 

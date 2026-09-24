@@ -3,7 +3,6 @@
 export("%>%")
 export("%||%")
 export(.clinicopath_errors)
-export(agreement)
 export(bootstrapIDI)
 export(bootstrapNRI)
 export(clear_error_log)
@@ -50,7 +49,6 @@ importFrom(dplyr,
   "%>%",
   arrange,
   case_when,
-  count,
   filter,
   group_by,
   mutate,
@@ -105,11 +103,6 @@ importFrom(graphics,
   par
 )
 importFrom(grid,arrow)
-importFrom(irr,
-  agree,
-  kappa2,
-  kappam.fleiss
-)
 importFrom(irrCAC,gwet.ac1.raw)
 importFrom(jmvcore,.)
 importFrom(kappaSize,PowerBinary)
