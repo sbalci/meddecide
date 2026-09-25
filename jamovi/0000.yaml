@@ -30,18 +30,6 @@ description: >-
   For comments, suggestions, feature requests or reporting bugs, please open an
   issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.
 analyses:
-  - title: Medical Decision
-    name: decision
-    ns: meddecide
-    menuGroup: meddecide
-    menuSubgroup: Decision
-    menuTitle: Medical Decision
-    description: >
-      Function for Medical Decision Analysis. Sensitivity, Specificity, Positive
-      Predictive Value, Negative Predictive Value.
-    menuSubtitle: Sensitivity, Specificity, PPV, NPV
-    ribbon: analyses
-    category: analyses
   - title: Medical Decision Calculator
     name: decisioncalculator
     ns: meddecide

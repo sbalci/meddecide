@@ -34,9 +34,6 @@
             "\"Statistical comparison\" is enabled but only one prediction model is selected, so the Exploratory Model Comparison table stays empty.": [
                 ""
             ],
-            "(95% CI: sensitivity {sens}, specificity {spec})": [
-                "(%95 GA: duyarlılık {sens}, özgüllük {spec})"
-            ],
             "(95%% CI: %1$.1f-%2$.1f%%)": [
                 ""
             ],
@@ -75,12 +72,6 @@
             ],
             "(The Summary panel below reproduces the kappaSize package's own wording, which says the sample size will “ensure” the limits — read it with this caveat in mind.)": [
                 ""
-            ],
-            "(this is 1 - NPV)": [
-                "(bu 1 - NÖD'dir)"
-            ],
-            "(this is the PPV)": [
-                "(bu PÖD'dir)"
             ],
             "(this is the share of cases satisfying the rule, not an estimate of disease prevalence)": [
                 "(bu, kuralı karşılayan olguların payıdır, hastalık prevalansının bir tahmini değildir)"
@@ -142,21 +133,6 @@
             "{models} never exceeds both reference strategies anywhere in the threshold range examined, so no range is shown.": [
                 "{models} incelenen eşik aralığında hiçbir yerde her iki referans stratejiyi birden aşmaz, bu nedenle aralık gösterilmez."
             ],
-            "{n} case(s) ({pct}) removed because their level was neither the positive nor the negative level you selected (these are NOT missing values)": [
-                "Seçtiğiniz pozitif veya negatif düzey olmadığı için {n} olgu (%{pct}) kaldırıldı (bunlar eksik değer DEĞİLDİR)"
-            ],
-            "{n} case(s) ({pct}) removed for missing values on the test or gold-standard variable": [
-                "Test veya altın standart değişkenindeki eksik değerler nedeniyle {n} olgu (%{pct}) kaldırıldı"
-            ],
-            "{n} cases ({pct} of errors) - Test incorrectly predicts disease": [
-                "{n} olgu (hataların %{pct}'si) - Test yanlışlıkla hastalığı tahmin ediyor"
-            ],
-            "{n} cases ({pct} of errors) - Test misses actual disease": [
-                "{n} olgu (hataların %{pct}'si) - Test gerçek hastalığı kaçırıyor"
-            ],
-            "{n} cases analyzed": [
-                "{n} olgu analiz edildi"
-            ],
             "{n} of {total} bootstrap resamples for '{var}' contained only one outcome class and were dropped; the bootstrap AUC summary uses the remaining {kept}.": [
                 ""
             ],
@@ -168,9 +144,6 @@
             ],
             "{n} rules tie on Youden's J ({rules}); \"{shown}\" is displayed only because it comes first.": [
                 "{n} kural Youden J üzerinde eşit puana sahip ({rules}); \"{shown}\" yalnızca ilk sırada yer aldığı için görüntüleniyor."
-            ],
-            "{n} total misclassifications ({pct} error rate)": [
-                "Toplam {n} yanlış sınıflandırma (%{pct} hata oranı)"
             ],
             "{pairs} could not be bootstrap-tested because at least one side is a derived strategy rather than a predictor column, so it has no values to resample.": [
                 "{pairs} bootstrap ile test edilemedi çünkü en az bir taraf bir öngörücü sütunu yerine türetilmiş bir stratejidir, bu nedenle yeniden örneklenecek değerleri yoktur."
@@ -420,18 +393,6 @@
             ],
             "<div style='background-color: rgba(33, 149, 188, 0.1);padding:15px;border-left:4px solid #0077be;font-size:1.05em;line-height:1.6; color: inherit;'><strong>Illustrative Summary:</strong> Using a %1$s with %2$s followed by %3$s, the combined test achieves %4$.1f%% sensitivity (detects %5$.0f of every 100 diseased individuals) and %6$.1f%% specificity (correctly rules out %7$.0f of every 100 healthy individuals). At your specified disease prevalence of %8$.1f%%, a positive result indicates a %9$s chance the person truly has the disease (PPV), while a negative result indicates a %10$s chance the person is truly disease-free (NPV).%11$s %12$s <em>These combined figures assume the two tests are conditionally independent given disease status, and they treat the sensitivity, specificity and prevalence you entered as exact, so they carry no confidence interval. If the two tests measure related biology, %13$s.</em></div>": [
                 ""
-            ],
-            "<div style='margin: 15px; padding: 15px; border-left: 5px solid #4CAF50; background-color: rgba(114, 184, 33, 0.1); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Clinical Summary</h3><p style='font-size: 16px;'><strong>Analysis:</strong> Diagnostic test performance evaluation comparing {testname} against gold standard {goldname}.</p><p><strong>Sample:</strong> {sample}. Predictive values below are computed at a disease prevalence of {prev}.</p><p><strong>Test Performance:</strong> The test shows <strong>{quality}</strong> discriminatory ability with sensitivity of <strong>{sens}</strong> (<em>{sensnote}</em>) and specificity of <strong>{spec}</strong> (<em>{specnote}</em>).</p><p><strong>Discrimination Profile:</strong> {profile}.</p><p><strong>Likelihood Ratios:</strong> Positive LR: {lrpos} (<em>{lrposnote}</em>), Negative LR: {lrneg} (<em>{lrnegnote}</em>)</p><p><strong>Key Findings:</strong> Predictive values are post-test probabilities. After a positive result the probability of disease is the positive predictive value (PPV {ppv}). After a negative result the probability of disease is <strong>{postneg}</strong>, and the probability of being disease-free is the negative predictive value (NPV {npv}).</p></div>": [
-                "<div style='margin: 15px; padding: 15px; border-left: 5px solid #4CAF50; background-color: rgba(114, 184, 33, 0.1); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Klinik Özet</h3><p style='font-size: 16px;'><strong>Analiz:</strong> {testname} ile altın standart {goldname} karşılaştırılan tanısal test performansı değerlendirmesi.</p><p><strong>Örneklem:</strong> {sample}. Aşağıdaki öngörü değerleri %{prev} hastalık prevalansında hesaplanmıştır.</p><p><strong>Test Performansı:</strong> Test, <strong>{sens}</strong> duyarlılık (<em>{sensnote}</em>) ve <strong>{spec}</strong> özgüllük (<em>{specnote}</em>) ile <strong>{quality}</strong> ayırt etme yeteneği göstermektedir.</p><p><strong>Ayırt Etme Profili:</strong> {profile}.</p><p><strong>Olabilirlik Oranları:</strong> Pozitif OO: {lrpos} (<em>{lrposnote}</em>), Negatif OO: {lrneg} (<em>{lrnegnote}</em>)</p><p><strong>Temel Bulgular:</strong> Öngörü değerleri test sonrası olasılıklardır. Pozitif bir sonuçtan sonra hastalık olasılığı pozitif öngörü değeridir (PÖD {ppv}). Negatif bir sonuçtan sonra hastalık olasılığı <strong>{postneg}</strong> olup, hastalıktan ari olma olasılığı negatif öngörü değeridir (NÖD {npv}).</p></div>"
-            ],
-            "<div style='margin: 15px; padding: 15px; border-left: 5px solid #FF9800; background-color: rgba(255, 169, 33, 0.14); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Clinical Summary</h3><p>Basic diagnostic test evaluation completed with {n} cases.</p><p><strong>Results:</strong> Sensitivity {sens}, Specificity {spec}</p></div>": [
-                "<div style='margin: 15px; padding: 15px; border-left: 5px solid #FF9800; background-color: rgba(255, 169, 33, 0.14); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Klinik Özet</h3><p>{n} olgu ile temel tanısal test değerlendirmesi tamamlandı.</p><p><strong>Sonuçlar:</strong> Duyarlılık {sens}, Özgüllük {spec}</p></div>"
-            ],
-            "<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Copy-Ready Clinical Report</h3><div style='background: rgba(255, 255, 255, 0.06); color: inherit; padding: 10px; border-radius: 5px; font-family: Arial, sans-serif;'><p><strong>DIAGNOSTIC TEST EVALUATION</strong></p><p>We evaluated the diagnostic performance of {testname} compared to the gold standard {goldname}. The test demonstrated a sensitivity of {sens} and specificity of {spec} {ci}. At a disease prevalence of {prev}, the positive predictive value was {ppv} and the negative predictive value was {npv}. The positive likelihood ratio of {lr} provides {interp}.</p></div><p style='font-size: 12px; color: inherit; opacity: 0.75;'><em>Copy the text above for your clinical report. Modify as needed for your specific context.</em></p></div>": [
-                "<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Kopyalamaya Hazır Klinik Rapor</h3><div style='background: rgba(255, 255, 255, 0.06); color: inherit; padding: 10px; border-radius: 5px; font-family: Arial, sans-serif;'><p><strong>TANISAL TEST DEĞERLENDİRMESİ</strong></p><p>{testname} testinin tanısal performansını altın standart {goldname} ile karşılaştırarak değerlendirdik. Test, {sens} duyarlılık ve {spec} {ci} özgüllük gösterdi. %{prev} hastalık prevalansında pozitif öngörü değeri {ppv} ve negatif öngörü değeri {npv} olarak bulundu. {lr} pozitif olabilirlik oranı {interp} sağlamaktadır.</p></div><p style='font-size: 12px; color: inherit; opacity: 0.75;'><em>Klinik raporunuz için yukarıdaki metni kopyalayın. Özel bağlamınıza göre gerektiği gibi değiştirin.</em></p></div>"
-            ],
-            "<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Copy-Ready Clinical Report</h3><p>Diagnostic test evaluation shows sensitivity of {sens} and specificity of {spec}.</p></div>": [
-                "<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Kopyalamaya Hazır Klinik Rapor</h3><p>Tanısal test değerlendirmesi {sens} duyarlılık ve {spec} özgüllük göstermektedir.</p></div>"
             ],
             "<div style=\"max-width: 800px;\">\n<h3>Understanding Test Dependence in Diagnostic Testing</h3>\n\n<p>This applies to two tests read <strong>in parallel</strong>: both are performed on the same subject at the same time, before either result is known, and the two results are then combined. For tests performed one after another, where the second is ordered only after a particular first result, use a sequential testing analysis instead — the second test's sensitivity and specificity there apply to the selected subgroup, not to everyone.</p>\n\n<h4>What is conditional independence vs. dependence?</h4>\n<p>Two diagnostic tests are <strong>conditionally independent</strong> if the result of one test does not influence the result of the other test, <em>given the disease status</em>. In other words, within the diseased population, the probability of Test 1 being positive is not affected by knowing the result of Test 2, and vice versa. The same applies within the non-diseased population.</p>\n\n<p>Tests are <strong>conditionally dependent</strong> when the result of one test affects the probability of the other test result, even when we know the patient's true disease status.</p>\n\n<h4>Mathematical Formulation</h4>\n\n<p><strong>Independent Tests:</strong> When tests are independent, joint probabilities are simply the product of individual probabilities:</p>\n<ul>\n  <li>P(Test1+ and Test2+ | Disease+) = P(Test1+ | Disease+) × P(Test2+ | Disease+) = Sens₁ × Sens₂</li>\n  <li>P(Test1+ and Test2+ | Disease−) = P(Test1+ | Disease−) × P(Test2+ | Disease−) = (1−Spec₁) × (1−Spec₂)</li>\n  <li>P(Test1− and Test2− | Disease+) = P(Test1− | Disease+) × P(Test2− | Disease+) = (1−Sens₁) × (1−Sens₂)</li>\n  <li>P(Test1− and Test2− | Disease−) = P(Test1− | Disease−) × P(Test2− | Disease−) = Spec₁ × Spec₂</li>\n</ul>\n\n<p><strong>Dependent Tests:</strong> When tests are dependent, we adjust these probabilities using a correlation parameter (denoted as ρ or ψ) that runs from −1 through 0 (independence) to +1. Positive values describe tests that tend to err together; negative values describe tests that compensate for each other's errors, so that one tends to be positive where the other is negative. Both are permitted here, though the attainable range is narrower than −1 to +1 and depends on the sensitivities and specificities entered — values outside it are truncated, and the analysis says so:</p>\n<ul>\n  <li>P(Test1+ and Test2+ | Disease+) = (Sens₁ × Sens₂) + ρ<sub>pos</sub> × √(Sens₁ × (1−Sens₁) × Sens₂ × (1−Sens₂))</li>\n  <li>P(Test1+ and Test2+ | Disease−) = ((1−Spec₁) × (1−Spec₂)) + ρ<sub>neg</sub> × √((1−Spec₁) × Spec₁ × (1−Spec₂) × Spec₂)</li>\n</ul>\n\n<p>Extreme values are automatically truncated to stay within feasible joint bounds; the realized correlation after truncation is reported.</p>\n\n<p>Note: Similar adjustments are made for the other joint probabilities.</p>\n\n<h4>When to Use Dependent vs. Independent Models</h4>\n\n<p><strong>Independence is the assumption that has to be justified, not the fallback.</strong> It is the optimistic choice: it credits the pair with more combined information than dependent tests actually provide. Use it only when you can point to a positive reason, such as:</p>\n<ul>\n  <li>The tests measure genuinely different biological phenomena</li>\n  <li>They use different specimens, and different mechanisms of measurement</li>\n  <li>Paired data from your own or a published series shows no residual correlation within disease status</li>\n</ul>\n\n<p><strong>If you simply do not know how the two tests interact, independence is the wrong default.</strong> Tests that share a specimen, a modality, an observer or a biological pathway are dependent unless shown otherwise. Enter a small positive dependence (0.05 to 0.15) and see how far the conclusion moves; if it moves a lot, the honest report gives the range rather than the independent figure. This is why the independence checkbox is off by default.</p>\n\n<p><strong>Use the dependence model when:</strong></p>\n<ul>\n  <li>Tests measure the same or similar biological phenomena</li>\n  <li>Tests are based on the same biological specimen or mechanism</li>\n  <li>Previous studies indicate correlation between test results</li>\n  <li>Both tests are affected by the same confounding factors</li>\n  <li>You have observed that knowing one test result predicts the other</li>\n</ul>\n\n<h4>Real-World Examples of Dependent Tests</h4>\n<ul>\n  <li>Two imaging tests (e.g., MRI and CT) looking at the same anatomical structure</li>\n  <li>Two serological tests that detect different antibodies but against the same pathogen</li>\n  <li>Tests that may both be affected by the same confounding factor (e.g., inflammation)</li>\n  <li>Multiple readings of the same test by different observers</li>\n  <li>Two different molecular tests detecting different genes of the same pathogen</li>\n</ul>\n\n<h4>Estimating Dependency Parameters</h4>\n<p>The conditional dependence parameters (ρ<sub>pos</sub> for diseased subjects and ρ<sub>neg</sub> for non-diseased subjects) ideally should be estimated from paired testing data with known disease status. Positive values between 0 and 0.5 are the common case in practice, with larger values indicating stronger dependence; negative values are unusual but legitimate where the two tests genuinely compensate for one another. When no data is available, sensitivity analyses using a range of plausible values (e.g., 0.05, 0.1, 0.2) can reveal how much dependence affects results.</p>\n\n<h4>Impact of Ignoring Dependence</h4>\n<p>Ignoring conditional dependence when it exists overstates how much the second test adds. The <em>direction</em> of the error differs by row, so it is worth being precise rather than saying post-test probabilities are simply \"exaggerated\":</p>\n<ul>\n  <li><strong>Both tests positive</strong> — assuming independence makes the probability of disease <strong>too high</strong>. Two correlated positives are partly the same evidence counted twice. (Simulation across 400 ordinary clinical parameter sets: this held in 100% of them.)</li>\n  <li><strong>Both tests negative</strong> — assuming independence makes the probability of disease <strong>too low</strong>, i.e. it overstates how safely the pair rules disease out. This is the error that matters most in screening. (100% of the same sets.)</li>\n  <li><strong>Either test positive (the parallel rule)</strong> — here independence makes the probability of disease <strong>too low</strong> in the large majority of cases (85%), not too high, because dependence concentrates false positives into the double-positive cell. Do not assume the independent figure is the conservative one for this row.</li>\n  <li><strong>One test positive only</strong> — the direction is not determined by dependence alone; across the same sets it went each way about half the time, depending on the two operating points.</li>\n</ul>\n<p>The common thread is an <strong>overly optimistic assessment of what the two tests achieve together</strong>, not a uniform inflation of every number. Note also that this analysis reports no confidence intervals at all: every figure is conditional on the sensitivity, specificity and prevalence you entered being exact.</p>\n</div>": [
                 ""
@@ -1009,12 +970,6 @@
             "1SE Rule (parsimonious)": [
                 "1SE Kuralı (sadeleştirilmiş)"
             ],
-            "5% or fewer disease-free cases flagged positive in this sample": [
-                "Bu örneklemde hastalıksız olguların %5 veya daha azı pozitif olarak işaretlendi"
-            ],
-            "5% or fewer diseased cases missed in this sample": [
-                "Bu örneklemde hastalıklı olguların %5 veya daha azı kaçırıldı"
-            ],
             "95 percent CI": [
                 "%95 GA"
             ],
@@ -1033,15 +988,6 @@
             "95% Confidence Interval": [
                 "%95 Güven Aralığı"
             ],
-            "95% Confidence Intervals": [
-                "%95 Güven Aralıkları"
-            ],
-            "95% confidence intervals": [
-                "%95 güven aralıkları"
-            ],
-            "95% confidence intervals could not be computed": [
-                ""
-            ],
             "95% Interval Lower (weighted AUC)": [
                 ""
             ],
@@ -1053,15 +999,6 @@
             ],
             "A bound at or below zero means this many subjects cannot rule out agreement no better than chance.": [
                 "Sıfır veya altında bir sınır, bu sayıda olgunun şansa bağlı uyumdan daha iyisini dışlayamayacağı anlamına gelir."
-            ],
-            "A cell of the 2x2 table is zero. Sensitivity, specificity, accuracy and the predictive values are computed from the observed counts; the likelihood ratios are computed from the Haldane-Anscombe corrected table (0.5 added to every cell), because they are undefined when a cell is empty. A finite likelihood ratio beside a specificity of 100% reflects that correction, not the observed data.": [
-                ""
-            ],
-            "A cell of the 2x2 table is zero. The positive and negative likelihood ratios, the diagnostic odds ratio and the Fagan nomogram are computed from the Haldane-Anscombe corrected table (0.5 added to every cell), because those quantities are undefined when a cell is empty. Sensitivity, specificity, accuracy and the predictive values are computed from the observed counts and are unchanged. The two sets therefore do not reconcile exactly: a finite likelihood ratio can sit beside a specificity of 100%.": [
-                ""
-            ],
-            "A cell of the 2x2 table was zero. Sensitivity, specificity and the predictive values above are computed from the observed counts; the likelihood ratios are computed from the Haldane-Anscombe corrected table (0.5 added to every cell), without which they would be undefined. Quote both facts together.": [
-                ""
             ],
             "A comprehensive toolkit for medical decision analysis and reliability\nassessment, implemented as a jamovi module. The package provides tools for:\n* Interrater and intrarater reliability analysis using Cohen's Kappa and\n  Fleiss' Kappa statistics\n* Diagnostic test evaluation with sensitivity, specificity, predictive values,\n  and likelihood ratios\n* Sample size calculations for reliability studies using confidence interval\n  and power-based approaches\n* Visualization tools including Fagan nomograms for Bayesian probability\n  updates\n* Power analysis for interobserver agreement studies with support for\n  multiple raters and outcome categories\nTools are provided through an intuitive graphical interface in jamovi, making\ncomplex medical decision analyses accessible to clinical researchers.\nFor comments, suggestions, feature requests or reporting bugs, please open an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.": [
                 ""
@@ -1108,9 +1045,6 @@
             "A positive result multiplies pre-test odds by {lr}.": [
                 "Pozitif bir sonuç test öncesi odds'unu {lr} ile çarpar."
             ],
-            "A predictive value is left blank where Bayes' theorem is undefined at this prior, which happens when no case can produce the corresponding test result in this sample.": [
-                ""
-            ],
             "A residual above %.2f (the 5%% point of chi-squared on 1 degree of freedom) is evidence that the pair does not err independently. This is a descriptive check, not a formal test: the residuals are correlated with one another and no multiplicity adjustment is applied.": [
                 "%.2f üzerindeki bir kalıntı (1 serbestlik derecesinde ki-karenin %%5 noktası), çiftin bağımsız olarak hata yapmadığının kanıtıdır. Bu betimsel bir kontroldür, resmi bir test değildir: kalıntılar birbiriyle korelasyonludur ve hiçbir çokluk düzeltmesi uygulanmaz."
             ],
@@ -1149,12 +1083,6 @@
             ],
             "A zero cell was present, so the likelihood ratios and the probabilities read from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive values in the Measures table are computed from the raw counts and can differ slightly.": [
                 ""
-            ],
-            "About analysis content unavailable": [
-                "Analiz hakkında içeriği mevcut değil"
-            ],
-            "About Diagnostic Test Evaluation": [
-                "Tanısal Test Değerlendirmesi Hakkında"
             ],
             "About diagnostic-test evaluation": [
                 "Tanı testi değerlendirmesi hakkında"
@@ -1210,9 +1138,6 @@
             "Add definitions and prevalence-source notes to the comparison table.": [
                 "Karşılaştırma tablosuna tanımları ve yaygınlık kaynağı notlarını ekleyin."
             ],
-            "Add detailed explanatory footnotes to all tables with clinical interpretation guidance. Helpful for understanding what each statistic means and how to interpret the results.": [
-                "Klinik yorumlama kılavuzuyla tüm tablolara ayrıntılı açıklayıcı dipnotlar ekleyin. Her istatistiğin ne anlama geldiğini ve sonuçların nasıl yorumlanacağını anlamak için yararlıdır."
-            ],
             "Add detailed explanatory footnotes to the tables. Helpful for understanding what each statistic means.": [
                 "Tablolara ayrıntılı açıklayıcı dipnotlar ekleyin. Her istatistiğin ne anlama geldiğini anlamak için yararlıdır."
             ],
@@ -1221,9 +1146,6 @@
             ],
             "Add the explanatory detail to the class-imbalance warning. The warning itself is always shown when imbalance is detected; this only controls how much it explains.": [
                 ""
-            ],
-            "Adds detailed clinical interpretation help to all result tables.": [
-                "Tüm sonuç tablolarına ayrıntılı klinik yorumlama yardımı ekler."
             ],
             "Adequate": [
                 ""
@@ -1396,9 +1318,6 @@
             "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
                 "1.000 görünürde EAA, seçilen tahmin edicilerin bu veri setinde iki sınıfı tamamen ayırdığı anlamına gelir. 1.000 duyarlılık, özgüllük, doğruluk, kesinlik ve F1, gelecekteki hastaları değil, modelin uyarlandığı satırları tanımlar ve güven aralığı kesinliği belirtmek yerine tek bir noktaya çöker. Tam ayrım katsayıların kendisini de kararsız hale getirir. İyimserlik düzeltmeli bir tahmin için bootstrap doğrulamasını etkinleştirin ve herhangi bir klinik kullanımdan önce harici doğrulamayı zorunlu olarak ele alın."
             ],
-            "An equivalent area under the curve below 0.70 is conventionally read as poor discrimination. Confirm that the level chosen under Test positive level is the one you meant, then interpret the predictive values with care: at this level of discrimination they are driven mainly by prevalence.": [
-                ""
-            ],
             "An illustrative population of %1$.0f at %2$.2f%% prevalence contains only %3$.2f expected people with disease, so the population-flow counts are fractional. Increase the population size (for example to 10000) for readable whole-person counts.": [
                 ""
             ],
@@ -1407,12 +1326,6 @@
             ],
             "An unpenalized logistic refit in the Model Comparison table showed complete/quasi-complete separation (non-convergence or fitted probabilities at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row.": [
                 "Model Karşılaştırma tablosundaki cezalandırılmamış bir lojistik yeniden uyarlama, tam/yarı-tam ayrım gösterdi (yakınsamama veya 0/1'de uyarlanan olasılıklar). EAA/AIC değerleri güvenilmezdir; cezalandırılmış LASSO satırını tercih edin."
-            ],
-            "Analysed Combination Counts": [
-                ""
-            ],
-            "Analysed Contingency Table": [
-                ""
             ],
             "Analyses two diagnostic tests applied in parallel: both are performed on the same subject at the same time, before either result is known, and the two results are then combined. Reports the post-test probability of disease for every result combination (either test positive, test 1 only, test 2 only, both positive, both negative), optionally allowing the two tests to be conditionally dependent. For tests performed one after another, where the second is ordered only after a particular first result, use Sequential Test Analysis instead. Note that Sequential Test Analysis also offers a parallel strategy, but its combined figures assume conditional independence; this analysis is the one that models conditional dependence numerically.": [
                 "Paralel uygulanan iki tanı testini analiz eder: her ikisi de aynı deneğe aynı anda, herhangi bir sonuç bilinmeden önce uygulanır ve ardından iki sonuç birleştirilir. İki testin koşullu olarak bağımlı olmasına isteğe bağlı olarak izin vererek, her sonuç kombinasyonu için (herhangi bir test pozitif, yalnızca test 1 pozitif, yalnızca test 2 pozitif, her ikisi pozitif, her ikisi negatif) hastalık son test olasılığını raporlar. İkincisinin yalnızca belirli bir ilk sonuçtan sonra istendiği ardışık yapılan testler için bunun yerine Sıralı Test Analizini kullanın. Sıralı Test Analizinin de paralel bir strateji sunduğunu, ancak birleşik rakamlarının koşullu bağımsızlığı varsaydığını unutmayın; bu analiz, koşullu bağımlılığı sayısal olarak modelleyen analizdir."
@@ -1444,12 +1357,6 @@
             "Analysis guide": [
                 "Analiz kılavuzu"
             ],
-            "Analysis may take a moment to complete.": [
-                "Analizin tamamlanması biraz zaman alabilir."
-            ],
-            "Analysis may take longer than usual. Consider sampling for initial exploratory analysis. Full dataset will still be used for final results.": [
-                "Analiz normalden uzun sürebilir. İlk keşifsel analiz için örnekleme yapmayı düşünün. Nihai sonuçlar için yine de tam veri kümesi kullanılacaktır."
-            ],
             "Analysis Method": [
                 "Analiz Yöntemi"
             ],
@@ -1464,9 +1371,6 @@
             ],
             "Analysis Options": [
                 "Analiz Seçenekleri"
-            ],
-            "Analysis Options Explained": [
-                "Analiz Seçenekleri Açıklandı"
             ],
             "Analysis result": [
                 "Analiz sonucu"
@@ -1615,9 +1519,6 @@
             "At least 2 explanatory variables are required for LASSO regression.": [
                 "LASSO regresyonu için en az 2 açıklayıcı değişken gereklidir."
             ],
-            "At least 4 cases are required for diagnostic test analysis. Each cell of the 2×2 table should have at least one observation.": [
-                ""
-            ],
             "At least four cases are required for analysis.": [
                 "Analiz için en az dört olgu gereklidir."
             ],
@@ -1765,9 +1666,6 @@
             "Available levels: {levels}.": [
                 "Mevcut düzeyler: {levels}."
             ],
-            "Available levels: {lvls}. Check for typos or select the correct level from the dropdown.": [
-                "Mevcut düzeyler: {lvls}. Yazım hatalarını kontrol edin veya açılır menüden doğru düzeyi seçin."
-            ],
             "Available-Case Missing-Data Handling": [
                 ""
             ],
@@ -1836,9 +1734,6 @@
             ],
             "Basic Bootstrap": [
                 "Temel Bootstrap"
-            ],
-            "Basic Results": [
-                "Temel Sonuçlar"
             ],
             "Basic ROC Analysis": [
                 "Temel ROC Analizi"
@@ -2077,9 +1972,6 @@
             "Calculate 95 percent confidence intervals for measures estimable from integer study counts. Prevalence-adjusted predictive-value intervals are omitted.": [
                 "Tam sayı çalışma sayılarından tahmin edilebilen ölçütler için yüzde 95 güven aralıklarını hesaplayın. Prevalansa göre ayarlanmış öngörü değeri aralıkları atlanmıştır."
             ],
-            "Calculate and display 95 percent confidence intervals for all diagnostic statistics. Provides uncertainty estimates around point estimates of sensitivity, specificity, etc.": [
-                "Tüm tanısal istatistikler için yüzde 95 güven aralıklarını hesaplayın ve görüntüleyin. Duyarlılık, özgüllük vb. nokta tahminleri etrafında belirsizlik tahminleri sağlar."
-            ],
             "Calculate Brier score and scaled Brier score": [
                 "Brier puanını ve ölçeklendirilmiş Brier puanını hesapla"
             ],
@@ -2167,17 +2059,8 @@
             "Called high risk": [
                 ""
             ],
-            "Cannot be calculated: LR- is (1 - sensitivity) / specificity, and one of those is not estimable here": [
-                "Hesaplanamıyor: LR- (1 - duyarlılık) / özgüllük şeklindedir ve bunlardan biri burada tahmin edilememektedir"
-            ],
-            "Cannot be calculated: LR+ is sensitivity / (1 - specificity), and one of those is not estimable here": [
-                "Hesaplanamıyor: LR+ duyarlılık / (1 - özgüllük) şeklindedir ve bunlardan biri burada tahmin edilememektedir"
-            ],
             "Cannot compute": [
                 ""
-            ],
-            "Case exclusion summary: {details}. {analysed} of {total} cases analysed.": [
-                "Olgu hariç tutma özeti: {details}. {total} olgudan {analysed} tanesi analiz edildi."
             ],
             "Cases Detected": [
                 "Tespit Edilen Olgular"
@@ -2190,9 +2073,6 @@
             ],
             "Cases sorted by gold standard result (n=%d)": [
                 ""
-            ],
-            "Cases where the diagnostic test disagreed with the gold standard are examined below. False positives (test positive, disease absent) and false negatives (test negative, disease present) are listed with their original row numbers so individual records can be reviewed.": [
-                "Tanısal testin altın standartla uyuşmadığı olgular aşağıda incelenmektedir. Bireysel kayıtların incelenebilmesi için yanlış pozitifler (test pozitif, hastalık yok) ve yanlış negatifler (test negatif, hastalık var) orijinal satır numaralarıyla listelenir."
             ],
             "Categorical NRI, using risk category boundaries at {thr}.": [
                 ""
@@ -2208,15 +2088,6 @@
             ],
             "Check": [
                 "Kontrol"
-            ],
-            "Check that the level selected under Test positive level is the one you meant: this analysis has no numeric cut-point, it simply treats that level as a positive result.": [
-                "Test pozitif düzeyi altında seçilen düzeyin amaçladığınız düzey olduğunu kontrol edin: bu analizin sayısal bir kesme noktası yoktur, yalnızca o düzeyi pozitif bir sonuç olarak ele alır."
-            ],
-            "Check that the level you chose under Test positive level is the one you meant: this analysis has no numeric cutpoint, it simply treats that level as a positive result, so choosing the other level swaps every false positive with a false negative": [
-                "Test pozitif düzeyi altında seçtiğiniz düzeyin amaçladığınız düzey olduğunu kontrol edin: bu analizin sayısal bir kesme noktası yoktur, yalnızca o düzeyi pozitif bir sonuç olarak ele alır; dolayısıyla diğer düzeyi seçmek her yanlış pozitifi yanlış negatifle değiştirir"
-            ],
-            "Check your data formatting. Ensure both variables have exactly 2 levels. Verify positive/negative levels are correctly specified.": [
-                "Veri biçimlendirmenizi kontrol edin. Her iki değişkenin de tam olarak 2 düzeye sahip olduğundan emin olun. Pozitif/negatif düzeylerin doğru belirtildiğini doğrulayın."
             ],
             "Chest Imaging + Culture (Illustrative)": [
                 "Göğüs Görüntüleme + Kültür (Açıklayıcı)"
@@ -2257,29 +2128,11 @@
             "Choose distinct model names.": [
                 "Farklı model adları seçin."
             ],
-            "Choose the diagnostic test you want to evaluate": [
-                "Değerlendirmek istediğiniz tanısal testi seçin"
-            ],
             "Choose the maximum acceptable confidence-interval half-width for sensitivity and specificity before collecting data.": [
                 "Veri toplamadan önce duyarlılık ve özgüllük için kabul edilebilir maksimum güven aralığı yarı genişliğini seçin."
             ],
-            "Choose the reference variable representing true disease status (e.g., biopsy result, final diagnosis)": [
-                "Gerçek hastalık durumunu temsil eden referans değişkeni seçin (ör. biyopsi sonucu, nihai tanı)"
-            ],
             "Choose whether to calculate confidence intervals.": [
                 "Güven aralıklarının hesaplanıp hesaplanmayacağını seçin."
-            ],
-            "Choose which gold-standard level means disease absent": [
-                "Hangi altın standart düzeyinin hastalık yok anlamına geldiğini seçin"
-            ],
-            "Choose which level indicates disease is present": [
-                "Hangi düzeyin hastalık var olduğunu gösterdiğini seçin"
-            ],
-            "Choose which level represents a positive test result": [
-                "Hangi düzeyin pozitif test sonucunu temsil ettiğini seçin"
-            ],
-            "Choose which test level means a negative result": [
-                "Hangi test düzeyinin negatif sonuç anlamına geldiğini seçin"
             ],
             "chosen from the outcome's first and last factor levels because Direction is set to auto; for an unordered outcome those are merely the alphabetically first and last levels, so the orientation is arbitrary": [
                 ""
@@ -2338,17 +2191,11 @@
             "Classic": [
                 "Klasik"
             ],
-            "Classification": [
-                "Sınıflandırma"
-            ],
             "Classification Direction": [
                 "Sınıflandırma Yönü"
             ],
             "Classification direction": [
                 "Sınıflandırma yönü"
-            ],
-            "Classification Groups": [
-                "Sınıflandırma Grupları"
             ],
             "Classification Performance": [
                 "Sınıflandırma Performansı"
@@ -2406,9 +2253,6 @@
             ],
             "Clinical decision curves and threshold analysis": [
                 "Klinik karar eğrileri ve eşik analizi"
-            ],
-            "Clinical Decision Making": [
-                "Klinik Karar Verme"
             ],
             "Clinical Decision Rule": [
                 "Klinik Karar Kuralı"
@@ -2476,15 +2320,6 @@
             "Clinical interpretation guidance": [
                 "Klinik yorumlama rehberliği"
             ],
-            "Clinical Interpretation Guide": [
-                "Klinik Yorumlama Rehberi"
-            ],
-            "Clinical interpretation guide": [
-                "Klinik yorumlama kılavuzu"
-            ],
-            "Clinical Interpretation Guidelines": [
-                "Klinik Yorumlama Kılavuzları"
-            ],
             "Clinical Metrics": [
                 "Klinik Metrikler"
             ],
@@ -2542,12 +2377,6 @@
             "Clinical Significance": [
                 "Klinik Anlamlılık"
             ],
-            "Clinical Summary": [
-                "Klinik Özet"
-            ],
-            "Clinical summary": [
-                "Klinik özet"
-            ],
             "Clinical Terms Glossary": [
                 "Klinik Terimler Sözlüğü"
             ],
@@ -2580,9 +2409,6 @@
             ],
             "Clinical Validation": [
                 ""
-            ],
-            "Clinical validation studies": [
-                "Klinik doğrulama çalışmaları"
             ],
             "Clinical Value": [
                 "Klinik Değer"
@@ -2737,9 +2563,6 @@
             "Comma-separated list of custom cutoffs to evaluate (e.g., 0.1, 0.5, 0.9)": [
                 "Değerlendirilecek özel kesme noktalarının virgülle ayrılmış listesi (ör. 0.1, 0.5, 0.9)"
             ],
-            "Common Issues": [
-                "Yaygın Sorunlar"
-            ],
             "Common pitfalls:": [
                 "Yaygın tuzaklar:"
             ],
@@ -2773,9 +2596,6 @@
             "Compare the lower OPA confidence bound with the user-specified descriptive criterion. This optional criterion is not a noninferiority comparison, regulatory guidance, or clinical guidance.": [
                 "Alt OPA güven sınırını kullanıcı tarafından belirtilen betimsel kriterle karşılaştırın. Bu isteğe bağlı kriter bir non-inferiority (aşağı olmama) karşılaştırması, düzenleyici kılavuz veya klinik kılavuz değildir."
             ],
-            "Comparing performance of different diagnostic methods": [
-                "Farklı tanı yöntemlerinin performansını karşılaştırma"
-            ],
             "Comparison": [
                 "Karşılaştırma"
             ],
@@ -2808,9 +2628,6 @@
             ],
             "Complete-case analysis uses {used} of {total} cases ({percent}%) for the combination analysis. Cases missing the gold standard or any selected test were excluded. Individual-test tables use their own pairwise-complete denominators. If data are not missing completely at random, investigate the missingness pattern.": [
                 "Eksiksiz olgu analizi, kombinasyon analizi için {total} olgunun {used} tanesini (%{percent}) kullanır. Altın standart veya seçilen herhangi bir testi eksik olan olgular hariç tutuldu. Bireysel test tabloları kendi ikili eksiksiz paydalarını kullanır. Veriler tamamen rastgele eksik değilse eksiklik modelini araştırın."
-            ],
-            "Complete-case analysis uses {used} of {total} cases. Consider investigating patterns of missingness.": [
-                "Eksiksiz olgu analizi {total} olgudan {used} tanesini kullanmaktadır. Eksiklik modellerini araştırmayı düşünün."
             ],
             "Complete-case analysis: a patient missing the reference standard or any selected test is excluded from the combination table. The number excluded is reported above when it is not zero.": [
                 "Eksiksiz olgu analizi: referans standardı veya seçilen herhangi bir testi eksik olan bir hasta kombinasyon tablosundan hariç tutulur. Hariç tutulan sayı sıfır olmadığında yukarıda bildirilir."
@@ -2923,12 +2740,6 @@
             "Confidence intervals could not be matched": [
                 ""
             ],
-            "Confidence intervals for sensitivity, specificity, and predictive values are Clopper-Pearson exact intervals, computed as in epiR::epi.tests() with its default settings (method = \"exact\").": [
-                "Duyarlılık, özgüllük ve öngörü değerleri için güven aralıkları, varsayılan ayarlarıyla (method = \"exact\") epiR::epi.tests() içinde hesaplandığı gibi Clopper-Pearson kesin aralıklarıdır."
-            ],
-            "Confidence Intervals Interpretation": [
-                "Güven Aralıklarının Yorumlanması"
-            ],
             "Confidence Intervals on Plot": [
                 "Grafik Üzerindeki Güven Aralıkları"
             ],
@@ -2995,12 +2806,6 @@
             "Confusion matrix (reference standard vs test result)": [
                 "Karışıklık matrisi (referans standart ve test sonucu)"
             ],
-            "Confusion matrix contains NA or negative values. Check that your data is properly formatted. Ensure sufficient observations in all categories.": [
-                "Karışıklık matrisi NA veya negatif değerler içeriyor. Verilerinizin doğru biçimlendirildiğini kontrol edin. Tüm kategorilerde yeterli gözlem olduğundan emin olun."
-            ],
-            "Confusion Matrix Summary": [
-                "Karışıklık Matrisi Özeti"
-            ],
             "Conservative/liberal reference standards": [
                 "Muhafazakar/serbest referans standartlar"
             ],
@@ -3012,9 +2817,6 @@
             ],
             "Consider class imbalance in interpretation": [
                 "Yorumlamada sınıf dengesizliğini göz önünde bulundurun"
-            ],
-            "Consider clinical consequences of false positives vs false negatives": [
-                "Yanlış pozitiflere karşı yanlış negatiflerin klinik sonuçlarını değerlendirin"
             ],
             "Consider collapsing rare categories or enrolling more subjects.": [
                 "Nadir kategorileri birleştirmeyi veya daha fazla olgu almayı düşünün."
@@ -3084,12 +2886,6 @@
             ],
             "Copy-ready clinical report sentences for publications and reports": [
                 "Yayınlar ve raporlar için kopyalamaya hazır klinik rapor cümleleri"
-            ],
-            "Copy-Ready Report": [
-                "Kopyalamaya Hazır Rapor"
-            ],
-            "Copy-ready report": [
-                "Rapora hazır metin"
             ],
             "Copy-ready report sentences were not generated because %s. Check the Direction setting and the coding of the outcome variable before quoting any cut-point from this analysis.": [
                 "%s nedeniyle kopyalamaya hazır rapor cümleleri oluşturulmadı. Bu analizden herhangi bir kesme noktasını aktarmadan önce Yön ayarını ve sonuç değişkeninin kodlamasını kontrol edin."
@@ -3352,12 +3148,6 @@
             "Data preparation failed: %s": [
                 "Veri hazırlama başarısız oldu: %s"
             ],
-            "Data Quality Summary": [
-                "Veri Kalitesi Özeti"
-            ],
-            "Data Requirements": [
-                "Veri Gereksinimleri"
-            ],
             "Data Suitability": [
                 "Veri Uygunluğu"
             ],
@@ -3474,9 +3264,6 @@
             ],
             "Decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J": [
                 "Her test paternini duyarlılık ve özgüllüğüne göre konumlandıran, nokta boyutu Youden J ile ölçeklendirilmiş karar uzayı saçılım grafiği"
-            ],
-            "Decreases probability of disease (test may be flawed)": [
-                "Hastalık olasılığını azaltır (test kusurlu olabilir)"
             ],
             "Default Metric Set": [
                 "Varsayılan Metrik Seti"
@@ -3610,9 +3397,6 @@
             "Detailed Cutoff Analysis": [
                 "Ayrıntılı Kesme Noktası Analizi"
             ],
-            "Detailed examination of false positives and false negatives": [
-                "Yanlış pozitiflerin ve yanlış negatiflerin ayrıntılı incelemesi"
-            ],
             "Detailed footnotes": [
                 "Ayrıntılı dipnotlar"
             ],
@@ -3679,14 +3463,8 @@
             "Diagnostic plots": [
                 "Tanısal grafikler"
             ],
-            "Diagnostic Probability Shift": [
-                "Tanısal Olasılık Kayması"
-            ],
             "Diagnostic Statistics": [
                 "Tanısal İstatistikler"
-            ],
-            "DIAGNOSTIC TEST EVALUATION: Compare test accuracy to gold standard reference. This function evaluates diagnostic test performance by comparing test results to a gold standard (reference). It calculates key diagnostic accuracy measures including sensitivity, specificity, predictive values, and likelihood ratios.": [
-                "TANISAL TEST DEĞERLENDİRMESİ: Test doğruluğunu altın standart referansla karşılaştırın. Bu işlev, test sonuçlarını bir altın standartla (referans) karşılaştırarak tanısal test performansını değerlendirir. Duyarlılık, özgüllük, öngörü değerleri ve olabilirlik oranları dahil olmak üzere temel tanısal doğruluk ölçütlerini hesaplar."
             ],
             "Diagnostic Test Validation (Balanced)": [
                 "Tanısal Test Doğrulaması (Dengeli)"
@@ -3775,14 +3553,8 @@
             "Disease prevalence": [
                 "Hastalık yaygınlığı (prevalansı)"
             ],
-            "Disease prevalence in target population (0.0-1.0)": [
-                "Hedef popülasyonda hastalık prevalansı (0.0-1.0)"
-            ],
             "Disease prevalence to assume when computing predictive values. Used only when \"Use observed prevalence\" is unticked - set it to the prevalence of the population the test will actually be used in, which for a screening setting is usually far lower than in a case-control sample.": [
                 "Öngörü değerleri hesaplanırken varsayılacak hastalık prevalansı. Yalnızca \"Gözlemlenen prevalansı kullan\" işareti kaldırıldığında kullanılır - testin gerçekten kullanılacağı popülasyonun prevalansına ayarlayın; bu değer bir tarama ortamı için genellikle vaka-kontrol örnekleminden çok daha düşüktür."
-            ],
-            "Disease Prevalence: Observed proportion with disease in this sample. Affects predictive values.": [
-                "Hastalık Prevalansı: Bu örneklemde hastalık bulunan gözlemlenen oran. Öngörü değerlerini etkiler."
             ],
             "Disease Probability (%)": [
                 "Hastalık Olasılığı (%)"
@@ -3790,20 +3562,8 @@
             "Disease-\nn={n}": [
                 "Hastalık-\nn={n}"
             ],
-            "Disease-absent level \"{lvl}\" not found in gold standard variable": [
-                "Hastalık yok düzeyi \"{lvl}\" altın standart değişkende bulunamadı"
-            ],
-            "Disease-present and disease-absent levels cannot be the same": [
-                "Hastalık var ve hastalık yok düzeyleri aynı olamaz"
-            ],
-            "Disease-present level \"{lvl}\" not found in gold standard variable": [
-                "Hastalık var düzeyi \"{lvl}\" altın standart değişkende bulunamadı"
-            ],
             "Disease+\nn={n}": [
                 "Hastalık+\nn={n}"
-            ],
-            "Diseased": [
-                "Hastalıklı"
             ],
             "Display a decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J.": [
                 "Her test paternini duyarlılık ve özgüllüğüne göre konumlandıran, nokta boyutu Youden J ile ölçeklendirilmiş bir karar uzayı saçılım grafiği görüntüleyin."
@@ -3816,9 +3576,6 @@
             ],
             "Display a longer descriptive performance summary with methods and results templates. The text is an editable reporting aid, not clinical guidance.": [
                 "Yöntem ve sonuç şablonlarıyla daha uzun bir betimsel performans özeti görüntüleyin. Metin düzenlenebilir bir raporlama yardımcısıdır, klinik kılavuz değildir."
-            ],
-            "Display a natural language clinical summary of the diagnostic test performance. Provides an easy-to-understand interpretation of results for clinical use.": [
-                "Tanısal test performansının doğal dilde klinik bir özetini görüntüleyin. Klinik kullanım için sonuçların anlaşılması kolay bir yorumunu sağlar."
             ],
             "Display a plain-language summary paragraph of comparison results. Useful for reading the statistical comparison at a glance without needing to interpret every table cell.": [
                 "Karşılaştırma sonuçlarının sade dille yazılmış bir özet paragrafını görüntüleyin. Her tablo hücresini yorumlamaya gerek kalmadan istatistiksel karşılaştırmayı bir bakışta okumak için yararlıdır."
@@ -3838,26 +3595,17 @@
             "Display confidence bands around ROC curve": [
                 "ROC eğrisi etrafındaki güven bantlarını görüntüle"
             ],
-            "Display detailed clinical interpretation with likelihood ratio guidance. Helps understand the clinical significance of test results.": [
-                "Olabilirlik oranı kılavuzuyla ayrıntılı klinik yorumu görüntüleyin. Test sonuçlarının klinik anlamlılığını anlamaya yardımcı olur."
-            ],
             "Display detailed cutoff analysis": [
                 "Ayrıntılı kesme noktası analizini görüntüle"
             ],
             "Display detailed differences between model metrics": [
                 "Model ölçütleri arasındaki ayrıntılı farkları görüntüle"
             ],
-            "Display detailed tables of false positive and false negative cases. Helps identify patterns in diagnostic errors and understand which cases are being misclassified by the test. Inspired by Orange Data Mining's interactive confusion matrix feature, adapted for static jamovi output.": [
-                "Yanlış pozitif ve yanlış negatif olguların ayrıntılı tablolarını görüntüleyin. Tanısal hatalardaki kalıpları belirlemeye ve hangi olguların test tarafından yanlış sınıflandırıldığını anlamaya yardımcı olur. Orange Data Mining'in etkileşimli karışıklık matrisi özelliğinden esinlenilmiş, statik jamovi çıktısı için uyarlanmıştır."
-            ],
             "Display diagnostic statistics for each individual test before combinations.": [
                 "Kombinasyonlardan önce her bireysel test için tanısal istatistikleri görüntüleyin."
             ],
             "Display educational content including statistical glossary, assumptions, and interpretation guidance. Helpful for understanding what each test means and how to interpret the results clinically.": [
                 "İstatistiksel sözlük, varsayımlar ve yorumlama rehberliğini içeren eğitici içeriği görüntüleyin. Her testin ne anlama geldiğini ve sonuçların klinik olarak nasıl yorumlanacağını anlamak için yararlıdır."
-            ],
-            "Display educational information about diagnostic test evaluation. Explains concepts and provides interpretation guidelines.": [
-                "Tanısal test değerlendirmesi hakkında eğitici bilgileri görüntüleyin. Kavramları açıklar ve yorumlama kılavuzları sağlar."
             ],
             "Display forest plot showing confidence intervals for key diagnostic metrics across patterns.": [
                 "Paternler genelinde temel tanısal metrikler için güven aralıklarını gösteren orman grafiğini görüntüleyin."
@@ -3888,12 +3636,6 @@
             ],
             "Display the calibration plot: observed proportion against predicted probability in the Hosmer-Lemeshow risk groups, with an optional flexible spline curve (splineCalibration)": [
                 "Kalibrasyon grafiğini görüntüleyin: isteğe bağlı esnek bir spline eğrisi (splineCalibration) ile Hosmer-Lemeshow risk gruplarında tahmin edilen olasılığa karşı gözlemlenen oran"
-            ],
-            "Display the original contingency tables and raw data summaries. Useful for verifying data entry and understanding the underlying counts.": [
-                "Orijinal kontenjans tablolarını ve ham veri özetlerini görüntüleyin. Veri girişini doğrulamak ve alttaki sayıları anlamak için yararlıdır."
-            ],
-            "Displays original contingency tables and missing data summaries for verification.": [
-                "Doğrulama için orijinal kontenjans tablolarını ve eksik veri özetlerini görüntüler."
             ],
             "Distance to (0,1) in ROC space": [
                 "ROC uzayında (0,1) noktasına uzaklık"
@@ -4057,9 +3799,6 @@
             "Enrol more subjects, add raters, or relax the significance level.": [
                 ""
             ],
-            "Ensure your variables are dichotomous (binary). Check that positive/negative levels are correctly specified.": [
-                "Değişkenlerinizin iki düzeyli (ikili) olduğundan emin olun. Pozitif/negatif düzeylerin doğru belirtildiğini kontrol edin."
-            ],
             "Enter exactly {k} proportions for {k} outcome categories (received {got}).": [
                 ""
             ],
@@ -4077,9 +3816,6 @@
             ],
             "epiR package missing": [
                 "epiR paketi eksik"
-            ],
-            "EpiR Table Ratios": [
-                "EpiR Tablo Oranları"
             ],
             "EPV = %.1f (<5: insufficient, high overfitting risk)": [
                 "EPV = %.1f (<5: yetersiz, yüksek aşırı uyum riski)"
@@ -4099,17 +3835,8 @@
             "ERROR": [
                 "HATA"
             ],
-            "Error Balance": [
-                "Hata Dengesi"
-            ],
-            "Error extracting confusion matrix values: {msg}": [
-                "Karışıklık matrisi değerlerini çıkarma hatası: {msg}"
-            ],
             "Error in ggplot: {msg}": [
                 "ggplot hatası: {msg}"
-            ],
-            "Error in misclassified cases analysis": [
-                "Yanlış sınıflandırılan olgular analizinde hata"
             ],
             "Error in plot: {msg}": [
                 "Grafik hatası: {msg}"
@@ -4119,9 +3846,6 @@
             ],
             "Error parsing proportions: {error}": [
                 ""
-            ],
-            "Error Summary": [
-                "Hata Özeti"
             ],
             "Estimate": [
                 "Tahmin"
@@ -4137,9 +3861,6 @@
             ],
             "Estimates and intervals in this table are computed by epiR from the raw counts. The likelihood ratios and diagnostic odds ratio shown in the tables above use a Haldane-Anscombe 0.5 correction because a zero cell was present, so their point estimates differ from the ones here. Quantities that are not estimable from the raw table are left blank.": [
                 ""
-            ],
-            "Evaluate diagnostic test performance with sensitivity, specificity, and predictive values.": [
-                "Duyarlılık, özgüllük ve öngörü değerleri ile tanısal test performansını değerlendirin."
             ],
             "Evaluates diagnostic-test performance by calculating sensitivity, specificity, predictive values, likelihood ratios, and advanced metrics from a 2×2 confusion matrix.": [
                 "2x2 karışıklık matrisinden duyarlılık, özgüllük, öngörü değerleri, olabilirlik oranları ve ileri düzey metrikleri hesaplayarak tanı testi performansını değerlendirir."
@@ -4204,9 +3925,6 @@
             "Evidence against conditional independence": [
                 "Koşullu bağımsızlığa karşı kanıt"
             ],
-            "evidence AGAINST disease when positive, which usually means the level chosen as test-positive is inverted": [
-                "pozitif olduğunda hastalığa KARŞI kanıt, bu genellikle test pozitif olarak seçilen düzeyin ters çevrildiği anlamına gelir"
-            ],
             "evidence against disease: this result combination is more common in subjects without the disease, so it lowers the probability of disease. Check whether a sensitivity and a specificity have been entered the wrong way round.": [
                 ""
             ],
@@ -4258,14 +3976,8 @@
             "excellent": [
                 "mükemmel"
             ],
-            "Excellent discriminatory power (Youden's index 0.80 or above)": [
-                "Mükemmel ayırt edici güç (Youden indeksi 0.80 veya üzeri)"
-            ],
             "Excellent early retrieval performance; classifier performs well at low FPR": [
                 "Mükemmel erken geri erişim performansı; sınıflandırıcı düşük YPO'da iyi performans gösterir"
-            ],
-            "Excellent Tests": [
-                "Mükemmel Testler"
             ],
             "Exclude indeterminate/Equivocal levels": [
                 "Belirsiz/Şüpheli düzeyleri hariç tut"
@@ -4308,9 +4020,6 @@
             ],
             "Explanations": [
                 "Açıklamalar"
-            ],
-            "Explanatory Footnotes": [
-                "Açıklayıcı Dipnotlar"
             ],
             "Explanatory footnotes": [
                 "Açıklayıcı dipnotlar"
@@ -4396,9 +4105,6 @@
             "Extreme Prevalence": [
                 "Aşırı Prevalans"
             ],
-            "Extreme prevalence affects predictive values": [
-                "Aşırı prevalans öngörü değerlerini etkiler"
-            ],
             "Extreme prevalence in the analysed sample: %1$s%% (%2$s). • %3$s. • ROC/AUC analysis may be misleading - consider Precision-Recall Curve (PRC) instead. • Sensitivity and specificity remain valid, but predictive values (PPV/NPV) are heavily influenced by prevalence.": [
                 ""
             ],
@@ -4456,9 +4162,6 @@
             "fair": [
                 "orta"
             ],
-            "Fair discriminatory power (Youden's index 0.40 to 0.59)": [
-                "Orta derecede ayırt edici güç (Youden indeksi 0.40 ila 0.59)"
-            ],
             "fair to good discrimination": [
                 "orta ila iyi ayırt etme"
             ],
@@ -4471,14 +4174,8 @@
             "False Negative (FN)": [
                 "Yanlış Negatif (YN)"
             ],
-            "False Negative Cases (Test- but Disease+)": [
-                "Yanlış Negatif Olgular (Test- ancak Hastalık+)"
-            ],
             "False Negatives": [
                 "Yanlış Negatifler"
-            ],
-            "False negatives outnumbered false positives in this sample.": [
-                "Bu örneklemde yanlış negatifler yanlış pozitiflerden daha fazlaydı."
             ],
             "False Omission Rate": [
                 "Yanlış İhmal Oranı"
@@ -4489,9 +4186,6 @@
             "False Positive (FP)": [
                 "Yanlış Pozitif (YP)"
             ],
-            "False Positive Cases (Test+ but Disease-)": [
-                "Yanlış Pozitif Olgular (Test+ ancak Hastalık-)"
-            ],
             "False Positive Rate": [
                 "Yanlış Pozitif Oranı"
             ],
@@ -4500,12 +4194,6 @@
             ],
             "False Positives": [
                 "Yanlış Pozitifler"
-            ],
-            "False positives and false negatives occurred equally often in this sample.": [
-                "Bu örneklemde yanlış pozitifler ve yanlış negatifler eşit sıklıkta meydana geldi."
-            ],
-            "False positives outnumbered false negatives in this sample.": [
-                "Bu örneklemde yanlış pozitifler yanlış negatiflerden daha fazlaydı."
             ],
             "False-discovery proportion among test-positive subjects": [
                 "Test pozitif denekler arasında yanlış keşif oranı"
@@ -4521,9 +4209,6 @@
             ],
             "Features:": [
                 "Özellikler:"
-            ],
-            "Few cases in one arm: {dpos} disease-present and {dneg} disease-free": [
-                ""
             ],
             "Few Outcome Events": [
                 "Az Sayıda Olay"
@@ -4636,9 +4321,6 @@
             "Focused range (0.05 to 0.50; not a clinical recommendation)": [
                 "Odaklanmış aralık (0.05 ila 0.50; klinik bir öneri değildir)"
             ],
-            "Follow-up checks on this analysis": [
-                "Bu analizle ilgili takip kontrolleri"
-            ],
             "Footnotes": [
                 "Dipnotlar"
             ],
@@ -4659,9 +4341,6 @@
             ],
             "For orientation: most diagnostic tests fall between 0.60 and 0.95 for sensitivity and between 0.70 and 0.98 for specificity, and prevalence is the pre-test probability in the population you are testing (roughly 0.001-0.01 for rare disease, 0.05-0.20 for common conditions). Values far outside these bands are worth re-checking — most often sensitivity and specificity have been entered the wrong way round.": [
                 ""
-            ],
-            "For robust diagnostic test evaluation, 100+ cases recommended. Current sample provides preliminary estimates.": [
-                "Güçlü bir tanısal test değerlendirmesi için 100+ olgu önerilir. Mevcut örneklem ön tahminler sağlar."
             ],
             "For this serial-negative example, Test 2 sensitivity (%.1f%%) is below Test 1 sensitivity (%.1f%%). This does not invalidate the calculation, but it may not improve sensitivity as much as expected.": [
                 "Bu seri negatif örneği için Test 2 duyarlılığı (%%%.1f), Test 1 duyarlılığının (%%%.1f) altındadır. Bu durum hesaplamayı geçersiz kılmaz, ancak duyarlılığı beklendiği kadar artırmayabilir."
@@ -4732,9 +4411,6 @@
             "Function for comparing multiple Medical Decision Tests. Compares sensitivity, specificity, positive predictive value, negative predictive value, and other metrics between different tests against the same gold standard. Includes statistical comparison using McNemar's test and confidence intervals for differences.": [
                 "Birden fazla Tıbbi Karar Testini karşılaştırma fonksiyonu. Aynı altın standarda karşı farklı testler arasındaki duyarlılık, özgüllük, pozitif öngörü değeri, negatif öngörü değeri ve diğer metrikleri karşılaştırır. McNemar testi ve farklar için güven aralıkları kullanarak istatistiksel karşılaştırmayı içerir."
             ],
-            "Function for Medical Decision Analysis. Sensitivity, Specificity, Positive Predictive Value, Negative Predictive Value.": [
-                "Tıbbi Karar Analizi fonksiyonu. Duyarlılık, Özgüllük, Pozitif Öngörü Değeri, Negatif Öngörü Değeri."
-            ],
             "Functions for Medical Decision in ClinicoPath jamovi Module": [
                 ""
             ],
@@ -4762,12 +4438,6 @@
             "General": [
                 "Genel"
             ],
-            "Generate a copy-ready clinical report template for documentation. Formatted text that can be copied directly into clinical reports.": [
-                "Belgeleme için kopyalamaya hazır bir klinik rapor şablonu oluşturun. Doğrudan klinik raporlara kopyalanabilen biçimlendirilmiş metin."
-            ],
-            "Generate a Fagan nomogram for visual interpretation of test results. Shows how test results change the probability of disease from pre-test to post-test.": [
-                "Test sonuçlarının görsel yorumu için bir Fagan nomogramı oluşturun. Test sonuçlarının hastalık olasılığını test öncesinden test sonrasına nasıl değiştirdiğini gösterir."
-            ],
             "Generate a Fagan nomogram for visual interpretation of test results. Shows how test results change the probability of disease.": [
                 "Test sonuçlarının görsel yorumlanması için bir Fagan nomogramı oluşturun. Test sonuçlarının hastalık olasılığını nasıl değiştirdiğini gösterir."
             ],
@@ -4782,9 +4452,6 @@
             ],
             "Generate radar (spider) plot showing all performance metrics on a circular scale. Excellent for comprehensive visual comparison and identifying test strengths/weaknesses.": [
                 "Tüm performans metriklerini dairesel bir ölçekte gösteren radar (örümcek) grafiği oluşturun. Kapsamlı görsel karşılaştırma ve testin güçlü/zayıf yönlerini belirlemek için mükemmeldir."
-            ],
-            "Getting Started": [
-                "Başlarken"
             ],
             "Global Test Not Computed": [
                 ""
@@ -4804,17 +4471,11 @@
             "Gold Standard (Reference Test)": [
                 "Altın Standart (Referans Test)"
             ],
-            "Gold Standard (Reference)": [
-                "Altın Standart (Referans)"
-            ],
             "Gold Standard Frequency Distribution": [
                 "Altın Standart Frekans Dağılımı"
             ],
             "Gold Standard Has Only One Outcome": [
                 "Altın Standart Yalnızca Bir Sonuca Sahip"
-            ],
-            "Gold standard levels excluded from analysis: {lvls}": [
-                "Analizden hariç tutulan altın standart düzeyleri: {lvls}"
             ],
             "Gold standard variable must be specified. Select a reference test variable that represents the true disease status.": [
                 ""
@@ -4830,9 +4491,6 @@
             ],
             "Good calibration slope": [
                 ""
-            ],
-            "Good discriminatory power (Youden's index 0.60 to 0.79)": [
-                "İyi ayırt edici güç (Youden indeksi 0.60 ila 0.79)"
             ],
             "Good early retrieval performance": [
                 "İyi erken geri erişim performansı"
@@ -4881,9 +4539,6 @@
             ],
             "Harmonic mean of sensitivity and PPV; because PPV depends on prevalence, F1 also changes with the selected prevalence.": [
                 "Duyarlılık ve PÖD'ün harmonik ortalaması; PÖD prevalansa bağlı olduğundan F1 de seçilen prevalansla değişir."
-            ],
-            "Healthy": [
-                "Sağlıklı"
             ],
             "Heatmap": [
                 "Isı haritası"
@@ -4969,9 +4624,6 @@
             "Highly significant overall difference among tests (p<0.001)": [
                 ""
             ],
-            "Highly unbalanced test results ({pct} positive)": [
-                "Yüksek derecede dengesiz test sonuçları (%{pct} pozitif)"
-            ],
             "histopathology including analysis": [
                 ""
             ],
@@ -4996,29 +4648,8 @@
             "How many times more (or less) likely disease is after testing compared to before testing": [
                 ""
             ],
-            "How much a negative test decreases disease odds. LR- <0.1 strong evidence AGAINST disease, LR- 0.1-0.2 moderate, LR- 0.2-0.5 weak.": [
-                "Negatif bir testin hastalık odds'unu ne kadar azalttığı. LR- <0.1 hastalığa KARŞI güçlü kanıt, LR- 0.1-0.2 orta, LR- 0.2-0.5 zayıf."
-            ],
-            "How much a positive test increases disease odds. LR+ >10 strong evidence FOR disease, LR+ 5-10 moderate, LR+ 2-5 weak but useful.": [
-                "Pozitif bir testin hastalık odds'unu ne kadar artırdığı. LR+ >10 hastalık LEHİNE güçlü kanıt, LR+ 5-10 orta, LR+ 2-5 zayıf ama yararlı."
-            ],
-            "How much more likely a negative result is in a diseased than in a healthy patient. <0.1 is strong evidence AGAINST disease, 0.1-0.2 moderate, 0.2-0.5 weak.": [
-                "Negatif bir sonucun sağlıklı bir hastaya kıyasla hastalıklı bir hastada ne kadar daha olası olduğu. <0.1 hastalığa KARŞI güçlü kanıt, 0.1-0.2 orta, 0.2-0.5 zayıf."
-            ],
-            "How much more likely a positive result is in a diseased than in a healthy patient. >10 is strong evidence FOR disease, 5-10 moderate, 2-5 weak.": [
-                "Pozitif bir sonucun sağlıklı bir hastaya kıyasla hastalıklı bir hastada ne kadar daha olası olduğu. >10 hastalık LEHİNE güçlü kanıt, 5-10 orta, 2-5 zayıf."
-            ],
-            "How much more likely will the test make a correct diagnosis than an incorrect diagnosis in patients with the disease.": [
-                "Testin hastalığı olan hastalarda yanlış bir tanıya kıyasla doğru bir tanı koyma olasılığının ne kadar daha fazla olduğu."
-            ],
-            "How much test results change disease probability": [
-                "Test sonuçlarının hastalık olasılığını ne kadar değiştirdiği"
-            ],
             "How to Use This Analysis": [
                 ""
-            ],
-            "How well the test identifies disease presence and absence": [
-                "Testin hastalık varlığını ve yokluğunu ne kadar iyi belirlediği"
             ],
             "HPV": [
                 ""
@@ -5040,9 +4671,6 @@
             ],
             "Identical Positive and Negative Levels": [
                 ""
-            ],
-            "Identify and analyze false positive and false negative cases": [
-                "Yanlış pozitif ve yanlış negatif olguları belirleyin ve analiz edin"
             ],
             "IDI": [
                 "IDI"
@@ -5158,9 +4786,6 @@
             "Important Information": [
                 "Önemli Bilgi"
             ],
-            "Important warning": [
-                ""
-            ],
             "In this %1$s sample, %2$s showed %3$s: the AUC was %4$.3f (%5$s%% CI: %6$s--%7$s). AUC is the probability that a randomly chosen case scores above a randomly chosen non-case; it is computed over all cutpoints and does not depend on which cutpoint was selected. This is an in-sample estimate with no internal or external validation behind it%8$s. The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those ARE optimistic, because that cutpoint was searched for on these same data.": [
                 ""
             ],
@@ -5187,9 +4812,6 @@
             ],
             "Incorporation bias.": [
                 "Dahil etme (incorporation) yanlılığı."
-            ],
-            "Increases probability of disease (test may be flawed)": [
-                "Hastalık olasılığını artırır (test kusurlu olabilir)"
             ],
             "Incremental Assigned Benefit vs Treat All": [
                 "Herkesi Tedavi Etmeye Göre Artımlı Atanan Fayda"
@@ -5272,12 +4894,6 @@
             "Insufficient Data After Removing Missing Values": [
                 "Eksik Değerler Kaldırıldıktan Sonra Yetersiz Veri"
             ],
-            "Insufficient data to evaluate discriminatory power": [
-                "Ayırt edici gücü değerlendirmek için yetersiz veri"
-            ],
-            "Insufficient data: {n} cases found": [
-                "Yetersiz veri: {n} olgu bulundu"
-            ],
             "Insufficient Outcome Variable Levels": [
                 "Yetersiz Sonuç Değişkeni Düzeyleri"
             ],
@@ -5317,9 +4933,6 @@
             "Interpret differences between models with caution and do not choose a threshold from this curve alone.": [
                 "Modeller arasındaki farkları dikkatle yorumlayın ve yalnızca bu eğriden bir eşik seçmeyin."
             ],
-            "Interpret results with caution. Confidence intervals may be wide. Minimum recommended: 100 cases for robust estimates.": [
-                "Sonuçları dikkatle yorumlayın. Güven aralıkları geniş olabilir. Güçlü tahminler için önerilen minimum: 100 olgu."
-            ],
             "Interpret ROC results cautiously given class imbalance.": [
                 ""
             ],
@@ -5344,9 +4957,6 @@
             "Interpretation Guidelines:": [
                 "Yorumlama Kılavuzu:"
             ],
-            "Interpretation of Misclassified Cases": [
-                "Yanlış Sınıflandırılan Olguların Yorumlanması"
-            ],
             "Interval Type": [
                 "Aralık Türü"
             ],
@@ -5362,9 +4972,6 @@
             "Interventions Avoided": [
                 "Önlenen Girişimler"
             ],
-            "Invalid contingency table values detected": [
-                "Geçersiz kontenjans tablosu değerleri tespit edildi"
-            ],
             "Invalid Counts": [
                 "Geçersiz Sayılar"
             ],
@@ -5374,14 +4981,8 @@
             "Invalid cut-off inputs": [
                 "Geçersiz kesim değeri girdileri"
             ],
-            "Invalid data structure: Both test and gold standard variables must have exactly 2 levels each": [
-                "Geçersiz veri yapısı: Hem test hem de altın standart değişkenlerinin her biri tam olarak 2 düzeye sahip olmalıdır"
-            ],
             "Invalid Partial AUC Range": [
                 "Geçersiz Kısmi EAA Aralığı"
-            ],
-            "Invalid population prevalence: {value}": [
-                "Geçersiz popülasyon prevalansı: {value}"
             ],
             "Invalid Positive Class Selection": [
                 "Geçersiz Pozitif Sınıf Seçimi"
@@ -5488,17 +5089,11 @@
             "Key Metrics Explained": [
                 ""
             ],
-            "Key Output Measures": [
-                "Temel Çıktı Ölçütleri"
-            ],
             "Key outputs:": [
                 "Temel çıktılar:"
             ],
             "Knots of the spline calibration curve (3 to 7). The spline has knots - 1 degrees of freedom; more knots follow the data more closely but need more events per knot. Used only when splineCalibration is on.": [
                 "Spline kalibrasyon eğrisinin düğümleri (3 ila 7). Spline düğümler - 1 serbestlik derecesine sahiptir; daha fazla düğüm verileri daha yakından izler ancak düğüm başına daha fazla olay gerektirir. Yalnızca splineCalibration açık olduğunda kullanılır."
-            ],
-            "Known disease prevalence in the target population (as proportion: 0.0-1.0). Examples: rare diseases (0.001-0.01), common conditions (0.05-0.20). This affects post-test probabilities and predictive values.": [
-                "Hedef popülasyonda bilinen hastalık prevalansı (oran olarak: 0.0-1.0). Örnekler: nadir hastalıklar (0.001-0.01), yaygın durumlar (0.05-0.20). Bu, test sonrası olasılıkları ve öngörü değerlerini etkiler."
             ],
             "Known population prevalence": [
                 "Bilinen popülasyon prevalansı"
@@ -5523,15 +5118,6 @@
             ],
             "Large": [
                 ""
-            ],
-            "Large and often conclusive decrease in probability of disease": [
-                "Hastalık olasılığında büyük ve genellikle kesin azalma"
-            ],
-            "Large and often conclusive increase in probability of disease": [
-                "Hastalık olasılığında büyük ve genellikle kesin artış"
-            ],
-            "Large dataset detected ({n} rows)": [
-                "Büyük veri kümesi tespit edildi ({n} satır)"
             ],
             "Large effect": [
                 "Büyük etki"
@@ -5617,20 +5203,11 @@
             "Level '{}' not found in variable '{}'. Available levels: {}": [
                 "'{}' düzeyi '{}' değişkeninde bulunamadı. Kullanılabilir düzeyler: {}"
             ],
-            "Likelihood Ratio Interpretation": [
-                "Olabilirlik Oranı Yorumu"
-            ],
             "Likelihood ratio of a negative test": [
                 "Negatif bir testin olabilirlik oranı"
             ],
             "Likelihood ratio of a positive test": [
                 "Pozitif bir testin olabilirlik oranı"
-            ],
-            "likelihood ratio unavailable due to data limitations": [
-                "veri kısıtlılıkları nedeniyle olabilirlik oranı mevcut değil"
-            ],
-            "Likelihood Ratios": [
-                "Olabilirlik Oranları"
             ],
             "Likelihood ratios describe how a test result changes pre-test odds.": [
                 "Olabilirlik oranları bir test sonucunun test öncesi odds'unu nasıl değiştirdiğini tanımlar."
@@ -5643,9 +5220,6 @@
             ],
             "Limitations": [
                 "Kısıtlılıklar"
-            ],
-            "limited": [
-                "sınırlı"
             ],
             "Limited diagnostic performance for %1$s: AUC=%2$s. • AUC below 0.7 indicates limited discriminative ability. • Consider: (1) Adding predictor variables or interaction terms, (2) Verifying data quality and coding, (3) Using multivariate models to improve discrimination, (4) Checking if direction setting is appropriate for your biomarker.": [
                 ""
@@ -5743,14 +5317,8 @@
             "LR-": [
                 "LR-"
             ],
-            "LR- (Negative Likelihood Ratio)": [
-                "LR- (Negatif Olabilirlik Oranı)"
-            ],
             "LR- (negative likelihood ratio)": [
                 "LR- (negatif olabilirlik oranı)"
-            ],
-            "LR- <0.1 strong evidence AGAINST disease, LR- 0.1-0.2 moderate, LR- 0.2-0.5 weak": [
-                "LR- <0.1 hastalığa KARŞI güçlü kanıt, LR- 0.1-0.2 orta, LR- 0.2-0.5 zayıf"
             ],
             "LR- Quality": [
                 ""
@@ -5758,14 +5326,8 @@
             "LR+": [
                 "LR+"
             ],
-            "LR+ (Positive Likelihood Ratio)": [
-                "LR+ (Pozitif Olabilirlik Oranı)"
-            ],
             "LR+ (positive likelihood ratio)": [
                 "LR+ (pozitif olabilirlik oranı)"
-            ],
-            "LR+ >10 strong evidence FOR disease, LR+ 5-10 moderate, LR+ 2-5 weak but useful": [
-                "LR+ >10 hastalık LEHİNE güçlü kanıt, LR+ 5-10 orta, LR+ 2-5 zayıf ama yararlı"
             ],
             "LR+ and LR-": [
                 ""
@@ -5869,15 +5431,6 @@
             "Maximize metric (LOESS smoothed)": [
                 "Ölçütü maksimize et (LOESS ile düzeltilmiş)"
             ],
-            "Maximum cases to display": [
-                "Görüntülenecek maksimum olgu"
-            ],
-            "Maximum cases to display:": [
-                "Görüntülenecek maksimum olgu:"
-            ],
-            "Maximum number of misclassified cases to display in each table. Large datasets may have many misclassifications; this limits the output.": [
-                "Her tabloda görüntülenecek maksimum yanlış sınıflandırılmış olgu sayısı. Büyük veri kümelerinde çok sayıda yanlış sınıflandırma olabilir; bu çıktıyı sınırlar."
-            ],
             "Maximum Points per Feature": [
                 "Özellik Başına Maksimum Puan"
             ],
@@ -5938,12 +5491,6 @@
             "Median of tied cutpoints": [
                 "Bağlı kesme noktalarının medyanı"
             ],
-            "Medical Decision": [
-                "Tıbbi Karar"
-            ],
-            "Medical Decision Analysis": [
-                "Tıbbi Karar Analizi"
-            ],
             "Medical Decision Calculator": [
                 "Tıbbi Karar Hesaplayıcı"
             ],
@@ -5952,9 +5499,6 @@
             ],
             "Medical Decision Calculator for diagnostic test evaluation when you have the four key counts: True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN). Calculates comprehensive diagnostic performance metrics including sensitivity, specificity, positive and negative predictive values, likelihood ratios, and post-test probabilities. Supports confidence interval estimation and Fagan nomogram visualization for educational interpretation. Presets and examples are illustrative only and are not clinical guides.": [
                 ""
-            ],
-            "Medical device evaluation": [
-                "Tıbbi cihaz değerlendirmesi"
             ],
             "Medium": [
                 ""
@@ -6070,29 +5614,14 @@
             "Minimal": [
                 "Minimal"
             ],
-            "Minimal decrease in probability of disease": [
-                "Hastalık olasılığında minimal azalma"
-            ],
             "Minimal difference": [
                 "Minimal fark"
             ],
             "Minimal effect": [
                 "Minimal etki"
             ],
-            "Minimal evidence against disease": [
-                "Hastalığa karşı minimal kanıt"
-            ],
-            "Minimal evidence for disease": [
-                "Hastalık lehine minimal kanıt"
-            ],
             "minimal evidence for disease": [
                 ""
-            ],
-            "minimal evidence for disease when positive": [
-                "pozitif olduğunda hastalık lehine minimal kanıt"
-            ],
-            "Minimal increase in probability of disease": [
-                "Hastalık olasılığında minimal artış"
             ],
             "Minimize |PPV - NPV|": [
                 "|PÖD - NÖD| minimize et"
@@ -6148,20 +5677,8 @@
             "Minority class: %.1f%% (severe imbalance)": [
                 "Azınlık sınıfı: %%%.1f (ciddi dengesizlik)"
             ],
-            "Misclassification Analysis": [
-                "Yanlış Sınıflandırma Analizi"
-            ],
             "Misclassification cost": [
                 "Yanlış sınıflandırma maliyeti"
-            ],
-            "Misclassified Cases Analysis": [
-                "Yanlış Sınıflandırılan Olgular Analizi"
-            ],
-            "Misclassified cases analysis": [
-                "Yanlış sınıflandırılan olgular analizi"
-            ],
-            "Misclassified cases tables": [
-                "Yanlış sınıflandırılan olgular tabloları"
             ],
             "Missing Dependency": [
                 ""
@@ -6283,35 +5800,20 @@
             "Moderate": [
                 "Orta"
             ],
-            "Moderate decrease in probability of disease": [
-                "Hastalık olasılığında orta derecede azalma"
-            ],
             "Moderate difference": [
                 "Orta derecede fark"
             ],
             "Moderate early retrieval performance": [
                 "Orta derecede erken geri erişim performansı"
             ],
-            "Moderate evidence against disease": [
-                "Hastalığa karşı orta derecede kanıt"
-            ],
-            "Moderate evidence for disease": [
-                "Hastalık lehine orta derecede kanıt"
-            ],
             "moderate evidence for disease": [
                 ""
-            ],
-            "moderate evidence for disease when positive": [
-                "pozitif olduğunda hastalık lehine orta derecede kanıt"
             ],
             "Moderate evidence for positive diagnosis": [
                 "Pozitif tanı için orta derecede kanıt"
             ],
             "Moderate imbalance": [
                 "Orta derecede dengesizlik"
-            ],
-            "Moderate increase in probability of disease": [
-                "Hastalık olasılığında orta derecede artış"
             ],
             "Moderate negative evidence": [
                 ""
@@ -6348,18 +5850,6 @@
             ],
             "Monitoring": [
                 "İzleme"
-            ],
-            "more than 1 disease-free case in 5 flagged positive here": [
-                "burada her 5 hastalıksız olgudan 1'den fazlası pozitif işaretlendi"
-            ],
-            "more than 1 disease-free case in 5 flagged positive in this sample": [
-                "bu örneklemde her 5 hastalıksız olgudan 1'den fazlası pozitif işaretlendi"
-            ],
-            "more than 1 diseased case in 5 missed here": [
-                "burada her 5 hastalıklı olgudan 1'den fazlası kaçırıldı"
-            ],
-            "more than 1 diseased case in 5 missed in this sample": [
-                "bu örneklemde her 5 hastalıklı olgudan 1'den fazlası kaçırıldı"
             ],
             "Most latent-class starts did not converge": [
                 "Çoğu örtük sınıf başlangıcı yakınsamadı"
@@ -6490,23 +5980,14 @@
             "Negative Likelihood Ratio": [
                 "Negatif Olabilirlik Oranı"
             ],
-            "Negative likelihood ratio": [
-                "Negatif olabilirlik oranı"
-            ],
             "negative likelihood ratio": [
                 ""
             ],
             "Negative Likelihood Ratio Infinite": [
                 "Negatif Olabilirlik Oranı Sonsuz"
             ],
-            "Negative likelihood ratio unavailable due to data limitations": [
-                "veri kısıtlılıkları nedeniyle negatif olabilirlik oranı mevcut değil"
-            ],
             "Negative Likelihood Ratio Undefined": [
                 "Negatif Olabilirlik Oranı Tanımsız"
-            ],
-            "Negative Likelihood Ratio: How much more likely a negative result is in diseased vs healthy patients. <0.1 = strong evidence against disease, <0.2 = moderate, <0.5 = weak.": [
-                "Negatif Olabilirlik Oranı: Negatif bir sonucun sağlıklı hastalara kıyasla hastalıklı hastalarda ne kadar daha olası olduğu. <0.1 = hastalığa karşı güçlü kanıt, <0.2 = orta, <0.5 = zayıf."
             ],
             "Negative Likelihood Ratio: how much more likely a negative result is in diseased vs. non-diseased patients": [
                 ""
@@ -6535,17 +6016,11 @@
             "Negative Predictive Value = TN/(TN+FN) = Probability of being healthy when test is negative": [
                 ""
             ],
-            "Negative predictive value is unstable at this prevalence. Verify that the level selected as disease-present is the one you meant.": [
-                "Negatif öngörü değeri bu prevalansta kararsızdır. Hastalık var olarak seçilen düzeyin amaçladığınız düzey olduğunu doğrulayın."
-            ],
             "Negative predictive value using the supplied population prevalence.": [
                 "Sağlanan popülasyon prevalansı kullanılarak hesaplanan negatif öngörü değeri."
             ],
             "Negative predictive value using this study sample's prevalence.": [
                 "Bu çalışma örnekleminin prevalansı kullanılarak hesaplanan negatif öngörü değeri."
-            ],
-            "Negative Predictive Value: Probability of being healthy given a negative test. This IS the post-test probability of health. Depends on prevalence, sensitivity and specificity.": [
-                "Negatif Öngörü Değeri: Negatif bir test verildiğinde sağlıklı olma olasılığı. Bu, sağlığın test sonrası olasılığıdır. Prevalans, duyarlılık ve özgüllüğe bağlıdır."
             ],
             "Negative Tests": [
                 "Negatif Testler"
@@ -6649,9 +6124,6 @@
             "Net-benefit precision depends on the number of events, prevalence and the selected thresholds; inspect the uncertainty bands and validate the predictions on independent or properly resampled data.": [
                 "Net fayda kesinliği olayların sayısına, prevalansa ve seçilen eşiklere bağlıdır; belirsizlik bantlarını inceleyin ve tahminleri bağımsız veya uygun şekilde yeniden örneklenmiş veriler üzerinde doğrulayın."
             ],
-            "New Test": [
-                "Yeni Test"
-            ],
             "NND": [
                 "NND"
             ],
@@ -6679,17 +6151,11 @@
             "No case observations found for predictor '%s'. Check that your outcome variable has both positive and negative cases.": [
                 "Öngörücü '%s' için hiçbir olgu gözlemi bulunamadı. Sonuç değişkeninizin hem pozitif hem de negatif olgulara sahip olduğunu kontrol edin."
             ],
-            "No cases excluded.": [
-                "Hiçbir olgu hariç tutulmadı."
-            ],
             "No cases for cut-off": [
                 "Kesim değeri için olgu yok"
             ],
             "No cases remain for {test} after applying the selected positive and negative levels.": [
                 ""
-            ],
-            "no change in the probability of disease": [
-                "hastalık olasılığında değişiklik yok"
             ],
             "No Complete Cases": [
                 "Tam Olgu Yok"
@@ -6717,9 +6183,6 @@
             ],
             "No data are available. Load data before running the analysis.": [
                 "Veri mevcut değil. Analizi çalıştırmadan önce verileri yükleyin."
-            ],
-            "No data available for analysis": [
-                "Analiz için veri mevcut değil"
             ],
             "No Data Provided": [
                 ""
@@ -6904,17 +6367,8 @@
             "Not available": [
                 "Mevcut değil"
             ],
-            "not available": [
-                "mevcut değil"
-            ],
             "Not beneficial": [
                 "Faydalı değil"
-            ],
-            "not calculated": [
-                "hesaplanmadı"
-            ],
-            "not calculated (needs both sensitivity and specificity)": [
-                "hesaplanmadı (hem duyarlılık hem özgüllük gerektirir)"
             ],
             "Not computable with three tests: the model has no residual degrees of freedom, so it reproduces every observed table exactly and no residual can detect conditional dependence. Add a fourth test if you need to check this assumption.": [
                 "Üç testle hesaplanamaz: modelin artık serbestlik derecesi yoktur, bu nedenle gözlemlenen her tabloyu tam olarak yeniden üretir ve hiçbir artık koşullu bağımlılığı tespit edemez. Bu varsayımı kontrol etmeniz gerekiyorsa dördüncü bir test ekleyin."
@@ -6934,23 +6388,11 @@
             "Not estimable - a model was fitted to these data, so the slope and intercept are 1 and 0 by construction": [
                 ""
             ],
-            "not estimable: no gold-standard negative cases": [
-                "tahmin edilemiyor: altın standart negatif olgu yok"
-            ],
-            "not estimable: no gold-standard positive cases": [
-                "tahmin edilemiyor: altın standart pozitif olgu yok"
-            ],
             "Not informative (post-hoc)": [
                 ""
             ],
             "Not interpretable": [
                 "Yorumlanamaz"
-            ],
-            "not provided": [
-                "sağlanmadı"
-            ],
-            "not reported": [
-                "bildirilmedi"
             ],
             "not reported - fixed at 100% by construction": [
                 "bildirilmedi - yapı gereği %100'e sabitlendi"
@@ -7068,9 +6510,6 @@
             ],
             "Number of patients called high risk, and number of true events among them, per 1000 tested across thresholds": [
                 ""
-            ],
-            "Number of patients that need to be tested to give one correct positive test.": [
-                "Bir doğru pozitif test elde etmek için test edilmesi gereken hasta sayısı."
             ],
             "Number of predictor variables analyzed": [
                 "Analiz edilen öngörücü değişken sayısı"
@@ -7206,12 +6645,6 @@
             ],
             "One-vs-rest curves read each marker the same way for every class, but the markers do not all read the same way (%1$s). The orientation was %2$s.": [
                 ""
-            ],
-            "Only \"{pos}\" (disease-present) and \"{neg}\" (disease-absent) take part. Cases at any other level are removed, not counted as disease-absent, because an indeterminate result is not a negative result.": [
-                "Yalnızca \"{pos}\" (hastalık var) ve \"{neg}\" (hastalık yok) yer alır. Başka herhangi bir düzeydeki olgular kaldırılır, hastalık yok olarak sayılmaz, çünkü belirsiz bir sonuç negatif bir sonuç değildir."
-            ],
-            "Only \"{pos}\" (test-positive) and \"{neg}\" (test-negative) take part. Cases at any other level are removed, not counted as negative.": [
-                "Yalnızca \"{pos}\" (test pozitif) ve \"{neg}\" (test negatif) yer alır. Başka herhangi bir düzeydeki olgular kaldırılır, negatif olarak sayılmaz."
             ],
             "Only {kept} of {total} bootstrap resamples for '{var}' contained both outcome classes, which is too few for a stable interval, so no bootstrap AUC summary is reported for it.": [
                 ""
@@ -7720,9 +7153,6 @@
             "Please adjust the threshold range in Analysis Options.": [
                 "Lütfen Analiz Seçeneklerinde eşik aralığını ayarlayın."
             ],
-            "Please ensure your data is loaded. Check that your dataset contains observations.": [
-                "Lütfen verilerinizin yüklendiğinden emin olun. Veri kümenizin gözlemler içerdiğini kontrol edin."
-            ],
             "Please select an outcome variable and at least one predictor variable for ROC analysis. • Outcome variable: required (binary/factor). • Predictor variables: at least one numeric variable required for ROC curve calculation.": [
                 ""
             ],
@@ -7765,12 +7195,6 @@
             "Points (Selected)": [
                 "Puanlar (Seçilen)"
             ],
-            "Points AGAINST disease when positive: the test-positive level may be inverted": [
-                "Pozitif olduğunda hastalığa KARŞI işaret eder: test pozitif düzeyi ters çevrilmiş olabilir"
-            ],
-            "Points TOWARD disease when negative: the test-positive level may be inverted": [
-                "Negatif olduğunda hastalığa DOĞRU işaret eder: test pozitif düzeyi ters çevrilmiş olabilir"
-            ],
             "Points: observed proportion in {grp}; curve: natural cubic spline with {k} knots on the logit scale": [
                 ""
             ],
@@ -7792,17 +7216,8 @@
             "Poor Discrimination": [
                 "Zayıf Ayrım"
             ],
-            "Poor discrimination (Youden's index {j}, equivalent AUC {auc})": [
-                ""
-            ],
-            "Poor discriminatory power (Youden's index below 0.40)": [
-                "Zayıf ayırt edici güç (Youden indeksi 0.40 altı)"
-            ],
             "Population Characteristics:": [
                 ""
-            ],
-            "Population disease prevalence": [
-                "Popülasyon hastalık prevalansı"
             ],
             "Population Flow Analysis": [
                 "Popülasyon Akış Analizi"
@@ -7815,9 +7230,6 @@
             ],
             "Population Prevalence": [
                 "Popülasyon Prevalansı"
-            ],
-            "Population Prevalence Settings": [
-                "Popülasyon Prevalansı Ayarları"
             ],
             "Population size": [
                 "Popülasyon boyutu"
@@ -7864,20 +7276,11 @@
             "Positive Likelihood Ratio": [
                 "Pozitif Olabilirlik Oranı"
             ],
-            "Positive likelihood ratio": [
-                "Pozitif olabilirlik oranı"
-            ],
             "positive likelihood ratio": [
                 ""
             ],
-            "Positive likelihood ratio unavailable due to data limitations": [
-                "veri kısıtlılıkları nedeniyle pozitif olabilirlik oranı mevcut değil"
-            ],
             "Positive Likelihood Ratio Undefined": [
                 "Pozitif Olabilirlik Oranı Tanımsız"
-            ],
-            "Positive Likelihood Ratio: How much more likely a positive result is in diseased vs healthy patients. >10 = strong evidence, >5 = moderate, >2 = weak but potentially useful.": [
-                "Pozitif Olabilirlik Oranı: Pozitif bir sonucun sağlıklı hastalara kıyasla hastalıklı hastalarda ne kadar daha olası olduğu. >10 = güçlü kanıt, >5 = orta, >2 = zayıf ama potansiyel olarak yararlı."
             ],
             "Positive Likelihood Ratio: how much more likely a positive result is in diseased vs. non-diseased patients": [
                 ""
@@ -7915,17 +7318,11 @@
             "Positive Predictive Value = TP/(TP+FP) = Probability of disease when test is positive": [
                 ""
             ],
-            "Positive predictive value is unstable at this prevalence and will not transfer to a population with a different one. Sensitivity and specificity are unaffected. Consider supplying a population prior under Population Prevalence Settings.": [
-                "Pozitif öngörü değeri bu prevalansta kararsızdır ve farklı bir prevalansa sahip bir popülasyona aktarılamaz. Duyarlılık ve özgüllük etkilenmez. Popülasyon Prevalansı Ayarları altında bir popülasyon öncülü sağlamayı düşünün."
-            ],
             "Positive predictive value using the supplied population prevalence.": [
                 "Sağlanan popülasyon prevalansı kullanılarak hesaplanan pozitif öngörü değeri."
             ],
             "Positive predictive value using this study sample's prevalence.": [
                 "Bu çalışma örnekleminin prevalansı kullanılarak hesaplanan pozitif öngörü değeri."
-            ],
-            "Positive Predictive Value: Probability of disease given a positive test. This IS the post-test probability of disease. Depends on prevalence, sensitivity and specificity.": [
-                "Pozitif Öngörü Değeri: Pozitif bir test verildiğinde hastalık olasılığı. Bu, hastalığın test sonrası olasılığıdır. Prevalans, duyarlılık ve özgüllüğe bağlıdır."
             ],
             "Positive rule level": [
                 "Pozitif kural düzeyi"
@@ -7951,9 +7348,6 @@
             "Post-hoc power (observed data)": [
                 "Post-hoc güç (gözlemlenen veriler)"
             ],
-            "Post-test": [
-                "Test sonrası"
-            ],
             "Post-test Odds": [
                 "Test Sonrası Odds"
             ],
@@ -7962,12 +7356,6 @@
             ],
             "Post-test Probability": [
                 "Test Sonrası Olasılık"
-            ],
-            "Post-test probability of disease, test negative": [
-                "Hastalığın test sonrası olasılığı, test negatif"
-            ],
-            "Post-test probability of disease, test positive": [
-                "Hastalığın test sonrası olasılığı, test pozitif"
             ],
             "Post-test Reference-negative Probability": [
                 "Test Sonrası Referans Negatif Olasılığı"
@@ -8074,17 +7462,11 @@
             "Pre-test": [
                 "Test öncesi"
             ],
-            "Pre-test prevalence {prev} | Sensitivity {sens} | Specificity {spec}": [
-                "Test öncesi prevalans {prev} | Duyarlılık {sens} | Özgüllük {spec}"
-            ],
             "Pre-test probability is {prevalence}, using the population prevalence you supplied.": [
                 "Test öncesi olasılık {prevalence}'dir; sağladığınız popülasyon prevalansı kullanılmaktadır."
             ],
             "Pre-test probability is {prevalence}, using the prevalence observed in this study table.": [
                 "Test öncesi olasılık {prevalence}'dir; bu çalışma tablosunda gözlemlenen prevalans kullanılmaktadır."
-            ],
-            "Pre-test probability of disease": [
-                "Hastalığın test öncesi olasılığı"
             ],
             "Precision": [
                 "Kesinlik (Presizyon)"
@@ -8146,20 +7528,8 @@
             "Predictive Value": [
                 "Öngörü Değeri"
             ],
-            "Predictive Values": [
-                "Öngörü Değerleri"
-            ],
             "Predictive values (PPV, NPV) were adjusted for prevalence using Bayes' theorem. Likelihood ratios and diagnostic odds ratios follow standard definitions.": [
                 "Öngörü değerleri (PÖD, NÖD) Bayes teoremi kullanılarak prevalansa göre düzeltilmiştir. Olabilirlik oranları ve tanısal odds oranları standart tanımları izler."
-            ],
-            "Predictive values are computed at this sample's observed prevalence of {prevalence}. If the sample was enriched or case-control, that prevalence is not the clinical one and these predictive values do not transfer - tick Known population prevalence under Population Prevalence Settings to obtain values for your setting.": [
-                "Öngörü değerleri bu örneklemin gözlemlenen %{prevalence} prevalansında hesaplanmıştır. Örneklem zenginleştirilmiş veya vaka-kontrol ise bu prevalans klinik prevalans değildir ve bu öngörü değerleri aktarılamaz - ortamınız için değerler elde etmek amacıyla Popülasyon Prevalansı Ayarları altında Bilinen popülasyon prevalansını işaretleyin."
-            ],
-            "Predictive values are computed by Bayes' theorem at the population prior of {prior} that you supplied, NOT at this sample's observed prevalence of {observed}. Sensitivity and specificity are unaffected by prevalence; PPV and NPV are not.": [
-                "Öngörü değerleri bu örneklemin gözlemlenen {observed} prevalansında DEĞİL, sağladığınız {prior} popülasyon öncülünde Bayes teoremi ile hesaplanmıştır. Duyarlılık ve özgüllük prevalanstan etkilenmez; PÖD ve NÖD etkilenir."
-            ],
-            "Predictive values depend on disease prevalence in your population": [
-                "Öngörü değerleri popülasyonunuzdaki hastalık prevalansına bağlıdır"
             ],
             "Predictive Values vs Disease Prevalence": [
                 "Öngörü Değerleri ve Hastalık Prevalansı"
@@ -8263,9 +7633,6 @@
             "Prevalence Low": [
                 ""
             ],
-            "Prevalence must be between 0 and 1 (exclusive). For 5% prevalence, enter 0.05. For 20% prevalence, enter 0.20.": [
-                "Prevalans 0 ile 1 arasında olmalıdır (sınırlar hariç). %5 prevalans için 0.05 girin. %20 prevalans için 0.20 girin."
-            ],
             "Prevalence must be greater than 0 and less than 1 (exclusive). Current value is invalid.": [
                 "Prevalans 0'dan büyük ve 1'den küçük olmalıdır (sınırlar hariç). Geçerli değer geçersizdir."
             ],
@@ -8286,9 +7653,6 @@
             ],
             "Prevalence Very Low": [
                 "Prevalans Çok Düşük"
-            ],
-            "Prevalence: the user-supplied population prevalence (Known population prevalence, under Population Prevalence Settings), NOT this sample's observed prevalence. Predictive values, which are the post-test probabilities, are computed from this prior; sensitivity and specificity are not affected by it.": [
-                "Prevalans: bu örneklemin gözlemlenen prevalansı DEĞİL, kullanıcı tarafından sağlanan popülasyon prevalansıdır (Popülasyon Prevalansı Ayarları altında Bilinen popülasyon prevalansı). Test sonrası olasılıklar olan öngörü değerleri bu öncülden hesaplanır; duyarlılık ve özgüllük bundan etkilenmez."
             ],
             "Prior\nProb.\n(%)": [
                 ""
@@ -8347,17 +7711,8 @@
             "Probability of a reference-positive outcome after a positive test; it depends on prevalence.": [
                 "Pozitif bir testten sonra referans pozitif bir sonucun olasılığı; prevalansa bağlıdır."
             ],
-            "Probability of being healthy given a negative test. Depends on prevalence, sensitivity and specificity.": [
-                "Negatif bir test verildiğinde sağlıklı olma olasılığı. Prevalans, duyarlılık ve özgüllüğe bağlıdır."
-            ],
             "Probability of disease after obtaining this test result combination": [
                 ""
-            ],
-            "Probability of disease given a positive test. Depends on prevalence, sensitivity and specificity.": [
-                "Pozitif bir test verildiğinde hastalık olasılığı. Prevalans, duyarlılık ve özgüllüğe bağlıdır."
-            ],
-            "Probability of disease given test results (PPV, NPV)": [
-                "Test sonuçlarına göre hastalık olasılığı (PÖD, NÖD)"
             ],
             "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type II error). Conventional values are 0.80 or 0.90; must exceed alpha.": [
                 "Gerçek uyum kappa1 iken kappa0'ın reddedilme olasılığı (1 - tip II hata). Alışılmış değerler 0.80 veya 0.90'dır; alfadan büyük olmalıdır."
@@ -8416,12 +7771,6 @@
             "Proportion of diseased cases correctly identified (True Positive Rate). High sensitivity means few false negatives. Important when missing disease is costly.": [
                 ""
             ],
-            "Proportion of diseased patients correctly identified (TP rate). Higher is better for ruling OUT disease when negative.": [
-                "Doğru şekilde tanımlanan hastalıklı hastaların oranı (GP oranı). Negatif olduğunda hastalığı DIŞLAMAK için daha yüksek olması daha iyidir."
-            ],
-            "Proportion of diseased patients correctly identified (true positive rate). Higher is better for ruling OUT disease when negative.": [
-                "Doğru şekilde tanımlanan hastalıklı hastaların oranı (gerçek pozitif oranı). Negatif olduğunda hastalığı DIŞLAMAK için daha yüksek olması daha iyidir."
-            ],
             "Proportion of diseased patients correctly identified by %s": [
                 ""
             ],
@@ -8430,12 +7779,6 @@
             ],
             "Proportion of false positives": [
                 "Yanlış pozitiflerin oranı"
-            ],
-            "Proportion of healthy patients correctly identified (TN rate). Higher is better for ruling IN disease when positive.": [
-                "Doğru şekilde tanımlanan sağlıklı hastaların oranı (GN oranı). Pozitif olduğunda hastalığı DOĞRULAMAK için daha yüksek olması daha iyidir."
-            ],
-            "Proportion of healthy patients correctly identified (true negative rate). Higher is better for ruling IN disease when positive.": [
-                "Doğru şekilde tanımlanan sağlıklı hastaların oranı (gerçek negatif oranı). Pozitif olduğunda hastalığı DOĞRULAMAK için daha yüksek olması daha iyidir."
             ],
             "Proportion of non-diseased cases correctly identified (True Negative Rate). High specificity means few false positives. Important when false alarms are problematic.": [
                 ""
@@ -8500,9 +7843,6 @@
             "Provide diagnostic-test data with at least one non-zero count.": [
                 "En az bir sıfır olmayan sayıya sahip tanı testi verileri sağlayın."
             ],
-            "Provides uncertainty estimates using the epiR package. These intervals describe the observed sample; when a population prevalence is supplied they do not apply to the prior-adjusted predictive values in the main table.": [
-                "epiR paketini kullanarak belirsizlik tahminleri sağlar. Bu aralıklar gözlemlenen örneklemi açıklar; bir popülasyon prevalansı sağlandığında ana tablodaki öncül düzeltmeli öngörü değerleri için geçerli değildir."
-            ],
             "PSA": [
                 ""
             ],
@@ -8530,17 +7870,11 @@
             "Qualitative performance labels are illustrative summaries of the observed sample only. They are not clinical guides, validated decision rules, or recommendations for patient care.": [
                 ""
             ],
-            "Quality assurance for laboratory tests": [
-                "Laboratuvar testleri için kalite güvencesi"
-            ],
             "Quantile Positions": [
                 "Kantil Konumları"
             ],
             "Quantile positions": [
                 "Kantil konumları"
-            ],
-            "Quick Start": [
-                "Hızlı Başlangıç"
             ],
             "Radar plot": [
                 "Radar grafiği"
@@ -8638,12 +7972,6 @@
             "Ratio threshold for imbalance detection (e.g., 3.0 means 3:1 or 1:3 ratio)": [
                 "Dengesizlik tespiti için oran eşiği (ör. 3.0, 3:1 veya 1:3 oranı anlamına gelir)"
             ],
-            "Raw Data Tables": [
-                "Ham Veri Tabloları"
-            ],
-            "Raw data tables": [
-                "Ham veri tabloları"
-            ],
             "Re-running with the same seed reproduces these numbers exactly.": [
                 "Aynı tohumla yeniden çalıştırmak bu sayıları tam olarak yeniden üretir."
             ],
@@ -8679,9 +8007,6 @@
             ],
             "Reclassification improvement (NRI)": [
                 "Yeniden sınıflandırma iyileşmesi (NRI)"
-            ],
-            "Recoded Data for Decision Test Statistics": [
-                "Karar Testi İstatistikleri İçin Yeniden Kodlanmış Veriler"
             ],
             "Recommend using Precision-Recall curves when imbalance is detected": [
                 "Dengesizlik tespit edildiğinde Duyarlılık-Duyarlık eğrilerinin kullanılmasını öner"
@@ -8791,14 +8116,8 @@
             "Relevant for high-specificity screening applications (minimizing false positives)": [
                 "Yüksek özgüllüklü tarama uygulamaları için uygundur (yanlış pozitifleri en aza indirme)"
             ],
-            "Removed {n} case(s) with an explicit missing level": [
-                "Açık bir eksik düzeyi olan {n} olgu kaldırıldı"
-            ],
             "Removed {n} case(s) with missing values": [
                 "Eksik değerlere sahip {n} olgu kaldırıldı"
-            ],
-            "Removed {n} row(s) with missing diagnostic data": [
-                "Eksik tanısal veriye sahip {n} satır kaldırıldı"
             ],
             "Rename the duplicated label(s): {names}.": [
                 "Yinelenen etiket(ler)i yeniden adlandırın: {names}."
@@ -8812,17 +8131,11 @@
             "Report Sentences": [
                 ""
             ],
-            "Reported reason": [
-                ""
-            ],
             "Reporting a cut-point and a sensitivity from this analysis would misdescribe the marker.": [
                 "Bu analizden bir kesme noktası ve duyarlılık bildirmek belirteci yanlış tanımlayacaktır."
             ],
             "Reporting Options": [
                 "Raporlama Seçenekleri"
-            ],
-            "Required data: Cases with both test results and true disease status (gold standard). Both variables must be categorical (factor), each with exactly 2 levels, minimum 4 cases (preferably 30+).": [
-                "Gerekli veriler: Hem test sonuçlarına hem de gerçek hastalık durumuna (altın standart) sahip olgular. Her iki değişken de kategorik (faktör) olmalı, her biri tam olarak 2 düzeye sahip olmalı, minimum 4 olgu (tercihen 30+) bulunmalıdır."
             ],
             "Required inputs:": [
                 "Gerekli girdiler:"
@@ -8878,14 +8191,8 @@
             "Result": [
                 "Sonuç"
             ],
-            "Results are only as good as your gold standard": [
-                "Sonuçlar yalnızca altın standardınız kadar iyidir"
-            ],
             "Results include Area Under the Curve (AUC), optimal cutpoints, and performance statistics.": [
                 "Sonuçlar Eğri Altındaki Alanı (EAA), optimal kesme noktalarını ve performans istatistiklerini içerir."
-            ],
-            "Results may be unstable or undefined (e.g., infinite likelihood ratios). Consider collecting more data or using exact methods. Ensure both tests and gold standard have both positive and negative cases.": [
-                "Sonuçlar kararsız veya tanımsız olabilir (ör. sonsuz olabilirlik oranları). Daha fazla veri toplamayı veya kesin yöntemler kullanmayı düşünün. Hem testlerin hem de altın standardın hem pozitif hem negatif olgulara sahip olduğundan emin olun."
             ],
             "Results Section": [
                 "Sonuçlar Bölümü"
@@ -8904,12 +8211,6 @@
             ],
             "Results table": [
                 "Sonuç tablosu"
-            ],
-            "Review false negative cases to understand what the test misses": [
-                "Testin neyi kaçırdığını anlamak için yanlış negatif olguları inceleyin"
-            ],
-            "Review false positive cases to identify common characteristics": [
-                "Ortak özellikleri belirlemek için yanlış pozitif olguları inceleyin"
             ],
             "Review the decision curves and the range of benefit below.": [
                 "Aşağıdaki karar eğrilerini ve fayda aralığını inceleyin."
@@ -9052,9 +8353,6 @@
             "ROC Smoothing Method": [
                 "ROC Düzeltme Yöntemi"
             ],
-            "Row": [
-                "Satır"
-            ],
             "Row type": [
                 "Satır Türü"
             ],
@@ -9078,12 +8376,6 @@
             ],
             "Sample Accuracy": [
                 "Örneklem Doğruluğu"
-            ],
-            "Sample Accuracy is the proportion of concordant results at the prevalence observed in this sample ({prevalence}), and it changes with case mix.": [
-                "Örneklem Doğruluğu, bu örneklemde gözlemlenen {prevalence} prevalansındaki uyumlu sonuçların oranıdır ve vaka dağılımıyla değişir."
-            ],
-            "Sample Accuracy is the proportion of concordant results at the prevalence observed in this sample ({prevalence}), NOT at the population prior you supplied. Unlike the predictive values it is not standardised to that prior, and it changes with case mix.": [
-                "Örneklem Doğruluğu, sağladığınız popülasyon öncülünde DEĞİL, bu örneklemde gözlemlenen {prevalence} prevalansındaki uyumlu sonuçların oranıdır. Öngörü değerlerinin aksine bu öncüle göre standartlaştırılmamıştır ve vaka dağılımıyla değişir."
             ],
             "Sample accuracy is the proportion of concordant results. It is computed at the prevalence observed in this sample ({prevalence}) and changes with case mix.": [
                 "Örneklem doğruluğu uyumlu sonuçların oranıdır. Bu örneklemde gözlemlenen prevalansta ({prevalence}) hesaplanır ve vaka dağılımı ile değişir."
@@ -9121,14 +8413,8 @@
             "Sample size for an interobserver agreement study sized to reject a null kappa (kappa0) in favour of an alternative kappa (kappa1) at a given two-sided significance level and power - the power approach of the kappaSize package. Use kappaSizeCI for a target confidence-interval width, and kappaSizeFixedN when the number of subjects is already fixed.": [
                 "Belirli bir iki yönlü anlamlılık düzeyi ve güçte sıfır hipotezi kappasını (kappa0) alternatif kappa (kappa1) lehine reddetmek üzere boyutlandırılan gözlemciler arası uyum çalışması için örneklem büyüklüğü; kappaSize paketinin güç yaklaşımı. Hedef güven aralığı genişliği için kappaSizeCI, olgu sayısı önceden sabitse kappaSizeFixedN kullanın."
             ],
-            "Sample size not available": [
-                "Örneklem büyüklüğü mevcut değil"
-            ],
             "Sample Size Warning": [
                 "Örneklem Büyüklüğü Uyarısı"
-            ],
-            "Sample size: n = {n}": [
-                "Örneklem büyüklüğü: n = {n}"
             ],
             "Sample size: n = {n} complete cases": [
                 "Örneklem büyüklüğü: n = {n} eksiksiz olgu"
@@ -9141,15 +8427,6 @@
             ],
             "Samples": [
                 "Örnekler"
-            ],
-            "Save classification groups (TP/FP/FN/TN) to dataset:": [
-                "Sınıflandırma gruplarını (GP/YP/YN/GN) veri kümesine kaydet:"
-            ],
-            "Save classifications to data": [
-                "Sınıflandırmaları verilere kaydet"
-            ],
-            "Save the classification results (True Positive, False Positive, False Negative, True Negative) as a new column in your dataset. This allows you to use the classification groups in other analyses.": [
-                "Sınıflandırma sonuçlarını (Gerçek Pozitif, Yanlış Pozitif, Yanlış Negatif, Gerçek Negatif) veri kümenizde yeni bir sütun olarak kaydedin. Bu, sınıflandırma gruplarını diğer analizlerde kullanmanıza olanak tanır."
             ],
             "Save Variables": [
                 "Değişkenleri Kaydet"
@@ -9271,17 +8548,8 @@
             "Select a binary rule variable or disable \"Clinical Decision Rule Integration\".": [
                 "İkili bir kural değişkeni seçin veya \"Klinik Karar Kuralı Entegrasyonu\"nu devre dışı bırakın."
             ],
-            "Select a different variable for the test under evaluation. Comparing a variable against itself always yields perfect agreement and tells you nothing about the test.": [
-                "Değerlendirilen test için farklı bir değişken seçin. Bir değişkeni kendisiyle karşılaştırmak her zaman mükemmel uyum verir ve test hakkında size hiçbir şey söylemez."
-            ],
             "Select a second diagnostic test to compare with Test 1. This enables head-to-head  comparison analysis (e.g., new method vs standard method, or two different biomarkers).": [
                 "Test 1 ile karşılaştırmak için ikinci bir tanı testi seçin. Bu, başa baş karşılaştırma analizine olanak tanır (ör. yeni yöntem ve standart yöntem veya iki farklı biyobelirteç)."
-            ],
-            "Select different levels for positive and negative outcomes.": [
-                "Pozitif ve negatif sonuçlar için farklı düzeyler seçin."
-            ],
-            "Select Disease present level": [
-                "Hastalık var düzeyini seçin"
             ],
             "Select exactly one positive outcome level that is present in the analysis data.": [
                 "Analiz verilerinde mevcut olan tam olarak bir pozitif sonuç düzeyi seçin."
@@ -9292,17 +8560,8 @@
             "Select from available statistical approaches:": [
                 "Mevcut istatistiksel yaklaşımlardan seçin:"
             ],
-            "Select Gold Standard": [
-                "Altın Standardı Seçin"
-            ],
-            "Select New Test": [
-                "Yeni Testi Seçin"
-            ],
             "Select one metric, or use the plot-specific default metric set. The bar chart defaults to sensitivity, specificity, PPV, NPV, and accuracy; the heatmap also includes prevalence, balanced accuracy, and Youden's J. The forest plot supports sensitivity, specificity, PPV, NPV, accuracy, LR+, LR-, and diagnostic OR, for which confidence intervals are available. Unsupported forest selections produce an explanatory notice rather than silently showing other statistics. The decision-space plot has fixed sensitivity and specificity axes and is unaffected.": [
                 "Bir metrik seçin veya grafiğe özgü varsayılan metrik setini kullanın. Çubuk grafik varsayılan olarak duyarlılık, özgüllük, PÖD, NÖD ve doğruluğu gösterir; ısı haritası ayrıca prevalans, dengeli doğruluk ve Youden J içerir. Orman grafiği güven aralıklarının mevcut olduğu duyarlılık, özgüllük, PÖD, NÖD, doğruluk, LR+, LR- ve tanısal OR'yi destekler. Desteklenmeyen orman seçimleri sessizce diğer istatistikleri göstermek yerine açıklayıcı bir bildirim üretir. Karar uzayı grafiği sabit duyarlılık ve özgüllük eksenlerine sahiptir ve etkilenmez."
-            ],
-            "Select Test positive level": [
-                "Test pozitif düzeyini seçin"
             ],
             "Select Test Variables:": [
                 "Test Değişkenlerini Seçin:"
@@ -9319,17 +8578,8 @@
             "Select the level representing a positive result for Test 1.": [
                 "Test 1 için pozitif bir sonucu temsil eden düzeyi seçin."
             ],
-            "Select the level that indicates disease is absent in your gold standard variable. Only the disease-present and disease-absent levels take part; cases at any other level are excluded from the analysis, not counted as disease-absent. With a two-level variable this is inferred; with three or more levels you must choose it.": [
-                "Altın standart değişkeninizde hastalığın olmadığını gösteren düzeyi seçin. Yalnızca hastalık var ve hastalık yok düzeyleri yer alır; başka herhangi bir düzeydeki olgular analizden hariç tutulur, hastalık yok olarak sayılmaz. İki düzeyli bir değişkende bu çıkarımlanır; üç veya daha fazla düzeyde bunu siz seçmelisiniz."
-            ],
             "Select the level that indicates disease IS PRESENT in your gold standard variable  (e.g., \"positive\", \"malignant\", \"1\"). This represents the condition you want to detect.": [
                 "Altın standart değişkeninizde hastalığın VAR OLDUĞUNU gösteren düzeyi seçin (ör. \"pozitif\", \"malign\", \"1\"). Bu, tespit etmek istediğiniz durumu temsil eder."
-            ],
-            "Select the level that indicates disease is present in your gold standard variable. This represents the condition you want to detect or diagnose.": [
-                "Altın standart değişkeninizde hastalığın mevcut olduğunu gösteren düzeyi seçin. Bu, tespit etmek veya teşhis etmek istediğiniz durumu temsil eder."
-            ],
-            "Select the level that represents a negative test result. Only the test-positive and test-negative levels take part; cases at any other level are excluded from the analysis, not counted as negative. With a two-level variable this is inferred; with three or more levels you must choose it.": [
-                "Negatif bir test sonucunu temsil eden düzeyi seçin. Yalnızca test pozitif ve test negatif düzeyleri yer alır; başka herhangi bir düzeydeki olgular analizden hariç tutulur, negatif olarak sayılmaz. İki düzeyli bir değişkende bu çıkarımlanır; üç veya daha fazla düzeyde bunu siz seçmelisiniz."
             ],
             "Select the level that represents a POSITIVE result for Test 1  (e.g., \"abnormal\", \"high\", \"positive\"). This should indicate suspected disease presence.": [
                 "Test 1 için POZİTİF bir sonucu temsil eden düzeyi seçin (ör. \"anormal\", \"yüksek\", \"pozitif\"). Bu, şüphelenilen hastalık varlığını göstermelidir."
@@ -9339,9 +8589,6 @@
             ],
             "Select the level that represents a POSITIVE result for Test 3.": [
                 "Test 3 için POZİTİF bir sonucu temsil eden düzeyi seçin."
-            ],
-            "Select the level that represents a positive test result. This should correspond to the level indicating suspected disease presence.": [
-                "Pozitif bir test sonucunu temsil eden düzeyi seçin. Bu, şüphelenilen hastalık varlığını gösteren düzeye karşılık gelmelidir."
             ],
             "Select the most reliable diagnostic method available (e.g., biopsy, final pathology,  expert consensus). This is the \"truth\" against which we compare other tests.  The selected positive level is compared with the remaining levels; if indeterminate values should be excluded, also select explicit negative levels.": [
                 "Mevcut en güvenilir tanı yöntemini seçin (ör. biyopsi, nihai patoloji, uzman konsensüsü). Bu, diğer testleri karşılaştırdığımız \"gerçektir\". Seçilen pozitif düzey kalan düzeylerle karşılaştırılır; belirsiz değerlerin hariç tutulması gerekiyorsa açık negatif düzeyleri de seçin."
@@ -9412,9 +8659,6 @@
             "Sensitivity = TP/(TP+FN) = Probability of positive test among diseased": [
                 ""
             ],
-            "Sensitivity >90% excellent for ruling OUT disease": [
-                "Hastalığı DIŞLAMAK için %90 üzeri duyarlılık mükemmeldir"
-            ],
             "Sensitivity analysis showing how the fixed penalties affect a conditional-independence fit.": [
                 "Sabit cezaların bir koşullu bağımsızlık uyumunu nasıl etkilediğini gösteren duyarlılık analizi."
             ],
@@ -9427,9 +8671,6 @@
             "Sensitivity and specificity across cutoff values": [
                 "Kesme değerleri boyunca duyarlılık ve özgüllük"
             ],
-            "sensitivity and specificity are both 0.80 or above in this sample": [
-                "bu örneklemde hem duyarlılık hem özgüllük 0.80 veya üzerindedir"
-            ],
             "Sensitivity and Specificity vs Threshold": [
                 "Duyarlılık ve Özgüllük - Eşik"
             ],
@@ -9439,32 +8680,14 @@
             "Sensitivity and Specificity vs. Threshold: Combined": [
                 "Duyarlılık ve Özgüllük - Eşik: Birleşik"
             ],
-            "sensitivity and specificity were not both 0.80 or above in this sample": [
-                "bu örneklemde hem duyarlılık hem özgüllük 0.80 veya üzerinde değildi"
-            ],
             "Sensitivity and/or specificity could not be computed here: one gold-standard class has no cases, so that rate has an empty denominator and is reported as blank rather than as a low value. The 2x2 counts behind this row are in the Recoded Data table for this test": [
                 ""
             ],
             "Sensitivity CI": [
                 ""
             ],
-            "Sensitivity is estimated from the disease-present cases only and specificity from the disease-free cases only, so these are the numbers that matter, not the total sample size. With fewer than ten cases in an arm one reclassified patient moves that proportion by more than ten percentage points. Report the 95% confidence intervals rather than the point estimates.": [
-                ""
-            ],
-            "sensitivity is high (0.90 or above) while specificity is below 0.80: few false negatives, more false positives in this sample": [
-                "duyarlılık yüksek (0.90 veya üzeri) iken özgüllük 0.80 altındadır: bu örneklemde az sayıda yanlış negatif, daha fazla yanlış pozitif"
-            ],
             "Sensitivity is the proportion of reference-positive observations with a positive test result.": [
                 "Duyarlılık, pozitif test sonucuna sahip referans pozitif gözlemlerin oranıdır."
-            ],
-            "sensitivity or specificity could not be computed in this sample, so the discrimination profile is incomplete": [
-                "bu örneklemde duyarlılık veya özgüllük hesaplanamadı, bu nedenle ayırt etme profili eksiktir"
-            ],
-            "Sensitivity plus specificity is below 1, so a positive result argues AGAINST disease and a negative result argues for it. The usual cause is that the level chosen under Test positive level is the wrong one; swapping it would give the mirror-image performance. Check the level selection before reading any number in these tables.": [
-                ""
-            ],
-            "Sensitivity plus specificity is exactly 1, which is what a coin toss achieves. Both likelihood ratios equal 1 and the post-test probability equals the pre-test probability, whatever the result.": [
-                ""
             ],
             "Sensitivity plus specificity minus one; it weights both equally and is not a measure of clinical utility or a universal cut-off.": [
                 "Duyarlılık artı özgüllük eksi bir; her ikisini de eşit olarak ağırlıklandırır ve bir klinik yarar ölçüsü veya evrensel bir kesim değeri değildir."
@@ -9487,14 +8710,8 @@
             "Sensitivity, specificity and prevalence were treated as exact, so these probabilities carry no confidence interval.": [
                 ""
             ],
-            "Sensitivity, Specificity, PPV, NPV": [
-                "Duyarlılık, Özgüllük, PÖD, NÖD"
-            ],
             "Sensitivity, Specificity, PPV, NPV, ...": [
                 "Duyarlılık, Özgüllük, PÖD, NÖD, ..."
-            ],
-            "Sensitivity: Proportion of diseased patients correctly identified (TP rate). Higher is better for ruling OUT disease when negative.": [
-                "Duyarlılık: Doğru şekilde tanımlanan hastalıklı hastaların oranı (GP oranı). Negatif olduğunda hastalığı DIŞLAMAK için daha yüksek olması daha iyidir."
             ],
             "Sensitivity: true positives among reference-positive subjects": [
                 "Duyarlılık: referans pozitif denekler arasındaki gerçek pozitifler"
@@ -9586,17 +8803,8 @@
             "Show the number needed to test (1 / net benefit) and number needed to diagnose (1 / Youden index) columns in the clinical impact table": [
                 "Klinik etki tablosunda test edilmesi gereken sayı (1 / net fayda) ve teşhis edilmesi gereken sayı (1 / Youden indeksi) sütunlarını göster"
             ],
-            "Showing first {shown} of {total} false negative cases": [
-                "{total} yanlış negatif olgunun ilk {shown} tanesi gösteriliyor"
-            ],
-            "Showing first {shown} of {total} false positive cases": [
-                "{total} yanlış pozitif olgunun ilk {shown} tanesi gösteriliyor"
-            ],
             "Showing the %1$d highest-ranked of %2$d model terms; the remaining terms have smaller maximum coefficients along the path.": [
                 ""
-            ],
-            "Showing the first {shown} of {total} level combinations.": [
-                "{total} düzey kombinasyonunun ilk {shown} tanesi gösteriliyor."
             ],
             "Significance Level": [
                 "Anlamlılık Düzeyi"
@@ -9655,18 +8863,6 @@
             "Small": [
                 ""
             ],
-            "Small but potentially important decrease in probability": [
-                "Olasılıkta küçük ancak potansiyel olarak önemli azalma"
-            ],
-            "Small but potentially important increase in probability": [
-                "Olasılıkta küçük ancak potansiyel olarak önemli artış"
-            ],
-            "Small cell count detected (minimum = {n}, < 5)": [
-                "Küçük hücre sayısı tespit edildi (minimum = {n}, < 5)"
-            ],
-            "Small cell counts (<5) may cause unstable results": [
-                "Küçük hücre sayıları (<5) kararsız sonuçlara neden olabilir"
-            ],
             "Small effect": [
                 "Küçük etki"
             ],
@@ -9690,9 +8886,6 @@
             ],
             "Small Sample Size: %s": [
                 "Küçük Örneklem Büyüklüğü: %s"
-            ],
-            "Small sample size: n = {n} (< 50 cases)": [
-                "Küçük örneklem büyüklüğü: n = {n} (< 50 olgu)"
             ],
             "Small sample: %1$d positive and %2$d negative case(s). DeLong's test relies on a large-sample approximation to the variance of the AUC, so with fewer than 10 cases in a class the p-values and confidence intervals below are unreliable and are likely to be too narrow. Treat any difference as provisional and confirm it in a larger sample.": [
                 ""
@@ -9760,14 +8953,8 @@
             "Specificity = TN/(TN+FP) = Probability of negative test among healthy": [
                 ""
             ],
-            "Specificity >90% excellent for ruling IN disease": [
-                "Hastalığı DOĞRULAMAK için %90 üzeri özgüllük mükemmeldir"
-            ],
             "Specificity CI": [
                 ""
-            ],
-            "specificity is high (0.90 or above) while sensitivity is below 0.80: few false positives, more false negatives in this sample": [
-                "özgüllük yüksek (0.90 veya üzeri) iken duyarlılık 0.80 altındadır: bu örneklemde az sayıda yanlış pozitif, daha fazla yanlış negatif"
             ],
             "Specificity is the proportion of reference-negative observations with a negative test result.": [
                 "Özgüllük, negatif test sonucuna sahip referans negatif gözlemlerin oranıdır."
@@ -9777,9 +8964,6 @@
             ],
             "Specificity Range (for high-specificity applications)": [
                 "Özgüllük Aralığı (yüksek özgüllüklü uygulamalar için)"
-            ],
-            "Specificity: Proportion of healthy patients correctly identified (TN rate). Higher is better for ruling IN disease when positive.": [
-                "Özgüllük: Doğru şekilde tanımlanan sağlıklı hastaların oranı (GN oranı). Pozitif olduğunda hastalığı DOĞRULAMAK için daha yüksek olması daha iyidir."
             ],
             "Specificity: true negatives among reference-negative subjects": [
                 "Özgüllük: referans negatif denekler arasındaki gerçek negatifler"
@@ -9883,9 +9067,6 @@
             "Statistical Conclusion": [
                 "İstatistiksel Sonuç"
             ],
-            "Statistical estimates may be unstable. Enable 95% confidence intervals: the exact (Clopper-Pearson) intervals shown there remain valid with small cells and will be wide enough to show it.": [
-                "İstatistiksel tahminler kararsız olabilir. %95 güven aralıklarını etkinleştirin: orada gösterilen kesin (Clopper-Pearson) aralıklar küçük hücrelerle geçerli kalır ve bunu gösterecek kadar geniş olacaktır."
-            ],
             "Statistical Explanations & Glossary": [
                 "İstatistiksel Açıklamalar ve Sözlük"
             ],
@@ -9967,17 +9148,8 @@
             "Strong": [
                 ""
             ],
-            "Strong evidence against disease": [
-                "Hastalığa karşı güçlü kanıt"
-            ],
-            "Strong evidence for disease": [
-                "Hastalık lehine güçlü kanıt"
-            ],
             "strong evidence for disease": [
                 ""
-            ],
-            "strong evidence for disease when positive": [
-                "pozitif olduğunda hastalık lehine güçlü kanıt"
             ],
             "Strong evidence for positive diagnosis": [
                 "Pozitif tanı için güçlü kanıt"
@@ -10092,9 +9264,6 @@
             ],
             "Teaching Examples (Not Clinical Guidance)": [
                 "Eğitim Örnekleri (Klinik Kılavuz Değildir)"
-            ],
-            "Technical details: %s Please report this issue if it persists.": [
-                ""
             ],
             "Technical Notes": [
                 "Teknik Notlar"
@@ -10354,9 +9523,6 @@
             "Test Comparison": [
                 "Test Karşılaştırması"
             ],
-            "Test comparisons": [
-                "Test karşılaştırmaları"
-            ],
             "Test Correlation Risk": [
                 "Test Korelasyon Riski"
             ],
@@ -10384,9 +9550,6 @@
             "Test negative": [
                 "Test negatif"
             ],
-            "Test negative level": [
-                "Test negatif düzeyi"
-            ],
             "Test Pair": [
                 "Test Çifti"
             ],
@@ -10405,23 +9568,11 @@
             "Test Performance Comparison": [
                 "Test Performansı Karşılaştırması"
             ],
-            "Test Performance Summary": [
-                "Test Performansı Özeti"
-            ],
             "Test Positive": [
                 "Test Pozitif"
             ],
             "Test positive": [
                 "Test pozitif"
-            ],
-            "Test positive level": [
-                "Test pozitif düzeyi"
-            ],
-            "Test Result": [
-                "Test Sonucu"
-            ],
-            "Test result": [
-                "Test sonucu"
             ],
             "Test Results": [
                 "Test Sonuçları"
@@ -10438,9 +9589,6 @@
             "Test Statistic": [
                 "Test İstatistiği"
             ],
-            "Test Under Evaluation": [
-                "Değerlendirilen Test"
-            ],
             "Test value distribution": [
                 "Test değeri dağılımı"
             ],
@@ -10453,20 +9601,8 @@
             "Test Variable": [
                 ""
             ],
-            "Test variable levels excluded from analysis: {lvls}": [
-                "Analizden hariç tutulan test değişkeni düzeyleri: {lvls}"
-            ],
             "Test Variables": [
                 "Test Değişkenleri"
-            ],
-            "Test-negative level \"{lvl}\" not found in test variable": [
-                "Test negatif düzeyi \"{lvl}\" test değişkeninde bulunamadı"
-            ],
-            "Test-positive and test-negative levels cannot be the same": [
-                "Test pozitif ve test negatif düzeyleri aynı olamaz"
-            ],
-            "Test-positive level \"{lvl}\" not found in test variable": [
-                "Test pozitif düzeyi \"{lvl}\" test değişkeninde bulunamadı"
             ],
             "Tested Positive (%)": [
                 "Test Pozitif (%)"
@@ -10609,12 +9745,6 @@
             "The design needs {n} subjects; few agreement studies can enrol this many. A rare finding (prevalence far from 0.5), a small difference between kappa0 and kappa1, and a high power target all inflate the sample size - revisit whichever of these is not a firm requirement.": [
                 "Tasarım {n} olgu gerektiriyor; çok az uyum çalışması bu kadar olgu toplayabilir. Nadir bir bulgu (0.5'ten uzak prevalans), kappa0 ile kappa1 arasındaki küçük fark ve yüksek güç hedefinin her biri örneklem büyüklüğünü artırır; bunlardan kesin bir gereklilik olmayanı gözden geçirin."
             ],
-            "The diagnostic test being evaluated for performance. This is typically a new, faster, or less expensive test compared to the gold standard.": [
-                "Performansı değerlendirilen tanısal test. Bu, genellikle altın standarda kıyasla yeni, daha hızlı veya daha ucuz bir testtir."
-            ],
-            "The displayed confidence intervals (95% CI) are calculated from your study sample. They apply to the sample-based Sensitivity, Specificity, PPV and NPV in the epiR tables. They do NOT apply to the PPV and NPV in the main ratio table, which are recomputed by Bayes' theorem at the fixed population prevalence you supplied.": [
-                "Görüntülenen güven aralıkları (%95 GA) çalışma örnekleminizden hesaplanmıştır. epiR tablolarındaki örneklem temelli Duyarlılık, Özgüllük, PÖD ve NÖD için geçerlidir. Sağladığınız sabit popülasyon prevalansında Bayes teoremi ile yeniden hesaplanan ana oran tablosundaki PÖD ve NÖD için geçerli DEĞİLDİR."
-            ],
             "The displayed ROC curve is smoothed (%s), but every reported statistic — AUC, confidence intervals, optimal cut-points and all sensitivity/specificity values — is computed from the empirical curve. A smoothed curve carries no thresholds, so it cannot produce a cut-point.": [
                 ""
             ],
@@ -10624,16 +9754,10 @@
             "The enhanced DeLong comparison failed (%s), so a fallback implementation was used; the AUC differences and p-values below come from that fallback.": [
                 "Gelişmiş DeLong karşılaştırması başarısız oldu (%s), bu nedenle bir yedek uygulama kullanıldı; aşağıdaki EAA farkları ve p değerleri bu yedekten gelmektedir."
             ],
-            "The epiR package could not produce intervals for this table, so the two confidence-interval tables are empty.": [
-                ""
-            ],
             "The epiR package is required for confidence intervals. Install it or disable confidence intervals. The two interval tables are left blank; every other result on this page is unaffected.": [
                 ""
             ],
             "The epiR package is required for confidence intervals. Install it with install.packages(\"epiR\"), or disable the \"95% CI\" option.": [
-                ""
-            ],
-            "The epiR package returned no interval estimates for this table, so the two confidence-interval tables are empty. This usually means the 2x2 table is too sparse for the exact method.": [
                 ""
             ],
             "The estimation did not converge": [
@@ -10689,15 +9813,6 @@
             ],
             "The global test across all markers could not be computed (%s); its statistic and p-value are left blank.": [
                 "Tüm belirteçler arasındaki genel test hesaplanamadı (%s); istatistiği ve p değeri boş bırakıldı."
-            ],
-            "The gold standard and the test are the same variable": [
-                "Altın standart ve test aynı değişkendir"
-            ],
-            "The gold standard has more than one level besides \"{pos}\" ({lvls}), so the disease-absent level cannot be inferred. Select it under Disease absent level. Levels you do not name are excluded from the analysis rather than counted as disease-absent.": [
-                "Altın standart \"{pos}\" dışında birden fazla düzeye sahiptir ({lvls}), bu nedenle hastalık yok düzeyi çıkarımlanamaz. Bunu Hastalık yok düzeyi altında seçin. Belirtmediğiniz düzeyler hastalık yok olarak sayılmak yerine analizden hariç tutulur."
-            ],
-            "The gold standard reference variable (true disease status).  This should be the most reliable test or diagnosis available (e.g., biopsy, final diagnosis).": [
-                "Altın standart referans değişkeni (gerçek hastalık durumu). Bu, mevcut en güvenilir test veya tanı olmalıdır (ör. biyopsi, nihai tanı)."
             ],
             "The gold-standard variable cannot also occupy a test slot. Select a different variable for each test.": [
                 ""
@@ -10821,9 +9936,6 @@
             ],
             "The positive-response probability and NPV are fixed at 100% by construction and therefore are left blank.": [
                 "Pozitif yanıt olasılığı ve NÖD yapı gereği %100'e sabitlenmiştir ve bu nedenle boş bırakılmıştır."
-            ],
-            "The predictive values in this table are computed at the prevalence observed in this sample ({observed}), not at the population prior of {prior} used for the predictive values in the main table above. The intervals here belong to these estimates, not to those. Sensitivity and specificity are unaffected by prevalence.": [
-                ""
             ],
             "The predictor '%1$s' values are not in the 0 to 1 probability range (observed range: %2$s to %3$s). A logistic regression model was fitted to obtain predicted probabilities for calibration assessment. These calibration results reflect the fitted model's calibration, NOT the raw biomarker's calibration. For proper calibration assessment, provide predicted probabilities from your prediction model.": [
                 ""
@@ -10957,9 +10069,6 @@
             "The test '%1$s' has an AUC of %2$.3f": [
                 ""
             ],
-            "The test has more than one level besides \"{pos}\" ({lvls}), so the test-negative level cannot be inferred. Select it under Test negative level. Levels you do not name are excluded from the analysis rather than counted as negative.": [
-                "Test \"{pos}\" dışında birden fazla düzeye sahiptir ({lvls}), bu nedenle test negatif düzeyi çıkarımlanamaz. Bunu Test negatif düzeyi altında seçin. Belirtmediğiniz düzeyler negatif olarak sayılmak yerine analizden hariç tutulur."
-            ],
             "The tests have similar marginal sensitivity and specificity. Similar marginal performance does not establish redundancy or independence; assess conditional dependence using external evidence.": [
                 "Testler benzer marjinal duyarlılık ve özgüllüğe sahiptir. Benzer marjinal performans fazlalığı veya bağımsızlığı kanıtlamaz; harici kanıtları kullanarak koşullu bağımlılığı değerlendirin."
             ],
@@ -11017,9 +10126,6 @@
             "These are single-cohort estimates. Their practical meaning depends on intended use, error consequences, prevalence, patient spectrum, and reference-standard quality. This educational summary is not a clinical guide.": [
                 "Bunlar tek kohortlu tahminlerdir. Pratik anlamları amaçlanan kullanıma, hata sonuçlarına, prevalansa, hasta spektrumuna ve referans standart kalitesine bağlıdır. Bu eğitici özet klinik bir kılavuz değildir."
             ],
-            "These cases carry a level that codes missingness rather than a result. They are excluded rather than counted as negative, which would have biased sensitivity and specificity.": [
-                "Bu olgular bir sonuç yerine eksikliği kodlayan bir düzey taşır. Duyarlılık ve özgüllüğü yanlı kılacak şekilde negatif olarak sayılmak yerine hariç tutulurlar."
-            ],
             "These curves are computed on the same rows that supplied the predicted risks.": [
                 "Bu eğriler, tahmin edilen riskleri sağlayan aynı satırlar üzerinde hesaplanır."
             ],
@@ -11073,9 +10179,6 @@
             ],
             "This analysis uses the %1$d of %2$d cases (%3$.1f%%) with a result recorded for every selected test. All displayed estimates use these complete cases. If the probability of a missing result is related to an unobserved test result or latent class, the estimates can be biased.": [
                 ""
-            ],
-            "This analysis was inspired by Orange Data Mining's interactive confusion matrix feature, adapted for static jamovi output with comprehensive statistical tables.": [
-                "Bu analiz, Orange Data Mining'in etkileşimli karışıklık matrisi özelliğinden esinlenilmiş ve kapsamlı istatistiksel tablolarla statik jamovi çıktısı için uyarlanmıştır."
             ],
             "This AUC is apparent (in-sample), and where a cutpoint was searched for on these data the cutpoint metrics are optimistic. Independent validation is needed before these figures describe performance in new patients.": [
                 "Bu EAA görünürdür (örneklem içi) ve bu veriler üzerinde bir kesme noktası arandığında kesme noktası ölçütleri iyimserdir. Bu rakamların yeni hastalardaki performansı tanımlaması için bağımsız doğrulama gereklidir."
@@ -11212,12 +10315,6 @@
             "This table lists every observed test value as a candidate cutpoint, not only the selected one; the bias above applies to whichever row you report as the cutpoint.": [
                 "Bu tablo yalnızca seçilen kesme noktasını değil, gözlemlenen her test değerini aday bir kesme noktası olarak listeler; yukarıdaki yanlılık kesme noktası olarak bildirdiğiniz satır için geçerlidir."
             ],
-            "This test is uninformative (Youden's index 0.00, equivalent AUC 0.50)": [
-                ""
-            ],
-            "This test performs worse than chance (Youden's index {j}, equivalent AUC {auc})": [
-                ""
-            ],
             "This tool compares the diagnostic performance of multiple medical tests against a gold standard reference. It systematically evaluates sensitivity, specificity, predictive values, likelihood ratios, and overall accuracy to support transparent comparison of observed performance. It does not select a test for clinical use.": [
                 ""
             ],
@@ -11344,20 +10441,11 @@
             "Total number of discordant test results": [
                 "Uyumsuz test sonuçlarının toplam sayısı"
             ],
-            "Total Number of Healthy Subjects (Gold Standard Negative)": [
-                "Toplam Sağlıklı Denek Sayısı (Altın Standart Negatif)"
-            ],
-            "Total Number of Negative Test Results": [
-                "Toplam Negatif Test Sonucu Sayısı"
-            ],
             "Total number of negative tests": [
                 "Negatif testlerin toplam sayısı"
             ],
             "Total number of observations in analysis": [
                 "Analizdeki toplam gözlem sayısı"
-            ],
-            "Total Number of Positive Test Results": [
-                "Toplam Pozitif Test Sonucu Sayısı"
             ],
             "Total number of positive tests": [
                 "Pozitif testlerin toplam sayısı"
@@ -11370,18 +10458,6 @@
             ],
             "Total number of subjects": [
                 "Toplam denek sayısı"
-            ],
-            "Total Number of Subjects in complete case analysis": [
-                "Eksiksiz olgu analizindeki Toplam Denek Sayısı"
-            ],
-            "Total Number of Subjects with Disease (Gold Standard Positive)": [
-                "Hastalığı Olan Toplam Denek Sayısı (Altın Standart Pozitif)"
-            ],
-            "Total Number of True Test Results (TP + TN)": [
-                "Toplam Doğru Test Sonucu Sayısı (GP + GN)"
-            ],
-            "Total Number of Wrong Test Results (FP + FN)": [
-                "Toplam Yanlış Test Sonucu Sayısı (YP + YN)"
             ],
             "Total Population": [
                 "Toplam Popülasyon"
@@ -11485,9 +10561,6 @@
             "True Status": [
                 "Gerçek Durum"
             ],
-            "True Test": [
-                "Doğru Test"
-            ],
             "True-negative rate": [
                 "Gerçek negatif oranı"
             ],
@@ -11551,44 +10624,20 @@
             "Unable to compute paired differences for {comparison}: no observations with complete data across both tests and the gold standard.": [
                 ""
             ],
-            "Unable to generate detailed clinical interpretation due to data limitations.": [
-                "Veri kısıtlılıkları nedeniyle ayrıntılı klinik yorum oluşturulamıyor."
-            ],
             "unavailable": [
                 ""
             ],
             "Uncertainty and Diagnostics": [
                 "Belirsizlik ve Tanılamalar"
             ],
-            "Uncertainty estimates for all statistics": [
-                "Tüm istatistikler için belirsizlik tahminleri"
-            ],
-            "undefined": [
-                "tanımsız"
-            ],
             "Under-fitting (slope > 1)": [
                 ""
-            ],
-            "Understanding Misclassifications": [
-                "Yanlış Sınıflandırmaları Anlama"
             ],
             "Understanding Penalized Logistic Regression": [
                 "Cezalandırılmış Lojistik Regresyonu Anlama"
             ],
             "Understanding Test Dependence": [
                 "Test Bağımlılığını Anlama"
-            ],
-            "Uninformative: a negative result does not change the probability of disease": [
-                "Bilgilendirici değil: negatif bir sonuç hastalık olasılığını değiştirmez"
-            ],
-            "Uninformative: a negative result leaves the probability of disease unchanged": [
-                "Bilgilendirici değil: negatif bir sonuç hastalık olasılığını değiştirmeden bırakır"
-            ],
-            "Uninformative: a positive result does not change the probability of disease": [
-                "Bilgilendirici değil: pozitif bir sonuç hastalık olasılığını değiştirmez"
-            ],
-            "Uninformative: a positive result leaves the probability of disease unchanged": [
-                "Bilgilendirici değil: pozitif bir sonuç hastalık olasılığını değiştirmeden bırakır"
             ],
             "Unit Cost": [
                 "Birim Maliyet"
@@ -11604,30 +10653,6 @@
             ],
             "Unweighted average of sensitivity and specificity; it does not encode different consequences for the two error types.": [
                 "Duyarlılık ve özgüllüğün ağırlıksız ortalaması; iki hata türü için farklı sonuçları kodlamaz."
-            ],
-            "up to 1 disease-free case in 10 flagged positive here": [
-                "burada her 10 hastalıksız olgudan en fazla 1 tanesi pozitif işaretlendi"
-            ],
-            "up to 1 disease-free case in 10 flagged positive in this sample": [
-                "bu örneklemde her 10 hastalıksız olgudan en fazla 1 tanesi pozitif işaretlendi"
-            ],
-            "up to 1 disease-free case in 5 flagged positive here": [
-                "burada her 5 hastalıksız olgudan en fazla 1 tanesi pozitif işaretlendi"
-            ],
-            "up to 1 disease-free case in 5 flagged positive in this sample": [
-                "bu örneklemde her 5 hastalıksız olgudan en fazla 1 tanesi pozitif işaretlendi"
-            ],
-            "up to 1 diseased case in 10 missed here": [
-                "burada her 10 hastalıklı olgudan en fazla 1 tanesi kaçırıldı"
-            ],
-            "up to 1 diseased case in 10 missed in this sample": [
-                "bu örneklemde her 10 hastalıklı olgudan en fazla 1 tanesi kaçırıldı"
-            ],
-            "up to 1 diseased case in 5 missed here": [
-                "burada her 5 hastalıklı olgudan en fazla 1 tanesi kaçırıldı"
-            ],
-            "up to 1 diseased case in 5 missed in this sample": [
-                "bu örneklemde her 5 hastalıklı olgudan en fazla 1 tanesi kaçırıldı"
             ],
             "Upper": [
                 "Üst"
@@ -11659,20 +10684,11 @@
             "Use known disease prevalence from population data for predictive values, post-test probabilities, and F1 score. Sensitivity, specificity, sample accuracy, and MCC remain based on the entered study table.": [
                 "Öngörü değerleri, test sonrası olasılıklar ve F1 puanı için popülasyon verilerinden bilinen hastalık prevalansını kullanın. Duyarlılık, özgüllük, örneklem doğruluğu ve MCC girilen çalışma tablosuna dayalı kalır."
             ],
-            "Use known disease prevalence from population data instead of study prevalence. Enable this when your study sample may not represent the target population.": [
-                "Çalışma prevalansı yerine popülasyon verilerinden bilinen hastalık prevalansını kullanın. Çalışma örnekleminiz hedef popülasyonu temsil etmeyebileceğinde bunu etkinleştirin."
-            ],
             "Use model-based probabilities and assess their calibration separately in the target population; min-max scaling does not create calibrated risks.": [
                 "Model tabanlı olasılıkları kullanın ve bunların kalibrasyonunu hedef popülasyonda ayrıca değerlendirin; min-maks ölçeklendirmesi kalibre edilmiş riskler oluşturmaz."
             ],
             "Use Precision-Recall Curve (PRC) analysis instead of ROC": [
                 "ROC yerine Duyarlılık-Duyarlık Eğrisi (PRC) analizini kullan"
-            ],
-            "Use when sample doesn't represent target population disease prevalence": [
-                "Örneklem hedef popülasyon hastalık prevalansını temsil etmediğinde kullanın"
-            ],
-            "Use when your study sample doesn't represent the target population prevalence. Affects PPV/NPV calculations using Bayes' theorem. Enter as proportion (e.g., 0.05 for 5%, 0.15 for 15%). Common ranges: rare diseases (0.001-0.01), common conditions (0.05-0.30).": [
-                "Çalışma örnekleminiz hedef popülasyon prevalansını temsil etmediğinde kullanın. Bayes teoremini kullanarak PÖD/NÖD hesaplamalarını etkiler. Oran olarak girin (ör. %5 için 0.05, %15 için 0.15). Yaygın aralıklar: nadir hastalıklar (0.001-0.01), yaygın durumlar (0.05-0.30)."
             ],
             "USER OVERRIDE ACTIVE: Meta-analysis performed on non-independent data despite violation of independence assumption. These results should NOT be used for formal statistical inference. Provided for exploratory purposes only with full awareness of statistical invalidity.": [
                 ""
@@ -11694,9 +10710,6 @@
             ],
             "Using fewer than 100 replications may give unreliable confidence intervals; consider at least 1000 replications for stable estimates.": [
                 "100'den az tekrarlama kullanmak güvenilmez güven aralıkları verebilir; kararlı tahminler için en az 1000 tekrarlama düşünün."
-            ],
-            "Validating new tests": [
-                "Yeni testleri doğrulama"
             ],
             "Validation": [
                 "Doğrulama"
@@ -11773,23 +10786,14 @@
             "Very high %1$s ratio ( %2$s ) - indicates highly informative test.": [
                 ""
             ],
-            "Very high disease prevalence observed in this sample ({pct})": [
-                "Bu örneklemde çok yüksek hastalık prevalansı gözlemlendi (%{pct})"
-            ],
             "Very high prevalence (above 95%): every post-test probability below is driven mainly by the prevalence you entered rather than by the tests, and even the 'both tests negative' row will stay high. Check that this is the pre-test probability in the population you are actually testing.": [
                 ""
             ],
             "Very high sensitivity range - critical for screening/case-finding": [
                 "Çok yüksek duyarlılık aralığı - tarama/olgu bulma için kritik"
             ],
-            "Very large dataset detected ({n} rows)": [
-                "Çok büyük veri kümesi tespit edildi ({n} satır)"
-            ],
             "Very large sample size.": [
                 "Çok büyük örneklem büyüklüğü."
-            ],
-            "Very low disease prevalence observed in this sample ({pct})": [
-                "Bu örneklemde çok düşük hastalık prevalansı gözlemlendi (%{pct})"
             ],
             "Very small observed reference-standard sample (n={n}). Confidence intervals may be wide and estimates unstable, especially when either gold-standard class is sparse. Interpret the interval widths and class-specific denominators; no universal sample-size cutoff guarantees adequate precision.": [
                 ""
@@ -11800,9 +10804,6 @@
             "Very small sample size (n = {n}).": [
                 "Çok küçük örneklem büyüklüğü (n = {n})."
             ],
-            "Very small sample size: n = {n} (< 20 cases)": [
-                "Çok küçük örneklem büyüklüğü: n = {n} (< 20 olgu)"
-            ],
             "Very small sample size.": [
                 "Çok küçük örneklem büyüklüğü."
             ],
@@ -11812,14 +10813,8 @@
             "Very sparse reference groups": [
                 "Çok seyrek referans grupları"
             ],
-            "Visual representation of probability changes": [
-                "Olasılık değişikliklerinin görsel temsili"
-            ],
             "Visual theme for ROC plots": [
                 "ROC grafikleri için görsel tema"
-            ],
-            "Visual tool showing how test results change disease probability. Shows relationship between pre-test probability, likelihood ratios, and post-test probability.": [
-                "Test sonuçlarının hastalık olasılığını nasıl değiştirdiğini gösteren görsel araç. Test öncesi olasılık, olabilirlik oranları ve test sonrası olasılık arasındaki ilişkiyi gösterir."
             ],
             "Visualization": [
                 "Görselleştirme"
@@ -11857,17 +10852,8 @@
             "Weak": [
                 ""
             ],
-            "Weak evidence against disease": [
-                "Hastalığa karşı zayıf kanıt"
-            ],
-            "Weak evidence for disease": [
-                "Hastalık lehine zayıf kanıt"
-            ],
             "weak evidence for disease": [
                 ""
-            ],
-            "weak evidence for disease when positive": [
-                "pozitif olduğunda hastalık lehine zayıf kanıt"
             ],
             "Weak evidence for positive diagnosis": [
                 "Pozitif tanı için zayıf kanıt"
@@ -11911,9 +10897,6 @@
             "What this tool does:": [
                 "Bu araç ne yapar:"
             ],
-            "What You'll Get": [
-                "Neler Elde Edeceksiniz"
-            ],
             "When a test or the gold standard has more than two levels (e.g., indeterminate/equivocal), exclude those rows instead of treating them as negative.": [
                 "Bir test veya altın standart ikiden fazla düzeye sahip olduğunda (ör. belirsiz/şüpheli), bunları negatif olarak değerlendirmek yerine o satırları hariç tutun."
             ],
@@ -11956,9 +10939,6 @@
             "Wilson score 95 percent confidence intervals for sensitivity, specificity, PPV, NPV and accuracy, shown as percentages to match the combination table above. Likelihood ratios and the diagnostic odds ratio are unbounded ratios rather than proportions, so they appear in their own table below.": [
                 "Yukarıdaki kombinasyon tablosuyla eşleşmesi için yüzde olarak gösterilen duyarlılık, özgüllük, PÖD, NÖD ve doğruluk için Wilson puanı yüzde 95 güven aralıkları. Olabilirlik oranları ve tanısal odds oranı oranlar yerine sınırsız oranlar olduğundan aşağıdaki kendi tablolarında görünürler."
             ],
-            "With fewer than 20 cases each proportion rests on a handful of patients, so one reclassified case moves sensitivity or specificity by several percentage points and the 95% confidence intervals (enable the 95% CI option) will be very wide. Read the intervals rather than the point estimates; diagnostic accuracy studies usually need on the order of 100 cases before the intervals narrow usefully.": [
-                "20'den az olguyla her oran bir avuç hastaya dayanır; bu nedenle yeniden sınıflandırılan bir olgu duyarlılık veya özgüllüğü birkaç yüzdelik puan kaydırır ve %95 güven aralıkları (%95 GA seçeneğini etkinleştirin) çok geniş olacaktır. Nokta tahminleri yerine aralıkları okuyun; tanısal doğruluk çalışmalarında aralıkların yararlı şekilde daralması için genellikle 100 olgu civarında gereklidir."
-            ],
             "With fewer than 20 complete cases every proportion rests on a handful of patients, so one reclassified case moves sensitivity or specificity by several percentage points and the 95% confidence intervals are very wide. Read the intervals rather than the point estimates. Diagnostic accuracy studies usually need on the order of 100 cases before the intervals narrow usefully, and combination analysis splits those cases across four or eight patterns.": [
                 "20'den az eksiksiz olgu olduğunda her oran bir avuç hastaya dayanır, bu nedenle yeniden sınıflandırılan bir olgu duyarlılık veya özgüllüğü birkaç yüzde puanı hareket ettirir ve %95 güven aralıkları çok geniştir. Nokta tahminleri yerine aralıkları okuyun. Tanısal doğruluk çalışmaları, aralıkların yararlı şekilde daralmasından önce genellikle yaklaşık 100 olguya ihtiyaç duyar ve kombinasyon analizi bu olguları dört veya sekiz paterne böler."
             ],
@@ -11988,9 +10968,6 @@
             ],
             "Wrong level specified for positive class. No observations found.": [
                 "Pozitif sınıf için yanlış düzey belirtildi. Hiçbir gözlem bulunamadı."
-            ],
-            "Wrong Test": [
-                "Yanlış Test"
             ],
             "Yes": [
                 "Evet"
@@ -12067,9 +11044,6 @@
             "Youden's index is {youden} and sample accuracy is {accuracy}. These values describe the entered study table; they are not clinical grades or decision thresholds.": [
                 "Youden indeksi {youden} ve örneklem doğruluğu {accuracy}'dir. Bu değerler girilen çalışma tablosunu tanımlar; klinik dereceler veya karar eşikleri değildir."
             ],
-            "Youden's index is the difference between the true positive rate and the false positive rate. Youden's index ranges from -1 to +1 with values closer to 1 if both sensitivity and specificity are high (i.e. close to 1).": [
-                "Youden indeksi, gerçek pozitif oranı ile yanlış pozitif oranı arasındaki farktır. Youden indeksi -1 ile +1 arasında değişir; hem duyarlılık hem de özgüllük yüksekse (yani 1'e yakınsa) 1'e daha yakın değerler alır."
-            ],
             "Youden's J": [
                 "Youden J"
             ],
@@ -12084,9 +11058,6 @@
             ],
             "Zero cell detected. A 0.5 continuity correction is applied only to a likelihood ratio whose own denominator cell is empty (FP = 0 for LR+, TN = 0 for LR-); every other statistic uses these raw counts. Interpret cautiously.": [
                 ""
-            ],
-            "Zero counts detected in contingency table": [
-                "Kontenjans tablosunda sıfır sayımları tespit edildi"
             ],
             "Δ Cohen's d": [
                 "Δ Cohen d"

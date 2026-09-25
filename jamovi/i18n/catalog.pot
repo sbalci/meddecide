@@ -72,10 +72,6 @@ msgid ""
 "selected, so the Exploratory Model Comparison table stays empty."
 msgstr ""
 
-#: R/decision.b.R
-msgid "(95% CI: sensitivity {sens}, specificity {spec})"
-msgstr ""
-
 #: R/decisioncompare.b.R
 msgid "(95%% CI: %1$.1f-%2$.1f%%)"
 msgstr ""
@@ -133,14 +129,6 @@ msgid ""
 "(The Summary panel below reproduces the kappaSize package's own wording, "
 "which says the sample size will “ensure” the limits — read it with this "
 "caveat in mind.)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "(this is 1 - NPV)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "(this is the PPV)"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -254,30 +242,6 @@ msgid ""
 "range examined, so no range is shown."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"{n} case(s) ({pct}) removed because their level was neither the positive nor "
-"the negative level you selected (these are NOT missing values)"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"{n} case(s) ({pct}) removed for missing values on the test or gold-standard "
-"variable"
-msgstr ""
-
-#: R/decision.b.R
-msgid "{n} cases ({pct} of errors) - Test incorrectly predicts disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "{n} cases ({pct} of errors) - Test misses actual disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "{n} cases analyzed"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid ""
 "{n} of {total} bootstrap resamples for '{var}' contained only one outcome "
@@ -302,10 +266,6 @@ msgstr ""
 msgid ""
 "{n} rules tie on Youden's J ({rules}); \"{shown}\" is displayed only because "
 "it comes first."
-msgstr ""
-
-#: R/decision.b.R
-msgid "{n} total misclassifications ({pct} error rate)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -840,65 +800,6 @@ msgid ""
 "independent given disease status, and they treat the sensitivity, "
 "specificity and prevalence you entered as exact, so they carry no confidence "
 "interval. If the two tests measure related biology, %13$s.</em></div>"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"<div style='margin: 15px; padding: 15px; border-left: 5px solid #4CAF50; "
-"background-color: rgba(114, 184, 33, 0.1); color: inherit;'><h3 "
-"style='color: inherit; margin-top: 0;'>Clinical Summary</h3><p "
-"style='font-size: 16px;'><strong>Analysis:</strong> Diagnostic test "
-"performance evaluation comparing {testname} against gold standard "
-"{goldname}.</p><p><strong>Sample:</strong> {sample}. Predictive values below "
-"are computed at a disease prevalence of {prev}.</p><p><strong>Test "
-"Performance:</strong> The test shows <strong>{quality}</strong> "
-"discriminatory ability with sensitivity of <strong>{sens}</strong> "
-"(<em>{sensnote}</em>) and specificity of <strong>{spec}</strong> "
-"(<em>{specnote}</em>).</p><p><strong>Discrimination Profile:</strong> "
-"{profile}.</p><p><strong>Likelihood Ratios:</strong> Positive LR: {lrpos} "
-"(<em>{lrposnote}</em>), Negative LR: {lrneg} "
-"(<em>{lrnegnote}</em>)</p><p><strong>Key Findings:</strong> Predictive "
-"values are post-test probabilities. After a positive result the probability "
-"of disease is the positive predictive value (PPV {ppv}). After a negative "
-"result the probability of disease is <strong>{postneg}</strong>, and the "
-"probability of being disease-free is the negative predictive value (NPV "
-"{npv}).</p></div>"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"<div style='margin: 15px; padding: 15px; border-left: 5px solid #FF9800; "
-"background-color: rgba(255, 169, 33, 0.14); color: inherit;'><h3 "
-"style='color: inherit; margin-top: 0;'>Clinical Summary</h3><p>Basic "
-"diagnostic test evaluation completed with {n} "
-"cases.</p><p><strong>Results:</strong> Sensitivity {sens}, Specificity "
-"{spec}</p></div>"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; "
-"background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 "
-"style='color: inherit; margin-top: 0;'>Copy-Ready Clinical Report</h3><div "
-"style='background: rgba(255, 255, 255, 0.06); color: inherit; padding: 10px; "
-"border-radius: 5px; font-family: Arial, sans-serif;'><p><strong>DIAGNOSTIC "
-"TEST EVALUATION</strong></p><p>We evaluated the diagnostic performance of "
-"{testname} compared to the gold standard {goldname}. The test demonstrated a "
-"sensitivity of {sens} and specificity of {spec} {ci}. At a disease "
-"prevalence of {prev}, the positive predictive value was {ppv} and the "
-"negative predictive value was {npv}. The positive likelihood ratio of {lr} "
-"provides {interp}.</p></div><p style='font-size: 12px; color: inherit; "
-"opacity: 0.75;'><em>Copy the text above for your clinical report. Modify as "
-"needed for your specific context.</em></p></div>"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; "
-"background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 "
-"style='color: inherit; margin-top: 0;'>Copy-Ready Clinical "
-"Report</h3><p>Diagnostic test evaluation shows sensitivity of {sens} and "
-"specificity of {spec}.</p></div>"
 msgstr ""
 
 #: R/cotest.b.R
@@ -2306,19 +2207,10 @@ msgstr ""
 msgid "1SE Rule (parsimonious)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "5% or fewer disease-free cases flagged positive in this sample"
-msgstr ""
-
-#: R/decision.b.R
-msgid "5% or fewer diseased cases missed in this sample"
-msgstr ""
-
 #: decisioncompare/options/ci.title
 msgid "95 percent CI"
 msgstr ""
 
-#: decision/options/ci.title
 #: decisioncalculator/options/ci.title
 msgid "95 percent confidence intervals"
 msgstr ""
@@ -2349,8 +2241,6 @@ msgstr ""
 msgid "95% CI Upper"
 msgstr ""
 
-#: decision/results/epirTable_ratio.columns.superTitle
-#: decision/results/epirTable_number.columns.superTitle
 #: decisioncalculator/results/epirTable_ratio.columns.superTitle
 #: decisioncalculator/results/epirTable_number.columns.superTitle
 #: decisioncompare/results/epirTable1.columns.superTitle
@@ -2358,18 +2248,6 @@ msgstr ""
 #: decisioncompare/results/epirTable3.columns.superTitle
 #: decisioncompare/results/diffTable.columns.superTitle
 msgid "95% Confidence Interval"
-msgstr ""
-
-#: R/decision.b.R
-msgid "95% Confidence Intervals"
-msgstr ""
-
-#: decision/ui[1][0]/ci.label
-msgid "95% confidence intervals"
-msgstr ""
-
-#: R/decision.b.R
-msgid "95% confidence intervals could not be computed"
 msgstr ""
 
 #: psychopdaROC/results/bayesianROCTable.columns.title
@@ -2393,36 +2271,6 @@ msgstr ""
 msgid ""
 "A bound at or below zero means this many subjects cannot rule out agreement "
 "no better than chance."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"A cell of the 2x2 table is zero. Sensitivity, specificity, accuracy and the "
-"predictive values are computed from the observed counts; the likelihood "
-"ratios are computed from the Haldane-Anscombe corrected table (0.5 added to "
-"every cell), because they are undefined when a cell is empty. A finite "
-"likelihood ratio beside a specificity of 100% reflects that correction, not "
-"the observed data."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"A cell of the 2x2 table is zero. The positive and negative likelihood "
-"ratios, the diagnostic odds ratio and the Fagan nomogram are computed from "
-"the Haldane-Anscombe corrected table (0.5 added to every cell), because "
-"those quantities are undefined when a cell is empty. Sensitivity, "
-"specificity, accuracy and the predictive values are computed from the "
-"observed counts and are unchanged. The two sets therefore do not reconcile "
-"exactly: a finite likelihood ratio can sit beside a specificity of 100%."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"A cell of the 2x2 table was zero. Sensitivity, specificity and the "
-"predictive values above are computed from the observed counts; the "
-"likelihood ratios are computed from the Haldane-Anscombe corrected table "
-"(0.5 added to every cell), without which they would be undefined. Quote both "
-"facts together."
 msgstr ""
 
 #: package.description
@@ -2543,13 +2391,6 @@ msgstr ""
 msgid "A positive result multiplies pre-test odds by {lr}."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"A predictive value is left blank where Bayes' theorem is undefined at this "
-"prior, which happens when no case can produce the corresponding test result "
-"in this sample."
-msgstr ""
-
 #: R/nogoldstandard.b.R
 msgid ""
 "A residual above %.2f (the 5%% point of chi-squared on 1 degree of freedom) "
@@ -2637,14 +2478,6 @@ msgid ""
 "slightly."
 msgstr ""
 
-#: R/decision.b.R
-msgid "About analysis content unavailable"
-msgstr ""
-
-#: R/decision.b.R
-msgid "About Diagnostic Test Evaluation"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "About diagnostic-test evaluation"
 msgstr ""
@@ -2653,15 +2486,12 @@ msgstr ""
 msgid "About Medical Decision Test Comparison"
 msgstr ""
 
-#: decision/results/aboutAnalysis.title
 #: decisioncalculator/results/about.title
 #: decisioncombine/results/about.title
 #: decisioncompare/results/aboutAnalysis.title
 msgid "About This Analysis"
 msgstr ""
 
-#: decision/options/showAboutAnalysis.title
-#: decision/ui[4]/showAboutAnalysis.label
 #: decisioncalculator/options/showAbout.title
 #: decisioncombine/options/showAbout.title
 #: decisioncombine/ui[1]/showAbout.label
@@ -2762,13 +2592,6 @@ msgstr ""
 msgid "Add definitions and prevalence-source notes to the comparison table."
 msgstr ""
 
-#: decision/options/fnote.description.ui
-msgid ""
-"Add detailed explanatory footnotes to all tables with clinical "
-"interpretation guidance. Helpful for understanding what each statistic means "
-"and how to interpret the results."
-msgstr ""
-
 #: decisioncalculator/options/fnote.description.ui
 msgid ""
 "Add detailed explanatory footnotes to the tables. Helpful for understanding "
@@ -2787,10 +2610,6 @@ msgid ""
 "Add the explanatory detail to the class-imbalance warning. The warning "
 "itself is always shown when imbalance is detected; this only controls how "
 "much it explains."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Adds detailed clinical interpretation help to all result tables."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -3093,14 +2912,6 @@ msgid ""
 "before any clinical use."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"An equivalent area under the curve below 0.70 is conventionally read as poor "
-"discrimination. Confirm that the level chosen under Test positive level is "
-"the one you meant, then interpret the predictive values with care: at this "
-"level of discrimination they are driven mainly by prevalence."
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "An illustrative population of %1$.0f at %2$.2f%% prevalence contains only "
@@ -3121,14 +2932,6 @@ msgid ""
 "An unpenalized logistic refit in the Model Comparison table showed "
 "complete/quasi-complete separation (non-convergence or fitted probabilities "
 "at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row."
-msgstr ""
-
-#: decision/results/rawCounts.title
-msgid "Analysed Combination Counts"
-msgstr ""
-
-#: decision/results/rawContingency.title
-msgid "Analysed Contingency Table"
 msgstr ""
 
 #: package/analyses/cotest.description
@@ -3189,16 +2992,6 @@ msgstr ""
 msgid "Analysis guide"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Analysis may take a moment to complete."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Analysis may take longer than usual. Consider sampling for initial "
-"exploratory analysis. Full dataset will still be used for final results."
-msgstr ""
-
 #: nogoldstandard/options/method.title
 msgid "Analysis Method"
 msgstr ""
@@ -3221,15 +3014,10 @@ msgid ""
 "reference-rule results are not diagnostic-accuracy estimates."
 msgstr ""
 
-#: decision/ui[1].label
 #: decisioncurve/ui[1].label
 #: enhancedROC/ui[1].label
 #: nogoldstandard/ui[1].label
 msgid "Analysis Options"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Analysis Options Explained"
 msgstr ""
 
 #: kappaSizeCI/results/text1.title
@@ -3501,12 +3289,6 @@ msgstr ""
 msgid "At least 2 explanatory variables are required for LASSO regression."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"At least 4 cases are required for diagnostic test analysis. Each cell of the "
-"2×2 table should have at least one observation."
-msgstr ""
-
 #: R/decisioncombine.b.R
 msgid "At least four cases are required for analysis."
 msgstr ""
@@ -3773,12 +3555,6 @@ msgstr ""
 msgid "Available levels: {levels}."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Available levels: {lvls}. Check for typos or select the correct level from "
-"the dropdown."
-msgstr ""
-
 #: R/decisioncompare.b.R
 msgid "Available-Case Missing-Data Handling"
 msgstr ""
@@ -3891,10 +3667,6 @@ msgstr ""
 
 #: enhancedROC/options/bootstrapMethod/basic.title
 msgid "Basic Bootstrap"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Basic Results"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -4264,13 +4036,6 @@ msgid ""
 "omitted."
 msgstr ""
 
-#: decision/options/ci.description.ui
-msgid ""
-"Calculate and display 95 percent confidence intervals for all diagnostic "
-"statistics. Provides uncertainty estimates around point estimates of "
-"sensitivity, specificity, etc."
-msgstr ""
-
 #: enhancedROC/options/brierScore.description
 msgid "Calculate Brier score and scaled Brier score"
 msgstr ""
@@ -4394,24 +4159,8 @@ msgstr ""
 msgid "Called high risk"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Cannot be calculated: LR- is (1 - sensitivity) / specificity, and one of "
-"those is not estimable here"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Cannot be calculated: LR+ is sensitivity / (1 - specificity), and one of "
-"those is not estimable here"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid "Cannot compute"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Case exclusion summary: {details}. {analysed} of {total} cases analysed."
 msgstr ""
 
 #: psychopdaROC/results/decisionCurveTable.columns.title
@@ -4428,14 +4177,6 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "Cases sorted by gold standard result (n=%d)"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Cases where the diagnostic test disagreed with the gold standard are "
-"examined below. False positives (test positive, disease absent) and false "
-"negatives (test negative, disease present) are listed with their original "
-"row numbers so individual records can be reviewed."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -4456,27 +4197,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Check"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Check that the level selected under Test positive level is the one you "
-"meant: this analysis has no numeric cut-point, it simply treats that level "
-"as a positive result."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Check that the level you chose under Test positive level is the one you "
-"meant: this analysis has no numeric cutpoint, it simply treats that level as "
-"a positive result, so choosing the other level swaps every false positive "
-"with a false negative"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Check your data formatting. Ensure both variables have exactly 2 levels. "
-"Verify positive/negative levels are correctly specified."
 msgstr ""
 
 #: sequentialtests/options/preset/tb_screening_confirmation.title
@@ -4534,40 +4254,14 @@ msgstr ""
 msgid "Choose distinct model names."
 msgstr ""
 
-#: R/decision.b.R
-msgid "Choose the diagnostic test you want to evaluate"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid ""
 "Choose the maximum acceptable confidence-interval half-width for sensitivity "
 "and specificity before collecting data."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Choose the reference variable representing true disease status (e.g., biopsy "
-"result, final diagnosis)"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "Choose whether to calculate confidence intervals."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Choose which gold-standard level means disease absent"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Choose which level indicates disease is present"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Choose which level represents a positive test result"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Choose which test level means a negative result"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -4668,20 +4362,12 @@ msgstr ""
 msgid "Classic"
 msgstr ""
 
-#: decision/results/confusionMatrixSummary.columns.title
-msgid "Classification"
-msgstr ""
-
 #: psychopdaROC/options/direction.title
 msgid "Classification Direction"
 msgstr ""
 
 #: psychopdaROC/ui[2]/direction.label
 msgid "Classification direction"
-msgstr ""
-
-#: decision/results/saveClassifications.title
-msgid "Classification Groups"
 msgstr ""
 
 #: lassologistic/results/performance.title
@@ -4763,10 +4449,6 @@ msgstr ""
 msgid "Clinical decision curves and threshold analysis"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Clinical Decision Making"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid "Clinical Decision Rule"
 msgstr ""
@@ -4845,7 +4527,6 @@ msgstr ""
 msgid "Clinical Impact: Projected Outcomes in a Population of {n}"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
@@ -4866,19 +4547,6 @@ msgstr ""
 
 #: lassologistic/options/includeClinicalGuidance.title
 msgid "Clinical interpretation guidance"
-msgstr ""
-
-#: decision/results/clinicalInterpretation.title
-msgid "Clinical Interpretation Guide"
-msgstr ""
-
-#: decision/options/showClinicalInterpretation.title
-#: decision/ui[4]/showClinicalInterpretation.label
-msgid "Clinical interpretation guide"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Clinical Interpretation Guidelines"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -4969,15 +4637,6 @@ msgstr ""
 msgid "Clinical Significance"
 msgstr ""
 
-#: decision/results/naturalLanguageSummary.title
-msgid "Clinical Summary"
-msgstr ""
-
-#: decision/options/showNaturalLanguage.title
-#: decision/ui[4]/showNaturalLanguage.label
-msgid "Clinical summary"
-msgstr ""
-
 #: decisioncalculator/results/glossary.title
 msgid "Clinical Terms Glossary"
 msgstr ""
@@ -5025,10 +4684,6 @@ msgstr ""
 
 #: R/nogoldstandard.b.R
 msgid "Clinical Validation"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Clinical validation studies"
 msgstr ""
 
 #: psychopdaROC/results/decisionCurveTable.columns.title
@@ -5299,10 +4954,6 @@ msgstr ""
 msgid "Comma-separated list of custom cutoffs to evaluate (e.g., 0.1, 0.5, 0.9)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Common Issues"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "Common pitfalls:"
 msgstr ""
@@ -5358,10 +5009,6 @@ msgid ""
 "regulatory guidance, or clinical guidance."
 msgstr ""
 
-#: R/decision.b.R
-msgid "Comparing performance of different diagnostic methods"
-msgstr ""
-
 #: decisioncompare/results/mcnemarTable.columns.title
 #: decisioncompare/results/diffTable.columns.title
 #: decisioncurve/results/comparisonTable.columns.title
@@ -5413,12 +5060,6 @@ msgid ""
 "were excluded. Individual-test tables use their own pairwise-complete "
 "denominators. If data are not missing completely at random, investigate the "
 "missingness pattern."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Complete-case analysis uses {used} of {total} cases. Consider investigating "
-"patterns of missingness."
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -5576,7 +5217,6 @@ msgstr ""
 msgid "Confidence Interval Type"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncurve.b.R
 #: decisioncalculator/ui[2][0].label
 #: enhancedROC/ui[4][0][0].label
@@ -5597,17 +5237,6 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Confidence intervals could not be matched"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Confidence intervals for sensitivity, specificity, and predictive values are "
-"Clopper-Pearson exact intervals, computed as in epiR::epi.tests() with its "
-"default settings (method = \"exact\")."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Confidence Intervals Interpretation"
 msgstr ""
 
 #: psychopdaROC/ui[7][0][1][0][0].label
@@ -5717,16 +5346,6 @@ msgstr ""
 msgid "Confusion matrix (reference standard vs test result)"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Confusion matrix contains NA or negative values. Check that your data is "
-"properly formatted. Ensure sufficient observations in all categories."
-msgstr ""
-
-#: decision/results/confusionMatrixSummary.title
-msgid "Confusion Matrix Summary"
-msgstr ""
-
 #: R/nogoldstandard.b.R
 msgid "Conservative/liberal reference standards"
 msgstr ""
@@ -5747,10 +5366,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Consider class imbalance in interpretation"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Consider clinical consequences of false positives vs false negatives"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
@@ -5820,7 +5435,6 @@ msgstr ""
 msgid "Continuity Correction"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 msgid "Continuity correction applied"
 msgstr ""
@@ -5868,15 +5482,6 @@ msgstr ""
 
 #: enhancedROC/results/results/clinicalReport.description
 msgid "Copy-ready clinical report sentences for publications and reports"
-msgstr ""
-
-#: decision/results/reportTemplate.title
-msgid "Copy-Ready Report"
-msgstr ""
-
-#: decision/options/showReportTemplate.title
-#: decision/ui[4]/showReportTemplate.label
-msgid "Copy-ready report"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -5947,8 +5552,6 @@ msgid ""
 "Error: {error}"
 msgstr ""
 
-#: decision/results/rawCounts.columns.title
-#: decision/results/confusionMatrixSummary.columns.title
 #: decisioncombine/results/goldFreqTable.columns.title
 #: nogoldstandard/results/crosstab.columns.title
 msgid "Count"
@@ -6264,14 +5867,6 @@ msgstr ""
 msgid "Data preparation failed: %s"
 msgstr ""
 
-#: decision/results/missingDataSummary.title
-msgid "Data Quality Summary"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Data Requirements"
-msgstr ""
-
 #: R/lassologistic.b.R
 #: lassologistic/ui[1].label
 msgid "Data Suitability"
@@ -6312,11 +5907,9 @@ msgid ""
 "curves there - not the other way round."
 msgstr ""
 
-#: package/analyses/decision.menuSubgroup
 #: package/analyses/nogoldstandard.menuSubgroup
 #: package/analyses/decisioncompare.menuSubgroup
 #: package/analyses/decisioncombine.menuSubgroup
-#: decision/options.menuSubgroup
 #: decisioncombine/options.menuSubgroup
 #: decisioncompare/options.menuSubgroup
 #: nogoldstandard/options.menuSubgroup
@@ -6473,8 +6066,6 @@ msgstr ""
 msgid "Decision Space: Sensitivity vs Specificity"
 msgstr ""
 
-#: decision/results/epirTable_ratio.columns.title
-#: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
 #: decisioncalculator/results/epirTable_number.columns.title
 #: decisioncompare/results/epirTable1.columns.title
@@ -6491,10 +6082,6 @@ msgstr ""
 msgid ""
 "Decision-space scatter plot positioning each test pattern by its sensitivity "
 "and specificity, with point size scaled by Youden's J"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Decreases probability of disease (test may be flawed)"
 msgstr ""
 
 #: decisioncombine/options/filterStatistic/all.title
@@ -6707,10 +6294,6 @@ msgstr ""
 msgid "Detailed Cutoff Analysis"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Detailed examination of false positives and false negatives"
-msgstr ""
-
 #: cotest/ui[5][0]/fnote.label
 msgid "Detailed footnotes"
 msgstr ""
@@ -6782,7 +6365,6 @@ msgstr ""
 msgid "Diagnostic Odds Ratio"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 #: psychopdaROC/options/metric/odds_ratio.title
@@ -6818,23 +6400,10 @@ msgstr ""
 msgid "Diagnostic plots"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Diagnostic Probability Shift"
-msgstr ""
-
 #: decisioncombine/results/individualTest1/test1Stats.title
 #: decisioncombine/results/individualTest2/test2Stats.title
 #: decisioncombine/results/individualTest3/test3Stats.title
 msgid "Diagnostic Statistics"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"DIAGNOSTIC TEST EVALUATION: Compare test accuracy to gold standard "
-"reference. This function evaluates diagnostic test performance by comparing "
-"test results to a gold standard (reference). It calculates key diagnostic "
-"accuracy measures including sensitivity, specificity, predictive values, and "
-"likelihood ratios."
 msgstr ""
 
 #: enhancedROC/options/clinicalPresets/diagnostic_validation.title
@@ -6944,7 +6513,6 @@ msgstr ""
 msgid "Disease Absent"
 msgstr ""
 
-#: decision/options/goldNegative.title
 #: decisioncompare/options/goldNegative.title
 msgid "Disease absent level"
 msgstr ""
@@ -6965,7 +6533,6 @@ msgstr ""
 msgid "Disease Present"
 msgstr ""
 
-#: decision/options/goldPositive.title
 #: decisioncombine/options/goldPositive.title
 #: decisioncombine/ui[0][0]/goldPositive.label
 #: decisioncompare/options/goldPositive.title
@@ -6988,22 +6555,12 @@ msgstr ""
 msgid "Disease prevalence"
 msgstr ""
 
-#: decision/ui[2]/pprob.label
-msgid "Disease prevalence in target population (0.0-1.0)"
-msgstr ""
-
 #: enhancedROC/options/prevalence.description
 msgid ""
 "Disease prevalence to assume when computing predictive values. Used only "
 "when \"Use observed prevalence\" is unticked - set it to the prevalence of "
 "the population the test will actually be used in, which for a screening "
 "setting is usually far lower than in a case-control sample."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Disease Prevalence: Observed proportion with disease in this sample. Affects "
-"predictive values."
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -7016,26 +6573,10 @@ msgid ""
 "n={n}"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Disease-absent level \"{lvl}\" not found in gold standard variable"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Disease-present and disease-absent levels cannot be the same"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Disease-present level \"{lvl}\" not found in gold standard variable"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "Disease+\n"
 "n={n}"
-msgstr ""
-
-#: decision/results/nTable.columns.title
-msgid "Diseased"
 msgstr ""
 
 #: decisioncombine/options/showDecisionTree.description.ui
@@ -7060,13 +6601,6 @@ msgstr ""
 msgid ""
 "Display a longer descriptive performance summary with methods and results "
 "templates. The text is an editable reporting aid, not clinical guidance."
-msgstr ""
-
-#: decision/options/showNaturalLanguage.description.ui
-msgid ""
-"Display a natural language clinical summary of the diagnostic test "
-"performance. Provides an easy-to-understand interpretation of results for "
-"clinical use."
 msgstr ""
 
 #: decisioncompare/options/showSummary.description.ui
@@ -7096,26 +6630,12 @@ msgstr ""
 msgid "Display confidence bands around ROC curve"
 msgstr ""
 
-#: decision/options/showClinicalInterpretation.description.ui
-msgid ""
-"Display detailed clinical interpretation with likelihood ratio guidance. "
-"Helps understand the clinical significance of test results."
-msgstr ""
-
 #: enhancedROC/options/cutoffTable.description
 msgid "Display detailed cutoff analysis"
 msgstr ""
 
 #: enhancedROC/options/showMetricsDiff.description
 msgid "Display detailed differences between model metrics"
-msgstr ""
-
-#: decision/options/showMisclassified.description.ui
-msgid ""
-"Display detailed tables of false positive and false negative cases. Helps "
-"identify patterns in diagnostic errors and understand which cases are being "
-"misclassified by the test. Inspired by Orange Data Mining's interactive "
-"confusion matrix feature, adapted for static jamovi output."
 msgstr ""
 
 #: decisioncombine/options/showIndividual.description.ui
@@ -7127,12 +6647,6 @@ msgid ""
 "Display educational content including statistical glossary, assumptions, and "
 "interpretation guidance. Helpful for understanding what each test means and "
 "how to interpret the results clinically."
-msgstr ""
-
-#: decision/options/showAboutAnalysis.description.ui
-msgid ""
-"Display educational information about diagnostic test evaluation. Explains "
-"concepts and provides interpretation guidelines."
 msgstr ""
 
 #: decisioncombine/options/showForest.description.ui
@@ -7189,18 +6703,6 @@ msgid ""
 "Display the calibration plot: observed proportion against predicted "
 "probability in the Hosmer-Lemeshow risk groups, with an optional flexible "
 "spline curve (splineCalibration)"
-msgstr ""
-
-#: decision/options/od.description.ui
-msgid ""
-"Display the original contingency tables and raw data summaries. Useful for "
-"verifying data entry and understanding the underlying counts."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Displays original contingency tables and missing data summaries for "
-"verification."
 msgstr ""
 
 #: psychopdaROC/options/metric/roc01.title
@@ -7479,12 +6981,6 @@ msgstr ""
 msgid "Enrol more subjects, add raters, or relax the significance level."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Ensure your variables are dichotomous (binary). Check that positive/negative "
-"levels are correctly specified."
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 msgid "Enter exactly {k} proportions for {k} outcome categories (received {got})."
 msgstr ""
@@ -7514,10 +7010,6 @@ msgstr ""
 msgid "epiR package missing"
 msgstr ""
 
-#: decision/results/epirTable_ratio.title
-msgid "EpiR Table Ratios"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "EPV = %.1f (<5: insufficient, high overfitting risk)"
 msgstr ""
@@ -7535,7 +7027,6 @@ msgid "Equal sensitivity and specificity"
 msgstr ""
 
 #: R/cotest.b.R
-#: R/decision.b.R
 #: R/decisioncombine.b.R
 #: R/lassologistic.b.R
 msgid "Error"
@@ -7547,20 +7038,8 @@ msgstr ""
 msgid "ERROR"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Error Balance"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Error extracting confusion matrix values: {msg}"
-msgstr ""
-
 #: R/nogoldstandard.b.R
 msgid "Error in ggplot: {msg}"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Error in misclassified cases analysis"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -7575,12 +7054,6 @@ msgstr ""
 msgid "Error parsing proportions: {error}"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Error Summary"
-msgstr ""
-
-#: decision/results/epirTable_ratio.columns.title
-#: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
 #: decisioncalculator/results/epirTable_number.columns.title
 #: decisioncombine/results/combinationTableCI.columns.title
@@ -7615,12 +7088,6 @@ msgid ""
 "above use a Haldane-Anscombe 0.5 correction because a zero cell was present, "
 "so their point estimates differ from the ones here. Quantities that are not "
 "estimable from the raw table are left blank."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Evaluate diagnostic test performance with sensitivity, specificity, and "
-"predictive values."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -7769,12 +7236,6 @@ msgstr ""
 msgid "Evidence against conditional independence"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"evidence AGAINST disease when positive, which usually means the level chosen "
-"as test-positive is inverted"
-msgstr ""
-
 #: R/cotest.b.R
 msgid ""
 "evidence against disease: this result combination is more common in subjects "
@@ -7855,21 +7316,12 @@ msgstr ""
 msgid "Excellent"
 msgstr ""
 
-#: R/decision.b.R
 #: R/psychopdaROC.b.R
 msgid "excellent"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Excellent discriminatory power (Youden's index 0.80 or above)"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Excellent early retrieval performance; classifier performs well at low FPR"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Excellent Tests"
 msgstr ""
 
 #: decisioncompare/options/excludeIndeterminate.title
@@ -7943,12 +7395,6 @@ msgstr ""
 msgid "Explanations"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Explanatory Footnotes"
-msgstr ""
-
-#: decision/options/fnote.title
-#: decision/ui[1][0]/fnote.label
 #: decisioncalculator/options/fnote.title
 msgid "Explanatory footnotes"
 msgstr ""
@@ -8098,10 +7544,6 @@ msgstr ""
 msgid "Extreme Prevalence"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Extreme prevalence affects predictive values"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "Extreme prevalence in the analysed sample: %1$s%% (%2$s). • %3$s. • ROC/AUC "
@@ -8159,14 +7601,11 @@ msgid ""
 msgstr ""
 
 #: R/cotest.b.R
-#: R/decision.b.R
 msgid "Fagan Nomogram"
 msgstr ""
 
 #: cotest/options/fagan.title
 #: cotest/ui[5][0]/fagan.label
-#: decision/ui[3]/fagan.label
-#: decision/results/plot1.title
 #: decisioncalculator/results/plot1.title
 msgid "Fagan nomogram"
 msgstr ""
@@ -8179,7 +7618,6 @@ msgstr ""
 msgid "Fagan nomogram not drawn"
 msgstr ""
 
-#: decision/options/fagan.title
 #: decisioncalculator/options/fagan.title
 msgid "Fagan nomogram plot"
 msgstr ""
@@ -8201,10 +7639,6 @@ msgstr ""
 msgid "fair"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Fair discriminatory power (Youden's index 0.40 to 0.59)"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "fair to good discrimination"
 msgstr ""
@@ -8213,7 +7647,6 @@ msgstr ""
 msgid "False Discovery Rate"
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 #: enhancedROC/results/results/cutoffAnalysis.columns.title
@@ -8226,24 +7659,14 @@ msgstr ""
 msgid "False Negative (FN)"
 msgstr ""
 
-#: decision/results/falseNegativeTable.title
-msgid "False Negative Cases (Test- but Disease+)"
-msgstr ""
-
-#: R/decision.b.R
 #: sequentialtests/results/population_flow_table.columns.title
 msgid "False Negatives"
-msgstr ""
-
-#: R/decision.b.R
-msgid "False negatives outnumbered false positives in this sample."
 msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "False Omission Rate"
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 #: enhancedROC/results/results/cutoffAnalysis.columns.title
@@ -8256,10 +7679,6 @@ msgstr ""
 msgid "False Positive (FP)"
 msgstr ""
 
-#: decision/results/falsePositiveTable.title
-msgid "False Positive Cases (Test+ but Disease-)"
-msgstr ""
-
 #: R/enhancedROC.b.R
 #: enhancedROC/results/results/clinicalImpactTable.columns.title
 msgid "False Positive Rate"
@@ -8269,18 +7688,9 @@ msgstr ""
 msgid "False Positive Rate (1 - Specificity)"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncurve.b.R
 #: sequentialtests/results/population_flow_table.columns.title
 msgid "False Positives"
-msgstr ""
-
-#: R/decision.b.R
-msgid "False positives and false negatives occurred equally often in this sample."
-msgstr ""
-
-#: R/decision.b.R
-msgid "False positives outnumbered false negatives in this sample."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -8301,10 +7711,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Features:"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Few cases in one arm: {dpos} disease-present and {dneg} disease-free"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -8485,10 +7891,6 @@ msgstr ""
 msgid "Focused range (0.05 to 0.50; not a clinical recommendation)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Follow-up checks on this analysis"
-msgstr ""
-
 #: cotest/options/fnote.title
 #: decisioncompare/options/fnote.title
 msgid "Footnotes"
@@ -8542,12 +7944,6 @@ msgid ""
 "for rare disease, 0.05-0.20 for common conditions). Values far outside these "
 "bands are worth re-checking — most often sensitivity and specificity have "
 "been entered the wrong way round."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"For robust diagnostic test evaluation, 100+ cases recommended. Current "
-"sample provides preliminary estimates."
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -8675,13 +8071,6 @@ msgid ""
 "confidence intervals for differences."
 msgstr ""
 
-#: package/analyses/decision.description
-#: decision/options.description.main
-msgid ""
-"Function for Medical Decision Analysis. Sensitivity, Specificity, Positive "
-"Predictive Value, Negative Predictive Value."
-msgstr ""
-
 #: package.title
 msgid "Functions for Medical Decision in ClinicoPath jamovi Module"
 msgstr ""
@@ -8725,19 +8114,6 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: decision/options/showReportTemplate.description.ui
-msgid ""
-"Generate a copy-ready clinical report template for documentation. Formatted "
-"text that can be copied directly into clinical reports."
-msgstr ""
-
-#: decision/options/fagan.description.ui
-msgid ""
-"Generate a Fagan nomogram for visual interpretation of test results. Shows "
-"how test results change the probability of disease from pre-test to "
-"post-test."
-msgstr ""
-
 #: decisioncalculator/options/fagan.description.ui
 msgid ""
 "Generate a Fagan nomogram for visual interpretation of test results. Shows "
@@ -8772,15 +8148,10 @@ msgid ""
 "strengths/weaknesses."
 msgstr ""
 
-#: decision/results/welcome.title
-msgid "Getting Started"
-msgstr ""
-
 #: R/decisioncompare.b.R
 msgid "Global Test Not Computed"
 msgstr ""
 
-#: decision/results/cTable.columns.title
 #: decisioncombine/results/crossTabTable.columns.title
 #: decisioncombine/results/individualTest1/test1Contingency.columns.title
 #: decisioncombine/results/individualTest2/test2Contingency.columns.title
@@ -8791,7 +8162,6 @@ msgstr ""
 msgid "Gold Negative"
 msgstr ""
 
-#: decision/results/cTable.columns.title
 #: decisioncombine/results/crossTabTable.columns.title
 #: decisioncombine/results/individualTest1/test1Contingency.columns.title
 #: decisioncombine/results/individualTest2/test2Contingency.columns.title
@@ -8810,15 +8180,10 @@ msgstr ""
 msgid "gold standard"
 msgstr ""
 
-#: decision/ui[0][0].label
 #: decisioncombine/options/gold.title
 #: decisioncombine/ui[0][0].label
 #: decisioncompare/options/gold.title
 msgid "Gold Standard (Reference Test)"
-msgstr ""
-
-#: decision/options/gold.title
-msgid "Gold Standard (Reference)"
 msgstr ""
 
 #: decisioncombine/results/goldFreqTable.title
@@ -8827,10 +8192,6 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid "Gold Standard Has Only One Outcome"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Gold standard levels excluded from analysis: {lvls}"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -8845,7 +8206,6 @@ msgstr ""
 msgid "Good"
 msgstr ""
 
-#: R/decision.b.R
 #: R/psychopdaROC.b.R
 msgid "good"
 msgstr ""
@@ -8856,10 +8216,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Good calibration slope"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Good discriminatory power (Youden's index 0.60 to 0.79)"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -8929,10 +8285,6 @@ msgstr ""
 msgid ""
 "Harmonic mean of sensitivity and PPV; because PPV depends on prevalence, F1 "
 "also changes with the selected prevalence."
-msgstr ""
-
-#: decision/results/nTable.columns.title
-msgid "Healthy"
 msgstr ""
 
 #: decisioncombine/options/showHeatmap.title
@@ -9052,10 +8404,6 @@ msgstr ""
 msgid "Highly significant overall difference among tests (p<0.001)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Highly unbalanced test results ({pct} positive)"
-msgstr ""
-
 #: package/datasets/histopathologyincludinganalysis.name
 msgid "histopathology including analysis"
 msgstr ""
@@ -9090,47 +8438,8 @@ msgid ""
 "before testing"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"How much a negative test decreases disease odds. LR- <0.1 strong evidence "
-"AGAINST disease, LR- 0.1-0.2 moderate, LR- 0.2-0.5 weak."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"How much a positive test increases disease odds. LR+ >10 strong evidence FOR "
-"disease, LR+ 5-10 moderate, LR+ 2-5 weak but useful."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"How much more likely a negative result is in a diseased than in a healthy "
-"patient. <0.1 is strong evidence AGAINST disease, 0.1-0.2 moderate, 0.2-0.5 "
-"weak."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"How much more likely a positive result is in a diseased than in a healthy "
-"patient. >10 is strong evidence FOR disease, 5-10 moderate, 2-5 weak."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"How much more likely will the test make a correct diagnosis than an "
-"incorrect diagnosis in patients with the disease."
-msgstr ""
-
-#: R/decision.b.R
-msgid "How much test results change disease probability"
-msgstr ""
-
 #: R/decisioncompare.b.R
 msgid "How to Use This Analysis"
-msgstr ""
-
-#: R/decision.b.R
-msgid "How well the test identifies disease presence and absence"
 msgstr ""
 
 #: R/cotest.b.R
@@ -9159,10 +8468,6 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "Identical Positive and Negative Levels"
-msgstr ""
-
-#: decision/ui[5][0].label
-msgid "Identify and analyze false positive and false negative cases"
 msgstr ""
 
 #: psychopdaROC/results/idiTable.columns.title
@@ -9343,7 +8648,6 @@ msgstr ""
 msgid "Important Assumptions & Limitations"
 msgstr ""
 
-#: decision/results/notices.title
 #: decisioncalculator/results/notices.title
 #: decisioncompare/results/notices.title
 #: decisioncurve/results/notices.title
@@ -9352,10 +8656,6 @@ msgstr ""
 #: nogoldstandard/results/notices.title
 #: sequentialtests/results/notices.title
 msgid "Important Information"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Important warning"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -9408,10 +8708,6 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid "Incorporation bias."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Increases probability of disease (test may be flawed)"
 msgstr ""
 
 #: decisioncurve/results/costBenefitTable.columns.title
@@ -9547,14 +8843,6 @@ msgstr ""
 msgid "Insufficient Data After Removing Missing Values"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Insufficient data to evaluate discriminatory power"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Insufficient data: {n} cases found"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Insufficient Outcome Variable Levels"
 msgstr ""
@@ -9617,12 +8905,6 @@ msgid ""
 "threshold from this curve alone."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Interpret results with caution. Confidence intervals may be wide. Minimum "
-"recommended: 100 cases for robust estimates."
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Interpret ROC results cautiously given class imbalance."
 msgstr ""
@@ -9669,10 +8951,6 @@ msgstr ""
 msgid "Interpretation Guidelines:"
 msgstr ""
 
-#: decision/results/misclassificationInterpretation.title
-msgid "Interpretation of Misclassified Cases"
-msgstr ""
-
 #: decisioncurve/options/ciBand.title
 msgid "Interval Type"
 msgstr ""
@@ -9697,10 +8975,6 @@ msgstr ""
 msgid "Interventions Avoided"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Invalid contingency table values detected"
-msgstr ""
-
 #: R/decisioncombine.b.R
 msgid "Invalid Counts"
 msgstr ""
@@ -9715,18 +8989,8 @@ msgstr ""
 msgid "Invalid cut-off inputs"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Invalid data structure: Both test and gold standard variables must have "
-"exactly 2 levels each"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Invalid Partial AUC Range"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Invalid population prevalence: {value}"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -9908,10 +9172,6 @@ msgstr ""
 msgid "Key Metrics Explained"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Key Output Measures"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "Key outputs:"
 msgstr ""
@@ -9923,15 +9183,6 @@ msgid ""
 "events per knot. Used only when splineCalibration is on."
 msgstr ""
 
-#: decision/options/pprob.description.ui
-msgid ""
-"Known disease prevalence in the target population (as proportion: 0.0-1.0). "
-"Examples: rare diseases (0.001-0.01), common conditions (0.05-0.20). This "
-"affects post-test probabilities and predictive values."
-msgstr ""
-
-#: decision/options/pp.title
-#: decision/ui[2]/pp.label
 #: decisioncalculator/options/pp.title
 msgid "Known population prevalence"
 msgstr ""
@@ -9962,18 +9213,6 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Large"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Large and often conclusive decrease in probability of disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Large and often conclusive increase in probability of disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Large dataset detected ({n} rows)"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -10122,10 +9361,6 @@ msgstr ""
 msgid "Level '{}' not found in variable '{}'. Available levels: {}"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Likelihood Ratio Interpretation"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 msgid "Likelihood ratio of a negative test"
@@ -10134,14 +9369,6 @@ msgstr ""
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 msgid "Likelihood ratio of a positive test"
-msgstr ""
-
-#: R/decision.b.R
-msgid "likelihood ratio unavailable due to data limitations"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Likelihood Ratios"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -10159,10 +9386,6 @@ msgstr ""
 #: R/decisioncompare.b.R
 #: R/nogoldstandard.b.R
 msgid "Limitations"
-msgstr ""
-
-#: R/decision.b.R
-msgid "limited"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -10265,8 +9488,6 @@ msgstr ""
 msgid "Low Threshold Range"
 msgstr ""
 
-#: decision/results/epirTable_ratio.columns.title
-#: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
 #: decisioncalculator/results/epirTable_number.columns.title
 #: decisioncombine/results/combinationTableCI.columns.title
@@ -10331,18 +9552,8 @@ msgstr ""
 msgid "LR-"
 msgstr ""
 
-#: R/decision.b.R
-msgid "LR- (Negative Likelihood Ratio)"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "LR- (negative likelihood ratio)"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"LR- <0.1 strong evidence AGAINST disease, LR- 0.1-0.2 moderate, LR- 0.2-0.5 "
-"weak"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -10357,18 +9568,8 @@ msgstr ""
 msgid "LR+"
 msgstr ""
 
-#: R/decision.b.R
-msgid "LR+ (Positive Likelihood Ratio)"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "LR+ (positive likelihood ratio)"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"LR+ >10 strong evidence FOR disease, LR+ 5-10 moderate, LR+ 2-5 weak but "
-"useful"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -10539,20 +9740,6 @@ msgstr ""
 msgid "Maximize metric (LOESS smoothed)"
 msgstr ""
 
-#: decision/options/maxCasesShow.title
-msgid "Maximum cases to display"
-msgstr ""
-
-#: decision/ui[5][2][0].label
-msgid "Maximum cases to display:"
-msgstr ""
-
-#: decision/options/maxCasesShow.description.ui
-msgid ""
-"Maximum number of misclassified cases to display in each table. Large "
-"datasets may have many misclassifications; this limits the output."
-msgstr ""
-
 #: lassologistic/options/scoringMaxPoints.title
 msgid "Maximum Points per Feature"
 msgstr ""
@@ -10624,7 +9811,6 @@ msgstr ""
 msgid "Measures"
 msgstr ""
 
-#: package/analyses/decision.menuGroup
 #: package/analyses/decisioncalculator.menuGroup
 #: package/analyses/nogoldstandard.menuGroup
 #: package/analyses/decisioncompare.menuGroup
@@ -10636,7 +9822,6 @@ msgstr ""
 #: package/analyses/lassologistic.menuGroup
 #: package/analyses/decisioncurve.menuGroup
 #: cotest/options.menuGroup
-#: decision/options.menuGroup
 #: decisioncalculator/options.menuGroup
 #: decisioncombine/options.menuGroup
 #: decisioncompare/options.menuGroup
@@ -10659,18 +9844,6 @@ msgstr ""
 
 #: psychopdaROC/options/break_ties/median.title
 msgid "Median of tied cutpoints"
-msgstr ""
-
-#: package/analyses/decision.title
-#: package/analyses/decision.menuTitle
-#: decision/options.title
-#: decision/ui.title
-#: decision/results.title
-msgid "Medical Decision"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Medical Decision Analysis"
 msgstr ""
 
 #: package/analyses/decisioncalculator.title
@@ -10696,10 +9869,6 @@ msgid ""
 "Supports confidence interval estimation and Fagan nomogram visualization for "
 "educational interpretation. Presets and examples are illustrative only and "
 "are not clinical guides."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Medical device evaluation"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -10888,10 +10057,6 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Minimal decrease in probability of disease"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Minimal difference"
 msgstr ""
@@ -10900,24 +10065,8 @@ msgstr ""
 msgid "Minimal effect"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Minimal evidence against disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Minimal evidence for disease"
-msgstr ""
-
 #: R/cotest.b.R
 msgid "minimal evidence for disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "minimal evidence for disease when positive"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Minimal increase in probability of disease"
 msgstr ""
 
 #: psychopdaROC/options/metric/abs_d_ppv_npv.title
@@ -11004,26 +10153,8 @@ msgstr ""
 msgid "Minority class: %.1f%% (severe imbalance)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Misclassification Analysis"
-msgstr ""
-
 #: psychopdaROC/options/metric/misclassification_cost.title
 msgid "Misclassification cost"
-msgstr ""
-
-#: R/decision.b.R
-#: decision/ui[5].label
-#: decision/results/misclassifiedHeading.title
-msgid "Misclassified Cases Analysis"
-msgstr ""
-
-#: decision/options/showMisclassified.title
-msgid "Misclassified cases analysis"
-msgstr ""
-
-#: decision/ui[5]/showMisclassified.label
-msgid "Misclassified cases tables"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -11200,17 +10331,12 @@ msgstr ""
 msgid "Models Analyzed"
 msgstr ""
 
-#: R/decision.b.R
 #: R/enhancedROC.b.R
 msgid "moderate"
 msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Moderate"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Moderate decrease in probability of disease"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -11221,20 +10347,8 @@ msgstr ""
 msgid "Moderate early retrieval performance"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Moderate evidence against disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Moderate evidence for disease"
-msgstr ""
-
 #: R/cotest.b.R
 msgid "moderate evidence for disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "moderate evidence for disease when positive"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -11243,10 +10357,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Moderate imbalance"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Moderate increase in probability of disease"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -11295,22 +10405,6 @@ msgstr ""
 
 #: enhancedROC/options/clinicalContext/monitoring.title
 msgid "Monitoring"
-msgstr ""
-
-#: R/decision.b.R
-msgid "more than 1 disease-free case in 5 flagged positive here"
-msgstr ""
-
-#: R/decision.b.R
-msgid "more than 1 disease-free case in 5 flagged positive in this sample"
-msgstr ""
-
-#: R/decision.b.R
-msgid "more than 1 diseased case in 5 missed here"
-msgstr ""
-
-#: R/decision.b.R
-msgid "more than 1 diseased case in 5 missed in this sample"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -11498,14 +10592,9 @@ msgstr ""
 msgid "Negative Level Required for Exclusion"
 msgstr ""
 
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncompare/results/comparisonTable.columns.title
 msgid "Negative Likelihood Ratio"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Negative likelihood ratio"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -11516,19 +10605,8 @@ msgstr ""
 msgid "Negative Likelihood Ratio Infinite"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Negative likelihood ratio unavailable due to data limitations"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Negative Likelihood Ratio Undefined"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Negative Likelihood Ratio: How much more likely a negative result is in "
-"diseased vs healthy patients. <0.1 = strong evidence against disease, <0.2 = "
-"moderate, <0.5 = weak."
 msgstr ""
 
 #: R/cotest.b.R
@@ -11544,7 +10622,6 @@ msgid ""
 "starting probability."
 msgstr ""
 
-#: R/decision.b.R
 #: cotest/results/testParamsTable.columns.title
 #: sequentialtests/results/individual_tests_table.columns.title
 msgid "Negative LR"
@@ -11554,13 +10631,11 @@ msgstr ""
 msgid "Negative Path"
 msgstr ""
 
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncompare/results/comparisonTable.columns.title
 msgid "Negative Predictive Value"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 msgid "Negative predictive value"
@@ -11582,12 +10657,6 @@ msgid ""
 "test is negative"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Negative predictive value is unstable at this prevalence. Verify that the "
-"level selected as disease-present is the one you meant."
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "Negative predictive value using the supplied population prevalence."
 msgstr ""
@@ -11596,14 +10665,6 @@ msgstr ""
 msgid "Negative predictive value using this study sample's prevalence."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Negative Predictive Value: Probability of being healthy given a negative "
-"test. This IS the post-test probability of health. Depends on prevalence, "
-"sensitivity and specificity."
-msgstr ""
-
-#: decision/results/nTable.columns.title
 #: decisioncalculator/results/nTable.columns.title
 msgid "Negative Tests"
 msgstr ""
@@ -11776,10 +10837,6 @@ msgid ""
 "predictions on independent or properly resampled data."
 msgstr ""
 
-#: decision/ui[0][1].label
-msgid "New Test"
-msgstr ""
-
 #: enhancedROC/results/results/clinicalImpactTable.columns.title
 msgid "NND"
 msgstr ""
@@ -11826,10 +10883,6 @@ msgid ""
 "variable has both positive and negative cases."
 msgstr ""
 
-#: R/decision.b.R
-msgid "No cases excluded."
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "No cases for cut-off"
 msgstr ""
@@ -11838,10 +10891,6 @@ msgstr ""
 msgid ""
 "No cases remain for {test} after applying the selected positive and negative "
 "levels."
-msgstr ""
-
-#: R/decision.b.R
-msgid "no change in the probability of disease"
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -11891,10 +10940,6 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid "No data are available. Load data before running the analysis."
-msgstr ""
-
-#: R/decision.b.R
-msgid "No data available for analysis"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -12211,20 +11256,8 @@ msgstr ""
 msgid "Not available"
 msgstr ""
 
-#: R/decision.b.R
-msgid "not available"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid "Not beneficial"
-msgstr ""
-
-#: R/decision.b.R
-msgid "not calculated"
-msgstr ""
-
-#: R/decision.b.R
-msgid "not calculated (needs both sensitivity and specificity)"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -12261,28 +11294,12 @@ msgid ""
 "are 1 and 0 by construction"
 msgstr ""
 
-#: R/decision.b.R
-msgid "not estimable: no gold-standard negative cases"
-msgstr ""
-
-#: R/decision.b.R
-msgid "not estimable: no gold-standard positive cases"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid "Not informative (post-hoc)"
 msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Not interpretable"
-msgstr ""
-
-#: R/decision.b.R
-msgid "not provided"
-msgstr ""
-
-#: R/decision.b.R
-msgid "not reported"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -12302,7 +11319,6 @@ msgid "Not testable"
 msgstr ""
 
 #: R/cotest.b.R
-#: R/decision.b.R
 #: R/decisioncombine.b.R
 #: R/enhancedROC.b.R
 msgid "Note"
@@ -12378,7 +11394,6 @@ msgstr ""
 msgid "NPV"
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 msgid "NPV (Negative Predictive Value)"
 msgstr ""
@@ -12425,7 +11440,6 @@ msgstr ""
 msgid "Null hypothesis"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 msgid "Number needed to diagnose"
@@ -12490,10 +11504,6 @@ msgstr ""
 msgid ""
 "Number of patients called high risk, and number of true events among them, "
 "per 1000 tested across thresholds"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Number of patients that need to be tested to give one correct positive test."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -12705,19 +11715,6 @@ msgstr ""
 msgid ""
 "One-vs-rest curves read each marker the same way for every class, but the "
 "markers do not all read the same way (%1$s). The orientation was %2$s."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Only \"{pos}\" (disease-present) and \"{neg}\" (disease-absent) take part. "
-"Cases at any other level are removed, not counted as disease-absent, because "
-"an indeterminate result is not a negative result."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Only \"{pos}\" (test-positive) and \"{neg}\" (test-negative) take part. "
-"Cases at any other level are removed, not counted as negative."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -13068,7 +12065,6 @@ msgstr ""
 msgid "Output Display"
 msgstr ""
 
-#: decision/ui[4].label
 #: enhancedROC/ui[2].label
 #: lassologistic/ui[6].label
 #: psychopdaROC/ui[6].label
@@ -13472,7 +12468,6 @@ msgstr ""
 msgid "Percent"
 msgstr ""
 
-#: decision/results/confusionMatrixSummary.columns.title
 #: nogoldstandard/results/crosstab.columns.title
 msgid "Percentage"
 msgstr ""
@@ -13570,12 +12565,6 @@ msgstr ""
 msgid "Please adjust the threshold range in Analysis Options."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Please ensure your data is loaded. Check that your dataset contains "
-"observations."
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "Please select an outcome variable and at least one predictor variable for "
@@ -13644,14 +12633,6 @@ msgstr ""
 msgid "Points (Selected)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Points AGAINST disease when positive: the test-positive level may be inverted"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Points TOWARD disease when negative: the test-positive level may be inverted"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "Points: observed proportion in {grp}; curve: natural cubic spline with {k} "
@@ -13686,20 +12667,8 @@ msgstr ""
 msgid "Poor Discrimination"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Poor discrimination (Youden's index {j}, equivalent AUC {auc})"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Poor discriminatory power (Youden's index below 0.40)"
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 msgid "Population Characteristics:"
-msgstr ""
-
-#: decision/options/pprob.title
-msgid "Population disease prevalence"
 msgstr ""
 
 #: sequentialtests/results/population_flow_table.title
@@ -13714,13 +12683,8 @@ msgstr ""
 msgid "Population Flow Visualization"
 msgstr ""
 
-#: R/decision.b.R
 #: decisioncalculator/ui[3].label
 msgid "Population Prevalence"
-msgstr ""
-
-#: decision/ui[2].label
-msgid "Population Prevalence Settings"
 msgstr ""
 
 #: decisioncurve/ui[6][0]/populationSize.label
@@ -13800,33 +12764,17 @@ msgstr ""
 msgid "Positive Levels May Be Inverted"
 msgstr ""
 
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncompare/results/comparisonTable.columns.title
 msgid "Positive Likelihood Ratio"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Positive likelihood ratio"
 msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "positive likelihood ratio"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Positive likelihood ratio unavailable due to data limitations"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Positive Likelihood Ratio Undefined"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Positive Likelihood Ratio: How much more likely a positive result is in "
-"diseased vs healthy patients. >10 = strong evidence, >5 = moderate, >2 = "
-"weak but potentially useful."
 msgstr ""
 
 #: R/cotest.b.R
@@ -13842,7 +12790,6 @@ msgid ""
 "starting probability."
 msgstr ""
 
-#: R/decision.b.R
 #: cotest/results/testParamsTable.columns.title
 #: sequentialtests/results/individual_tests_table.columns.title
 msgid "Positive LR"
@@ -13864,13 +12811,11 @@ msgstr ""
 msgid "Positive Path"
 msgstr ""
 
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncompare/results/comparisonTable.columns.title
 msgid "Positive Predictive Value"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 msgid "Positive predictive value"
@@ -13892,14 +12837,6 @@ msgid ""
 "positive"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Positive predictive value is unstable at this prevalence and will not "
-"transfer to a population with a different one. Sensitivity and specificity "
-"are unaffected. Consider supplying a population prior under Population "
-"Prevalence Settings."
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "Positive predictive value using the supplied population prevalence."
 msgstr ""
@@ -13908,18 +12845,10 @@ msgstr ""
 msgid "Positive predictive value using this study sample's prevalence."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Positive Predictive Value: Probability of disease given a positive test. "
-"This IS the post-test probability of disease. Depends on prevalence, "
-"sensitivity and specificity."
-msgstr ""
-
 #: decisioncurve/ui[1][2][0]/decisionRulePositive.label
 msgid "Positive rule level"
 msgstr ""
 
-#: decision/results/nTable.columns.title
 #: decisioncalculator/results/nTable.columns.title
 msgid "Positive Tests"
 msgstr ""
@@ -13950,10 +12879,6 @@ msgstr ""
 msgid "Post-hoc power (observed data)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Post-test"
-msgstr ""
-
 #: cotest/results/cotestResultsTable.columns.title
 msgid "Post-test Odds"
 msgstr ""
@@ -13966,14 +12891,6 @@ msgstr ""
 
 #: cotest/results/cotestResultsTable.columns.title
 msgid "Post-test Probability"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Post-test probability of disease, test negative"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Post-test probability of disease, test positive"
 msgstr ""
 
 #: decisioncalculator/results/ratioTable.columns.title
@@ -14097,7 +13014,6 @@ msgstr ""
 msgid "PPV"
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 msgid "PPV (Positive Predictive Value)"
 msgstr ""
@@ -14176,13 +13092,8 @@ msgstr ""
 msgid "Pre-configured settings for common clinical scenarios"
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 msgid "Pre-test"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Pre-test prevalence {prev} | Sensitivity {sens} | Specificity {spec}"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -14195,10 +13106,6 @@ msgstr ""
 msgid ""
 "Pre-test probability is {prevalence}, using the prevalence observed in this "
 "study table."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Pre-test probability of disease"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -14294,36 +13201,11 @@ msgstr ""
 msgid "Predictive Value"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Predictive Values"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "Predictive values (PPV, NPV) were adjusted for prevalence using Bayes' "
 "theorem. Likelihood ratios and diagnostic odds ratios follow standard "
 "definitions."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Predictive values are computed at this sample's observed prevalence of "
-"{prevalence}. If the sample was enriched or case-control, that prevalence is "
-"not the clinical one and these predictive values do not transfer - tick "
-"Known population prevalence under Population Prevalence Settings to obtain "
-"values for your setting."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Predictive values are computed by Bayes' theorem at the population prior of "
-"{prior} that you supplied, NOT at this sample's observed prevalence of "
-"{observed}. Sensitivity and specificity are unaffected by prevalence; PPV "
-"and NPV are not."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Predictive values depend on disease prevalence in your population"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -14443,7 +13325,6 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 #: R/decisioncurve.b.R
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncombine/options/filterStatistic/prevalence.title
 #: decisioncombine/results/combinationTable.columns.title
@@ -14513,12 +13394,6 @@ msgstr ""
 msgid "Prevalence Low"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Prevalence must be between 0 and 1 (exclusive). For 5% prevalence, enter "
-"0.05. For 20% prevalence, enter 0.20."
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "Prevalence must be greater than 0 and less than 1 (exclusive). Current value "
@@ -14554,15 +13429,6 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "Prevalence Very Low"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Prevalence: the user-supplied population prevalence (Known population "
-"prevalence, under Population Prevalence Settings), NOT this sample's "
-"observed prevalence. Predictive values, which are the post-test "
-"probabilities, are computed from this prior; sensitivity and specificity are "
-"not affected by it."
 msgstr ""
 
 #: R/cotest.b.R
@@ -14634,7 +13500,6 @@ msgid ""
 "{value}. Enter a decimal value like 0.15 for 15% prevalence."
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 msgid "Probability"
 msgstr ""
@@ -14663,24 +13528,8 @@ msgid ""
 "depends on prevalence."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Probability of being healthy given a negative test. Depends on prevalence, "
-"sensitivity and specificity."
-msgstr ""
-
 #: R/cotest.b.R
 msgid "Probability of disease after obtaining this test result combination"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Probability of disease given a positive test. Depends on prevalence, "
-"sensitivity and specificity."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Probability of disease given test results (PPV, NPV)"
 msgstr ""
 
 #: kappaSizePower/options/power.description.ui
@@ -14768,18 +13617,6 @@ msgid ""
 "costly."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Proportion of diseased patients correctly identified (TP rate). Higher is "
-"better for ruling OUT disease when negative."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Proportion of diseased patients correctly identified (true positive rate). "
-"Higher is better for ruling OUT disease when negative."
-msgstr ""
-
 #: R/cotest.b.R
 msgid "Proportion of diseased patients correctly identified by %s"
 msgstr ""
@@ -14790,18 +13627,6 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "Proportion of false positives"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Proportion of healthy patients correctly identified (TN rate). Higher is "
-"better for ruling IN disease when positive."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Proportion of healthy patients correctly identified (true negative rate). "
-"Higher is better for ruling IN disease when positive."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -14903,13 +13728,6 @@ msgstr ""
 msgid "Provide diagnostic-test data with at least one non-zero count."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Provides uncertainty estimates using the epiR package. These intervals "
-"describe the observed sample; when a population prevalence is supplied they "
-"do not apply to the prior-adjusted predictive values in the main table."
-msgstr ""
-
 #: R/cotest.b.R
 msgid "PSA"
 msgstr ""
@@ -14949,20 +13767,12 @@ msgid ""
 "recommendations for patient care."
 msgstr ""
 
-#: R/decision.b.R
-msgid "Quality assurance for laboratory tests"
-msgstr ""
-
 #: psychopdaROC/options/quantiles.title
 msgid "Quantile Positions"
 msgstr ""
 
 #: psychopdaROC/ui[7][0][1][0]/quantiles.label
 msgid "Quantile positions"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Quick Start"
 msgstr ""
 
 #: decisioncompare/options/radarplot.title
@@ -15117,15 +13927,6 @@ msgstr ""
 msgid "Ratio threshold for imbalance detection (e.g., 3.0 means 3:1 or 1:3 ratio)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Raw Data Tables"
-msgstr ""
-
-#: decision/options/od.title
-#: decision/ui[1][0]/od.label
-msgid "Raw data tables"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid "Re-running with the same seed reproduces these numbers exactly."
 msgstr ""
@@ -15199,10 +14000,6 @@ msgstr ""
 
 #: psychopdaROC/options/calculateNRI.title
 msgid "Reclassification improvement (NRI)"
-msgstr ""
-
-#: decision/results/cTable.title
-msgid "Recoded Data for Decision Test Statistics"
 msgstr ""
 
 #: enhancedROC/options/recommendPRC.description
@@ -15366,16 +14163,8 @@ msgid ""
 "positives)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Removed {n} case(s) with an explicit missing level"
-msgstr ""
-
 #: R/decisioncombine.b.R
 msgid "Removed {n} case(s) with missing values"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Removed {n} row(s) with missing diagnostic data"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -15396,10 +14185,6 @@ msgstr ""
 msgid "Report Sentences"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Reported reason"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "Reporting a cut-point and a sensitivity from this analysis would misdescribe "
@@ -15408,13 +14193,6 @@ msgstr ""
 
 #: enhancedROC/ui[3][0][1][0].label
 msgid "Reporting Options"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Required data: Cases with both test results and true disease status (gold "
-"standard). Both variables must be categorical (factor), each with exactly 2 "
-"levels, minimum 4 cases (preferably 30+)."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -15502,21 +14280,10 @@ msgstr ""
 msgid "Result"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Results are only as good as your gold standard"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid ""
 "Results include Area Under the Curve (AUC), optimal cutpoints, and "
 "performance statistics."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Results may be unstable or undefined (e.g., infinite likelihood ratios). "
-"Consider collecting more data or using exact methods. Ensure both tests and "
-"gold standard have both positive and negative cases."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -15541,14 +14308,6 @@ msgstr ""
 
 #: decisioncurve/ui[2][0]/showTable.label
 msgid "Results table"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Review false negative cases to understand what the test misses"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Review false positive cases to identify common characteristics"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -15766,11 +14525,6 @@ msgstr ""
 msgid "ROC Smoothing Method"
 msgstr ""
 
-#: decision/results/falsePositiveTable.columns.title
-#: decision/results/falseNegativeTable.columns.title
-msgid "Row"
-msgstr ""
-
 #: decisioncombine/results/combinationTable.columns.title
 msgid "Row type"
 msgstr ""
@@ -15799,24 +14553,9 @@ msgstr ""
 msgid "Sample"
 msgstr ""
 
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncalculator/results/multipleCutoffTable.columns.title
 msgid "Sample Accuracy"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Sample Accuracy is the proportion of concordant results at the prevalence "
-"observed in this sample ({prevalence}), and it changes with case mix."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Sample Accuracy is the proportion of concordant results at the prevalence "
-"observed in this sample ({prevalence}), NOT at the population prior you "
-"supplied. Unlike the predictive values it is not standardised to that prior, "
-"and it changes with case mix."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -15886,16 +14625,8 @@ msgid ""
 "kappaSizeFixedN when the number of subjects is already fixed."
 msgstr ""
 
-#: R/decision.b.R
-msgid "Sample size not available"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Sample Size Warning"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Sample size: n = {n}"
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -15915,21 +14646,6 @@ msgstr ""
 
 #: nogoldstandard/ui[2][0]/nboot.label
 msgid "Samples"
-msgstr ""
-
-#: decision/ui[5][3][0].label
-msgid "Save classification groups (TP/FP/FN/TN) to dataset:"
-msgstr ""
-
-#: decision/options/saveClassifications.title
-msgid "Save classifications to data"
-msgstr ""
-
-#: decision/options/saveClassifications.description.ui
-msgid ""
-"Save the classification results (True Positive, False Positive, False "
-"Negative, True Negative) as a new column in your dataset. This allows you to "
-"use the classification groups in other analyses."
 msgstr ""
 
 #: lassologistic/ui[6][0].label
@@ -16103,26 +14819,11 @@ msgid ""
 "Integration\"."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Select a different variable for the test under evaluation. Comparing a "
-"variable against itself always yields perfect agreement and tells you "
-"nothing about the test."
-msgstr ""
-
 #: decisioncompare/options/test2.description.ui
 msgid ""
 "Select a second diagnostic test to compare with Test 1. This enables "
 "head-to-head  comparison analysis (e.g., new method vs standard method, or "
 "two different biomarkers)."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Select different levels for positive and negative outcomes."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Select Disease present level"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -16139,14 +14840,6 @@ msgstr ""
 msgid "Select from available statistical approaches:"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Select Gold Standard"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Select New Test"
-msgstr ""
-
 #: decisioncombine/options/filterStatistic.description.ui
 msgid ""
 "Select one metric, or use the plot-specific default metric set. The bar "
@@ -16157,10 +14850,6 @@ msgid ""
 "forest selections produce an explanatory notice rather than silently showing "
 "other statistics. The decision-space plot has fixed sensitivity and "
 "specificity axes and is unaffected."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Select Test positive level"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -16188,34 +14877,11 @@ msgstr ""
 msgid "Select the level representing a positive result for Test 1."
 msgstr ""
 
-#: decision/options/goldNegative.description.ui
-msgid ""
-"Select the level that indicates disease is absent in your gold standard "
-"variable. Only the disease-present and disease-absent levels take part; "
-"cases at any other level are excluded from the analysis, not counted as "
-"disease-absent. With a two-level variable this is inferred; with three or "
-"more levels you must choose it."
-msgstr ""
-
 #: decisioncompare/options/goldPositive.description.ui
 msgid ""
 "Select the level that indicates disease IS PRESENT in your gold standard "
 "variable  (e.g., \"positive\", \"malignant\", \"1\"). This represents the "
 "condition you want to detect."
-msgstr ""
-
-#: decision/options/goldPositive.description.ui
-msgid ""
-"Select the level that indicates disease is present in your gold standard "
-"variable. This represents the condition you want to detect or diagnose."
-msgstr ""
-
-#: decision/options/testNegative.description.ui
-msgid ""
-"Select the level that represents a negative test result. Only the "
-"test-positive and test-negative levels take part; cases at any other level "
-"are excluded from the analysis, not counted as negative. With a two-level "
-"variable this is inferred; with three or more levels you must choose it."
 msgstr ""
 
 #: decisioncompare/options/test1Positive.description.ui
@@ -16231,12 +14897,6 @@ msgstr ""
 
 #: decisioncompare/options/test3Positive.description.ui
 msgid "Select the level that represents a POSITIVE result for Test 3."
-msgstr ""
-
-#: decision/options/testPositive.description.ui
-msgid ""
-"Select the level that represents a positive test result. This should "
-"correspond to the level indicating suspected disease presence."
 msgstr ""
 
 #: decisioncompare/options/gold.description.ui
@@ -16290,7 +14950,6 @@ msgstr ""
 msgid "Selection Method"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
@@ -16298,7 +14957,6 @@ msgstr ""
 #: R/psychopdaROC.b.R
 #: R/sequentialtests.b.R
 #: cotest/results/testParamsTable.columns.title
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncalculator/results/multipleCutoffTable.columns.title
 #: decisioncombine/options/filterStatistic/sens.title
@@ -16379,10 +15037,6 @@ msgstr ""
 msgid "Sensitivity = TP/(TP+FN) = Probability of positive test among diseased"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Sensitivity >90% excellent for ruling OUT disease"
-msgstr ""
-
 #: R/nogoldstandard.b.R
 msgid ""
 "Sensitivity analysis showing how the fixed penalties affect a "
@@ -16401,10 +15055,6 @@ msgstr ""
 msgid "Sensitivity and specificity across cutoff values"
 msgstr ""
 
-#: R/decision.b.R
-msgid "sensitivity and specificity are both 0.80 or above in this sample"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Sensitivity and Specificity vs Threshold"
 msgstr ""
@@ -16415,10 +15065,6 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Sensitivity and Specificity vs. Threshold: Combined"
-msgstr ""
-
-#: R/decision.b.R
-msgid "sensitivity and specificity were not both 0.80 or above in this sample"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -16433,47 +15079,10 @@ msgstr ""
 msgid "Sensitivity CI"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Sensitivity is estimated from the disease-present cases only and specificity "
-"from the disease-free cases only, so these are the numbers that matter, not "
-"the total sample size. With fewer than ten cases in an arm one reclassified "
-"patient moves that proportion by more than ten percentage points. Report the "
-"95% confidence intervals rather than the point estimates."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"sensitivity is high (0.90 or above) while specificity is below 0.80: few "
-"false negatives, more false positives in this sample"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid ""
 "Sensitivity is the proportion of reference-positive observations with a "
 "positive test result."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"sensitivity or specificity could not be computed in this sample, so the "
-"discrimination profile is incomplete"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Sensitivity plus specificity is below 1, so a positive result argues AGAINST "
-"disease and a negative result argues for it. The usual cause is that the "
-"level chosen under Test positive level is the wrong one; swapping it would "
-"give the mirror-image performance. Check the level selection before reading "
-"any number in these tables."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Sensitivity plus specificity is exactly 1, which is what a coin toss "
-"achieves. Both likelihood ratios equal 1 and the post-test probability "
-"equals the pre-test probability, whatever the result."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -16519,20 +15128,9 @@ msgid ""
 "probabilities carry no confidence interval."
 msgstr ""
 
-#: package/analyses/decision.menuSubtitle
-#: decision/options.menuSubtitle
-msgid "Sensitivity, Specificity, PPV, NPV"
-msgstr ""
-
 #: package/analyses/decisioncalculator.menuSubtitle
 #: decisioncalculator/options.menuSubtitle
 msgid "Sensitivity, Specificity, PPV, NPV, ..."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Sensitivity: Proportion of diseased patients correctly identified (TP rate). "
-"Higher is better for ruling OUT disease when negative."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -16678,22 +15276,10 @@ msgid ""
 "diagnose (1 / Youden index) columns in the clinical impact table"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Showing first {shown} of {total} false negative cases"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Showing first {shown} of {total} false positive cases"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "Showing the %1$d highest-ranked of %2$d model terms; the remaining terms "
 "have smaller maximum coefficients along the path."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Showing the first {shown} of {total} level combinations."
 msgstr ""
 
 #: psychopdaROC/ui[10][0]/significanceLevel.label
@@ -16779,22 +15365,6 @@ msgstr ""
 msgid "Small"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Small but potentially important decrease in probability"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Small but potentially important increase in probability"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Small cell count detected (minimum = {n}, < 5)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Small cell counts (<5) may cause unstable results"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Small effect"
 msgstr ""
@@ -16837,10 +15407,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Small Sample Size: %s"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Small sample size: n = {n} (< 50 cases)"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -16917,14 +15483,12 @@ msgstr ""
 msgid "Sparse Reference-Standard Class"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/lassologistic.b.R
 #: R/sequentialtests.b.R
 #: cotest/results/testParamsTable.columns.title
-#: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncalculator/results/multipleCutoffTable.columns.title
 #: decisioncombine/options/filterStatistic/spec.title
@@ -16973,18 +15537,8 @@ msgstr ""
 msgid "Specificity = TN/(TN+FP) = Probability of negative test among healthy"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Specificity >90% excellent for ruling IN disease"
-msgstr ""
-
 #: enhancedROC/results/results/diagnosticPerformance.columns.title
 msgid "Specificity CI"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"specificity is high (0.90 or above) while sensitivity is below 0.80: few "
-"false positives, more false negatives in this sample"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -16999,12 +15553,6 @@ msgstr ""
 
 #: enhancedROC/options/partialAucType/specificity.title
 msgid "Specificity Range (for high-specificity applications)"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Specificity: Proportion of healthy patients correctly identified (TN rate). "
-"Higher is better for ruling IN disease when positive."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -17172,13 +15720,6 @@ msgstr ""
 msgid "Statistical Conclusion"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Statistical estimates may be unstable. Enable 95% confidence intervals: the "
-"exact (Clopper-Pearson) intervals shown there remain valid with small cells "
-"and will be wide enough to show it."
-msgstr ""
-
 #: decisioncompare/results/explanationsContent.title
 msgid "Statistical Explanations & Glossary"
 msgstr ""
@@ -17298,20 +15839,8 @@ msgstr ""
 msgid "Strong"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Strong evidence against disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Strong evidence for disease"
-msgstr ""
-
 #: R/cotest.b.R
 msgid "strong evidence for disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "strong evidence for disease when positive"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -17492,10 +16021,6 @@ msgstr ""
 
 #: sequentialtests/ui[0].label
 msgid "Teaching Examples (Not Clinical Guidance)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Technical details: %s Please report this issue if it persists."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -17916,10 +16441,6 @@ msgstr ""
 msgid "Test Comparison"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Test comparisons"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Test Correlation Risk"
 msgstr ""
@@ -17951,7 +16472,6 @@ msgid ""
 "This can bias combined sensitivity and specificity in opposite directions."
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: sequentialtests/results/population_flow_table.columns.title
@@ -17960,10 +16480,6 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Test negative"
-msgstr ""
-
-#: decision/options/testNegative.title
-msgid "Test negative level"
 msgstr ""
 
 #: nogoldstandard/results/agreement_stats.columns.title
@@ -17993,11 +16509,6 @@ msgstr ""
 msgid "Test Performance Comparison"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Test Performance Summary"
-msgstr ""
-
-#: R/decision.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: sequentialtests/results/population_flow_table.columns.title
@@ -18006,19 +16517,6 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Test positive"
-msgstr ""
-
-#: decision/options/testPositive.title
-msgid "Test positive level"
-msgstr ""
-
-#: decision/results/falsePositiveTable.columns.title
-#: decision/results/falseNegativeTable.columns.title
-msgid "Test Result"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Test result"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -18044,10 +16542,6 @@ msgstr ""
 msgid "Test Statistic"
 msgstr ""
 
-#: decision/options/newtest.title
-msgid "Test Under Evaluation"
-msgstr ""
-
 #: psychopdaROC/options/showDotPlot.title
 msgid "Test value distribution"
 msgstr ""
@@ -18065,25 +16559,9 @@ msgstr ""
 msgid "Test Variable"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Test variable levels excluded from analysis: {lvls}"
-msgstr ""
-
 #: psychopdaROC/options/dependentVars.title
 #: psychopdaROC/ui[0][0].label
 msgid "Test Variables"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Test-negative level \"{lvl}\" not found in test variable"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Test-positive and test-negative levels cannot be the same"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Test-positive level \"{lvl}\" not found in test variable"
 msgstr ""
 
 #: enhancedROC/results/results/clinicalImpactTable.columns.title
@@ -18378,21 +16856,6 @@ msgid ""
 "whichever of these is not a firm requirement."
 msgstr ""
 
-#: decision/options/newtest.description.ui
-msgid ""
-"The diagnostic test being evaluated for performance. This is typically a "
-"new, faster, or less expensive test compared to the gold standard."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"The displayed confidence intervals (95% CI) are calculated from your study "
-"sample. They apply to the sample-based Sensitivity, Specificity, PPV and NPV "
-"in the epiR tables. They do NOT apply to the PPV and NPV in the main ratio "
-"table, which are recomputed by Bayes' theorem at the fixed population "
-"prevalence you supplied."
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "The displayed ROC curve is smoothed (%s), but every reported statistic — "
@@ -18416,12 +16879,6 @@ msgid ""
 "used; the AUC differences and p-values below come from that fallback."
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"The epiR package could not produce intervals for this table, so the two "
-"confidence-interval tables are empty."
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid ""
 "The epiR package is required for confidence intervals. Install it or disable "
@@ -18433,13 +16890,6 @@ msgstr ""
 msgid ""
 "The epiR package is required for confidence intervals. Install it with "
 "install.packages(\"epiR\"), or disable the \"95% CI\" option."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"The epiR package returned no interval estimates for this table, so the two "
-"confidence-interval tables are empty. This usually means the 2x2 table is "
-"too sparse for the exact method."
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -18578,25 +17028,6 @@ msgstr ""
 msgid ""
 "The global test across all markers could not be computed (%s); its statistic "
 "and p-value are left blank."
-msgstr ""
-
-#: R/decision.b.R
-msgid "The gold standard and the test are the same variable"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"The gold standard has more than one level besides \"{pos}\" ({lvls}), so the "
-"disease-absent level cannot be inferred. Select it under Disease absent "
-"level. Levels you do not name are excluded from the analysis rather than "
-"counted as disease-absent."
-msgstr ""
-
-#: decision/options/gold.description.ui
-msgid ""
-"The gold standard reference variable (true disease status).  This should be "
-"the most reliable test or diagnosis available (e.g., biopsy, final "
-"diagnosis)."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -18889,15 +17320,6 @@ msgstr ""
 msgid ""
 "The positive-response probability and NPV are fixed at 100% by construction "
 "and therefore are left blank."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"The predictive values in this table are computed at the prevalence observed "
-"in this sample ({observed}), not at the population prior of {prior} used for "
-"the predictive values in the main table above. The intervals here belong to "
-"these estimates, not to those. Sensitivity and specificity are unaffected by "
-"prevalence."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -19202,14 +17624,6 @@ msgstr ""
 msgid "The test '%1$s' has an AUC of %2$.3f"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"The test has more than one level besides \"{pos}\" ({lvls}), so the "
-"test-negative level cannot be inferred. Select it under Test negative level. "
-"Levels you do not name are excluded from the analysis rather than counted as "
-"negative."
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "The tests have similar marginal sensitivity and specificity. Similar "
@@ -19331,13 +17745,6 @@ msgid ""
 "These are single-cohort estimates. Their practical meaning depends on "
 "intended use, error consequences, prevalence, patient spectrum, and "
 "reference-standard quality. This educational summary is not a clinical guide."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"These cases carry a level that codes missingness rather than a result. They "
-"are excluded rather than counted as negative, which would have biased "
-"sensitivity and specificity."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -19464,13 +17871,6 @@ msgid ""
 "for every selected test. All displayed estimates use these complete cases. "
 "If the probability of a missing result is related to an unobserved test "
 "result or latent class, the estimates can be biased."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"This analysis was inspired by Orange Data Mining's interactive confusion "
-"matrix feature, adapted for static jamovi output with comprehensive "
-"statistical tables."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -19763,16 +18163,6 @@ msgid ""
 "cutpoint."
 msgstr ""
 
-#: R/decision.b.R
-msgid "This test is uninformative (Youden's index 0.00, equivalent AUC 0.50)"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"This test performs worse than chance (Youden's index {j}, equivalent AUC "
-"{auc})"
-msgstr ""
-
 #: R/decisioncompare.b.R
 msgid ""
 "This tool compares the diagnostic performance of multiple medical tests "
@@ -19952,13 +18342,9 @@ msgstr ""
 msgid "Top right"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
-#: decision/results/rawContingency.columns.title
-#: decision/results/cTable.columns.title
-#: decision/results/nTable.columns.title
 #: decisioncalculator/results/cTable.columns.title
 #: decisioncalculator/results/nTable.columns.title
 #: decisioncombine/results/crossTabTable.columns.title
@@ -19994,24 +18380,12 @@ msgstr ""
 msgid "Total number of discordant test results"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Total Number of Healthy Subjects (Gold Standard Negative)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Total Number of Negative Test Results"
-msgstr ""
-
 #: R/decisioncalculator.b.R
 msgid "Total number of negative tests"
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Total number of observations in analysis"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Total Number of Positive Test Results"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -20028,22 +18402,6 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Total number of subjects"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Total Number of Subjects in complete case analysis"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Total Number of Subjects with Disease (Gold Standard Positive)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Total Number of True Test Results (TP + TN)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Total Number of Wrong Test Results (FP + FN)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -20151,7 +18509,6 @@ msgstr ""
 msgid "Troponin + ECG (demo only)"
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 #: enhancedROC/results/results/cutoffAnalysis.columns.title
@@ -20168,7 +18525,6 @@ msgstr ""
 msgid "True Negatives"
 msgstr ""
 
-#: R/decision.b.R
 #: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 #: enhancedROC/results/results/cutoffAnalysis.columns.title
@@ -20201,13 +18557,7 @@ msgid "True prevalence"
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: decision/results/falsePositiveTable.columns.title
-#: decision/results/falseNegativeTable.columns.title
 msgid "True Status"
-msgstr ""
-
-#: decision/results/nTable.columns.title
-msgid "True Test"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -20322,10 +18672,6 @@ msgid ""
 "complete data across both tests and the gold standard."
 msgstr ""
 
-#: R/decision.b.R
-msgid "Unable to generate detailed clinical interpretation due to data limitations."
-msgstr ""
-
 #: R/cotest.b.R
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
@@ -20337,20 +18683,8 @@ msgstr ""
 msgid "Uncertainty and Diagnostics"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Uncertainty estimates for all statistics"
-msgstr ""
-
-#: R/decision.b.R
-msgid "undefined"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Under-fitting (slope > 1)"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Understanding Misclassifications"
 msgstr ""
 
 #: lassologistic/results/lassoExplanation.title
@@ -20359,22 +18693,6 @@ msgstr ""
 
 #: cotest/results/dependenceExplanation.title
 msgid "Understanding Test Dependence"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Uninformative: a negative result does not change the probability of disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Uninformative: a negative result leaves the probability of disease unchanged"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Uninformative: a positive result does not change the probability of disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Uninformative: a positive result leaves the probability of disease unchanged"
 msgstr ""
 
 #: sequentialtests/results/cost_analysis_table.columns.title
@@ -20403,40 +18721,6 @@ msgid ""
 "different consequences for the two error types."
 msgstr ""
 
-#: R/decision.b.R
-msgid "up to 1 disease-free case in 10 flagged positive here"
-msgstr ""
-
-#: R/decision.b.R
-msgid "up to 1 disease-free case in 10 flagged positive in this sample"
-msgstr ""
-
-#: R/decision.b.R
-msgid "up to 1 disease-free case in 5 flagged positive here"
-msgstr ""
-
-#: R/decision.b.R
-msgid "up to 1 disease-free case in 5 flagged positive in this sample"
-msgstr ""
-
-#: R/decision.b.R
-msgid "up to 1 diseased case in 10 missed here"
-msgstr ""
-
-#: R/decision.b.R
-msgid "up to 1 diseased case in 10 missed in this sample"
-msgstr ""
-
-#: R/decision.b.R
-msgid "up to 1 diseased case in 5 missed here"
-msgstr ""
-
-#: R/decision.b.R
-msgid "up to 1 diseased case in 5 missed in this sample"
-msgstr ""
-
-#: decision/results/epirTable_ratio.columns.title
-#: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
 #: decisioncalculator/results/epirTable_number.columns.title
 #: decisioncombine/results/combinationTableCI.columns.title
@@ -20494,13 +18778,6 @@ msgid ""
 "accuracy, and MCC remain based on the entered study table."
 msgstr ""
 
-#: decision/options/pp.description.ui
-msgid ""
-"Use known disease prevalence from population data instead of study "
-"prevalence. Enable this when your study sample may not represent the target "
-"population."
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid ""
 "Use model-based probabilities and assess their calibration separately in the "
@@ -20509,18 +18786,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Use Precision-Recall Curve (PRC) analysis instead of ROC"
-msgstr ""
-
-#: decision/ui[2][0].label
-msgid "Use when sample doesn't represent target population disease prevalence"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Use when your study sample doesn't represent the target population "
-"prevalence. Affects PPV/NPV calculations using Bayes' theorem. Enter as "
-"proportion (e.g., 0.05 for 5%, 0.15 for 15%). Common ranges: rare diseases "
-"(0.001-0.01), common conditions (0.05-0.30)."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -20561,10 +18826,6 @@ msgstr ""
 msgid ""
 "Using fewer than 100 replications may give unreliable confidence intervals; "
 "consider at least 1000 replications for stable estimates."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Validating new tests"
 msgstr ""
 
 #: lassologistic/ui[3].label
@@ -20704,10 +18965,6 @@ msgstr ""
 msgid "Very high %1$s ratio ( %2$s ) - indicates highly informative test."
 msgstr ""
 
-#: R/decision.b.R
-msgid "Very high disease prevalence observed in this sample ({pct})"
-msgstr ""
-
 #: R/cotest.b.R
 msgid ""
 "Very high prevalence (above 95%): every post-test probability below is "
@@ -20720,16 +18977,8 @@ msgstr ""
 msgid "Very high sensitivity range - critical for screening/case-finding"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Very large dataset detected ({n} rows)"
-msgstr ""
-
 #: R/kappaSizePower.b.R
 msgid "Very large sample size."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Very low disease prevalence observed in this sample ({pct})"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -20748,10 +18997,6 @@ msgstr ""
 msgid "Very small sample size (n = {n})."
 msgstr ""
 
-#: R/decision.b.R
-msgid "Very small sample size: n = {n} (< 20 cases)"
-msgstr ""
-
 #: R/kappaSizePower.b.R
 msgid "Very small sample size."
 msgstr ""
@@ -20764,22 +19009,10 @@ msgstr ""
 msgid "Very sparse reference groups"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Visual representation of probability changes"
-msgstr ""
-
 #: enhancedROC/options/plotTheme.description
 msgid "Visual theme for ROC plots"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Visual tool showing how test results change disease probability. Shows "
-"relationship between pre-test probability, likelihood ratios, and post-test "
-"probability."
-msgstr ""
-
-#: decision/ui[3].label
 #: decisioncalculator/ui[4].label
 #: psychopdaROC/ui[7].label
 msgid "Visualization"
@@ -20791,7 +19024,6 @@ msgid "Visualizations"
 msgstr ""
 
 #: R/cotest.b.R
-#: R/decision.b.R
 #: R/decisioncombine.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
@@ -20856,20 +19088,8 @@ msgstr ""
 msgid "Weak"
 msgstr ""
 
-#: R/decision.b.R
-msgid "Weak evidence against disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "Weak evidence for disease"
-msgstr ""
-
 #: R/cotest.b.R
 msgid "weak evidence for disease"
-msgstr ""
-
-#: R/decision.b.R
-msgid "weak evidence for disease when positive"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -20920,7 +19140,6 @@ msgstr ""
 msgid "What this analysis does"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "What This Analysis Does"
 msgstr ""
@@ -20931,10 +19150,6 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "What this tool does:"
-msgstr ""
-
-#: R/decision.b.R
-msgid "What You'll Get"
 msgstr ""
 
 #: decisioncompare/options/excludeIndeterminate.description.ui
@@ -20948,7 +19163,6 @@ msgstr ""
 msgid "When to use it:"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "When to Use This Analysis"
 msgstr ""
@@ -21001,16 +19215,6 @@ msgid ""
 "PPV, NPV and accuracy, shown as percentages to match the combination table "
 "above. Likelihood ratios and the diagnostic odds ratio are unbounded ratios "
 "rather than proportions, so they appear in their own table below."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"With fewer than 20 cases each proportion rests on a handful of patients, so "
-"one reclassified case moves sensitivity or specificity by several percentage "
-"points and the 95% confidence intervals (enable the 95% CI option) will be "
-"very wide. Read the intervals rather than the point estimates; diagnostic "
-"accuracy studies usually need on the order of 100 cases before the intervals "
-"narrow usefully."
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -21082,10 +19286,6 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Wrong level specified for positive class. No observations found."
-msgstr ""
-
-#: decision/results/nTable.columns.title
-msgid "Wrong Test"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -21174,12 +19374,10 @@ msgstr ""
 msgid "Youden Index vs Threshold"
 msgstr ""
 
-#: R/decision.b.R
 #: decisioncalculator/results/advancedMetricsTable.columns.title
 msgid "Youden's Index"
 msgstr ""
 
-#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 msgid "Youden's index"
@@ -21207,13 +19405,6 @@ msgid ""
 "Youden's index is {youden} and sample accuracy is {accuracy}. These values "
 "describe the entered study table; they are not clinical grades or decision "
 "thresholds."
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Youden's index is the difference between the true positive rate and the "
-"false positive rate. Youden's index ranges from -1 to +1 with values closer "
-"to 1 if both sensitivity and specificity are high (i.e. close to 1)."
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -21245,10 +19436,6 @@ msgid ""
 "Zero cell detected. A 0.5 continuity correction is applied only to a "
 "likelihood ratio whose own denominator cell is empty (FP = 0 for LR+, TN = 0 "
 "for LR-); every other statistic uses these raw counts. Interpret cautiously."
-msgstr ""
-
-#: R/decision.b.R
-msgid "Zero counts detected in contingency table"
 msgstr ""
 
 #: psychopdaROC/results/effectSizeTable.columns.title

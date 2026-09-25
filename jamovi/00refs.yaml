@@ -7,6 +7,7 @@ refs:
         title: "Diagnostic tests 1: Sensitivity and specificity"
         publisher: BMJ
         volume: 308
+        issue: 6943
         pages: 1552
         doi: 10.1136/bmj.308.6943.1552
         url: "https://doi.org/10.1136/bmj.308.6943.1552"
@@ -45,7 +46,7 @@ refs:
 
     ClinicoPathJamoviModule:
         type: software
-        author: Serdar Balci
+        author: "Balci, S."
         year: 2020
         title: "ClinicoPath jamovi Module"
         publisher: "[R package]. Retrieved from https://github.com/sbalci/ClinicoPathJamoviModule"
@@ -89,9 +90,10 @@ refs:
         type: article
         author: "Deeks, J. J., & Altman, D. G."
         year: 2004
-        title: "Diagnostic tests 4: Likelihood ratios"
+        title: "Diagnostic tests 4: likelihood ratios"
         publisher: BMJ
         volume: 329
+        issue: 7458
         pages: 168-169
         doi: 10.1136/bmj.329.7458.168
         url: "https://doi.org/10.1136/bmj.329.7458.168"
@@ -110,17 +112,20 @@ refs:
 
     DiagnosticTests:
         type: article
-        author: Stites EC, Wilen CB.
+        author: "Stites, E. C., & Wilen, C. B."
         year: 2020
         title: The Interpretation of SARS-CoV-2 Diagnostic Tests
-        publisher: Med (N Y).
+        publisher: Med
+        volume: 1
+        issue: 1
+        pages: 78-89
         doi: 10.1016/j.medj.2020.08.001
-        url: "https://www.cell.com/med/fulltext/S2666-6340(20)30016-7"
+        url: "https://doi.org/10.1016/j.medj.2020.08.001"
 
     Fagan:
         type: software
-        author: Adam Chekroud
-        year: 2020
+        author: "Chekroud, A. M., & Schwartz, A."
+        year: 2016
         title: "nomogrammer: Fagan's nomograms with ggplot2"
         publisher: GitHub
         url: "https://github.com/achekroud/nomogrammer"
@@ -129,20 +134,13 @@ refs:
         type: article
         author: Fagan, T. J.
         year: 1975
-        title: Nomogram for Bayes theorem
+        title: "Nomogram for Bayes's theorem"
         publisher: New England Journal of Medicine
         volume: 293
+        issue: 5
         pages: 257
         doi: 10.1056/NEJM197507312930513
         url: "https://doi.org/10.1056/NEJM197507312930513"
-
-    Fagan2:
-        type: article
-        author: Simon, S.
-        year: 2020
-        title: "StATS: What is a Fagan nomogram?"
-        publisher: P.Mean Consulting
-        url: "http://www.pmean.com/definitions/fagan.htm"
 
     Hedges1981:
         type: article
@@ -367,18 +365,20 @@ refs:
 
     epiR:
         type: software
-        author: Mark Stevenson with contributions from Telmo Nunes, Cord Heuer, Jonathon Marshall, Javier Sanchez, Ron Thornton, Jeno Reiczigel, Jim Robison-Cox, Paola Sebastiani, Peter Solymos, Kazuki Yoshida, Geoff Jones, Sarah Pirikahu, Simon Firestone, Ryan Kyle, Johann Popp, Mathew Jay and Charles Reynard.
-        year: 2020
-        title: "epiR: Tools for the Analysis of Epidemiological Data."
+        author: "Stevenson, M., & Sergeant, E."
+        year: 2026
+        title: "epiR: Tools for the Analysis of Epidemiological Data"
         publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=epiR"
+        doi: 10.32614/CRAN.package.epiR
         url: "https://CRAN.R-project.org/package=epiR"
 
     forcats:
         type: software
-        author: Hadley Wickham and Posit Software, PBC
+        author: "Wickham, H."
         year: 2025
         title: "forcats: Tools for Working with Categorical Variables (Factors)"
         publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=forcats"
+        doi: 10.32614/CRAN.package.forcats
         url: "https://CRAN.R-project.org/package=forcats"
 
     ggplot2:
@@ -430,7 +430,7 @@ refs:
 
     jaeschke1994:
         type: article
-        author: Jaeschke, R., Guyatt, G. H., Sackett, D. L., et al.
+        author: "Jaeschke, R., Guyatt, G. H., & Sackett, D. L."
         year: 1994
         title: Users' guides to the medical literature. III. How to use an article about a diagnostic test. B. What are the results and will they help me in caring for my patients?
         publisher: JAMA

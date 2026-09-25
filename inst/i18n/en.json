@@ -34,9 +34,6 @@
             "\"Statistical comparison\" is enabled but only one prediction model is selected, so the Exploratory Model Comparison table stays empty.": [
                 ""
             ],
-            "(95% CI: sensitivity {sens}, specificity {spec})": [
-                ""
-            ],
             "(95%% CI: %1$.1f-%2$.1f%%)": [
                 ""
             ],
@@ -74,12 +71,6 @@
                 ""
             ],
             "(The Summary panel below reproduces the kappaSize package's own wording, which says the sample size will “ensure” the limits — read it with this caveat in mind.)": [
-                ""
-            ],
-            "(this is 1 - NPV)": [
-                ""
-            ],
-            "(this is the PPV)": [
                 ""
             ],
             "(this is the share of cases satisfying the rule, not an estimate of disease prevalence)": [
@@ -142,21 +133,6 @@
             "{models} never exceeds both reference strategies anywhere in the threshold range examined, so no range is shown.": [
                 ""
             ],
-            "{n} case(s) ({pct}) removed because their level was neither the positive nor the negative level you selected (these are NOT missing values)": [
-                ""
-            ],
-            "{n} case(s) ({pct}) removed for missing values on the test or gold-standard variable": [
-                ""
-            ],
-            "{n} cases ({pct} of errors) - Test incorrectly predicts disease": [
-                ""
-            ],
-            "{n} cases ({pct} of errors) - Test misses actual disease": [
-                ""
-            ],
-            "{n} cases analyzed": [
-                ""
-            ],
             "{n} of {total} bootstrap resamples for '{var}' contained only one outcome class and were dropped; the bootstrap AUC summary uses the remaining {kept}.": [
                 ""
             ],
@@ -167,9 +143,6 @@
                 ""
             ],
             "{n} rules tie on Youden's J ({rules}); \"{shown}\" is displayed only because it comes first.": [
-                ""
-            ],
-            "{n} total misclassifications ({pct} error rate)": [
                 ""
             ],
             "{pairs} could not be bootstrap-tested because at least one side is a derived strategy rather than a predictor column, so it has no values to resample.": [
@@ -419,18 +392,6 @@
                 ""
             ],
             "<div style='background-color: rgba(33, 149, 188, 0.1);padding:15px;border-left:4px solid #0077be;font-size:1.05em;line-height:1.6; color: inherit;'><strong>Illustrative Summary:</strong> Using a %1$s with %2$s followed by %3$s, the combined test achieves %4$.1f%% sensitivity (detects %5$.0f of every 100 diseased individuals) and %6$.1f%% specificity (correctly rules out %7$.0f of every 100 healthy individuals). At your specified disease prevalence of %8$.1f%%, a positive result indicates a %9$s chance the person truly has the disease (PPV), while a negative result indicates a %10$s chance the person is truly disease-free (NPV).%11$s %12$s <em>These combined figures assume the two tests are conditionally independent given disease status, and they treat the sensitivity, specificity and prevalence you entered as exact, so they carry no confidence interval. If the two tests measure related biology, %13$s.</em></div>": [
-                ""
-            ],
-            "<div style='margin: 15px; padding: 15px; border-left: 5px solid #4CAF50; background-color: rgba(114, 184, 33, 0.1); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Clinical Summary</h3><p style='font-size: 16px;'><strong>Analysis:</strong> Diagnostic test performance evaluation comparing {testname} against gold standard {goldname}.</p><p><strong>Sample:</strong> {sample}. Predictive values below are computed at a disease prevalence of {prev}.</p><p><strong>Test Performance:</strong> The test shows <strong>{quality}</strong> discriminatory ability with sensitivity of <strong>{sens}</strong> (<em>{sensnote}</em>) and specificity of <strong>{spec}</strong> (<em>{specnote}</em>).</p><p><strong>Discrimination Profile:</strong> {profile}.</p><p><strong>Likelihood Ratios:</strong> Positive LR: {lrpos} (<em>{lrposnote}</em>), Negative LR: {lrneg} (<em>{lrnegnote}</em>)</p><p><strong>Key Findings:</strong> Predictive values are post-test probabilities. After a positive result the probability of disease is the positive predictive value (PPV {ppv}). After a negative result the probability of disease is <strong>{postneg}</strong>, and the probability of being disease-free is the negative predictive value (NPV {npv}).</p></div>": [
-                ""
-            ],
-            "<div style='margin: 15px; padding: 15px; border-left: 5px solid #FF9800; background-color: rgba(255, 169, 33, 0.14); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Clinical Summary</h3><p>Basic diagnostic test evaluation completed with {n} cases.</p><p><strong>Results:</strong> Sensitivity {sens}, Specificity {spec}</p></div>": [
-                ""
-            ],
-            "<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Copy-Ready Clinical Report</h3><div style='background: rgba(255, 255, 255, 0.06); color: inherit; padding: 10px; border-radius: 5px; font-family: Arial, sans-serif;'><p><strong>DIAGNOSTIC TEST EVALUATION</strong></p><p>We evaluated the diagnostic performance of {testname} compared to the gold standard {goldname}. The test demonstrated a sensitivity of {sens} and specificity of {spec} {ci}. At a disease prevalence of {prev}, the positive predictive value was {ppv} and the negative predictive value was {npv}. The positive likelihood ratio of {lr} provides {interp}.</p></div><p style='font-size: 12px; color: inherit; opacity: 0.75;'><em>Copy the text above for your clinical report. Modify as needed for your specific context.</em></p></div>": [
-                ""
-            ],
-            "<div style='margin: 15px; padding: 15px; border: 2px dashed #2196F3; background-color: rgba(33, 152, 239, 0.13); color: inherit;'><h3 style='color: inherit; margin-top: 0;'>Copy-Ready Clinical Report</h3><p>Diagnostic test evaluation shows sensitivity of {sens} and specificity of {spec}.</p></div>": [
                 ""
             ],
             "<div style=\"max-width: 800px;\">\n<h3>Understanding Test Dependence in Diagnostic Testing</h3>\n\n<p>This applies to two tests read <strong>in parallel</strong>: both are performed on the same subject at the same time, before either result is known, and the two results are then combined. For tests performed one after another, where the second is ordered only after a particular first result, use a sequential testing analysis instead — the second test's sensitivity and specificity there apply to the selected subgroup, not to everyone.</p>\n\n<h4>What is conditional independence vs. dependence?</h4>\n<p>Two diagnostic tests are <strong>conditionally independent</strong> if the result of one test does not influence the result of the other test, <em>given the disease status</em>. In other words, within the diseased population, the probability of Test 1 being positive is not affected by knowing the result of Test 2, and vice versa. The same applies within the non-diseased population.</p>\n\n<p>Tests are <strong>conditionally dependent</strong> when the result of one test affects the probability of the other test result, even when we know the patient's true disease status.</p>\n\n<h4>Mathematical Formulation</h4>\n\n<p><strong>Independent Tests:</strong> When tests are independent, joint probabilities are simply the product of individual probabilities:</p>\n<ul>\n  <li>P(Test1+ and Test2+ | Disease+) = P(Test1+ | Disease+) × P(Test2+ | Disease+) = Sens₁ × Sens₂</li>\n  <li>P(Test1+ and Test2+ | Disease−) = P(Test1+ | Disease−) × P(Test2+ | Disease−) = (1−Spec₁) × (1−Spec₂)</li>\n  <li>P(Test1− and Test2− | Disease+) = P(Test1− | Disease+) × P(Test2− | Disease+) = (1−Sens₁) × (1−Sens₂)</li>\n  <li>P(Test1− and Test2− | Disease−) = P(Test1− | Disease−) × P(Test2− | Disease−) = Spec₁ × Spec₂</li>\n</ul>\n\n<p><strong>Dependent Tests:</strong> When tests are dependent, we adjust these probabilities using a correlation parameter (denoted as ρ or ψ) that runs from −1 through 0 (independence) to +1. Positive values describe tests that tend to err together; negative values describe tests that compensate for each other's errors, so that one tends to be positive where the other is negative. Both are permitted here, though the attainable range is narrower than −1 to +1 and depends on the sensitivities and specificities entered — values outside it are truncated, and the analysis says so:</p>\n<ul>\n  <li>P(Test1+ and Test2+ | Disease+) = (Sens₁ × Sens₂) + ρ<sub>pos</sub> × √(Sens₁ × (1−Sens₁) × Sens₂ × (1−Sens₂))</li>\n  <li>P(Test1+ and Test2+ | Disease−) = ((1−Spec₁) × (1−Spec₂)) + ρ<sub>neg</sub> × √((1−Spec₁) × Spec₁ × (1−Spec₂) × Spec₂)</li>\n</ul>\n\n<p>Extreme values are automatically truncated to stay within feasible joint bounds; the realized correlation after truncation is reported.</p>\n\n<p>Note: Similar adjustments are made for the other joint probabilities.</p>\n\n<h4>When to Use Dependent vs. Independent Models</h4>\n\n<p><strong>Independence is the assumption that has to be justified, not the fallback.</strong> It is the optimistic choice: it credits the pair with more combined information than dependent tests actually provide. Use it only when you can point to a positive reason, such as:</p>\n<ul>\n  <li>The tests measure genuinely different biological phenomena</li>\n  <li>They use different specimens, and different mechanisms of measurement</li>\n  <li>Paired data from your own or a published series shows no residual correlation within disease status</li>\n</ul>\n\n<p><strong>If you simply do not know how the two tests interact, independence is the wrong default.</strong> Tests that share a specimen, a modality, an observer or a biological pathway are dependent unless shown otherwise. Enter a small positive dependence (0.05 to 0.15) and see how far the conclusion moves; if it moves a lot, the honest report gives the range rather than the independent figure. This is why the independence checkbox is off by default.</p>\n\n<p><strong>Use the dependence model when:</strong></p>\n<ul>\n  <li>Tests measure the same or similar biological phenomena</li>\n  <li>Tests are based on the same biological specimen or mechanism</li>\n  <li>Previous studies indicate correlation between test results</li>\n  <li>Both tests are affected by the same confounding factors</li>\n  <li>You have observed that knowing one test result predicts the other</li>\n</ul>\n\n<h4>Real-World Examples of Dependent Tests</h4>\n<ul>\n  <li>Two imaging tests (e.g., MRI and CT) looking at the same anatomical structure</li>\n  <li>Two serological tests that detect different antibodies but against the same pathogen</li>\n  <li>Tests that may both be affected by the same confounding factor (e.g., inflammation)</li>\n  <li>Multiple readings of the same test by different observers</li>\n  <li>Two different molecular tests detecting different genes of the same pathogen</li>\n</ul>\n\n<h4>Estimating Dependency Parameters</h4>\n<p>The conditional dependence parameters (ρ<sub>pos</sub> for diseased subjects and ρ<sub>neg</sub> for non-diseased subjects) ideally should be estimated from paired testing data with known disease status. Positive values between 0 and 0.5 are the common case in practice, with larger values indicating stronger dependence; negative values are unusual but legitimate where the two tests genuinely compensate for one another. When no data is available, sensitivity analyses using a range of plausible values (e.g., 0.05, 0.1, 0.2) can reveal how much dependence affects results.</p>\n\n<h4>Impact of Ignoring Dependence</h4>\n<p>Ignoring conditional dependence when it exists overstates how much the second test adds. The <em>direction</em> of the error differs by row, so it is worth being precise rather than saying post-test probabilities are simply \"exaggerated\":</p>\n<ul>\n  <li><strong>Both tests positive</strong> — assuming independence makes the probability of disease <strong>too high</strong>. Two correlated positives are partly the same evidence counted twice. (Simulation across 400 ordinary clinical parameter sets: this held in 100% of them.)</li>\n  <li><strong>Both tests negative</strong> — assuming independence makes the probability of disease <strong>too low</strong>, i.e. it overstates how safely the pair rules disease out. This is the error that matters most in screening. (100% of the same sets.)</li>\n  <li><strong>Either test positive (the parallel rule)</strong> — here independence makes the probability of disease <strong>too low</strong> in the large majority of cases (85%), not too high, because dependence concentrates false positives into the double-positive cell. Do not assume the independent figure is the conservative one for this row.</li>\n  <li><strong>One test positive only</strong> — the direction is not determined by dependence alone; across the same sets it went each way about half the time, depending on the two operating points.</li>\n</ul>\n<p>The common thread is an <strong>overly optimistic assessment of what the two tests achieve together</strong>, not a uniform inflation of every number. Note also that this analysis reports no confidence intervals at all: every figure is conditional on the sensitivity, specificity and prevalence you entered being exact.</p>\n</div>": [
@@ -1009,12 +970,6 @@
             "1SE Rule (parsimonious)": [
                 ""
             ],
-            "5% or fewer disease-free cases flagged positive in this sample": [
-                ""
-            ],
-            "5% or fewer diseased cases missed in this sample": [
-                ""
-            ],
             "95 percent CI": [
                 ""
             ],
@@ -1033,15 +988,6 @@
             "95% Confidence Interval": [
                 ""
             ],
-            "95% Confidence Intervals": [
-                ""
-            ],
-            "95% confidence intervals": [
-                ""
-            ],
-            "95% confidence intervals could not be computed": [
-                ""
-            ],
             "95% Interval Lower (weighted AUC)": [
                 ""
             ],
@@ -1052,15 +998,6 @@
                 ""
             ],
             "A bound at or below zero means this many subjects cannot rule out agreement no better than chance.": [
-                ""
-            ],
-            "A cell of the 2x2 table is zero. Sensitivity, specificity, accuracy and the predictive values are computed from the observed counts; the likelihood ratios are computed from the Haldane-Anscombe corrected table (0.5 added to every cell), because they are undefined when a cell is empty. A finite likelihood ratio beside a specificity of 100% reflects that correction, not the observed data.": [
-                ""
-            ],
-            "A cell of the 2x2 table is zero. The positive and negative likelihood ratios, the diagnostic odds ratio and the Fagan nomogram are computed from the Haldane-Anscombe corrected table (0.5 added to every cell), because those quantities are undefined when a cell is empty. Sensitivity, specificity, accuracy and the predictive values are computed from the observed counts and are unchanged. The two sets therefore do not reconcile exactly: a finite likelihood ratio can sit beside a specificity of 100%.": [
-                ""
-            ],
-            "A cell of the 2x2 table was zero. Sensitivity, specificity and the predictive values above are computed from the observed counts; the likelihood ratios are computed from the Haldane-Anscombe corrected table (0.5 added to every cell), without which they would be undefined. Quote both facts together.": [
                 ""
             ],
             "A comprehensive toolkit for medical decision analysis and reliability\nassessment, implemented as a jamovi module. The package provides tools for:\n* Interrater and intrarater reliability analysis using Cohen's Kappa and\n  Fleiss' Kappa statistics\n* Diagnostic test evaluation with sensitivity, specificity, predictive values,\n  and likelihood ratios\n* Sample size calculations for reliability studies using confidence interval\n  and power-based approaches\n* Visualization tools including Fagan nomograms for Bayesian probability\n  updates\n* Power analysis for interobserver agreement studies with support for\n  multiple raters and outcome categories\nTools are provided through an intuitive graphical interface in jamovi, making\ncomplex medical decision analyses accessible to clinical researchers.\nFor comments, suggestions, feature requests or reporting bugs, please open an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.": [
@@ -1108,9 +1045,6 @@
             "A positive result multiplies pre-test odds by {lr}.": [
                 ""
             ],
-            "A predictive value is left blank where Bayes' theorem is undefined at this prior, which happens when no case can produce the corresponding test result in this sample.": [
-                ""
-            ],
             "A residual above %.2f (the 5%% point of chi-squared on 1 degree of freedom) is evidence that the pair does not err independently. This is a descriptive check, not a formal test: the residuals are correlated with one another and no multiplicity adjustment is applied.": [
                 ""
             ],
@@ -1148,12 +1082,6 @@
                 ""
             ],
             "A zero cell was present, so the likelihood ratios and the probabilities read from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive values in the Measures table are computed from the raw counts and can differ slightly.": [
-                ""
-            ],
-            "About analysis content unavailable": [
-                ""
-            ],
-            "About Diagnostic Test Evaluation": [
                 ""
             ],
             "About diagnostic-test evaluation": [
@@ -1210,9 +1138,6 @@
             "Add definitions and prevalence-source notes to the comparison table.": [
                 ""
             ],
-            "Add detailed explanatory footnotes to all tables with clinical interpretation guidance. Helpful for understanding what each statistic means and how to interpret the results.": [
-                ""
-            ],
             "Add detailed explanatory footnotes to the tables. Helpful for understanding what each statistic means.": [
                 ""
             ],
@@ -1220,9 +1145,6 @@
                 ""
             ],
             "Add the explanatory detail to the class-imbalance warning. The warning itself is always shown when imbalance is detected; this only controls how much it explains.": [
-                ""
-            ],
-            "Adds detailed clinical interpretation help to all result tables.": [
                 ""
             ],
             "Adequate": [
@@ -1396,9 +1318,6 @@
             "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
                 ""
             ],
-            "An equivalent area under the curve below 0.70 is conventionally read as poor discrimination. Confirm that the level chosen under Test positive level is the one you meant, then interpret the predictive values with care: at this level of discrimination they are driven mainly by prevalence.": [
-                ""
-            ],
             "An illustrative population of %1$.0f at %2$.2f%% prevalence contains only %3$.2f expected people with disease, so the population-flow counts are fractional. Increase the population size (for example to 10000) for readable whole-person counts.": [
                 ""
             ],
@@ -1406,12 +1325,6 @@
                 ""
             ],
             "An unpenalized logistic refit in the Model Comparison table showed complete/quasi-complete separation (non-convergence or fitted probabilities at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row.": [
-                ""
-            ],
-            "Analysed Combination Counts": [
-                ""
-            ],
-            "Analysed Contingency Table": [
                 ""
             ],
             "Analyses two diagnostic tests applied in parallel: both are performed on the same subject at the same time, before either result is known, and the two results are then combined. Reports the post-test probability of disease for every result combination (either test positive, test 1 only, test 2 only, both positive, both negative), optionally allowing the two tests to be conditionally dependent. For tests performed one after another, where the second is ordered only after a particular first result, use Sequential Test Analysis instead. Note that Sequential Test Analysis also offers a parallel strategy, but its combined figures assume conditional independence; this analysis is the one that models conditional dependence numerically.": [
@@ -1444,12 +1357,6 @@
             "Analysis guide": [
                 ""
             ],
-            "Analysis may take a moment to complete.": [
-                ""
-            ],
-            "Analysis may take longer than usual. Consider sampling for initial exploratory analysis. Full dataset will still be used for final results.": [
-                ""
-            ],
             "Analysis Method": [
                 ""
             ],
@@ -1463,9 +1370,6 @@
                 ""
             ],
             "Analysis Options": [
-                ""
-            ],
-            "Analysis Options Explained": [
                 ""
             ],
             "Analysis result": [
@@ -1615,9 +1519,6 @@
             "At least 2 explanatory variables are required for LASSO regression.": [
                 ""
             ],
-            "At least 4 cases are required for diagnostic test analysis. Each cell of the 2×2 table should have at least one observation.": [
-                ""
-            ],
             "At least four cases are required for analysis.": [
                 ""
             ],
@@ -1765,9 +1666,6 @@
             "Available levels: {levels}.": [
                 ""
             ],
-            "Available levels: {lvls}. Check for typos or select the correct level from the dropdown.": [
-                ""
-            ],
             "Available-Case Missing-Data Handling": [
                 ""
             ],
@@ -1835,9 +1733,6 @@
                 ""
             ],
             "Basic Bootstrap": [
-                ""
-            ],
-            "Basic Results": [
                 ""
             ],
             "Basic ROC Analysis": [
@@ -2077,9 +1972,6 @@
             "Calculate 95 percent confidence intervals for measures estimable from integer study counts. Prevalence-adjusted predictive-value intervals are omitted.": [
                 ""
             ],
-            "Calculate and display 95 percent confidence intervals for all diagnostic statistics. Provides uncertainty estimates around point estimates of sensitivity, specificity, etc.": [
-                ""
-            ],
             "Calculate Brier score and scaled Brier score": [
                 ""
             ],
@@ -2167,16 +2059,7 @@
             "Called high risk": [
                 ""
             ],
-            "Cannot be calculated: LR- is (1 - sensitivity) / specificity, and one of those is not estimable here": [
-                ""
-            ],
-            "Cannot be calculated: LR+ is sensitivity / (1 - specificity), and one of those is not estimable here": [
-                ""
-            ],
             "Cannot compute": [
-                ""
-            ],
-            "Case exclusion summary: {details}. {analysed} of {total} cases analysed.": [
                 ""
             ],
             "Cases Detected": [
@@ -2189,9 +2072,6 @@
                 ""
             ],
             "Cases sorted by gold standard result (n=%d)": [
-                ""
-            ],
-            "Cases where the diagnostic test disagreed with the gold standard are examined below. False positives (test positive, disease absent) and false negatives (test negative, disease present) are listed with their original row numbers so individual records can be reviewed.": [
                 ""
             ],
             "Categorical NRI, using risk category boundaries at {thr}.": [
@@ -2207,15 +2087,6 @@
                 ""
             ],
             "Check": [
-                ""
-            ],
-            "Check that the level selected under Test positive level is the one you meant: this analysis has no numeric cut-point, it simply treats that level as a positive result.": [
-                ""
-            ],
-            "Check that the level you chose under Test positive level is the one you meant: this analysis has no numeric cutpoint, it simply treats that level as a positive result, so choosing the other level swaps every false positive with a false negative": [
-                ""
-            ],
-            "Check your data formatting. Ensure both variables have exactly 2 levels. Verify positive/negative levels are correctly specified.": [
                 ""
             ],
             "Chest Imaging + Culture (Illustrative)": [
@@ -2257,28 +2128,10 @@
             "Choose distinct model names.": [
                 ""
             ],
-            "Choose the diagnostic test you want to evaluate": [
-                ""
-            ],
             "Choose the maximum acceptable confidence-interval half-width for sensitivity and specificity before collecting data.": [
                 ""
             ],
-            "Choose the reference variable representing true disease status (e.g., biopsy result, final diagnosis)": [
-                ""
-            ],
             "Choose whether to calculate confidence intervals.": [
-                ""
-            ],
-            "Choose which gold-standard level means disease absent": [
-                ""
-            ],
-            "Choose which level indicates disease is present": [
-                ""
-            ],
-            "Choose which level represents a positive test result": [
-                ""
-            ],
-            "Choose which test level means a negative result": [
                 ""
             ],
             "chosen from the outcome's first and last factor levels because Direction is set to auto; for an unordered outcome those are merely the alphabetically first and last levels, so the orientation is arbitrary": [
@@ -2338,16 +2191,10 @@
             "Classic": [
                 ""
             ],
-            "Classification": [
-                ""
-            ],
             "Classification Direction": [
                 ""
             ],
             "Classification direction": [
-                ""
-            ],
-            "Classification Groups": [
                 ""
             ],
             "Classification Performance": [
@@ -2405,9 +2252,6 @@
                 ""
             ],
             "Clinical decision curves and threshold analysis": [
-                ""
-            ],
-            "Clinical Decision Making": [
                 ""
             ],
             "Clinical Decision Rule": [
@@ -2476,15 +2320,6 @@
             "Clinical interpretation guidance": [
                 ""
             ],
-            "Clinical Interpretation Guide": [
-                ""
-            ],
-            "Clinical interpretation guide": [
-                ""
-            ],
-            "Clinical Interpretation Guidelines": [
-                ""
-            ],
             "Clinical Metrics": [
                 ""
             ],
@@ -2542,12 +2377,6 @@
             "Clinical Significance": [
                 ""
             ],
-            "Clinical Summary": [
-                ""
-            ],
-            "Clinical summary": [
-                ""
-            ],
             "Clinical Terms Glossary": [
                 ""
             ],
@@ -2579,9 +2408,6 @@
                 ""
             ],
             "Clinical Validation": [
-                ""
-            ],
-            "Clinical validation studies": [
                 ""
             ],
             "Clinical Value": [
@@ -2737,9 +2563,6 @@
             "Comma-separated list of custom cutoffs to evaluate (e.g., 0.1, 0.5, 0.9)": [
                 ""
             ],
-            "Common Issues": [
-                ""
-            ],
             "Common pitfalls:": [
                 ""
             ],
@@ -2773,9 +2596,6 @@
             "Compare the lower OPA confidence bound with the user-specified descriptive criterion. This optional criterion is not a noninferiority comparison, regulatory guidance, or clinical guidance.": [
                 ""
             ],
-            "Comparing performance of different diagnostic methods": [
-                ""
-            ],
             "Comparison": [
                 ""
             ],
@@ -2807,9 +2627,6 @@
                 ""
             ],
             "Complete-case analysis uses {used} of {total} cases ({percent}%) for the combination analysis. Cases missing the gold standard or any selected test were excluded. Individual-test tables use their own pairwise-complete denominators. If data are not missing completely at random, investigate the missingness pattern.": [
-                ""
-            ],
-            "Complete-case analysis uses {used} of {total} cases. Consider investigating patterns of missingness.": [
                 ""
             ],
             "Complete-case analysis: a patient missing the reference standard or any selected test is excluded from the combination table. The number excluded is reported above when it is not zero.": [
@@ -2923,12 +2740,6 @@
             "Confidence intervals could not be matched": [
                 ""
             ],
-            "Confidence intervals for sensitivity, specificity, and predictive values are Clopper-Pearson exact intervals, computed as in epiR::epi.tests() with its default settings (method = \"exact\").": [
-                ""
-            ],
-            "Confidence Intervals Interpretation": [
-                ""
-            ],
             "Confidence Intervals on Plot": [
                 ""
             ],
@@ -2995,12 +2806,6 @@
             "Confusion matrix (reference standard vs test result)": [
                 ""
             ],
-            "Confusion matrix contains NA or negative values. Check that your data is properly formatted. Ensure sufficient observations in all categories.": [
-                ""
-            ],
-            "Confusion Matrix Summary": [
-                ""
-            ],
             "Conservative/liberal reference standards": [
                 ""
             ],
@@ -3011,9 +2816,6 @@
                 ""
             ],
             "Consider class imbalance in interpretation": [
-                ""
-            ],
-            "Consider clinical consequences of false positives vs false negatives": [
                 ""
             ],
             "Consider collapsing rare categories or enrolling more subjects.": [
@@ -3083,12 +2885,6 @@
                 ""
             ],
             "Copy-ready clinical report sentences for publications and reports": [
-                ""
-            ],
-            "Copy-Ready Report": [
-                ""
-            ],
-            "Copy-ready report": [
                 ""
             ],
             "Copy-ready report sentences were not generated because %s. Check the Direction setting and the coding of the outcome variable before quoting any cut-point from this analysis.": [
@@ -3352,12 +3148,6 @@
             "Data preparation failed: %s": [
                 ""
             ],
-            "Data Quality Summary": [
-                ""
-            ],
-            "Data Requirements": [
-                ""
-            ],
             "Data Suitability": [
                 ""
             ],
@@ -3473,9 +3263,6 @@
                 ""
             ],
             "Decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J": [
-                ""
-            ],
-            "Decreases probability of disease (test may be flawed)": [
                 ""
             ],
             "Default Metric Set": [
@@ -3610,9 +3397,6 @@
             "Detailed Cutoff Analysis": [
                 ""
             ],
-            "Detailed examination of false positives and false negatives": [
-                ""
-            ],
             "Detailed footnotes": [
                 ""
             ],
@@ -3679,13 +3463,7 @@
             "Diagnostic plots": [
                 ""
             ],
-            "Diagnostic Probability Shift": [
-                ""
-            ],
             "Diagnostic Statistics": [
-                ""
-            ],
-            "DIAGNOSTIC TEST EVALUATION: Compare test accuracy to gold standard reference. This function evaluates diagnostic test performance by comparing test results to a gold standard (reference). It calculates key diagnostic accuracy measures including sensitivity, specificity, predictive values, and likelihood ratios.": [
                 ""
             ],
             "Diagnostic Test Validation (Balanced)": [
@@ -3775,13 +3553,7 @@
             "Disease prevalence": [
                 ""
             ],
-            "Disease prevalence in target population (0.0-1.0)": [
-                ""
-            ],
             "Disease prevalence to assume when computing predictive values. Used only when \"Use observed prevalence\" is unticked - set it to the prevalence of the population the test will actually be used in, which for a screening setting is usually far lower than in a case-control sample.": [
-                ""
-            ],
-            "Disease Prevalence: Observed proportion with disease in this sample. Affects predictive values.": [
                 ""
             ],
             "Disease Probability (%)": [
@@ -3790,19 +3562,7 @@
             "Disease-\nn={n}": [
                 ""
             ],
-            "Disease-absent level \"{lvl}\" not found in gold standard variable": [
-                ""
-            ],
-            "Disease-present and disease-absent levels cannot be the same": [
-                ""
-            ],
-            "Disease-present level \"{lvl}\" not found in gold standard variable": [
-                ""
-            ],
             "Disease+\nn={n}": [
-                ""
-            ],
-            "Diseased": [
                 ""
             ],
             "Display a decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J.": [
@@ -3815,9 +3575,6 @@
                 ""
             ],
             "Display a longer descriptive performance summary with methods and results templates. The text is an editable reporting aid, not clinical guidance.": [
-                ""
-            ],
-            "Display a natural language clinical summary of the diagnostic test performance. Provides an easy-to-understand interpretation of results for clinical use.": [
                 ""
             ],
             "Display a plain-language summary paragraph of comparison results. Useful for reading the statistical comparison at a glance without needing to interpret every table cell.": [
@@ -3838,25 +3595,16 @@
             "Display confidence bands around ROC curve": [
                 ""
             ],
-            "Display detailed clinical interpretation with likelihood ratio guidance. Helps understand the clinical significance of test results.": [
-                ""
-            ],
             "Display detailed cutoff analysis": [
                 ""
             ],
             "Display detailed differences between model metrics": [
                 ""
             ],
-            "Display detailed tables of false positive and false negative cases. Helps identify patterns in diagnostic errors and understand which cases are being misclassified by the test. Inspired by Orange Data Mining's interactive confusion matrix feature, adapted for static jamovi output.": [
-                ""
-            ],
             "Display diagnostic statistics for each individual test before combinations.": [
                 ""
             ],
             "Display educational content including statistical glossary, assumptions, and interpretation guidance. Helpful for understanding what each test means and how to interpret the results clinically.": [
-                ""
-            ],
-            "Display educational information about diagnostic test evaluation. Explains concepts and provides interpretation guidelines.": [
                 ""
             ],
             "Display forest plot showing confidence intervals for key diagnostic metrics across patterns.": [
@@ -3887,12 +3635,6 @@
                 ""
             ],
             "Display the calibration plot: observed proportion against predicted probability in the Hosmer-Lemeshow risk groups, with an optional flexible spline curve (splineCalibration)": [
-                ""
-            ],
-            "Display the original contingency tables and raw data summaries. Useful for verifying data entry and understanding the underlying counts.": [
-                ""
-            ],
-            "Displays original contingency tables and missing data summaries for verification.": [
                 ""
             ],
             "Distance to (0,1) in ROC space": [
@@ -4057,9 +3799,6 @@
             "Enrol more subjects, add raters, or relax the significance level.": [
                 ""
             ],
-            "Ensure your variables are dichotomous (binary). Check that positive/negative levels are correctly specified.": [
-                ""
-            ],
             "Enter exactly {k} proportions for {k} outcome categories (received {got}).": [
                 ""
             ],
@@ -4076,9 +3815,6 @@
                 ""
             ],
             "epiR package missing": [
-                ""
-            ],
-            "EpiR Table Ratios": [
                 ""
             ],
             "EPV = %.1f (<5: insufficient, high overfitting risk)": [
@@ -4099,16 +3835,7 @@
             "ERROR": [
                 ""
             ],
-            "Error Balance": [
-                ""
-            ],
-            "Error extracting confusion matrix values: {msg}": [
-                ""
-            ],
             "Error in ggplot: {msg}": [
-                ""
-            ],
-            "Error in misclassified cases analysis": [
                 ""
             ],
             "Error in plot: {msg}": [
@@ -4118,9 +3845,6 @@
                 ""
             ],
             "Error parsing proportions: {error}": [
-                ""
-            ],
-            "Error Summary": [
                 ""
             ],
             "Estimate": [
@@ -4136,9 +3860,6 @@
                 ""
             ],
             "Estimates and intervals in this table are computed by epiR from the raw counts. The likelihood ratios and diagnostic odds ratio shown in the tables above use a Haldane-Anscombe 0.5 correction because a zero cell was present, so their point estimates differ from the ones here. Quantities that are not estimable from the raw table are left blank.": [
-                ""
-            ],
-            "Evaluate diagnostic test performance with sensitivity, specificity, and predictive values.": [
                 ""
             ],
             "Evaluates diagnostic-test performance by calculating sensitivity, specificity, predictive values, likelihood ratios, and advanced metrics from a 2×2 confusion matrix.": [
@@ -4204,9 +3925,6 @@
             "Evidence against conditional independence": [
                 ""
             ],
-            "evidence AGAINST disease when positive, which usually means the level chosen as test-positive is inverted": [
-                ""
-            ],
             "evidence against disease: this result combination is more common in subjects without the disease, so it lowers the probability of disease. Check whether a sensitivity and a specificity have been entered the wrong way round.": [
                 ""
             ],
@@ -4258,13 +3976,7 @@
             "excellent": [
                 ""
             ],
-            "Excellent discriminatory power (Youden's index 0.80 or above)": [
-                ""
-            ],
             "Excellent early retrieval performance; classifier performs well at low FPR": [
-                ""
-            ],
-            "Excellent Tests": [
                 ""
             ],
             "Exclude indeterminate/Equivocal levels": [
@@ -4307,9 +4019,6 @@
                 ""
             ],
             "Explanations": [
-                ""
-            ],
-            "Explanatory Footnotes": [
                 ""
             ],
             "Explanatory footnotes": [
@@ -4396,9 +4105,6 @@
             "Extreme Prevalence": [
                 ""
             ],
-            "Extreme prevalence affects predictive values": [
-                ""
-            ],
             "Extreme prevalence in the analysed sample: %1$s%% (%2$s). • %3$s. • ROC/AUC analysis may be misleading - consider Precision-Recall Curve (PRC) instead. • Sensitivity and specificity remain valid, but predictive values (PPV/NPV) are heavily influenced by prevalence.": [
                 ""
             ],
@@ -4456,9 +4162,6 @@
             "fair": [
                 ""
             ],
-            "Fair discriminatory power (Youden's index 0.40 to 0.59)": [
-                ""
-            ],
             "fair to good discrimination": [
                 ""
             ],
@@ -4471,13 +4174,7 @@
             "False Negative (FN)": [
                 ""
             ],
-            "False Negative Cases (Test- but Disease+)": [
-                ""
-            ],
             "False Negatives": [
-                ""
-            ],
-            "False negatives outnumbered false positives in this sample.": [
                 ""
             ],
             "False Omission Rate": [
@@ -4489,9 +4186,6 @@
             "False Positive (FP)": [
                 ""
             ],
-            "False Positive Cases (Test+ but Disease-)": [
-                ""
-            ],
             "False Positive Rate": [
                 ""
             ],
@@ -4499,12 +4193,6 @@
                 ""
             ],
             "False Positives": [
-                ""
-            ],
-            "False positives and false negatives occurred equally often in this sample.": [
-                ""
-            ],
-            "False positives outnumbered false negatives in this sample.": [
                 ""
             ],
             "False-discovery proportion among test-positive subjects": [
@@ -4520,9 +4208,6 @@
                 ""
             ],
             "Features:": [
-                ""
-            ],
-            "Few cases in one arm: {dpos} disease-present and {dneg} disease-free": [
                 ""
             ],
             "Few Outcome Events": [
@@ -4636,9 +4321,6 @@
             "Focused range (0.05 to 0.50; not a clinical recommendation)": [
                 ""
             ],
-            "Follow-up checks on this analysis": [
-                ""
-            ],
             "Footnotes": [
                 ""
             ],
@@ -4658,9 +4340,6 @@
                 ""
             ],
             "For orientation: most diagnostic tests fall between 0.60 and 0.95 for sensitivity and between 0.70 and 0.98 for specificity, and prevalence is the pre-test probability in the population you are testing (roughly 0.001-0.01 for rare disease, 0.05-0.20 for common conditions). Values far outside these bands are worth re-checking — most often sensitivity and specificity have been entered the wrong way round.": [
-                ""
-            ],
-            "For robust diagnostic test evaluation, 100+ cases recommended. Current sample provides preliminary estimates.": [
                 ""
             ],
             "For this serial-negative example, Test 2 sensitivity (%.1f%%) is below Test 1 sensitivity (%.1f%%). This does not invalidate the calculation, but it may not improve sensitivity as much as expected.": [
@@ -4732,9 +4411,6 @@
             "Function for comparing multiple Medical Decision Tests. Compares sensitivity, specificity, positive predictive value, negative predictive value, and other metrics between different tests against the same gold standard. Includes statistical comparison using McNemar's test and confidence intervals for differences.": [
                 ""
             ],
-            "Function for Medical Decision Analysis. Sensitivity, Specificity, Positive Predictive Value, Negative Predictive Value.": [
-                ""
-            ],
             "Functions for Medical Decision in ClinicoPath jamovi Module": [
                 ""
             ],
@@ -4762,12 +4438,6 @@
             "General": [
                 ""
             ],
-            "Generate a copy-ready clinical report template for documentation. Formatted text that can be copied directly into clinical reports.": [
-                ""
-            ],
-            "Generate a Fagan nomogram for visual interpretation of test results. Shows how test results change the probability of disease from pre-test to post-test.": [
-                ""
-            ],
             "Generate a Fagan nomogram for visual interpretation of test results. Shows how test results change the probability of disease.": [
                 ""
             ],
@@ -4781,9 +4451,6 @@
                 ""
             ],
             "Generate radar (spider) plot showing all performance metrics on a circular scale. Excellent for comprehensive visual comparison and identifying test strengths/weaknesses.": [
-                ""
-            ],
-            "Getting Started": [
                 ""
             ],
             "Global Test Not Computed": [
@@ -4804,16 +4471,10 @@
             "Gold Standard (Reference Test)": [
                 ""
             ],
-            "Gold Standard (Reference)": [
-                ""
-            ],
             "Gold Standard Frequency Distribution": [
                 ""
             ],
             "Gold Standard Has Only One Outcome": [
-                ""
-            ],
-            "Gold standard levels excluded from analysis: {lvls}": [
                 ""
             ],
             "Gold standard variable must be specified. Select a reference test variable that represents the true disease status.": [
@@ -4829,9 +4490,6 @@
                 ""
             ],
             "Good calibration slope": [
-                ""
-            ],
-            "Good discriminatory power (Youden's index 0.60 to 0.79)": [
                 ""
             ],
             "Good early retrieval performance": [
@@ -4880,9 +4538,6 @@
                 ""
             ],
             "Harmonic mean of sensitivity and PPV; because PPV depends on prevalence, F1 also changes with the selected prevalence.": [
-                ""
-            ],
-            "Healthy": [
                 ""
             ],
             "Heatmap": [
@@ -4969,9 +4624,6 @@
             "Highly significant overall difference among tests (p<0.001)": [
                 ""
             ],
-            "Highly unbalanced test results ({pct} positive)": [
-                ""
-            ],
             "histopathology including analysis": [
                 ""
             ],
@@ -4996,28 +4648,7 @@
             "How many times more (or less) likely disease is after testing compared to before testing": [
                 ""
             ],
-            "How much a negative test decreases disease odds. LR- <0.1 strong evidence AGAINST disease, LR- 0.1-0.2 moderate, LR- 0.2-0.5 weak.": [
-                ""
-            ],
-            "How much a positive test increases disease odds. LR+ >10 strong evidence FOR disease, LR+ 5-10 moderate, LR+ 2-5 weak but useful.": [
-                ""
-            ],
-            "How much more likely a negative result is in a diseased than in a healthy patient. <0.1 is strong evidence AGAINST disease, 0.1-0.2 moderate, 0.2-0.5 weak.": [
-                ""
-            ],
-            "How much more likely a positive result is in a diseased than in a healthy patient. >10 is strong evidence FOR disease, 5-10 moderate, 2-5 weak.": [
-                ""
-            ],
-            "How much more likely will the test make a correct diagnosis than an incorrect diagnosis in patients with the disease.": [
-                ""
-            ],
-            "How much test results change disease probability": [
-                ""
-            ],
             "How to Use This Analysis": [
-                ""
-            ],
-            "How well the test identifies disease presence and absence": [
                 ""
             ],
             "HPV": [
@@ -5039,9 +4670,6 @@
                 ""
             ],
             "Identical Positive and Negative Levels": [
-                ""
-            ],
-            "Identify and analyze false positive and false negative cases": [
                 ""
             ],
             "IDI": [
@@ -5158,9 +4786,6 @@
             "Important Information": [
                 ""
             ],
-            "Important warning": [
-                ""
-            ],
             "In this %1$s sample, %2$s showed %3$s: the AUC was %4$.3f (%5$s%% CI: %6$s--%7$s). AUC is the probability that a randomly chosen case scores above a randomly chosen non-case; it is computed over all cutpoints and does not depend on which cutpoint was selected. This is an in-sample estimate with no internal or external validation behind it%8$s. The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those ARE optimistic, because that cutpoint was searched for on these same data.": [
                 ""
             ],
@@ -5186,9 +4811,6 @@
                 ""
             ],
             "Incorporation bias.": [
-                ""
-            ],
-            "Increases probability of disease (test may be flawed)": [
                 ""
             ],
             "Incremental Assigned Benefit vs Treat All": [
@@ -5272,12 +4894,6 @@
             "Insufficient Data After Removing Missing Values": [
                 ""
             ],
-            "Insufficient data to evaluate discriminatory power": [
-                ""
-            ],
-            "Insufficient data: {n} cases found": [
-                ""
-            ],
             "Insufficient Outcome Variable Levels": [
                 ""
             ],
@@ -5317,9 +4933,6 @@
             "Interpret differences between models with caution and do not choose a threshold from this curve alone.": [
                 ""
             ],
-            "Interpret results with caution. Confidence intervals may be wide. Minimum recommended: 100 cases for robust estimates.": [
-                ""
-            ],
             "Interpret ROC results cautiously given class imbalance.": [
                 ""
             ],
@@ -5344,9 +4957,6 @@
             "Interpretation Guidelines:": [
                 ""
             ],
-            "Interpretation of Misclassified Cases": [
-                ""
-            ],
             "Interval Type": [
                 ""
             ],
@@ -5362,9 +4972,6 @@
             "Interventions Avoided": [
                 ""
             ],
-            "Invalid contingency table values detected": [
-                ""
-            ],
             "Invalid Counts": [
                 ""
             ],
@@ -5374,13 +4981,7 @@
             "Invalid cut-off inputs": [
                 ""
             ],
-            "Invalid data structure: Both test and gold standard variables must have exactly 2 levels each": [
-                ""
-            ],
             "Invalid Partial AUC Range": [
-                ""
-            ],
-            "Invalid population prevalence: {value}": [
                 ""
             ],
             "Invalid Positive Class Selection": [
@@ -5488,16 +5089,10 @@
             "Key Metrics Explained": [
                 ""
             ],
-            "Key Output Measures": [
-                ""
-            ],
             "Key outputs:": [
                 ""
             ],
             "Knots of the spline calibration curve (3 to 7). The spline has knots - 1 degrees of freedom; more knots follow the data more closely but need more events per knot. Used only when splineCalibration is on.": [
-                ""
-            ],
-            "Known disease prevalence in the target population (as proportion: 0.0-1.0). Examples: rare diseases (0.001-0.01), common conditions (0.05-0.20). This affects post-test probabilities and predictive values.": [
                 ""
             ],
             "Known population prevalence": [
@@ -5522,15 +5117,6 @@
                 ""
             ],
             "Large": [
-                ""
-            ],
-            "Large and often conclusive decrease in probability of disease": [
-                ""
-            ],
-            "Large and often conclusive increase in probability of disease": [
-                ""
-            ],
-            "Large dataset detected ({n} rows)": [
                 ""
             ],
             "Large effect": [
@@ -5617,19 +5203,10 @@
             "Level '{}' not found in variable '{}'. Available levels: {}": [
                 ""
             ],
-            "Likelihood Ratio Interpretation": [
-                ""
-            ],
             "Likelihood ratio of a negative test": [
                 ""
             ],
             "Likelihood ratio of a positive test": [
-                ""
-            ],
-            "likelihood ratio unavailable due to data limitations": [
-                ""
-            ],
-            "Likelihood Ratios": [
                 ""
             ],
             "Likelihood ratios describe how a test result changes pre-test odds.": [
@@ -5642,9 +5219,6 @@
                 ""
             ],
             "Limitations": [
-                ""
-            ],
-            "limited": [
                 ""
             ],
             "Limited diagnostic performance for %1$s: AUC=%2$s. • AUC below 0.7 indicates limited discriminative ability. • Consider: (1) Adding predictor variables or interaction terms, (2) Verifying data quality and coding, (3) Using multivariate models to improve discrimination, (4) Checking if direction setting is appropriate for your biomarker.": [
@@ -5743,13 +5317,7 @@
             "LR-": [
                 ""
             ],
-            "LR- (Negative Likelihood Ratio)": [
-                ""
-            ],
             "LR- (negative likelihood ratio)": [
-                ""
-            ],
-            "LR- <0.1 strong evidence AGAINST disease, LR- 0.1-0.2 moderate, LR- 0.2-0.5 weak": [
                 ""
             ],
             "LR- Quality": [
@@ -5758,13 +5326,7 @@
             "LR+": [
                 ""
             ],
-            "LR+ (Positive Likelihood Ratio)": [
-                ""
-            ],
             "LR+ (positive likelihood ratio)": [
-                ""
-            ],
-            "LR+ >10 strong evidence FOR disease, LR+ 5-10 moderate, LR+ 2-5 weak but useful": [
                 ""
             ],
             "LR+ and LR-": [
@@ -5869,15 +5431,6 @@
             "Maximize metric (LOESS smoothed)": [
                 ""
             ],
-            "Maximum cases to display": [
-                ""
-            ],
-            "Maximum cases to display:": [
-                ""
-            ],
-            "Maximum number of misclassified cases to display in each table. Large datasets may have many misclassifications; this limits the output.": [
-                ""
-            ],
             "Maximum Points per Feature": [
                 ""
             ],
@@ -5938,12 +5491,6 @@
             "Median of tied cutpoints": [
                 ""
             ],
-            "Medical Decision": [
-                ""
-            ],
-            "Medical Decision Analysis": [
-                ""
-            ],
             "Medical Decision Calculator": [
                 ""
             ],
@@ -5951,9 +5498,6 @@
                 ""
             ],
             "Medical Decision Calculator for diagnostic test evaluation when you have the four key counts: True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN). Calculates comprehensive diagnostic performance metrics including sensitivity, specificity, positive and negative predictive values, likelihood ratios, and post-test probabilities. Supports confidence interval estimation and Fagan nomogram visualization for educational interpretation. Presets and examples are illustrative only and are not clinical guides.": [
-                ""
-            ],
-            "Medical device evaluation": [
                 ""
             ],
             "Medium": [
@@ -6070,28 +5614,13 @@
             "Minimal": [
                 ""
             ],
-            "Minimal decrease in probability of disease": [
-                ""
-            ],
             "Minimal difference": [
                 ""
             ],
             "Minimal effect": [
                 ""
             ],
-            "Minimal evidence against disease": [
-                ""
-            ],
-            "Minimal evidence for disease": [
-                ""
-            ],
             "minimal evidence for disease": [
-                ""
-            ],
-            "minimal evidence for disease when positive": [
-                ""
-            ],
-            "Minimal increase in probability of disease": [
                 ""
             ],
             "Minimize |PPV - NPV|": [
@@ -6148,19 +5677,7 @@
             "Minority class: %.1f%% (severe imbalance)": [
                 ""
             ],
-            "Misclassification Analysis": [
-                ""
-            ],
             "Misclassification cost": [
-                ""
-            ],
-            "Misclassified Cases Analysis": [
-                ""
-            ],
-            "Misclassified cases analysis": [
-                ""
-            ],
-            "Misclassified cases tables": [
                 ""
             ],
             "Missing Dependency": [
@@ -6283,34 +5800,19 @@
             "Moderate": [
                 ""
             ],
-            "Moderate decrease in probability of disease": [
-                ""
-            ],
             "Moderate difference": [
                 ""
             ],
             "Moderate early retrieval performance": [
                 ""
             ],
-            "Moderate evidence against disease": [
-                ""
-            ],
-            "Moderate evidence for disease": [
-                ""
-            ],
             "moderate evidence for disease": [
-                ""
-            ],
-            "moderate evidence for disease when positive": [
                 ""
             ],
             "Moderate evidence for positive diagnosis": [
                 ""
             ],
             "Moderate imbalance": [
-                ""
-            ],
-            "Moderate increase in probability of disease": [
                 ""
             ],
             "Moderate negative evidence": [
@@ -6347,18 +5849,6 @@
                 ""
             ],
             "Monitoring": [
-                ""
-            ],
-            "more than 1 disease-free case in 5 flagged positive here": [
-                ""
-            ],
-            "more than 1 disease-free case in 5 flagged positive in this sample": [
-                ""
-            ],
-            "more than 1 diseased case in 5 missed here": [
-                ""
-            ],
-            "more than 1 diseased case in 5 missed in this sample": [
                 ""
             ],
             "Most latent-class starts did not converge": [
@@ -6490,22 +5980,13 @@
             "Negative Likelihood Ratio": [
                 ""
             ],
-            "Negative likelihood ratio": [
-                ""
-            ],
             "negative likelihood ratio": [
                 ""
             ],
             "Negative Likelihood Ratio Infinite": [
                 ""
             ],
-            "Negative likelihood ratio unavailable due to data limitations": [
-                ""
-            ],
             "Negative Likelihood Ratio Undefined": [
-                ""
-            ],
-            "Negative Likelihood Ratio: How much more likely a negative result is in diseased vs healthy patients. <0.1 = strong evidence against disease, <0.2 = moderate, <0.5 = weak.": [
                 ""
             ],
             "Negative Likelihood Ratio: how much more likely a negative result is in diseased vs. non-diseased patients": [
@@ -6535,16 +6016,10 @@
             "Negative Predictive Value = TN/(TN+FN) = Probability of being healthy when test is negative": [
                 ""
             ],
-            "Negative predictive value is unstable at this prevalence. Verify that the level selected as disease-present is the one you meant.": [
-                ""
-            ],
             "Negative predictive value using the supplied population prevalence.": [
                 ""
             ],
             "Negative predictive value using this study sample's prevalence.": [
-                ""
-            ],
-            "Negative Predictive Value: Probability of being healthy given a negative test. This IS the post-test probability of health. Depends on prevalence, sensitivity and specificity.": [
                 ""
             ],
             "Negative Tests": [
@@ -6649,9 +6124,6 @@
             "Net-benefit precision depends on the number of events, prevalence and the selected thresholds; inspect the uncertainty bands and validate the predictions on independent or properly resampled data.": [
                 ""
             ],
-            "New Test": [
-                ""
-            ],
             "NND": [
                 ""
             ],
@@ -6679,16 +6151,10 @@
             "No case observations found for predictor '%s'. Check that your outcome variable has both positive and negative cases.": [
                 ""
             ],
-            "No cases excluded.": [
-                ""
-            ],
             "No cases for cut-off": [
                 ""
             ],
             "No cases remain for {test} after applying the selected positive and negative levels.": [
-                ""
-            ],
-            "no change in the probability of disease": [
                 ""
             ],
             "No Complete Cases": [
@@ -6716,9 +6182,6 @@
                 ""
             ],
             "No data are available. Load data before running the analysis.": [
-                ""
-            ],
-            "No data available for analysis": [
                 ""
             ],
             "No Data Provided": [
@@ -6904,16 +6367,7 @@
             "Not available": [
                 ""
             ],
-            "not available": [
-                ""
-            ],
             "Not beneficial": [
-                ""
-            ],
-            "not calculated": [
-                ""
-            ],
-            "not calculated (needs both sensitivity and specificity)": [
                 ""
             ],
             "Not computable with three tests: the model has no residual degrees of freedom, so it reproduces every observed table exactly and no residual can detect conditional dependence. Add a fourth test if you need to check this assumption.": [
@@ -6934,22 +6388,10 @@
             "Not estimable - a model was fitted to these data, so the slope and intercept are 1 and 0 by construction": [
                 ""
             ],
-            "not estimable: no gold-standard negative cases": [
-                ""
-            ],
-            "not estimable: no gold-standard positive cases": [
-                ""
-            ],
             "Not informative (post-hoc)": [
                 ""
             ],
             "Not interpretable": [
-                ""
-            ],
-            "not provided": [
-                ""
-            ],
-            "not reported": [
                 ""
             ],
             "not reported - fixed at 100% by construction": [
@@ -7067,9 +6509,6 @@
                 ""
             ],
             "Number of patients called high risk, and number of true events among them, per 1000 tested across thresholds": [
-                ""
-            ],
-            "Number of patients that need to be tested to give one correct positive test.": [
                 ""
             ],
             "Number of predictor variables analyzed": [
@@ -7205,12 +6644,6 @@
                 ""
             ],
             "One-vs-rest curves read each marker the same way for every class, but the markers do not all read the same way (%1$s). The orientation was %2$s.": [
-                ""
-            ],
-            "Only \"{pos}\" (disease-present) and \"{neg}\" (disease-absent) take part. Cases at any other level are removed, not counted as disease-absent, because an indeterminate result is not a negative result.": [
-                ""
-            ],
-            "Only \"{pos}\" (test-positive) and \"{neg}\" (test-negative) take part. Cases at any other level are removed, not counted as negative.": [
                 ""
             ],
             "Only {kept} of {total} bootstrap resamples for '{var}' contained both outcome classes, which is too few for a stable interval, so no bootstrap AUC summary is reported for it.": [
@@ -7720,9 +7153,6 @@
             "Please adjust the threshold range in Analysis Options.": [
                 ""
             ],
-            "Please ensure your data is loaded. Check that your dataset contains observations.": [
-                ""
-            ],
             "Please select an outcome variable and at least one predictor variable for ROC analysis. • Outcome variable: required (binary/factor). • Predictor variables: at least one numeric variable required for ROC curve calculation.": [
                 ""
             ],
@@ -7765,12 +7195,6 @@
             "Points (Selected)": [
                 ""
             ],
-            "Points AGAINST disease when positive: the test-positive level may be inverted": [
-                ""
-            ],
-            "Points TOWARD disease when negative: the test-positive level may be inverted": [
-                ""
-            ],
             "Points: observed proportion in {grp}; curve: natural cubic spline with {k} knots on the logit scale": [
                 ""
             ],
@@ -7792,16 +7216,7 @@
             "Poor Discrimination": [
                 ""
             ],
-            "Poor discrimination (Youden's index {j}, equivalent AUC {auc})": [
-                ""
-            ],
-            "Poor discriminatory power (Youden's index below 0.40)": [
-                ""
-            ],
             "Population Characteristics:": [
-                ""
-            ],
-            "Population disease prevalence": [
                 ""
             ],
             "Population Flow Analysis": [
@@ -7814,9 +7229,6 @@
                 ""
             ],
             "Population Prevalence": [
-                ""
-            ],
-            "Population Prevalence Settings": [
                 ""
             ],
             "Population size": [
@@ -7864,19 +7276,10 @@
             "Positive Likelihood Ratio": [
                 ""
             ],
-            "Positive likelihood ratio": [
-                ""
-            ],
             "positive likelihood ratio": [
                 ""
             ],
-            "Positive likelihood ratio unavailable due to data limitations": [
-                ""
-            ],
             "Positive Likelihood Ratio Undefined": [
-                ""
-            ],
-            "Positive Likelihood Ratio: How much more likely a positive result is in diseased vs healthy patients. >10 = strong evidence, >5 = moderate, >2 = weak but potentially useful.": [
                 ""
             ],
             "Positive Likelihood Ratio: how much more likely a positive result is in diseased vs. non-diseased patients": [
@@ -7915,16 +7318,10 @@
             "Positive Predictive Value = TP/(TP+FP) = Probability of disease when test is positive": [
                 ""
             ],
-            "Positive predictive value is unstable at this prevalence and will not transfer to a population with a different one. Sensitivity and specificity are unaffected. Consider supplying a population prior under Population Prevalence Settings.": [
-                ""
-            ],
             "Positive predictive value using the supplied population prevalence.": [
                 ""
             ],
             "Positive predictive value using this study sample's prevalence.": [
-                ""
-            ],
-            "Positive Predictive Value: Probability of disease given a positive test. This IS the post-test probability of disease. Depends on prevalence, sensitivity and specificity.": [
                 ""
             ],
             "Positive rule level": [
@@ -7951,9 +7348,6 @@
             "Post-hoc power (observed data)": [
                 ""
             ],
-            "Post-test": [
-                ""
-            ],
             "Post-test Odds": [
                 ""
             ],
@@ -7961,12 +7355,6 @@
                 ""
             ],
             "Post-test Probability": [
-                ""
-            ],
-            "Post-test probability of disease, test negative": [
-                ""
-            ],
-            "Post-test probability of disease, test positive": [
                 ""
             ],
             "Post-test Reference-negative Probability": [
@@ -8074,16 +7462,10 @@
             "Pre-test": [
                 ""
             ],
-            "Pre-test prevalence {prev} | Sensitivity {sens} | Specificity {spec}": [
-                ""
-            ],
             "Pre-test probability is {prevalence}, using the population prevalence you supplied.": [
                 ""
             ],
             "Pre-test probability is {prevalence}, using the prevalence observed in this study table.": [
-                ""
-            ],
-            "Pre-test probability of disease": [
                 ""
             ],
             "Precision": [
@@ -8146,19 +7528,7 @@
             "Predictive Value": [
                 ""
             ],
-            "Predictive Values": [
-                ""
-            ],
             "Predictive values (PPV, NPV) were adjusted for prevalence using Bayes' theorem. Likelihood ratios and diagnostic odds ratios follow standard definitions.": [
-                ""
-            ],
-            "Predictive values are computed at this sample's observed prevalence of {prevalence}. If the sample was enriched or case-control, that prevalence is not the clinical one and these predictive values do not transfer - tick Known population prevalence under Population Prevalence Settings to obtain values for your setting.": [
-                ""
-            ],
-            "Predictive values are computed by Bayes' theorem at the population prior of {prior} that you supplied, NOT at this sample's observed prevalence of {observed}. Sensitivity and specificity are unaffected by prevalence; PPV and NPV are not.": [
-                ""
-            ],
-            "Predictive values depend on disease prevalence in your population": [
                 ""
             ],
             "Predictive Values vs Disease Prevalence": [
@@ -8263,9 +7633,6 @@
             "Prevalence Low": [
                 ""
             ],
-            "Prevalence must be between 0 and 1 (exclusive). For 5% prevalence, enter 0.05. For 20% prevalence, enter 0.20.": [
-                ""
-            ],
             "Prevalence must be greater than 0 and less than 1 (exclusive). Current value is invalid.": [
                 ""
             ],
@@ -8285,9 +7652,6 @@
                 ""
             ],
             "Prevalence Very Low": [
-                ""
-            ],
-            "Prevalence: the user-supplied population prevalence (Known population prevalence, under Population Prevalence Settings), NOT this sample's observed prevalence. Predictive values, which are the post-test probabilities, are computed from this prior; sensitivity and specificity are not affected by it.": [
                 ""
             ],
             "Prior\nProb.\n(%)": [
@@ -8347,16 +7711,7 @@
             "Probability of a reference-positive outcome after a positive test; it depends on prevalence.": [
                 ""
             ],
-            "Probability of being healthy given a negative test. Depends on prevalence, sensitivity and specificity.": [
-                ""
-            ],
             "Probability of disease after obtaining this test result combination": [
-                ""
-            ],
-            "Probability of disease given a positive test. Depends on prevalence, sensitivity and specificity.": [
-                ""
-            ],
-            "Probability of disease given test results (PPV, NPV)": [
                 ""
             ],
             "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type II error). Conventional values are 0.80 or 0.90; must exceed alpha.": [
@@ -8416,12 +7771,6 @@
             "Proportion of diseased cases correctly identified (True Positive Rate). High sensitivity means few false negatives. Important when missing disease is costly.": [
                 ""
             ],
-            "Proportion of diseased patients correctly identified (TP rate). Higher is better for ruling OUT disease when negative.": [
-                ""
-            ],
-            "Proportion of diseased patients correctly identified (true positive rate). Higher is better for ruling OUT disease when negative.": [
-                ""
-            ],
             "Proportion of diseased patients correctly identified by %s": [
                 ""
             ],
@@ -8429,12 +7778,6 @@
                 ""
             ],
             "Proportion of false positives": [
-                ""
-            ],
-            "Proportion of healthy patients correctly identified (TN rate). Higher is better for ruling IN disease when positive.": [
-                ""
-            ],
-            "Proportion of healthy patients correctly identified (true negative rate). Higher is better for ruling IN disease when positive.": [
                 ""
             ],
             "Proportion of non-diseased cases correctly identified (True Negative Rate). High specificity means few false positives. Important when false alarms are problematic.": [
@@ -8500,9 +7843,6 @@
             "Provide diagnostic-test data with at least one non-zero count.": [
                 ""
             ],
-            "Provides uncertainty estimates using the epiR package. These intervals describe the observed sample; when a population prevalence is supplied they do not apply to the prior-adjusted predictive values in the main table.": [
-                ""
-            ],
             "PSA": [
                 ""
             ],
@@ -8530,16 +7870,10 @@
             "Qualitative performance labels are illustrative summaries of the observed sample only. They are not clinical guides, validated decision rules, or recommendations for patient care.": [
                 ""
             ],
-            "Quality assurance for laboratory tests": [
-                ""
-            ],
             "Quantile Positions": [
                 ""
             ],
             "Quantile positions": [
-                ""
-            ],
-            "Quick Start": [
                 ""
             ],
             "Radar plot": [
@@ -8638,12 +7972,6 @@
             "Ratio threshold for imbalance detection (e.g., 3.0 means 3:1 or 1:3 ratio)": [
                 ""
             ],
-            "Raw Data Tables": [
-                ""
-            ],
-            "Raw data tables": [
-                ""
-            ],
             "Re-running with the same seed reproduces these numbers exactly.": [
                 ""
             ],
@@ -8678,9 +8006,6 @@
                 ""
             ],
             "Reclassification improvement (NRI)": [
-                ""
-            ],
-            "Recoded Data for Decision Test Statistics": [
                 ""
             ],
             "Recommend using Precision-Recall curves when imbalance is detected": [
@@ -8791,13 +8116,7 @@
             "Relevant for high-specificity screening applications (minimizing false positives)": [
                 ""
             ],
-            "Removed {n} case(s) with an explicit missing level": [
-                ""
-            ],
             "Removed {n} case(s) with missing values": [
-                ""
-            ],
-            "Removed {n} row(s) with missing diagnostic data": [
                 ""
             ],
             "Rename the duplicated label(s): {names}.": [
@@ -8812,16 +8131,10 @@
             "Report Sentences": [
                 ""
             ],
-            "Reported reason": [
-                ""
-            ],
             "Reporting a cut-point and a sensitivity from this analysis would misdescribe the marker.": [
                 ""
             ],
             "Reporting Options": [
-                ""
-            ],
-            "Required data: Cases with both test results and true disease status (gold standard). Both variables must be categorical (factor), each with exactly 2 levels, minimum 4 cases (preferably 30+).": [
                 ""
             ],
             "Required inputs:": [
@@ -8878,13 +8191,7 @@
             "Result": [
                 ""
             ],
-            "Results are only as good as your gold standard": [
-                ""
-            ],
             "Results include Area Under the Curve (AUC), optimal cutpoints, and performance statistics.": [
-                ""
-            ],
-            "Results may be unstable or undefined (e.g., infinite likelihood ratios). Consider collecting more data or using exact methods. Ensure both tests and gold standard have both positive and negative cases.": [
                 ""
             ],
             "Results Section": [
@@ -8903,12 +8210,6 @@
                 ""
             ],
             "Results table": [
-                ""
-            ],
-            "Review false negative cases to understand what the test misses": [
-                ""
-            ],
-            "Review false positive cases to identify common characteristics": [
                 ""
             ],
             "Review the decision curves and the range of benefit below.": [
@@ -9052,9 +8353,6 @@
             "ROC Smoothing Method": [
                 ""
             ],
-            "Row": [
-                ""
-            ],
             "Row type": [
                 ""
             ],
@@ -9077,12 +8375,6 @@
                 ""
             ],
             "Sample Accuracy": [
-                ""
-            ],
-            "Sample Accuracy is the proportion of concordant results at the prevalence observed in this sample ({prevalence}), and it changes with case mix.": [
-                ""
-            ],
-            "Sample Accuracy is the proportion of concordant results at the prevalence observed in this sample ({prevalence}), NOT at the population prior you supplied. Unlike the predictive values it is not standardised to that prior, and it changes with case mix.": [
                 ""
             ],
             "Sample accuracy is the proportion of concordant results. It is computed at the prevalence observed in this sample ({prevalence}) and changes with case mix.": [
@@ -9121,13 +8413,7 @@
             "Sample size for an interobserver agreement study sized to reject a null kappa (kappa0) in favour of an alternative kappa (kappa1) at a given two-sided significance level and power - the power approach of the kappaSize package. Use kappaSizeCI for a target confidence-interval width, and kappaSizeFixedN when the number of subjects is already fixed.": [
                 ""
             ],
-            "Sample size not available": [
-                ""
-            ],
             "Sample Size Warning": [
-                ""
-            ],
-            "Sample size: n = {n}": [
                 ""
             ],
             "Sample size: n = {n} complete cases": [
@@ -9140,15 +8426,6 @@
                 ""
             ],
             "Samples": [
-                ""
-            ],
-            "Save classification groups (TP/FP/FN/TN) to dataset:": [
-                ""
-            ],
-            "Save classifications to data": [
-                ""
-            ],
-            "Save the classification results (True Positive, False Positive, False Negative, True Negative) as a new column in your dataset. This allows you to use the classification groups in other analyses.": [
                 ""
             ],
             "Save Variables": [
@@ -9271,16 +8548,7 @@
             "Select a binary rule variable or disable \"Clinical Decision Rule Integration\".": [
                 ""
             ],
-            "Select a different variable for the test under evaluation. Comparing a variable against itself always yields perfect agreement and tells you nothing about the test.": [
-                ""
-            ],
             "Select a second diagnostic test to compare with Test 1. This enables head-to-head  comparison analysis (e.g., new method vs standard method, or two different biomarkers).": [
-                ""
-            ],
-            "Select different levels for positive and negative outcomes.": [
-                ""
-            ],
-            "Select Disease present level": [
                 ""
             ],
             "Select exactly one positive outcome level that is present in the analysis data.": [
@@ -9292,16 +8560,7 @@
             "Select from available statistical approaches:": [
                 ""
             ],
-            "Select Gold Standard": [
-                ""
-            ],
-            "Select New Test": [
-                ""
-            ],
             "Select one metric, or use the plot-specific default metric set. The bar chart defaults to sensitivity, specificity, PPV, NPV, and accuracy; the heatmap also includes prevalence, balanced accuracy, and Youden's J. The forest plot supports sensitivity, specificity, PPV, NPV, accuracy, LR+, LR-, and diagnostic OR, for which confidence intervals are available. Unsupported forest selections produce an explanatory notice rather than silently showing other statistics. The decision-space plot has fixed sensitivity and specificity axes and is unaffected.": [
-                ""
-            ],
-            "Select Test positive level": [
                 ""
             ],
             "Select Test Variables:": [
@@ -9319,16 +8578,7 @@
             "Select the level representing a positive result for Test 1.": [
                 ""
             ],
-            "Select the level that indicates disease is absent in your gold standard variable. Only the disease-present and disease-absent levels take part; cases at any other level are excluded from the analysis, not counted as disease-absent. With a two-level variable this is inferred; with three or more levels you must choose it.": [
-                ""
-            ],
             "Select the level that indicates disease IS PRESENT in your gold standard variable  (e.g., \"positive\", \"malignant\", \"1\"). This represents the condition you want to detect.": [
-                ""
-            ],
-            "Select the level that indicates disease is present in your gold standard variable. This represents the condition you want to detect or diagnose.": [
-                ""
-            ],
-            "Select the level that represents a negative test result. Only the test-positive and test-negative levels take part; cases at any other level are excluded from the analysis, not counted as negative. With a two-level variable this is inferred; with three or more levels you must choose it.": [
                 ""
             ],
             "Select the level that represents a POSITIVE result for Test 1  (e.g., \"abnormal\", \"high\", \"positive\"). This should indicate suspected disease presence.": [
@@ -9338,9 +8588,6 @@
                 ""
             ],
             "Select the level that represents a POSITIVE result for Test 3.": [
-                ""
-            ],
-            "Select the level that represents a positive test result. This should correspond to the level indicating suspected disease presence.": [
                 ""
             ],
             "Select the most reliable diagnostic method available (e.g., biopsy, final pathology,  expert consensus). This is the \"truth\" against which we compare other tests.  The selected positive level is compared with the remaining levels; if indeterminate values should be excluded, also select explicit negative levels.": [
@@ -9412,9 +8659,6 @@
             "Sensitivity = TP/(TP+FN) = Probability of positive test among diseased": [
                 ""
             ],
-            "Sensitivity >90% excellent for ruling OUT disease": [
-                ""
-            ],
             "Sensitivity analysis showing how the fixed penalties affect a conditional-independence fit.": [
                 ""
             ],
@@ -9427,9 +8671,6 @@
             "Sensitivity and specificity across cutoff values": [
                 ""
             ],
-            "sensitivity and specificity are both 0.80 or above in this sample": [
-                ""
-            ],
             "Sensitivity and Specificity vs Threshold": [
                 ""
             ],
@@ -9439,31 +8680,13 @@
             "Sensitivity and Specificity vs. Threshold: Combined": [
                 ""
             ],
-            "sensitivity and specificity were not both 0.80 or above in this sample": [
-                ""
-            ],
             "Sensitivity and/or specificity could not be computed here: one gold-standard class has no cases, so that rate has an empty denominator and is reported as blank rather than as a low value. The 2x2 counts behind this row are in the Recoded Data table for this test": [
                 ""
             ],
             "Sensitivity CI": [
                 ""
             ],
-            "Sensitivity is estimated from the disease-present cases only and specificity from the disease-free cases only, so these are the numbers that matter, not the total sample size. With fewer than ten cases in an arm one reclassified patient moves that proportion by more than ten percentage points. Report the 95% confidence intervals rather than the point estimates.": [
-                ""
-            ],
-            "sensitivity is high (0.90 or above) while specificity is below 0.80: few false negatives, more false positives in this sample": [
-                ""
-            ],
             "Sensitivity is the proportion of reference-positive observations with a positive test result.": [
-                ""
-            ],
-            "sensitivity or specificity could not be computed in this sample, so the discrimination profile is incomplete": [
-                ""
-            ],
-            "Sensitivity plus specificity is below 1, so a positive result argues AGAINST disease and a negative result argues for it. The usual cause is that the level chosen under Test positive level is the wrong one; swapping it would give the mirror-image performance. Check the level selection before reading any number in these tables.": [
-                ""
-            ],
-            "Sensitivity plus specificity is exactly 1, which is what a coin toss achieves. Both likelihood ratios equal 1 and the post-test probability equals the pre-test probability, whatever the result.": [
                 ""
             ],
             "Sensitivity plus specificity minus one; it weights both equally and is not a measure of clinical utility or a universal cut-off.": [
@@ -9487,13 +8710,7 @@
             "Sensitivity, specificity and prevalence were treated as exact, so these probabilities carry no confidence interval.": [
                 ""
             ],
-            "Sensitivity, Specificity, PPV, NPV": [
-                ""
-            ],
             "Sensitivity, Specificity, PPV, NPV, ...": [
-                ""
-            ],
-            "Sensitivity: Proportion of diseased patients correctly identified (TP rate). Higher is better for ruling OUT disease when negative.": [
                 ""
             ],
             "Sensitivity: true positives among reference-positive subjects": [
@@ -9586,16 +8803,7 @@
             "Show the number needed to test (1 / net benefit) and number needed to diagnose (1 / Youden index) columns in the clinical impact table": [
                 ""
             ],
-            "Showing first {shown} of {total} false negative cases": [
-                ""
-            ],
-            "Showing first {shown} of {total} false positive cases": [
-                ""
-            ],
             "Showing the %1$d highest-ranked of %2$d model terms; the remaining terms have smaller maximum coefficients along the path.": [
-                ""
-            ],
-            "Showing the first {shown} of {total} level combinations.": [
                 ""
             ],
             "Significance Level": [
@@ -9655,18 +8863,6 @@
             "Small": [
                 ""
             ],
-            "Small but potentially important decrease in probability": [
-                ""
-            ],
-            "Small but potentially important increase in probability": [
-                ""
-            ],
-            "Small cell count detected (minimum = {n}, < 5)": [
-                ""
-            ],
-            "Small cell counts (<5) may cause unstable results": [
-                ""
-            ],
             "Small effect": [
                 ""
             ],
@@ -9689,9 +8885,6 @@
                 ""
             ],
             "Small Sample Size: %s": [
-                ""
-            ],
-            "Small sample size: n = {n} (< 50 cases)": [
                 ""
             ],
             "Small sample: %1$d positive and %2$d negative case(s). DeLong's test relies on a large-sample approximation to the variance of the AUC, so with fewer than 10 cases in a class the p-values and confidence intervals below are unreliable and are likely to be too narrow. Treat any difference as provisional and confirm it in a larger sample.": [
@@ -9760,13 +8953,7 @@
             "Specificity = TN/(TN+FP) = Probability of negative test among healthy": [
                 ""
             ],
-            "Specificity >90% excellent for ruling IN disease": [
-                ""
-            ],
             "Specificity CI": [
-                ""
-            ],
-            "specificity is high (0.90 or above) while sensitivity is below 0.80: few false positives, more false negatives in this sample": [
                 ""
             ],
             "Specificity is the proportion of reference-negative observations with a negative test result.": [
@@ -9776,9 +8963,6 @@
                 ""
             ],
             "Specificity Range (for high-specificity applications)": [
-                ""
-            ],
-            "Specificity: Proportion of healthy patients correctly identified (TN rate). Higher is better for ruling IN disease when positive.": [
                 ""
             ],
             "Specificity: true negatives among reference-negative subjects": [
@@ -9883,9 +9067,6 @@
             "Statistical Conclusion": [
                 ""
             ],
-            "Statistical estimates may be unstable. Enable 95% confidence intervals: the exact (Clopper-Pearson) intervals shown there remain valid with small cells and will be wide enough to show it.": [
-                ""
-            ],
             "Statistical Explanations & Glossary": [
                 ""
             ],
@@ -9967,16 +9148,7 @@
             "Strong": [
                 ""
             ],
-            "Strong evidence against disease": [
-                ""
-            ],
-            "Strong evidence for disease": [
-                ""
-            ],
             "strong evidence for disease": [
-                ""
-            ],
-            "strong evidence for disease when positive": [
                 ""
             ],
             "Strong evidence for positive diagnosis": [
@@ -10091,9 +9263,6 @@
                 ""
             ],
             "Teaching Examples (Not Clinical Guidance)": [
-                ""
-            ],
-            "Technical details: %s Please report this issue if it persists.": [
                 ""
             ],
             "Technical Notes": [
@@ -10354,9 +9523,6 @@
             "Test Comparison": [
                 ""
             ],
-            "Test comparisons": [
-                ""
-            ],
             "Test Correlation Risk": [
                 ""
             ],
@@ -10384,9 +9550,6 @@
             "Test negative": [
                 ""
             ],
-            "Test negative level": [
-                ""
-            ],
             "Test Pair": [
                 ""
             ],
@@ -10405,22 +9568,10 @@
             "Test Performance Comparison": [
                 ""
             ],
-            "Test Performance Summary": [
-                ""
-            ],
             "Test Positive": [
                 ""
             ],
             "Test positive": [
-                ""
-            ],
-            "Test positive level": [
-                ""
-            ],
-            "Test Result": [
-                ""
-            ],
-            "Test result": [
                 ""
             ],
             "Test Results": [
@@ -10438,9 +9589,6 @@
             "Test Statistic": [
                 ""
             ],
-            "Test Under Evaluation": [
-                ""
-            ],
             "Test value distribution": [
                 ""
             ],
@@ -10453,19 +9601,7 @@
             "Test Variable": [
                 ""
             ],
-            "Test variable levels excluded from analysis: {lvls}": [
-                ""
-            ],
             "Test Variables": [
-                ""
-            ],
-            "Test-negative level \"{lvl}\" not found in test variable": [
-                ""
-            ],
-            "Test-positive and test-negative levels cannot be the same": [
-                ""
-            ],
-            "Test-positive level \"{lvl}\" not found in test variable": [
                 ""
             ],
             "Tested Positive (%)": [
@@ -10609,12 +9745,6 @@
             "The design needs {n} subjects; few agreement studies can enrol this many. A rare finding (prevalence far from 0.5), a small difference between kappa0 and kappa1, and a high power target all inflate the sample size - revisit whichever of these is not a firm requirement.": [
                 ""
             ],
-            "The diagnostic test being evaluated for performance. This is typically a new, faster, or less expensive test compared to the gold standard.": [
-                ""
-            ],
-            "The displayed confidence intervals (95% CI) are calculated from your study sample. They apply to the sample-based Sensitivity, Specificity, PPV and NPV in the epiR tables. They do NOT apply to the PPV and NPV in the main ratio table, which are recomputed by Bayes' theorem at the fixed population prevalence you supplied.": [
-                ""
-            ],
             "The displayed ROC curve is smoothed (%s), but every reported statistic — AUC, confidence intervals, optimal cut-points and all sensitivity/specificity values — is computed from the empirical curve. A smoothed curve carries no thresholds, so it cannot produce a cut-point.": [
                 ""
             ],
@@ -10624,16 +9754,10 @@
             "The enhanced DeLong comparison failed (%s), so a fallback implementation was used; the AUC differences and p-values below come from that fallback.": [
                 ""
             ],
-            "The epiR package could not produce intervals for this table, so the two confidence-interval tables are empty.": [
-                ""
-            ],
             "The epiR package is required for confidence intervals. Install it or disable confidence intervals. The two interval tables are left blank; every other result on this page is unaffected.": [
                 ""
             ],
             "The epiR package is required for confidence intervals. Install it with install.packages(\"epiR\"), or disable the \"95% CI\" option.": [
-                ""
-            ],
-            "The epiR package returned no interval estimates for this table, so the two confidence-interval tables are empty. This usually means the 2x2 table is too sparse for the exact method.": [
                 ""
             ],
             "The estimation did not converge": [
@@ -10688,15 +9812,6 @@
                 ""
             ],
             "The global test across all markers could not be computed (%s); its statistic and p-value are left blank.": [
-                ""
-            ],
-            "The gold standard and the test are the same variable": [
-                ""
-            ],
-            "The gold standard has more than one level besides \"{pos}\" ({lvls}), so the disease-absent level cannot be inferred. Select it under Disease absent level. Levels you do not name are excluded from the analysis rather than counted as disease-absent.": [
-                ""
-            ],
-            "The gold standard reference variable (true disease status).  This should be the most reliable test or diagnosis available (e.g., biopsy, final diagnosis).": [
                 ""
             ],
             "The gold-standard variable cannot also occupy a test slot. Select a different variable for each test.": [
@@ -10820,9 +9935,6 @@
                 ""
             ],
             "The positive-response probability and NPV are fixed at 100% by construction and therefore are left blank.": [
-                ""
-            ],
-            "The predictive values in this table are computed at the prevalence observed in this sample ({observed}), not at the population prior of {prior} used for the predictive values in the main table above. The intervals here belong to these estimates, not to those. Sensitivity and specificity are unaffected by prevalence.": [
                 ""
             ],
             "The predictor '%1$s' values are not in the 0 to 1 probability range (observed range: %2$s to %3$s). A logistic regression model was fitted to obtain predicted probabilities for calibration assessment. These calibration results reflect the fitted model's calibration, NOT the raw biomarker's calibration. For proper calibration assessment, provide predicted probabilities from your prediction model.": [
@@ -10957,9 +10069,6 @@
             "The test '%1$s' has an AUC of %2$.3f": [
                 ""
             ],
-            "The test has more than one level besides \"{pos}\" ({lvls}), so the test-negative level cannot be inferred. Select it under Test negative level. Levels you do not name are excluded from the analysis rather than counted as negative.": [
-                ""
-            ],
             "The tests have similar marginal sensitivity and specificity. Similar marginal performance does not establish redundancy or independence; assess conditional dependence using external evidence.": [
                 ""
             ],
@@ -11017,9 +10126,6 @@
             "These are single-cohort estimates. Their practical meaning depends on intended use, error consequences, prevalence, patient spectrum, and reference-standard quality. This educational summary is not a clinical guide.": [
                 ""
             ],
-            "These cases carry a level that codes missingness rather than a result. They are excluded rather than counted as negative, which would have biased sensitivity and specificity.": [
-                ""
-            ],
             "These curves are computed on the same rows that supplied the predicted risks.": [
                 ""
             ],
@@ -11072,9 +10178,6 @@
                 ""
             ],
             "This analysis uses the %1$d of %2$d cases (%3$.1f%%) with a result recorded for every selected test. All displayed estimates use these complete cases. If the probability of a missing result is related to an unobserved test result or latent class, the estimates can be biased.": [
-                ""
-            ],
-            "This analysis was inspired by Orange Data Mining's interactive confusion matrix feature, adapted for static jamovi output with comprehensive statistical tables.": [
                 ""
             ],
             "This AUC is apparent (in-sample), and where a cutpoint was searched for on these data the cutpoint metrics are optimistic. Independent validation is needed before these figures describe performance in new patients.": [
@@ -11212,12 +10315,6 @@
             "This table lists every observed test value as a candidate cutpoint, not only the selected one; the bias above applies to whichever row you report as the cutpoint.": [
                 ""
             ],
-            "This test is uninformative (Youden's index 0.00, equivalent AUC 0.50)": [
-                ""
-            ],
-            "This test performs worse than chance (Youden's index {j}, equivalent AUC {auc})": [
-                ""
-            ],
             "This tool compares the diagnostic performance of multiple medical tests against a gold standard reference. It systematically evaluates sensitivity, specificity, predictive values, likelihood ratios, and overall accuracy to support transparent comparison of observed performance. It does not select a test for clinical use.": [
                 ""
             ],
@@ -11344,19 +10441,10 @@
             "Total number of discordant test results": [
                 ""
             ],
-            "Total Number of Healthy Subjects (Gold Standard Negative)": [
-                ""
-            ],
-            "Total Number of Negative Test Results": [
-                ""
-            ],
             "Total number of negative tests": [
                 ""
             ],
             "Total number of observations in analysis": [
-                ""
-            ],
-            "Total Number of Positive Test Results": [
                 ""
             ],
             "Total number of positive tests": [
@@ -11369,18 +10457,6 @@
                 ""
             ],
             "Total number of subjects": [
-                ""
-            ],
-            "Total Number of Subjects in complete case analysis": [
-                ""
-            ],
-            "Total Number of Subjects with Disease (Gold Standard Positive)": [
-                ""
-            ],
-            "Total Number of True Test Results (TP + TN)": [
-                ""
-            ],
-            "Total Number of Wrong Test Results (FP + FN)": [
                 ""
             ],
             "Total Population": [
@@ -11485,9 +10561,6 @@
             "True Status": [
                 ""
             ],
-            "True Test": [
-                ""
-            ],
             "True-negative rate": [
                 ""
             ],
@@ -11551,43 +10624,19 @@
             "Unable to compute paired differences for {comparison}: no observations with complete data across both tests and the gold standard.": [
                 ""
             ],
-            "Unable to generate detailed clinical interpretation due to data limitations.": [
-                ""
-            ],
             "unavailable": [
                 ""
             ],
             "Uncertainty and Diagnostics": [
                 ""
             ],
-            "Uncertainty estimates for all statistics": [
-                ""
-            ],
-            "undefined": [
-                ""
-            ],
             "Under-fitting (slope > 1)": [
-                ""
-            ],
-            "Understanding Misclassifications": [
                 ""
             ],
             "Understanding Penalized Logistic Regression": [
                 ""
             ],
             "Understanding Test Dependence": [
-                ""
-            ],
-            "Uninformative: a negative result does not change the probability of disease": [
-                ""
-            ],
-            "Uninformative: a negative result leaves the probability of disease unchanged": [
-                ""
-            ],
-            "Uninformative: a positive result does not change the probability of disease": [
-                ""
-            ],
-            "Uninformative: a positive result leaves the probability of disease unchanged": [
                 ""
             ],
             "Unit Cost": [
@@ -11603,30 +10652,6 @@
                 ""
             ],
             "Unweighted average of sensitivity and specificity; it does not encode different consequences for the two error types.": [
-                ""
-            ],
-            "up to 1 disease-free case in 10 flagged positive here": [
-                ""
-            ],
-            "up to 1 disease-free case in 10 flagged positive in this sample": [
-                ""
-            ],
-            "up to 1 disease-free case in 5 flagged positive here": [
-                ""
-            ],
-            "up to 1 disease-free case in 5 flagged positive in this sample": [
-                ""
-            ],
-            "up to 1 diseased case in 10 missed here": [
-                ""
-            ],
-            "up to 1 diseased case in 10 missed in this sample": [
-                ""
-            ],
-            "up to 1 diseased case in 5 missed here": [
-                ""
-            ],
-            "up to 1 diseased case in 5 missed in this sample": [
                 ""
             ],
             "Upper": [
@@ -11659,19 +10684,10 @@
             "Use known disease prevalence from population data for predictive values, post-test probabilities, and F1 score. Sensitivity, specificity, sample accuracy, and MCC remain based on the entered study table.": [
                 ""
             ],
-            "Use known disease prevalence from population data instead of study prevalence. Enable this when your study sample may not represent the target population.": [
-                ""
-            ],
             "Use model-based probabilities and assess their calibration separately in the target population; min-max scaling does not create calibrated risks.": [
                 ""
             ],
             "Use Precision-Recall Curve (PRC) analysis instead of ROC": [
-                ""
-            ],
-            "Use when sample doesn't represent target population disease prevalence": [
-                ""
-            ],
-            "Use when your study sample doesn't represent the target population prevalence. Affects PPV/NPV calculations using Bayes' theorem. Enter as proportion (e.g., 0.05 for 5%, 0.15 for 15%). Common ranges: rare diseases (0.001-0.01), common conditions (0.05-0.30).": [
                 ""
             ],
             "USER OVERRIDE ACTIVE: Meta-analysis performed on non-independent data despite violation of independence assumption. These results should NOT be used for formal statistical inference. Provided for exploratory purposes only with full awareness of statistical invalidity.": [
@@ -11693,9 +10709,6 @@
                 ""
             ],
             "Using fewer than 100 replications may give unreliable confidence intervals; consider at least 1000 replications for stable estimates.": [
-                ""
-            ],
-            "Validating new tests": [
                 ""
             ],
             "Validation": [
@@ -11773,22 +10786,13 @@
             "Very high %1$s ratio ( %2$s ) - indicates highly informative test.": [
                 ""
             ],
-            "Very high disease prevalence observed in this sample ({pct})": [
-                ""
-            ],
             "Very high prevalence (above 95%): every post-test probability below is driven mainly by the prevalence you entered rather than by the tests, and even the 'both tests negative' row will stay high. Check that this is the pre-test probability in the population you are actually testing.": [
                 ""
             ],
             "Very high sensitivity range - critical for screening/case-finding": [
                 ""
             ],
-            "Very large dataset detected ({n} rows)": [
-                ""
-            ],
             "Very large sample size.": [
-                ""
-            ],
-            "Very low disease prevalence observed in this sample ({pct})": [
                 ""
             ],
             "Very small observed reference-standard sample (n={n}). Confidence intervals may be wide and estimates unstable, especially when either gold-standard class is sparse. Interpret the interval widths and class-specific denominators; no universal sample-size cutoff guarantees adequate precision.": [
@@ -11800,9 +10804,6 @@
             "Very small sample size (n = {n}).": [
                 ""
             ],
-            "Very small sample size: n = {n} (< 20 cases)": [
-                ""
-            ],
             "Very small sample size.": [
                 ""
             ],
@@ -11812,13 +10813,7 @@
             "Very sparse reference groups": [
                 ""
             ],
-            "Visual representation of probability changes": [
-                ""
-            ],
             "Visual theme for ROC plots": [
-                ""
-            ],
-            "Visual tool showing how test results change disease probability. Shows relationship between pre-test probability, likelihood ratios, and post-test probability.": [
                 ""
             ],
             "Visualization": [
@@ -11857,16 +10852,7 @@
             "Weak": [
                 ""
             ],
-            "Weak evidence against disease": [
-                ""
-            ],
-            "Weak evidence for disease": [
-                ""
-            ],
             "weak evidence for disease": [
-                ""
-            ],
-            "weak evidence for disease when positive": [
                 ""
             ],
             "Weak evidence for positive diagnosis": [
@@ -11911,9 +10897,6 @@
             "What this tool does:": [
                 ""
             ],
-            "What You'll Get": [
-                ""
-            ],
             "When a test or the gold standard has more than two levels (e.g., indeterminate/equivocal), exclude those rows instead of treating them as negative.": [
                 ""
             ],
@@ -11956,9 +10939,6 @@
             "Wilson score 95 percent confidence intervals for sensitivity, specificity, PPV, NPV and accuracy, shown as percentages to match the combination table above. Likelihood ratios and the diagnostic odds ratio are unbounded ratios rather than proportions, so they appear in their own table below.": [
                 ""
             ],
-            "With fewer than 20 cases each proportion rests on a handful of patients, so one reclassified case moves sensitivity or specificity by several percentage points and the 95% confidence intervals (enable the 95% CI option) will be very wide. Read the intervals rather than the point estimates; diagnostic accuracy studies usually need on the order of 100 cases before the intervals narrow usefully.": [
-                ""
-            ],
             "With fewer than 20 complete cases every proportion rests on a handful of patients, so one reclassified case moves sensitivity or specificity by several percentage points and the 95% confidence intervals are very wide. Read the intervals rather than the point estimates. Diagnostic accuracy studies usually need on the order of 100 cases before the intervals narrow usefully, and combination analysis splits those cases across four or eight patterns.": [
                 ""
             ],
@@ -11987,9 +10967,6 @@
                 ""
             ],
             "Wrong level specified for positive class. No observations found.": [
-                ""
-            ],
-            "Wrong Test": [
                 ""
             ],
             "Yes": [
@@ -12067,9 +11044,6 @@
             "Youden's index is {youden} and sample accuracy is {accuracy}. These values describe the entered study table; they are not clinical grades or decision thresholds.": [
                 ""
             ],
-            "Youden's index is the difference between the true positive rate and the false positive rate. Youden's index ranges from -1 to +1 with values closer to 1 if both sensitivity and specificity are high (i.e. close to 1).": [
-                ""
-            ],
             "Youden's J": [
                 ""
             ],
@@ -12083,9 +11057,6 @@
                 ""
             ],
             "Zero cell detected. A 0.5 continuity correction is applied only to a likelihood ratio whose own denominator cell is empty (FP = 0 for LR+, TN = 0 for LR-); every other statistic uses these raw counts. Interpret cautiously.": [
-                ""
-            ],
-            "Zero counts detected in contingency table": [
                 ""
             ],
             "Δ Cohen's d": [

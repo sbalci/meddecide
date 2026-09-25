@@ -12,7 +12,6 @@ export(clinicopath_init)
 export(clinicopath_warning_handler)
 export(cotest)
 export(create_enhanced_result)
-export(decision)
 export(decisioncalculator)
 export(decisioncombine)
 export(decisioncompare)
@@ -54,7 +53,6 @@ importFrom(dplyr,
   mutate,
   summarise
 )
-importFrom(epiR,epi.tests)
 importFrom(forcats,
   as_factor,
   fct_relevel
