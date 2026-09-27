@@ -8390,7 +8390,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
 msgid "Fair"
-msgstr "Orta"
+msgstr "Makul"
 
 #: R/psychopdaROC.b.R
 msgid "fair"
@@ -14099,6 +14099,9 @@ msgid ""
 "Prob.\n"
 "(%)"
 msgstr ""
+"Sonsal\n"
+"Olas.\n"
+"(%)"
 
 #: package/analyses/kappaSizePower.menuGroup
 #: package/analyses/kappaSizeCI.menuGroup
@@ -14686,6 +14689,9 @@ msgid ""
 "Prob.\n"
 "(%)"
 msgstr ""
+"Öncül\n"
+"Olas.\n"
+"(%)"
 
 #: psychopdaROC/ui[11][0]/priorAUC.label
 msgid "Prior AUC"

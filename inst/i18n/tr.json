@@ -4157,7 +4157,7 @@
                 ""
             ],
             "Fair": [
-                "Orta"
+                "Makul"
             ],
             "fair": [
                 "orta"
@@ -7364,7 +7364,7 @@
                 "Test Sonrası Referans Pozitif Olasılığı"
             ],
             "Posterior\nProb.\n(%)": [
-                ""
+                "Sonsal\nOlas.\n(%)"
             ],
             "Power": [
                 "Güç"
@@ -7655,7 +7655,7 @@
                 "Prevalans Çok Düşük"
             ],
             "Prior\nProb.\n(%)": [
-                ""
+                "Öncül\nOlas.\n(%)"
             ],
             "Prior AUC": [
                 "Öncül EAA"
