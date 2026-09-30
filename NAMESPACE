@@ -13,7 +13,6 @@ export(clinicopath_warning_handler)
 export(cotest)
 export(create_enhanced_result)
 export(decisioncalculator)
-export(decisioncombine)
 export(decisioncompare)
 export(decisioncurve)
 export(enhancedROC)
@@ -45,17 +44,11 @@ importFrom(boot,
 importFrom(caret,confusionMatrix)
 importFrom(cutpointr,cutpointr)
 importFrom(dplyr,
-  "%>%",
   arrange,
-  case_when,
   filter,
   group_by,
   mutate,
   summarise
-)
-importFrom(forcats,
-  as_factor,
-  fct_relevel
 )
 importFrom(ggplot2,
   aes,
@@ -110,8 +103,6 @@ importFrom(lmerTest,as_lmerModLmerTest)
 importFrom(magrittr,"%>%")
 importFrom(pROC,roc)
 importFrom(poLCA,poLCA)
-importFrom(rlang,.data)
-importFrom(scales,percent_format)
 importFrom(splines,ns)
 importFrom(stats,
   binom.test,
@@ -126,10 +117,7 @@ importFrom(stats,
   var
 )
 importFrom(tibble,rownames_to_column)
-importFrom(tidyr,
-  gather,
-  pivot_longer
-)
+importFrom(tidyr,gather)
 importFrom(tools,toTitleCase)
 importFrom(utils,
   data,

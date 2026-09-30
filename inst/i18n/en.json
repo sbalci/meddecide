@@ -142,9 +142,6 @@
             "{n} risk-quantile groups": [
                 ""
             ],
-            "{n} rules tie on Youden's J ({rules}); \"{shown}\" is displayed only because it comes first.": [
-                ""
-            ],
             "{pairs} could not be bootstrap-tested because at least one side is a derived strategy rather than a predictor column, so it has no values to resample.": [
                 ""
             ],
@@ -185,9 +182,6 @@
                 ""
             ],
             "{var} ({level} = positive)": [
-                ""
-            ],
-            "{variable} has {n} levels": [
                 ""
             ],
             "%": [
@@ -1006,16 +1000,10 @@
             "A gain at or below zero means a default strategy serves these patients at least as well as the model.": [
                 ""
             ],
-            "A gold standard variable is required. Select a reference test.": [
-                ""
-            ],
             "A Haldane-Anscombe 0.5 correction was applied to likelihood-ratio and diagnostic-odds-ratio point estimates because a zero cell was present. Confidence intervals use the raw counts and are not continuity-corrected.": [
                 ""
             ],
             "A Haldane-Anscombe 0.5 correction was applied to the likelihood ratios because a zero cell was present. The epiR confidence-interval table uses raw counts, so its point estimates may differ.": [
-                ""
-            ],
-            "A Haldane-Anscombe continuity correction of 0.5 was applied to {n} pattern(s) with at least one zero cell ({patterns}). The correction affects LR+, LR-, the diagnostic odds ratio and their confidence intervals only; sensitivity, specificity, PPV and NPV on the same rows use the observed counts.": [
                 ""
             ],
             "A latent-class EM point estimator using fixed Beta priors.": [
@@ -1031,12 +1019,6 @@
                 ""
             ],
             "A non-significant McNemar result does not establish that the two tests perform equally; the test uses only the discordant pairs and may lack power to detect a clinically important difference.": [
-                ""
-            ],
-            "A PATTERN row (\"+/-\") is a mutually exclusive group of patients: those whose results were exactly that. It can be read as a rule -- \"call positive only when the results are exactly this\" -- and the ranking treats it that way, but then every column refers to that exact pattern. Sensitivity is the share of diseased patients showing it; Specificity the share of non-diseased patients showing anything else; LR- the likelihood ratio for \"any other pattern\" rather than for a negative test.": [
-                ""
-            ],
-            "A pattern row (e.g. \"+/-\") is a mutually exclusive group of patients. It can still be read as a rule -- \"call positive only when the results are exactly this\" -- and the ranking treats it that way, but every column then refers to that exact pattern: Sensitivity is the proportion of diseased patients showing it, Specificity the proportion of non-diseased patients showing anything else, and LR- the likelihood ratio for \"any other pattern\" rather than for a negative test. Accuracy and NPV on such a row are dominated by the patients who did not show the pattern, so a rare pattern reports both close to 1 minus the prevalence however uninformative it is -- read Youden's J there, not Accuracy. The named rows -- Parallel (>=1 pos), Serial (all pos) and, with three tests, Majority (>=2/3 pos) -- are the strategies you would normally apply to a patient; Serial (all pos) is numerically identical to the all-positive pattern row.": [
                 ""
             ],
             "A positive result has a likelihood ratio of {lr} and raises the probability from {prevalence} to {posttest}.": [
@@ -1058,9 +1040,6 @@
                 ""
             ],
             "a specificity of 1.000 here means the model calls every case negative, not that it is a specific test": [
-                ""
-            ],
-            "A STRATEGY row is a rule you would normally apply to a patient. Parallel (>=1 pos) calls positive if any test is positive, which raises sensitivity and lowers specificity. Serial (all pos) requires every test to be positive, which does the reverse. Majority (>=2/3 pos) needs two of three.": [
                 ""
             ],
             "A strict majority means more than half of the tests are positive. With an even number of tests, ties are classified as rule negative and must be interpreted as part of the chosen rule.": [
@@ -1108,13 +1087,7 @@
             "accuracy": [
                 ""
             ],
-            "Accuracy and NPV on a pattern row are dominated by the patients who did NOT show that pattern, so a rare pattern reports both close to 1 minus the prevalence however uninformative it is. A pattern seen in 5 of 50 diseased and 10 of 150 non-diseased patients reports Accuracy 0.73 and NPV 0.76 against a prevalence of 0.25, while its Youden's J is 0.03. Read Youden's J or Balanced Accuracy on these rows, not Accuracy. PPV and LR+ are the two columns that read cleanly: PPV is the probability of disease given exactly that result combination, and LR+ is the likelihood ratio for that combination.": [
-                ""
-            ],
             "Accuracy intervals are not computed for scenarios containing fractional frequencies because no effective sample size or weighting design was supplied.": [
-                ""
-            ],
-            "Accuracy measured on clearly diseased versus clearly healthy patients is higher than accuracy in the population the test is actually used on, which is full of early, partial and equivocal presentations. A case-control (two-gate) design inflates sensitivity and specificity and makes the Prevalence column an artefact of the sampling ratio rather than of any clinical population, so PPV is inflated while NPV is DEFLATED relative to a low-prevalence setting. At sensitivity and specificity of 0.90, a 50% sampled prevalence gives PPV 0.90 and NPV 0.90, while a true 5% prevalence gives PPV 0.32 and NPV 0.99.": [
                 ""
             ],
             "Achieved Sensitivity": [
@@ -1127,9 +1100,6 @@
                 ""
             ],
             "Active Illustrative Example": [
-                ""
-            ],
-            "Add a new column to the dataset containing the test combination pattern for each case (e.g., \"+/+\", \"+/-\", \"-/-\").": [
                 ""
             ],
             "Add a second model to compare.": [
@@ -1240,9 +1210,6 @@
             "All pairwise comparisons": [
                 ""
             ],
-            "All Patterns": [
-                ""
-            ],
             "All People\n(n={n})": [
                 ""
             ],
@@ -1250,9 +1217,6 @@
                 ""
             ],
             "All proportions must be valid numbers": [
-                ""
-            ],
-            "All Tests Negative": [
                 ""
             ],
             "All Tests Positive": [
@@ -1265,9 +1229,6 @@
                 ""
             ],
             "All values for cut-off \"{cutoff}\" must be non-negative finite numbers (TP={tp}, FP={fp}, TN={tn}, FN={fn}).": [
-                ""
-            ],
-            "All Zero Counts": [
                 ""
             ],
             "All-tests-positive reference rule": [
@@ -1456,9 +1417,6 @@
             "Area Under the ROC Curve": [
                 ""
             ],
-            "Around 100 cases or more is the usual target for a stable diagnostic accuracy estimate; this sample supports preliminary estimates, particularly once it is divided across the result patterns.": [
-                ""
-            ],
             "as specified by Direction": [
                 ""
             ],
@@ -1486,12 +1444,6 @@
             "Assumptions and caveats": [
                 ""
             ],
-            "Assumptions and Caveats": [
-                ""
-            ],
-            "Assumptions, biases and requirements": [
-                ""
-            ],
             "At {prevalence} prevalence": [
                 ""
             ],
@@ -1517,12 +1469,6 @@
                 ""
             ],
             "At least 2 explanatory variables are required for LASSO regression.": [
-                ""
-            ],
-            "At least four cases are required for analysis.": [
-                ""
-            ],
-            "At least four complete cases are required for combination analysis; only {used} of {total} cases remain after excluding missing values.": [
                 ""
             ],
             "At least one marker separates the two classes completely in this sample (AUC 1.000). The confidence interval collapses to a single point and the p-value is undefined because the variance is zero - those columns are not showing precision, they are showing that the estimate is degenerate. Complete separation in a sample this size is far more often label leakage, an outcome-derived predictor, or overfitting than a genuinely perfect test. Validate externally before drawing any conclusion.": [
@@ -1711,19 +1657,10 @@
             "Balanced accuracy (CI not computed)": [
                 ""
             ],
-            "Balanced Accuracy and Youden's J are the same statistic on two scales: Balanced Accuracy = (J + 1) / 2.": [
-                ""
-            ],
             "Balanced accuracy is the unweighted average of sensitivity and specificity. It is descriptive and does not encode the consequences of false-positive and false-negative results.": [
                 ""
             ],
             "Balanced approach for diagnostic test validation": [
-                ""
-            ],
-            "Bar chart": [
-                ""
-            ],
-            "Bar Chart - Performance Comparison": [
                 ""
             ],
             "Baseline (Prevalence) = {b}": [
@@ -2491,19 +2428,10 @@
             "Collinearity": [
                 ""
             ],
-            "Color-coded heatmap showing all diagnostic metrics for each test pattern": [
-                ""
-            ],
             "Combine\nResults": [
                 ""
             ],
             "Combine all curves in one plot": [
-                ""
-            ],
-            "Combine and evaluate test patterns": [
-                ""
-            ],
-            "Combine Medical Decision Tests": [
                 ""
             ],
             "Combine multiple ROC curves": [
@@ -2626,12 +2554,6 @@
             "Complete-Case Analysis": [
                 ""
             ],
-            "Complete-case analysis uses {used} of {total} cases ({percent}%) for the combination analysis. Cases missing the gold standard or any selected test were excluded. Individual-test tables use their own pairwise-complete denominators. If data are not missing completely at random, investigate the missingness pattern.": [
-                ""
-            ],
-            "Complete-case analysis: a patient missing the reference standard or any selected test is excluded from the combination table. The number excluded is reported above when it is not zero.": [
-                ""
-            ],
             "Composite majority-vote reference rule": [
                 ""
             ],
@@ -2746,9 +2668,6 @@
             "Confidence Intervals Unavailable": [
                 ""
             ],
-            "Confidence intervals will be wide, and dividing this sample across four or eight result patterns leaves very few cases per pattern. Interpret the pattern rows as exploratory.": [
-                ""
-            ],
             "Confidence Level": [
                 ""
             ],
@@ -2851,12 +2770,6 @@
             "Constraints Not Met: %s": [
                 ""
             ],
-            "Contingency Table": [
-                ""
-            ],
-            "Continuity Correction": [
-                ""
-            ],
             "Continuity correction applied": [
                 ""
             ],
@@ -2938,9 +2851,6 @@
             "Counts": [
                 ""
             ],
-            "Counts and diagnostic performance metrics for each test combination pattern and clinical strategy, including prevalence, balanced accuracy, Youden's J, likelihood ratios, and diagnostic odds ratios": [
-                ""
-            ],
             "Counts are projected to a population of {n} from the complete-case cohort.": [
                 ""
             ],
@@ -2984,9 +2894,6 @@
                 ""
             ],
             "Cross-tabulation of {test} and {gold}": [
-                ""
-            ],
-            "Cross-tabulation showing how test combination patterns align with gold standard results": [
                 ""
             ],
             "Cross-validated lambda selection": [
@@ -3247,25 +3154,10 @@
             "Decision Rule Positive Level": [
                 ""
             ],
-            "Decision Space - Sensitivity vs Specificity": [
-                ""
-            ],
-            "Decision space (sensitivity vs specificity)": [
-                ""
-            ],
-            "Decision Space: Sensitivity vs Specificity": [
-                ""
-            ],
             "Decision Statistics": [
                 ""
             ],
             "Decision Test Comparison": [
-                ""
-            ],
-            "Decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J": [
-                ""
-            ],
-            "Default Metric Set": [
                 ""
             ],
             "Define Positive Levels:": [
@@ -3340,12 +3232,6 @@
             "Descriptive Average Net Benefit Over Threshold Range": [
                 ""
             ],
-            "Descriptive candidate-rule ranking": [
-                ""
-            ],
-            "Descriptive Candidate-Rule Ranking": [
-                ""
-            ],
             "Descriptive comparison unavailable": [
                 ""
             ],
@@ -3368,9 +3254,6 @@
                 ""
             ],
             "Descriptive Summary & Report Templates": [
-                ""
-            ],
-            "Descriptive Youden ranking": [
                 ""
             ],
             "Descriptively compare illustrative cut-off scenarios. These examples are not clinical guides.": [
@@ -3433,9 +3316,6 @@
             "Diagnostic accuracy": [
                 ""
             ],
-            "Diagnostic accuracy estimates are shaped by how the study was designed, not only by how the tests perform. The three biases below dominate real pathology accuracy studies and none of them is detectable from the data in front of this analysis.": [
-                ""
-            ],
             "Diagnostic metrics": [
                 ""
             ],
@@ -3451,9 +3331,6 @@
             "Diagnostic OR": [
                 ""
             ],
-            "Diagnostic Performance Comparison": [
-                ""
-            ],
             "Diagnostic Performance Metrics": [
                 ""
             ],
@@ -3461,9 +3338,6 @@
                 ""
             ],
             "Diagnostic plots": [
-                ""
-            ],
-            "Diagnostic Statistics": [
                 ""
             ],
             "Diagnostic Test Validation (Balanced)": [
@@ -3565,9 +3439,6 @@
             "Disease+\nn={n}": [
                 ""
             ],
-            "Display a decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J.": [
-                ""
-            ],
             "Display a descriptive plain-language summary. It is educational and is not a clinical guide.": [
                 ""
             ],
@@ -3601,22 +3472,7 @@
             "Display detailed differences between model metrics": [
                 ""
             ],
-            "Display diagnostic statistics for each individual test before combinations.": [
-                ""
-            ],
             "Display educational content including statistical glossary, assumptions, and interpretation guidance. Helpful for understanding what each test means and how to interpret the results clinically.": [
-                ""
-            ],
-            "Display forest plot showing confidence intervals for key diagnostic metrics across patterns.": [
-                ""
-            ],
-            "Display frequency distribution tables for the gold standard and cross-tabulation of test results.": [
-                ""
-            ],
-            "Display grouped bar chart comparing performance metrics across test combinations.": [
-                ""
-            ],
-            "Display heatmap showing all metrics for all test patterns with color-coded performance values.": [
                 ""
             ],
             "Display introductory message with quick start guide. Helpful for first-time users to understand the tool.": [
@@ -3650,9 +3506,6 @@
                 ""
             ],
             "Do not select a model solely from its average net benefit: curve crossings and the plausibility of each threshold determine the clinically relevant comparison.": [
-                ""
-            ],
-            "DOR": [
                 ""
             ],
             "DOR (diagnostic odds ratio)": [
@@ -3719,9 +3572,6 @@
                 ""
             ],
             "Each test is part of the rule against which it is evaluated, so the results are affected by incorporation bias.": [
-                ""
-            ],
-            "Each test is reduced to two levels. Any level that is not the one chosen as positive counts as negative, so equivocal and indeterminate results are folded into the negative arm unless you recode them as missing first.": [
                 ""
             ],
             "Each test is scored against a reference standard built from the tests themselves, so these are measures of agreement with that rule, not estimates of diagnostic accuracy. The blank column is fixed at 100% by construction and carries no information.": [
@@ -3850,9 +3700,6 @@
             "Estimate": [
                 ""
             ],
-            "Estimate (95% CI)": [
-                ""
-            ],
             "Estimated Class or Rule Proportion": [
                 ""
             ],
@@ -3889,22 +3736,7 @@
             "Every case received the same predicted probability, so the classification metrics below are artefacts of a default 0.500 threshold that assigns everyone to one group: %s. Only the AUC of 0.500 is interpretable.": [
                 ""
             ],
-            "Every complete case has gold standard \"{level}\", so this sample contains no disease-absent cases. Specificity and NPV cannot be estimated and are reported as blank, and so are LR+, LR- and the diagnostic odds ratio: each of those needs a specificity, and computing one from the continuity correction would report a number that reflects no patient. Diagnostic accuracy assessment requires both diseased and non-diseased cases.": [
-                ""
-            ],
-            "Every complete case has gold standard \"{level}\", so this sample contains no disease-present cases. Sensitivity and PPV cannot be estimated and are reported as blank, and so are LR+, LR- and the diagnostic odds ratio: each of those needs a sensitivity, and computing one from the continuity correction would report a number that reflects no patient. Diagnostic accuracy assessment requires both diseased and non-diseased cases.": [
-                ""
-            ],
             "Every pair of predictors is tested separately, so with {k} predictors this table reports {m} tests. At the 5% level roughly one verdict in twenty is expected to read “significant” by chance alone, so with several pairs on screen treat an isolated significant row as a hypothesis to confirm rather than as a finding. No multiplicity adjustment is applied to these p-values.": [
-                ""
-            ],
-            "Every pattern and strategy is reported together with no adjustment for multiple comparisons. Treat the best-looking row as a hypothesis to confirm in new data, not as an established result.": [
-                ""
-            ],
-            "Every row is estimated directly from the observed joint results, not derived from the individual tests' sensitivity and specificity. These figures therefore do not assume the tests are conditionally independent given disease status, and they remain valid when the tests share biology or technology. They do assume this sample's case mix resembles the population the rule would be used in.": [
-                ""
-            ],
-            "Every row is estimated directly from the observed joint results, not derived from the individual tests' sensitivity and specificity. These figures therefore do NOT require the tests to be conditionally independent given disease status, and they stay valid when the tests share biology, specimen or technology. That is the main difference from a sequential-testing calculator, which must assume independence and warns about it.": [
                 ""
             ],
             "Every threshold in the range counts equally, so the value depends on the range you chose - report the range with it.": [
@@ -4087,9 +3919,6 @@
             "Extreme disease prevalence among observed reference results: {pct}% ({diseased}/{observed} cases). PPV and NPV are highly sensitive to prevalence and may not generalize to populations with different disease rates. Sensitivity and specificity can also vary across settings and case mix.": [
                 ""
             ],
-            "Extreme disease prevalence in the combination analysis: {percent}% ({diseased}/{observed} complete cases). PPV and NPV are highly sensitive to prevalence and may not generalize to populations with different disease rates. Sensitivity and specificity can also vary across settings and case mix, and with so few cases in one arm the likelihood ratios and diagnostic odds ratios for every pattern rest on a very small denominator. Individual-test tables use their own pairwise denominators, so their prevalence may differ.": [
-                ""
-            ],
             "Extreme fitted class proportion": [
                 ""
             ],
@@ -4219,18 +4048,6 @@
             "Fewer than 20 bootstrap replicates succeeded. The optimism correction is unreliable at this number - increase the sample size or reduce the number of candidate predictors.": [
                 ""
             ],
-            "Filter by pattern type": [
-                ""
-            ],
-            "Filter by statistic": [
-                ""
-            ],
-            "Filter the bar chart, heatmap and forest plot by pattern type: all patterns, all tests positive (+/+, +/+/+), all tests negative (-/-, -/-/-), or mixed/discordant patterns. Named strategy rows are not result patterns and are excluded whenever a specific pattern type is selected. The performance tables always show every pattern, and the decision-space plot always shows every row so patterns remain comparable.": [
-                ""
-            ],
-            "Filters": [
-                ""
-            ],
             "Final\nResult": [
                 ""
             ],
@@ -4244,9 +4061,6 @@
                 ""
             ],
             "Find the optimal cutoff by maximising the Youden index (sensitivity + specificity - 1), subject to the minimum sensitivity/specificity below. When off, the cutoff closest to the top-left corner of the ROC curve is reported instead.": [
-                ""
-            ],
-            "First diagnostic test to evaluate. Must have at least 2 levels.": [
                 ""
             ],
             "First Test": [
@@ -4357,18 +4171,6 @@
             "Forest plot": [
                 ""
             ],
-            "Forest Plot - 95% Confidence Intervals": [
-                ""
-            ],
-            "Forest Plot - Confidence Intervals": [
-                ""
-            ],
-            "Forest plot displaying 95 percent confidence intervals for key diagnostic metrics": [
-                ""
-            ],
-            "Forest Plot Not Available for Selected Statistic": [
-                ""
-            ],
             "Formulas Used": [
                 ""
             ],
@@ -4388,12 +4190,6 @@
                 ""
             ],
             "Fractional frequencies are used for point estimates only. Confidence intervals are omitted because no effective sample size or weighting design was supplied.": [
-                ""
-            ],
-            "Frequency distribution of the gold standard (reference) test showing counts and percentages for each level": [
-                ""
-            ],
-            "Frequency tables": [
                 ""
             ],
             "From": [
@@ -4465,16 +4261,7 @@
             "Gold Standard": [
                 ""
             ],
-            "gold standard": [
-                ""
-            ],
             "Gold Standard (Reference Test)": [
-                ""
-            ],
-            "Gold Standard Frequency Distribution": [
-                ""
-            ],
-            "Gold Standard Has Only One Outcome": [
                 ""
             ],
             "Gold standard variable must be specified. Select a reference test variable that represents the true disease status.": [
@@ -4510,9 +4297,6 @@
             "Group Variable (Optional)": [
                 ""
             ],
-            "Grouped bar chart comparing sensitivity, specificity, PPV, NPV, and accuracy across test combinations": [
-                ""
-            ],
             "Groups": [
                 ""
             ],
@@ -4538,12 +4322,6 @@
                 ""
             ],
             "Harmonic mean of sensitivity and PPV; because PPV depends on prevalence, F1 also changes with the selected prevalence.": [
-                ""
-            ],
-            "Heatmap": [
-                ""
-            ],
-            "Heatmap - All Metrics by Pattern": [
                 ""
             ],
             "Height of ROC plots": [
@@ -4601,9 +4379,6 @@
                 ""
             ],
             "Highest Average Net Benefit Over the Selected Range:": [
-                ""
-            ],
-            "Highest-Ranked Rule": [
                 ""
             ],
             "Highlight optimal cutoff points on ROC curve": [
@@ -4696,13 +4471,7 @@
             "If 220 participants include 110 reference-positive and 110 reference-negative observations, with TP=90 and TN=80, then FN=20 and FP=30.": [
                 ""
             ],
-            "If one of the tests being evaluated also contributed to establishing the reference standard, that test is being compared against itself and its apparent accuracy is inflated. This is easy to do accidentally when the reference is a final diagnosis assembled from all available information.": [
-                ""
-            ],
             "If the Analysis result panel also prints 'At least one expected cell count is less than five', that is a separate and looser check: kappaSize applies it to the outcome category prevalences you entered (for a binary outcome, to the prevalence of the finding alone), not to the agreement-pattern cells the chi-square actually divides by, and those empty out long before any category prevalence does. Seeing one warning without the other is expected.": [
-                ""
-            ],
-            "If the reference standard was obtained mainly on patients whose test was positive, then test-negative patients of BOTH disease states are under-represented: the missing false negatives inflate sensitivity, and the missing true negatives deflate specificity. This is the usual situation when the reference standard is a biopsy or resection that is only performed after a positive test.": [
                 ""
             ],
             "If those risks came from a model fitted on this dataset - including a cutpoint, a score, or a regression developed here - the net benefit is optimistically biased and the model can appear to beat treat-all when it does not.": [
@@ -4810,9 +4579,6 @@
             "Incorporation bias occurs when the reference standard includes the test being evaluated.": [
                 ""
             ],
-            "Incorporation bias.": [
-                ""
-            ],
             "Incremental Assigned Benefit vs Treat All": [
                 ""
             ],
@@ -4834,13 +4600,7 @@
             "indicating %1$s discrimination in this sample: the marker ranks a randomly chosen case from the positive class ahead of a randomly chosen case from the negative class about %2$.0f%% of the time, in the classification direction in use. AUC is a ranking property of pairs, computed over all cutpoints; it does not depend on which cutpoint was selected, and it does not describe how reliably any single cutpoint classifies an individual patient, which also depends on the cutpoint and on disease prevalence. This AUC is an in-sample estimate that has not been internally or externally validated. %3$s": [
                 ""
             ],
-            "Individual Test {test} statistics use {used} of {total} cases with both the test and reference standard observed.": [
-                ""
-            ],
             "Individual Test Performance": [
-                ""
-            ],
-            "Individual test statistics": [
                 ""
             ],
             "infinite": [
@@ -4882,13 +4642,7 @@
             "Insufficient Cases": [
                 ""
             ],
-            "Insufficient Complete Cases": [
-                ""
-            ],
             "Insufficient complete cases for analysis ({n} cases available; this implementation requires at least 10 to run).": [
-                ""
-            ],
-            "Insufficient Data": [
                 ""
             ],
             "Insufficient Data After Removing Missing Values": [
@@ -4972,12 +4726,6 @@
             "Interventions Avoided": [
                 ""
             ],
-            "Invalid Counts": [
-                ""
-            ],
-            "Invalid counts were detected for Test {test}. The individual analysis was skipped.": [
-                ""
-            ],
             "Invalid cut-off inputs": [
                 ""
             ],
@@ -5021,9 +4769,6 @@
                 ""
             ],
             "Item": [
-                ""
-            ],
-            "Its advantage is not established: the lower bound of this rule's Youden's J ({lower}) falls at or below the next-best rule's point estimate ({runnerUp}), so the ranking may reflect sampling variation rather than a real difference.": [
                 ""
             ],
             "Its curve is still shown in the plot.": [
@@ -5197,9 +4942,6 @@
             "Legend position": [
                 ""
             ],
-            "Level": [
-                ""
-            ],
             "Level '{}' not found in variable '{}'. Available levels: {}": [
                 ""
             ],
@@ -5210,9 +4952,6 @@
                 ""
             ],
             "Likelihood ratios describe how a test result changes pre-test odds.": [
-                ""
-            ],
-            "Likelihood Ratios with 95% Confidence Intervals": [
                 ""
             ],
             "Likelihood-ratio update:": [
@@ -5246,9 +4985,6 @@
                 ""
             ],
             "Log-Likelihood": [
-                ""
-            ],
-            "Log-scale 95 percent confidence intervals for LR+, LR- and the diagnostic odds ratio. These are ratios on an unbounded scale, so they are reported separately from the proportions above rather than sharing a column with them.": [
                 ""
             ],
             "Logistic (all vars)": [
@@ -5338,12 +5074,6 @@
             "LR+ Quality": [
                 ""
             ],
-            "LR+, LR- and the diagnostic odds ratio are computed with a Haldane-Anscombe 0.5 continuity correction when a cell is zero, so they stay finite; sensitivity, specificity, PPV and NPV on the same row use the observed counts. The two therefore need not agree exactly at a zero cell. The correction repairs a sampling zero, not a structural one, so it is withheld whenever a whole margin is empty, and what is then left blank differs between the two kinds of empty margin. On a pattern that no patient exhibits, LR+ and the odds ratio are 0/0 and are left blank, while LR- is exactly 1 and is shown as such: any other result leaves the odds unchanged. The mirror case, a row with no test-negative patients, blanks LR- and the odds ratio and shows LR+ as exactly 1. In a sample where every case is disease-present, or every case is disease-absent, sensitivity or specificity cannot be estimated at all, so all three ratios are left blank in every row.": [
-                ""
-            ],
-            "LR+, LR- and the diagnostic odds ratio use a Haldane-Anscombe 0.5 correction when a cell is zero, so they stay finite; the proportions on the same row use the observed counts. A pattern that no patient exhibits is left BLANK rather than corrected: with no predicted positives, LR+ and the odds ratio are undefined and are not invented.": [
-                ""
-            ],
             "Macro AUC": [
                 ""
             ],
@@ -5351,9 +5081,6 @@
                 ""
             ],
             "Maintain outcome class proportions in bootstrap samples (recommended for imbalanced data)": [
-                ""
-            ],
-            "Majority (>=2/3 pos)": [
                 ""
             ],
             "Majority rule has an empty group": [
@@ -5686,9 +5413,6 @@
             "Missing epiR Package": [
                 ""
             ],
-            "Missing Level": [
-                ""
-            ],
             "Missing Packages": [
                 ""
             ],
@@ -5711,9 +5435,6 @@
                 ""
             ],
             "Missing Variables": [
-                ""
-            ],
-            "Mixed/Discordant": [
                 ""
             ],
             "Model": [
@@ -6142,9 +5863,6 @@
             "No better than predicting the base rate": [
                 ""
             ],
-            "No candidate rule has an estimable Youden index with at least 10 disease-present and 10 disease-absent cases. Youden's J needs both reference groups to be reasonably sized before a ranking means anything.": [
-                ""
-            ],
             "No case in the analyzed data meets the strict-majority rule, so there is no rule-positive group. The positive-response probability cannot be computed from an empty denominator and is left blank rather than reported.": [
                 ""
             ],
@@ -6157,13 +5875,7 @@
             "No cases remain for {test} after applying the selected positive and negative levels.": [
                 ""
             ],
-            "No Complete Cases": [
-                ""
-            ],
             "No complete cases available": [
-                ""
-            ],
-            "No complete cases remain after removing missing data.": [
                 ""
             ],
             "No confidence intervals could be matched to the reported statistics. The installed version of epiR labels its output differently from the version this analysis expects. The interval tables are left blank; the point estimates above are unaffected.": [
@@ -6181,9 +5893,6 @@
             "No Data": [
                 ""
             ],
-            "No data are available. Load data before running the analysis.": [
-                ""
-            ],
             "No Data Provided": [
                 ""
             ],
@@ -6197,9 +5906,6 @@
                 ""
             ],
             "No example": [
-                ""
-            ],
-            "No Gold Positive Level": [
                 ""
             ],
             "No Gold Standard": [
@@ -6221,9 +5927,6 @@
                 ""
             ],
             "No nomogram is drawn for this table.": [
-                ""
-            ],
-            "No observations were found for pattern \"{pattern}\". This combination was skipped.": [
                 ""
             ],
             "No obvious sparse-cell warning.": [
@@ -6251,12 +5954,6 @@
                 ""
             ],
             "No report sentences were written, because %s.": [
-                ""
-            ],
-            "No Rows Match the Pattern Filter": [
-                ""
-            ],
-            "No Rule Performs Better Than Chance": [
                 ""
             ],
             "No scoring system could be built: the model selected zero predictors at the chosen lambda, so there are no coefficients to convert into points. %s": [
@@ -6289,18 +5986,6 @@
             "No statistical comparison between these two tests could be computed; the reason is given in the Important Information panel. Report the per-test performance only.": [
                 ""
             ],
-            "No Test 1": [
-                ""
-            ],
-            "No Test 1 Positive Level": [
-                ""
-            ],
-            "No Test 2 Positive Level": [
-                ""
-            ],
-            "No Test 3 Positive Level": [
-                ""
-            ],
             "No Test Variables": [
                 ""
             ],
@@ -6314,9 +5999,6 @@
                 ""
             ],
             "No usable values: {model}": [
-                ""
-            ],
-            "No valid observations were found for Test {test}. The individual analysis was skipped.": [
                 ""
             ],
             "No Valid ROC Results": [
@@ -6347,9 +6029,6 @@
                 ""
             ],
             "none": [
-                ""
-            ],
-            "None of the {n} candidate rules that could be scored has a Youden's J above zero: in this sample no single test, result pattern or combination strategy separates disease-present from disease-absent cases better than chance. A rule with a negative Youden's J is anti-predictive - its result would have to be reversed to carry information. Review the level chosen as positive for the reference standard and for each test, then treat the sensitivity and specificity in the tables above as uninformative until that is settled.": [
                 ""
             ],
             "none.": [
@@ -6428,9 +6107,6 @@
                 ""
             ],
             "Nothing about the clinical rule is shown until then.": [
-                ""
-            ],
-            "Notices": [
                 ""
             ],
             "NPV": [
@@ -6595,12 +6271,6 @@
             "Observed Proportion": [
                 ""
             ],
-            "Observed sensitivity and specificity are both above 70%.": [
-                ""
-            ],
-            "Observed sensitivity and specificity are both above 80%.": [
-                ""
-            ],
             "Observed vs Predicted Probabilities ({grp})": [
                 ""
             ],
@@ -6650,9 +6320,6 @@
                 ""
             ],
             "Only {kept} of the {given} NRI risk threshold(s) entered could be read as a number strictly between 0 and 1. Enter them as comma-separated proportions, for example: 0.2, 0.5": [
-                ""
-            ],
-            "Only {n} cases in the smaller reference-standard group": [
                 ""
             ],
             "Only {n} events of the outcome are present in the analysed cases.": [
@@ -6742,9 +6409,6 @@
             "Optimized for confirmatory testing with high specificity": [
                 ""
             ],
-            "Optional third test for 3-way combination analysis (8 patterns).": [
-                ""
-            ],
             "Optional variable to stratify comparison metrics by subgroup (e.g., specimen type, histologic type, site). Computes separate sensitivity, specificity, accuracy, and OPA within each subgroup level.": [
                 ""
             ],
@@ -6782,9 +6446,6 @@
                 ""
             ],
             "Original measurement scale, as in the Selected Variables table": [
-                ""
-            ],
-            "Other requirements": [
                 ""
             ],
             "Outcome Balance Warning": [
@@ -6937,9 +6598,6 @@
             "Pap cytology": [
                 ""
             ],
-            "Parallel (>=1 pos)": [
-                ""
-            ],
             "Parallel rule: positive if either test is positive, negative only if both are negative.": [
                 ""
             ],
@@ -7039,12 +6697,6 @@
             "Patients screened per true positive is the reciprocal of the observed true-positive yield, not a causal number-needed-to-screen effect measure.": [
                 ""
             ],
-            "Pattern": [
-                ""
-            ],
-            "Pattern type": [
-                ""
-            ],
             "pAUC Lower CI": [
                 ""
             ],
@@ -7090,9 +6742,6 @@
             "Penalty type": [
                 ""
             ],
-            "Percent": [
-                ""
-            ],
             "Percentage": [
                 ""
             ],
@@ -7121,9 +6770,6 @@
                 ""
             ],
             "Performance Gap": [
-                ""
-            ],
-            "Performance Heatmap": [
                 ""
             ],
             "Performance Level": [
@@ -7258,9 +6904,6 @@
             "Positive and negative predictive values are adjusted to the supplied population prevalence. No confidence intervals were requested.": [
                 ""
             ],
-            "Positive and negative predictive values are calculated using the sample prevalence. Interpret them cautiously if the sample does not represent the target clinical population.": [
-                ""
-            ],
             "Positive Class": [
                 ""
             ],
@@ -7268,9 +6911,6 @@
                 ""
             ],
             "Positive Level": [
-                ""
-            ],
-            "Positive Levels May Be Inverted": [
                 ""
             ],
             "Positive Likelihood Ratio": [
@@ -7426,9 +7066,6 @@
             "PPV and NPV below are computed at the prevalence of this sample (%.1f%%) and do not carry over to a population where the condition is more or less common - sensitivity and specificity do, predictive values do not. Recompute them for your own setting's prevalence before quoting them.": [
                 ""
             ],
-            "PPV and NPV depend on prevalence, so they transfer to another population only if its disease rate is similar. Sensitivity, specificity and the likelihood ratios are less prevalence-dependent, though not independent of it. LR+ and LR- are the more useful numbers to carry elsewhere not because they are more stable -- being functions of sensitivity and specificity, they inherit exactly the same dependence -- but because they convert a pre-test probability into a post-test probability at whatever prevalence the new setting has.": [
-                ""
-            ],
             "PPV and NPV vary with prevalence and should be verified in the target setting.": [
                 ""
             ],
@@ -7442,9 +7079,6 @@
                 ""
             ],
             "PPV, NPV and overall accuracy all depend on disease prevalence.": [
-                ""
-            ],
-            "PPV/NPV Interpretation": [
                 ""
             ],
             "PPV/NPV will be calculated using the supplied population prevalence (pp=TRUE). Confidence intervals are unavailable in this mode.": [
@@ -7615,13 +7249,7 @@
             "Prevalence Invalid": [
                 ""
             ],
-            "Prevalence is identical in every row: it is the disease rate in the whole sample, not the rate within that pattern.": [
-                ""
-            ],
             "Prevalence is low (%.2f%%). Below 5%% pre-test probability, PPV is dominated by specificity: a one-percentage-point change in specificity can move PPV by tens of points. Verify the specificity assumptions and the intended population.": [
-                ""
-            ],
-            "Prevalence is the same in every row: it is the disease rate in the whole sample, not the rate within that pattern. Balanced Accuracy and Youden's J are the same statistic on two scales (Balanced Accuracy = (J + 1) / 2), so ranking by one is identical to ranking by the other.": [
                 ""
             ],
             "Prevalence is very high (%.1f%%). Verify that this assumption matches the intended population; predictive values are prevalence-dependent.": [
@@ -7831,9 +7459,6 @@
             "Proportions should sum to 1.0, current sum is {sum}.": [
                 ""
             ],
-            "Proportions with 95% Confidence Intervals": [
-                ""
-            ],
             "Prospective power (planning)": [
                 ""
             ],
@@ -7936,9 +7561,6 @@
             "Range Type": [
                 ""
             ],
-            "Rank eligible exact-pattern rules and named parallel, serial, and majority strategies descriptively by observed Youden's J. This sample-dependent summary is not a clinical guide or validated recommendation.": [
-                ""
-            ],
             "Ranks a random case above a random non-case %.0f%% of the time": [
                 ""
             ],
@@ -7985,9 +7607,6 @@
                 ""
             ],
             "Reading of the test values: <b>LOWER values were taken to indicate %1$s</b> (Classification Direction = \"%2$s\"). If that is the wrong way round for this marker, every sensitivity, specificity, cutpoint and AUC below is reversed — switch Classification Direction to \">=\" and the AUC becomes 1 minus the value shown.": [
-                ""
-            ],
-            "Reading the columns": [
                 ""
             ],
             "Reading the Nomogram": [
@@ -8114,9 +7733,6 @@
                 ""
             ],
             "Relevant for high-specificity screening applications (minimizing false positives)": [
-                ""
-            ],
-            "Removed {n} case(s) with missing values": [
                 ""
             ],
             "Rename the duplicated label(s): {names}.": [
@@ -8353,9 +7969,6 @@
             "ROC Smoothing Method": [
                 ""
             ],
-            "Row type": [
-                ""
-            ],
             "RT-PCR": [
                 ""
             ],
@@ -8395,9 +8008,6 @@
             "Sample size (N) must be a whole number of at least 11. The kappaSize method is a large-sample approximation and its engine refuses any study of 10 or fewer subjects (received {n}).": [
                 ""
             ],
-            "Sample size and cell counts are reported as notices when they fall below the usual thresholds. Read the confidence intervals rather than the point estimates whenever they do.": [
-                ""
-            ],
             "Sample size calculation failed": [
                 ""
             ],
@@ -8414,12 +8024,6 @@
                 ""
             ],
             "Sample Size Warning": [
-                ""
-            ],
-            "Sample size: n = {n} complete cases": [
-                ""
-            ],
-            "Sample-dependent descriptive ranking of eligible exact-pattern rules and named testing strategies by observed Youden index; this is not a clinical guide or validated recommendation": [
                 ""
             ],
             "Sampled": [
@@ -8524,9 +8128,6 @@
             "Screening Tests (Rule-Out):": [
                 ""
             ],
-            "Second diagnostic test for combination analysis. Leave empty for single test only.": [
-                ""
-            ],
             "Second Test": [
                 ""
             ],
@@ -8560,22 +8161,10 @@
             "Select from available statistical approaches:": [
                 ""
             ],
-            "Select one metric, or use the plot-specific default metric set. The bar chart defaults to sensitivity, specificity, PPV, NPV, and accuracy; the heatmap also includes prevalence, balanced accuracy, and Youden's J. The forest plot supports sensitivity, specificity, PPV, NPV, accuracy, LR+, LR-, and diagnostic OR, for which confidence intervals are available. Unsupported forest selections produce an explanatory notice rather than silently showing other statistics. The decision-space plot has fixed sensitivity and specificity axes and is unaffected.": [
-                ""
-            ],
             "Select Test Variables:": [
                 ""
             ],
-            "Select the disease-present level for the gold standard.": [
-                ""
-            ],
             "Select the first diagnostic test to evaluate (e.g., imaging result, biomarker,  clinical assessment). This should be a test you want to validate against the gold standard.": [
-                ""
-            ],
-            "Select the level indicating disease presence (e.g., \"1\", \"positive\", \"malignant\").": [
-                ""
-            ],
-            "Select the level representing a positive result for Test 1.": [
                 ""
             ],
             "Select the level that indicates disease IS PRESENT in your gold standard variable  (e.g., \"positive\", \"malignant\", \"1\"). This represents the condition you want to detect.": [
@@ -8593,18 +8182,6 @@
             "Select the most reliable diagnostic method available (e.g., biopsy, final pathology,  expert consensus). This is the \"truth\" against which we compare other tests.  The selected positive level is compared with the remaining levels; if indeterminate values should be excluded, also select explicit negative levels.": [
                 ""
             ],
-            "Select the positive level for Test 1.": [
-                ""
-            ],
-            "Select the positive level for Test 2.": [
-                ""
-            ],
-            "Select the positive level for Test 3.": [
-                ""
-            ],
-            "Select the reference standard (e.g., biopsy, final diagnosis). This represents the reference classification. Binary variables are intended; with additional levels, all non-positive levels are grouped as negative and a warning is shown.": [
-                ""
-            ],
             "Select which level of the class variable represents the positive class (disease/condition present).": [
                 ""
             ],
@@ -8615,9 +8192,6 @@
                 ""
             ],
             "Selected Variables": [
-                ""
-            ],
-            "Selection Method": [
                 ""
             ],
             "Sensitivity": [
@@ -8737,9 +8311,6 @@
             "Sequential testing analysis completed: %s strategy with prevalence %.1f%%, combined sensitivity %.1f%%, combined specificity %.1f%%.": [
                 ""
             ],
-            "Serial (all pos)": [
-                ""
-            ],
             "serial negative (exclusion) strategy": [
                 ""
             ],
@@ -8792,9 +8363,6 @@
                 ""
             ],
             "Show explanatory panels describing test evaluation methodology and assumptions. Helpful for understanding when and how to use this analysis.": [
-                ""
-            ],
-            "Show explanatory panels describing what a pattern row and a strategy row mean, how to read each column, and the study-design assumptions and biases that affect diagnostic accuracy estimates.": [
                 ""
             ],
             "Show overall percent agreement (OPA) between each test and the gold standard with 95 percent confidence intervals. OPA is the proportion of cases where the test and gold standard agree. Unlike kappa, OPA does not correct for chance agreement.": [
@@ -8854,9 +8422,6 @@
             "Single ROC Analysis": [
                 ""
             ],
-            "Single test": [
-                ""
-            ],
             "Size of difference": [
                 ""
             ],
@@ -8890,9 +8455,6 @@
             "Small sample: %1$d positive and %2$d negative case(s). DeLong's test relies on a large-sample approximation to the variance of the AUC, so with fewer than 10 cases in a class the p-values and confidence intervals below are unreliable and are likely to be too narrow. Treat any difference as provisional and confirm it in a larger sample.": [
                 ""
             ],
-            "Small sample: n = {n} complete cases": [
-                ""
-            ],
             "Small Test Categories": [
                 ""
             ],
@@ -8924,9 +8486,6 @@
                 ""
             ],
             "Sparse categories.": [
-                ""
-            ],
-            "Sparse Cell Counts": [
                 ""
             ],
             "Sparse Reference-Standard Class": [
@@ -8981,9 +8540,6 @@
                 ""
             ],
             "Spectrum bias occurs when the study population differs materially from clinical practice.": [
-                ""
-            ],
-            "Spectrum bias.": [
                 ""
             ],
             "Spline calibration curve": [
@@ -9118,9 +8674,6 @@
             "Strategy Notes and Teaching Examples": [
                 ""
             ],
-            "Strategy Ranking Unavailable": [
-                ""
-            ],
             "Strategy: {strategy}": [
                 ""
             ],
@@ -9217,9 +8770,6 @@
             "Switch on 'Clinical metrics' to see the PPV at %s in the Clinical Application Metrics table.": [
                 ""
             ],
-            "Systematic evaluation of diagnostic test combinations. Analyzes all possible test result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a gold standard and summarizes named parallel, serial, and majority strategies. Calculates sensitivity, specificity, predictive values, likelihood ratios, accuracy, and uncertainty intervals. Descriptive rankings are sample-dependent analytical summaries, not clinical guides or validated recommendations.": [
-                ""
-            ],
             "Table thresholds outside the analysed range": [
                 ""
             ],
@@ -9280,15 +8830,6 @@
             "Test '{test}' is extremely imbalanced on the positive/not-positive split the analysis uses: the smaller side is {percentage}% of observations. This may destabilize parameter estimation.": [
                 ""
             ],
-            "Test {test} cannot be summarized because no case has both the test and reference-standard result.": [
-                ""
-            ],
-            "Test {test} Has No Complete Cases": [
-                ""
-            ],
-            "Test {test} Pairwise Denominator": [
-                ""
-            ],
             "Test %d": [
                 ""
             ],
@@ -9305,9 +8846,6 @@
                 ""
             ],
             "Test 1 has low discriminatory power (sensitivity plus specificity below 1.1, i.e. a Youden index below 0.1). Check its likelihood ratios in the results table: an operating point close to the chance diagonal can still give an informative LR+ or LR- when sensitivity and specificity are very unequal.": [
-                ""
-            ],
-            "Test 1 is required. Select at least one test variable.": [
                 ""
             ],
             "Test 1 Low Performance": [
@@ -9329,9 +8867,6 @@
                 ""
             ],
             "Test 1 parameters": [
-                ""
-            ],
-            "Test 1 Performance": [
                 ""
             ],
             "Test 1 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
@@ -9385,9 +8920,6 @@
             "Test 2 - Recoded Data": [
                 ""
             ],
-            "Test 2 (Required for Combinations)": [
-                ""
-            ],
             "Test 2 (Required for Comparison)": [
                 ""
             ],
@@ -9415,9 +8947,6 @@
             "Test 2 parameters": [
                 ""
             ],
-            "Test 2 Performance": [
-                ""
-            ],
             "Test 2 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
                 ""
             ],
@@ -9425,9 +8954,6 @@
                 ""
             ],
             "Test 2 Positive LR": [
-                ""
-            ],
-            "Test 2 Required Before Test 3": [
                 ""
             ],
             "Test 2 sensitivity": [
@@ -9475,13 +9001,7 @@
             "Test 3 (Optional)": [
                 ""
             ],
-            "Test 3 cannot be combined without Test 2. Select Test 2 and its positive level, or remove Test 3.": [
-                ""
-            ],
             "Test 3 Negative Level": [
-                ""
-            ],
-            "Test 3 Performance": [
                 ""
             ],
             "Test 3 Positive Level": [
@@ -9515,9 +9035,6 @@
                 ""
             ],
             "Test Combination": [
-                ""
-            ],
-            "Test Combination Performance": [
                 ""
             ],
             "Test Comparison": [
@@ -9556,15 +9073,6 @@
             "Test Parameters": [
                 ""
             ],
-            "Test Pattern": [
-                ""
-            ],
-            "Test pattern column": [
-                ""
-            ],
-            "Test Pattern Column": [
-                ""
-            ],
             "Test Performance Comparison": [
                 ""
             ],
@@ -9575,9 +9083,6 @@
                 ""
             ],
             "Test Results": [
-                ""
-            ],
-            "Test Results Cross-Tabulation": [
                 ""
             ],
             "Test sensitivity": [
@@ -9676,9 +9181,6 @@
             "The calculation did not converge to a usable answer: the search returned {bound}, which is below the lowest agreement the model allows for these prevalences (every agreement pattern must keep a non-negative probability). With this combination of sample size, anticipated kappa and category prevalences the large-sample approximation breaks down. Increase N, use a less extreme prevalence, or raise the significance level.": [
                 ""
             ],
-            "The candidate-rule ranking is a descriptive argmax over observed Youden's J with no significance test and no multiplicity correction. On data with no real signal it will still name a winner. It is a hypothesis to confirm in new data, not a validated recommendation.": [
-                ""
-            ],
             "The Clinical Application Metrics table reports the PPV at %s.": [
                 ""
             ],
@@ -9695,9 +9197,6 @@
                 ""
             ],
             "The computed sample size ({n}) is very large and may be impractical for a typical interobserver-agreement study.": [
-                ""
-            ],
-            "The confidence interval is left blank for {n} row(s) ({patterns}) whose ratio is determinate but whose standard error is not estimable: the pattern has an empty test margin, so the delta-method standard error on the log scale is exactly zero and an interval computed from it would be zero-width. A zero-width interval would assert that the ratio is known exactly on a row carrying no information, so the point estimate is shown without one.": [
                 ""
             ],
             "The corrected AUC (%1$.3f) is below 0.500. This is a real result, not an error: the bootstrap replicates fit models that pick up chance associations, so the optimism (%2$.3f) exceeds what the model actually achieves. Read it as evidence that these predictors carry no usable signal at this sample size - the model performs no better than, and by this estimate slightly worse than, guessing.": [
@@ -9799,9 +9298,6 @@
             "The following predictor variable(s) are not numeric: %s. ROC analysis requires continuous or ordinal numeric predictors, such as biomarker levels, test scores or measurements. • If the variable is ORDINAL, recode it to numbers in rank order (for example Low=1, Medium=2, High=3). • Do not number a NOMINAL variable such as tumour site or histological subtype: the AUC would then be decided by the order you happened to assign rather than by the marker. • For a nominal predictor use contingency table analysis instead.": [
                 ""
             ],
-            "The forest plot is not drawn for \"{statistic}\" because this analysis does not calculate a confidence interval for that statistic. The bar chart and heatmap can still display it.": [
-                ""
-            ],
             "The generated scoring system reaches %d points for a single factor. A usable clinical score is typically under 20 points in total; this one is dominated by the ratio between the largest and smallest selected effects. Switch to the Max-scaled method or remove the near-zero predictor before using this score.": [
                 ""
             ],
@@ -9815,9 +9311,6 @@
                 ""
             ],
             "The gold-standard variable cannot also occupy a test slot. Select a different variable for each test.": [
-                ""
-            ],
-            "The highest observed Youden's J among the eligible candidate rules was {youden}.": [
                 ""
             ],
             "The intercept is the log-odds of the event when every selected predictor is 0 (or at its reference level); with the coefficients above it reproduces the model's predicted probability as plogis(intercept + sum(coefficient x value)). No odds ratio or importance applies to it.": [
@@ -9886,9 +9379,6 @@
             "The Number Needed to Diagnose (1/Youden) was {nnd}. This is a prevalence-free index of discriminating power, not a count of patients to test: the number that must actually be tested to find one additional case also depends on disease prevalence in the population.": [
                 ""
             ],
-            "The observed results involve a trade-off between sensitivity and specificity.": [
-                ""
-            ],
             "The one worked example that assumes conditional independence: a biochemical measurement and a physical examination.": [
                 ""
             ],
@@ -9911,12 +9401,6 @@
                 ""
             ],
             "The partial AUC confidence interval is a bootstrap interval of the requested type '%1$s' from %2$s resamples. If any resample contained a single outcome class it is dropped, and a BCa interval is then reported as a percentile interval instead — a notice appears when that happens. The interval is for the raw partial AUC over the chosen focus range, NOT for the McClish-normalised value in the next column.": [
-                ""
-            ],
-            "The pattern-type and statistic filters affect the plots only. The performance tables always show every row.": [
-                ""
-            ],
-            "The pattern-type filter \"{filter}\" matches none of the rows in this analysis, so the bar chart, heatmap and forest plot are blank. Pattern filters apply to exact result patterns such as \"+/+\"; a single-test analysis has no such rows, and the named strategies are not result patterns. Set the pattern filter back to \"All Patterns\" to see the plots.": [
                 ""
             ],
             "The penalized-EM analysis has N = {n}. N < 50 is a general stability warning, not a clinical adequacy threshold; fixed priors may have substantial influence. Inspect bootstrap intervals and consider collecting more observations.": [
@@ -9952,9 +9436,6 @@
             "the prevalence you entered (%.3f)": [
                 ""
             ],
-            "The ranking": [
-                ""
-            ],
             "The reference rule is a majority vote of the same tests being evaluated, so each test helps decide the answer against which it is compared. This incorporation bias can materially distort the displayed agreement probabilities, but its magnitude and direction are study-specific. Treat these as agreement with the majority rule, not as diagnostic accuracy.": [
                 ""
             ],
@@ -9962,9 +9443,6 @@
                 ""
             ],
             "The reference rule is defined as \"every test is positive\", so each test is compared against a rule built from its own result. Sensitivity and NPV are therefore fixed at 100% by construction on every dataset and are left blank rather than reported as findings. The remaining values are also affected by this circularity and describe agreement with the rule, not diagnostic accuracy.": [
-                ""
-            ],
-            "The reference standard and tests must use different variables. Select a different variable for: {variables}.": [
                 ""
             ],
             "The remaining values describe agreement with the rule and are not estimates of diagnostic accuracy.": [
@@ -9998,12 +9476,6 @@
                 ""
             ],
             "The results describe agreement with the majority-vote rule and are not estimates of diagnostic accuracy.": [
-                ""
-            ],
-            "The rows are not independent: every rule is scored on the same patients, so the differences between them are correlated. A formal comparison needs a paired procedure -- McNemar's test applied SEPARATELY within the diseased patients to compare sensitivity and within the non-diseased patients to compare specificity, because a single McNemar over the whole sample compares positivity rates rather than accuracy. Paired PPV and NPV comparisons need a generalised score test instead. This analysis performs neither.": [
-                ""
-            ],
-            "The rule that separates the two groups best in this sample is one that calls a patient positive when the tests are negative; or every named strategy (Parallel, Serial, Majority) performs at or below chance while an exact result pattern does not. Both are the signature of a reversed positive level: the arithmetic still works, but the sensitivity and specificity reported for each rule are then swapped, and the best-performing rule is one no clinician can apply. Check the level chosen as positive for the reference standard and for each test before interpreting any of these results.": [
                 ""
             ],
             "the sample mean": [
@@ -10045,9 +9517,6 @@
             "The smaller outcome group has only %1$.1f%% of observations (%2$d cases). This may affect ROC reliability.": [
                 ""
             ],
-            "The specified positive level \"{level}\" is not defined for variable \"{variable}\" ({label}). Select a level that exists in the data.": [
-                ""
-            ],
             "The spline calibration curve for '%1$s' could not be fitted with %2$s knots: it needs at least %3$s events and %4$s non-events, more distinct predicted probabilities than knots, and a converging fit. Reduce the number of knots or check the predictor. ICI, E50, E90 and Emax are left blank.": [
                 ""
             ],
@@ -10079,9 +9548,6 @@
                 ""
             ],
             "The Treatment Threshold Range could not be read as \"min,max,step\" with a positive step inside 0 to 1. The default range 0.05 to 0.50 in steps of 0.05 was used instead.": [
-                ""
-            ],
-            "The two kinds of row": [
                 ""
             ],
             "The unpenalized refit on all candidate variables could not be fitted (%s), so its row is omitted.": [
@@ -10147,9 +9613,6 @@
             "These markers take the same value in every case and carry no information: %s. Their AUC of 0.500 with a zero-width interval is arithmetic, not a finding, and the accompanying sensitivity of 1.000 at an infinite cutpoint simply means every case is called positive. Remove them from the analysis.": [
                 ""
             ],
-            "These rows have a 2-by-2 cell count below 5 (smallest cell {minimum}): {rows}. Their likelihood ratios, diagnostic odds ratios and confidence intervals rest on very few cases and may be unstable even when they look informative. Sensitivity, specificity and Youden's J on the same rows can still be sound, because those depend on the size of the two reference groups rather than on the smallest cell. Treat the ratio columns as exploratory and validate them in a larger independent sample.": [
-                ""
-            ],
             "These values describe agreement with a majority-vote rule built from the same tests. They are not estimates of diagnostic accuracy.": [
                 ""
             ],
@@ -10169,9 +9632,6 @@
                 ""
             ],
             "This analysis evaluated %1$d predictor(s) using %2$d observations in a %3$s context.": [
-                ""
-            ],
-            "This analysis evaluates every way two or three diagnostic tests can be combined, scoring each against the reference standard on the same patients. With a single test selected it reports that one test alone, and the two row kinds described below do not arise.": [
                 ""
             ],
             "This analysis resamples the data by the bootstrap and shrinks the result towards the prior AUC. It does not run MCMC and it does not produce a Bayesian posterior: the interval shown is a bootstrap percentile interval, not a credible interval. The Bootstrap Evidence Ratio is a resampling frequency - the number of bootstrap resamples whose AUC exceeded 0.5, divided by one plus the number that did not - and is not a Bayes factor, because no marginal likelihood is computed. Do not read it against Bayes factor evidence thresholds. For genuine Bayesian inference use dedicated software such as Stan or JAGS.": [
@@ -10205,12 +9665,6 @@
                 ""
             ],
             "This is a CONFIDENCE-INTERVAL calculation: it returns the number of subjects\nneeded for the interval around kappa to reach the requested width. It answers a\ndifferent question from the power approach (kappaSizePower), which sizes a study\nto reject a null value, so the two will not agree on a sample size for the same\nstudy - choose the one that matches how the result will be reported.": [
-                ""
-            ],
-            "This is a descriptive ranking of {n} candidate rule(s) scored on at least 10 disease-present and 10 disease-absent cases with a Youden's J above zero; no significance test or multiplicity correction was applied.": [
-                ""
-            ],
-            "This is a descriptive, sample-dependent ranking of exact-pattern rules and named testing strategies. It is not a clinical guide or validated recommendation.": [
                 ""
             ],
             "This is a planning expectation, not a guarantee.": [
@@ -10282,13 +9736,7 @@
             "This range contains a gap where the model is not superior; read the curve.": [
                 ""
             ],
-            "This sample has {pos} disease-present and {neg} disease-absent complete cases. Sensitivity and PPV are limited by the disease-present count and specificity and NPV by the disease-absent count, so with fewer than 10 in one group the statistics that depend on it are driven by single patients and their confidence intervals span most of the possible range. Every likelihood ratio and diagnostic odds ratio inherits that instability.": [
-                ""
-            ],
             "This sample size cannot demonstrate agreement.": [
-                ""
-            ],
-            "This sample-dependent ranking is an analytical summary, not a clinical guide or validated recommendation.": [
                 ""
             ],
             "This scenario is illustrative, does not change settings, and is not a clinical guide or validated recommendation.": [
@@ -10582,9 +10030,6 @@
             "Two tests run in parallel": [
                 ""
             ],
-            "Two things that assumption-free estimation does not buy. Precision: the sample is split across four or eight pattern cells instead of being pooled into two marginal proportions, so the intervals are wider -- that width is what the assumption was paying for. Transport: these numbers carry to another population only if the whole joint distribution of results given disease status carries over, which is a stronger requirement than each test's sensitivity and specificity carrying over. Parallel and Serial figures here will also generally NOT match the textbook independence formulas computed by hand from the individual tests, and will usually be worse when the tests are correlated.": [
-                ""
-            ],
             "Two-sided": [
                 ""
             ],
@@ -10747,9 +10192,6 @@
             "Variable '{}' must be a factor": [
                 ""
             ],
-            "Variable \"{variable}\" ({label}) has {n} levels: {levels}. Only \"{positive}\" is treated as positive; every other level ({others}) is counted as NEGATIVE. If any of those levels represent equivocal or indeterminate results, this recoding can bias sensitivity, specificity, predictive values, and likelihood ratios and make them difficult to interpret. Recode the variable to two levels and set equivocal results to missing if that is not what you intend.": [
-                ""
-            ],
             "Variable Importance Analysis": [
                 ""
             ],
@@ -10762,16 +10204,10 @@
             "Variables analysed": [
                 ""
             ],
-            "Variables Must Be Distinct": [
-                ""
-            ],
             "Venkatraman (2000)": [
                 ""
             ],
             "Venkatraman Test for AUC Comparison": [
-                ""
-            ],
-            "Verification (work-up) bias.": [
                 ""
             ],
             "Verification bias occurs when reference-standard verification differs according to the index-test result.": [
@@ -10805,9 +10241,6 @@
                 ""
             ],
             "Very small sample size.": [
-                ""
-            ],
-            "Very small sample: n = {n} complete cases": [
                 ""
             ],
             "Very sparse reference groups": [
@@ -10885,13 +10318,7 @@
             "What does this analysis do?": [
                 ""
             ],
-            "What this analysis does": [
-                ""
-            ],
             "What This Analysis Does": [
-                ""
-            ],
-            "What this analysis does NOT assume": [
                 ""
             ],
             "What this tool does:": [
@@ -10934,12 +10361,6 @@
                 ""
             ],
             "Wilson Score": [
-                ""
-            ],
-            "Wilson score 95 percent confidence intervals for sensitivity, specificity, PPV, NPV and accuracy, shown as percentages to match the combination table above. Likelihood ratios and the diagnostic odds ratio are unbounded ratios rather than proportions, so they appear in their own table below.": [
-                ""
-            ],
-            "With fewer than 20 complete cases every proportion rests on a handful of patients, so one reclassified case moves sensitivity or specificity by several percentage points and the 95% confidence intervals are very wide. Read the intervals rather than the point estimates. Diagnostic accuracy studies usually need on the order of 100 cases before the intervals narrow usefully, and combination analysis splits those cases across four or eight patterns.": [
                 ""
             ],
             "With only %1$d observations, results may be unstable. Consider %2$d+ observations for reliable ROC analysis.": [
