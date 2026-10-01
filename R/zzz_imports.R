@@ -12,6 +12,7 @@
 #' @importFrom graphics par
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow
+#' @importFrom irr kappa2
 #' @importFrom irrCAC gwet.ac1.raw
 #' @importFrom kappaSize PowerBinary
 #' @importFrom knitr kable

@@ -94,6 +94,7 @@ importFrom(graphics,
   par
 )
 importFrom(grid,arrow)
+importFrom(irr,kappa2)
 importFrom(irrCAC,gwet.ac1.raw)
 importFrom(jmvcore,.)
 importFrom(kappaSize,PowerBinary)
