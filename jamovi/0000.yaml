@@ -110,21 +110,6 @@ analyses:
       self-built composite reference rules. Latent classes are unlabeled, and
       reference-rule results are not diagnostic-accuracy estimates.
     category: analyses
-  - title: Compare Medical Decision Tests
-    name: decisioncompare
-    ns: meddecide
-    menuGroup: meddecide
-    menuSubgroup: Decision
-    menuTitle: Compare Medical Decision Tests
-    menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
-    description: >
-      Function for comparing multiple Medical Decision Tests. Compares
-      sensitivity, specificity, positive predictive value, negative predictive
-      value, and other metrics between different tests against the same gold
-      standard. Includes statistical comparison using McNemar's test and
-      confidence intervals for differences.
-    ribbon: analyses
-    category: analyses
   - title: Clinical ROC Analysis
     name: enhancedROC
     ns: meddecide

@@ -34,12 +34,6 @@
             "\"Statistical comparison\" is enabled but only one prediction model is selected, so the Exploratory Model Comparison table stays empty.": [
                 ""
             ],
-            "(95%% CI: %1$.1f-%2$.1f%%)": [
-                ""
-            ],
-            "(Holm-Bonferroni corrected)": [
-                ""
-            ],
             "(Intercept)": [
                 ""
             ],
@@ -76,16 +70,10 @@
             "(this is the share of cases satisfying the rule, not an estimate of disease prevalence)": [
                 ""
             ],
-            "(zero cell; LR may be unstable)": [
-                ""
-            ],
             "{a} and {b}": [
                 ""
             ],
             "{a} vs {b}": [
-                ""
-            ],
-            "{comparison} could not be tested: no case has a determinate result for both tests and the reference standard, or the paired table was empty. This pair has no row in the McNemar table, and it was excluded from the multiplicity correction so that the remaining comparisons are not over-corrected.": [
                 ""
             ],
             "{ctx} resulted in a non-finite probability.": [
@@ -149,33 +137,6 @@
                 ""
             ],
             "{pred} (Bootstrap): Original AUC = {orig}, Optimism = {opt} (SD across resamples {sd}), Corrected AUC = {corr}": [
-                ""
-            ],
-            "{rows} row(s) have no value for {variable}. They remain in overall per-test results but are omitted from subgroup rows.": [
-                ""
-            ],
-            "{test} in {stratum}": [
-                ""
-            ],
-            "{test} or its reference standard has more than two levels. Only the selected positive level is Positive; all other levels are combined as Negative. This may bias estimates when those levels include equivocal results.": [
-                ""
-            ],
-            "{test}: {missing} of {total} rows lacked this test result or the reference result and were excluded only from analyses requiring those values.": [
-                ""
-            ],
-            "{test}: {ratio} would be undefined because the cell in its denominator is empty, so it was computed after adding {correction} to all four cells of the 2x2, giving {shown}. Every other statistic in the same row, including the likelihood ratio that was not affected, uses the raw counts. Interpret the corrected value cautiously.": [
-                ""
-            ],
-            "{test}: excluded {excluded} of {total} rows ({pct}%). Accuracy estimates are conditional on a determinate result; the exclusion count and rate are reported in the tables.": [
-                ""
-            ],
-            "{test}: sensitivity rests on {positives} reference-positive cases and specificity on {negatives} reference-negative cases. A percentage computed on a denominator this small is far less precise than the overall analyzed N suggests. Enable the 95% CI option and read the interval before quoting either figure.": [
-                ""
-            ],
-            "{tests} diagnostic tests compared among {rows} selected rows. Per-test available determinate denominators: {denominators}. Paired comparisons use only rows determinate for both tests and the reference standard.": [
-                ""
-            ],
-            "{tests} had identical observed balanced accuracy. {first} appears first only because it was selected first; this descriptive tie is not a clinical recommendation.": [
                 ""
             ],
             "{unstable} of {starts} attempted starts failed, reached the iteration limit, or returned an invalid likelihood ({failed} fitting failures; {nonconverged} unfinished fits). The selected fit is the best converged solution when one was available, but this pattern indicates an unstable likelihood surface. Do not report the estimates without additional model checks.": [
@@ -244,21 +205,6 @@
             "%1$s (treat all: %2$.4f, treat none: 0)": [
                 ""
             ],
-            "%1$s classified significantly more cases correctly than %2$s (accuracy %3$.1f%% vs %4$.1f%%); McNemar's test compares overall correctness only.": [
-                ""
-            ],
-            "%1$s comparing %2$s and %3$s did not detect a significant difference in diagnostic accuracy (exact p = %4$.3f).": [
-                ""
-            ],
-            "%1$s comparing %2$s and %3$s did not detect a significant difference in diagnostic accuracy (χ²(%4$d) = %5$.2f, p = %6$.3f).": [
-                ""
-            ],
-            "%1$s comparing %2$s and %3$s showed a significant difference in diagnostic accuracy (exact p = %4$.3f).": [
-                ""
-            ],
-            "%1$s comparing %2$s and %3$s showed a significant difference in diagnostic accuracy (χ²(%4$d) = %5$.2f, p = %6$.3f).": [
-                ""
-            ],
             "%1$s cutoffs for %2$s share the same best balance of sensitivity and specificity. The one closest to the top-left corner of the ROC curve is reported (cutoff %3$s); the others perform equally well by this criterion.": [
                 ""
             ],
@@ -293,9 +239,6 @@
                 ""
             ],
             "%s Every row's risk group below is therefore unreliable.": [
-                ""
-            ],
-            "%s had the highest observed balanced accuracy; this descriptive ranking was not tested as a superiority claim and is not a clinical recommendation.": [
                 ""
             ],
             "%s have bivariate residuals above the descriptive threshold. This is evidence that the conditional-independence model does not reproduce those pairwise tables. Because the residual is squared, it does not show the direction or cause of the dependence and cannot determine whether fitted response probabilities are biased upward or downward. Do not interpret the latent-class parameters as diagnostic accuracy without a dependence-sensitive model or a study-specific sensitivity analysis.": [
@@ -335,12 +278,6 @@
                 ""
             ],
             "• Distance from κ₀ to the nearer limit: {dist} (this is what drives the sample size, not the full width)": [
-                ""
-            ],
-            "• Example emphasis: sensitivity and NPV<br>• Example threshold: 95%<br>• Study-specific aim: reduce false negatives": [
-                ""
-            ],
-            "• Example emphasis: specificity and PPV<br>• Example thresholds: 95% and 90%<br>• Study-specific aim: reduce false positives": [
                 ""
             ],
             "• Expected category proportions of {props}": [
@@ -394,24 +331,6 @@
             "<div style=\"max-width: 900px; font-family: sans-serif;\">\n<h3>Welcome to Co-Testing Analysis</h3>\n<p><strong>Purpose:</strong> This analysis evaluates the combined diagnostic performance of two tests applied <strong>in parallel</strong>, accounting for possible dependence between them.</p>\n\n<p><strong>What \"in parallel\" means here:</strong> both tests are performed on the same subject at the same time, before either result is known, and the two results are then combined into a single conclusion. Neither test gates the other: Test 2 is run whether or not Test 1 came back positive. That is what separates parallel co-testing from <em>sequential</em> (serial) testing, where a second test is ordered only after a particular first result, and where the second test's operating characteristics apply to the selected subgroup rather than to everyone. If your tests are run one after the other with the second conditional on the first, this is the wrong analysis — use <em>Sequential Test Analysis</em> instead.</p>\n\n<p><strong>Choosing between this and Sequential Test Analysis for parallel testing.</strong> Sequential Test Analysis also has a parallel strategy, and for <em>conditionally independent</em> tests the two agree. It computes its combined figures under that independence assumption and warns you in prose when dependence would matter. This analysis is the one that actually models the dependence: if the two tests share a specimen, a modality, an observer or a biological pathway, use this one and enter a dependence parameter.</p>\n\n<p>Because both tests are always performed, each subject falls into exactly one of four result combinations — both positive, Test 1 only, Test 2 only, both negative — and the table below gives the post-test probability of disease for each, plus the combined <em>either positive</em> arm used by the parallel decision rule.</p>\n\n<h4>Quick Start Guide</h4>\n<ol>\n<li><strong>Choose a worked example</strong> (optional): HPV+Pap, PSA+DRE, Troponin+ECG and the rest fill in every parameter for you so you can see the calculation end to end. <strong>They are illustrations, not clinical inputs</strong> — see the warning below.</li>\n<li><strong>Enter your own test parameters</strong>: with <em>Custom values</em> selected, input sensitivity and specificity for each test. While a worked example is selected these boxes are locked, because the example supplies them.</li>\n<li><strong>Set disease prevalence</strong>: the pre-test probability of disease in the population you are actually testing — not the figure quoted in the paper the test was validated in.</li>\n<li><strong>Configure test independence</strong>: state whether the two tests are conditionally independent or dependent (see \"Understanding Test Dependence\" below). This choice moves the answer more than any other.</li>\n<li><strong>Review Results</strong>: The analysis provides post-test probabilities for all test combination outcomes, including the critical <em>Either Test Positive (Parallel Rule)</em> used in clinical co-testing algorithms.</li>\n</ol>\n\n<h4>Key Clinical Scenarios</h4>\n<ul>\n<li><strong>Either Test Positive (Parallel Rule)</strong>: At least one test is positive. This combination rule raises sensitivity relative to either test used alone, at the cost of specificity, so the complementary arm carries the rule-out information. The <em>Either Test Positive</em> row is the probability of disease given <em>at least one</em> positive result, so it pools single-positive and double-positive cases; when only one test is positive read the single-positive row for that test instead (labelled <em>Test 1 Positive Only</em> / <em>Test 2 Positive Only</em>, or by the names you give the two tests). How far a result moves the probability is set by its likelihood ratio: the positive and negative likelihood ratios of each test on its own are listed in the <em>Test Parameters</em> table, while the combined effect of a scenario is reported as its <em>Post-test Probability</em> and <em>Post-test Odds</em> in the <em>Co-Testing Results</em> table rather than as a separate combined likelihood ratio.</li>\n<li><strong>Both Tests Positive</strong>: Both tests are positive. The resulting post-test probability depends on the pre-test prevalence, on the positive likelihood ratios of both tests (listed in the <em>Test Parameters</em> table) and on any conditional dependence you specify. Read the resulting figure in the <em>Post-test Probability</em> column of the <em>Both Tests Positive</em> row.</li>\n<li><strong>Both Tests Negative</strong>: Neither test is positive. This is the arm the parallel rule is designed to act on. The <em>Both Tests Negative</em> row gives the resulting <em>Post-test Probability</em>; its <em>Relative to Prevalence</em> entry is that probability divided by the prevalence you entered, so a value of 0.20 means two negatives cut the probability of disease to one fifth of where it started. The combined negative likelihood ratio behind that shift is not printed as its own number.</li>\n<li><strong>Single Positive</strong>: Only one of the two tests is positive. This result is driven by the positive likelihood ratio of one test together with the negative likelihood ratio of the other; both are listed in the <em>Test Parameters</em> table. The resulting probability is in the corresponding single-positive row of the <em>Co-Testing Results</em> table, and it can sit well below the <em>Both Tests Positive</em> row because the negative test pulls the probability back down.</li>\n</ul>\n\n<h4>Worked examples included</h4>\n<ul>\n<li><strong>HPV + Pap cytology</strong>: sensitive test plus specific test, same specimen (dependent)</li>\n<li><strong>PSA + digital rectal examination</strong>: the one independent example (biochemical plus physical)</li>\n<li><strong>Troponin + ECG</strong>: both driven by extent of injury (dependent)</li>\n<li><strong>Mammography + ultrasound</strong>: two views of the same tissue, strongest dependence (dependent)</li>\n<li><strong>Rapid antigen + PCR</strong>: two assays, one swab, both track viral load (dependent)</li>\n<li><strong>Chest radiograph + sputum microscopy</strong>: imaging plus microbiology (dependent)</li>\n</ul>\n\n<div style=\"background-color: rgba(220, 53, 69, 0.12); border-left: 3px solid rgba(220, 53, 69, 0.85); border-radius: 3px; padding: 10px 14px; margin: 12px 0; color: inherit;\">\n<p style=\"margin: 0;\"><strong>The worked examples are for demonstration only.</strong> Every sensitivity, specificity, prevalence and dependence value in them is a round illustrative number picked to show how the calculation behaves — how a sensitive test pairs with a specific one, how dependence pulls the answer back. They are <strong>not</strong> pooled estimates from the literature, they are <strong>not</strong> drawn from any guideline, and they have <strong>not</strong> been checked for clinical accuracy. Do not quote them, and do not make any clinical decision from a result computed with them. For real work select <em>Custom values</em> and enter sensitivity and specificity from a validation study in a population like yours, together with your own local prevalence.</p>\n</div>\n\n<p><strong>No uncertainty is propagated:</strong> sensitivity, specificity and prevalence are treated as exact. Every probability reported here is conditional on those numbers being right, and carries no confidence interval — published test performance and local prevalence both vary considerably.</p>\n\n<p><strong>Tip:</strong> Enable \"Detailed footnotes\" for explanations of each metric. Enable \"Fagan nomogram\" for a visual of the probability update — note that the nomogram plots the <em>parallel rule</em> (positive if either test is positive, negative only if both are negative), so its positive arm corresponds to the \"Either Test Positive\" row of the results table, not to \"Both Tests Positive\".</p>\n</div>": [
                 ""
             ],
-            "<dt><b>Cochran's Q Test</b></dt>": [
-                ""
-            ],
-            "<dt><b>Discordant Pairs</b></dt>": [
-                ""
-            ],
-            "<dt><b>Holm-Bonferroni Correction</b></dt>": [
-                ""
-            ],
-            "<dt><b>McNemar's Test</b></dt>": [
-                ""
-            ],
-            "<dt><b>NPV (Negative Predictive Value)</b></dt>": [
-                ""
-            ],
-            "<dt><b>PPV (Positive Predictive Value)</b></dt>": [
-                ""
-            ],
             "<h3>Mathematical Framework for Sequential Testing</h3>": [
                 ""
             ],
@@ -460,34 +379,7 @@
             "<i>Number Needed to Screen</i> counts entries into the pathway, that is first tests only. A serial strategy also performs a second test on part of that group; the Cost Analysis table shows the expected number of each test.": [
                 ""
             ],
-            "<li><b>Adequate Information:</b> Precision and power depend strongly on the number of discordant pairs</li>": [
-                ""
-            ],
-            "<li><b>Available Cases:</b> Standalone metrics use each test's observed reference/test pairs; paired comparisons use common determinate rows</li>": [
-                ""
-            ],
-            "<li><b>Binary Recoding:</b> Each test is analyzed after positive/negative recoding; multilevel results require explicit handling when indeterminate values should be excluded</li>": [
-                ""
-            ],
-            "<li><b>Gold Standard:</b> Reference test must represent true disease status (e.g., biopsy, final diagnosis)</li>": [
-                ""
-            ],
-            "<li><b>Paired Data:</b> All tests must be performed on the same patients/samples (not independent groups)</li>": [
-                ""
-            ],
             "<li><strong>1SE Rule</strong>: Selects the most parsimonious model within 1 SE of minimum CV error.</li>": [
-                ""
-            ],
-            "<li><strong>Choose Tests to Compare:</strong> Select 2-3 diagnostic tests you want to evaluate</li>": [
-                ""
-            ],
-            "<li><strong>Clinical Research:</strong> Validating biomarkers, imaging techniques, or clinical assessments</li>": [
-                ""
-            ],
-            "<li><strong>Confidence Intervals:</strong> The per-test CI tables report Clopper-Pearson exact intervals for the proportions (sensitivity, specificity, PPV, NPV, accuracy and prevalence), as computed by epiR::epi.tests() with its default settings. Likelihood ratios are reported as point estimates only, without confidence intervals. The Overall Percent Agreement (OPA) table uses the selected single-proportion method. Paired differences use Newcombe's method-10 score interval for correlated proportions.</li>": [
-                ""
-            ],
-            "<li><strong>Configure Options:</strong> Enable statistical comparisons, confidence intervals, or visualizations as needed</li>": [
                 ""
             ],
             "<li><strong>Convert post-test odds back to probability</strong>: Post-test P = Odds/(1+Odds)</li>": [
@@ -496,31 +388,13 @@
             "<li><strong>Convert pre-test probability to odds</strong>: Odds = P/(1-P)</li>": [
                 ""
             ],
-            "<li><strong>Copy Report:</strong> Use the auto-generated sentences for your documentation</li>": [
-                ""
-            ],
-            "<li><strong>Define Positive Levels:</strong> Specify what constitutes a \"positive\" result for each test</li>": [
-                ""
-            ],
             "<li><strong>Elastic Net</strong>: Combines L1 and L2 penalties; useful when predictors are correlated.</li>": [
-                ""
-            ],
-            "<li><strong>Gold Standard:</strong> Assumes your reference test is truly accurate</li>": [
                 ""
             ],
             "<li><strong>Lambda</strong>: Controls regularization strength. Higher lambda = fewer variables selected.</li>": [
                 ""
             ],
             "<li><strong>Lambda</strong>: Controls regularization strength. Higher lambda shrinks every coefficient further toward zero, but none reaches zero, so the number of variables never changes.</li>": [
-                ""
-            ],
-            "<li><strong>McNemar Test:</strong> Requires paired/matched data for statistical comparisons</li>": [
-                ""
-            ],
-            "<li><strong>Method Comparison:</strong> Describing and testing differences among paired tests</li>": [
-                ""
-            ],
-            "<li><strong>Missing Data:</strong> Standalone estimates use available reference/test pairs; paired comparisons use common determinate rows. Missing-data handling and counts should be reported.</li>": [
                 ""
             ],
             "<li><strong>Multiply odds by likelihood ratio</strong>: Post-test odds = Pre-test odds × LR</li>": [
@@ -538,24 +412,6 @@
             "<li><strong>Prevalence (P)</strong>: The pre-test probability of disease</li>": [
                 ""
             ],
-            "<li><strong>Prevalence Dependency:</strong> PPV and NPV vary with disease prevalence</li>": [
-                ""
-            ],
-            "<li><strong>Protocol Development:</strong> Optimizing diagnostic workflows</li>": [
-                ""
-            ],
-            "<li><strong>Quality Assessment:</strong> Measuring agreement between different raters or methods</li>": [
-                ""
-            ],
-            "<li><strong>Run Analysis:</strong> Review estimates, denominators, exclusions, and statistical comparisons</li>": [
-                ""
-            ],
-            "<li><strong>Sample Size:</strong> Results more reliable with larger, representative samples</li>": [
-                ""
-            ],
-            "<li><strong>Select Gold Standard:</strong> Choose your most reliable reference test (e.g., biopsy, expert consensus)</li>": [
-                ""
-            ],
             "<li><strong>Sensitivity (Se)</strong>: Probability of a positive test in diseased subjects</li>": [
                 ""
             ],
@@ -563,9 +419,6 @@
                 ""
             ],
             "<li><strong>Standardization (default on):</strong> predictors are centered and scaled before fitting, so the penalty treats variables with different units comparably. The Coefficient and Odds Ratio columns of the Selected Variables table are then back-transformed to the <strong>original measurement scale</strong> (per 1 unit of a continuous predictor, or present vs absent for a binary one). The Importance column and the Coefficient Plot stay on the per-standard-deviation scale, which is the quantity that is comparable across predictors with different units.</li>": [
-                ""
-            ],
-            "<li><strong>Test Validation:</strong> Comparing new diagnostic methods against established standards</li>": [
                 ""
             ],
             "<li>Always validate the scoring system on an independent cohort before clinical adoption.</li>": [
@@ -592,9 +445,6 @@
             "<li>Combined specificity (Sp) = {value}</li>": [
                 ""
             ],
-            "<li>Comparing diagnostic accuracy of 2-3 tests performed on same patients</li>": [
-                ""
-            ],
             "<li>Continuous predictors in the scoring system are dichotomized at %s (set by 'Cut Point for Continuous Predictors'); the score-based performance therefore reflects a simplified point model and may differ from the continuous LASSO model's AUC.</li>": [
                 ""
             ],
@@ -605,9 +455,6 @@
                 ""
             ],
             "<li>Emergency teaching pair (Physiologic test + Biomarker)</li><li>Acute-imaging teaching pair (Clinical assessment + Imaging)</li>": [
-                ""
-            ],
-            "<li>Evaluating if a new test is significantly better/worse than standard test</li>": [
                 ""
             ],
             "<li>Events-per-variable (EPV) should be >=10. Below 5, results are unreliable regardless of regularization.</li>": [
@@ -631,9 +478,6 @@
             "<li>LASSO coefficients do not have standard errors or p-values. Use bootstrap validation for inference.</li>": [
                 ""
             ],
-            "<li>McNemar's test compares overall accuracy only - does not separately test sensitivity vs specificity differences</li>": [
-                ""
-            ],
             "<li>NPV = numerator/denominator = {numerator}/{denominator} = {npv}</li>": [
                 ""
             ],
@@ -641,12 +485,6 @@
                 ""
             ],
             "<li>Numerator = P × Se = {p} × {se} = {numerator}</li>": [
-                ""
-            ],
-            "<li>Optimizing test selection based on performance metrics</li>": [
-                ""
-            ],
-            "<li>P-values do not indicate clinical importance - consider effect sizes and practical implications</li>": [
                 ""
             ],
             "<li>PPV = numerator/denominator = {numerator}/{denominator} = {ppv}</li>": [
@@ -679,16 +517,10 @@
             "<li>Probability of testing positive on Test 2: {value}</li>": [
                 ""
             ],
-            "<li>Requires paired observations - cannot compare tests performed on different patient groups</li>": [
-                ""
-            ],
             "<li>Rule-out teaching pair (Initial assessment → Biomarker)</li><li>Exclusion teaching pair (Clinical score → Laboratory assay)</li>": [
                 ""
             ],
             "<li>Selected variables are the features most useful for distinguishing the two groups.</li>": [
-                ""
-            ],
-            "<li>Small number of discordant pairs reduces statistical power and reliability</li>": [
                 ""
             ],
             "<li>Test negative on Test 1 but positive on Test 2</li>": [
@@ -709,12 +541,6 @@
             "<li>The scoring system rounds coefficients to integers, which loses precision but gains clinical usability.</li>": [
                 ""
             ],
-            "<li>This function cannot handle continuous test results directly for statistical comparison. For continuous diagnostic tests, please use the dedicated ROC (Receiver Operating Characteristic) analysis functions for comparing curves (e.g., DeLong's test).</li>": [
-                ""
-            ],
-            "<li>Validating diagnostic tools in clinical or pathology practice</li>": [
-                ""
-            ],
             "<li>Variables NOT selected are not necessarily unimportant - they may be redundant with selected features.</li>": [
                 ""
             ],
@@ -727,64 +553,7 @@
             "<ol>": [
                 ""
             ],
-            "<p><b>%1$s:</b> exact p = %2$.3f": [
-                ""
-            ],
-            "<p><b>%1$s:</b> χ² = %2$.2f, p = %3$.3f": [
-                ""
-            ],
-            "<p><b>Comparison:</b> %1$s (accuracy: %2$.1f%%) vs %3$s (accuracy: %4$.1f%%)</p>": [
-                ""
-            ],
-            "<p><b>Descriptive interpretation:</b> <span style='color:inherit;'><b>%1$s</b></span> had the highest observed balanced accuracy in this sample (overall accuracy %2$.1f%%). This descriptive ranking is not a superiority test or clinical recommendation. Review the pairwise comparisons above for inferential results.</p>": [
-                ""
-            ],
-            "<p><b>Overall comparison:</b> Cochran's Q test (χ² = %1$.2f, p = %2$.3f)": [
-                ""
-            ],
-            "<p><strong>Accuracy:</strong> Overall probability of correct classification</p>": [
-                ""
-            ],
             "<p><strong>Clinical Interpretation:</strong></p>\n                <p>Disease prevalence (pre-test probability): <strong>%1$s</strong></p>\n                <p><strong>Both tests positive:</strong> %2$s probability (%3$s) - %4$s</p>\n                <p><strong>Both tests negative:</strong> %5$s probability (%6$s) %7$s</p>\n                <p><strong>Single positive test:</strong></p>\n                <ul>\n                <li>%8$s positive only: <strong>%9$s</strong> %10$s</li>\n                <li>%11$s positive only: <strong>%12$s</strong> %13$s</li>\n                </ul>\n                <div style='background-color: rgba(33, 152, 255, 0.07); padding: 10px; border-radius: 5px; margin-top: 15px; color: inherit;'>\n                <p><strong>Copy-ready summary:</strong></p>\n                <p style='font-family: monospace; font-size: 12px;'>%14$s</p>\n                </div>": [
-                ""
-            ],
-            "<p><strong>Important:</strong> These thresholds and use cases are examples only. They are not clinical guides, validated decision rules, or recommendations for patient care.</p>": [
-                ""
-            ],
-            "<p><strong>LR-:</strong> How much negative test decreases odds of disease</p>": [
-                ""
-            ],
-            "<p><strong>LR+:</strong> How much positive test increases odds of disease</p>": [
-                ""
-            ],
-            "<p><strong>McNemar Test:</strong> Statistical comparison between paired tests</p>": [
-                ""
-            ],
-            "<p><strong>Measured performance:</strong> %1$s had both high sensitivity (%2$.1f%%) and high specificity (%3$.1f%%) in this sample: few false negatives and few false positives.</p>": [
-                ""
-            ],
-            "<p><strong>Measured performance:</strong> %1$s had high sensitivity (%2$.1f%%) but lower specificity (%3$.1f%%) in this sample: few false negatives, more false positives.</p>": [
-                ""
-            ],
-            "<p><strong>Measured performance:</strong> %1$s had high specificity (%2$.1f%%) but lower sensitivity (%3$.1f%%) in this sample: few false positives, more false negatives.</p>": [
-                ""
-            ],
-            "<p><strong>Measured performance:</strong> %1$s reached neither 95%% sensitivity (%2$.1f%%) nor 95%% specificity (%3$.1f%%) in this sample, so at this operating point it produces both false negatives and false positives at a rate you can read off the Decision Test Comparison table. These are the rates observed in these particular cases, not a fixed property of the test.</p>": [
-                ""
-            ],
-            "<p><strong>Measured performance:</strong> sensitivity and/or specificity could not be computed for %s because one gold-standard class has no cases, so that rate has an empty denominator. This test is named here only because the ranking had nothing else to compare; check the 2x2 counts in the Recoded Data table before reading any other panel.</p>": [
-                ""
-            ],
-            "<p><strong>NPV:</strong> Probability of no disease when test negative</p>": [
-                ""
-            ],
-            "<p><strong>PPV:</strong> Probability of disease when test positive</p>": [
-                ""
-            ],
-            "<p><strong>Sensitivity:</strong> Probability test is positive when disease present (rule-out ability)</p>": [
-                ""
-            ],
-            "<p><strong>Specificity:</strong> Probability test is negative when disease absent (rule-in ability)</p>": [
                 ""
             ],
             "<p>Calculation steps:</p>": [
@@ -880,9 +649,6 @@
             "<p>The probability that a positive test result is a true positive:</p>": [
                 ""
             ],
-            "<p>The radar plot's LR scale uses familiar likelihood-ratio evidence categories described in the Users' Guides to the Medical Literature (Jaeschke et al., 1994) solely as an illustrative visualization. Appropriate thresholds and consequences depend on the clinical setting, population, harms, benefits, and decision pathway.</p>": [
-                ""
-            ],
             "<p>The two tests are run in parallel on the same subject and are assumed to be <strong>conditionally independent</strong>: within the diseased group, and again within the non-diseased group, the result of one test carries no information about the other. The joint probabilities below are therefore plain products of the entered sensitivities and specificities.</p><p>Independence is the optimistic assumption. If the two tests in fact tend to err together — same specimen, same operator, same biology — it overstates how much the pair adds over either test alone. Clear <em>Assume the two tests are conditionally independent</em> and enter a dependence parameter to see how far the conclusion moves.</p>": [
                 ""
             ],
@@ -899,21 +665,6 @@
                 ""
             ],
             "<p>You selected a <strong>serial-positive teaching strategy</strong>. Everyone first receives {test1} (sensitivity {sens1}%, specificity {spec1}%). Only first-test positives receive {test2} (sensitivity {sens2}%, specificity {spec2}%), and a final result is positive only when both tests are positive.</p><p>The sensitivities and false-positive rates therefore multiply. Combined specificity increases while combined sensitivity decreases. Two positive results are not automatically a confirmed diagnosis; PPV still depends on prevalence, and false negatives are shown in the population-flow table.</p>": [
-                ""
-            ],
-            "<span style='color:inherit;'><b>Significant difference detected.</b></span> %1$s classified significantly more cases correctly than %2$s (accuracy %3$.1f%% vs %4$.1f%%). McNemar's test compares overall correctness only; the two tests may still differ in the sensitivity/specificity balance.</p>": [
-                ""
-            ],
-            "<strong>Cases where Test A and Test B have different CORRECTNESS</strong> relative to the reference standard (e.g., Test A correct but Test B wrong, or vice versa). McNemar's test examines whether the imbalance between these discordant types is statistically significant. Exact inference is used automatically when fewer than 25 discordant pairs are available, but precision and power still depend on the number of discordant pairs.": [
-                ""
-            ],
-            "<strong>Caution:</strong> No statistical comparison between the tests could be computed for these data, so no test of one test against another was performed; the reason is given in the Important Information panel. %s is named here only because it had the highest observed balanced accuracy in this sample, and these data say nothing about whether the tests differ.</p>": [
-                ""
-            ],
-            "<strong>Caution:</strong> No statistically significant difference was detected between the tests compared. %s is named here only because it had the highest observed balanced accuracy in this sample; the data neither establish that it outperforms the others nor establish that the tests are equivalent, since a non-significant result may simply reflect limited power. The confidence intervals above show how large a real difference remains compatible with these data.</p>": [
-                ""
-            ],
-            "<strong>Compares diagnostic CORRECTNESS</strong> of two tests relative to the gold standard. Focuses on <i>discordant pairs</i> (cases where one test is correct and the other is wrong). Tests whether Test A correctly classifies significantly more/fewer cases than Test B. Appropriate for paired/matched data only. P < 0.05 indicates tests differ significantly in accuracy.": [
                 ""
             ],
             "<ul>": [
@@ -964,13 +715,7 @@
             "1SE Rule (parsimonious)": [
                 ""
             ],
-            "95 percent CI": [
-                ""
-            ],
             "95 percent confidence intervals": [
-                ""
-            ],
-            "95% CI": [
                 ""
             ],
             "95% CI Lower": [
@@ -1018,9 +763,6 @@
             "A negative result multiplies pre-test odds by {lr}.": [
                 ""
             ],
-            "A non-significant McNemar result does not establish that the two tests perform equally; the test uses only the discordant pairs and may lack power to detect a clinically important difference.": [
-                ""
-            ],
             "A positive result has a likelihood ratio of {lr} and raises the probability from {prevalence} to {posttest}.": [
                 ""
             ],
@@ -1066,9 +808,6 @@
             "About diagnostic-test evaluation": [
                 ""
             ],
-            "About Medical Decision Test Comparison": [
-                ""
-            ],
             "About This Analysis": [
                 ""
             ],
@@ -1082,9 +821,6 @@
                 ""
             ],
             "Accuracy": [
-                ""
-            ],
-            "accuracy": [
                 ""
             ],
             "Accuracy intervals are not computed for scenarios containing fractional frequencies because no effective sample size or weighting design was supplied.": [
@@ -1105,9 +841,6 @@
             "Add a second model to compare.": [
                 ""
             ],
-            "Add definitions and prevalence-source notes to the comparison table.": [
-                ""
-            ],
             "Add detailed explanatory footnotes to the tables. Helpful for understanding what each statistic means.": [
                 ""
             ],
@@ -1121,9 +854,6 @@
                 ""
             ],
             "Adjust for population prevalence (use prior prevalence)": [
-                ""
-            ],
-            "Adjusts p-values when making multiple comparisons to control Type I error (false positives). More powerful than standard Bonferroni correction. Applied automatically when comparing 3 tests.": [
                 ""
             ],
             "Advanced Cutpoint Settings": [
@@ -1201,9 +931,6 @@
             "All inputs must use the same currency and the calculation assumes one test per person, treatment after a positive model decision, and treat-all without testing.": [
                 ""
             ],
-            "All metrics scaled 0-100%; LR scaling is illustrative only, not clinical guidance": [
-                ""
-            ],
             "All observed cutpoints": [
                 ""
             ],
@@ -1267,15 +994,6 @@
             "Among the %1$d predictors evaluated, %2$s had the highest observed AUC (%3$.3f). Pairwise comparisons using %4$s methodology are reported in the ROC Curve Comparisons table; a higher observed AUC is not a demonstrated difference unless the corresponding comparison is statistically significant, and a comparison that is not significant does not establish that two predictors perform equally.": [
                 ""
             ],
-            "Among the tests evaluated, %s had the highest observed balanced accuracy; this is a descriptive ranking only and not evidence of superiority or a clinical recommendation.": [
-                ""
-            ],
-            "among the three tests. This is not evidence that they perform equally: with this sample size a clinically important accuracy difference could go undetected, and no test of one test against another across a pre-specified equivalence margin was performed. (If requested, the criterion column in the Overall Percent Agreement table compares each test with a user-specified descriptive OPA threshold; it is not a noninferiority comparison between tests or clinical guidance.) The confidence intervals for the paired differences in the Differences with 95% Confidence Intervals table show how large a difference remains compatible with these data.</p>": [
-                ""
-            ],
-            "among the three tests. This means the tests do NOT perform equally - at least one differs significantly from the others.</p>": [
-                ""
-            ],
             "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
                 ""
             ],
@@ -1295,9 +1013,6 @@
                 ""
             ],
             "Analysis Complete": [
-                ""
-            ],
-            "Analysis Completed Successfully": [
                 ""
             ],
             "Analysis Configuration": [
@@ -1363,9 +1078,6 @@
             "Analyze diagnostic test performance when no perfect reference test (gold standard) is available.": [
                 ""
             ],
-            "Analyzed N": [
-                ""
-            ],
             "Analyzes how diagnostic accuracy changes when applying two tests in sequence, comparing three different testing strategies: serial positive (confirmation), serial negative (exclusion), and parallel testing. Provides comprehensive analysis including population flow, cost implications, and diagnostic plots, so you can explore how diagnostic strategies behave under explicit assumptions, compare hypothetical test sequences, weigh trade-offs between sensitivity and specificity, and illustrate expected testing volume and cost under user-supplied assumptions. The named scenarios and their values are teaching examples only, not clinical guidance or validated diagnostic pathways. Replace all example parameters with estimates applicable to the intended population before interpreting results.": [
                 ""
             ],
@@ -1379,9 +1091,6 @@
                 ""
             ],
             "Anticipated share of subjects in each outcome category, separated by commas, semicolons or spaces, using a decimal point, and summing to 1 (for example 0.20, 0.80 for a finding present in one case in five). For a binary outcome a single prevalence is enough. Enter exactly one value per outcome level otherwise.": [
-                ""
-            ],
-            "Any criterion is descriptive, not a noninferiority analysis against a comparator, regulatory guidance, or clinical guidance. OPA does not correct for chance agreement and should not be used alone to characterize diagnostic performance.": [
                 ""
             ],
             "Any Test Positive": [
@@ -1438,9 +1147,6 @@
             "Assumptions & Caveats": [
                 ""
             ],
-            "Assumptions & Requirements": [
-                ""
-            ],
             "Assumptions and caveats": [
                 ""
             ],
@@ -1474,9 +1180,6 @@
             "At least one marker separates the two classes completely in this sample (AUC 1.000). The confidence interval collapses to a single point and the p-value is undefined because the variance is zero - those columns are not showing precision, they are showing that the estimate is degenerate. Complete separation in a sample this size is far more often label leakage, an outcome-derived predictor, or overfitting than a genuinely perfect test. Validate externally before drawing any conclusion.": [
                 ""
             ],
-            "At least one test variable must be specified. Select diagnostic test variables to compare against the gold standard.": [
-                ""
-            ],
             "At least three tests are required; the two-test model is not statistically identifiable.": [
                 ""
             ],
@@ -1498,16 +1201,7 @@
             "at or above the 0.80 level conventionally quoted for diagnosis": [
                 ""
             ],
-            "At the %1$.1f%% disease prevalence observed in this sample, %2$s positive predictive value, %3$s negative predictive value, and %4$s overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
-                ""
-            ],
-            "At the %1$.1f%% population prevalence supplied for this analysis, positive predictive value was %2$s and negative predictive value was %3$s; overall accuracy was %4$s at the prevalence of this sample. Predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
-                ""
-            ],
             "At the computed sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the confidence limit where they are thinnest: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the required n is less dependable here.": [
-                ""
-            ],
-            "At the disease prevalence observed in this sample, %1$s positive predictive value, %2$s negative predictive value, and %3$s overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
                 ""
             ],
             "At the required sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the sample size shown is less dependable here.": [
@@ -1612,9 +1306,6 @@
             "Available levels: {levels}.": [
                 ""
             ],
-            "Available-Case Missing-Data Handling": [
-                ""
-            ],
             "Average": [
                 ""
             ],
@@ -1679,9 +1370,6 @@
                 ""
             ],
             "BCa (Bias-Corrected and Accelerated)": [
-                ""
-            ],
-            "Because the differences between tests were not statistically significant, this ranking reflects the observed sample and should not be reported as evidence that one test outperforms the others.": [
                 ""
             ],
             "Because the probabilities for '%s' were derived here by a linear logistic fit, the spline curve only tests whether that logit-linear form is adequate for this marker; it says nothing about the calibration of an external model.": [
@@ -2008,9 +1696,6 @@
             "Cases meeting the reference rule": [
                 ""
             ],
-            "Cases sorted by gold standard result (n=%d)": [
-                ""
-            ],
             "Categorical NRI, using risk category boundaries at {thr}.": [
                 ""
             ],
@@ -2075,9 +1760,6 @@
                 ""
             ],
             "CI Lower": [
-                ""
-            ],
-            "CI Method for Agreement": [
                 ""
             ],
             "CI Upper": [
@@ -2353,12 +2035,6 @@
             "Clinically significant difference": [
                 ""
             ],
-            "Clopper-Pearson (exact)": [
-                ""
-            ],
-            "Clopper-Pearson (Exact)": [
-                ""
-            ],
             "closeness to the top-left corner of the ROC plot, the point of perfect sensitivity and specificity; the Optimization Metric setting is not used by this method": [
                 ""
             ],
@@ -2375,24 +2051,6 @@
                 ""
             ],
             "Cochran's Q": [
-                ""
-            ],
-            "Cochran's Q is a single test of whether the tests differ in accuracy anywhere among them. It did not reach p < 0.05 here, which means these data did not separate the tests, not that the tests agree. The per-pair rows in this table are exploratory in that situation: read them alongside the paired differences and their 95% confidence intervals in the Differences with 95% Confidence Intervals table, which show how large a real difference is still compatible with this sample.": [
-                ""
-            ],
-            "Cochran's Q is undefined for these data: every case was classified identically by all three tests (all correct, or all incorrect), leaving no discordance for the statistic to use. This means the data cannot separate the tests, not that the analysis failed.": [
-                ""
-            ],
-            "Cochran's Q test did not detect a significant difference in diagnostic accuracy among the three tests (χ²(%1$d) = %2$.2f, p = %3$.3f).": [
-                ""
-            ],
-            "Cochran's Q test failed. Pairwise comparisons may still be valid but should be interpreted cautiously.": [
-                ""
-            ],
-            "Cochran's Q test revealed a significant difference in diagnostic accuracy among the three tests (χ²(%1$d) = %2$.2f, p = %3$.3f).": [
-                ""
-            ],
-            "Cochran's Q was not computed: no case has a determinate result for all three tests and the reference standard. The pairwise comparisons below each use their own complete cases.": [
                 ""
             ],
             "Coefficient": [
@@ -2512,16 +2170,7 @@
             "Compare classifier performance": [
                 ""
             ],
-            "Compare Medical Decision Tests": [
-                ""
-            ],
-            "Compare sensitivity, specificity, PPV, NPV, ...": [
-                ""
-            ],
             "Compare test performance statistically": [
-                ""
-            ],
-            "Compare the lower OPA confidence bound with the user-specified descriptive criterion. This optional criterion is not a noninferiority comparison, regulatory guidance, or clinical guidance.": [
                 ""
             ],
             "Comparison": [
@@ -2536,13 +2185,7 @@
             "Comparison method": [
                 ""
             ],
-            "Comparison of Tests": [
-                ""
-            ],
             "Comparison Options Need Comparative Analysis": [
-                ""
-            ],
-            "Comparison plot": [
                 ""
             ],
             "Comparisons not tested": [
@@ -2614,18 +2257,6 @@
             "Conclusion": [
                 ""
             ],
-            "Concordance Heatmap": [
-                ""
-            ],
-            "Concordance heatmap": [
-                ""
-            ],
-            "Concordance Heatmap: Per-Case Test Results vs Gold Standard": [
-                ""
-            ],
-            "Concordant": [
-                ""
-            ],
             "Concordant Results": [
                 ""
             ],
@@ -2663,9 +2294,6 @@
                 ""
             ],
             "Confidence Intervals on Plot": [
-                ""
-            ],
-            "Confidence Intervals Unavailable": [
                 ""
             ],
             "Confidence Level": [
@@ -2708,12 +2336,6 @@
                 ""
             ],
             "Confirmatory Testing (High Specificity)": [
-                ""
-            ],
-            "Confirmatory Tests (Rule-In):": [
-                ""
-            ],
-            "Conflicting Options": [
                 ""
             ],
             "Confusion Matrices": [
@@ -2791,9 +2413,6 @@
             "Convex hull represents optimal achievable performance": [
                 ""
             ],
-            "Copy and adapt to your manuscript. Verify all statistical values and add clinical context.": [
-                ""
-            ],
             "Copy and paste the sections below into your clinical reports or publications": [
                 ""
             ],
@@ -2833,16 +2452,7 @@
             "Cost-benefit optimized": [
                 ""
             ],
-            "Could not calculate confidence intervals for {test} (n={n}). This may be due to insufficient sample size or extreme values. Error: {error}": [
-                ""
-            ],
-            "Could not calculate: %s. Check that all tests have valid paired data.": [
-                ""
-            ],
             "Could not compute": [
-                ""
-            ],
-            "Could not perform McNemar's test for {comparison} (n1={n1}, n2={n2}). This may be due to insufficient discordant pairs or identical test results. Error: {error}": [
                 ""
             ],
             "Count": [
@@ -2858,9 +2468,6 @@
                 ""
             ],
             "CRITERION": [
-                ""
-            ],
-            "Criterion Met?": [
                 ""
             ],
             "CROC (Concentrated ROC) Analysis": [
@@ -2891,9 +2498,6 @@
                 ""
             ],
             "CROC Integration Warning": [
-                ""
-            ],
-            "Cross-tabulation of {test} and {gold}": [
                 ""
             ],
             "Cross-validated lambda selection": [
@@ -3157,9 +2761,6 @@
             "Decision Statistics": [
                 ""
             ],
-            "Decision Test Comparison": [
-                ""
-            ],
             "Define Positive Levels:": [
                 ""
             ],
@@ -3208,9 +2809,6 @@
             "DEMONSTRATION ONLY — illustrative values, not for clinical use": [
                 ""
             ],
-            "Denominator cell empty; computed after adding {correction} to all four cells of the 2x2. Not reproducible from the sensitivity and specificity in this row, which use the raw counts.": [
-                ""
-            ],
             "Density-based": [
                 ""
             ],
@@ -3241,19 +2839,10 @@
             "Descriptive name for the second illustrative cut-off scenario; not clinical guidance.": [
                 ""
             ],
-            "Descriptive Performance Summary": [
-                ""
-            ],
-            "Descriptive report templates": [
-                ""
-            ],
             "Descriptive results:": [
                 ""
             ],
             "Descriptive statistic": [
-                ""
-            ],
-            "Descriptive Summary & Report Templates": [
                 ""
             ],
             "Descriptively compare illustrative cut-off scenarios. These examples are not clinical guides.": [
@@ -3293,9 +2882,6 @@
                 ""
             ],
             "Detailed Threshold Performance": [
-                ""
-            ],
-            "Determinate denominators were {denominators}.": [
                 ""
             ],
             "Determine the required sample size to estimate κ₀ = {kappa0} ensuring the lower confidence limit is at least {kappaL} in an interobserver agreement study.": [
@@ -3352,9 +2938,6 @@
             "Diagnostic-test performance summary": [
                 ""
             ],
-            "did not detect a significant difference": [
-                ""
-            ],
             "Difference": [
                 ""
             ],
@@ -3362,12 +2945,6 @@
                 ""
             ],
             "Difference in Cohen's d between markers": [
-                ""
-            ],
-            "Differences are paired (within-subject). Confidence intervals use Newcombe's method 10, combining Wilson score intervals with the paired correlation and its recommended continuity correction. They are not affected by the \"CI Method for Agreement\" option, which applies only to overall percent agreement.": [
-                ""
-            ],
-            "Differences with 95% Confidence Intervals": [
                 ""
             ],
             "Differentiation Assay": [
@@ -3403,9 +2980,6 @@
             "Disease Absent": [
                 ""
             ],
-            "Disease absent level": [
-                ""
-            ],
             "Disease Negative": [
                 ""
             ],
@@ -3416,9 +2990,6 @@
                 ""
             ],
             "Disease Present": [
-                ""
-            ],
-            "Disease present level": [
                 ""
             ],
             "Disease Prevalence": [
@@ -3445,12 +3016,6 @@
             "Display a glossary defining diagnostic-test terms with plain-language explanations.": [
                 ""
             ],
-            "Display a longer descriptive performance summary with methods and results templates. The text is an editable reporting aid, not clinical guidance.": [
-                ""
-            ],
-            "Display a plain-language summary paragraph of comparison results. Useful for reading the statistical comparison at a glance without needing to interpret every table cell.": [
-                ""
-            ],
             "Display AUC summary table": [
                 ""
             ],
@@ -3470,9 +3035,6 @@
                 ""
             ],
             "Display detailed differences between model metrics": [
-                ""
-            ],
-            "Display educational content including statistical glossary, assumptions, and interpretation guidance. Helpful for understanding what each test means and how to interpret the results clinically.": [
                 ""
             ],
             "Display introductory message with quick start guide. Helpful for first-time users to understand the tool.": [
@@ -3523,9 +3085,6 @@
             "Duplicate Strategy Name": [
                 ""
             ],
-            "Duplicate Test Variables": [
-                ""
-            ],
             "E/O is the sum of the predicted probabilities divided by the number of events actually observed; 1 means the marker predicts the right number of events overall, above 1 means it over-predicts them. It is reported only for a predictor supplied as a probability between 0 and 1. Where a logistic model had to be fitted here to obtain probabilities, that fit forces the predicted and observed event totals to be equal, so E/O would be exactly 1 for any data at all; the cell is left blank there rather than report a perfect calibration that is an algebraic identity. No confidence interval is given.": [
                 ""
             ],
@@ -3539,9 +3098,6 @@
                 ""
             ],
             "E90": [
-                ""
-            ],
-            "Each interval is an ordinary 95% interval for a single comparison and is not adjusted for multiplicity, whereas the p-values in the McNemar table are Holm-Bonferroni adjusted.": [
                 ""
             ],
             "Each latent-class resample is fitted with a single EM run started from the full-sample solution, not from the multi-start random search used for the primary fit. The interval is therefore conditional on that solution: it does not propagate label-switching or local-optimum variability and is likely anti-conservative, that is, too narrow.": [
@@ -3559,9 +3115,6 @@
             "Each row is calculated at the exact displayed threshold; selected thresholds do not need to coincide with the plotting grid.": [
                 ""
             ],
-            "Each test had %d determinate results.": [
-                ""
-            ],
             "Each test helps construct the rule against which it is evaluated, creating incorporation bias.": [
                 ""
             ],
@@ -3575,9 +3128,6 @@
                 ""
             ],
             "Each test is scored against a reference standard built from the tests themselves, so these are measures of agreement with that rule, not estimates of diagnostic accuracy. The blank column is fixed at 100% by construction and carries no information.": [
-                ""
-            ],
-            "Each test slot must contain a different variable. Remove the duplicate selection(s): {duplicates}.": [
                 ""
             ],
             "Early Retrieval Gain": [
@@ -3629,9 +3179,6 @@
                 ""
             ],
             "Enable bootstrap confidence intervals for robust estimates": [
-                ""
-            ],
-            "Enable custom disease prevalence for calculating PPV and NPV.  Use when your study population differs from the dataset prevalence  (e.g., screening vs high-risk populations).": [
                 ""
             ],
             "Enable multi-class ROC analysis for outcomes with >2 levels": [
@@ -3763,12 +3310,6 @@
             "Evidence Strength": [
                 ""
             ],
-            "Exact binomial inference was used because there were only %d discordant pairs; interpret the estimate with its paired confidence interval.": [
-                ""
-            ],
-            "Exact binomial McNemar": [
-                ""
-            ],
             "Example analysis for Medical Decision Tests.": [
                 ""
             ],
@@ -3811,19 +3352,10 @@
             "Excellent early retrieval performance; classifier performs well at low FPR": [
                 ""
             ],
-            "Exclude indeterminate/Equivocal levels": [
-                ""
-            ],
-            "Excluded": [
-                ""
-            ],
             "Excluded %d case(s) with missing test results": [
                 ""
             ],
             "Excluded from analysis": [
-                ""
-            ],
-            "Excluded Rate": [
                 ""
             ],
             "Expected AUC Difference": [
@@ -3910,15 +3442,6 @@
             "Exponential magnifier emphasizes early retrieval performance": [
                 ""
             ],
-            "Extension of McNemar's for 3+ tests. <strong>Tests whether diagnostic correctness differs</strong> among tests relative to the gold standard. If significant (p < 0.05), at least one test is significantly more/less accurate than the others. Proceed to pairwise comparisons with multiple comparison correction to identify which tests differ.": [
-                ""
-            ],
-            "Extreme Disease Prevalence": [
-                ""
-            ],
-            "Extreme disease prevalence among observed reference results: {pct}% ({diseased}/{observed} cases). PPV and NPV are highly sensitive to prevalence and may not generalize to populations with different disease rates. Sensitivity and specificity can also vary across settings and case mix.": [
-                ""
-            ],
             "Extreme fitted class proportion": [
                 ""
             ],
@@ -3994,9 +3517,6 @@
             "fair to good discrimination": [
                 ""
             ],
-            "False Discovery Rate": [
-                ""
-            ],
             "False Negative": [
                 ""
             ],
@@ -4004,9 +3524,6 @@
                 ""
             ],
             "False Negatives": [
-                ""
-            ],
-            "False Omission Rate": [
                 ""
             ],
             "False Positive": [
@@ -4138,9 +3655,6 @@
             "Footnotes": [
                 ""
             ],
-            "For 2 tests: McNemar's test compares diagnostic CORRECTNESS (agreement with gold standard) between paired tests. For 3+ tests: Cochran's Q test provides an overall test, followed by pairwise McNemar's tests with Holm-Bonferroni correction for multiple comparisons. Tests examine discordant pairs (cases where one test is correct and the other is wrong relative to the gold standard) to determine if differences in accuracy are statistically significant.": [
-                ""
-            ],
             "For a binary outcome enter either one prevalence value or two proportions that sum to 1 (received {got}).": [
                 ""
             ],
@@ -4174,9 +3688,6 @@
             "Formulas Used": [
                 ""
             ],
-            "found significant differences": [
-                ""
-            ],
             "FP": [
                 ""
             ],
@@ -4202,9 +3713,6 @@
                 ""
             ],
             "Full research-grade analysis with all available statistical methods, Bayesian analysis, and publication-quality outputs.": [
-                ""
-            ],
-            "Function for comparing multiple Medical Decision Tests. Compares sensitivity, specificity, positive predictive value, negative predictive value, and other metrics between different tests against the same gold standard. Includes statistical comparison using McNemar's test and confidence intervals for differences.": [
                 ""
             ],
             "Functions for Medical Decision in ClinicoPath jamovi Module": [
@@ -4235,36 +3743,6 @@
                 ""
             ],
             "Generate a Fagan nomogram for visual interpretation of test results. Shows how test results change the probability of disease.": [
-                ""
-            ],
-            "Generate a per-case heatmap showing each test's result versus the gold standard for every sample. Samples are sorted by gold standard result. Reveals agreement patterns and identifies cases where specific tests disagree.": [
-                ""
-            ],
-            "Generate bar chart comparing test performance metrics side-by-side.  Useful for visualizing differences in sensitivity, specificity, PPV, NPV, and accuracy.": [
-                ""
-            ],
-            "Generate manuscript-ready sentences describing the statistical comparison results. Useful for drafting methods and results sections of research papers.": [
-                ""
-            ],
-            "Generate radar (spider) plot showing all performance metrics on a circular scale. Excellent for comprehensive visual comparison and identifying test strengths/weaknesses.": [
-                ""
-            ],
-            "Global Test Not Computed": [
-                ""
-            ],
-            "Gold Negative": [
-                ""
-            ],
-            "Gold Positive": [
-                ""
-            ],
-            "Gold Standard": [
-                ""
-            ],
-            "Gold Standard (Reference Test)": [
-                ""
-            ],
-            "Gold standard variable must be specified. Select a reference test variable that represents the true disease status.": [
                 ""
             ],
             "Good": [
@@ -4345,15 +3823,6 @@
             "High risk and has the event": [
                 ""
             ],
-            "High sensitivity (>=95%): few false negatives in this sample": [
-                ""
-            ],
-            "High sensitivity and high specificity in this sample (both >=95%)": [
-                ""
-            ],
-            "High specificity (>=95%): few false positives in this sample": [
-                ""
-            ],
             "High Threshold Range": [
                 ""
             ],
@@ -4393,12 +3862,6 @@
             "Highly significant difference (p < 0.001)": [
                 ""
             ],
-            "Highly significant difference (p<0.001)": [
-                ""
-            ],
-            "Highly significant overall difference among tests (p<0.001)": [
-                ""
-            ],
             "histopathology including analysis": [
                 ""
             ],
@@ -4423,9 +3886,6 @@
             "How many times more (or less) likely disease is after testing compared to before testing": [
                 ""
             ],
-            "How to Use This Analysis": [
-                ""
-            ],
             "HPV": [
                 ""
             ],
@@ -4442,9 +3902,6 @@
                 ""
             ],
             "ICI": [
-                ""
-            ],
-            "Identical Positive and Negative Levels": [
                 ""
             ],
             "IDI": [
@@ -4493,9 +3950,6 @@
                 ""
             ],
             "Illustrative example: {preset}": [
-                ""
-            ],
-            "Illustrative Interpretation Examples": [
                 ""
             ],
             "Illustrative observer-agreement scenario": [
@@ -4549,16 +4003,10 @@
             "Importance Score": [
                 ""
             ],
-            "Important Assumptions & Limitations": [
-                ""
-            ],
             "Important Information": [
                 ""
             ],
             "In this %1$s sample, %2$s showed %3$s: the AUC was %4$.3f (%5$s%% CI: %6$s--%7$s). AUC is the probability that a randomly chosen case scores above a randomly chosen non-case; it is computed over all cutpoints and does not depend on which cutpoint was selected. This is an in-sample estimate with no internal or external validation behind it%8$s. The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those ARE optimistic, because that cutpoint was searched for on these same data.": [
-                ""
-            ],
-            "In this sample neither sensitivity nor specificity reached 85%, and neither likelihood ratio reached LR+ >= 5 or LR- <= 0.2. That describes these counts at this operating point, not the test in general; the Confidence Intervals table for this test (95% CI option) shows how precisely each rate is pinned down by this many cases": [
                 ""
             ],
             "In-sample AUC %.2f, estimated on these same data; not internally or externally validated": [
@@ -4586,15 +4034,6 @@
                 ""
             ],
             "Independence Assumption": [
-                ""
-            ],
-            "Indeterminate / excluded": [
-                ""
-            ],
-            "Indeterminate exclusion cannot be applied to {variables} until a negative level is selected. Its non-positive levels are currently combined as Negative.": [
-                ""
-            ],
-            "Indeterminate Results Excluded": [
                 ""
             ],
             "indicating %1$s discrimination in this sample: the marker ranks a randomly chosen case from the positive class ahead of a randomly chosen case from the negative class about %2$.0f%% of the time, in the classification direction in use. AUC is a ranking property of pairs, computed over all cutpoints; it does not depend on which cutpoint was selected, and it does not describe how reliably any single cutpoint classifies an individual patient, which also depends on the cutpoint and on disease prevalence. This AUC is an in-sample estimate that has not been internally or externally validated. %3$s": [
@@ -4735,12 +4174,6 @@
             "Invalid Positive Class Selection": [
                 ""
             ],
-            "Invalid Positive Level": [
-                ""
-            ],
-            "Invalid Prevalence Value": [
-                ""
-            ],
             "Invalid Probabilities: {model}": [
                 ""
             ],
@@ -4829,9 +4262,6 @@
                 ""
             ],
             "Key Concepts": [
-                ""
-            ],
-            "Key Metrics Explained": [
                 ""
             ],
             "Key outputs:": [
@@ -4993,9 +4423,6 @@
             "Logistic (LASSO-selected vars)": [
                 ""
             ],
-            "Logit": [
-                ""
-            ],
             "low": [
                 ""
             ],
@@ -5056,22 +4483,13 @@
             "LR- (negative likelihood ratio)": [
                 ""
             ],
-            "LR- Quality": [
-                ""
-            ],
             "LR+": [
                 ""
             ],
             "LR+ (positive likelihood ratio)": [
                 ""
             ],
-            "LR+ and LR-": [
-                ""
-            ],
             "LR+ is how many times more likely a positive result is in someone with the disease than in someone without it; LR- is the same ratio for a negative result. Above 10 (or below 0.1) a single result shifts the probability of disease substantially; between 0.5 and 2 it barely moves it.": [
-                ""
-            ],
-            "LR+ Quality": [
                 ""
             ],
             "Macro AUC": [
@@ -5108,9 +4526,6 @@
                 ""
             ],
             "Manual Cutpoint Value": [
-                ""
-            ],
-            "Manuscript-Ready Report": [
                 ""
             ],
             "Marginal (%.0f%% better than base rate)": [
@@ -5171,15 +4586,6 @@
                 ""
             ],
             "MCC (Matthews correlation coefficient)": [
-                ""
-            ],
-            "McNemar chi-squared (continuity corrected)": [
-                ""
-            ],
-            "McNemar Test Unavailable": [
-                ""
-            ],
-            "McNemar's test compares overall accuracy only: it does not separately test whether sensitivity or specificity differ between the tests. Overall accuracy depends on disease prevalence, so two tests with a non-significant McNemar result here can still differ in their sensitivity/specificity balance. Read the per-metric contrasts in the Differences with 95% Confidence Intervals table alongside this p-value.": [
                 ""
             ],
             "Mean = %1$.3f, 95%% CI (%2$.3f to %3$.3f)": [
@@ -5278,9 +4684,6 @@
             "Method for comparing ROC curves": [
                 ""
             ],
-            "Method for computing confidence intervals for agreement proportions. Wilson score is recommended for most cases. Logit is preferred when proportions are near 0 or 1 (common in high-agreement studies). Clopper-Pearson (Exact) is the most conservative.": [
-                ""
-            ],
             "Method for handling tied predictor scores in ROC calculation": [
                 ""
             ],
@@ -5311,13 +4714,7 @@
             "Methods Section": [
                 ""
             ],
-            "Methods Section:": [
-                ""
-            ],
             "Metric": [
-                ""
-            ],
-            "Metric Difference Unavailable": [
                 ""
             ],
             "Metric Score": [
@@ -5327,9 +4724,6 @@
                 ""
             ],
             "Metric tolerance is %1$s: every cutpoint scoring within %2$s of the best %3$s was treated as equivalent and the reported cutpoint is their %4$s. It is therefore <i>not</i> necessarily the cutpoint that maximises the metric, and its sensitivity and specificity can differ appreciably from the maximum. Set the tolerance to 0 to report the maximising cutpoint itself.": [
-                ""
-            ],
-            "Metric Unavailable": [
                 ""
             ],
             "Metrics differences": [
@@ -5365,16 +4759,7 @@
             "Minimize metric (LOESS smoothed)": [
                 ""
             ],
-            "Minimum acceptable OPA (%)": [
-                ""
-            ],
-            "Minimum acceptable OPA (percent)": [
-                ""
-            ],
             "Minimum CV Error": [
-                ""
-            ],
-            "Minimum OPA criterion": [
                 ""
             ],
             "Minimum sensitivity": [
@@ -5410,28 +4795,10 @@
             "Missing Dependency": [
                 ""
             ],
-            "Missing epiR Package": [
-                ""
-            ],
             "Missing Packages": [
                 ""
             ],
-            "Missing Positive Level": [
-                ""
-            ],
-            "Missing Positive Levels": [
-                ""
-            ],
-            "Missing Results Excluded Per Test": [
-                ""
-            ],
-            "Missing Stratifier Values": [
-                ""
-            ],
             "Missing values detected in predictor '%s' or outcome variable. Please check your data.": [
-                ""
-            ],
-            "Missing values were retained for transparent, test-specific handling ({counts}). Each standalone test uses rows observed for that test and the reference standard; paired comparisons use rows observed for both tests and the reference standard. Missing stratifier values affect only subgroup results. Report this handling and assess whether missingness could bias accuracy estimates (STARD 2015).": [
                 ""
             ],
             "Missing Variables": [
@@ -5536,22 +4903,7 @@
             "Moderate imbalance": [
                 ""
             ],
-            "Moderate negative evidence": [
-                ""
-            ],
             "Moderate optimization potential; consider threshold tuning": [
-                ""
-            ],
-            "Moderate positive evidence": [
-                ""
-            ],
-            "Moderately high sensitivity (>=85%) in this sample": [
-                ""
-            ],
-            "Moderately high sensitivity and specificity in this sample (both >=85%)": [
-                ""
-            ],
-            "Moderately high specificity (>=85%) in this sample": [
                 ""
             ],
             "Modern": [
@@ -5617,9 +4969,6 @@
             "Multi-level Outcome Variable Detected": [
                 ""
             ],
-            "Multi-Level Results Combined": [
-                ""
-            ],
             "Multiple cut-off evaluation": [
                 ""
             ],
@@ -5654,9 +5003,6 @@
                 ""
             ],
             "N Variables": [
-                ""
-            ],
-            "N/A": [
                 ""
             ],
             "Name (optional)": [
@@ -5695,13 +5041,7 @@
             "Negative counts detected": [
                 ""
             ],
-            "Negative Level Required for Exclusion": [
-                ""
-            ],
             "Negative Likelihood Ratio": [
-                ""
-            ],
-            "negative likelihood ratio": [
                 ""
             ],
             "Negative Likelihood Ratio Infinite": [
@@ -5728,13 +5068,7 @@
             "Negative predictive value": [
                 ""
             ],
-            "negative predictive value": [
-                ""
-            ],
             "Negative Predictive Value (NPV) will be unreliable even with high sensitivity/specificity": [
-                ""
-            ],
-            "Negative Predictive Value = TN/(TN+FN) = Probability of being healthy when test is negative": [
                 ""
             ],
             "Negative predictive value using the supplied population prevalence.": [
@@ -5854,12 +5188,6 @@
             "NNT and NND columns": [
                 ""
             ],
-            "No": [
-                ""
-            ],
-            "No analyzable cases were found in any observed stratum of '{variable}'. Check subgroup values and test/reference availability.": [
-                ""
-            ],
             "No better than predicting the base rate": [
                 ""
             ],
@@ -5870,9 +5198,6 @@
                 ""
             ],
             "No cases for cut-off": [
-                ""
-            ],
-            "No cases remain for {test} after applying the selected positive and negative levels.": [
                 ""
             ],
             "No complete cases available": [
@@ -5890,37 +5215,16 @@
             "No cutoffs meet the specified sensitivity/specificity constraints for %s. Using unconstrained Youden optimization instead.": [
                 ""
             ],
-            "No Data": [
-                ""
-            ],
-            "No Data Provided": [
-                ""
-            ],
-            "No data provided for analysis. Please ensure your dataset contains data. Load a dataset with diagnostic test variables and a gold standard reference.": [
-                ""
-            ],
-            "No Determinate Cases": [
-                ""
-            ],
             "no diagnostic value": [
                 ""
             ],
             "No example": [
                 ""
             ],
-            "No Gold Standard": [
-                ""
-            ],
             "No legend": [
                 ""
             ],
             "No manual cut point was supplied for: %s. These fell back to the sample median. Enter them as 'variable=value' pairs (for example 'ki67=20, age=65') to use established clinical thresholds.": [
-                ""
-            ],
-            "No McNemar result is available for these two tests; the reason is given in the Important Information panel. No statistical comparison was performed, so these data say nothing about whether the tests differ.": [
-                ""
-            ],
-            "No minimum OPA criterion was requested.": [
                 ""
             ],
             "No negative test results": [
@@ -5932,13 +5236,7 @@
             "No obvious sparse-cell warning.": [
                 ""
             ],
-            "No paired statistical comparison between the tests could be computed for these data, so none is reported.": [
-                ""
-            ],
             "No positive class was selected, so \"%s\" was assumed — the last level of the class variable. If that is the <i>negative</i> group, every sensitivity, specificity, cutpoint and AUC below is reversed. Set Positive Class explicitly.": [
-                ""
-            ],
-            "No positive level supplied for {target}. Please select the level that represents a positive result in the variable selection panel.": [
                 ""
             ],
             "No positive test results": [
@@ -5962,31 +5260,7 @@
             "No significant difference (p >= 0.05)": [
                 ""
             ],
-            "No significant difference detected at alpha = 0.05; this does not establish that the tests perform equally": [
-                ""
-            ],
-            "No significant difference detected.": [
-                ""
-            ],
-            "No significant overall difference detected among tests (p>=0.05); this does not establish that the tests perform equally": [
-                ""
-            ],
             "no single reference level is conventional for this context": [
-                ""
-            ],
-            "No statistical comparison between the tests could be computed for these data, so no McNemar's or Cochran's test result is available; the reason is given in the Important Information panel. These data therefore say nothing about whether the tests differ.": [
-                ""
-            ],
-            "No statistical comparison between the tests could be computed for these data: neither the global Cochran's Q test nor any pairwise McNemar test produced a result; the reason is given in the Important Information panel. Report the per-test performance only.": [
-                ""
-            ],
-            "No statistical comparison between the tests could be computed for these data: neither the global Cochran's Q test nor any pairwise McNemar test produced a result. The reason is given in the Important Information panel, and these data say nothing about whether the tests differ.": [
-                ""
-            ],
-            "No statistical comparison between these two tests could be computed; the reason is given in the Important Information panel. Report the per-test performance only.": [
-                ""
-            ],
-            "No Test Variables": [
                 ""
             ],
             "no usable cut-point exists - every threshold gives a Youden index of zero or less": [
@@ -6076,9 +5350,6 @@
             "not reported - fixed at 100% by construction": [
                 ""
             ],
-            "Not requested": [
-                ""
-            ],
             "Not significantly different": [
                 ""
             ],
@@ -6116,12 +5387,6 @@
                 ""
             ],
             "NPV (negative predictive value)": [
-                ""
-            ],
-            "NPV uses the prevalence observed in this sample.": [
-                ""
-            ],
-            "NPV uses the supplied population prevalence.": [
                 ""
             ],
             "NRI": [
@@ -6337,24 +5602,6 @@
             "Only 1 event of the outcome is present in the analysed cases.": [
                 ""
             ],
-            "Only one pairwise comparison was computed, so neither this interval nor the McNemar p-value is adjusted for multiplicity.": [
-                ""
-            ],
-            "Only one pairwise comparison was computed, so no multiplicity adjustment applies and the p-value shown is the unadjusted one.": [
-                ""
-            ],
-            "OPA": [
-                ""
-            ],
-            "OPA = (TP + TN) / analyzed N. {method} 95% confidence intervals.": [
-                ""
-            ],
-            "OPA = (TP + TN) / Total. OPA does not correct for chance agreement; consider Cohen's kappa for chance-corrected concordance. The criterion is met when the lower CI bound exceeds the user-specified minimum OPA. The criterion is optional and descriptive. It is not a noninferiority comparison, regulatory guidance, or clinical guidance.": [
-                ""
-            ],
-            "OPA Criterion": [
-                ""
-            ],
             "Optimal (closest to top-left)": [
                 ""
             ],
@@ -6409,40 +5656,16 @@
             "Optimized for confirmatory testing with high specificity": [
                 ""
             ],
-            "Optional variable to stratify comparison metrics by subgroup (e.g., specimen type, histologic type, site). Computes separate sensitivity, specificity, accuracy, and OPA within each subgroup level.": [
-                ""
-            ],
             "Optional: Bootstrap CI:": [
                 ""
             ],
-            "Optional. Select the level that indicates a NEGATIVE result for test 1. Only needed when the variable has more than two levels and you want \"Exclude indeterminate/Equivocal levels\" to drop the remaining (equivocal) rows instead of counting them as negative.": [
-                ""
-            ],
-            "Optional. Select the level that indicates a NEGATIVE result for test 2. Only needed when the variable has more than two levels and you want \"Exclude indeterminate/Equivocal levels\" to drop the remaining (equivocal) rows instead of counting them as negative.": [
-                ""
-            ],
-            "Optional. Select the level that indicates a NEGATIVE result for test 3. Only needed when the variable has more than two levels and you want \"Exclude indeterminate/Equivocal levels\" to drop the remaining (equivocal) rows instead of counting them as negative.": [
-                ""
-            ],
-            "Optional. Select the level that indicates disease is ABSENT in the gold standard variable. Only needed when the variable has more than two levels and you want \"Exclude indeterminate/Equivocal levels\" to drop the remaining (equivocal) rows instead of counting them as negative.": [
-                ""
-            ],
             "Optionally enable the summary, glossary, or about panels for additional guidance.": [
-                ""
-            ],
-            "Optionally select a third diagnostic test for three-way comparison.  This allows comprehensive evaluation of multiple testing strategies simultaneously.": [
                 ""
             ],
             "or the Model Comparison table for unpenalized estimates on the selected variables.": [
                 ""
             ],
             "or tick 'Model comparison analysis' under Explanatory Output to see unpenalized estimates on the selected variables.": [
-                ""
-            ],
-            "Original Data": [
-                ""
-            ],
-            "Original data": [
                 ""
             ],
             "Original measurement scale, as in the Selected Variables table": [
@@ -6508,22 +5731,10 @@
             "Over-fitting (slope < 1)": [
                 ""
             ],
-            "Overall (%d tests)": [
-                ""
-            ],
-            "Overall (%d tests) - ERROR": [
-                ""
-            ],
             "Overall accuracy": [
                 ""
             ],
             "Overall calibration metrics including Brier score": [
-                ""
-            ],
-            "Overall Percent Agreement (Descriptive)": [
-                ""
-            ],
-            "Overall percent agreement with CI": [
                 ""
             ],
             "Overall:": [
@@ -6571,19 +5782,7 @@
             "Package 'poLCA' is required for latent class analysis. Please install it with: install.packages('poLCA')": [
                 ""
             ],
-            "Paired comparisons used the common determinate rows. Diagnostic correctness was compared with McNemar's test, using an exact binomial p-value when fewer than 25 discordant pairs were available.": [
-                ""
-            ],
-            "Paired Difference Unavailable": [
-                ""
-            ],
-            "Paired N": [
-                ""
-            ],
             "Pairwise comparison needs two models": [
-                ""
-            ],
-            "Pairwise Comparison Not Computed": [
                 ""
             ],
             "Pairwise comparisons": [
@@ -6763,9 +5962,6 @@
             "Perform internal validation using cross-validation or bootstrap": [
                 ""
             ],
-            "Perform McNemar's test to statistically compare test performance. Use when you need to determine if differences between tests are statistically significant (p<0.05 indicates significant difference). Also provides confidence intervals for metric differences.": [
-                ""
-            ],
             "Perform pairwise comparisons between ROC curves": [
                 ""
             ],
@@ -6809,9 +6005,6 @@
                 ""
             ],
             "Please specify at least two dependent variables to use DeLong's test.": [
-                ""
-            ],
-            "Please specify positive levels for: {slots}. Use the level selector in the variable panel to choose which level represents a positive test result.": [
                 ""
             ],
             "Plot height": [
@@ -6898,9 +6091,6 @@
             "Positive agreement with the rule:": [
                 ""
             ],
-            "Positive and negative levels for {variable} are both \"{chosen}\". Choose two different levels.": [
-                ""
-            ],
             "Positive and negative predictive values are adjusted to the supplied population prevalence. No confidence intervals were requested.": [
                 ""
             ],
@@ -6914,9 +6104,6 @@
                 ""
             ],
             "Positive Likelihood Ratio": [
-                ""
-            ],
-            "positive likelihood ratio": [
                 ""
             ],
             "Positive Likelihood Ratio Undefined": [
@@ -6949,13 +6136,7 @@
             "Positive predictive value": [
                 ""
             ],
-            "positive predictive value": [
-                ""
-            ],
             "Positive Predictive Value (PPV) will be unreliable even with high sensitivity/specificity": [
-                ""
-            ],
-            "Positive Predictive Value = TP/(TP+FP) = Probability of disease when test is positive": [
                 ""
             ],
             "Positive predictive value using the supplied population prevalence.": [
@@ -6980,9 +6161,6 @@
                 ""
             ],
             "Possible Overfitting": [
-                ""
-            ],
-            "Post-hoc pairwise comparisons with Holm-Bonferroni correction were conducted to identify specific differences between tests.": [
                 ""
             ],
             "Post-hoc power (observed data)": [
@@ -7067,21 +6245,6 @@
                 ""
             ],
             "PPV and NPV vary with prevalence and should be verified in the target setting.": [
-                ""
-            ],
-            "PPV and NPV were computed at the population prevalence you supplied; overall accuracy reflects the prevalence of this sample.": [
-                ""
-            ],
-            "PPV uses the prevalence observed in this sample.": [
-                ""
-            ],
-            "PPV uses the supplied population prevalence.": [
-                ""
-            ],
-            "PPV, NPV and overall accuracy all depend on disease prevalence.": [
-                ""
-            ],
-            "PPV/NPV will be calculated using the supplied population prevalence (pp=TRUE). Confidence intervals are unavailable in this mode.": [
                 ""
             ],
             "PRC Baseline": [
@@ -7234,9 +6397,6 @@
             "Prevalence": [
                 ""
             ],
-            "prevalence": [
-                ""
-            ],
             "Prevalence (0-1)": [
                 ""
             ],
@@ -7265,12 +6425,6 @@
                 ""
             ],
             "Prevalence observed in this study sample.": [
-                ""
-            ],
-            "Prevalence Settings": [
-                ""
-            ],
-            "Prevalence Source": [
                 ""
             ],
             "Prevalence uses a uniform Beta(%1$g, %2$g) prior. Sensitivity and specificity each use a Beta(%3$g, %4$g) prior, which has mean %5$.2f and increases toward 1, so it pulls both estimates upward -- in MAP terms it adds one pseudo-positive result to every test. With a small sample this prior, not your data, may be driving the numbers below. These are penalised-likelihood (MAP) point estimates from an EM algorithm, not draws from a posterior, so the intervals shown are not credible intervals.": [
@@ -7306,22 +6460,10 @@
             "Prior prevalence value (0-1)": [
                 ""
             ],
-            "Prior Probability": [
-                ""
-            ],
             "Prior probability (disease prevalence in the community). Requires a value between 0.001 and 0.999, default 0.300.": [
                 ""
             ],
             "Prior Probability (prevalence)": [
-                ""
-            ],
-            "Prior probability (prevalence)": [
-                ""
-            ],
-            "Prior probability and confidence intervals cannot both be enabled. Please disable either the \"Prior Probability\" or the \"95% CI\" option. Use CI for sample-based estimates or custom prevalence for population-based PPV/NPV.": [
-                ""
-            ],
-            "Prior probability must be between 0 and 1 (exclusive). Current value: {value}. Enter a decimal value like 0.15 for 15% prevalence.": [
                 ""
             ],
             "Probability": [
@@ -7343,12 +6485,6 @@
                 ""
             ],
             "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type II error). Conventional values are 0.80 or 0.90; must exceed alpha.": [
-                ""
-            ],
-            "Probability that a negative test result truly indicates absence of disease. Also depends on prevalence.": [
-                ""
-            ],
-            "Probability that a positive test result truly indicates disease. Depends on disease prevalence - higher in populations with higher disease rates.": [
                 ""
             ],
             "Probability Transformation": [
@@ -7396,19 +6532,7 @@
             "Projected Unnecessary Treatments": [
                 ""
             ],
-            "Proportion of diseased cases correctly identified (True Positive Rate). High sensitivity means few false negatives. Important when missing disease is costly.": [
-                ""
-            ],
             "Proportion of diseased patients correctly identified by %s": [
-                ""
-            ],
-            "Proportion of false negative": [
-                ""
-            ],
-            "Proportion of false positives": [
-                ""
-            ],
-            "Proportion of non-diseased cases correctly identified (True Negative Rate). High specificity means few false positives. Important when false alarms are problematic.": [
                 ""
             ],
             "Proportion of non-diseased patients correctly identified by %s": [
@@ -7424,12 +6548,6 @@
                 ""
             ],
             "Proportion of subjects with outcome ruled out": [
-                ""
-            ],
-            "Proportion of subjects with the outcome ruled in": [
-                ""
-            ],
-            "Proportion of subjects with the outcome ruled out": [
                 ""
             ],
             "Proportions (comma-separated, sum to 1)": [
@@ -7492,22 +6610,10 @@
             "Q p-value": [
                 ""
             ],
-            "Qualitative performance labels are illustrative summaries of the observed sample only. They are not clinical guides, validated decision rules, or recommendations for patient care.": [
-                ""
-            ],
             "Quantile Positions": [
                 ""
             ],
             "Quantile positions": [
-                ""
-            ],
-            "Radar plot": [
-                ""
-            ],
-            "Radar Plot Comparison": [
-                ""
-            ],
-            "Radar Plot: Decision Test Statistics Comparison": [
                 ""
             ],
             "raised to %.2fx of prevalence": [
@@ -7669,9 +6775,6 @@
             "Reference Positive": [
                 ""
             ],
-            "Reference Reused as a Test": [
-                ""
-            ],
             "Reference rule splits the sample very unevenly": [
                 ""
             ],
@@ -7741,12 +6844,6 @@
             "Report achieved confidence intervals because a nominal sample-size threshold does not guarantee adequate precision.": [
                 ""
             ],
-            "Report sentence": [
-                ""
-            ],
-            "Report Sentences": [
-                ""
-            ],
             "Reporting a cut-point and a sensitivity from this analysis would misdescribe the marker.": [
                 ""
             ],
@@ -7811,9 +6908,6 @@
                 ""
             ],
             "Results Section": [
-                ""
-            ],
-            "Results Section:": [
                 ""
             ],
             "Results Summary": [
@@ -7984,9 +7078,6 @@
             "Run manually": [
                 ""
             ],
-            "Sample": [
-                ""
-            ],
             "Sample Accuracy": [
                 ""
             ],
@@ -8056,9 +7147,6 @@
             "Schneeweiss method (Mehta et al. J Clin Epidemiol 2016)": [
                 ""
             ],
-            "Scope of these estimates:": [
-                ""
-            ],
             "Scope warning:": [
                 ""
             ],
@@ -8125,9 +7213,6 @@
             "Screening test name": [
                 ""
             ],
-            "Screening Tests (Rule-Out):": [
-                ""
-            ],
             "Second Test": [
                 ""
             ],
@@ -8149,9 +7234,6 @@
             "Select a binary rule variable or disable \"Clinical Decision Rule Integration\".": [
                 ""
             ],
-            "Select a second diagnostic test to compare with Test 1. This enables head-to-head  comparison analysis (e.g., new method vs standard method, or two different biomarkers).": [
-                ""
-            ],
             "Select exactly one positive outcome level that is present in the analysis data.": [
                 ""
             ],
@@ -8162,24 +7244,6 @@
                 ""
             ],
             "Select Test Variables:": [
-                ""
-            ],
-            "Select the first diagnostic test to evaluate (e.g., imaging result, biomarker,  clinical assessment). This should be a test you want to validate against the gold standard.": [
-                ""
-            ],
-            "Select the level that indicates disease IS PRESENT in your gold standard variable  (e.g., \"positive\", \"malignant\", \"1\"). This represents the condition you want to detect.": [
-                ""
-            ],
-            "Select the level that represents a POSITIVE result for Test 1  (e.g., \"abnormal\", \"high\", \"positive\"). This should indicate suspected disease presence.": [
-                ""
-            ],
-            "Select the level that represents a POSITIVE result for Test 2.": [
-                ""
-            ],
-            "Select the level that represents a POSITIVE result for Test 3.": [
-                ""
-            ],
-            "Select the most reliable diagnostic method available (e.g., biopsy, final pathology,  expert consensus). This is the \"truth\" against which we compare other tests.  The selected positive level is compared with the remaining levels; if indeterminate values should be excluded, also select explicit negative levels.": [
                 ""
             ],
             "Select which level of the class variable represents the positive class (disease/condition present).": [
@@ -8195,9 +7259,6 @@
                 ""
             ],
             "Sensitivity": [
-                ""
-            ],
-            "sensitivity": [
                 ""
             ],
             "Sensitivity (0-1)": [
@@ -8230,9 +7291,6 @@
             "Sensitivity %1$.2f, specificity %2$.2f: the false-positive burden depends on prevalence.": [
                 ""
             ],
-            "Sensitivity = TP/(TP+FN) = Probability of positive test among diseased": [
-                ""
-            ],
             "Sensitivity analysis showing how the fixed penalties affect a conditional-independence fit.": [
                 ""
             ],
@@ -8254,9 +7312,6 @@
             "Sensitivity and Specificity vs. Threshold: Combined": [
                 ""
             ],
-            "Sensitivity and/or specificity could not be computed here: one gold-standard class has no cases, so that rate has an empty denominator and is reported as blank rather than as a low value. The 2x2 counts behind this row are in the Recoded Data table for this test": [
-                ""
-            ],
             "Sensitivity CI": [
                 ""
             ],
@@ -8267,9 +7322,6 @@
                 ""
             ],
             "Sensitivity Range (for high-sensitivity applications)": [
-                ""
-            ],
-            "Sensitivity was %1$s%2$s and specificity was %3$s%4$s.": [
                 ""
             ],
             "Sensitivity, specificity and accuracy are reported at a cutpoint that was searched for on these same data, so they are optimistic; they are not cross-validated or externally validated estimates.": [
@@ -8356,16 +7408,10 @@
             "Shaded: {level}% simultaneous band": [
                 ""
             ],
-            "Show 95 percent confidence intervals for per-test diagnostic accuracy estimates.": [
-                ""
-            ],
             "Show decision impact at various thresholds": [
                 ""
             ],
             "Show explanatory panels describing test evaluation methodology and assumptions. Helpful for understanding when and how to use this analysis.": [
-                ""
-            ],
-            "Show overall percent agreement (OPA) between each test and the gold standard with 95 percent confidence intervals. OPA is the proportion of cases where the test and gold standard agree. Unlike kappa, OPA does not correct for chance agreement.": [
                 ""
             ],
             "Show the number needed to test (1 / net benefit) and number needed to diagnose (1 / Youden index) columns in the clinical impact table": [
@@ -8395,16 +7441,10 @@
             "Significant difference (p < 0.05)": [
                 ""
             ],
-            "Significant difference (p<0.01)": [
-                ""
-            ],
             "Significant lack of fit": [
                 ""
             ],
             "Significant optimization potential; classifier may benefit from recalibration": [
-                ""
-            ],
-            "Significant overall difference among tests (p<0.01)": [
                 ""
             ],
             "Significantly different": [
@@ -8432,12 +7472,6 @@
                 ""
             ],
             "Small kappa difference.": [
-                ""
-            ],
-            "Small observed reference-standard sample (n={n}). Confidence intervals may be wide and estimates unstable, especially when either gold-standard class is sparse. Interpret the interval widths and class-specific denominators; no universal sample-size cutoff guarantees adequate precision.": [
-                ""
-            ],
-            "Small paired sample/discordant counts; CI may be unstable (n={n}, discordant counts: {counts}).": [
                 ""
             ],
             "Small Sample Size": [
@@ -8488,13 +7522,7 @@
             "Sparse categories.": [
                 ""
             ],
-            "Sparse Reference-Standard Class": [
-                ""
-            ],
             "Specificity": [
-                ""
-            ],
-            "specificity": [
                 ""
             ],
             "Specificity (0-1)": [
@@ -8507,9 +7535,6 @@
                 ""
             ],
             "Specificity %1$.2f with sensitivity %2$.2f: few false positives in this sample.": [
-                ""
-            ],
-            "Specificity = TN/(TN+FP) = Probability of negative test among healthy": [
                 ""
             ],
             "Specificity CI": [
@@ -8602,34 +7627,13 @@
             "Statistical comparison": [
                 ""
             ],
-            "Statistical comparison (McNemar's/Cochran's test) did not reveal a statistically significant difference in test performance (detailed results in the comparison tables).": [
-                ""
-            ],
-            "Statistical comparison (McNemar's/Cochran's test) revealed a statistically significant difference in test performance (detailed results in the comparison tables).": [
-                ""
-            ],
             "Statistical comparison failed: %s": [
-                ""
-            ],
-            "Statistical Comparison of Test Accuracy": [
                 ""
             ],
             "Statistical Comparison Summary": [
                 ""
             ],
-            "Statistical comparisons between tests are reported in the comparison tables above.": [
-                ""
-            ],
             "Statistical Conclusion": [
-                ""
-            ],
-            "Statistical Explanations & Glossary": [
-                ""
-            ],
-            "Statistical Glossary": [
-                ""
-            ],
-            "Statistical Interpretation": [
                 ""
             ],
             "Statistical Methods and References": [
@@ -8651,12 +7655,6 @@
                 ""
             ],
             "Statistical Test": [
-                ""
-            ],
-            "Statistically significant difference (p<0.05)": [
-                ""
-            ],
-            "Statistically significant overall difference among tests (p<0.05)": [
                 ""
             ],
             "Step Size": [
@@ -8683,19 +7681,7 @@
             "Strategy: {strategy} | Sensitivity: {sensitivity} | Specificity: {specificity}": [
                 ""
             ],
-            "Stratification (Optional)": [
-                ""
-            ],
-            "Stratification Empty": [
-                ""
-            ],
-            "Stratification Variable": [
-                ""
-            ],
             "Stratified bootstrap": [
-                ""
-            ],
-            "Stratified Diagnostic Accuracy": [
                 ""
             ],
             "Strong": [
@@ -8705,12 +7691,6 @@
                 ""
             ],
             "Strong evidence for positive diagnosis": [
-                ""
-            ],
-            "Strong negative evidence": [
-                ""
-            ],
-            "Strong positive evidence": [
                 ""
             ],
             "STRONG WARNING": [
@@ -8723,9 +7703,6 @@
                 ""
             ],
             "Study Explanation": [
-                ""
-            ],
-            "Subgroup": [
                 ""
             ],
             "Subgroup Variable (Optional)": [
@@ -8830,19 +7807,7 @@
             "Test '{test}' is extremely imbalanced on the positive/not-positive split the analysis uses: the smaller side is {percentage}% of observations. This may destabilize parameter estimation.": [
                 ""
             ],
-            "Test %d": [
-                ""
-            ],
             "Test 1": [
-                ""
-            ],
-            "Test 1 - Confidence Intervals": [
-                ""
-            ],
-            "Test 1 - Recoded Data": [
-                ""
-            ],
-            "Test 1 (Required)": [
                 ""
             ],
             "Test 1 has low discriminatory power (sensitivity plus specificity below 1.1, i.e. a Youden index below 0.1). Check its likelihood ratios in the results table: an operating point close to the chance diagonal can still give an informative LR+ or LR- when sensitivity and specificity are very unequal.": [
@@ -8857,9 +7822,6 @@
             "Test 1 Name Empty": [
                 ""
             ],
-            "Test 1 Negative Level": [
-                ""
-            ],
             "Test 1 Negative LR": [
                 ""
             ],
@@ -8870,9 +7832,6 @@
                 ""
             ],
             "Test 1 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
-                ""
-            ],
-            "Test 1 Positive Level": [
                 ""
             ],
             "Test 1 Positive LR": [
@@ -8914,15 +7873,6 @@
             "Test 2": [
                 ""
             ],
-            "Test 2 - Confidence Intervals": [
-                ""
-            ],
-            "Test 2 - Recoded Data": [
-                ""
-            ],
-            "Test 2 (Required for Comparison)": [
-                ""
-            ],
             "Test 2 has low discriminatory power (sensitivity plus specificity below 1.1, i.e. a Youden index below 0.1). Check its likelihood ratios in the results table: an operating point close to the chance diagonal can still give an informative LR+ or LR- when sensitivity and specificity are very unequal.": [
                 ""
             ],
@@ -8935,9 +7885,6 @@
             "Test 2 Name Empty": [
                 ""
             ],
-            "Test 2 Negative Level": [
-                ""
-            ],
             "Test 2 Negative LR": [
                 ""
             ],
@@ -8948,9 +7895,6 @@
                 ""
             ],
             "Test 2 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
-                ""
-            ],
-            "Test 2 Positive Level": [
                 ""
             ],
             "Test 2 Positive LR": [
@@ -8992,19 +7936,7 @@
             "Test 3": [
                 ""
             ],
-            "Test 3 - Confidence Intervals": [
-                ""
-            ],
-            "Test 3 - Recoded Data": [
-                ""
-            ],
             "Test 3 (Optional)": [
-                ""
-            ],
-            "Test 3 Negative Level": [
-                ""
-            ],
-            "Test 3 Positive Level": [
                 ""
             ],
             "Test 4": [
@@ -9035,9 +7967,6 @@
                 ""
             ],
             "Test Combination": [
-                ""
-            ],
-            "Test Comparison": [
                 ""
             ],
             "Test Correlation Risk": [
@@ -9232,9 +8161,6 @@
             "The data did not pass clinical validation. • %s": [
                 ""
             ],
-            "The dataset contains no rows to analyze.": [
-                ""
-            ],
             "The dependence parameter for the diseased group (%1$.2f) is not attainable with these sensitivities, so the joint positive probability was truncated from %2$.4f to its bound %3$.4f. The model actually fitted is therefore not the one you specified, and can force some test combinations to be impossible. Move the value toward 0 until this note disappears; the realized correlation is reported in the Test Dependence panel.": [
                 ""
             ],
@@ -9254,9 +8180,6 @@
                 ""
             ],
             "The epiR package is required for confidence intervals. Install it or disable confidence intervals. The two interval tables are left blank; every other result on this page is unaffected.": [
-                ""
-            ],
-            "The epiR package is required for confidence intervals. Install it with install.packages(\"epiR\"), or disable the \"95% CI\" option.": [
                 ""
             ],
             "The estimation did not converge": [
@@ -9301,16 +8224,7 @@
             "The generated scoring system reaches %d points for a single factor. A usable clinical score is typically under 20 points in total; this one is dominated by the ratio between the largest and smallest selected effects. Switch to the Max-scaled method or remove the near-zero predictor before using this score.": [
                 ""
             ],
-            "The global Cochran's Q test could not be computed for these data; the reason is given in the Important Information panel. Report the pairwise comparisons and their confidence intervals instead.": [
-                ""
-            ],
-            "The global Cochran's Q test could not be computed for these data; the reason is given in the Important Information panel. The pairwise comparisons and their confidence intervals in the tables above are unaffected.": [
-                ""
-            ],
             "The global test across all markers could not be computed (%s); its statistic and p-value are left blank.": [
-                ""
-            ],
-            "The gold-standard variable cannot also occupy a test slot. Select a different variable for each test.": [
                 ""
             ],
             "The intercept is the log-odds of the event when every selected predictor is 0 (or at its reference level); with the coefficients above it reproduces the model's predicted probability as plogis(intercept + sum(coefficient x value)). No odds ratio or importance applies to it.": [
@@ -9335,9 +8249,6 @@
                 ""
             ],
             "The latent-class analysis has N = {n}. N < 100 is a general stability warning, not a clinical adequacy threshold; precision also depends on class balance, response patterns, and the number of tests. Inspect bootstrap intervals and convergence, and consider collecting more observations.": [
-                ""
-            ],
-            "The likelihood ratio for positive results was %1$s and for negative results was %2$s.": [
                 ""
             ],
             "The maximum threshold is {max}%.": [
@@ -9397,9 +8308,6 @@
             "The p-value is blank for: %s. The differences are still shown; only the test failed.": [
                 ""
             ],
-            "The p-values in this table are Holm-Bonferroni adjusted across the {comparisons} pairwise comparisons that could be computed. The confidence intervals in the Differences with 95% Confidence Intervals table are not adjusted for multiplicity, so an adjusted p above 0.05 can sit beside an interval that excludes zero.": [
-                ""
-            ],
             "The partial AUC confidence interval is a bootstrap interval of the requested type '%1$s' from %2$s resamples. If any resample contained a single outcome class it is dropped, and a BCa interval is then reported as a percentile interval instead — a notice appears when that happens. The interval is for the raw partial AUC over the chosen focus range, NOT for the McClish-normalised value in the next column.": [
                 ""
             ],
@@ -9407,9 +8315,6 @@
                 ""
             ],
             "The Positive Class you selected (%1$s) does not appear in %2$s. Its observed levels are: %3$s.": [
-                ""
-            ],
-            "The positive level \"{chosen}\" was not found in {target}. Check spelling and capitalisation. Available levels: {available}.": [
                 ""
             ],
             "The positive likelihood ratio is {lr}, so a positive result lowers the probability of a reference-positive outcome rather than raising it.": [
@@ -9595,9 +8500,6 @@
             "These curves are computed on the same rows that supplied the predicted risks.": [
                 ""
             ],
-            "These estimates are apparent performance in this dataset and have not been externally validated.": [
-                ""
-            ],
             "These figures are APPARENT (in-sample) and optimistic twice over: the points were derived from a model fitted to this dataset, and the score cutoff was chosen to maximise the Youden index on the same rows. They are not an estimate of how the score would perform on new patients. Enable bootstrap validation for an optimism-corrected estimate of the model, and validate any score externally before clinical use.": [
                 ""
             ],
@@ -9620,9 +8522,6 @@
                 ""
             ],
             "They cover each threshold separately and are not a simultaneous band; choose the simultaneous band to read the whole curve at once.": [
-                ""
-            ],
-            "They were all computed at the prevalence of this sample.": [
                 ""
             ],
             "They would like to know how low the one-sided {conf}% lower confidence bound for kappa can be expected to fall - the smallest agreement the study would still be unable to rule out; every value below it is excluded.": [
@@ -9655,9 +8554,6 @@
             "This design cannot support a reliability claim.": [
                 ""
             ],
-            "This does not establish that the tests perform equally; no test of one test against another across a pre-specified equivalence margin was performed. (If requested, the OPA criterion column compares each test with a user-specified descriptive threshold; it is not a noninferiority comparison between tests or clinical guidance.)": [
-                ""
-            ],
             "This function evaluates a diagnostic test against a stated reference standard. It calculates sensitivity, specificity, predictive values, and likelihood ratios. Reference standards can be imperfect, so disagreement may reflect error in either method.": [
                 ""
             ],
@@ -9677,9 +8573,6 @@
                 ""
             ],
             "This is not an accuracy estimate: each test helps build the rule against which it is evaluated, creating incorporation bias. Strict majority means more than half positive; with an even number of tests, tied cases are rule negative. With two tests this is identical to the all-tests-positive rule.": [
-                ""
-            ],
-            "This is not evidence that the two tests are equivalent: McNemar's test uses only the discordant pairs, so with few discordances it has little power to detect a real difference. Check the confidence interval for the accuracy difference to see how large a difference remains compatible with these data.</p>": [
                 ""
             ],
             "This is not posterior sampling, priors are not configurable, intervals are not credible intervals, and latent-class labels remain unidentified.": [
@@ -9763,9 +8656,6 @@
             "This table lists every observed test value as a candidate cutpoint, not only the selected one; the bias above applies to whichever row you report as the cutpoint.": [
                 ""
             ],
-            "This tool compares the diagnostic performance of multiple medical tests against a gold standard reference. It systematically evaluates sensitivity, specificity, predictive values, likelihood ratios, and overall accuracy to support transparent comparison of observed performance. It does not select a test for clinical use.": [
-                ""
-            ],
             "This was read from the data, not specified in advance — set Direction explicitly to pin it.": [
                 ""
             ],
@@ -9815,9 +8705,6 @@
                 ""
             ],
             "Tied Best Cutoff: %s": [
-                ""
-            ],
-            "Tied Descriptive Ranking": [
                 ""
             ],
             "Tied Score Handling": [
@@ -10060,15 +8947,6 @@
             "Unable to assess": [
                 ""
             ],
-            "Unable to compute {metric} difference for {comparison}: insufficient paired data.": [
-                ""
-            ],
-            "Unable to compute {metric} for {test}: denominator is zero. The result is set to NA.": [
-                ""
-            ],
-            "Unable to compute paired differences for {comparison}: no observations with complete data across both tests and the gold standard.": [
-                ""
-            ],
             "unavailable": [
                 ""
             ],
@@ -10138,12 +9016,6 @@
             "USER OVERRIDE ACTIVE: Meta-analysis performed on non-independent data despite violation of independence assumption. These results should NOT be used for formal statistical inference. Provided for exploratory purposes only with full awareness of statistical invalidity.": [
                 ""
             ],
-            "User-requested minimum OPA criterion: {pct}%. 'Criterion met' means the lower confidence bound exceeds this descriptive threshold.": [
-                ""
-            ],
-            "User-specified descriptive criterion for overall percent agreement. The criterion is met when the lower 95 percent confidence bound exceeds this value. This is not a noninferiority comparison against another test and is not regulatory or clinical guidance.": [
-                ""
-            ],
             "Uses majority vote as pseudo-gold standard": [
                 ""
             ],
@@ -10160,9 +9032,6 @@
                 ""
             ],
             "Validation & Model Performance": [
-                ""
-            ],
-            "Validation failed": [
                 ""
             ],
             "Validation failed for {pred}: {msg}": [
@@ -10231,12 +9100,6 @@
             "Very large sample size.": [
                 ""
             ],
-            "Very small observed reference-standard sample (n={n}). Confidence intervals may be wide and estimates unstable, especially when either gold-standard class is sparse. Interpret the interval widths and class-specific denominators; no universal sample-size cutoff guarantees adequate precision.": [
-                ""
-            ],
-            "Very Small Sample Size": [
-                ""
-            ],
             "Very small sample size (n = {n}).": [
                 ""
             ],
@@ -10250,9 +9113,6 @@
                 ""
             ],
             "Visualization": [
-                ""
-            ],
-            "Visualizations": [
                 ""
             ],
             "Warning": [
@@ -10277,9 +9137,6 @@
                 ""
             ],
             "Warnings:": [
-                ""
-            ],
-            "We compared the diagnostic performance of %1$s tests (%2$s) against the reference standard using diagnostic accuracy analysis. The dataset contained %3$d selected rows. %4$s Standalone estimates used available reference/test pairs, and paired comparisons used common determinate rows. Performance metrics included sensitivity, specificity, positive and negative predictive values, likelihood ratios, and overall accuracy. %5$s": [
                 ""
             ],
             "Weak": [
@@ -10318,19 +9175,10 @@
             "What does this analysis do?": [
                 ""
             ],
-            "What This Analysis Does": [
-                ""
-            ],
             "What this tool does:": [
                 ""
             ],
-            "When a test or the gold standard has more than two levels (e.g., indeterminate/equivocal), exclude those rows instead of treating them as negative.": [
-                ""
-            ],
             "When to use it:": [
-                ""
-            ],
-            "When to Use This Analysis": [
                 ""
             ],
             "Where a marker is not already a probability, the risks come from a logistic model fitted to these same data, so the curve is apparent, not validated.": [
@@ -10355,12 +9203,6 @@
                 ""
             ],
             "Width of ROC plots": [
-                ""
-            ],
-            "Wilson score": [
-                ""
-            ],
-            "Wilson Score": [
                 ""
             ],
             "With only %1$d observations, results may be unstable. Consider %2$d+ observations for reliable ROC analysis.": [
@@ -10388,9 +9230,6 @@
                 ""
             ],
             "Wrong level specified for positive class. No observations found.": [
-                ""
-            ],
-            "Yes": [
                 ""
             ],
             "You are already using the least conservative lambda (Minimum CV Error), so the penalty is not the limiting factor: none of these predictors carries enough signal at this sample size. Add more informative predictors or collect more cases.": [
@@ -10472,12 +9311,6 @@
                 ""
             ],
             "Z-statistic": [
-                ""
-            ],
-            "Zero Cell Continuity Correction": [
-                ""
-            ],
-            "Zero cell detected. A 0.5 continuity correction is applied only to a likelihood ratio whose own denominator cell is empty (FP = 0 for LR+, TN = 0 for LR-); every other statistic uses these raw counts. Interpret cautiously.": [
                 ""
             ],
             "Δ Cohen's d": [

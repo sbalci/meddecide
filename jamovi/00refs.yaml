@@ -332,18 +332,6 @@ refs:
         publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=caret"
         url: "https://CRAN.R-project.org/package=caret"
 
-    cochran1950:
-        type: article
-        author: Cochran, W. G.
-        year: 1950
-        title: The comparison of percentages in matched samples
-        publisher: Biometrika
-        volume: 37
-        issue: 3-4
-        pages: 256-266
-        doi: 10.1093/biomet/37.3-4.256
-        url: "https://doi.org/10.1093/biomet/37.3-4.256"
-
     cutpointr:
         type: software
         author: Christian Thiele
@@ -372,23 +360,6 @@ refs:
         doi: 10.32614/CRAN.package.epiR
         url: "https://CRAN.R-project.org/package=epiR"
 
-    forcats:
-        type: software
-        author: "Wickham, H."
-        year: 2025
-        title: "forcats: Tools for Working with Categorical Variables (Factors)"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=forcats"
-        doi: 10.32614/CRAN.package.forcats
-        url: "https://CRAN.R-project.org/package=forcats"
-
-    ggplot2:
-        type: software
-        author: "Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., & RStudio"
-        year: 2018
-        title: "ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=ggplot2"
-        url: "https://CRAN.R-project.org/package=ggplot2"
-
     glmnet:
         type: software
         author: Jerome Friedman, Trevor Hastie, Rob Tibshirani, Balasubramanian Narasimhan, Kenneth Tay, Noah Simon, James Yang, Jonathan Taylor
@@ -396,17 +367,6 @@ refs:
         title: "glmnet: Lasso and Elastic-Net Regularized Generalized Linear Models"
         publisher: "[R package version 5.0]. Retrieved from https://CRAN.R-project.org/package=glmnet"
         url: "https://CRAN.R-project.org/package=glmnet"
-
-    holm1979:
-        type: article
-        author: Holm, S.
-        year: 1979
-        title: A simple sequentially rejective multiple test procedure
-        publisher: Scandinavian Journal of Statistics
-        volume: 6
-        issue: 2
-        pages: 65-70
-        url: "https://www.jstor.org/stable/4615733"
 
     irr:
         type: software
@@ -416,18 +376,6 @@ refs:
         publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=irr"
         url: "https://CRAN.R-project.org/package=irr"
 
-    jaeschke1994:
-        type: article
-        author: "Jaeschke, R., Guyatt, G. H., & Sackett, D. L."
-        year: 1994
-        title: Users' guides to the medical literature. III. How to use an article about a diagnostic test. B. What are the results and will they help me in caring for my patients?
-        publisher: JAMA
-        volume: 271
-        issue: 9
-        pages: 703-707
-        doi: 10.1001/jama.271.9.703
-        url: "https://doi.org/10.1001/jama.271.9.703"
-
     kappaSize:
         type: software
         author: Michael A Rotondi
@@ -435,38 +383,6 @@ refs:
         title: "kappaSize: Sample Size Estimation Functions for Studies of Interobserver Agreement"
         publisher: "[R package]. Retrieved from https://cran.r-project.org/web/packages/kappaSize/"
         url: "https://cran.r-project.org/web/packages/kappaSize/"
-
-    knitr:
-        type: software
-        author: Yihui Xie
-        year: 2025
-        title: "knitr: R package"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=knitr"
-        url: "https://CRAN.R-project.org/package=knitr"
-
-    mcnemar1947:
-        type: article
-        author: McNemar, Q.
-        year: 1947
-        title: Note on the sampling error of the difference between correlated proportions or percentages
-        publisher: Psychometrika
-        volume: 12
-        issue: 2
-        pages: 153-157
-        doi: 10.1007/BF02295996
-        url: "https://doi.org/10.1007/BF02295996"
-
-    newcombe1998paired:
-        type: article
-        author: Newcombe, R. G.
-        year: 1998
-        title: Improved confidence intervals for the difference between binomial proportions based on paired data
-        publisher: Statistics in Medicine
-        volume: 17
-        issue: 22
-        pages: 2635-2650
-        doi: "10.1002/(SICI)1097-0258(19981130)17:22<2635::AID-SIM954>3.0.CO;2-C"
-        url: "https://doi.org/10.1002/(SICI)1097-0258(19981130)17:22%3C2635::AID-SIM954%3E3.0.CO;2-C"
 
     pROC:
         type: software
@@ -510,17 +426,5 @@ refs:
         title: "tools: R package"
         publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=tools"
         url: "https://CRAN.R-project.org/package=tools"
-
-    wilson1927:
-        type: article
-        author: Wilson, E. B.
-        year: 1927
-        title: Probable inference, the law of succession, and statistical inference
-        publisher: Journal of the American Statistical Association
-        volume: 22
-        issue: 158
-        pages: 209-212
-        doi: 10.1080/01621459.1927.10502953
-        url: "https://doi.org/10.1080/01621459.1927.10502953"
 
 ...
