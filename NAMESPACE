@@ -2,46 +2,17 @@
 
 export("%>%")
 export("%||%")
-export(.clinicopath_errors)
-export(bootstrapIDI)
-export(bootstrapNRI)
-export(clear_error_log)
-export(clinicopath_cleanup)
-export(clinicopath_error_handler)
-export(clinicopath_init)
-export(clinicopath_warning_handler)
 export(cotest)
-export(create_enhanced_result)
-export(decisioncalculator)
 export(decisioncurve)
-export(enhancedROC)
-export(enhancedROCClass)
-export(generate_user_friendly_error)
-export(generate_user_friendly_warning)
-export(get_clinical_context)
-export(get_error_summary)
 export(kappaSizeCI)
 export(kappaSizeFixedN)
 export(kappaSizePower)
 export(lassologistic)
-export(nogoldstandard)
 export(nomogrammer)
-export(psychopdaROC)
-export(psychopdaROCClass)
-export(raw_to_prob)
-export(safe_execute)
 export(sequentialtests)
-export(validate_clinical_data)
 import(jmvcore)
 importFrom(DescTools,CCC)
-importFrom(MASS,ginv)
 importFrom(R6,R6Class)
-importFrom(boot,
-  boot,
-  boot.ci
-)
-importFrom(caret,confusionMatrix)
-importFrom(cutpointr,cutpointr)
 importFrom(dplyr,
   arrange,
   filter,
@@ -82,30 +53,18 @@ importFrom(ggplot2,
   ylim
 )
 importFrom(glmnet,cv.glmnet)
-importFrom(grDevices,
-  colorRampPalette,
-  hcl.colors
-)
-importFrom(graphics,
-  axis,
-  box,
-  image,
-  par
-)
+importFrom(grDevices,colorRampPalette)
+importFrom(graphics,par)
 importFrom(grid,arrow)
 importFrom(irr,kappa2)
 importFrom(irrCAC,gwet.ac1.raw)
-importFrom(jmvcore,.)
 importFrom(kappaSize,PowerBinary)
 importFrom(knitr,kable)
 importFrom(lme4,lmer)
 importFrom(lmerTest,as_lmerModLmerTest)
 importFrom(magrittr,"%>%")
-importFrom(pROC,roc)
 importFrom(poLCA,poLCA)
-importFrom(splines,ns)
 importFrom(stats,
-  binom.test,
   binomial,
   complete.cases,
   cov,
@@ -120,7 +79,6 @@ importFrom(tibble,rownames_to_column)
 importFrom(tidyr,gather)
 importFrom(tools,toTitleCase)
 importFrom(utils,
-  data,
   sessionInfo,
   tail
 )

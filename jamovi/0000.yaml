@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.0.83.05
+version: 1.0.83.06
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-09-27'
+date: '2026-10-03'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -30,24 +30,6 @@ description: >-
   For comments, suggestions, feature requests or reporting bugs, please open an
   issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.
 analyses:
-  - title: Medical Decision Calculator
-    name: decisioncalculator
-    ns: meddecide
-    menuGroup: meddecide
-    menuSubgroup: Decision Calculators
-    menuTitle: Medical Decision Calculator
-    description: >
-      Medical Decision Calculator for diagnostic test evaluation when you have
-      the four key counts: True Positives (TP), False Positives (FP), True
-      Negatives (TN), and False Negatives (FN). Calculates comprehensive
-      diagnostic performance metrics including sensitivity, specificity,
-      positive and negative predictive values, likelihood ratios, and post-test
-      probabilities. Supports confidence interval estimation and Fagan nomogram
-      visualization for educational interpretation. Presets and examples are
-      illustrative only and are not clinical guides.
-    menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
-    ribbon: analyses
-    category: analyses
   - title: Power Approach for the Number of Subjects Required
     name: kappaSizePower
     ns: meddecide
@@ -95,46 +77,6 @@ analyses:
       test and kappaSizeCI to size it for a target interval width.
     ribbon: analyses
     category: analyses
-  - title: Analysis Without Gold Standard
-    name: nogoldstandard
-    ns: meddecide
-    ribbon: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision
-    menuTitle: Analysis Without Gold Standard
-    menuSubtitle: Multiple Test Analysis Without Gold Standard
-    description: >
-      Analysis of multiple binary tests when no perfect reference exists.
-      Implements a conditional-independence two-class latent class model,
-      fixed-prior penalized EM point estimation, and descriptive agreement with
-      self-built composite reference rules. Latent classes are unlabeled, and
-      reference-rule results are not diagnostic-accuracy estimates.
-    category: analyses
-  - title: Clinical ROC Analysis
-    name: enhancedROC
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: ROC
-    menuTitle: Clinical ROC Analysis
-    menuSubtitle: Clinical ROC analysis with diagnostic metrics and optimal cutoffs
-    description: >
-      Clinical ROC analysis toolkit for comprehensive diagnostic performance
-      evaluation. Includes ROC curve analysis, Youden Index optimization,
-      sensitivity/specificity analysis, optimal cutoff determination, and
-      comparative ROC analysis. Essential for biomarker validation, diagnostic
-      test evaluation, and clinical decision support in medical research.
-  - title: Advanced ROC Analysis
-    name: psychopdaROC
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: ROC
-    menuTitle: Advanced ROC Analysis
-    menuSubtitle: Advanced ROC analysis with statistical comparisons and effect sizes
-    description: >
-      Receiver Operating Characteristic (ROC) curve analysis with optimal
-      cutpoint determination.
   - title: Co-Testing Analysis
     name: cotest
     ns: meddecide

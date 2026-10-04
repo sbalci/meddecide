@@ -1,41 +1,5 @@
 ---
 refs:
-    AltmanBland1994:
-        type: article
-        author: "Altman, D. G., & Bland, J. M."
-        year: 1994
-        title: "Diagnostic tests 1: Sensitivity and specificity"
-        publisher: BMJ
-        volume: 308
-        issue: 6943
-        pages: 1552
-        doi: 10.1136/bmj.308.6943.1552
-        url: "https://doi.org/10.1136/bmj.308.6943.1552"
-
-    AustinSteyerberg2019ICI:
-        type: article
-        author: "Austin, P. C., & Steyerberg, E. W."
-        year: 2019
-        title: The Integrated Calibration Index (ICI) and related metrics for quantifying the calibration of logistic regression models
-        publisher: Statistics in Medicine
-        volume: 38
-        issue: 21
-        pages: 4051-4065
-        doi: 10.1002/sim.8281
-        url: "https://doi.org/10.1002/sim.8281"
-
-    Buderer1996:
-        type: article
-        author: Buderer, N. M. F.
-        year: 1996
-        title: "Statistical methodology: I. Incorporating the prevalence of disease into the sample size calculation for sensitivity and specificity"
-        publisher: Academic Emergency Medicine
-        volume: 3
-        issue: 9
-        pages: 895-900
-        doi: 10.1111/j.1553-2712.1996.tb03538.x
-        url: "https://doi.org/10.1111/j.1553-2712.1996.tb03538.x"
-
     CDC_HIV_Testing_2023:
         type: webpage
         author: Centers for Disease Control and Prevention; Association of Public Health Laboratories.
@@ -53,15 +17,6 @@ refs:
         doi: 10.17605/OSF.IO/9SZUD
         url: "https://www.serdarbalci.com/ClinicoPathJamoviModule/"
 
-    Cohen1988:
-        type: book
-        author: Cohen, J.
-        year: 1988
-        title: Statistical Power Analysis for the Behavioral Sciences (2nd ed.)
-        publisher: Lawrence Erlbaum Associates
-        doi: 10.4324/9780203771587
-        url: "https://doi.org/10.4324/9780203771587"
-
     ConditionalDependenceDiagnosticTests:
         type: article
         author: Gardner IA, Stryhn H, Lind P, Collins MT.
@@ -73,18 +28,6 @@ refs:
         pages: 107-122
         doi: 10.1016/S0167-5877(00)00119-7
         url: "https://pubmed.ncbi.nlm.nih.gov/10802336/"
-
-    DeLong1988:
-        type: article
-        author: "DeLong, E. R., DeLong, D. M., & Clarke-Pearson, D. L."
-        year: 1988
-        title: "Comparing the areas under two or more correlated receiver operating characteristic curves: a nonparametric approach"
-        publisher: Biometrics
-        volume: 44
-        issue: 3
-        pages: 837-845
-        doi: 10.2307/2531595
-        url: "https://doi.org/10.2307/2531595"
 
     DeeksAltman2004:
         type: article
@@ -98,18 +41,6 @@ refs:
         doi: 10.1136/bmj.329.7458.168
         url: "https://doi.org/10.1136/bmj.329.7458.168"
 
-    DerSimonian1986:
-        type: article
-        author: "DerSimonian, R., & Laird, N."
-        year: 1986
-        title: Meta-analysis in clinical trials
-        publisher: Controlled Clinical Trials
-        volume: 7
-        issue: 3
-        pages: 177-188
-        doi: 10.1016/0197-2456(86)90046-2
-        url: "https://doi.org/10.1016/0197-2456(86)90046-2"
-
     DiagnosticTests:
         type: article
         author: "Stites, E. C., & Wilen, C. B."
@@ -121,14 +52,6 @@ refs:
         pages: 78-89
         doi: 10.1016/j.medj.2020.08.001
         url: "https://doi.org/10.1016/j.medj.2020.08.001"
-
-    Fagan:
-        type: software
-        author: "Chekroud, A. M., & Schwartz, A."
-        year: 2016
-        title: "nomogrammer: Fagan's nomograms with ggplot2"
-        publisher: GitHub
-        url: "https://github.com/achekroud/nomogrammer"
 
     Fagan1975:
         type: article
@@ -142,42 +65,6 @@ refs:
         doi: 10.1056/NEJM197507312930513
         url: "https://doi.org/10.1056/NEJM197507312930513"
 
-    Hedges1981:
-        type: article
-        author: Hedges, L. V.
-        year: 1981
-        title: Distribution theory for Glass's estimator of effect size and related estimators
-        publisher: Journal of Educational Statistics
-        volume: 6
-        issue: 2
-        pages: 107-128
-        doi: 10.3102/10769986006002107
-        url: "https://doi.org/10.3102/10769986006002107"
-
-    Higgins2003:
-        type: article
-        author: "Higgins, J. P. T., Thompson, S. G., Deeks, J. J., & Altman, D. G."
-        year: 2003
-        title: Measuring inconsistency in meta-analyses
-        publisher: BMJ
-        volume: 327
-        issue: 7414
-        pages: 557-560
-        doi: 10.1136/bmj.327.7414.557
-        url: "https://doi.org/10.1136/bmj.327.7414.557"
-
-    HuiWalter1980:
-        type: article
-        author: "Hui, S. L., & Walter, S. D."
-        year: 1980
-        title: Estimating the Error Rates of Diagnostic Tests
-        publisher: Biometrics
-        volume: 36
-        issue: 1
-        pages: 167-171
-        doi: 10.2307/2530508
-        url: "https://doi.org/10.2307/2530508"
-
     Kerr2016DCA:
         type: article
         author: "Kerr, K. F., Brown, M. D., Zhu, K., & Janes, H."
@@ -190,14 +77,6 @@ refs:
         doi: 10.1200/JCO.2015.65.5654
         url: "https://doi.org/10.1200/JCO.2015.65.5654"
 
-    MASS:
-        type: software
-        author: "Ripley, B., Venables W., Bates, D. M., Hornik, K., Gebhardt, A., & Firth, D."
-        year: 2018
-        title: "MASS: Support Functions and Datasets for Venables and Ripley's MASS"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=MASS"
-        url: "https://CRAN.R-project.org/package=MASS"
-
     MandelBetensky2008:
         type: article
         author: "Mandel, M., & Betensky, R. A."
@@ -209,77 +88,6 @@ refs:
         pages: 2158-2165
         doi: 10.1016/j.csda.2007.07.005
         url: "https://doi.org/10.1016/j.csda.2007.07.005"
-
-    McClish1989:
-        type: article
-        author: McClish, D. K.
-        year: 1989
-        title: Analyzing a portion of the ROC curve
-        publisher: Medical Decision Making
-        volume: 9
-        issue: 3
-        pages: 190-195
-        doi: 10.1177/0272989X8900900307
-        url: "https://doi.org/10.1177/0272989X8900900307"
-
-    Pencina2008:
-        type: article
-        author: "Pencina, M. J., D'Agostino Sr, R. B., D'Agostino Jr, R. B., & Vasan, R. S."
-        year: 2008
-        title: "Evaluating the added predictive ability of a new marker: from area under the ROC curve to reclassification and beyond"
-        publisher: Statistics in Medicine
-        volume: 27
-        issue: 2
-        pages: 157-172
-        doi: 10.1002/sim.2929
-        url: "https://doi.org/10.1002/sim.2929"
-
-    Pencina2011:
-        type: article
-        author: "Pencina, M. J., D'Agostino Sr, R. B., & Steyerberg, E. W."
-        year: 2011
-        title: Extensions of net reclassification improvement calculations to measure usefulness of new biomarkers
-        publisher: Statistics in Medicine
-        volume: 30
-        issue: 1
-        pages: 11-21
-        doi: 10.1002/sim.4085
-        url: "https://doi.org/10.1002/sim.4085"
-
-    STARD2015:
-        type: article
-        author: Bossuyt, P. M., Reitsma, J. B., Bruns, D. E., et al.
-        year: 2015
-        title: "STARD 2015: An updated list of essential items for reporting diagnostic accuracy studies"
-        publisher: BMJ
-        volume: 351
-        pages: h5527
-        doi: 10.1136/bmj.h5527
-        url: "https://doi.org/10.1136/bmj.h5527"
-
-    Steyerberg2010:
-        type: article
-        author: "Steyerberg, E. W., Vickers, A. J., Cook, N. R., Gerds, T., Gonen, M., Obuchowski, N., Pencina, M. J., & Kattan, M. W."
-        year: 2010
-        title: "Assessing the performance of prediction models: a framework for traditional and novel measures"
-        publisher: Epidemiology
-        volume: 21
-        issue: 1
-        pages: 128-138
-        doi: 10.1097/EDE.0b013e3181c30fb2
-        url: "https://doi.org/10.1097/EDE.0b013e3181c30fb2"
-
-    Swamidass2010:
-        type: article
-        author: "Swamidass, S. J., Azencott, C.-A., Daily, K., & Baldi, P."
-        year: 2010
-        title: "A CROC stronger than ROC: measuring, visualizing and optimizing early retrieval"
-        publisher: Bioinformatics
-        volume: 26
-        issue: 10
-        pages: 1348-1356
-        doi: 10.1093/bioinformatics/btq140
-        url: "https://doi.org/10.1093/bioinformatics/btq140"
 
     Vickers2006:
         type: article
@@ -316,30 +124,6 @@ refs:
         doi: 10.1186/s41512-023-00148-y
         url: "https://doi.org/10.1186/s41512-023-00148-y"
 
-    boot:
-        type: software
-        author: Angelo Canty, Brian Ripley, Alessandra R. Brazzale
-        year: 2025
-        title: "boot: R package"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=boot"
-        url: "https://CRAN.R-project.org/package=boot"
-
-    caret:
-        type: software
-        author: Max Kuhn
-        year: 2020
-        title: "caret: Classification and Regression Training"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=caret"
-        url: "https://CRAN.R-project.org/package=caret"
-
-    cutpointr:
-        type: software
-        author: Christian Thiele
-        year: 2025
-        title: "cutpointr: R package"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=cutpointr"
-        url: "https://CRAN.R-project.org/package=cutpointr"
-
     donnerEliasziwKappaGOF:
         type: article
         author: Donner A, Eliasziw M.
@@ -351,15 +135,6 @@ refs:
         doi: 10.1002/sim.4780111109
         url: "https://doi.org/10.1002/sim.4780111109"
 
-    epiR:
-        type: software
-        author: "Stevenson, M., & Sergeant, E."
-        year: 2026
-        title: "epiR: Tools for the Analysis of Epidemiological Data"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=epiR"
-        doi: 10.32614/CRAN.package.epiR
-        url: "https://CRAN.R-project.org/package=epiR"
-
     glmnet:
         type: software
         author: Jerome Friedman, Trevor Hastie, Rob Tibshirani, Balasubramanian Narasimhan, Kenneth Tay, Noah Simon, James Yang, Jonathan Taylor
@@ -367,14 +142,6 @@ refs:
         title: "glmnet: Lasso and Elastic-Net Regularized Generalized Linear Models"
         publisher: "[R package version 5.0]. Retrieved from https://CRAN.R-project.org/package=glmnet"
         url: "https://CRAN.R-project.org/package=glmnet"
-
-    irr:
-        type: software
-        author: Matthias Gamer, Jim Lemon, Ian Fellows, Puspendra Singh
-        year: 2019
-        title: Various Coefficients of Interrater Reliability and Agreement.
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=irr"
-        url: "https://CRAN.R-project.org/package=irr"
 
     kappaSize:
         type: software
@@ -392,14 +159,6 @@ refs:
         publisher: "[R package version 1.19.0.1]. Retrieved from https://CRAN.R-project.org/package=pROC"
         url: "https://CRAN.R-project.org/package=pROC"
 
-    poLCA:
-        type: software
-        author: Drew Linzer, Jeffrey Lewis
-        year: 2026
-        title: "poLCA: R package"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=poLCA"
-        url: "https://CRAN.R-project.org/package=poLCA"
-
     rotondiDonnerKappaCI:
         type: article
         author: Rotondi MA, Donner A.
@@ -410,21 +169,5 @@ refs:
         pages: 778-784
         doi: 10.1016/j.jclinepi.2011.10.019
         url: "https://doi.org/10.1016/j.jclinepi.2011.10.019"
-
-    splines:
-        type: software
-        author: Douglas M. Bates and William N. Venables
-        year: 2026
-        title: "splines: R package"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=splines"
-        url: "https://CRAN.R-project.org/package=splines"
-
-    tools:
-        type: software
-        author: R Core Team
-        year: 2026
-        title: "tools: R package"
-        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=tools"
-        url: "https://CRAN.R-project.org/package=tools"
 
 ...
