@@ -77,26 +77,6 @@ analyses:
       test and kappaSizeCI to size it for a target interval width.
     ribbon: analyses
     category: analyses
-  - title: Co-Testing Analysis
-    name: cotest
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision Calculators
-    menuTitle: Co-Testing Analysis
-    menuSubtitle: Two tests run in parallel
-    description: >
-      Analyses two diagnostic tests applied in parallel: both are performed on
-      the same subject at the same time, before either result is known, and the
-      two results are then combined. Reports the post-test probability of
-      disease for every result combination (either test positive, test 1 only,
-      test 2 only, both positive, both negative), optionally allowing the two
-      tests to be conditionally dependent. For tests performed one after
-      another, where the second is ordered only after a particular first result,
-      use Sequential Test Analysis instead. Note that Sequential Test Analysis
-      also offers a parallel strategy, but its combined figures assume
-      conditional independence; this analysis is the one that models conditional
-      dependence numerically.
   - title: Sequential Testing Analysis
     name: sequentialtests
     ns: meddecide

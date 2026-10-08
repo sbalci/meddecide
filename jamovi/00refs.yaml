@@ -29,42 +29,6 @@ refs:
         doi: 10.1016/S0167-5877(00)00119-7
         url: "https://pubmed.ncbi.nlm.nih.gov/10802336/"
 
-    DeeksAltman2004:
-        type: article
-        author: "Deeks, J. J., & Altman, D. G."
-        year: 2004
-        title: "Diagnostic tests 4: likelihood ratios"
-        publisher: BMJ
-        volume: 329
-        issue: 7458
-        pages: 168-169
-        doi: 10.1136/bmj.329.7458.168
-        url: "https://doi.org/10.1136/bmj.329.7458.168"
-
-    DiagnosticTests:
-        type: article
-        author: "Stites, E. C., & Wilen, C. B."
-        year: 2020
-        title: The Interpretation of SARS-CoV-2 Diagnostic Tests
-        publisher: Med
-        volume: 1
-        issue: 1
-        pages: 78-89
-        doi: 10.1016/j.medj.2020.08.001
-        url: "https://doi.org/10.1016/j.medj.2020.08.001"
-
-    Fagan1975:
-        type: article
-        author: Fagan, T. J.
-        year: 1975
-        title: "Nomogram for Bayes's theorem"
-        publisher: New England Journal of Medicine
-        volume: 293
-        issue: 5
-        pages: 257
-        doi: 10.1056/NEJM197507312930513
-        url: "https://doi.org/10.1056/NEJM197507312930513"
-
     Kerr2016DCA:
         type: article
         author: "Kerr, K. F., Brown, M. D., Zhu, K., & Janes, H."

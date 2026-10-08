@@ -2,13 +2,11 @@
 
 export("%>%")
 export("%||%")
-export(cotest)
 export(decisioncurve)
 export(kappaSizeCI)
 export(kappaSizeFixedN)
 export(kappaSizePower)
 export(lassologistic)
-export(nomogrammer)
 export(sequentialtests)
 import(jmvcore)
 importFrom(DescTools,CCC)
@@ -34,19 +32,13 @@ importFrom(ggplot2,
   geom_text,
   geom_vline,
   ggplot,
-  ggtitle,
   labs,
-  margin,
-  rel,
   scale_color_brewer,
-  scale_color_manual,
   scale_fill_manual,
   scale_x_continuous,
   scale_x_discrete,
   scale_y_continuous,
-  sec_axis,
   theme,
-  theme_bw,
   theme_minimal,
   theme_void,
   xlim,
@@ -69,7 +61,6 @@ importFrom(stats,
   complete.cases,
   cov,
   glm,
-  line,
   predict,
   qbeta,
   quantile,

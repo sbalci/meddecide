@@ -22,33 +22,6 @@
             "(Intercept)": [
                 ""
             ],
-            "(major decrease)": [
-                ""
-            ],
-            "(major increase)": [
-                ""
-            ],
-            "(minimal change)": [
-                ""
-            ],
-            "(moderate decrease)": [
-                ""
-            ],
-            "(moderate increase)": [
-                ""
-            ],
-            "(not estimable)": [
-                ""
-            ],
-            "(requested %.2f among diseased, truncated to the largest value the entered sensitivities allow)": [
-                ""
-            ],
-            "(requested %.2f among non-diseased, truncated to the largest value the entered specificities allow)": [
-                ""
-            ],
-            "(slight increase)": [
-                ""
-            ],
             "(The Summary panel below reproduces the kappaSize package's own wording, which says the sample size will “ensure” the limits — read it with this caveat in mind.)": [
                 ""
             ],
@@ -56,9 +29,6 @@
                 ""
             ],
             "{a} vs {b}": [
-                ""
-            ],
-            "{ctx} resulted in a non-finite probability.": [
                 ""
             ],
             "{excluded} of {total} rows ({pct}%) were excluded because the outcome, at least one model prediction, or the enabled clinical rule was missing; every strategy is evaluated on the same {kept} retained rows.": [
@@ -94,12 +64,6 @@
             "% Fewer Treatments vs Treat All": [
                 ""
             ],
-            "%.1fx increase": [
-                ""
-            ],
-            "%.2fx of prevalence, a decrease": [
-                ""
-            ],
             "%.3f (CI not estimable)": [
                 ""
             ],
@@ -113,12 +77,6 @@
                 ""
             ],
             "%1$d selected variable(s) had the same value in every case and were removed before fitting: %2$s. A constant carries no information and cannot be penalised or selected. %3$d variables remain and are shown as Variables analysed.": [
-                ""
-            ],
-            "%1$s (%2$s given, %3$s used — this selects which model is fitted)": [
-                ""
-            ],
-            "%1$s (%2$s given, %3$s used)": [
                 ""
             ],
             "%1$s ends at the first-test-negative subgroup: P(disease | Test 1 negative) = %2$.1f%%. That is not the pooled final-negative figure in the tables, 1 - combined NPV = %3$.1f%%, which also averages in the Test 1 positive / Test 2 negative subgroup (P(disease) = %4$.1f%%). Those subjects are classified negative but are not drawn here.": [
@@ -140,18 +98,6 @@
                 ""
             ],
             "%s Every row's risk group below is therefore unreliable.": [
-                ""
-            ],
-            "%s is infinite: with the current parameters this combination of test results cannot occur in a subject without disease, so its post-test probability is 1 by construction rather than estimated. Lower the conditional dependence if that is not intended.": [
-                ""
-            ],
-            "%s is undefined: with the current parameters this combination of test results has probability zero in both the diseased and the non-diseased group, so it cannot occur at all and no post-test probability exists for it. That row is left blank.": [
-                ""
-            ],
-            "%s is zero: with the current parameters this combination of test results cannot occur in a subject with disease, so its post-test probability is 0 by construction rather than estimated. Lower the conditional dependence if that is not intended.": [
-                ""
-            ],
-            "%s Positive Only": [
                 ""
             ],
             "%s The risk groups in the Score-to-Probability Lookup table are not meaningful either. Do not publish or apply this score.": [
@@ -196,12 +142,6 @@
             "</ul>": [
                 ""
             ],
-            "<b>Demonstration only.</b> Illustrative test performance from a built-in worked example, not values for clinical use.": [
-                ""
-            ],
-            "<b>Demonstration only.</b> These figures come from a built-in worked example: round illustrative sensitivity, specificity, prevalence and dependence values chosen to show how the calculation behaves. They are not pooled literature estimates, are not taken from any guideline, and must not be used for patient care.": [
-                ""
-            ],
             "<div class='jmv-guidance' style='background-color: rgba(138, 155, 172, 0.06);padding:15px;border-radius:6px;margin-top:10px; color: inherit;'><h4>Strategy Notes and Teaching Examples</h4><p><strong>Teaching examples only — not clinical guidance.</strong> The named pairs illustrate mathematical structure only. They are not recommendations, complete diagnostic algorithms, or validated pathways, and their sensitivity, specificity, prevalence, and cost values are not validated clinical parameters.</p><p><strong>How the strategies combine tests:</strong></p><ul><li><strong>Serial positive:</strong> Test 2 is applied to first-test positives; both tests must be positive. Specificity increases and sensitivity decreases under conditional independence.</li><li><strong>Serial negative:</strong> Test 2 is applied to first-test negatives; either positive makes the final result positive. Sensitivity increases and specificity decreases under conditional independence.</li><li><strong>Parallel:</strong> Both tests are applied to everyone; either positive makes the final result positive. Accuracy is algebraically identical to serial-negative testing, but utilization differs.</li></ul><p><strong>Why conditional dependence matters:</strong> Conditional dependence means that one test result remains informative about the other even after disease status is fixed, for example because the tests share biology, specimen characteristics, or technology. When positive conditional dependence is present in both disease-status groups, independence-based serial-positive calculations can make combined specificity too high and combined sensitivity too low. For serial-negative and parallel interpretation, they can make combined sensitivity too high and combined specificity too low. Gardner et al. (2000), <em>Conditional dependence between tests affects the diagnosis and surveillance of animal diseases</em>, describes these directional effects; see the reference below.</p><p>Test order is an input to explore, not a recommendation. Replace every example value with evidence appropriate to the intended setting.</p><p><strong>Illustrative pair labels:</strong></p><ul>": [
                 ""
             ],
@@ -209,12 +149,6 @@
                 ""
             ],
             "<div style='background-color: rgba(33, 149, 188, 0.1);padding:15px;border-left:4px solid #0077be;font-size:1.05em;line-height:1.6; color: inherit;'><strong>Illustrative Summary:</strong> Using a %1$s with %2$s followed by %3$s, the combined test achieves %4$.1f%% sensitivity (detects %5$.0f of every 100 diseased individuals) and %6$.1f%% specificity (correctly rules out %7$.0f of every 100 healthy individuals). At your specified disease prevalence of %8$.1f%%, a positive result indicates a %9$s chance the person truly has the disease (PPV), while a negative result indicates a %10$s chance the person is truly disease-free (NPV).%11$s %12$s <em>These combined figures assume the two tests are conditionally independent given disease status, and they treat the sensitivity, specificity and prevalence you entered as exact, so they carry no confidence interval. If the two tests measure related biology, %13$s.</em></div>": [
-                ""
-            ],
-            "<div style=\"max-width: 800px;\">\n<h3>Understanding Test Dependence in Diagnostic Testing</h3>\n\n<p>This applies to two tests read <strong>in parallel</strong>: both are performed on the same subject at the same time, before either result is known, and the two results are then combined. For tests performed one after another, where the second is ordered only after a particular first result, use a sequential testing analysis instead — the second test's sensitivity and specificity there apply to the selected subgroup, not to everyone.</p>\n\n<h4>What is conditional independence vs. dependence?</h4>\n<p>Two diagnostic tests are <strong>conditionally independent</strong> if the result of one test does not influence the result of the other test, <em>given the disease status</em>. In other words, within the diseased population, the probability of Test 1 being positive is not affected by knowing the result of Test 2, and vice versa. The same applies within the non-diseased population.</p>\n\n<p>Tests are <strong>conditionally dependent</strong> when the result of one test affects the probability of the other test result, even when we know the patient's true disease status.</p>\n\n<h4>Mathematical Formulation</h4>\n\n<p><strong>Independent Tests:</strong> When tests are independent, joint probabilities are simply the product of individual probabilities:</p>\n<ul>\n  <li>P(Test1+ and Test2+ | Disease+) = P(Test1+ | Disease+) × P(Test2+ | Disease+) = Sens₁ × Sens₂</li>\n  <li>P(Test1+ and Test2+ | Disease−) = P(Test1+ | Disease−) × P(Test2+ | Disease−) = (1−Spec₁) × (1−Spec₂)</li>\n  <li>P(Test1− and Test2− | Disease+) = P(Test1− | Disease+) × P(Test2− | Disease+) = (1−Sens₁) × (1−Sens₂)</li>\n  <li>P(Test1− and Test2− | Disease−) = P(Test1− | Disease−) × P(Test2− | Disease−) = Spec₁ × Spec₂</li>\n</ul>\n\n<p><strong>Dependent Tests:</strong> When tests are dependent, we adjust these probabilities using a correlation parameter (denoted as ρ or ψ) that runs from −1 through 0 (independence) to +1. Positive values describe tests that tend to err together; negative values describe tests that compensate for each other's errors, so that one tends to be positive where the other is negative. Both are permitted here, though the attainable range is narrower than −1 to +1 and depends on the sensitivities and specificities entered — values outside it are truncated, and the analysis says so:</p>\n<ul>\n  <li>P(Test1+ and Test2+ | Disease+) = (Sens₁ × Sens₂) + ρ<sub>pos</sub> × √(Sens₁ × (1−Sens₁) × Sens₂ × (1−Sens₂))</li>\n  <li>P(Test1+ and Test2+ | Disease−) = ((1−Spec₁) × (1−Spec₂)) + ρ<sub>neg</sub> × √((1−Spec₁) × Spec₁ × (1−Spec₂) × Spec₂)</li>\n</ul>\n\n<p>Extreme values are automatically truncated to stay within feasible joint bounds; the realized correlation after truncation is reported.</p>\n\n<p>Note: Similar adjustments are made for the other joint probabilities.</p>\n\n<h4>When to Use Dependent vs. Independent Models</h4>\n\n<p><strong>Independence is the assumption that has to be justified, not the fallback.</strong> It is the optimistic choice: it credits the pair with more combined information than dependent tests actually provide. Use it only when you can point to a positive reason, such as:</p>\n<ul>\n  <li>The tests measure genuinely different biological phenomena</li>\n  <li>They use different specimens, and different mechanisms of measurement</li>\n  <li>Paired data from your own or a published series shows no residual correlation within disease status</li>\n</ul>\n\n<p><strong>If you simply do not know how the two tests interact, independence is the wrong default.</strong> Tests that share a specimen, a modality, an observer or a biological pathway are dependent unless shown otherwise. Enter a small positive dependence (0.05 to 0.15) and see how far the conclusion moves; if it moves a lot, the honest report gives the range rather than the independent figure. This is why the independence checkbox is off by default.</p>\n\n<p><strong>Use the dependence model when:</strong></p>\n<ul>\n  <li>Tests measure the same or similar biological phenomena</li>\n  <li>Tests are based on the same biological specimen or mechanism</li>\n  <li>Previous studies indicate correlation between test results</li>\n  <li>Both tests are affected by the same confounding factors</li>\n  <li>You have observed that knowing one test result predicts the other</li>\n</ul>\n\n<h4>Real-World Examples of Dependent Tests</h4>\n<ul>\n  <li>Two imaging tests (e.g., MRI and CT) looking at the same anatomical structure</li>\n  <li>Two serological tests that detect different antibodies but against the same pathogen</li>\n  <li>Tests that may both be affected by the same confounding factor (e.g., inflammation)</li>\n  <li>Multiple readings of the same test by different observers</li>\n  <li>Two different molecular tests detecting different genes of the same pathogen</li>\n</ul>\n\n<h4>Estimating Dependency Parameters</h4>\n<p>The conditional dependence parameters (ρ<sub>pos</sub> for diseased subjects and ρ<sub>neg</sub> for non-diseased subjects) ideally should be estimated from paired testing data with known disease status. Positive values between 0 and 0.5 are the common case in practice, with larger values indicating stronger dependence; negative values are unusual but legitimate where the two tests genuinely compensate for one another. When no data is available, sensitivity analyses using a range of plausible values (e.g., 0.05, 0.1, 0.2) can reveal how much dependence affects results.</p>\n\n<h4>Impact of Ignoring Dependence</h4>\n<p>Ignoring conditional dependence when it exists overstates how much the second test adds. The <em>direction</em> of the error differs by row, so it is worth being precise rather than saying post-test probabilities are simply \"exaggerated\":</p>\n<ul>\n  <li><strong>Both tests positive</strong> — assuming independence makes the probability of disease <strong>too high</strong>. Two correlated positives are partly the same evidence counted twice. (Simulation across 400 ordinary clinical parameter sets: this held in 100% of them.)</li>\n  <li><strong>Both tests negative</strong> — assuming independence makes the probability of disease <strong>too low</strong>, i.e. it overstates how safely the pair rules disease out. This is the error that matters most in screening. (100% of the same sets.)</li>\n  <li><strong>Either test positive (the parallel rule)</strong> — here independence makes the probability of disease <strong>too low</strong> in the large majority of cases (85%), not too high, because dependence concentrates false positives into the double-positive cell. Do not assume the independent figure is the conservative one for this row.</li>\n  <li><strong>One test positive only</strong> — the direction is not determined by dependence alone; across the same sets it went each way about half the time, depending on the two operating points.</li>\n</ul>\n<p>The common thread is an <strong>overly optimistic assessment of what the two tests achieve together</strong>, not a uniform inflation of every number. Note also that this analysis reports no confidence intervals at all: every figure is conditional on the sensitivity, specificity and prevalence you entered being exact.</p>\n</div>": [
-                ""
-            ],
-            "<div style=\"max-width: 900px; font-family: sans-serif;\">\n<h3>Welcome to Co-Testing Analysis</h3>\n<p><strong>Purpose:</strong> This analysis evaluates the combined diagnostic performance of two tests applied <strong>in parallel</strong>, accounting for possible dependence between them.</p>\n\n<p><strong>What \"in parallel\" means here:</strong> both tests are performed on the same subject at the same time, before either result is known, and the two results are then combined into a single conclusion. Neither test gates the other: Test 2 is run whether or not Test 1 came back positive. That is what separates parallel co-testing from <em>sequential</em> (serial) testing, where a second test is ordered only after a particular first result, and where the second test's operating characteristics apply to the selected subgroup rather than to everyone. If your tests are run one after the other with the second conditional on the first, this is the wrong analysis — use <em>Sequential Test Analysis</em> instead.</p>\n\n<p><strong>Choosing between this and Sequential Test Analysis for parallel testing.</strong> Sequential Test Analysis also has a parallel strategy, and for <em>conditionally independent</em> tests the two agree. It computes its combined figures under that independence assumption and warns you in prose when dependence would matter. This analysis is the one that actually models the dependence: if the two tests share a specimen, a modality, an observer or a biological pathway, use this one and enter a dependence parameter.</p>\n\n<p>Because both tests are always performed, each subject falls into exactly one of four result combinations — both positive, Test 1 only, Test 2 only, both negative — and the table below gives the post-test probability of disease for each, plus the combined <em>either positive</em> arm used by the parallel decision rule.</p>\n\n<h4>Quick Start Guide</h4>\n<ol>\n<li><strong>Choose a worked example</strong> (optional): HPV+Pap, PSA+DRE, Troponin+ECG and the rest fill in every parameter for you so you can see the calculation end to end. <strong>They are illustrations, not clinical inputs</strong> — see the warning below.</li>\n<li><strong>Enter your own test parameters</strong>: with <em>Custom values</em> selected, input sensitivity and specificity for each test. While a worked example is selected these boxes are locked, because the example supplies them.</li>\n<li><strong>Set disease prevalence</strong>: the pre-test probability of disease in the population you are actually testing — not the figure quoted in the paper the test was validated in.</li>\n<li><strong>Configure test independence</strong>: state whether the two tests are conditionally independent or dependent (see \"Understanding Test Dependence\" below). This choice moves the answer more than any other.</li>\n<li><strong>Review Results</strong>: The analysis provides post-test probabilities for all test combination outcomes, including the critical <em>Either Test Positive (Parallel Rule)</em> used in clinical co-testing algorithms.</li>\n</ol>\n\n<h4>Key Clinical Scenarios</h4>\n<ul>\n<li><strong>Either Test Positive (Parallel Rule)</strong>: At least one test is positive. This combination rule raises sensitivity relative to either test used alone, at the cost of specificity, so the complementary arm carries the rule-out information. The <em>Either Test Positive</em> row is the probability of disease given <em>at least one</em> positive result, so it pools single-positive and double-positive cases; when only one test is positive read the single-positive row for that test instead (labelled <em>Test 1 Positive Only</em> / <em>Test 2 Positive Only</em>, or by the names you give the two tests). How far a result moves the probability is set by its likelihood ratio: the positive and negative likelihood ratios of each test on its own are listed in the <em>Test Parameters</em> table, while the combined effect of a scenario is reported as its <em>Post-test Probability</em> and <em>Post-test Odds</em> in the <em>Co-Testing Results</em> table rather than as a separate combined likelihood ratio.</li>\n<li><strong>Both Tests Positive</strong>: Both tests are positive. The resulting post-test probability depends on the pre-test prevalence, on the positive likelihood ratios of both tests (listed in the <em>Test Parameters</em> table) and on any conditional dependence you specify. Read the resulting figure in the <em>Post-test Probability</em> column of the <em>Both Tests Positive</em> row.</li>\n<li><strong>Both Tests Negative</strong>: Neither test is positive. This is the arm the parallel rule is designed to act on. The <em>Both Tests Negative</em> row gives the resulting <em>Post-test Probability</em>; its <em>Relative to Prevalence</em> entry is that probability divided by the prevalence you entered, so a value of 0.20 means two negatives cut the probability of disease to one fifth of where it started. The combined negative likelihood ratio behind that shift is not printed as its own number.</li>\n<li><strong>Single Positive</strong>: Only one of the two tests is positive. This result is driven by the positive likelihood ratio of one test together with the negative likelihood ratio of the other; both are listed in the <em>Test Parameters</em> table. The resulting probability is in the corresponding single-positive row of the <em>Co-Testing Results</em> table, and it can sit well below the <em>Both Tests Positive</em> row because the negative test pulls the probability back down.</li>\n</ul>\n\n<h4>Worked examples included</h4>\n<ul>\n<li><strong>HPV + Pap cytology</strong>: sensitive test plus specific test, same specimen (dependent)</li>\n<li><strong>PSA + digital rectal examination</strong>: the one independent example (biochemical plus physical)</li>\n<li><strong>Troponin + ECG</strong>: both driven by extent of injury (dependent)</li>\n<li><strong>Mammography + ultrasound</strong>: two views of the same tissue, strongest dependence (dependent)</li>\n<li><strong>Rapid antigen + PCR</strong>: two assays, one swab, both track viral load (dependent)</li>\n<li><strong>Chest radiograph + sputum microscopy</strong>: imaging plus microbiology (dependent)</li>\n</ul>\n\n<div style=\"background-color: rgba(220, 53, 69, 0.12); border-left: 3px solid rgba(220, 53, 69, 0.85); border-radius: 3px; padding: 10px 14px; margin: 12px 0; color: inherit;\">\n<p style=\"margin: 0;\"><strong>The worked examples are for demonstration only.</strong> Every sensitivity, specificity, prevalence and dependence value in them is a round illustrative number picked to show how the calculation behaves — how a sensitive test pairs with a specific one, how dependence pulls the answer back. They are <strong>not</strong> pooled estimates from the literature, they are <strong>not</strong> drawn from any guideline, and they have <strong>not</strong> been checked for clinical accuracy. Do not quote them, and do not make any clinical decision from a result computed with them. For real work select <em>Custom values</em> and enter sensitivity and specificity from a validation study in a population like yours, together with your own local prevalence.</p>\n</div>\n\n<p><strong>No uncertainty is propagated:</strong> sensitivity, specificity and prevalence are treated as exact. Every probability reported here is conditional on those numbers being right, and carries no confidence interval — published test performance and local prevalence both vary considerably.</p>\n\n<p><strong>Tip:</strong> Enable \"Detailed footnotes\" for explanations of each metric. Enable \"Fagan nomogram\" for a visual of the probability update — note that the nomogram plots the <em>parallel rule</em> (positive if either test is positive, negative only if both are negative), so its positive arm corresponds to the \"Either Test Positive\" row of the results table, not to \"Both Tests Positive\".</p>\n</div>": [
                 ""
             ],
             "<h3>Mathematical Framework for Sequential Testing</h3>": [
@@ -439,9 +373,6 @@
             "<ol>": [
                 ""
             ],
-            "<p><strong>Clinical Interpretation:</strong></p>\n                <p>Disease prevalence (pre-test probability): <strong>%1$s</strong></p>\n                <p><strong>Both tests positive:</strong> %2$s probability (%3$s) - %4$s</p>\n                <p><strong>Both tests negative:</strong> %5$s probability (%6$s) %7$s</p>\n                <p><strong>Single positive test:</strong></p>\n                <ul>\n                <li>%8$s positive only: <strong>%9$s</strong> %10$s</li>\n                <li>%11$s positive only: <strong>%12$s</strong> %13$s</li>\n                </ul>\n                <div style='background-color: rgba(33, 152, 255, 0.07); padding: 10px; border-radius: 5px; margin-top: 15px; color: inherit;'>\n                <p><strong>Copy-ready summary:</strong></p>\n                <p style='font-family: monospace; font-size: 12px;'>%14$s</p>\n                </div>": [
-                ""
-            ],
             "<p>Calculation steps:</p>": [
                 ""
             ],
@@ -523,16 +454,10 @@
             "<p>Sp<sub>combined</sub> = Sp<sub>1</sub> × Sp<sub>2</sub></p>": [
                 ""
             ],
-            "<p>Tests are modeled with conditional dependence:<br>\n                Dependence for subjects with disease: %1$.2f<br>\n                Dependence for subjects without disease: %2$.2f<br>\n                Realized phi (disease): %3$s<br>\n                Realized phi (no disease): %4$s<br>\n                <span style='font-size: 90%%;'>(Phi is the correlation between the two test results\n                actually achieved by the fitted model, on a −1 to +1 scale, where 0 is\n                conditional independence. It differs from the value you entered when that value\n                was not attainable given the sensitivities and specificities supplied.)</span></p>\n                <p>Joint probabilities after accounting for dependence:<br>\n                P(Test1+,Test2+ | Disease+): %5$.4f<br>\n                P(Test1+,Test2- | Disease+): %6$.4f<br>\n                P(Test1-,Test2+ | Disease+): %7$.4f<br>\n                P(Test1-,Test2- | Disease+): %8$.4f<br>\n                P(Test1+,Test2+ | Disease-): %9$.4f<br>\n                P(Test1+,Test2- | Disease-): %10$.4f<br>\n                P(Test1-,Test2+ | Disease-): %11$.4f<br>\n                P(Test1-,Test2- | Disease-): %12$.4f</p>": [
-                ""
-            ],
             "<p>The probability that a negative test result is a true negative:</p>": [
                 ""
             ],
             "<p>The probability that a positive test result is a true positive:</p>": [
-                ""
-            ],
-            "<p>The two tests are run in parallel on the same subject and are assumed to be <strong>conditionally independent</strong>: within the diseased group, and again within the non-diseased group, the result of one test carries no information about the other. The joint probabilities below are therefore plain products of the entered sensitivities and specificities.</p><p>Independence is the optimistic assumption. If the two tests in fact tend to err together — same specimen, same operator, same biology — it overstates how much the pair adds over either test alone. Clear <em>Assume the two tests are conditionally independent</em> and enter a dependence parameter to see how far the conclusion moves.</p>": [
                 ""
             ],
             "<p>This can be rewritten as:</p>": [
@@ -584,12 +509,6 @@
                 ""
             ],
             "A model is useful only where its curve sits above BOTH reference lines.": [
-                ""
-            ],
-            "A sensitive imaging test paired with a highly specific microbiological one; advanced disease makes both more likely to be positive.": [
-                ""
-            ],
-            "A sensitive test paired with a specific one, both read from the same cervical sample, so they are modelled as conditionally dependent.": [
                 ""
             ],
             "a sensitivity of 1.000 here means the model calls every case positive, not that it is a sensitive test": [
@@ -688,9 +607,6 @@
             "An unpenalized logistic refit in the Model Comparison table showed complete/quasi-complete separation (non-convergence or fitted probabilities at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row.": [
                 ""
             ],
-            "Analyses two diagnostic tests applied in parallel: both are performed on the same subject at the same time, before either result is known, and the two results are then combined. Reports the post-test probability of disease for every result combination (either test positive, test 1 only, test 2 only, both positive, both negative), optionally allowing the two tests to be conditionally dependent. For tests performed one after another, where the second is ordered only after a particular first result, use Sequential Test Analysis instead. Note that Sequential Test Analysis also offers a parallel strategy, but its combined figures assume conditional independence; this analysis is the one that models conditional dependence numerically.": [
-                ""
-            ],
             "Analysis Complete": [
                 ""
             ],
@@ -728,12 +644,6 @@
                 ""
             ],
             "Applied as provided in the data ({label}).": [
-                ""
-            ],
-            "Assume conditional independence": [
-                ""
-            ],
-            "Assume the two tests are conditionally independent": [
                 ""
             ],
             "At least {n} subjects are needed for the confidence limits to fall within {limits}, if the observed kappa comes in at {kappa0}.": [
@@ -883,28 +793,7 @@
             "Bootstrap replications": [
                 ""
             ],
-            "Both Negative LR": [
-                ""
-            ],
-            "Both Positive LR": [
-                ""
-            ],
-            "Both tests are driven by the extent of myocardial injury, so they are modelled as dependent among diseased subjects in particular.": [
-                ""
-            ],
-            "Both Tests Negative": [
-                ""
-            ],
             "Both tests performed on everyone": [
-                ""
-            ],
-            "Both Tests Positive": [
-                ""
-            ],
-            "Both tests were applied in parallel and assumed conditionally independent.": [
-                ""
-            ],
-            "Both tests were applied in parallel, allowing conditional dependence (correlation %1$s among diseased and %2$s among non-diseased subjects)%3$s.": [
                 ""
             ],
             "Breast Imaging + Tissue Sampling (Illustrative)": [
@@ -941,15 +830,6 @@
                 ""
             ],
             "Chest Imaging + Culture (Illustrative)": [
-                ""
-            ],
-            "Chest radiograph": [
-                ""
-            ],
-            "Chest radiograph (Test 1) + sputum microscopy (Test 2)": [
-                ""
-            ],
-            "Chest radiograph + sputum (demo only)": [
                 ""
             ],
             "Chest X-ray": [
@@ -1037,15 +917,6 @@
                 ""
             ],
             "Clinical Utility, Net Benefit, Threshold Analysis": [
-                ""
-            ],
-            "Co-Testing Analysis": [
-                ""
-            ],
-            "Co-Testing Results": [
-                ""
-            ],
-            "Co-testing with %1$s (sensitivity %2$.0f%%, specificity %3$.0f%%) and %4$s (sensitivity %5$.0f%%, specificity %6$.0f%%) in a population with %7$.1f%% disease prevalence showed: when both tests are positive, disease probability is %8$s (%9$s); when both are negative, disease probability is %10$s (%11$s).": [
                 ""
             ],
             "Coefficient": [
@@ -1267,9 +1138,6 @@
             "Custom Values": [
                 ""
             ],
-            "Custom values": [
-                ""
-            ],
             "Cut Point for Continuous Predictors": [
                 ""
             ],
@@ -1360,18 +1228,6 @@
             "Decision Rule Positive Level": [
                 ""
             ],
-            "DEMONSTRATION ONLY — %s, illustrative values, not for clinical use": [
-                ""
-            ],
-            "DEMONSTRATION ONLY — illustrative values, not for clinical use": [
-                ""
-            ],
-            "Dependence among subjects with disease": [
-                ""
-            ],
-            "Dependence among subjects without disease": [
-                ""
-            ],
             "Derived from the net-benefit gain after accounting for threshold odds": [
                 ""
             ],
@@ -1385,9 +1241,6 @@
                 ""
             ],
             "Detailed consequences at selected thresholds": [
-                ""
-            ],
-            "Detailed footnotes": [
                 ""
             ],
             "Detailed methodology notes": [
@@ -1450,9 +1303,6 @@
             "Display Options": [
                 ""
             ],
-            "Display options": [
-                ""
-            ],
             "Do not select a model solely from its average net benefit: curve crossings and the plausibility of each threshold determine the clinically relevant comparison.": [
                 ""
             ],
@@ -1478,12 +1328,6 @@
                 ""
             ],
             "Either +": [
-                ""
-            ],
-            "Either Positive LR": [
-                ""
-            ],
-            "Either Test Positive (Parallel Rule)": [
                 ""
             ],
             "Elastic Net": [
@@ -1550,9 +1394,6 @@
                 ""
             ],
             "Every threshold in the range counts equally, so the value depends on the range you chose - report the range with it.": [
-                ""
-            ],
-            "evidence against disease: this result combination is more common in subjects without the disease, so it lowers the probability of disease. Check whether a sensitivity and a specificity have been entered the wrong way round.": [
                 ""
             ],
             "Example analysis for Medical Decision Tests.": [
@@ -1627,15 +1468,6 @@
             "F1 Score": [
                 ""
             ],
-            "Fagan Nomogram": [
-                ""
-            ],
-            "Fagan nomogram": [
-                ""
-            ],
-            "Fagan nomogram - parallel rule (positive if either test is positive)": [
-                ""
-            ],
             "False Negative": [
                 ""
             ],
@@ -1687,9 +1519,6 @@
             "Focused range (0.05 to 0.50; not a clinical recommendation)": [
                 ""
             ],
-            "Footnotes": [
-                ""
-            ],
             "For a binary outcome enter either one prevalence value or two proportions that sum to 1 (received {got}).": [
                 ""
             ],
@@ -1700,9 +1529,6 @@
                 ""
             ],
             "For an interobserver agreement study whose number of subjects is already fixed, the lowest kappa the study would still be unable to rule out - the lower bound of the one-sided confidence interval around the anticipated kappa (kappa0); every value below it is excluded. Computed with the kappaSize package. Use kappaSizePower to size a study for a hypothesis test and kappaSizeCI to size it for a target interval width.": [
-                ""
-            ],
-            "For orientation: most diagnostic tests fall between 0.60 and 0.95 for sensitivity and between 0.70 and 0.98 for specificity, and prevalence is the pre-test probability in the population you are testing (roughly 0.001-0.01 for rare disease, 0.05-0.20 for common conditions). Values far outside these bands are worth re-checking — most often sensitivity and specificity have been entered the wrong way round.": [
                 ""
             ],
             "For this serial-negative example, Test 2 sensitivity (%.1f%%) is below Test 1 sensitivity (%.1f%%). This does not invalidate the calculation, but it may not improve sensitivity as much as expected.": [
@@ -1756,13 +1582,7 @@
             "Good (%.0f%% better than predicting the base rate)": [
                 ""
             ],
-            "Guidance and explanations": [
-                ""
-            ],
             "Harm of false treatment": [
-                ""
-            ],
-            "High prevalence (above 50%) detected. Ensure this reflects your actual clinical population.": [
                 ""
             ],
             "High risk": [
@@ -1787,18 +1607,6 @@
                 ""
             ],
             "HIV Ag/Ab Assay": [
-                ""
-            ],
-            "How many times more (or less) likely disease is after testing compared to before testing": [
-                ""
-            ],
-            "HPV": [
-                ""
-            ],
-            "HPV (Test 1) + Pap cytology (Test 2)": [
-                ""
-            ],
-            "HPV + Pap cytology (demo only)": [
                 ""
             ],
             "If the Analysis result panel also prints 'At least one expected cell count is less than five', that is a separate and looser check: kappaSize applies it to the outcome category prevalences you entered (for a binary outcome, to the prevalence of the finding alone), not to the agreement-pattern cells the chi-square actually divides by, and those empty out long before any category prevalence does. Seeing one warning without the other is expected.": [
@@ -1883,9 +1691,6 @@
                 ""
             ],
             "Insufficient complete cases for analysis ({n} cases available; this implementation requires at least 10 to run).": [
-                ""
-            ],
-            "Internal: could not read the default for '%s', so the analysis cannot report whether a worked example replaced a value you supplied. Please report this.": [
                 ""
             ],
             "Interpret differences between models with caution and do not choose a threshold from this curve alone.": [
@@ -2056,9 +1861,6 @@
             "Low power.": [
                 ""
             ],
-            "Low prevalence (below 5%): every post-test probability below is driven mainly by the prevalence you entered rather than by the tests, and changes steeply with it. Check that this is the pre-test probability in the population you are actually testing, and re-run with a plausible range around it before acting on the numbers.": [
-                ""
-            ],
             "Low risk": [
                 ""
             ],
@@ -2074,16 +1876,7 @@
             "Lowest Expected Value for a fixed sample size": [
                 ""
             ],
-            "LR+ is how many times more likely a positive result is in someone with the disease than in someone without it; LR- is the same ratio for a negative result. Above 10 (or below 0.1) a single result shifts the probability of disease substantially; between 0.5 and 2 it barely moves it.": [
-                ""
-            ],
             "Mammography": [
-                ""
-            ],
-            "Mammography (Test 1) + ultrasound (Test 2)": [
-                ""
-            ],
-            "Mammography + ultrasound (demo only)": [
                 ""
             ],
             "Manual cut points": [
@@ -2156,9 +1949,6 @@
                 ""
             ],
             "Metric": [
-                ""
-            ],
-            "minimal evidence for disease": [
                 ""
             ],
             "Minimum CV Error": [
@@ -2251,9 +2041,6 @@
             "Models Analyzed": [
                 ""
             ],
-            "moderate evidence for disease": [
-                ""
-            ],
             "Monetary Cost per Test/Screening": [
                 ""
             ],
@@ -2281,15 +2068,6 @@
             "N Variables": [
                 ""
             ],
-            "Name (optional)": [
-                ""
-            ],
-            "Name of test 1": [
-                ""
-            ],
-            "Name of test 2": [
-                ""
-            ],
             "Narrow Probability Range: {model}": [
                 ""
             ],
@@ -2315,9 +2093,6 @@
                 ""
             ],
             "Negative Likelihood Ratio Undefined": [
-                ""
-            ],
-            "Negative Likelihood Ratio: how much more likely a negative result is in diseased vs. non-diseased patients": [
                 ""
             ],
             "Negative LR": [
@@ -2395,9 +2170,6 @@
             "No cut point separated the two groups, so the search settled on the lowest possible total score and every patient is classified positive: the sensitivity of %1$s with a specificity of %2$s shown here is an artefact of that, not evidence of a sensitive score.": [
                 ""
             ],
-            "no diagnostic value": [
-                ""
-            ],
             "No manual cut point was supplied for: %s. These fell back to the sample median. Enter them as 'variable=value' pairs (for example 'ki67=20, age=65') to use established clinical thresholds.": [
                 ""
             ],
@@ -2431,9 +2203,6 @@
             "Not a numeric column: {model}": [
                 ""
             ],
-            "Not an estimate: with these parameters this result combination cannot occur in one of the two disease groups, so the probability is %s by construction. This follows from the conditional dependence being truncated to the largest value the entered sensitivities and specificities allow — move it toward 0 to leave this regime.": [
-                ""
-            ],
             "Not available": [
                 ""
             ],
@@ -2446,16 +2215,10 @@
             "not defined (no diseased subjects)": [
                 ""
             ],
-            "not estimable": [
-                ""
-            ],
             "Not interpretable": [
                 ""
             ],
             "Not testable": [
-                ""
-            ],
-            "Note": [
                 ""
             ],
             "Note that kappa0 here is the agreement you anticipate observing, not a null hypothesis value as it is in kappaSizePower.": [
@@ -2623,12 +2386,6 @@
             "Pairwise comparison needs two models": [
                 ""
             ],
-            "Pap cytology": [
-                ""
-            ],
-            "Parallel rule: positive if either test is positive, negative only if both are negative.": [
-                ""
-            ],
             "Parallel Test Assumption Check": [
                 ""
             ],
@@ -2657,9 +2414,6 @@
                 ""
             ],
             "Patients screened per true positive is the reciprocal of the observed true-positive yield, not a causal number-needed-to-screen effect measure.": [
-                ""
-            ],
-            "PCR": [
                 ""
             ],
             "Penalized feature selection for binary classification": [
@@ -2743,9 +2497,6 @@
             "Positive Likelihood Ratio Undefined": [
                 ""
             ],
-            "Positive Likelihood Ratio: how much more likely a positive result is in diseased vs. non-diseased patients": [
-                ""
-            ],
             "Positive LR": [
                 ""
             ],
@@ -2768,18 +2519,6 @@
                 ""
             ],
             "Possible Overfitting": [
-                ""
-            ],
-            "Post-test Odds": [
-                ""
-            ],
-            "Post-test odds: probability of disease divided by probability of no disease. Odds of 1 mean a 50% probability; odds of 9 mean 90%.": [
-                ""
-            ],
-            "Post-test Probability": [
-                ""
-            ],
-            "Posterior\nProb.\n(%)": [
                 ""
             ],
             "Power": [
@@ -2860,9 +2599,6 @@
             "Prevalence": [
                 ""
             ],
-            "Prevalence (0-1)": [
-                ""
-            ],
             "Prevalence Invalid": [
                 ""
             ],
@@ -2887,13 +2623,7 @@
             "Prevalence Very Low": [
                 ""
             ],
-            "Prior\nProb.\n(%)": [
-                ""
-            ],
             "Probability": [
-                ""
-            ],
-            "Probability of disease after obtaining this test result combination": [
                 ""
             ],
             "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type II error). Conventional values are 0.80 or 0.90; must exceed alpha.": [
@@ -2935,12 +2665,6 @@
             "Projected Unnecessary Treatments": [
                 ""
             ],
-            "Proportion of diseased patients correctly identified by %s": [
-                ""
-            ],
-            "Proportion of non-diseased patients correctly identified by %s": [
-                ""
-            ],
             "Proportions (comma-separated, sum to 1)": [
                 ""
             ],
@@ -2968,22 +2692,10 @@
             "Proportions should sum to 1.0, current sum is {sum}.": [
                 ""
             ],
-            "PSA": [
-                ""
-            ],
-            "PSA (Test 1) + digital rectal examination (Test 2)": [
-                ""
-            ],
             "PSA + MRI (Illustrative)": [
                 ""
             ],
-            "PSA + rectal examination (demo only)": [
-                ""
-            ],
             "PSA Test": [
-                ""
-            ],
-            "raised to %.2fx of prevalence": [
                 ""
             ],
             "Random Seed": [
@@ -3013,15 +2725,6 @@
             "Range of threshold probabilities over which the model's net benefit exceeds both treat-all and treat-none; a model is only worth using within this range.": [
                 ""
             ],
-            "Rapid antigen": [
-                ""
-            ],
-            "Rapid antigen (Test 1) + PCR (Test 2)": [
-                ""
-            ],
-            "Rapid antigen + PCR (demo only)": [
-                ""
-            ],
             "Rapid Antigen Test": [
                 ""
             ],
@@ -3037,13 +2740,7 @@
             "Re-running with the same seed reproduces these numbers exactly.": [
                 ""
             ],
-            "Rectal examination": [
-                ""
-            ],
             "Reduce the step size to {maxstep}% or less, or widen the range.": [
-                ""
-            ],
-            "reduced to %.2fx of prevalence": [
                 ""
             ],
             "Reference": [
@@ -3062,9 +2759,6 @@
                 ""
             ],
             "Reference Strategies": [
-                ""
-            ],
-            "Relative to Prevalence": [
                 ""
             ],
             "Relative Utility (vs best default strategy)": [
@@ -3193,9 +2887,6 @@
             "Save Variables": [
                 ""
             ],
-            "Scenario": [
-                ""
-            ],
             "Schneeweiss": [
                 ""
             ],
@@ -3292,9 +2983,6 @@
             "Sensitivity": [
                 ""
             ],
-            "Sensitivity (0-1)": [
-                ""
-            ],
             "Sensitivity (Recall)": [
                 ""
             ],
@@ -3305,12 +2993,6 @@
                 ""
             ],
             "Sensitivity, specificity and prevalence are treated as exact. These combined figures therefore carry <i>no</i> confidence interval and do not reflect sampling uncertainty in the values entered — published test performance and local prevalence both vary.": [
-                ""
-            ],
-            "Sensitivity, specificity and prevalence are treated as exact. These post-test probabilities therefore carry <i>no</i> confidence interval and do not reflect sampling uncertainty in the values entered — published test performance estimates and local prevalence both vary.": [
-                ""
-            ],
-            "Sensitivity, specificity and prevalence were treated as exact, so these probabilities carry no confidence interval.": [
                 ""
             ],
             "Separation in Unpenalized Refit": [
@@ -3403,9 +3085,6 @@
             "Specificity": [
                 ""
             ],
-            "Specificity (0-1)": [
-                ""
-            ],
             "Specified event level '%1$s' not found in the outcome variable. Observed levels: %2$s.": [
                 ""
             ],
@@ -3416,9 +3095,6 @@
                 ""
             ],
             "Sputum Culture": [
-                ""
-            ],
-            "Sputum microscopy": [
                 ""
             ],
             "Standard (with reference lines)": [
@@ -3457,9 +3133,6 @@
             "Strategy: {strategy} | Sensitivity: {sensitivity} | Specificity: {specificity}": [
                 ""
             ],
-            "strong evidence for disease": [
-                ""
-            ],
             "STRONG WARNING": [
                 ""
             ],
@@ -3473,12 +3146,6 @@
                 ""
             ],
             "subjects": [
-                ""
-            ],
-            "subjects with disease": [
-                ""
-            ],
-            "subjects without disease": [
                 ""
             ],
             "Summary": [
@@ -3517,12 +3184,6 @@
             "Test": [
                 ""
             ],
-            "Test 1": [
-                ""
-            ],
-            "Test 1 has low discriminatory power (sensitivity plus specificity below 1.1, i.e. a Youden index below 0.1). Check its likelihood ratios in the results table: an operating point close to the chance diagonal can still give an informative LR+ or LR- when sensitivity and specificity are very unequal.": [
-                ""
-            ],
             "Test 1 Low Performance": [
                 ""
             ],
@@ -3532,22 +3193,7 @@
             "Test 1 Name Empty": [
                 ""
             ],
-            "Test 1 Negative LR": [
-                ""
-            ],
-            "Test 1 Only LR": [
-                ""
-            ],
-            "Test 1 parameters": [
-                ""
-            ],
             "Test 1 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
-                ""
-            ],
-            "Test 1 Positive LR": [
-                ""
-            ],
-            "Test 1 sensitivity": [
                 ""
             ],
             "Test 1 Sensitivity High": [
@@ -3560,9 +3206,6 @@
                 ""
             ],
             "Test 1 sensitivity must be between 0 and 1 (0% to 100%). Current value is invalid.": [
-                ""
-            ],
-            "Test 1 specificity": [
                 ""
             ],
             "Test 1 Specificity High": [
@@ -3580,12 +3223,6 @@
             "Test 1: {name}": [
                 ""
             ],
-            "Test 2": [
-                ""
-            ],
-            "Test 2 has low discriminatory power (sensitivity plus specificity below 1.1, i.e. a Youden index below 0.1). Check its likelihood ratios in the results table: an operating point close to the chance diagonal can still give an informative LR+ or LR- when sensitivity and specificity are very unequal.": [
-                ""
-            ],
             "Test 2 Low Performance": [
                 ""
             ],
@@ -3595,22 +3232,7 @@
             "Test 2 Name Empty": [
                 ""
             ],
-            "Test 2 Negative LR": [
-                ""
-            ],
-            "Test 2 Only LR": [
-                ""
-            ],
-            "Test 2 parameters": [
-                ""
-            ],
             "Test 2 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
-                ""
-            ],
-            "Test 2 Positive LR": [
-                ""
-            ],
-            "Test 2 sensitivity": [
                 ""
             ],
             "Test 2 Sensitivity High": [
@@ -3623,9 +3245,6 @@
                 ""
             ],
             "Test 2 sensitivity must be between 0 and 1 (0% to 100%). Current value is invalid.": [
-                ""
-            ],
-            "Test 2 specificity": [
                 ""
             ],
             "Test 2 Specificity High": [
@@ -3655,19 +3274,10 @@
             "Test Correlation Risk": [
                 ""
             ],
-            "Test Dependence": [
-                ""
-            ],
-            "Test independence": [
-                ""
-            ],
             "Test names are similar (\"%s\" vs \"%s\"). If tests measure similar biomarkers or use similar technology, they may be conditionally dependent. This can bias combined sensitivity and specificity in opposite directions.": [
                 ""
             ],
             "Test Negative": [
-                ""
-            ],
-            "Test Parameters": [
                 ""
             ],
             "Test Performance Comparison": [
@@ -3754,12 +3364,6 @@
             "the cut points you supplied, and the sample median for the predictors you did not give one for": [
                 ""
             ],
-            "The dependence parameter for the diseased group (%1$.2f) is not attainable with these sensitivities, so the joint positive probability was truncated from %2$.4f to its bound %3$.4f. The model actually fitted is therefore not the one you specified, and can force some test combinations to be impossible. Move the value toward 0 until this note disappears; the realized correlation is reported in the Test Dependence panel.": [
-                ""
-            ],
-            "The dependence parameter for the non-diseased group (%1$.2f) is not attainable with these specificities, so the joint false-positive probability was truncated from %2$.4f to its bound %3$.4f. The model actually fitted is therefore not the one you specified, and can force some test combinations to be impossible. Move the value toward 0 until this note disappears; the realized correlation is reported in the Test Dependence panel.": [
-                ""
-            ],
             "The design needs {n} subjects; few agreement studies can enrol this many. A rare finding (prevalence far from 0.5), a small difference between kappa0 and kappa1, and a high power target all inflate the sample size - revisit whichever of these is not a firm requirement.": [
                 ""
             ],
@@ -3772,31 +3376,10 @@
             "The expected lower bound is {bound}. The study excludes agreement below that value but leaves everything above it open, and on the Landis and Koch scale a bound under 0.40 is no better than fair agreement. These subjects can therefore show that agreement exceeds chance, but cannot establish moderate or better reliability even if the raters perform exactly as anticipated.": [
                 ""
             ],
-            "The Fagan nomogram was not drawn because one of the combined likelihood ratios is not a finite number with these parameters. Check the sensitivity and specificity values you entered.": [
-                ""
-            ],
-            "The Fagan nomogram was not drawn because the negative-rule likelihood ratio is zero, which cannot be placed on the nomogram's logarithmic axis. Check the sensitivity and specificity values you entered.": [
-                ""
-            ],
-            "The Fagan nomogram was not drawn because the positive-rule likelihood ratio is %.2f, which is below 1. A Fagan nomogram assumes a positive result raises the probability of disease; here it lowers it, which means the tests as specified perform worse than chance. Check the sensitivity and specificity values you entered.": [
-                ""
-            ],
-            "The Fagan nomogram was not drawn because the two tests together carry no information: the positive-rule and negative-rule likelihood ratios are both %.2f, so neither a positive nor a negative combined result changes the probability of disease. Each test is sitting on the chance diagonal (sensitivity = 1 - specificity). Check the sensitivity and specificity values you entered.": [
-                ""
-            ],
             "The generated scoring system reaches %d points for a single factor. A usable clinical score is typically under 20 points in total; this one is dominated by the ratio between the largest and smallest selected effects. Switch to the Max-scaled method or remove the near-zero predictor before using this score.": [
                 ""
             ],
             "The intercept is the log-odds of the event when every selected predictor is 0 (or at its reference level); with the coefficients above it reproduces the model's predicted probability as plogis(intercept + sum(coefficient x value)). No odds ratio or importance applies to it.": [
-                ""
-            ],
-            "The joint probabilities for %1$s are not all valid probabilities (%2$s). Review the dependence parameters.": [
-                ""
-            ],
-            "The joint probabilities for %1$s do not add back up to the test parameters entered (they imply %2$.4f and %3$.4f, against %4$.4f and %5$.4f). Review the dependence parameters.": [
-                ""
-            ],
-            "The joint probabilities for %1$s sum to %2$.6f rather than 1. Review the dependence parameters.": [
                 ""
             ],
             "The kappaSize package is required but not installed. Please install it using install.packages(\"kappaSize\")": [
@@ -3815,9 +3398,6 @@
                 ""
             ],
             "The null hypothesis value of kappa - the level of agreement the study tests against. kappaSize documents this as \"the null hypothesis for the kappa hypothesis test\"; it is NOT the value you expect to observe.": [
-                ""
-            ],
-            "The one worked example that assumes conditional independence: a biochemical measurement and a physical examination.": [
                 ""
             ],
             "The optimal threshold maximizes the Youden index on the same data used to fit the model, so sensitivity, specificity, accuracy, precision, and F1 are apparent (in-sample) and optimistic. Enable bootstrap validation for an optimism-corrected estimate of discrimination.": [
@@ -3910,9 +3490,6 @@
             "The whole curve, including any clinical rule, lies within the band with this probability.": [
                 ""
             ],
-            "The worked example replaced values you supplied: %s. A worked example sets every parameter; to use your own numbers set the worked example to Custom values.": [
-                ""
-            ],
             "The Youden search did find a cut point (%1$s and above, sensitivity %2$s, specificity %3$s), but the score points the wrong way, so calling the high scores high risk inverts the real risk.": [
                 ""
             ],
@@ -3920,9 +3497,6 @@
                 ""
             ],
             "These figures are APPARENT (in-sample) and optimistic twice over: the points were derived from a model fitted to this dataset, and the score cutoff was chosen to maximise the Youden index on the same rows. They are not an estimate of how the score would perform on new patients. Enable bootstrap validation for an optimism-corrected estimate of the model, and validate any score externally before clinical use.": [
-                ""
-            ],
-            "These likelihood ratios describe each test <i>on its own</i>. Because the two tests are modelled as conditionally dependent, the combined likelihood ratio is <b>not</b> their product — use the Post-test Odds column of the Co-Testing Results table instead.": [
                 ""
             ],
             "These look like percentages: enter {values} instead.": [
@@ -4084,12 +3658,6 @@
             "Troponin": [
                 ""
             ],
-            "Troponin (Test 1) + ECG (Test 2)": [
-                ""
-            ],
-            "Troponin + ECG (demo only)": [
-                ""
-            ],
             "True Negative": [
                 ""
             ],
@@ -4108,15 +3676,6 @@
             "Try the Minimum CV Error lambda instead of the 1SE rule, or add more informative predictors.": [
                 ""
             ],
-            "Two assays for the same organism on the same swab; both track viral load, so dependence among diseased subjects is set high.": [
-                ""
-            ],
-            "Two imaging modalities of the same tissue: the strongest dependence among the worked examples, which is what dense tissue would produce.": [
-                ""
-            ],
-            "Two tests run in parallel": [
-                ""
-            ],
             "Two-sided": [
                 ""
             ],
@@ -4129,16 +3688,10 @@
             "Two-sided significance level (capped at 0.20; must be below the power).": [
                 ""
             ],
-            "Ultrasound": [
-                ""
-            ],
             "unavailable": [
                 ""
             ],
             "Understanding Penalized Logistic Regression": [
-                ""
-            ],
-            "Understanding Test Dependence": [
                 ""
             ],
             "Unit Cost": [
@@ -4174,9 +3727,6 @@
             "Validation": [
                 ""
             ],
-            "Validation Notices": [
-                ""
-            ],
             "Value": [
                 ""
             ],
@@ -4199,12 +3749,6 @@
                 ""
             ],
             "Variables analysed": [
-                ""
-            ],
-            "Very high %1$s ratio ( %2$s ) - indicates highly informative test.": [
-                ""
-            ],
-            "Very high prevalence (above 95%): every post-test probability below is driven mainly by the prevalence you entered rather than by the tests, and even the 'both tests negative' row will stay high. Check that this is the pre-test probability in the population you are actually testing.": [
                 ""
             ],
             "Very large sample size.": [
@@ -4231,9 +3775,6 @@
             "Warning.": [
                 ""
             ],
-            "weak evidence for disease": [
-                ""
-            ],
             "Welcome to LASSO Logistic Regression": [
                 ""
             ],
@@ -4253,15 +3794,6 @@
                 ""
             ],
             "With the sample size already fixed, this reports the lower bound of the one-sided 100(1 - alpha)% confidence interval that the study can expect to achieve for the intraclass (Fleiss-type) kappa of the common-correlation model used by the kappaSize package (Donner and Eliasziw; Rotondi and Donner); for two raters with equal marginal frequencies this coincides with Cohen's kappa.": [
-                ""
-            ],
-            "Worked example": [
-                ""
-            ],
-            "Worked example in use: %1$s. %2$s These are round illustrative numbers chosen to demonstrate the calculation, not pooled estimates from the literature and not values to use for patient care — select Custom values and enter sensitivity, specificity and prevalence from your own population before acting on any result below.": [
-                ""
-            ],
-            "Worked Examples (Demonstration Only)": [
                 ""
             ],
             "Worse than chance - ranking is inverted": [

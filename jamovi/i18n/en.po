@@ -37,46 +37,6 @@ msgstr ""
 msgid "(Intercept)"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "(major decrease)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "(major increase)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "(minimal change)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "(moderate decrease)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "(moderate increase)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "(not estimable)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"(requested %.2f among diseased, truncated to the largest value the entered "
-"sensitivities allow)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"(requested %.2f among non-diseased, truncated to the largest value the "
-"entered specificities allow)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "(slight increase)"
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 msgid ""
 "(The Summary panel below reproduces the kappaSize package's own wording, "
@@ -91,10 +51,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "{a} vs {b}"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "{ctx} resulted in a non-finite probability."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -155,14 +111,6 @@ msgstr ""
 msgid "% Fewer Treatments vs Treat All"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "%.1fx increase"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "%.2fx of prevalence, a decrease"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "%.3f (CI not estimable)"
 msgstr ""
@@ -194,14 +142,6 @@ msgid ""
 "before fitting: %2$s. A constant carries no information and cannot be "
 "penalised or selected. %3$d variables remain and are shown as Variables "
 "analysed."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "%1$s (%2$s given, %3$s used — this selects which model is fitted)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "%1$s (%2$s given, %3$s used)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -244,34 +184,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "%s Every row's risk group below is therefore unreliable."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"%s is infinite: with the current parameters this combination of test results "
-"cannot occur in a subject without disease, so its post-test probability is 1 "
-"by construction rather than estimated. Lower the conditional dependence if "
-"that is not intended."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"%s is undefined: with the current parameters this combination of test "
-"results has probability zero in both the diseased and the non-diseased "
-"group, so it cannot occur at all and no post-test probability exists for it. "
-"That row is left blank."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"%s is zero: with the current parameters this combination of test results "
-"cannot occur in a subject with disease, so its post-test probability is 0 by "
-"construction rather than estimated. Lower the conditional dependence if that "
-"is not intended."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "%s Positive Only"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -338,21 +250,6 @@ msgstr ""
 msgid "</ul>"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"<b>Demonstration only.</b> Illustrative test performance from a built-in "
-"worked example, not values for clinical use."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"<b>Demonstration only.</b> These figures come from a built-in worked "
-"example: round illustrative sensitivity, specificity, prevalence and "
-"dependence values chosen to show how the calculation behaves. They are not "
-"pooled literature estimates, are not taken from any guideline, and must not "
-"be used for patient care."
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "<div class='jmv-guidance' style='background-color: rgba(138, 155, 172, "
@@ -413,292 +310,6 @@ msgid ""
 "independent given disease status, and they treat the sensitivity, "
 "specificity and prevalence you entered as exact, so they carry no confidence "
 "interval. If the two tests measure related biology, %13$s.</em></div>"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"<div style=\"max-width: 800px;\">\n"
-"<h3>Understanding Test Dependence in Diagnostic Testing</h3>\n"
-"\n"
-"<p>This applies to two tests read <strong>in parallel</strong>: both are "
-"performed on the same subject at the same time, before either result is "
-"known, and the two results are then combined. For tests performed one after "
-"another, where the second is ordered only after a particular first result, "
-"use a sequential testing analysis instead — the second test's sensitivity "
-"and specificity there apply to the selected subgroup, not to everyone.</p>\n"
-"\n"
-"<h4>What is conditional independence vs. dependence?</h4>\n"
-"<p>Two diagnostic tests are <strong>conditionally independent</strong> if "
-"the result of one test does not influence the result of the other test, "
-"<em>given the disease status</em>. In other words, within the diseased "
-"population, the probability of Test 1 being positive is not affected by "
-"knowing the result of Test 2, and vice versa. The same applies within the "
-"non-diseased population.</p>\n"
-"\n"
-"<p>Tests are <strong>conditionally dependent</strong> when the result of one "
-"test affects the probability of the other test result, even when we know the "
-"patient's true disease status.</p>\n"
-"\n"
-"<h4>Mathematical Formulation</h4>\n"
-"\n"
-"<p><strong>Independent Tests:</strong> When tests are independent, joint "
-"probabilities are simply the product of individual probabilities:</p>\n"
-"<ul>\n"
-"  <li>P(Test1+ and Test2+ | Disease+) = P(Test1+ | Disease+) × P(Test2+ | "
-"Disease+) = Sens₁ × Sens₂</li>\n"
-"  <li>P(Test1+ and Test2+ | Disease−) = P(Test1+ | Disease−) × P(Test2+ | "
-"Disease−) = (1−Spec₁) × (1−Spec₂)</li>\n"
-"  <li>P(Test1− and Test2− | Disease+) = P(Test1− | Disease+) × P(Test2− | "
-"Disease+) = (1−Sens₁) × (1−Sens₂)</li>\n"
-"  <li>P(Test1− and Test2− | Disease−) = P(Test1− | Disease−) × P(Test2− | "
-"Disease−) = Spec₁ × Spec₂</li>\n"
-"</ul>\n"
-"\n"
-"<p><strong>Dependent Tests:</strong> When tests are dependent, we adjust "
-"these probabilities using a correlation parameter (denoted as ρ or ψ) that "
-"runs from −1 through 0 (independence) to +1. Positive values describe tests "
-"that tend to err together; negative values describe tests that compensate "
-"for each other's errors, so that one tends to be positive where the other is "
-"negative. Both are permitted here, though the attainable range is narrower "
-"than −1 to +1 and depends on the sensitivities and specificities entered — "
-"values outside it are truncated, and the analysis says so:</p>\n"
-"<ul>\n"
-"  <li>P(Test1+ and Test2+ | Disease+) = (Sens₁ × Sens₂) + ρ<sub>pos</sub> × "
-"√(Sens₁ × (1−Sens₁) × Sens₂ × (1−Sens₂))</li>\n"
-"  <li>P(Test1+ and Test2+ | Disease−) = ((1−Spec₁) × (1−Spec₂)) + "
-"ρ<sub>neg</sub> × √((1−Spec₁) × Spec₁ × (1−Spec₂) × Spec₂)</li>\n"
-"</ul>\n"
-"\n"
-"<p>Extreme values are automatically truncated to stay within feasible joint "
-"bounds; the realized correlation after truncation is reported.</p>\n"
-"\n"
-"<p>Note: Similar adjustments are made for the other joint probabilities.</p>\n"
-"\n"
-"<h4>When to Use Dependent vs. Independent Models</h4>\n"
-"\n"
-"<p><strong>Independence is the assumption that has to be justified, not the "
-"fallback.</strong> It is the optimistic choice: it credits the pair with "
-"more combined information than dependent tests actually provide. Use it only "
-"when you can point to a positive reason, such as:</p>\n"
-"<ul>\n"
-"  <li>The tests measure genuinely different biological phenomena</li>\n"
-"  <li>They use different specimens, and different mechanisms of "
-"measurement</li>\n"
-"  <li>Paired data from your own or a published series shows no residual "
-"correlation within disease status</li>\n"
-"</ul>\n"
-"\n"
-"<p><strong>If you simply do not know how the two tests interact, "
-"independence is the wrong default.</strong> Tests that share a specimen, a "
-"modality, an observer or a biological pathway are dependent unless shown "
-"otherwise. Enter a small positive dependence (0.05 to 0.15) and see how far "
-"the conclusion moves; if it moves a lot, the honest report gives the range "
-"rather than the independent figure. This is why the independence checkbox is "
-"off by default.</p>\n"
-"\n"
-"<p><strong>Use the dependence model when:</strong></p>\n"
-"<ul>\n"
-"  <li>Tests measure the same or similar biological phenomena</li>\n"
-"  <li>Tests are based on the same biological specimen or mechanism</li>\n"
-"  <li>Previous studies indicate correlation between test results</li>\n"
-"  <li>Both tests are affected by the same confounding factors</li>\n"
-"  <li>You have observed that knowing one test result predicts the other</li>\n"
-"</ul>\n"
-"\n"
-"<h4>Real-World Examples of Dependent Tests</h4>\n"
-"<ul>\n"
-"  <li>Two imaging tests (e.g., MRI and CT) looking at the same anatomical "
-"structure</li>\n"
-"  <li>Two serological tests that detect different antibodies but against the "
-"same pathogen</li>\n"
-"  <li>Tests that may both be affected by the same confounding factor (e.g., "
-"inflammation)</li>\n"
-"  <li>Multiple readings of the same test by different observers</li>\n"
-"  <li>Two different molecular tests detecting different genes of the same "
-"pathogen</li>\n"
-"</ul>\n"
-"\n"
-"<h4>Estimating Dependency Parameters</h4>\n"
-"<p>The conditional dependence parameters (ρ<sub>pos</sub> for diseased "
-"subjects and ρ<sub>neg</sub> for non-diseased subjects) ideally should be "
-"estimated from paired testing data with known disease status. Positive "
-"values between 0 and 0.5 are the common case in practice, with larger values "
-"indicating stronger dependence; negative values are unusual but legitimate "
-"where the two tests genuinely compensate for one another. When no data is "
-"available, sensitivity analyses using a range of plausible values (e.g., "
-"0.05, 0.1, 0.2) can reveal how much dependence affects results.</p>\n"
-"\n"
-"<h4>Impact of Ignoring Dependence</h4>\n"
-"<p>Ignoring conditional dependence when it exists overstates how much the "
-"second test adds. The <em>direction</em> of the error differs by row, so it "
-"is worth being precise rather than saying post-test probabilities are simply "
-"\"exaggerated\":</p>\n"
-"<ul>\n"
-"  <li><strong>Both tests positive</strong> — assuming independence makes the "
-"probability of disease <strong>too high</strong>. Two correlated positives "
-"are partly the same evidence counted twice. (Simulation across 400 ordinary "
-"clinical parameter sets: this held in 100% of them.)</li>\n"
-"  <li><strong>Both tests negative</strong> — assuming independence makes the "
-"probability of disease <strong>too low</strong>, i.e. it overstates how "
-"safely the pair rules disease out. This is the error that matters most in "
-"screening. (100% of the same sets.)</li>\n"
-"  <li><strong>Either test positive (the parallel rule)</strong> — here "
-"independence makes the probability of disease <strong>too low</strong> in "
-"the large majority of cases (85%), not too high, because dependence "
-"concentrates false positives into the double-positive cell. Do not assume "
-"the independent figure is the conservative one for this row.</li>\n"
-"  <li><strong>One test positive only</strong> — the direction is not "
-"determined by dependence alone; across the same sets it went each way about "
-"half the time, depending on the two operating points.</li>\n"
-"</ul>\n"
-"<p>The common thread is an <strong>overly optimistic assessment of what the "
-"two tests achieve together</strong>, not a uniform inflation of every "
-"number. Note also that this analysis reports no confidence intervals at all: "
-"every figure is conditional on the sensitivity, specificity and prevalence "
-"you entered being exact.</p>\n"
-"</div>"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"<div style=\"max-width: 900px; font-family: sans-serif;\">\n"
-"<h3>Welcome to Co-Testing Analysis</h3>\n"
-"<p><strong>Purpose:</strong> This analysis evaluates the combined diagnostic "
-"performance of two tests applied <strong>in parallel</strong>, accounting "
-"for possible dependence between them.</p>\n"
-"\n"
-"<p><strong>What \"in parallel\" means here:</strong> both tests are "
-"performed on the same subject at the same time, before either result is "
-"known, and the two results are then combined into a single conclusion. "
-"Neither test gates the other: Test 2 is run whether or not Test 1 came back "
-"positive. That is what separates parallel co-testing from "
-"<em>sequential</em> (serial) testing, where a second test is ordered only "
-"after a particular first result, and where the second test's operating "
-"characteristics apply to the selected subgroup rather than to everyone. If "
-"your tests are run one after the other with the second conditional on the "
-"first, this is the wrong analysis — use <em>Sequential Test Analysis</em> "
-"instead.</p>\n"
-"\n"
-"<p><strong>Choosing between this and Sequential Test Analysis for parallel "
-"testing.</strong> Sequential Test Analysis also has a parallel strategy, and "
-"for <em>conditionally independent</em> tests the two agree. It computes its "
-"combined figures under that independence assumption and warns you in prose "
-"when dependence would matter. This analysis is the one that actually models "
-"the dependence: if the two tests share a specimen, a modality, an observer "
-"or a biological pathway, use this one and enter a dependence parameter.</p>\n"
-"\n"
-"<p>Because both tests are always performed, each subject falls into exactly "
-"one of four result combinations — both positive, Test 1 only, Test 2 only, "
-"both negative — and the table below gives the post-test probability of "
-"disease for each, plus the combined <em>either positive</em> arm used by the "
-"parallel decision rule.</p>\n"
-"\n"
-"<h4>Quick Start Guide</h4>\n"
-"<ol>\n"
-"<li><strong>Choose a worked example</strong> (optional): HPV+Pap, PSA+DRE, "
-"Troponin+ECG and the rest fill in every parameter for you so you can see the "
-"calculation end to end. <strong>They are illustrations, not clinical "
-"inputs</strong> — see the warning below.</li>\n"
-"<li><strong>Enter your own test parameters</strong>: with <em>Custom "
-"values</em> selected, input sensitivity and specificity for each test. While "
-"a worked example is selected these boxes are locked, because the example "
-"supplies them.</li>\n"
-"<li><strong>Set disease prevalence</strong>: the pre-test probability of "
-"disease in the population you are actually testing — not the figure quoted "
-"in the paper the test was validated in.</li>\n"
-"<li><strong>Configure test independence</strong>: state whether the two "
-"tests are conditionally independent or dependent (see \"Understanding Test "
-"Dependence\" below). This choice moves the answer more than any other.</li>\n"
-"<li><strong>Review Results</strong>: The analysis provides post-test "
-"probabilities for all test combination outcomes, including the critical "
-"<em>Either Test Positive (Parallel Rule)</em> used in clinical co-testing "
-"algorithms.</li>\n"
-"</ol>\n"
-"\n"
-"<h4>Key Clinical Scenarios</h4>\n"
-"<ul>\n"
-"<li><strong>Either Test Positive (Parallel Rule)</strong>: At least one test "
-"is positive. This combination rule raises sensitivity relative to either "
-"test used alone, at the cost of specificity, so the complementary arm "
-"carries the rule-out information. The <em>Either Test Positive</em> row is "
-"the probability of disease given <em>at least one</em> positive result, so "
-"it pools single-positive and double-positive cases; when only one test is "
-"positive read the single-positive row for that test instead (labelled "
-"<em>Test 1 Positive Only</em> / <em>Test 2 Positive Only</em>, or by the "
-"names you give the two tests). How far a result moves the probability is set "
-"by its likelihood ratio: the positive and negative likelihood ratios of each "
-"test on its own are listed in the <em>Test Parameters</em> table, while the "
-"combined effect of a scenario is reported as its <em>Post-test "
-"Probability</em> and <em>Post-test Odds</em> in the <em>Co-Testing "
-"Results</em> table rather than as a separate combined likelihood ratio.</li>\n"
-"<li><strong>Both Tests Positive</strong>: Both tests are positive. The "
-"resulting post-test probability depends on the pre-test prevalence, on the "
-"positive likelihood ratios of both tests (listed in the <em>Test "
-"Parameters</em> table) and on any conditional dependence you specify. Read "
-"the resulting figure in the <em>Post-test Probability</em> column of the "
-"<em>Both Tests Positive</em> row.</li>\n"
-"<li><strong>Both Tests Negative</strong>: Neither test is positive. This is "
-"the arm the parallel rule is designed to act on. The <em>Both Tests "
-"Negative</em> row gives the resulting <em>Post-test Probability</em>; its "
-"<em>Relative to Prevalence</em> entry is that probability divided by the "
-"prevalence you entered, so a value of 0.20 means two negatives cut the "
-"probability of disease to one fifth of where it started. The combined "
-"negative likelihood ratio behind that shift is not printed as its own "
-"number.</li>\n"
-"<li><strong>Single Positive</strong>: Only one of the two tests is positive. "
-"This result is driven by the positive likelihood ratio of one test together "
-"with the negative likelihood ratio of the other; both are listed in the "
-"<em>Test Parameters</em> table. The resulting probability is in the "
-"corresponding single-positive row of the <em>Co-Testing Results</em> table, "
-"and it can sit well below the <em>Both Tests Positive</em> row because the "
-"negative test pulls the probability back down.</li>\n"
-"</ul>\n"
-"\n"
-"<h4>Worked examples included</h4>\n"
-"<ul>\n"
-"<li><strong>HPV + Pap cytology</strong>: sensitive test plus specific test, "
-"same specimen (dependent)</li>\n"
-"<li><strong>PSA + digital rectal examination</strong>: the one independent "
-"example (biochemical plus physical)</li>\n"
-"<li><strong>Troponin + ECG</strong>: both driven by extent of injury "
-"(dependent)</li>\n"
-"<li><strong>Mammography + ultrasound</strong>: two views of the same tissue, "
-"strongest dependence (dependent)</li>\n"
-"<li><strong>Rapid antigen + PCR</strong>: two assays, one swab, both track "
-"viral load (dependent)</li>\n"
-"<li><strong>Chest radiograph + sputum microscopy</strong>: imaging plus "
-"microbiology (dependent)</li>\n"
-"</ul>\n"
-"\n"
-"<div style=\"background-color: rgba(220, 53, 69, 0.12); border-left: 3px "
-"solid rgba(220, 53, 69, 0.85); border-radius: 3px; padding: 10px 14px; "
-"margin: 12px 0; color: inherit;\">\n"
-"<p style=\"margin: 0;\"><strong>The worked examples are for demonstration "
-"only.</strong> Every sensitivity, specificity, prevalence and dependence "
-"value in them is a round illustrative number picked to show how the "
-"calculation behaves — how a sensitive test pairs with a specific one, how "
-"dependence pulls the answer back. They are <strong>not</strong> pooled "
-"estimates from the literature, they are <strong>not</strong> drawn from any "
-"guideline, and they have <strong>not</strong> been checked for clinical "
-"accuracy. Do not quote them, and do not make any clinical decision from a "
-"result computed with them. For real work select <em>Custom values</em> and "
-"enter sensitivity and specificity from a validation study in a population "
-"like yours, together with your own local prevalence.</p>\n"
-"</div>\n"
-"\n"
-"<p><strong>No uncertainty is propagated:</strong> sensitivity, specificity "
-"and prevalence are treated as exact. Every probability reported here is "
-"conditional on those numbers being right, and carries no confidence interval "
-"— published test performance and local prevalence both vary "
-"considerably.</p>\n"
-"\n"
-"<p><strong>Tip:</strong> Enable \"Detailed footnotes\" for explanations of "
-"each metric. Enable \"Fagan nomogram\" for a visual of the probability "
-"update — note that the nomogram plots the <em>parallel rule</em> (positive "
-"if either test is positive, negative only if both are negative), so its "
-"positive arm corresponds to the \"Either Test Positive\" row of the results "
-"table, not to \"Both Tests Positive\".</p>\n"
-"</div>"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -1094,28 +705,6 @@ msgstr ""
 msgid "<ol>"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"<p><strong>Clinical Interpretation:</strong></p>\n"
-"                <p>Disease prevalence (pre-test probability): "
-"<strong>%1$s</strong></p>\n"
-"                <p><strong>Both tests positive:</strong> %2$s probability "
-"(%3$s) - %4$s</p>\n"
-"                <p><strong>Both tests negative:</strong> %5$s probability "
-"(%6$s) %7$s</p>\n"
-"                <p><strong>Single positive test:</strong></p>\n"
-"                <ul>\n"
-"                <li>%8$s positive only: <strong>%9$s</strong> %10$s</li>\n"
-"                <li>%11$s positive only: <strong>%12$s</strong> %13$s</li>\n"
-"                </ul>\n"
-"                <div style='background-color: rgba(33, 152, 255, 0.07); "
-"padding: 10px; border-radius: 5px; margin-top: 15px; color: inherit;'>\n"
-"                <p><strong>Copy-ready summary:</strong></p>\n"
-"                <p style='font-family: monospace; font-size: "
-"12px;'>%14$s</p>\n"
-"                </div>"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "<p>Calculation steps:</p>"
 msgstr ""
@@ -1264,52 +853,12 @@ msgstr ""
 msgid "<p>Sp<sub>combined</sub> = Sp<sub>1</sub> × Sp<sub>2</sub></p>"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"<p>Tests are modeled with conditional dependence:<br>\n"
-"                Dependence for subjects with disease: %1$.2f<br>\n"
-"                Dependence for subjects without disease: %2$.2f<br>\n"
-"                Realized phi (disease): %3$s<br>\n"
-"                Realized phi (no disease): %4$s<br>\n"
-"                <span style='font-size: 90%%;'>(Phi is the correlation "
-"between the two test results\n"
-"                actually achieved by the fitted model, on a −1 to +1 scale, "
-"where 0 is\n"
-"                conditional independence. It differs from the value you "
-"entered when that value\n"
-"                was not attainable given the sensitivities and specificities "
-"supplied.)</span></p>\n"
-"                <p>Joint probabilities after accounting for dependence:<br>\n"
-"                P(Test1+,Test2+ | Disease+): %5$.4f<br>\n"
-"                P(Test1+,Test2- | Disease+): %6$.4f<br>\n"
-"                P(Test1-,Test2+ | Disease+): %7$.4f<br>\n"
-"                P(Test1-,Test2- | Disease+): %8$.4f<br>\n"
-"                P(Test1+,Test2+ | Disease-): %9$.4f<br>\n"
-"                P(Test1+,Test2- | Disease-): %10$.4f<br>\n"
-"                P(Test1-,Test2+ | Disease-): %11$.4f<br>\n"
-"                P(Test1-,Test2- | Disease-): %12$.4f</p>"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "<p>The probability that a negative test result is a true negative:</p>"
 msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "<p>The probability that a positive test result is a true positive:</p>"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"<p>The two tests are run in parallel on the same subject and are assumed to "
-"be <strong>conditionally independent</strong>: within the diseased group, "
-"and again within the non-diseased group, the result of one test carries no "
-"information about the other. The joint probabilities below are therefore "
-"plain products of the entered sensitivities and "
-"specificities.</p><p>Independence is the optimistic assumption. If the two "
-"tests in fact tend to err together — same specimen, same operator, same "
-"biology — it overstates how much the pair adds over either test alone. Clear "
-"<em>Assume the two tests are conditionally independent</em> and enter a "
-"dependence parameter to see how far the conclusion moves.</p>"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -1428,18 +977,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "A model is useful only where its curve sits above BOTH reference lines."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"A sensitive imaging test paired with a highly specific microbiological one; "
-"advanced disease makes both more likely to be positive."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"A sensitive test paired with a specific one, both read from the same "
-"cervical sample, so they are modelled as conditionally dependent."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -1610,21 +1147,6 @@ msgid ""
 "at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row."
 msgstr ""
 
-#: package/analyses/cotest.description
-#: cotest/options.description.main
-msgid ""
-"Analyses two diagnostic tests applied in parallel: both are performed on the "
-"same subject at the same time, before either result is known, and the two "
-"results are then combined. Reports the post-test probability of disease for "
-"every result combination (either test positive, test 1 only, test 2 only, "
-"both positive, both negative), optionally allowing the two tests to be "
-"conditionally dependent. For tests performed one after another, where the "
-"second is ordered only after a particular first result, use Sequential Test "
-"Analysis instead. Note that Sequential Test Analysis also offers a parallel "
-"strategy, but its combined figures assume conditional independence; this "
-"analysis is the one that models conditional dependence numerically."
-msgstr ""
-
 #: R/decisioncurve.b.R
 #: R/lassologistic.b.R
 #: R/sequentialtests.b.R
@@ -1709,15 +1231,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "Applied as provided in the data ({label})."
-msgstr ""
-
-#: R/cotest.b.R
-#: cotest/options/indep.title
-msgid "Assume conditional independence"
-msgstr ""
-
-#: cotest/ui[3][0]/indep.label
-msgid "Assume the two tests are conditionally independent"
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -1978,40 +1491,8 @@ msgstr ""
 msgid "Bootstrap replications"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Both Negative LR"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Both Positive LR"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Both tests are driven by the extent of myocardial injury, so they are "
-"modelled as dependent among diseased subjects in particular."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Both Tests Negative"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Both tests performed on everyone"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Both Tests Positive"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Both tests were applied in parallel and assumed conditionally independent."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Both tests were applied in parallel, allowing conditional dependence "
-"(correlation %1$s among diseased and %2$s among non-diseased subjects)%3$s."
 msgstr ""
 
 #: sequentialtests/options/preset/breast_cancer_screening.title
@@ -2067,18 +1548,6 @@ msgstr ""
 
 #: sequentialtests/options/preset/tb_screening_confirmation.title
 msgid "Chest Imaging + Culture (Illustrative)"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Chest radiograph"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Chest radiograph (Test 1) + sputum microscopy (Test 2)"
-msgstr ""
-
-#: cotest/options/preset/tb_xray_sputum.title
-msgid "Chest radiograph + sputum (demo only)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -2202,26 +1671,6 @@ msgstr ""
 #: package/analyses/decisioncurve.menuSubtitle
 #: decisioncurve/options.menuSubtitle
 msgid "Clinical Utility, Net Benefit, Threshold Analysis"
-msgstr ""
-
-#: package/analyses/cotest.title
-#: package/analyses/cotest.menuTitle
-#: cotest/options.title
-#: cotest/ui.title
-#: cotest/results.title
-msgid "Co-Testing Analysis"
-msgstr ""
-
-#: cotest/results/cotestResultsTable.title
-msgid "Co-Testing Results"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Co-testing with %1$s (sensitivity %2$.0f%%, specificity %3$.0f%%) and %4$s "
-"(sensitivity %5$.0f%%, specificity %6$.0f%%) in a population with %7$.1f%% "
-"disease prevalence showed: when both tests are positive, disease probability "
-"is %8$s (%9$s); when both are negative, disease probability is %10$s (%11$s)."
 msgstr ""
 
 #: lassologistic/results/coefficients.columns.title
@@ -2575,10 +2024,6 @@ msgstr ""
 msgid "Custom Values"
 msgstr ""
 
-#: cotest/options/preset/custom.title
-msgid "Custom values"
-msgstr ""
-
 #: lassologistic/options/scoreCutMethod.title
 msgid "Cut Point for Continuous Predictors"
 msgstr ""
@@ -2631,9 +2076,7 @@ msgid ""
 "curves there - not the other way round."
 msgstr ""
 
-#: package/analyses/cotest.menuSubgroup
 #: package/analyses/sequentialtests.menuSubgroup
-#: cotest/options.menuSubgroup
 #: sequentialtests/options.menuSubgroup
 msgid "Decision Calculators"
 msgstr ""
@@ -2742,26 +2185,6 @@ msgstr ""
 msgid "Decision Rule Positive Level"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "DEMONSTRATION ONLY — %s, illustrative values, not for clinical use"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "DEMONSTRATION ONLY — illustrative values, not for clinical use"
-msgstr ""
-
-#: R/cotest.b.R
-#: cotest/options/cond_dep_pos.title
-#: cotest/ui[3][0][1]/cond_dep_pos.label
-msgid "Dependence among subjects with disease"
-msgstr ""
-
-#: R/cotest.b.R
-#: cotest/options/cond_dep_neg.title
-#: cotest/ui[3][0][1]/cond_dep_neg.label
-msgid "Dependence among subjects without disease"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid "Derived from the net-benefit gain after accounting for threshold odds"
 msgstr ""
@@ -2780,10 +2203,6 @@ msgstr ""
 
 #: decisioncurve/results/decisionConsequencesTable.description
 msgid "Detailed consequences at selected thresholds"
-msgstr ""
-
-#: cotest/ui[5][0]/fnote.label
-msgid "Detailed footnotes"
 msgstr ""
 
 #: lassologistic/options/showMethodologyNotes.title
@@ -2855,9 +2274,6 @@ msgstr ""
 msgid "Disease Prevalence"
 msgstr ""
 
-#: R/cotest.b.R
-#: cotest/options/prevalence.title
-#: cotest/ui[4].label
 #: sequentialtests/options/prevalence.title
 msgid "Disease prevalence"
 msgstr ""
@@ -2880,10 +2296,6 @@ msgstr ""
 
 #: sequentialtests/ui[6].label
 msgid "Display Options"
-msgstr ""
-
-#: cotest/ui[5].label
-msgid "Display options"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -2922,21 +2334,12 @@ msgid ""
 "do not need to coincide with the plotting grid."
 msgstr ""
 
-#: R/cotest.b.R
 #: R/sequentialtests.b.R
 msgid "ECG"
 msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "Either +"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Either Positive LR"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Either Test Positive (Parallel Rule)"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -2985,7 +2388,6 @@ msgstr ""
 msgid "EPV = %.1f (5-10: marginal, results may be unstable)"
 msgstr ""
 
-#: R/cotest.b.R
 #: R/lassologistic.b.R
 msgid "Error"
 msgstr ""
@@ -3035,13 +2437,6 @@ msgid ""
 "range you chose - report the range with it."
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"evidence against disease: this result combination is more common in subjects "
-"without the disease, so it lowers the probability of disease. Check whether "
-"a sensitivity and a specificity have been entered the wrong way round."
-msgstr ""
-
 #: package/datasets/histopathologyincludinganalysis.description
 msgid "Example analysis for Medical Decision Tests."
 msgstr ""
@@ -3068,7 +2463,6 @@ msgstr ""
 msgid "Expected Proportion of Cases in Each Category"
 msgstr ""
 
-#: cotest/results/explanation.title
 #: sequentialtests/results/explanation_text.title
 msgid "Explanation"
 msgstr ""
@@ -3149,19 +2543,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "F1 Score"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Fagan Nomogram"
-msgstr ""
-
-#: cotest/options/fagan.title
-#: cotest/ui[5][0]/fagan.label
-msgid "Fagan nomogram"
-msgstr ""
-
-#: cotest/results/plot1.title
-msgid "Fagan nomogram - parallel rule (positive if either test is positive)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -3245,10 +2626,6 @@ msgstr ""
 msgid "Focused range (0.05 to 0.50; not a clinical recommendation)"
 msgstr ""
 
-#: cotest/options/fnote.title
-msgid "Footnotes"
-msgstr ""
-
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "For a binary outcome enter either one prevalence value or two proportions "
@@ -3276,16 +2653,6 @@ msgid ""
 "kappa (kappa0); every value below it is excluded. Computed with the "
 "kappaSize package. Use kappaSizePower to size a study for a hypothesis test "
 "and kappaSizeCI to size it for a target interval width."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"For orientation: most diagnostic tests fall between 0.60 and 0.95 for "
-"sensitivity and between 0.70 and 0.98 for specificity, and prevalence is the "
-"pre-test probability in the population you are testing (roughly 0.001-0.01 "
-"for rare disease, 0.05-0.20 for common conditions). Values far outside these "
-"bands are worth re-checking — most often sensitivity and specificity have "
-"been entered the wrong way round."
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -3375,19 +2742,8 @@ msgstr ""
 msgid "Good (%.0f%% better than predicting the base rate)"
 msgstr ""
 
-#: cotest/options/showGuidance.title
-#: cotest/ui[5][0]/showGuidance.label
-msgid "Guidance and explanations"
-msgstr ""
-
 #: decisioncurve/ui[4][0]/harmFalseTreatment.label
 msgid "Harm of false treatment"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"High prevalence (above 50%) detected. Ensure this reflects your actual "
-"clinical population."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -3420,24 +2776,6 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "HIV Ag/Ab Assay"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"How many times more (or less) likely disease is after testing compared to "
-"before testing"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "HPV"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "HPV (Test 1) + Pap cytology (Test 2)"
-msgstr ""
-
-#: cotest/options/preset/hpv_pap.title
-msgid "HPV + Pap cytology (demo only)"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
@@ -3558,7 +2896,6 @@ msgstr ""
 msgid "Install with install.packages(c({quoted}))."
 msgstr ""
 
-#: cotest/results/instructions.title
 #: decisioncurve/results/instructions.title
 msgid "Instructions"
 msgstr ""
@@ -3571,12 +2908,6 @@ msgstr ""
 msgid ""
 "Insufficient complete cases for analysis ({n} cases available; this "
 "implementation requires at least 10 to run)."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Internal: could not read the default for '%s', so the analysis cannot report "
-"whether a worked example replaced a value you supplied. Please report this."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -3858,15 +3189,6 @@ msgstr ""
 msgid "Low power."
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"Low prevalence (below 5%): every post-test probability below is driven "
-"mainly by the prevalence you entered rather than by the tests, and changes "
-"steeply with it. Check that this is the pre-test probability in the "
-"population you are actually testing, and re-run with a plausible range "
-"around it before acting on the numbers."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Low risk"
 msgstr ""
@@ -3894,25 +3216,8 @@ msgstr ""
 msgid "Lowest Expected Value for a fixed sample size"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"LR+ is how many times more likely a positive result is in someone with the "
-"disease than in someone without it; LR- is the same ratio for a negative "
-"result. Above 10 (or below 0.1) a single result shifts the probability of "
-"disease substantially; between 0.5 and 2 it barely moves it."
-msgstr ""
-
-#: R/cotest.b.R
 #: R/sequentialtests.b.R
 msgid "Mammography"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Mammography (Test 1) + ultrasound (Test 2)"
-msgstr ""
-
-#: cotest/options/preset/mammogram_ultrasound.title
-msgid "Mammography + ultrasound (demo only)"
 msgstr ""
 
 #: lassologistic/options/scoreCutMethod/manual.title
@@ -3977,11 +3282,9 @@ msgstr ""
 msgid "Mean score (reference class)"
 msgstr ""
 
-#: package/analyses/cotest.menuGroup
 #: package/analyses/sequentialtests.menuGroup
 #: package/analyses/lassologistic.menuGroup
 #: package/analyses/decisioncurve.menuGroup
-#: cotest/options.menuGroup
 #: decisioncurve/options.menuGroup
 #: lassologistic/options.menuGroup
 #: sequentialtests/options.menuGroup
@@ -4022,10 +3325,6 @@ msgstr ""
 #: lassologistic/results/scoringPerformance.columns.title
 #: lassologistic/results/validationTable.columns.title
 msgid "Metric"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "minimal evidence for disease"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -4158,10 +3457,6 @@ msgstr ""
 msgid "Models Analyzed"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "moderate evidence for disease"
-msgstr ""
-
 #: decisioncurve/options/testCost.title
 msgid "Monetary Cost per Test/Screening"
 msgstr ""
@@ -4196,19 +3491,6 @@ msgstr ""
 
 #: lassologistic/results/modelComparison.columns.title
 msgid "N Variables"
-msgstr ""
-
-#: cotest/ui[1][0]/test1_name.label
-#: cotest/ui[2][0]/test2_name.label
-msgid "Name (optional)"
-msgstr ""
-
-#: cotest/options/test1_name.title
-msgid "Name of test 1"
-msgstr ""
-
-#: cotest/options/test2_name.title
-msgid "Name of test 2"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -4250,13 +3532,6 @@ msgstr ""
 msgid "Negative Likelihood Ratio Undefined"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"Negative Likelihood Ratio: how much more likely a negative result is in "
-"diseased vs. non-diseased patients"
-msgstr ""
-
-#: cotest/results/testParamsTable.columns.title
 #: sequentialtests/results/individual_tests_table.columns.title
 msgid "Negative LR"
 msgstr ""
@@ -4380,10 +3655,6 @@ msgid ""
 "that, not evidence of a sensitive score."
 msgstr ""
 
-#: R/cotest.b.R
-msgid "no diagnostic value"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "No manual cut point was supplied for: %s. These fell back to the sample "
@@ -4435,15 +3706,6 @@ msgstr ""
 msgid "Not a numeric column: {model}"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"Not an estimate: with these parameters this result combination cannot occur "
-"in one of the two disease groups, so the probability is %s by construction. "
-"This follows from the conditional dependence being truncated to the largest "
-"value the entered sensitivities and specificities allow — move it toward 0 "
-"to leave this regime."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Not available"
 msgstr ""
@@ -4460,20 +3722,12 @@ msgstr ""
 msgid "not defined (no diseased subjects)"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "not estimable"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Not interpretable"
 msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "Not testable"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Note"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
@@ -4740,16 +3994,6 @@ msgstr ""
 msgid "Pairwise comparison needs two models"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Pap cytology"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Parallel rule: positive if either test is positive, negative only if both "
-"are negative."
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Parallel Test Assumption Check"
 msgstr ""
@@ -4798,10 +4042,6 @@ msgstr ""
 msgid ""
 "Patients screened per true positive is the reciprocal of the observed "
 "true-positive yield, not a causal number-needed-to-screen effect measure."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "PCR"
 msgstr ""
 
 #: package/analyses/lassologistic.menuSubtitle
@@ -4928,13 +4168,6 @@ msgstr ""
 msgid "Positive Likelihood Ratio Undefined"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"Positive Likelihood Ratio: how much more likely a positive result is in "
-"diseased vs. non-diseased patients"
-msgstr ""
-
-#: cotest/results/testParamsTable.columns.title
 #: sequentialtests/results/individual_tests_table.columns.title
 msgid "Positive LR"
 msgstr ""
@@ -4965,27 +4198,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Possible Overfitting"
-msgstr ""
-
-#: cotest/results/cotestResultsTable.columns.title
-msgid "Post-test Odds"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Post-test odds: probability of disease divided by probability of no disease. "
-"Odds of 1 mean a 50% probability; odds of 9 mean 90%."
-msgstr ""
-
-#: cotest/results/cotestResultsTable.columns.title
-msgid "Post-test Probability"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Posterior\n"
-"Prob.\n"
-"(%)"
 msgstr ""
 
 #: package/analyses/kappaSizePower.menuGroup
@@ -5129,10 +4341,6 @@ msgstr ""
 msgid "Prevalence"
 msgstr ""
 
-#: cotest/ui[4][0]/prevalence.label
-msgid "Prevalence (0-1)"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Prevalence Invalid"
 msgstr ""
@@ -5175,19 +4383,8 @@ msgstr ""
 msgid "Prevalence Very Low"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"Prior\n"
-"Prob.\n"
-"(%)"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Probability"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Probability of disease after obtaining this test result combination"
 msgstr ""
 
 #: kappaSizePower/options/power.description.ui
@@ -5244,14 +4441,6 @@ msgstr ""
 msgid "Projected Unnecessary Treatments"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Proportion of diseased patients correctly identified by %s"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Proportion of non-diseased patients correctly identified by %s"
-msgstr ""
-
 #: kappaSizeCI/ui[3][0]/props.label
 #: kappaSizeFixedN/ui[2][0]/props.label
 #: kappaSizePower/ui[2][0]/props.label
@@ -5300,28 +4489,12 @@ msgstr ""
 msgid "Proportions should sum to 1.0, current sum is {sum}."
 msgstr ""
 
-#: R/cotest.b.R
-msgid "PSA"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "PSA (Test 1) + digital rectal examination (Test 2)"
-msgstr ""
-
 #: sequentialtests/options/preset/prostate_screening_exclusion.title
 msgid "PSA + MRI (Illustrative)"
 msgstr ""
 
-#: cotest/options/preset/psa_dre.title
-msgid "PSA + rectal examination (demo only)"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "PSA Test"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "raised to %.2fx of prevalence"
 msgstr ""
 
 #: decisioncurve/options/seed.title
@@ -5366,18 +4539,6 @@ msgid ""
 "both treat-all and treat-none; a model is only worth using within this range."
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Rapid antigen"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Rapid antigen (Test 1) + PCR (Test 2)"
-msgstr ""
-
-#: cotest/options/preset/covid_antigen_pcr.title
-msgid "Rapid antigen + PCR (demo only)"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Rapid Antigen Test"
 msgstr ""
@@ -5401,16 +4562,8 @@ msgstr ""
 msgid "Re-running with the same seed reproduces these numbers exactly."
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Rectal examination"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid "Reduce the step size to {maxstep}% or less, or widen the range."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "reduced to %.2fx of prevalence"
 msgstr ""
 
 #: lassologistic/results/methodComparison.columns.title
@@ -5435,10 +4588,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "Reference Strategies"
-msgstr ""
-
-#: cotest/results/cotestResultsTable.columns.title
-msgid "Relative to Prevalence"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -5629,10 +4778,6 @@ msgstr ""
 msgid "Save Variables"
 msgstr ""
 
-#: cotest/results/cotestResultsTable.columns.title
-msgid "Scenario"
-msgstr ""
-
 #: lassologistic/results/scoringTable.columns.title
 msgid "Schneeweiss"
 msgstr ""
@@ -5764,7 +4909,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 #: R/sequentialtests.b.R
-#: cotest/results/testParamsTable.columns.title
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 #: sequentialtests/options/test1_sens.title
 #: sequentialtests/options/test2_sens.title
@@ -5772,11 +4916,6 @@ msgstr ""
 #: sequentialtests/ui[2][0]/test2_sens.label
 #: sequentialtests/results/individual_tests_table.columns.title
 msgid "Sensitivity"
-msgstr ""
-
-#: cotest/ui[1][0]/test1_sens.label
-#: cotest/ui[2][0]/test2_sens.label
-msgid "Sensitivity (0-1)"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -5797,20 +4936,6 @@ msgid ""
 "figures therefore carry <i>no</i> confidence interval and do not reflect "
 "sampling uncertainty in the values entered — published test performance and "
 "local prevalence both vary."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Sensitivity, specificity and prevalence are treated as exact. These "
-"post-test probabilities therefore carry <i>no</i> confidence interval and do "
-"not reflect sampling uncertainty in the values entered — published test "
-"performance estimates and local prevalence both vary."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Sensitivity, specificity and prevalence were treated as exact, so these "
-"probabilities carry no confidence interval."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -5948,7 +5073,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 #: R/sequentialtests.b.R
-#: cotest/results/testParamsTable.columns.title
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 #: sequentialtests/options/test1_spec.title
 #: sequentialtests/options/test2_spec.title
@@ -5956,11 +5080,6 @@ msgstr ""
 #: sequentialtests/ui[2][0]/test2_spec.label
 #: sequentialtests/results/individual_tests_table.columns.title
 msgid "Specificity"
-msgstr ""
-
-#: cotest/ui[1][0]/test1_spec.label
-#: cotest/ui[2][0]/test2_spec.label
-msgid "Specificity (0-1)"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -5981,10 +5100,6 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "Sputum Culture"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Sputum microscopy"
 msgstr ""
 
 #: decisioncurve/options/plotStyle/standard.title
@@ -6039,10 +5154,6 @@ msgid ""
 "{specificity}"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "strong evidence for disease"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "STRONG WARNING"
 msgstr ""
@@ -6063,14 +5174,6 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid "subjects"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "subjects with disease"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "subjects without disease"
 msgstr ""
 
 #: kappaSizeCI/results/text_summary.title
@@ -6121,21 +5224,8 @@ msgstr ""
 msgid "Terms selected"
 msgstr ""
 
-#: cotest/results/testParamsTable.columns.title
 #: sequentialtests/results/individual_tests_table.columns.title
 msgid "Test"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Test 1"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Test 1 has low discriminatory power (sensitivity plus specificity below 1.1, "
-"i.e. a Youden index below 0.1). Check its likelihood ratios in the results "
-"table: an operating point close to the chance diagonal can still give an "
-"informative LR+ or LR- when sensitivity and specificity are very unequal."
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -6150,32 +5240,11 @@ msgstr ""
 msgid "Test 1 Name Empty"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Test 1 Negative LR"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Test 1 Only LR"
-msgstr ""
-
-#: cotest/ui[1].label
-msgid "Test 1 parameters"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "Test 1 performance is unusually low (Sensitivity=%.1f%%, "
 "Specificity=%.1f%%). Verify whether these assumptions are suitable for the "
 "intended illustrative comparison."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Test 1 Positive LR"
-msgstr ""
-
-#: R/cotest.b.R
-#: cotest/options/test1_sens.title
-msgid "Test 1 sensitivity"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -6196,11 +5265,6 @@ msgstr ""
 msgid ""
 "Test 1 sensitivity must be between 0 and 1 (0% to 100%). Current value is "
 "invalid."
-msgstr ""
-
-#: R/cotest.b.R
-#: cotest/options/test1_spec.title
-msgid "Test 1 specificity"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -6227,18 +5291,6 @@ msgstr ""
 msgid "Test 1: {name}"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Test 2"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Test 2 has low discriminatory power (sensitivity plus specificity below 1.1, "
-"i.e. a Youden index below 0.1). Check its likelihood ratios in the results "
-"table: an operating point close to the chance diagonal can still give an "
-"informative LR+ or LR- when sensitivity and specificity are very unequal."
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid "Test 2 Low Performance"
 msgstr ""
@@ -6251,32 +5303,11 @@ msgstr ""
 msgid "Test 2 Name Empty"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Test 2 Negative LR"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Test 2 Only LR"
-msgstr ""
-
-#: cotest/ui[2].label
-msgid "Test 2 parameters"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "Test 2 performance is unusually low (Sensitivity=%.1f%%, "
 "Specificity=%.1f%%). Verify whether these assumptions are suitable for the "
 "intended illustrative comparison."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Test 2 Positive LR"
-msgstr ""
-
-#: R/cotest.b.R
-#: cotest/options/test2_sens.title
-msgid "Test 2 sensitivity"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -6297,11 +5328,6 @@ msgstr ""
 msgid ""
 "Test 2 sensitivity must be between 0 and 1 (0% to 100%). Current value is "
 "invalid."
-msgstr ""
-
-#: R/cotest.b.R
-#: cotest/options/test2_spec.title
-msgid "Test 2 specificity"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -6344,14 +5370,6 @@ msgstr ""
 msgid "Test Correlation Risk"
 msgstr ""
 
-#: cotest/results/dependenceInfo.title
-msgid "Test Dependence"
-msgstr ""
-
-#: cotest/ui[3].label
-msgid "Test independence"
-msgstr ""
-
 #: R/sequentialtests.b.R
 msgid ""
 "Test names are similar (\"%s\" vs \"%s\"). If tests measure similar "
@@ -6361,10 +5379,6 @@ msgstr ""
 
 #: sequentialtests/results/population_flow_table.columns.title
 msgid "Test Negative"
-msgstr ""
-
-#: cotest/results/testParamsTable.title
-msgid "Test Parameters"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -6532,26 +5546,6 @@ msgid ""
 "did not give one for"
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"The dependence parameter for the diseased group (%1$.2f) is not attainable "
-"with these sensitivities, so the joint positive probability was truncated "
-"from %2$.4f to its bound %3$.4f. The model actually fitted is therefore not "
-"the one you specified, and can force some test combinations to be "
-"impossible. Move the value toward 0 until this note disappears; the realized "
-"correlation is reported in the Test Dependence panel."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The dependence parameter for the non-diseased group (%1$.2f) is not "
-"attainable with these specificities, so the joint false-positive probability "
-"was truncated from %2$.4f to its bound %3$.4f. The model actually fitted is "
-"therefore not the one you specified, and can force some test combinations to "
-"be impossible. Move the value toward 0 until this note disappears; the "
-"realized correlation is reported in the Test Dependence panel."
-msgstr ""
-
 #: R/kappaSizePower.b.R
 msgid ""
 "The design needs {n} subjects; few agreement studies can enrol this many. A "
@@ -6581,39 +5575,6 @@ msgid ""
 "or better reliability even if the raters perform exactly as anticipated."
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"The Fagan nomogram was not drawn because one of the combined likelihood "
-"ratios is not a finite number with these parameters. Check the sensitivity "
-"and specificity values you entered."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The Fagan nomogram was not drawn because the negative-rule likelihood ratio "
-"is zero, which cannot be placed on the nomogram's logarithmic axis. Check "
-"the sensitivity and specificity values you entered."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The Fagan nomogram was not drawn because the positive-rule likelihood ratio "
-"is %.2f, which is below 1. A Fagan nomogram assumes a positive result raises "
-"the probability of disease; here it lowers it, which means the tests as "
-"specified perform worse than chance. Check the sensitivity and specificity "
-"values you entered."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The Fagan nomogram was not drawn because the two tests together carry no "
-"information: the positive-rule and negative-rule likelihood ratios are both "
-"%.2f, so neither a positive nor a negative combined result changes the "
-"probability of disease. Each test is sitting on the chance diagonal "
-"(sensitivity = 1 - specificity). Check the sensitivity and specificity "
-"values you entered."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "The generated scoring system reaches %d points for a single factor. A usable "
@@ -6629,25 +5590,6 @@ msgid ""
 "0 (or at its reference level); with the coefficients above it reproduces the "
 "model's predicted probability as plogis(intercept + sum(coefficient x "
 "value)). No odds ratio or importance applies to it."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The joint probabilities for %1$s are not all valid probabilities (%2$s). "
-"Review the dependence parameters."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The joint probabilities for %1$s do not add back up to the test parameters "
-"entered (they imply %2$.4f and %3$.4f, against %4$.4f and %5$.4f). Review "
-"the dependence parameters."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The joint probabilities for %1$s sum to %2$.6f rather than 1. Review the "
-"dependence parameters."
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -6683,12 +5625,6 @@ msgid ""
 "The null hypothesis value of kappa - the level of agreement the study tests "
 "against. kappaSize documents this as \"the null hypothesis for the kappa "
 "hypothesis test\"; it is NOT the value you expect to observe."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"The one worked example that assumes conditional independence: a biochemical "
-"measurement and a physical examination."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -6875,13 +5811,6 @@ msgid ""
 "probability."
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"The worked example replaced values you supplied: %s. A worked example sets "
-"every parameter; to use your own numbers set the worked example to Custom "
-"values."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "The Youden search did find a cut point (%1$s and above, sensitivity %2$s, "
@@ -6901,14 +5830,6 @@ msgid ""
 "estimate of how the score would perform on new patients. Enable bootstrap "
 "validation for an optimism-corrected estimate of the model, and validate any "
 "score externally before clinical use."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"These likelihood ratios describe each test <i>on its own</i>. Because the "
-"two tests are modelled as conditionally dependent, the combined likelihood "
-"ratio is <b>not</b> their product — use the Post-test Odds column of the "
-"Co-Testing Results table instead."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -7193,17 +6114,8 @@ msgstr ""
 msgid "Treat None"
 msgstr ""
 
-#: R/cotest.b.R
 #: R/sequentialtests.b.R
 msgid "Troponin"
-msgstr ""
-
-#: R/cotest.b.R
-msgid "Troponin (Test 1) + ECG (Test 2)"
-msgstr ""
-
-#: cotest/options/preset/troponin_ecg.title
-msgid "Troponin + ECG (demo only)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -7235,23 +6147,6 @@ msgid ""
 "informative predictors."
 msgstr ""
 
-#: R/cotest.b.R
-msgid ""
-"Two assays for the same organism on the same swab; both track viral load, so "
-"dependence among diseased subjects is set high."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Two imaging modalities of the same tissue: the strongest dependence among "
-"the worked examples, which is what dense tissue would produce."
-msgstr ""
-
-#: package/analyses/cotest.menuSubtitle
-#: cotest/options.menuSubtitle
-msgid "Two tests run in parallel"
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 #: kappaSizeCI/options/citype/two_sided.title
 msgid "Two-sided"
@@ -7271,11 +6166,6 @@ msgstr ""
 msgid "Two-sided significance level (capped at 0.20; must be below the power)."
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Ultrasound"
-msgstr ""
-
-#: R/cotest.b.R
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
 #: R/kappaSizePower.b.R
@@ -7284,10 +6174,6 @@ msgstr ""
 
 #: lassologistic/results/lassoExplanation.title
 msgid "Understanding Penalized Logistic Regression"
-msgstr ""
-
-#: cotest/results/dependenceExplanation.title
-msgid "Understanding Test Dependence"
 msgstr ""
 
 #: sequentialtests/results/cost_analysis_table.columns.title
@@ -7340,10 +6226,6 @@ msgstr ""
 msgid "Validation"
 msgstr ""
 
-#: cotest/results/notices.title
-msgid "Validation Notices"
-msgstr ""
-
 #: lassologistic/results/modelSummary.columns.title
 #: lassologistic/results/performance.columns.title
 #: lassologistic/results/scoringPerformance.columns.title
@@ -7381,18 +6263,6 @@ msgstr ""
 msgid "Variables analysed"
 msgstr ""
 
-#: R/cotest.b.R
-msgid "Very high %1$s ratio ( %2$s ) - indicates highly informative test."
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Very high prevalence (above 95%): every post-test probability below is "
-"driven mainly by the prevalence you entered rather than by the tests, and "
-"even the 'both tests negative' row will stay high. Check that this is the "
-"pre-test probability in the population you are actually testing."
-msgstr ""
-
 #: R/kappaSizePower.b.R
 msgid "Very large sample size."
 msgstr ""
@@ -7405,7 +6275,6 @@ msgstr ""
 msgid "Very small sample size."
 msgstr ""
 
-#: R/cotest.b.R
 #: R/lassologistic.b.R
 msgid "Warning"
 msgstr ""
@@ -7431,10 +6300,6 @@ msgstr ""
 
 #: R/kappaSizeCI.b.R
 msgid "Warning."
-msgstr ""
-
-#: R/cotest.b.R
-msgid "weak evidence for disease"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -7469,23 +6334,6 @@ msgid ""
 "model used by the kappaSize package (Donner and Eliasziw; Rotondi and "
 "Donner); for two raters with equal marginal frequencies this coincides with "
 "Cohen's kappa."
-msgstr ""
-
-#: cotest/options/preset.title
-msgid "Worked example"
-msgstr ""
-
-#: R/cotest.b.R
-msgid ""
-"Worked example in use: %1$s. %2$s These are round illustrative numbers "
-"chosen to demonstrate the calculation, not pooled estimates from the "
-"literature and not values to use for patient care — select Custom values and "
-"enter sensitivity, specificity and prevalence from your own population "
-"before acting on any result below."
-msgstr ""
-
-#: cotest/ui[0].label
-msgid "Worked Examples (Demonstration Only)"
 msgstr ""
 
 #: R/lassologistic.b.R
