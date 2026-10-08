@@ -7,7 +7,6 @@ export(kappaSizeCI)
 export(kappaSizeFixedN)
 export(kappaSizePower)
 export(lassologistic)
-export(sequentialtests)
 import(jmvcore)
 importFrom(DescTools,CCC)
 importFrom(R6,R6Class)
@@ -21,13 +20,11 @@ importFrom(dplyr,
 importFrom(ggplot2,
   aes,
   annotate,
-  element_blank,
   element_text,
   facet_wrap,
   geom_bar,
   geom_hline,
   geom_line,
-  geom_point,
   geom_ribbon,
   geom_text,
   geom_vline,
@@ -37,10 +34,7 @@ importFrom(ggplot2,
   scale_fill_manual,
   scale_x_continuous,
   scale_x_discrete,
-  scale_y_continuous,
-  theme,
   theme_minimal,
-  theme_void,
   xlim,
   ylim
 )

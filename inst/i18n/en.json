@@ -34,12 +34,6 @@
             "{excluded} of {total} rows ({pct}%) were excluded because the outcome, at least one model prediction, or the enabled clinical rule was missing; every strategy is evaluated on the same {kept} retained rows.": [
                 ""
             ],
-            "{first} and {second} applied together": [
-                ""
-            ],
-            "{first} followed by {second}": [
-                ""
-            ],
             "{head} and {last}": [
                 ""
             ],
@@ -83,12 +77,6 @@
                 ""
             ],
             "%1$d selected variable(s) had the same value in every case and were removed before fitting: %2$s. A constant carries no information and cannot be penalised or selected. %3$d variables remain and are shown as Variables analysed.": [
-                ""
-            ],
-            "%1$s ends at the first-test-negative subgroup: P(disease | Test 1 negative) = %2$.1f%%. That is not the pooled final-negative figure in the tables, 1 - combined NPV = %3$.1f%%, which also averages in the Test 1 positive / Test 2 negative subgroup (P(disease) = %4$.1f%%). Those subjects are classified negative but are not drawn here.": [
-                ""
-            ],
-            "%1$s ends at the first-test-positive subgroup: P(disease | Test 1 positive) = %2$.1f%%. That is not the pooled final-positive figure in the tables, combined PPV = %3$.1f%%, which also averages in the Test 1 negative / Test 2 positive subgroup (P(disease) = %4$.1f%%). Those subjects are classified positive but are not drawn here.": [
                 ""
             ],
             "%1$s logistic regression with %2$s lambda selection and %3$d-fold cross-validation was applied to %4$d candidate variables (%5$d model terms after dummy coding) in %6$d patients (%7$d events, %8$d non-events). %9$d term(s) were retained: %10$s.": [
@@ -142,76 +130,7 @@
             "• The limit that drives the sample size is {rho}, which is {dist} from κ₀ (it is this distance, not the full interval width, that sets n)": [
                 ""
             ],
-            "</ol>": [
-                ""
-            ],
-            "</ul>": [
-                ""
-            ],
-            "<div class='jmv-guidance' style='background-color: rgba(138, 155, 172, 0.06);padding:15px;border-radius:6px;margin-top:10px; color: inherit;'><h4>Strategy Notes and Teaching Examples</h4><p><strong>Teaching examples only — not clinical guidance.</strong> The named pairs illustrate mathematical structure only. They are not recommendations, complete diagnostic algorithms, or validated pathways, and their sensitivity, specificity, prevalence, and cost values are not validated clinical parameters.</p><p><strong>How the strategies combine tests:</strong></p><ul><li><strong>Serial positive:</strong> Test 2 is applied to first-test positives; both tests must be positive. Specificity increases and sensitivity decreases under conditional independence.</li><li><strong>Serial negative:</strong> Test 2 is applied to first-test negatives; either positive makes the final result positive. Sensitivity increases and specificity decreases under conditional independence.</li><li><strong>Parallel:</strong> Both tests are applied to everyone; either positive makes the final result positive. Accuracy is algebraically identical to serial-negative testing, but utilization differs.</li></ul><p><strong>Why conditional dependence matters:</strong> Conditional dependence means that one test result remains informative about the other even after disease status is fixed, for example because the tests share biology, specimen characteristics, or technology. When positive conditional dependence is present in both disease-status groups, independence-based serial-positive calculations can make combined specificity too high and combined sensitivity too low. For serial-negative and parallel interpretation, they can make combined sensitivity too high and combined specificity too low. Gardner et al. (2000), <em>Conditional dependence between tests affects the diagnosis and surveillance of animal diseases</em>, describes these directional effects; see the reference below.</p><p>Test order is an input to explore, not a recommendation. Replace every example value with evidence appropriate to the intended setting.</p><p><strong>Illustrative pair labels:</strong></p><ul>": [
-                ""
-            ],
-            "<div style='background-color: rgba(138, 155, 172, 0.06);padding:10px;border-radius:6px;margin-top:8px; color: inherit;'><strong>Assumption:</strong> Combined metrics assume conditional independence between tests. With positive conditional dependence in both disease-status groups, {direction}, and PPV and NPV shift accordingly.</div>": [
-                ""
-            ],
-            "<div style='background-color: rgba(33, 149, 188, 0.1);padding:15px;border-left:4px solid #0077be;font-size:1.05em;line-height:1.6; color: inherit;'><strong>Illustrative Summary:</strong> Using a %1$s with %2$s, the combined test achieves %3$.1f%% sensitivity (detects %4$.0f of every 100 diseased individuals) and %5$.1f%% specificity (correctly rules out %6$.0f of every 100 healthy individuals). At your specified disease prevalence of %7$.1f%%, a positive result indicates a %8$s chance the person truly has the disease (PPV), while a negative result indicates a %9$s chance the person is truly disease-free (NPV).%10$s %11$s <em>These combined figures assume the two tests are conditionally independent given disease status, and they treat the sensitivity, specificity and prevalence you entered as exact, so they carry no confidence interval. If the two tests are positively dependent in both disease-status groups (for example, because they measure related biology), %12$s.</em></div>": [
-                ""
-            ],
-            "<h3>Mathematical Framework for Sequential Testing</h3>": [
-                ""
-            ],
-            "<h3>Sequential Testing Strategy Explanation</h3>{strategy}<h3>Results Interpretation</h3><p>With an entered prevalence of {prevalence}, the combined strategy has:</p><ul><li><strong>Combined sensitivity:</strong> {sensitivity}</li><li><strong>Combined specificity:</strong> {specificity}</li><li><strong>Combined PPV:</strong> {ppv}</li><li><strong>Combined NPV:</strong> {npv}</li></ul><p>For an illustrative population of {population} people:</p><ul><li>{finalPos} have a final positive classification</li><li>{finalNeg} have a final negative classification</li><li>Among {diseased} expected people with disease, {tp} are correctly identified ({tpRate})</li><li>Among {healthy} expected people without disease, {tn} are correctly identified ({tnRate})</li></ul>": [
-                ""
-            ],
-            "<h4>Key Definitions</h4>": [
-                ""
-            ],
-            "<h4>Likelihood Ratios</h4>": [
-                ""
-            ],
-            "<h4>Parallel Testing Strategy</h4>": [
-                ""
-            ],
-            "<h4>Predictive Values Calculations</h4>": [
-                ""
-            ],
-            "<h4>Probability Conversions</h4>": [
-                ""
-            ],
-            "<h4>Serial Testing Strategy (Testing Negatives)</h4>": [
-                ""
-            ],
-            "<h4>Serial Testing Strategy (Testing Positives)</h4>": [
-                ""
-            ],
-            "<h5>Combined Sensitivity</h5>": [
-                ""
-            ],
-            "<h5>Combined Specificity</h5>": [
-                ""
-            ],
-            "<h5>Negative Likelihood Ratio (LR-)</h5>": [
-                ""
-            ],
-            "<h5>Negative Predictive Value (NPV)</h5>": [
-                ""
-            ],
-            "<h5>Positive Likelihood Ratio (LR+)</h5>": [
-                ""
-            ],
-            "<h5>Positive Predictive Value (PPV)</h5>": [
-                ""
-            ],
-            "<i>Number Needed to Screen</i> here is the number of people entering the pathway per true-positive case detected, 1 / (prevalence × combined sensitivity), rounded up. It is not the screening-benefit statistic of the same name, people screened per death or adverse event prevented. It counts first tests only: a serial strategy also performs a second test on part of that group, and the Cost Analysis table shows the expected number of each test.": [
-                ""
-            ],
             "<li><strong>1SE Rule</strong>: Selects the most parsimonious model within 1 SE of minimum CV error.</li>": [
-                ""
-            ],
-            "<li><strong>Convert post-test odds back to probability</strong>: Post-test P = Odds/(1+Odds)</li>": [
-                ""
-            ],
-            "<li><strong>Convert pre-test probability to odds</strong>: Odds = P/(1-P)</li>": [
                 ""
             ],
             "<li><strong>Elastic Net</strong>: Combines L1 and L2 penalties; useful when predictors are correlated.</li>": [
@@ -223,25 +142,7 @@
             "<li><strong>Lambda</strong>: Controls regularization strength. Higher lambda shrinks every coefficient further toward zero, but none reaches zero, so the number of variables never changes.</li>": [
                 ""
             ],
-            "<li><strong>Multiply odds by likelihood ratio</strong>: Post-test odds = Pre-test odds × LR</li>": [
-                ""
-            ],
-            "<li><strong>Negative Likelihood Ratio (LR-)</strong>: (1-Se)/Sp</li>": [
-                ""
-            ],
             "<li><strong>Odds Ratio</strong>: exp(coefficient). OR > 1 increases probability of the positive class.</li>": [
-                ""
-            ],
-            "<li><strong>Positive Likelihood Ratio (LR+)</strong>: Se/(1-Sp)</li>": [
-                ""
-            ],
-            "<li><strong>Prevalence (P)</strong>: The pre-test probability of disease</li>": [
-                ""
-            ],
-            "<li><strong>Sensitivity (Se)</strong>: Probability of a positive test in diseased subjects</li>": [
-                ""
-            ],
-            "<li><strong>Specificity (Sp)</strong>: Probability of a negative test in non-diseased subjects</li>": [
                 ""
             ],
             "<li><strong>Standardization (default on):</strong> predictors are centered and scaled before fitting, so the penalty treats variables with different units comparably. The Coefficient and Odds Ratio columns of the Selected Variables table are then back-transformed to the <strong>original measurement scale</strong> (per 1 unit of a continuous predictor, or present vs absent for a binary one). The Importance column and the Coefficient Plot stay on the per-standard-deviation scale, which is the quantity that is comparable across predictors with different units.</li>": [
@@ -253,49 +154,13 @@
             "<li>Bootstrap optimism correction estimates how much the apparent AUC overestimates true performance.</li>": [
                 ""
             ],
-            "<li>Combined probability = {first} + {second} = {combined}</li>": [
-                ""
-            ],
-            "<li>Combined probability = {sens1} + {sens2} - {both} = {combined}</li>": [
-                ""
-            ],
-            "<li>Combined probability = {sens1} × {sens2} = {combined}</li>": [
-                ""
-            ],
-            "<li>Combined probability = {spec1} × {spec2} = {combined}</li>": [
-                ""
-            ],
-            "<li>Combined sensitivity (Se) = {value}</li>": [
-                ""
-            ],
-            "<li>Combined specificity (Sp) = {value}</li>": [
-                ""
-            ],
             "<li>Continuous predictors in the scoring system are dichotomized at %s (set by 'Cut Point for Continuous Predictors'); the score-based performance therefore reflects a simplified point model and may differ from the continuous LASSO model's AUC.</li>": [
-                ""
-            ],
-            "<li>Denominator = (1-P) × Sp + P × (1-Se) = {numerator} + {p} × {oneMinusSe} = {denominator}</li>": [
-                ""
-            ],
-            "<li>Denominator = P × Se + (1-P) × (1-Sp) = {numerator} + {oneMinusP} × {oneMinusSp} = {denominator}</li>": [
-                ""
-            ],
-            "<li>Emergency teaching pair (Physiologic test + Biomarker)</li><li>Acute-imaging teaching pair (Clinical assessment + Imaging)</li>": [
                 ""
             ],
             "<li>Events-per-variable (EPV) should be >=10. Below 5, results are unreliable regardless of regularization.</li>": [
                 ""
             ],
-            "<li>Given a negative Test 1, probability of testing negative on Test 2: {value}</li>": [
-                ""
-            ],
-            "<li>Given a positive Test 1, probability of testing positive on Test 2: {value}</li>": [
-                ""
-            ],
             "<li>Higher total scores indicate higher probability of the event (positive class).</li>": [
-                ""
-            ],
-            "<li>HIV-style teaching pair (Ag/Ab assay → differentiation assay); this is not a complete HIV diagnostic algorithm</li><li>Cancer-screening teaching pair (Imaging → Tissue sampling)</li><li>Respiratory-infection teaching pair (Rapid antigen → Molecular assay)</li>": [
                 ""
             ],
             "<li>Inter-observer agreement should be assessed for any morphologic scoring components.</li>": [
@@ -304,61 +169,10 @@
             "<li>LASSO coefficients do not have standard errors or p-values. Use bootstrap validation for inference.</li>": [
                 ""
             ],
-            "<li>NPV = numerator/denominator = {numerator}/{denominator} = {npv}</li>": [
-                ""
-            ],
-            "<li>Numerator = (1-P) × Sp = {oneMinusP} × {sp} = {numerator}</li>": [
-                ""
-            ],
-            "<li>Numerator = P × Se = {p} × {se} = {numerator}</li>": [
-                ""
-            ],
-            "<li>PPV = numerator/denominator = {numerator}/{denominator} = {ppv}</li>": [
-                ""
-            ],
             "<li>Predictors were <strong>not</strong> standardized; coefficients, odds ratios, importance, and the Coefficient Plot are all on the original measurement scale of each variable.</li>": [
                 ""
             ],
-            "<li>Prevalence (P) = {value}</li>": [
-                ""
-            ],
-            "<li>Probability of negative Test 1 followed by positive Test 2: (1 - {sens1}) × {sens2} = {value}</li>": [
-                ""
-            ],
-            "<li>Probability of positive Test 1 followed by negative Test 2: (1 - {spec1}) × {spec2} = {value}</li>": [
-                ""
-            ],
-            "<li>Probability of testing negative on Test 1: {value}</li>": [
-                ""
-            ],
-            "<li>Probability of testing negative on Test 2: {value}</li>": [
-                ""
-            ],
-            "<li>Probability of testing positive on both: {sens1} × {sens2} = {both}</li>": [
-                ""
-            ],
-            "<li>Probability of testing positive on Test 1: {value}</li>": [
-                ""
-            ],
-            "<li>Probability of testing positive on Test 2: {value}</li>": [
-                ""
-            ],
-            "<li>Rule-out teaching pair (Initial assessment → Biomarker)</li><li>Exclusion teaching pair (Clinical score → Laboratory assay)</li>": [
-                ""
-            ],
             "<li>Selected variables are the features most useful for distinguishing the two groups.</li>": [
-                ""
-            ],
-            "<li>Test negative on Test 1 but positive on Test 2</li>": [
-                ""
-            ],
-            "<li>Test negative on Test 1, OR</li>": [
-                ""
-            ],
-            "<li>Test positive on Test 1 but negative on Test 2</li>": [
-                ""
-            ],
-            "<li>Test positive on Test 1, OR</li>": [
                 ""
             ],
             "<li>The scoring system assigns positive points for features favoring the event class and negative points for the reference class.</li>": [
@@ -376,112 +190,13 @@
             "<li>With correlated predictors, Ridge shares the coefficient among them rather than picking one, which is one reason to prefer it when predictors are collinear.</li>": [
                 ""
             ],
-            "<ol>": [
-                ""
-            ],
-            "<p>Calculation steps:</p>": [
-                ""
-            ],
             "<p>Elastic Net blends the L1 (LASSO) and L2 (Ridge) penalties, here with a mixing weight of alpha = %.2f. The L1 part can shrink coefficients exactly to zero, so some variable selection still happens, while the L2 part keeps correlated predictors together instead of letting the model pick one of them arbitrarily.</p>": [
-                ""
-            ],
-            "<p>For a subject to test negative in this strategy, they must either:</p>": [
-                ""
-            ],
-            "<p>For a subject to test negative in this strategy, they must test negative on both tests:</p>": [
-                ""
-            ],
-            "<p>For a subject to test positive in this strategy, they must either:</p>": [
-                ""
-            ],
-            "<p>For a subject to test positive in this strategy, they must test positive on at least one test. This is calculated using the complement of the probability of testing negative on both tests:</p>": [
-                ""
-            ],
-            "<p>For a subject to test positive in this strategy, they must test positive on both tests:</p>": [
-                ""
-            ],
-            "<p>How much more likely a negative test result is to occur in patients with disease compared to those without:</p>": [
-                ""
-            ],
-            "<p>How much more likely a positive test result is to occur in patients with disease compared to those without:</p>": [
-                ""
-            ],
-            "<p>In this strategy, both tests are performed on all subjects. A subject is considered positive if either test is positive.</p>": [
-                ""
-            ],
-            "<p>In this strategy, the second test is only performed if the first test is negative. A subject is considered positive if either test is positive.</p>": [
-                ""
-            ],
-            "<p>In this strategy, the second test is only performed if the first test is positive. A subject is considered positive only if both tests are positive.</p>": [
                 ""
             ],
             "<p>LASSO (Least Absolute Shrinkage and Selection Operator) adds an L1 penalty to the logistic regression likelihood, which shrinks some coefficients exactly to zero. This performs automatic variable selection, identifying the most important predictors for your binary outcome.</p>": [
                 ""
             ],
-            "<p>LR- = (1 - {se}) / {sp} = {lr}</p>": [
-                ""
-            ],
-            "<p>LR- = (1 - Sensitivity) / Specificity</p>": [
-                ""
-            ],
-            "<p>LR+ = {se} / (1 - {sp}) = {lr}</p>": [
-                ""
-            ],
-            "<p>LR+ = Sensitivity / (1 - Specificity)</p>": [
-                ""
-            ],
-            "<p>NPV = ((1-P) × Sp) / ((1-P) × Sp + P × (1-Se))</p>": [
-                ""
-            ],
-            "<p>PPV = (P × Se) / (P × Se + (1-P) × (1-Sp))</p>": [
-                ""
-            ],
-            "<p>Probability calculation:</p>": [
-                ""
-            ],
             "<p>Ridge regression adds an L2 penalty to the logistic regression likelihood. It shrinks coefficients toward zero but never <strong>to</strong> zero, so it does <strong>not</strong> perform variable selection: every predictor you supplied is retained in the model. Ridge is the right choice when you believe most predictors carry some signal, or when they are strongly correlated and you want the penalty shared among them rather than one arbitrarily kept.</p>": [
-                ""
-            ],
-            "<p>Se<sub>combined</sub> = 1 - (1-Se<sub>1</sub>) × (1-Se<sub>2</sub>)</p>": [
-                ""
-            ],
-            "<p>Se<sub>combined</sub> = Se<sub>1</sub> + (1-Se<sub>1</sub>) × Se<sub>2</sub></p>": [
-                ""
-            ],
-            "<p>Se<sub>combined</sub> = Se<sub>1</sub> + Se<sub>2</sub> - (Se<sub>1</sub> × Se<sub>2</sub>)</p>": [
-                ""
-            ],
-            "<p>Se<sub>combined</sub> = Se<sub>1</sub> × Se<sub>2</sub></p>": [
-                ""
-            ],
-            "<p>Sp<sub>combined</sub> = Sp<sub>1</sub> + (1-Sp<sub>1</sub>) × Sp<sub>2</sub></p>": [
-                ""
-            ],
-            "<p>Sp<sub>combined</sub> = Sp<sub>1</sub> × Sp<sub>2</sub></p>": [
-                ""
-            ],
-            "<p>The probability that a negative test result is a true negative:</p>": [
-                ""
-            ],
-            "<p>The probability that a positive test result is a true positive:</p>": [
-                ""
-            ],
-            "<p>This can be rewritten as:</p>": [
-                ""
-            ],
-            "<p>To calculate how a test changes probability:</p>": [
-                ""
-            ],
-            "<p>You selected a <strong>parallel teaching strategy</strong>. Everyone receives both {test1} (sensitivity {sens1}%, specificity {spec1}%) and {test2} (sensitivity {sens2}%, specificity {spec2}%), and a final result is positive when either test is positive.</p><p>The false-negative rates and specificities therefore multiply. Combined sensitivity increases while combined specificity decreases. These are the same accuracy formulas as serial-negative testing; only second-test utilization differs. Tests that fail on the same cases may add little benefit.</p>": [
-                ""
-            ],
-            "<p>You selected a <strong>serial-negative teaching strategy</strong>. Everyone first receives {test1} (sensitivity {sens1}%, specificity {spec1}%). Only first-test negatives receive {test2} (sensitivity {sens2}%, specificity {spec2}%), and a final result is negative only when both tests are negative.</p><p>The false-negative rates and specificities therefore multiply. Combined sensitivity increases while combined specificity decreases. Two negative results do not automatically rule disease out; NPV still depends on prevalence, and false positives are shown in the population-flow table.</p>": [
-                ""
-            ],
-            "<p>You selected a <strong>serial-positive teaching strategy</strong>. Everyone first receives {test1} (sensitivity {sens1}%, specificity {spec1}%). Only first-test positives receive {test2} (sensitivity {sens2}%, specificity {spec2}%), and a final result is positive only when both tests are positive.</p><p>The sensitivities and false-positive rates therefore multiply. Combined specificity increases while combined sensitivity decreases. Two positive results are not automatically a confirmed diagnosis; PPV still depends on prevalence, and false negatives are shown in the population-flow table.</p>": [
-                ""
-            ],
-            "<ul>": [
                 ""
             ],
             "= %s": [
@@ -547,34 +262,10 @@
             "Add one or more Prediction Variables/Models containing predicted probabilities from 0 to 1; raw scores, logits and linear predictors are not valid threshold probabilities.": [
                 ""
             ],
-            "After Both Tests": [
-                ""
-            ],
-            "After Combined Strategy": [
-                ""
-            ],
-            "After First Test": [
-                ""
-            ],
-            "After Second Test": [
-                ""
-            ],
-            "After Test 1": [
-                ""
-            ],
-            "After Test 2 (-)": [
-                ""
-            ],
-            "After Test 2 (+)": [
-                ""
-            ],
             "AIC": [
                 ""
             ],
             "All inputs must use the same currency and the calculation assumes one test per person, treatment after a positive model decision, and treat-all without testing.": [
-                ""
-            ],
-            "All People\n(n={n})": [
                 ""
             ],
             "All proportions must be between 0 and 1": [
@@ -607,9 +298,6 @@
             "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
                 ""
             ],
-            "An illustrative population of %1$.0f at %2$.2f%% prevalence contains only %3$.2f expected people with disease, so the population-flow counts are fractional. Increase the population size (for example to 10000) for readable whole-person counts.": [
-                ""
-            ],
             "An unpenalized logistic refit in the Model Comparison table showed complete/quasi-complete separation (non-convergence or fitted probabilities at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row.": [
                 ""
             ],
@@ -623,9 +311,6 @@
                 ""
             ],
             "Analysis Summary": [
-                ""
-            ],
-            "Analyzes how diagnostic accuracy changes when applying two tests in sequence, comparing three different testing strategies: serial positive (confirmation), serial negative (exclusion), and parallel testing. Provides comprehensive analysis including population flow, cost implications, and diagnostic plots, so you can explore how diagnostic strategies behave under explicit assumptions, compare hypothetical test sequences, weigh trade-offs between sensitivity and specificity, and illustrate expected testing volume and cost under user-supplied assumptions. The named scenarios and their values are teaching examples only, not clinical guidance or validated diagnostic pathways. Replace all example parameters with estimates applicable to the intended population before interpreting results.": [
                 ""
             ],
             "Anticipated Agreement": [
@@ -757,9 +442,6 @@
             "Binomial Deviance": [
                 ""
             ],
-            "Biomarker + ECG (Illustrative)": [
-                ""
-            ],
             "Blue dashed: lambda.min; orange dotted: lambda.1se": [
                 ""
             ],
@@ -799,22 +481,7 @@
             "Bootstrap replications": [
                 ""
             ],
-            "Both tests performed on everyone": [
-                ""
-            ],
-            "Breast Imaging + Tissue Sampling (Illustrative)": [
-                ""
-            ],
             "Brier Score": [
-                ""
-            ],
-            "Calculation Error": [
-                ""
-            ],
-            "Calculation error with provided values: %s. Please verify all parameters and try again.": [
-                ""
-            ],
-            "Calculation formulas": [
                 ""
             ],
             "Calibration slope": [
@@ -833,12 +500,6 @@
                 ""
             ],
             "Check": [
-                ""
-            ],
-            "Chest Imaging + Culture (Illustrative)": [
-                ""
-            ],
-            "Chest X-ray": [
                 ""
             ],
             "Choose a unique rule label.": [
@@ -860,12 +521,6 @@
                 ""
             ],
             "Clean (minimal annotations)": [
-                ""
-            ],
-            "Clinical Assessment": [
-                ""
-            ],
-            "Clinical Assessment + CT (Illustrative)": [
                 ""
             ],
             "Clinical Decision Rule": [
@@ -943,60 +598,6 @@
             "Collinearity": [
                 ""
             ],
-            "Combine\nResults": [
-                ""
-            ],
-            "Combined": [
-                ""
-            ],
-            "Combined figures assume the two tests are <i>conditionally independent</i> — that, among people with the same disease status, one test's result says nothing about the other's. With positive conditional dependence in both disease-status groups, {direction}. Dependence among people with the disease alone biases the combined sensitivity but not the specificity, and dependence among people without it the reverse; PPV and NPV move with either.": [
-                ""
-            ],
-            "Combined metrics assume conditional independence between tests. If tests have positive conditional dependence in both disease-status groups (for example, similar biology or technology), {direction}. Dependence among people with the disease alone biases the combined sensitivity but not the specificity, and dependence among people without it the reverse; PPV and NPV move with either.": [
-                ""
-            ],
-            "Combined negative likelihood ratio is infinite because combined specificity is effectively zero under the entered assumptions.": [
-                ""
-            ],
-            "Combined negative likelihood ratio is undefined (both numerator and denominator approach zero).": [
-                ""
-            ],
-            "Combined NPV": [
-                ""
-            ],
-            "Combined NPV cannot be calculated (denominator is zero). Check for extreme sensitivity/specificity combinations.": [
-                ""
-            ],
-            "Combined NPV Undefined": [
-                ""
-            ],
-            "Combined positive likelihood ratio is infinite because combined specificity is effectively 100% under the entered assumptions. This does not establish perfect performance in another population.": [
-                ""
-            ],
-            "Combined positive likelihood ratio is undefined (both numerator and denominator approach zero).": [
-                ""
-            ],
-            "Combined PPV": [
-                ""
-            ],
-            "Combined PPV cannot be calculated (denominator is zero). Check for extreme sensitivity/specificity combinations.": [
-                ""
-            ],
-            "Combined PPV Undefined": [
-                ""
-            ],
-            "Combined Sensitivity": [
-                ""
-            ],
-            "Combined Specificity": [
-                ""
-            ],
-            "Combined Strategy": [
-                ""
-            ],
-            "Combined Test Performance: Sensitivity=%1$.1f%%, Specificity=%2$.1f%%": [
-                ""
-            ],
             "Comparable across units; the table reports the original scale": [
                 ""
             ],
@@ -1048,12 +649,6 @@
             "Confirm that this narrow interval was prespecified from the clinical decision and is wide enough to cover plausible treatment preferences.": [
                 ""
             ],
-            "Confirmatory Test": [
-                ""
-            ],
-            "Confirmatory test name": [
-                ""
-            ],
             "Consider a wider confidence interval (lower precision) or revisiting the expected category proportions. More raters would lower this figure, but that is what makes the cells sparse above — the two cannot both be improved by the rater count, so change the interval or the proportions instead.": [
                 ""
             ],
@@ -1090,15 +685,6 @@
             "Corrected": [
                 ""
             ],
-            "Cost analysis": [
-                ""
-            ],
-            "Cost Analysis": [
-                ""
-            ],
-            "Cost Analysis (Per {n} People)": [
-                ""
-            ],
             "Cost per test": [
                 ""
             ],
@@ -1129,9 +715,6 @@
             "Cross-validation plot": [
                 ""
             ],
-            "CT Scan": [
-                ""
-            ],
             "Current settings: Min = {min}%, Max = {max}%; the valid range is 0.1% to 99.9%.": [
                 ""
             ],
@@ -1139,9 +722,6 @@
                 ""
             ],
             "Custom range": [
-                ""
-            ],
-            "Custom Values": [
                 ""
             ],
             "Cut Point for Continuous Predictors": [
@@ -1175,9 +755,6 @@
                 ""
             ],
             "Decide the threshold range from clinical judgement first, then read the curves there - not the other way round.": [
-                ""
-            ],
-            "Decision Calculators": [
                 ""
             ],
             "Decision Consequences": [
@@ -1258,13 +835,7 @@
             "Determine the required sample size to estimate κ₀ = {kappa0} with confidence limits {limits} in an interobserver agreement study.": [
                 ""
             ],
-            "Diagnostic plots": [
-                ""
-            ],
             "Difference in Average Net Benefit": [
-                ""
-            ],
-            "Differentiation Assay": [
                 ""
             ],
             "Dimensionless net benefit divided by outcome prevalence; not net benefit per 100 patients": [
@@ -1274,39 +845,6 @@
                 ""
             ],
             "Discrimination Worse Than Chance": [
-                ""
-            ],
-            "Disease Absent": [
-                ""
-            ],
-            "Disease Negative": [
-                ""
-            ],
-            "Disease Parameters": [
-                ""
-            ],
-            "Disease Positive": [
-                ""
-            ],
-            "Disease Present": [
-                ""
-            ],
-            "Disease Prevalence": [
-                ""
-            ],
-            "Disease prevalence": [
-                ""
-            ],
-            "Disease Probability (%)": [
-                ""
-            ],
-            "Disease-\nn={n}": [
-                ""
-            ],
-            "Disease+\nn={n}": [
-                ""
-            ],
-            "Display Options": [
                 ""
             ],
             "Do not select a model solely from its average net benefit: curve crossings and the plausibility of each threshold determine the clinically relevant comparison.": [
@@ -1328,12 +866,6 @@
                 ""
             ],
             "Each row is calculated at the exact displayed threshold; selected thresholds do not need to coincide with the plotting grid.": [
-                ""
-            ],
-            "ECG": [
-                ""
-            ],
-            "Either +": [
                 ""
             ],
             "Elastic Net": [
@@ -1372,9 +904,6 @@
             "Error": [
                 ""
             ],
-            "ERROR": [
-                ""
-            ],
             "Error in sample size calculation: {}": [
                 ""
             ],
@@ -1411,19 +940,10 @@
             "Excluded from analysis": [
                 ""
             ],
-            "Expected Number of Tests": [
-                ""
-            ],
             "Expected proportion of cases in each category": [
                 ""
             ],
             "Expected Proportion of Cases in Each Category": [
-                ""
-            ],
-            "Explanation": [
-                ""
-            ],
-            "Explanations": [
                 ""
             ],
             "Explanatory Output": [
@@ -1477,9 +997,6 @@
             "False Negative": [
                 ""
             ],
-            "False Negatives": [
-                ""
-            ],
             "False Positive": [
                 ""
             ],
@@ -1498,9 +1015,6 @@
             "Fewer than 20 bootstrap replicates succeeded. The optimism correction is unreliable at this number - increase the sample size or reduce the number of candidate predictors.": [
                 ""
             ],
-            "Final\nResult": [
-                ""
-            ],
             "Find lower Kappa based on sample size": [
                 ""
             ],
@@ -1508,18 +1022,6 @@
                 ""
             ],
             "Find sample size based on power": [
-                ""
-            ],
-            "First Test": [
-                ""
-            ],
-            "First test": [
-                ""
-            ],
-            "First Test (Screening)": [
-                ""
-            ],
-            "FN\nn={n}": [
                 ""
             ],
             "Focused range (0.05 to 0.50; not a clinical recommendation)": [
@@ -1537,22 +1039,10 @@
             "For an interobserver agreement study whose number of subjects is already fixed, the lowest kappa the study would still be unable to rule out - the lower bound of the one-sided confidence interval around the anticipated kappa (kappa0); every value below it is excluded. Computed with the kappaSize package. Use kappaSizePower to size a study for a hypothesis test and kappaSizeCI to size it for a target interval width.": [
                 ""
             ],
-            "For this serial-negative example, Test 2 sensitivity (%.1f%%) is below Test 1 sensitivity (%.1f%%). This does not invalidate the calculation, but it may not improve sensitivity as much as expected.": [
-                ""
-            ],
-            "For this serial-positive example, Test 2 specificity (%.1f%%) is below Test 1 specificity (%.1f%%). This does not invalidate the calculation, but it may not improve specificity as much as expected.": [
-                ""
-            ],
             "For time-to-event predictions, supply risks and a binary outcome defined at the same fixed horizon; censoring is not handled here.": [
                 ""
             ],
             "For two raters with equal marginal frequencies this coincides with Cohen's κ; with more raters, or unequal marginals, it does not.": [
-                ""
-            ],
-            "Formulas Used": [
-                ""
-            ],
-            "FP\nn={n}": [
                 ""
             ],
             "From": [
@@ -1609,12 +1099,6 @@
             "histopathology including analysis": [
                 ""
             ],
-            "HIV Ag/Ab + Differentiation Assay (Illustrative)": [
-                ""
-            ],
-            "HIV Ag/Ab Assay": [
-                ""
-            ],
             "If the Analysis result panel also prints 'At least one expected cell count is less than five', that is a separate and looser check: kappaSize applies it to the outcome category prevalences you entered (for a binary outcome, to the prevalence of the finding alone), not to the agreement-pattern cells the chi-square actually divides by, and those empty out long before any category prevalence does. Seeing one warning without the other is expected.": [
                 ""
             ],
@@ -1622,18 +1106,6 @@
                 ""
             ],
             "Ignored {values}.": [
-                ""
-            ],
-            "Illustrative population size": [
-                ""
-            ],
-            "Illustrative Population Too Small": [
-                ""
-            ],
-            "Illustrative unit cost": [
-                ""
-            ],
-            "Illustrative unit costs": [
                 ""
             ],
             "Importance": [
@@ -1654,28 +1126,10 @@
             "Incremental Cost": [
                 ""
             ],
-            "Independence Assumption": [
-                ""
-            ],
-            "Individual Test Performance": [
-                ""
-            ],
-            "infinite": [
-                ""
-            ],
-            "Infinite Positive Likelihood Ratio": [
-                ""
-            ],
             "Info Loss vs Full Model (%)": [
                 ""
             ],
             "Information": [
-                ""
-            ],
-            "Initial": [
-                ""
-            ],
-            "Initial Population": [
                 ""
             ],
             "Input validation failed: {errors}": [
@@ -1748,9 +1202,6 @@
                 ""
             ],
             "It returns the minimum number of subjects so that the {pct}% confidence interval ({side}) for the intraclass (Fleiss-type) κ of the common-correlation model attains the requested precision, given the expected category proportions and the number of raters.": [
-                ""
-            ],
-            "Item": [
                 ""
             ],
             "Its curve is still shown in the plot.": [
@@ -1880,9 +1331,6 @@
                 ""
             ],
             "Lowest Expected Value for a fixed sample size": [
-                ""
-            ],
-            "Mammography": [
                 ""
             ],
             "Manual cut points": [
@@ -2059,9 +1507,6 @@
             "Monetary Value Assigned to a True Positive": [
                 ""
             ],
-            "MRI": [
-                ""
-            ],
             "N = %d (<50: small, consider fewer predictors)": [
                 ""
             ],
@@ -2089,22 +1534,7 @@
             "Negative": [
                 ""
             ],
-            "Negative\nResult": [
-                ""
-            ],
             "Negative (-)": [
-                ""
-            ],
-            "Negative Likelihood Ratio Infinite": [
-                ""
-            ],
-            "Negative Likelihood Ratio Undefined": [
-                ""
-            ],
-            "Negative LR": [
-                ""
-            ],
-            "Negative Path": [
                 ""
             ],
             "Net Benefit": [
@@ -2212,15 +1642,6 @@
             "Not available": [
                 ""
             ],
-            "not defined": [
-                ""
-            ],
-            "not defined (no disease-free subjects)": [
-                ""
-            ],
-            "not defined (no diseased subjects)": [
-                ""
-            ],
             "Not interpretable": [
                 ""
             ],
@@ -2242,13 +1663,7 @@
             "NPV": [
                 ""
             ],
-            "NPV (Negative Predictive Value)": [
-                ""
-            ],
             "Null hypothesis": [
-                ""
-            ],
-            "Number Needed to Screen": [
                 ""
             ],
             "Number of CV Folds": [
@@ -2282,9 +1697,6 @@
                 ""
             ],
             "Number of subjects available, each rated by all raters (at least 11).": [
-                ""
-            ],
-            "Numbers of tests and total costs are expected values derived from the entered probabilities. Fractional expected counts are retained so the displayed count and cost agree.": [
                 ""
             ],
             "Numeric outcome must have at least 2 observed values.": [
@@ -2392,24 +1804,6 @@
             "Pairwise comparison needs two models": [
                 ""
             ],
-            "Parallel Test Assumption Check": [
-                ""
-            ],
-            "parallel testing": [
-                ""
-            ],
-            "Parallel Testing (Test all)": [
-                ""
-            ],
-            "Parallel testing raises combined sensitivity above that of either test alone and lowers combined specificity: fewer missed cases, more false positives.": [
-                ""
-            ],
-            "parallel testing strategy": [
-                ""
-            ],
-            "Parallel Testing Strategy": [
-                ""
-            ],
             "Path Inclusion Proportion": [
                 ""
             ],
@@ -2476,15 +1870,6 @@
             "Population Characteristics:": [
                 ""
             ],
-            "Population Flow Analysis": [
-                ""
-            ],
-            "Population Flow Through Testing": [
-                ""
-            ],
-            "Population Flow Visualization": [
-                ""
-            ],
             "Population size": [
                 ""
             ],
@@ -2494,16 +1879,7 @@
             "Positive": [
                 ""
             ],
-            "Positive\nResult": [
-                ""
-            ],
             "Positive (+)": [
-                ""
-            ],
-            "Positive Likelihood Ratio Undefined": [
-                ""
-            ],
-            "Positive LR": [
                 ""
             ],
             "Positive Outcome": [
@@ -2513,9 +1889,6 @@
                 ""
             ],
             "Positive Outcome Level Required": [
-                ""
-            ],
-            "Positive Path": [
                 ""
             ],
             "Positive rule level": [
@@ -2543,12 +1916,6 @@
                 ""
             ],
             "PPV": [
-                ""
-            ],
-            "PPV (Positive Predictive Value)": [
-                ""
-            ],
-            "Pre-test": [
                 ""
             ],
             "Precision": [
@@ -2605,40 +1972,7 @@
             "Prevalence": [
                 ""
             ],
-            "Prevalence Invalid": [
-                ""
-            ],
-            "Prevalence is low (%.2f%%). Below 5%% pre-test probability, PPV is dominated by specificity: a one-percentage-point change in specificity can move PPV by more than 15 percentage points. Verify the specificity assumptions and the intended population.": [
-                ""
-            ],
-            "Prevalence is very high (%.1f%%). Verify that this assumption matches the intended population; predictive values are prevalence-dependent.": [
-                ""
-            ],
-            "Prevalence is very low (%.3f%%). Even with excellent tests, PPV may be extremely low. Verify the pre-test probability for the intended population.": [
-                ""
-            ],
-            "Prevalence Low": [
-                ""
-            ],
-            "Prevalence must be greater than 0 and less than 1 (exclusive). Current value is invalid.": [
-                ""
-            ],
-            "Prevalence Very High": [
-                ""
-            ],
-            "Prevalence Very Low": [
-                ""
-            ],
-            "Probability": [
-                ""
-            ],
             "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type II error). Conventional values are 0.80 or 0.90; must exceed alpha.": [
-                ""
-            ],
-            "Probability Transformation": [
-                ""
-            ],
-            "Probability Transformation Through Testing": [
                 ""
             ],
             "Projected False Positives": [
@@ -2698,12 +2032,6 @@
             "Proportions should sum to 1.0, current sum is {sum}.": [
                 ""
             ],
-            "PSA + MRI (Illustrative)": [
-                ""
-            ],
-            "PSA Test": [
-                ""
-            ],
             "Random Seed": [
                 ""
             ],
@@ -2729,9 +2057,6 @@
                 ""
             ],
             "Range of threshold probabilities over which the model's net benefit exceeds both treat-all and treat-none; a model is only worth using within this range.": [
-                ""
-            ],
-            "Rapid Antigen Test": [
                 ""
             ],
             "Rare outcome category.": [
@@ -2818,9 +2143,6 @@
             "Resource utilization projected to the selected population size": [
                 ""
             ],
-            "Respiratory Testing (Illustrative)": [
-                ""
-            ],
             "Result": [
                 ""
             ],
@@ -2858,9 +2180,6 @@
                 ""
             ],
             "ROC curve with AUC and confidence interval": [
-                ""
-            ],
-            "RT-PCR": [
                 ""
             ],
             "Rule Not Binary": [
@@ -2947,27 +2266,6 @@
             "Scoring System Runs Backwards": [
                 ""
             ],
-            "Screening Test": [
-                ""
-            ],
-            "Screening test name": [
-                ""
-            ],
-            "Second Test": [
-                ""
-            ],
-            "Second test": [
-                ""
-            ],
-            "Second Test (Confirmatory)": [
-                ""
-            ],
-            "Second test only for those negative on first test": [
-                ""
-            ],
-            "Second test only for those positive on first test": [
-                ""
-            ],
             "Select a binary Outcome Variable (the condition you want to predict).": [
                 ""
             ],
@@ -2992,52 +2290,7 @@
             "Sensitivity (Recall)": [
                 ""
             ],
-            "Sensitivity Analysis: How Prevalence Affects Predictive Values": [
-                ""
-            ],
-            "Sensitivity Analysis: PPV/NPV vs Prevalence": [
-                ""
-            ],
-            "Sensitivity, specificity and prevalence are treated as exact. These combined figures therefore carry <i>no</i> confidence interval and do not reflect sampling uncertainty in the values entered — published test performance and local prevalence both vary.": [
-                ""
-            ],
             "Separation in Unpenalized Refit": [
-                ""
-            ],
-            "Sequential Test Analysis": [
-                ""
-            ],
-            "Sequential Testing Analysis": [
-                ""
-            ],
-            "Sequential testing analysis completed: %s strategy with prevalence %.1f%%, combined sensitivity %.1f%%, combined specificity %.1f%%.": [
-                ""
-            ],
-            "serial negative (exclusion) strategy": [
-                ""
-            ],
-            "Serial Negative Assumption Check": [
-                ""
-            ],
-            "serial positive (confirmation) strategy": [
-                ""
-            ],
-            "Serial Positive Assumption Check": [
-                ""
-            ],
-            "Serial Testing (Test negatives)": [
-                ""
-            ],
-            "Serial Testing (Test positives)": [
-                ""
-            ],
-            "serial testing of negatives": [
-                ""
-            ],
-            "Serial Testing Strategy: Test Negatives": [
-                ""
-            ],
-            "Serial Testing Strategy: Test Positives": [
                 ""
             ],
             "Serious warning": [
@@ -3100,9 +2353,6 @@
             "Specify which level represents the positive outcome.": [
                 ""
             ],
-            "Sputum Culture": [
-                ""
-            ],
             "Standard (with reference lines)": [
                 ""
             ],
@@ -3127,21 +2377,6 @@
             "Strategy": [
                 ""
             ],
-            "Strategy Notes and Teaching Examples": [
-                ""
-            ],
-            "Strategy: {strategy}": [
-                ""
-            ],
-            "Strategy: {strategy} | Prevalence: {prevalence}": [
-                ""
-            ],
-            "Strategy: {strategy} | Sensitivity: {sensitivity} | Specificity: {specificity}": [
-                ""
-            ],
-            "STRONG WARNING": [
-                ""
-            ],
             "Study Design:": [
                 ""
             ],
@@ -3157,28 +2392,10 @@
             "Summary": [
                 ""
             ],
-            "Summary (Plain Language)": [
-                ""
-            ],
-            "Summary of Testing Strategy": [
-                ""
-            ],
             "Table thresholds outside the analysed range": [
                 ""
             ],
             "Tables & Outputs": [
-                ""
-            ],
-            "Teaching example": [
-                ""
-            ],
-            "Teaching example \"{preset}\" is not recognised; the values shown in the panel were used instead.": [
-                ""
-            ],
-            "Teaching Example Values Are Not Clinical Guidance": [
-                ""
-            ],
-            "Teaching Examples (Not Clinical Guidance)": [
                 ""
             ],
             "Technical Notes": [
@@ -3187,130 +2404,7 @@
             "Terms selected": [
                 ""
             ],
-            "Test": [
-                ""
-            ],
-            "Test 1 Low Performance": [
-                ""
-            ],
-            "Test 1 name cannot be empty. Please provide a descriptive name.": [
-                ""
-            ],
-            "Test 1 Name Empty": [
-                ""
-            ],
-            "Test 1 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
-                ""
-            ],
-            "Test 1 Sensitivity High": [
-                ""
-            ],
-            "Test 1 Sensitivity Invalid": [
-                ""
-            ],
-            "Test 1 sensitivity is at least 99%% (%.2f%%). Verify that this estimate applies to the intended population and setting.": [
-                ""
-            ],
-            "Test 1 sensitivity must be between 0 and 1 (0% to 100%). Current value is invalid.": [
-                ""
-            ],
-            "Test 1 Specificity High": [
-                ""
-            ],
-            "Test 1 Specificity Invalid": [
-                ""
-            ],
-            "Test 1 specificity is at least 99%% (%.2f%%). Verify that this estimate applies to the intended population and setting.": [
-                ""
-            ],
-            "Test 1 specificity must be between 0 and 1 (0% to 100%). Current value is invalid.": [
-                ""
-            ],
-            "Test 1: {name}": [
-                ""
-            ],
-            "Test 2 Low Performance": [
-                ""
-            ],
-            "Test 2 name cannot be empty. Please provide a descriptive name.": [
-                ""
-            ],
-            "Test 2 Name Empty": [
-                ""
-            ],
-            "Test 2 performance is unusually low (Sensitivity=%.1f%%, Specificity=%.1f%%). Verify whether these assumptions are suitable for the intended illustrative comparison.": [
-                ""
-            ],
-            "Test 2 Sensitivity High": [
-                ""
-            ],
-            "Test 2 Sensitivity Invalid": [
-                ""
-            ],
-            "Test 2 sensitivity is at least 99%% (%.2f%%). Verify that this estimate applies to the intended population and setting.": [
-                ""
-            ],
-            "Test 2 sensitivity must be between 0 and 1 (0% to 100%). Current value is invalid.": [
-                ""
-            ],
-            "Test 2 Specificity High": [
-                ""
-            ],
-            "Test 2 Specificity Invalid": [
-                ""
-            ],
-            "Test 2 specificity is at least 99%% (%.2f%%). Verify that this estimate applies to the intended population and setting.": [
-                ""
-            ],
-            "Test 2 specificity must be between 0 and 1 (0% to 100%). Current value is invalid.": [
-                ""
-            ],
-            "Test 2: {name}": [
-                ""
-            ],
-            "Test all negatives from first test": [
-                ""
-            ],
-            "Test all positives from first test": [
-                ""
-            ],
-            "Test all subjects with both tests (parallel)": [
-                ""
-            ],
-            "Test Correlation Risk": [
-                ""
-            ],
-            "Test names are similar (\"%s\" vs \"%s\"). If tests measure similar biomarkers or use similar technology, they may be conditionally dependent. This can bias combined sensitivity and specificity in opposite directions.": [
-                ""
-            ],
-            "Test Negative": [
-                ""
-            ],
-            "Test Performance Comparison": [
-                ""
-            ],
-            "Test Positive": [
-                ""
-            ],
-            "Test Results": [
-                ""
-            ],
-            "Testing Stage": [
-                ""
-            ],
-            "Testing Strategy": [
-                ""
-            ],
-            "Testing strategy": [
-                ""
-            ],
-            "Testing Strategy Flow Diagram": [
-                ""
-            ],
             "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); their apparent AUC is typically higher than the penalized LASSO row because refitting removes LASSO shrinkage. All metrics are apparent (in-sample) - use Bootstrap Internal Validation for optimism-corrected discrimination.": [
-                ""
-            ],
-            "The \"{preset}\" teaching example supplies round, illustrative numbers chosen to demonstrate how sequential testing behaves. They are NOT validated clinical parameters, they are not taken from any specific published study, and the prevalence is not your population's. This example is not clinical guidance and must not be used to design a real testing protocol or advise a patient. Replace every value with sensitivity, specificity and prevalence estimates from your own setting or from a source you have checked.": [
                 ""
             ],
             "The alternative hypothesis value of kappa - the level of agreement the study should be able to detect against kappa0.": [
@@ -3341,12 +2435,6 @@
                 ""
             ],
             "The clinical decision rule variable must be binary (exactly 2 levels).": [
-                ""
-            ],
-            "the combined sensitivity above is too high and the combined specificity too low": [
-                ""
-            ],
-            "the combined specificity above is too high and the combined sensitivity too low": [
                 ""
             ],
             "The computed sample size ({n}) is very large and may be impractical for a typical interobserver-agreement study.": [
@@ -3472,9 +2560,6 @@
             "The table reports rows at {values}, which fall outside the analysed threshold range of {lo}% to {hi}%.": [
                 ""
             ],
-            "The tests have similar marginal sensitivity and specificity. Similar marginal performance does not establish redundancy or independence; assess conditional dependence using external evidence.": [
-                ""
-            ],
             "The threshold range you entered, {lo}% to {hi}%, is narrower than the step size of {step}%, so it produces only one threshold ({one}%) and no decision curve can be drawn.": [
                 ""
             ],
@@ -3568,15 +2653,6 @@
             "This scoring system runs backwards.": [
                 ""
             ],
-            "This strategy gives exactly the same sensitivity, specificity, PPV and NPV as {other}: both call a subject positive if <i>either</i> test is positive. They differ only in how many second tests are performed, which the cost analysis shows.": [
-                ""
-            ],
-            "This strategy raises combined sensitivity above that of either test alone and lowers combined specificity: fewer missed cases, more false positives.": [
-                ""
-            ],
-            "This strategy raises combined specificity above that of either test alone and lowers combined sensitivity: fewer false positives, more missed cases.": [
-                ""
-            ],
             "Threshold": [
                 ""
             ],
@@ -3610,12 +2686,6 @@
             "Thresholds for table (probabilities 0-1, comma-separated)": [
                 ""
             ],
-            "Tissue Biopsy": [
-                ""
-            ],
-            "TN\nn={n}": [
-                ""
-            ],
             "To": [
                 ""
             ],
@@ -3631,28 +2701,13 @@
             "Too few non-degenerate predictor columns.": [
                 ""
             ],
-            "Total\nn={n}": [
-                ""
-            ],
             "Total Benefit": [
                 ""
             ],
             "Total Cost": [
                 ""
             ],
-            "Total Population": [
-                ""
-            ],
-            "Total Protocol Cost": [
-                ""
-            ],
             "Total Score": [
-                ""
-            ],
-            "Total Subjects": [
-                ""
-            ],
-            "TP\nn={n}": [
                 ""
             ],
             "Treat All": [
@@ -3661,22 +2716,13 @@
             "Treat None": [
                 ""
             ],
-            "Troponin": [
-                ""
-            ],
             "True Negative": [
-                ""
-            ],
-            "True Negatives": [
                 ""
             ],
             "True Positive": [
                 ""
             ],
             "True Positives": [
-                ""
-            ],
-            "True Status": [
                 ""
             ],
             "Try the Minimum CV Error lambda instead of the 1SE rule, or add more informative predictors.": [
@@ -3698,12 +2744,6 @@
                 ""
             ],
             "Understanding Penalized Logistic Regression": [
-                ""
-            ],
-            "Unit Cost": [
-                ""
-            ],
-            "Unknown Teaching Example": [
                 ""
             ],
             "Unsupported number of outcome categories": [
@@ -3736,9 +2776,6 @@
             "Value": [
                 ""
             ],
-            "Value (%)": [
-                ""
-            ],
             "Values between 0 and 1 are accepted as probabilities, but this analysis does not verify calibration.": [
                 ""
             ],
@@ -3767,9 +2804,6 @@
                 ""
             ],
             "Warning": [
-                ""
-            ],
-            "WARNING": [
                 ""
             ],
             "Warning: an unpenalized logistic refit (a 'Logistic' row) did not converge or produced fitted probabilities at 0 or 1, indicating complete or quasi-complete separation. Its apparent AUC (often ~1.0), AIC, and Brier score are unreliable and should not be interpreted - this is exactly the instability that LASSO penalization is designed to avoid.": [
@@ -3811,13 +2845,7 @@
             "You are already using the least conservative lambda, so add more informative predictors or collect more cases.": [
                 ""
             ],
-            "You would need to screen approximately %d people to identify one true positive case.": [
-                ""
-            ],
             "Youden index": [
-                ""
-            ],
-            "Your prevalence\n(%.1f%%)": [
                 ""
             ]
         }

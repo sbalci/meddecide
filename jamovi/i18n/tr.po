@@ -65,14 +65,6 @@ msgstr ""
 "veya etkinleştirilmiş klinik kural eksik olduğu için hariç tutuldu; her "
 "strateji aynı {kept} tutulan satır üzerinde değerlendirilir."
 
-#: R/sequentialtests.b.R
-msgid "{first} and {second} applied together"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "{first} followed by {second}"
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
 msgid "{head} and {last}"
@@ -168,24 +160,6 @@ msgid ""
 "analysed."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"%1$s ends at the first-test-negative subgroup: P(disease | Test 1 negative) "
-"= %2$.1f%%. That is not the pooled final-negative figure in the tables, 1 - "
-"combined NPV = %3$.1f%%, which also averages in the Test 1 positive / Test 2 "
-"negative subgroup (P(disease) = %4$.1f%%). Those subjects are classified "
-"negative but are not drawn here."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"%1$s ends at the first-test-positive subgroup: P(disease | Test 1 positive) "
-"= %2$.1f%%. That is not the pooled final-positive figure in the tables, "
-"combined PPV = %3$.1f%%, which also averages in the Test 1 negative / Test 2 "
-"positive subgroup (P(disease) = %4$.1f%%). Those subjects are classified "
-"positive but are not drawn here."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "%1$s logistic regression with %2$s lambda selection and %3$d-fold "
@@ -266,176 +240,6 @@ msgid ""
 "(it is this distance, not the full interval width, that sets n)"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "</ol>"
-msgstr "</ol>"
-
-#: R/sequentialtests.b.R
-msgid "</ul>"
-msgstr "</ul>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<div class='jmv-guidance' style='background-color: rgba(138, 155, 172, "
-"0.06);padding:15px;border-radius:6px;margin-top:10px; color: "
-"inherit;'><h4>Strategy Notes and Teaching Examples</h4><p><strong>Teaching "
-"examples only — not clinical guidance.</strong> The named pairs illustrate "
-"mathematical structure only. They are not recommendations, complete "
-"diagnostic algorithms, or validated pathways, and their sensitivity, "
-"specificity, prevalence, and cost values are not validated clinical "
-"parameters.</p><p><strong>How the strategies combine "
-"tests:</strong></p><ul><li><strong>Serial positive:</strong> Test 2 is "
-"applied to first-test positives; both tests must be positive. Specificity "
-"increases and sensitivity decreases under conditional "
-"independence.</li><li><strong>Serial negative:</strong> Test 2 is applied to "
-"first-test negatives; either positive makes the final result positive. "
-"Sensitivity increases and specificity decreases under conditional "
-"independence.</li><li><strong>Parallel:</strong> Both tests are applied to "
-"everyone; either positive makes the final result positive. Accuracy is "
-"algebraically identical to serial-negative testing, but utilization "
-"differs.</li></ul><p><strong>Why conditional dependence matters:</strong> "
-"Conditional dependence means that one test result remains informative about "
-"the other even after disease status is fixed, for example because the tests "
-"share biology, specimen characteristics, or technology. When positive "
-"conditional dependence is present in both disease-status groups, "
-"independence-based serial-positive calculations can make combined "
-"specificity too high and combined sensitivity too low. For serial-negative "
-"and parallel interpretation, they can make combined sensitivity too high and "
-"combined specificity too low. Gardner et al. (2000), <em>Conditional "
-"dependence between tests affects the diagnosis and surveillance of animal "
-"diseases</em>, describes these directional effects; see the reference "
-"below.</p><p>Test order is an input to explore, not a recommendation. "
-"Replace every example value with evidence appropriate to the intended "
-"setting.</p><p><strong>Illustrative pair labels:</strong></p><ul>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<div style='background-color: rgba(138, 155, 172, "
-"0.06);padding:10px;border-radius:6px;margin-top:8px; color: "
-"inherit;'><strong>Assumption:</strong> Combined metrics assume conditional "
-"independence between tests. With positive conditional dependence in both "
-"disease-status groups, {direction}, and PPV and NPV shift accordingly.</div>"
-msgstr ""
-"<div style='background-color: rgba(138, 155, 172, "
-"0.06);padding:10px;border-radius:6px;margin-top:8px; color: "
-"inherit;'><strong>Varsayım:</strong> Birleşik ölçütler testler arasında "
-"koşullu bağımsızlık varsayar. Her iki hastalık durumu grubunda da pozitif "
-"koşullu bağımlılık varsa {direction} ve PÖD ile NÖD buna göre kayar.</div>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<div style='background-color: rgba(33, 149, 188, "
-"0.1);padding:15px;border-left:4px solid "
-"#0077be;font-size:1.05em;line-height:1.6; color: "
-"inherit;'><strong>Illustrative Summary:</strong> Using a %1$s with %2$s, the "
-"combined test achieves %3$.1f%% sensitivity (detects %4$.0f of every 100 "
-"diseased individuals) and %5$.1f%% specificity (correctly rules out %6$.0f "
-"of every 100 healthy individuals). At your specified disease prevalence of "
-"%7$.1f%%, a positive result indicates a %8$s chance the person truly has the "
-"disease (PPV), while a negative result indicates a %9$s chance the person is "
-"truly disease-free (NPV).%10$s %11$s <em>These combined figures assume the "
-"two tests are conditionally independent given disease status, and they treat "
-"the sensitivity, specificity and prevalence you entered as exact, so they "
-"carry no confidence interval. If the two tests are positively dependent in "
-"both disease-status groups (for example, because they measure related "
-"biology), %12$s.</em></div>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h3>Mathematical Framework for Sequential Testing</h3>"
-msgstr "<h3>Sıralı Test İçin Matematiksel Çerçeve</h3>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<h3>Sequential Testing Strategy Explanation</h3>{strategy}<h3>Results "
-"Interpretation</h3><p>With an entered prevalence of {prevalence}, the "
-"combined strategy has:</p><ul><li><strong>Combined sensitivity:</strong> "
-"{sensitivity}</li><li><strong>Combined specificity:</strong> "
-"{specificity}</li><li><strong>Combined PPV:</strong> "
-"{ppv}</li><li><strong>Combined NPV:</strong> {npv}</li></ul><p>For an "
-"illustrative population of {population} people:</p><ul><li>{finalPos} have a "
-"final positive classification</li><li>{finalNeg} have a final negative "
-"classification</li><li>Among {diseased} expected people with disease, {tp} "
-"are correctly identified ({tpRate})</li><li>Among {healthy} expected people "
-"without disease, {tn} are correctly identified ({tnRate})</li></ul>"
-msgstr ""
-"<h3>Sıralı Test Stratejisi Açıklaması</h3>{strategy}<h3>Sonuçların "
-"Yorumlanması</h3><p>Girilen {prevalence} prevalansı ile birleşik strateji "
-"şunlara sahiptir:</p><ul><li><strong>Birleşik duyarlılık:</strong> "
-"{sensitivity}</li><li><strong>Birleşik özgüllük:</strong> "
-"{specificity}</li><li><strong>Birleşik PÖD:</strong> "
-"{ppv}</li><li><strong>Birleşik NÖD:</strong> {npv}</li></ul><p>{population} "
-"kişilik açıklayıcı bir popülasyon için:</p><ul><li>{finalPos} nihai pozitif "
-"sınıflandırmaya sahiptir</li><li>{finalNeg} nihai negatif sınıflandırmaya "
-"sahiptir</li><li>Hastalığı olan beklenen {diseased} kişi arasından {tp} kişi "
-"doğru şekilde tanımlanmıştır ({tpRate})</li><li>Hastalığı olmayan beklenen "
-"{healthy} kişi arasından {tn} kişi doğru şekilde tanımlanmıştır "
-"({tnRate})</li></ul>"
-
-#: R/sequentialtests.b.R
-msgid "<h4>Key Definitions</h4>"
-msgstr "<h4>Temel Tanımlar</h4>"
-
-#: R/sequentialtests.b.R
-msgid "<h4>Likelihood Ratios</h4>"
-msgstr "<h4>Olabilirlik Oranları</h4>"
-
-#: R/sequentialtests.b.R
-msgid "<h4>Parallel Testing Strategy</h4>"
-msgstr "<h4>Paralel Test Stratejisi</h4>"
-
-#: R/sequentialtests.b.R
-msgid "<h4>Predictive Values Calculations</h4>"
-msgstr "<h4>Öngörü Değerleri Hesaplamaları</h4>"
-
-#: R/sequentialtests.b.R
-msgid "<h4>Probability Conversions</h4>"
-msgstr "<h4>Olasılık Dönüşümleri</h4>"
-
-#: R/sequentialtests.b.R
-msgid "<h4>Serial Testing Strategy (Testing Negatives)</h4>"
-msgstr "<h4>Seri Test Stratejisi (Negatifleri Test Etme)</h4>"
-
-#: R/sequentialtests.b.R
-msgid "<h4>Serial Testing Strategy (Testing Positives)</h4>"
-msgstr "<h4>Seri Test Stratejisi (Pozitifleri Test Etme)</h4>"
-
-#: R/sequentialtests.b.R
-msgid "<h5>Combined Sensitivity</h5>"
-msgstr "<h5>Birleşik Duyarlılık</h5>"
-
-#: R/sequentialtests.b.R
-msgid "<h5>Combined Specificity</h5>"
-msgstr "<h5>Birleşik Özgüllük</h5>"
-
-#: R/sequentialtests.b.R
-msgid "<h5>Negative Likelihood Ratio (LR-)</h5>"
-msgstr "<h5>Negatif Olabilirlik Oranı (LR-)</h5>"
-
-#: R/sequentialtests.b.R
-msgid "<h5>Negative Predictive Value (NPV)</h5>"
-msgstr "<h5>Negatif Öngörü Değeri (NÖD)</h5>"
-
-#: R/sequentialtests.b.R
-msgid "<h5>Positive Likelihood Ratio (LR+)</h5>"
-msgstr "<h5>Pozitif Olabilirlik Oranı (LR+)</h5>"
-
-#: R/sequentialtests.b.R
-msgid "<h5>Positive Predictive Value (PPV)</h5>"
-msgstr "<h5>Pozitif Öngörü Değeri (PÖD)</h5>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<i>Number Needed to Screen</i> here is the number of people entering the "
-"pathway per true-positive case detected, 1 / (prevalence × combined "
-"sensitivity), rounded up. It is not the screening-benefit statistic of the "
-"same name, people screened per death or adverse event prevented. It counts "
-"first tests only: a serial strategy also performs a second test on part of "
-"that group, and the Cost Analysis table shows the expected number of each "
-"test."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li><strong>1SE Rule</strong>: Selects the most parsimonious model within 1 "
@@ -443,22 +247,6 @@ msgid ""
 msgstr ""
 "<li><strong>1SE Kuralı</strong>: Minimum ÇD hatasının 1 SE içindeki en yalın "
 "modeli seçer.</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Convert post-test odds back to probability</strong>: Post-test P "
-"= Odds/(1+Odds)</li>"
-msgstr ""
-"<li><strong>Test sonrası odds'u tekrar olasılığa dönüştürün</strong>: Test "
-"sonrası P = Odds/(1+Odds)</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Convert pre-test probability to odds</strong>: Odds = "
-"P/(1-P)</li>"
-msgstr ""
-"<li><strong>Test öncesi olasılığı odds'a dönüştürün</strong>: Odds = "
-"P/(1-P)</li>"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -486,16 +274,6 @@ msgstr ""
 "yüksek lambda her katsayıyı sıfıra doğru daha da daraltır ancak hiçbiri "
 "sıfıra ulaşmaz, bu nedenle değişken sayısı asla değişmez.</li>"
 
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Multiply odds by likelihood ratio</strong>: Post-test odds = "
-"Pre-test odds × LR</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li><strong>Negative Likelihood Ratio (LR-)</strong>: (1-Se)/Sp</li>"
-msgstr "<li><strong>Negatif Olabilirlik Oranı (LR-)</strong>: (1-Se)/Sp</li>"
-
 #: R/lassologistic.b.R
 msgid ""
 "<li><strong>Odds Ratio</strong>: exp(coefficient). OR > 1 increases "
@@ -503,30 +281,6 @@ msgid ""
 msgstr ""
 "<li><strong>Odds Oranı</strong>: exp(katsayı). OR > 1 pozitif sınıf "
 "olasılığını artırır.</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li><strong>Positive Likelihood Ratio (LR+)</strong>: Se/(1-Sp)</li>"
-msgstr "<li><strong>Pozitif Olabilirlik Oranı (LR+)</strong>: Se/(1-Sp)</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li><strong>Prevalence (P)</strong>: The pre-test probability of disease</li>"
-msgstr "<li><strong>Prevalans (P)</strong>: Hastalığın test öncesi olasılığı</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Sensitivity (Se)</strong>: Probability of a positive test in "
-"diseased subjects</li>"
-msgstr ""
-"<li><strong>Duyarlılık (Se)</strong>: Hastalıklı deneklerde testin pozitif "
-"çıkma olasılığı</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Specificity (Sp)</strong>: Probability of a negative test in "
-"non-diseased subjects</li>"
-msgstr ""
-"<li><strong>Özgüllük (Sp)</strong>: Hastalıksız deneklerde testin negatif "
-"çıkma olasılığı</li>"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -564,30 +318,6 @@ msgstr ""
 "<li>Bootstrap iyimserlik düzeltmesi, görünürdeki EAA'nın gerçek performansı "
 "ne kadar abarttığını tahmin eder.</li>"
 
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {first} + {second} = {combined}</li>"
-msgstr "<li>Birleşik olasılık = {first} + {second} = {combined}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {sens1} + {sens2} - {both} = {combined}</li>"
-msgstr "<li>Birleşik olasılık = {sens1} + {sens2} - {both} = {combined}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {sens1} × {sens2} = {combined}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {spec1} × {spec2} = {combined}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined sensitivity (Se) = {value}</li>"
-msgstr "<li>Birleşik duyarlılık (Se) = {value}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined specificity (Sp) = {value}</li>"
-msgstr "<li>Birleşik özgüllük (Sp) = {value}</li>"
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Continuous predictors in the scoring system are dichotomized at %s (set "
@@ -600,27 +330,6 @@ msgstr ""
 "nedenle puana dayalı performans basitleştirilmiş bir puan modelini yansıtır "
 "ve sürekli LASSO modelinin EAA değerinden farklı olabilir.</li>"
 
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Denominator = (1-P) × Sp + P × (1-Se) = {numerator} + {p} × {oneMinusSe} "
-"= {denominator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Denominator = P × Se + (1-P) × (1-Sp) = {numerator} + {oneMinusP} × "
-"{oneMinusSp} = {denominator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Emergency teaching pair (Physiologic test + "
-"Biomarker)</li><li>Acute-imaging teaching pair (Clinical assessment + "
-"Imaging)</li>"
-msgstr ""
-"<li>Acil eğitim çifti (Fizyolojik test + Biyobelirteç)</li><li>Akut "
-"görüntüleme eğitim çifti (Klinik değerlendirme + Görüntüleme)</li>"
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Events-per-variable (EPV) should be >=10. Below 5, results are "
@@ -629,22 +338,6 @@ msgstr ""
 "<li>Değişken başına olay (EPV) >=10 olmalıdır. 5'in altında, "
 "düzenlileştirmeden bağımsız olarak sonuçlar güvenilmezdir.</li>"
 
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a negative Test 1, probability of testing negative on Test 2: "
-"{value}</li>"
-msgstr ""
-"<li>Negatif Test 1 verildiğinde, Test 2'de negatif test etme olasılığı: "
-"{value}</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a positive Test 1, probability of testing positive on Test 2: "
-"{value}</li>"
-msgstr ""
-"<li>Pozitif Test 1 verildiğinde, Test 2'de pozitif test etme olasılığı: "
-"{value}</li>"
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Higher total scores indicate higher probability of the event (positive "
@@ -652,14 +345,6 @@ msgid ""
 msgstr ""
 "<li>Daha yüksek toplam puanlar olayın (pozitif sınıf) daha yüksek "
 "olasılığını gösterir.</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>HIV-style teaching pair (Ag/Ab assay → differentiation assay); this is "
-"not a complete HIV diagnostic algorithm</li><li>Cancer-screening teaching "
-"pair (Imaging → Tissue sampling)</li><li>Respiratory-infection teaching pair "
-"(Rapid antigen → Molecular assay)</li>"
-msgstr ""
 
 #: R/lassologistic.b.R
 msgid ""
@@ -677,22 +362,6 @@ msgstr ""
 "<li>LASSO katsayılarının standart hataları veya p değerleri yoktur. Çıkarım "
 "için bootstrap doğrulamasını kullanın.</li>"
 
-#: R/sequentialtests.b.R
-msgid "<li>NPV = numerator/denominator = {numerator}/{denominator} = {npv}</li>"
-msgstr "<li>NÖD = pay/payda = {numerator}/{denominator} = {npv}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Numerator = (1-P) × Sp = {oneMinusP} × {sp} = {numerator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Numerator = P × Se = {p} × {se} = {numerator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>PPV = numerator/denominator = {numerator}/{denominator} = {ppv}</li>"
-msgstr "<li>PÖD = pay/payda = {numerator}/{denominator} = {ppv}</li>"
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Predictors were <strong>not</strong> standardized; coefficients, odds "
@@ -703,49 +372,6 @@ msgstr ""
 "odds oranları, önem ve Katsayı Grafiği her değişkenin orijinal ölçüm "
 "ölçeğindedir.</li>"
 
-#: R/sequentialtests.b.R
-msgid "<li>Prevalence (P) = {value}</li>"
-msgstr "<li>Prevalans (P) = {value}</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Probability of negative Test 1 followed by positive Test 2: (1 - "
-"{sens1}) × {sens2} = {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Probability of positive Test 1 followed by negative Test 2: (1 - "
-"{spec1}) × {spec2} = {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing negative on Test 1: {value}</li>"
-msgstr "<li>Test 1'de negatif test etme olasılığı: {value}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing negative on Test 2: {value}</li>"
-msgstr "<li>Test 2'de negatif test etme olasılığı: {value}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on both: {sens1} × {sens2} = {both}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on Test 1: {value}</li>"
-msgstr "<li>Test 1'de pozitif çıkma olasılığı: {value}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on Test 2: {value}</li>"
-msgstr "<li>Test 2'de pozitif çıkma olasılığı: {value}</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Rule-out teaching pair (Initial assessment → "
-"Biomarker)</li><li>Exclusion teaching pair (Clinical score → Laboratory "
-"assay)</li>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Selected variables are the features most useful for distinguishing the "
@@ -753,22 +379,6 @@ msgid ""
 msgstr ""
 "<li>Seçilen değişkenler iki grubu ayırt etmek için en yararlı "
 "özelliklerdir.</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Test negative on Test 1 but positive on Test 2</li>"
-msgstr "<li>Test 1'de negatif ancak Test 2'de pozitif test</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Test negative on Test 1, OR</li>"
-msgstr "<li>Test 1'de negatif test, VEYA</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Test positive on Test 1 but negative on Test 2</li>"
-msgstr "<li>Test 1'de pozitif ancak Test 2'de negatif test</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Test positive on Test 1, OR</li>"
-msgstr "<li>Test 1'de pozitif test, VEYA</li>"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -812,14 +422,6 @@ msgstr ""
 "aralarında paylaşır; bu da tahmin ediciler eşdoğrusal (collinear) olduğunda "
 "bunu tercih etmenin bir nedenidir.</li>"
 
-#: R/sequentialtests.b.R
-msgid "<ol>"
-msgstr "<ol>"
-
-#: R/sequentialtests.b.R
-msgid "<p>Calculation steps:</p>"
-msgstr "<p>Hesaplama adımları:</p>"
-
 #: R/lassologistic.b.R
 msgid ""
 "<p>Elastic Net blends the L1 (LASSO) and L2 (Ridge) penalties, here with a "
@@ -834,85 +436,6 @@ msgstr ""
 "modelin bunlardan birini rastgele seçmesine izin vermek yerine korelasyonlu "
 "tahmin edicileri bir arada tutar.</p>"
 
-#: R/sequentialtests.b.R
-msgid "<p>For a subject to test negative in this strategy, they must either:</p>"
-msgstr ""
-"<p>Bir deneğin bu stratejide negatif test sonucu vermesi için şunlardan biri "
-"olmalıdır:</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>For a subject to test negative in this strategy, they must test negative "
-"on both tests:</p>"
-msgstr ""
-"<p>Bir deneğin bu stratejide negatif test sonucu vermesi için her iki testte "
-"de negatif çıkması gerekir:</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>For a subject to test positive in this strategy, they must either:</p>"
-msgstr ""
-"<p>Bir deneğin bu stratejide pozitif test sonucu vermesi için şunlardan biri "
-"olmalıdır:</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>For a subject to test positive in this strategy, they must test positive "
-"on at least one test. This is calculated using the complement of the "
-"probability of testing negative on both tests:</p>"
-msgstr ""
-"<p>Bir deneğin bu stratejide pozitif test sonucu vermesi için en az bir "
-"testte pozitif çıkması gerekir. Bu, her iki testte de negatif çıkma "
-"olasılığının tümleyeni kullanılarak hesaplanır:</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>For a subject to test positive in this strategy, they must test positive "
-"on both tests:</p>"
-msgstr ""
-"<p>Bir deneğin bu stratejide pozitif test sonucu vermesi için her iki testte "
-"de pozitif çıkması gerekir:</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>How much more likely a negative test result is to occur in patients with "
-"disease compared to those without:</p>"
-msgstr ""
-"<p>Negatif bir test sonucunun hastalığı olanlarda olmayanlara kıyasla ortaya "
-"çıkma olasılığının ne kadar daha fazla olduğu:</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>How much more likely a positive test result is to occur in patients with "
-"disease compared to those without:</p>"
-msgstr ""
-"<p>Pozitif bir test sonucunun hastalığı olanlarda olmayanlara kıyasla ortaya "
-"çıkma olasılığının ne kadar daha fazla olduğu:</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>In this strategy, both tests are performed on all subjects. A subject is "
-"considered positive if either test is positive.</p>"
-msgstr ""
-"<p>Bu stratejide her iki test de tüm deneklere uygulanır. Herhangi bir test "
-"pozitifse denek pozitif kabul edilir.</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>In this strategy, the second test is only performed if the first test is "
-"negative. A subject is considered positive if either test is positive.</p>"
-msgstr ""
-"<p>Bu stratejide ikinci test yalnızca ilk test negatifse uygulanır. Herhangi "
-"bir test pozitifse denek pozitif kabul edilir.</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>In this strategy, the second test is only performed if the first test is "
-"positive. A subject is considered positive only if both tests are "
-"positive.</p>"
-msgstr ""
-"<p>Bu stratejide ikinci test yalnızca ilk test pozitifse uygulanır. Bir "
-"denek yalnızca her iki test de pozitifse pozitif kabul edilir.</p>"
-
 #: R/lassologistic.b.R
 msgid ""
 "<p>LASSO (Least Absolute Shrinkage and Selection Operator) adds an L1 "
@@ -924,34 +447,6 @@ msgstr ""
 "olabilirliğine bazı katsayıları tam olarak sıfıra daraltan bir L1 cezası "
 "ekler. Bu, otomatik değişken seçimi gerçekleştirerek ikili sonucunuz için en "
 "önemli tahmin edicileri tanımlar.</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>LR- = (1 - {se}) / {sp} = {lr}</p>"
-msgstr "<p>LR- = (1 - {se}) / {sp} = {lr}</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>LR- = (1 - Sensitivity) / Specificity</p>"
-msgstr "<p>LR- = (1 - Duyarlılık) / Özgüllük</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>LR+ = {se} / (1 - {sp}) = {lr}</p>"
-msgstr "<p>LR+ = {se} / (1 - {sp}) = {lr}</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>LR+ = Sensitivity / (1 - Specificity)</p>"
-msgstr "<p>LR+ = Duyarlılık / (1 - Özgüllük)</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>NPV = ((1-P) × Sp) / ((1-P) × Sp + P × (1-Se))</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>PPV = (P × Se) / (P × Se + (1-P) × (1-Sp))</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Probability calculation:</p>"
-msgstr "<p>Olasılık hesaplaması:</p>"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -970,118 +465,6 @@ msgstr ""
 "taşıdığına inandığınızda veya güçlü bir şekilde korelasyonlu olduklarında ve "
 "cezanın birinin rastgele tutulması yerine aralarında paylaşılmasını "
 "istediğinizde Ridge doğru seçimdir.</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>Se<sub>combined</sub> = 1 - (1-Se<sub>1</sub>) × (1-Se<sub>2</sub>)</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>Se<sub>combined</sub> = Se<sub>1</sub> + (1-Se<sub>1</sub>) × "
-"Se<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>Se<sub>combined</sub> = Se<sub>1</sub> + Se<sub>2</sub> - (Se<sub>1</sub> "
-"× Se<sub>2</sub>)</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Se<sub>combined</sub> = Se<sub>1</sub> × Se<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>Sp<sub>combined</sub> = Sp<sub>1</sub> + (1-Sp<sub>1</sub>) × "
-"Sp<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Sp<sub>combined</sub> = Sp<sub>1</sub> × Sp<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>The probability that a negative test result is a true negative:</p>"
-msgstr "<p>Negatif bir test sonucunun gerçek bir negatif olma olasılığı:</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>The probability that a positive test result is a true positive:</p>"
-msgstr "<p>Pozitif bir test sonucunun gerçek bir pozitif olma olasılığı:</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>This can be rewritten as:</p>"
-msgstr "<p>Bu şu şekilde yeniden yazılabilir:</p>"
-
-#: R/sequentialtests.b.R
-msgid "<p>To calculate how a test changes probability:</p>"
-msgstr "<p>Bir testin olasılığı nasıl değiştirdiğini hesaplamak için:</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>You selected a <strong>parallel teaching strategy</strong>. Everyone "
-"receives both {test1} (sensitivity {sens1}%, specificity {spec1}%) and "
-"{test2} (sensitivity {sens2}%, specificity {spec2}%), and a final result is "
-"positive when either test is positive.</p><p>The false-negative rates and "
-"specificities therefore multiply. Combined sensitivity increases while "
-"combined specificity decreases. These are the same accuracy formulas as "
-"serial-negative testing; only second-test utilization differs. Tests that "
-"fail on the same cases may add little benefit.</p>"
-msgstr ""
-"<p>Bir <strong>paralel eğitim stratejisi</strong> seçtiniz. Herkes hem "
-"{test1} (duyarlılık %{sens1}, özgüllük %{spec1}) hem de {test2} (duyarlılık "
-"%{sens2}, özgüllük %{spec2}) alır ve nihai sonuç herhangi bir test pozitif "
-"olduğunda pozitiftir.</p><p>Dolayısıyla yanlış negatiflik oranları ve "
-"özgüllükler çarpılır. Birleşik duyarlılık artarken birleşik özgüllük azalır. "
-"Bunlar seri negatif test ile aynı doğruluk formülleridir; yalnızca ikinci "
-"test kullanımı farklıdır. Aynı olgularda başarısız olan testler çok az fayda "
-"sağlayabilir.</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>You selected a <strong>serial-negative teaching strategy</strong>. "
-"Everyone first receives {test1} (sensitivity {sens1}%, specificity "
-"{spec1}%). Only first-test negatives receive {test2} (sensitivity {sens2}%, "
-"specificity {spec2}%), and a final result is negative only when both tests "
-"are negative.</p><p>The false-negative rates and specificities therefore "
-"multiply. Combined sensitivity increases while combined specificity "
-"decreases. Two negative results do not automatically rule disease out; NPV "
-"still depends on prevalence, and false positives are shown in the "
-"population-flow table.</p>"
-msgstr ""
-"<p>Bir <strong>seri negatif eğitim stratejisi</strong> seçtiniz. Herkese "
-"önce {test1} uygulanır (duyarlılık %{sens1}, özgüllük %{spec1}). Yalnızca "
-"ilk testte negatif olanlara {test2} uygulanır (duyarlılık %{sens2}, özgüllük "
-"%{spec2}) ve nihai sonuç yalnızca her iki test de negatif olduğunda "
-"negatiftir.</p><p>Dolayısıyla yanlış negatiflik oranları ve özgüllükler "
-"çarpılır. Birleşik duyarlılık artarken birleşik özgüllük azalır. İki negatif "
-"sonuç hastalığı otomatik olarak dışlamaz; NÖD yine de prevalansa bağlıdır ve "
-"yanlış pozitifler popülasyon akış tablosunda gösterilir.</p>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>You selected a <strong>serial-positive teaching strategy</strong>. "
-"Everyone first receives {test1} (sensitivity {sens1}%, specificity "
-"{spec1}%). Only first-test positives receive {test2} (sensitivity {sens2}%, "
-"specificity {spec2}%), and a final result is positive only when both tests "
-"are positive.</p><p>The sensitivities and false-positive rates therefore "
-"multiply. Combined specificity increases while combined sensitivity "
-"decreases. Two positive results are not automatically a confirmed diagnosis; "
-"PPV still depends on prevalence, and false negatives are shown in the "
-"population-flow table.</p>"
-msgstr ""
-"<p>Bir <strong>seri pozitif eğitim stratejisi</strong> seçtiniz. Herkese "
-"önce {test1} uygulanır (duyarlılık %{sens1}, özgüllük %{spec1}). Yalnızca "
-"ilk testte pozitif olanlara {test2} uygulanır (duyarlılık %{sens2}, özgüllük "
-"%{spec2}) ve nihai sonuç yalnızca her iki test de pozitif olduğunda "
-"pozitiftir.</p><p>Dolayısıyla duyarlılıklar ve yanlış pozitiflik oranları "
-"çarpılır. Birleşik özgüllük artarken birleşik duyarlılık azalır. İki pozitif "
-"sonuç otomatik olarak doğrulanmış bir tanı değildir; PÖD yine de prevalansa "
-"bağlıdır ve yanlış negatifler popülasyon akış tablosunda gösterilir.</p>"
-
-#: R/sequentialtests.b.R
-msgid "<ul>"
-msgstr "<ul>"
 
 #: R/lassologistic.b.R
 msgid "= %s"
@@ -1224,34 +607,6 @@ msgstr ""
 "Tahmin Değişkeni/Modeli ekleyin; ham puanlar, logitler ve doğrusal "
 "öngörücüler geçerli eşik olasılıkları değildir."
 
-#: R/sequentialtests.b.R
-msgid "After Both Tests"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "After Combined Strategy"
-msgstr "Birleşik Stratejiden Sonra"
-
-#: R/sequentialtests.b.R
-msgid "After First Test"
-msgstr "İlk Testten Sonra"
-
-#: R/sequentialtests.b.R
-msgid "After Second Test"
-msgstr "İkinci Testten Sonra"
-
-#: R/sequentialtests.b.R
-msgid "After Test 1"
-msgstr "Test 1'den Sonra"
-
-#: R/sequentialtests.b.R
-msgid "After Test 2 (-)"
-msgstr "Test 2 Sonrası (-)"
-
-#: R/sequentialtests.b.R
-msgid "After Test 2 (+)"
-msgstr "Test 2 Sonrası (+)"
-
 #: lassologistic/results/modelComparison.columns.title
 msgid "AIC"
 msgstr "AIC"
@@ -1265,14 +620,6 @@ msgstr ""
 "Tüm girdiler aynı para birimini kullanmalıdır ve hesaplama kişi başına bir "
 "test, pozitif model kararından sonra tedavi ve test yapılmadan herkese "
 "tedavi uygulandığını varsayar."
-
-#: R/sequentialtests.b.R
-msgid ""
-"All People\n"
-"(n={n})"
-msgstr ""
-"Tüm Kişiler\n"
-"(n={n})"
 
 #: R/kappaSizeCI.b.R
 msgid "All proportions must be between 0 and 1"
@@ -1335,14 +682,6 @@ msgstr ""
 "düzeltmeli bir tahmin için bootstrap doğrulamasını etkinleştirin ve herhangi "
 "bir klinik kullanımdan önce harici doğrulamayı zorunlu olarak ele alın."
 
-#: R/sequentialtests.b.R
-msgid ""
-"An illustrative population of %1$.0f at %2$.2f%% prevalence contains only "
-"%3$.2f expected people with disease, so the population-flow counts are "
-"fractional. Increase the population size (for example to 10000) for readable "
-"whole-person counts."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "An unpenalized logistic refit in the Model Comparison table showed "
@@ -1356,7 +695,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 msgid "Analysis Complete"
 msgstr "Analiz Tamamlandı"
 
@@ -1373,22 +711,6 @@ msgstr "Analiz sonucu"
 #: decisioncurve/results/procedureNotes.title
 msgid "Analysis Summary"
 msgstr "Analiz Özeti"
-
-#: package/analyses/sequentialtests.description
-#: sequentialtests/options.description.main
-msgid ""
-"Analyzes how diagnostic accuracy changes when applying two tests in "
-"sequence, comparing three different testing strategies: serial positive "
-"(confirmation), serial negative (exclusion), and parallel testing. Provides "
-"comprehensive analysis including population flow, cost implications, and "
-"diagnostic plots, so you can explore how diagnostic strategies behave under "
-"explicit assumptions, compare hypothetical test sequences, weigh trade-offs "
-"between sensitivity and specificity, and illustrate expected testing volume "
-"and cost under user-supplied assumptions. The named scenarios and their "
-"values are teaching examples only, not clinical guidance or validated "
-"diagnostic pathways. Replace all example parameters with estimates "
-"applicable to the intended population before interpreting results."
-msgstr ""
 
 #: kappaSizeFixedN/ui[1].label
 msgid "Anticipated Agreement"
@@ -1669,10 +991,6 @@ msgstr "İkili Sonuç"
 msgid "Binomial Deviance"
 msgstr "Binom Sapması (Deviance)"
 
-#: sequentialtests/options/preset/mi_emergency_parallel.title
-msgid "Biomarker + ECG (Illustrative)"
-msgstr "Biyobelirteç + EKG (Açıklayıcı)"
-
 #: R/lassologistic.b.R
 msgid "Blue dashed: lambda.min; orange dotted: lambda.1se"
 msgstr ""
@@ -1730,34 +1048,10 @@ msgstr "Bootstrap Tekrarlamaları"
 msgid "Bootstrap replications"
 msgstr "Bootstrap tekrarlamaları"
 
-#: R/sequentialtests.b.R
-msgid "Both tests performed on everyone"
-msgstr "Herkese her iki test de uygulandı"
-
-#: sequentialtests/options/preset/breast_cancer_screening.title
-msgid "Breast Imaging + Tissue Sampling (Illustrative)"
-msgstr "Meme Görüntüleme + Doku Örneklemesi (Açıklayıcı)"
-
 #: R/lassologistic.b.R
 #: lassologistic/results/modelComparison.columns.title
 msgid "Brier Score"
 msgstr "Brier Skoru"
-
-#: R/sequentialtests.b.R
-msgid "Calculation Error"
-msgstr "Hesaplama Hatası"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Calculation error with provided values: %s. Please verify all parameters and "
-"try again."
-msgstr ""
-"Verilen değerlerle hesaplama hatası: %s. Lütfen tüm parametreleri doğrulayın "
-"ve tekrar deneyin."
-
-#: sequentialtests/options/show_formulas.title
-msgid "Calculation formulas"
-msgstr "Hesaplama formülleri"
 
 #: R/lassologistic.b.R
 msgid "Calibration slope"
@@ -1791,14 +1085,6 @@ msgstr "Dikkat: Önemli sorunlar tespit edildi"
 msgid "Check"
 msgstr "Kontrol"
 
-#: sequentialtests/options/preset/tb_screening_confirmation.title
-msgid "Chest Imaging + Culture (Illustrative)"
-msgstr "Göğüs Görüntüleme + Kültür (Açıklayıcı)"
-
-#: R/sequentialtests.b.R
-msgid "Chest X-ray"
-msgstr "Akciğer Grafisi"
-
 #: R/decisioncurve.b.R
 msgid "Choose a unique rule label."
 msgstr "Benzersiz bir kural etiketi seçin."
@@ -1826,14 +1112,6 @@ msgstr "Sınıflandırma Performansı"
 #: decisioncurve/options/plotStyle/clean.title
 msgid "Clean (minimal annotations)"
 msgstr "Temiz (en az açıklama)"
-
-#: R/sequentialtests.b.R
-msgid "Clinical Assessment"
-msgstr "Klinik Değerlendirme"
-
-#: sequentialtests/options/preset/stroke_emergency_parallel.title
-msgid "Clinical Assessment + CT (Illustrative)"
-msgstr "Klinik Değerlendirme + BT (Açıklayıcı)"
 
 #: R/decisioncurve.b.R
 msgid "Clinical Decision Rule"
@@ -1942,126 +1220,6 @@ msgstr "Katsayı grafiği"
 msgid "Collinearity"
 msgstr "Eş doğrusallık"
 
-#: R/sequentialtests.b.R
-msgid ""
-"Combine\n"
-"Results"
-msgstr ""
-"Sonuçları\n"
-"Birleştir"
-
-#: R/sequentialtests.b.R
-msgid "Combined"
-msgstr "Birleşik"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined figures assume the two tests are <i>conditionally independent</i> — "
-"that, among people with the same disease status, one test's result says "
-"nothing about the other's. With positive conditional dependence in both "
-"disease-status groups, {direction}. Dependence among people with the disease "
-"alone biases the combined sensitivity but not the specificity, and "
-"dependence among people without it the reverse; PPV and NPV move with either."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined metrics assume conditional independence between tests. If tests "
-"have positive conditional dependence in both disease-status groups (for "
-"example, similar biology or technology), {direction}. Dependence among "
-"people with the disease alone biases the combined sensitivity but not the "
-"specificity, and dependence among people without it the reverse; PPV and NPV "
-"move with either."
-msgstr ""
-"Birleşik ölçütler testler arasında koşullu bağımsızlık varsayar. Testlerde "
-"her iki hastalık durumu grubunda da pozitif koşullu bağımlılık varsa "
-"(örneğin benzer biyoloji veya teknoloji), {direction}. Yalnızca hastalığı "
-"olan kişiler arasındaki bağımlılık birleşik duyarlılığı yanlı kılar ancak "
-"özgüllüğü etkilemez; yalnızca hastalığı olmayanlar arasındaki bağımlılık "
-"bunun tersini yapar. PÖD ve NÖD her iki durumda da değişir."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined negative likelihood ratio is infinite because combined specificity "
-"is effectively zero under the entered assumptions."
-msgstr ""
-"Girilen varsayımlar altında birleşik özgüllük etkin olarak sıfır olduğundan "
-"birleşik negatif olabilirlik oranı sonsuzdur."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined negative likelihood ratio is undefined (both numerator and "
-"denominator approach zero)."
-msgstr ""
-"Birleşik negatif olabilirlik oranı tanımsızdır (hem pay hem de payda sıfıra "
-"yaklaşmaktadır)."
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined NPV"
-msgstr "Birleşik NÖD"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined NPV cannot be calculated (denominator is zero). Check for extreme "
-"sensitivity/specificity combinations."
-msgstr ""
-"Birleşik NÖD hesaplanamıyor (payda sıfır). Aşırı duyarlılık/özgüllük "
-"kombinasyonlarını kontrol edin."
-
-#: R/sequentialtests.b.R
-msgid "Combined NPV Undefined"
-msgstr "Birleşik NÖD Tanımsız"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined positive likelihood ratio is infinite because combined specificity "
-"is effectively 100% under the entered assumptions. This does not establish "
-"perfect performance in another population."
-msgstr ""
-"Girilen varsayımlar altında birleşik özgüllük etkin olarak %100 olduğundan "
-"birleşik pozitif olabilirlik oranı sonsuzdur. Bu, başka bir popülasyonda "
-"mükemmel performans olduğunu göstermez."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined positive likelihood ratio is undefined (both numerator and "
-"denominator approach zero)."
-msgstr ""
-"Birleşik pozitif olabilirlik oranı tanımsızdır (hem pay hem de payda sıfıra "
-"yaklaşmaktadır)."
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined PPV"
-msgstr "Birleşik PÖD"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined PPV cannot be calculated (denominator is zero). Check for extreme "
-"sensitivity/specificity combinations."
-msgstr ""
-"Birleşik PÖD hesaplanamıyor (payda sıfır). Aşırı duyarlılık/özgüllük "
-"kombinasyonlarını kontrol edin."
-
-#: R/sequentialtests.b.R
-msgid "Combined PPV Undefined"
-msgstr "Birleşik PÖD Tanımsız"
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined Sensitivity"
-msgstr "Birleşik Duyarlılık"
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined Specificity"
-msgstr "Birleşik Özgüllük"
-
-#: R/sequentialtests.b.R
-msgid "Combined Strategy"
-msgstr "Birleşik Strateji"
-
-#: R/sequentialtests.b.R
-msgid "Combined Test Performance: Sensitivity=%1$.1f%%, Specificity=%2$.1f%%"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Comparable across units; the table reports the original scale"
 msgstr "Birimler arasında karşılaştırılabilir; tablo orijinal ölçeği bildirir"
@@ -2147,14 +1305,6 @@ msgstr ""
 "Bu dar aralığın klinik karardan önceden belirlendiğini ve makul tedavi "
 "tercihlerini kapsayacak kadar geniş olduğunu doğrulayın."
 
-#: sequentialtests/options/test2_name.default
-msgid "Confirmatory Test"
-msgstr "Doğrulayıcı Test"
-
-#: sequentialtests/options/test2_name.title
-msgid "Confirmatory test name"
-msgstr "Doğrulayıcı test adı"
-
 #: R/kappaSizeCI.b.R
 msgid ""
 "Consider a wider confidence interval (lower precision) or revisiting the "
@@ -2239,18 +1389,6 @@ msgstr ""
 msgid "Corrected"
 msgstr "Düzeltilmiş"
 
-#: sequentialtests/options/show_cost_analysis.title
-msgid "Cost analysis"
-msgstr "Maliyet analizi"
-
-#: sequentialtests/results/cost_analysis_table.title
-msgid "Cost Analysis"
-msgstr "Maliyet Analizi"
-
-#: R/sequentialtests.b.R
-msgid "Cost Analysis (Per {n} People)"
-msgstr "Maliyet Analizi ({n} Kişi Başına)"
-
 #: decisioncurve/ui[4][0]/testCost.label
 msgid "Cost per test"
 msgstr "Test başına maliyet"
@@ -2298,10 +1436,6 @@ msgstr "Çapraz doğrulama grafiği"
 msgid "Cross-validation plot"
 msgstr "Çapraz doğrulama grafiği"
 
-#: R/sequentialtests.b.R
-msgid "CT Scan"
-msgstr "BT Taraması"
-
 #: R/decisioncurve.b.R
 msgid ""
 "Current settings: Min = {min}%, Max = {max}%; the valid range is 0.1% to "
@@ -2321,10 +1455,6 @@ msgstr ""
 #: decisioncurve/options/thresholdRange/custom.title
 msgid "Custom range"
 msgstr "Özel aralık"
-
-#: sequentialtests/options/preset/custom.title
-msgid "Custom Values"
-msgstr "Özel Değerler"
 
 #: lassologistic/options/scoreCutMethod.title
 msgid "Cut Point for Continuous Predictors"
@@ -2381,11 +1511,6 @@ msgid ""
 msgstr ""
 "Önce klinik yargıdan eşik aralığına karar verin, ardından eğrileri orada "
 "okuyun - tersini yapmayın."
-
-#: package/analyses/sequentialtests.menuSubgroup
-#: sequentialtests/options.menuSubgroup
-msgid "Decision Calculators"
-msgstr "Karar Hesaplayıcıları"
 
 #: decisioncurve/results/decisionConsequencesTable.title
 msgid "Decision Consequences"
@@ -2553,17 +1678,9 @@ msgid ""
 "limits {limits} in an interobserver agreement study."
 msgstr ""
 
-#: sequentialtests/options/show_plots.title
-msgid "Diagnostic plots"
-msgstr "Tanısal grafikler"
-
 #: decisioncurve/results/comparisonTable.columns.title
 msgid "Difference in Average Net Benefit"
 msgstr "Ortalama Net Faydadaki Fark"
-
-#: R/sequentialtests.b.R
-msgid "Differentiation Assay"
-msgstr "Farklılaşma Testi"
 
 #: decisioncurve/results/standardizedNetBenefitPlot.description
 msgid ""
@@ -2581,59 +1698,6 @@ msgstr "Yön"
 #: R/lassologistic.b.R
 msgid "Discrimination Worse Than Chance"
 msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Disease Absent"
-msgstr "Hastalık Yok"
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Disease Negative"
-msgstr "Hastalık Negatif"
-
-#: sequentialtests/ui[5].label
-msgid "Disease Parameters"
-msgstr "Hastalık Parametreleri"
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Disease Positive"
-msgstr "Hastalık Pozitif"
-
-#: R/sequentialtests.b.R
-msgid "Disease Present"
-msgstr "Hastalık Var"
-
-#: R/sequentialtests.b.R
-#: sequentialtests/results/summary_table.columns.title
-msgid "Disease Prevalence"
-msgstr "Hastalık Prevalansı"
-
-#: sequentialtests/options/prevalence.title
-msgid "Disease prevalence"
-msgstr "Hastalık yaygınlığı (prevalansı)"
-
-#: R/sequentialtests.b.R
-msgid "Disease Probability (%)"
-msgstr "Hastalık Olasılığı (%)"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Disease-\n"
-"n={n}"
-msgstr ""
-"Hastalık-\n"
-"n={n}"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Disease+\n"
-"n={n}"
-msgstr ""
-"Hastalık+\n"
-"n={n}"
-
-#: sequentialtests/ui[6].label
-msgid "Display Options"
-msgstr "Görüntüleme Seçenekleri"
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -2674,14 +1738,6 @@ msgid ""
 msgstr ""
 "Her satır görüntülenen tam eşikte hesaplanır; seçilen eşiklerin çizim "
 "ızgarasıyla çakışması gerekmez."
-
-#: R/sequentialtests.b.R
-msgid "ECG"
-msgstr "EKG"
-
-#: R/sequentialtests.b.R
-msgid "Either +"
-msgstr "Herhangi Biri +"
 
 #: R/lassologistic.b.R
 #: lassologistic/options/penalty/elasticnet.title
@@ -2732,10 +1788,6 @@ msgstr "EPV = %.1f (5-10: marjinal, sonuçlar kararsız olabilir)"
 #: R/lassologistic.b.R
 msgid "Error"
 msgstr "Hata"
-
-#: R/sequentialtests.b.R
-msgid "ERROR"
-msgstr "HATA"
 
 #: R/kappaSizeCI.b.R
 msgid "Error in sample size calculation: {}"
@@ -2795,10 +1847,6 @@ msgstr "Mükemmel"
 msgid "Excluded from analysis"
 msgstr "Analizden hariç tutuldu"
 
-#: sequentialtests/results/cost_analysis_table.columns.title
-msgid "Expected Number of Tests"
-msgstr "Beklenen Test Sayısı"
-
 #: kappaSizeFixedN/options/props.title
 #: kappaSizePower/options/props.title
 msgid "Expected proportion of cases in each category"
@@ -2808,14 +1856,6 @@ msgstr "Her kategoride beklenen olgu oranı"
 #: kappaSizePower/ui[2].label
 msgid "Expected Proportion of Cases in Each Category"
 msgstr "Her Kategoride Beklenen Olgu Oranı"
-
-#: sequentialtests/results/explanation_text.title
-msgid "Explanation"
-msgstr "Açıklama"
-
-#: sequentialtests/options/show_explanation.title
-msgid "Explanations"
-msgstr "Açıklamalar"
 
 #: lassologistic/ui[7].label
 msgid "Explanatory Output"
@@ -2895,22 +1935,15 @@ msgstr "Aşırı Prevalans"
 msgid "F1 Score"
 msgstr "F1 Skoru"
 
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "False Negative"
 msgstr "Yanlış Negatif"
 
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "False Negatives"
-msgstr "Yanlış Negatifler"
-
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "False Positive"
 msgstr "Yanlış Pozitif"
 
 #: R/decisioncurve.b.R
-#: sequentialtests/results/population_flow_table.columns.title
 msgid "False Positives"
 msgstr "Yanlış Pozitifler"
 
@@ -2936,14 +1969,6 @@ msgstr ""
 "düzeltmesi güvenilmezdir - örneklem boyutunu artırın veya aday tahmin edici "
 "sayısını azaltın."
 
-#: R/sequentialtests.b.R
-msgid ""
-"Final\n"
-"Result"
-msgstr ""
-"Nihai\n"
-"Sonuç"
-
 #: package/analyses/kappaSizeFixedN.menuSubtitle
 #: kappaSizeFixedN/options.menuSubtitle
 msgid "Find lower Kappa based on sample size"
@@ -2958,26 +1983,6 @@ msgstr "Kappa güven aralığına göre örneklem büyüklüğü bulma"
 #: kappaSizePower/options.menuSubtitle
 msgid "Find sample size based on power"
 msgstr "Güce dayalı örneklem büyüklüğü bulma"
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "First Test"
-msgstr "İlk Test"
-
-#: sequentialtests/ui[3][0]/test1_cost.label
-msgid "First test"
-msgstr "İlk test"
-
-#: sequentialtests/ui[1].label
-msgid "First Test (Screening)"
-msgstr "İlk Test (Tarama)"
-
-#: R/sequentialtests.b.R
-msgid ""
-"FN\n"
-"n={n}"
-msgstr ""
-"YN\n"
-"n={n}"
 
 #: decisioncurve/options/thresholdRange/clinical.title
 msgid "Focused range (0.05 to 0.50; not a clinical recommendation)"
@@ -3024,26 +2029,6 @@ msgstr ""
 "çalışma boyutlandırmada kappaSizePower, hedef aralık genişliği için "
 "kappaSizeCI kullanın."
 
-#: R/sequentialtests.b.R
-msgid ""
-"For this serial-negative example, Test 2 sensitivity (%.1f%%) is below Test "
-"1 sensitivity (%.1f%%). This does not invalidate the calculation, but it may "
-"not improve sensitivity as much as expected."
-msgstr ""
-"Bu seri negatif örneği için Test 2 duyarlılığı (%%%.1f), Test 1 "
-"duyarlılığının (%%%.1f) altındadır. Bu durum hesaplamayı geçersiz kılmaz, "
-"ancak duyarlılığı beklendiği kadar artırmayabilir."
-
-#: R/sequentialtests.b.R
-msgid ""
-"For this serial-positive example, Test 2 specificity (%.1f%%) is below Test "
-"1 specificity (%.1f%%). This does not invalidate the calculation, but it may "
-"not improve specificity as much as expected."
-msgstr ""
-"Bu seri pozitif örneği için Test 2 özgüllüğü (%%%.1f), Test 1 özgüllüğünün "
-"(%%%.1f) altındadır. Bu durum hesaplamayı geçersiz kılmaz, ancak özgüllüğü "
-"beklendiği kadar artırmayabilir."
-
 #: R/decisioncurve.b.R
 msgid ""
 "For time-to-event predictions, supply risks and a binary outcome defined at "
@@ -3057,18 +2042,6 @@ msgid ""
 "For two raters with equal marginal frequencies this coincides with Cohen's "
 "κ; with more raters, or unequal marginals, it does not."
 msgstr ""
-
-#: sequentialtests/results/formulas_text.title
-msgid "Formulas Used"
-msgstr "Kullanılan Formüller"
-
-#: R/sequentialtests.b.R
-msgid ""
-"FP\n"
-"n={n}"
-msgstr ""
-"YP\n"
-"n={n}"
 
 #: decisioncurve/results/benefitRangeTable.columns.title
 msgid "From"
@@ -3156,14 +2129,6 @@ msgstr "Aralık Minimumunu Vurgula"
 msgid "histopathology including analysis"
 msgstr ""
 
-#: sequentialtests/options/preset/hiv_screening_confirmation.title
-msgid "HIV Ag/Ab + Differentiation Assay (Illustrative)"
-msgstr "HIV Ag/Ab + Farklılaşma Testi (Açıklayıcı)"
-
-#: R/sequentialtests.b.R
-msgid "HIV Ag/Ab Assay"
-msgstr "HIV Ag/Ab Testi"
-
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "If the Analysis result panel also prints 'At least one expected cell count "
@@ -3190,24 +2155,6 @@ msgstr ""
 msgid "Ignored {values}."
 msgstr "{values} göz ardı edildi."
 
-#: sequentialtests/options/population_size.title
-#: sequentialtests/ui[5][0]/population_size.label
-msgid "Illustrative population size"
-msgstr "Açıklayıcı popülasyon boyutu"
-
-#: R/sequentialtests.b.R
-msgid "Illustrative Population Too Small"
-msgstr ""
-
-#: sequentialtests/options/test1_cost.title
-#: sequentialtests/options/test2_cost.title
-msgid "Illustrative unit cost"
-msgstr "Açıklayıcı birim maliyet"
-
-#: sequentialtests/ui[3].label
-msgid "Illustrative unit costs"
-msgstr "Açıklayıcı birim maliyetler"
-
 #: lassologistic/results/coefficients.columns.title
 msgid "Importance"
 msgstr "Önem"
@@ -3222,7 +2169,6 @@ msgstr "Önem Puanı"
 
 #: decisioncurve/results/notices.title
 #: lassologistic/results/notices.title
-#: sequentialtests/results/notices.title
 msgid "Important Information"
 msgstr "Önemli Bilgi"
 
@@ -3234,22 +2180,6 @@ msgstr "Herkesi Tedavi Etmeye Göre Artımlı Atanan Fayda"
 msgid "Incremental Cost"
 msgstr "Artımlı Maliyet"
 
-#: R/sequentialtests.b.R
-msgid "Independence Assumption"
-msgstr "Bağımsızlık Varsayımı"
-
-#: sequentialtests/results/individual_tests_table.title
-msgid "Individual Test Performance"
-msgstr "Bireysel Test Performansı"
-
-#: R/sequentialtests.b.R
-msgid "infinite"
-msgstr "sonsuz"
-
-#: R/sequentialtests.b.R
-msgid "Infinite Positive Likelihood Ratio"
-msgstr "Sonsuz Pozitif Olabilirlik Oranı"
-
 #: lassologistic/results/methodComparison.columns.title
 msgid "Info Loss vs Full Model (%)"
 msgstr "Tam Modele Göre Bilgi Kaybı (%)"
@@ -3257,14 +2187,6 @@ msgstr "Tam Modele Göre Bilgi Kaybı (%)"
 #: R/lassologistic.b.R
 msgid "Information"
 msgstr "Bilgi"
-
-#: R/sequentialtests.b.R
-msgid "Initial"
-msgstr "İlk"
-
-#: R/sequentialtests.b.R
-msgid "Initial Population"
-msgstr "İlk Popülasyon"
 
 #: R/kappaSizeCI.b.R
 msgid "Input validation failed: {errors}"
@@ -3432,10 +2354,6 @@ msgid ""
 "common-correlation model attains the requested precision, given the expected "
 "category proportions and the number of raters."
 msgstr ""
-
-#: sequentialtests/results/cost_analysis_table.columns.title
-msgid "Item"
-msgstr "Öğe"
 
 #: R/decisioncurve.b.R
 msgid "Its curve is still shown in the plot."
@@ -3659,10 +2577,6 @@ msgstr ""
 msgid "Lowest Expected Value for a fixed sample size"
 msgstr "Sabit Örneklem Büyüklüğü için En Düşük Beklenen Değer"
 
-#: R/sequentialtests.b.R
-msgid "Mammography"
-msgstr "Mamografi"
-
 #: lassologistic/options/scoreCutMethod/manual.title
 msgid "Manual cut points"
 msgstr "Manuel kesim noktaları"
@@ -3727,12 +2641,10 @@ msgstr "Ortalama puan (pozitif sınıf)"
 msgid "Mean score (reference class)"
 msgstr "Ortalama puan (referans sınıf)"
 
-#: package/analyses/sequentialtests.menuGroup
 #: package/analyses/lassologistic.menuGroup
 #: package/analyses/decisioncurve.menuGroup
 #: decisioncurve/options.menuGroup
 #: lassologistic/options.menuGroup
-#: sequentialtests/options.menuGroup
 msgid "meddecide"
 msgstr "meddecide"
 
@@ -3922,10 +2834,6 @@ msgstr "Yanlış Pozitife Atanan Parasal Zarar"
 msgid "Monetary Value Assigned to a True Positive"
 msgstr "Gerçek Pozitife Atanan Parasal Değer"
 
-#: R/sequentialtests.b.R
-msgid "MRI"
-msgstr "MRG"
-
 #: R/lassologistic.b.R
 msgid "N = %d (<50: small, consider fewer predictors)"
 msgstr "N = %d (<50: küçük, daha az tahmin edici düşünün)"
@@ -3959,37 +2867,12 @@ msgid "Need at least 5 cases in each outcome class."
 msgstr "Her sonuç sınıfında en az 5 olgu gereklidir."
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 msgid "Negative"
 msgstr "Negatif"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Negative\n"
-"Result"
-msgstr ""
-"Negatif\n"
-"Sonuç"
 
 #: R/lassologistic.b.R
 msgid "Negative (-)"
 msgstr "Negatif (-)"
-
-#: R/sequentialtests.b.R
-msgid "Negative Likelihood Ratio Infinite"
-msgstr "Negatif Olabilirlik Oranı Sonsuz"
-
-#: R/sequentialtests.b.R
-msgid "Negative Likelihood Ratio Undefined"
-msgstr "Negatif Olabilirlik Oranı Tanımsız"
-
-#: sequentialtests/results/individual_tests_table.columns.title
-msgid "Negative LR"
-msgstr "Negatif LR"
-
-#: R/sequentialtests.b.R
-msgid "Negative Path"
-msgstr "Negatif Yol"
 
 #: R/decisioncurve.b.R
 msgid "Net Benefit"
@@ -4187,18 +3070,6 @@ msgstr "Sayısal bir sütun değil: {model}"
 msgid "Not available"
 msgstr "Mevcut değil"
 
-#: R/sequentialtests.b.R
-msgid "not defined"
-msgstr "tanımlanmamış"
-
-#: R/sequentialtests.b.R
-msgid "not defined (no disease-free subjects)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "not defined (no diseased subjects)"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Not interpretable"
 msgstr "Yorumlanamaz"
@@ -4233,23 +3104,13 @@ msgstr "Notlar"
 msgid "Nothing about the clinical rule is shown until then."
 msgstr ""
 
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "NPV"
 msgstr "NPV"
-
-#: R/sequentialtests.b.R
-msgid "NPV (Negative Predictive Value)"
-msgstr "NÖD (Negatif Öngörü Değeri)"
 
 #: kappaSizePower/ui[1][0]/kappa0.label
 msgid "Null hypothesis"
 msgstr "Sıfır hipotezi"
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Number Needed to Screen"
-msgstr "Taranması Gereken Sayı"
 
 #: lassologistic/options/nfolds.title
 msgid "Number of CV Folds"
@@ -4318,16 +3179,6 @@ msgid "Number of subjects available, each rated by all raters (at least 11)."
 msgstr ""
 "Her biri tüm değerlendiriciler tarafından değerlendirilen mevcut olgu sayısı "
 "(en az 11)."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Numbers of tests and total costs are expected values derived from the "
-"entered probabilities. Fractional expected counts are retained so the "
-"displayed count and cost agree."
-msgstr ""
-"Test sayıları ve toplam maliyetler girilen olasılıklardan türetilen beklenen "
-"değerlerdir. Görüntülenen sayı ve maliyetin uyuşması için kesirli beklenen "
-"sayılar korunur."
 
 #: R/lassologistic.b.R
 msgid "Numeric outcome must have at least 2 observed values."
@@ -4494,35 +3345,6 @@ msgstr ""
 msgid "Pairwise comparison needs two models"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Parallel Test Assumption Check"
-msgstr "Paralel Test Varsayım Kontrolü"
-
-#: R/sequentialtests.b.R
-msgid "parallel testing"
-msgstr "paralel test"
-
-#: R/sequentialtests.b.R
-msgid "Parallel Testing (Test all)"
-msgstr "Paralel Test (Tümünü test et)"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Parallel testing raises combined sensitivity above that of either test alone "
-"and lowers combined specificity: fewer missed cases, more false positives."
-msgstr ""
-"Paralel test, birleşik duyarlılığı her iki testin de üzerine çıkarır ve "
-"birleşik özgüllüğü düşürür: daha az kaçırılan olgu, daha fazla yanlış "
-"pozitif."
-
-#: R/sequentialtests.b.R
-msgid "parallel testing strategy"
-msgstr "paralel test stratejisi"
-
-#: R/sequentialtests.b.R
-msgid "Parallel Testing Strategy"
-msgstr "Paralel Test Stratejisi"
-
 #: lassologistic/results/variableImportance.columns.title
 msgid "Path Inclusion Proportion"
 msgstr "Yolda yer alma oranı"
@@ -4644,18 +3466,6 @@ msgstr "Zayıf Ayırt Etme"
 msgid "Population Characteristics:"
 msgstr ""
 
-#: sequentialtests/results/population_flow_table.title
-msgid "Population Flow Analysis"
-msgstr "Popülasyon Akış Analizi"
-
-#: R/sequentialtests.b.R
-msgid "Population Flow Through Testing"
-msgstr "Test Boyunca Popülasyon Akışı"
-
-#: sequentialtests/results/plot_population_flow.title
-msgid "Population Flow Visualization"
-msgstr "Popülasyon Akışı Görselleştirmesi"
-
 #: decisioncurve/ui[6][0]/populationSize.label
 msgid "Population size"
 msgstr "Popülasyon boyutu"
@@ -4665,29 +3475,12 @@ msgid "Population Size for Projections"
 msgstr "Projeksiyonlar İçin Popülasyon Boyutu"
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 msgid "Positive"
 msgstr "Pozitif"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Positive\n"
-"Result"
-msgstr ""
-"Pozitif\n"
-"Sonuç"
 
 #: R/lassologistic.b.R
 msgid "Positive (+)"
 msgstr "Pozitif (+)"
-
-#: R/sequentialtests.b.R
-msgid "Positive Likelihood Ratio Undefined"
-msgstr "Pozitif Olabilirlik Oranı Tanımsız"
-
-#: sequentialtests/results/individual_tests_table.columns.title
-msgid "Positive LR"
-msgstr "Pozitif LR"
 
 #: decisioncurve/ui[0][0]/outcomePositive.label
 msgid "Positive Outcome"
@@ -4700,10 +3493,6 @@ msgstr "Pozitif Sonuç Düzeyi"
 #: R/decisioncurve.b.R
 msgid "Positive Outcome Level Required"
 msgstr "Pozitif Sonuç Düzeyi Gerekli"
-
-#: R/sequentialtests.b.R
-msgid "Positive Path"
-msgstr "Pozitif Yol"
 
 #: decisioncurve/ui[1][2][0]/decisionRulePositive.label
 msgid "Positive rule level"
@@ -4762,19 +3551,9 @@ msgstr ""
 "kappaSize paketindeki (Rotondi ve Donner) uyum iyiliği (merkezi olmayan "
 "ki-kare) yaklaşımıyla hesaplanan güce dayalı örneklem büyüklüğü."
 
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "PPV"
 msgstr "PPV"
-
-#: R/sequentialtests.b.R
-msgid "PPV (Positive Predictive Value)"
-msgstr "PÖD (Pozitif Öngörü Değeri)"
-
-#: R/sequentialtests.b.R
-msgid "Pre-test"
-msgstr "Test öncesi"
 
 #: R/lassologistic.b.R
 msgid "Precision"
@@ -4871,61 +3650,8 @@ msgid "present"
 msgstr "mevcut"
 
 #: R/decisioncurve.b.R
-#: sequentialtests/ui[5][0]/prevalence.label
 msgid "Prevalence"
 msgstr "Prevalans"
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Invalid"
-msgstr "Prevalans Geçersiz"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence is low (%.2f%%). Below 5%% pre-test probability, PPV is dominated "
-"by specificity: a one-percentage-point change in specificity can move PPV by "
-"more than 15 percentage points. Verify the specificity assumptions and the "
-"intended population."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence is very high (%.1f%%). Verify that this assumption matches the "
-"intended population; predictive values are prevalence-dependent."
-msgstr ""
-"Prevalans çok yüksek (%%%.1f). Bu varsayımın hedef popülasyonla eşleştiğini "
-"doğrulayın; öngörü değerleri prevalansa bağlıdır."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence is very low (%.3f%%). Even with excellent tests, PPV may be "
-"extremely low. Verify the pre-test probability for the intended population."
-msgstr ""
-"Prevalans çok düşük (%%%.3f). Mükemmel testlerle bile PÖD son derece düşük "
-"olabilir. Hedef popülasyon için test öncesi olasılığı doğrulayın."
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Low"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence must be greater than 0 and less than 1 (exclusive). Current value "
-"is invalid."
-msgstr ""
-"Prevalans 0'dan büyük ve 1'den küçük olmalıdır (sınırlar hariç). Geçerli "
-"değer geçersizdir."
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Very High"
-msgstr "Prevalans Çok Yüksek"
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Very Low"
-msgstr "Prevalans Çok Düşük"
-
-#: R/sequentialtests.b.R
-msgid "Probability"
-msgstr "Olasılık"
 
 #: kappaSizePower/options/power.description.ui
 msgid ""
@@ -4934,14 +3660,6 @@ msgid ""
 msgstr ""
 "Gerçek uyum kappa1 iken kappa0'ın reddedilme olasılığı (1 - tip II hata). "
 "Alışılmış değerler 0.80 veya 0.90'dır; alfadan büyük olmalıdır."
-
-#: sequentialtests/results/plot_probability.title
-msgid "Probability Transformation"
-msgstr "Olasılık Dönüşümü"
-
-#: R/sequentialtests.b.R
-msgid "Probability Transformation Through Testing"
-msgstr "Test Boyunca Olasılık Dönüşümü"
 
 #: decisioncurve/results/clinicalImpactTable.columns.title
 msgid "Projected False Positives"
@@ -5036,14 +3754,6 @@ msgstr "Sonuç düzeylerinin oranları"
 msgid "Proportions should sum to 1.0, current sum is {sum}."
 msgstr ""
 
-#: sequentialtests/options/preset/prostate_screening_exclusion.title
-msgid "PSA + MRI (Illustrative)"
-msgstr "PSA + MRG (Açıklayıcı)"
-
-#: R/sequentialtests.b.R
-msgid "PSA Test"
-msgstr "PSA Testi"
-
 #: decisioncurve/options/seed.title
 #: lassologistic/options/random_seed.title
 msgid "Random Seed"
@@ -5088,10 +3798,6 @@ msgstr ""
 "Modelin net faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi "
 "etmemeyi aştığı eşik olasılıkları aralığı; bir model yalnızca bu aralıkta "
 "kullanılmaya değerdir."
-
-#: R/sequentialtests.b.R
-msgid "Rapid Antigen Test"
-msgstr "Hızlı Antijen Testi"
 
 #: R/kappaSizePower.b.R
 msgid "Rare outcome category."
@@ -5226,10 +3932,6 @@ msgstr "Kaynak Kullanımı Analizi"
 msgid "Resource utilization projected to the selected population size"
 msgstr "Seçilen popülasyon boyutuna yansıtılan kaynak kullanımı"
 
-#: sequentialtests/options/preset/covid_screening_confirmation.title
-msgid "Respiratory Testing (Illustrative)"
-msgstr "Solunum Yolu Testi (Açıklayıcı)"
-
 #: R/lassologistic.b.R
 msgid "Result"
 msgstr "Sonuç"
@@ -5282,10 +3984,6 @@ msgstr "ROC Eğrisi (EAA = %s)"
 #: R/lassologistic.b.R
 msgid "ROC curve with AUC and confidence interval"
 msgstr "EAA ve güven aralığı ile ROC eğrisi"
-
-#: R/sequentialtests.b.R
-msgid "RT-PCR"
-msgstr "RT-PCR"
 
 #: R/decisioncurve.b.R
 msgid "Rule Not Binary"
@@ -5417,34 +4115,6 @@ msgstr "Puanlama Sistemi Performansı"
 msgid "Scoring System Runs Backwards"
 msgstr ""
 
-#: sequentialtests/options/test1_name.default
-msgid "Screening Test"
-msgstr "Tarama Testi"
-
-#: sequentialtests/options/test1_name.title
-msgid "Screening test name"
-msgstr "Tarama testi adı"
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Second Test"
-msgstr "İkinci Test"
-
-#: sequentialtests/ui[3][0]/test2_cost.label
-msgid "Second test"
-msgstr "İkinci test"
-
-#: sequentialtests/ui[2].label
-msgid "Second Test (Confirmatory)"
-msgstr "İkinci Test (Doğrulayıcı)"
-
-#: R/sequentialtests.b.R
-msgid "Second test only for those negative on first test"
-msgstr "İkinci test yalnızca ilk testte negatif olanlar içindir"
-
-#: R/sequentialtests.b.R
-msgid "Second test only for those positive on first test"
-msgstr "İkinci test yalnızca ilk testte pozitif olanlar içindir"
-
 #: R/decisioncurve.b.R
 msgid "Select a binary Outcome Variable (the condition you want to predict)."
 msgstr "İkili bir Sonuç Değişkeni seçin (tahmin etmek istediğiniz durum)."
@@ -5476,13 +4146,7 @@ msgid "Selected Variables"
 msgstr "Seçilen Değişkenler"
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/options/test1_sens.title
-#: sequentialtests/options/test2_sens.title
-#: sequentialtests/ui[1][0]/test1_sens.label
-#: sequentialtests/ui[2][0]/test2_sens.label
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "Sensitivity"
 msgstr "Duyarlılık"
 
@@ -5490,82 +4154,9 @@ msgstr "Duyarlılık"
 msgid "Sensitivity (Recall)"
 msgstr "Duyarlılık (Recall)"
 
-#: R/sequentialtests.b.R
-msgid "Sensitivity Analysis: How Prevalence Affects Predictive Values"
-msgstr "Duyarlılık Analizi: Prevalansın Öngörü Değerlerini Nasıl Etkilediği"
-
-#: sequentialtests/results/plot_sensitivity_analysis.title
-msgid "Sensitivity Analysis: PPV/NPV vs Prevalence"
-msgstr "Duyarlılık Analizi: PÖD/NÖD ve Prevalans"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Sensitivity, specificity and prevalence are treated as exact. These combined "
-"figures therefore carry <i>no</i> confidence interval and do not reflect "
-"sampling uncertainty in the values entered — published test performance and "
-"local prevalence both vary."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Separation in Unpenalized Refit"
 msgstr "Cezalandırılmamış Yeniden Uyumda Ayrım"
-
-#: package/analyses/sequentialtests.menuSubtitle
-#: sequentialtests/options.menuSubtitle
-msgid "Sequential Test Analysis"
-msgstr "Sıralı Test Analizi"
-
-#: package/analyses/sequentialtests.title
-#: package/analyses/sequentialtests.menuTitle
-#: sequentialtests/options.title
-#: sequentialtests/ui.title
-#: sequentialtests/results.title
-msgid "Sequential Testing Analysis"
-msgstr "Sıralı Test Analizi"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Sequential testing analysis completed: %s strategy with prevalence %.1f%%, "
-"combined sensitivity %.1f%%, combined specificity %.1f%%."
-msgstr ""
-"Sıralı test analizi tamamlandı: %s stratejisi, prevalans %%%.1f, birleşik "
-"duyarlılık %%%.1f, birleşik özgüllük %%%.1f."
-
-#: R/sequentialtests.b.R
-msgid "serial negative (exclusion) strategy"
-msgstr "seri negatif (dışlama) stratejisi"
-
-#: R/sequentialtests.b.R
-msgid "Serial Negative Assumption Check"
-msgstr "Seri Negatif Varsayım Kontrolü"
-
-#: R/sequentialtests.b.R
-msgid "serial positive (confirmation) strategy"
-msgstr "seri pozitif (doğrulama) stratejisi"
-
-#: R/sequentialtests.b.R
-msgid "Serial Positive Assumption Check"
-msgstr "Seri Pozitif Varsayım Kontrolü"
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing (Test negatives)"
-msgstr "Seri Test (Negatifleri test et)"
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing (Test positives)"
-msgstr "Seri Test (Pozitifleri test et)"
-
-#: R/sequentialtests.b.R
-msgid "serial testing of negatives"
-msgstr "negatiflerin seri testi"
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing Strategy: Test Negatives"
-msgstr "Seri Test Stratejisi: Negatifleri Test Et"
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing Strategy: Test Positives"
-msgstr "Seri Test Stratejisi: Pozitifleri Test Et"
 
 #: R/lassologistic.b.R
 msgid "Serious warning"
@@ -5648,13 +4239,7 @@ msgid "Sparse categories."
 msgstr "Seyrek kategoriler."
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/options/test1_spec.title
-#: sequentialtests/options/test2_spec.title
-#: sequentialtests/ui[1][0]/test1_spec.label
-#: sequentialtests/ui[2][0]/test2_spec.label
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "Specificity"
 msgstr "Özgüllük"
 
@@ -5673,10 +4258,6 @@ msgstr ""
 #: R/decisioncurve.b.R
 msgid "Specify which level represents the positive outcome."
 msgstr "Hangi düzeyin pozitif sonucu temsil ettiğini belirtin."
-
-#: R/sequentialtests.b.R
-msgid "Sputum Culture"
-msgstr "Balgam Kültürü"
 
 #: decisioncurve/options/plotStyle/standard.title
 msgid "Standard (with reference lines)"
@@ -5712,28 +4293,6 @@ msgstr "Adım Boyutu"
 msgid "Strategy"
 msgstr "Strateji"
 
-#: sequentialtests/results/clinical_guidance.title
-msgid "Strategy Notes and Teaching Examples"
-msgstr "Strateji Notları ve Eğitim Örnekleri"
-
-#: R/sequentialtests.b.R
-msgid "Strategy: {strategy}"
-msgstr "Strateji: {strategy}"
-
-#: R/sequentialtests.b.R
-msgid "Strategy: {strategy} | Prevalence: {prevalence}"
-msgstr "Strateji: {strategy} | Prevalans: {prevalence}"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Strategy: {strategy} | Sensitivity: {sensitivity} | Specificity: "
-"{specificity}"
-msgstr "Strateji: {strategy} | Duyarlılık: {sensitivity} | Özgüllük: {specificity}"
-
-#: R/sequentialtests.b.R
-msgid "STRONG WARNING"
-msgstr "GÜÇLÜ UYARI"
-
 #: R/kappaSizeCI.b.R
 msgid "Study Design:"
 msgstr "Çalışma Tasarımı:"
@@ -5758,14 +4317,6 @@ msgstr "olgu"
 msgid "Summary"
 msgstr "Özet"
 
-#: sequentialtests/results/plain_summary.title
-msgid "Summary (Plain Language)"
-msgstr "Özet (Sade Dille)"
-
-#: sequentialtests/results/summary_table.title
-msgid "Summary of Testing Strategy"
-msgstr "Test Stratejisi Özeti"
-
 #: R/decisioncurve.b.R
 msgid "Table thresholds outside the analysed range"
 msgstr "Analiz edilen aralığın dışındaki tablo eşikleri"
@@ -5774,26 +4325,6 @@ msgstr "Analiz edilen aralığın dışındaki tablo eşikleri"
 msgid "Tables & Outputs"
 msgstr "Tablolar ve Çıktılar"
 
-#: sequentialtests/options/preset.title
-msgid "Teaching example"
-msgstr "Eğitim örneği"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Teaching example \"{preset}\" is not recognised; the values shown in the "
-"panel were used instead."
-msgstr ""
-"\"{preset}\" eğitim örneği tanınmıyor; bunun yerine panelde gösterilen "
-"değerler kullanıldı."
-
-#: R/sequentialtests.b.R
-msgid "Teaching Example Values Are Not Clinical Guidance"
-msgstr "Eğitim Örneği Değerleri Klinik Kılavuz Değildir"
-
-#: sequentialtests/ui[0].label
-msgid "Teaching Examples (Not Clinical Guidance)"
-msgstr "Eğitim Örnekleri (Klinik Kılavuz Değildir)"
-
 #: R/lassologistic.b.R
 msgid "Technical Notes"
 msgstr "Teknik Notlar"
@@ -5801,220 +4332,6 @@ msgstr "Teknik Notlar"
 #: R/lassologistic.b.R
 msgid "Terms selected"
 msgstr "Seçilen terimler"
-
-#: sequentialtests/results/individual_tests_table.columns.title
-msgid "Test"
-msgstr "Test"
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Low Performance"
-msgstr "Test 1 Düşük Performans"
-
-#: R/sequentialtests.b.R
-msgid "Test 1 name cannot be empty. Please provide a descriptive name."
-msgstr "Test 1 adı boş olamaz. Lütfen açıklayıcı bir ad sağlayın."
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Name Empty"
-msgstr "Test 1 Adı Boş"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 performance is unusually low (Sensitivity=%.1f%%, "
-"Specificity=%.1f%%). Verify whether these assumptions are suitable for the "
-"intended illustrative comparison."
-msgstr ""
-"Test 1 performansı alışılmadık derecede düşük (Duyarlılık=%%%.1f, "
-"Özgüllük=%%%.1f). Bu varsayımların amaçlanan açıklayıcı karşılaştırma için "
-"uygun olup olmadığını doğrulayın."
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Sensitivity High"
-msgstr "Test 1 Duyarlılığı Yüksek"
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Sensitivity Invalid"
-msgstr "Test 1 Duyarlılığı Geçersiz"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 sensitivity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-"Test 1 duyarlılığı en az %%99 (%.2f%%). Bu tahminin hedef popülasyon ve "
-"ortam için geçerli olduğunu doğrulayın."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 sensitivity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-"Test 1 duyarlılığı 0 ile 1 arasında olmalıdır (%0 ila %100). Geçerli değer "
-"geçersizdir."
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Specificity High"
-msgstr "Test 1 Özgüllüğü Yüksek"
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Specificity Invalid"
-msgstr "Test 1 Özgüllüğü Geçersiz"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 specificity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-"Test 1 özgüllüğü en az %%99 (%.2f%%). Bu tahminin hedef popülasyon ve ortam "
-"için geçerli olduğunu doğrulayın."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 specificity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-"Test 1 özgüllüğü 0 ile 1 arasında olmalıdır (%0 ila %100). Geçerli değer "
-"geçersizdir."
-
-#: R/sequentialtests.b.R
-msgid "Test 1: {name}"
-msgstr "Test 1: {name}"
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Low Performance"
-msgstr "Test 2 Düşük Performans"
-
-#: R/sequentialtests.b.R
-msgid "Test 2 name cannot be empty. Please provide a descriptive name."
-msgstr "Test 2 adı boş olamaz. Lütfen açıklayıcı bir ad sağlayın."
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Name Empty"
-msgstr "Test 2 Adı Boş"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 performance is unusually low (Sensitivity=%.1f%%, "
-"Specificity=%.1f%%). Verify whether these assumptions are suitable for the "
-"intended illustrative comparison."
-msgstr ""
-"Test 2 performansı alışılmadık derecede düşük (Duyarlılık=%%%.1f, "
-"Özgüllük=%%%.1f). Bu varsayımların amaçlanan açıklayıcı karşılaştırma için "
-"uygun olup olmadığını doğrulayın."
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Sensitivity High"
-msgstr "Test 2 Duyarlılığı Yüksek"
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Sensitivity Invalid"
-msgstr "Test 2 Duyarlılığı Geçersiz"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 sensitivity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-"Test 2 duyarlılığı en az %%99 (%.2f%%). Bu tahminin hedef popülasyon ve "
-"ortam için geçerli olduğunu doğrulayın."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 sensitivity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-"Test 2 duyarlılığı 0 ile 1 arasında olmalıdır (%0 ila %100). Geçerli değer "
-"geçersizdir."
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Specificity High"
-msgstr "Test 2 Özgüllüğü Yüksek"
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Specificity Invalid"
-msgstr "Test 2 Özgüllüğü Geçersiz"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 specificity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-"Test 2 özgüllüğü en az %%99 (%.2f%%). Bu tahminin hedef popülasyon ve ortam "
-"için geçerli olduğunu doğrulayın."
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 specificity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-"Test 2 özgüllüğü 0 ile 1 arasında olmalıdır (%0 ila %100). Geçerli değer "
-"geçersizdir."
-
-#: R/sequentialtests.b.R
-msgid "Test 2: {name}"
-msgstr "Test 2: {name}"
-
-#: sequentialtests/options/strategy/serial_negative.title
-msgid "Test all negatives from first test"
-msgstr "İlk testten tüm negatifleri test et"
-
-#: sequentialtests/options/strategy/serial_positive.title
-msgid "Test all positives from first test"
-msgstr "İlk testten tüm pozitifleri test et"
-
-#: sequentialtests/options/strategy/parallel.title
-msgid "Test all subjects with both tests (parallel)"
-msgstr "Tüm denekleri her iki testle test et (paralel)"
-
-#: R/sequentialtests.b.R
-msgid "Test Correlation Risk"
-msgstr "Test Korelasyon Riski"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test names are similar (\"%s\" vs \"%s\"). If tests measure similar "
-"biomarkers or use similar technology, they may be conditionally dependent. "
-"This can bias combined sensitivity and specificity in opposite directions."
-msgstr ""
-"Test adları benzerdir (\"%s\" ve \"%s\"). Testler benzer biyobelirteçleri "
-"ölçüyorsa veya benzer teknoloji kullanıyorsa koşullu olarak bağımlı "
-"olabilirler. Bu durum birleşik duyarlılık ve özgüllüğü zıt yönlerde yanlı "
-"yapabilir."
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Test Negative"
-msgstr "Test Negatif"
-
-#: R/sequentialtests.b.R
-#: sequentialtests/results/plot_performance.title
-msgid "Test Performance Comparison"
-msgstr "Test Performansı Karşılaştırması"
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Test Positive"
-msgstr "Test Pozitif"
-
-#: R/sequentialtests.b.R
-msgid "Test Results"
-msgstr "Test Sonuçları"
-
-#: R/sequentialtests.b.R
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Testing Stage"
-msgstr "Test Aşaması"
-
-#: sequentialtests/ui[4].label
-#: sequentialtests/results/summary_table.columns.title
-msgid "Testing Strategy"
-msgstr "Test Stratejisi"
-
-#: sequentialtests/options/strategy.title
-msgid "Testing strategy"
-msgstr "Test stratejisi"
-
-#: sequentialtests/results/plot_flow_diagram.title
-msgid "Testing Strategy Flow Diagram"
-msgstr "Test Stratejisi Akış Diyagramı"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -6029,25 +4346,6 @@ msgstr ""
 "uyarlama LASSO daralmasını ortadan kaldırır. Tüm metrikler görünürdedir "
 "(örneklem içi) - iyimserlik düzeltmeli ayrım için Bootstrap Dahili "
 "Doğrulamasını kullanın."
-
-#: R/sequentialtests.b.R
-msgid ""
-"The \"{preset}\" teaching example supplies round, illustrative numbers "
-"chosen to demonstrate how sequential testing behaves. They are NOT validated "
-"clinical parameters, they are not taken from any specific published study, "
-"and the prevalence is not your population's. This example is not clinical "
-"guidance and must not be used to design a real testing protocol or advise a "
-"patient. Replace every value with sensitivity, specificity and prevalence "
-"estimates from your own setting or from a source you have checked."
-msgstr ""
-"\"{preset}\" eğitim örneği, sıralı testin nasıl davrandığını göstermek için "
-"seçilmiş yuvarlak, açıklayıcı sayılar sunar. Bunlar doğrulanmış klinik "
-"parametreler DEĞİLDİR, yayınlanmış belirli bir çalışmadan alınmamıştır ve "
-"prevalans sizin popülasyonunuzun prevalansı değildir. Bu örnek klinik "
-"rehberlik değildir ve gerçek bir test protokolü tasarlamak ya da bir hastaya "
-"tavsiyede bulunmak için kullanılmamalıdır. Her değeri kendi ortamınızdan "
-"veya kontrol ettiğiniz bir kaynaktan alınan duyarlılık, özgüllük ve "
-"prevalans tahminleriyle değiştirin."
 
 #: kappaSizePower/options/kappa1.description.ui
 msgid ""
@@ -6131,18 +4429,6 @@ msgstr ""
 #: R/decisioncurve.b.R
 msgid "The clinical decision rule variable must be binary (exactly 2 levels)."
 msgstr "Klinik karar kuralı değişkeni ikili olmalıdır (tam olarak 2 düzey)."
-
-#: R/sequentialtests.b.R
-msgid ""
-"the combined sensitivity above is too high and the combined specificity too "
-"low"
-msgstr "yukarıdaki birleşik duyarlılık çok yüksek ve birleşik özgüllük çok düşüktür"
-
-#: R/sequentialtests.b.R
-msgid ""
-"the combined specificity above is too high and the combined sensitivity too "
-"low"
-msgstr "yukarıdaki birleşik özgüllük çok yüksek ve birleşik duyarlılık çok düşüktür"
 
 #: R/kappaSizeCI.b.R
 msgid ""
@@ -6457,16 +4743,6 @@ msgstr ""
 "Tablo, analiz edilen %{lo} ila %{hi} eşik aralığının dışına düşen {values} "
 "değerlerinde satırlar bildirmektedir."
 
-#: R/sequentialtests.b.R
-msgid ""
-"The tests have similar marginal sensitivity and specificity. Similar "
-"marginal performance does not establish redundancy or independence; assess "
-"conditional dependence using external evidence."
-msgstr ""
-"Testler benzer marjinal duyarlılık ve özgüllüğe sahiptir. Benzer marjinal "
-"performans fazlalığı veya bağımsızlığı kanıtlamaz; harici kanıtları "
-"kullanarak koşullu bağımlılığı değerlendirin."
-
 #: R/decisioncurve.b.R
 msgid ""
 "The threshold range you entered, {lo}% to {hi}%, is narrower than the step "
@@ -6704,36 +4980,6 @@ msgstr ""
 msgid "This scoring system runs backwards."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"This strategy gives exactly the same sensitivity, specificity, PPV and NPV "
-"as {other}: both call a subject positive if <i>either</i> test is positive. "
-"They differ only in how many second tests are performed, which the cost "
-"analysis shows."
-msgstr ""
-"Bu strateji, {other} ile tam olarak aynı duyarlılık, özgüllük, PÖD ve NÖD'yi "
-"verir: her ikisi de <i>herhangi bir</i> test pozitifse deneği pozitif olarak "
-"nitelendirir. Yalnızca kaç ikinci testin uygulandığı konusunda farklılık "
-"gösterirler ki bunu maliyet analizi gösterir."
-
-#: R/sequentialtests.b.R
-msgid ""
-"This strategy raises combined sensitivity above that of either test alone "
-"and lowers combined specificity: fewer missed cases, more false positives."
-msgstr ""
-"Bu strateji, birleşik duyarlılığı her iki testin de üzerine çıkarır ve "
-"birleşik özgüllüğü düşürür: daha az kaçırılan olgu, daha fazla yanlış "
-"pozitif."
-
-#: R/sequentialtests.b.R
-msgid ""
-"This strategy raises combined specificity above that of either test alone "
-"and lowers combined sensitivity: fewer false positives, more missed cases."
-msgstr ""
-"Bu strateji, birleşik özgüllüğü her iki testin de üzerine çıkarır ve "
-"birleşik duyarlılığı düşürür: daha az yanlış pozitif, daha fazla kaçırılan "
-"olgu."
-
 #: decisioncurve/results/clinicalImpactTable.columns.title
 #: decisioncurve/results/costBenefitTable.columns.title
 #: decisioncurve/results/decisionConsequencesTable.columns.title
@@ -6796,18 +5042,6 @@ msgstr "Eşik Adım Boyutu"
 msgid "Thresholds for table (probabilities 0-1, comma-separated)"
 msgstr "Tablo için eşikler (0-1 arası olasılıklar, virgülle ayrılmış)"
 
-#: R/sequentialtests.b.R
-msgid "Tissue Biopsy"
-msgstr "Doku Biyopsisi"
-
-#: R/sequentialtests.b.R
-msgid ""
-"TN\n"
-"n={n}"
-msgstr ""
-"GN\n"
-"n={n}"
-
 #: decisioncurve/results/benefitRangeTable.columns.title
 msgid "To"
 msgstr "Bitiş"
@@ -6828,46 +5062,17 @@ msgstr "Analiz için çok az eksiksiz olgu var."
 msgid "Too few non-degenerate predictor columns."
 msgstr "Çok az dejenere olmayan tahmin edici sütunu var."
 
-#: R/sequentialtests.b.R
-msgid ""
-"Total\n"
-"n={n}"
-msgstr ""
-"Toplam\n"
-"n={n}"
-
 #: decisioncurve/results/costBenefitTable.columns.title
 msgid "Total Benefit"
 msgstr "Toplam Fayda"
 
 #: decisioncurve/results/costBenefitTable.columns.title
-#: sequentialtests/results/cost_analysis_table.columns.title
 msgid "Total Cost"
 msgstr "Toplam Maliyet"
-
-#: R/sequentialtests.b.R
-msgid "Total Population"
-msgstr "Toplam Popülasyon"
-
-#: R/sequentialtests.b.R
-msgid "Total Protocol Cost"
-msgstr "Toplam Protokol Maliyeti"
 
 #: lassologistic/results/lookupTable.columns.title
 msgid "Total Score"
 msgstr "Toplam Puan"
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Total Subjects"
-msgstr "Toplam Denek"
-
-#: R/sequentialtests.b.R
-msgid ""
-"TP\n"
-"n={n}"
-msgstr ""
-"GP\n"
-"n={n}"
 
 #: decisioncurve/results/resultsTable.columns.title
 msgid "Treat All"
@@ -6877,32 +5082,17 @@ msgstr "Herkesi Tedavi Et"
 msgid "Treat None"
 msgstr "Hiç Kimseyi Tedavi Et"
 
-#: R/sequentialtests.b.R
-msgid "Troponin"
-msgstr "Troponin"
-
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "True Negative"
 msgstr "Gerçek Negatif"
 
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "True Negatives"
-msgstr "Gerçek Negatifler"
-
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "True Positive"
 msgstr "Gerçek Pozitif"
 
 #: R/decisioncurve.b.R
-#: sequentialtests/results/population_flow_table.columns.title
 msgid "True Positives"
 msgstr "Gerçek Pozitifler"
-
-#: R/sequentialtests.b.R
-msgid "True Status"
-msgstr "Gerçek Durum"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -6942,14 +5132,6 @@ msgstr "mevcut değil"
 #: lassologistic/results/lassoExplanation.title
 msgid "Understanding Penalized Logistic Regression"
 msgstr "Cezalandırılmış Lojistik Regresyonu Anlama"
-
-#: sequentialtests/results/cost_analysis_table.columns.title
-msgid "Unit Cost"
-msgstr "Birim Maliyet"
-
-#: R/sequentialtests.b.R
-msgid "Unknown Teaching Example"
-msgstr "Bilinmeyen Eğitim Örneği"
 
 #: R/kappaSizeCI.b.R
 msgid "Unsupported number of outcome categories"
@@ -7006,10 +5188,6 @@ msgstr "Doğrulama"
 msgid "Value"
 msgstr "Değer"
 
-#: R/sequentialtests.b.R
-msgid "Value (%)"
-msgstr "Değer (%)"
-
 #: R/decisioncurve.b.R
 msgid ""
 "Values between 0 and 1 are accepted as probabilities, but this analysis does "
@@ -7054,10 +5232,6 @@ msgstr "Çok küçük örneklem büyüklüğü."
 #: R/lassologistic.b.R
 msgid "Warning"
 msgstr "Uyarı"
-
-#: R/sequentialtests.b.R
-msgid "WARNING"
-msgstr "UYARI"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -7151,20 +5325,6 @@ msgstr ""
 "Zaten en az muhafazakar lambdayı kullanıyorsunuz, bu nedenle daha "
 "bilgilendirici tahmin ediciler ekleyin veya daha fazla olgu toplayın."
 
-#: R/sequentialtests.b.R
-msgid ""
-"You would need to screen approximately %d people to identify one true "
-"positive case."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Youden index"
 msgstr "Youden indeksi"
-
-#: R/sequentialtests.b.R
-msgid ""
-"Your prevalence\n"
-"(%.1f%%)"
-msgstr ""
-"Sizin prevalansınız\n"
-"(%%%.1f)"

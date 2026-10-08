@@ -60,14 +60,6 @@ msgid ""
 "strategy is evaluated on the same {kept} retained rows."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "{first} and {second} applied together"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "{first} followed by {second}"
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
 msgid "{head} and {last}"
@@ -152,24 +144,6 @@ msgid ""
 "analysed."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"%1$s ends at the first-test-negative subgroup: P(disease | Test 1 negative) "
-"= %2$.1f%%. That is not the pooled final-negative figure in the tables, 1 - "
-"combined NPV = %3$.1f%%, which also averages in the Test 1 positive / Test 2 "
-"negative subgroup (P(disease) = %4$.1f%%). Those subjects are classified "
-"negative but are not drawn here."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"%1$s ends at the first-test-positive subgroup: P(disease | Test 1 positive) "
-"= %2$.1f%%. That is not the pooled final-positive figure in the tables, "
-"combined PPV = %3$.1f%%, which also averages in the Test 1 negative / Test 2 "
-"positive subgroup (P(disease) = %4$.1f%%). Those subjects are classified "
-"positive but are not drawn here."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "%1$s logistic regression with %2$s lambda selection and %3$d-fold "
@@ -250,175 +224,10 @@ msgid ""
 "(it is this distance, not the full interval width, that sets n)"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "</ol>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "</ul>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<div class='jmv-guidance' style='background-color: rgba(138, 155, 172, "
-"0.06);padding:15px;border-radius:6px;margin-top:10px; color: "
-"inherit;'><h4>Strategy Notes and Teaching Examples</h4><p><strong>Teaching "
-"examples only — not clinical guidance.</strong> The named pairs illustrate "
-"mathematical structure only. They are not recommendations, complete "
-"diagnostic algorithms, or validated pathways, and their sensitivity, "
-"specificity, prevalence, and cost values are not validated clinical "
-"parameters.</p><p><strong>How the strategies combine "
-"tests:</strong></p><ul><li><strong>Serial positive:</strong> Test 2 is "
-"applied to first-test positives; both tests must be positive. Specificity "
-"increases and sensitivity decreases under conditional "
-"independence.</li><li><strong>Serial negative:</strong> Test 2 is applied to "
-"first-test negatives; either positive makes the final result positive. "
-"Sensitivity increases and specificity decreases under conditional "
-"independence.</li><li><strong>Parallel:</strong> Both tests are applied to "
-"everyone; either positive makes the final result positive. Accuracy is "
-"algebraically identical to serial-negative testing, but utilization "
-"differs.</li></ul><p><strong>Why conditional dependence matters:</strong> "
-"Conditional dependence means that one test result remains informative about "
-"the other even after disease status is fixed, for example because the tests "
-"share biology, specimen characteristics, or technology. When positive "
-"conditional dependence is present in both disease-status groups, "
-"independence-based serial-positive calculations can make combined "
-"specificity too high and combined sensitivity too low. For serial-negative "
-"and parallel interpretation, they can make combined sensitivity too high and "
-"combined specificity too low. Gardner et al. (2000), <em>Conditional "
-"dependence between tests affects the diagnosis and surveillance of animal "
-"diseases</em>, describes these directional effects; see the reference "
-"below.</p><p>Test order is an input to explore, not a recommendation. "
-"Replace every example value with evidence appropriate to the intended "
-"setting.</p><p><strong>Illustrative pair labels:</strong></p><ul>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<div style='background-color: rgba(138, 155, 172, "
-"0.06);padding:10px;border-radius:6px;margin-top:8px; color: "
-"inherit;'><strong>Assumption:</strong> Combined metrics assume conditional "
-"independence between tests. With positive conditional dependence in both "
-"disease-status groups, {direction}, and PPV and NPV shift accordingly.</div>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<div style='background-color: rgba(33, 149, 188, "
-"0.1);padding:15px;border-left:4px solid "
-"#0077be;font-size:1.05em;line-height:1.6; color: "
-"inherit;'><strong>Illustrative Summary:</strong> Using a %1$s with %2$s, the "
-"combined test achieves %3$.1f%% sensitivity (detects %4$.0f of every 100 "
-"diseased individuals) and %5$.1f%% specificity (correctly rules out %6$.0f "
-"of every 100 healthy individuals). At your specified disease prevalence of "
-"%7$.1f%%, a positive result indicates a %8$s chance the person truly has the "
-"disease (PPV), while a negative result indicates a %9$s chance the person is "
-"truly disease-free (NPV).%10$s %11$s <em>These combined figures assume the "
-"two tests are conditionally independent given disease status, and they treat "
-"the sensitivity, specificity and prevalence you entered as exact, so they "
-"carry no confidence interval. If the two tests are positively dependent in "
-"both disease-status groups (for example, because they measure related "
-"biology), %12$s.</em></div>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h3>Mathematical Framework for Sequential Testing</h3>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<h3>Sequential Testing Strategy Explanation</h3>{strategy}<h3>Results "
-"Interpretation</h3><p>With an entered prevalence of {prevalence}, the "
-"combined strategy has:</p><ul><li><strong>Combined sensitivity:</strong> "
-"{sensitivity}</li><li><strong>Combined specificity:</strong> "
-"{specificity}</li><li><strong>Combined PPV:</strong> "
-"{ppv}</li><li><strong>Combined NPV:</strong> {npv}</li></ul><p>For an "
-"illustrative population of {population} people:</p><ul><li>{finalPos} have a "
-"final positive classification</li><li>{finalNeg} have a final negative "
-"classification</li><li>Among {diseased} expected people with disease, {tp} "
-"are correctly identified ({tpRate})</li><li>Among {healthy} expected people "
-"without disease, {tn} are correctly identified ({tnRate})</li></ul>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h4>Key Definitions</h4>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h4>Likelihood Ratios</h4>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h4>Parallel Testing Strategy</h4>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h4>Predictive Values Calculations</h4>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h4>Probability Conversions</h4>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h4>Serial Testing Strategy (Testing Negatives)</h4>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h4>Serial Testing Strategy (Testing Positives)</h4>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h5>Combined Sensitivity</h5>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h5>Combined Specificity</h5>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h5>Negative Likelihood Ratio (LR-)</h5>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h5>Negative Predictive Value (NPV)</h5>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h5>Positive Likelihood Ratio (LR+)</h5>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<h5>Positive Predictive Value (PPV)</h5>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<i>Number Needed to Screen</i> here is the number of people entering the "
-"pathway per true-positive case detected, 1 / (prevalence × combined "
-"sensitivity), rounded up. It is not the screening-benefit statistic of the "
-"same name, people screened per death or adverse event prevented. It counts "
-"first tests only: a serial strategy also performs a second test on part of "
-"that group, and the Cost Analysis table shows the expected number of each "
-"test."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li><strong>1SE Rule</strong>: Selects the most parsimonious model within 1 "
 "SE of minimum CV error.</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Convert post-test odds back to probability</strong>: Post-test P "
-"= Odds/(1+Odds)</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Convert pre-test probability to odds</strong>: Odds = "
-"P/(1-P)</li>"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -440,40 +249,10 @@ msgid ""
 "number of variables never changes.</li>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Multiply odds by likelihood ratio</strong>: Post-test odds = "
-"Pre-test odds × LR</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li><strong>Negative Likelihood Ratio (LR-)</strong>: (1-Se)/Sp</li>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li><strong>Odds Ratio</strong>: exp(coefficient). OR > 1 increases "
 "probability of the positive class.</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li><strong>Positive Likelihood Ratio (LR+)</strong>: Se/(1-Sp)</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li><strong>Prevalence (P)</strong>: The pre-test probability of disease</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Sensitivity (Se)</strong>: Probability of a positive test in "
-"diseased subjects</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li><strong>Specificity (Sp)</strong>: Probability of a negative test in "
-"non-diseased subjects</li>"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -500,30 +279,6 @@ msgid ""
 "overestimates true performance.</li>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {first} + {second} = {combined}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {sens1} + {sens2} - {both} = {combined}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {sens1} × {sens2} = {combined}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined probability = {spec1} × {spec2} = {combined}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined sensitivity (Se) = {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Combined specificity (Sp) = {value}</li>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Continuous predictors in the scoring system are dichotomized at %s (set "
@@ -532,55 +287,16 @@ msgid ""
 "continuous LASSO model's AUC.</li>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Denominator = (1-P) × Sp + P × (1-Se) = {numerator} + {p} × {oneMinusSe} "
-"= {denominator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Denominator = P × Se + (1-P) × (1-Sp) = {numerator} + {oneMinusP} × "
-"{oneMinusSp} = {denominator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Emergency teaching pair (Physiologic test + "
-"Biomarker)</li><li>Acute-imaging teaching pair (Clinical assessment + "
-"Imaging)</li>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Events-per-variable (EPV) should be >=10. Below 5, results are "
 "unreliable regardless of regularization.</li>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a negative Test 1, probability of testing negative on Test 2: "
-"{value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a positive Test 1, probability of testing positive on Test 2: "
-"{value}</li>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Higher total scores indicate higher probability of the event (positive "
 "class).</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>HIV-style teaching pair (Ag/Ab assay → differentiation assay); this is "
-"not a complete HIV diagnostic algorithm</li><li>Cancer-screening teaching "
-"pair (Imaging → Tissue sampling)</li><li>Respiratory-infection teaching pair "
-"(Rapid antigen → Molecular assay)</li>"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -595,22 +311,6 @@ msgid ""
 "bootstrap validation for inference.</li>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "<li>NPV = numerator/denominator = {numerator}/{denominator} = {npv}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Numerator = (1-P) × Sp = {oneMinusP} × {sp} = {numerator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Numerator = P × Se = {p} × {se} = {numerator}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>PPV = numerator/denominator = {numerator}/{denominator} = {ppv}</li>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Predictors were <strong>not</strong> standardized; coefficients, odds "
@@ -618,69 +318,10 @@ msgid ""
 "measurement scale of each variable.</li>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "<li>Prevalence (P) = {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Probability of negative Test 1 followed by positive Test 2: (1 - "
-"{sens1}) × {sens2} = {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Probability of positive Test 1 followed by negative Test 2: (1 - "
-"{spec1}) × {spec2} = {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing negative on Test 1: {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing negative on Test 2: {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on both: {sens1} × {sens2} = {both}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on Test 1: {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on Test 2: {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Rule-out teaching pair (Initial assessment → "
-"Biomarker)</li><li>Exclusion teaching pair (Clinical score → Laboratory "
-"assay)</li>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<li>Selected variables are the features most useful for distinguishing the "
 "two groups.</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Test negative on Test 1 but positive on Test 2</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Test negative on Test 1, OR</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Test positive on Test 1 but negative on Test 2</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Test positive on Test 1, OR</li>"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -714,14 +355,6 @@ msgid ""
 "are collinear.</li>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "<ol>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Calculation steps:</p>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<p>Elastic Net blends the L1 (LASSO) and L2 (Ridge) penalties, here with a "
@@ -731,98 +364,12 @@ msgid ""
 "arbitrarily.</p>"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "<p>For a subject to test negative in this strategy, they must either:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>For a subject to test negative in this strategy, they must test negative "
-"on both tests:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>For a subject to test positive in this strategy, they must either:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>For a subject to test positive in this strategy, they must test positive "
-"on at least one test. This is calculated using the complement of the "
-"probability of testing negative on both tests:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>For a subject to test positive in this strategy, they must test positive "
-"on both tests:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>How much more likely a negative test result is to occur in patients with "
-"disease compared to those without:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>How much more likely a positive test result is to occur in patients with "
-"disease compared to those without:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>In this strategy, both tests are performed on all subjects. A subject is "
-"considered positive if either test is positive.</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>In this strategy, the second test is only performed if the first test is "
-"negative. A subject is considered positive if either test is positive.</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>In this strategy, the second test is only performed if the first test is "
-"positive. A subject is considered positive only if both tests are "
-"positive.</p>"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "<p>LASSO (Least Absolute Shrinkage and Selection Operator) adds an L1 "
 "penalty to the logistic regression likelihood, which shrinks some "
 "coefficients exactly to zero. This performs automatic variable selection, "
 "identifying the most important predictors for your binary outcome.</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>LR- = (1 - {se}) / {sp} = {lr}</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>LR- = (1 - Sensitivity) / Specificity</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>LR+ = {se} / (1 - {sp}) = {lr}</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>LR+ = Sensitivity / (1 - Specificity)</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>NPV = ((1-P) × Sp) / ((1-P) × Sp + P × (1-Se))</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>PPV = (P × Se) / (P × Se + (1-P) × (1-Sp))</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Probability calculation:</p>"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -834,94 +381,6 @@ msgid ""
 "the right choice when you believe most predictors carry some signal, or when "
 "they are strongly correlated and you want the penalty shared among them "
 "rather than one arbitrarily kept.</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Se<sub>combined</sub> = 1 - (1-Se<sub>1</sub>) × (1-Se<sub>2</sub>)</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>Se<sub>combined</sub> = Se<sub>1</sub> + (1-Se<sub>1</sub>) × "
-"Se<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>Se<sub>combined</sub> = Se<sub>1</sub> + Se<sub>2</sub> - (Se<sub>1</sub> "
-"× Se<sub>2</sub>)</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Se<sub>combined</sub> = Se<sub>1</sub> × Se<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>Sp<sub>combined</sub> = Sp<sub>1</sub> + (1-Sp<sub>1</sub>) × "
-"Sp<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>Sp<sub>combined</sub> = Sp<sub>1</sub> × Sp<sub>2</sub></p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>The probability that a negative test result is a true negative:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>The probability that a positive test result is a true positive:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>This can be rewritten as:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<p>To calculate how a test changes probability:</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>You selected a <strong>parallel teaching strategy</strong>. Everyone "
-"receives both {test1} (sensitivity {sens1}%, specificity {spec1}%) and "
-"{test2} (sensitivity {sens2}%, specificity {spec2}%), and a final result is "
-"positive when either test is positive.</p><p>The false-negative rates and "
-"specificities therefore multiply. Combined sensitivity increases while "
-"combined specificity decreases. These are the same accuracy formulas as "
-"serial-negative testing; only second-test utilization differs. Tests that "
-"fail on the same cases may add little benefit.</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>You selected a <strong>serial-negative teaching strategy</strong>. "
-"Everyone first receives {test1} (sensitivity {sens1}%, specificity "
-"{spec1}%). Only first-test negatives receive {test2} (sensitivity {sens2}%, "
-"specificity {spec2}%), and a final result is negative only when both tests "
-"are negative.</p><p>The false-negative rates and specificities therefore "
-"multiply. Combined sensitivity increases while combined specificity "
-"decreases. Two negative results do not automatically rule disease out; NPV "
-"still depends on prevalence, and false positives are shown in the "
-"population-flow table.</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<p>You selected a <strong>serial-positive teaching strategy</strong>. "
-"Everyone first receives {test1} (sensitivity {sens1}%, specificity "
-"{spec1}%). Only first-test positives receive {test2} (sensitivity {sens2}%, "
-"specificity {spec2}%), and a final result is positive only when both tests "
-"are positive.</p><p>The sensitivities and false-positive rates therefore "
-"multiply. Combined specificity increases while combined sensitivity "
-"decreases. Two positive results are not automatically a confirmed diagnosis; "
-"PPV still depends on prevalence, and false negatives are shown in the "
-"population-flow table.</p>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<ul>"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -1046,34 +505,6 @@ msgid ""
 "valid threshold probabilities."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "After Both Tests"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "After Combined Strategy"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "After First Test"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "After Second Test"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "After Test 1"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "After Test 2 (-)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "After Test 2 (+)"
-msgstr ""
-
 #: lassologistic/results/modelComparison.columns.title
 msgid "AIC"
 msgstr ""
@@ -1083,12 +514,6 @@ msgid ""
 "All inputs must use the same currency and the calculation assumes one test "
 "per person, treatment after a positive model decision, and treat-all without "
 "testing."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"All People\n"
-"(n={n})"
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -1145,14 +570,6 @@ msgid ""
 "before any clinical use."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"An illustrative population of %1$.0f at %2$.2f%% prevalence contains only "
-"%3$.2f expected people with disease, so the population-flow counts are "
-"fractional. Increase the population size (for example to 10000) for readable "
-"whole-person counts."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "An unpenalized logistic refit in the Model Comparison table showed "
@@ -1162,7 +579,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 msgid "Analysis Complete"
 msgstr ""
 
@@ -1178,22 +594,6 @@ msgstr ""
 
 #: decisioncurve/results/procedureNotes.title
 msgid "Analysis Summary"
-msgstr ""
-
-#: package/analyses/sequentialtests.description
-#: sequentialtests/options.description.main
-msgid ""
-"Analyzes how diagnostic accuracy changes when applying two tests in "
-"sequence, comparing three different testing strategies: serial positive "
-"(confirmation), serial negative (exclusion), and parallel testing. Provides "
-"comprehensive analysis including population flow, cost implications, and "
-"diagnostic plots, so you can explore how diagnostic strategies behave under "
-"explicit assumptions, compare hypothetical test sequences, weigh trade-offs "
-"between sensitivity and specificity, and illustrate expected testing volume "
-"and cost under user-supplied assumptions. The named scenarios and their "
-"values are teaching examples only, not clinical guidance or validated "
-"diagnostic pathways. Replace all example parameters with estimates "
-"applicable to the intended population before interpreting results."
 msgstr ""
 
 #: kappaSizeFixedN/ui[1].label
@@ -1445,10 +845,6 @@ msgstr ""
 msgid "Binomial Deviance"
 msgstr ""
 
-#: sequentialtests/options/preset/mi_emergency_parallel.title
-msgid "Biomarker + ECG (Illustrative)"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Blue dashed: lambda.min; orange dotted: lambda.1se"
 msgstr ""
@@ -1504,31 +900,9 @@ msgstr ""
 msgid "Bootstrap replications"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Both tests performed on everyone"
-msgstr ""
-
-#: sequentialtests/options/preset/breast_cancer_screening.title
-msgid "Breast Imaging + Tissue Sampling (Illustrative)"
-msgstr ""
-
 #: R/lassologistic.b.R
 #: lassologistic/results/modelComparison.columns.title
 msgid "Brier Score"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Calculation Error"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Calculation error with provided values: %s. Please verify all parameters and "
-"try again."
-msgstr ""
-
-#: sequentialtests/options/show_formulas.title
-msgid "Calculation formulas"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -1559,14 +933,6 @@ msgstr ""
 msgid "Check"
 msgstr ""
 
-#: sequentialtests/options/preset/tb_screening_confirmation.title
-msgid "Chest Imaging + Culture (Illustrative)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Chest X-ray"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid "Choose a unique rule label."
 msgstr ""
@@ -1593,14 +959,6 @@ msgstr ""
 
 #: decisioncurve/options/plotStyle/clean.title
 msgid "Clean (minimal annotations)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Clinical Assessment"
-msgstr ""
-
-#: sequentialtests/options/preset/stroke_emergency_parallel.title
-msgid "Clinical Assessment + CT (Illustrative)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -1710,105 +1068,6 @@ msgstr ""
 msgid "Collinearity"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"Combine\n"
-"Results"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Combined"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined figures assume the two tests are <i>conditionally independent</i> — "
-"that, among people with the same disease status, one test's result says "
-"nothing about the other's. With positive conditional dependence in both "
-"disease-status groups, {direction}. Dependence among people with the disease "
-"alone biases the combined sensitivity but not the specificity, and "
-"dependence among people without it the reverse; PPV and NPV move with either."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined metrics assume conditional independence between tests. If tests "
-"have positive conditional dependence in both disease-status groups (for "
-"example, similar biology or technology), {direction}. Dependence among "
-"people with the disease alone biases the combined sensitivity but not the "
-"specificity, and dependence among people without it the reverse; PPV and NPV "
-"move with either."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined negative likelihood ratio is infinite because combined specificity "
-"is effectively zero under the entered assumptions."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined negative likelihood ratio is undefined (both numerator and "
-"denominator approach zero)."
-msgstr ""
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined NPV"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined NPV cannot be calculated (denominator is zero). Check for extreme "
-"sensitivity/specificity combinations."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Combined NPV Undefined"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined positive likelihood ratio is infinite because combined specificity "
-"is effectively 100% under the entered assumptions. This does not establish "
-"perfect performance in another population."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined positive likelihood ratio is undefined (both numerator and "
-"denominator approach zero)."
-msgstr ""
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined PPV"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Combined PPV cannot be calculated (denominator is zero). Check for extreme "
-"sensitivity/specificity combinations."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Combined PPV Undefined"
-msgstr ""
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined Sensitivity"
-msgstr ""
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Combined Specificity"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Combined Strategy"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Combined Test Performance: Sensitivity=%1$.1f%%, Specificity=%2$.1f%%"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Comparable across units; the table reports the original scale"
 msgstr ""
@@ -1888,14 +1147,6 @@ msgid ""
 "decision and is wide enough to cover plausible treatment preferences."
 msgstr ""
 
-#: sequentialtests/options/test2_name.default
-msgid "Confirmatory Test"
-msgstr ""
-
-#: sequentialtests/options/test2_name.title
-msgid "Confirmatory test name"
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 msgid ""
 "Consider a wider confidence interval (lower precision) or revisiting the "
@@ -1965,18 +1216,6 @@ msgstr ""
 msgid "Corrected"
 msgstr ""
 
-#: sequentialtests/options/show_cost_analysis.title
-msgid "Cost analysis"
-msgstr ""
-
-#: sequentialtests/results/cost_analysis_table.title
-msgid "Cost Analysis"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Cost Analysis (Per {n} People)"
-msgstr ""
-
 #: decisioncurve/ui[4][0]/testCost.label
 msgid "Cost per test"
 msgstr ""
@@ -2019,10 +1258,6 @@ msgstr ""
 msgid "Cross-validation plot"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "CT Scan"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid ""
 "Current settings: Min = {min}%, Max = {max}%; the valid range is 0.1% to "
@@ -2037,10 +1272,6 @@ msgstr ""
 
 #: decisioncurve/options/thresholdRange/custom.title
 msgid "Custom range"
-msgstr ""
-
-#: sequentialtests/options/preset/custom.title
-msgid "Custom Values"
 msgstr ""
 
 #: lassologistic/options/scoreCutMethod.title
@@ -2093,11 +1324,6 @@ msgstr ""
 msgid ""
 "Decide the threshold range from clinical judgement first, then read the "
 "curves there - not the other way round."
-msgstr ""
-
-#: package/analyses/sequentialtests.menuSubgroup
-#: sequentialtests/options.menuSubgroup
-msgid "Decision Calculators"
 msgstr ""
 
 #: decisioncurve/results/decisionConsequencesTable.title
@@ -2241,16 +1467,8 @@ msgid ""
 "limits {limits} in an interobserver agreement study."
 msgstr ""
 
-#: sequentialtests/options/show_plots.title
-msgid "Diagnostic plots"
-msgstr ""
-
 #: decisioncurve/results/comparisonTable.columns.title
 msgid "Difference in Average Net Benefit"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Differentiation Assay"
 msgstr ""
 
 #: decisioncurve/results/standardizedNetBenefitPlot.description
@@ -2266,55 +1484,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Discrimination Worse Than Chance"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Disease Absent"
-msgstr ""
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Disease Negative"
-msgstr ""
-
-#: sequentialtests/ui[5].label
-msgid "Disease Parameters"
-msgstr ""
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Disease Positive"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Disease Present"
-msgstr ""
-
-#: R/sequentialtests.b.R
-#: sequentialtests/results/summary_table.columns.title
-msgid "Disease Prevalence"
-msgstr ""
-
-#: sequentialtests/options/prevalence.title
-msgid "Disease prevalence"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Disease Probability (%)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Disease-\n"
-"n={n}"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Disease+\n"
-"n={n}"
-msgstr ""
-
-#: sequentialtests/ui[6].label
-msgid "Display Options"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -2351,14 +1520,6 @@ msgstr ""
 msgid ""
 "Each row is calculated at the exact displayed threshold; selected thresholds "
 "do not need to coincide with the plotting grid."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "ECG"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Either +"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -2409,10 +1570,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Error"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "ERROR"
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -2468,10 +1625,6 @@ msgstr ""
 msgid "Excluded from analysis"
 msgstr ""
 
-#: sequentialtests/results/cost_analysis_table.columns.title
-msgid "Expected Number of Tests"
-msgstr ""
-
 #: kappaSizeFixedN/options/props.title
 #: kappaSizePower/options/props.title
 msgid "Expected proportion of cases in each category"
@@ -2480,14 +1633,6 @@ msgstr ""
 #: kappaSizeFixedN/ui[2].label
 #: kappaSizePower/ui[2].label
 msgid "Expected Proportion of Cases in Each Category"
-msgstr ""
-
-#: sequentialtests/results/explanation_text.title
-msgid "Explanation"
-msgstr ""
-
-#: sequentialtests/options/show_explanation.title
-msgid "Explanations"
 msgstr ""
 
 #: lassologistic/ui[7].label
@@ -2564,22 +1709,15 @@ msgstr ""
 msgid "F1 Score"
 msgstr ""
 
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "False Negative"
 msgstr ""
 
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "False Negatives"
-msgstr ""
-
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "False Positive"
 msgstr ""
 
 #: R/decisioncurve.b.R
-#: sequentialtests/results/population_flow_table.columns.title
 msgid "False Positives"
 msgstr ""
 
@@ -2602,12 +1740,6 @@ msgid ""
 "candidate predictors."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"Final\n"
-"Result"
-msgstr ""
-
 #: package/analyses/kappaSizeFixedN.menuSubtitle
 #: kappaSizeFixedN/options.menuSubtitle
 msgid "Find lower Kappa based on sample size"
@@ -2621,24 +1753,6 @@ msgstr ""
 #: package/analyses/kappaSizePower.menuSubtitle
 #: kappaSizePower/options.menuSubtitle
 msgid "Find sample size based on power"
-msgstr ""
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "First Test"
-msgstr ""
-
-#: sequentialtests/ui[3][0]/test1_cost.label
-msgid "First test"
-msgstr ""
-
-#: sequentialtests/ui[1].label
-msgid "First Test (Screening)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"FN\n"
-"n={n}"
 msgstr ""
 
 #: decisioncurve/options/thresholdRange/clinical.title
@@ -2674,20 +1788,6 @@ msgid ""
 "and kappaSizeCI to size it for a target interval width."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"For this serial-negative example, Test 2 sensitivity (%.1f%%) is below Test "
-"1 sensitivity (%.1f%%). This does not invalidate the calculation, but it may "
-"not improve sensitivity as much as expected."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"For this serial-positive example, Test 2 specificity (%.1f%%) is below Test "
-"1 specificity (%.1f%%). This does not invalidate the calculation, but it may "
-"not improve specificity as much as expected."
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid ""
 "For time-to-event predictions, supply risks and a binary outcome defined at "
@@ -2698,16 +1798,6 @@ msgstr ""
 msgid ""
 "For two raters with equal marginal frequencies this coincides with Cohen's "
 "κ; with more raters, or unequal marginals, it does not."
-msgstr ""
-
-#: sequentialtests/results/formulas_text.title
-msgid "Formulas Used"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"FP\n"
-"n={n}"
 msgstr ""
 
 #: decisioncurve/results/benefitRangeTable.columns.title
@@ -2789,14 +1879,6 @@ msgstr ""
 msgid "histopathology including analysis"
 msgstr ""
 
-#: sequentialtests/options/preset/hiv_screening_confirmation.title
-msgid "HIV Ag/Ab + Differentiation Assay (Illustrative)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "HIV Ag/Ab Assay"
-msgstr ""
-
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "If the Analysis result panel also prints 'At least one expected cell count "
@@ -2819,24 +1901,6 @@ msgstr ""
 msgid "Ignored {values}."
 msgstr ""
 
-#: sequentialtests/options/population_size.title
-#: sequentialtests/ui[5][0]/population_size.label
-msgid "Illustrative population size"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Illustrative Population Too Small"
-msgstr ""
-
-#: sequentialtests/options/test1_cost.title
-#: sequentialtests/options/test2_cost.title
-msgid "Illustrative unit cost"
-msgstr ""
-
-#: sequentialtests/ui[3].label
-msgid "Illustrative unit costs"
-msgstr ""
-
 #: lassologistic/results/coefficients.columns.title
 msgid "Importance"
 msgstr ""
@@ -2851,7 +1915,6 @@ msgstr ""
 
 #: decisioncurve/results/notices.title
 #: lassologistic/results/notices.title
-#: sequentialtests/results/notices.title
 msgid "Important Information"
 msgstr ""
 
@@ -2863,36 +1926,12 @@ msgstr ""
 msgid "Incremental Cost"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Independence Assumption"
-msgstr ""
-
-#: sequentialtests/results/individual_tests_table.title
-msgid "Individual Test Performance"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "infinite"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Infinite Positive Likelihood Ratio"
-msgstr ""
-
 #: lassologistic/results/methodComparison.columns.title
 msgid "Info Loss vs Full Model (%)"
 msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Information"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Initial"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Initial Population"
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -3026,10 +2065,6 @@ msgid ""
 "interval ({side}) for the intraclass (Fleiss-type) κ of the "
 "common-correlation model attains the requested precision, given the expected "
 "category proportions and the number of raters."
-msgstr ""
-
-#: sequentialtests/results/cost_analysis_table.columns.title
-msgid "Item"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -3235,10 +2270,6 @@ msgstr ""
 msgid "Lowest Expected Value for a fixed sample size"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Mammography"
-msgstr ""
-
 #: lassologistic/options/scoreCutMethod/manual.title
 msgid "Manual cut points"
 msgstr ""
@@ -3301,12 +2332,10 @@ msgstr ""
 msgid "Mean score (reference class)"
 msgstr ""
 
-#: package/analyses/sequentialtests.menuGroup
 #: package/analyses/lassologistic.menuGroup
 #: package/analyses/decisioncurve.menuGroup
 #: decisioncurve/options.menuGroup
 #: lassologistic/options.menuGroup
-#: sequentialtests/options.menuGroup
 msgid "meddecide"
 msgstr ""
 
@@ -3492,10 +2521,6 @@ msgstr ""
 msgid "Monetary Value Assigned to a True Positive"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "MRI"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "N = %d (<50: small, consider fewer predictors)"
 msgstr ""
@@ -3529,34 +2554,11 @@ msgid "Need at least 5 cases in each outcome class."
 msgstr ""
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 msgid "Negative"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Negative\n"
-"Result"
 msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Negative (-)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Negative Likelihood Ratio Infinite"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Negative Likelihood Ratio Undefined"
-msgstr ""
-
-#: sequentialtests/results/individual_tests_table.columns.title
-msgid "Negative LR"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Negative Path"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -3729,18 +2731,6 @@ msgstr ""
 msgid "Not available"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "not defined"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "not defined (no disease-free subjects)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "not defined (no diseased subjects)"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Not interpretable"
 msgstr ""
@@ -3771,22 +2761,12 @@ msgstr ""
 msgid "Nothing about the clinical rule is shown until then."
 msgstr ""
 
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "NPV"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "NPV (Negative Predictive Value)"
 msgstr ""
 
 #: kappaSizePower/ui[1][0]/kappa0.label
 msgid "Null hypothesis"
-msgstr ""
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Number Needed to Screen"
 msgstr ""
 
 #: lassologistic/options/nfolds.title
@@ -3847,13 +2827,6 @@ msgstr ""
 
 #: kappaSizeFixedN/options/n.description.ui
 msgid "Number of subjects available, each rated by all raters (at least 11)."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Numbers of tests and total costs are expected values derived from the "
-"entered probabilities. Fractional expected counts are retained so the "
-"displayed count and cost agree."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -4013,32 +2986,6 @@ msgstr ""
 msgid "Pairwise comparison needs two models"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Parallel Test Assumption Check"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "parallel testing"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Parallel Testing (Test all)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Parallel testing raises combined sensitivity above that of either test alone "
-"and lowers combined specificity: fewer missed cases, more false positives."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "parallel testing strategy"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Parallel Testing Strategy"
-msgstr ""
-
 #: lassologistic/results/variableImportance.columns.title
 msgid "Path Inclusion Proportion"
 msgstr ""
@@ -4148,18 +3095,6 @@ msgstr ""
 msgid "Population Characteristics:"
 msgstr ""
 
-#: sequentialtests/results/population_flow_table.title
-msgid "Population Flow Analysis"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Population Flow Through Testing"
-msgstr ""
-
-#: sequentialtests/results/plot_population_flow.title
-msgid "Population Flow Visualization"
-msgstr ""
-
 #: decisioncurve/ui[6][0]/populationSize.label
 msgid "Population size"
 msgstr ""
@@ -4169,26 +3104,11 @@ msgid "Population Size for Projections"
 msgstr ""
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 msgid "Positive"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Positive\n"
-"Result"
 msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Positive (+)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Positive Likelihood Ratio Undefined"
-msgstr ""
-
-#: sequentialtests/results/individual_tests_table.columns.title
-msgid "Positive LR"
 msgstr ""
 
 #: decisioncurve/ui[0][0]/outcomePositive.label
@@ -4201,10 +3121,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "Positive Outcome Level Required"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Positive Path"
 msgstr ""
 
 #: decisioncurve/ui[1][2][0]/decisionRulePositive.label
@@ -4258,18 +3174,8 @@ msgid ""
 "the kappaSize package (Rotondi and Donner)."
 msgstr ""
 
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "PPV"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "PPV (Positive Predictive Value)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Pre-test"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -4356,68 +3262,13 @@ msgid "present"
 msgstr ""
 
 #: R/decisioncurve.b.R
-#: sequentialtests/ui[5][0]/prevalence.label
 msgid "Prevalence"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Invalid"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence is low (%.2f%%). Below 5%% pre-test probability, PPV is dominated "
-"by specificity: a one-percentage-point change in specificity can move PPV by "
-"more than 15 percentage points. Verify the specificity assumptions and the "
-"intended population."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence is very high (%.1f%%). Verify that this assumption matches the "
-"intended population; predictive values are prevalence-dependent."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence is very low (%.3f%%). Even with excellent tests, PPV may be "
-"extremely low. Verify the pre-test probability for the intended population."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Low"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Prevalence must be greater than 0 and less than 1 (exclusive). Current value "
-"is invalid."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Very High"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Prevalence Very Low"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Probability"
 msgstr ""
 
 #: kappaSizePower/options/power.description.ui
 msgid ""
 "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type "
 "II error). Conventional values are 0.80 or 0.90; must exceed alpha."
-msgstr ""
-
-#: sequentialtests/results/plot_probability.title
-msgid "Probability Transformation"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Probability Transformation Through Testing"
 msgstr ""
 
 #: decisioncurve/results/clinicalImpactTable.columns.title
@@ -4508,14 +3359,6 @@ msgstr ""
 msgid "Proportions should sum to 1.0, current sum is {sum}."
 msgstr ""
 
-#: sequentialtests/options/preset/prostate_screening_exclusion.title
-msgid "PSA + MRI (Illustrative)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "PSA Test"
-msgstr ""
-
 #: decisioncurve/options/seed.title
 #: lassologistic/options/random_seed.title
 msgid "Random Seed"
@@ -4556,10 +3399,6 @@ msgstr ""
 msgid ""
 "Range of threshold probabilities over which the model's net benefit exceeds "
 "both treat-all and treat-none; a model is only worth using within this range."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Rapid Antigen Test"
 msgstr ""
 
 #: R/kappaSizePower.b.R
@@ -4687,10 +3526,6 @@ msgstr ""
 msgid "Resource utilization projected to the selected population size"
 msgstr ""
 
-#: sequentialtests/options/preset/covid_screening_confirmation.title
-msgid "Respiratory Testing (Illustrative)"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Result"
 msgstr ""
@@ -4742,10 +3577,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "ROC curve with AUC and confidence interval"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "RT-PCR"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -4870,34 +3701,6 @@ msgstr ""
 msgid "Scoring System Runs Backwards"
 msgstr ""
 
-#: sequentialtests/options/test1_name.default
-msgid "Screening Test"
-msgstr ""
-
-#: sequentialtests/options/test1_name.title
-msgid "Screening test name"
-msgstr ""
-
-#: sequentialtests/results/summary_table.columns.title
-msgid "Second Test"
-msgstr ""
-
-#: sequentialtests/ui[3][0]/test2_cost.label
-msgid "Second test"
-msgstr ""
-
-#: sequentialtests/ui[2].label
-msgid "Second Test (Confirmatory)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Second test only for those negative on first test"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Second test only for those positive on first test"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid "Select a binary Outcome Variable (the condition you want to predict)."
 msgstr ""
@@ -4927,13 +3730,7 @@ msgid "Selected Variables"
 msgstr ""
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/options/test1_sens.title
-#: sequentialtests/options/test2_sens.title
-#: sequentialtests/ui[1][0]/test1_sens.label
-#: sequentialtests/ui[2][0]/test2_sens.label
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "Sensitivity"
 msgstr ""
 
@@ -4941,79 +3738,8 @@ msgstr ""
 msgid "Sensitivity (Recall)"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Sensitivity Analysis: How Prevalence Affects Predictive Values"
-msgstr ""
-
-#: sequentialtests/results/plot_sensitivity_analysis.title
-msgid "Sensitivity Analysis: PPV/NPV vs Prevalence"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Sensitivity, specificity and prevalence are treated as exact. These combined "
-"figures therefore carry <i>no</i> confidence interval and do not reflect "
-"sampling uncertainty in the values entered — published test performance and "
-"local prevalence both vary."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Separation in Unpenalized Refit"
-msgstr ""
-
-#: package/analyses/sequentialtests.menuSubtitle
-#: sequentialtests/options.menuSubtitle
-msgid "Sequential Test Analysis"
-msgstr ""
-
-#: package/analyses/sequentialtests.title
-#: package/analyses/sequentialtests.menuTitle
-#: sequentialtests/options.title
-#: sequentialtests/ui.title
-#: sequentialtests/results.title
-msgid "Sequential Testing Analysis"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Sequential testing analysis completed: %s strategy with prevalence %.1f%%, "
-"combined sensitivity %.1f%%, combined specificity %.1f%%."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "serial negative (exclusion) strategy"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Serial Negative Assumption Check"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "serial positive (confirmation) strategy"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Serial Positive Assumption Check"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing (Test negatives)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing (Test positives)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "serial testing of negatives"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing Strategy: Test Negatives"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Serial Testing Strategy: Test Positives"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -5091,13 +3817,7 @@ msgid "Sparse categories."
 msgstr ""
 
 #: R/lassologistic.b.R
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
-#: sequentialtests/options/test1_spec.title
-#: sequentialtests/options/test2_spec.title
-#: sequentialtests/ui[1][0]/test1_spec.label
-#: sequentialtests/ui[2][0]/test2_spec.label
-#: sequentialtests/results/individual_tests_table.columns.title
 msgid "Specificity"
 msgstr ""
 
@@ -5115,10 +3835,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "Specify which level represents the positive outcome."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Sputum Culture"
 msgstr ""
 
 #: decisioncurve/options/plotStyle/standard.title
@@ -5155,28 +3871,6 @@ msgstr ""
 msgid "Strategy"
 msgstr ""
 
-#: sequentialtests/results/clinical_guidance.title
-msgid "Strategy Notes and Teaching Examples"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Strategy: {strategy}"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Strategy: {strategy} | Prevalence: {prevalence}"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Strategy: {strategy} | Sensitivity: {sensitivity} | Specificity: "
-"{specificity}"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "STRONG WARNING"
-msgstr ""
-
 #: R/kappaSizeCI.b.R
 msgid "Study Design:"
 msgstr ""
@@ -5201,38 +3895,12 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
-#: sequentialtests/results/plain_summary.title
-msgid "Summary (Plain Language)"
-msgstr ""
-
-#: sequentialtests/results/summary_table.title
-msgid "Summary of Testing Strategy"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid "Table thresholds outside the analysed range"
 msgstr ""
 
 #: decisioncurve/ui[2].label
 msgid "Tables & Outputs"
-msgstr ""
-
-#: sequentialtests/options/preset.title
-msgid "Teaching example"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Teaching example \"{preset}\" is not recognised; the values shown in the "
-"panel were used instead."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Teaching Example Values Are Not Clinical Guidance"
-msgstr ""
-
-#: sequentialtests/ui[0].label
-msgid "Teaching Examples (Not Clinical Guidance)"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -5243,211 +3911,12 @@ msgstr ""
 msgid "Terms selected"
 msgstr ""
 
-#: sequentialtests/results/individual_tests_table.columns.title
-msgid "Test"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Low Performance"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1 name cannot be empty. Please provide a descriptive name."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Name Empty"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 performance is unusually low (Sensitivity=%.1f%%, "
-"Specificity=%.1f%%). Verify whether these assumptions are suitable for the "
-"intended illustrative comparison."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Sensitivity High"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Sensitivity Invalid"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 sensitivity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 sensitivity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Specificity High"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1 Specificity Invalid"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 specificity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 1 specificity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 1: {name}"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Low Performance"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2 name cannot be empty. Please provide a descriptive name."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Name Empty"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 performance is unusually low (Sensitivity=%.1f%%, "
-"Specificity=%.1f%%). Verify whether these assumptions are suitable for the "
-"intended illustrative comparison."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Sensitivity High"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Sensitivity Invalid"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 sensitivity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 sensitivity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Specificity High"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2 Specificity Invalid"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 specificity is at least 99%% (%.2f%%). Verify that this estimate "
-"applies to the intended population and setting."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test 2 specificity must be between 0 and 1 (0% to 100%). Current value is "
-"invalid."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test 2: {name}"
-msgstr ""
-
-#: sequentialtests/options/strategy/serial_negative.title
-msgid "Test all negatives from first test"
-msgstr ""
-
-#: sequentialtests/options/strategy/serial_positive.title
-msgid "Test all positives from first test"
-msgstr ""
-
-#: sequentialtests/options/strategy/parallel.title
-msgid "Test all subjects with both tests (parallel)"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test Correlation Risk"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Test names are similar (\"%s\" vs \"%s\"). If tests measure similar "
-"biomarkers or use similar technology, they may be conditionally dependent. "
-"This can bias combined sensitivity and specificity in opposite directions."
-msgstr ""
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Test Negative"
-msgstr ""
-
-#: R/sequentialtests.b.R
-#: sequentialtests/results/plot_performance.title
-msgid "Test Performance Comparison"
-msgstr ""
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Test Positive"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Test Results"
-msgstr ""
-
-#: R/sequentialtests.b.R
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Testing Stage"
-msgstr ""
-
-#: sequentialtests/ui[4].label
-#: sequentialtests/results/summary_table.columns.title
-msgid "Testing Strategy"
-msgstr ""
-
-#: sequentialtests/options/strategy.title
-msgid "Testing strategy"
-msgstr ""
-
-#: sequentialtests/results/plot_flow_diagram.title
-msgid "Testing Strategy Flow Diagram"
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid ""
 "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); "
 "their apparent AUC is typically higher than the penalized LASSO row because "
 "refitting removes LASSO shrinkage. All metrics are apparent (in-sample) - "
 "use Bootstrap Internal Validation for optimism-corrected discrimination."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"The \"{preset}\" teaching example supplies round, illustrative numbers "
-"chosen to demonstrate how sequential testing behaves. They are NOT validated "
-"clinical parameters, they are not taken from any specific published study, "
-"and the prevalence is not your population's. This example is not clinical "
-"guidance and must not be used to design a real testing protocol or advise a "
-"patient. Replace every value with sensitivity, specificity and prevalence "
-"estimates from your own setting or from a source you have checked."
 msgstr ""
 
 #: kappaSizePower/options/kappa1.description.ui
@@ -5511,18 +3980,6 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid "The clinical decision rule variable must be binary (exactly 2 levels)."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"the combined sensitivity above is too high and the combined specificity too "
-"low"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"the combined specificity above is too high and the combined sensitivity too "
-"low"
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -5784,13 +4241,6 @@ msgid ""
 "threshold range of {lo}% to {hi}%."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"The tests have similar marginal sensitivity and specificity. Similar "
-"marginal performance does not establish redundancy or independence; assess "
-"conditional dependence using external evidence."
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid ""
 "The threshold range you entered, {lo}% to {hi}%, is narrower than the step "
@@ -5981,26 +4431,6 @@ msgstr ""
 msgid "This scoring system runs backwards."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"This strategy gives exactly the same sensitivity, specificity, PPV and NPV "
-"as {other}: both call a subject positive if <i>either</i> test is positive. "
-"They differ only in how many second tests are performed, which the cost "
-"analysis shows."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"This strategy raises combined sensitivity above that of either test alone "
-"and lowers combined specificity: fewer missed cases, more false positives."
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"This strategy raises combined specificity above that of either test alone "
-"and lowers combined sensitivity: fewer false positives, more missed cases."
-msgstr ""
-
 #: decisioncurve/results/clinicalImpactTable.columns.title
 #: decisioncurve/results/costBenefitTable.columns.title
 #: decisioncurve/results/decisionConsequencesTable.columns.title
@@ -6058,16 +4488,6 @@ msgstr ""
 msgid "Thresholds for table (probabilities 0-1, comma-separated)"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Tissue Biopsy"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"TN\n"
-"n={n}"
-msgstr ""
-
 #: decisioncurve/results/benefitRangeTable.columns.title
 msgid "To"
 msgstr ""
@@ -6088,41 +4508,16 @@ msgstr ""
 msgid "Too few non-degenerate predictor columns."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"Total\n"
-"n={n}"
-msgstr ""
-
 #: decisioncurve/results/costBenefitTable.columns.title
 msgid "Total Benefit"
 msgstr ""
 
 #: decisioncurve/results/costBenefitTable.columns.title
-#: sequentialtests/results/cost_analysis_table.columns.title
 msgid "Total Cost"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Total Population"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Total Protocol Cost"
 msgstr ""
 
 #: lassologistic/results/lookupTable.columns.title
 msgid "Total Score"
-msgstr ""
-
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "Total Subjects"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"TP\n"
-"n={n}"
 msgstr ""
 
 #: decisioncurve/results/resultsTable.columns.title
@@ -6133,31 +4528,16 @@ msgstr ""
 msgid "Treat None"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Troponin"
-msgstr ""
-
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "True Negative"
 msgstr ""
 
-#: sequentialtests/results/population_flow_table.columns.title
-msgid "True Negatives"
-msgstr ""
-
-#: R/sequentialtests.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "True Positive"
 msgstr ""
 
 #: R/decisioncurve.b.R
-#: sequentialtests/results/population_flow_table.columns.title
 msgid "True Positives"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "True Status"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -6193,14 +4573,6 @@ msgstr ""
 
 #: lassologistic/results/lassoExplanation.title
 msgid "Understanding Penalized Logistic Regression"
-msgstr ""
-
-#: sequentialtests/results/cost_analysis_table.columns.title
-msgid "Unit Cost"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "Unknown Teaching Example"
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -6251,10 +4623,6 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid "Value (%)"
-msgstr ""
-
 #: R/decisioncurve.b.R
 msgid ""
 "Values between 0 and 1 are accepted as probabilities, but this analysis does "
@@ -6296,10 +4664,6 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Warning"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "WARNING"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -6373,18 +4737,6 @@ msgid ""
 "predictors or collect more cases."
 msgstr ""
 
-#: R/sequentialtests.b.R
-msgid ""
-"You would need to screen approximately %d people to identify one true "
-"positive case."
-msgstr ""
-
 #: R/lassologistic.b.R
 msgid "Youden index"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"Your prevalence\n"
-"(%.1f%%)"
 msgstr ""
