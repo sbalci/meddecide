@@ -286,15 +286,6 @@
             "Alpha (0-1)": [
                 ""
             ],
-            "Alpha and Power": [
-                ""
-            ],
-            "Alternative below the null.": [
-                ""
-            ],
-            "Alternative hypothesis": [
-                ""
-            ],
             "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
                 ""
             ],
@@ -362,12 +353,6 @@
                 ""
             ],
             "At the computed sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the confidence limit where they are thinnest: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the required n is less dependable here.": [
-                ""
-            ],
-            "At the required sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the sample size shown is less dependable here.": [
-                ""
-            ],
-            "At the required sample size the rarest outcome category is expected in only {min} subjects. Fewer than five cases of a category makes the large-sample chi-square approximation behind this method unreliable, and it leaves the study with too few examples of that category for the raters to disagree about.": [
                 ""
             ],
             "At this sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the reported lower bound: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the bound shown is less dependable here.": [
@@ -658,16 +643,10 @@
             "Consider collapsing rare categories or enrolling more subjects.": [
                 ""
             ],
-            "Consider collapsing rare categories or planning a larger study.": [
-                ""
-            ],
             "Consider collapsing rare categories, using fewer raters, or recruiting more subjects than the figure shown.": [
                 ""
             ],
             "Consider enriching the case series so the rare finding is more common (the calculation assumes the stated prevalence), adding subjects, or relaxing the significance level.": [
-                ""
-            ],
-            "Consider enriching the case series so the rare finding is more common (the calculation assumes the stated prevalence), or planning a larger study.": [
                 ""
             ],
             "Consider using fewer raters, or recruiting more subjects than the figure shown.": [
@@ -1021,16 +1000,10 @@
             "Find sample size based on Kappa confidence": [
                 ""
             ],
-            "Find sample size based on power": [
-                ""
-            ],
             "Focused range (0.05 to 0.50; not a clinical recommendation)": [
                 ""
             ],
             "For a binary outcome enter either one prevalence value or two proportions that sum to 1 (received {got}).": [
-                ""
-            ],
-            "For a binary outcome enter either one prevalence value or two proportions that sum to 1.": [
                 ""
             ],
             "For a defensible clinical claim, supply predictions from an external dataset or from cross-validation, and report which was used.": [
@@ -1057,13 +1030,7 @@
             "Further suppose that the prevalence of the trait is {p}.": [
                 ""
             ],
-            "Further suppose that the prevalences of the categories are {head} and {last}.": [
-                ""
-            ],
             "Further suppose that the proportions of the outcome categories are {props}.": [
-                ""
-            ],
-            "Further suppose that the two categories occur in {p1} and {p2} of subjects (the required sample size is the same whichever category is called positive).": [
                 ""
             ],
             "Gain vs Best Default": [
@@ -1186,15 +1153,6 @@
             "It answers 'given the subjects I have, how little agreement am I still unable to rule out?' - the mirror image of the sample-size question; every kappa below the bound is excluded.": [
                 ""
             ],
-            "It answers 'how many subjects do I need to reject kappa0 in favour of kappa1?' - not how precisely kappa will be estimated; for a target interval width use kappaSizeCI instead.": [
-                ""
-            ],
-            "It answers a different question from the confidence-interval approach (kappaSizeCI), which sizes a study to achieve a target interval width, so the two will not agree on a sample size for the same study - pick the one that matches how the result will be reported.": [
-                ""
-            ],
-            "It does not apply to weighted kappa for ordered grades; for an ordinal grading study either treat the grades as nominal categories or use a dedicated weighted-kappa method.": [
-                ""
-            ],
             "It is computed correctly at that exact value, but it is not shown on the decision curve, and the surrounding rows come from the analysed range.": [
                 ""
             ],
@@ -1216,9 +1174,6 @@
             "kappa0": [
                 ""
             ],
-            "kappa0 (null) and kappa1 (alternative) must differ; equal values make the required sample size undefined.": [
-                ""
-            ],
             "kappa0 must be greater than kappaL": [
                 ""
             ],
@@ -1226,9 +1181,6 @@
                 ""
             ],
             "kappa0 must be strictly within the confidence interval (kappaL, kappaU)": [
-                ""
-            ],
-            "kappa1": [
                 ""
             ],
             "kappaL": [
@@ -1313,9 +1265,6 @@
                 ""
             ],
             "Low bootstrap replications ({n}).": [
-                ""
-            ],
-            "Low power.": [
                 ""
             ],
             "Low risk": [
@@ -1651,9 +1600,6 @@
             "Note that kappa0 here is the agreement you anticipate observing, not a null hypothesis value as it is in kappaSizePower.": [
                 ""
             ],
-            "Note that kappa0 here is the null hypothesis value, whereas in kappaSizeCI and kappaSizeFixedN it is the agreement you anticipate observing.": [
-                ""
-            ],
             "Notes": [
                 ""
             ],
@@ -1661,9 +1607,6 @@
                 ""
             ],
             "NPV": [
-                ""
-            ],
-            "Null hypothesis": [
                 ""
             ],
             "Number of CV Folds": [
@@ -1903,16 +1846,7 @@
             "Power": [
                 ""
             ],
-            "power": [
-                ""
-            ],
             "Power Analysis by meddecide": [
-                ""
-            ],
-            "Power Approach for the Number of Subjects Required": [
-                ""
-            ],
-            "Power-based sample size for a two-sided test of H0: kappa = kappa0 against H1: kappa = kappa1, for the unweighted (nominal-category) kappa coefficient, using the goodness-of-fit (non-central chi-square) approach implemented in the kappaSize package (Rotondi and Donner).": [
                 ""
             ],
             "PPV": [
@@ -1970,9 +1904,6 @@
                 ""
             ],
             "Prevalence": [
-                ""
-            ],
-            "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type II error). Conventional values are 0.80 or 0.90; must exceed alpha.": [
                 ""
             ],
             "Projected False Positives": [
@@ -2059,9 +1990,6 @@
             "Range of threshold probabilities over which the model's net benefit exceeds both treat-all and treat-none; a model is only worth using within this range.": [
                 ""
             ],
-            "Rare outcome category.": [
-                ""
-            ],
             "Raters": [
                 ""
             ],
@@ -2116,16 +2044,10 @@
             "Required sample size: {n}": [
                 ""
             ],
-            "Required sample size: <b>{n}</b> {subjects}, each rated by all {raters} raters.": [
-                ""
-            ],
             "Required sample size: unavailable": [
                 ""
             ],
             "Researchers anticipate an agreement of kappa = {kappa0} and have access to {n} subjects, each rated by {raters} raters.": [
-                ""
-            ],
-            "Researchers would like to determine the required sample size to test the null hypothesis kappa = {kappa0} against the alternative kappa = {kappa1} at a two-sided significance level of {alpha} with power {power}, in a study of interobserver agreement with {raters} raters.": [
                 ""
             ],
             "Reserved Model Name": [
@@ -2200,13 +2122,7 @@
             "Sample size calculation failed": [
                 ""
             ],
-            "Sample size calculation failed: {error}": [
-                ""
-            ],
             "Sample Size Calculation for Interobserver Agreement Study": [
-                ""
-            ],
-            "Sample size for an interobserver agreement study sized to reject a null kappa (kappa0) in favour of an alternative kappa (kappa1) at a given two-sided significance level and power - the power approach of the kappaSize package. Use kappaSizeCI for a target confidence-interval width, and kappaSizeFixedN when the number of subjects is already fixed.": [
                 ""
             ],
             "Save Variables": [
@@ -2323,9 +2239,6 @@
             "Simultaneous sup-t bootstrap band from {reps} replications at the {level}% level (Mandel and Betensky 2008).": [
                 ""
             ],
-            "Small kappa difference.": [
-                ""
-            ],
             "Small Sample Size": [
                 ""
             ],
@@ -2383,12 +2296,6 @@
             "Study Explanation": [
                 ""
             ],
-            "subject": [
-                ""
-            ],
-            "subjects": [
-                ""
-            ],
             "Summary": [
                 ""
             ],
@@ -2405,12 +2312,6 @@
                 ""
             ],
             "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); their apparent AUC is typically higher than the penalized LASSO row because refitting removes LASSO shrinkage. All metrics are apparent (in-sample) - use Bootstrap Internal Validation for optimism-corrected discrimination.": [
-                ""
-            ],
-            "The alternative hypothesis value of kappa - the level of agreement the study should be able to detect against kappa0.": [
-                ""
-            ],
-            "The alternative kappa ({kappa1}) is BELOW the null ({kappa0}). This sizes a study to demonstrate that agreement is WORSE than the null value, not better. If you meant to detect an improvement, swap the two values - the required sample size is not the same either way.": [
                 ""
             ],
             "The analysis continues without confidence intervals; the point estimates are unaffected.": [
@@ -2458,9 +2359,6 @@
             "the cut points you supplied, and the sample median for the predictors you did not give one for": [
                 ""
             ],
-            "The design needs {n} subjects; few agreement studies can enrol this many. A rare finding (prevalence far from 0.5), a small difference between kappa0 and kappa1, and a high power target all inflate the sample size - revisit whichever of these is not a firm requirement.": [
-                ""
-            ],
             "The expected lower bound for kappa is {bound}.": [
                 ""
             ],
@@ -2488,12 +2386,6 @@
             "The minimum threshold is {min}%.": [
                 ""
             ],
-            "The null and alternative kappa differ by only {delta}. Check that kappa0 is the agreement you want to rule OUT (not the agreement you expect to observe) and that kappa1 is a clinically meaningful difference from it; very close values need very large studies.": [
-                ""
-            ],
-            "The null hypothesis value of kappa - the level of agreement the study tests against. kappaSize documents this as \"the null hypothesis for the kappa hypothesis test\"; it is NOT the value you expect to observe.": [
-                ""
-            ],
             "The optimal threshold maximizes the Youden index on the same data used to fit the model, so sensitivity, specificity, accuracy, precision, and F1 are apparent (in-sample) and optimistic. Enable bootstrap validation for an optimism-corrected estimate of discrimination.": [
                 ""
             ],
@@ -2515,19 +2407,10 @@
             "The requested confidence interval is too narrow to size in reasonable time. The limit that governs the sample size is {dist} away from kappa0, and the required sample size grows roughly as one over the square of that distance — the search was still running after {secs} seconds. Widen the interval, use more raters, or accept a lower confidence level.": [
                 ""
             ],
-            "The requested power is {power}. A study powered below 50% is more likely to miss the alternative kappa than to detect it; conventional values are 0.80 or 0.90.": [
-                ""
-            ],
             "The required sample size could not be determined from the provided inputs.": [
                 ""
             ],
-            "The required sample size is {n} {subjects}.": [
-                ""
-            ],
             "The required sample size is computed with the confidence-interval width approach of the kappaSize package (Donner and Eliasziw; Rotondi and Donner).": [
-                ""
-            ],
-            "The required sample size is only {n} {subjects}. The large-sample approximation behind this method does not hold for such small studies; treat the figure as a lower bound, not a plan.": [
                 ""
             ],
             "the sample mean": [
@@ -2546,9 +2429,6 @@
                 ""
             ],
             "The selected threshold range spans {span} percentage points.": [
-                ""
-            ],
-            "The significance level ({alpha}) must be below the power ({power}). A study whose power does not exceed its type I error rate provides no evidence, and the sample size cannot be computed for it. Conventional values are alpha 0.05 and power 0.80.": [
                 ""
             ],
             "The start and end shown span a gap where the model is not superior - read the curve rather than the endpoints.": [
@@ -2621,9 +2501,6 @@
                 ""
             ],
             "This is a planning expectation, not a guarantee.": [
-                ""
-            ],
-            "This is a POWER calculation: it returns the number of subjects needed to REJECT kappa0 in favour of kappa1 in a two-sided test at the stated significance level and power.": [
                 ""
             ],
             "This is not a confirmatory test and depends on giving every threshold equal weight.": [
@@ -2737,9 +2614,6 @@
             "Two-sided CI requires both lower and upper limits. One-sided CI only requires a lower limit (kappaU is ignored).": [
                 ""
             ],
-            "Two-sided significance level (capped at 0.20; must be below the power).": [
-                ""
-            ],
             "unavailable": [
                 ""
             ],
@@ -2794,13 +2668,7 @@
             "Variables analysed": [
                 ""
             ],
-            "Very large sample size.": [
-                ""
-            ],
             "Very small sample size (n = {n}).": [
-                ""
-            ],
-            "Very small sample size.": [
                 ""
             ],
             "Warning": [

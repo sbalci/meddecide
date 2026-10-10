@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.0.83.06
+version: 1.0.83.07
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-10-03'
+date: '2026-10-10'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -30,21 +30,6 @@ description: >-
   For comments, suggestions, feature requests or reporting bugs, please open an
   issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.
 analyses:
-  - title: Power Approach for the Number of Subjects Required
-    name: kappaSizePower
-    ns: meddecide
-    menuGroup: Power
-    menuSubgroup: Power Analysis by meddecide
-    menuSubtitle: Find sample size based on power
-    menuTitle: Power Approach for the Number of Subjects Required
-    description: >
-      Sample size for an interobserver agreement study sized to reject a null
-      kappa (kappa0) in favour of an alternative kappa (kappa1) at a given
-      two-sided significance level and power - the power approach of the
-      kappaSize package. Use kappaSizeCI for a target confidence-interval width,
-      and kappaSizeFixedN when the number of subjects is already fixed.
-    ribbon: analyses
-    category: analyses
   - title: Confidence Interval Approach for the Number of Subjects Required
     name: kappaSizeCI
     ns: meddecide

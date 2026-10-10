@@ -87,13 +87,14 @@
         `year`=2018, 
         `title`="kappaSize: Sample Size Estimation Functions for Studies of Interobserver Agreement", 
         `publisher`="[R package]. Retrieved from https://cran.r-project.org/web/packages/kappaSize/", 
+        `doi`="10.32614/CRAN.package.kappaSize", 
         `url`="https://cran.r-project.org/web/packages/kappaSize/"), 
     `pROC`=list(
         `type`="software", 
         `author`="Xavier Robin", 
-        `year`=2025, 
+        `year`=2026, 
         `title`="pROC: Display and Analyze ROC Curves", 
-        `publisher`="[R package version 1.19.0.1]. Retrieved from https://CRAN.R-project.org/package=pROC", 
+        `publisher`="[R package version 1.19.1]. Retrieved from https://CRAN.R-project.org/package=pROC", 
         `url`="https://CRAN.R-project.org/package=pROC"), 
     `rotondiDonnerKappaCI`=list(
         `type`="article", 

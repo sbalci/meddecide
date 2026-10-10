@@ -480,7 +480,6 @@ msgstr "0.05, 0.10, 0.15, 0.20, 0.25, 0.30"
 
 #: kappaSizeCI/options/props.default
 #: kappaSizeFixedN/options/props.default
-#: kappaSizePower/options/props.default
 msgid "0.20, 0.80"
 msgstr "0.20, 0.80"
 
@@ -637,31 +636,17 @@ msgstr "Karşılaştırma için gösterilen üç yöntemin tümü"
 #: kappaSizeCI/ui[4].label
 #: kappaSizeFixedN/ui[3].label
 #: kappaSizeFixedN/ui[3][0][0]/alpha.label
-#: kappaSizePower/ui[3][0][0]/alpha.label
 msgid "Alpha"
 msgstr "Alfa"
 
 #: kappaSizeCI/options/alpha.title
 #: kappaSizeFixedN/options/alpha.title
-#: kappaSizePower/options/alpha.title
 msgid "alpha"
 msgstr "alfa"
 
 #: kappaSizeCI/ui[4][0][0]/alpha.label
 msgid "Alpha (0-1)"
 msgstr ""
-
-#: kappaSizePower/ui[3].label
-msgid "Alpha and Power"
-msgstr "Alfa ve Güç"
-
-#: R/kappaSizePower.b.R
-msgid "Alternative below the null."
-msgstr "Alternatif değer sıfır hipotezinin altında."
-
-#: kappaSizePower/ui[1][1]/kappa1.label
-msgid "Alternative hypothesis"
-msgstr "Alternatif hipotez"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -704,7 +689,6 @@ msgstr "Analiz Seçenekleri"
 
 #: kappaSizeCI/results/text1.title
 #: kappaSizeFixedN/results/text1.title
-#: kappaSizePower/results/text1.title
 msgid "Analysis result"
 msgstr "Analiz sonucu"
 
@@ -723,7 +707,6 @@ msgstr "Beklenen kappa (kappa0)"
 
 #: kappaSizeCI/options/props.description.ui
 #: kappaSizeFixedN/options/props.description.ui
-#: kappaSizePower/options/props.description.ui
 msgid ""
 "Anticipated share of subjects in each outcome category, separated by commas, "
 "semicolons or spaces, using a decimal point, and summing to 1 (for example "
@@ -820,31 +803,6 @@ msgid ""
 "thinnest: the smallest expected count is {min} and {below} of {total} cells "
 "are below 5. The calculation rests on a large-sample chi-square "
 "approximation, so the required n is less dependable here."
-msgstr ""
-
-#: R/kappaSizePower.b.R
-msgid ""
-"At the required sample size the agreement-pattern cells (for example, "
-"exactly k of the raters calling the finding present, or all raters agreeing "
-"on one category) are too sparse: the smallest expected count is {min} and "
-"{below} of {total} cells are below 5. The calculation rests on a "
-"large-sample chi-square approximation, so the sample size shown is less "
-"dependable here."
-msgstr ""
-"Gerekli örneklem büyüklüğünde uyum örüntüsü hücreleri (örneğin "
-"değerlendiricilerden tam olarak k tanesinin bulguyu var olarak bildirmesi ya "
-"da tüm değerlendiricilerin tek bir kategoride uyuşması) çok seyrektir: en "
-"küçük beklenen sayı {min} ve {total} hücreden {below} tanesi 5'in "
-"altındadır. Hesaplama büyük örneklem ki-kare yaklaşımına dayandığından, "
-"gösterilen örneklem büyüklüğü burada daha az güvenilirdir."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"At the required sample size the rarest outcome category is expected in only "
-"{min} subjects. Fewer than five cases of a category makes the large-sample "
-"chi-square approximation behind this method unreliable, and it leaves the "
-"study with too few examples of that category for the raters to disagree "
-"about."
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
@@ -957,7 +915,6 @@ msgstr "Şu durumda puan ver"
 
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "below 0.0001"
 msgstr ""
 
@@ -1323,12 +1280,6 @@ msgstr ""
 msgid "Consider collapsing rare categories or enrolling more subjects."
 msgstr "Nadir kategorileri birleştirmeyi veya daha fazla olgu almayı düşünün."
 
-#: R/kappaSizePower.b.R
-msgid "Consider collapsing rare categories or planning a larger study."
-msgstr ""
-"Nadir kategorileri birleştirmeyi veya daha büyük bir çalışma planlamayı "
-"düşünün."
-
 #: R/kappaSizeCI.b.R
 msgid ""
 "Consider collapsing rare categories, using fewer raters, or recruiting more "
@@ -1344,15 +1295,6 @@ msgstr ""
 "Nadir bulgunun daha sık görülmesi için olgu serisini zenginleştirmeyi "
 "(hesaplama belirtilen prevalansı varsayar), olgu eklemeyi veya anlamlılık "
 "düzeyini gevşetmeyi düşünün."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"Consider enriching the case series so the rare finding is more common (the "
-"calculation assumes the stated prevalence), or planning a larger study."
-msgstr ""
-"Nadir bulgunun daha sık görülmesi için olgu serisini zenginleştirmeyi "
-"(hesaplama belirtilen prevalansı varsayar) veya daha büyük bir çalışma "
-"planlamayı düşünün."
 
 #: R/kappaSizeCI.b.R
 msgid ""
@@ -1727,7 +1669,6 @@ msgid "Each model needs a unique name."
 msgstr "Her modelin benzersiz bir ada ihtiyacı vardır."
 
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "Each proportion must be strictly between 0 and 1."
 msgstr "Her oran 0 ile 1 arasında (sınırlar hariç) olmalıdır."
 
@@ -1769,7 +1710,6 @@ msgid "Enter exactly {k} proportions for {k} outcome categories (received {got})
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "Enter exactly {k} proportions for {k} outcome levels (received {got})."
 msgstr "{k} sonuç düzeyi için tam olarak {k} oran girin (girilen: {got})."
 
@@ -1848,12 +1788,10 @@ msgid "Excluded from analysis"
 msgstr "Analizden hariç tutuldu"
 
 #: kappaSizeFixedN/options/props.title
-#: kappaSizePower/options/props.title
 msgid "Expected proportion of cases in each category"
 msgstr "Her kategoride beklenen olgu oranı"
 
 #: kappaSizeFixedN/ui[2].label
-#: kappaSizePower/ui[2].label
 msgid "Expected Proportion of Cases in Each Category"
 msgstr "Her Kategoride Beklenen Olgu Oranı"
 
@@ -1979,11 +1917,6 @@ msgstr "Örneklem büyüklüğüne göre alt kappa sınırını bulma"
 msgid "Find sample size based on Kappa confidence"
 msgstr "Kappa güven aralığına göre örneklem büyüklüğü bulma"
 
-#: package/analyses/kappaSizePower.menuSubtitle
-#: kappaSizePower/options.menuSubtitle
-msgid "Find sample size based on power"
-msgstr "Güce dayalı örneklem büyüklüğü bulma"
-
 #: decisioncurve/options/thresholdRange/clinical.title
 msgid "Focused range (0.05 to 0.50; not a clinical recommendation)"
 msgstr "Odaklanmış aralık (0.05 ila 0.50; klinik bir öneri değildir)"
@@ -1995,14 +1928,6 @@ msgid ""
 msgstr ""
 "İkili sonuç için ya tek bir prevalans değeri ya da toplamı 1 olan iki oran "
 "girin (girilen: {got})."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"For a binary outcome enter either one prevalence value or two proportions "
-"that sum to 1."
-msgstr ""
-"İkili sonuç için ya tek bir prevalans değeri ya da toplamı 1 olan iki oran "
-"girin."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -2056,26 +1981,12 @@ msgid "Functions for Medical Decision in ClinicoPath jamovi Module"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "Further suppose that the prevalence of the trait is {p}."
 msgstr "Ayrıca özelliğin prevalansının {p} olduğunu varsayalım."
-
-#: R/kappaSizePower.b.R
-msgid "Further suppose that the prevalences of the categories are {head} and {last}."
-msgstr "Ayrıca kategorilerin prevalanslarının {head} ve {last} olduğunu varsayalım."
 
 #: R/kappaSizeFixedN.b.R
 msgid "Further suppose that the proportions of the outcome categories are {props}."
 msgstr "Ayrıca sonuç kategorilerinin oranlarının {props} olduğunu varsayalım."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"Further suppose that the two categories occur in {p1} and {p2} of subjects "
-"(the required sample size is the same whichever category is called positive)."
-msgstr ""
-"Ayrıca iki kategorinin olguların {p1} ve {p2} oranında görüldüğünü "
-"varsayalım (hangi kategorinin pozitif sayıldığından bağımsız olarak gerekli "
-"örneklem büyüklüğü aynıdır)."
 
 #: decisioncurve/results/weightedAUCTable.columns.title
 msgid "Gain vs Best Default"
@@ -2297,38 +2208,6 @@ msgstr ""
 "yanıtlar; örneklem büyüklüğü sorusunun ayna görüntüsü. Sınırın altındaki her "
 "kappa dışlanır."
 
-#: R/kappaSizePower.b.R
-msgid ""
-"It answers 'how many subjects do I need to reject kappa0 in favour of "
-"kappa1?' - not how precisely kappa will be estimated; for a target interval "
-"width use kappaSizeCI instead."
-msgstr ""
-"'kappa0'ı kappa1 lehine reddetmek için kaç olguya ihtiyacım var?' sorusunu "
-"yanıtlar; kappanın ne kadar kesin kestirileceğini değil. Hedef güven aralığı "
-"genişliği için kappaSizeCI kullanın."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"It answers a different question from the confidence-interval approach "
-"(kappaSizeCI), which sizes a study to achieve a target interval width, so "
-"the two will not agree on a sample size for the same study - pick the one "
-"that matches how the result will be reported."
-msgstr ""
-"Hedef aralık genişliğine ulaşmak için çalışmayı boyutlandıran güven aralığı "
-"yaklaşımından (kappaSizeCI) farklı bir soruyu yanıtlar; bu nedenle aynı "
-"çalışma için ikisi aynı örneklem büyüklüğünü vermez. Sonucun nasıl "
-"raporlanacağına uyan yaklaşımı seçin."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"It does not apply to weighted kappa for ordered grades; for an ordinal "
-"grading study either treat the grades as nominal categories or use a "
-"dedicated weighted-kappa method."
-msgstr ""
-"Sıralı dereceler için ağırlıklı kappaya uygulanmaz; ordinal bir "
-"derecelendirme çalışmasında dereceleri nominal kategoriler olarak ele alın "
-"ya da ağırlıklı kappaya özgü bir yöntem kullanın."
-
 #: R/decisioncurve.b.R
 msgid ""
 "It is computed correctly at that exact value, but it is not shown on the "
@@ -2360,7 +2239,6 @@ msgid "Its curve is still shown in the plot."
 msgstr "Eğrisi grafikte hala gösterilmektedir."
 
 #: kappaSizeCI/ui[2].label
-#: kappaSizePower/ui[1].label
 msgid "Kappa Levels"
 msgstr "Kappa Düzeyleri"
 
@@ -2370,17 +2248,8 @@ msgstr ""
 
 #: kappaSizeCI/options/kappa0.title
 #: kappaSizeFixedN/options/kappa0.title
-#: kappaSizePower/options/kappa0.title
 msgid "kappa0"
 msgstr "kappa0"
-
-#: R/kappaSizePower.b.R
-msgid ""
-"kappa0 (null) and kappa1 (alternative) must differ; equal values make the "
-"required sample size undefined."
-msgstr ""
-"kappa0 (sıfır hipotezi) ile kappa1 (alternatif) farklı olmalıdır; eşit "
-"değerlerde gerekli örneklem büyüklüğü tanımsızdır."
 
 #: R/kappaSizeCI.b.R
 msgid "kappa0 must be greater than kappaL"
@@ -2393,10 +2262,6 @@ msgstr "kappa0 0 ile 1 arasında (sınırlar hariç) olmalıdır."
 #: R/kappaSizeCI.b.R
 msgid "kappa0 must be strictly within the confidence interval (kappaL, kappaU)"
 msgstr ""
-
-#: kappaSizePower/options/kappa1.title
-msgid "kappa1"
-msgstr "kappa1"
 
 #: kappaSizeCI/options/kappaL.title
 msgid "kappaL"
@@ -2543,10 +2408,6 @@ msgstr "Düşük Bootstrap Tekrarlamaları"
 msgid "Low bootstrap replications ({n})."
 msgstr "Düşük bootstrap tekrarlamaları ({n})."
 
-#: R/kappaSizePower.b.R
-msgid "Low power."
-msgstr "Düşük güç."
-
 #: R/lassologistic.b.R
 msgid "Low risk"
 msgstr "Düşük risk"
@@ -2674,7 +2535,6 @@ msgstr "Metodoloji Notları"
 
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "Methodology."
 msgstr "Yöntem."
 
@@ -3086,17 +2946,8 @@ msgstr ""
 "Burada kappa0 gözlemlemeyi beklediğiniz uyumdur; kappaSizePower'daki gibi "
 "bir sıfır hipotezi değeri değildir."
 
-#: R/kappaSizePower.b.R
-msgid ""
-"Note that kappa0 here is the null hypothesis value, whereas in kappaSizeCI "
-"and kappaSizeFixedN it is the agreement you anticipate observing."
-msgstr ""
-"Burada kappa0 sıfır hipotezi değeridir; kappaSizeCI ve kappaSizeFixedN'de "
-"ise gözlemlemeyi beklediğiniz uyum düzeyidir."
-
 #: kappaSizeCI/results/notices.title
 #: kappaSizeFixedN/results/notices.title
-#: kappaSizePower/results/notices.title
 msgid "Notes"
 msgstr "Notlar"
 
@@ -3108,10 +2959,6 @@ msgstr ""
 msgid "NPV"
 msgstr "NPV"
 
-#: kappaSizePower/ui[1][0]/kappa0.label
-msgid "Null hypothesis"
-msgstr "Sıfır hipotezi"
-
 #: lassologistic/options/nfolds.title
 msgid "Number of CV Folds"
 msgstr "ÇD Katlama Sayısı"
@@ -3121,19 +2968,16 @@ msgid "Number of outcome level"
 msgstr "Sonuç düzeyi sayısı"
 
 #: kappaSizeFixedN/options/outcome.title
-#: kappaSizePower/options/outcome.title
 msgid "Number of outcome levels"
 msgstr "Sonuç düzeyi sayısı"
 
 #: kappaSizeCI/ui[0][0][0].label
 #: kappaSizeFixedN/ui[0][0][0].label
-#: kappaSizePower/ui[0][0][0].label
 msgid "Number of Outcome Levels"
 msgstr "Sonuç Düzeyi Sayısı"
 
 #: kappaSizeCI/options/outcome.description.ui
 #: kappaSizeFixedN/options/outcome.description.ui
-#: kappaSizePower/options/outcome.description.ui
 msgid "Number of outcome levels (categories) of the rated variable."
 msgstr "Değerlendirilen değişkenin sonuç düzeyi (kategori) sayısı."
 
@@ -3143,13 +2987,11 @@ msgstr "Sonuç düzeyi sayısı 2, 3, 4 veya 5 olmalıdır."
 
 #: kappaSizeCI/ui[0][1][0].label
 #: kappaSizeFixedN/ui[0][1][0].label
-#: kappaSizePower/ui[0][1][0].label
 msgid "Number of Raters"
 msgstr "Değerlendirici Sayısı"
 
 #: kappaSizeCI/options/raters.description.ui
 #: kappaSizeFixedN/options/raters.description.ui
-#: kappaSizePower/options/raters.description.ui
 msgid "Number of raters who will each rate every subject (2 to 6)."
 msgstr "Her olguyu değerlendirecek değerlendirici sayısı (2-6)."
 
@@ -3275,7 +3117,6 @@ msgid "outcome level not modelled"
 msgstr "sonuç düzeyi modellenmedi"
 
 #: kappaSizeFixedN/ui[0][0][0][0]/outcome.label
-#: kappaSizePower/ui[0][0][0][0]/outcome.label
 msgid "Outcome levels"
 msgstr "Sonuç düzeyleri"
 
@@ -3508,48 +3349,19 @@ msgstr ""
 msgid "Possible Overfitting"
 msgstr "Olası Aşırı Uyum"
 
-#: package/analyses/kappaSizePower.menuGroup
 #: package/analyses/kappaSizeCI.menuGroup
 #: package/analyses/kappaSizeFixedN.menuGroup
 #: kappaSizeCI/options.menuGroup
 #: kappaSizeFixedN/options.menuGroup
-#: kappaSizePower/options.menuGroup
-#: kappaSizePower/ui[3][1][0]/power.label
 msgid "Power"
 msgstr "Güç"
 
-#: kappaSizePower/options/power.title
-msgid "power"
-msgstr "güç"
-
-#: package/analyses/kappaSizePower.menuSubgroup
 #: package/analyses/kappaSizeCI.menuSubgroup
 #: package/analyses/kappaSizeFixedN.menuSubgroup
 #: kappaSizeCI/options.menuSubgroup
 #: kappaSizeFixedN/options.menuSubgroup
-#: kappaSizePower/options.menuSubgroup
 msgid "Power Analysis by meddecide"
 msgstr "meddecide ile Güç Analizi"
-
-#: package/analyses/kappaSizePower.title
-#: package/analyses/kappaSizePower.menuTitle
-#: kappaSizePower/options.title
-#: kappaSizePower/ui.title
-#: kappaSizePower/results.title
-msgid "Power Approach for the Number of Subjects Required"
-msgstr "Gerekli Olgu Sayısı için Güç Yaklaşımı"
-
-#: R/kappaSizePower.b.R
-msgid ""
-"Power-based sample size for a two-sided test of H0: kappa = kappa0 against "
-"H1: kappa = kappa1, for the unweighted (nominal-category) kappa coefficient, "
-"using the goodness-of-fit (non-central chi-square) approach implemented in "
-"the kappaSize package (Rotondi and Donner)."
-msgstr ""
-"Ağırlıksız (nominal kategorili) kappa katsayısı için, H0: kappa = kappa0 "
-"hipotezinin H1: kappa = kappa1 hipotezine karşı iki yönlü testine yönelik, "
-"kappaSize paketindeki (Rotondi ve Donner) uyum iyiliği (merkezi olmayan "
-"ki-kare) yaklaşımıyla hesaplanan güce dayalı örneklem büyüklüğü."
 
 #: decisioncurve/results/decisionConsequencesTable.columns.title
 msgid "PPV"
@@ -3653,14 +3465,6 @@ msgstr "mevcut"
 msgid "Prevalence"
 msgstr "Prevalans"
 
-#: kappaSizePower/options/power.description.ui
-msgid ""
-"Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type "
-"II error). Conventional values are 0.80 or 0.90; must exceed alpha."
-msgstr ""
-"Gerçek uyum kappa1 iken kappa0'ın reddedilme olasılığı (1 - tip II hata). "
-"Alışılmış değerler 0.80 veya 0.90'dır; alfadan büyük olmalıdır."
-
 #: decisioncurve/results/clinicalImpactTable.columns.title
 msgid "Projected False Positives"
 msgstr "Öngörülen Yanlış Pozitifler"
@@ -3703,7 +3507,6 @@ msgstr "Öngörülen Gereksiz Tedaviler"
 
 #: kappaSizeCI/ui[3][0]/props.label
 #: kappaSizeFixedN/ui[2][0]/props.label
-#: kappaSizePower/ui[2][0]/props.label
 msgid "Proportions (comma-separated, sum to 1)"
 msgstr ""
 
@@ -3712,7 +3515,6 @@ msgid "Proportions cannot be empty"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid ""
 "Proportions must be numbers separated by commas, semicolons or spaces (for "
 "example '0.20, 0.80'). One or more entries could not be read as a number. "
@@ -3723,7 +3525,6 @@ msgstr ""
 "Ondalık virgül tanınmaz; 0.20 örneğindeki gibi nokta kullanın."
 
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "Proportions must sum to 1 (current sum = {sum})."
 msgstr "Oranların toplamı 1 olmalıdır (şu anki toplam = {sum})."
 
@@ -3734,7 +3535,6 @@ msgid ""
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid ""
 "Proportions must use a decimal point, not a decimal comma: write 0.30, 0.70 "
 "rather than 0,30 0,70."
@@ -3799,18 +3599,12 @@ msgstr ""
 "etmemeyi aştığı eşik olasılıkları aralığı; bir model yalnızca bu aralıkta "
 "kullanılmaya değerdir."
 
-#: R/kappaSizePower.b.R
-msgid "Rare outcome category."
-msgstr ""
-
 #: kappaSizeFixedN/ui[0][1][0][0]/raters.label
-#: kappaSizePower/ui[0][1][0][0]/raters.label
 msgid "Raters"
 msgstr "Değerlendiriciler"
 
 #: kappaSizeCI/options/raters.title
 #: kappaSizeFixedN/options/raters.title
-#: kappaSizePower/options/raters.title
 msgid "raters"
 msgstr "değerlendiriciler"
 
@@ -3880,14 +3674,6 @@ msgstr "Gerekli paketler eksik: {pkgs}."
 msgid "Required sample size: {n}"
 msgstr ""
 
-#: R/kappaSizePower.b.R
-msgid ""
-"Required sample size: <b>{n}</b> {subjects}, each rated by all {raters} "
-"raters."
-msgstr ""
-"Gerekli örneklem büyüklüğü: her biri {raters} değerlendiricinin tümü "
-"tarafından değerlendirilen <b>{n}</b> {subjects}."
-
 #: R/kappaSizeCI.b.R
 msgid "Required sample size: unavailable"
 msgstr ""
@@ -3899,18 +3685,6 @@ msgid ""
 msgstr ""
 "Araştırmacılar kappa = {kappa0} düzeyinde bir uyum beklemekte ve her biri "
 "{raters} değerlendirici tarafından değerlendirilen {n} olguya sahiptir."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"Researchers would like to determine the required sample size to test the "
-"null hypothesis kappa = {kappa0} against the alternative kappa = {kappa1} at "
-"a two-sided significance level of {alpha} with power {power}, in a study of "
-"interobserver agreement with {raters} raters."
-msgstr ""
-"Araştırmacılar, {raters} değerlendiricili bir gözlemciler arası uyum "
-"çalışmasında, kappa = {kappa0} sıfır hipotezini kappa = {kappa1} "
-"alternatifine karşı {alpha} iki yönlü anlamlılık düzeyinde ve {power} güçle "
-"test etmek için gerekli örneklem büyüklüğünü belirlemek istemektedir."
 
 #: R/decisioncurve.b.R
 msgid "Reserved Model Name"
@@ -4015,28 +3789,9 @@ msgstr ""
 msgid "Sample size calculation failed"
 msgstr ""
 
-#: R/kappaSizePower.b.R
-msgid "Sample size calculation failed: {error}"
-msgstr "Örneklem büyüklüğü hesaplaması başarısız oldu: {error}"
-
 #: R/kappaSizeCI.b.R
 msgid "Sample Size Calculation for Interobserver Agreement Study"
 msgstr ""
-
-#: package/analyses/kappaSizePower.description
-#: kappaSizePower/options.description.main
-msgid ""
-"Sample size for an interobserver agreement study sized to reject a null "
-"kappa (kappa0) in favour of an alternative kappa (kappa1) at a given "
-"two-sided significance level and power - the power approach of the kappaSize "
-"package. Use kappaSizeCI for a target confidence-interval width, and "
-"kappaSizeFixedN when the number of subjects is already fixed."
-msgstr ""
-"Belirli bir iki yönlü anlamlılık düzeyi ve güçte sıfır hipotezi kappasını "
-"(kappa0) alternatif kappa (kappa1) lehine reddetmek üzere boyutlandırılan "
-"gözlemciler arası uyum çalışması için örneklem büyüklüğü; kappaSize "
-"paketinin güç yaklaşımı. Hedef güven aralığı genişliği için kappaSizeCI, "
-"olgu sayısı önceden sabitse kappaSizeFixedN kullanın."
 
 #: lassologistic/ui[6][0].label
 msgid "Save Variables"
@@ -4212,10 +3967,6 @@ msgstr ""
 "%{level} düzeyinde {reps} tekrarlamadan elde edilen eşzamanlı sup-t "
 "bootstrap bandı (Mandel ve Betensky 2008)."
 
-#: R/kappaSizePower.b.R
-msgid "Small kappa difference."
-msgstr "Küçük kappa farkı."
-
 #: R/decisioncurve.b.R
 msgid "Small Sample Size"
 msgstr "Küçük Örneklem Büyüklüğü"
@@ -4234,7 +3985,6 @@ msgstr "Bunun yerine kaynak değişken adları kullanılır."
 
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "Sparse categories."
 msgstr "Seyrek kategoriler."
 
@@ -4299,21 +4049,11 @@ msgstr "Çalışma Tasarımı:"
 
 #: kappaSizeCI/results/text2.title
 #: kappaSizeFixedN/results/text2.title
-#: kappaSizePower/results/text2.title
 msgid "Study Explanation"
 msgstr "Çalışma Açıklaması"
 
-#: R/kappaSizePower.b.R
-msgid "subject"
-msgstr "olgu"
-
-#: R/kappaSizePower.b.R
-msgid "subjects"
-msgstr "olgu"
-
 #: kappaSizeCI/results/text_summary.title
 #: kappaSizeFixedN/results/text_summary.title
-#: kappaSizePower/results/text_summary.title
 msgid "Summary"
 msgstr "Özet"
 
@@ -4346,27 +4086,6 @@ msgstr ""
 "uyarlama LASSO daralmasını ortadan kaldırır. Tüm metrikler görünürdedir "
 "(örneklem içi) - iyimserlik düzeltmeli ayrım için Bootstrap Dahili "
 "Doğrulamasını kullanın."
-
-#: kappaSizePower/options/kappa1.description.ui
-msgid ""
-"The alternative hypothesis value of kappa - the level of agreement the study "
-"should be able to detect against kappa0."
-msgstr ""
-"Kappanın alternatif hipotez değeri; çalışmanın kappa0'a karşı saptayabilmesi "
-"gereken uyum düzeyi."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"The alternative kappa ({kappa1}) is BELOW the null ({kappa0}). This sizes a "
-"study to demonstrate that agreement is WORSE than the null value, not "
-"better. If you meant to detect an improvement, swap the two values - the "
-"required sample size is not the same either way."
-msgstr ""
-"Alternatif kappa ({kappa1}) sıfır hipotezi değerinin ({kappa0}) ALTINDADIR. "
-"Bu, uyumun sıfır hipotezi değerinden daha iyi değil daha KÖTÜ olduğunu "
-"göstermek üzere bir çalışma boyutlandırır. Bir iyileşmeyi saptamayı "
-"amaçlıyorsanız iki değeri yer değiştirin; gerekli örneklem büyüklüğü iki "
-"yönde aynı değildir."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -4474,18 +4193,6 @@ msgstr ""
 "sağladığınız kesim noktaları ve bir tane vermediğiniz tahmin ediciler için "
 "örneklem medyanı"
 
-#: R/kappaSizePower.b.R
-msgid ""
-"The design needs {n} subjects; few agreement studies can enrol this many. A "
-"rare finding (prevalence far from 0.5), a small difference between kappa0 "
-"and kappa1, and a high power target all inflate the sample size - revisit "
-"whichever of these is not a firm requirement."
-msgstr ""
-"Tasarım {n} olgu gerektiriyor; çok az uyum çalışması bu kadar olgu "
-"toplayabilir. Nadir bir bulgu (0.5'ten uzak prevalans), kappa0 ile kappa1 "
-"arasındaki küçük fark ve yüksek güç hedefinin her biri örneklem büyüklüğünü "
-"artırır; bunlardan kesin bir gereklilik olmayanı gözden geçirin."
-
 #: R/kappaSizeFixedN.b.R
 msgid "The expected lower bound for kappa is {bound}."
 msgstr "Kappa için beklenen alt sınır {bound}."
@@ -4559,28 +4266,6 @@ msgstr ""
 msgid "The minimum threshold is {min}%."
 msgstr "Minimum eşik %{min}'dir."
 
-#: R/kappaSizePower.b.R
-msgid ""
-"The null and alternative kappa differ by only {delta}. Check that kappa0 is "
-"the agreement you want to rule OUT (not the agreement you expect to observe) "
-"and that kappa1 is a clinically meaningful difference from it; very close "
-"values need very large studies."
-msgstr ""
-"Sıfır hipotezi ve alternatif kappa yalnızca {delta} kadar farklıdır. "
-"kappa0'ın DIŞLAMAK istediğiniz uyum (gözlemlemeyi beklediğiniz uyum değil) "
-"ve kappa1'in bundan klinik olarak anlamlı bir fark olduğunu denetleyin; "
-"birbirine çok yakın değerler çok büyük çalışmalar gerektirir."
-
-#: kappaSizePower/options/kappa0.description.ui
-msgid ""
-"The null hypothesis value of kappa - the level of agreement the study tests "
-"against. kappaSize documents this as \"the null hypothesis for the kappa "
-"hypothesis test\"; it is NOT the value you expect to observe."
-msgstr ""
-"Kappanın sıfır hipotezi değeri; çalışmanın karşısında test ettiği uyum "
-"düzeyi. kappaSize bunu \"kappa hipotez testi için sıfır hipotezi\" olarak "
-"belgeler; gözlemlemeyi beklediğiniz değer DEĞİLDİR."
-
 #: R/lassologistic.b.R
 msgid ""
 "The optimal threshold maximizes the Youden index on the same data used to "
@@ -4644,39 +4329,15 @@ msgid ""
 "more raters, or accept a lower confidence level."
 msgstr ""
 
-#: R/kappaSizePower.b.R
-msgid ""
-"The requested power is {power}. A study powered below 50% is more likely to "
-"miss the alternative kappa than to detect it; conventional values are 0.80 "
-"or 0.90."
-msgstr ""
-"İstenen güç {power}. Gücü %50'nin altında olan bir çalışmanın alternatif "
-"kappayı saptamaktan çok kaçırması olasıdır; alışılmış değerler 0.80 veya "
-"0.90'dır."
-
 #: R/kappaSizeCI.b.R
 msgid "The required sample size could not be determined from the provided inputs."
 msgstr ""
-
-#: R/kappaSizePower.b.R
-msgid "The required sample size is {n} {subjects}."
-msgstr "Gerekli örneklem büyüklüğü {n} {subjects}."
 
 #: R/kappaSizeCI.b.R
 msgid ""
 "The required sample size is computed with the confidence-interval width "
 "approach of the kappaSize package (Donner and Eliasziw; Rotondi and Donner)."
 msgstr ""
-
-#: R/kappaSizePower.b.R
-msgid ""
-"The required sample size is only {n} {subjects}. The large-sample "
-"approximation behind this method does not hold for such small studies; treat "
-"the figure as a lower bound, not a plan."
-msgstr ""
-"Gerekli örneklem büyüklüğü yalnızca {n} {subjects}. Bu yöntemin dayandığı "
-"büyük örneklem yaklaşımı bu kadar küçük çalışmalar için geçerli değildir; bu "
-"sayıyı bir plan değil alt sınır olarak değerlendirin."
 
 #: R/lassologistic.b.R
 msgid "the sample mean"
@@ -4707,17 +4368,6 @@ msgstr ""
 #: R/decisioncurve.b.R
 msgid "The selected threshold range spans {span} percentage points."
 msgstr "Seçilen eşik aralığı {span} yüzdelik puanı kapsar."
-
-#: R/kappaSizePower.b.R
-msgid ""
-"The significance level ({alpha}) must be below the power ({power}). A study "
-"whose power does not exceed its type I error rate provides no evidence, and "
-"the sample size cannot be computed for it. Conventional values are alpha "
-"0.05 and power 0.80."
-msgstr ""
-"Anlamlılık düzeyi ({alpha}) güçten ({power}) küçük olmalıdır. Gücü tip I "
-"hata oranını aşmayan bir çalışma kanıt sağlamaz ve bunun için örneklem "
-"büyüklüğü hesaplanamaz. Alışılmış değerler alfa 0.05 ve güç 0.80'dir."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -4894,15 +4544,6 @@ msgstr ""
 #: R/kappaSizeCI.b.R
 msgid "This is a planning expectation, not a guarantee."
 msgstr ""
-
-#: R/kappaSizePower.b.R
-msgid ""
-"This is a POWER calculation: it returns the number of subjects needed to "
-"REJECT kappa0 in favour of kappa1 in a two-sided test at the stated "
-"significance level and power."
-msgstr ""
-"Bu bir GÜÇ hesaplamasıdır: belirtilen anlamlılık düzeyi ve güçte, iki yönlü "
-"bir testte kappa0'ı kappa1 lehine REDDETMEK için gereken olgu sayısını verir."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -5119,13 +4760,8 @@ msgstr ""
 "İki yönlü GA hem alt hem üst sınır gerektirir. Tek yönlü GA yalnızca alt "
 "sınır gerektirir (kappaU yok sayılır)."
 
-#: kappaSizePower/options/alpha.description.ui
-msgid "Two-sided significance level (capped at 0.20; must be below the power)."
-msgstr "İki yönlü anlamlılık düzeyi (en çok 0.20; güçten küçük olmalıdır)."
-
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
 msgid "unavailable"
 msgstr "mevcut değil"
 
@@ -5217,17 +4853,9 @@ msgstr ""
 msgid "Variables analysed"
 msgstr "Analiz edilen değişkenler"
 
-#: R/kappaSizePower.b.R
-msgid "Very large sample size."
-msgstr "Çok büyük örneklem büyüklüğü."
-
 #: R/decisioncurve.b.R
 msgid "Very small sample size (n = {n})."
 msgstr "Çok küçük örneklem büyüklüğü (n = {n})."
-
-#: R/kappaSizePower.b.R
-msgid "Very small sample size."
-msgstr "Çok küçük örneklem büyüklüğü."
 
 #: R/lassologistic.b.R
 msgid "Warning"

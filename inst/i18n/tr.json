@@ -286,15 +286,6 @@
             "Alpha (0-1)": [
                 ""
             ],
-            "Alpha and Power": [
-                "Alfa ve Güç"
-            ],
-            "Alternative below the null.": [
-                "Alternatif değer sıfır hipotezinin altında."
-            ],
-            "Alternative hypothesis": [
-                "Alternatif hipotez"
-            ],
             "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
                 "1.000 görünürde EAA, seçilen tahmin edicilerin bu veri setinde iki sınıfı tamamen ayırdığı anlamına gelir. 1.000 duyarlılık, özgüllük, doğruluk, kesinlik ve F1, gelecekteki hastaları değil, modelin uyarlandığı satırları tanımlar ve güven aralığı kesinliği belirtmek yerine tek bir noktaya çöker. Tam ayrım katsayıların kendisini de kararsız hale getirir. İyimserlik düzeltmeli bir tahmin için bootstrap doğrulamasını etkinleştirin ve herhangi bir klinik kullanımdan önce harici doğrulamayı zorunlu olarak ele alın."
             ],
@@ -362,12 +353,6 @@
                 "En az iki tahmin edici gereklidir"
             ],
             "At the computed sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the confidence limit where they are thinnest: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the required n is less dependable here.": [
-                ""
-            ],
-            "At the required sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the sample size shown is less dependable here.": [
-                "Gerekli örneklem büyüklüğünde uyum örüntüsü hücreleri (örneğin değerlendiricilerden tam olarak k tanesinin bulguyu var olarak bildirmesi ya da tüm değerlendiricilerin tek bir kategoride uyuşması) çok seyrektir: en küçük beklenen sayı {min} ve {total} hücreden {below} tanesi 5'in altındadır. Hesaplama büyük örneklem ki-kare yaklaşımına dayandığından, gösterilen örneklem büyüklüğü burada daha az güvenilirdir."
-            ],
-            "At the required sample size the rarest outcome category is expected in only {min} subjects. Fewer than five cases of a category makes the large-sample chi-square approximation behind this method unreliable, and it leaves the study with too few examples of that category for the raters to disagree about.": [
                 ""
             ],
             "At this sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the reported lower bound: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the bound shown is less dependable here.": [
@@ -658,17 +643,11 @@
             "Consider collapsing rare categories or enrolling more subjects.": [
                 "Nadir kategorileri birleştirmeyi veya daha fazla olgu almayı düşünün."
             ],
-            "Consider collapsing rare categories or planning a larger study.": [
-                "Nadir kategorileri birleştirmeyi veya daha büyük bir çalışma planlamayı düşünün."
-            ],
             "Consider collapsing rare categories, using fewer raters, or recruiting more subjects than the figure shown.": [
                 ""
             ],
             "Consider enriching the case series so the rare finding is more common (the calculation assumes the stated prevalence), adding subjects, or relaxing the significance level.": [
                 "Nadir bulgunun daha sık görülmesi için olgu serisini zenginleştirmeyi (hesaplama belirtilen prevalansı varsayar), olgu eklemeyi veya anlamlılık düzeyini gevşetmeyi düşünün."
-            ],
-            "Consider enriching the case series so the rare finding is more common (the calculation assumes the stated prevalence), or planning a larger study.": [
-                "Nadir bulgunun daha sık görülmesi için olgu serisini zenginleştirmeyi (hesaplama belirtilen prevalansı varsayar) veya daha büyük bir çalışma planlamayı düşünün."
             ],
             "Consider using fewer raters, or recruiting more subjects than the figure shown.": [
                 ""
@@ -1021,17 +1000,11 @@
             "Find sample size based on Kappa confidence": [
                 "Kappa güven aralığına göre örneklem büyüklüğü bulma"
             ],
-            "Find sample size based on power": [
-                "Güce dayalı örneklem büyüklüğü bulma"
-            ],
             "Focused range (0.05 to 0.50; not a clinical recommendation)": [
                 "Odaklanmış aralık (0.05 ila 0.50; klinik bir öneri değildir)"
             ],
             "For a binary outcome enter either one prevalence value or two proportions that sum to 1 (received {got}).": [
                 "İkili sonuç için ya tek bir prevalans değeri ya da toplamı 1 olan iki oran girin (girilen: {got})."
-            ],
-            "For a binary outcome enter either one prevalence value or two proportions that sum to 1.": [
-                "İkili sonuç için ya tek bir prevalans değeri ya da toplamı 1 olan iki oran girin."
             ],
             "For a defensible clinical claim, supply predictions from an external dataset or from cross-validation, and report which was used.": [
                 "Savunulabilir bir klinik iddia için harici bir veri kümesinden veya çapraz doğrulamadan tahminler sağlayın ve hangisinin kullanıldığını bildirin."
@@ -1057,14 +1030,8 @@
             "Further suppose that the prevalence of the trait is {p}.": [
                 "Ayrıca özelliğin prevalansının {p} olduğunu varsayalım."
             ],
-            "Further suppose that the prevalences of the categories are {head} and {last}.": [
-                "Ayrıca kategorilerin prevalanslarının {head} ve {last} olduğunu varsayalım."
-            ],
             "Further suppose that the proportions of the outcome categories are {props}.": [
                 "Ayrıca sonuç kategorilerinin oranlarının {props} olduğunu varsayalım."
-            ],
-            "Further suppose that the two categories occur in {p1} and {p2} of subjects (the required sample size is the same whichever category is called positive).": [
-                "Ayrıca iki kategorinin olguların {p1} ve {p2} oranında görüldüğünü varsayalım (hangi kategorinin pozitif sayıldığından bağımsız olarak gerekli örneklem büyüklüğü aynıdır)."
             ],
             "Gain vs Best Default": [
                 "En İyi Varsayılana Göre Kazanç"
@@ -1186,15 +1153,6 @@
             "It answers 'given the subjects I have, how little agreement am I still unable to rule out?' - the mirror image of the sample-size question; every kappa below the bound is excluded.": [
                 "'Elimdeki olgularla ne kadar düşük bir uyumu hâlâ dışlayamıyorum?' sorusunu yanıtlar; örneklem büyüklüğü sorusunun ayna görüntüsü. Sınırın altındaki her kappa dışlanır."
             ],
-            "It answers 'how many subjects do I need to reject kappa0 in favour of kappa1?' - not how precisely kappa will be estimated; for a target interval width use kappaSizeCI instead.": [
-                "'kappa0'ı kappa1 lehine reddetmek için kaç olguya ihtiyacım var?' sorusunu yanıtlar; kappanın ne kadar kesin kestirileceğini değil. Hedef güven aralığı genişliği için kappaSizeCI kullanın."
-            ],
-            "It answers a different question from the confidence-interval approach (kappaSizeCI), which sizes a study to achieve a target interval width, so the two will not agree on a sample size for the same study - pick the one that matches how the result will be reported.": [
-                "Hedef aralık genişliğine ulaşmak için çalışmayı boyutlandıran güven aralığı yaklaşımından (kappaSizeCI) farklı bir soruyu yanıtlar; bu nedenle aynı çalışma için ikisi aynı örneklem büyüklüğünü vermez. Sonucun nasıl raporlanacağına uyan yaklaşımı seçin."
-            ],
-            "It does not apply to weighted kappa for ordered grades; for an ordinal grading study either treat the grades as nominal categories or use a dedicated weighted-kappa method.": [
-                "Sıralı dereceler için ağırlıklı kappaya uygulanmaz; ordinal bir derecelendirme çalışmasında dereceleri nominal kategoriler olarak ele alın ya da ağırlıklı kappaya özgü bir yöntem kullanın."
-            ],
             "It is computed correctly at that exact value, but it is not shown on the decision curve, and the surrounding rows come from the analysed range.": [
                 "Tam o değerde doğru şekilde hesaplanmıştır, ancak karar eğrisinde gösterilmez ve çevreleyen satırlar analiz edilen aralıktan gelir."
             ],
@@ -1216,9 +1174,6 @@
             "kappa0": [
                 "kappa0"
             ],
-            "kappa0 (null) and kappa1 (alternative) must differ; equal values make the required sample size undefined.": [
-                "kappa0 (sıfır hipotezi) ile kappa1 (alternatif) farklı olmalıdır; eşit değerlerde gerekli örneklem büyüklüğü tanımsızdır."
-            ],
             "kappa0 must be greater than kappaL": [
                 ""
             ],
@@ -1227,9 +1182,6 @@
             ],
             "kappa0 must be strictly within the confidence interval (kappaL, kappaU)": [
                 ""
-            ],
-            "kappa1": [
-                "kappa1"
             ],
             "kappaL": [
                 "kappaL"
@@ -1314,9 +1266,6 @@
             ],
             "Low bootstrap replications ({n}).": [
                 "Düşük bootstrap tekrarlamaları ({n})."
-            ],
-            "Low power.": [
-                "Düşük güç."
             ],
             "Low risk": [
                 "Düşük risk"
@@ -1651,9 +1600,6 @@
             "Note that kappa0 here is the agreement you anticipate observing, not a null hypothesis value as it is in kappaSizePower.": [
                 "Burada kappa0 gözlemlemeyi beklediğiniz uyumdur; kappaSizePower'daki gibi bir sıfır hipotezi değeri değildir."
             ],
-            "Note that kappa0 here is the null hypothesis value, whereas in kappaSizeCI and kappaSizeFixedN it is the agreement you anticipate observing.": [
-                "Burada kappa0 sıfır hipotezi değeridir; kappaSizeCI ve kappaSizeFixedN'de ise gözlemlemeyi beklediğiniz uyum düzeyidir."
-            ],
             "Notes": [
                 "Notlar"
             ],
@@ -1662,9 +1608,6 @@
             ],
             "NPV": [
                 "NPV"
-            ],
-            "Null hypothesis": [
-                "Sıfır hipotezi"
             ],
             "Number of CV Folds": [
                 "ÇD Katlama Sayısı"
@@ -1903,17 +1846,8 @@
             "Power": [
                 "Güç"
             ],
-            "power": [
-                "güç"
-            ],
             "Power Analysis by meddecide": [
                 "meddecide ile Güç Analizi"
-            ],
-            "Power Approach for the Number of Subjects Required": [
-                "Gerekli Olgu Sayısı için Güç Yaklaşımı"
-            ],
-            "Power-based sample size for a two-sided test of H0: kappa = kappa0 against H1: kappa = kappa1, for the unweighted (nominal-category) kappa coefficient, using the goodness-of-fit (non-central chi-square) approach implemented in the kappaSize package (Rotondi and Donner).": [
-                "Ağırlıksız (nominal kategorili) kappa katsayısı için, H0: kappa = kappa0 hipotezinin H1: kappa = kappa1 hipotezine karşı iki yönlü testine yönelik, kappaSize paketindeki (Rotondi ve Donner) uyum iyiliği (merkezi olmayan ki-kare) yaklaşımıyla hesaplanan güce dayalı örneklem büyüklüğü."
             ],
             "PPV": [
                 "PPV"
@@ -1971,9 +1905,6 @@
             ],
             "Prevalence": [
                 "Prevalans"
-            ],
-            "Probability of rejecting kappa0 when the true agreement is kappa1 (1 - type II error). Conventional values are 0.80 or 0.90; must exceed alpha.": [
-                "Gerçek uyum kappa1 iken kappa0'ın reddedilme olasılığı (1 - tip II hata). Alışılmış değerler 0.80 veya 0.90'dır; alfadan büyük olmalıdır."
             ],
             "Projected False Positives": [
                 "Öngörülen Yanlış Pozitifler"
@@ -2059,9 +1990,6 @@
             "Range of threshold probabilities over which the model's net benefit exceeds both treat-all and treat-none; a model is only worth using within this range.": [
                 "Modelin net faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi aştığı eşik olasılıkları aralığı; bir model yalnızca bu aralıkta kullanılmaya değerdir."
             ],
-            "Rare outcome category.": [
-                ""
-            ],
             "Raters": [
                 "Değerlendiriciler"
             ],
@@ -2116,17 +2044,11 @@
             "Required sample size: {n}": [
                 ""
             ],
-            "Required sample size: <b>{n}</b> {subjects}, each rated by all {raters} raters.": [
-                "Gerekli örneklem büyüklüğü: her biri {raters} değerlendiricinin tümü tarafından değerlendirilen <b>{n}</b> {subjects}."
-            ],
             "Required sample size: unavailable": [
                 ""
             ],
             "Researchers anticipate an agreement of kappa = {kappa0} and have access to {n} subjects, each rated by {raters} raters.": [
                 "Araştırmacılar kappa = {kappa0} düzeyinde bir uyum beklemekte ve her biri {raters} değerlendirici tarafından değerlendirilen {n} olguya sahiptir."
-            ],
-            "Researchers would like to determine the required sample size to test the null hypothesis kappa = {kappa0} against the alternative kappa = {kappa1} at a two-sided significance level of {alpha} with power {power}, in a study of interobserver agreement with {raters} raters.": [
-                "Araştırmacılar, {raters} değerlendiricili bir gözlemciler arası uyum çalışmasında, kappa = {kappa0} sıfır hipotezini kappa = {kappa1} alternatifine karşı {alpha} iki yönlü anlamlılık düzeyinde ve {power} güçle test etmek için gerekli örneklem büyüklüğünü belirlemek istemektedir."
             ],
             "Reserved Model Name": [
                 "Ayrılmış Model Adı"
@@ -2200,14 +2122,8 @@
             "Sample size calculation failed": [
                 ""
             ],
-            "Sample size calculation failed: {error}": [
-                "Örneklem büyüklüğü hesaplaması başarısız oldu: {error}"
-            ],
             "Sample Size Calculation for Interobserver Agreement Study": [
                 ""
-            ],
-            "Sample size for an interobserver agreement study sized to reject a null kappa (kappa0) in favour of an alternative kappa (kappa1) at a given two-sided significance level and power - the power approach of the kappaSize package. Use kappaSizeCI for a target confidence-interval width, and kappaSizeFixedN when the number of subjects is already fixed.": [
-                "Belirli bir iki yönlü anlamlılık düzeyi ve güçte sıfır hipotezi kappasını (kappa0) alternatif kappa (kappa1) lehine reddetmek üzere boyutlandırılan gözlemciler arası uyum çalışması için örneklem büyüklüğü; kappaSize paketinin güç yaklaşımı. Hedef güven aralığı genişliği için kappaSizeCI, olgu sayısı önceden sabitse kappaSizeFixedN kullanın."
             ],
             "Save Variables": [
                 "Değişkenleri Kaydet"
@@ -2323,9 +2239,6 @@
             "Simultaneous sup-t bootstrap band from {reps} replications at the {level}% level (Mandel and Betensky 2008).": [
                 "%{level} düzeyinde {reps} tekrarlamadan elde edilen eşzamanlı sup-t bootstrap bandı (Mandel ve Betensky 2008)."
             ],
-            "Small kappa difference.": [
-                "Küçük kappa farkı."
-            ],
             "Small Sample Size": [
                 "Küçük Örneklem Büyüklüğü"
             ],
@@ -2383,12 +2296,6 @@
             "Study Explanation": [
                 "Çalışma Açıklaması"
             ],
-            "subject": [
-                "olgu"
-            ],
-            "subjects": [
-                "olgu"
-            ],
             "Summary": [
                 "Özet"
             ],
@@ -2406,12 +2313,6 @@
             ],
             "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); their apparent AUC is typically higher than the penalized LASSO row because refitting removes LASSO shrinkage. All metrics are apparent (in-sample) - use Bootstrap Internal Validation for optimism-corrected discrimination.": [
                 "'Lojistik' satırları cezalandırılmamış yeniden uyarlamalardır (AIC karşılaştırılabilirliği için gösterilmiştir); görünürdeki EAA'ları tipik olarak cezalandırılmış LASSO satırından daha yüksektir çünkü yeniden uyarlama LASSO daralmasını ortadan kaldırır. Tüm metrikler görünürdedir (örneklem içi) - iyimserlik düzeltmeli ayrım için Bootstrap Dahili Doğrulamasını kullanın."
-            ],
-            "The alternative hypothesis value of kappa - the level of agreement the study should be able to detect against kappa0.": [
-                "Kappanın alternatif hipotez değeri; çalışmanın kappa0'a karşı saptayabilmesi gereken uyum düzeyi."
-            ],
-            "The alternative kappa ({kappa1}) is BELOW the null ({kappa0}). This sizes a study to demonstrate that agreement is WORSE than the null value, not better. If you meant to detect an improvement, swap the two values - the required sample size is not the same either way.": [
-                "Alternatif kappa ({kappa1}) sıfır hipotezi değerinin ({kappa0}) ALTINDADIR. Bu, uyumun sıfır hipotezi değerinden daha iyi değil daha KÖTÜ olduğunu göstermek üzere bir çalışma boyutlandırır. Bir iyileşmeyi saptamayı amaçlıyorsanız iki değeri yer değiştirin; gerekli örneklem büyüklüğü iki yönde aynı değildir."
             ],
             "The analysis continues without confidence intervals; the point estimates are unaffected.": [
                 "Analiz güven aralıkları olmadan devam eder; nokta tahminleri etkilenmez."
@@ -2458,9 +2359,6 @@
             "the cut points you supplied, and the sample median for the predictors you did not give one for": [
                 "sağladığınız kesim noktaları ve bir tane vermediğiniz tahmin ediciler için örneklem medyanı"
             ],
-            "The design needs {n} subjects; few agreement studies can enrol this many. A rare finding (prevalence far from 0.5), a small difference between kappa0 and kappa1, and a high power target all inflate the sample size - revisit whichever of these is not a firm requirement.": [
-                "Tasarım {n} olgu gerektiriyor; çok az uyum çalışması bu kadar olgu toplayabilir. Nadir bir bulgu (0.5'ten uzak prevalans), kappa0 ile kappa1 arasındaki küçük fark ve yüksek güç hedefinin her biri örneklem büyüklüğünü artırır; bunlardan kesin bir gereklilik olmayanı gözden geçirin."
-            ],
             "The expected lower bound for kappa is {bound}.": [
                 "Kappa için beklenen alt sınır {bound}."
             ],
@@ -2488,12 +2386,6 @@
             "The minimum threshold is {min}%.": [
                 "Minimum eşik %{min}'dir."
             ],
-            "The null and alternative kappa differ by only {delta}. Check that kappa0 is the agreement you want to rule OUT (not the agreement you expect to observe) and that kappa1 is a clinically meaningful difference from it; very close values need very large studies.": [
-                "Sıfır hipotezi ve alternatif kappa yalnızca {delta} kadar farklıdır. kappa0'ın DIŞLAMAK istediğiniz uyum (gözlemlemeyi beklediğiniz uyum değil) ve kappa1'in bundan klinik olarak anlamlı bir fark olduğunu denetleyin; birbirine çok yakın değerler çok büyük çalışmalar gerektirir."
-            ],
-            "The null hypothesis value of kappa - the level of agreement the study tests against. kappaSize documents this as \"the null hypothesis for the kappa hypothesis test\"; it is NOT the value you expect to observe.": [
-                "Kappanın sıfır hipotezi değeri; çalışmanın karşısında test ettiği uyum düzeyi. kappaSize bunu \"kappa hipotez testi için sıfır hipotezi\" olarak belgeler; gözlemlemeyi beklediğiniz değer DEĞİLDİR."
-            ],
             "The optimal threshold maximizes the Youden index on the same data used to fit the model, so sensitivity, specificity, accuracy, precision, and F1 are apparent (in-sample) and optimistic. Enable bootstrap validation for an optimism-corrected estimate of discrimination.": [
                 "Optimal eşik modeli uyarlamak için kullanılan aynı veriler üzerinde Youden indeksini maksimize eder, bu nedenle duyarlılık, özgüllük, doğruluk, kesinlik ve F1 görünürdedir (örneklem içi) ve iyimserdir. Ayrım gücünün iyimserlik düzeltmeli bir tahmini için bootstrap doğrulamasını etkinleştirin."
             ],
@@ -2515,20 +2407,11 @@
             "The requested confidence interval is too narrow to size in reasonable time. The limit that governs the sample size is {dist} away from kappa0, and the required sample size grows roughly as one over the square of that distance — the search was still running after {secs} seconds. Widen the interval, use more raters, or accept a lower confidence level.": [
                 ""
             ],
-            "The requested power is {power}. A study powered below 50% is more likely to miss the alternative kappa than to detect it; conventional values are 0.80 or 0.90.": [
-                "İstenen güç {power}. Gücü %50'nin altında olan bir çalışmanın alternatif kappayı saptamaktan çok kaçırması olasıdır; alışılmış değerler 0.80 veya 0.90'dır."
-            ],
             "The required sample size could not be determined from the provided inputs.": [
                 ""
             ],
-            "The required sample size is {n} {subjects}.": [
-                "Gerekli örneklem büyüklüğü {n} {subjects}."
-            ],
             "The required sample size is computed with the confidence-interval width approach of the kappaSize package (Donner and Eliasziw; Rotondi and Donner).": [
                 ""
-            ],
-            "The required sample size is only {n} {subjects}. The large-sample approximation behind this method does not hold for such small studies; treat the figure as a lower bound, not a plan.": [
-                "Gerekli örneklem büyüklüğü yalnızca {n} {subjects}. Bu yöntemin dayandığı büyük örneklem yaklaşımı bu kadar küçük çalışmalar için geçerli değildir; bu sayıyı bir plan değil alt sınır olarak değerlendirin."
             ],
             "the sample mean": [
                 "örneklem ortalaması"
@@ -2547,9 +2430,6 @@
             ],
             "The selected threshold range spans {span} percentage points.": [
                 "Seçilen eşik aralığı {span} yüzdelik puanı kapsar."
-            ],
-            "The significance level ({alpha}) must be below the power ({power}). A study whose power does not exceed its type I error rate provides no evidence, and the sample size cannot be computed for it. Conventional values are alpha 0.05 and power 0.80.": [
-                "Anlamlılık düzeyi ({alpha}) güçten ({power}) küçük olmalıdır. Gücü tip I hata oranını aşmayan bir çalışma kanıt sağlamaz ve bunun için örneklem büyüklüğü hesaplanamaz. Alışılmış değerler alfa 0.05 ve güç 0.80'dir."
             ],
             "The start and end shown span a gap where the model is not superior - read the curve rather than the endpoints.": [
                 "Gösterilen başlangıç ve bitiş, modelin üstün olmadığı bir boşluğu kapsar - uç noktalar yerine eğriyi okuyun."
@@ -2622,9 +2502,6 @@
             ],
             "This is a planning expectation, not a guarantee.": [
                 ""
-            ],
-            "This is a POWER calculation: it returns the number of subjects needed to REJECT kappa0 in favour of kappa1 in a two-sided test at the stated significance level and power.": [
-                "Bu bir GÜÇ hesaplamasıdır: belirtilen anlamlılık düzeyi ve güçte, iki yönlü bir testte kappa0'ı kappa1 lehine REDDETMEK için gereken olgu sayısını verir."
             ],
             "This is not a confirmatory test and depends on giving every threshold equal weight.": [
                 "Bu doğrulayıcı bir test değildir ve her eşiğe eşit ağırlık verilmesine bağlıdır."
@@ -2737,9 +2614,6 @@
             "Two-sided CI requires both lower and upper limits. One-sided CI only requires a lower limit (kappaU is ignored).": [
                 "İki yönlü GA hem alt hem üst sınır gerektirir. Tek yönlü GA yalnızca alt sınır gerektirir (kappaU yok sayılır)."
             ],
-            "Two-sided significance level (capped at 0.20; must be below the power).": [
-                "İki yönlü anlamlılık düzeyi (en çok 0.20; güçten küçük olmalıdır)."
-            ],
             "unavailable": [
                 "mevcut değil"
             ],
@@ -2794,14 +2668,8 @@
             "Variables analysed": [
                 "Analiz edilen değişkenler"
             ],
-            "Very large sample size.": [
-                "Çok büyük örneklem büyüklüğü."
-            ],
             "Very small sample size (n = {n}).": [
                 "Çok küçük örneklem büyüklüğü (n = {n})."
-            ],
-            "Very small sample size.": [
-                "Çok küçük örneklem büyüklüğü."
             ],
             "Warning": [
                 "Uyarı"
