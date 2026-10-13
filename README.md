@@ -3,7 +3,7 @@
 **Medical Decision Analysis, Diagnostic Evaluation, and Reliability Assessment for jamovi and R**
 
 [![CRAN Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
-[![R-CMD-check](https://github.com/sbalci/meddecide/workflows/R-CMD-check/badge.svg)](https://github.com/sbalci/meddecide/actions)
+[![R-CMD-check](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml)
 [![License: GPL (>= 2)](https://img.shields.io/badge/License-GPL%20(%3E=%202)-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
 [![jamovi Module](https://img.shields.io/badge/jamovi-module-brightgreen.svg?logo=jamovi)](https://www.jamovi.org/)
 [![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://www.serdarbalci.com/meddecide/)
