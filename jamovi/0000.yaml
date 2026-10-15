@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.0.83.07
+version: 1.0.83.08
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-10-10'
+date: '2026-10-15'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -62,34 +62,6 @@ analyses:
       test and kappaSizeCI to size it for a target interval width.
     ribbon: analyses
     category: analyses
-  - title: LASSO Logistic Regression
-    name: lassologistic
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Prediction Models
-    menuTitle: LASSO Logistic
-    menuSubtitle: Penalized feature selection for binary classification
-    description: >
-      Performs LASSO-penalized logistic regression for variable selection in
-      binary classification problems. Ideal for diagnostic pathology studies
-      that build classifiers (e.g., tumor type A vs B) with automatic feature
-      selection.
-  - title: Decision Curve Analysis
-    name: decisioncurve
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision Curve Analysis
-    menuTitle: Decision Curve Analysis
-    menuSubtitle: Clinical Utility, Net Benefit, Threshold Analysis
-    description: >
-      Decision Curve Analysis for evaluating the clinical utility of prediction
-      models and diagnostic tests. Calculates net benefit across threshold
-      probabilities to determine if using a model provides more benefit than
-      default strategies. Inputs must be probabilities for a clearly defined
-      binary outcome and prediction horizon; calibration must be assessed
-      separately, and this analysis does not handle censoring.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

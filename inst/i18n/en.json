@@ -7,97 +7,13 @@
                 "lang": "en",
                 "plural_forms": "nplurals=2; plural=(n != 1)"
             },
-            "'Treat All' assumes all patients receive the intervention; 'Treat None' assumes no intervention.": [
-                ""
-            ],
-            "\"Clinical decision rule\" is enabled but no rule variable has been selected.": [
-                ""
-            ],
-            "\"Enhanced pairwise comparison\" is enabled but only one prediction model is selected, so the Exploratory Pairwise Model Comparison table stays empty.": [
-                ""
-            ],
-            "\"Statistical comparison\" is enabled but only one prediction model is selected, so the Exploratory Model Comparison table stays empty.": [
-                ""
-            ],
-            "(Intercept)": [
-                ""
-            ],
             "(The Summary panel below reproduces the kappaSize package's own wording, which says the sample size will “ensure” the limits — read it with this caveat in mind.)": [
                 ""
             ],
             "{a} and {b}": [
                 ""
             ],
-            "{a} vs {b}": [
-                ""
-            ],
-            "{excluded} of {total} rows ({pct}%) were excluded because the outcome, at least one model prediction, or the enabled clinical rule was missing; every strategy is evaluated on the same {kept} retained rows.": [
-                ""
-            ],
             "{head} and {last}": [
-                ""
-            ],
-            "{kept} complete cases; {excluded} of {total} rows excluded for missing required values": [
-                ""
-            ],
-            "{lo}% to {hi}%": [
-                ""
-            ],
-            "{lo}% to {hi}% threshold probability - the range over which this model beats both treating everyone and treating no one.": [
-                ""
-            ],
-            "{models} falls below the visible range at some thresholds: relative utility there is worse than shown.": [
-                ""
-            ],
-            "{models} is superior over more than one separate stretch of thresholds.": [
-                ""
-            ],
-            "{models} never exceeds both reference strategies anywhere in the threshold range examined, so no range is shown.": [
-                ""
-            ],
-            "{pairs} could not be bootstrap-tested because at least one side is a derived strategy rather than a predictor column, so it has no values to resample.": [
-                ""
-            ],
-            "{var} ({level} = positive)": [
-                ""
-            ],
-            "% Fewer Treatments vs Treat All": [
-                ""
-            ],
-            "%.3f (CI not estimable)": [
-                ""
-            ],
-            "%1$d folds were requested but only %2$d could be used: stratified cross-validation cannot create more folds than there are cases in the smaller outcome class (%3$d). Fewer folds mean a noisier lambda; a larger or better-balanced sample is the real remedy.": [
-                ""
-            ],
-            "%1$d of %2$d bootstrap replicates completed; %3$d failed (typically a resample with too few events to fit) and were excluded. The optimism correction is based on the %4$d successful replicates.": [
-                ""
-            ],
-            "%1$d of %2$d cases (%3$.1f%%) were excluded%4$s; the analysis uses the remaining %5$d cases.%6$s": [
-                ""
-            ],
-            "%1$d selected variable(s) had the same value in every case and were removed before fitting: %2$s. A constant carries no information and cannot be penalised or selected. %3$d variables remain and are shown as Variables analysed.": [
-                ""
-            ],
-            "%1$s logistic regression with %2$s lambda selection and %3$d-fold cross-validation was applied to %4$d candidate variables (%5$d model terms after dummy coding) in %6$d patients (%7$d events, %8$d non-events). %9$d term(s) were retained: %10$s.": [
-                ""
-            ],
-            "%d had a missing outcome": [
-                ""
-            ],
-            "%d had at least one predictor missing": [
-                ""
-            ],
-            "%d were in an outcome level outside the two being compared": [
-                ""
-            ],
-            "%s Every row's risk group below is therefore unreliable.": [
-                ""
-            ],
-            "%s The risk groups in the Score-to-Probability Lookup table are not meaningful either. Do not publish or apply this score.": [
-                ""
-            ],
-            "%s The Scoring System Performance figures and the High/Low risk labels in the lookup table are not measurements of a working score.": [
                 ""
             ],
             "• Anticipated kappa (κ₀): {kappa0}": [
@@ -130,94 +46,10 @@
             "• The limit that drives the sample size is {rho}, which is {dist} from κ₀ (it is this distance, not the full interval width, that sets n)": [
                 ""
             ],
-            "<li><strong>1SE Rule</strong>: Selects the most parsimonious model within 1 SE of minimum CV error.</li>": [
-                ""
-            ],
-            "<li><strong>Elastic Net</strong>: Combines L1 and L2 penalties; useful when predictors are correlated.</li>": [
-                ""
-            ],
-            "<li><strong>Lambda</strong>: Controls regularization strength. Higher lambda = fewer variables selected.</li>": [
-                ""
-            ],
-            "<li><strong>Lambda</strong>: Controls regularization strength. Higher lambda shrinks every coefficient further toward zero, but none reaches zero, so the number of variables never changes.</li>": [
-                ""
-            ],
-            "<li><strong>Odds Ratio</strong>: exp(coefficient). OR > 1 increases probability of the positive class.</li>": [
-                ""
-            ],
-            "<li><strong>Standardization (default on):</strong> predictors are centered and scaled before fitting, so the penalty treats variables with different units comparably. The Coefficient and Odds Ratio columns of the Selected Variables table are then back-transformed to the <strong>original measurement scale</strong> (per 1 unit of a continuous predictor, or present vs absent for a binary one). The Importance column and the Coefficient Plot stay on the per-standard-deviation scale, which is the quantity that is comparable across predictors with different units.</li>": [
-                ""
-            ],
-            "<li>Always validate the scoring system on an independent cohort before clinical adoption.</li>": [
-                ""
-            ],
-            "<li>Bootstrap optimism correction estimates how much the apparent AUC overestimates true performance.</li>": [
-                ""
-            ],
-            "<li>Continuous predictors in the scoring system are dichotomized at %s (set by 'Cut Point for Continuous Predictors'); the score-based performance therefore reflects a simplified point model and may differ from the continuous LASSO model's AUC.</li>": [
-                ""
-            ],
-            "<li>Events-per-variable (EPV) should be >=10. Below 5, results are unreliable regardless of regularization.</li>": [
-                ""
-            ],
-            "<li>Higher total scores indicate higher probability of the event (positive class).</li>": [
-                ""
-            ],
-            "<li>Inter-observer agreement should be assessed for any morphologic scoring components.</li>": [
-                ""
-            ],
-            "<li>LASSO coefficients do not have standard errors or p-values. Use bootstrap validation for inference.</li>": [
-                ""
-            ],
-            "<li>Predictors were <strong>not</strong> standardized; coefficients, odds ratios, importance, and the Coefficient Plot are all on the original measurement scale of each variable.</li>": [
-                ""
-            ],
-            "<li>Selected variables are the features most useful for distinguishing the two groups.</li>": [
-                ""
-            ],
-            "<li>The scoring system assigns positive points for features favoring the event class and negative points for the reference class.</li>": [
-                ""
-            ],
-            "<li>The scoring system rounds coefficients to integers, which loses precision but gains clinical usability.</li>": [
-                ""
-            ],
-            "<li>Variables NOT selected are not necessarily unimportant - they may be redundant with selected features.</li>": [
-                ""
-            ],
-            "<li>With correlated predictors, LASSO arbitrarily selects one from a group. Consider elastic net (alpha 0.5).</li>": [
-                ""
-            ],
-            "<li>With correlated predictors, Ridge shares the coefficient among them rather than picking one, which is one reason to prefer it when predictors are collinear.</li>": [
-                ""
-            ],
-            "<p>Elastic Net blends the L1 (LASSO) and L2 (Ridge) penalties, here with a mixing weight of alpha = %.2f. The L1 part can shrink coefficients exactly to zero, so some variable selection still happens, while the L2 part keeps correlated predictors together instead of letting the model pick one of them arbitrarily.</p>": [
-                ""
-            ],
-            "<p>LASSO (Least Absolute Shrinkage and Selection Operator) adds an L1 penalty to the logistic regression likelihood, which shrinks some coefficients exactly to zero. This performs automatic variable selection, identifying the most important predictors for your binary outcome.</p>": [
-                ""
-            ],
-            "<p>Ridge regression adds an L2 penalty to the logistic regression likelihood. It shrinks coefficients toward zero but never <strong>to</strong> zero, so it does <strong>not</strong> perform variable selection: every predictor you supplied is retained in the model. Ridge is the right choice when you believe most predictors carry some signal, or when they are strongly correlated and you want the penalty shared among them rather than one arbitrarily kept.</p>": [
-                ""
-            ],
-            "= %s": [
-                ""
-            ],
-            "> %s": [
-                ""
-            ],
-            "0.05, 0.10, 0.15, 0.20, 0.25, 0.30": [
-                ""
-            ],
             "0.20, 0.80": [
                 ""
             ],
             "100(1 - alpha)": [
-                ""
-            ],
-            "1SE Rule (More Parsimonious)": [
-                ""
-            ],
-            "1SE Rule (parsimonious)": [
                 ""
             ],
             "A bound at or below zero means this many subjects cannot rule out agreement no better than chance.": [
@@ -226,55 +58,10 @@
             "A comprehensive toolkit for medical decision analysis and reliability\nassessment, implemented as a jamovi module. The package provides tools for:\n* Interrater and intrarater reliability analysis using Cohen's Kappa and\n  Fleiss' Kappa statistics\n* Diagnostic test evaluation with sensitivity, specificity, predictive values,\n  and likelihood ratios\n* Sample size calculations for reliability studies using confidence interval\n  and power-based approaches\n* Visualization tools including Fagan nomograms for Bayesian probability\n  updates\n* Power analysis for interobserver agreement studies with support for\n  multiple raters and outcome categories\nTools are provided through an intuitive graphical interface in jamovi, making\ncomplex medical decision analyses accessible to clinical researchers.\nFor comments, suggestions, feature requests or reporting bugs, please open an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.": [
                 ""
             ],
-            "A gain at or below zero means a default strategy serves these patients at least as well as the model.": [
-                ""
-            ],
-            "A model is useful only where its curve sits above BOTH reference lines.": [
-                ""
-            ],
-            "a sensitivity of 1.000 here means the model calls every case positive, not that it is a sensitive test": [
-                ""
-            ],
-            "a specificity of 1.000 here means the model calls every case negative, not that it is a specific test": [
-                ""
-            ],
-            "A value of 1 corresponds to the maximum net benefit of perfect classification; values are not counts per 100 patients.": [
-                ""
-            ],
-            "A value range of 0 to 1 does not establish calibration; calibration must be assessed separately in the target population.": [
-                ""
-            ],
-            "Acceptable": [
-                ""
-            ],
-            "Acceptable with caveats": [
-                ""
-            ],
-            "Accuracy": [
-                ""
-            ],
-            "Across every threshold examined, treating everyone or treating no one does at least as well as this model.": [
-                ""
-            ],
-            "Add a second model to compare.": [
-                ""
-            ],
-            "Add one or more Prediction Variables/Models containing predicted probabilities from 0 to 1; raw scores, logits and linear predictors are not valid threshold probabilities.": [
-                ""
-            ],
-            "AIC": [
-                ""
-            ],
-            "All inputs must use the same currency and the calculation assumes one test per person, treatment after a positive model decision, and treat-all without testing.": [
-                ""
-            ],
             "All proportions must be between 0 and 1": [
                 ""
             ],
             "All proportions must be valid numbers": [
-                ""
-            ],
-            "All three methods shown for comparison": [
                 ""
             ],
             "Alpha": [
@@ -286,22 +73,7 @@
             "Alpha (0-1)": [
                 ""
             ],
-            "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
-                ""
-            ],
-            "An unpenalized logistic refit in the Model Comparison table showed complete/quasi-complete separation (non-convergence or fitted probabilities at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row.": [
-                ""
-            ],
-            "Analysis Complete": [
-                ""
-            ],
-            "Analysis Options": [
-                ""
-            ],
             "Analysis result": [
-                ""
-            ],
-            "Analysis Summary": [
                 ""
             ],
             "Anticipated Agreement": [
@@ -311,21 +83,6 @@
                 ""
             ],
             "Anticipated share of subjects in each outcome category, separated by commas, semicolons or spaces, using a decimal point, and summing to 1 (for example 0.20, 0.80 for a finding present in one case in five). For a binary outcome a single prevalence is enough. Enter exactly one value per outcome level otherwise.": [
-                ""
-            ],
-            "Apparent": [
-                ""
-            ],
-            "Apparent (in-sample) discrimination was AUC = %.3f; enable Bootstrap Internal Validation for an optimism-corrected estimate.": [
-                ""
-            ],
-            "Apparent AUC = %1$.3f with N = %2$d: likely overfitted. Enable bootstrap validation for corrected estimate.": [
-                ""
-            ],
-            "Apparent AUC = %1$.3f with N = %2$d: the model separates the two classes completely on the data it was fitted to. This is an in-sample artefact far more often than a real effect, the reported confidence interval collapses to a point rather than showing precision, and the coefficients are unstable. Enable bootstrap validation and validate externally before drawing any conclusion.": [
-                ""
-            ],
-            "Applied as provided in the data ({label}).": [
                 ""
             ],
             "At least {n} subjects are needed for the confidence limits to fall within {limits}, if the observed kappa comes in at {kappa0}.": [
@@ -343,295 +100,19 @@
             "At least {n} subjects rated by {raters} raters are needed for the lower confidence limit for κ₀ = {kappa0} to reach {kappaL}, if the observed kappa comes in at {kappa0}.": [
                 ""
             ],
-            "At least 2 candidate predictors": [
-                ""
-            ],
-            "At least 2 explanatory variables are required for LASSO regression.": [
-                ""
-            ],
-            "At least two predictors are required": [
-                ""
-            ],
             "At the computed sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the confidence limit where they are thinnest: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the required n is less dependable here.": [
                 ""
             ],
             "At this sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the reported lower bound: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the bound shown is less dependable here.": [
                 ""
             ],
-            "AUC": [
-                ""
-            ],
-            "AUC (apparent)": [
-                ""
-            ],
-            "AUC = %.3f indicates poor discrimination and is below the level generally regarded as clinically usable. Consider adding more informative predictors or using a different model.": [
-                ""
-            ],
-            "AUC = %.3f is BELOW 0.500, so the model ranks cases the wrong way round: patients it scores high are less likely to have the event than patients it scores low. Do not read the odds ratios as they stand. Check that the event level is the one you intended, then treat these predictors as carrying no usable signal at this sample size.": [
-                ""
-            ],
-            "AUC = %1$s (95%% CI: %2$.3f-%3$.3f)": [
-                ""
-            ],
-            "AUC could not be computed": [
-                ""
-            ],
-            "Automated scoring system generation": [
-                ""
-            ],
-            "Automatic (0.01 to 0.99)": [
-                ""
-            ],
-            "Available levels: {levels}.": [
-                ""
-            ],
-            "Average Net Benefit": [
-                ""
-            ],
-            "Average net benefit over the {lo}% to {hi}% threshold range: the area under the decision curve divided by the width of that range.": [
-                ""
-            ],
-            "Average Net Benefit Over the Threshold Range": [
-                ""
-            ],
-            "Average net benefit table": [
-                ""
-            ],
-            "Award a factor's points when the patient meets its criterion. Continuous predictors are cut at %s. The Odds Ratio column is the penalized odds ratio for MEETING that criterion (present vs absent, or above vs below the cut), which is the contrast the points represent - so points and odds ratios are on the same footing here. A cut derived from this dataset (median, mean, tertile or quartile) is not an externally established clinical threshold and will differ in another cohort; supplying manual cut points from the literature is what makes a score portable. The score has not been validated outside these data.": [
-                ""
-            ],
-            "Award points when": [
-                ""
-            ],
             "below 0.0001": [
-                ""
-            ],
-            "Benefit of correct treatment": [
-                ""
-            ],
-            "beta / max|beta| x maximum points": [
-                ""
-            ],
-            "Beta10": [
-                ""
-            ],
-            "Beta10 (coefficient x 10, rounded)": [
-                ""
-            ],
-            "Beta10 method (Zhang et al. Ann Transl Med 2017)": [
-                ""
-            ],
-            "Binary Outcome": [
-                ""
-            ],
-            "Binomial Deviance": [
-                ""
-            ],
-            "Blue dashed: lambda.min; orange dotted: lambda.1se": [
-                ""
-            ],
-            "Bootstrap CI Calculation Error": [
-                ""
-            ],
-            "Bootstrap CI calculation error: predictions and outcomes have different lengths ({n1} vs {n2}).": [
-                ""
-            ],
-            "Bootstrap CI Failed": [
-                ""
-            ],
-            "Bootstrap confidence interval calculation failed: {error}.": [
-                ""
-            ],
-            "Bootstrap Confidence Intervals": [
-                ""
-            ],
-            "Bootstrap confidence intervals": [
-                ""
-            ],
-            "Bootstrap Internal Validation": [
-                ""
-            ],
-            "Bootstrap internal validation": [
-                ""
-            ],
-            "Bootstrap Iterations": [
-                ""
-            ],
-            "Bootstrap optimism-corrected validation": [
-                ""
-            ],
-            "Bootstrap Replications": [
-                ""
-            ],
-            "Bootstrap replications": [
-                ""
-            ],
-            "Brier Score": [
-                ""
-            ],
-            "Calibration slope": [
-                ""
-            ],
-            "Calibration slope: 1.0 = ideal. A corrected slope below 1 means predicted probabilities are too extreme (overfitted) and would benefit from shrinkage; an apparent slope above 1 is expected for penalized models on their training data.": [
-                ""
-            ],
-            "Cases excluded from the analysis": [
-                ""
-            ],
-            "Categorical variable with two levels (e.g., PanNET G3 vs PanNEC)": [
-                ""
-            ],
-            "Caution: Major concerns detected": [
-                ""
-            ],
-            "Check": [
-                ""
-            ],
-            "Choose a unique rule label.": [
-                ""
-            ],
-            "Choose distinct model names.": [
-                ""
-            ],
-            "CI Lower": [
-                ""
-            ],
-            "CI Upper": [
-                ""
-            ],
-            "Class balance": [
-                ""
-            ],
-            "Classification Performance": [
-                ""
-            ],
-            "Clean (minimal annotations)": [
-                ""
-            ],
-            "Clinical Decision Rule": [
-                ""
-            ],
-            "Clinical decision rule": [
-                ""
-            ],
-            "Clinical Decision Rule (binary)": [
-                ""
-            ],
-            "Clinical Decision Rule Integration": [
-                ""
-            ],
-            "Clinical Decision Rule Variable Required": [
-                ""
-            ],
-            "Clinical Impact": [
-                ""
-            ],
-            "Clinical Impact Analysis": [
-                ""
-            ],
-            "Clinical impact metrics": [
-                ""
-            ],
-            "Clinical Impact Plot": [
-                ""
-            ],
-            "Clinical impact plot": [
-                ""
-            ],
-            "Clinical Impact: Projected Outcomes in a Population of {n}": [
-                ""
-            ],
-            "Clinical Interpretation": [
-                ""
-            ],
-            "Clinical Interpretation Guidance": [
-                ""
-            ],
-            "Clinical interpretation guidance": [
-                ""
-            ],
-            "Clinical Range Highlight": [
-                ""
-            ],
-            "Clinical range highlight": [
-                ""
-            ],
-            "Clinical Rule": [
-                ""
-            ],
-            "Clinical Rule ({level})": [
-                ""
-            ],
-            "Clinical Utility, Net Benefit, Threshold Analysis": [
-                ""
-            ],
-            "Coefficient": [
-                ""
-            ],
-            "Coefficient (per 1 SD)": [
-                ""
-            ],
-            "Coefficient (per 1 unit)": [
-                ""
-            ],
-            "Coefficient Plot": [
-                ""
-            ],
-            "Coefficient plot": [
-                ""
-            ],
-            "Collinearity": [
-                ""
-            ],
-            "Comparable across units; the table reports the original scale": [
-                ""
-            ],
-            "Compare All Methods": [
-                ""
-            ],
-            "Comparison": [
-                ""
-            ],
-            "Comparisons not tested": [
-                ""
-            ],
-            "Complete cases analysed": [
-                ""
-            ],
-            "Complete-Case Analysis": [
-                ""
-            ],
-            "Conclusion": [
-                ""
-            ],
-            "Confidence Band": [
                 ""
             ],
             "Confidence Interval Approach for the Number of Subjects Required": [
                 ""
             ],
             "Confidence Interval Type": [
-                ""
-            ],
-            "Confidence Intervals": [
-                ""
-            ],
-            "Confidence Level": [
-                ""
-            ],
-            "Confidence level": [
-                ""
-            ],
-            "Configure the threshold range and other analysis options.": [
-                ""
-            ],
-            "Confirm that a risk this high genuinely represents the point at which the intended intervention becomes worthwhile in the target clinical setting.": [
-                ""
-            ],
-            "Confirm that a risk this low genuinely represents the point at which the intended intervention becomes worthwhile in the target clinical setting.": [
-                ""
-            ],
-            "Confirm that this narrow interval was prespecified from the clinical decision and is wide enough to cover plausible treatment preferences.": [
                 ""
             ],
             "Consider a wider confidence interval (lower precision) or revisiting the expected category proportions. More raters would lower this figure, but that is what makes the cells sparse above — the two cannot both be improved by the rater count, so change the interval or the proportions instead.": [
@@ -652,214 +133,13 @@
             "Consider using fewer raters, or recruiting more subjects than the figure shown.": [
                 ""
             ],
-            "Consider whether the sample represents the target clinical population; results may not generalize to populations with different event rates.": [
-                ""
-            ],
-            "Constant predictors removed": [
-                ""
-            ],
-            "Continuous predictors are scored by dichotomizing at %s: the full point block is awarded above the cut and nothing below it. The performance shown here reflects this simplified integer point system and may differ from the continuous LASSO model in the Classification Performance table.": [
-                ""
-            ],
-            "Corrected": [
-                ""
-            ],
-            "Cost per test": [
-                ""
-            ],
-            "Cost per treatment": [
-                ""
-            ],
-            "Counts are projected to a population of {n} from the complete-case cohort.": [
-                ""
-            ],
-            "Counts are projections to the selected population size of {n}, assuming every person is tested once; they are not observed patient counts.": [
-                ""
-            ],
-            "Cross-validated lambda selection": [
-                ""
-            ],
-            "Cross-validation": [
-                ""
-            ],
-            "Cross-validation folds reduced": [
-                ""
-            ],
-            "Cross-Validation for LASSO Logistic Regression": [
-                ""
-            ],
-            "Cross-validation Plot": [
-                ""
-            ],
-            "Cross-validation plot": [
-                ""
-            ],
-            "Current settings: Min = {min}%, Max = {max}%; the valid range is 0.1% to 99.9%.": [
-                ""
-            ],
-            "Curve drawn from {to} of {from} computed points for rendering speed; tables and statistics use all of them.": [
-                ""
-            ],
-            "Custom range": [
-                ""
-            ],
-            "Cut Point for Continuous Predictors": [
-                ""
-            ],
-            "CV folds": [
-                ""
-            ],
-            "Data Error": [
-                ""
-            ],
-            "Data preparation failed: %s": [
-                ""
-            ],
-            "Data Suitability": [
-                ""
-            ],
-            "Data Suitability Assessment": [
-                ""
-            ],
-            "Data suitability assessment": [
-                ""
-            ],
-            "Data suitability: %1$d major concern(s) detected (%2$s). Results may be unreliable; consider reducing predictors or collecting more data.": [
-                ""
-            ],
-            "Data suitability: %d minor concern(s). Enable bootstrap validation to assess overfitting risk.": [
-                ""
-            ],
-            "Data suitable for LASSO logistic": [
-                ""
-            ],
-            "Decide the threshold range from clinical judgement first, then read the curves there - not the other way round.": [
-                ""
-            ],
-            "Decision Consequences": [
-                ""
-            ],
-            "Decision Consequences Table": [
-                ""
-            ],
-            "Decision consequences table": [
-                ""
-            ],
-            "Decision Curve Analysis": [
-                ""
-            ],
-            "Decision curve analysis completed: {models} model(s) evaluated using {n} complete cases.": [
-                ""
-            ],
-            "Decision Curve Analysis evaluates the clinical utility of prediction models by calculating net benefit across different threshold probabilities.": [
-                ""
-            ],
-            "Decision Curve Analysis for evaluating the clinical utility of prediction models and diagnostic tests. Calculates net benefit across threshold probabilities to determine if using a model provides more benefit than default strategies. Inputs must be probabilities for a clearly defined binary outcome and prediction horizon; calibration must be assessed separately, and this analysis does not handle censoring.": [
-                ""
-            ],
-            "Decision curve analysis may not be informative with such limited variation (range below 5%); check model calibration and discrimination, because models with poor discrimination may not show clinical utility.": [
-                ""
-            ],
-            "Decision curve analysis needs predicted probabilities between 0 and 1 as a numeric column; convert it before running the analysis, because a categorical column cannot express a predicted risk.": [
-                ""
-            ],
-            "Decision curve analysis requires a binary outcome (diseased vs healthy, event vs no event); recode to binary or select a different outcome variable.": [
-                ""
-            ],
-            "Decision curve analysis requires predicted probabilities for the clinical outcome and prediction horizon being evaluated, not raw scores, logits or linear predictors.": [
-                ""
-            ],
-            "Decision Curve Analysis Summary": [
-                ""
-            ],
-            "Decision curve plot": [
-                ""
-            ],
-            "Decision Curve Plot": [
-                ""
-            ],
-            "Decision curves may be less interpretable with very low or very high event rates, and net benefit is sensitive to prevalence extremes.": [
-                ""
-            ],
-            "Decision Rule Label": [
-                ""
-            ],
-            "Decision rule label": [
-                ""
-            ],
-            "Decision Rule Positive Level": [
-                ""
-            ],
-            "Derived from the net-benefit gain after accounting for threshold odds": [
-                ""
-            ],
-            "Descriptive Average Net Benefit Over Threshold Range": [
-                ""
-            ],
-            "Design matrix error: {}": [
-                ""
-            ],
-            "Detailed (with annotations)": [
-                ""
-            ],
-            "Detailed consequences at selected thresholds": [
-                ""
-            ],
-            "Detailed methodology notes": [
-                ""
-            ],
             "Determine the required sample size to estimate κ₀ = {kappa0} ensuring the lower confidence limit is at least {kappaL} in an interobserver agreement study.": [
                 ""
             ],
             "Determine the required sample size to estimate κ₀ = {kappa0} with confidence limits {limits} in an interobserver agreement study.": [
                 ""
             ],
-            "Difference in Average Net Benefit": [
-                ""
-            ],
-            "Dimensionless net benefit divided by outcome prevalence; not net benefit per 100 patients": [
-                ""
-            ],
-            "Direction": [
-                ""
-            ],
-            "Discrimination Worse Than Chance": [
-                ""
-            ],
-            "Do not select a model solely from its average net benefit: curve crossings and the plausibility of each threshold determine the clinically relevant comparison.": [
-                ""
-            ],
-            "Drop a binary variable into \"Clinical Decision Rule (binary)\" and choose its positive level, or switch the option off.": [
-                ""
-            ],
-            "Duplicate Model Names": [
-                ""
-            ],
-            "Duplicate Strategy Name": [
-                ""
-            ],
-            "Each model needs a unique name.": [
-                ""
-            ],
             "Each proportion must be strictly between 0 and 1.": [
-                ""
-            ],
-            "Each row is calculated at the exact displayed threshold; selected thresholds do not need to coincide with the plotting grid.": [
-                ""
-            ],
-            "Elastic Net": [
-                ""
-            ],
-            "Elastic Net Logistic Regression": [
-                ""
-            ],
-            "Elastic Net Mixing (0=Ridge, 1=LASSO)": [
-                ""
-            ],
-            "Enhanced Multi-Model Comparison": [
-                ""
-            ],
-            "Enhanced pairwise comparison": [
                 ""
             ],
             "Enrol more subjects, add raters, or relax the significance level.": [
@@ -871,52 +151,16 @@
             "Enter exactly {k} proportions for {k} outcome levels (received {got}).": [
                 ""
             ],
-            "EPV = %.1f (<5: insufficient, high overfitting risk)": [
-                ""
-            ],
-            "EPV = %.1f (>=10: adequate)": [
-                ""
-            ],
-            "EPV = %.1f (5-10: marginal, results may be unstable)": [
-                ""
-            ],
-            "Error": [
-                ""
-            ],
             "Error in sample size calculation: {}": [
                 ""
             ],
             "Error parsing proportions: {error}": [
                 ""
             ],
-            "Event class (positive)": [
-                ""
-            ],
-            "Event Level": [
-                ""
-            ],
             "Event Proportion: {p}": [
                 ""
             ],
-            "Events": [
-                ""
-            ],
-            "Events per variable": [
-                ""
-            ],
-            "Every case received the same predicted probability, so the classification metrics below are artefacts of a default 0.500 threshold that assigns everyone to one group: %s. Only the AUC of 0.500 is interpretable.": [
-                ""
-            ],
-            "Every threshold in the range counts equally, so the value depends on the range you chose - report the range with it.": [
-                ""
-            ],
             "Example analysis for Medical Decision Tests.": [
-                ""
-            ],
-            "Excellent": [
-                ""
-            ],
-            "Excluded from analysis": [
                 ""
             ],
             "Expected proportion of cases in each category": [
@@ -925,103 +169,19 @@
             "Expected Proportion of Cases in Each Category": [
                 ""
             ],
-            "Explanatory Output": [
-                ""
-            ],
-            "Explanatory Variables": [
-                ""
-            ],
-            "Exploratory adjusted p < 0.05": [
-                ""
-            ],
-            "Exploratory adjusted p >= 0.05": [
-                ""
-            ],
-            "Exploratory bootstrap comparison of average net benefit under each decision curve, {reps} resamples, seed {seed}.": [
-                ""
-            ],
-            "Exploratory case-resampling comparison of average net benefit over the selected range": [
-                ""
-            ],
-            "Exploratory mean difference in net benefit across the selected threshold range, with an approximate case-resampling bootstrap p-value from {reps} resamples, Holm-adjusted across all {k} pairwise comparisons (seed {seed}).": [
-                ""
-            ],
-            "Exploratory Model Comparison": [
-                ""
-            ],
-            "Exploratory Monetary Payoff": [
-                ""
-            ],
-            "Exploratory monetary payoff": [
-                ""
-            ],
-            "Exploratory Monetary Payoff (Not Cost-Effectiveness)": [
-                ""
-            ],
-            "Exploratory monetary payoff projection for a population of {n}.": [
-                ""
-            ],
-            "Exploratory Pairwise Model Comparison": [
-                ""
-            ],
-            "Extreme outcome prevalence: {pct}% ({events}/{n} cases).": [
-                ""
-            ],
-            "Extreme Prevalence": [
-                ""
-            ],
-            "F1 Score": [
-                ""
-            ],
-            "False Negative": [
-                ""
-            ],
-            "False Positive": [
-                ""
-            ],
-            "False Positives": [
-                ""
-            ],
-            "Features:": [
-                ""
-            ],
-            "Few Outcome Events": [
-                ""
-            ],
-            "Fewer than 2 non-constant predictors remain.": [
-                ""
-            ],
-            "Fewer than 20 bootstrap replicates succeeded. The optimism correction is unreliable at this number - increase the sample size or reduce the number of candidate predictors.": [
-                ""
-            ],
             "Find lower Kappa based on sample size": [
                 ""
             ],
             "Find sample size based on Kappa confidence": [
                 ""
             ],
-            "Focused range (0.05 to 0.50; not a clinical recommendation)": [
-                ""
-            ],
             "For a binary outcome enter either one prevalence value or two proportions that sum to 1 (received {got}).": [
-                ""
-            ],
-            "For a defensible clinical claim, supply predictions from an external dataset or from cross-validation, and report which was used.": [
                 ""
             ],
             "For an interobserver agreement study whose number of subjects is already fixed, the lowest kappa the study would still be unable to rule out - the lower bound of the one-sided confidence interval around the anticipated kappa (kappa0); every value below it is excluded. Computed with the kappaSize package. Use kappaSizePower to size a study for a hypothesis test and kappaSizeCI to size it for a target interval width.": [
                 ""
             ],
-            "For time-to-event predictions, supply risks and a binary outcome defined at the same fixed horizon; censoring is not handled here.": [
-                ""
-            ],
             "For two raters with equal marginal frequencies this coincides with Cohen's κ; with more raters, or unequal marginals, it does not.": [
-                ""
-            ],
-            "From": [
-                ""
-            ],
-            "Full LASSO model (continuous)": [
                 ""
             ],
             "Functions for Medical Decision in ClinicoPath jamovi Module": [
@@ -1033,136 +193,19 @@
             "Further suppose that the proportions of the outcome categories are {props}.": [
                 ""
             ],
-            "Gain vs Best Default": [
-                ""
-            ],
-            "Gain vs Default is the difference against the better of treating everyone and treating no one at each threshold, on the net-benefit scale: 0.01 means one extra true positive per 100 patients at no extra cost in unnecessary treatment.": [
-                ""
-            ],
-            "Good": [
-                ""
-            ],
-            "Good (%.0f%% better than predicting the base rate)": [
-                ""
-            ],
-            "Harm of false treatment": [
-                ""
-            ],
-            "High risk": [
-                ""
-            ],
-            "High Threshold Range": [
-                ""
-            ],
-            "Highest Average Net Benefit Over the Selected Range:": [
-                ""
-            ],
-            "Highlight Range Maximum": [
-                ""
-            ],
-            "Highlight Range Minimum": [
-                ""
-            ],
             "histopathology including analysis": [
                 ""
             ],
             "If the Analysis result panel also prints 'At least one expected cell count is less than five', that is a separate and looser check: kappaSize applies it to the outcome category prevalences you entered (for a binary outcome, to the prevalence of the finding alone), not to the agreement-pattern cells the chi-square actually divides by, and those empty out long before any category prevalence does. Seeing one warning without the other is expected.": [
                 ""
             ],
-            "If those risks came from a model fitted on this dataset - including a cutpoint, a score, or a regression developed here - the net benefit is optimistically biased and the model can appear to beat treat-all when it does not.": [
-                ""
-            ],
-            "Ignored {values}.": [
-                ""
-            ],
-            "Importance": [
-                ""
-            ],
-            "Importance Rank": [
-                ""
-            ],
-            "Importance Score": [
-                ""
-            ],
-            "Important Information": [
-                ""
-            ],
-            "Incremental Assigned Benefit vs Treat All": [
-                ""
-            ],
-            "Incremental Cost": [
-                ""
-            ],
-            "Info Loss vs Full Model (%)": [
-                ""
-            ],
-            "Information": [
-                ""
-            ],
             "Input validation failed: {errors}": [
-                ""
-            ],
-            "Inputs must be probabilities for the clinical outcome and prediction horizon being evaluated.": [
-                ""
-            ],
-            "Inspect the curves at prespecified clinical thresholds because curves may cross.": [
-                ""
-            ],
-            "Install with install.packages(c({quoted})).": [
-                ""
-            ],
-            "Instructions": [
-                ""
-            ],
-            "Insufficient Cases": [
-                ""
-            ],
-            "Insufficient complete cases for analysis ({n} cases available; this implementation requires at least 10 to run).": [
-                ""
-            ],
-            "Interpret differences between models with caution and do not choose a threshold from this curve alone.": [
-                ""
-            ],
-            "Interpret the curve within a prespecified clinically plausible subrange; summaries that average across the full range weight every threshold equally.": [
-                ""
-            ],
-            "Interpret the unadjusted p only for a single comparison specified before the data were seen.": [
-                ""
-            ],
-            "Interpretation": [
-                ""
-            ],
-            "Interpretation Guidelines:": [
-                ""
-            ],
-            "Interval Type": [
-                ""
-            ],
-            "Interval type": [
-                ""
-            ],
-            "Intervals are {level}% percentile intervals and p-values are approximate; results depend on the selected threshold range and equal weighting of its thresholds.": [
-                ""
-            ],
-            "Invalid Probabilities: {model}": [
-                ""
-            ],
-            "Invalid Threshold Range": [
                 ""
             ],
             "It answers 'given the subjects I have, how little agreement am I still unable to rule out?' - the mirror image of the sample-size question; every kappa below the bound is excluded.": [
                 ""
             ],
-            "It is computed correctly at that exact value, but it is not shown on the decision curve, and the surrounding rows come from the analysed range.": [
-                ""
-            ],
-            "It is not an ICER, QALY, cost-effectiveness or net-monetary-benefit analysis and does not model time horizon, discounting, false-negative consequences or uncertainty in costs and values.": [
-                ""
-            ],
             "It returns the minimum number of subjects so that the {pct}% confidence interval ({side}) for the intraclass (Fleiss-type) κ of the common-correlation model attains the requested precision, given the expected category proportions and the number of raters.": [
-                ""
-            ],
-            "Its curve is still shown in the plot.": [
                 ""
             ],
             "Kappa Levels": [
@@ -1201,78 +244,6 @@
             "KappaU: not applicable (one-sided interval)": [
                 ""
             ],
-            "Key Concepts": [
-                ""
-            ],
-            "Lambda (optimal)": [
-                ""
-            ],
-            "Lambda Selection": [
-                ""
-            ],
-            "Lambda selection": [
-                ""
-            ],
-            "Lambda Selection Method": [
-                ""
-            ],
-            "LASSO (L1)": [
-                ""
-            ],
-            "LASSO (penalized)": [
-                ""
-            ],
-            "LASSO coefficients are penalized (shrunken) and have no valid standard confidence intervals; they are omitted rather than shown as blanks. Use bootstrap validation for performance inference,": [
-                ""
-            ],
-            "LASSO Logistic": [
-                ""
-            ],
-            "LASSO Logistic Regression": [
-                ""
-            ],
-            "LASSO Logistic Regression Coefficients": [
-                ""
-            ],
-            "LASSO model fitting failed: %s": [
-                ""
-            ],
-            "LASSO performs variable SELECTION, so it needs a set of candidate predictors to choose among; with a single predictor there is nothing to select and a penalized fit is not informative. Add at least one more predictor, or use ordinary logistic regression for a single-predictor model.": [
-                ""
-            ],
-            "LASSO selected zero variables at the chosen lambda. %s": [
-                ""
-            ],
-            "LASSO uses listwise deletion, so a single sparsely-measured predictor can remove a large share of the cohort; check which predictor is driving the exclusions before interpreting these results.": [
-                ""
-            ],
-            "LASSO vs Unpenalized Logistic": [
-                ""
-            ],
-            "LASSO, Ridge, or Elastic Net penalty": [
-                ""
-            ],
-            "Log Lambda": [
-                ""
-            ],
-            "Logistic (all vars)": [
-                ""
-            ],
-            "Logistic (LASSO-selected vars)": [
-                ""
-            ],
-            "Low Bootstrap Replications": [
-                ""
-            ],
-            "Low bootstrap replications ({n}).": [
-                ""
-            ],
-            "Low risk": [
-                ""
-            ],
-            "Low Threshold Range": [
-                ""
-            ],
             "Lower confidence limit": [
                 ""
             ],
@@ -1282,334 +253,13 @@
             "Lowest Expected Value for a fixed sample size": [
                 ""
             ],
-            "Manual cut points": [
-                ""
-            ],
-            "Manual Cut Points": [
-                ""
-            ],
-            "Marginal (%.0f%% better than base rate)": [
-                ""
-            ],
-            "Max |r| = %.2f (<0.7: acceptable)": [
-                ""
-            ],
-            "Max |r| = %.2f (>=0.9: high, consider elastic net)": [
-                ""
-            ],
-            "Max |r| = %.2f (0.7-0.9: moderate, LASSO will handle)": [
-                ""
-            ],
-            "Max-scaled": [
-                ""
-            ],
-            "Max-scaled (strongest predictor = max points)": [
-                ""
-            ],
-            "Max-scaled method (strongest predictor = maximum points)": [
-                ""
-            ],
-            "Maximum Points per Feature": [
-                ""
-            ],
-            "Maximum Threshold": [
-                ""
-            ],
-            "Mean NB Difference": [
-                ""
-            ],
-            "Mean of this dataset": [
-                ""
-            ],
-            "Mean score (positive class)": [
-                ""
-            ],
-            "Mean score (reference class)": [
-                ""
-            ],
-            "meddecide": [
-                ""
-            ],
-            "Median NB Difference": [
-                ""
-            ],
-            "Median of this dataset": [
-                ""
-            ],
-            "Method": [
-                ""
-            ],
-            "Method explanations": [
-                ""
-            ],
-            "Methodological Notes:": [
-                ""
-            ],
-            "Methodology Notes": [
-                ""
-            ],
             "Methodology.": [
-                ""
-            ],
-            "Metric": [
-                ""
-            ],
-            "Minimum CV Error": [
-                ""
-            ],
-            "Minimum Threshold": [
-                ""
-            ],
-            "Minimum threshold ({min}%) must be less than maximum threshold ({max}%).": [
-                ""
-            ],
-            "Minority class: %.1f%% (balanced)": [
-                ""
-            ],
-            "Minority class: %.1f%% (moderate imbalance)": [
-                ""
-            ],
-            "Minority class: %.1f%% (severe imbalance)": [
-                ""
-            ],
-            "Missing Dependency": [
-                ""
-            ],
-            "Missing Packages": [
-                ""
-            ],
-            "Model": [
-                ""
-            ],
-            "Model \"{model}\" contains values outside 0 to 1 (min = {min}, max = {max}).": [
-                ""
-            ],
-            "Model \"{model}\" has a very narrow probability range ({min} to {max}).": [
-                ""
-            ],
-            "Model \"{model}\" is a {class} column.": [
-                ""
-            ],
-            "Model \"{model}\" is entirely missing after complete-case filtering.": [
-                ""
-            ],
-            "Model 1": [
-                ""
-            ],
-            "Model 2": [
-                ""
-            ],
-            "Model Comparison": [
-                ""
-            ],
-            "Model comparison analysis": [
-                ""
-            ],
-            "Model comparison needs two models": [
-                ""
-            ],
-            "Model Comparison Statistics": [
-                ""
-            ],
-            "Model Does Not Discriminate": [
-                ""
-            ],
-            "Model Fitting Error": [
-                ""
-            ],
-            "Model Names": [
-                ""
-            ],
-            "Model Names (optional)": [
-                ""
-            ],
-            "Model names cannot be 'Treat All' or 'Treat None' because those labels identify the reference strategies.": [
-                ""
-            ],
-            "Model Names Replaced": [
-                ""
-            ],
-            "Model Options": [
-                ""
-            ],
-            "Model Summary": [
-                ""
-            ],
-            "Model terms (after dummy coding)": [
-                ""
-            ],
-            "Model Type": [
-                ""
-            ],
-            "Models Analyzed": [
-                ""
-            ],
-            "Monetary Cost per Test/Screening": [
-                ""
-            ],
-            "Monetary Cost per Treatment": [
-                ""
-            ],
-            "Monetary Harm Assigned to a False Positive": [
-                ""
-            ],
-            "Monetary Value Assigned to a True Positive": [
-                ""
-            ],
-            "N = %d (<50: small, consider fewer predictors)": [
-                ""
-            ],
-            "N = %d (>=100: adequate)": [
-                ""
-            ],
-            "N = %d (50-100: marginal)": [
-                ""
-            ],
-            "N Variables": [
-                ""
-            ],
-            "Narrow Probability Range: {model}": [
-                ""
-            ],
-            "Narrow Range": [
-                ""
-            ],
-            "NB = (TP/n) - (FP/n) × pt/(1-pt), where pt is the threshold probability.": [
-                ""
-            ],
-            "Need at least 5 cases in each outcome class.": [
-                ""
-            ],
-            "Negative": [
-                ""
-            ],
-            "Negative (-)": [
-                ""
-            ],
-            "Net Benefit": [
-                ""
-            ],
-            "Net benefit at every threshold is driven by these events, so the curves and any confidence intervals are imprecise and may be unstable.": [
-                ""
-            ],
-            "Net benefit at every threshold is driven by these events, so the curves and any confidence intervals are imprecise.": [
-                ""
-            ],
-            "Net Benefit at Selected Thresholds": [
-                ""
-            ],
-            "Net benefit confidence intervals": [
-                ""
-            ],
-            "Net Benefit Confidence Intervals": [
-                ""
-            ],
-            "Net benefit divided by outcome prevalence (dimensionless)": [
-                ""
-            ],
-            "Net Benefit Formula": [
-                ""
-            ],
-            "Net benefit is on the scale of true positives per patient; multiply by 100 to read it as true positives per 100 patients, at no additional cost in unnecessary treatment.": [
-                ""
-            ],
-            "Net benefit shown here is apparent, not validated": [
-                ""
-            ],
-            "Net Interventions Avoided": [
-                ""
-            ],
-            "Net interventions avoided": [
-                ""
-            ],
-            "Net interventions avoided is derived from the net-benefit difference versus treat-all after accounting for threshold odds.": [
-                ""
-            ],
-            "Net Interventions Avoided per 100 Patients": [
-                ""
-            ],
-            "Net Interventions Avoided vs Treat All": [
-                ""
-            ],
-            "Net Payoff": [
-                ""
-            ],
-            "Net payoff versus treat-all is the difference between assigned monetary benefits and direct costs under these assumptions.": [
-                ""
-            ],
-            "Net Payoff vs Treat All": [
-                ""
-            ],
-            "Net-benefit curves with optional bootstrap ribbons, pointwise or a simultaneous sup-t band, for every model and any clinical rule": [
-                ""
-            ],
-            "Net-benefit precision depends on event counts, prevalence and thresholds; use an adequately sized validation sample.": [
-                ""
-            ],
-            "Net-benefit precision depends on the number of events, prevalence and the selected thresholds; inspect the uncertainty bands and validate the predictions on independent or properly resampled data.": [
-                ""
-            ],
-            "No better than predicting the base rate": [
-                ""
-            ],
-            "No cut point separated the two groups, so the search settled on the lowest possible total score and every patient is classified positive: the sensitivity of %1$s with a specificity of %2$s shown here is an artefact of that, not evidence of a sensitive score.": [
-                ""
-            ],
-            "No manual cut point was supplied for: %s. These fell back to the sample median. Enter them as 'variable=value' pairs (for example 'ki67=20, age=65') to use established clinical thresholds.": [
-                ""
-            ],
-            "No scoring system could be built: the model selected zero predictors at the chosen lambda, so there are no coefficients to convert into points. %s": [
-                ""
-            ],
-            "No usable threshold probabilities were found in the list, so the default 5%, 10%, 15%, 20%, 25% and 30% are used.": [
-                ""
-            ],
-            "No usable values: {model}": [
-                ""
-            ],
-            "No variables selected": [
-                ""
-            ],
-            "No Variables Selected": [
-                ""
-            ],
-            "Non-Binary Outcome": [
-                ""
-            ],
-            "None": [
-                ""
-            ],
-            "none": [
-                ""
-            ],
-            "none.": [
-                ""
-            ],
-            "Not a numeric column: {model}": [
-                ""
-            ],
-            "Not available": [
-                ""
-            ],
-            "Not interpretable": [
-                ""
-            ],
-            "Not testable": [
                 ""
             ],
             "Note that kappa0 here is the agreement you anticipate observing, not a null hypothesis value as it is in kappaSizePower.": [
                 ""
             ],
             "Notes": [
-                ""
-            ],
-            "Nothing about the clinical rule is shown until then.": [
-                ""
-            ],
-            "NPV": [
-                ""
-            ],
-            "Number of CV Folds": [
                 ""
             ],
             "Number of outcome level": [
@@ -1642,16 +292,7 @@
             "Number of subjects available, each rated by all raters (at least 11).": [
                 ""
             ],
-            "Numeric outcome must have at least 2 observed values.": [
-                ""
-            ],
             "Objective:": [
-                ""
-            ],
-            "Observed complete-case proportions projected to a population of {n} patients.": [
-                ""
-            ],
-            "Odds Ratio": [
                 ""
             ],
             "One-sided (lower bound only)": [
@@ -1660,280 +301,16 @@
             "one-sided lower bound": [
                 ""
             ],
-            "Only {n} events of the outcome are present in the analysed cases.": [
-                ""
-            ],
-            "Only 1 event of the outcome is present in the analysed cases.": [
-                ""
-            ],
-            "Optimal score cutoff (chosen on this data)": [
-                ""
-            ],
-            "Optimal threshold": [
-                ""
-            ],
-            "Optimism": [
-                ""
-            ],
-            "Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) is a more realistic estimate of future performance.": [
-                ""
-            ],
-            "or the Model Comparison table for unpenalized estimates on the selected variables.": [
-                ""
-            ],
-            "or tick 'Model comparison analysis' under Explanatory Output to see unpenalized estimates on the selected variables.": [
-                ""
-            ],
-            "Original measurement scale, as in the Selected Variables table": [
-                ""
-            ],
-            "Outcome has %1$d distinct numeric values; only %2$s (event) vs %3$s (reference) are modeled. Other cases are excluded.": [
-                ""
-            ],
-            "Outcome has %1$d observed levels; only '%2$s' (event) vs '%3$s' (reference) are modeled. Cases in other levels are excluded.": [
-                ""
-            ],
-            "Outcome is not binary after filtering.": [
-                ""
-            ],
-            "outcome level not modelled": [
-                ""
-            ],
             "Outcome levels": [
                 ""
             ],
-            "outcome missing": [
-                ""
-            ],
-            "Outcome Not Binary": [
-                ""
-            ],
-            "Outcome prevalence: {pct}% ({events}/{n}).": [
-                ""
-            ],
-            "Outcome Type": [
-                ""
-            ],
-            "Outcome Variable": [
-                ""
-            ],
-            "Outcome variable must have at least 2 observed values.": [
-                ""
-            ],
-            "Output Options": [
-                ""
-            ],
-            "Overall:": [
-                ""
-            ],
-            "p (Holm, average NB difference)": [
-                ""
-            ],
-            "p (Holm, mean NB difference)": [
-                ""
-            ],
-            "p (Holm) controls the family-wise error rate across all {k} pairwise comparisons.": [
-                ""
-            ],
-            "p = %1$d predictors, n/p = %2$.1f (good ratio)": [
-                ""
-            ],
-            "p = %1$d predictors, n/p = %2$.1f (regularization essential)": [
-                ""
-            ],
-            "Package 'glmnet' is required. Install with: install.packages('glmnet')": [
-                ""
-            ],
-            "Pairwise comparison needs two models": [
-                ""
-            ],
-            "Path Inclusion Proportion": [
-                ""
-            ],
-            "Path Inclusion Proportion is the fraction of the single cross-validated lambda path on which each predictor has a non-zero coefficient (apparent), NOT a bootstrap/resampling stability-selection frequency. Importance Rank orders predictors by their maximum absolute coefficient along that path. Because Ridge (L1 weight = 0) never shrinks coefficients to zero, every predictor is retained at all lambdas and the proportion is trivially 1.0.": [
-                ""
-            ],
-            "Patients Screened per True Positive": [
-                ""
-            ],
-            "Patients screened per true positive is the reciprocal of the observed true-positive yield, not a causal number-needed-to-screen effect measure.": [
-                ""
-            ],
-            "Penalized feature selection for binary classification": [
-                ""
-            ],
-            "Penalized logistic regression completed: %1$d/%2$d model terms selected using the %3$s penalty with the %4$s lambda (N=%5$d, %6$d events).": [
-                ""
-            ],
-            "Penalized logistic regression for automatic feature selection in binary classification.": [
-                ""
-            ],
-            "Penalty Type": [
-                ""
-            ],
-            "Penalty type": [
-                ""
-            ],
-            "Perfect Apparent Separation": [
-                ""
-            ],
-            "Perfect in-sample separation - see note": [
-                ""
-            ],
-            "Performs LASSO-penalized logistic regression for variable selection in binary classification problems. Ideal for diagnostic pathology studies that build classifiers (e.g., tumor type A vs B) with automatic feature selection.": [
-                ""
-            ],
-            "Please adjust the threshold range in Analysis Options.": [
-                ""
-            ],
-            "Plot Style": [
-                ""
-            ],
-            "Plot style": [
-                ""
-            ],
-            "Plots": [
-                ""
-            ],
-            "Points (Selected)": [
-                ""
-            ],
-            "Pointwise intervals (each threshold separately)": [
-                ""
-            ],
-            "Pointwise percentile-bootstrap intervals from {reps} replications at the {level}% level, drawn for every model and any clinical rule.": [
-                ""
-            ],
-            "Poor": [
-                ""
-            ],
-            "Poor Discrimination": [
-                ""
-            ],
             "Population Characteristics:": [
-                ""
-            ],
-            "Population size": [
-                ""
-            ],
-            "Population Size for Projections": [
-                ""
-            ],
-            "Positive": [
-                ""
-            ],
-            "Positive (+)": [
-                ""
-            ],
-            "Positive Outcome": [
-                ""
-            ],
-            "Positive Outcome Level": [
-                ""
-            ],
-            "Positive Outcome Level Required": [
-                ""
-            ],
-            "Positive rule level": [
-                ""
-            ],
-            "Positive values favour the model; negative values favour treating everyone.": [
-                ""
-            ],
-            "Possible Overfitting": [
                 ""
             ],
             "Power": [
                 ""
             ],
             "Power Analysis by meddecide": [
-                ""
-            ],
-            "PPV": [
-                ""
-            ],
-            "Precision": [
-                ""
-            ],
-            "Precision (PPV)": [
-                ""
-            ],
-            "Precision (PPV) and the F1 score are left blank because this model predicts no positive cases at the chosen threshold, which makes both quantities undefined rather than zero.": [
-                ""
-            ],
-            "Predicted probabilities": [
-                ""
-            ],
-            "Predicted probabilities are in-sample empirical event rates; scores based on few cases (small N) are unstable and can read as 0% or 100%. Validate the score-to-probability mapping on an independent cohort before clinical use.": [
-                ""
-            ],
-            "Predicted Probability": [
-                ""
-            ],
-            "Prediction Models": [
-                ""
-            ],
-            "Prediction Models/Variables": [
-                ""
-            ],
-            "Prediction Requirement": [
-                ""
-            ],
-            "Prediction Scale": [
-                ""
-            ],
-            "Prediction Variables/Models": [
-                ""
-            ],
-            "Predictive Factor": [
-                ""
-            ],
-            "Predictor count": [
-                ""
-            ],
-            "predictor missing": [
-                ""
-            ],
-            "Predictors were standardized before fitting so that the penalty treats them comparably, but the Coefficient and Odds Ratio columns are reported on the ORIGINAL measurement scale (per 1 unit of a continuous predictor, or present vs absent for a binary one). The Importance column is the per-standard-deviation magnitude, which is what can be compared across predictors with different units. Odds ratios remain penalized (shrunk toward 1).": [
-                ""
-            ],
-            "Preprocessing": [
-                ""
-            ],
-            "present": [
-                ""
-            ],
-            "Prevalence": [
-                ""
-            ],
-            "Projected False Positives": [
-                ""
-            ],
-            "Projected Interventions": [
-                ""
-            ],
-            "Projected Missed Cases": [
-                ""
-            ],
-            "Projected Net Interventions Avoided vs Treat All": [
-                ""
-            ],
-            "Projected Number of Patients": [
-                ""
-            ],
-            "Projected Tests": [
-                ""
-            ],
-            "Projected Treatments": [
-                ""
-            ],
-            "Projected true and false positives for the selected population size": [
-                ""
-            ],
-            "Projected True Positives": [
-                ""
-            ],
-            "Projected Unnecessary Treatments": [
                 ""
             ],
             "Proportions (comma-separated, sum to 1)": [
@@ -1963,82 +340,10 @@
             "Proportions should sum to 1.0, current sum is {sum}.": [
                 ""
             ],
-            "Random Seed": [
-                ""
-            ],
-            "Random seed": [
-                ""
-            ],
-            "Random seed: {seed}": [
-                ""
-            ],
-            "Range maximum": [
-                ""
-            ],
-            "Range minimum": [
-                ""
-            ],
-            "Range of Benefit": [
-                ""
-            ],
-            "Range of benefit table": [
-                ""
-            ],
-            "Range of Benefit:": [
-                ""
-            ],
-            "Range of threshold probabilities over which the model's net benefit exceeds both treat-all and treat-none; a model is only worth using within this range.": [
-                ""
-            ],
             "Raters": [
                 ""
             ],
             "raters": [
-                ""
-            ],
-            "Re-running with the same seed reproduces these numbers exactly.": [
-                ""
-            ],
-            "Reduce the step size to {maxstep}% or less, or widen the range.": [
-                ""
-            ],
-            "Reference": [
-                ""
-            ],
-            "Reference (no rounding)": [
-                ""
-            ],
-            "Reference class": [
-                ""
-            ],
-            "Reference Line Labels": [
-                ""
-            ],
-            "Reference line labels": [
-                ""
-            ],
-            "Reference Strategies": [
-                ""
-            ],
-            "Relative Utility (vs best default strategy)": [
-                ""
-            ],
-            "Relative utility compared to default strategies": [
-                ""
-            ],
-            "Relative Utility Curve": [
-                ""
-            ],
-            "Relative utility plot": [
-                ""
-            ],
-            "Rename the duplicated label(s): {names}.": [
-                ""
-            ],
-            "Required inputs:": [
-                ""
-            ],
-            "Required packages missing: {pkgs}.": [
                 ""
             ],
             "Required sample size: {n}": [
@@ -2050,72 +355,6 @@
             "Researchers anticipate an agreement of kappa = {kappa0} and have access to {n} subjects, each rated by {raters} raters.": [
                 ""
             ],
-            "Reserved Model Name": [
-                ""
-            ],
-            "Resource utilization": [
-                ""
-            ],
-            "Resource Utilization": [
-                ""
-            ],
-            "Resource Utilization Analysis": [
-                ""
-            ],
-            "Resource utilization projected to the selected population size": [
-                ""
-            ],
-            "Result": [
-                ""
-            ],
-            "Results Summary": [
-                ""
-            ],
-            "Results summary": [
-                ""
-            ],
-            "Results Table": [
-                ""
-            ],
-            "Results table": [
-                ""
-            ],
-            "Review the decision curves and the range of benefit below.": [
-                ""
-            ],
-            "Ridge (L2)": [
-                ""
-            ],
-            "Ridge Logistic Regression": [
-                ""
-            ],
-            "Risk Group": [
-                ""
-            ],
-            "ROC curve": [
-                ""
-            ],
-            "ROC Curve": [
-                ""
-            ],
-            "ROC Curve (AUC = %s)": [
-                ""
-            ],
-            "ROC curve with AUC and confidence interval": [
-                ""
-            ],
-            "Rule Not Binary": [
-                ""
-            ],
-            "Rule Positive Level Required": [
-                ""
-            ],
-            "Sample Size": [
-                ""
-            ],
-            "Sample size": [
-                ""
-            ],
             "Sample size (N) must be a whole number of at least 11. The kappaSize method is a large-sample approximation and its engine refuses any study of 10 or fewer subjects (received {n}).": [
                 ""
             ],
@@ -2123,102 +362,6 @@
                 ""
             ],
             "Sample Size Calculation for Interobserver Agreement Study": [
-                ""
-            ],
-            "Save Variables": [
-                ""
-            ],
-            "Schneeweiss": [
-                ""
-            ],
-            "Schneeweiss (divide by smallest coefficient)": [
-                ""
-            ],
-            "Schneeweiss (primary)": [
-                ""
-            ],
-            "Schneeweiss method (Mehta et al. J Clin Epidemiol 2016)": [
-                ""
-            ],
-            "Score AUC (apparent)": [
-                ""
-            ],
-            "Score range": [
-                ""
-            ],
-            "Score-to-Probability Lookup": [
-                ""
-            ],
-            "Score-to-probability lookup table": [
-                ""
-            ],
-            "Scoring Method": [
-                ""
-            ],
-            "Scoring method": [
-                ""
-            ],
-            "Scoring Method Comparison": [
-                ""
-            ],
-            "Scoring Scale Not Usable": [
-                ""
-            ],
-            "Scoring System": [
-                ""
-            ],
-            "Scoring system": [
-                ""
-            ],
-            "Scoring System Does Not Discriminate": [
-                ""
-            ],
-            "Scoring System Not Generated": [
-                ""
-            ],
-            "Scoring System Performance": [
-                ""
-            ],
-            "Scoring System Runs Backwards": [
-                ""
-            ],
-            "Select a binary Outcome Variable (the condition you want to predict).": [
-                ""
-            ],
-            "Select a binary rule variable or disable \"Clinical Decision Rule Integration\".": [
-                ""
-            ],
-            "Select exactly one positive outcome level that is present in the analysis data.": [
-                ""
-            ],
-            "Select exactly one positive rule level that is present in the analysis data.": [
-                ""
-            ],
-            "Selected Thresholds for Table": [
-                ""
-            ],
-            "Selected Variables": [
-                ""
-            ],
-            "Sensitivity": [
-                ""
-            ],
-            "Sensitivity (Recall)": [
-                ""
-            ],
-            "Separation in Unpenalized Refit": [
-                ""
-            ],
-            "Serious warning": [
-                ""
-            ],
-            "Shaded: {level}% pointwise CI": [
-                ""
-            ],
-            "Shaded: {level}% simultaneous band": [
-                ""
-            ],
-            "Showing the %1$d highest-ranked of %2$d model terms; the remaining terms have smaller maximum coefficients along the path.": [
                 ""
             ],
             "Significance level (alpha) must be between 0.001 and 0.20.": [
@@ -2230,64 +373,7 @@
             "Significance level of the one-sided lower confidence bound (capped at 0.20).": [
                 ""
             ],
-            "Simple monetary payoff projection under explicit assumptions; not an ICER, QALY or formal health-economic analysis": [
-                ""
-            ],
-            "Simultaneous band (whole curve at once)": [
-                ""
-            ],
-            "Simultaneous sup-t bootstrap band from {reps} replications at the {level}% level (Mandel and Betensky 2008).": [
-                ""
-            ],
-            "Small Sample Size": [
-                ""
-            ],
-            "Small sample size (n = {n}).": [
-                ""
-            ],
-            "Some thresholds ignored": [
-                ""
-            ],
-            "Source variable names are used instead.": [
-                ""
-            ],
             "Sparse categories.": [
-                ""
-            ],
-            "Specificity": [
-                ""
-            ],
-            "Specified event level '%1$s' not found in the outcome variable. Observed levels: %2$s.": [
-                ""
-            ],
-            "Specified event level '%1$s' not found in the outcome variable. Observed values: %2$s.": [
-                ""
-            ],
-            "Specify which level represents the positive outcome.": [
-                ""
-            ],
-            "Standard (with reference lines)": [
-                ""
-            ],
-            "Standardized Net Benefit": [
-                ""
-            ],
-            "Standardized Net Benefit (NB / Prevalence)": [
-                ""
-            ],
-            "Standardized net benefit plot": [
-                ""
-            ],
-            "Statistic": [
-                ""
-            ],
-            "Statistical comparison": [
-                ""
-            ],
-            "Step Size": [
-                ""
-            ],
-            "Strategy": [
                 ""
             ],
             "Study Design:": [
@@ -2299,64 +385,13 @@
             "Summary": [
                 ""
             ],
-            "Table thresholds outside the analysed range": [
-                ""
-            ],
-            "Tables & Outputs": [
-                ""
-            ],
-            "Technical Notes": [
-                ""
-            ],
-            "Terms selected": [
-                ""
-            ],
-            "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); their apparent AUC is typically higher than the penalized LASSO row because refitting removes LASSO shrinkage. All metrics are apparent (in-sample) - use Bootstrap Internal Validation for optimism-corrected discrimination.": [
-                ""
-            ],
-            "The analysis continues without confidence intervals; the point estimates are unaffected.": [
-                ""
-            ],
-            "The analysis was stopped to avoid reversing event and non-event status.": [
-                ""
-            ],
-            "The analysis was stopped to avoid reversing intervention recommendations.": [
-                ""
-            ],
-            "The analysis will show whether using your prediction model(s) provides more clinical benefit than treating all patients or treating no patients.": [
-                ""
-            ],
             "The bound is a confidence limit around the anticipated kappa and approaches it from below without ever reaching it, so while the anticipated kappa is itself 0.40 or below no sample size, number of raters or significance level can lift the bound past 0.40; the anticipated agreement, not the number of subjects, is what binds here.": [
                 ""
             ],
             "The calculation did not converge to a usable answer: the search returned {bound}, which is below the lowest agreement the model allows for these prevalences (every agreement pattern must keep a non-negative probability). With this combination of sample size, anticipated kappa and category prevalences the large-sample approximation breaks down. Increase N, use a less extreme prevalence, or raise the significance level.": [
                 ""
             ],
-            "The clinical decision rule label \"{label}\" duplicates a model or reference-strategy name.": [
-                ""
-            ],
-            "The clinical decision rule variable must be binary (exactly 2 levels).": [
-                ""
-            ],
             "The computed sample size ({n}) is very large and may be impractical for a typical interobserver-agreement study.": [
-                ""
-            ],
-            "The corrected AUC (%1$.3f) is below 0.500. This is a real result, not an error: the bootstrap replicates fit models that pick up chance associations, so the optimism (%2$.3f) exceeds what the model actually achieves. Read it as evidence that these predictors carry no usable signal at this sample size - the model performs no better than, and by this estimate slightly worse than, guessing.": [
-                ""
-            ],
-            "The current outcome \"{var}\" has {n} levels: {levels}.": [
-                ""
-            ],
-            "The current rule variable \"{var}\" has {n} levels: {levels}.": [
-                ""
-            ],
-            "The custom model-name list must contain exactly {n} non-empty comma-separated names.": [
-                ""
-            ],
-            "the cut points you supplied": [
-                ""
-            ],
-            "the cut points you supplied, and the sample median for the predictors you did not give one for": [
                 ""
             ],
             "The expected lower bound for kappa is {bound}.": [
@@ -2368,28 +403,7 @@
             "The expected lower bound is {bound}. The study excludes agreement below that value but leaves everything above it open, and on the Landis and Koch scale a bound under 0.40 is no better than fair agreement. These subjects can therefore show that agreement exceeds chance, but cannot establish moderate or better reliability even if the raters perform exactly as anticipated.": [
                 ""
             ],
-            "The generated scoring system reaches %d points for a single factor. A usable clinical score is typically under 20 points in total; this one is dominated by the ratio between the largest and smallest selected effects. Switch to the Max-scaled method or remove the near-zero predictor before using this score.": [
-                ""
-            ],
-            "The intercept is the log-odds of the event when every selected predictor is 0 (or at its reference level); with the coefficients above it reproduces the model's predicted probability as plogis(intercept + sum(coefficient x value)). No odds ratio or importance applies to it.": [
-                ""
-            ],
             "The kappaSize package is required but not installed. Please install it using install.packages(\"kappaSize\")": [
-                ""
-            ],
-            "The maximum threshold is {max}%.": [
-                ""
-            ],
-            "The minimum probability at which a patient would choose the intervention over no intervention.": [
-                ""
-            ],
-            "The minimum threshold is {min}%.": [
-                ""
-            ],
-            "The optimal threshold maximizes the Youden index on the same data used to fit the model, so sensitivity, specificity, accuracy, precision, and F1 are apparent (in-sample) and optimistic. Enable bootstrap validation for an optimism-corrected estimate of discrimination.": [
-                ""
-            ],
-            "The outcome variable must be binary (exactly 2 levels).": [
                 ""
             ],
             "The preliminary (anticipated) value of kappa - the agreement you expect to observe. It is not a null hypothesis value.": [
@@ -2413,88 +427,22 @@
             "The required sample size is computed with the confidence-interval width approach of the kappaSize package (Donner and Eliasziw; Rotondi and Donner).": [
                 ""
             ],
-            "the sample mean": [
-                ""
-            ],
-            "the sample median": [
-                ""
-            ],
             "The sample size delivers the stated limits only if the study observes the anticipated kappa. Roughly half of such studies observe less and finish with a lower limit short of the target, so plan on a conservative anticipated kappa or enrol above the figure shown.": [
                 ""
             ],
             "The sample size was computed but could not be formatted for display: {error}": [
                 ""
             ],
-            "The score's AUC is %.3f, below 0.500: higher total scores are associated with FEWER events.": [
-                ""
-            ],
-            "The selected threshold range spans {span} percentage points.": [
-                ""
-            ],
-            "The start and end shown span a gap where the model is not superior - read the curve rather than the endpoints.": [
-                ""
-            ],
-            "The table reports a row at {value}, which falls outside the analysed threshold range of {lo}% to {hi}%.": [
-                ""
-            ],
-            "The table reports rows at {values}, which fall outside the analysed threshold range of {lo}% to {hi}%.": [
-                ""
-            ],
-            "The threshold range you entered, {lo}% to {hi}%, is narrower than the step size of {step}%, so it produces only one threshold ({one}%) and no decision curve can be drawn.": [
-                ""
-            ],
-            "The unpenalized refit on all candidate variables could not be fitted (%s), so its row is omitted.": [
-                ""
-            ],
-            "The unpenalized refit on the LASSO-selected variables could not be fitted (%s), so its row is omitted.": [
-                ""
-            ],
-            "the upper quartile": [
-                ""
-            ],
-            "the upper tertile": [
-                ""
-            ],
             "The warning above is the check that matters for the bound, because it is the one computed on those agreement-pattern cells.": [
-                ""
-            ],
-            "The whole curve, including any clinical rule, lies within the band with this probability.": [
-                ""
-            ],
-            "The Youden search did find a cut point (%1$s and above, sensitivity %2$s, specificity %3$s), but the score points the wrong way, so calling the high scores high risk inverts the real risk.": [
-                ""
-            ],
-            "These curves are computed on the same rows that supplied the predicted risks.": [
-                ""
-            ],
-            "These figures are APPARENT (in-sample) and optimistic twice over: the points were derived from a model fitted to this dataset, and the score cutoff was chosen to maximise the Youden index on the same rows. They are not an estimate of how the score would perform on new patients. Enable bootstrap validation for an optimism-corrected estimate of the model, and validate any score externally before clinical use.": [
-                ""
-            ],
-            "These look like percentages: enter {values} instead.": [
-                ""
-            ],
-            "They are computed correctly at those exact values, but they are not shown on the decision curve, and the surrounding rows come from the analysed range.": [
-                ""
-            ],
-            "They cover each threshold separately and are not a simultaneous band; choose the simultaneous band to read the whole curve at once.": [
                 ""
             ],
             "They would like to know how low the one-sided {conf}% lower confidence bound for kappa can be expected to fall - the smallest agreement the study would still be unable to rule out; every value below it is excluded.": [
                 ""
             ],
-            "This binary analysis does not account for censoring.": [
-                ""
-            ],
             "This combination of expected proportions and rater count is too extreme for the kappaSize engine: with {raters} raters and a rarest category of {rarest}, some agreement patterns are so unlikely that the calculation loses them to rounding and never converges. About {n} subjects would be needed. Use fewer raters, or a less extreme expected prevalence — the same design usually computes with one rater fewer.": [
                 ""
             ],
-            "This computational safeguard does not imply that 10 observations are statistically adequate.": [
-                ""
-            ],
             "This design cannot support a reliability claim.": [
-                ""
-            ],
-            "This indicates a data processing error; please report it.": [
                 ""
             ],
             "This is a CONFIDENCE-INTERVAL calculation: it returns the number of subjects\nneeded for the interval around kappa to reach the requested width. It answers a\ndifferent question from the power approach (kappaSizePower), which sizes a study\nto reject a null value, so the two will not agree on a sample size for the same\nstudy - choose the one that matches how the result will be reported.": [
@@ -2503,106 +451,10 @@
             "This is a planning expectation, not a guarantee.": [
                 ""
             ],
-            "This is not a confirmatory test and depends on giving every threshold equal weight.": [
-                ""
-            ],
             "This is the bound the study reaches if the agreement it observes lands exactly on kappa0. Roughly half of such studies will observe less agreement than anticipated and end with a lower bound below the figure shown, so read it as a planning expectation rather than a guarantee.": [
                 ""
             ],
-            "This model assigns every case the same predicted probability, so it does not discriminate at all and no meaningful threshold exists. A default of 0.500 was used, which classifies every case into one group: the resulting sensitivity of 1.000 (or specificity of 1.000, depending on which side of 0.500 that constant probability falls) and the F1 score are artefacts of that, not evidence of a sensitive or specific test. Only the AUC of 0.500 is informative here.": [
-                ""
-            ],
-            "This only ranks the models against each other; it does not mean the model is useful.": [
-                ""
-            ],
-            "This point scale spans up to %d points per factor, which is too wide to be used as a bedside score. It happens when one selected predictor has a far smaller effect than the others and the chosen method scales relative to it. Try the Max-scaled method, which caps the strongest predictor at the Maximum Points you set, or drop the negligible predictor.": [
-                ""
-            ],
-            "This range contains a gap where the model is not superior; read the curve.": [
-                ""
-            ],
             "This sample size cannot demonstrate agreement.": [
-                ""
-            ],
-            "This scoring system does not discriminate.": [
-                ""
-            ],
-            "This scoring system runs backwards.": [
-                ""
-            ],
-            "Threshold": [
-                ""
-            ],
-            "Threshold Out of Bounds": [
-                ""
-            ],
-            "Threshold probabilities must be numbers strictly between 0 and 1, separated by commas or spaces.": [
-                ""
-            ],
-            "Threshold probabilities must lie strictly between 0 and 1.": [
-                ""
-            ],
-            "Threshold Probability": [
-                ""
-            ],
-            "Threshold probability is set by clinical judgement about the relative cost of a missed case versus an unnecessary treatment; it is not estimated from the data, so there is no optimal value to report.": [
-                ""
-            ],
-            "Threshold Range": [
-                ""
-            ],
-            "Threshold Range Too Narrow": [
-                ""
-            ],
-            "Threshold range: {lo}% to {hi}%.": [
-                ""
-            ],
-            "Threshold Step Size": [
-                ""
-            ],
-            "Thresholds for table (probabilities 0-1, comma-separated)": [
-                ""
-            ],
-            "To": [
-                ""
-            ],
-            "To Do": [
-                ""
-            ],
-            "To get started:": [
-                ""
-            ],
-            "Too few complete cases for analysis.": [
-                ""
-            ],
-            "Too few non-degenerate predictor columns.": [
-                ""
-            ],
-            "Total Benefit": [
-                ""
-            ],
-            "Total Cost": [
-                ""
-            ],
-            "Total Score": [
-                ""
-            ],
-            "Treat All": [
-                ""
-            ],
-            "Treat None": [
-                ""
-            ],
-            "True Negative": [
-                ""
-            ],
-            "True Positive": [
-                ""
-            ],
-            "True Positives": [
-                ""
-            ],
-            "Try the Minimum CV Error lambda instead of the 1SE rule, or add more informative predictors.": [
                 ""
             ],
             "Two-sided": [
@@ -2617,9 +469,6 @@
             "unavailable": [
                 ""
             ],
-            "Understanding Penalized Logistic Regression": [
-                ""
-            ],
             "Unsupported number of outcome categories": [
                 ""
             ],
@@ -2629,91 +478,10 @@
             "Upper confidence limit you want the study to achieve for kappa. It must be above kappa0, and is ignored for a one-sided interval.": [
                 ""
             ],
-            "Upper quartile (top quarter scores)": [
-                ""
-            ],
-            "Upper tertile (top third scores)": [
-                ""
-            ],
-            "Use model-based probabilities and assess their calibration separately in the target population; min-max scaling does not create calibrated risks.": [
-                ""
-            ],
-            "Using default thresholds": [
-                ""
-            ],
-            "Using fewer than 100 replications may give unreliable confidence intervals; consider at least 1000 replications for stable estimates.": [
-                ""
-            ],
-            "Validation": [
-                ""
-            ],
-            "Value": [
-                ""
-            ],
-            "Values between 0 and 1 are accepted as probabilities, but this analysis does not verify calibration.": [
-                ""
-            ],
-            "Variable": [
-                ""
-            ],
-            "Variable Importance Analysis": [
-                ""
-            ],
-            "Variable importance analysis": [
-                ""
-            ],
-            "Variable standardization": [
-                ""
-            ],
-            "Variables analysed": [
-                ""
-            ],
-            "Very small sample size (n = {n}).": [
-                ""
-            ],
-            "Warning": [
-                ""
-            ],
-            "Warning: an unpenalized logistic refit (a 'Logistic' row) did not converge or produced fitted probabilities at 0 or 1, indicating complete or quasi-complete separation. Its apparent AUC (often ~1.0), AIC, and Brier score are unreliable and should not be interpreted - this is exactly the instability that LASSO penalization is designed to avoid.": [
-                ""
-            ],
-            "Warning: Very high apparent AUC with small sample size suggests possible overfitting. Enable bootstrap validation to assess optimism.": [
-                ""
-            ],
             "Warning.": [
                 ""
             ],
-            "Welcome to LASSO Logistic Regression": [
-                ""
-            ],
-            "Whether it beats treating everyone or no one is the Range of Benefit below.": [
-                ""
-            ],
-            "Wide Threshold Range": [
-                ""
-            ],
-            "Widen the threshold range, or remove it from \"Thresholds for table\".": [
-                ""
-            ],
-            "Widen the threshold range, or remove them from \"Thresholds for table\".": [
-                ""
-            ],
-            "Width": [
-                ""
-            ],
             "With the sample size already fixed, this reports the lower bound of the one-sided 100(1 - alpha)% confidence interval that the study can expect to achieve for the intraclass (Fleiss-type) kappa of the common-correlation model used by the kappaSize package (Donner and Eliasziw; Rotondi and Donner); for two raters with equal marginal frequencies this coincides with Cohen's kappa.": [
-                ""
-            ],
-            "Worse than chance - ranking is inverted": [
-                ""
-            ],
-            "You are already using the least conservative lambda (Minimum CV Error), so the penalty is not the limiting factor: none of these predictors carries enough signal at this sample size. Add more informative predictors or collect more cases.": [
-                ""
-            ],
-            "You are already using the least conservative lambda, so add more informative predictors or collect more cases.": [
-                ""
-            ],
-            "Youden index": [
                 ""
             ]
         }

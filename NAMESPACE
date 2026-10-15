@@ -2,41 +2,11 @@
 
 export("%>%")
 export("%||%")
-export(decisioncurve)
 export(kappaSizeCI)
 export(kappaSizeFixedN)
-export(lassologistic)
 import(jmvcore)
 importFrom(DescTools,CCC)
 importFrom(R6,R6Class)
-importFrom(dplyr,
-  arrange,
-  filter,
-  group_by,
-  mutate,
-  summarise
-)
-importFrom(ggplot2,
-  aes,
-  annotate,
-  element_text,
-  facet_wrap,
-  geom_bar,
-  geom_hline,
-  geom_line,
-  geom_ribbon,
-  geom_text,
-  geom_vline,
-  ggplot,
-  labs,
-  scale_color_brewer,
-  scale_fill_manual,
-  scale_x_continuous,
-  scale_x_discrete,
-  theme_minimal,
-  xlim,
-  ylim
-)
 importFrom(glmnet,cv.glmnet)
 importFrom(grDevices,colorRampPalette)
 importFrom(graphics,par)
@@ -51,7 +21,6 @@ importFrom(magrittr,"%>%")
 importFrom(poLCA,poLCA)
 importFrom(stats,
   binomial,
-  complete.cases,
   cov,
   glm,
   predict,
@@ -60,7 +29,6 @@ importFrom(stats,
   var
 )
 importFrom(tibble,rownames_to_column)
-importFrom(tidyr,gather)
 importFrom(tools,toTitleCase)
 importFrom(utils,
   sessionInfo,

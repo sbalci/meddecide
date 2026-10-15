@@ -9,65 +9,6 @@ refs:
         doi: 10.17605/OSF.IO/9SZUD
         url: "https://www.serdarbalci.com/ClinicoPathJamoviModule/"
 
-    Kerr2016DCA:
-        type: article
-        author: "Kerr, K. F., Brown, M. D., Zhu, K., & Janes, H."
-        year: 2016
-        title: "Assessing the clinical impact of risk prediction models with decision curves: guidance for correct interpretation and appropriate use"
-        publisher: Journal of Clinical Oncology
-        volume: 34
-        issue: 21
-        pages: 2534-2540
-        doi: 10.1200/JCO.2015.65.5654
-        url: "https://doi.org/10.1200/JCO.2015.65.5654"
-
-    MandelBetensky2008:
-        type: article
-        author: "Mandel, M., & Betensky, R. A."
-        year: 2008
-        title: Simultaneous confidence intervals based on the percentile bootstrap approach
-        publisher: "Computational Statistics & Data Analysis"
-        volume: 52
-        issue: 4
-        pages: 2158-2165
-        doi: 10.1016/j.csda.2007.07.005
-        url: "https://doi.org/10.1016/j.csda.2007.07.005"
-
-    Vickers2006:
-        type: article
-        author: "Vickers, A. J., & Elkin, E. B."
-        year: 2006
-        title: "Decision curve analysis: a novel method for evaluating prediction models"
-        publisher: Medical Decision Making
-        volume: 26
-        issue: 6
-        pages: 565-574
-        doi: 10.1177/0272989X06295361
-        url: "https://doi.org/10.1177/0272989X06295361"
-
-    Vickers2019DCA:
-        type: article
-        author: "Vickers, A. J., Van Calster, B., & Steyerberg, E. W."
-        year: 2019
-        title: A simple, step-by-step guide to interpreting decision curve analysis
-        publisher: Diagnostic and Prognostic Research
-        volume: 3
-        pages: 18
-        doi: 10.1186/s41512-019-0064-7
-        url: "https://doi.org/10.1186/s41512-019-0064-7"
-
-    Vickers2023DCAInference:
-        type: article
-        author: "Vickers, A. J., Van Calster, B., Wynants, L., & Steyerberg, E. W."
-        year: 2023
-        title: "Decision curve analysis: confidence intervals and hypothesis testing for net benefit"
-        publisher: Diagnostic and Prognostic Research
-        volume: 7
-        issue: 1
-        pages: 11
-        doi: 10.1186/s41512-023-00148-y
-        url: "https://doi.org/10.1186/s41512-023-00148-y"
-
     donnerEliasziwKappaGOF:
         type: article
         author: Donner A, Eliasziw M.
@@ -79,14 +20,6 @@ refs:
         doi: 10.1002/sim.4780111109
         url: "https://doi.org/10.1002/sim.4780111109"
 
-    glmnet:
-        type: software
-        author: Jerome Friedman, Trevor Hastie, Rob Tibshirani, Balasubramanian Narasimhan, Kenneth Tay, Noah Simon, James Yang, Jonathan Taylor
-        year: 2026
-        title: "glmnet: Lasso and Elastic-Net Regularized Generalized Linear Models"
-        publisher: "[R package version 5.0]. Retrieved from https://CRAN.R-project.org/package=glmnet"
-        url: "https://CRAN.R-project.org/package=glmnet"
-
     kappaSize:
         type: software
         author: Michael A Rotondi
@@ -95,14 +28,6 @@ refs:
         publisher: "[R package]. Retrieved from https://cran.r-project.org/web/packages/kappaSize/"
         doi: 10.32614/CRAN.package.kappaSize
         url: "https://cran.r-project.org/web/packages/kappaSize/"
-
-    pROC:
-        type: software
-        author: Xavier Robin
-        year: 2026
-        title: "pROC: Display and Analyze ROC Curves"
-        publisher: "[R package version 1.19.1]. Retrieved from https://CRAN.R-project.org/package=pROC"
-        url: "https://CRAN.R-project.org/package=pROC"
 
     rotondiDonnerKappaCI:
         type: article

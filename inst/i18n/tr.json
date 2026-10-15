@@ -7,98 +7,14 @@
                 "lang": "tr",
                 "plural_forms": "nplurals=2; plural=(n != 1)"
             },
-            "'Treat All' assumes all patients receive the intervention; 'Treat None' assumes no intervention.": [
-                "'Herkesi Tedavi Et' tüm hastaların girişimi aldığını varsayar; 'Hiç Kimseyi Tedavi Et' hiçbir girişim yapılmadığını varsayar."
-            ],
-            "\"Clinical decision rule\" is enabled but no rule variable has been selected.": [
-                ""
-            ],
-            "\"Enhanced pairwise comparison\" is enabled but only one prediction model is selected, so the Exploratory Pairwise Model Comparison table stays empty.": [
-                ""
-            ],
-            "\"Statistical comparison\" is enabled but only one prediction model is selected, so the Exploratory Model Comparison table stays empty.": [
-                ""
-            ],
-            "(Intercept)": [
-                "(Kesişim)"
-            ],
             "(The Summary panel below reproduces the kappaSize package's own wording, which says the sample size will “ensure” the limits — read it with this caveat in mind.)": [
                 ""
             ],
             "{a} and {b}": [
                 "{a} ve {b}"
             ],
-            "{a} vs {b}": [
-                "{a} - {b}"
-            ],
-            "{excluded} of {total} rows ({pct}%) were excluded because the outcome, at least one model prediction, or the enabled clinical rule was missing; every strategy is evaluated on the same {kept} retained rows.": [
-                "{total} satırdan {excluded} satır (%{pct}) sonuç, en az bir model tahmini veya etkinleştirilmiş klinik kural eksik olduğu için hariç tutuldu; her strateji aynı {kept} tutulan satır üzerinde değerlendirilir."
-            ],
             "{head} and {last}": [
                 "{head} ve {last}"
-            ],
-            "{kept} complete cases; {excluded} of {total} rows excluded for missing required values": [
-                "{kept} eksiksiz olgu; gerekli değerlerin eksik olması nedeniyle {total} satırdan {excluded} satır hariç tutuldu"
-            ],
-            "{lo}% to {hi}%": [
-                "%{lo} ila %{hi}"
-            ],
-            "{lo}% to {hi}% threshold probability - the range over which this model beats both treating everyone and treating no one.": [
-                "%{lo} ila %{hi} eşik olasılığı - bu modelin hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi geçtiği aralık."
-            ],
-            "{models} falls below the visible range at some thresholds: relative utility there is worse than shown.": [
-                "{models} bazı eşiklerde görünür aralığın altına düşer: oradaki göreceli yararlılık gösterilenden daha kötüdür."
-            ],
-            "{models} is superior over more than one separate stretch of thresholds.": [
-                "{models} birden fazla ayrı eşik aralığında üstündür."
-            ],
-            "{models} never exceeds both reference strategies anywhere in the threshold range examined, so no range is shown.": [
-                "{models} incelenen eşik aralığında hiçbir yerde her iki referans stratejiyi birden aşmaz, bu nedenle aralık gösterilmez."
-            ],
-            "{pairs} could not be bootstrap-tested because at least one side is a derived strategy rather than a predictor column, so it has no values to resample.": [
-                "{pairs} bootstrap ile test edilemedi çünkü en az bir taraf bir öngörücü sütunu yerine türetilmiş bir stratejidir, bu nedenle yeniden örneklenecek değerleri yoktur."
-            ],
-            "{var} ({level} = positive)": [
-                "{var} ({level} = pozitif)"
-            ],
-            "% Fewer Treatments vs Treat All": [
-                "Herkesi Tedavi Etmeye Göre % Daha Az Tedavi"
-            ],
-            "%.3f (CI not estimable)": [
-                "%.3f (GA tahmin edilemez)"
-            ],
-            "%1$d folds were requested but only %2$d could be used: stratified cross-validation cannot create more folds than there are cases in the smaller outcome class (%3$d). Fewer folds mean a noisier lambda; a larger or better-balanced sample is the real remedy.": [
-                ""
-            ],
-            "%1$d of %2$d bootstrap replicates completed; %3$d failed (typically a resample with too few events to fit) and were excluded. The optimism correction is based on the %4$d successful replicates.": [
-                ""
-            ],
-            "%1$d of %2$d cases (%3$.1f%%) were excluded%4$s; the analysis uses the remaining %5$d cases.%6$s": [
-                ""
-            ],
-            "%1$d selected variable(s) had the same value in every case and were removed before fitting: %2$s. A constant carries no information and cannot be penalised or selected. %3$d variables remain and are shown as Variables analysed.": [
-                ""
-            ],
-            "%1$s logistic regression with %2$s lambda selection and %3$d-fold cross-validation was applied to %4$d candidate variables (%5$d model terms after dummy coding) in %6$d patients (%7$d events, %8$d non-events). %9$d term(s) were retained: %10$s.": [
-                ""
-            ],
-            "%d had a missing outcome": [
-                "%d eksik sonuca sahipti"
-            ],
-            "%d had at least one predictor missing": [
-                "%d en az bir eksik tahmin ediciye sahipti"
-            ],
-            "%d were in an outcome level outside the two being compared": [
-                "%d karşılaştırılan ikisinin dışındaki bir sonuç düzeyindeydi"
-            ],
-            "%s Every row's risk group below is therefore unreliable.": [
-                ""
-            ],
-            "%s The risk groups in the Score-to-Probability Lookup table are not meaningful either. Do not publish or apply this score.": [
-                ""
-            ],
-            "%s The Scoring System Performance figures and the High/Low risk labels in the lookup table are not measurements of a working score.": [
-                ""
             ],
             "• Anticipated kappa (κ₀): {kappa0}": [
                 ""
@@ -130,95 +46,11 @@
             "• The limit that drives the sample size is {rho}, which is {dist} from κ₀ (it is this distance, not the full interval width, that sets n)": [
                 ""
             ],
-            "<li><strong>1SE Rule</strong>: Selects the most parsimonious model within 1 SE of minimum CV error.</li>": [
-                "<li><strong>1SE Kuralı</strong>: Minimum ÇD hatasının 1 SE içindeki en yalın modeli seçer.</li>"
-            ],
-            "<li><strong>Elastic Net</strong>: Combines L1 and L2 penalties; useful when predictors are correlated.</li>": [
-                "<li><strong>Elastic Net</strong>: L1 ve L2 cezalarını birleştirir; tahmin ediciler korelasyonlu olduğunda yararlıdır.</li>"
-            ],
-            "<li><strong>Lambda</strong>: Controls regularization strength. Higher lambda = fewer variables selected.</li>": [
-                "<li><strong>Lambda</strong>: Düzenlileştirme gücünü kontrol eder. Daha yüksek lambda = daha az değişken seçilir.</li>"
-            ],
-            "<li><strong>Lambda</strong>: Controls regularization strength. Higher lambda shrinks every coefficient further toward zero, but none reaches zero, so the number of variables never changes.</li>": [
-                "<li><strong>Lambda</strong>: Düzenlileştirme gücünü kontrol eder. Daha yüksek lambda her katsayıyı sıfıra doğru daha da daraltır ancak hiçbiri sıfıra ulaşmaz, bu nedenle değişken sayısı asla değişmez.</li>"
-            ],
-            "<li><strong>Odds Ratio</strong>: exp(coefficient). OR > 1 increases probability of the positive class.</li>": [
-                "<li><strong>Odds Oranı</strong>: exp(katsayı). OR > 1 pozitif sınıf olasılığını artırır.</li>"
-            ],
-            "<li><strong>Standardization (default on):</strong> predictors are centered and scaled before fitting, so the penalty treats variables with different units comparably. The Coefficient and Odds Ratio columns of the Selected Variables table are then back-transformed to the <strong>original measurement scale</strong> (per 1 unit of a continuous predictor, or present vs absent for a binary one). The Importance column and the Coefficient Plot stay on the per-standard-deviation scale, which is the quantity that is comparable across predictors with different units.</li>": [
-                "<li><strong>Standardizasyon (varsayılan açık):</strong> tahmin ediciler uyarlamadan önce merkezileştirilir ve ölçeklendirilir, böylece ceza farklı birimlere sahip değişkenleri karşılaştırılabilir şekilde ele alır. Seçilen Değişkenler tablosunun Katsayı ve Odds Oranı sütunları daha sonra <strong>orijinal ölçüm ölçeğine</strong> geri dönüştürülür (sürekli bir tahmin edicinin 1 birimi başına veya ikili bir tahmin edici için var ve yok). Önem sütunu ve Katsayı Grafiği, farklı birimlere sahip tahmin ediciler arasında karşılaştırılabilir olan standart sapma başına ölçekte kalır.</li>"
-            ],
-            "<li>Always validate the scoring system on an independent cohort before clinical adoption.</li>": [
-                "<li>Klinik benimsemeden önce puanlama sistemini her zaman bağımsız bir kohortta doğrulayın.</li>"
-            ],
-            "<li>Bootstrap optimism correction estimates how much the apparent AUC overestimates true performance.</li>": [
-                "<li>Bootstrap iyimserlik düzeltmesi, görünürdeki EAA'nın gerçek performansı ne kadar abarttığını tahmin eder.</li>"
-            ],
-            "<li>Continuous predictors in the scoring system are dichotomized at %s (set by 'Cut Point for Continuous Predictors'); the score-based performance therefore reflects a simplified point model and may differ from the continuous LASSO model's AUC.</li>": [
-                "<li>Puanlama sistemindeki sürekli tahmin ediciler %s noktasında ikiye ayrılır ('Sürekli Tahmin Ediciler İçin Kesim Noktası' ile ayarlanır); bu nedenle puana dayalı performans basitleştirilmiş bir puan modelini yansıtır ve sürekli LASSO modelinin EAA değerinden farklı olabilir.</li>"
-            ],
-            "<li>Events-per-variable (EPV) should be >=10. Below 5, results are unreliable regardless of regularization.</li>": [
-                "<li>Değişken başına olay (EPV) >=10 olmalıdır. 5'in altında, düzenlileştirmeden bağımsız olarak sonuçlar güvenilmezdir.</li>"
-            ],
-            "<li>Higher total scores indicate higher probability of the event (positive class).</li>": [
-                "<li>Daha yüksek toplam puanlar olayın (pozitif sınıf) daha yüksek olasılığını gösterir.</li>"
-            ],
-            "<li>Inter-observer agreement should be assessed for any morphologic scoring components.</li>": [
-                "<li>Herhangi bir morfolojik puanlama bileşeni için gözlemciler arası uyum değerlendirilmelidir.</li>"
-            ],
-            "<li>LASSO coefficients do not have standard errors or p-values. Use bootstrap validation for inference.</li>": [
-                "<li>LASSO katsayılarının standart hataları veya p değerleri yoktur. Çıkarım için bootstrap doğrulamasını kullanın.</li>"
-            ],
-            "<li>Predictors were <strong>not</strong> standardized; coefficients, odds ratios, importance, and the Coefficient Plot are all on the original measurement scale of each variable.</li>": [
-                "<li>Tahmin ediciler standardize <strong>edilmemiştir</strong>; katsayılar, odds oranları, önem ve Katsayı Grafiği her değişkenin orijinal ölçüm ölçeğindedir.</li>"
-            ],
-            "<li>Selected variables are the features most useful for distinguishing the two groups.</li>": [
-                "<li>Seçilen değişkenler iki grubu ayırt etmek için en yararlı özelliklerdir.</li>"
-            ],
-            "<li>The scoring system assigns positive points for features favoring the event class and negative points for the reference class.</li>": [
-                "<li>Puanlama sistemi olay sınıfını destekleyen özellikler için pozitif puanlar, referans sınıf için negatif puanlar verir.</li>"
-            ],
-            "<li>The scoring system rounds coefficients to integers, which loses precision but gains clinical usability.</li>": [
-                "<li>Puanlama sistemi katsayıları tam sayılara yuvarlar, bu da kesinliği kaybeder ancak klinik kullanılabilirlik kazandırır.</li>"
-            ],
-            "<li>Variables NOT selected are not necessarily unimportant - they may be redundant with selected features.</li>": [
-                "<li>Seçilmeyen değişkenler mutlaka önemsiz değildir - seçilen özelliklerle gereksiz (yedekli) olabilirler.</li>"
-            ],
-            "<li>With correlated predictors, LASSO arbitrarily selects one from a group. Consider elastic net (alpha 0.5).</li>": [
-                "<li>Korelasyonlu tahmin edicilerle LASSO bir gruptan rastgele birini seçer. Elastic net (alfa 0.5) düşünün.</li>"
-            ],
-            "<li>With correlated predictors, Ridge shares the coefficient among them rather than picking one, which is one reason to prefer it when predictors are collinear.</li>": [
-                "<li>Korelasyonlu tahmin edicilerle Ridge, birini seçmek yerine katsayıyı aralarında paylaşır; bu da tahmin ediciler eşdoğrusal (collinear) olduğunda bunu tercih etmenin bir nedenidir.</li>"
-            ],
-            "<p>Elastic Net blends the L1 (LASSO) and L2 (Ridge) penalties, here with a mixing weight of alpha = %.2f. The L1 part can shrink coefficients exactly to zero, so some variable selection still happens, while the L2 part keeps correlated predictors together instead of letting the model pick one of them arbitrarily.</p>": [
-                "<p>Elastic Net, burada alfa = %.2f karışım ağırlığı ile L1 (LASSO) ve L2 (Ridge) cezalarını harmanlar. L1 kısmı katsayıları tam olarak sıfıra daraltabilir, böylece bir miktar değişken seçimi devam eder; L2 kısmı ise modelin bunlardan birini rastgele seçmesine izin vermek yerine korelasyonlu tahmin edicileri bir arada tutar.</p>"
-            ],
-            "<p>LASSO (Least Absolute Shrinkage and Selection Operator) adds an L1 penalty to the logistic regression likelihood, which shrinks some coefficients exactly to zero. This performs automatic variable selection, identifying the most important predictors for your binary outcome.</p>": [
-                "<p>LASSO (En Küçük Mutlak Daralma ve Seçim Operatörü), lojistik regresyon olabilirliğine bazı katsayıları tam olarak sıfıra daraltan bir L1 cezası ekler. Bu, otomatik değişken seçimi gerçekleştirerek ikili sonucunuz için en önemli tahmin edicileri tanımlar.</p>"
-            ],
-            "<p>Ridge regression adds an L2 penalty to the logistic regression likelihood. It shrinks coefficients toward zero but never <strong>to</strong> zero, so it does <strong>not</strong> perform variable selection: every predictor you supplied is retained in the model. Ridge is the right choice when you believe most predictors carry some signal, or when they are strongly correlated and you want the penalty shared among them rather than one arbitrarily kept.</p>": [
-                "<p>Ridge regresyonu lojistik regresyon olabilirliğine bir L2 cezası ekler. Katsayıları sıfıra doğru daraltır ancak asla sıfıra <strong>kadar</strong> daraltmaz, bu nedenle değişken seçimi <strong>yapmaz</strong>: sağladığınız her tahmin edici modelde tutulur. Çoğu tahmin edicinin bir miktar sinyal taşıdığına inandığınızda veya güçlü bir şekilde korelasyonlu olduklarında ve cezanın birinin rastgele tutulması yerine aralarında paylaşılmasını istediğinizde Ridge doğru seçimdir.</p>"
-            ],
-            "= %s": [
-                ""
-            ],
-            "> %s": [
-                "> %s"
-            ],
-            "0.05, 0.10, 0.15, 0.20, 0.25, 0.30": [
-                "0.05, 0.10, 0.15, 0.20, 0.25, 0.30"
-            ],
             "0.20, 0.80": [
                 "0.20, 0.80"
             ],
             "100(1 - alpha)": [
                 ""
-            ],
-            "1SE Rule (More Parsimonious)": [
-                "1SE Kuralı (Daha Yalın)"
-            ],
-            "1SE Rule (parsimonious)": [
-                "1SE Kuralı (sadeleştirilmiş)"
             ],
             "A bound at or below zero means this many subjects cannot rule out agreement no better than chance.": [
                 "Sıfır veya altında bir sınır, bu sayıda olgunun şansa bağlı uyumdan daha iyisini dışlayamayacağı anlamına gelir."
@@ -226,56 +58,11 @@
             "A comprehensive toolkit for medical decision analysis and reliability\nassessment, implemented as a jamovi module. The package provides tools for:\n* Interrater and intrarater reliability analysis using Cohen's Kappa and\n  Fleiss' Kappa statistics\n* Diagnostic test evaluation with sensitivity, specificity, predictive values,\n  and likelihood ratios\n* Sample size calculations for reliability studies using confidence interval\n  and power-based approaches\n* Visualization tools including Fagan nomograms for Bayesian probability\n  updates\n* Power analysis for interobserver agreement studies with support for\n  multiple raters and outcome categories\nTools are provided through an intuitive graphical interface in jamovi, making\ncomplex medical decision analyses accessible to clinical researchers.\nFor comments, suggestions, feature requests or reporting bugs, please open an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.": [
                 ""
             ],
-            "A gain at or below zero means a default strategy serves these patients at least as well as the model.": [
-                "Sıfır veya altındaki bir kazanç, varsayılan bir stratejinin bu hastalara en az model kadar iyi hizmet ettiği anlamına gelir."
-            ],
-            "A model is useful only where its curve sits above BOTH reference lines.": [
-                "Bir model yalnızca eğrisi HER İKİ referans çizgisinin de üzerinde olduğunda yararlıdır."
-            ],
-            "a sensitivity of 1.000 here means the model calls every case positive, not that it is a sensitive test": [
-                "burada 1.000 duyarlılık, modelin her olguyu pozitif olarak adlandırdığı anlamına gelir, duyarlı bir test olduğu anlamına gelmez"
-            ],
-            "a specificity of 1.000 here means the model calls every case negative, not that it is a specific test": [
-                "burada 1.000 özgüllük, modelin her olguyu negatif olarak adlandırdığı anlamına gelir, özgül bir test olduğu anlamına gelmez"
-            ],
-            "A value of 1 corresponds to the maximum net benefit of perfect classification; values are not counts per 100 patients.": [
-                "1 değeri mükemmel sınıflandırmanın maksimum net faydasına karşılık gelir; değerler 100 hasta başına sayımlar değildir."
-            ],
-            "A value range of 0 to 1 does not establish calibration; calibration must be assessed separately in the target population.": [
-                "0 ila 1 değer aralığı kalibrasyonu kanıtlamaz; kalibrasyon hedef popülasyonda ayrıca değerlendirilmelidir."
-            ],
-            "Acceptable": [
-                "Kabul edilebilir"
-            ],
-            "Acceptable with caveats": [
-                "Çekincelerle kabul edilebilir"
-            ],
-            "Accuracy": [
-                "Doğruluk"
-            ],
-            "Across every threshold examined, treating everyone or treating no one does at least as well as this model.": [
-                "İncelenen her eşikte, herkesi tedavi etmek veya hiç kimseyi tedavi etmemek en az bu model kadar iyi sonuç verir."
-            ],
-            "Add a second model to compare.": [
-                ""
-            ],
-            "Add one or more Prediction Variables/Models containing predicted probabilities from 0 to 1; raw scores, logits and linear predictors are not valid threshold probabilities.": [
-                "0 ile 1 arasında tahmin edilen olasılıkları içeren bir veya daha fazla Tahmin Değişkeni/Modeli ekleyin; ham puanlar, logitler ve doğrusal öngörücüler geçerli eşik olasılıkları değildir."
-            ],
-            "AIC": [
-                "AIC"
-            ],
-            "All inputs must use the same currency and the calculation assumes one test per person, treatment after a positive model decision, and treat-all without testing.": [
-                "Tüm girdiler aynı para birimini kullanmalıdır ve hesaplama kişi başına bir test, pozitif model kararından sonra tedavi ve test yapılmadan herkese tedavi uygulandığını varsayar."
-            ],
             "All proportions must be between 0 and 1": [
                 ""
             ],
             "All proportions must be valid numbers": [
                 ""
-            ],
-            "All three methods shown for comparison": [
-                "Karşılaştırma için gösterilen üç yöntemin tümü"
             ],
             "Alpha": [
                 "Alfa"
@@ -286,23 +73,8 @@
             "Alpha (0-1)": [
                 ""
             ],
-            "An apparent AUC of 1.000 means the selected predictors separate the two classes completely in this dataset. Sensitivity, specificity, accuracy, precision and F1 of 1.000 describe the rows the model was fitted to, not future patients, and the confidence interval collapses to a single point rather than indicating precision. Complete separation also makes the coefficients themselves unstable. Enable bootstrap validation for an optimism-corrected estimate, and treat external validation as mandatory before any clinical use.": [
-                "1.000 görünürde EAA, seçilen tahmin edicilerin bu veri setinde iki sınıfı tamamen ayırdığı anlamına gelir. 1.000 duyarlılık, özgüllük, doğruluk, kesinlik ve F1, gelecekteki hastaları değil, modelin uyarlandığı satırları tanımlar ve güven aralığı kesinliği belirtmek yerine tek bir noktaya çöker. Tam ayrım katsayıların kendisini de kararsız hale getirir. İyimserlik düzeltmeli bir tahmin için bootstrap doğrulamasını etkinleştirin ve herhangi bir klinik kullanımdan önce harici doğrulamayı zorunlu olarak ele alın."
-            ],
-            "An unpenalized logistic refit in the Model Comparison table showed complete/quasi-complete separation (non-convergence or fitted probabilities at 0/1). Its AUC/AIC are unreliable; prefer the penalized LASSO row.": [
-                "Model Karşılaştırma tablosundaki cezalandırılmamış bir lojistik yeniden uyarlama, tam/yarı-tam ayrım gösterdi (yakınsamama veya 0/1'de uyarlanan olasılıklar). EAA/AIC değerleri güvenilmezdir; cezalandırılmış LASSO satırını tercih edin."
-            ],
-            "Analysis Complete": [
-                "Analiz Tamamlandı"
-            ],
-            "Analysis Options": [
-                "Analiz Seçenekleri"
-            ],
             "Analysis result": [
                 "Analiz sonucu"
-            ],
-            "Analysis Summary": [
-                "Analiz Özeti"
             ],
             "Anticipated Agreement": [
                 "Beklenen Uyum"
@@ -312,21 +84,6 @@
             ],
             "Anticipated share of subjects in each outcome category, separated by commas, semicolons or spaces, using a decimal point, and summing to 1 (for example 0.20, 0.80 for a finding present in one case in five). For a binary outcome a single prevalence is enough. Enter exactly one value per outcome level otherwise.": [
                 "Her sonuç kategorisinde beklenen olgu payı; virgül, noktalı virgül veya boşlukla ayrılmış, ondalık ayırıcı olarak nokta kullanılan ve toplamı 1 olan değerler (örneğin beş olgudan birinde bulunan bir bulgu için 0.20, 0.80). İkili sonuç için tek bir prevalans değeri yeterlidir. Diğer durumlarda her sonuç düzeyi için tam olarak bir değer girin."
-            ],
-            "Apparent": [
-                "Görünürdeki"
-            ],
-            "Apparent (in-sample) discrimination was AUC = %.3f; enable Bootstrap Internal Validation for an optimism-corrected estimate.": [
-                "Görünen (örneklem-içi) ayrım gücü AUC = %.3f idi; iyimserlik-düzeltilmiş tahmin için Bootstrap İç Doğrulamayı etkinleştirin."
-            ],
-            "Apparent AUC = %1$.3f with N = %2$d: likely overfitted. Enable bootstrap validation for corrected estimate.": [
-                ""
-            ],
-            "Apparent AUC = %1$.3f with N = %2$d: the model separates the two classes completely on the data it was fitted to. This is an in-sample artefact far more often than a real effect, the reported confidence interval collapses to a point rather than showing precision, and the coefficients are unstable. Enable bootstrap validation and validate externally before drawing any conclusion.": [
-                ""
-            ],
-            "Applied as provided in the data ({label}).": [
-                "Verilerde sağlandığı gibi uygulandı ({label})."
             ],
             "At least {n} subjects are needed for the confidence limits to fall within {limits}, if the observed kappa comes in at {kappa0}.": [
                 ""
@@ -343,296 +100,20 @@
             "At least {n} subjects rated by {raters} raters are needed for the lower confidence limit for κ₀ = {kappa0} to reach {kappaL}, if the observed kappa comes in at {kappa0}.": [
                 ""
             ],
-            "At least 2 candidate predictors": [
-                "En az 2 aday tahmin edici"
-            ],
-            "At least 2 explanatory variables are required for LASSO regression.": [
-                "LASSO regresyonu için en az 2 açıklayıcı değişken gereklidir."
-            ],
-            "At least two predictors are required": [
-                "En az iki tahmin edici gereklidir"
-            ],
             "At the computed sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the confidence limit where they are thinnest: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the required n is less dependable here.": [
                 ""
             ],
             "At this sample size the agreement-pattern cells (for example, exactly k of the raters calling the finding present, or all raters agreeing on one category) are too sparse at the reported lower bound: the smallest expected count is {min} and {below} of {total} cells are below 5. The calculation rests on a large-sample chi-square approximation, so the bound shown is less dependable here.": [
                 "Bu örneklem büyüklüğünde uyum örüntüsü hücreleri (örneğin değerlendiricilerden tam olarak k tanesinin bulguyu var olarak bildirmesi ya da tüm değerlendiricilerin tek bir kategoride uyuşması) bildirilen alt sınırda çok seyrektir: en küçük beklenen sayı {min} ve {total} hücreden {below} tanesi 5'in altındadır. Hesaplama büyük örneklem ki-kare yaklaşımına dayandığından, gösterilen sınır burada daha az güvenilirdir."
             ],
-            "AUC": [
-                "AUC"
-            ],
-            "AUC (apparent)": [
-                "AUC (görünen)"
-            ],
-            "AUC = %.3f indicates poor discrimination and is below the level generally regarded as clinically usable. Consider adding more informative predictors or using a different model.": [
-                ""
-            ],
-            "AUC = %.3f is BELOW 0.500, so the model ranks cases the wrong way round: patients it scores high are less likely to have the event than patients it scores low. Do not read the odds ratios as they stand. Check that the event level is the one you intended, then treat these predictors as carrying no usable signal at this sample size.": [
-                ""
-            ],
-            "AUC = %1$s (95%% CI: %2$.3f-%3$.3f)": [
-                ""
-            ],
-            "AUC could not be computed": [
-                "AUC hesaplanamadı"
-            ],
-            "Automated scoring system generation": [
-                "Otomatik puanlama sistemi oluşturma"
-            ],
-            "Automatic (0.01 to 0.99)": [
-                "Otomatik (0.01 ila 0.99)"
-            ],
-            "Available levels: {levels}.": [
-                "Mevcut düzeyler: {levels}."
-            ],
-            "Average Net Benefit": [
-                "Ortalama Net Fayda"
-            ],
-            "Average net benefit over the {lo}% to {hi}% threshold range: the area under the decision curve divided by the width of that range.": [
-                "%{lo} ila %{hi} eşik aralığındaki ortalama net fayda: karar eğrisinin altındaki alanın bu aralığın genişliğine bölünmesi."
-            ],
-            "Average Net Benefit Over the Threshold Range": [
-                "Eşik Aralığında Ortalama Net Fayda"
-            ],
-            "Average net benefit table": [
-                "Ortalama net fayda tablosu"
-            ],
-            "Award a factor's points when the patient meets its criterion. Continuous predictors are cut at %s. The Odds Ratio column is the penalized odds ratio for MEETING that criterion (present vs absent, or above vs below the cut), which is the contrast the points represent - so points and odds ratios are on the same footing here. A cut derived from this dataset (median, mean, tertile or quartile) is not an externally established clinical threshold and will differ in another cohort; supplying manual cut points from the literature is what makes a score portable. The score has not been validated outside these data.": [
-                "Hasta kriterini karşıladığında bir faktörün puanlarını verin. Sürekli tahmin ediciler %s noktasında kesilir. Odds Oranı sütunu, bu kriterin KARŞILANMASI (var vs yok veya kesimin üstü vs altı) için cezalandırılmış odds oranıdır; bu, puanların temsil ettiği karşıtlıktır - bu nedenle puanlar ve odds oranları burada aynı düzeydedir. Bu veri setinden türetilen bir kesim (medyan, ortalama, üçte birlik veya çeyreklik) harici olarak belirlenmiş bir klinik eşik değildir ve başka bir kohortta farklılık gösterecektir; literatürden manuel kesim noktaları sağlamak bir puanı taşınabilir kılan şeydir. Puan bu verilerin dışında doğrulanmamıştır."
-            ],
-            "Award points when": [
-                "Şu durumda puan ver"
-            ],
             "below 0.0001": [
-                ""
-            ],
-            "Benefit of correct treatment": [
-                "Doğru tedavinin faydası"
-            ],
-            "beta / max|beta| x maximum points": [
-                "beta / max|beta| x maksimum puan"
-            ],
-            "Beta10": [
-                "Beta10"
-            ],
-            "Beta10 (coefficient x 10, rounded)": [
-                "Beta10 (katsayı x 10, yuvarlanmış)"
-            ],
-            "Beta10 method (Zhang et al. Ann Transl Med 2017)": [
-                "Beta10 yöntemi (Zhang ve ark. Ann Transl Med 2017)"
-            ],
-            "Binary Outcome": [
-                "İkili Sonuç"
-            ],
-            "Binomial Deviance": [
-                "Binom Sapması (Deviance)"
-            ],
-            "Blue dashed: lambda.min; orange dotted: lambda.1se": [
-                ""
-            ],
-            "Bootstrap CI Calculation Error": [
-                "Bootstrap GA Hesaplama Hatası"
-            ],
-            "Bootstrap CI calculation error: predictions and outcomes have different lengths ({n1} vs {n2}).": [
-                "Bootstrap GA hesaplama hatası: tahminler ve sonuçlar farklı uzunluklara sahip ({n1} ve {n2})."
-            ],
-            "Bootstrap CI Failed": [
-                "Bootstrap GA Başarısız"
-            ],
-            "Bootstrap confidence interval calculation failed: {error}.": [
-                "Bootstrap güven aralığı hesaplaması başarısız oldu: {error}."
-            ],
-            "Bootstrap Confidence Intervals": [
-                "Bootstrap Güven Aralıkları"
-            ],
-            "Bootstrap confidence intervals": [
-                "Bootstrap güven aralıkları"
-            ],
-            "Bootstrap Internal Validation": [
-                "Bootstrap Dahili Doğrulama"
-            ],
-            "Bootstrap internal validation": [
-                "Bootstrap dahili doğrulama"
-            ],
-            "Bootstrap Iterations": [
-                "Bootstrap Yinelemeleri"
-            ],
-            "Bootstrap optimism-corrected validation": [
-                "Bootstrap iyimserlik düzeltmeli doğrulama"
-            ],
-            "Bootstrap Replications": [
-                "Bootstrap Tekrarlamaları"
-            ],
-            "Bootstrap replications": [
-                "Bootstrap tekrarlamaları"
-            ],
-            "Brier Score": [
-                "Brier Skoru"
-            ],
-            "Calibration slope": [
-                "Kalibrasyon eğimi"
-            ],
-            "Calibration slope: 1.0 = ideal. A corrected slope below 1 means predicted probabilities are too extreme (overfitted) and would benefit from shrinkage; an apparent slope above 1 is expected for penalized models on their training data.": [
-                "Kalibrasyon eğimi: 1.0 = ideal. 1'in altındaki düzeltilmiş eğim, tahmin edilen olasılıkların çok uçta (aşırı uyarlanmış) olduğu ve daralmadan fayda sağlayacağı anlamına gelir; 1'in üzerindeki görünürde eğim eğitim verilerindeki cezalandırılmış modeller için beklenen bir durumdur."
-            ],
-            "Cases excluded from the analysis": [
-                "Analizden hariç tutulan olgular"
-            ],
-            "Categorical variable with two levels (e.g., PanNET G3 vs PanNEC)": [
-                "İki düzeyli kategorik değişken (ör. PanNET G3 ve PanNEC)"
-            ],
-            "Caution: Major concerns detected": [
-                "Dikkat: Önemli sorunlar tespit edildi"
-            ],
-            "Check": [
-                "Kontrol"
-            ],
-            "Choose a unique rule label.": [
-                "Benzersiz bir kural etiketi seçin."
-            ],
-            "Choose distinct model names.": [
-                "Farklı model adları seçin."
-            ],
-            "CI Lower": [
-                "GA Alt"
-            ],
-            "CI Upper": [
-                "GA Üst"
-            ],
-            "Class balance": [
-                "Sınıf dengesi"
-            ],
-            "Classification Performance": [
-                "Sınıflandırma Performansı"
-            ],
-            "Clean (minimal annotations)": [
-                "Temiz (en az açıklama)"
-            ],
-            "Clinical Decision Rule": [
-                "Klinik Karar Kuralı"
-            ],
-            "Clinical decision rule": [
-                "Klinik karar kuralı"
-            ],
-            "Clinical Decision Rule (binary)": [
-                "Klinik Karar Kuralı (ikili)"
-            ],
-            "Clinical Decision Rule Integration": [
-                "Klinik Karar Kuralı Entegrasyonu"
-            ],
-            "Clinical Decision Rule Variable Required": [
-                ""
-            ],
-            "Clinical Impact": [
-                "Klinik Etki"
-            ],
-            "Clinical Impact Analysis": [
-                "Klinik Etki Analizi"
-            ],
-            "Clinical impact metrics": [
-                "Klinik etki ölçütleri"
-            ],
-            "Clinical Impact Plot": [
-                "Klinik Etki Grafiği"
-            ],
-            "Clinical impact plot": [
-                "Klinik etki grafiği"
-            ],
-            "Clinical Impact: Projected Outcomes in a Population of {n}": [
-                "Klinik Etki: {n} Kişilik Popülasyonda Öngörülen Sonuçlar"
-            ],
-            "Clinical Interpretation": [
-                "Klinik Yorum"
-            ],
-            "Clinical Interpretation Guidance": [
-                "Klinik yorumlama rehberi"
-            ],
-            "Clinical interpretation guidance": [
-                "Klinik yorumlama rehberliği"
-            ],
-            "Clinical Range Highlight": [
-                "Klinik Aralık Vurgulama"
-            ],
-            "Clinical range highlight": [
-                "Klinik aralık vurgulama"
-            ],
-            "Clinical Rule": [
-                "Klinik Kural"
-            ],
-            "Clinical Rule ({level})": [
-                "Klinik Kural ({level})"
-            ],
-            "Clinical Utility, Net Benefit, Threshold Analysis": [
-                "Klinik Yarar, Net Fayda, Eşik Değer Analizi"
-            ],
-            "Coefficient": [
-                "Katsayı"
-            ],
-            "Coefficient (per 1 SD)": [
-                "Katsayı (1 SS başına)"
-            ],
-            "Coefficient (per 1 unit)": [
-                "Katsayı (1 birim başına)"
-            ],
-            "Coefficient Plot": [
-                "Katsayı grafiği"
-            ],
-            "Coefficient plot": [
-                "Katsayı grafiği"
-            ],
-            "Collinearity": [
-                "Eş doğrusallık"
-            ],
-            "Comparable across units; the table reports the original scale": [
-                "Birimler arasında karşılaştırılabilir; tablo orijinal ölçeği bildirir"
-            ],
-            "Compare All Methods": [
-                "Tüm Yöntemleri Karşılaştır"
-            ],
-            "Comparison": [
-                "Karşılaştırma"
-            ],
-            "Comparisons not tested": [
-                "Test edilmeyen karşılaştırmalar"
-            ],
-            "Complete cases analysed": [
-                "Analiz edilen eksiksiz olgular"
-            ],
-            "Complete-Case Analysis": [
-                "Eksiksiz Olgu Analizi"
-            ],
-            "Conclusion": [
-                "Sonuç"
-            ],
-            "Confidence Band": [
-                "Güven Bandı"
+                "0.0001'in altında"
             ],
             "Confidence Interval Approach for the Number of Subjects Required": [
                 "Gerekli Olgu Sayısı için Güven Aralığı Yaklaşımı"
             ],
             "Confidence Interval Type": [
                 "Güven Aralığı Türü"
-            ],
-            "Confidence Intervals": [
-                "Güven Aralıkları"
-            ],
-            "Confidence Level": [
-                "Güven Düzeyi"
-            ],
-            "Confidence level": [
-                "Güven düzeyi"
-            ],
-            "Configure the threshold range and other analysis options.": [
-                "Eşik aralığını ve diğer analiz seçeneklerini yapılandırın."
-            ],
-            "Confirm that a risk this high genuinely represents the point at which the intended intervention becomes worthwhile in the target clinical setting.": [
-                "Bu kadar yüksek bir riskin, hedef klinik ortamda amaçlanan girişimin gerçekten değerli hale geldiği noktayı temsil ettiğini doğrulayın."
-            ],
-            "Confirm that a risk this low genuinely represents the point at which the intended intervention becomes worthwhile in the target clinical setting.": [
-                "Bu kadar düşük bir riskin, hedef klinik ortamda amaçlanan girişimin gerçekten değerli hale geldiği noktayı temsil ettiğini doğrulayın."
-            ],
-            "Confirm that this narrow interval was prespecified from the clinical decision and is wide enough to cover plausible treatment preferences.": [
-                "Bu dar aralığın klinik karardan önceden belirlendiğini ve makul tedavi tercihlerini kapsayacak kadar geniş olduğunu doğrulayın."
             ],
             "Consider a wider confidence interval (lower precision) or revisiting the expected category proportions. More raters would lower this figure, but that is what makes the cells sparse above — the two cannot both be improved by the rater count, so change the interval or the proportions instead.": [
                 ""
@@ -652,215 +133,14 @@
             "Consider using fewer raters, or recruiting more subjects than the figure shown.": [
                 ""
             ],
-            "Consider whether the sample represents the target clinical population; results may not generalize to populations with different event rates.": [
-                "Örneklemin hedef klinik popülasyonu temsil edip etmediğini değerlendirin; sonuçlar farklı olay oranlarına sahip popülasyonlara genellenemeyebilir."
-            ],
-            "Constant predictors removed": [
-                "Sabit tahmin ediciler kaldırıldı"
-            ],
-            "Continuous predictors are scored by dichotomizing at %s: the full point block is awarded above the cut and nothing below it. The performance shown here reflects this simplified integer point system and may differ from the continuous LASSO model in the Classification Performance table.": [
-                "Sürekli tahmin ediciler %s noktasında ikiye ayrılarak puanlanır: kesimin üzerinde tam puan bloğu verilir ve altında hiçbir şey verilmez. Burada gösterilen performans bu basitleştirilmiş tam sayı puan sistemini yansıtır ve Sınıflandırma Performansı tablosundaki sürekli LASSO modelinden farklı olabilir."
-            ],
-            "Corrected": [
-                "Düzeltilmiş"
-            ],
-            "Cost per test": [
-                "Test başına maliyet"
-            ],
-            "Cost per treatment": [
-                "Tedavi başına maliyet"
-            ],
-            "Counts are projected to a population of {n} from the complete-case cohort.": [
-                "Sayımlar, eksiksiz olgu kohortundan {n} kişilik bir popülasyona yansıtılmıştır."
-            ],
-            "Counts are projections to the selected population size of {n}, assuming every person is tested once; they are not observed patient counts.": [
-                "Sayımlar, her kişinin bir kez test edildiği varsayılarak {n} kişilik seçilen popülasyon boyutuna yapılan projeksiyonlardır; gözlemlenen hasta sayıları değildir."
-            ],
-            "Cross-validated lambda selection": [
-                "Çapraz doğrulanmış lambda seçimi"
-            ],
-            "Cross-validation": [
-                "Çapraz doğrulama"
-            ],
-            "Cross-validation folds reduced": [
-                "Çapraz doğrulama katlamaları azaltıldı"
-            ],
-            "Cross-Validation for LASSO Logistic Regression": [
-                "LASSO Lojistik Regresyon İçin Çapraz Doğrulama"
-            ],
-            "Cross-validation Plot": [
-                "Çapraz doğrulama grafiği"
-            ],
-            "Cross-validation plot": [
-                "Çapraz doğrulama grafiği"
-            ],
-            "Current settings: Min = {min}%, Max = {max}%; the valid range is 0.1% to 99.9%.": [
-                "Geçerli ayarlar: Min = %{min}, Maks = %{max}; geçerli aralık %0.1 ila %99.9'dur."
-            ],
-            "Curve drawn from {to} of {from} computed points for rendering speed; tables and statistics use all of them.": [
-                "Eğri, çizim hızı için hesaplanan {from} noktanın {to} tanesinden çizilmiştir; tablolar ve istatistikler hepsini kullanır."
-            ],
-            "Custom range": [
-                "Özel aralık"
-            ],
-            "Cut Point for Continuous Predictors": [
-                "Sürekli Tahmin Ediciler İçin Kesim Noktası"
-            ],
-            "CV folds": [
-                "ÇD katman sayısı"
-            ],
-            "Data Error": [
-                "Veri Hatası"
-            ],
-            "Data preparation failed: %s": [
-                "Veri hazırlama başarısız oldu: %s"
-            ],
-            "Data Suitability": [
-                "Veri Uygunluğu"
-            ],
-            "Data Suitability Assessment": [
-                "Veri Uygunluk Değerlendirmesi"
-            ],
-            "Data suitability assessment": [
-                "Veri uygunluğu değerlendirmesi"
-            ],
-            "Data suitability: %1$d major concern(s) detected (%2$s). Results may be unreliable; consider reducing predictors or collecting more data.": [
-                ""
-            ],
-            "Data suitability: %d minor concern(s). Enable bootstrap validation to assess overfitting risk.": [
-                "Veri uygunluğu: %d küçük sorun. Aşırı uyum riskini değerlendirmek için bootstrap doğrulamayı etkinleştirin."
-            ],
-            "Data suitable for LASSO logistic": [
-                "Veri LASSO lojistik için uygun"
-            ],
-            "Decide the threshold range from clinical judgement first, then read the curves there - not the other way round.": [
-                "Önce klinik yargıdan eşik aralığına karar verin, ardından eğrileri orada okuyun - tersini yapmayın."
-            ],
-            "Decision Consequences": [
-                "Karar Sonuçları"
-            ],
-            "Decision Consequences Table": [
-                "Karar Sonuçları Tablosu"
-            ],
-            "Decision consequences table": [
-                "Karar sonuçları tablosu"
-            ],
-            "Decision Curve Analysis": [
-                "Karar Eğrisi Analizi"
-            ],
-            "Decision curve analysis completed: {models} model(s) evaluated using {n} complete cases.": [
-                "Karar eğrisi analizi tamamlandı: {n} eksiksiz olgu kullanılarak {models} model değerlendirildi."
-            ],
-            "Decision Curve Analysis evaluates the clinical utility of prediction models by calculating net benefit across different threshold probabilities.": [
-                "Karar Eğrisi Analizi, farklı eşik olasılıkları boyunca net faydayı hesaplayarak tahmin modellerinin klinik yararlılığını değerlendirir."
-            ],
-            "Decision Curve Analysis for evaluating the clinical utility of prediction models and diagnostic tests. Calculates net benefit across threshold probabilities to determine if using a model provides more benefit than default strategies. Inputs must be probabilities for a clearly defined binary outcome and prediction horizon; calibration must be assessed separately, and this analysis does not handle censoring.": [
-                "Tahmin modellerinin ve tanı testlerinin klinik yararını değerlendirmek için Karar Eğrisi Analizi. Bir model kullanmanın varsayılan stratejilerden daha fazla fayda sağlayıp sağlamadığını belirlemek için eşik olasılıklar boyunca net faydayı hesaplar. Girdiler, açıkça tanımlanmış bir ikili sonuç ve tahmin ufku için olasılıklar olmalıdır; kalibrasyon ayrı olarak değerlendirilmelidir ve bu analiz sansürlemeyi ele almaz."
-            ],
-            "Decision curve analysis may not be informative with such limited variation (range below 5%); check model calibration and discrimination, because models with poor discrimination may not show clinical utility.": [
-                "Karar eğrisi analizi bu kadar sınırlı varyasyonla (%5'in altında aralık) bilgilendirici olmayabilir; model kalibrasyonunu ve ayırt ediciliğini kontrol edin, çünkü zayıf ayırt ediciliğe sahip modeller klinik yararlılık göstermeyebilir."
-            ],
-            "Decision curve analysis needs predicted probabilities between 0 and 1 as a numeric column; convert it before running the analysis, because a categorical column cannot express a predicted risk.": [
-                "Karar eğrisi analizi, sayısal bir sütun olarak 0 ile 1 arasında tahmin edilen olasılıklara ihtiyaç duyar; analizi çalıştırmadan önce dönüştürün, çünkü kategorik bir sütun tahmin edilen bir riski ifade edemez."
-            ],
-            "Decision curve analysis requires a binary outcome (diseased vs healthy, event vs no event); recode to binary or select a different outcome variable.": [
-                "Karar eğrisi analizi ikili bir sonuç gerektirir (hastalıklı - sağlıklı, olay var - olay yok); ikiliye yeniden kodlayın veya farklı bir sonuç değişkeni seçin."
-            ],
-            "Decision curve analysis requires predicted probabilities for the clinical outcome and prediction horizon being evaluated, not raw scores, logits or linear predictors.": [
-                "Karar eğrisi analizi, ham puanlar, logitler veya doğrusal öngörücüler yerine, değerlendirilen klinik sonuç ve tahmin ufku için tahmin edilen olasılıkları gerektirir."
-            ],
-            "Decision Curve Analysis Summary": [
-                "Karar Eğrisi Analizi Özeti"
-            ],
-            "Decision curve plot": [
-                "Karar eğrisi grafiği"
-            ],
-            "Decision Curve Plot": [
-                "Karar Eğrisi Grafiği"
-            ],
-            "Decision curves may be less interpretable with very low or very high event rates, and net benefit is sensitive to prevalence extremes.": [
-                "Karar eğrileri çok düşük veya çok yüksek olay oranlarıyla daha az yorumlanabilir olabilir ve net fayda aşırı prevalans uçlarına duyarlıdır."
-            ],
-            "Decision Rule Label": [
-                "Karar Kuralı Etiketi"
-            ],
-            "Decision rule label": [
-                "Karar kuralı etiketi"
-            ],
-            "Decision Rule Positive Level": [
-                "Karar Kuralı Pozitif Düzeyi"
-            ],
-            "Derived from the net-benefit gain after accounting for threshold odds": [
-                "Eşik odds'u hesaba katıldıktan sonra net fayda kazancından türetilmiştir"
-            ],
-            "Descriptive Average Net Benefit Over Threshold Range": [
-                "Eşik Aralığında Tanımlayıcı Ortalama Net Fayda"
-            ],
-            "Design matrix error: {}": [
-                "Tasarım matrisi hatası: {}"
-            ],
-            "Detailed (with annotations)": [
-                "Ayrıntılı (açıklamalarla)"
-            ],
-            "Detailed consequences at selected thresholds": [
-                "Seçilen eşiklerde ayrıntılı sonuçlar"
-            ],
-            "Detailed methodology notes": [
-                "Ayrıntılı metodoloji notları"
-            ],
             "Determine the required sample size to estimate κ₀ = {kappa0} ensuring the lower confidence limit is at least {kappaL} in an interobserver agreement study.": [
                 ""
             ],
             "Determine the required sample size to estimate κ₀ = {kappa0} with confidence limits {limits} in an interobserver agreement study.": [
                 ""
             ],
-            "Difference in Average Net Benefit": [
-                "Ortalama Net Faydadaki Fark"
-            ],
-            "Dimensionless net benefit divided by outcome prevalence; not net benefit per 100 patients": [
-                "Sonuç prevalansına bölünmüş boyutsuz net fayda; 100 hasta başına net fayda değildir"
-            ],
-            "Direction": [
-                "Yön"
-            ],
-            "Discrimination Worse Than Chance": [
-                ""
-            ],
-            "Do not select a model solely from its average net benefit: curve crossings and the plausibility of each threshold determine the clinically relevant comparison.": [
-                "Bir modeli yalnızca ortalama net faydasına göre seçmeyin: eğri kesişimleri ve her eşiğin makullüğü klinik olarak anlamlı karşılaştırmayı belirler."
-            ],
-            "Drop a binary variable into \"Clinical Decision Rule (binary)\" and choose its positive level, or switch the option off.": [
-                ""
-            ],
-            "Duplicate Model Names": [
-                "Yinelenen Model Adları"
-            ],
-            "Duplicate Strategy Name": [
-                "Yinelenen Strateji Adı"
-            ],
-            "Each model needs a unique name.": [
-                "Her modelin benzersiz bir ada ihtiyacı vardır."
-            ],
             "Each proportion must be strictly between 0 and 1.": [
                 "Her oran 0 ile 1 arasında (sınırlar hariç) olmalıdır."
-            ],
-            "Each row is calculated at the exact displayed threshold; selected thresholds do not need to coincide with the plotting grid.": [
-                "Her satır görüntülenen tam eşikte hesaplanır; seçilen eşiklerin çizim ızgarasıyla çakışması gerekmez."
-            ],
-            "Elastic Net": [
-                "Elastik Ağ"
-            ],
-            "Elastic Net Logistic Regression": [
-                "Elastic Net Lojistik Regresyon"
-            ],
-            "Elastic Net Mixing (0=Ridge, 1=LASSO)": [
-                "Elastic Net Karışımı (0=Ridge, 1=LASSO)"
-            ],
-            "Enhanced Multi-Model Comparison": [
-                "Gelişmiş Çoklu Model Karşılaştırması"
-            ],
-            "Enhanced pairwise comparison": [
-                "Gelişmiş ikili karşılaştırma"
             ],
             "Enrol more subjects, add raters, or relax the significance level.": [
                 ""
@@ -871,53 +151,17 @@
             "Enter exactly {k} proportions for {k} outcome levels (received {got}).": [
                 "{k} sonuç düzeyi için tam olarak {k} oran girin (girilen: {got})."
             ],
-            "EPV = %.1f (<5: insufficient, high overfitting risk)": [
-                "EPV = %.1f (<5: yetersiz, yüksek aşırı uyum riski)"
-            ],
-            "EPV = %.1f (>=10: adequate)": [
-                "EPV = %.1f (>=10: yeterli)"
-            ],
-            "EPV = %.1f (5-10: marginal, results may be unstable)": [
-                "EPV = %.1f (5-10: marjinal, sonuçlar kararsız olabilir)"
-            ],
-            "Error": [
-                "Hata"
-            ],
             "Error in sample size calculation: {}": [
                 ""
             ],
             "Error parsing proportions: {error}": [
                 ""
             ],
-            "Event class (positive)": [
-                "Olay sınıfı (pozitif)"
-            ],
-            "Event Level": [
-                "Olay Düzeyi"
-            ],
             "Event Proportion: {p}": [
                 ""
             ],
-            "Events": [
-                "Olaylar"
-            ],
-            "Events per variable": [
-                "Değişken başına olay"
-            ],
-            "Every case received the same predicted probability, so the classification metrics below are artefacts of a default 0.500 threshold that assigns everyone to one group: %s. Only the AUC of 0.500 is interpretable.": [
-                "Her olgu aynı tahmin edilen olasılığı aldı, bu nedenle aşağıdaki sınıflandırma metrikleri herkesi bir gruba atayan varsayılan 0.500 eşiğinin yapaylıklarıdır: %s. Yalnızca 0.500 EAA yorumlanabilir."
-            ],
-            "Every threshold in the range counts equally, so the value depends on the range you chose - report the range with it.": [
-                "Aralıktaki her eşik eşit sayılır, bu nedenle değer seçtiğiniz aralığa bağlıdır - aralığı onunla birlikte raporlayın."
-            ],
             "Example analysis for Medical Decision Tests.": [
                 ""
-            ],
-            "Excellent": [
-                "Mükemmel"
-            ],
-            "Excluded from analysis": [
-                "Analizden hariç tutuldu"
             ],
             "Expected proportion of cases in each category": [
                 "Her kategoride beklenen olgu oranı"
@@ -925,104 +169,20 @@
             "Expected Proportion of Cases in Each Category": [
                 "Her Kategoride Beklenen Olgu Oranı"
             ],
-            "Explanatory Output": [
-                "Açıklayıcı Çıktı"
-            ],
-            "Explanatory Variables": [
-                "Açıklayıcı Değişkenler"
-            ],
-            "Exploratory adjusted p < 0.05": [
-                "Keşifsel düzeltilmiş p < 0.05"
-            ],
-            "Exploratory adjusted p >= 0.05": [
-                "Keşifsel düzeltilmiş p >= 0.05"
-            ],
-            "Exploratory bootstrap comparison of average net benefit under each decision curve, {reps} resamples, seed {seed}.": [
-                "Her karar eğrisi altındaki ortalama net faydanın keşifsel bootstrap karşılaştırması, {reps} yeniden örnekleme, tohum {seed}."
-            ],
-            "Exploratory case-resampling comparison of average net benefit over the selected range": [
-                "Seçilen aralıkta ortalama net faydanın keşifsel olgu yeniden örneklemeli karşılaştırması"
-            ],
-            "Exploratory mean difference in net benefit across the selected threshold range, with an approximate case-resampling bootstrap p-value from {reps} resamples, Holm-adjusted across all {k} pairwise comparisons (seed {seed}).": [
-                ""
-            ],
-            "Exploratory Model Comparison": [
-                "Keşifsel Model Karşılaştırması"
-            ],
-            "Exploratory Monetary Payoff": [
-                "Keşifsel Parasal Getiri"
-            ],
-            "Exploratory monetary payoff": [
-                "Keşifsel parasal getiri"
-            ],
-            "Exploratory Monetary Payoff (Not Cost-Effectiveness)": [
-                "Keşifsel Parasal Getiri (Maliyet-Etkinlik Değildir)"
-            ],
-            "Exploratory monetary payoff projection for a population of {n}.": [
-                "{n} kişilik bir popülasyon için keşifsel parasal getiri projeksiyonu."
-            ],
-            "Exploratory Pairwise Model Comparison": [
-                "Keşifsel İkili Model Karşılaştırması"
-            ],
-            "Extreme outcome prevalence: {pct}% ({events}/{n} cases).": [
-                "Aşırı sonuç prevalansı: %{pct} ({events}/{n} olgu)."
-            ],
-            "Extreme Prevalence": [
-                "Aşırı Prevalans"
-            ],
-            "F1 Score": [
-                "F1 Skoru"
-            ],
-            "False Negative": [
-                "Yanlış Negatif"
-            ],
-            "False Positive": [
-                "Yanlış Pozitif"
-            ],
-            "False Positives": [
-                "Yanlış Pozitifler"
-            ],
-            "Features:": [
-                "Özellikler:"
-            ],
-            "Few Outcome Events": [
-                "Az Sayıda Olay"
-            ],
-            "Fewer than 2 non-constant predictors remain.": [
-                "2'den az sabit olmayan tahmin edici kaldı."
-            ],
-            "Fewer than 20 bootstrap replicates succeeded. The optimism correction is unreliable at this number - increase the sample size or reduce the number of candidate predictors.": [
-                "20'den az bootstrap yinelemesi başarılı oldu. Bu sayıda iyimserlik düzeltmesi güvenilmezdir - örneklem boyutunu artırın veya aday tahmin edici sayısını azaltın."
-            ],
             "Find lower Kappa based on sample size": [
                 "Örneklem büyüklüğüne göre alt kappa sınırını bulma"
             ],
             "Find sample size based on Kappa confidence": [
                 "Kappa güven aralığına göre örneklem büyüklüğü bulma"
             ],
-            "Focused range (0.05 to 0.50; not a clinical recommendation)": [
-                "Odaklanmış aralık (0.05 ila 0.50; klinik bir öneri değildir)"
-            ],
             "For a binary outcome enter either one prevalence value or two proportions that sum to 1 (received {got}).": [
                 "İkili sonuç için ya tek bir prevalans değeri ya da toplamı 1 olan iki oran girin (girilen: {got})."
-            ],
-            "For a defensible clinical claim, supply predictions from an external dataset or from cross-validation, and report which was used.": [
-                "Savunulabilir bir klinik iddia için harici bir veri kümesinden veya çapraz doğrulamadan tahminler sağlayın ve hangisinin kullanıldığını bildirin."
             ],
             "For an interobserver agreement study whose number of subjects is already fixed, the lowest kappa the study would still be unable to rule out - the lower bound of the one-sided confidence interval around the anticipated kappa (kappa0); every value below it is excluded. Computed with the kappaSize package. Use kappaSizePower to size a study for a hypothesis test and kappaSizeCI to size it for a target interval width.": [
                 "Olgu sayısı önceden sabit olan bir gözlemciler arası uyum çalışmasında, çalışmanın yine de dışlayamayacağı en düşük kappa değeri; beklenen kappa (kappa0) etrafındaki tek yönlü güven aralığının alt sınırı. Bunun altındaki her değer dışlanır. kappaSize paketiyle hesaplanır. Hipotez testi için çalışma boyutlandırmada kappaSizePower, hedef aralık genişliği için kappaSizeCI kullanın."
             ],
-            "For time-to-event predictions, supply risks and a binary outcome defined at the same fixed horizon; censoring is not handled here.": [
-                "Olay zamanı tahminleri için, aynı sabit ufukta tanımlanmış riskleri ve ikili bir sonucu sağlayın; sansürleme burada ele alınmaz."
-            ],
             "For two raters with equal marginal frequencies this coincides with Cohen's κ; with more raters, or unequal marginals, it does not.": [
                 ""
-            ],
-            "From": [
-                "Başlangıç"
-            ],
-            "Full LASSO model (continuous)": [
-                "Tam LASSO modeli (sürekli)"
             ],
             "Functions for Medical Decision in ClinicoPath jamovi Module": [
                 ""
@@ -1033,137 +193,20 @@
             "Further suppose that the proportions of the outcome categories are {props}.": [
                 "Ayrıca sonuç kategorilerinin oranlarının {props} olduğunu varsayalım."
             ],
-            "Gain vs Best Default": [
-                "En İyi Varsayılana Göre Kazanç"
-            ],
-            "Gain vs Default is the difference against the better of treating everyone and treating no one at each threshold, on the net-benefit scale: 0.01 means one extra true positive per 100 patients at no extra cost in unnecessary treatment.": [
-                "Varsayılana Göre Kazanç, net fayda ölçeğinde her eşikte herkesi tedavi etme ve hiç kimseyi tedavi etmeme seçeneklerinden daha iyi olana karşı farktır: 0.01, gereksiz tedavide ekstra maliyet olmaksızın 100 hasta başına bir ekstra gerçek pozitif anlamına gelir."
-            ],
-            "Good": [
-                "İyi"
-            ],
-            "Good (%.0f%% better than predicting the base rate)": [
-                "İyi (temel oranı tahmin etmekten %%%.0f daha iyi)"
-            ],
-            "Harm of false treatment": [
-                "Yanlış tedavinin zararı"
-            ],
-            "High risk": [
-                "Yüksek risk"
-            ],
-            "High Threshold Range": [
-                "Yüksek Eşik Aralığı"
-            ],
-            "Highest Average Net Benefit Over the Selected Range:": [
-                "Seçilen Aralıkta En Yüksek Ortalama Net Fayda:"
-            ],
-            "Highlight Range Maximum": [
-                "Aralık Maksimumunu Vurgula"
-            ],
-            "Highlight Range Minimum": [
-                "Aralık Minimumunu Vurgula"
-            ],
             "histopathology including analysis": [
                 ""
             ],
             "If the Analysis result panel also prints 'At least one expected cell count is less than five', that is a separate and looser check: kappaSize applies it to the outcome category prevalences you entered (for a binary outcome, to the prevalence of the finding alone), not to the agreement-pattern cells the chi-square actually divides by, and those empty out long before any category prevalence does. Seeing one warning without the other is expected.": [
                 ""
             ],
-            "If those risks came from a model fitted on this dataset - including a cutpoint, a score, or a regression developed here - the net benefit is optimistically biased and the model can appear to beat treat-all when it does not.": [
-                "Bu riskler bu veri kümesine uydurulan bir modelden geldiyse (burada geliştirilen bir kesme noktası, puan veya regresyon dahil) net fayda iyimser olarak yanlıdır ve model herkesi tedavi etmeyi geçmediği halde geçmiş gibi görünebilir."
-            ],
-            "Ignored {values}.": [
-                "{values} göz ardı edildi."
-            ],
-            "Importance": [
-                "Önem"
-            ],
-            "Importance Rank": [
-                "Önem Sırası"
-            ],
-            "Importance Score": [
-                "Önem Puanı"
-            ],
-            "Important Information": [
-                "Önemli Bilgi"
-            ],
-            "Incremental Assigned Benefit vs Treat All": [
-                "Herkesi Tedavi Etmeye Göre Artımlı Atanan Fayda"
-            ],
-            "Incremental Cost": [
-                "Artımlı Maliyet"
-            ],
-            "Info Loss vs Full Model (%)": [
-                "Tam Modele Göre Bilgi Kaybı (%)"
-            ],
-            "Information": [
-                "Bilgi"
-            ],
             "Input validation failed: {errors}": [
                 ""
-            ],
-            "Inputs must be probabilities for the clinical outcome and prediction horizon being evaluated.": [
-                "Girdiler, değerlendirilen klinik sonuç ve tahmin ufku için olasılıklar olmalıdır."
-            ],
-            "Inspect the curves at prespecified clinical thresholds because curves may cross.": [
-                "Eğriler kesişebileceğinden, önceden belirlenmiş klinik eşiklerde eğrileri inceleyin."
-            ],
-            "Install with install.packages(c({quoted})).": [
-                "install.packages(c({quoted})) ile yükleyin."
-            ],
-            "Instructions": [
-                "Yönergeler"
-            ],
-            "Insufficient Cases": [
-                "Yetersiz Olgu"
-            ],
-            "Insufficient complete cases for analysis ({n} cases available; this implementation requires at least 10 to run).": [
-                "Analiz için yetersiz eksiksiz olgu ({n} olgu mevcut; bu uygulamanın çalışması için en az 10 olgu gerekir)."
-            ],
-            "Interpret differences between models with caution and do not choose a threshold from this curve alone.": [
-                "Modeller arasındaki farkları dikkatle yorumlayın ve yalnızca bu eğriden bir eşik seçmeyin."
-            ],
-            "Interpret the curve within a prespecified clinically plausible subrange; summaries that average across the full range weight every threshold equally.": [
-                "Eğriyi önceden belirlenmiş klinik olarak makul bir alt aralık içinde yorumlayın; tam aralık genelinde ortalama alan özetler her eşiğe eşit ağırlık verir."
-            ],
-            "Interpret the unadjusted p only for a single comparison specified before the data were seen.": [
-                "Düzeltilmemiş p değerini yalnızca veriler görülmeden önce belirtilen tek bir karşılaştırma için yorumlayın."
-            ],
-            "Interpretation": [
-                "Yorum"
-            ],
-            "Interpretation Guidelines:": [
-                "Yorumlama Kılavuzu:"
-            ],
-            "Interval Type": [
-                "Aralık Türü"
-            ],
-            "Interval type": [
-                "Aralık türü"
-            ],
-            "Intervals are {level}% percentile intervals and p-values are approximate; results depend on the selected threshold range and equal weighting of its thresholds.": [
-                "Aralıklar %{level} yüzdelik aralıklardır ve p değerleri yaklaşıktır; sonuçlar seçilen eşik aralığına ve eşiklerinin eşit ağırlıklandırılmasına bağlıdır."
-            ],
-            "Invalid Probabilities: {model}": [
-                "Geçersiz Olasılıklar: {model}"
-            ],
-            "Invalid Threshold Range": [
-                "Geçersiz Eşik Aralığı"
             ],
             "It answers 'given the subjects I have, how little agreement am I still unable to rule out?' - the mirror image of the sample-size question; every kappa below the bound is excluded.": [
                 "'Elimdeki olgularla ne kadar düşük bir uyumu hâlâ dışlayamıyorum?' sorusunu yanıtlar; örneklem büyüklüğü sorusunun ayna görüntüsü. Sınırın altındaki her kappa dışlanır."
             ],
-            "It is computed correctly at that exact value, but it is not shown on the decision curve, and the surrounding rows come from the analysed range.": [
-                "Tam o değerde doğru şekilde hesaplanmıştır, ancak karar eğrisinde gösterilmez ve çevreleyen satırlar analiz edilen aralıktan gelir."
-            ],
-            "It is not an ICER, QALY, cost-effectiveness or net-monetary-benefit analysis and does not model time horizon, discounting, false-negative consequences or uncertainty in costs and values.": [
-                "Bu bir ICER, QALY, maliyet-etkililik veya net parasal fayda analizi değildir ve zaman ufkunu, indirgemeyi, yanlış negatif sonuçlarını veya maliyetler ile değerlerdeki belirsizliği modellemez."
-            ],
             "It returns the minimum number of subjects so that the {pct}% confidence interval ({side}) for the intraclass (Fleiss-type) κ of the common-correlation model attains the requested precision, given the expected category proportions and the number of raters.": [
                 ""
-            ],
-            "Its curve is still shown in the plot.": [
-                "Eğrisi grafikte hala gösterilmektedir."
             ],
             "Kappa Levels": [
                 "Kappa Düzeyleri"
@@ -1201,78 +244,6 @@
             "KappaU: not applicable (one-sided interval)": [
                 ""
             ],
-            "Key Concepts": [
-                "Temel Kavramlar"
-            ],
-            "Lambda (optimal)": [
-                "Lambda (optimal)"
-            ],
-            "Lambda Selection": [
-                "Lambda Seçimi"
-            ],
-            "Lambda selection": [
-                "Lambda seçimi"
-            ],
-            "Lambda Selection Method": [
-                "Lambda Seçim Yöntemi"
-            ],
-            "LASSO (L1)": [
-                "LASSO (L1)"
-            ],
-            "LASSO (penalized)": [
-                "LASSO (cezalı)"
-            ],
-            "LASSO coefficients are penalized (shrunken) and have no valid standard confidence intervals; they are omitted rather than shown as blanks. Use bootstrap validation for performance inference,": [
-                "LASSO katsayıları cezalandırılmıştır (daraltılmıştır) ve geçerli standart güven aralıkları yoktur; boş olarak gösterilmek yerine atlanmıştır. Performans çıkarımı için bootstrap doğrulamasını kullanın,"
-            ],
-            "LASSO Logistic": [
-                "LASSO Lojistik"
-            ],
-            "LASSO Logistic Regression": [
-                "LASSO Lojistik Regresyon"
-            ],
-            "LASSO Logistic Regression Coefficients": [
-                "LASSO Lojistik Regresyon Katsayıları"
-            ],
-            "LASSO model fitting failed: %s": [
-                "LASSO model uyarlaması başarısız oldu: %s"
-            ],
-            "LASSO performs variable SELECTION, so it needs a set of candidate predictors to choose among; with a single predictor there is nothing to select and a penalized fit is not informative. Add at least one more predictor, or use ordinary logistic regression for a single-predictor model.": [
-                "LASSO değişken SEÇİMİ gerçekleştirir, bu nedenle arasından seçim yapabileceği bir dizi aday tahmin ediciye ihtiyaç duyar; tek bir tahmin edici ile seçilecek hiçbir şey yoktur ve cezalandırılmış bir uyum bilgilendirici değildir. En az bir tahmin edici daha ekleyin veya tek tahmin edicili bir model için sıradan lojistik regresyon kullanın."
-            ],
-            "LASSO selected zero variables at the chosen lambda. %s": [
-                "LASSO seçilen lambda değerinde sıfır değişken seçti. %s"
-            ],
-            "LASSO uses listwise deletion, so a single sparsely-measured predictor can remove a large share of the cohort; check which predictor is driving the exclusions before interpreting these results.": [
-                "LASSO liste bazında silme kullanır, bu nedenle seyrek ölçülen tek bir tahmin edici kohortun büyük bir kısmını kaldırabilir; bu sonuçları yorumlamadan önce hangi tahmin edicinin hariç tutmalara yol açtığını kontrol edin."
-            ],
-            "LASSO vs Unpenalized Logistic": [
-                "LASSO ve Cezalandırılmamış Lojistik"
-            ],
-            "LASSO, Ridge, or Elastic Net penalty": [
-                "LASSO, Ridge veya Elastic Net cezası"
-            ],
-            "Log Lambda": [
-                "Log lambda"
-            ],
-            "Logistic (all vars)": [
-                "Lojistik (tüm değişkenler)"
-            ],
-            "Logistic (LASSO-selected vars)": [
-                "Lojistik (LASSO ile seçilen değişkenler)"
-            ],
-            "Low Bootstrap Replications": [
-                "Düşük Bootstrap Tekrarlamaları"
-            ],
-            "Low bootstrap replications ({n}).": [
-                "Düşük bootstrap tekrarlamaları ({n})."
-            ],
-            "Low risk": [
-                "Düşük risk"
-            ],
-            "Low Threshold Range": [
-                "Düşük Eşik Aralığı"
-            ],
             "Lower confidence limit": [
                 "Alt güven sınırı"
             ],
@@ -1282,335 +253,14 @@
             "Lowest Expected Value for a fixed sample size": [
                 "Sabit Örneklem Büyüklüğü için En Düşük Beklenen Değer"
             ],
-            "Manual cut points": [
-                "Manuel kesim noktaları"
-            ],
-            "Manual Cut Points": [
-                "Manuel Kesim Noktaları"
-            ],
-            "Marginal (%.0f%% better than base rate)": [
-                "Marjinal (temel orandan %%%.0f daha iyi)"
-            ],
-            "Max |r| = %.2f (<0.7: acceptable)": [
-                "Maks |r| = %.2f (<0.7: kabul edilebilir)"
-            ],
-            "Max |r| = %.2f (>=0.9: high, consider elastic net)": [
-                "Maks |r| = %.2f (>=0.9: yüksek, elastic net düşünün)"
-            ],
-            "Max |r| = %.2f (0.7-0.9: moderate, LASSO will handle)": [
-                "Maks |r| = %.2f (0.7-0.9: orta, LASSO ele alacaktır)"
-            ],
-            "Max-scaled": [
-                "Maksimuma göre ölçeklendirilmiş"
-            ],
-            "Max-scaled (strongest predictor = max points)": [
-                "Maksimuma göre ölçeklendirilmiş (en güçlü tahmin edici = maks puan)"
-            ],
-            "Max-scaled method (strongest predictor = maximum points)": [
-                "Maksimuma göre ölçeklendirilmiş yöntem (en güçlü tahmin edici = maksimum puan)"
-            ],
-            "Maximum Points per Feature": [
-                "Özellik Başına Maksimum Puan"
-            ],
-            "Maximum Threshold": [
-                "Maksimum Eşik"
-            ],
-            "Mean NB Difference": [
-                "Ortalama NF Farkı"
-            ],
-            "Mean of this dataset": [
-                "Bu veri setinin ortalaması"
-            ],
-            "Mean score (positive class)": [
-                "Ortalama puan (pozitif sınıf)"
-            ],
-            "Mean score (reference class)": [
-                "Ortalama puan (referans sınıf)"
-            ],
-            "meddecide": [
-                "meddecide"
-            ],
-            "Median NB Difference": [
-                "Medyan NF Farkı"
-            ],
-            "Median of this dataset": [
-                "Bu veri setinin medyanı"
-            ],
-            "Method": [
-                "Yöntem"
-            ],
-            "Method explanations": [
-                "Yöntem açıklamaları"
-            ],
-            "Methodological Notes:": [
-                "Metodolojik Notlar:"
-            ],
-            "Methodology Notes": [
-                "Metodoloji Notları"
-            ],
             "Methodology.": [
                 "Yöntem."
-            ],
-            "Metric": [
-                "Ölçüt"
-            ],
-            "Minimum CV Error": [
-                "Minimum ÇD Hatası"
-            ],
-            "Minimum Threshold": [
-                "Minimum Eşik"
-            ],
-            "Minimum threshold ({min}%) must be less than maximum threshold ({max}%).": [
-                "Minimum eşik (%{min}), maksimum eşikten (%{max}) küçük olmalıdır."
-            ],
-            "Minority class: %.1f%% (balanced)": [
-                "Azınlık sınıfı: %%%.1f (dengeli)"
-            ],
-            "Minority class: %.1f%% (moderate imbalance)": [
-                "Azınlık sınıfı: %%%.1f (orta düzey dengesizlik)"
-            ],
-            "Minority class: %.1f%% (severe imbalance)": [
-                "Azınlık sınıfı: %%%.1f (ciddi dengesizlik)"
-            ],
-            "Missing Dependency": [
-                ""
-            ],
-            "Missing Packages": [
-                "Eksik Paketler"
-            ],
-            "Model": [
-                "Model"
-            ],
-            "Model \"{model}\" contains values outside 0 to 1 (min = {min}, max = {max}).": [
-                "\"{model}\" modeli 0 ile 1 dışında değerler içeriyor (min = {min}, maks = {max})."
-            ],
-            "Model \"{model}\" has a very narrow probability range ({min} to {max}).": [
-                "\"{model}\" modeli çok dar bir olasılık aralığına sahip ({min} ila {max})."
-            ],
-            "Model \"{model}\" is a {class} column.": [
-                "\"{model}\" modeli bir {class} sütunudur."
-            ],
-            "Model \"{model}\" is entirely missing after complete-case filtering.": [
-                "\"{model}\" modeli eksiksiz olgu filtrelemesinden sonra tamamen eksiktir."
-            ],
-            "Model 1": [
-                "Model 1"
-            ],
-            "Model 2": [
-                "Model 2"
-            ],
-            "Model Comparison": [
-                "Model Karşılaştırması"
-            ],
-            "Model comparison analysis": [
-                "Model karşılaştırma analizi"
-            ],
-            "Model comparison needs two models": [
-                ""
-            ],
-            "Model Comparison Statistics": [
-                "Model Karşılaştırma İstatistikleri"
-            ],
-            "Model Does Not Discriminate": [
-                "Model Ayrım Yapmıyor"
-            ],
-            "Model Fitting Error": [
-                "Model Uyum Hatası"
-            ],
-            "Model Names": [
-                "Model Adları"
-            ],
-            "Model Names (optional)": [
-                "Model Adları (isteğe bağlı)"
-            ],
-            "Model names cannot be 'Treat All' or 'Treat None' because those labels identify the reference strategies.": [
-                "Model adları 'Herkesi Tedavi Et' veya 'Hiç Kimseyi Tedavi Et' olamaz çünkü bu etiketler referans stratejileri tanımlar."
-            ],
-            "Model Names Replaced": [
-                "Model Adları Değiştirildi"
-            ],
-            "Model Options": [
-                "Model Seçenekleri"
-            ],
-            "Model Summary": [
-                "Model özeti"
-            ],
-            "Model terms (after dummy coding)": [
-                "Model terimleri (kukla kodlamadan sonra)"
-            ],
-            "Model Type": [
-                "Model türü"
-            ],
-            "Models Analyzed": [
-                "Analiz Edilen Modeller"
-            ],
-            "Monetary Cost per Test/Screening": [
-                "Test/Tarama Başına Parasal Maliyet"
-            ],
-            "Monetary Cost per Treatment": [
-                "Tedavi Başına Parasal Maliyet"
-            ],
-            "Monetary Harm Assigned to a False Positive": [
-                "Yanlış Pozitife Atanan Parasal Zarar"
-            ],
-            "Monetary Value Assigned to a True Positive": [
-                "Gerçek Pozitife Atanan Parasal Değer"
-            ],
-            "N = %d (<50: small, consider fewer predictors)": [
-                "N = %d (<50: küçük, daha az tahmin edici düşünün)"
-            ],
-            "N = %d (>=100: adequate)": [
-                "N = %d (>=100: yeterli)"
-            ],
-            "N = %d (50-100: marginal)": [
-                "N = %d (50-100: marjinal)"
-            ],
-            "N Variables": [
-                "Değişken sayısı"
-            ],
-            "Narrow Probability Range: {model}": [
-                "Dar Olasılık Aralığı: {model}"
-            ],
-            "Narrow Range": [
-                "Dar Aralık"
-            ],
-            "NB = (TP/n) - (FP/n) × pt/(1-pt), where pt is the threshold probability.": [
-                ""
-            ],
-            "Need at least 5 cases in each outcome class.": [
-                "Her sonuç sınıfında en az 5 olgu gereklidir."
-            ],
-            "Negative": [
-                "Negatif"
-            ],
-            "Negative (-)": [
-                "Negatif (-)"
-            ],
-            "Net Benefit": [
-                "Net Fayda"
-            ],
-            "Net benefit at every threshold is driven by these events, so the curves and any confidence intervals are imprecise and may be unstable.": [
-                "Her eşikteki net fayda bu olaylar tarafından yönlendirilir, bu nedenle eğriler ve güven aralıkları kesin değildir ve kararsız olabilir."
-            ],
-            "Net benefit at every threshold is driven by these events, so the curves and any confidence intervals are imprecise.": [
-                "Her eşikteki net fayda bu olaylar tarafından yönlendirilir, bu nedenle eğriler ve güven aralıkları kesin değildir."
-            ],
-            "Net Benefit at Selected Thresholds": [
-                "Seçilen Eşiklerde Net Fayda"
-            ],
-            "Net benefit confidence intervals": [
-                "Net fayda güven aralıkları"
-            ],
-            "Net Benefit Confidence Intervals": [
-                "Net Fayda Güven Aralıkları"
-            ],
-            "Net benefit divided by outcome prevalence (dimensionless)": [
-                "Sonuç prevalansına bölünmüş net fayda (boyutsuz)"
-            ],
-            "Net Benefit Formula": [
-                "Net Fayda Formülü"
-            ],
-            "Net benefit is on the scale of true positives per patient; multiply by 100 to read it as true positives per 100 patients, at no additional cost in unnecessary treatment.": [
-                "Net fayda hasta başına gerçek pozitifler ölçeğindedir; gereksiz tedavide ek maliyet olmaksızın 100 hasta başına gerçek pozitif olarak okumak için 100 ile çarpın."
-            ],
-            "Net benefit shown here is apparent, not validated": [
-                "Burada gösterilen net fayda görünürdür, doğrulanmamıştır"
-            ],
-            "Net Interventions Avoided": [
-                "Net Önlenen Girişimler"
-            ],
-            "Net interventions avoided": [
-                "Net önlenen girişimler"
-            ],
-            "Net interventions avoided is derived from the net-benefit difference versus treat-all after accounting for threshold odds.": [
-                "Net önlenen girişimler, eşik odds'u hesaba katıldıktan sonra herkesi tedavi etmeye kıyasla net fayda farkından türetilir."
-            ],
-            "Net Interventions Avoided per 100 Patients": [
-                "100 Hasta Başına Net Önlenen Girişimler"
-            ],
-            "Net Interventions Avoided vs Treat All": [
-                "Herkesi Tedavi Etmeye Göre Net Önlenen Girişimler"
-            ],
-            "Net Payoff": [
-                "Net Getiri"
-            ],
-            "Net payoff versus treat-all is the difference between assigned monetary benefits and direct costs under these assumptions.": [
-                "Herkesi tedavi etmeye kıyasla net getiri, bu varsayımlar altında atanan parasal faydalar ile doğrudan maliyetler arasındaki farktır."
-            ],
-            "Net Payoff vs Treat All": [
-                "Herkesi Tedavi Etmeye Göre Net Getiri"
-            ],
-            "Net-benefit curves with optional bootstrap ribbons, pointwise or a simultaneous sup-t band, for every model and any clinical rule": [
-                "Her model ve herhangi bir klinik kural için noktasal veya eşzamanlı bir sup-t bandı olmak üzere isteğe bağlı bootstrap şeritleriyle net fayda eğrileri"
-            ],
-            "Net-benefit precision depends on event counts, prevalence and thresholds; use an adequately sized validation sample.": [
-                "Net fayda kesinliği olay sayılarına, prevalansa ve eşiklere bağlıdır; yeterli büyüklükte bir doğrulama örneklemi kullanın."
-            ],
-            "Net-benefit precision depends on the number of events, prevalence and the selected thresholds; inspect the uncertainty bands and validate the predictions on independent or properly resampled data.": [
-                "Net fayda kesinliği olayların sayısına, prevalansa ve seçilen eşiklere bağlıdır; belirsizlik bantlarını inceleyin ve tahminleri bağımsız veya uygun şekilde yeniden örneklenmiş veriler üzerinde doğrulayın."
-            ],
-            "No better than predicting the base rate": [
-                "Temel oranı tahmin etmekten daha iyi değil"
-            ],
-            "No cut point separated the two groups, so the search settled on the lowest possible total score and every patient is classified positive: the sensitivity of %1$s with a specificity of %2$s shown here is an artefact of that, not evidence of a sensitive score.": [
-                ""
-            ],
-            "No manual cut point was supplied for: %s. These fell back to the sample median. Enter them as 'variable=value' pairs (for example 'ki67=20, age=65') to use established clinical thresholds.": [
-                "Şunlar için manuel kesim noktası sağlanmadı: %s. Bunlar örneklem medyanına geri döndü. Belirlenmiş klinik eşikleri kullanmak için bunları 'değişken=değer' çiftleri olarak girin (örneğin 'ki67=20, age=65')."
-            ],
-            "No scoring system could be built: the model selected zero predictors at the chosen lambda, so there are no coefficients to convert into points. %s": [
-                "Hiçbir puanlama sistemi oluşturulamadı: model seçilen lambda değerinde sıfır tahmin edici seçti, bu nedenle puana dönüştürülecek katsayı bulunmuyor. %s"
-            ],
-            "No usable threshold probabilities were found in the list, so the default 5%, 10%, 15%, 20%, 25% and 30% are used.": [
-                "Listede kullanılabilir eşik olasılıkları bulunamadı, bu nedenle varsayılan %5, %10, %15, %20, %25 ve %30 kullanılır."
-            ],
-            "No usable values: {model}": [
-                "Kullanılabilir değer yok: {model}"
-            ],
-            "No variables selected": [
-                "Değişken seçilmedi"
-            ],
-            "No Variables Selected": [
-                "Değişken Seçilmedi"
-            ],
-            "Non-Binary Outcome": [
-                "İkili Olmayan Sonuç"
-            ],
-            "None": [
-                "Yok"
-            ],
-            "none": [
-                "yok"
-            ],
-            "none.": [
-                "yok."
-            ],
-            "Not a numeric column: {model}": [
-                "Sayısal bir sütun değil: {model}"
-            ],
-            "Not available": [
-                "Mevcut değil"
-            ],
-            "Not interpretable": [
-                "Yorumlanamaz"
-            ],
-            "Not testable": [
-                "Test edilemez"
             ],
             "Note that kappa0 here is the agreement you anticipate observing, not a null hypothesis value as it is in kappaSizePower.": [
                 "Burada kappa0 gözlemlemeyi beklediğiniz uyumdur; kappaSizePower'daki gibi bir sıfır hipotezi değeri değildir."
             ],
             "Notes": [
                 "Notlar"
-            ],
-            "Nothing about the clinical rule is shown until then.": [
-                ""
-            ],
-            "NPV": [
-                "NPV"
-            ],
-            "Number of CV Folds": [
-                "ÇD Katlama Sayısı"
             ],
             "Number of outcome level": [
                 "Sonuç düzeyi sayısı"
@@ -1642,17 +292,8 @@
             "Number of subjects available, each rated by all raters (at least 11).": [
                 "Her biri tüm değerlendiriciler tarafından değerlendirilen mevcut olgu sayısı (en az 11)."
             ],
-            "Numeric outcome must have at least 2 observed values.": [
-                "Sayısal sonuç en az 2 gözlemlenen değere sahip olmalıdır."
-            ],
             "Objective:": [
                 ""
-            ],
-            "Observed complete-case proportions projected to a population of {n} patients.": [
-                "Gözlemlenen eksiksiz olgu oranları {n} kişilik bir hasta popülasyonuna yansıtılmıştır."
-            ],
-            "Odds Ratio": [
-                "Odds Oranı"
             ],
             "One-sided (lower bound only)": [
                 "Tek yönlü (yalnızca alt sınır)"
@@ -1660,281 +301,17 @@
             "one-sided lower bound": [
                 ""
             ],
-            "Only {n} events of the outcome are present in the analysed cases.": [
-                "Analiz edilen olgularda sonucun yalnızca {n} olayı mevcuttur."
-            ],
-            "Only 1 event of the outcome is present in the analysed cases.": [
-                "Analiz edilen olgularda sonucun yalnızca 1 olayı mevcuttur."
-            ],
-            "Optimal score cutoff (chosen on this data)": [
-                "Optimal puan kesim değeri (bu veriler üzerinde seçildi)"
-            ],
-            "Optimal threshold": [
-                "Optimal eşik"
-            ],
-            "Optimism": [
-                "İyimserlik"
-            ],
-            "Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) is a more realistic estimate of future performance.": [
-                ""
-            ],
-            "or the Model Comparison table for unpenalized estimates on the selected variables.": [
-                "veya seçilen değişkenler üzerindeki cezalandırılmamış tahminler için Model Karşılaştırma tablosu."
-            ],
-            "or tick 'Model comparison analysis' under Explanatory Output to see unpenalized estimates on the selected variables.": [
-                "veya seçilen değişkenler üzerindeki cezalandırılmamış tahminleri görmek için Açıklayıcı Çıktı altında 'Model karşılaştırma analizi'ni işaretleyin."
-            ],
-            "Original measurement scale, as in the Selected Variables table": [
-                "Seçilen Değişkenler tablosundaki gibi orijinal ölçüm ölçeği"
-            ],
-            "Outcome has %1$d distinct numeric values; only %2$s (event) vs %3$s (reference) are modeled. Other cases are excluded.": [
-                ""
-            ],
-            "Outcome has %1$d observed levels; only '%2$s' (event) vs '%3$s' (reference) are modeled. Cases in other levels are excluded.": [
-                ""
-            ],
-            "Outcome is not binary after filtering.": [
-                "Filtrelemeden sonra sonuç ikili değildir."
-            ],
-            "outcome level not modelled": [
-                "sonuç düzeyi modellenmedi"
-            ],
             "Outcome levels": [
                 "Sonuç düzeyleri"
             ],
-            "outcome missing": [
-                "sonuç eksik"
-            ],
-            "Outcome Not Binary": [
-                "Sonuç İkili Değil"
-            ],
-            "Outcome prevalence: {pct}% ({events}/{n}).": [
-                "Sonuç prevalansı: %{pct} ({events}/{n})."
-            ],
-            "Outcome Type": [
-                "Sonuç Türü"
-            ],
-            "Outcome Variable": [
-                "Sonuç Değişkeni"
-            ],
-            "Outcome variable must have at least 2 observed values.": [
-                "Sonuç değişkeni en az 2 gözlemlenen değere sahip olmalıdır."
-            ],
-            "Output Options": [
-                "Çıktı Seçenekleri"
-            ],
-            "Overall:": [
-                "Genel:"
-            ],
-            "p (Holm, average NB difference)": [
-                "p (Holm, ortalama NF farkı)"
-            ],
-            "p (Holm, mean NB difference)": [
-                "p (Holm, ortalama NF farkı)"
-            ],
-            "p (Holm) controls the family-wise error rate across all {k} pairwise comparisons.": [
-                "p (Holm), tüm {k} ikili karşılaştırma genelinde aile bazında hata oranını kontrol eder."
-            ],
-            "p = %1$d predictors, n/p = %2$.1f (good ratio)": [
-                ""
-            ],
-            "p = %1$d predictors, n/p = %2$.1f (regularization essential)": [
-                ""
-            ],
-            "Package 'glmnet' is required. Install with: install.packages('glmnet')": [
-                ""
-            ],
-            "Pairwise comparison needs two models": [
-                ""
-            ],
-            "Path Inclusion Proportion": [
-                "Yolda yer alma oranı"
-            ],
-            "Path Inclusion Proportion is the fraction of the single cross-validated lambda path on which each predictor has a non-zero coefficient (apparent), NOT a bootstrap/resampling stability-selection frequency. Importance Rank orders predictors by their maximum absolute coefficient along that path. Because Ridge (L1 weight = 0) never shrinks coefficients to zero, every predictor is retained at all lambdas and the proportion is trivially 1.0.": [
-                "Yol Dahil Edilme Oranı, her bir tahmin edicinin sıfır olmayan bir katsayıya sahip olduğu tek çapraz doğrulanmış lambda yolunun kesridir (görünürdeki), bir bootstrap/yeniden örnekleme kararlılık-seçim frekansı DEĞİLDİR. Önem Sırası, tahmin edicileri bu yol boyunca maksimum mutlak katsayılarına göre sıralar. Ridge (L1 ağırlığı = 0) katsayıları asla sıfıra daraltmadığı için, her tahmin edici tüm lambdalarda tutulur ve oran önemsiz şekilde 1.0'dır."
-            ],
-            "Patients Screened per True Positive": [
-                "Gerçek Pozitif Başına Taranan Hasta"
-            ],
-            "Patients screened per true positive is the reciprocal of the observed true-positive yield, not a causal number-needed-to-screen effect measure.": [
-                "Gerçek pozitif başına taranan hasta, gözlemlenen gerçek pozitif veriminin tersidir; nedensel bir taranması gereken sayı etki ölçüsü değildir."
-            ],
-            "Penalized feature selection for binary classification": [
-                "İkili sınıflandırma için cezalandırılmış özellik seçimi"
-            ],
-            "Penalized logistic regression completed: %1$d/%2$d model terms selected using the %3$s penalty with the %4$s lambda (N=%5$d, %6$d events).": [
-                ""
-            ],
-            "Penalized logistic regression for automatic feature selection in binary classification.": [
-                "İkili sınıflandırmada otomatik özellik seçimi için cezalandırılmış lojistik regresyon."
-            ],
-            "Penalty Type": [
-                "Ceza Tipi"
-            ],
-            "Penalty type": [
-                "Ceza türü"
-            ],
-            "Perfect Apparent Separation": [
-                "Kusursuz Görünürde Ayrım"
-            ],
-            "Perfect in-sample separation - see note": [
-                "Örneklem içi kusursuz ayrım - nota bakın"
-            ],
-            "Performs LASSO-penalized logistic regression for variable selection in binary classification problems. Ideal for diagnostic pathology studies that build classifiers (e.g., tumor type A vs B) with automatic feature selection.": [
-                ""
-            ],
-            "Please adjust the threshold range in Analysis Options.": [
-                "Lütfen Analiz Seçeneklerinde eşik aralığını ayarlayın."
-            ],
-            "Plot Style": [
-                "Grafik Stili"
-            ],
-            "Plot style": [
-                "Grafik stili"
-            ],
-            "Plots": [
-                "Grafikler"
-            ],
-            "Points (Selected)": [
-                "Puanlar (Seçilen)"
-            ],
-            "Pointwise intervals (each threshold separately)": [
-                "Noktasal aralıklar (her eşik ayrı ayrı)"
-            ],
-            "Pointwise percentile-bootstrap intervals from {reps} replications at the {level}% level, drawn for every model and any clinical rule.": [
-                "Her model ve herhangi bir klinik kural için çizilen, %{level} düzeyinde {reps} tekrarlamadan elde edilen noktasal yüzdelik bootstrap aralıkları."
-            ],
-            "Poor": [
-                "Zayıf"
-            ],
-            "Poor Discrimination": [
-                "Zayıf Ayırt Etme"
-            ],
             "Population Characteristics:": [
                 ""
-            ],
-            "Population size": [
-                "Popülasyon boyutu"
-            ],
-            "Population Size for Projections": [
-                "Projeksiyonlar İçin Popülasyon Boyutu"
-            ],
-            "Positive": [
-                "Pozitif"
-            ],
-            "Positive (+)": [
-                "Pozitif (+)"
-            ],
-            "Positive Outcome": [
-                "Pozitif Sonuç"
-            ],
-            "Positive Outcome Level": [
-                "Pozitif Sonuç Düzeyi"
-            ],
-            "Positive Outcome Level Required": [
-                "Pozitif Sonuç Düzeyi Gerekli"
-            ],
-            "Positive rule level": [
-                "Pozitif kural düzeyi"
-            ],
-            "Positive values favour the model; negative values favour treating everyone.": [
-                "Pozitif değerler modeli destekler; negatif değerler herkesi tedavi etmeyi destekler."
-            ],
-            "Possible Overfitting": [
-                "Olası Aşırı Uyum"
             ],
             "Power": [
                 "Güç"
             ],
             "Power Analysis by meddecide": [
                 "meddecide ile Güç Analizi"
-            ],
-            "PPV": [
-                "PPV"
-            ],
-            "Precision": [
-                "Kesinlik (Presizyon)"
-            ],
-            "Precision (PPV)": [
-                "Kesinlik (PPD)"
-            ],
-            "Precision (PPV) and the F1 score are left blank because this model predicts no positive cases at the chosen threshold, which makes both quantities undefined rather than zero.": [
-                ""
-            ],
-            "Predicted probabilities": [
-                ""
-            ],
-            "Predicted probabilities are in-sample empirical event rates; scores based on few cases (small N) are unstable and can read as 0% or 100%. Validate the score-to-probability mapping on an independent cohort before clinical use.": [
-                "Tahmin edilen olasılıklar örneklem içi ampirik olay oranlarıdır; az sayıda olguya (küçük N) dayalı puanlar kararsızdır ve %0 veya %100 olarak okunabilir. Klinik kullanımdan önce bağımsız bir kohortta puandan olasılığa eşlemeyi doğrulayın."
-            ],
-            "Predicted Probability": [
-                "Tahmin Edilen Olasılık"
-            ],
-            "Prediction Models": [
-                "Tahmin Modelleri"
-            ],
-            "Prediction Models/Variables": [
-                "Tahmin Modelleri/Değişkenleri"
-            ],
-            "Prediction Requirement": [
-                "Tahmin Gereksinimi"
-            ],
-            "Prediction Scale": [
-                "Tahmin Ölçeği"
-            ],
-            "Prediction Variables/Models": [
-                "Tahmin Değişkenleri/Modelleri"
-            ],
-            "Predictive Factor": [
-                "Öngörücü Faktör"
-            ],
-            "Predictor count": [
-                "Belirleyici sayısı"
-            ],
-            "predictor missing": [
-                "tahmin edici eksik"
-            ],
-            "Predictors were standardized before fitting so that the penalty treats them comparably, but the Coefficient and Odds Ratio columns are reported on the ORIGINAL measurement scale (per 1 unit of a continuous predictor, or present vs absent for a binary one). The Importance column is the per-standard-deviation magnitude, which is what can be compared across predictors with different units. Odds ratios remain penalized (shrunk toward 1).": [
-                "Tahmin ediciler uyarlamadan önce standardize edildi, böylece ceza onları karşılaştırılabilir şekilde ele alır, ancak Katsayı ve Odds Oranı sütunları ORİJİNAL ölçüm ölçeğinde bildirilir (sürekli bir tahmin edicinin 1 birimi başına veya ikili bir tahmin edici için var ve yok). Önem sütunu, farklı birimlere sahip tahmin ediciler arasında karşılaştırılabilecek standart sapma başına büyüklüktür. Odds oranları cezalandırılmış olarak kalır (1'e doğru daraltılmıştır)."
-            ],
-            "Preprocessing": [
-                "Ön İşleme"
-            ],
-            "present": [
-                "mevcut"
-            ],
-            "Prevalence": [
-                "Prevalans"
-            ],
-            "Projected False Positives": [
-                "Öngörülen Yanlış Pozitifler"
-            ],
-            "Projected Interventions": [
-                "Öngörülen Girişimler"
-            ],
-            "Projected Missed Cases": [
-                "Öngörülen Kaçırılan Olgular"
-            ],
-            "Projected Net Interventions Avoided vs Treat All": [
-                "Herkesi Tedavi Etmeye Göre Öngörülen Net Önlenen Girişimler"
-            ],
-            "Projected Number of Patients": [
-                "Öngörülen Hasta Sayısı"
-            ],
-            "Projected Tests": [
-                "Öngörülen Testler"
-            ],
-            "Projected Treatments": [
-                "Öngörülen Tedaviler"
-            ],
-            "Projected true and false positives for the selected population size": [
-                "Seçilen popülasyon boyutu için öngörülen gerçek ve yanlış pozitifler"
-            ],
-            "Projected True Positives": [
-                "Öngörülen Gerçek Pozitifler"
-            ],
-            "Projected Unnecessary Treatments": [
-                "Öngörülen Gereksiz Tedaviler"
             ],
             "Proportions (comma-separated, sum to 1)": [
                 ""
@@ -1963,83 +340,11 @@
             "Proportions should sum to 1.0, current sum is {sum}.": [
                 ""
             ],
-            "Random Seed": [
-                "Rastgele Tohum"
-            ],
-            "Random seed": [
-                "Rastgelelik tohumu"
-            ],
-            "Random seed: {seed}": [
-                "Rastgelelik tohumu: {seed}"
-            ],
-            "Range maximum": [
-                "Aralık maksimumu"
-            ],
-            "Range minimum": [
-                "Aralık minimumu"
-            ],
-            "Range of Benefit": [
-                "Fayda Aralığı"
-            ],
-            "Range of benefit table": [
-                "Fayda aralığı tablosu"
-            ],
-            "Range of Benefit:": [
-                "Fayda Aralığı:"
-            ],
-            "Range of threshold probabilities over which the model's net benefit exceeds both treat-all and treat-none; a model is only worth using within this range.": [
-                "Modelin net faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi aştığı eşik olasılıkları aralığı; bir model yalnızca bu aralıkta kullanılmaya değerdir."
-            ],
             "Raters": [
                 "Değerlendiriciler"
             ],
             "raters": [
                 "değerlendiriciler"
-            ],
-            "Re-running with the same seed reproduces these numbers exactly.": [
-                "Aynı tohumla yeniden çalıştırmak bu sayıları tam olarak yeniden üretir."
-            ],
-            "Reduce the step size to {maxstep}% or less, or widen the range.": [
-                "Adım boyutunu %{maxstep} veya daha azına düşürün ya da aralığı genişletin."
-            ],
-            "Reference": [
-                "Referans"
-            ],
-            "Reference (no rounding)": [
-                "Referans (yuvarlama yok)"
-            ],
-            "Reference class": [
-                "Referans sınıf"
-            ],
-            "Reference Line Labels": [
-                "Referans Çizgisi Etiketleri"
-            ],
-            "Reference line labels": [
-                "Referans çizgisi etiketleri"
-            ],
-            "Reference Strategies": [
-                "Referans Stratejiler"
-            ],
-            "Relative Utility (vs best default strategy)": [
-                "Göreceli Yararlılık (en iyi varsayılan stratejiye göre)"
-            ],
-            "Relative utility compared to default strategies": [
-                "Varsayılan stratejilere kıyasla göreceli yararlılık"
-            ],
-            "Relative Utility Curve": [
-                "Göreceli Yararlılık Eğrisi"
-            ],
-            "Relative utility plot": [
-                "Göreceli yararlılık grafiği"
-            ],
-            "Rename the duplicated label(s): {names}.": [
-                "Yinelenen etiket(ler)i yeniden adlandırın: {names}."
-            ],
-            "Required inputs:": [
-                "Gerekli girdiler:"
-            ],
-            "Required packages missing: {pkgs}.": [
-                "Gerekli paketler eksik: {pkgs}."
             ],
             "Required sample size: {n}": [
                 ""
@@ -2050,72 +355,6 @@
             "Researchers anticipate an agreement of kappa = {kappa0} and have access to {n} subjects, each rated by {raters} raters.": [
                 "Araştırmacılar kappa = {kappa0} düzeyinde bir uyum beklemekte ve her biri {raters} değerlendirici tarafından değerlendirilen {n} olguya sahiptir."
             ],
-            "Reserved Model Name": [
-                "Ayrılmış Model Adı"
-            ],
-            "Resource utilization": [
-                "Kaynak kullanımı"
-            ],
-            "Resource Utilization": [
-                "Kaynak Kullanımı"
-            ],
-            "Resource Utilization Analysis": [
-                "Kaynak Kullanımı Analizi"
-            ],
-            "Resource utilization projected to the selected population size": [
-                "Seçilen popülasyon boyutuna yansıtılan kaynak kullanımı"
-            ],
-            "Result": [
-                "Sonuç"
-            ],
-            "Results Summary": [
-                "Sonuç özeti"
-            ],
-            "Results summary": [
-                "Sonuç özeti"
-            ],
-            "Results Table": [
-                "Sonuç Tablosu"
-            ],
-            "Results table": [
-                "Sonuç tablosu"
-            ],
-            "Review the decision curves and the range of benefit below.": [
-                "Aşağıdaki karar eğrilerini ve fayda aralığını inceleyin."
-            ],
-            "Ridge (L2)": [
-                "Ridge (L2)"
-            ],
-            "Ridge Logistic Regression": [
-                "Ridge Lojistik Regresyon"
-            ],
-            "Risk Group": [
-                "Risk grubu"
-            ],
-            "ROC curve": [
-                "ROC eğrisi"
-            ],
-            "ROC Curve": [
-                "ROC Eğrisi"
-            ],
-            "ROC Curve (AUC = %s)": [
-                "ROC Eğrisi (EAA = %s)"
-            ],
-            "ROC curve with AUC and confidence interval": [
-                "EAA ve güven aralığı ile ROC eğrisi"
-            ],
-            "Rule Not Binary": [
-                "Kural İkili Değil"
-            ],
-            "Rule Positive Level Required": [
-                "Kural Pozitif Düzeyi Gerekli"
-            ],
-            "Sample Size": [
-                "Örneklem büyüklüğü"
-            ],
-            "Sample size": [
-                "Örneklem büyüklüğü"
-            ],
             "Sample size (N) must be a whole number of at least 11. The kappaSize method is a large-sample approximation and its engine refuses any study of 10 or fewer subjects (received {n}).": [
                 "Örneklem büyüklüğü (N) en az 11 olan bir tam sayı olmalıdır. kappaSize yöntemi büyük örneklem yaklaşımıdır ve 10 veya daha az olgulu çalışmaları reddeder (girilen: {n})."
             ],
@@ -2123,102 +362,6 @@
                 ""
             ],
             "Sample Size Calculation for Interobserver Agreement Study": [
-                ""
-            ],
-            "Save Variables": [
-                "Değişkenleri Kaydet"
-            ],
-            "Schneeweiss": [
-                "Schneeweiss"
-            ],
-            "Schneeweiss (divide by smallest coefficient)": [
-                "Schneeweiss (en küçük katsayıya böl)"
-            ],
-            "Schneeweiss (primary)": [
-                "Schneeweiss (birincil)"
-            ],
-            "Schneeweiss method (Mehta et al. J Clin Epidemiol 2016)": [
-                "Schneeweiss yöntemi (Mehta ve ark. J Clin Epidemiol 2016)"
-            ],
-            "Score AUC (apparent)": [
-                "Puan EAA (görünürdeki)"
-            ],
-            "Score range": [
-                "Puan aralığı"
-            ],
-            "Score-to-Probability Lookup": [
-                "Puan-Olasılık Arama Tablosu"
-            ],
-            "Score-to-probability lookup table": [
-                "Puan-olasılık arama tablosu"
-            ],
-            "Scoring Method": [
-                "Puanlama Yöntemi"
-            ],
-            "Scoring method": [
-                "Puanlama yöntemi"
-            ],
-            "Scoring Method Comparison": [
-                "Puanlama Yöntemi Karşılaştırması"
-            ],
-            "Scoring Scale Not Usable": [
-                "Puanlama Ölçeği Kullanılamaz"
-            ],
-            "Scoring System": [
-                "Puanlama Sistemi"
-            ],
-            "Scoring system": [
-                "Puanlama sistemi"
-            ],
-            "Scoring System Does Not Discriminate": [
-                ""
-            ],
-            "Scoring System Not Generated": [
-                "Puanlama Sistemi Oluşturulmadı"
-            ],
-            "Scoring System Performance": [
-                "Puanlama Sistemi Performansı"
-            ],
-            "Scoring System Runs Backwards": [
-                ""
-            ],
-            "Select a binary Outcome Variable (the condition you want to predict).": [
-                "İkili bir Sonuç Değişkeni seçin (tahmin etmek istediğiniz durum)."
-            ],
-            "Select a binary rule variable or disable \"Clinical Decision Rule Integration\".": [
-                "İkili bir kural değişkeni seçin veya \"Klinik Karar Kuralı Entegrasyonu\"nu devre dışı bırakın."
-            ],
-            "Select exactly one positive outcome level that is present in the analysis data.": [
-                "Analiz verilerinde mevcut olan tam olarak bir pozitif sonuç düzeyi seçin."
-            ],
-            "Select exactly one positive rule level that is present in the analysis data.": [
-                "Analiz verilerinde mevcut olan tam olarak bir pozitif kural düzeyi seçin."
-            ],
-            "Selected Thresholds for Table": [
-                "Tablo İçin Seçilen Eşikler"
-            ],
-            "Selected Variables": [
-                "Seçilen Değişkenler"
-            ],
-            "Sensitivity": [
-                "Duyarlılık"
-            ],
-            "Sensitivity (Recall)": [
-                "Duyarlılık (Recall)"
-            ],
-            "Separation in Unpenalized Refit": [
-                "Cezalandırılmamış Yeniden Uyumda Ayrım"
-            ],
-            "Serious warning": [
-                "Ciddi uyarı"
-            ],
-            "Shaded: {level}% pointwise CI": [
-                ""
-            ],
-            "Shaded: {level}% simultaneous band": [
-                ""
-            ],
-            "Showing the %1$d highest-ranked of %2$d model terms; the remaining terms have smaller maximum coefficients along the path.": [
                 ""
             ],
             "Significance level (alpha) must be between 0.001 and 0.20.": [
@@ -2230,65 +373,8 @@
             "Significance level of the one-sided lower confidence bound (capped at 0.20).": [
                 "Tek yönlü alt güven sınırının anlamlılık düzeyi (en çok 0.20)."
             ],
-            "Simple monetary payoff projection under explicit assumptions; not an ICER, QALY or formal health-economic analysis": [
-                "Açık varsayımlar altında basit parasal getiri projeksiyonu; bir ICER, QALY veya resmi sağlık ekonomisi analizi değildir"
-            ],
-            "Simultaneous band (whole curve at once)": [
-                "Eşzamanlı bant (tüm eğri bir kerede)"
-            ],
-            "Simultaneous sup-t bootstrap band from {reps} replications at the {level}% level (Mandel and Betensky 2008).": [
-                "%{level} düzeyinde {reps} tekrarlamadan elde edilen eşzamanlı sup-t bootstrap bandı (Mandel ve Betensky 2008)."
-            ],
-            "Small Sample Size": [
-                "Küçük Örneklem Büyüklüğü"
-            ],
-            "Small sample size (n = {n}).": [
-                "Küçük örneklem büyüklüğü (n = {n})."
-            ],
-            "Some thresholds ignored": [
-                "Bazı eşikler göz ardı edildi"
-            ],
-            "Source variable names are used instead.": [
-                "Bunun yerine kaynak değişken adları kullanılır."
-            ],
             "Sparse categories.": [
                 "Seyrek kategoriler."
-            ],
-            "Specificity": [
-                "Özgüllük"
-            ],
-            "Specified event level '%1$s' not found in the outcome variable. Observed levels: %2$s.": [
-                ""
-            ],
-            "Specified event level '%1$s' not found in the outcome variable. Observed values: %2$s.": [
-                ""
-            ],
-            "Specify which level represents the positive outcome.": [
-                "Hangi düzeyin pozitif sonucu temsil ettiğini belirtin."
-            ],
-            "Standard (with reference lines)": [
-                "Standart (referans çizgileriyle)"
-            ],
-            "Standardized Net Benefit": [
-                "Standartlaştırılmış Net Fayda"
-            ],
-            "Standardized Net Benefit (NB / Prevalence)": [
-                "Standartlaştırılmış Net Fayda (NF / Prevalans)"
-            ],
-            "Standardized net benefit plot": [
-                "Standartlaştırılmış net fayda grafiği"
-            ],
-            "Statistic": [
-                "İstatistik"
-            ],
-            "Statistical comparison": [
-                "İstatistiksel karşılaştırma"
-            ],
-            "Step Size": [
-                "Adım Boyutu"
-            ],
-            "Strategy": [
-                "Strateji"
             ],
             "Study Design:": [
                 "Çalışma Tasarımı:"
@@ -2299,65 +385,14 @@
             "Summary": [
                 "Özet"
             ],
-            "Table thresholds outside the analysed range": [
-                "Analiz edilen aralığın dışındaki tablo eşikleri"
-            ],
-            "Tables & Outputs": [
-                "Tablolar ve Çıktılar"
-            ],
-            "Technical Notes": [
-                "Teknik Notlar"
-            ],
-            "Terms selected": [
-                "Seçilen terimler"
-            ],
-            "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); their apparent AUC is typically higher than the penalized LASSO row because refitting removes LASSO shrinkage. All metrics are apparent (in-sample) - use Bootstrap Internal Validation for optimism-corrected discrimination.": [
-                "'Lojistik' satırları cezalandırılmamış yeniden uyarlamalardır (AIC karşılaştırılabilirliği için gösterilmiştir); görünürdeki EAA'ları tipik olarak cezalandırılmış LASSO satırından daha yüksektir çünkü yeniden uyarlama LASSO daralmasını ortadan kaldırır. Tüm metrikler görünürdedir (örneklem içi) - iyimserlik düzeltmeli ayrım için Bootstrap Dahili Doğrulamasını kullanın."
-            ],
-            "The analysis continues without confidence intervals; the point estimates are unaffected.": [
-                "Analiz güven aralıkları olmadan devam eder; nokta tahminleri etkilenmez."
-            ],
-            "The analysis was stopped to avoid reversing event and non-event status.": [
-                "Olay ve olay olmama durumunun tersine dönmesini önlemek için analiz durduruldu."
-            ],
-            "The analysis was stopped to avoid reversing intervention recommendations.": [
-                "Girişim önerilerinin tersine dönmesini önlemek için analiz durduruldu."
-            ],
-            "The analysis will show whether using your prediction model(s) provides more clinical benefit than treating all patients or treating no patients.": [
-                "Analiz, tahmin model(ler)inizi kullanmanın tüm hastaları tedavi etmekten veya hiçbir hastayı tedavi etmemekten daha fazla klinik fayda sağlayıp sağlamadığını gösterecektir."
-            ],
             "The bound is a confidence limit around the anticipated kappa and approaches it from below without ever reaching it, so while the anticipated kappa is itself 0.40 or below no sample size, number of raters or significance level can lift the bound past 0.40; the anticipated agreement, not the number of subjects, is what binds here.": [
                 ""
             ],
             "The calculation did not converge to a usable answer: the search returned {bound}, which is below the lowest agreement the model allows for these prevalences (every agreement pattern must keep a non-negative probability). With this combination of sample size, anticipated kappa and category prevalences the large-sample approximation breaks down. Increase N, use a less extreme prevalence, or raise the significance level.": [
                 "Hesaplama kullanılabilir bir sonuca ulaşmadı: arama {bound} değerini döndürdü; bu, modelin bu prevalanslar için izin verdiği en düşük uyumun altındadır (her uyum örüntüsünün olasılığı negatif olmamalıdır). Bu örneklem büyüklüğü, beklenen kappa ve kategori prevalansı bileşiminde büyük örneklem yaklaşımı geçersizleşir. N'yi artırın, daha az uç bir prevalans kullanın veya anlamlılık düzeyini yükseltin."
             ],
-            "The clinical decision rule label \"{label}\" duplicates a model or reference-strategy name.": [
-                "Klinik karar kuralı etiketi \"{label}\" bir model veya referans strateji adını yineliyor."
-            ],
-            "The clinical decision rule variable must be binary (exactly 2 levels).": [
-                "Klinik karar kuralı değişkeni ikili olmalıdır (tam olarak 2 düzey)."
-            ],
             "The computed sample size ({n}) is very large and may be impractical for a typical interobserver-agreement study.": [
                 ""
-            ],
-            "The corrected AUC (%1$.3f) is below 0.500. This is a real result, not an error: the bootstrap replicates fit models that pick up chance associations, so the optimism (%2$.3f) exceeds what the model actually achieves. Read it as evidence that these predictors carry no usable signal at this sample size - the model performs no better than, and by this estimate slightly worse than, guessing.": [
-                ""
-            ],
-            "The current outcome \"{var}\" has {n} levels: {levels}.": [
-                "Geçerli sonuç \"{var}\" {n} düzeye sahiptir: {levels}."
-            ],
-            "The current rule variable \"{var}\" has {n} levels: {levels}.": [
-                "Geçerli kural değişkeni \"{var}\" {n} düzeye sahiptir: {levels}."
-            ],
-            "The custom model-name list must contain exactly {n} non-empty comma-separated names.": [
-                "Özel model adı listesi, virgülle ayrılmış tam olarak {n} boş olmayan ad içermelidir."
-            ],
-            "the cut points you supplied": [
-                "sağladığınız kesim noktaları"
-            ],
-            "the cut points you supplied, and the sample median for the predictors you did not give one for": [
-                "sağladığınız kesim noktaları ve bir tane vermediğiniz tahmin ediciler için örneklem medyanı"
             ],
             "The expected lower bound for kappa is {bound}.": [
                 "Kappa için beklenen alt sınır {bound}."
@@ -2368,29 +403,8 @@
             "The expected lower bound is {bound}. The study excludes agreement below that value but leaves everything above it open, and on the Landis and Koch scale a bound under 0.40 is no better than fair agreement. These subjects can therefore show that agreement exceeds chance, but cannot establish moderate or better reliability even if the raters perform exactly as anticipated.": [
                 ""
             ],
-            "The generated scoring system reaches %d points for a single factor. A usable clinical score is typically under 20 points in total; this one is dominated by the ratio between the largest and smallest selected effects. Switch to the Max-scaled method or remove the near-zero predictor before using this score.": [
-                "Oluşturulan puanlama sistemi tek bir faktör için %d puana ulaşır. Kullanılabilir bir klinik puan tipik olarak toplamda 20 puanın altındadır; bu puan en büyük ve en küçük seçilen etkiler arasındaki oran tarafından domine edilir. Bu puanı kullanmadan önce Maksimum ölçekli yönteme geçin veya sıfıra yakın tahmin ediciyi kaldırın."
-            ],
-            "The intercept is the log-odds of the event when every selected predictor is 0 (or at its reference level); with the coefficients above it reproduces the model's predicted probability as plogis(intercept + sum(coefficient x value)). No odds ratio or importance applies to it.": [
-                "Kesişim, seçilen her tahmin edici 0 olduğunda (veya referans düzeyinde olduğunda) olayın log-odds'udur; yukarıdaki katsayılarla modelin tahmin edilen olasılığını plogis(kesişim + toplam(katsayı x değer)) olarak yeniden üretir. Buna hiçbir odds oranı veya önem uygulanmaz."
-            ],
             "The kappaSize package is required but not installed. Please install it using install.packages(\"kappaSize\")": [
                 ""
-            ],
-            "The maximum threshold is {max}%.": [
-                "Maksimum eşik %{max}'dir."
-            ],
-            "The minimum probability at which a patient would choose the intervention over no intervention.": [
-                "Bir hastanın müdahale olmamasına kıyasla müdahaleyi seçeceği minimum olasılık."
-            ],
-            "The minimum threshold is {min}%.": [
-                "Minimum eşik %{min}'dir."
-            ],
-            "The optimal threshold maximizes the Youden index on the same data used to fit the model, so sensitivity, specificity, accuracy, precision, and F1 are apparent (in-sample) and optimistic. Enable bootstrap validation for an optimism-corrected estimate of discrimination.": [
-                "Optimal eşik modeli uyarlamak için kullanılan aynı veriler üzerinde Youden indeksini maksimize eder, bu nedenle duyarlılık, özgüllük, doğruluk, kesinlik ve F1 görünürdedir (örneklem içi) ve iyimserdir. Ayrım gücünün iyimserlik düzeltmeli bir tahmini için bootstrap doğrulamasını etkinleştirin."
-            ],
-            "The outcome variable must be binary (exactly 2 levels).": [
-                "Sonuç değişkeni ikili olmalıdır (tam olarak 2 düzey)."
             ],
             "The preliminary (anticipated) value of kappa - the agreement you expect to observe. It is not a null hypothesis value.": [
                 "Kappanın ön (beklenen) değeri; gözlemlemeyi beklediğiniz uyum. Bir sıfır hipotezi değeri değildir."
@@ -2413,89 +427,23 @@
             "The required sample size is computed with the confidence-interval width approach of the kappaSize package (Donner and Eliasziw; Rotondi and Donner).": [
                 ""
             ],
-            "the sample mean": [
-                "örneklem ortalaması"
-            ],
-            "the sample median": [
-                "örneklem medyanı"
-            ],
             "The sample size delivers the stated limits only if the study observes the anticipated kappa. Roughly half of such studies observe less and finish with a lower limit short of the target, so plan on a conservative anticipated kappa or enrol above the figure shown.": [
                 ""
             ],
             "The sample size was computed but could not be formatted for display: {error}": [
                 ""
             ],
-            "The score's AUC is %.3f, below 0.500: higher total scores are associated with FEWER events.": [
-                ""
-            ],
-            "The selected threshold range spans {span} percentage points.": [
-                "Seçilen eşik aralığı {span} yüzdelik puanı kapsar."
-            ],
-            "The start and end shown span a gap where the model is not superior - read the curve rather than the endpoints.": [
-                "Gösterilen başlangıç ve bitiş, modelin üstün olmadığı bir boşluğu kapsar - uç noktalar yerine eğriyi okuyun."
-            ],
-            "The table reports a row at {value}, which falls outside the analysed threshold range of {lo}% to {hi}%.": [
-                "Tablo, analiz edilen %{lo} ila %{hi} eşik aralığının dışına düşen {value} değerinde bir satır bildirmektedir."
-            ],
-            "The table reports rows at {values}, which fall outside the analysed threshold range of {lo}% to {hi}%.": [
-                "Tablo, analiz edilen %{lo} ila %{hi} eşik aralığının dışına düşen {values} değerlerinde satırlar bildirmektedir."
-            ],
-            "The threshold range you entered, {lo}% to {hi}%, is narrower than the step size of {step}%, so it produces only one threshold ({one}%) and no decision curve can be drawn.": [
-                "Girdiğiniz %{lo} ila %{hi} eşik aralığı %{step} adım boyutundan daha dardır, bu nedenle yalnızca bir eşik (%{one}) üretir ve hiçbir karar eğrisi çizilemez."
-            ],
-            "The unpenalized refit on all candidate variables could not be fitted (%s), so its row is omitted.": [
-                "Tüm aday değişkenler üzerindeki cezalandırılmamış yeniden uyarlama uyarlanamadı (%s), bu nedenle satırı atlandı."
-            ],
-            "The unpenalized refit on the LASSO-selected variables could not be fitted (%s), so its row is omitted.": [
-                "LASSO ile seçilen değişkenler üzerindeki cezalandırılmamış yeniden uyarlama uyarlanamadı (%s), bu nedenle satırı atlandı."
-            ],
-            "the upper quartile": [
-                "üst çeyreklik"
-            ],
-            "the upper tertile": [
-                "üst üçte birlik"
-            ],
             "The warning above is the check that matters for the bound, because it is the one computed on those agreement-pattern cells.": [
                 ""
-            ],
-            "The whole curve, including any clinical rule, lies within the band with this probability.": [
-                "Herhangi bir klinik kural dahil tüm eğri bu olasılıkla bant içinde yer alır."
-            ],
-            "The Youden search did find a cut point (%1$s and above, sensitivity %2$s, specificity %3$s), but the score points the wrong way, so calling the high scores high risk inverts the real risk.": [
-                ""
-            ],
-            "These curves are computed on the same rows that supplied the predicted risks.": [
-                "Bu eğriler, tahmin edilen riskleri sağlayan aynı satırlar üzerinde hesaplanır."
-            ],
-            "These figures are APPARENT (in-sample) and optimistic twice over: the points were derived from a model fitted to this dataset, and the score cutoff was chosen to maximise the Youden index on the same rows. They are not an estimate of how the score would perform on new patients. Enable bootstrap validation for an optimism-corrected estimate of the model, and validate any score externally before clinical use.": [
-                "Bu rakamlar GÖRÜNÜRDE (örneklem içi) ve iki kat iyimserdir: puanlar bu veri setine uyarlanan bir modelden türetilmiş ve puan kesim değeri aynı satırlarda Youden indeksini maksimize edecek şekilde seçilmiştir. Puanın yeni hastalarda nasıl performans göstereceğine dair bir tahmin değildirler. Modelin iyimserlik düzeltmeli bir tahmini için bootstrap doğrulamasını etkinleştirin ve herhangi bir puanı klinik kullanımdan önce harici olarak doğrulayın."
-            ],
-            "These look like percentages: enter {values} instead.": [
-                "Bunlar yüzde gibi görünüyor: bunun yerine {values} girin."
-            ],
-            "They are computed correctly at those exact values, but they are not shown on the decision curve, and the surrounding rows come from the analysed range.": [
-                "Tam o değerlerde doğru şekilde hesaplanmıştır, ancak karar eğrisinde gösterilmez ve çevreleyen satırlar analiz edilen aralıktan gelir."
-            ],
-            "They cover each threshold separately and are not a simultaneous band; choose the simultaneous band to read the whole curve at once.": [
-                "Her eşiği ayrı ayrı kapsarlar ve eşzamanlı bir bant değillerdir; tüm eğriyi bir kerede okumak için eşzamanlı bandı seçin."
             ],
             "They would like to know how low the one-sided {conf}% lower confidence bound for kappa can be expected to fall - the smallest agreement the study would still be unable to rule out; every value below it is excluded.": [
                 "Kappa için tek yönlü %{conf} alt güven sınırının ne kadar düşük çıkmasının beklenebileceğini bilmek istemektedirler; çalışmanın yine de dışlayamayacağı en küçük uyum. Bunun altındaki her değer dışlanır."
             ],
-            "This binary analysis does not account for censoring.": [
-                "Bu ikili analiz sansürlemeyi hesaba katmaz."
-            ],
             "This combination of expected proportions and rater count is too extreme for the kappaSize engine: with {raters} raters and a rarest category of {rarest}, some agreement patterns are so unlikely that the calculation loses them to rounding and never converges. About {n} subjects would be needed. Use fewer raters, or a less extreme expected prevalence — the same design usually computes with one rater fewer.": [
                 ""
             ],
-            "This computational safeguard does not imply that 10 observations are statistically adequate.": [
-                "Bu hesaplama koruması, 10 gözlemin istatistiksel olarak yeterli olduğu anlamına gelmez."
-            ],
             "This design cannot support a reliability claim.": [
                 ""
-            ],
-            "This indicates a data processing error; please report it.": [
-                "Bu bir veri işleme hatasını gösterir; lütfen bildirin."
             ],
             "This is a CONFIDENCE-INTERVAL calculation: it returns the number of subjects\nneeded for the interval around kappa to reach the requested width. It answers a\ndifferent question from the power approach (kappaSizePower), which sizes a study\nto reject a null value, so the two will not agree on a sample size for the same\nstudy - choose the one that matches how the result will be reported.": [
                 ""
@@ -2503,107 +451,11 @@
             "This is a planning expectation, not a guarantee.": [
                 ""
             ],
-            "This is not a confirmatory test and depends on giving every threshold equal weight.": [
-                "Bu doğrulayıcı bir test değildir ve her eşiğe eşit ağırlık verilmesine bağlıdır."
-            ],
             "This is the bound the study reaches if the agreement it observes lands exactly on kappa0. Roughly half of such studies will observe less agreement than anticipated and end with a lower bound below the figure shown, so read it as a planning expectation rather than a guarantee.": [
                 "Bu, çalışmanın gözlemlediği uyum tam olarak kappa0 üzerine düşerse ulaşacağı sınırdır. Bu tür çalışmaların yaklaşık yarısı beklenenden daha az uyum gözlemleyecek ve gösterilen değerin altında bir alt sınırla sonuçlanacaktır, bu nedenle bunu bir garanti yerine bir planlama beklentisi olarak okuyun."
             ],
-            "This model assigns every case the same predicted probability, so it does not discriminate at all and no meaningful threshold exists. A default of 0.500 was used, which classifies every case into one group: the resulting sensitivity of 1.000 (or specificity of 1.000, depending on which side of 0.500 that constant probability falls) and the F1 score are artefacts of that, not evidence of a sensitive or specific test. Only the AUC of 0.500 is informative here.": [
-                "Bu model her olguya aynı tahmin edilen olasılığı atar, bu nedenle hiç ayrım yapmaz ve anlamlı bir eşik bulunmaz. Herkesi bir gruba sınıflandıran 0.500 varsayılanı kullanılmıştır: ortaya çıkan 1.000 duyarlılık (veya bu sabit olasılığın 0.500'ün hangi tarafına düştüğüne bağlı olarak 1.000 özgüllük) ve F1 puanı bunun yapaylıklarıdır, duyarlı veya özgül bir testin kanıtı değildir. Burada yalnızca 0.500 EAA bilgilendiricidir."
-            ],
-            "This only ranks the models against each other; it does not mean the model is useful.": [
-                "Bu yalnızca modelleri birbirine göre sıralar; modelin yararlı olduğu anlamına gelmez."
-            ],
-            "This point scale spans up to %d points per factor, which is too wide to be used as a bedside score. It happens when one selected predictor has a far smaller effect than the others and the chosen method scales relative to it. Try the Max-scaled method, which caps the strongest predictor at the Maximum Points you set, or drop the negligible predictor.": [
-                "Bu puan ölçeği faktör başına %d puana kadar uzanır, bu da başucu puanı olarak kullanılamayacak kadar geniştir. Seçilen bir tahmin edicinin diğerlerinden çok daha küçük bir etkiye sahip olduğu ve seçilen yöntemin ona göre ölçeklendiği durumlarda gerçekleşir. En güçlü tahmin ediciyi belirlediğiniz Maksimum Puan ile sınırlayan Maksimum ölçekli yöntemi deneyin veya önemsiz tahmin ediciyi bırakın."
-            ],
-            "This range contains a gap where the model is not superior; read the curve.": [
-                "Bu aralık modelin üstün olmadığı bir boşluk içeriyor; eğriyi okuyun."
-            ],
             "This sample size cannot demonstrate agreement.": [
                 "Bu örneklem büyüklüğü uyumu gösteremez."
-            ],
-            "This scoring system does not discriminate.": [
-                ""
-            ],
-            "This scoring system runs backwards.": [
-                ""
-            ],
-            "Threshold": [
-                "Eşik"
-            ],
-            "Threshold Out of Bounds": [
-                "Eşik Sınırların Dışında"
-            ],
-            "Threshold probabilities must be numbers strictly between 0 and 1, separated by commas or spaces.": [
-                "Eşik olasılıkları virgül veya boşlukla ayrılmış, kesinlikle 0 ile 1 arasında sayılar olmalıdır."
-            ],
-            "Threshold probabilities must lie strictly between 0 and 1.": [
-                "Eşik olasılıkları kesinlikle 0 ile 1 arasında olmalıdır."
-            ],
-            "Threshold Probability": [
-                "Eşik Olasılığı"
-            ],
-            "Threshold probability is set by clinical judgement about the relative cost of a missed case versus an unnecessary treatment; it is not estimated from the data, so there is no optimal value to report.": [
-                "Eşik olasılığı, kaçırılan bir olgunun gereksiz bir tedaviye göreceli maliyeti hakkındaki klinik yargıyla belirlenir; verilerden tahmin edilmez, bu nedenle rapor edilecek optimal bir değer yoktur."
-            ],
-            "Threshold Range": [
-                "Eşik Aralığı"
-            ],
-            "Threshold Range Too Narrow": [
-                "Eşik Aralığı Çok Dar"
-            ],
-            "Threshold range: {lo}% to {hi}%.": [
-                "Eşik aralığı: %{lo} ila %{hi}."
-            ],
-            "Threshold Step Size": [
-                "Eşik Adım Boyutu"
-            ],
-            "Thresholds for table (probabilities 0-1, comma-separated)": [
-                "Tablo için eşikler (0-1 arası olasılıklar, virgülle ayrılmış)"
-            ],
-            "To": [
-                "Bitiş"
-            ],
-            "To Do": [
-                "Yapılacaklar"
-            ],
-            "To get started:": [
-                "Başlamak için:"
-            ],
-            "Too few complete cases for analysis.": [
-                "Analiz için çok az eksiksiz olgu var."
-            ],
-            "Too few non-degenerate predictor columns.": [
-                "Çok az dejenere olmayan tahmin edici sütunu var."
-            ],
-            "Total Benefit": [
-                "Toplam Fayda"
-            ],
-            "Total Cost": [
-                "Toplam Maliyet"
-            ],
-            "Total Score": [
-                "Toplam Puan"
-            ],
-            "Treat All": [
-                "Herkesi Tedavi Et"
-            ],
-            "Treat None": [
-                "Hiç Kimseyi Tedavi Et"
-            ],
-            "True Negative": [
-                "Gerçek Negatif"
-            ],
-            "True Positive": [
-                "Gerçek Pozitif"
-            ],
-            "True Positives": [
-                "Gerçek Pozitifler"
-            ],
-            "Try the Minimum CV Error lambda instead of the 1SE rule, or add more informative predictors.": [
-                "1SE kuralı yerine Minimum ÇD Hatası lambdasını deneyin veya daha bilgilendirici tahmin ediciler ekleyin."
             ],
             "Two-sided": [
                 "İki yönlü"
@@ -2617,9 +469,6 @@
             "unavailable": [
                 "mevcut değil"
             ],
-            "Understanding Penalized Logistic Regression": [
-                "Cezalandırılmış Lojistik Regresyonu Anlama"
-            ],
             "Unsupported number of outcome categories": [
                 ""
             ],
@@ -2629,92 +478,11 @@
             "Upper confidence limit you want the study to achieve for kappa. It must be above kappa0, and is ignored for a one-sided interval.": [
                 "Çalışmanın kappa için ulaşmasını istediğiniz üst güven sınırı. kappa0 değerinin üzerinde olmalıdır ve tek taraflı bir aralık için yok sayılır."
             ],
-            "Upper quartile (top quarter scores)": [
-                "Üst çeyreklik (en üst çeyrek puanlar)"
-            ],
-            "Upper tertile (top third scores)": [
-                "Üst üçte birlik (en üst üçte bir puanlar)"
-            ],
-            "Use model-based probabilities and assess their calibration separately in the target population; min-max scaling does not create calibrated risks.": [
-                "Model tabanlı olasılıkları kullanın ve bunların kalibrasyonunu hedef popülasyonda ayrıca değerlendirin; min-maks ölçeklendirmesi kalibre edilmiş riskler oluşturmaz."
-            ],
-            "Using default thresholds": [
-                "Varsayılan eşikler kullanılıyor"
-            ],
-            "Using fewer than 100 replications may give unreliable confidence intervals; consider at least 1000 replications for stable estimates.": [
-                "100'den az tekrarlama kullanmak güvenilmez güven aralıkları verebilir; kararlı tahminler için en az 1000 tekrarlama düşünün."
-            ],
-            "Validation": [
-                "Doğrulama"
-            ],
-            "Value": [
-                "Değer"
-            ],
-            "Values between 0 and 1 are accepted as probabilities, but this analysis does not verify calibration.": [
-                "0 ile 1 arasındaki değerler olasılık olarak kabul edilir, ancak bu analiz kalibrasyonu doğrulamaz."
-            ],
-            "Variable": [
-                "Değişken"
-            ],
-            "Variable Importance Analysis": [
-                "Değişken önemi analizi"
-            ],
-            "Variable importance analysis": [
-                "Değişken önemi analizi"
-            ],
-            "Variable standardization": [
-                ""
-            ],
-            "Variables analysed": [
-                "Analiz edilen değişkenler"
-            ],
-            "Very small sample size (n = {n}).": [
-                "Çok küçük örneklem büyüklüğü (n = {n})."
-            ],
-            "Warning": [
-                "Uyarı"
-            ],
-            "Warning: an unpenalized logistic refit (a 'Logistic' row) did not converge or produced fitted probabilities at 0 or 1, indicating complete or quasi-complete separation. Its apparent AUC (often ~1.0), AIC, and Brier score are unreliable and should not be interpreted - this is exactly the instability that LASSO penalization is designed to avoid.": [
-                "Uyarı: cezalandırılmamış bir lojistik yeniden uyarlama (bir 'Lojistik' satırı) yakınsamadı veya 0 ya da 1'de uyarlanan olasılıklar üretti, bu da tam veya yarı tam ayrımı gösterir. Görünürdeki EAA'sı (genellikle ~1.0), AIC'si ve Brier puanı güvenilmezdir ve yorumlanmamalıdır - bu tam olarak LASSO cezalandırmasının önlemek için tasarlandığı kararsızlıktır."
-            ],
-            "Warning: Very high apparent AUC with small sample size suggests possible overfitting. Enable bootstrap validation to assess optimism.": [
-                "Uyarı: Küçük örneklem boyutu ile çok yüksek görünürde EAA olası aşırı uyuma işaret eder. İyimserliği değerlendirmek için bootstrap doğrulamasını etkinleştirin."
-            ],
             "Warning.": [
                 ""
             ],
-            "Welcome to LASSO Logistic Regression": [
-                "LASSO Lojistik Regresyona Hoş Geldiniz"
-            ],
-            "Whether it beats treating everyone or no one is the Range of Benefit below.": [
-                "Herkesi veya hiç kimseyi tedavi etmeyi geçip geçmediği aşağıdaki Fayda Aralığıdır."
-            ],
-            "Wide Threshold Range": [
-                "Geniş Eşik Aralığı"
-            ],
-            "Widen the threshold range, or remove it from \"Thresholds for table\".": [
-                "Eşik aralığını genişletin veya \"Tablo için eşikler\"den kaldırın."
-            ],
-            "Widen the threshold range, or remove them from \"Thresholds for table\".": [
-                "Eşik aralığını genişletin veya \"Tablo için eşikler\"den kaldırın."
-            ],
-            "Width": [
-                "Genişlik"
-            ],
             "With the sample size already fixed, this reports the lower bound of the one-sided 100(1 - alpha)% confidence interval that the study can expect to achieve for the intraclass (Fleiss-type) kappa of the common-correlation model used by the kappaSize package (Donner and Eliasziw; Rotondi and Donner); for two raters with equal marginal frequencies this coincides with Cohen's kappa.": [
                 "Örneklem büyüklüğü önceden sabitken, kappaSize paketinin kullandığı ortak korelasyon modelindeki sınıf içi (Fleiss tipi) kappa için çalışmanın ulaşmayı bekleyebileceği tek yönlü %100(1 - alfa) güven aralığının alt sınırını bildirir (Donner ve Eliasziw; Rotondi ve Donner); eşit marjinal sıklıklı iki değerlendiricide bu Cohen kappasıyla örtüşür."
-            ],
-            "Worse than chance - ranking is inverted": [
-                ""
-            ],
-            "You are already using the least conservative lambda (Minimum CV Error), so the penalty is not the limiting factor: none of these predictors carries enough signal at this sample size. Add more informative predictors or collect more cases.": [
-                "Zaten en az muhafazakar lambdayı (Minimum ÇD Hatası) kullanıyorsunuz, bu nedenle ceza sınırlayıcı faktör değildir: bu tahmin edicilerin hiçbiri bu örneklem boyutunda yeterli sinyal taşımıyor. Daha bilgilendirici tahmin ediciler ekleyin veya daha fazla olgu toplayın."
-            ],
-            "You are already using the least conservative lambda, so add more informative predictors or collect more cases.": [
-                "Zaten en az muhafazakar lambdayı kullanıyorsunuz, bu nedenle daha bilgilendirici tahmin ediciler ekleyin veya daha fazla olgu toplayın."
-            ],
-            "Youden index": [
-                "Youden indeksi"
             ]
         }
     }
