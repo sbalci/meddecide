@@ -1177,7 +1177,7 @@ per-rater and per-subgroup agreement, rater and case clustering, consensus
 and agreement-level variables, and sample size for an agreement study.
 }
 \examples{
-\dontrun{
+\donttest{
 # Two raters scoring the same 250 cases as 0 or 1
 agreement(
     data = histopathology,

@@ -63,26 +63,6 @@ analyses:
       ICC, Lin's concordance, Bland-Altman limits, marginal homogeneity tests,
       per-rater and per-subgroup agreement, rater and case clustering, consensus
       and agreement-level variables, and sample size for an agreement study.
-  - title: Co-Testing Analysis
-    name: cotest
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision Calculators
-    menuTitle: Co-Testing Analysis
-    menuSubtitle: Two tests run in parallel
-    description: >
-      Analyses two diagnostic tests applied in parallel: both are performed on
-      the same subject at the same time, before either result is known, and the
-      two results are then combined. Reports the post-test probability of
-      disease for every result combination (either test positive, test 1 only,
-      test 2 only, both positive, both negative), optionally allowing the two
-      tests to be conditionally dependent. For tests performed one after
-      another, where the second is ordered only after a particular first result,
-      use Sequential Test Analysis instead. Note that Sequential Test Analysis
-      also offers a parallel strategy, but its combined figures assume
-      conditional independence; this analysis is the one that models conditional
-      dependence numerically.
   - title: Medical Decision
     name: decision
     ns: meddecide
@@ -111,6 +91,26 @@ analyses:
       probabilities. Supports confidence interval estimation and Fagan nomogram
       visualization for educational interpretation. Presets and examples are
       illustrative only and are not clinical guides.
+  - title: Co-Testing Analysis
+    name: cotest
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Calculators
+    menuTitle: Co-Testing Analysis
+    menuSubtitle: Two tests run in parallel
+    description: >
+      Analyses two diagnostic tests applied in parallel: both are performed on
+      the same subject at the same time, before either result is known, and the
+      two results are then combined. Reports the post-test probability of
+      disease for every result combination (either test positive, test 1 only,
+      test 2 only, both positive, both negative), optionally allowing the two
+      tests to be conditionally dependent. For tests performed one after
+      another, where the second is ordered only after a particular first result,
+      use Sequential Test Analysis instead. Note that Sequential Test Analysis
+      also offers a parallel strategy, but its combined figures assume
+      conditional independence; this analysis is the one that models conditional
+      dependence numerically.
   - title: Combine Medical Decision Tests
     name: decisioncombine
     ns: meddecide
