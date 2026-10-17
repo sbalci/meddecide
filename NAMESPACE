@@ -38,6 +38,7 @@ export(sequentialtests)
 export(validate_clinical_data)
 import(jmvcore)
 importFrom(DescTools,CCC)
+importFrom(MASS,fitdistr)
 importFrom(R6,R6Class)
 importFrom(boot,
   boot,
@@ -133,7 +134,6 @@ importFrom(stats,
   quantile,
   var
 )
-importFrom(tibble,rownames_to_column)
 importFrom(tidyr,
   gather,
   pivot_longer
