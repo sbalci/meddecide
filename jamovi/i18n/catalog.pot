@@ -4315,6 +4315,8 @@ msgid "Advanced research"
 msgstr ""
 
 #: R/psychopdaROC.b.R
+#: package/analyses/psychopdaROC.title
+#: package/analyses/psychopdaROC.menuTitle
 #: psychopdaROC/options.title
 #: psychopdaROC/ui.title
 #: psychopdaROC/ui[9].label
@@ -4322,6 +4324,7 @@ msgstr ""
 msgid "Advanced ROC Analysis"
 msgstr ""
 
+#: package/analyses/psychopdaROC.menuSubtitle
 #: psychopdaROC/options.menuSubtitle
 msgid "Advanced ROC analysis with statistical comparisons and effect sizes"
 msgstr ""
@@ -4374,6 +4377,7 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 #: R/nogoldstandard.b.R
+#: package/analyses/agreement.menuSubgroup
 #: agreement/options.menuSubgroup
 #: agreement/results/allPairsKappaTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
@@ -4405,6 +4409,7 @@ msgstr ""
 msgid "Agreement Analysis Summary"
 msgstr ""
 
+#: package/analyses/agreement.description
 #: agreement/options.description.main
 msgid ""
 "Agreement between two or more raters who scored the same cases. Cohen's "
@@ -4894,6 +4899,7 @@ msgstr ""
 msgid "Analysed Contingency Table"
 msgstr ""
 
+#: package/analyses/cotest.description
 #: cotest/options.description.main
 msgid ""
 "Analyses two diagnostic tests applied in parallel: both are performed on the "
@@ -4977,6 +4983,7 @@ msgstr ""
 msgid "Analysis method: currently \"{current}\", example \"{example}\""
 msgstr ""
 
+#: package/analyses/nogoldstandard.description
 #: nogoldstandard/options.description.main
 msgid ""
 "Analysis of multiple binary tests when no perfect reference exists. "
@@ -5048,6 +5055,8 @@ msgid "Analysis unit: independent observations"
 msgstr ""
 
 #: R/nogoldstandard.b.R
+#: package/analyses/nogoldstandard.title
+#: package/analyses/nogoldstandard.menuTitle
 #: nogoldstandard/options.title
 #: nogoldstandard/ui.title
 #: nogoldstandard/results.title
@@ -5095,6 +5104,7 @@ msgstr ""
 msgid "Analyzed rows"
 msgstr ""
 
+#: package/analyses/sequentialtests.description
 #: sequentialtests/options.description.main
 msgid ""
 "Analyzes how diagnostic accuracy changes when applying two tests in "
@@ -7814,6 +7824,8 @@ msgid "Clinical Report Withheld"
 msgstr ""
 
 #: R/enhancedROC.b.R
+#: package/analyses/enhancedROC.title
+#: package/analyses/enhancedROC.menuTitle
 #: enhancedROC/options.title
 #: enhancedROC/ui.title
 msgid "Clinical ROC Analysis"
@@ -7823,6 +7835,7 @@ msgstr ""
 msgid "Clinical ROC Analysis Results"
 msgstr ""
 
+#: package/analyses/enhancedROC.description
 #: enhancedROC/options.description.main
 msgid ""
 "Clinical ROC analysis toolkit for comprehensive diagnostic performance "
@@ -7832,6 +7845,7 @@ msgid ""
 "test evaluation, and clinical decision support in medical research."
 msgstr ""
 
+#: package/analyses/enhancedROC.menuSubtitle
 #: enhancedROC/options.menuSubtitle
 msgid "Clinical ROC analysis with diagnostic metrics and optimal cutoffs"
 msgstr ""
@@ -7909,6 +7923,7 @@ msgstr ""
 msgid "Clinical Utility Plot Error"
 msgstr ""
 
+#: package/analyses/decisioncurve.menuSubtitle
 #: decisioncurve/options.menuSubtitle
 msgid "Clinical Utility, Net Benefit, Threshold Analysis"
 msgstr ""
@@ -8032,6 +8047,8 @@ msgstr ""
 msgid "Clusters"
 msgstr ""
 
+#: package/analyses/cotest.title
+#: package/analyses/cotest.menuTitle
 #: cotest/options.title
 #: cotest/ui.title
 #: cotest/results.title
@@ -8230,11 +8247,14 @@ msgstr ""
 msgid "Combinations vs each test alone"
 msgstr ""
 
+#: package/analyses/decisioncombine.menuSubtitle
 #: decisioncombine/options.menuSubtitle
 msgid "Combine and evaluate test patterns"
 msgstr ""
 
 #: R/decisioncombine.b.R
+#: package/analyses/decisioncombine.title
+#: package/analyses/decisioncombine.menuTitle
 #: decisioncombine/options.title
 #: decisioncombine/ui.title
 #: decisioncombine/results.title
@@ -8384,12 +8404,15 @@ msgid ""
 "positive and negative classes."
 msgstr ""
 
+#: package/analyses/decisioncompare.title
+#: package/analyses/decisioncompare.menuTitle
 #: decisioncompare/options.title
 #: decisioncompare/ui.title
 #: decisioncompare/results.title
 msgid "Compare Medical Decision Tests"
 msgstr ""
 
+#: package/analyses/decisioncompare.menuSubtitle
 #: decisioncompare/options.menuSubtitle
 msgid "Compare sensitivity, specificity, PPV, NPV, ..."
 msgstr ""
@@ -8738,6 +8761,8 @@ msgstr ""
 msgid "Confidence Interval"
 msgstr ""
 
+#: package/analyses/kappaSizeCI.title
+#: package/analyses/kappaSizeCI.menuTitle
 #: kappaSizeCI/options.title
 #: kappaSizeCI/ui.title
 #: kappaSizeCI/results.title
@@ -9799,6 +9824,10 @@ msgid ""
 "curves there - not the other way round."
 msgstr ""
 
+#: package/analyses/decision.menuSubgroup
+#: package/analyses/decisioncombine.menuSubgroup
+#: package/analyses/decisioncompare.menuSubgroup
+#: package/analyses/nogoldstandard.menuSubgroup
 #: decision/options.menuSubgroup
 #: decisioncombine/options.menuSubgroup
 #: decisioncompare/options.menuSubgroup
@@ -9810,6 +9839,9 @@ msgstr ""
 msgid "DECISION BASED ON MEASURE"
 msgstr ""
 
+#: package/analyses/cotest.menuSubgroup
+#: package/analyses/decisioncalculator.menuSubgroup
+#: package/analyses/sequentialtests.menuSubgroup
 #: cotest/options.menuSubgroup
 #: decisioncalculator/options.menuSubgroup
 #: sequentialtests/options.menuSubgroup
@@ -9831,6 +9863,9 @@ msgstr ""
 #: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
+#: package/analyses/decisioncurve.title
+#: package/analyses/decisioncurve.menuSubgroup
+#: package/analyses/decisioncurve.menuTitle
 #: decisioncurve/options.title
 #: decisioncurve/options.menuSubgroup
 #: decisioncurve/ui.title
@@ -9857,6 +9892,7 @@ msgid ""
 "by calculating net benefit across different threshold probabilities."
 msgstr ""
 
+#: package/analyses/decisioncurve.description
 #: decisioncurve/options.description.main
 msgid ""
 "Decision Curve Analysis for evaluating the clinical utility of prediction "
@@ -12288,6 +12324,7 @@ msgstr ""
 msgid "Exploratory Pairwise Model Comparison"
 msgstr ""
 
+#: package/analyses/psychopdaROC.description
 #: psychopdaROC/options.description.main
 msgid ""
 "Exploratory Receiver Operating Characteristic (ROC) curve analysis with "
@@ -12810,10 +12847,12 @@ msgstr ""
 msgid "Find lower Kappa based on sample size"
 msgstr ""
 
+#: package/analyses/kappaSizeCI.menuSubtitle
 #: kappaSizeCI/options.menuSubtitle
 msgid "Find sample size based on Kappa confidence"
 msgstr ""
 
+#: package/analyses/kappaSizePower.menuSubtitle
 #: kappaSizePower/options.menuSubtitle
 msgid "Find sample size based on power"
 msgstr ""
@@ -13124,15 +13163,6 @@ msgid ""
 msgstr ""
 
 #: package/analyses/kappaSizeFixedN.description
-msgid ""
-"For an interobserver agreement study whose number of subjects is already "
-"fixed, the lowest kappa the study would still be unable to rule out - the "
-"lower bound of the one-sided confidence interval around the anticipated "
-"kappa (kappa0); every value below it is excluded. Computed with the "
-"kappaSize package. Use kappaSizePower to size a study for a hypothesis test "
-"and kappaSizeCI to size it for a target interval width."
-msgstr ""
-
 #: kappaSizeFixedN/options.description.main
 msgid ""
 "For an interobserver agreement study whose number of subjects is already "
@@ -13424,6 +13454,7 @@ msgstr ""
 msgid "Full LASSO model (continuous)"
 msgstr ""
 
+#: package/analyses/decisioncompare.description
 #: decisioncompare/options.description.main
 msgid ""
 "Function for comparing multiple Medical Decision Tests. Compares "
@@ -13438,6 +13469,7 @@ msgid ""
 "never pooled as negative."
 msgstr ""
 
+#: package/analyses/decision.description
 #: decision/options.description.main
 msgid ""
 "Function for Medical Decision Analysis. Sensitivity, Specificity, Positive "
@@ -15147,6 +15179,8 @@ msgid ""
 "visual assessment of agreement."
 msgstr ""
 
+#: package/analyses/agreement.title
+#: package/analyses/agreement.menuTitle
 #: agreement/options.title
 #: agreement/ui.title
 #: agreement/results.title
@@ -15930,11 +15964,13 @@ msgid ""
 "score, calibration slope), not coefficient uncertainty."
 msgstr ""
 
+#: package/analyses/lassologistic.menuTitle
 #: lassologistic/options.menuTitle
 msgid "LASSO Logistic"
 msgstr ""
 
 #: R/lassologistic.b.R
+#: package/analyses/lassologistic.title
 #: lassologistic/options.title
 #: lassologistic/ui.title
 #: lassologistic/results.title
@@ -16493,15 +16529,12 @@ msgid ""
 "specified in the analysis options rather than estimated from these data."
 msgstr ""
 
+#: package/analyses/kappaSizeFixedN.title
+#: package/analyses/kappaSizeFixedN.menuTitle
 #: kappaSizeFixedN/options.title
 #: kappaSizeFixedN/ui.title
 #: kappaSizeFixedN/results.title
 msgid "Lowest Expected Kappa for a Fixed Sample Size"
-msgstr ""
-
-#: package/analyses/kappaSizeFixedN.title
-#: package/analyses/kappaSizeFixedN.menuTitle
-msgid "Lowest Expected Value for a fixed sample size"
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -16990,6 +17023,18 @@ msgstr ""
 msgid "Measures"
 msgstr ""
 
+#: package/analyses/agreement.menuGroup
+#: package/analyses/cotest.menuGroup
+#: package/analyses/decision.menuGroup
+#: package/analyses/decisioncalculator.menuGroup
+#: package/analyses/decisioncombine.menuGroup
+#: package/analyses/decisioncompare.menuGroup
+#: package/analyses/decisioncurve.menuGroup
+#: package/analyses/enhancedROC.menuGroup
+#: package/analyses/lassologistic.menuGroup
+#: package/analyses/nogoldstandard.menuGroup
+#: package/analyses/psychopdaROC.menuGroup
+#: package/analyses/sequentialtests.menuGroup
 #: agreement/options.menuGroup
 #: cotest/options.menuGroup
 #: decision/options.menuGroup
@@ -17021,6 +17066,8 @@ msgstr ""
 msgid "Median of tied cutpoints"
 msgstr ""
 
+#: package/analyses/decision.title
+#: package/analyses/decision.menuTitle
 #: decision/options.title
 #: decision/ui.title
 #: decision/results.title
@@ -17031,6 +17078,8 @@ msgstr ""
 msgid "Medical Decision Analysis"
 msgstr ""
 
+#: package/analyses/decisioncalculator.title
+#: package/analyses/decisioncalculator.menuTitle
 #: decisioncalculator/options.title
 #: decisioncalculator/ui.title
 #: decisioncalculator/results.title
@@ -17041,6 +17090,7 @@ msgstr ""
 msgid "Medical decision calculator"
 msgstr ""
 
+#: package/analyses/decisioncalculator.description
 #: decisioncalculator/options.description.main
 msgid ""
 "Medical Decision Calculator for diagnostic test evaluation when you have the "
@@ -18000,6 +18050,7 @@ msgstr ""
 msgid "Multiple ROC curves for comparison"
 msgstr ""
 
+#: package/analyses/nogoldstandard.menuSubtitle
 #: nogoldstandard/options.menuSubtitle
 msgid "Multiple Test Analysis Without Gold Standard"
 msgstr ""
@@ -20048,6 +20099,7 @@ msgstr ""
 msgid "Number of Subjects"
 msgstr ""
 
+#: package/analyses/kappaSizeCI.description
 #: kappaSizeCI/options.description.main
 msgid ""
 "Number of subjects an interobserver agreement study needs for the confidence "
@@ -21731,6 +21783,7 @@ msgstr ""
 msgid "Penalized EM Sample Size"
 msgstr ""
 
+#: package/analyses/lassologistic.menuSubtitle
 #: lassologistic/options.menuSubtitle
 msgid "Penalized feature selection for binary classification"
 msgstr ""
@@ -21922,6 +21975,7 @@ msgstr ""
 msgid "Performance Summary"
 msgstr ""
 
+#: package/analyses/lassologistic.description
 #: lassologistic/options.description.main
 msgid ""
 "Performs LASSO-penalized logistic regression for variable selection in "
@@ -22583,6 +22637,8 @@ msgid ""
 msgstr ""
 
 #: package/analyses/kappaSizeFixedN.menuGroup
+#: package/analyses/kappaSizeCI.menuGroup
+#: package/analyses/kappaSizePower.menuGroup
 #: kappaSizeCI/options.menuGroup
 #: kappaSizeFixedN/options.menuGroup
 #: kappaSizePower/options.menuGroup
@@ -22599,6 +22655,8 @@ msgid "Power Adequacy"
 msgstr ""
 
 #: package/analyses/kappaSizeFixedN.menuSubgroup
+#: package/analyses/kappaSizeCI.menuSubgroup
+#: package/analyses/kappaSizePower.menuSubgroup
 #: kappaSizeCI/options.menuSubgroup
 #: kappaSizeFixedN/options.menuSubgroup
 #: kappaSizePower/options.menuSubgroup
@@ -22635,6 +22693,8 @@ msgstr ""
 msgid "Power and Sample Size Analysis"
 msgstr ""
 
+#: package/analyses/kappaSizePower.title
+#: package/analyses/kappaSizePower.menuTitle
 #: kappaSizePower/options.title
 #: kappaSizePower/ui.title
 #: kappaSizePower/results.title
@@ -22959,6 +23019,7 @@ msgstr ""
 msgid "Prediction column: %1$s. Reference annotators: %2$s."
 msgstr ""
 
+#: package/analyses/lassologistic.menuSubgroup
 #: lassologistic/options.menuSubgroup
 msgid "Prediction Models"
 msgstr ""
@@ -24996,6 +25057,8 @@ msgid ""
 "rater variable and run again."
 msgstr ""
 
+#: package/analyses/enhancedROC.menuSubgroup
+#: package/analyses/psychopdaROC.menuSubgroup
 #: enhancedROC/options.menuSubgroup
 #: psychopdaROC/options.menuSubgroup
 msgid "ROC"
@@ -25427,6 +25490,7 @@ msgstr ""
 msgid "Sample Size for Agreement Study (Design)"
 msgstr ""
 
+#: package/analyses/kappaSizePower.description
 #: kappaSizePower/options.description.main
 msgid ""
 "Sample size for an interobserver agreement study sized to reject a null "
@@ -26273,10 +26337,12 @@ msgid ""
 "probabilities carry no confidence interval."
 msgstr ""
 
+#: package/analyses/decision.menuSubtitle
 #: decision/options.menuSubtitle
 msgid "Sensitivity, Specificity, PPV, NPV"
 msgstr ""
 
+#: package/analyses/decisioncalculator.menuSubtitle
 #: decisioncalculator/options.menuSubtitle
 msgid "Sensitivity, Specificity, PPV, NPV, ..."
 msgstr ""
@@ -26309,10 +26375,13 @@ msgstr ""
 msgid "Separation in Unpenalized Refit"
 msgstr ""
 
+#: package/analyses/sequentialtests.menuSubtitle
 #: sequentialtests/options.menuSubtitle
 msgid "Sequential Test Analysis"
 msgstr ""
 
+#: package/analyses/sequentialtests.title
+#: package/analyses/sequentialtests.menuTitle
 #: sequentialtests/options.title
 #: sequentialtests/ui.title
 #: sequentialtests/results.title
@@ -27830,6 +27899,7 @@ msgstr ""
 msgid "Systematic %"
 msgstr ""
 
+#: package/analyses/decisioncombine.description
 #: decisioncombine/options.description.main
 msgid ""
 "Systematic evaluation of diagnostic test combinations. Analyzes all possible "
@@ -32636,6 +32706,7 @@ msgid ""
 "high in both disease groups, as dense tissue might produce."
 msgstr ""
 
+#: package/analyses/cotest.menuSubtitle
 #: cotest/options.menuSubtitle
 msgid "Two tests run in parallel"
 msgstr ""

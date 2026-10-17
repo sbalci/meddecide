@@ -613,7 +613,7 @@ sequentialtestsBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # No data: every input is an assumed parameter, not an estimate.
 #' sequentialtests(
 #'     test1_sens = 0.95, test1_spec = 0.70,

@@ -221,7 +221,7 @@ kappaSizeFixedNBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # kappaSize::FixedNBinary example: anticipated kappa 0.7, 100 subjects,
 #' # 4 raters, trait prevalence 0.50
 #' kappaSizeFixedN(

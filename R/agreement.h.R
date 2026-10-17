@@ -4336,7 +4336,7 @@ agreementBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Two raters scoring the same 250 cases as 0 or 1
 #' agreement(
 #'     data = histopathology,

@@ -5985,6 +5985,8 @@ msgid "Advanced research"
 msgstr "İleri araştırma"
 
 #: R/psychopdaROC.b.R
+#: package/analyses/psychopdaROC.title
+#: package/analyses/psychopdaROC.menuTitle
 #: psychopdaROC/options.title
 #: psychopdaROC/ui.title
 #: psychopdaROC/ui[9].label
@@ -5992,6 +5994,7 @@ msgstr "İleri araştırma"
 msgid "Advanced ROC Analysis"
 msgstr "İleri Düzey ROC Analizi"
 
+#: package/analyses/psychopdaROC.menuSubtitle
 #: psychopdaROC/options.menuSubtitle
 msgid "Advanced ROC analysis with statistical comparisons and effect sizes"
 msgstr ""
@@ -6052,6 +6055,7 @@ msgstr "Referansla Uyuşan"
 
 #: R/decisioncompare.b.R
 #: R/nogoldstandard.b.R
+#: package/analyses/agreement.menuSubgroup
 #: agreement/options.menuSubgroup
 #: agreement/results/allPairsKappaTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
@@ -6090,6 +6094,7 @@ msgstr ""
 msgid "Agreement Analysis Summary"
 msgstr "Uyum Analizi Özeti"
 
+#: package/analyses/agreement.description
 #: agreement/options.description.main
 msgid ""
 "Agreement between two or more raters who scored the same cases. Cohen's "
@@ -6717,6 +6722,7 @@ msgstr "Analiz Edilen Kombinasyon Sayıları"
 msgid "Analysed Contingency Table"
 msgstr "Analiz Edilen Kontenjans Tablosu"
 
+#: package/analyses/cotest.description
 #: cotest/options.description.main
 msgid ""
 "Analyses two diagnostic tests applied in parallel: both are performed on the "
@@ -6811,6 +6817,7 @@ msgstr "Analiz yöntemi"
 msgid "Analysis method: currently \"{current}\", example \"{example}\""
 msgstr "Analiz yöntemi: şu anda \"{current}\", örnekte \"{example}\""
 
+#: package/analyses/nogoldstandard.description
 #: nogoldstandard/options.description.main
 msgid ""
 "Analysis of multiple binary tests when no perfect reference exists. "
@@ -6888,6 +6895,8 @@ msgid "Analysis unit: independent observations"
 msgstr "Analiz birimi: bağımsız gözlemler"
 
 #: R/nogoldstandard.b.R
+#: package/analyses/nogoldstandard.title
+#: package/analyses/nogoldstandard.menuTitle
 #: nogoldstandard/options.title
 #: nogoldstandard/ui.title
 #: nogoldstandard/results.title
@@ -6937,6 +6946,7 @@ msgstr "Analiz edilen pozitif"
 msgid "Analyzed rows"
 msgstr "Analiz edilen satırlar"
 
+#: package/analyses/sequentialtests.description
 #: sequentialtests/options.description.main
 msgid ""
 "Analyzes how diagnostic accuracy changes when applying two tests in "
@@ -10151,6 +10161,8 @@ msgid "Clinical Report Withheld"
 msgstr "Klinik Rapor Tutuldu"
 
 #: R/enhancedROC.b.R
+#: package/analyses/enhancedROC.title
+#: package/analyses/enhancedROC.menuTitle
 #: enhancedROC/options.title
 #: enhancedROC/ui.title
 msgid "Clinical ROC Analysis"
@@ -10160,6 +10172,7 @@ msgstr "Klinik ROC Analizi"
 msgid "Clinical ROC Analysis Results"
 msgstr "Klinik ROC Analizi Sonuçları"
 
+#: package/analyses/enhancedROC.description
 #: enhancedROC/options.description.main
 msgid ""
 "Clinical ROC analysis toolkit for comprehensive diagnostic performance "
@@ -10174,6 +10187,7 @@ msgstr ""
 "içerir. Tıbbi araştırmalarda biyobelirteç doğrulaması, tanısal test "
 "değerlendirmesi ve klinik karar desteği için temel bir araçtır."
 
+#: package/analyses/enhancedROC.menuSubtitle
 #: enhancedROC/options.menuSubtitle
 msgid "Clinical ROC analysis with diagnostic metrics and optimal cutoffs"
 msgstr "Tanısal metrikler ve optimal kesim değerleri ile klinik ROC analizi"
@@ -10253,6 +10267,7 @@ msgstr "Klinik yararlılık eğrisi"
 msgid "Clinical Utility Plot Error"
 msgstr "Klinik Yararlılık Grafiği Hatası"
 
+#: package/analyses/decisioncurve.menuSubtitle
 #: decisioncurve/options.menuSubtitle
 msgid "Clinical Utility, Net Benefit, Threshold Analysis"
 msgstr "Klinik Yarar, Net Fayda, Eşik Değer Analizi"
@@ -10382,6 +10397,8 @@ msgstr "Kümeleme en az 3 değerlendirici gerektirir"
 msgid "Clusters"
 msgstr "Kümeler"
 
+#: package/analyses/cotest.title
+#: package/analyses/cotest.menuTitle
 #: cotest/options.title
 #: cotest/ui.title
 #: cotest/results.title
@@ -10631,11 +10648,14 @@ msgstr "Kombinasyon Kuralları ile Tek Başına Testler"
 msgid "Combinations vs each test alone"
 msgstr "Kombinasyonlar ile tek başına testler"
 
+#: package/analyses/decisioncombine.menuSubtitle
 #: decisioncombine/options.menuSubtitle
 msgid "Combine and evaluate test patterns"
 msgstr "Test paternlerini birleştirin ve değerlendirin"
 
 #: R/decisioncombine.b.R
+#: package/analyses/decisioncombine.title
+#: package/analyses/decisioncombine.menuTitle
 #: decisioncombine/options.title
 #: decisioncombine/ui.title
 #: decisioncombine/results.title
@@ -10802,12 +10822,15 @@ msgstr ""
 "Açıkça seçilen pozitif ve negatif sınıflar için tanısal belirteçleri "
 "karşılaştırın ve kesim noktalarını seçin."
 
+#: package/analyses/decisioncompare.title
+#: package/analyses/decisioncompare.menuTitle
 #: decisioncompare/options.title
 #: decisioncompare/ui.title
 #: decisioncompare/results.title
 msgid "Compare Medical Decision Tests"
 msgstr "Tıbbi Karar Testlerini Karşılaştır"
 
+#: package/analyses/decisioncompare.menuSubtitle
 #: decisioncompare/options.menuSubtitle
 msgid "Compare sensitivity, specificity, PPV, NPV, ..."
 msgstr "Duyarlılık, özgüllük, PÖD, NÖD karşılaştır..."
@@ -11202,6 +11225,8 @@ msgstr ""
 msgid "Confidence Interval"
 msgstr "Güven Aralığı"
 
+#: package/analyses/kappaSizeCI.title
+#: package/analyses/kappaSizeCI.menuTitle
 #: kappaSizeCI/options.title
 #: kappaSizeCI/ui.title
 #: kappaSizeCI/results.title
@@ -12453,6 +12478,10 @@ msgstr ""
 "Önce klinik yargıdan eşik aralığına karar verin, ardından eğrileri orada "
 "okuyun - tersini yapmayın."
 
+#: package/analyses/decision.menuSubgroup
+#: package/analyses/decisioncombine.menuSubgroup
+#: package/analyses/decisioncompare.menuSubgroup
+#: package/analyses/nogoldstandard.menuSubgroup
 #: decision/options.menuSubgroup
 #: decisioncombine/options.menuSubgroup
 #: decisioncompare/options.menuSubgroup
@@ -12464,6 +12493,9 @@ msgstr "Karar"
 msgid "DECISION BASED ON MEASURE"
 msgstr "ÖLÇÜME DAYALI KARAR"
 
+#: package/analyses/cotest.menuSubgroup
+#: package/analyses/decisioncalculator.menuSubgroup
+#: package/analyses/sequentialtests.menuSubgroup
 #: cotest/options.menuSubgroup
 #: decisioncalculator/options.menuSubgroup
 #: sequentialtests/options.menuSubgroup
@@ -12485,6 +12517,9 @@ msgstr "Karar sonuçları tablosu"
 #: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
+#: package/analyses/decisioncurve.title
+#: package/analyses/decisioncurve.menuSubgroup
+#: package/analyses/decisioncurve.menuTitle
 #: decisioncurve/options.title
 #: decisioncurve/options.menuSubgroup
 #: decisioncurve/ui.title
@@ -12515,6 +12550,7 @@ msgstr ""
 "Karar Eğrisi Analizi, farklı eşik olasılıkları boyunca net faydayı "
 "hesaplayarak tahmin modellerinin klinik yararlılığını değerlendirir."
 
+#: package/analyses/decisioncurve.description
 #: decisioncurve/options.description.main
 msgid ""
 "Decision Curve Analysis for evaluating the clinical utility of prediction "
@@ -15475,6 +15511,7 @@ msgstr ""
 msgid "Exploratory Pairwise Model Comparison"
 msgstr "Keşifsel İkili Model Karşılaştırması"
 
+#: package/analyses/psychopdaROC.description
 #: psychopdaROC/options.description.main
 msgid ""
 "Exploratory Receiver Operating Characteristic (ROC) curve analysis with "
@@ -16071,10 +16108,12 @@ msgstr ""
 msgid "Find lower Kappa based on sample size"
 msgstr "Örneklem büyüklüğüne göre alt kappa sınırını bulma"
 
+#: package/analyses/kappaSizeCI.menuSubtitle
 #: kappaSizeCI/options.menuSubtitle
 msgid "Find sample size based on Kappa confidence"
 msgstr "Kappa güven aralığına göre örneklem büyüklüğü bulma"
 
+#: package/analyses/kappaSizePower.menuSubtitle
 #: kappaSizePower/options.menuSubtitle
 msgid "Find sample size based on power"
 msgstr "Güce dayalı örneklem büyüklüğü bulma"
@@ -16447,15 +16486,6 @@ msgstr ""
 "kaynak popülasyona uygulanamaz; bu analiz dış bir prevalans kabul etmez."
 
 #: package/analyses/kappaSizeFixedN.description
-msgid ""
-"For an interobserver agreement study whose number of subjects is already "
-"fixed, the lowest kappa the study would still be unable to rule out - the "
-"lower bound of the one-sided confidence interval around the anticipated "
-"kappa (kappa0); every value below it is excluded. Computed with the "
-"kappaSize package. Use kappaSizePower to size a study for a hypothesis test "
-"and kappaSizeCI to size it for a target interval width."
-msgstr ""
-
 #: kappaSizeFixedN/options.description.main
 msgid ""
 "For an interobserver agreement study whose number of subjects is already "
@@ -16849,6 +16879,7 @@ msgstr "Dondurulmuş model doğrulama raporu"
 msgid "Full LASSO model (continuous)"
 msgstr "Tam LASSO modeli (sürekli)"
 
+#: package/analyses/decisioncompare.description
 #: decisioncompare/options.description.main
 msgid ""
 "Function for comparing multiple Medical Decision Tests. Compares "
@@ -16873,6 +16904,7 @@ msgstr ""
 "gereklidir. Gözlenen diğer düzeyler açıkça dışlanmalı ya da önceden yeniden "
 "kodlanmalıdır; bunlar hiçbir zaman negatif olarak birleştirilmez."
 
+#: package/analyses/decision.description
 #: decision/options.description.main
 msgid ""
 "Function for Medical Decision Analysis. Sensitivity, Specificity, Positive "
@@ -18904,6 +18936,8 @@ msgstr ""
 "Yorum: %s (Koo & Li, 2016). Uyumun görsel değerlendirmesi için Bland-Altman "
 "grafiğini kullanmayı düşünün."
 
+#: package/analyses/agreement.title
+#: package/analyses/agreement.menuTitle
 #: agreement/options.title
 #: agreement/ui.title
 #: agreement/results.title
@@ -19910,11 +19944,13 @@ msgstr ""
 "Bootstrap doğrulaması katsayı belirsizliğini değil, iyimserlik düzeltmeli "
 "performansı (AUC, Brier skoru, kalibrasyon eğimi) tahmin eder."
 
+#: package/analyses/lassologistic.menuTitle
 #: lassologistic/options.menuTitle
 msgid "LASSO Logistic"
 msgstr "LASSO Lojistik"
 
 #: R/lassologistic.b.R
+#: package/analyses/lassologistic.title
 #: lassologistic/options.title
 #: lassologistic/ui.title
 #: lassologistic/results.title
@@ -20575,16 +20611,13 @@ msgstr ""
 "analiz seçeneklerinde belirtildiği şekilde pozitif sınıfı gösterdiği kabul "
 "edildi."
 
+#: package/analyses/kappaSizeFixedN.title
+#: package/analyses/kappaSizeFixedN.menuTitle
 #: kappaSizeFixedN/options.title
 #: kappaSizeFixedN/ui.title
 #: kappaSizeFixedN/results.title
 msgid "Lowest Expected Kappa for a Fixed Sample Size"
 msgstr "Sabit Örneklem Büyüklüğü için En Düşük Beklenen Kappa"
-
-#: package/analyses/kappaSizeFixedN.title
-#: package/analyses/kappaSizeFixedN.menuTitle
-msgid "Lowest Expected Value for a fixed sample size"
-msgstr ""
 
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
@@ -21133,6 +21166,18 @@ msgstr "Ölçüm Değişken(ler)i"
 msgid "Measures"
 msgstr "Ölçütler"
 
+#: package/analyses/agreement.menuGroup
+#: package/analyses/cotest.menuGroup
+#: package/analyses/decision.menuGroup
+#: package/analyses/decisioncalculator.menuGroup
+#: package/analyses/decisioncombine.menuGroup
+#: package/analyses/decisioncompare.menuGroup
+#: package/analyses/decisioncurve.menuGroup
+#: package/analyses/enhancedROC.menuGroup
+#: package/analyses/lassologistic.menuGroup
+#: package/analyses/nogoldstandard.menuGroup
+#: package/analyses/psychopdaROC.menuGroup
+#: package/analyses/sequentialtests.menuGroup
 #: agreement/options.menuGroup
 #: cotest/options.menuGroup
 #: decision/options.menuGroup
@@ -21164,6 +21209,8 @@ msgstr "Bu veri setinin medyanı"
 msgid "Median of tied cutpoints"
 msgstr "Bağlı kesme noktalarının medyanı"
 
+#: package/analyses/decision.title
+#: package/analyses/decision.menuTitle
 #: decision/options.title
 #: decision/ui.title
 #: decision/results.title
@@ -21174,6 +21221,8 @@ msgstr "Tıbbi Karar"
 msgid "Medical Decision Analysis"
 msgstr "Tıbbi Karar Analizi"
 
+#: package/analyses/decisioncalculator.title
+#: package/analyses/decisioncalculator.menuTitle
 #: decisioncalculator/options.title
 #: decisioncalculator/ui.title
 #: decisioncalculator/results.title
@@ -21184,6 +21233,7 @@ msgstr "Tıbbi Karar Hesaplayıcı"
 msgid "Medical decision calculator"
 msgstr "Tıbbi karar hesaplayıcı"
 
+#: package/analyses/decisioncalculator.description
 #: decisioncalculator/options.description.main
 msgid ""
 "Medical Decision Calculator for diagnostic test evaluation when you have the "
@@ -22266,6 +22316,7 @@ msgstr "Çoklu kesim değeri değerlendirmesi"
 msgid "Multiple ROC curves for comparison"
 msgstr "Karşılaştırma için birden fazla ROC eğrisi"
 
+#: package/analyses/nogoldstandard.menuSubtitle
 #: nogoldstandard/options.menuSubtitle
 msgid "Multiple Test Analysis Without Gold Standard"
 msgstr "Altın Standart Olmadan Çoklu Test Analizi"
@@ -24744,6 +24795,7 @@ msgstr ""
 msgid "Number of Subjects"
 msgstr "Olgu Sayısı"
 
+#: package/analyses/kappaSizeCI.description
 #: kappaSizeCI/options.description.main
 msgid ""
 "Number of subjects an interobserver agreement study needs for the confidence "
@@ -26828,6 +26880,7 @@ msgstr ""
 msgid "Penalized EM Sample Size"
 msgstr "Cezalandırılmış EM Örneklem Büyüklüğü"
 
+#: package/analyses/lassologistic.menuSubtitle
 #: lassologistic/options.menuSubtitle
 msgid "Penalized feature selection for binary classification"
 msgstr "İkili sınıflandırma için cezalandırılmış özellik seçimi"
@@ -27047,6 +27100,7 @@ msgstr "Performans Ölçütü"
 msgid "Performance Summary"
 msgstr "Performans Özeti"
 
+#: package/analyses/lassologistic.description
 #: lassologistic/options.description.main
 msgid ""
 "Performs LASSO-penalized logistic regression for variable selection in "
@@ -27811,6 +27865,8 @@ msgstr ""
 "(%)"
 
 #: package/analyses/kappaSizeFixedN.menuGroup
+#: package/analyses/kappaSizeCI.menuGroup
+#: package/analyses/kappaSizePower.menuGroup
 #: kappaSizeCI/options.menuGroup
 #: kappaSizeFixedN/options.menuGroup
 #: kappaSizePower/options.menuGroup
@@ -27827,6 +27883,8 @@ msgid "Power Adequacy"
 msgstr "Güç Yeterliliği"
 
 #: package/analyses/kappaSizeFixedN.menuSubgroup
+#: package/analyses/kappaSizeCI.menuSubgroup
+#: package/analyses/kappaSizePower.menuSubgroup
 #: kappaSizeCI/options.menuSubgroup
 #: kappaSizeFixedN/options.menuSubgroup
 #: kappaSizePower/options.menuSubgroup
@@ -27865,6 +27923,8 @@ msgstr "Bu yapılandırma için güç ve gerekli örneklem büyüklüğü hesapl
 msgid "Power and Sample Size Analysis"
 msgstr "Güç ve Örneklem Büyüklüğü Analizi"
 
+#: package/analyses/kappaSizePower.title
+#: package/analyses/kappaSizePower.menuTitle
 #: kappaSizePower/options.title
 #: kappaSizePower/ui.title
 #: kappaSizePower/results.title
@@ -28262,6 +28322,7 @@ msgstr ""
 msgid "Prediction column: %1$s. Reference annotators: %2$s."
 msgstr "Tahmin sütunu: %1$s. Referans işaretleyiciler: %2$s."
 
+#: package/analyses/lassologistic.menuSubgroup
 #: lassologistic/options.menuSubgroup
 msgid "Prediction Models"
 msgstr "Tahmin Modelleri"
@@ -30636,6 +30697,8 @@ msgstr ""
 "bağlı hale gelir. Her değerlendirici değişkeninde aynı tam kategori kümesini "
 "aynı sırayla tanımlayın ve analizi yeniden çalıştırın."
 
+#: package/analyses/enhancedROC.menuSubgroup
+#: package/analyses/psychopdaROC.menuSubgroup
 #: enhancedROC/options.menuSubgroup
 #: psychopdaROC/options.menuSubgroup
 msgid "ROC"
@@ -31148,6 +31211,7 @@ msgstr "Uyum Çalışması İçin Örneklem Büyüklüğü"
 msgid "Sample Size for Agreement Study (Design)"
 msgstr "Uyum Çalışması İçin Örneklem Büyüklüğü (Tasarım)"
 
+#: package/analyses/kappaSizePower.description
 #: kappaSizePower/options.description.main
 msgid ""
 "Sample size for an interobserver agreement study sized to reject a null "
@@ -32152,10 +32216,12 @@ msgstr ""
 "Duyarlılık, özgüllük ve prevalans kesin değerler olarak ele alındığından bu "
 "olasılıklar güven aralığı içermez."
 
+#: package/analyses/decision.menuSubtitle
 #: decision/options.menuSubtitle
 msgid "Sensitivity, Specificity, PPV, NPV"
 msgstr "Duyarlılık, Özgüllük, PÖD, NÖD"
 
+#: package/analyses/decisioncalculator.menuSubtitle
 #: decisioncalculator/options.menuSubtitle
 msgid "Sensitivity, Specificity, PPV, NPV, ..."
 msgstr "Duyarlılık, Özgüllük, PÖD, NÖD, ..."
@@ -32192,10 +32258,13 @@ msgstr "Eşiğe göre duyarlılık/özgüllük"
 msgid "Separation in Unpenalized Refit"
 msgstr "Cezalandırılmamış Yeniden Uyumda Ayrım"
 
+#: package/analyses/sequentialtests.menuSubtitle
 #: sequentialtests/options.menuSubtitle
 msgid "Sequential Test Analysis"
 msgstr "Sıralı Test Analizi"
 
+#: package/analyses/sequentialtests.title
+#: package/analyses/sequentialtests.menuTitle
 #: sequentialtests/options.title
 #: sequentialtests/ui.title
 #: sequentialtests/results.title
@@ -33963,6 +34032,7 @@ msgstr "Sistematik (değerlendirici) varyansı"
 msgid "Systematic %"
 msgstr "Sistematik %"
 
+#: package/analyses/decisioncombine.description
 #: decisioncombine/options.description.main
 msgid ""
 "Systematic evaluation of diagnostic test combinations. Analyzes all possible "
@@ -40501,6 +40571,7 @@ msgstr ""
 "açabileceği gibi, bağımlılık her iki hastalık grubunda da görece yüksek "
 "ayarlanmıştır."
 
+#: package/analyses/cotest.menuSubtitle
 #: cotest/options.menuSubtitle
 msgid "Two tests run in parallel"
 msgstr "Paralel yürütülen iki test"

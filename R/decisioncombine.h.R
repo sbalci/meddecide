@@ -1045,7 +1045,7 @@ decisioncombineBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Illustrative example only; this is not a clinical guide.
 #' data(histopathology)
 #' result <- decisioncombine(

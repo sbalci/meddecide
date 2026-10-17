@@ -2632,7 +2632,7 @@ enhancedROCBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # pROC::aSAH ships with pROC, an Import, so the example runs in every module that
 #' # carries this analysis. positiveClass is a Level option: always a required argument.
 #' enhancedROC(

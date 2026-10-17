@@ -1887,7 +1887,7 @@ decisioncompareBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Clas
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Level arguments are explicit in the generated R API. Pass NULL for
 #' # the unused optional third test selectors only.
 #' decisioncompare(

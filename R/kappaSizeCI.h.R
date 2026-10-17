@@ -235,7 +235,7 @@ kappaSizeCIBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # kappaSize::CIBinary example: anticipated kappa 0.60 to be reported with a
 #' # 95 percent CI of [0.40, 0.80], 2 raters, trait prevalence 0.20
 #' kappaSizeCI(

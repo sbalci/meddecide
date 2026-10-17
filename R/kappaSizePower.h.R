@@ -196,7 +196,7 @@ kappaSizePowerBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # kappaSize::PowerBinary example: test kappa0 = 0.4 against kappa1 = 0.6
 #' # with a trait prevalence of 0.30, two raters, alpha 0.05 and power 0.80
 #' kappaSizePower(

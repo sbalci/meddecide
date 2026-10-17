@@ -1106,7 +1106,7 @@ decisioncurveBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' 
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # outcomePositive and decisionRulePositive are Level options: jamovi forbids a
 #' # default on them, so both are REQUIRED arguments. Pass NULL for the rule level
 #' # when no clinical decision rule is used.
