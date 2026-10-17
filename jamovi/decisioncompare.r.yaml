@@ -1,0 +1,906 @@
+---
+name: decisioncompare
+title: Compare Medical Decision Tests
+jrs: '1.1'
+
+items:
+    # Rich HTML guidance, ordered by severity in the backend and placed before results.
+    - name: notices
+      title: 'Important Information'
+      type: Html
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - pp
+          - pprob
+          - ci
+          - od
+          - excludeIndeterminate
+          - statComp
+          - mcnemarMethod
+          - opa
+          - useOpaCriterion
+          - niMargin
+          - ciMethod
+          - stratify
+          # .findBestTest() emits the "Tied Descriptive Ranking" notice and is reached
+          # ONLY from these three display toggles, so they belong in this item's
+          # clearWith too.
+          - showSummary
+          - showReportSentence
+          - showDescriptiveReport
+
+    - name: levelMapping
+      title: Selected Levels and Exclusions
+      type: Table
+      rows: 0
+      clearWith: [gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate]
+      columns:
+        - name: variable
+          title: Variable
+          type: text
+        - name: positive
+          title: Positive level
+          type: text
+        - name: negative
+          title: Negative level
+          type: text
+        - name: positiveN
+          title: Positive n
+          type: integer
+        - name: negativeN
+          title: Negative n
+          type: integer
+        - name: otherN
+          title: Other n
+          type: integer
+        - name: missingN
+          title: Missing n
+          type: integer
+        - name: otherLevels
+          title: Other observed levels (counts)
+          type: text
+
+    - name: text1
+      title: Original Data
+      type: Preformatted
+      visible: (referenceType:legacy && (od) || referenceType:disease && (od))
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, od]
+
+    - name: text2
+      title: Original Data
+      type: Html
+      visible: (referenceType:legacy && (od) || referenceType:disease && (od))
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, od]
+
+    # Tables for Test 1
+    - name: cTable1
+      title: 'Test 1 - Recoded Data'
+      type: Table
+      visible: (referenceType:legacy && (length(test1) > 0) || referenceType:disease && (length(test1) > 0))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, excludeIndeterminate]
+      columns:
+        - name: newtest
+          title: ''
+          type: text
+        - name: GP
+          title: 'Gold Positive'
+          type: number
+        - name: GN
+          title: 'Gold Negative'
+          type: number
+        - name: Total
+          title: 'Total'
+          type: number
+
+    - name: epirTable1
+      title: 'Test 1 - Confidence Intervals'
+      type: Table
+      visible: (referenceType:legacy && (ci && !is.null(test1) && test1 != "") || referenceType:disease && (ci && !is.null(test1) && test1 != ""))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, excludeIndeterminate, ci]
+      columns:
+        - name: statsnames
+          title: "Decision Statistics"
+          type: text
+        - name: est
+          title: "Estimate"
+          type: number
+          format: pc
+        - name: lower
+          title: 'Lower'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+        - name: upper
+          title: 'Upper'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+
+    # Tables for Test 2
+    - name: cTable2
+      title: 'Test 2 - Recoded Data'
+      type: Table
+      visible: (referenceType:legacy && (length(test2) > 0) || referenceType:disease && (length(test2) > 0))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test2, test2Positive, test2Negative, excludeIndeterminate]
+      columns:
+        - name: newtest
+          title: ''
+          type: text
+        - name: GP
+          title: 'Gold Positive'
+          type: number
+        - name: GN
+          title: 'Gold Negative'
+          type: number
+        - name: Total
+          title: 'Total'
+          type: number
+
+    - name: epirTable2
+      title: 'Test 2 - Confidence Intervals'
+      type: Table
+      visible: (referenceType:legacy && (ci && !is.null(test2) && test2 != "") || referenceType:disease && (ci && !is.null(test2) && test2 != ""))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test2, test2Positive, test2Negative, excludeIndeterminate, ci]
+      columns:
+        - name: statsnames
+          title: "Decision Statistics"
+          type: text
+        - name: est
+          title: "Estimate"
+          type: number
+          format: pc
+        - name: lower
+          title: 'Lower'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+        - name: upper
+          title: 'Upper'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+
+    # Tables for Test 3
+    - name: cTable3
+      title: 'Test 3 - Recoded Data'
+      type: Table
+      visible: (referenceType:legacy && (length(test3) > 0) || referenceType:disease && (length(test3) > 0))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test3, test3Positive, test3Negative, excludeIndeterminate]
+      columns:
+        - name: newtest
+          title: ''
+          type: text
+        - name: GP
+          title: 'Gold Positive'
+          type: number
+        - name: GN
+          title: 'Gold Negative'
+          type: number
+        - name: Total
+          title: 'Total'
+          type: number
+
+    - name: epirTable3
+      title: 'Test 3 - Confidence Intervals'
+      type: Table
+      visible: (referenceType:legacy && (ci && !is.null(test3) && test3 != "") || referenceType:disease && (ci && !is.null(test3) && test3 != ""))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test3, test3Positive, test3Negative, excludeIndeterminate, ci]
+      columns:
+        - name: statsnames
+          title: "Decision Statistics"
+          type: text
+        - name: est
+          title: "Estimate"
+          type: number
+          format: pc
+        - name: lower
+          title: 'Lower'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+        - name: upper
+          title: 'Upper'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+
+    # Comparison table
+    - name: comparisonTable
+      title: 'Decision Test Comparison'
+      type: Table
+      visible: (referenceType:legacy || referenceType:disease)
+      rows: 0
+      columns:
+        - name: test
+          title: 'Test'
+          type: text
+        - name: 'n'
+          title: 'Analyzed N'
+          type: integer
+        - name: excluded
+          title: 'Excluded'
+          type: integer
+        - name: excludedRate
+          title: 'Excluded Rate'
+          type: number
+          format: pc
+        - name: Sens
+          title: 'Sensitivity'
+          type: number
+          format: pc
+        - name: Spec
+          title: 'Specificity'
+          type: number
+          format: pc
+        - name: AccurT
+          title: 'Accuracy'
+          type: number
+          format: pc
+        - name: PPV
+          title: 'Positive Predictive Value'
+          type: number
+          format: pc
+        - name: NPV
+          title: 'Negative Predictive Value'
+          type: number
+          format: pc
+        - name: LRP
+          title: 'Positive Likelihood Ratio'
+          type: number
+        - name: LRN
+          title: 'Negative Likelihood Ratio'
+          type: number
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - excludeIndeterminate
+          - pp
+          - pprob
+
+    # Overall Percent Agreement Table
+    - name: opaTable
+      title: 'Overall Percent Agreement (Descriptive)'
+      type: Table
+      visible: (referenceType:legacy && (opa) || referenceType:disease && (opa))
+      rows: 0
+      notes:
+        note: >-
+          OPA = (TP + TN) / Total.
+          OPA does not correct for chance agreement; consider Cohen's kappa for chance-corrected concordance.
+          The criterion is met when the lower CI bound exceeds the user-specified minimum OPA.
+          The criterion is optional and descriptive. It is not a noninferiority comparison,
+          regulatory guidance, or clinical guidance.
+      columns:
+        - name: test
+          title: 'Test'
+          type: text
+        - name: concordant
+          title: 'Concordant'
+          type: integer
+        - name: total
+          title: 'Analyzed N'
+          type: integer
+        - name: excluded
+          title: 'Excluded'
+          type: integer
+        - name: opa
+          title: 'OPA'
+          type: number
+          format: pc
+        - name: lower
+          title: 'Lower'
+          superTitle: '95% CI'
+          type: number
+          format: pc
+        - name: upper
+          title: 'Upper'
+          superTitle: '95% CI'
+          type: number
+          format: pc
+        - name: niMargin
+          title: 'OPA Criterion'
+          type: number
+          format: pc
+        - name: niResult
+          title: 'Criterion Met?'
+          type: text
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - excludeIndeterminate
+          - useOpaCriterion
+          - niMargin
+          - ciMethod
+
+    # Stratified Comparison Table
+    - name: stratifiedTable
+      title: 'Stratified Diagnostic Accuracy'
+      type: Table
+      visible: (referenceType:legacy && (length(stratify) > 0) || referenceType:disease && (length(stratify) > 0))
+      rows: 0
+      columns:
+        - name: stratum
+          title: 'Subgroup'
+          type: text
+        - name: 'n'
+          title: 'Analyzed N'
+          type: integer
+        - name: excluded
+          title: 'Excluded'
+          type: integer
+        - name: excludedRate
+          title: 'Excluded Rate'
+          type: number
+          format: pc
+        - name: test
+          title: 'Test'
+          type: text
+        - name: Sens
+          title: 'Sensitivity'
+          type: number
+          format: pc
+        - name: Spec
+          title: 'Specificity'
+          type: number
+          format: pc
+        - name: AccurT
+          title: 'Accuracy'
+          type: number
+          format: pc
+        - name: PPV
+          title: 'PPV'
+          type: number
+          format: pc
+        - name: NPV
+          title: 'NPV'
+          type: number
+          format: pc
+        - name: opa
+          title: 'OPA'
+          type: number
+          format: pc
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - stratify
+          - excludeIndeterminate
+          - pp
+          - pprob
+
+    # Statistical Comparison Tables
+    - name: mcnemarTable
+      title: "Statistical Comparison of Test Accuracy"
+      type: Table
+      visible: (referenceType:legacy && (statComp) || referenceType:disease && (statComp))
+      rows: 0
+      notes:
+        note: >-
+          For 2 tests: McNemar's test compares diagnostic CORRECTNESS (agreement with gold standard) between paired tests.
+          For 3+ tests: Cochran's Q test provides an overall test, followed by pairwise McNemar's tests, Holm-Bonferroni adjusted whenever more than one pair is tested.
+          Tests examine discordant pairs (cases where one test is correct and the other is wrong relative to the gold standard) to determine if differences in accuracy are statistically significant.
+      columns:
+        - name: comparison
+          title: 'Comparison'
+          type: text
+        - name: 'n'
+          title: 'Paired N'
+          type: integer
+        - name: method
+          title: 'Method'
+          type: text
+        - name: stat
+          title: "Statistic"
+          type: number
+        - name: df
+          title: 'df'
+          type: integer
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+        - name: interpretation
+          title: 'Statistical Interpretation'
+          type: text
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - excludeIndeterminate
+          - statComp
+          - mcnemarMethod
+
+    - name: diffTable
+      title: 'Differences with 95% Confidence Intervals'
+      type: Table
+      visible: (referenceType:legacy && (statComp) || referenceType:disease && (statComp))
+      rows: 0
+      columns:
+        - name: comparison
+          title: 'Comparison'
+          type: text
+        - name: metric
+          title: 'Metric'
+          type: text
+        - name: 'n'
+          title: 'Paired N'
+          type: integer
+        - name: diff
+          title: 'Difference'
+          type: number
+          format: pc
+        - name: lower
+          title: 'Lower'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+        - name: upper
+          title: 'Upper'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+        - name: p
+          title: 'p-value'
+          type: number
+          format: zto,pvalue
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - excludeIndeterminate
+          - statComp
+          - mcnemarMethod
+
+    # Plot
+    - name: plot1
+      title: 'Test Comparison'
+      type: Image
+      width: 600
+      height: 450
+      renderFun: .plot1
+      visible: (referenceType:legacy && (plot) || referenceType:disease && (plot))
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - plot
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - excludeIndeterminate
+          - pp
+          - pprob
+      refs:
+          - ggplot2
+
+    # Radar Plot
+    - name: plotRadar
+      title: 'Radar Plot Comparison'
+      type: Image
+      width: 600
+      height: 600
+      renderFun: .plotRadar
+      visible: (referenceType:legacy && (radarplot) || referenceType:disease && (radarplot))
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - radarplot
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - excludeIndeterminate
+          - pp
+          - pprob
+      refs:
+          - ggplot2
+
+    # Concordance Heatmap
+    - name: plotHeatmap
+      title: 'Concordance Heatmap'
+      type: Image
+      width: 800
+      height: 400
+      renderFun: .plotHeatmap
+      visible: (referenceType:legacy && (heatmap) || referenceType:disease && (heatmap))
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - heatmap
+          - gold
+          - goldPositive
+          - goldNegative
+          - test1
+          - test1Positive
+          - test1Negative
+          - test2
+          - test2Positive
+          - test2Negative
+          - test3
+          - test3Positive
+          - test3Negative
+          - excludeIndeterminate
+      refs:
+          - ggplot2
+
+    # Summary Report
+    - name: summaryReport
+      title: 'Summary'
+      type: Html
+      visible: (referenceType:legacy && (statComp && showSummary) || referenceType:disease && (statComp && showSummary))
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, pp, pprob, statComp, mcnemarMethod, showSummary]
+
+    # Report Sentence
+    - name: reportSentence
+      title: 'Manuscript-Ready Report'
+      type: Html
+      visible: (referenceType:legacy && (statComp && showReportSentence) || referenceType:disease && (statComp && showReportSentence))
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, pp, pprob, statComp, mcnemarMethod, showReportSentence]
+
+    # Explanations and Glossary
+    - name: explanationsContent
+      title: 'Statistical Explanations & Glossary'
+      type: Html
+      visible: (referenceType:legacy && (showExplanations) || referenceType:disease && (showExplanations))
+      clearWith: [referenceType, referenceDescription, targetDefinition, showExplanations]
+
+    # Clinical Report
+    - name: clinicalReport
+      title: 'Descriptive Summary & Report Templates'
+      type: Html
+      visible: (referenceType:legacy && (showDescriptiveReport) || referenceType:disease && (showDescriptiveReport))
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, pp, pprob, statComp, mcnemarMethod, showDescriptiveReport]
+
+    # About This Analysis
+    - name: aboutAnalysis
+      title: 'About This Analysis'
+      type: Html
+      visible: (referenceType:legacy && (showExplanations) || referenceType:disease && (showExplanations))
+      clearWith: [referenceType, referenceDescription, targetDefinition, showExplanations]
+
+
+
+    - name: referenceDefinition
+      title: Reference and target
+      type: Table
+      visible: true
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+      columns:
+        - name: setting
+          title: "Setting"
+          type: text
+        - name: value
+          title: "Value"
+          type: text
+
+    - name: comparatorCounts
+      title: Binary comparator counts
+      type: Table
+      visible: (referenceType:consensus || referenceType:method)
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+      columns:
+        - name: test
+          title: "Test"
+          type: text
+        - name: call
+          title: "Call"
+          type: text
+        - name: refPositive
+          title: "Reference positive"
+          type: integer
+        - name: refNegative
+          title: "Reference negative"
+          type: integer
+
+    - name: comparatorPopulation
+      title: Comparison populations
+      type: Table
+      visible: (referenceType:consensus || referenceType:method)
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+      columns:
+        - name: test
+          title: "Test"
+          type: text
+        - name: selected
+          title: "Selected rows"
+          type: integer
+        - name: analyzed
+          title: "Analyzed pairs"
+          type: integer
+        - name: excluded
+          title: "Excluded pairs"
+          type: integer
+        - name: missing
+          title: "Missing result"
+          type: integer
+        - name: other
+          title: "Other level"
+          type: integer
+
+    - name: comparatorMetrics
+      title: Agreement with comparator
+      type: Table
+      visible: (referenceType:consensus || referenceType:method)
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+      columns:
+        - name: test
+          title: "Test"
+          type: text
+        - name: metric
+          title: "Metric"
+          type: text
+        - name: numerator
+          title: "Numerator"
+          type: integer
+        - name: denominator
+          title: "Denominator"
+          type: integer
+        - name: estimate
+          title: "Estimate"
+          type: number
+          format: pc
+        - name: lower
+          title: "Lower 95% CI"
+          type: number
+          format: pc
+        - name: upper
+          title: "Upper 95% CI"
+          type: number
+          format: pc
+        - name: method
+          title: "Interval method"
+          type: text
+
+    - name: comparatorReport
+      title: Comparator interpretation
+      type: Html
+      visible: (referenceType:consensus || referenceType:method)
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+
+    - name: comparatorDifferences
+      title: Paired agreement differences
+      type: Table
+      visible: (referenceType:consensus && (statComp) || referenceType:method && (statComp))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+      columns:
+        - name: comparison
+          title: "First minus second"
+          type: text
+        - name: metric
+          title: "Metric"
+          type: text
+        - name: n
+          title: "Paired cases"
+          type: integer
+        - name: diff
+          title: "Difference"
+          type: number
+          format: pc
+        - name: lower
+          title: "Lower 95% CI"
+          type: number
+          format: pc
+        - name: upper
+          title: "Upper 95% CI"
+          type: number
+          format: pc
+        - name: p
+          title: "Unadjusted p"
+          type: number
+          format: zto,pvalue
+        - name: adjusted
+          title: "Holm p"
+          type: number
+          format: zto,pvalue
+        - name: method
+          title: "Method"
+          type: text
+
+    - name: comparatorStrata
+      title: Agreement by stratum
+      type: Table
+      visible: (referenceType:consensus && (length(stratify) > 0) || referenceType:method && (length(stratify) > 0))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+      columns:
+        - name: stratum
+          title: "Stratum"
+          type: text
+        - name: test
+          title: "Test"
+          type: text
+        - name: metric
+          title: "Metric"
+          type: text
+        - name: numerator
+          title: "Numerator"
+          type: integer
+        - name: denominator
+          title: "Denominator"
+          type: integer
+        - name: estimate
+          title: "Estimate"
+          type: number
+          format: pc
+
+    - name: comparatorPlot
+      title: Comparator agreement (bar)
+      type: Image
+      visible: (referenceType:consensus && (plot) || referenceType:method && (plot))
+      width: 600
+      height: 450
+      renderFun: .plotComparatorBar
+      refs:
+          - ggplot2
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+
+    - name: comparatorRadar
+      title: Comparator agreement (radar)
+      type: Image
+      visible: (referenceType:consensus && (radarplot) || referenceType:method && (radarplot))
+      width: 600
+      height: 450
+      renderFun: .plotComparatorRadar
+      refs:
+          - ggplot2
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+
+    - name: comparatorHeatmap
+      title: Comparator agreement (heatmap)
+      type: Image
+      visible: (referenceType:consensus && (heatmap) || referenceType:method && (heatmap))
+      width: 600
+      height: 450
+      renderFun: .plotComparatorHeatmap
+      refs:
+          - ggplot2
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, test1, test1Positive, test1Negative, test2, test2Positive, test2Negative, test3, test3Positive, test3Negative, excludeIndeterminate, statComp, mcnemarMethod, stratify, plot, radarplot, heatmap]
+
+    - name: validationContext
+      title: Validation context
+      type: Table
+      visible: (showValidationContext)
+      clearWith:
+      - showValidationContext
+      - cohortRole
+      - samplingDesign
+      - thresholdSource
+      - modelVersion
+      - analysisUnit
+      - referenceType
+      - referenceDescription
+      columns:
+      - name: setting
+        title: Setting
+        type: text
+      - name: value
+        title: Value
+        type: text
+
+refs:
+    - ClinicoPathJamoviModule
+    - DiagnosticTests
+    - epiR
+    - forcats
+    - knitr
+    - mcnemar1947
+    - Fagerland2013
+    - Fagerland2014
+    - cochran1950
+    - holm1979
+    - wilson1927
+    - ClopperPearson1934
+    - BrownCaiDasGupta2001
+    - newcombe1998paired
+    - haldane1956
+    - anscombe1956
+    - STARD2015
+    - jaeschke1994
+
+...

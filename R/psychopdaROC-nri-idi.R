@@ -1,0 +1,558 @@
+# ============================================================================
+# UTILITY FUNCTIONS FOR PSYCHOPDAROC
+# ============================================================================
+# This file contains shared utility functions used by the psychopdaROC module
+# Functions here should be generic and reusable, not class-specific
+# 
+# Note: Core utility functions have been moved to R/utils.R
+# This file now contains psychopdaROC-specific utility functions only
+
+#' Bootstrap NRI calculation with confidence intervals
+#'
+#' @param new_values Test values for new test
+#' @param ref_values Test values for reference test
+#' @param actual Binary outcome vector (0/1)
+#' @param direction Classification direction (">=" or "<=")
+#' @param thresholds Risk category thresholds (NULL for continuous NRI)
+#' @param n_boot Number of bootstrap iterations
+#' @param conf_level Confidence level (default 0.95)
+#' @return List with NRI components and exploratory percentile intervals. The
+#'   compatibility field `p_value` is `NA`: refitted apparent bootstrap tail
+#'   fractions are not calibrated null-hypothesis tests.
+#' @export
+bootstrapNRI <- function(new_values, ref_values, actual,
+                         direction = ">=", thresholds = NULL,
+                         n_boot = 1000, conf_level = 0.95) {
+    # Validate inputs
+    n <- length(actual)
+    if (length(new_values) != n || length(ref_values) != n) {
+        stop("All input vectors must have the same length")
+    }
+
+    if (!all(actual %in% c(0, 1))) {
+        stop("Actual values must be binary (0 or 1)")
+    }
+
+    # Validate thresholds if provided
+    if (!is.null(thresholds)) {
+        thresholds <- sort(thresholds)
+        if (any(thresholds <= 0) || any(thresholds >= 1)) {
+            stop("Thresholds must be between 0 and 1")
+        }
+    }
+
+    # Original NRI calculation
+    original_nri <- computeNRI(
+        new_values, ref_values, actual, direction, thresholds, warn = FALSE
+    )
+
+    # Bootstrap
+    boot_nri <- numeric(n_boot)
+    boot_event_nri <- numeric(n_boot)
+    boot_non_event_nri <- numeric(n_boot)
+    valid_boots <- 0
+    warning_boots <- 0L
+
+    for (i in 1:n_boot) {
+        boot_idx <- sample(n, n, replace = TRUE)
+
+        boot_new <- new_values[boot_idx]
+        boot_ref <- ref_values[boot_idx]
+        boot_actual <- actual[boot_idx]
+
+        # Skip if no events or non-events
+        if (sum(boot_actual == 1) == 0 || sum(boot_actual == 0) == 0) {
+            boot_nri[i] <- NA
+            boot_event_nri[i] <- NA
+            boot_non_event_nri[i] <- NA
+            next
+        }
+
+        # Take the result FROM tryCatch, not from inside the error handler.
+        #
+        # `boot_nri[i] <- NA` written in the handler assigns into that function's
+        # own frame and never reaches this one, so a failed replicate kept its
+        # preallocated 0.0 -- which then survived the !is.na() filter below and
+        # was averaged into the confidence interval and counted in both p-value
+        # tails as though it were a real estimate of no reclassification. The
+        # "many bootstraps failed" warning could never fire from this path
+        # either. Same defect as bootstrapIDI() in utils.R.
+        res_i <- tryCatch({
+            r <- computeNRI(
+                boot_new, boot_ref, boot_actual, direction, thresholds, warn = FALSE
+            )
+            if (isTRUE(r$fit_warning)) warning_boots <- warning_boots + 1L
+            if (is.null(r$nri) || is.na(r$nri)) NULL else r
+        }, error = function(e) NULL)
+
+        if (is.null(res_i)) {
+            boot_nri[i] <- NA
+            boot_event_nri[i] <- NA
+            boot_non_event_nri[i] <- NA
+        } else {
+            boot_nri[i] <- res_i$nri
+            boot_event_nri[i] <- res_i$event_nri
+            boot_non_event_nri[i] <- res_i$non_event_nri
+            valid_boots <- valid_boots + 1
+        }
+    }
+
+    # Remove failed iterations
+    valid_idx <- !is.na(boot_nri)
+    boot_nri <- boot_nri[valid_idx]
+    boot_event_nri <- boot_event_nri[valid_idx]
+    boot_non_event_nri <- boot_non_event_nri[valid_idx]
+
+    if (length(boot_nri) == 0L) {
+        warning("All bootstrap replicates failed; no confidence interval or p-value can be computed.",
+                call. = FALSE)
+        return(list(
+            nri = original_nri$nri,
+            event_nri = original_nri$event_nri,
+            non_event_nri = original_nri$non_event_nri,
+            ci_lower = NA_real_, ci_upper = NA_real_, p_value = NA_real_,
+            n_valid_boots = 0L,
+            fit_warning = isTRUE(original_nri$fit_warning),
+            fit_warning_boots = warning_boots
+        ))
+    }
+
+    if (length(boot_nri) < n_boot * 0.5) {
+        warning("Many bootstrap samples failed - results may be unreliable")
+    }
+    if (isTRUE(original_nri$fit_warning) || warning_boots > 0L) {
+        warning(sprintf(
+            paste0(
+                "Logistic calibration showed separation or non-convergence in the original ",
+                "fit or %d of %d bootstrap replicates; NRI and its interval may be unstable."
+            ),
+            warning_boots, n_boot
+        ), call. = FALSE)
+    }
+
+    # Calculate confidence intervals
+    alpha <- 1 - conf_level
+    ci_lower <- quantile(boot_nri, alpha/2, na.rm = TRUE)
+    ci_upper <- quantile(boot_nri, 1 - alpha/2, na.rm = TRUE)
+
+    # These are refitted, in-sample bootstrap estimates, not draws under a null
+    # hypothesis. Retain the API field as unavailable rather than label a tail
+    # fraction as a calibrated significance test.
+    p_value <- NA_real_
+
+    return(list(
+        nri = original_nri$nri,
+        event_nri = original_nri$event_nri,
+        non_event_nri = original_nri$non_event_nri,
+        ci_lower = as.numeric(ci_lower),
+        ci_upper = as.numeric(ci_upper),
+        p_value = p_value,
+        n_valid_boots = valid_boots,
+        fit_warning = isTRUE(original_nri$fit_warning),
+        fit_warning_boots = warning_boots
+    ))
+}
+
+#' Compute Net Reclassification Index (NRI)
+#'
+#' @param new_values Test values for new test
+#' @param ref_values Test values for reference test
+#' @param actual Binary outcome vector (0/1)
+#' @param direction Classification direction
+#' @param thresholds Risk category thresholds (NULL for continuous NRI)
+#' @param warn Emit a warning when the logistic calibration shows separation or
+#'   fails to converge. Set to `FALSE` inside bootstrap replicates.
+#' @return List containing NRI components
+computeNRI <- function(new_values, ref_values, actual,
+                       direction = ">=", thresholds = NULL, warn = TRUE) {
+    # Convert to probabilities
+    new_probs <- raw_to_prob(new_values, actual, direction, warn = FALSE)
+    ref_probs <- raw_to_prob(ref_values, actual, direction, warn = FALSE)
+    fit_warning <- length(attr(new_probs, "fit_warnings")) > 0L ||
+        length(attr(ref_probs, "fit_warnings")) > 0L
+    if (isTRUE(warn) && fit_warning) {
+        warning(
+            paste0(
+                "Logistic calibration showed separation or non-convergence; ",
+                "NRI may be unstable."
+            ),
+            call. = FALSE
+        )
+    }
+
+    # Identify events and non-events
+    events <- actual == 1
+    non_events <- actual == 0
+
+    # Check for sufficient data
+    if (sum(events) == 0 || sum(non_events) == 0) {
+        return(list(nri = NA, event_nri = NA, non_event_nri = NA,
+                    fit_warning = fit_warning))
+    }
+
+    # Unusable predicted probabilities must yield NA, not 0.
+    #
+    # Every count below is taken with na.rm = TRUE, so if raw_to_prob could not
+    # fit a model and returned NA, all four counts come out 0, every proportion
+    # comes out 0, and the NRI is reported as exactly 0 -- which reads as "the
+    # new marker reclassifies nobody", a substantive negative finding
+    # manufactured out of a fitting failure.
+    if (all(is.na(new_probs)) || all(is.na(ref_probs))) {
+        if (isTRUE(warn)) {
+            warning("computeNRI: predicted probabilities are unavailable (the logistic fit failed); returning NA rather than an NRI of 0.",
+                    call. = FALSE)
+        }
+        return(list(nri = NA, event_nri = NA, non_event_nri = NA,
+                    fit_warning = TRUE))
+    }
+
+    # Denominator that counts exactly the cases the numerators counted. DEFENSIVE ONLY --
+    # this changes no number any psychopdaROC user can see, and was never a wrong result.
+    #
+    # Every count below is taken with na.rm = TRUE, so a case with a missing predicted
+    # probability is dropped from the numerator; sum(events) would have kept it in the
+    # denominator. But psychopdaROC.b.R (the only caller, via bootstrapNRI) filters to
+    # complete cases before it calls -- complete.cases(var_values, ref_values,
+    # actual_binary) -- and raw_to_prob() returns NA only where its input is NA or where
+    # the glm fails outright (all-NA, already rejected just above). So on that path
+    # `usable` is all TRUE and n_events == sum(events) identically, for bootstrap
+    # replicates too, since they resample already-complete data. Verified 2026-09-23: NRI
+    # identical to the old denominator on cc-filtered input.
+    #
+    # It is kept because bootstrapNRI() and raw_to_prob() are exported, so a direct or
+    # future caller may pass vectors with gaps, and then the mask is the correct
+    # denominator. The n_events == 0 branch is unreachable from bootstrapNRI for the same
+    # reason (an all-TRUE mask makes it exactly the sum(events) == 0 guard above), and its
+    # warning is doubly inert there because bootstrapNRI passes warn = FALSE.
+    #
+    # cut() below returns NA exactly where the probability is NA (probabilities are clamped
+    # to [0,1] and the breaks span it), so this one mask serves both branches.
+    usable <- !is.na(new_probs) & !is.na(ref_probs)
+    n_events <- sum(events & usable, na.rm = TRUE)
+    n_non_events <- sum(non_events & usable, na.rm = TRUE)
+    if (n_events == 0L || n_non_events == 0L) {
+        if (isTRUE(warn)) {
+            warning("computeNRI: one outcome group has no case with a predicted probability from both models, so the NRI is undefined.",
+                    call. = FALSE)
+        }
+        return(list(nri = NA, event_nri = NA, non_event_nri = NA,
+                    fit_warning = fit_warning))
+    }
+
+    # Fitted probabilities can differ by roundoff for the same model in different
+    # units. Treat differences within sqrt(machine epsilon) as numerical ties,
+    # including at category boundaries; this is not a clinical risk threshold.
+    probability_tolerance <- sqrt(.Machine$double.eps)
+    tied <- usable & abs(new_probs - ref_probs) <= probability_tolerance
+    new_probs[tied] <- ref_probs[tied]
+
+    if (is.null(thresholds) || length(thresholds) == 0) {
+        # Continuous NRI
+        up_events <- sum(new_probs[events] > ref_probs[events], na.rm = TRUE)
+        down_events <- sum(new_probs[events] < ref_probs[events], na.rm = TRUE)
+        up_non_events <- sum(new_probs[non_events] > ref_probs[non_events], na.rm = TRUE)
+        down_non_events <- sum(new_probs[non_events] < ref_probs[non_events], na.rm = TRUE)
+
+        # Calculate proportions
+        p_up_events <- up_events / n_events
+        p_down_events <- down_events / n_events
+        p_up_non_events <- up_non_events / n_non_events
+        p_down_non_events <- down_non_events / n_non_events
+
+    } else {
+        # Categorical NRI
+        # Create risk categories with proper handling of boundaries
+        breaks <- c(0, thresholds, 1)
+        labels <- 1:(length(breaks) - 1)
+
+        ref_cats <- cut(ref_probs,
+                        breaks = breaks,
+                        labels = labels,
+                        include.lowest = TRUE)
+
+        new_cats <- cut(new_probs,
+                        breaks = breaks,
+                        labels = labels,
+                        include.lowest = TRUE)
+
+        # Calculate movement between categories
+        move_up_event <- sum(as.numeric(new_cats[events]) > as.numeric(ref_cats[events]), na.rm = TRUE)
+        move_down_event <- sum(as.numeric(new_cats[events]) < as.numeric(ref_cats[events]), na.rm = TRUE)
+        move_up_non_event <- sum(as.numeric(new_cats[non_events]) > as.numeric(ref_cats[non_events]), na.rm = TRUE)
+        move_down_non_event <- sum(as.numeric(new_cats[non_events]) < as.numeric(ref_cats[non_events]), na.rm = TRUE)
+
+        # Calculate proportions
+        p_up_events <- move_up_event / n_events
+        p_down_events <- move_down_event / n_events
+        p_up_non_events <- move_up_non_event / n_non_events
+        p_down_non_events <- move_down_non_event / n_non_events
+    }
+
+    # Calculate NRI components
+    event_nri <- p_up_events - p_down_events
+    non_event_nri <- p_down_non_events - p_up_non_events
+    overall_nri <- event_nri + non_event_nri
+
+    return(list(
+        nri = overall_nri,
+        event_nri = event_nri,
+        non_event_nri = non_event_nri,
+        p_up_events = p_up_events,
+        p_down_events = p_down_events,
+        p_up_non_events = p_up_non_events,
+        p_down_non_events = p_down_non_events,
+        fit_warning = fit_warning
+    ))
+}
+
+# validateROCInputs function moved to R/utils.R
+
+# ============================================================================
+
+# ROC ANALYSIS UTILITIES (moved from R/utils.R, 2026-09-06 audit)
+
+# ============================================================================
+
+# Only psychopdaROC uses these, so they ship with meddecide/jsurvival/JamoviTest.
+
+#' Convert raw test values to fitted logistic probabilities
+#' @description Fits a logistic regression of the binary outcome on the marker.
+#'   The predictor is centered and scaled internally to keep fitted probabilities
+#'   stable when measurement units change.
+#' @param values Raw test values
+#' @param actual Binary outcomes (0/1)
+#' @param direction Direction of test (">=" or "<=")
+#' @keywords internal
+#' @return Vector of predicted probabilities
+#' @param warn Logical; emit a consolidated warning when logistic calibration
+#'   shows separation, non-convergence, or fitting failure. Bootstrap callers
+#'   set this to `FALSE` and report one aggregate diagnostic instead.
+#' @export
+raw_to_prob <- function(values, actual, direction = ">=", warn = TRUE) {
+    # Validate inputs
+    if (length(values) != length(actual)) {
+        stop("Values and actual must have the same length")
+    }
+
+    if (!direction %in% c(">=", "<=")) {
+        stop("Direction must be '>=' or '<='")
+    }
+
+    # Remove missing values
+    complete_cases <- !is.na(values) & !is.na(actual)
+    values_clean <- values[complete_cases]
+    actual_clean <- actual[complete_cases]
+
+    if (length(values_clean) == 0) {
+        warning("No complete cases found")
+        return(rep(NA, length(values)))
+    }
+
+    # Initialize probabilities vector
+    probs <- rep(NA, length(values))
+
+    # Use logistic regression to convert raw values to predicted probabilities
+    # This is the statistically correct approach for IDI/NRI calculations
+    predictor <- if (direction == "<=") -values_clean else values_clean
+
+    fit_warnings <- character(0)
+    glm_result <- tryCatch(
+        withCallingHandlers({
+            center <- mean(predictor)
+            spread <- max(abs(predictor - center))
+            if (!is.finite(center) || !is.finite(spread))
+                stop("Marker values must be finite")
+            if (spread == 0) spread <- 1
+            predictor <- (predictor - center) / spread
+            model <- stats::glm(actual_clean ~ predictor, family = binomial(link = "logit"))
+            new_predictor <- if (direction == "<=") -values else values
+            new_predictor <- (new_predictor - center) / spread
+            stats::predict(model, newdata = data.frame(predictor = new_predictor), type = "response")
+        }, warning = function(w) {
+            fit_warnings <<- c(fit_warnings, conditionMessage(w))
+            invokeRestart("muffleWarning")
+        }),
+        error = function(e) {
+        # Fail rather than substitute a non-probability.
+        #
+        # The previous fallback returned rank(x)/(n+1) -- the empirical
+        # percentile of the PREDICTOR. It never touched `actual`, so its mean is
+        # ~0.5 whatever the outcome prevalence and it is not an estimate of
+        # P(Y = 1 | x) in any sense. Feeding that to IDI (a difference of mean
+        # predicted risk between events and non-events) or to NRI category cuts
+        # silently swaps a calibrated risk scale for a uniform rank scale.
+        fit_warnings <<- c(fit_warnings, paste("fit failed:", conditionMessage(e)))
+        rep(NA_real_, length(values))
+    })
+
+    probs <- as.numeric(glm_result)
+    fit_warnings <- unique(fit_warnings)
+    attr(probs, "fit_warnings") <- fit_warnings
+
+    if (isTRUE(warn) && length(fit_warnings) > 0L) {
+        warning(sprintf(
+            paste0(
+                "raw_to_prob: logistic calibration reported %s. Predicted probabilities ",
+                "may be unreliable (separation or non-convergence); interpret IDI/NRI ",
+                "with caution."
+            ),
+            paste(sprintf("'%s'", fit_warnings), collapse = "; ")
+        ), call. = FALSE)
+    }
+
+    # Ensure probabilities are in [0,1] range
+    probs[!is.na(probs) & probs < 0] <- 0
+    probs[!is.na(probs) & probs > 1] <- 1
+
+    return(probs)
+}
+
+#' Bootstrap IDI calculation with confidence intervals
+#' @description Calculates Integrated Discrimination Improvement with bootstrap confidence intervals
+#' @param new_values Test values for new test
+#' @param ref_values Test values for reference test
+#' @param actual Binary outcome vector (0/1)
+#' @param direction Classification direction (">=" or "<=")
+#' @param n_boot Number of bootstrap iterations
+#' @param conf_level Confidence level (default 0.95)
+#' @keywords internal
+#' @return List with apparent IDI and exploratory percentile intervals. The
+#'   compatibility field `p_value` is `NA`; no null test is provided.
+#' @export
+bootstrapIDI <- function(new_values, ref_values, actual,
+                         direction = ">=", n_boot = 1000,
+                         conf_level = 0.95) {
+    # Validate inputs
+    n <- length(actual)
+    if (length(new_values) != n || length(ref_values) != n) {
+        stop("All input vectors must have the same length")
+    }
+    
+    if (n_boot < 100) {
+        warning("Low number of bootstrap iterations may produce unreliable results")
+    }
+    
+    # Ensure actual is binary
+    if (!all(actual %in% c(0, 1))) {
+        stop("Actual values must be binary (0 or 1)")
+    }
+    
+    # Original IDI calculation
+    new_probs <- raw_to_prob(new_values, actual, direction, warn = FALSE)
+    ref_probs <- raw_to_prob(ref_values, actual, direction, warn = FALSE)
+    original_fit_warning <- length(attr(new_probs, "fit_warnings")) > 0L ||
+        length(attr(ref_probs, "fit_warnings")) > 0L
+    
+    # Calculate discrimination slopes
+    events <- actual == 1
+    non_events <- actual == 0
+    
+    # Check for events and non-events
+    if (sum(events) == 0 || sum(non_events) == 0) {
+        warning("No events or non-events found in data")
+        return(list(idi = NA, ci_lower = NA, ci_upper = NA, p_value = NA))
+    }
+    
+    # Original IDI
+    original_idi <- (mean(new_probs[events], na.rm = TRUE) -
+                     mean(new_probs[non_events], na.rm = TRUE)) -
+        (mean(ref_probs[events], na.rm = TRUE) -
+         mean(ref_probs[non_events], na.rm = TRUE))
+    
+    # Bootstrap
+    boot_idi <- numeric(n_boot)
+    valid_boots <- 0
+    warning_boots <- 0L
+    
+    for (i in 1:n_boot) {
+        boot_idx <- sample(n, n, replace = TRUE)
+        
+        boot_new <- new_values[boot_idx]
+        boot_ref <- ref_values[boot_idx]
+        boot_actual <- actual[boot_idx]
+        
+        # Skip if no events or non-events in bootstrap sample
+        if (sum(boot_actual == 1) == 0 || sum(boot_actual == 0) == 0) {
+            boot_idi[i] <- NA
+            next
+        }
+        
+        # Calculate probabilities for bootstrap sample.
+        #
+        # The result is assigned from the value of tryCatch(), NOT from inside
+        # the error handler. `boot_idi[i] <- NA` written in the handler assigns
+        # into the handler function's own frame and never reaches this one, so
+        # every failed replicate silently kept its preallocated 0.0 -- dragging
+        # the estimate and the CI toward zero and counting in BOTH p-value
+        # tails. It also meant the "many bootstraps failed" warning below could
+        # never fire from this path.
+        boot_idi[i] <- tryCatch({
+            boot_new_probs <- raw_to_prob(boot_new, boot_actual, direction, warn = FALSE)
+            boot_ref_probs <- raw_to_prob(boot_ref, boot_actual, direction, warn = FALSE)
+            if (length(attr(boot_new_probs, "fit_warnings")) > 0L ||
+                length(attr(boot_ref_probs, "fit_warnings")) > 0L) {
+                warning_boots <- warning_boots + 1L
+            }
+
+            # Calculate IDI
+            boot_events <- boot_actual == 1
+            boot_non_events <- boot_actual == 0
+
+            val <- (mean(boot_new_probs[boot_events], na.rm = TRUE) -
+                    mean(boot_new_probs[boot_non_events], na.rm = TRUE)) -
+                (mean(boot_ref_probs[boot_events], na.rm = TRUE) -
+                 mean(boot_ref_probs[boot_non_events], na.rm = TRUE))
+            if (is.finite(val)) {
+                valid_boots <- valid_boots + 1
+                val
+            } else NA_real_
+        }, error = function(e) NA_real_)
+    }
+    
+    # Remove failed bootstrap samples
+    boot_idi_valid <- boot_idi[!is.na(boot_idi)]
+    
+    if (length(boot_idi_valid) == 0) {
+        # Nothing to summarise. Returning quantile(numeric(0)) and
+        # mean(logical(0)) would hand back ci = NA and p = NaN with no
+        # indication that every replicate had failed.
+        warning("All bootstrap replicates failed; no confidence interval or p-value can be computed.",
+                call. = FALSE)
+        return(list(idi = original_idi, ci_lower = NA_real_, ci_upper = NA_real_,
+                    p_value = NA_real_, n_valid_boots = 0,
+                    fit_warning = original_fit_warning,
+                    fit_warning_boots = warning_boots))
+    }
+
+    if (length(boot_idi_valid) < n_boot * 0.5) {
+        warning(sprintf("Only %d of %d bootstrap replicates succeeded - results may be unreliable",
+                        length(boot_idi_valid), n_boot), call. = FALSE)
+    }
+    if (original_fit_warning || warning_boots > 0L) {
+        warning(sprintf(
+            paste0(
+                "Logistic calibration showed separation or non-convergence in the original ",
+                "fit or %d of %d bootstrap replicates; IDI and its interval may be unstable."
+            ),
+            warning_boots, n_boot
+        ), call. = FALSE)
+    }
+    
+    # Calculate confidence intervals
+    alpha <- 1 - conf_level
+    ci_lower <- quantile(boot_idi_valid, alpha/2, na.rm = TRUE)
+    ci_upper <- quantile(boot_idi_valid, 1 - alpha/2, na.rm = TRUE)
+    
+    # No justified null reference distribution for the refitted apparent IDI.
+    p_value <- NA_real_
+
+    return(list(
+        idi = original_idi,
+        ci_lower = as.numeric(ci_lower),
+        ci_upper = as.numeric(ci_upper),
+        p_value = p_value,
+        n_valid_boots = valid_boots,
+        fit_warning = original_fit_warning,
+        fit_warning_boots = warning_boots
+    ))
+}

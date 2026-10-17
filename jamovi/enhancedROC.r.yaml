@@ -1,0 +1,1517 @@
+---
+name: enhancedROC
+title: Clinical ROC Analysis Results
+jrs: '1.1'
+
+items:
+    - title: Analysis Results
+      name: results
+      type: Group
+      items:
+          # Notices render as one HTML panel for multi-line, severity-ordered content (jmvcore::Notice
+          # serializes fine; the earlier serialization rationale was wrong - CLAUDE.md, review guide 13).
+          - name: notices
+            title: Important Information
+            type: Html
+            clearWith:
+               - outcome
+               - predictors
+               - detectImbalance
+               - analysisType
+               - imbalanceThreshold
+               - recommendPRC
+               - showImbalanceWarning
+
+          - name: instructions
+            title: Instructions
+            type: Html
+            visible: true
+            clearWith:
+                - outcome
+                - predictors
+                - clinicalContext
+
+          # Which outcome level is the positive class, and why (filled by .rocOutcomeCoding()).
+          # rows: 0 - one row per observed level, added in .run() after .deleteTableRows().
+          - name: outcomeCoding
+            title: 'Outcome coding: which level is positive'
+            type: Table
+            description: Outcome levels with their counts and the role each plays in the analysis
+            visible: (length(outcome) > 0 && !validationPanel)
+            rows: 0
+            clearWith:
+                - showTableNotes
+                - outcome
+                - positiveClass
+                - predictors
+                - direction
+                - multiClassROC
+            columns:
+                - name: level
+                  title: 'Outcome level'
+                  type: text
+                - name: n
+                  title: 'N'
+                  type: integer
+                - name: role
+                  title: 'Role in this analysis'
+                  type: text
+
+          # Imbalance Metrics Table
+          - name: imbalanceMetrics
+            title: Class Imbalance Metrics
+            type: Table
+            visible: (detectImbalance && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - imbalanceThreshold
+                - recommendPRC
+            rows: 1
+            columns:
+                - name: n_positive
+                  title: 'N Positive'
+                  type: integer
+                - name: n_negative
+                  title: 'N Negative'
+                  type: integer
+                - name: ratio
+                  title: 'Ratio (Pos:Neg)'
+                  type: text
+                - name: prevalence
+                  title: 'Prevalence'
+                  type: number
+                  format: zto
+                - name: prc_baseline
+                  title: 'PRC Baseline'
+                  type: number
+                  format: zto
+                - name: imbalance_severity
+                  title: 'Imbalance Severity'
+                  type: text
+                - name: recommendation
+                  title: 'Recommendation'
+                  type: text
+
+          # Precision-Recall Metrics Table
+          - name: precisionRecallTable
+            title: Precision-Recall Metrics
+            type: Table
+            description: Metrics for imbalanced data analysis
+            visible: (detectImbalance && !validationPanel)
+            refs:
+                - Davis2006
+                - Keilwagen2014
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+            rows: 1
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: auc_pr
+                  title: 'AUC-PR (interpolated)'
+                  type: number
+                  format: zto
+                - name: f1_score
+                  title: 'F1 Score (Max)'
+                  type: number
+                  format: zto
+                - name: precision
+                  title: 'Precision'
+                  type: number
+                  format: zto
+                - name: recall
+                  title: 'Recall'
+                  type: number
+                  format: zto
+                - name: average_precision
+                  title: 'Average Precision'
+                  type: number
+                  format: zto
+
+          # Natural Language Summary
+          - name: analysisSummary
+            title: Analysis Summary
+            type: Html
+            # Internal validation writes its results into this panel, so it shows it on its own
+            visible: (showAnalysisSummary || internalValidation)
+            clearWith:
+                - showAnalysisSummary
+                - outcome
+                - predictors
+                - positiveClass
+                - internalValidation
+                - validationMethod
+                - bootstrapSamples
+                - clinicalContext
+                - seed
+                - direction
+                - confidenceLevel
+            description: Plain language summary of key findings
+
+          # Clinical Report Sentences
+          - name: clinicalReport
+            title: Clinical Report Sentences
+            type: Html
+            visible: (showClinicalReport)
+            clearWith:
+                - showClinicalReport
+                - outcome
+                - predictors
+                - positiveClass
+                - clinicalContext
+                - direction
+                - confidenceLevel
+                - useBootstrap
+                - bootstrapMethod
+                - bootstrapSamples
+                - stratifiedBootstrap
+                - seed
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+                - analysisType
+                - pairwiseComparisons
+                - comparisonMethod
+            refs:
+                - LinnGrunau2006
+            description: Copy-ready clinical report sentences for publications and reports
+
+          # AUC Summary Table
+          - name: aucSummary
+            title: Area Under the Curve (AUC) Summary
+            type: Table
+            description: AUC values with confidence intervals for each predictor
+            visible: (aucTable && !validationPanel)
+            refs:
+                - MannWhitney1947
+                - HanleyMcNeil1982
+                - DeLong1988
+                - ObuchowskiLieber1998
+                - FengCorteseBaumgartner2017
+                - HosmerLemeshow2013
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - confidenceLevel
+                - useBootstrap
+                - bootstrapMethod
+                - bootstrapSamples
+                - stratifiedBootstrap
+                - seed
+                - clinicalContext
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: auc
+                  title: 'AUC'
+                  type: number
+                  format: zto
+                - name: auc_lower
+                  title: 'AUC Lower CI'
+                  type: number
+                  format: zto
+                - name: auc_upper
+                  title: 'AUC Upper CI'
+                  type: number
+                  format: zto
+                - name: std_error
+                  title: 'Standard Error'
+                  type: number
+                  format: zto
+                - name: auc_interpretation
+                  title: 'AUC Interpretation'
+                  type: text
+                - name: clinical_utility
+                  title: 'AUC in Context'
+                  type: text
+
+          # ROC Curve Comparisons
+          - name: rocComparisons
+            title: ROC Curve Comparisons
+            type: Table
+            description: Pairwise comparisons between ROC curves
+            visible: (pairwiseComparisons && analysisType:comparative && !validationPanel)
+            refs:
+                - DeLong1988
+                - VenkatramanBegg1996
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - comparisonMethod
+                - clinicalContext
+                - bootstrapSamples
+                - stratifiedBootstrap
+                - seed
+                - direction
+
+            columns:
+                - name: predictor1
+                  title: 'Predictor 1'
+                  type: text
+                - name: predictor2
+                  title: 'Predictor 2'
+                  type: text
+                - name: auc_difference
+                  title: 'AUC Difference (1 - 2)'
+                  type: number
+                  format: zto
+                - name: test_statistic
+                  title: 'Test Statistic'
+                  type: number
+                - name: p_value
+                  title: 'p-value'
+                  type: number
+                  format: zto,pvalue
+                - name: result
+                  title: 'Result'
+                  type: text
+
+          # Enhanced Model Comparison Metrics
+          - name: detailedComparison
+            title: Detailed Model Comparison
+            type: Table
+            description: Comprehensive comparison of diagnostic metrics between models
+            visible: (showMetricsDiff && analysisType:comparative && !validationPanel)
+            refs:
+                - DeLong1988
+                - VenkatramanBegg1996
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - comparisonMethod
+                - bootstrapSamples
+                - stratifiedBootstrap
+                - seed
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+
+            columns:
+                - name: metric
+                  title: 'Metric'
+                  type: text
+                - name: model1_value
+                  title: 'Model 1 Value'
+                  type: number
+                  format: zto
+                - name: model2_value
+                  title: 'Model 2 Value'
+                  type: number
+                  format: zto
+                - name: difference
+                  title: 'Difference (1 - 2)'
+                  type: number
+                  format: zto
+                - name: percent_change
+                  title: 'Relative difference (%)'
+                  type: number
+                  # .b.R computes 100 * (value1 - value2) / value2 - the value is ALREADY a
+                  # percentage, so `format: pc` (which multiplies by 100 again) would print
+                  # 12.5 as '1250%'. dp:1 keeps the number as computed.
+                  format: dp:1
+                - name: p_value
+                  title: 'p-value'
+                  type: number
+                  format: zto,pvalue
+                - name: interpretation
+                  title: 'Interpretation'
+                  type: text
+
+          # Statistical Comparison Summary
+          - name: statisticalSummary
+            title: Statistical Comparison Summary
+            type: Table
+            description: Summary of statistical tests for model comparison
+            visible: (statisticalComparison && analysisType:comparative && !validationPanel)
+            refs:
+                - DeLong1988
+                - VenkatramanBegg1996
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - comparisonMethod
+                - bootstrapSamples
+                - stratifiedBootstrap
+                - seed
+                - direction
+
+            columns:
+                - name: test_name
+                  title: 'Statistical Test'
+                  type: text
+                - name: test_statistic
+                  title: 'Test Statistic'
+                  type: number
+                - name: p_value
+                  title: 'p-value'
+                  type: number
+                  format: zto,pvalue
+                - name: conclusion
+                  title: 'Statistical Conclusion'
+                  type: text
+                - name: effect_magnitude
+                  title: 'Observed AUC difference'
+                  type: text
+
+          # Optimal Cutoff Summary
+          - name: optimalCutoffSummary
+            title: Optimal Cutoff Analysis
+            type: Table
+            description: Youden Index optimization results for each predictor
+            visible: (optimalCutoffs && !validationPanel)
+            refs:
+                - youden1950
+                - Fluss2005
+                - PerkinsSchisterman2006
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+                - clinicalContext
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: optimal_cutoff
+                  title: 'Optimal Cutoff'
+                  type: number
+                - name: youden_index
+                  title: 'Youden Index'
+                  type: number
+                  format: zto
+                - name: sensitivity
+                  title: 'Sensitivity'
+                  type: number
+                  format: zto
+                - name: specificity
+                  title: 'Specificity'
+                  type: number
+                  format: zto
+                - name: accuracy
+                  title: 'Accuracy'
+                  type: number
+                  format: zto
+                - name: clinical_recommendation
+                  title: 'Performance Summary'
+                  type: text
+
+          # Detailed Cutoff Analysis
+          - name: cutoffAnalysis
+            title: Detailed Cutoff Analysis
+            type: Table
+            description: Comprehensive analysis across multiple cutoff values
+            visible: (cutoffTable && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - customCutoffs
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: cutoff
+                  title: 'Cutoff'
+                  type: number
+                - name: cutoff_type
+                  title: 'Cutoff Type'
+                  type: text
+                - name: sensitivity
+                  title: 'Sensitivity'
+                  type: number
+                  format: zto
+                - name: specificity
+                  title: 'Specificity'
+                  type: number
+                  format: zto
+                - name: one_minus_specificity
+                  title: '1-Specificity'
+                  type: number
+                  format: zto
+                - name: youden_index
+                  title: 'Youden Index'
+                  type: number
+                  format: zto
+                - name: true_positive
+                  title: 'True Positive'
+                  type: integer
+                - name: true_negative
+                  title: 'True Negative'
+                  type: integer
+                - name: false_positive
+                  title: 'False Positive'
+                  type: integer
+                - name: false_negative
+                  title: 'False Negative'
+                  type: integer
+
+          # Diagnostic Performance Metrics
+          - name: diagnosticPerformance
+            title: Diagnostic Performance Metrics
+            type: Table
+            description: Comprehensive diagnostic performance measures at optimal cutoff
+            visible: (diagnosticMetrics && !validationPanel)
+            refs:
+                - ClopperPearson1934
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+                - confidenceLevel
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: cutoff
+                  title: 'Cutoff'
+                  type: number
+                - name: sensitivity
+                  title: 'Sensitivity'
+                  type: number
+                  format: zto
+                - name: sensitivity_ci
+                  title: 'Sensitivity CI'
+                  type: text
+                - name: specificity
+                  title: 'Specificity'
+                  type: number
+                  format: zto
+                - name: specificity_ci
+                  title: 'Specificity CI'
+                  type: text
+                - name: accuracy
+                  title: 'Accuracy'
+                  type: number
+                  format: zto
+                - name: balanced_accuracy
+                  title: 'Balanced Accuracy'
+                  type: number
+                  format: zto
+
+          # Clinical Application Metrics
+          - name: clinicalApplicationMetrics
+            title: Clinical Application Metrics
+            type: Table
+            description: Clinical metrics including predictive values and likelihood ratios
+            visible: (clinicalMetrics && !validationPanel)
+            refs:
+                - jaeschke1994
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - useObservedPrevalence
+                - prevalence
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+                - clinicalContext
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: prevalence
+                  title: 'Prevalence'
+                  type: number
+                  format: zto
+                - name: ppv
+                  title: 'PPV'
+                  type: number
+                  format: zto
+                - name: npv
+                  title: 'NPV'
+                  type: number
+                  format: zto
+                - name: lr_positive
+                  title: 'LR+'
+                  type: number
+                - name: lr_negative
+                  title: 'LR-'
+                  type: number
+                - name: diagnostic_odds_ratio
+                  title: 'Diagnostic OR'
+                  type: number
+                - name: clinical_interpretation
+                  title: 'Clinical Interpretation'
+                  type: text
+
+          # Partial AUC Analysis
+          - name: partialAucAnalysis
+            title: Partial AUC Analysis
+            type: Table
+            description: Partial AUC analysis for specific sensitivity/specificity ranges
+            visible: (partialAuc && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - partialRange
+                - partialAucType
+                - bootstrapPartialAUC
+                - bootstrapSamples
+                - bootstrapMethod
+                - stratifiedBootstrap
+                - confidenceLevel
+                - seed
+                - clinicalContext
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: range_type
+                  title: 'Range Type'
+                  type: text
+                - name: range_min
+                  title: 'Range Min'
+                  type: number
+                  format: zto
+                - name: range_max
+                  title: 'Range Max'
+                  type: number
+                  format: zto
+                - name: partial_auc
+                  title: 'Partial AUC'
+                  type: number
+                  format: zto
+                - name: partial_auc_lower
+                  title: 'pAUC Lower CI'
+                  type: number
+                  format: zto
+                  visible: (bootstrapPartialAUC && !validationPanel)
+                - name: partial_auc_upper
+                  title: 'pAUC Upper CI'
+                  type: number
+                  format: zto
+                  visible: (bootstrapPartialAUC && !validationPanel)
+                - name: normalized_pauc
+                  title: 'Normalized pAUC'
+                  type: number
+                  format: zto
+                - name: clinical_relevance
+                  title: 'Clinical Relevance'
+                  type: text
+
+          # CROC Analysis
+          - name: crocAnalysisTable
+            title: CROC (Concentrated ROC) Analysis
+            type: Table
+            description: Concentrated ROC analysis with early retrieval focus
+            visible: (crocAnalysis && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - crocAlpha
+                - direction
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: croc_auc
+                  title: 'CROC AUC'
+                  type: number
+                  format: zto
+                - name: random_croc
+                  title: 'Random-ranking CROC AUC'
+                  type: number
+                  format: zto
+                - name: roc_auc
+                  title: 'ROC AUC'
+                  type: number
+                  format: zto
+                - name: alpha
+                  title: 'Alpha'
+                  type: number
+                - name: early_retrieval_gain
+                  title: 'Gain over random'
+                  type: number
+                  format: zto
+                - name: interpretation
+                  title: 'Interpretation'
+                  type: text
+
+          # ROC Convex Hull
+          - name: convexHullTable
+            title: ROC Convex Hull Analysis
+            type: Table
+            description: ROC convex hull - operating points reachable by randomly mixing two cut-offs (in-sample)
+            visible: (convexHull && !validationPanel)
+            refs:
+                - ProvostFawcett2001
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: hull_auc
+                  title: 'Convex Hull AUC'
+                  type: number
+                  format: zto
+                - name: empirical_auc
+                  title: 'Empirical AUC'
+                  type: number
+                  format: zto
+                - name: performance_gap
+                  title: 'Performance Gap'
+                  type: number
+                  format: zto
+                - name: n_hull_points
+                  title: 'Hull vertices'
+                  type: integer
+                - name: interpretation
+                  title: 'Interpretation'
+                  type: text
+
+          # Comprehensive Analysis Summary
+          - name: comprehensiveAnalysisSummary
+            title: Comprehensive ROC Analysis Summary
+            type: Table
+            description: Enhanced statistical summary for comprehensive output
+            visible: (comprehensive_output && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - clinicalContext
+                - direction
+                - analysisType
+
+            columns:
+                - name: measure
+                  title: 'Measure'
+                  type: text
+                - name: value
+                  title: 'Value'
+                  type: text
+                - name: interpretation
+                  title: 'Interpretation'
+                  type: text
+                - name: clinical_significance
+                  title: 'Clinical Significance'
+                  type: text
+
+          # Clinical Interpretation
+          - name: clinicalInterpretationGuide
+            title: Clinical Application Guidance
+            type: Html
+            visible: (clinical_interpretation && !validationPanel)
+            clearWith:
+                - outcome
+                - predictors
+                - positiveClass
+                - clinicalContext
+
+          # Statistical Methods
+          - name: methodsExplanation
+            title: Statistical Methods and References
+            type: Html
+            visible: (comprehensive_output && !validationPanel)
+            clearWith:
+                - outcome
+                - predictors
+                - positiveClass
+            refs:
+                - harrell2015
+                - DavisonHinkley1997
+                - Noma2021
+
+          # ROC Curve Plot
+          - name: rocCurvePlot
+            title: ROC Curve Analysis
+            type: Image
+            description: ROC curves with optimal cutoff points
+            visible: (rocCurve && !validationPanel)
+            renderFun: .plotROCCurve
+            clearWith:
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - smoothMethod
+                - showCutoffPoints
+                - showConfidenceBands
+                - confidenceLevel
+                - bootstrapSamples
+                - stratifiedBootstrap
+                - seed
+                - plotTheme
+                - plotWidth
+                - plotHeight
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+            width: 600
+            height: 600
+
+          # Precision-Recall Curve Plot
+          - name: prcPlot
+            title: Precision-Recall Curve
+            type: Image
+            description: Precision-Recall curve for imbalanced data
+            visible: (detectImbalance && !validationPanel)
+            renderFun: .plotPRC
+            clearWith:
+                - direction
+                - plotTheme
+                - detectImbalance
+                - outcome
+                - predictors
+                - positiveClass
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          # Comparative ROC Plot
+          - name: comparativeROCPlot
+            title: Comparative ROC Analysis
+            type: Image
+            description: Multiple ROC curves for comparison
+            visible: (rocCurve && analysisType:comparative && !validationPanel)
+            renderFun: .plotComparativeROC
+            clearWith:
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - smoothMethod
+                - showCutoffPoints
+                - showConfidenceBands
+                - confidenceLevel
+                - plotTheme
+                - plotWidth
+                - plotHeight
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+            width: 600
+            height: 600
+
+          # Cutoff Analysis Plot
+          - name: cutoffAnalysisPlot
+            title: Cutoff Analysis Plot
+            type: Image
+            description: Sensitivity and specificity across cutoff values
+            visible: (cutoffTable && !validationPanel)
+            renderFun: .plotCutoffAnalysis
+            clearWith:
+                - direction
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          # Youden Index Plot
+          - name: youdenIndexPlot
+            title: Youden Index Optimization Plot
+            type: Image
+            description: Youden Index values across cutoff range
+            visible: (youdenOptimization && !validationPanel)
+            renderFun: .plotYoudenIndex
+            clearWith:
+                - direction
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - plotWidth
+                - plotHeight
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+            width: 600
+            height: 600
+
+          # Clinical Decision Plot
+          - name: clinicalDecisionPlot
+            title: Clinical Decision Analysis Plot
+            type: Image
+            description: Clinical decision curves and threshold analysis
+            visible: (clinicalMetrics && !validationPanel)
+            renderFun: .plotClinicalDecision
+            clearWith:
+                - direction
+                - plotTheme
+                - useObservedPrevalence
+                - prevalence
+                - outcome
+                - predictors
+                - positiveClass
+                - plotWidth
+                - plotHeight
+                - youdenOptimization
+                - sensitivityThreshold
+                - specificityThreshold
+                - clinicalPresets
+            width: 600
+            height: 600
+
+          # CROC Curve Plot
+          - name: crocCurvePlot
+            title: CROC (Concentrated ROC) Curve
+            type: Image
+            description: Concentrated ROC curve with exponential magnifier transformation
+            visible: (crocAnalysis && !validationPanel)
+            renderFun: .plotCROC
+            clearWith:
+                - direction
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - crocAlpha
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          # ROC Convex Hull Plot
+          - name: convexHullPlot
+            title: ROC Convex Hull Plot
+            type: Image
+            description: ROC curve with convex hull overlay
+            visible: (convexHull && !validationPanel)
+            renderFun: .plotConvexHull
+            clearWith:
+                - direction
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          # Calibration Analysis Results
+          - name: calibrationSummary
+            title: Calibration Performance Summary
+            type: Table
+            description: Overall calibration metrics including Brier score
+            visible: (calibrationAnalysis && !validationPanel)
+            refs:
+                - VanCalster2019Calibration
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - hlGroups
+                - splineCalibration
+                - splineKnots
+                - brierScore
+                - calibrationMetrics
+                - eoRatio
+                - direction
+                - predictionScale
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: brier_score
+                  title: 'Brier Score'
+                  type: number
+                  format: zto
+                  visible: (brierScore)
+                - name: scaled_brier
+                  title: 'Scaled Brier'
+                  type: number
+                  format: zto
+                  visible: (brierScore)
+                - name: calibration_slope
+                  title: 'Calibration Slope'
+                  type: number
+                  visible: (calibrationMetrics && !validationPanel)
+                - name: calibration_intercept
+                  title: 'Intercept (slope model)'
+                  type: number
+                  visible: (calibrationMetrics && !validationPanel)
+                - name: calibration_in_large
+                  title: 'Calibration-in-the-Large'
+                  type: number
+                  visible: (calibrationMetrics && !validationPanel)
+                - name: ici
+                  title: 'ICI'
+                  type: number
+                  format: zto
+                  visible: (splineCalibration && !validationPanel)
+                - name: e50
+                  title: 'E50'
+                  type: number
+                  format: zto
+                  visible: (splineCalibration && !validationPanel)
+                - name: e90
+                  title: 'E90'
+                  type: number
+                  format: zto
+                  visible: (splineCalibration && !validationPanel)
+                - name: emax
+                  title: 'Emax'
+                  type: number
+                  format: zto
+                  visible: (splineCalibration && !validationPanel)
+                # E/O is a ratio of counts, not a proportion - it is not bounded by 1, so
+                # `format: zto` would be wrong here.
+                - name: eo_ratio
+                  title: 'E/O Ratio'
+                  type: number
+                  format: dp:3
+                  visible: (eoRatio && !validationPanel)
+                - name: interpretation
+                  title: 'Interpretation'
+                  type: text
+
+          - name: hosmerLemeshowTable
+            title: Hosmer-Lemeshow Goodness-of-Fit Test
+            type: Table
+            description: Hosmer-Lemeshow test for calibration
+            visible: (calibrationAnalysis && hosmerLemeshow && !validationPanel)
+            refs:
+                - HosmerLemeshow2013
+                - VanCalster2019Calibration
+            clearWith:
+                - showTableNotes
+                - outcome
+                - predictors
+                - positiveClass
+                - hlGroups
+                - direction
+                - predictionScale
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: chi_square
+                  title: 'Chi-Square'
+                  type: number
+                - name: df
+                  title: 'df'
+                  type: integer
+                - name: p_value
+                  title: 'p-value'
+                  type: number
+                  format: zto,pvalue
+                - name: n_groups
+                  title: 'Groups'
+                  type: integer
+                - name: conclusion
+                  title: 'Conclusion'
+                  type: text
+
+          - name: calibrationPlotImage
+            title: Calibration Plot
+            type: Image
+            description: Calibration plot showing observed vs predicted probabilities
+            visible: (calibrationAnalysis && calibrationPlot && !validationPanel)
+            renderFun: .plotCalibration
+            clearWith:
+                - direction
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - hlGroups
+                - splineCalibration
+                - splineKnots
+                - calibrationDensity
+                - predictionScale
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          # Multi-Class ROC Results
+          - name: multiClassAUC
+            title: Multi-Class ROC Summary
+            type: Table
+            description: AUC values for each class in multi-class analysis
+            visible: (multiClassROC && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - direction
+                - outcome
+                - predictors
+                - positiveClass
+                - multiClassStrategy
+                - useBootstrap
+                - bootstrapMethod
+                - bootstrapSamples
+                - stratifiedBootstrap
+                - confidenceLevel
+                - seed
+            columns:
+                - name: class
+                  title: 'Class'
+                  type: text
+                - name: strategy
+                  title: 'Strategy'
+                  type: text
+                - name: auc
+                  title: 'AUC'
+                  type: number
+                  format: zto
+                - name: auc_lower
+                  title: 'AUC Lower CI'
+                  type: number
+                  format: zto
+                - name: auc_upper
+                  title: 'AUC Upper CI'
+                  type: number
+                  format: zto
+                - name: n_positive
+                  title: 'N Positive'
+                  type: integer
+                - name: n_negative
+                  title: 'N Negative'
+                  type: integer
+
+          - name: multiClassAverage
+            title: Multi-Class Average AUC
+            type: Table
+            description: Averaged AUC across all classes
+            visible: (multiClassROC && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - direction
+                - outcome
+                - predictors
+                - positiveClass
+                - multiClassStrategy
+                - multiClassAveraging
+            rows: 1
+            columns:
+                - name: averaging_method
+                  title: 'Averaging Method'
+                  type: text
+                - name: macro_auc
+                  title: 'Macro AUC'
+                  type: number
+                  format: zto
+                - name: weighted_auc
+                  title: 'Weighted AUC'
+                  type: number
+                  format: zto
+                - name: interpretation
+                  title: 'Interpretation'
+                  type: text
+
+          - name: multiClassROCPlot
+            title: Multi-Class ROC Curves
+            type: Image
+            description: ROC curves for all classes
+            visible: (multiClassROC && !validationPanel)
+            renderFun: .plotMultiClassROC
+            clearWith:
+                - direction
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - multiClassStrategy
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          # Clinical Impact Results
+          - name: clinicalImpactTable
+            title: Clinical Impact Metrics
+            type: Table
+            description: Number needed to test and clinical utility metrics
+            visible: (clinicalImpact && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - impactCutoffs
+                - utilityThreshold
+                - workloadPopulationSize
+                - analysisUnit
+                - prevalenceScenarios
+                - prevalence
+                - useObservedPrevalence
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: threshold
+                  title: 'Score cutoff'
+                  type: number
+                - name: nnt
+                  title: 'Inverse net benefit'
+                  type: number
+                  visible: (nntCalculation && !validationPanel)
+                - name: nnd
+                  title: 'Inverse Youden index'
+                  type: number
+                  visible: (nntCalculation && !validationPanel)
+                - name: tested_positive
+                  title: 'Tested Positive (%)'
+                  type: number
+                  format: pc
+                - name: true_positive_rate
+                  title: 'True Positive Rate'
+                  type: number
+                  format: pc
+                - name: false_positive_rate
+                  title: 'False Positive Rate'
+                  type: number
+                  format: pc
+                - name: net_benefit_per_100
+                  title: 'Net Benefit per 100'
+                  type: number
+
+          - name: decisionImpactSummary
+            title: Decision Impact at Key Thresholds
+            type: Table
+            description: Clinical consequences at various decision thresholds
+            visible: (clinicalImpact && decisionImpactTable && !validationPanel)
+            clearWith:
+                - showTableNotes
+                - impactCutoffs
+                - utilityThreshold
+                - workloadPopulationSize
+                - analysisUnit
+                - prevalenceScenarios
+                - prevalence
+                - useObservedPrevalence
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+            columns:
+                - name: predictor
+                  title: 'Predictor'
+                  type: text
+                - name: threshold
+                  title: 'Score cutoff'
+                  type: number
+                - name: n_high_risk
+                  title: 'N High Risk'
+                  type: number
+                - name: n_high_risk_with_event
+                  title: 'N True Positives'
+                  type: number
+                - name: n_high_risk_without_event
+                  title: 'N False Positives'
+                  type: number
+                - name: ppv
+                  title: 'PPV'
+                  type: number
+                  format: pc
+                - name: npv
+                  title: 'NPV'
+                  type: number
+                  format: pc
+
+          - name: clinicalUtilityPlot
+            title: Clinical Utility Curve
+            type: Image
+            description: 'Decision curve: net benefit against threshold probability'
+            visible: (clinicalImpact && clinicalUtilityCurve && !validationPanel)
+            renderFun: .plotClinicalUtility
+            refs:
+                - PrenticePyke1979
+            clearWith:
+                - impactCutoffs
+                - utilityThreshold
+                - workloadPopulationSize
+                - analysisUnit
+                - prevalenceScenarios
+                - prevalence
+                - useObservedPrevalence
+                - direction
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - predictionScale
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          - name: decisionImpactPlot
+            title: Clinical Impact Curve
+            type: Image
+            description: Number of patients called high risk, and number of true events among them, per 1000 tested across threshold probabilities
+            visible: (decisionImpactCurves && !validationPanel)
+            renderFun: .plotDecisionImpact
+            refs:
+                - PrenticePyke1979
+            clearWith:
+                - impactCutoffs
+                - utilityThreshold
+                - workloadPopulationSize
+                - analysisUnit
+                - prevalenceScenarios
+                - prevalence
+                - useObservedPrevalence
+                - plotTheme
+                - outcome
+                - predictors
+                - positiveClass
+                - direction
+                - predictionScale
+                - plotWidth
+                - plotHeight
+            width: 600
+            height: 600
+
+          - name: screeningWorkload
+            title: Observed and projected workload
+            type: Table
+            visible: (clinicalImpact)
+            clearWith: &id001
+            - showTableNotes
+            - outcome
+            - predictors
+            - positiveClass
+            - direction
+            - customCutoffs
+            - prevalence
+            - useObservedPrevalence
+            - impactCutoffs
+            - utilityThreshold
+            - workloadPopulationSize
+            - analysisUnit
+            - prevalenceScenarios
+            - validationPanel
+            - validationNegative
+            - referenceDescription
+            - modelVersion
+            - cohortRole
+            - samplingDesign
+            - thresholdSource
+            - predictionScale
+            - patientID
+            - siteID
+            - partitionID
+            - validationBootstrap
+            - validationDraws
+            - seed
+            - confidenceLevel
+            columns:
+            - name: predictor
+              title: Predictor
+              type: text
+            - name: source
+              title: Population
+              type: text
+            - name: unit
+              title: Unit
+              type: text
+            - name: cutoff
+              title: Score cutoff
+              type: number
+              format: dp:6
+            - name: prevalence
+              title: Prevalence
+              type: number
+              format: dp:6
+            - name: population
+              title: Population size
+              type: number
+              format: dp:6
+            - name: tp
+              title: True positives
+              type: number
+              format: dp:6
+            - name: fp
+              title: False positives
+              type: number
+              format: dp:6
+            - name: fn
+              title: False negatives
+              type: number
+              format: dp:6
+            - name: tn
+              title: True negatives
+              type: number
+              format: dp:6
+            - name: flags
+              title: Flags
+              type: number
+              format: dp:6
+            - name: ppv
+              title: PPV
+              type: number
+              format: dp:6
+            - name: npv
+              title: NPV
+              type: number
+              format: dp:6
+            - name: flags_per_1000
+              title: Flags per 1000
+              type: number
+              format: dp:6
+            - name: flags_per_detected
+              title: Flags per detected positive
+              type: number
+              format: dp:6
+            - name: tests_per_detected
+              title: Tests per detected positive
+              type: number
+              format: dp:6
+            - name: net_benefit
+              title: Net benefit
+              type: number
+              format: dp:6
+          - name: validationContext
+            title: Validation context
+            type: Table
+            visible: (validationPanel)
+            clearWith: *id001
+            columns:
+            - name: setting
+              title: Setting
+              type: text
+            - name: value
+              title: Value
+              type: text
+          - name: denominatorLedger
+            title: Validation denominator ledger
+            type: Table
+            visible: (validationPanel)
+            clearWith: *id001
+            columns:
+            - name: status
+              title: Status
+              type: text
+            - name: n
+              title: Rows
+              type: number
+          - name: frozenMetrics
+            title: Frozen-model performance and paired differences
+            type: Table
+            visible: (validationPanel)
+            clearWith: *id001
+            columns:
+            - name: n
+              title: Analyzed rows
+              type: integer
+            - name: positives
+              title: Positive rows
+              type: integer
+            - name: negatives
+              title: Negative rows
+              type: integer
+            - name: clusters
+              title: Independent units
+              type: integer
+            - name: site
+              title: Site
+              type: text
+            - name: model
+              title: Model / comparison
+              type: text
+            - name: cutoff
+              title: Fixed cutoff
+              type: number
+              format: dp:6
+            - name: metric
+              title: Metric
+              type: text
+            - name: estimate
+              title: Estimate
+              type: number
+              format: dp:6
+            - name: lower
+              title: CI lower
+              type: number
+              format: dp:6
+            - name: upper
+              title: CI upper
+              type: number
+              format: dp:6
+            - name: valid
+              title: Valid draws
+              type: number
+            - name: failed
+              title: Failed draws
+              type: integer
+            - name: status
+              title: Interval status
+              type: text
+
+refs:
+    - ClinicoPathJamoviModule
+    - Swamidass2010
+    - pROC
+    - Robin2011
+    - AustinSteyerberg2019ICI
+    - boot
+    - caret
+    - splines
+    - Kerr2016DCA
+    - Vickers2019DCA
+    - McClish1989
+...

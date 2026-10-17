@@ -2,7 +2,7 @@
 % Please edit documentation in R/kappaSizeFixedN.h.R
 \name{kappaSizeFixedN}
 \alias{kappaSizeFixedN}
-\title{Lowest Expected Value for a fixed sample size}
+\title{Lowest Expected Kappa for a Fixed Sample Size}
 \usage{
 kappaSizeFixedN(
   outcome = "2",
@@ -10,7 +10,9 @@ kappaSizeFixedN(
   props = "0.20, 0.80",
   raters = "2",
   alpha = 0.05,
-  n = 100
+  n = 100,
+  showExplanations = FALSE,
+  showSummary = FALSE
 )
 }
 \arguments{
@@ -34,6 +36,12 @@ Enter exactly one value per outcome level otherwise.}
 
 \item{n}{Number of subjects available, each rated by all raters (at least
 11; the kappaSize engine refuses 10 or fewer).}
+
+\item{showExplanations}{If TRUE, adds the methodology to the caveats panel
+and shows the Study Explanation.}
+
+\item{showSummary}{If TRUE, shows the kappaSize package's own summary
+output.}
 }
 \value{
 A results object containing:
@@ -42,15 +50,18 @@ A results object containing:
 \code{results$text1} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$text_summary} \tab \tab \tab \tab \tab a preformatted \cr
 \code{results$text2} \tab \tab \tab \tab \tab a preformatted \cr
+\code{results$methodology} \tab \tab \tab \tab \tab a html \cr
 }
 }
 \description{
 For an interobserver agreement study whose number of subjects is already
 fixed, the lowest kappa the study would still be unable to rule out - the
 lower bound of the one-sided confidence interval around the anticipated
-kappa (kappa0); every value below it is excluded. Computed with the
-kappaSize package. Use kappaSizePower to size a study for a hypothesis test
-and kappaSizeCI to size it for a target interval width.
+kappa (kappa0); every value below it is excluded. Solved from the
+goodness-of-fit models of the kappaSize package; with three or more raters
+or categories it also allows for re-estimating the category proportions
+when the study is analysed. Use kappaSizePower to size a study for a
+hypothesis test and kappaSizeCI to size it for target confidence limits.
 }
 \examples{
 \dontrun{

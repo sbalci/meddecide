@@ -1,0 +1,110 @@
+title: Sequential Testing Analysis
+name: sequentialtests
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: CollapseBox
+    label: Teaching Examples (Not Clinical Guidance)
+    collapsed: false
+    children:
+      - type: ComboBox
+        name: preset
+        stretchFactor: 1
+        events:
+          change: ./sequentialtests.events::onChange_preset
+  - type: Label
+    label: First Test
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: TextBox
+            name: test1_name
+            format: string
+            width: largest
+            enable: (preset:custom)
+          - type: TextBox
+            name: test1_sens
+            format: number
+            label: Sensitivity
+            enable: (preset:custom)
+          - type: TextBox
+            name: test1_spec
+            format: number
+            label: Specificity
+            enable: (preset:custom)
+  - type: Label
+    label: Second Test
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: TextBox
+            name: test2_name
+            format: string
+            width: largest
+            enable: (preset:custom)
+          - type: TextBox
+            name: test2_sens
+            format: number
+            label: Sensitivity
+            enable: (preset:custom)
+          - type: TextBox
+            name: test2_spec
+            format: number
+            label: Specificity
+            enable: (preset:custom)
+  - type: Label
+    label: Testing Strategy
+    children:
+      - type: ComboBox
+        name: strategy
+        enable: (preset:custom)
+  - type: Label
+    label: Disease Parameters
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: TextBox
+            name: prevalence
+            format: number
+            label: Prevalence
+            enable: (preset:custom)
+          - type: TextBox
+            name: population_size
+            format: number
+            label: Illustrative population size
+  - type: CollapseBox
+    label: Display Options
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: show_explanation
+          - type: CheckBox
+            name: show_formulas
+          - type: CheckBox
+            name: show_plots
+  - type: CollapseBox
+    label: Cost Analysis
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: show_cost_analysis
+          - type: TextBox
+            name: test1_cost
+            format: number
+            label: First test unit cost
+            enable: (show_cost_analysis)
+          - type: TextBox
+            name: test2_cost
+            format: number
+            label: Second test unit cost
+            enable: (show_cost_analysis)

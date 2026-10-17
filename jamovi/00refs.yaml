@@ -1,5 +1,109 @@
 ---
 refs:
+    AltmanBland1994:
+        type: article
+        author: "Altman, D. G., & Bland, J. M."
+        year: 1994
+        title: "Diagnostic tests 1: Sensitivity and specificity"
+        publisher: BMJ
+        volume: 308
+        issue: 6943
+        pages: 1552
+        doi: 10.1136/bmj.308.6943.1552
+        url: "https://doi.org/10.1136/bmj.308.6943.1552"
+
+    AustinSteyerberg2019ICI:
+        type: article
+        author: "Austin, P. C., & Steyerberg, E. W."
+        year: 2019
+        title: The Integrated Calibration Index (ICI) and related metrics for quantifying the calibration of logistic regression models
+        publisher: Statistics in Medicine
+        volume: 38
+        issue: 21
+        pages: 4051-4065
+        doi: 10.1002/sim.8281
+        url: "https://doi.org/10.1002/sim.8281"
+
+    Baker2009RelativeUtility:
+        type: article
+        author: "Baker, S. G., Cook, N. R., Vickers, A., & Kramer, B. S."
+        year: 2009
+        title: "Using relative utility curves to evaluate risk prediction"
+        publisher: "Journal of the Royal Statistical Society: Series A (Statistics in Society)"
+        volume: 172
+        issue: 4
+        pages: 729-748
+        doi: 10.1111/j.1467-985X.2009.00592.x
+        url: "https://doi.org/10.1111/j.1467-985X.2009.00592.x"
+
+    Barlow1991:
+        type: article
+        author: "Barlow, W., Lai, M. Y., & Azen, S. P."
+        year: 1991
+        title: A comparison of methods for calculating a stratified kappa
+        publisher: Statistics in Medicine
+        volume: 10
+        issue: 9
+        pages: 1465-1472
+        doi: 10.1002/sim.4780100913
+        url: "https://doi.org/10.1002/sim.4780100913"
+    BlandAltman1986:
+        type: article
+        author: "Bland, J. M., & Altman, D. G."
+        year: 1986
+        title: Statistical methods for assessing agreement between two methods of clinical measurement
+        publisher: Lancet
+        volume: 1
+        issue: 8476
+        pages: 307-310
+        pmid: 2868172
+        url: "https://pubmed.ncbi.nlm.nih.gov/2868172/"
+    BlandAltman1999:
+        type: article
+        author: "Bland, J. M., & Altman, D. G."
+        year: 1999
+        title: Measuring agreement in method comparison studies
+        publisher: Statistical Methods in Medical Research
+        volume: 8
+        issue: 2
+        pages: 135-160
+        pmid: 10501650
+        doi: 10.1177/096228029900800204
+        url: "https://pubmed.ncbi.nlm.nih.gov/10501650/"
+
+
+    Byrt1993:
+        type: article
+        author: "Byrt, T., Bishop, J., & Carlin, J. B."
+        year: 1993
+        title: "Bias, prevalence and kappa"
+        publisher: Journal of Clinical Epidemiology
+        volume: 46
+        issue: 5
+        pages: 423-429
+        doi: 10.1016/0895-4356(93)90018-V
+        url: "https://doi.org/10.1016/0895-4356(93)90018-V"
+
+    Buderer1996:
+        type: article
+        author: Buderer, N. M. F.
+        year: 1996
+        title: "Statistical methodology: I. Incorporating the prevalence of disease into the sample size calculation for sensitivity and specificity"
+        publisher: Academic Emergency Medicine
+        volume: 3
+        issue: 9
+        pages: 895-900
+        doi: 10.1111/j.1553-2712.1996.tb03538.x
+        url: "https://doi.org/10.1111/j.1553-2712.1996.tb03538.x"
+
+    CDC_HIV_Testing_2023:
+        type: webpage
+        author: Centers for Disease Control and Prevention; Association of Public Health Laboratories.
+        year: 2023
+        title: Technical Update for HIV Nucleic Acid Tests Approved for Diagnostic Purposes
+        publisher: CDC Stacks
+        url: "https://stacks.cdc.gov/view/cdc/129018"
+
     ClinicoPathJamoviModule:
         type: software
         author: "Balci, S."
@@ -8,6 +112,568 @@ refs:
         publisher: "[R package]. Retrieved from https://github.com/sbalci/ClinicoPathJamoviModule"
         doi: 10.17605/OSF.IO/9SZUD
         url: "https://www.serdarbalci.com/ClinicoPathJamoviModule/"
+
+    ClopperPearson1934:
+        type: article
+        author: "Clopper, C. J., & Pearson, E. S."
+        year: 1934
+        title: The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial
+        publisher: Biometrika
+        volume: 26
+        issue: 4
+        pages: 404-413
+        doi: 10.1093/biomet/26.4.404
+        url: "https://doi.org/10.1093/biomet/26.4.404"
+
+    Cicchetti1994:
+        type: article
+        author: "Cicchetti, D. V."
+        year: 1994
+        title: Guidelines, criteria, and rules of thumb for evaluating normed and standardized assessment instruments in psychology
+        publisher: Psychological Assessment
+        volume: 6
+        issue: 4
+        pages: 284-290
+        doi: 10.1037/1040-3590.6.4.284
+        url: "https://doi.org/10.1037/1040-3590.6.4.284"
+
+    Cohen1960:
+        type: article
+        author: "Cohen, J."
+        year: 1960
+        title: A coefficient of agreement for nominal scales
+        publisher: Educational and Psychological Measurement
+        volume: 20
+        issue: 1
+        pages: 37-46
+        doi: 10.1177/001316446002000104
+        url: "https://doi.org/10.1177/001316446002000104"
+
+    Cohen1968:
+        type: article
+        author: "Cohen, J."
+        year: 1968
+        title: "Weighted kappa: Nominal scale agreement provision for scaled disagreement or partial credit"
+        publisher: Psychological Bulletin
+        volume: 70
+        issue: 4
+        pages: 213-220
+        doi: 10.1037/h0026256
+        url: "https://doi.org/10.1037/h0026256"
+
+    Cohen1988:
+        type: book
+        author: Cohen, J.
+        year: 1988
+        title: Statistical Power Analysis for the Behavioral Sciences (2nd ed.)
+        publisher: Lawrence Erlbaum Associates
+        doi: 10.4324/9780203771587
+        url: "https://doi.org/10.4324/9780203771587"
+
+    ConditionalDependenceDiagnosticTests:
+        type: article
+        author: Gardner IA, Stryhn H, Lind P, Collins MT.
+        year: 2000
+        title: Conditional dependence between tests affects the diagnosis and surveillance of animal diseases
+        publisher: Preventive Veterinary Medicine
+        volume: 45
+        issue: 1-2
+        pages: 107-122
+        doi: 10.1016/S0167-5877(00)00119-7
+        url: "https://pubmed.ncbi.nlm.nih.gov/10802336/"
+
+    Conger1980:
+        type: article
+        author: "Conger, A. J."
+        year: 1980
+        title: Integration and generalization of kappas for multiple raters
+        publisher: Psychological Bulletin
+        volume: 88
+        issue: 2
+        pages: 322-328
+        doi: 10.1037/0033-2909.88.2.322
+        url: "https://doi.org/10.1037/0033-2909.88.2.322"
+
+    Davis2006:
+        type: inproceedings
+        author: "Davis, J., & Goadrich, M."
+        year: 2006
+        title: The relationship between Precision-Recall and ROC curves
+        publisher: Proceedings of the 23rd International Conference on Machine Learning
+        pages: 233-240
+        doi: 10.1145/1143844.1143874
+        url: "https://doi.org/10.1145/1143844.1143874"
+
+    DeLong1988:
+        type: article
+        author: "DeLong, E. R., DeLong, D. M., & Clarke-Pearson, D. L."
+        year: 1988
+        title: "Comparing the areas under two or more correlated receiver operating characteristic curves: a nonparametric approach"
+        publisher: Biometrics
+        volume: 44
+        issue: 3
+        pages: 837-845
+        doi: 10.2307/2531595
+        url: "https://doi.org/10.2307/2531595"
+
+    DeeksAltman2004:
+        type: article
+        author: "Deeks, J. J., & Altman, D. G."
+        year: 2004
+        title: "Diagnostic tests 4: likelihood ratios"
+        publisher: BMJ
+        volume: 329
+        issue: 7458
+        pages: 168-169
+        doi: 10.1136/bmj.329.7458.168
+        url: "https://doi.org/10.1136/bmj.329.7458.168"
+
+    DerSimonian1986:
+        type: article
+        author: "DerSimonian, R., & Laird, N."
+        year: 1986
+        title: Meta-analysis in clinical trials
+        publisher: Controlled Clinical Trials
+        volume: 7
+        issue: 3
+        pages: 177-188
+        doi: 10.1016/0197-2456(86)90046-2
+        url: "https://doi.org/10.1016/0197-2456(86)90046-2"
+
+    DescTools:
+        type: software
+        author: Andri Signorell
+        year: 2025
+        title: "DescTools: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=DescTools"
+        url: "https://CRAN.R-project.org/package=DescTools"
+
+    DiagnosticTests:
+        type: article
+        author: "Stites, E. C., & Wilen, C. B."
+        year: 2020
+        title: The Interpretation of SARS-CoV-2 Diagnostic Tests
+        publisher: Med
+        volume: 1
+        issue: 1
+        pages: 78-89
+        doi: 10.1016/j.medj.2020.08.001
+        url: "https://doi.org/10.1016/j.medj.2020.08.001"
+
+    Fagan:
+        type: software
+        author: "Chekroud, A. M., & Schwartz, A."
+        year: 2016
+        title: "nomogrammer: Fagan's nomograms with ggplot2"
+        publisher: GitHub
+        url: "https://github.com/achekroud/nomogrammer"
+
+    Fagan1975:
+        type: article
+        author: Fagan, T. J.
+        year: 1975
+        title: "Nomogram for Bayes's theorem"
+        publisher: New England Journal of Medicine
+        volume: 293
+        issue: 5
+        pages: 257
+        doi: 10.1056/NEJM197507312930513
+        url: "https://doi.org/10.1056/NEJM197507312930513"
+
+    Fleiss1971:
+        type: article
+        author: "Fleiss, J. L."
+        year: 1971
+        title: Measuring nominal scale agreement among many raters
+        publisher: Psychological Bulletin
+        volume: 76
+        issue: 5
+        pages: 378-382
+        doi: 10.1037/h0031619
+        url: "https://doi.org/10.1037/h0031619"
+
+    Gwet2008:
+        type: article
+        author: "Gwet, K. L."
+        year: 2008
+        title: Computing inter-rater reliability and its variance in the presence of high agreement
+        publisher: British Journal of Mathematical and Statistical Psychology
+        volume: 61
+        issue: 1
+        pages: 29-48
+        doi: 10.1348/000711006X126600
+        url: "https://doi.org/10.1348/000711006X126600"
+
+    Hedges1981:
+        type: article
+        author: Hedges, L. V.
+        year: 1981
+        title: Distribution theory for Glass's estimator of effect size and related estimators
+        publisher: Journal of Educational Statistics
+        volume: 6
+        issue: 2
+        pages: 107-128
+        doi: 10.3102/10769986006002107
+        url: "https://doi.org/10.3102/10769986006002107"
+
+    Higgins2003:
+        type: article
+        author: "Higgins, J. P. T., Thompson, S. G., Deeks, J. J., & Altman, D. G."
+        year: 2003
+        title: Measuring inconsistency in meta-analyses
+        publisher: BMJ
+        volume: 327
+        issue: 7414
+        pages: 557-560
+        doi: 10.1136/bmj.327.7414.557
+        url: "https://doi.org/10.1136/bmj.327.7414.557"
+
+    HuiWalter1980:
+        type: article
+        author: "Hui, S. L., & Walter, S. D."
+        year: 1980
+        title: Estimating the Error Rates of Diagnostic Tests
+        publisher: Biometrics
+        volume: 36
+        issue: 1
+        pages: 167-171
+        doi: 10.2307/2530508
+        url: "https://doi.org/10.2307/2530508"
+
+    Janson2001:
+        type: article
+        author: "Janson, H., & Olsson, U."
+        year: 2001
+        title: A measure of agreement for interval or nominal multivariate observations
+        publisher: Educational and Psychological Measurement
+        volume: 61
+        issue: 2
+        pages: 277-289
+        doi: 10.1177/00131640121971239
+        url: "https://doi.org/10.1177/00131640121971239"
+
+    Kerr2016DCA:
+        type: article
+        author: "Kerr, K. F., Brown, M. D., Zhu, K., & Janes, H."
+        year: 2016
+        title: "Assessing the clinical impact of risk prediction models with decision curves: guidance for correct interpretation and appropriate use"
+        publisher: Journal of Clinical Oncology
+        volume: 34
+        issue: 21
+        pages: 2534-2540
+        doi: 10.1200/JCO.2015.65.5654
+        url: "https://doi.org/10.1200/JCO.2015.65.5654"
+
+    Koo2016:
+        type: article
+        author: "Koo, T. K., & Li, M. Y."
+        year: 2016
+        title: A guideline of selecting and reporting intraclass correlation coefficients for reliability research
+        publisher: Journal of Chiropractic Medicine
+        volume: 15
+        issue: 2
+        pages: 155-163
+        doi: 10.1016/j.jcm.2016.02.012
+        url: "https://doi.org/10.1016/j.jcm.2016.02.012"
+
+    Krippendorff2004:
+        type: article
+        author: "Krippendorff, K."
+        year: 2004
+        title: "Reliability in Content Analysis: Some Common Misconceptions and Recommendations"
+        publisher: Human Communication Research
+        volume: 30
+        issue: 3
+        pages: 411-433
+        doi: 10.1111/j.1468-2958.2004.tb00738.x
+        url: "https://doi.org/10.1111/j.1468-2958.2004.tb00738.x"
+
+    LandisKoch1977:
+        type: article
+        author: "Landis, J. R., & Koch, G. G."
+        year: 1977
+        title: The measurement of observer agreement for categorical data
+        publisher: Biometrics
+        volume: 33
+        issue: 1
+        pages: 159-174
+        doi: 10.2307/2529310
+        url: "https://pubmed.ncbi.nlm.nih.gov/843571/"
+
+    Lin1989:
+        type: article
+        author: "Lin, L. I."
+        year: 1989
+        title: A concordance correlation coefficient to evaluate reproducibility
+        publisher: Biometrics
+        volume: 45
+        issue: 1
+        pages: 255-268
+        doi: 10.2307/2532051
+        url: "https://doi.org/10.2307/2532051"
+
+    Lin2000:
+        type: article
+        author: "Lin, L. I."
+        year: 2000
+        title: Total deviation index for measuring individual agreement with applications in laboratory performance and bioequivalence
+        publisher: Statistics in Medicine
+        volume: 19
+        issue: 2
+        pages: 255-270
+        doi: "10.1002/(SICI)1097-0258(20000130)19:2<255::AID-SIM293>3.0.CO;2-8"
+        url: "https://pubmed.ncbi.nlm.nih.gov/10641028/"
+
+    Light1971:
+        type: article
+        author: "Light, R. J."
+        year: 1971
+        title: "Measures of response agreement for qualitative data: Some generalizations and alternatives"
+        publisher: Psychological Bulletin
+        volume: 76
+        issue: 5
+        pages: 365-377
+        doi: 10.1037/h0031643
+        url: "https://doi.org/10.1037/h0031643"
+
+    MASS:
+        type: software
+        author: "Ripley, B., Venables W., Bates, D. M., Hornik, K., Gebhardt, A., & Firth, D."
+        year: 2018
+        title: "MASS: Support Functions and Datasets for Venables and Ripley's MASS"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=MASS"
+        url: "https://CRAN.R-project.org/package=MASS"
+
+    MontielOleaPlagborgMoller2019:
+        type: article
+        author: "Montiel Olea, J. L., & Plagborg-Møller, M."
+        year: 2019
+        title: "Simultaneous confidence bands: Theory, implementation, and an application to SVARs"
+        publisher: Journal of Applied Econometrics
+        volume: 34
+        issue: 1
+        pages: 1-17
+        doi: 10.1002/jae.2656
+        url: "https://doi.org/10.1002/jae.2656"
+
+    McClish1989:
+        type: article
+        author: McClish, D. K.
+        year: 1989
+        title: Analyzing a portion of the ROC curve
+        publisher: Medical Decision Making
+        volume: 9
+        issue: 3
+        pages: 190-195
+        doi: 10.1177/0272989X8900900307
+        url: "https://doi.org/10.1177/0272989X8900900307"
+
+    McGraw1996:
+        type: article
+        author: "McGraw, K. O., & Wong, S. P."
+        year: 1996
+        title: Forming inferences about some intraclass correlation coefficients
+        publisher: Psychological Methods
+        volume: 1
+        issue: 1
+        pages: 30-46
+        doi: 10.1037/1082-989X.1.1.30
+        url: "https://doi.org/10.1037/1082-989X.1.1.30"
+
+    Mukaka2012:
+        type: article
+        author: "Mukaka, M. M."
+        year: 2012
+        title: "Statistics corner: A guide to appropriate use of correlation coefficient in medical research"
+        publisher: Malawi Medical Journal
+        volume: 24
+        issue: 3
+        pages: 69-71
+        url: "https://pubmed.ncbi.nlm.nih.gov/23638278/"
+
+    Nelson2015:
+        type: article
+        author: "Nelson, K. P., & Edwards, D."
+        year: 2015
+        title: Measures of agreement between many raters for ordinal classifications
+        publisher: Statistics in Medicine
+        volume: 34
+        issue: 23
+        pages: 3116-3132
+        doi: 10.1002/sim.6546
+        url: "https://doi.org/10.1002/sim.6546"
+
+    PathologyKappa:
+        type: article
+        author: "Marchevsky, A. M., Walts, A. E., Lissenberg-Witte, B. I., & Thunnissen, E."
+        year: 2020
+        title: Pathologists should probably forget about kappa. Percent agreement, diagnostic specificity and related metrics provide more clinically applicable measures of interobserver variability
+        publisher: Annals of Diagnostic Pathology
+        volume: 47
+        pages: '151561'
+        doi: 10.1016/j.anndiagpath.2020.151561
+        pmid: 32623312
+        url: "https://doi.org/10.1016/j.anndiagpath.2020.151561"
+
+    Pencina2008:
+        type: article
+        author: "Pencina, M. J., D'Agostino Sr, R. B., D'Agostino Jr, R. B., & Vasan, R. S."
+        year: 2008
+        title: "Evaluating the added predictive ability of a new marker: from area under the ROC curve to reclassification and beyond"
+        publisher: Statistics in Medicine
+        volume: 27
+        issue: 2
+        pages: 157-172
+        doi: 10.1002/sim.2929
+        url: "https://doi.org/10.1002/sim.2929"
+
+    Pencina2011:
+        type: article
+        author: "Pencina, M. J., D'Agostino Sr, R. B., & Steyerberg, E. W."
+        year: 2011
+        title: Extensions of net reclassification improvement calculations to measure usefulness of new biomarkers
+        publisher: Statistics in Medicine
+        volume: 30
+        issue: 1
+        pages: 11-21
+        doi: 10.1002/sim.4085
+        url: "https://doi.org/10.1002/sim.4085"
+
+    STARD2015:
+        type: article
+        author: Bossuyt, P. M., Reitsma, J. B., Bruns, D. E., et al.
+        year: 2015
+        title: "STARD 2015: An updated list of essential items for reporting diagnostic accuracy studies"
+        publisher: BMJ
+        volume: 351
+        pages: h5527
+        doi: 10.1136/bmj.h5527
+        url: "https://doi.org/10.1136/bmj.h5527"
+
+    Shrout1979:
+        type: article
+        author: "Shrout, P. E., & Fleiss, J. L."
+        year: 1979
+        title: "Intraclass correlations: uses in assessing rater reliability"
+        publisher: Psychological Bulletin
+        volume: 86
+        issue: 2
+        pages: 420-428
+        doi: 10.1037/0033-2909.86.2.420
+        url: https://doi.org/10.1037/0033-2909.86.2.420
+
+    Steyerberg2010:
+        type: article
+        author: "Steyerberg, E. W., Vickers, A. J., Cook, N. R., Gerds, T., Gonen, M., Obuchowski, N., Pencina, M. J., & Kattan, M. W."
+        year: 2010
+        title: "Assessing the performance of prediction models: a framework for traditional and novel measures"
+        publisher: Epidemiology
+        volume: 21
+        issue: 1
+        pages: 128-138
+        doi: 10.1097/EDE.0b013e3181c30fb2
+        url: "https://doi.org/10.1097/EDE.0b013e3181c30fb2"
+
+    Stram1994:
+        type: article
+        author: "Stram, D. O., & Lee, J. W."
+        year: 1994
+        title: Variance components testing in the longitudinal mixed effects model
+        publisher: Biometrics
+        volume: 50
+        issue: 4
+        pages: 1171-1177
+        url: "https://pubmed.ncbi.nlm.nih.gov/7786999/"
+    Swamidass2010:
+        type: article
+        author: "Swamidass, S. J., Azencott, C.-A., Daily, K., & Baldi, P."
+        year: 2010
+        title: "A CROC stronger than ROC: measuring, visualizing and optimizing early retrieval"
+        publisher: Bioinformatics
+        volume: 26
+        issue: 10
+        pages: 1348-1356
+        doi: 10.1093/bioinformatics/btq140
+        url: "https://doi.org/10.1093/bioinformatics/btq140"
+
+    Vickers2006:
+        type: article
+        author: "Vickers, A. J., & Elkin, E. B."
+        year: 2006
+        title: "Decision curve analysis: a novel method for evaluating prediction models"
+        publisher: Medical Decision Making
+        volume: 26
+        issue: 6
+        pages: 565-574
+        doi: 10.1177/0272989X06295361
+        url: "https://doi.org/10.1177/0272989X06295361"
+
+    Vickers2019DCA:
+        type: article
+        author: "Vickers, A. J., Van Calster, B., & Steyerberg, E. W."
+        year: 2019
+        title: A simple, step-by-step guide to interpreting decision curve analysis
+        publisher: Diagnostic and Prognostic Research
+        volume: 3
+        pages: "18"
+        doi: 10.1186/s41512-019-0064-7
+        url: "https://doi.org/10.1186/s41512-019-0064-7"
+
+    Vickers2023DCAInference:
+        type: article
+        author: "Vickers, A. J., Van Calster, B., Wynants, L., & Steyerberg, E. W."
+        year: 2023
+        title: "Decision curve analysis: confidence intervals and hypothesis testing for net benefit"
+        publisher: Diagnostic and Prognostic Research
+        volume: 7
+        issue: 1
+        pages: 11
+        doi: 10.1186/s41512-023-00148-y
+        url: "https://doi.org/10.1186/s41512-023-00148-y"
+
+    agresti2013:
+        type: book
+        author: Agresti, A.
+        year: 2013
+        title: Categorical Data Analysis
+        publisher: Wiley, Hoboken, NJ (3rd edition)
+        url: "https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635"
+
+    boot:
+        type: software
+        author: Angelo Canty, Brian Ripley, Alessandra R. Brazzale
+        year: 2025
+        title: "boot: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=boot"
+        url: "https://CRAN.R-project.org/package=boot"
+
+    caret:
+        type: software
+        author: Max Kuhn
+        year: 2020
+        title: "caret: Classification and Regression Training"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=caret"
+        url: "https://CRAN.R-project.org/package=caret"
+
+    cochran1950:
+        type: article
+        author: Cochran, W. G.
+        year: 1950
+        title: The comparison of percentages in matched samples
+        publisher: Biometrika
+        volume: 37
+        issue: 3-4
+        pages: 256-266
+        doi: 10.1093/biomet/37.3-4.256
+        url: "https://doi.org/10.1093/biomet/37.3-4.256"
+
+    cutpointr:
+        type: software
+        author: Christian Thiele
+        year: 2025
+        title: "cutpointr: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=cutpointr"
+        url: "https://CRAN.R-project.org/package=cutpointr"
 
     donnerEliasziwKappaGOF:
         type: article
@@ -20,6 +686,131 @@ refs:
         doi: 10.1002/sim.4780111109
         url: "https://doi.org/10.1002/sim.4780111109"
 
+    altayeDonnerKlarKappaRaters:
+        type: article
+        author: Altaye M, Donner A, Klar N.
+        year: 2001
+        title: "Inference procedures for assessing interobserver agreement among multiple raters"
+        publisher: Biometrics.
+        volume: 57
+        pages: 584-588
+        doi: 10.1111/j.0006-341x.2001.00584.x
+        url: "https://doi.org/10.1111/j.0006-341x.2001.00584.x"
+
+    altayeDonnerEliasziwKappaGOF:
+        type: article
+        author: Altaye M, Donner A, Eliasziw M.
+        year: 2001
+        title: "A general goodness-of-fit approach for inference procedures concerning the kappa statistic"
+        publisher: Statistics in Medicine.
+        volume: 20
+        pages: 2479-2488
+        doi: 10.1002/sim.911
+        url: "https://doi.org/10.1002/sim.911"
+
+    epiR:
+        type: software
+        author: "Stevenson, M., & Sergeant, E."
+        year: 2026
+        title: "epiR: Tools for the Analysis of Epidemiological Data"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=epiR"
+        doi: 10.32614/CRAN.package.epiR
+        url: "https://CRAN.R-project.org/package=epiR"
+
+    forcats:
+        type: software
+        author: "Wickham, H."
+        year: 2025
+        title: "forcats: Tools for Working with Categorical Variables (Factors)"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=forcats"
+        doi: 10.32614/CRAN.package.forcats
+        url: "https://CRAN.R-project.org/package=forcats"
+
+    ggplot2:
+        type: software
+        author: "Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H., Dunnington, D., & van den Brand, T."
+        year: 2026
+        title: "ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=ggplot2"
+        doi: 10.32614/CRAN.package.ggplot2
+        url: "https://CRAN.R-project.org/package=ggplot2"
+
+    glmnet:
+        type: software
+        author: Jerome Friedman, Trevor Hastie, Rob Tibshirani, Balasubramanian Narasimhan, Kenneth Tay, Noah Simon, James Yang, Jonathan Taylor
+        year: 2026
+        title: "glmnet: Lasso and Elastic-Net Regularized Generalized Linear Models"
+        publisher: "[R package version 5.1]. Retrieved from https://CRAN.R-project.org/package=glmnet"
+        url: "https://CRAN.R-project.org/package=glmnet"
+
+    graphics:
+        type: software
+        author: R Core Team and contributors worldwide
+        year: 2026
+        title: The R Graphics Package
+        publisher: "[R package version 4.6.0]. Retrieved from https://CRAN.R-project.org/package=graphics"
+        url: "https://CRAN.R-project.org/package=graphics"
+
+    haldane1956:
+        type: article
+        author: Haldane, J. B. S.
+        year: 1956
+        title: The estimation and significance of the logarithm of a ratio of frequencies
+        publisher: Annals of Human Genetics
+        volume: 20
+        issue: 4
+        pages: 309-311
+        doi: 10.1111/j.1469-1809.1955.tb01285.x
+        url: "https://doi.org/10.1111/j.1469-1809.1955.tb01285.x"
+
+    harrell2015:
+        type: book
+        author: Harrell Jr, F. E.
+        year: 2015
+        title: Regression Modeling Strategies (2nd ed.)
+        publisher: Springer
+        doi: 10.1007/978-3-319-19425-7
+        url: https://doi.org/10.1007/978-3-319-19425-7
+
+    holm1979:
+        type: article
+        author: Holm, S.
+        year: 1979
+        title: A simple sequentially rejective multiple test procedure
+        publisher: Scandinavian Journal of Statistics
+        volume: 6
+        issue: 2
+        pages: 65-70
+        url: "https://www.jstor.org/stable/4615733"
+
+    irr:
+        type: software
+        author: Matthias Gamer, Jim Lemon, Ian Fellows, Puspendra Singh
+        year: 2019
+        title: Various Coefficients of Interrater Reliability and Agreement.
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=irr"
+        url: "https://CRAN.R-project.org/package=irr"
+
+    irrCAC:
+        type: software
+        author: Kilem L. Gwet
+        year: 2026
+        title: "irrCAC: Computing the Extent of Agreement among Raters with Chance-Corrected Agreement Coefficient (CAC)"
+        publisher: "[R package version 1.4]. Retrieved from https://CRAN.R-project.org/package=irrCAC"
+        url: "https://CRAN.R-project.org/package=irrCAC"
+
+    jaeschke1994:
+        type: article
+        author: "Jaeschke, R., Guyatt, G. H., & Sackett, D. L."
+        year: 1994
+        title: Users' guides to the medical literature. III. How to use an article about a diagnostic test. B. What are the results and will they help me in caring for my patients?
+        publisher: JAMA
+        volume: 271
+        issue: 9
+        pages: 703-707
+        doi: 10.1001/jama.271.9.703
+        url: "https://doi.org/10.1001/jama.271.9.703"
+
     kappaSize:
         type: software
         author: Michael A Rotondi
@@ -28,6 +819,117 @@ refs:
         publisher: "[R package]. Retrieved from https://cran.r-project.org/web/packages/kappaSize/"
         doi: 10.32614/CRAN.package.kappaSize
         url: "https://cran.r-project.org/web/packages/kappaSize/"
+
+    knitr:
+        type: software
+        author: "Xie, Y."
+        year: 2026
+        title: "knitr: A General-Purpose Package for Dynamic Report Generation in R"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=knitr"
+        doi: 10.32614/CRAN.package.knitr
+        url: "https://CRAN.R-project.org/package=knitr"
+
+    lme4:
+        type: software
+        author: Douglas Bates, Martin Maechler, Ben Bolker, Steven Walker, Mikael Jagan, Anna Ly
+        year: 2026
+        title: "lme4: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=lme4"
+        url: "https://CRAN.R-project.org/package=lme4"
+
+    lmerTest:
+        type: software
+        author: "Alexandra Kuznetsova , Per Bruun Brockhoff , Rune Haubo Bojesen Christensen (ORCID: ), Sofie Pødenphant Jensen"
+        year: 2026
+        title: "lmerTest: Tests in Linear Mixed Effects Models"
+        publisher: "[R package version 3.2-1]. Retrieved from https://CRAN.R-project.org/package=lmerTest"
+        url: "https://CRAN.R-project.org/package=lmerTest"
+
+    mcnemar1947:
+        type: article
+        author: McNemar, Q.
+        year: 1947
+        title: Note on the sampling error of the difference between correlated proportions or percentages
+        publisher: Psychometrika
+        volume: 12
+        issue: 2
+        pages: 153-157
+        doi: 10.1007/BF02295996
+        url: "https://doi.org/10.1007/BF02295996"
+
+    Fagerland2013:
+        type: article
+        author: "Fagerland, M. W., Lydersen, S., & Laake, P."
+        year: 2013
+        title: "The McNemar test for binary matched-pairs data: mid-p and asymptotic are better than exact conditional"
+        publisher: BMC Medical Research Methodology
+        volume: 13
+        pages: 91
+        doi: 10.1186/1471-2288-13-91
+        url: "https://doi.org/10.1186/1471-2288-13-91"
+    newcombe1998paired:
+        type: article
+        author: Newcombe, R. G.
+        year: 1998
+        title: Improved confidence intervals for the difference between binomial proportions based on paired data
+        publisher: Statistics in Medicine
+        volume: 17
+        issue: 22
+        pages: 2635-2650
+        doi: "10.1002/(SICI)1097-0258(19981130)17:22<2635::AID-SIM954>3.0.CO;2-C"
+        url: "https://doi.org/10.1002/(SICI)1097-0258(19981130)17:22%3C2635::AID-SIM954%3E3.0.CO;2-C"
+
+    ordinal:
+        type: software
+        author: "Rune Haubo Bojesen Christensen (ORCID: )"
+        year: 2026
+        title: "ordinal: Regression Models for Ordinal Data"
+        publisher: "[R package version 2026.7-26]. Retrieved from https://CRAN.R-project.org/package=ordinal"
+        url: "https://CRAN.R-project.org/package=ordinal"
+
+    pROC:
+        type: software
+        author: Xavier Robin
+        year: 2026
+        title: "pROC: Display and Analyze ROC Curves"
+        publisher: "[R package version 1.19.1]. Retrieved from https://CRAN.R-project.org/package=pROC"
+        url: "https://CRAN.R-project.org/package=pROC"
+
+    LinzerLewis2011:
+        type: article
+        author: Linzer, D. A., & Lewis, J. B.
+        year: 2011
+        title: "poLCA: An R Package for Polytomous Variable Latent Class Analysis"
+        publisher: Journal of Statistical Software
+        volume: 42
+        issue: 10
+        pages: 1-29
+        doi: 10.18637/jss.v042.i10
+        url: https://www.jstatsoft.org/article/view/v042i10
+
+    AllmanLatent2018:
+        type: article
+        author: Allman, E. S., Baños Cervantes, H., Evans, R., Hoşten, S., Kubjas, K., Lemke, D., Rhodes, J. A., & Zwiernik, P.
+        year: 2018
+        title: Maximum likelihood estimation of the Latent Class Model through model boundary decomposition
+        publisher: arXiv
+        url: https://arxiv.org/abs/1710.01696v2
+
+    poLCA:
+        type: software
+        author: Drew Linzer, Jeffrey Lewis
+        year: 2026
+        title: "poLCA: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=poLCA"
+        url: "https://CRAN.R-project.org/package=poLCA"
+
+    psych:
+        type: software
+        author: Revelle, W.
+        year: 2019
+        title: "psych: Procedures for Psychological, Psychometric, and Personality Research"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=psych"
+        url: "https://CRAN.R-project.org/package=psych"
 
     rotondiDonnerKappaCI:
         type: article
@@ -39,5 +941,621 @@ refs:
         pages: 778-784
         doi: 10.1016/j.jclinepi.2011.10.019
         url: "https://doi.org/10.1016/j.jclinepi.2011.10.019"
+
+    splines:
+        type: software
+        author: Douglas M. Bates and William N. Venables
+        year: 2026
+        title: "splines: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=splines"
+        url: "https://CRAN.R-project.org/package=splines"
+
+    tools:
+        type: software
+        author: R Core Team
+        year: 2026
+        title: "tools: R package"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=tools"
+        url: "https://CRAN.R-project.org/package=tools"
+
+    vcd:
+        type: software
+        author: "Meyer, D., Zeileis, A., Hornik, K., Gerber, F., & Friendly, M."
+        year: 2017
+        title: "vcd: Visualizing Categorical Data"
+        publisher: "[R package]. Retrieved from https://CRAN.R-project.org/package=vcd"
+        url: "https://CRAN.R-project.org/package=vcd"
+
+    wilson1927:
+        type: article
+        author: Wilson, E. B.
+        year: 1927
+        title: Probable inference, the law of succession, and statistical inference
+        publisher: Journal of the American Statistical Association
+        volume: 22
+        issue: 158
+        pages: 209-212
+        doi: 10.1080/01621459.1927.10502953
+        url: "https://doi.org/10.1080/01621459.1927.10502953"
+
+    youden1950:
+        type: article
+        author: Youden, W. J.
+        year: 1950
+        title: Index for rating diagnostic tests
+        publisher: Cancer
+        volume: 3
+        issue: 1
+        pages: 32-35
+        doi: "10.1002/1097-0142(1950)3:1<32::AID-CNCR2820030106>3.0.CO;2-3"
+        url: "https://doi.org/10.1002/1097-0142%281950%293%3A1%3C32%3A%3AAID-CNCR2820030106%3E3.0.CO%3B2-3"
+
+    Finn1970:
+        type: article
+        author: Finn, R. H.
+        year: 1970
+        title: A note on estimating the reliability of categorical data
+        publisher: Educational and Psychological Measurement
+        volume: 30
+        issue: 1
+        pages: 71-76
+        doi: 10.1177/001316447003000106
+        url: "https://doi.org/10.1177/001316447003000106"
+
+    Kendall1939:
+        type: article
+        author: "Kendall, M. G., & Babington Smith, B."
+        year: 1939
+        title: The problem of m rankings
+        publisher: The Annals of Mathematical Statistics
+        volume: 10
+        issue: 3
+        pages: 275-287
+        doi: 10.1214/aoms/1177732186
+        url: "https://doi.org/10.1214/aoms/1177732186"
+
+    Pearson1895:
+        type: article
+        author: Pearson, K.
+        year: 1895
+        title: Note on regression and inheritance in the case of two parents
+        publisher: Proceedings of the Royal Society of London
+        volume: 58
+        pages: 240-242
+        doi: 10.1098/rspl.1895.0041
+        url: "https://doi.org/10.1098/rspl.1895.0041"
+
+    Robinson1957:
+        type: article
+        author: Robinson, W. S.
+        year: 1957
+        title: The statistical measurement of agreement
+        publisher: American Sociological Review
+        volume: 22
+        issue: 1
+        pages: 17
+        doi: 10.2307/2088760
+        url: "https://doi.org/10.2307/2088760"
+
+    Spearman1904:
+        type: article
+        author: Spearman, C.
+        year: 1904
+        title: The proof and measurement of association between two things
+        publisher: The American Journal of Psychology
+        volume: 15
+        issue: 1
+        pages: 72
+        doi: 10.2307/1412159
+        url: "https://doi.org/10.2307/1412159"
+
+    Walter1998:
+        type: article
+        author: "Walter, S. D., Eliasziw, M., & Donner, A."
+        year: 1998
+        title: Sample size and optimal designs for reliability studies
+        publisher: Statistics in Medicine
+        volume: 17
+        issue: 1
+        pages: 101-110
+        doi: "10.1002/(SICI)1097-0258(19980115)17:1<101::AID-SIM727>3.0.CO;2-E"
+        url: "https://pubmed.ncbi.nlm.nih.gov/9463853/"
+
+    AltmanBland1994b:
+        type: article
+        author: "Altman, D. G., & Bland, J. M."
+        year: 1994
+        title: "Diagnostic tests 2: Predictive values"
+        publisher: BMJ
+        volume: 309
+        issue: 6947
+        pages: 102
+        doi: 10.1136/bmj.309.6947.102
+        url: "https://doi.org/10.1136/bmj.309.6947.102"
+
+    Simel1991:
+        type: article
+        author: "Simel, D. L., Samsa, G. P., & Matchar, D. B."
+        year: 1991
+        title: "Likelihood ratios with confidence: sample size estimation for diagnostic test studies"
+        publisher: Journal of Clinical Epidemiology
+        volume: 44
+        issue: 8
+        pages: 763-770
+        doi: "10.1016/0895-4356(91)90128-v"
+        url: "https://doi.org/10.1016/0895-4356(91)90128-v"
+
+    Glas2003:
+        type: article
+        author: "Glas, A. S., Lijmer, J. G., Prins, M. H., Bonsel, G. J., & Bossuyt, P. M. M."
+        year: 2003
+        title: "The diagnostic odds ratio: a single indicator of test performance"
+        publisher: Journal of Clinical Epidemiology
+        volume: 56
+        issue: 11
+        pages: 1129-1135
+        doi: "10.1016/s0895-4356(03)00177-x"
+        url: "https://doi.org/10.1016/s0895-4356(03)00177-x"
+
+    LinnGrunau2006:
+        type: article
+        author: "Linn, S., & Grunau, P. D."
+        year: 2006
+        title: "New patient-oriented summary measure of net total gain in certainty for dichotomous diagnostic tests"
+        publisher: "Epidemiologic Perspectives & Innovations"
+        volume: 3
+        issue: 1
+        pages: "11"
+        doi: 10.1186/1742-5573-3-11
+        url: "https://doi.org/10.1186/1742-5573-3-11"
+
+    anscombe1956:
+        type: article
+        author: "Anscombe, F. J."
+        year: 1956
+        title: "On estimating binomial response relations"
+        publisher: Biometrika
+        volume: 43
+        issue: "3-4"
+        pages: 461-464
+        doi: 10.1093/biomet/43.3-4.461
+        url: "https://doi.org/10.1093/biomet/43.3-4.461"
+
+    HosmerLemeshow2013:
+        type: book
+        author: "Hosmer, D. W., Lemeshow, S., & Sturdivant, R. X."
+        year: 2013
+        title: "Applied Logistic Regression (3rd ed.)"
+        publisher: Wiley
+        doi: 10.1002/9781118548387
+        url: "https://doi.org/10.1002/9781118548387"
+
+    Pewsner2004:
+        type: article
+        author: "Pewsner, D., Battaglia, M., Minder, C., et al."
+        year: 2004
+        title: 'Ruling a diagnosis in or out with "SpPIn" and "SnNOut": a note of caution'
+        publisher: BMJ
+        volume: 329
+        issue: 7459
+        pages: 209-213
+        doi: 10.1136/bmj.329.7459.209
+        url: "https://doi.org/10.1136/bmj.329.7459.209"
+
+    AgrestiCaffo2000:
+        type: article
+        author: "Agresti, A., & Caffo, B."
+        year: 2000
+        title: "Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures"
+        publisher: The American Statistician
+        volume: 54
+        issue: 4
+        pages: 280-288
+        doi: 10.1080/00031305.2000.10474560
+        url: "https://doi.org/10.1080/00031305.2000.10474560"
+
+    UsherSmith2016:
+        type: article
+        author: "Usher-Smith, J. A., Sharp, S. J., & Griffin, S. J."
+        year: 2016
+        title: "The spectrum effect in tests for risk prediction, screening, and diagnosis"
+        publisher: BMJ
+        volume: 353
+        pages: i3139
+        doi: 10.1136/bmj.i3139
+        url: "https://doi.org/10.1136/bmj.i3139"
+
+    Ying2020:
+        type: article
+        author: "Ying, G.-S., Maguire, M. G., Glynn, R. J., & Rosner, B."
+        year: 2020
+        title: "Calculating sensitivity, specificity, and predictive values for correlated eye data"
+        publisher: Investigative Ophthalmology & Visual Science
+        volume: 61
+        issue: 11
+        pages: 29
+        doi: 10.1167/iovs.61.11.29
+        url: "https://doi.org/10.1167/iovs.61.11.29"
+
+    Alberg2004:
+        type: article
+        author: "Alberg, A. J., Park, J. W., Hager, B. W., et al."
+        year: 2004
+        title: 'The use of "overall accuracy" to evaluate the validity of screening or diagnostic tests'
+        publisher: Journal of General Internal Medicine
+        volume: 19
+        issue: "5 Pt 1"
+        pages: 460-465
+        doi: 10.1111/j.1525-1497.2004.30091.x
+        url: "https://doi.org/10.1111/j.1525-1497.2004.30091.x"
+
+    Valenstein1990:
+        type: article
+        author: "Valenstein, P. N."
+        year: 1990
+        title: "Evaluating diagnostic tests with imperfect standards"
+        publisher: American Journal of Clinical Pathology
+        volume: 93
+        issue: 2
+        pages: 252-258
+        doi: 10.1093/ajcp/93.2.252
+        url: "https://doi.org/10.1093/ajcp/93.2.252"
+
+    Schuetz2012:
+        type: article
+        author: "Schuetz, G. M., Schlattmann, P., & Dewey, M."
+        year: 2012
+        title: "Use of 3x2 tables with an intention to diagnose approach to assess clinical performance of diagnostic tests: meta-analytical evaluation of coronary CT angiography studies"
+        publisher: BMJ
+        volume: 345
+        pages: e6717
+        doi: 10.1136/bmj.e6717
+        url: "https://doi.org/10.1136/bmj.e6717"
+
+    woolf1955:
+        type: article
+        author: Woolf, B.
+        year: 1955
+        title: On estimating the relation between blood group and disease
+        publisher: Annals of Human Genetics
+        volume: 19
+        issue: 4
+        pages: 251-253
+        doi: 10.1111/j.1469-1809.1955.tb01348.x
+        url: "https://doi.org/10.1111/j.1469-1809.1955.tb01348.x"
+
+    Begg1983:
+        type: article
+        author: "Begg, C. B., & Greenes, R. A."
+        year: 1983
+        title: Assessment of diagnostic tests when disease verification is subject to selection bias
+        publisher: Biometrics
+        volume: 39
+        issue: 1
+        pages: 207-215
+        doi: 10.2307/2530820
+        url: "https://doi.org/10.2307/2530820"
+
+    Ransohoff1978:
+        type: article
+        author: "Ransohoff, D. F., & Feinstein, A. R."
+        year: 1978
+        title: Problems of spectrum and bias in evaluating the efficacy of diagnostic tests
+        publisher: New England Journal of Medicine
+        volume: 299
+        issue: 17
+        pages: 926-930
+        doi: 10.1056/NEJM197810262991705
+        url: "https://doi.org/10.1056/NEJM197810262991705"
+
+    Leisenring2000:
+        type: article
+        author: "Leisenring, W., Alonzo, T., & Pepe, M. S."
+        year: 2000
+        title: Comparisons of predictive values of binary medical diagnostic tests for paired designs
+        publisher: Biometrics
+        volume: 56
+        issue: 2
+        pages: 345-351
+        doi: 10.1111/j.0006-341x.2000.00345.x
+        url: "https://doi.org/10.1111/j.0006-341x.2000.00345.x"
+
+    Fagerland2014:
+        type: article
+        author: "Fagerland, M. W., Lydersen, S., & Laake, P."
+        year: 2014
+        title: Recommended tests and confidence intervals for paired binomial proportions
+        publisher: Statistics in Medicine
+        volume: 33
+        issue: 16
+        pages: 2850-2875
+        doi: 10.1002/sim.6148
+        url: "https://doi.org/10.1002/sim.6148"
+
+    BrownCaiDasGupta2001:
+        type: article
+        author: "Brown, L. D., Cai, T. T., & DasGupta, A."
+        year: 2001
+        title: Interval estimation for a binomial proportion
+        publisher: Statistical Science
+        volume: 16
+        issue: 2
+        pages: 101-133
+        doi: 10.1214/ss/1009213286
+        url: "https://doi.org/10.1214/ss/1009213286"
+
+    Fluss2005:
+        type: article
+        author: "Fluss, R., Faraggi, D., & Reiser, B."
+        year: 2005
+        title: Estimation of the Youden Index and its associated cutoff point
+        publisher: Biometrical Journal
+        volume: 47
+        issue: 4
+        pages: 458-472
+        doi: 10.1002/bimj.200410135
+        pmid: 16161804
+        url: "https://doi.org/10.1002/bimj.200410135"
+
+    PerkinsSchisterman2006:
+        type: article
+        author: "Perkins, N. J., & Schisterman, E. F."
+        year: 2006
+        title: 'The inconsistency of "optimal" cutpoints obtained using two criteria based on the receiver operating characteristic curve'
+        publisher: American Journal of Epidemiology
+        volume: 163
+        issue: 7
+        pages: 670-675
+        doi: 10.1093/aje/kwj063
+        pmid: 16410346
+        url: "https://doi.org/10.1093/aje/kwj063"
+
+    VenkatramanBegg1996:
+        type: article
+        author: "Venkatraman, E. S., & Begg, C. B."
+        year: 1996
+        title: A distribution-free procedure for comparing receiver operating characteristic curves for a paired experiment
+        publisher: Biometrika
+        volume: 83
+        issue: 4
+        pages: 835-848
+        doi: 10.1093/biomet/83.4.835
+        url: "https://doi.org/10.1093/biomet/83.4.835"
+
+    MannWhitney1947:
+        type: article
+        author: "Mann, H. B., & Whitney, D. R."
+        year: 1947
+        title: On a test of whether one of two random variables is stochastically larger than the other
+        publisher: The Annals of Mathematical Statistics
+        volume: 18
+        issue: 1
+        pages: 50-60
+        doi: 10.1214/aoms/1177730491
+        url: "https://doi.org/10.1214/aoms/1177730491"
+
+    VanCalster2019Calibration:
+        type: article
+        author: "Van Calster, B., McLernon, D. J., van Smeden, M., Wynants, L., & Steyerberg, E. W."
+        year: 2019
+        title: "Calibration: the Achilles heel of predictive analytics"
+        publisher: BMC Medicine
+        volume: 17
+        pages: "230"
+        doi: 10.1186/s12916-019-1466-7
+        url: "https://doi.org/10.1186/s12916-019-1466-7"
+
+    ProvostFawcett2001:
+        type: article
+        author: "Provost, F., & Fawcett, T."
+        year: 2001
+        title: Robust classification for imprecise environments
+        publisher: Machine Learning
+        volume: 42
+        issue: 3
+        pages: 203-231
+        doi: "10.1023/A:1007601015854"
+        url: "https://doi.org/10.1023/A:1007601015854"
+
+    Robin2011:
+        type: article
+        author: "Robin, X., Turck, N., Hainard, A., et al."
+        year: 2011
+        title: "pROC: an open-source package for R and S+ to analyze and compare ROC curves"
+        publisher: BMC Bioinformatics
+        volume: 12
+        pages: "77"
+        doi: 10.1186/1471-2105-12-77
+        url: "https://doi.org/10.1186/1471-2105-12-77"
+
+    HanleyMcNeil1982:
+        type: article
+        author: "Hanley, J. A., & McNeil, B. J."
+        year: 1982
+        title: The meaning and use of the area under a receiver operating characteristic (ROC) curve
+        publisher: Radiology
+        volume: 143
+        issue: 1
+        pages: 29-36
+        doi: 10.1148/radiology.143.1.7063747
+        pmid: 7063747
+        url: "https://doi.org/10.1148/radiology.143.1.7063747"
+
+    ObuchowskiLieber1998:
+        type: article
+        author: "Obuchowski, N. A., & Lieber, M. L."
+        year: 1998
+        title: Confidence intervals for the receiver operating characteristic area in studies with small samples
+        publisher: Academic Radiology
+        volume: 5
+        issue: 8
+        pages: 561-571
+        doi: 10.1016/s1076-6332(98)80208-0
+        pmid: 9702267
+        url: "https://doi.org/10.1016/s1076-6332(98)80208-0"
+
+    FengCorteseBaumgartner2017:
+        type: article
+        author: "Feng, D., Cortese, G., & Baumgartner, R."
+        year: 2017
+        title: A comparison of confidence/credible interval methods for the area under the ROC curve for continuous diagnostic tests with small sample size
+        publisher: Statistical Methods in Medical Research
+        volume: 26
+        issue: 6
+        pages: 2603-2621
+        doi: 10.1177/0962280215602040
+        pmid: 26323286
+        url: "https://doi.org/10.1177/0962280215602040"
+
+    PrenticePyke1979:
+        type: article
+        author: "Prentice, R. L., & Pyke, R."
+        year: 1979
+        title: Logistic disease incidence models and case-control studies
+        publisher: Biometrika
+        volume: 66
+        issue: 3
+        pages: 403-411
+        doi: 10.1093/biomet/66.3.403
+        url: "https://doi.org/10.1093/biomet/66.3.403"
+
+    Keilwagen2014:
+        type: article
+        author: "Keilwagen, J., Grosse, I., & Grau, J."
+        year: 2014
+        title: Area under precision-recall curves for weighted and unweighted data
+        publisher: PLoS ONE
+        volume: 9
+        issue: 3
+        pages: e92209
+        doi: 10.1371/journal.pone.0092209
+        url: "https://doi.org/10.1371/journal.pone.0092209"
+
+    DavisonHinkley1997:
+        type: book
+        author: "Davison, A. C., & Hinkley, D. V."
+        year: 1997
+        title: Bootstrap Methods and their Application
+        publisher: Cambridge University Press
+        doi: 10.1017/CBO9780511802843
+        url: "https://doi.org/10.1017/CBO9780511802843"
+
+    Noma2021:
+        type: article
+        author: "Noma, H., Shinozaki, T., Iba, K., Teramukai, S., & Furukawa, T. A."
+        year: 2021
+        title: Confidence intervals of prediction accuracy measures for multivariable prediction models based on the bootstrap-based optimism correction methods
+        publisher: Statistics in Medicine
+        volume: 40
+        issue: 26
+        pages: 5691-5701
+        doi: 10.1002/sim.9148
+        pmid: 34302372
+        url: "https://doi.org/10.1002/sim.9148"
+
+    Tibshirani1996:
+        type: article
+        author: "Tibshirani, R."
+        year: 1996
+        title: "Regression shrinkage and selection via the lasso"
+        publisher: "Journal of the Royal Statistical Society: Series B (Methodological)"
+        volume: 58
+        issue: 1
+        pages: 267-288
+        doi: 10.1111/j.2517-6161.1996.tb02080.x
+        url: "https://doi.org/10.1111/j.2517-6161.1996.tb02080.x"
+
+    Friedman2010:
+        type: article
+        author: "Friedman, J., Hastie, T., & Tibshirani, R."
+        year: 2010
+        title: "Regularization paths for generalized linear models via coordinate descent"
+        publisher: Journal of Statistical Software
+        volume: 33
+        issue: 1
+        pages: 1-22
+        doi: 10.18637/jss.v033.i01
+        url: "https://doi.org/10.18637/jss.v033.i01"
+
+    Harrell1996:
+        type: article
+        author: "Harrell, F. E., Lee, K. L., & Mark, D. B."
+        year: 1996
+        title: "Multivariable prognostic models: issues in developing models, evaluating assumptions and adequacy, and measuring and reducing errors"
+        publisher: Statistics in Medicine
+        volume: 15
+        issue: 4
+        pages: 361-387
+        doi: "10.1002/(SICI)1097-0258(19960229)15:4<361::AID-SIM168>3.0.CO;2-4"
+        url: "https://pubmed.ncbi.nlm.nih.gov/8668867/"
+
+    Sullivan2004:
+        type: article
+        author: "Sullivan, L. M., Massaro, J. M., & D'Agostino, R. B."
+        year: 2004
+        title: "Presentation of multivariate data for clinical use: The Framingham Study risk score functions"
+        publisher: Statistics in Medicine
+        volume: 23
+        issue: 10
+        pages: 1631-1660
+        doi: 10.1002/sim.1742
+        url: "https://doi.org/10.1002/sim.1742"
+
+    Mehta2016:
+        type: article
+        author: "Mehta, H. B., Mehta, V., Girman, C. J., Adhikari, D., & Johnson, M. L."
+        year: 2016
+        title: "Regression coefficient-based scoring system should be used to assign weights to the risk index"
+        publisher: Journal of Clinical Epidemiology
+        volume: 79
+        pages: 22-28
+        doi: 10.1016/j.jclinepi.2016.03.031
+        url: "https://doi.org/10.1016/j.jclinepi.2016.03.031"
+
+    Peduzzi1996:
+        type: article
+        author: "Peduzzi, P., Concato, J., Kemper, E., Holford, T. R., & Feinstein, A. R."
+        year: 1996
+        title: "A simulation study of the number of events per variable in logistic regression analysis"
+        publisher: Journal of Clinical Epidemiology
+        volume: 49
+        issue: 12
+        pages: 1373-1379
+        doi: 10.1016/s0895-4356(96)00236-3
+        url: "https://doi.org/10.1016/s0895-4356(96)00236-3"
+
+    Riley2019:
+        type: article
+        author: "Riley, R. D., Snell, K. I. E., Ensor, J., Burke, D. L., Harrell, F. E., Moons, K. G. M., & Collins, G. S."
+        year: 2019
+        title: "Minimum sample size for developing a multivariable prediction model: PART II - binary and time-to-event outcomes"
+        publisher: Statistics in Medicine
+        volume: 38
+        issue: 7
+        pages: 1276-1296
+        doi: 10.1002/sim.7992
+        url: "https://doi.org/10.1002/sim.7992"
+
+    Riley2020:
+        type: article
+        author: "Riley, R. D., Ensor, J., Snell, K. I. E., Harrell, F. E., Martin, G. P., Reitsma, J. B., Moons, K. G. M., Collins, G., & van Smeden, M."
+        year: 2020
+        title: "Calculating the sample size required for developing a clinical prediction model"
+        publisher: BMJ
+        volume: 368
+        pages: m441
+        doi: 10.1136/bmj.m441
+        url: "https://doi.org/10.1136/bmj.m441"
+
+    Riley2021:
+        type: article
+        author: "Riley, R. D., Snell, K. I. E., Martin, G. P., Whittle, R., Archer, L., Sperrin, M., & Collins, G. S."
+        year: 2021
+        title: "Penalization and shrinkage methods produced unreliable clinical prediction models especially when sample size was small"
+        publisher: Journal of Clinical Epidemiology
+        volume: 132
+        pages: 88-96
+        doi: 10.1016/j.jclinepi.2020.12.005
+        url: "https://doi.org/10.1016/j.jclinepi.2020.12.005"
 
 ...

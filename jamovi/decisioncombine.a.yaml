@@ -1,0 +1,362 @@
+---
+name: decisioncombine
+title: Combine Medical Decision Tests
+menuGroup: meddecide
+menuSubgroup: Decision
+menuSubtitle: Combine and evaluate test patterns
+version: '1.0.9'
+jas: '1.2'
+
+description:
+    main: >
+        Systematic evaluation of diagnostic test combinations. Analyzes all possible
+        test result patterns (2-test: 4 patterns, 3-test: 8 patterns) against a gold
+        standard, each test alone, and parallel and serial strategies (with three tests
+        also for every pair of tests, and a majority rule).
+        Calculates sensitivity, specificity, predictive values, likelihood ratios,
+        accuracy, and uncertainty intervals. Descriptive rankings are sample-dependent
+        analytical summaries, not clinical guides or validated recommendations.
+
+    R:
+        dontrun: true
+        usage: |
+            # Illustrative example only; this is not a clinical guide.
+            data(histopathology)
+            result <- decisioncombine(
+                data = histopathology,
+                gold = "Golden Standart",
+                goldPositive = "1",
+                test1 = "New Test",
+                test1Positive = "1",
+                test2 = "Rater 1",
+                test2Positive = "1",
+                test3 = NULL,
+                test3Positive = NULL,
+                showIndividual = TRUE,
+                showRecommendation = TRUE
+            )
+
+options:
+    - name: data
+      type: Data
+      description:
+          R: The data as a data frame.
+
+    - name: gold
+      title: Gold Standard (Reference Test)
+      type: Variable
+      default: NULL
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            Select the reference standard (e.g., biopsy, final diagnosis).
+            This represents the reference classification. Binary variables are intended;
+            with additional levels, all non-positive levels are grouped as negative and a
+            warning is shown.
+          R: >
+            The gold standard reference variable representing true disease status.
+
+    - name: goldPositive
+      title: Disease present level
+      type: Level
+      variable: (gold)
+      description:
+          ui: >
+            Select the level indicating disease presence (e.g., "1", "positive", "malignant").
+          R: >
+            The level indicating presence of disease in the gold standard.
+
+    - name: test1
+      title: Test 1 (Required)
+      type: Variable
+      default: NULL
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            First diagnostic test to evaluate. Must have at least 2 levels.
+          R: >
+            The first diagnostic test variable.
+
+    - name: test1Positive
+      title: Test 1 Positive Level
+      type: Level
+      variable: (test1)
+      description:
+          ui: >
+            Select the level representing a positive result for Test 1.
+          R: >
+            The level representing a positive result for Test 1.
+
+    - name: test2
+      title: Test 2 (Required for Combinations)
+      type: Variable
+      default: NULL
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            Second diagnostic test for combination analysis. Leave empty for single test only.
+          R: >
+            The second diagnostic test variable for combination analysis.
+
+    - name: test2Positive
+      title: Test 2 Positive Level
+      type: Level
+      variable: (test2)
+      allowNone: true
+      description:
+          R: >
+            The level representing a positive result for Test 2.
+
+    - name: test3
+      title: Test 3 (Optional)
+      type: Variable
+      default: NULL
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            Optional third test for 3-way combination analysis (8 patterns).
+          R: >
+            The third diagnostic test variable for 3-way combination analysis.
+
+    - name: test3Positive
+      title: Test 3 Positive Level
+      type: Level
+      variable: (test3)
+      allowNone: true
+      description:
+          R: >
+            The level representing a positive result for Test 3.
+
+    - name: showIndividual
+      title: Individual test statistics
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display diagnostic statistics for each individual test before combinations.
+          R: >
+            Boolean to show individual test performance tables.
+
+    - name: showFrequency
+      title: Frequency tables
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display frequency distribution tables for the gold standard and cross-tabulation of test results.
+          R: >
+            Boolean to show frequency tables.
+
+    - name: showCITables
+      title: Confidence interval tables
+      type: Bool
+      default: true
+      description:
+          ui: >
+            Display the two tables of 95 percent confidence intervals: Wilson intervals for
+            sensitivity, specificity, PPV, NPV and accuracy, and log-scale intervals for LR+, LR-
+            and the diagnostic odds ratio. Untick to shorten the output; the forest plot draws
+            the same intervals either way.
+          R: >
+            Boolean to show the confidence-interval tables for the proportions and for the
+            likelihood ratios and diagnostic odds ratio.
+
+    - name: showBarPlot
+      title: Bar chart
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display grouped bar chart comparing performance metrics across test combinations.
+          R: >
+            Boolean to display bar chart visualization.
+
+    - name: showHeatmap
+      title: Heatmap
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display a color-coded heatmap of prevalence, sensitivity, specificity, PPV, NPV,
+            accuracy and balanced accuracy for each row, or of one metric selected under Filters.
+          R: >
+            Boolean to display heatmap visualization.
+
+    - name: showForest
+      title: Forest plot
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display forest plot showing confidence intervals for key diagnostic metrics across patterns.
+          R: >
+            Boolean to display forest plot.
+
+    - name: showDecisionTree
+      title: Decision space (sensitivity vs specificity)
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display a decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J.
+          R: >
+            Boolean to display the decision-space (sensitivity vs specificity) scatter plot.
+
+    - name: showRecommendation
+      title: Descriptive candidate-rule ranking
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Rank eligible exact-pattern rules, each test alone, and the parallel, serial,
+            pairwise and majority strategies descriptively by observed Youden's J. This
+            sample-dependent summary is not a clinical guide or validated recommendation.
+            It needs at least two tests: one test gives one rule, so nothing is ranked.
+          R: >
+            Boolean to show the descriptive candidate-rule ranking table.
+
+    - name: optimismCorrection
+      title: Youden's J corrected for rule selection
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Add to the ranking a bootstrap estimate of how much of the highest Youden's J comes
+            from picking the best of many rules on the same patients, and the J corrected for
+            it. Needs the ranking and at least two tests.
+          R: >
+            Boolean to add the bootstrap optimism-corrected Youden's J to the ranking table.
+
+    - name: nBoot
+      title: Number of bootstrap samples
+      type: Integer
+      default: 1000
+      min: 100
+      max: 10000
+      description:
+          R: >
+            Number of bootstrap resamples for the optimism correction of the ranking.
+
+    - name: seed
+      title: Random seed
+      type: Integer
+      default: 42
+      description:
+          R: >
+            Random seed for the bootstrap resamples of the optimism correction. Change it to
+            obtain a different set of resamples.
+
+    - name: showPairedComparison
+      title: Combinations vs each test alone
+      type: Bool
+      default: false
+      description:
+          ui: >
+            For each combination rule, show how its sensitivity and specificity differ from
+            each test it combines, on the same patients: the cases it gains and loses, the
+            change and its 95 percent confidence interval. Needs at least two tests.
+          R: >
+            Boolean to show the paired comparison of each combination rule with each of its
+            component tests.
+
+    # BREAKING_CHANGE (release review): was `addPatternToData`, type Bool. jmvcore's
+    # Output element resolves its own enabled state with options$get(<element name>), so
+    # an Output result item called `addedPattern` requires an OPTION of the same name and
+    # of type Output. Driven by a differently-named Bool, the backend computed and stored
+    # the column while `enabled` stayed FALSE and jamovi never wrote it to the dataset --
+    # invisible to R-side tests, because the values really are in the result object.
+    - name: addedPattern
+      title: Test pattern column
+      type: Output
+      description:
+          ui: >
+            Add a new column to the dataset containing the test combination pattern (e.g., "+/+", "+/-", "-/-") for each case with every selected test observed, including cases without a reference-standard result.
+          R: >
+            Output variable receiving the combined test pattern for each case with every selected test observed.
+
+    - name: showAbout
+      title: About this analysis
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Show explanatory panels describing what a pattern row and a strategy row mean,
+            how to read each column, and the study-design assumptions and biases that affect
+            diagnostic accuracy estimates.
+          R: >
+            Boolean to show the about-this-analysis and assumptions panels.
+
+    - name: filterStatistic
+      title: Filter by statistic
+      type: List
+      options:
+        - name: all
+          title: Default Metric Set
+        - name: prevalence
+          title: Prevalence
+        - name: sens
+          title: Sensitivity
+        - name: spec
+          title: Specificity
+        - name: ppv
+          title: PPV
+        - name: npv
+          title: NPV
+        - name: acc
+          title: Accuracy
+        - name: balancedAccuracy
+          title: Balanced Accuracy
+        - name: youden
+          title: Youden's J
+        - name: lrPos
+          title: LR+
+        - name: lrNeg
+          title: LR-
+        - name: dor
+          title: Diagnostic OR
+      default: all
+      description:
+          ui: >
+            Select one metric, or use the plot-specific default metric set. The bar chart
+            defaults to sensitivity, specificity, PPV, NPV, and accuracy; the heatmap also
+            includes prevalence and balanced accuracy. In these two plots Youden's J, LR+,
+            LR- and the diagnostic OR are drawn only when selected on their own. The forest
+            plot's default set is sensitivity, specificity, PPV, NPV, accuracy, LR+, LR- and
+            diagnostic OR, and it supports each of them alone; selecting prevalence, balanced accuracy or Youden's J (whose 95% confidence
+            interval is in the combination table) produces an explanatory notice rather than
+            silently showing other statistics. The decision-space plot has fixed sensitivity
+            and specificity axes and is unaffected.
+          R: >
+            Character indicating which statistic to display in the plots; `all` uses each
+            plot's default metric set.
+
+    - name: filterPattern
+      title: Filter by pattern type
+      type: List
+      options:
+        - name: all
+          title: All Patterns
+        - name: allPositive
+          title: All Tests Positive
+        - name: allNegative
+          title: All Tests Negative
+        - name: mixed
+          title: Mixed/Discordant
+      default: all
+      description:
+          ui: >
+            Filter the bar chart, heatmap and forest plot by pattern type: all patterns, all
+            tests positive (+/+, +/+/+), all tests negative (-/-, -/-/-), or mixed/discordant
+            patterns. Single-test and strategy rows are not result patterns and are excluded
+            whenever a specific pattern type is selected. The performance tables always show every
+            pattern, and the decision-space plot always shows every row so patterns remain
+            comparable.
+          R: >
+            Character indicating which pattern type to display in the bar chart, heatmap and
+            forest plot (default: all).
+
+...

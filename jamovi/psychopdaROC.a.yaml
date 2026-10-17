@@ -1,0 +1,1011 @@
+---
+name: psychopdaROC
+title: Advanced ROC Analysis
+menuGroup: meddecide
+menuSubgroup: ROC
+menuSubtitle: Advanced ROC analysis with statistical comparisons and effect sizes
+version: '1.0.9'
+jas: '1.2'
+
+description:
+    main: >
+        Exploratory Receiver Operating Characteristic (ROC) curve analysis with optimal cutpoint determination.
+        Analyse independent rows or a prespecified mean or median per patient.
+        Patient summaries require an ID and a consistent outcome within each patient;
+        all calculations and resampling then use one summary per patient.
+        Nominal coverage is not guaranteed in small or imbalanced samples. Cutpoints selected
+        on these data report apparent performance and require validation in the intended setting.
+
+options:
+    # ==========================================
+    # MANUAL RUN GATE (defer heavy recomputation)
+    # ==========================================
+
+    - name: manualRun
+      title: Run all analyses manually
+      type: Bool
+      default: false
+      description:
+          R: >
+            When TRUE, results are only computed after clicking the Run button.
+            Intensive options and datasets with more than 10000 selected marker
+            values always require Run, even when this option is FALSE.
+
+    - name: run
+      title: Run selected analyses
+      type: Action
+      description:
+          R: Set TRUE to run intensive options, large datasets, or manual mode.
+
+    # ==========================================
+    # CLINICAL ANALYSIS MODE SELECTION
+    # ==========================================
+
+    - name: showExplanations
+      title: Interpretation and procedure notes
+      type: Bool
+      default: false
+      description:
+          R: Show optional educational interpretation and procedure details. Input and scope notices remain visible.
+
+    - name: clinicalMode
+      title: Guidance Level
+      type: List
+      options:
+        - name: basic
+          title: Basic (recommended)
+        - name: advanced
+          title: Advanced research
+        - name: comprehensive
+          title: Comprehensive
+      default: basic
+      description:
+          R: >
+            Selects which guidance notes are shown in the Procedure Notes panel.
+            Basic explains the AUC bands and warns that a cutpoint searched on
+            these data is optimistic; Advanced and Comprehensive give a shorter
+            research framing. This option does not switch any analysis on or
+            off - every optional analysis has its own checkbox.
+
+    # ==========================================
+    # DATA INPUT SECTION
+    # ==========================================
+    
+    - name: data
+      type: Data
+      description:
+          R: The data as a data frame, with one independent observation per row.
+
+    - name: patientID
+      title: Patient ID (optional for independent rows)
+      type: Variable
+      default: NULL
+      suggested:
+        - nominal
+      permitted:
+        - factor
+        - numeric
+      description:
+          R: >
+            Identifier for independent patients. Required for patient summaries. With independent
+            rows, supplying an ID checks for duplicates and rejects repeated patients.
+
+    - name: analysisUnit
+      title: Analysis unit
+      type: List
+      options:
+        - name: rows
+          title: Independent rows
+        - name: patientMean
+          title: Patient mean
+        - name: patientMedian
+          title: Patient median
+      default: rows
+      description:
+          R: >
+            Choose a clinically prespecified summary before inspecting results. The mean or median
+            of observed scores is calculated for each patient and marker, including a separate
+            IDI/NRI reference. Patients with all scores missing for a marker are excluded for that
+            marker. Outcomes and subgroups must be consistent within patients. This estimates
+            patient-level accuracy of the summary, not accuracy of individual lesions or visits.
+
+    - name: aucInference
+      title: Single-AUC interval and test
+      type: List
+      options:
+        - name: logit
+          title: Logit DeLong
+        - name: delong
+          title: Untransformed DeLong (legacy)
+      default: logit
+      description:
+          R: >
+            Logit DeLong uses the DeLong standard error with a logit delta transformation for
+            the 95% interval and matching two-sided test against AUC 0.5. The legacy option uses
+            the untransformed normal approximation. Both remain asymptotic; unavailable or zero
+            variance gives missing inference. Pairwise AUC comparisons use ordinary paired DeLong.
+
+    - name: dependentVars
+      title: Test Variables
+      type: Variables
+      suggested:
+        - continuous
+      permitted:
+        - numeric
+      description:
+          R: >
+            Test variable(s) to be evaluated for classification performance.
+            Multiple variables can be selected for comparison.
+
+    - name: classVar
+      title: Class Variable (Gold Standard)
+      type: Variable
+      suggested:
+        - nominal
+      permitted:
+        - factor
+      description:
+          R: >
+            Classification variable representing the true class (gold standard).
+            Choose one positive and one negative level. Only observations in those two
+            levels are analysed; other levels and missing outcomes are excluded and counted.
+
+    # allowNone: without it the jamovi client pre-selects levels[0] - usually the NEGATIVE
+    # level - and the whole analysis runs reversed. The positive class is never inferred.
+    - name: positiveClass
+      title: Positive Class
+      type: Level
+      variable: (classVar)
+      allowNone: true
+      description:
+          ui: >
+            Choose the level that means the condition is present. Also choose a distinct
+            Negative Class. Nothing is computed until both observed levels are selected.
+          R: >
+            Level of classVar treated as the positive class (condition present). Required:
+            NULL leaves the analysis waiting for a choice; levels are never inferred from
+            their order.
+
+    - name: negativeClass
+      title: Negative Class
+      type: Level
+      variable: (classVar)
+      allowNone: true
+      description:
+          ui: >
+            Choose the level that means the condition is absent. It must differ from
+            Positive Class. All other outcome levels are excluded, not pooled.
+          R: >
+            Level of classVar treated as the negative class (condition absent). Required:
+            NULL leaves the analysis waiting for a choice. Other levels are excluded.
+
+    - name: subGroup
+      title: Subgroup Variable (Optional)
+      type: Variable
+      default: null
+      suggested:
+        - nominal
+      permitted:
+        - factor
+      description:
+          R: >
+            Optional grouping variable for stratified analysis.
+            ROC curves will be calculated separately for each group.
+
+    # ==========================================
+    # CLINICAL WORKFLOW PRESETS
+    # ==========================================
+    
+    - name: method
+      title: Cutpoint Method
+      type: List
+      options:
+        - name: maximize_metric
+          title: Maximize metric
+        - name: minimize_metric
+          title: Minimize metric
+        - name: maximize_loess_metric
+          title: Maximize metric (LOESS smoothed)
+        - name: minimize_loess_metric
+          title: Minimize metric (LOESS smoothed)
+        - name: maximize_boot_metric
+          title: Maximize metric (bootstrapped)
+        - name: minimize_boot_metric
+          title: Minimize metric (bootstrapped)
+        - name: oc_youden_kernel
+          title: Youden Index (kernel smoothed)
+        - name: oc_youden_normal
+          title: Youden Index (parametric normal)
+        - name: oc_manual
+          title: Manual cutpoint
+        - name: oc_cost_ratio
+          title: Cost-benefit optimized
+        - name: oc_equal_sens_spec
+          title: Equal sensitivity and specificity
+        - name: oc_closest_01
+          title: Closest to perfect classifier
+      default: maximize_metric
+      description:
+          R: >
+            Method for determining the optimal cutpoint. Different methods optimize
+            different aspects of classifier performance.
+
+    - name: metric
+      title: Optimization Metric
+      type: List
+      options:
+        - name: youden
+          title: Youden Index (Sens + Spec - 1)
+        - name: sum_sens_spec
+          title: Sum of sensitivity and specificity
+        - name: accuracy
+          title: Overall accuracy
+        - name: sum_ppv_npv
+          title: Sum of PPV and NPV
+        - name: prod_sens_spec
+          title: Product of sensitivity and specificity
+        - name: prod_ppv_npv
+          title: Product of PPV and NPV
+        - name: cohens_kappa
+          title: Cohen's Kappa
+        - name: abs_d_sens_spec
+          title: Minimize |Sens - Spec|
+        - name: abs_d_ppv_npv
+          title: Minimize |PPV - NPV|
+        - name: F1_score
+          title: F1 Score
+        - name: odds_ratio
+          title: Diagnostic odds ratio
+        - name: risk_ratio
+          title: Risk ratio
+        - name: misclassification_cost
+          title: Misclassification cost
+        - name: total_utility
+          title: Total utility
+        - name: roc01
+          title: Distance to (0,1) in ROC space
+        - name: p_chisquared
+          title: Chi-squared statistic
+      default: youden
+      description:
+          R: >
+            Metric to optimize when determining the cutpoint. 
+            Only applies to maximize/minimize methods. The legacy p_chisquared option
+            identifier denotes the Pearson chi-squared statistic (without continuity
+            correction), not its p-value.
+
+    - name: direction
+      title: Classification Direction
+      type: List
+      options:
+        - name: ">="
+          title: ">= (higher values indicate positive class)"
+        - name: "<="
+          title: "<= (lower values indicate positive class)"
+      default: ">="
+      description:
+          R: >
+            Direction of classification relative to the cutpoint.
+            Use '>=' when higher test values indicate the positive class.
+
+    - name: specifyCutScore
+      title: Manual Cutpoint Value
+      type: String
+      default: ""
+      description:
+          R: >
+            Specific cutpoint value to use when method is set to 'Manual cutpoint'.
+
+    - name: tol_metric
+      title: Metric Tolerance
+      type: Number
+      default: 0.000001
+      min: 0.0
+      max: 1.0
+      description:
+          R: >
+            Cutpoints whose metric is within this tolerance of the best value are treated as
+            equivalent and averaged together. BEHAVIOUR CHANGE (1.0.4) - the default was 0.05,
+            which is 50000 times wider than the 1e-06 used by the underlying cutpointr package
+            and meant the reported "optimal" cutpoint was usually not the one maximising the
+            metric. On the bundled example data 39 of 200 candidate thresholds, spanning 52.1 to
+            67.7, fell within 0.05 Youden of the optimum and were averaged, giving a cutpoint
+            with 84.5 percent sensitivity in place of the 94.4 percent available at the true
+            optimum. Raise it deliberately if you want that averaging as a guard against
+            over-fitting one threshold.
+
+    - name: break_ties
+      title: Tie Breaking Method
+      type: List
+      options:
+        - name: mean
+          title: Mean of tied cutpoints
+        - name: median
+          title: Median of tied cutpoints
+        - name: c
+          title: All tied cutpoints
+      default: mean
+      description:
+          R: >
+            Method for handling ties when multiple cutpoints achieve the same metric value.
+
+    # ==========================================
+    # ANALYSIS OPTIONS
+    # ==========================================
+    
+    - name: allObserved
+      title: All observed cutpoints
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display performance metrics for all observed test values as potential cutpoints,
+            not just the optimal cutpoint.
+
+    - name: boot_runs
+      title: Bootstrap Iterations
+      type: Integer
+      default: 0
+      min: 0
+      max: 10000
+      description:
+          R: >
+            Number of bootstrap iterations for methods using bootstrapping.
+            Set to 0 to disable bootstrapping.
+
+    - name: seed
+      title: Random Seed
+      type: Integer
+      default: 123
+      description:
+          R: >
+            Random seed for reproducibility of bootstrap and permutation tests.
+
+    - name: usePriorPrev
+      title: Prior prevalence
+      type: Bool
+      default: false
+      description:
+          R: >
+            Use a specified prior prevalence instead of the sample prevalence
+            for calculating predictive values.
+
+    - name: priorPrev
+      title: Prior Prevalence Value
+      type: Number
+      default: 0.5
+      min: 0.000000001
+      max: 0.999999999
+      description:
+          R: >
+            Population prevalence to use for predictive value calculations.
+            Only used when 'Use Prior Prevalence' is checked.
+
+    - name: costratioFP
+      title: Cost Ratio (FP:FN)
+      type: Number
+      default: 1.0
+      min: 0.01
+      max: 100.0
+      description:
+          R: >
+            Relative cost of false positives compared to false negatives.
+            Values > 1 penalize false positives more heavily.
+
+    # ==========================================
+    # BASIC OUTPUT OPTIONS
+    # ==========================================
+    
+    - name: sensSpecTable
+      title: Confusion matrices
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display detailed confusion matrices at optimal cutpoints.
+
+    - name: showThresholdTable
+      title: Threshold table
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display detailed table with performance metrics at multiple thresholds.
+
+    - name: maxThresholds
+      title: Maximum Thresholds to Display
+      type: Integer
+      default: 20
+      min: 5
+      max: 100
+      description:
+          R: >
+            Maximum number of threshold values to show in the threshold table.
+
+    - name: delongTest
+      title: Compare test performance statistically
+      type: Bool
+      default: false
+      description:
+          R: >
+            Test whether the diagnostic performance differs significantly between multiple tests.
+            Uses DeLong's method to compare Area Under the Curve (AUC) values.
+            Requires at least two test variables.
+
+    # ==========================================
+    # VISUALIZATION OPTIONS
+    # ==========================================
+    
+    - name: plotROC
+      title: ROC curves
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display ROC curves for visual assessment of classifier performance.
+
+    - name: combinePlots
+      title: Combine multiple ROC curves
+      type: Bool
+      default: false
+      description:
+          R: >
+            When multiple test variables are selected, combine all ROC curves in a single plot.
+
+    - name: cleanPlot
+      title: Publication-ready plot
+      type: Bool
+      default: false
+      description:
+          R: >
+            Create clean ROC curves without annotations, suitable for publications.
+
+    - name: showOptimalPoint
+      title: Mark selected cutpoint
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display the selected cutpoint on the ROC curve. When all tied cutpoints
+            are listed, mark the first selected cutpoint.
+
+    - name: displaySE
+      title: Smoothed-curve confidence band
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display the pointwise 95% confidence band for the fitted LOESS smooth.
+            This describes uncertainty in the visual smooth, not the Wilson intervals
+            for ROC sensitivity and specificity or a simultaneous ROC confidence region.
+
+    - name: smoothing
+      title: LOESS smoothing
+      type: Bool
+      default: false
+      description:
+          R: >
+            Apply LOESS smoothing to ROC curves for visualization.
+
+    - name: showConfidenceBands
+      title: Confidence bands
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display confidence bands around the ROC curve.
+
+    - name: legendPosition
+      title: Legend Position
+      type: List
+      options:
+        - name: "none"
+          title: "No legend"
+        - name: "right"
+          title: "Right"
+        - name: "bottom"
+          title: "Bottom"
+        - name: "topleft"
+          title: "Top left"
+        - name: "topright" 
+          title: "Top right"
+      default: "right"
+      description:
+          R: >
+            Position of the legend in plots with multiple ROC curves.
+
+    - name: directLabel
+      title: Direct curve labels
+      type: Bool
+      default: false
+      description:
+          R: >
+            Label curves directly on the plot instead of using a legend.
+
+    - name: interactiveROC
+      title: Additional static ROC plot
+      type: Bool
+      default: false
+      description:
+          R: >
+            Create an additional static ROC plot. The stable option name is retained
+            for saved analyses; the jamovi Image output does not provide HTML interaction.
+
+    # ==========================================
+    # ADDITIONAL PLOTS
+    # ==========================================
+    
+    - name: showCriterionPlot
+      title: Sensitivity/Specificity vs threshold
+      type: Bool
+      default: false
+      description:
+          R: >
+            Plot showing how sensitivity and specificity change across different thresholds.
+
+    - name: showPrevalencePlot
+      title: Predictive values vs prevalence
+      type: Bool
+      default: false
+      description:
+          R: >
+            Plot showing how PPV and NPV change with disease prevalence.
+
+    - name: showDotPlot
+      title: Test value distribution
+      type: Bool
+      default: false
+      description:
+          R: >
+            Dot plot showing the distribution of test values by class.
+
+    - name: precisionRecallCurve
+      title: Precision-recall curve
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display precision-recall step curves with average precision. The classifier
+            comparison table reports the separate interpolated AUC-PR estimate.
+
+    # ==========================================
+    # ADVANCED ANALYSES
+    # ==========================================
+    
+    - name: partialAUC
+      title: Partial AUC
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate AUC for a specific region of the ROC curve.
+
+    - name: partialAUCfrom
+      title: Partial AUC From (Specificity)
+      type: Number
+      default: 0.8
+      min: 0.0
+      max: 1.0
+      description:
+          R: >
+            Lower bound of specificity range for partial AUC calculation.
+
+    - name: partialAUCto
+      title: Partial AUC To (Specificity)
+      type: Number
+      default: 1.0
+      min: 0.0
+      max: 1.0
+      description:
+          R: >
+            Upper bound of specificity range for partial AUC calculation.
+
+    - name: rocSmoothingMethod
+      title: ROC Smoothing Method
+      type: List
+      options:
+        - name: none
+          title: None
+        - name: binormal
+          title: Binormal
+        - name: density
+          title: Density-based
+        - name: fitdistr
+          title: Distribution fitting
+      default: none
+      description:
+          R: >
+            Method for smoothing the ROC curve (requires pROC package).
+
+    - name: bootstrapCI
+      title: Bootstrap confidence intervals
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate bootstrap confidence intervals for full AUC and a separate Youden
+            reference cutoff, sensitivity and specificity. This does not follow the main
+            Cutpoint Method. Tied Youden optima use seeded random selection in both the
+            original sample and stratified bootstrap replicates.
+
+    - name: bootstrapReps
+      title: Bootstrap Replications
+      type: Integer
+      default: 2000
+      min: 100
+      max: 10000
+      description:
+          R: >
+            Number of bootstrap replications for confidence interval calculation.
+
+    - name: quantileCIs 
+      title: CIs at quantiles
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display confidence intervals at specific quantiles of the test variable.
+
+    - name: quantiles
+      title: Quantile Positions
+      type: String
+      default: "0.1,0.25,0.5,0.75,0.9"
+      description:
+          R: >
+            Comma-separated list of quantiles (0-1) at which to display confidence intervals.
+
+    # ==========================================
+    # MODEL COMPARISON
+    # ==========================================
+    
+    - name: compareClassifiers
+      title: Compare classifier performance
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform comprehensive comparison of classifier performance metrics.
+
+    - name: calculateIDI
+      title: Discrimination improvement (IDI)
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate how much better one test is at discriminating between diseased and healthy patients.
+            IDI (Integrated Discrimination Improvement) measures the average improvement in predicted probabilities.
+
+    - name: calculateNRI
+      title: Reclassification improvement (NRI)
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate how many patients are correctly reclassified when using a new test.
+            NRI (Net Reclassification Index) measures the net improvement in patient classification.
+
+    # A Variable, not a Level: a LevelSelector bound to the Variables option dependentVars lists
+    # no levels, so the reference could never be chosen in jamovi.
+    - name: refVar
+      title: Reference Test for IDI/NRI
+      type: Variable
+      default: null
+      suggested:
+        - continuous
+      permitted:
+        - numeric
+      description:
+          R: >
+            Reference test for IDI and NRI (a numeric variable; it need not be one of the
+            test variables, and it cannot be the class variable). Every test variable other
+            than the reference is compared against it. NULL uses the first test variable.
+
+    - name: nriThresholds
+      title: NRI Risk Categories
+      type: String
+      default: ""
+      description:
+          R: >
+            Comma-separated probability thresholds (0-1) defining risk categories for NRI.
+            Leave empty for continuous NRI. In both variants, predicted risks differing by at
+            most sqrt(machine epsilon), approximately 1.5e-8, are treated as numerical ties.
+            This tolerance removes numerical roundoff and is not a clinically meaningful change threshold.
+
+    - name: idiNriBootRuns
+      title: IDI/NRI Bootstrap Iterations
+      type: Integer
+      default: 1000
+      min: 100
+      max: 10000
+      description:
+          R: >
+            Number of bootstrap iterations for IDI and NRI confidence intervals.
+
+    # ==========================================
+    # ADVANCED STATISTICAL ANALYSES
+    # ==========================================
+
+    - name: effectSizeAnalysis
+      title: Effect size analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Calculate within-marker standardized differences between outcome classes
+            and pairwise differences in those effects. Size bands are descriptive conventions only.
+
+    - name: powerAnalysis
+      title: Statistical power (AUC vs. 0.5)
+      type: Bool
+      default: false
+      description:
+          R: >
+            Approximate power and sample size for each marker's AUC against 0.5.
+            Does not calculate power for a difference between markers.
+
+    - name: powerAnalysisType
+      title: Power Analysis Type
+      type: List
+      options:
+        - name: post_hoc
+          title: Post-hoc power (observed data)
+        - name: prospective
+          title: Prospective power (planning)
+        - name: sample_size
+          title: Sample size estimation
+      default: post_hoc
+      description:
+          R: >
+            Type of power analysis to perform.
+
+    - name: expectedAUCDifference
+      title: Target AUC minus 0.5
+      type: Number
+      default: 0.1
+      min: 0.01
+      max: 0.5
+      description:
+          R: >
+            Target AUC above chance (target AUC = 0.5 + this value) for prospective
+            power and sample size estimation, separately for each marker. A target AUC
+            of exactly 1 is degenerate and has no sample size recommendation.
+
+    - name: targetPower
+      title: Target Statistical Power
+      type: Number
+      default: 0.8
+      min: 0.5
+      max: 0.99
+      description:
+          R: >
+            Target statistical power for sample size calculations (typically 0.8 or 0.9).
+
+    - name: significanceLevel
+      title: Significance Level (Alpha)
+      type: Number
+      default: 0.05
+      min: 0.001
+      max: 0.1
+      description:
+          R: >
+            Type I error rate for power calculations (typically 0.05).
+
+    - name: correlationROCs
+      hidden: true
+      title: Legacy ROC correlation (ignored)
+      type: Number
+      default: 0.5
+      min: -1.0
+      max: 1.0
+      description:
+          R: >
+            Deprecated compatibility option, ignored. Power compares each marker's
+            AUC with 0.5; there is no paired AUC comparison in this calculation.
+
+    - name: bayesianAnalysis
+      title: Bootstrap ROC analysis with prior weighting
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform bootstrap-based ROC analysis with optional prior weighting to
+            estimate uncertainty in AUC. Uses bootstrap resampling to create an
+            empirical distribution. NOTE: This is NOT full Bayesian MCMC inference;
+            it uses bootstrap simulation with prior parameters as weights. Interpret
+            "credible intervals" as bootstrap percentile confidence intervals.
+
+    - name: priorAUC
+      title: Prior AUC Belief
+      type: Number
+      default: 0.7
+      min: 0.5
+      max: 1.0
+      description:
+          R: >
+            Prior belief about AUC value for Bayesian analysis (center of prior distribution).
+
+    - name: priorPrecision
+      title: Prior Precision
+      type: Number
+      default: 10
+      min: 1
+      max: 100
+      description:
+          R: >
+            Precision of prior belief (higher values = more confident prior).
+
+    # ==========================================
+    # CLINICAL UTILITY ANALYSIS
+    # ==========================================
+
+    - name: clinicalUtilityAnalysis
+      title: Clinical utility analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Perform clinical utility analysis including net benefit curves,
+            decision curve analysis, and clinical impact assessment.
+
+    - name: treatmentThreshold
+      title: Treatment Threshold Range
+      type: String
+      default: "0.05,0.5,0.05"
+      description:
+          R: >
+            Treatment threshold range for decision curve analysis (min,max,step).
+            Example: "0.05,0.5,0.05" creates thresholds from 5 percent to 50 percent in 5 percent steps.
+
+    - name: harmBenefitRatio
+      title: Harm-to-Benefit Ratio
+      type: Number
+      default: 0.25
+      min: 0.01
+      max: 10.0
+      description:
+          R: >
+            Ratio of harm from unnecessary treatment to benefit from necessary treatment.
+            Lower values favor more aggressive treatment policies.
+
+    - name: interventionCost
+      title: Intervention cost analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Include cost-effectiveness considerations in clinical utility analysis.
+
+    # ==========================================
+    # FIXED SENSITIVITY/SPECIFICITY ANALYSIS
+    # ==========================================
+
+    - name: fixedSensSpecAnalysis
+      title: Fixed sensitivity/Specificity analysis
+      type: Bool
+      default: false
+      description:
+          R: >
+            Determine cutoffs based on fixed sensitivity or specificity values and
+            display corresponding performance metrics.
+
+    - name: fixedAnalysisType
+      title: Fixed Analysis Type
+      type: List
+      options:
+        - name: sensitivity
+          title: Fixed Sensitivity
+        - name: specificity
+          title: Fixed Specificity
+      default: sensitivity
+      description:
+          R: >
+            Choose whether to fix sensitivity or specificity value for cutoff determination.
+
+    - name: fixedSensitivityValue
+      title: Target Sensitivity
+      type: Number
+      default: 0.90
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Target sensitivity value (0-1) for determining the corresponding cutoff and specificity.
+
+    - name: fixedSpecificityValue
+      title: Target Specificity
+      type: Number
+      default: 0.90
+      min: 0.01
+      max: 0.99
+      description:
+          R: >
+            Target specificity value (0-1) for determining the corresponding cutoff and sensitivity.
+
+    - name: showFixedROC
+      title: Fixed point ROC curve
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display separate ROC curve highlighting the fixed sensitivity/specificity point.
+
+    - name: fixedInterpolation
+      title: Interpolation Method
+      type: List
+      options:
+        - name: linear
+          title: Linear Interpolation
+        - name: nearest
+          title: Nearest Point
+        - name: stepwise
+          title: Stepwise (Conservative)
+      default: linear
+      description:
+          R: >
+            Method for selecting a cutoff near the target sensitivity/specificity.
+            Achieved rates always use empirical classifications at the returned cutoff.
+            Linear interpolation may miss the target; Stepwise meets or exceeds it.
+
+    - name: showFixedExplanation
+      title: Analysis guide
+      type: Bool
+      default: false
+      description:
+          R: >
+            Display explanatory guide for fixed sensitivity/specificity analysis including 
+            clinical interpretation, interpolation methods, and usage recommendations.
+
+    # ==========================================
+    # META-ANALYSIS OPTIONS
+    # ==========================================
+
+    # Retained for saved analyses and R-call compatibility. No within-cohort pooling is valid.
+    - name: metaAnalysis
+      title: Explain meta-analysis limitation
+      type: Bool
+      default: false
+      description:
+          R: >
+            Shows why marker columns from one cohort cannot be pooled as independent studies.
+            No pooled estimate or inference is computed, including with the legacy override.
+
+    - name: metaAnalysisMethod
+      hidden: true
+      title: Legacy meta-analysis method (inactive)
+      type: List
+      options:
+        - name: fixed
+          title: Fixed Effects Model
+        - name: random
+          title: Random Effects Model (DerSimonian-Laird)
+        - name: both
+          title: Both Fixed and Random Effects
+      default: both
+      description:
+          R: Deprecated compatibility option. Within-cohort meta-analysis is unavailable.
+
+    - name: heterogeneityTest
+      hidden: true
+      title: Legacy heterogeneity test (inactive)
+      type: Bool
+      default: false
+      description:
+          R: Deprecated compatibility option. No heterogeneity inference is computed.
+
+    - name: forestPlot
+      hidden: true
+      title: Legacy forest plot (inactive)
+      type: Bool
+      default: false
+      description:
+          R: Deprecated compatibility option. No pooled forest plot is computed.
+
+    - name: overrideMetaAnalysisWarning
+      hidden: true
+      title: Legacy override (inactive)
+      type: Bool
+      default: false
+      description:
+          R: Deprecated and ignored. An override cannot correct dependence between markers.
+
+...

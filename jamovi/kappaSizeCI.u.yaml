@@ -22,7 +22,7 @@ children:
                 children:
                   - type: ComboBox
                     name: outcome
-                    label: ''
+                    label: Outcome levels
                     events:
                       change: ./kappaSizeCI.events::onChange_outcome
       - type: LayoutBox
@@ -39,7 +39,7 @@ children:
                 children:
                   - type: ComboBox
                     name: raters
-                    label: ''
+                    label: Raters
 
 
   - type: Label
@@ -74,7 +74,7 @@ children:
           children:
             - type: TextBox
               name: kappaL
-              label: 'Lower confidence limit'
+              label: 'Lower confidence limit (kappaL)'
               format: number
         - type: LayoutBox
           margin: large
@@ -84,14 +84,14 @@ children:
           children:
             - type: TextBox
               name: kappaU
-              label: 'Upper confidence limit'
+              label: 'Upper confidence limit (kappaU)'
               format: number
               enable: (citype:two_sided)
 
 
 
   - type: Label
-    label: "Proportions of Each Outcome Level"
+    label: "Expected Proportion of Cases in Each Category"
     children:
       - type: LayoutBox
         margin: large
@@ -107,7 +107,7 @@ children:
 
 
   - type: Label
-    label: "Alpha"
+    label: "Significance Level"
     children:
         - type: LayoutBox
           margin: large
@@ -117,5 +117,15 @@ children:
               children:
                 - type: TextBox
                   name: alpha
-                  label: "Alpha (0-1)"
+                  label: 'Alpha'
                   format: number
+
+
+  - type: CollapseBox
+    label: Additional Output
+    collapsed: true
+    children:
+      - type: CheckBox
+        name: showExplanations
+      - type: CheckBox
+        name: showSummary

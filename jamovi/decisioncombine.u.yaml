@@ -1,0 +1,124 @@
+title: Combine Medical Decision Tests
+name: decisioncombine
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Gold Standard (Reference Test)
+        children:
+          - type: VariablesListBox
+            name: gold
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: goldPositive
+            label: Disease present level
+
+      - type: TargetLayoutBox
+        label: Test 1 (Required)
+        children:
+          - type: VariablesListBox
+            name: test1
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: test1Positive
+            label: Positive level
+
+      - type: TargetLayoutBox
+        label: Test 2 (Required for Combinations)
+        children:
+          - type: VariablesListBox
+            name: test2
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: test2Positive
+            label: Positive level
+            enable: (test2)
+
+      - type: TargetLayoutBox
+        label: Test 3 (Optional)
+        children:
+          - type: VariablesListBox
+            name: test3
+            maxItemCount: 1
+            isTarget: true
+            enable: (test2)
+          - type: LevelSelector
+            name: test3Positive
+            label: Positive level
+            enable: (test3)
+
+  - type: CollapseBox
+    label: Display Options
+    collapsed: true
+    children:
+      - type: CheckBox
+        name: showIndividual
+        label: Individual test statistics
+      - type: CheckBox
+        name: showFrequency
+        label: Frequency tables
+      - type: CheckBox
+        name: showCITables
+        label: Confidence interval tables
+      - type: CheckBox
+        name: showRecommendation
+        label: Descriptive candidate-rule ranking
+        children:
+          - type: CheckBox
+            name: optimismCorrection
+            label: Youden's J corrected for rule selection
+            enable: (showRecommendation && test2)
+            children:
+              - type: TextBox
+                name: nBoot
+                format: number
+                enable: (showRecommendation && test2 && optimismCorrection)
+              - type: TextBox
+                name: seed
+                format: number
+                enable: (showRecommendation && test2 && optimismCorrection)
+      - type: CheckBox
+        name: showPairedComparison
+        label: Combinations vs each test alone
+        enable: (test2)
+      - type: CheckBox
+        name: showAbout
+        label: About this analysis
+      - type: Output
+        name: addedPattern
+      - type: Label
+        label: Visualizations
+        children:
+          - type: CheckBox
+            name: showBarPlot
+            label: Bar chart
+          - type: CheckBox
+            name: showHeatmap
+            label: Heatmap
+          - type: CheckBox
+            name: showForest
+            label: Forest plot
+          - type: CheckBox
+            name: showDecisionTree
+            label: Decision space (sensitivity vs specificity)
+
+  - type: CollapseBox
+    label: Filters
+    collapsed: true
+    children:
+      - type: ComboBox
+        name: filterStatistic
+        label: Statistic
+        enable: (showBarPlot || showHeatmap || showForest)
+      - type: ComboBox
+        name: filterPattern
+        label: Pattern type
+        enable: (showBarPlot || showHeatmap || showForest)

@@ -56,3 +56,34 @@ kappaSizeGofCells <- function(outcome, raters, props, rho) {
         c(1 - sum(agree), agree)
     }
 }
+
+# TRUE when `raw` (the proportions text, already space-normalised by the caller) is valid
+# proportions once every comma between two digits is read as a decimal point -- i.e. the
+# user's real mistake is the decimal separator. EVERY token must parse: the three backends
+# used to drop the tokens that did not, so the typo "1.2, 0.8" ("1.2," unreadable, 0.8 valid)
+# was told to use the decimal point it already used. A string with no digit-comma-digit is
+# never a decimal-comma problem.
+kappaSizePropsLookDecimalComma <- function(raw) {
+    if (!grepl("[0-9],[0-9]", raw)) return(FALSE)
+    tok <- strsplit(gsub("([0-9]),([0-9])", "\\1.\\2", raw), "[,;|[:space:]]+")[[1]]
+    v <- suppressWarnings(as.numeric(tok[nzchar(tok)]))
+    length(v) > 0 && all(is.finite(v)) && all(v > 0 & v < 1)
+}
+
+# Syntax pane. jmvcore's sourcify() wraps a string in quotes without escaping it, and the options
+# of an analysis opened from an .omv/.omt reach it unchecked: jamovi copies the saved options
+# through as they are, so ANY option, not only the free-text props, can hold a string or a list.
+# A value such as `0.2", alpha = {<code>; 0.05}, citype = "two_sided` therefore exported a call
+# that parsed and ran <code> when pasted into R (props: security audit 2026-10-16; the List,
+# Number, Integer and Bool options: 2026-10-17). Returns "" for a list, which no option here
+# takes (deparse() would leave a backtick in a list name unescaped, so it is dropped, not
+# rendered), the escaped argument for a non-default string, or NULL to mean "let jmvcore's
+# .sourcifyOption() handle it" (numbers, logicals, defaults). Each backend's .sourcifyOption()
+# drops the option names its analysis does not define, then calls this.
+kappaSizeSourcifyOption <- function(option) {
+    value <- option$value
+    if (is.list(value)) return("")
+    if (!is.character(value) || length(value) != 1L || is.na(value) || identical(value, option$default))
+        return(NULL)
+    paste0(option$name, " = ", encodeString(value, quote = '"'))
+}

@@ -1,0 +1,375 @@
+---
+name: nogoldstandard
+title: Analysis Without Gold Standard
+jrs: '1.1'
+
+items:
+    - name: notices
+      title: Important Information
+      type: Preformatted
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+        - verbose
+
+    - name: instructions
+      title: Instructions
+      type: Html
+      visible: true
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+
+    - name: agreement_stats
+      title: Agreement Statistics (Cohen's Kappa)
+      type: Table
+      visible: true
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+      columns:
+        - name: test_pair
+          title: Test Pair
+          type: text
+        - name: kappa
+          title: Kappa
+          type: number
+        - name: p_value
+          title: p-value
+          type: number
+          format: zto,pvalue
+        - name: agreement
+          title: Agreement
+          type: number
+          format: pc
+
+    - name: clinical_summary
+      title: Plain-Language Summary
+      type: Html
+      visible: (showSummary)
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+        - showSummary
+
+    - name: method_guide
+      title: Method Selection Guide
+      type: Html
+      visible: (showMethodGuide)
+      clearWith:
+        - showMethodGuide
+
+    - name: prevalence
+      title: Estimated Class or Rule Proportion
+      type: Table
+      rows: 1
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+      columns:
+        - name: estimate
+          title: Estimate
+          type: number
+          format: pc
+        - name: ci_lower
+          title: Lower CI
+          type: number
+          format: pc
+        - name: ci_upper
+          title: Upper CI
+          type: number
+          format: pc
+
+    - name: test_metrics
+      title: Estimated Test Metrics or Rule Agreement
+      type: Table
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+      columns:
+        - name: test
+          title: Test
+          type: text
+        - name: sensitivity
+          title: P(Test+ | Class+/Rule+)
+          type: number
+          format: pc
+        - name: sens_ci_lower
+          title: Lower CI
+          superTitle: Positive-Response Probability
+          type: number
+          format: pc
+        - name: sens_ci_upper
+          title: Upper CI
+          superTitle: Positive-Response Probability
+          type: number
+          format: pc
+        - name: specificity  
+          title: P(Test- | Class-/Rule-)
+          type: number
+          format: pc
+        - name: spec_ci_lower
+          title: Lower CI
+          superTitle: Negative-Response Probability
+          type: number
+          format: pc
+        - name: spec_ci_upper
+          title: Upper CI
+          superTitle: Negative-Response Probability
+          type: number
+          format: pc
+        - name: ppv
+          title: PPV
+          type: number
+          format: pc
+        - name: ppv_ci_lower
+          title: Lower CI
+          superTitle: Positive Predictive Value
+          type: number
+          format: pc
+        - name: ppv_ci_upper
+          title: Upper CI
+          superTitle: Positive Predictive Value
+          type: number
+          format: pc
+        - name: npv
+          title: NPV
+          type: number
+          format: pc
+        - name: npv_ci_lower
+          title: Lower CI
+          superTitle: Negative Predictive Value
+          type: number
+          format: pc
+        - name: npv_ci_upper
+          title: Upper CI
+          superTitle: Negative Predictive Value
+          type: number
+          format: pc
+
+    - name: model_fit
+      title: Model Fit Statistics
+      type: Table
+      visible: (method=="latent_class")
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+      columns:
+        - name: statistic
+          title: Statistic
+          type: text
+        - name: value
+          title: Value
+          type: number
+
+    - name: conditional_dependence
+      title: 'Conditional Independence Check (Bivariate Residuals)'
+      type: Table
+      rows: 0
+      visible: (method=="latent_class")
+      clearWith:
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - seed
+      columns:
+        - name: pair
+          title: 'Test Pair'
+          type: text
+        - name: bvr
+          title: 'Bivariate Residual'
+          type: number
+        - name: verdict
+          title: 'Interpretation'
+          type: text
+      description: 'Latent class analysis assumes the tests are conditionally independent within each latent class. For each pair this compares the observed two-way table with the one implied by the fitted model. A residual above 3.84 is descriptive evidence against conditional independence, but this squared statistic does not identify the direction or cause of dependence and cannot determine the direction of bias in the fitted parameters. With three tests the nominal residual degrees of freedom are zero, but exact fit is not guaranteed. Residuals remain descriptive and do not provide a formal chi-squared test or establish identifiability.'
+
+    - name: diagnostics
+      title: 'Analysis Diagnostics'
+      type: Preformatted
+      visible: (verbose)
+      description: 'Detail of how the estimates were produced: sample size, method, convergence, number of random starts used, and bootstrap failures. Shown only when Verbose output is enabled.'
+      clearWith:
+        - verbose
+        - method
+        - bootstrap
+        - nboot
+        - seed
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - alpha
+
+    - name: crosstab
+      title: Test Cross-Tabulation
+      type: Table
+      visible: true
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+      columns:
+        - name: test_combination
+          title: Test Combination
+          type: text
+        - name: count
+          title: Count
+          type: integer
+        - name: percentage
+          title: Percentage
+          type: number
+          format: pc
+
+    - name: agreement_plot
+      title: Test Agreement Matrix
+      type: Image
+      renderFun: .plot_ggplot
+      width: 500
+      height: 400
+      clearWith:
+        - clinicalPreset
+        - test1
+        - test1Positive
+        - test2
+        - test2Positive
+        - test3
+        - test3Positive
+        - test4
+        - test4Positive
+        - test5
+        - test5Positive
+        - method
+        - bootstrap
+        - nboot
+        - alpha
+        - seed
+refs:
+    - ClinicoPathJamoviModule
+    - poLCA
+    - LinzerLewis2011
+    - AllmanLatent2018
+    - irr
+...

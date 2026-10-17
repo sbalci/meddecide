@@ -1,0 +1,332 @@
+---
+name:  decision
+title: Medical Decision
+menuGroup: meddecide
+menuSubgroup: Decision
+menuSubtitle: Sensitivity, Specificity, PPV, NPV
+version: '1.0.9'
+jas: '1.2'
+
+description:
+    main: >
+        Function for Medical Decision Analysis. Sensitivity, Specificity, Positive Predictive Value,
+        Negative Predictive Value.
+    # R:
+    #     dontrun: true
+    #     usage: |
+    #         # example will be added
+
+
+options:
+    - name: data
+      type: Data
+      description:
+          R: The data as a data frame. The data frame should contain the variables specified in the 'variables' option.
+
+
+    - name: referenceType
+      title: Reference interpretation
+      type: List
+      options:
+        - name: legacy
+          title: Not specified
+        - name: disease
+          title: Disease reference
+        - name: consensus
+          title: Expert consensus
+        - name: method
+          title: Comparative method
+      default: legacy
+      description:
+          R: Comparator interpretation; legacy preserves existing binary calculations. Consensus and method report agreement without disease-risk interpretation.
+
+    - name: referenceDescription
+      title: Comparator description
+      type: String
+      default: ''
+
+    - name: targetDefinition
+      title: Target definition
+      type: String
+      default: ''
+
+    - name: gold
+      title: Reference / comparator
+      type: Variable
+      default: NULL
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            Select the reference variable and its interpretation: disease reference, expert
+            consensus, or comparative method. Only a suitable disease reference supports
+            disease-accuracy interpretation.
+          R: >
+            The reference standard variable, used as each case's disease status.
+
+
+    - name: goldPositive
+      title: Reference positive level
+      type: Level
+      variable: (gold)
+      description:
+          ui: >
+            Select the positive reference level.
+            This represents the condition you want to detect or diagnose.
+          R: >
+            The positive reference level; disease interpretation requires a disease standard.
+
+    - name: newtest
+      title: Test Under Evaluation
+      type: Variable
+      default: NULL
+      suggested: [ nominal ]
+      permitted: [ factor ]
+      description:
+          ui: >
+            The diagnostic test being evaluated for performance.
+            This is typically a new, faster, or less expensive test compared to the gold standard.
+          R: >
+            The diagnostic test variable being evaluated for performance.
+
+    - name: testPositive
+      title: Test positive level
+      type: Level
+      variable: (newtest)
+      description:
+          ui: >
+            Select the level that represents a positive test result.
+            This should correspond to the level indicating suspected disease presence.
+          R: >
+            The level representing a positive result for the test under evaluation.
+
+    - name: goldNegative
+      title: Reference negative level
+      type: Level
+      variable: (gold)
+      description:
+          ui: >
+            Select the level that indicates disease is absent in your gold standard variable.
+            Only the disease-present and disease-absent levels take part; cases at any other
+            level are excluded from the analysis, not counted as disease-absent. With a
+            two-level variable this is inferred; with three or more levels you must choose it.
+          R: >
+            The level indicating absence of disease in the gold standard variable.
+            The compiler forbids a default on a Level option, so R callers must pass it
+            explicitly; pass NULL only for a two-level variable, where it is inferred.
+            With three or more levels a NULL raises an error rather than pooling them.
+
+    - name: testNegative
+      title: Test negative level
+      type: Level
+      variable: (newtest)
+      description:
+          ui: >
+            Select the level that represents a negative test result.
+            Only the test-positive and test-negative levels take part; cases at any other
+            level are excluded from the analysis, not counted as negative. With a two-level
+            variable this is inferred; with three or more levels you must choose it.
+          R: >
+            The level representing a negative result for the test under evaluation.
+            The compiler forbids a default on a Level option, so R callers must pass it
+            explicitly; pass NULL only for a two-level variable, where it is inferred.
+            With three or more levels a NULL raises an error rather than pooling them.
+
+
+
+
+
+    - name: pp
+      title: Known population prevalence
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Use known disease prevalence from population data instead of study prevalence.
+            Enable this when your study sample may not represent the target population.
+          R: >
+            Boolean selection whether to use known population prevalence instead of study prevalence.
+
+    - name: pprob
+      title: Population disease prevalence
+      type: Number
+      default: 0.300
+      min: 0.000000001
+      max: 0.999999999
+      description:
+          ui: >
+            Known disease prevalence in the target population, as a proportion strictly between 0 and 1.
+            This affects post-test probabilities and predictive values.
+          R: >
+            Population disease prevalence as a proportion strictly between 0 and 1.
+
+
+    - name: od
+      title: Raw data tables
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display the 2x2 table and level-combination counts of the analysed cases, and a summary
+            of the cases excluded for missing values or unselected levels.
+            Useful for verifying data entry and understanding the underlying counts.
+          R: >
+            Boolean selection whether to show original data frequency tables. The raw data
+            outputs (rawContingency, rawCounts and missingDataSummary) are filled only when this
+            is TRUE, so R code that reads them must set od = TRUE.
+
+    - name: fnote
+      title: Explanatory footnotes
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Add footnotes that define the main statistics. Some also give rules of thumb,
+            such as the likelihood-ratio bands of Jaeschke et al. (1994).
+          R: >
+            Boolean selection whether to show detailed explanatory footnotes.
+
+    - name: ci
+      title: "95 percent confidence intervals"
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display two tables of 95 percent confidence intervals for sensitivity, specificity,
+            predictive values, likelihood ratios, diagnostic odds ratio, Youden's index and number
+            needed to diagnose. Their predictive values use the sample prevalence, even when a
+            population prevalence is supplied.
+          R: >
+            Boolean selection whether to calculate and display 95 percent confidence intervals.
+
+
+    - name: fagan
+      title: "Fagan nomogram plot"
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Generate a Fagan nomogram for visual interpretation of test results.
+            Shows how test results change the probability of disease from pre-test to post-test.
+          R: >
+            Boolean selection whether to generate a Fagan nomogram plot.
+
+    - name: showNaturalLanguage
+      title: "Clinical summary"
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display a plain-language summary of the results, with rule-of-thumb descriptions.
+            It is not a recommendation for an individual patient.
+          R: >
+            Boolean selection whether to show the natural language clinical summary.
+
+    - name: showClinicalInterpretation
+      title: "Clinical interpretation guide"
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display sensitivity, specificity, Youden's index and the likelihood ratios, and the
+            pre-test and post-test probabilities of disease at the sample or entered population
+            prevalence. Youden's index and the likelihood ratios carry rule-of-thumb labels.
+          R: >
+            Boolean selection whether to show the clinical interpretation guide.
+
+    - name: showReportTemplate
+      title: "Copy-ready results paragraph"
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display a draft results paragraph for a manuscript or study report.
+            It gives study-level estimates, not wording for a patient report.
+          R: >
+            Boolean selection whether to show the copy-ready results paragraph.
+
+    - name: showAboutAnalysis
+      title: "About this analysis"
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display educational information about diagnostic test evaluation.
+            Explains concepts and provides interpretation guidelines.
+          R: >
+            Boolean selection whether to show the about analysis section.
+
+    - name: showMisclassified
+      title: "Misclassified cases analysis"
+      type: Bool
+      default: false
+      description:
+          ui: >
+            Display tables of the false positive and false negative cases (where the test
+            disagrees with the reference standard), with their row numbers so the records
+            can be reviewed.
+          R: >
+            Boolean selection whether to show detailed misclassified cases tables.
+
+    - name: maxCasesShow
+      title: 'Maximum cases to display'
+      type: Integer
+      default: 50
+      min: 10
+      max: 500
+      description:
+          ui: >
+            Maximum number of misclassified cases to display in each table.
+            Large datasets may have many misclassifications; this limits the output.
+          R: >
+            Maximum number of misclassified cases to display in tables.
+
+    - name: saveClassifications
+      title: 'Save classifications to data'
+      type: Output
+      varTitle: "Classification Group"
+      varDescription: "Classification of each case: True Positive, False Positive, False Negative, or True Negative"
+      measureType: nominal
+      clearWith:
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+      description:
+          ui: >
+            Save the classification results (True Positive, False Positive, False Negative, True Negative)
+            as a new column in your dataset. This allows you to use the classification groups
+            in other analyses.
+          R: >
+            Output variable to save classification results to the dataset.
+
+
+
+    - name: showValidationContext
+      title: Validation context
+      type: Bool
+      default: false
+    - name: cohortRole
+      title: Cohort role
+      type: String
+      default: ''
+    - name: samplingDesign
+      title: Sampling design
+      type: String
+      default: ''
+    - name: thresholdSource
+      title: Threshold source
+      type: String
+      default: ''
+    - name: modelVersion
+      title: Model version
+      type: String
+      default: ''
+    - name: analysisUnit
+      title: Unit of observation
+      type: String
+      default: slide
+
+...

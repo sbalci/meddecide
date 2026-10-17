@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.0.83.08
+version: 1.0.9
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-10-15'
+date: '2026-10-17'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -30,12 +30,159 @@ description: >-
   For comments, suggestions, feature requests or reporting bugs, please open an
   issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.
 analyses:
+  - title: Lowest Expected Kappa for a Fixed Sample Size
+    name: kappaSizeFixedN
+    ns: meddecide
+    menuGroup: Power
+    menuTitle: Lowest Expected Kappa for a Fixed Sample Size
+    menuSubgroup: Power Analysis by meddecide
+    menuSubtitle: Find lower Kappa based on sample size
+    description: >
+      For an interobserver agreement study whose number of subjects is already
+      fixed, the lowest kappa the study would still be unable to rule out - the
+      lower bound of the one-sided confidence interval around the anticipated
+      kappa (kappa0); every value below it is excluded. Solved from the
+      goodness-of-fit models of the kappaSize package; with three or more raters
+      or categories it also allows for re-estimating the category proportions
+      when the study is analysed. Use kappaSizePower to size a study for a
+      hypothesis test and kappaSizeCI to size it for target confidence limits.
+    ribbon: analyses
+    category: analyses
+  - title: Interrater Reliability
+    name: agreement
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Agreement
+    menuTitle: Interrater Reliability
+    description: >
+      Agreement between two or more raters who scored the same cases. Cohen's
+      kappa for two raters (unweighted, or linear or quadratic weighted for
+      ordinal grades) with a confidence interval, and Fleiss' or Conger's exact
+      kappa for three or more; optional Krippendorff's alpha, Gwet's AC, PABAK,
+      ICC, Lin's concordance, Bland-Altman limits, marginal homogeneity tests,
+      per-rater and per-subgroup agreement, rater and case clustering, consensus
+      and agreement-level variables, and sample size for an agreement study.
+  - title: Co-Testing Analysis
+    name: cotest
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Calculators
+    menuTitle: Co-Testing Analysis
+    menuSubtitle: Two tests run in parallel
+    description: >
+      Analyses two diagnostic tests applied in parallel: both are performed on
+      the same subject at the same time, before either result is known, and the
+      two results are then combined. Reports the post-test probability of
+      disease for every result combination (either test positive, test 1 only,
+      test 2 only, both positive, both negative), optionally allowing the two
+      tests to be conditionally dependent. For tests performed one after
+      another, where the second is ordered only after a particular first result,
+      use Sequential Test Analysis instead. Note that Sequential Test Analysis
+      also offers a parallel strategy, but its combined figures assume
+      conditional independence; this analysis is the one that models conditional
+      dependence numerically.
+  - title: Medical Decision
+    name: decision
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Medical Decision
+    menuSubtitle: Sensitivity, Specificity, PPV, NPV
+    description: >
+      Function for Medical Decision Analysis. Sensitivity, Specificity, Positive
+      Predictive Value, Negative Predictive Value.
+  - title: Medical Decision Calculator
+    name: decisioncalculator
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Calculators
+    menuTitle: Medical Decision Calculator
+    menuSubtitle: Sensitivity, Specificity, PPV, NPV, ...
+    description: >
+      Medical Decision Calculator for diagnostic test evaluation when you have
+      the four key counts: True Positives (TP), False Positives (FP), True
+      Negatives (TN), and False Negatives (FN). Calculates comprehensive
+      diagnostic performance metrics including sensitivity, specificity,
+      positive and negative predictive values, likelihood ratios, and post-test
+      probabilities. Supports confidence interval estimation and Fagan nomogram
+      visualization for educational interpretation. Presets and examples are
+      illustrative only and are not clinical guides.
+  - title: Combine Medical Decision Tests
+    name: decisioncombine
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Combine Medical Decision Tests
+    menuSubtitle: Combine and evaluate test patterns
+    description: >
+      Systematic evaluation of diagnostic test combinations. Analyzes all
+      possible test result patterns (2-test: 4 patterns, 3-test: 8 patterns)
+      against a gold standard, each test alone, and parallel and serial
+      strategies (with three tests also for every pair of tests, and a majority
+      rule). Calculates sensitivity, specificity, predictive values, likelihood
+      ratios, accuracy, and uncertainty intervals. Descriptive rankings are
+      sample-dependent analytical summaries, not clinical guides or validated
+      recommendations.
+  - title: Compare Medical Decision Tests
+    name: decisioncompare
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Compare Medical Decision Tests
+    menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
+    description: >
+      Function for comparing multiple Medical Decision Tests. Compares
+      sensitivity, specificity, positive predictive value, negative predictive
+      value, and other metrics between different tests against the same gold
+      standard. Includes statistical comparison using McNemar's test and
+      confidence intervals for differences. Tests are paired within each case;
+      cases must be independent across rows. Repeated specimens or lesions from
+      one patient require a method that accounts for clustering. Explicit
+      positive and negative levels are required for the reference and every
+      selected test. Other observed levels require explicit exclusion or prior
+      recoding; they are never pooled as negative.
+  - title: Decision Curve Analysis
+    name: decisioncurve
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Curve Analysis
+    menuTitle: Decision Curve Analysis
+    menuSubtitle: Clinical Utility, Net Benefit, Threshold Analysis
+    description: >
+      Decision Curve Analysis for evaluating the clinical utility of prediction
+      models and diagnostic tests. Calculates net benefit across threshold
+      probabilities to determine if using a model provides more benefit than
+      default strategies. Inputs must be probabilities for a clearly defined
+      binary outcome and prediction horizon; calibration must be assessed
+      separately, and this analysis does not handle censoring.
+  - title: Clinical ROC Analysis
+    name: enhancedROC
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: ROC
+    menuTitle: Clinical ROC Analysis
+    menuSubtitle: Clinical ROC analysis with diagnostic metrics and optimal cutoffs
+    description: >
+      Clinical ROC analysis toolkit for comprehensive diagnostic performance
+      evaluation. Includes ROC curve analysis, Youden Index optimization,
+      sensitivity/specificity analysis, optimal cutoff determination, and
+      comparative ROC analysis. Essential for biomarker validation, diagnostic
+      test evaluation, and clinical decision support in medical research.
   - title: Confidence Interval Approach for the Number of Subjects Required
     name: kappaSizeCI
     ns: meddecide
+    category: analyses
     menuGroup: Power
-    menuTitle: Confidence Interval Approach for the Number of Subjects Required
     menuSubgroup: Power Analysis by meddecide
+    menuTitle: Confidence Interval Approach for the Number of Subjects Required
     menuSubtitle: Find sample size based on Kappa confidence
     description: >
       Number of subjects an interobserver agreement study needs for the
@@ -44,24 +191,85 @@ analyses:
       package. This is NOT a power calculation and tests no hypothesis; use
       kappaSizePower to size a study for a hypothesis test, and kappaSizeFixedN
       when the number of subjects is already fixed.
-    ribbon: analyses
-    category: analyses
-  - title: Lowest Expected Value for a fixed sample size
-    name: kappaSizeFixedN
+  - title: Power Approach for the Number of Subjects Required
+    name: kappaSizePower
     ns: meddecide
-    menuGroup: Power
-    menuTitle: Lowest Expected Value for a fixed sample size
-    menuSubgroup: Power Analysis by meddecide
-    menuSubtitle: Find lower Kappa based on sample size
-    description: >
-      For an interobserver agreement study whose number of subjects is already
-      fixed, the lowest kappa the study would still be unable to rule out - the
-      lower bound of the one-sided confidence interval around the anticipated
-      kappa (kappa0); every value below it is excluded. Computed with the
-      kappaSize package. Use kappaSizePower to size a study for a hypothesis
-      test and kappaSizeCI to size it for a target interval width.
-    ribbon: analyses
     category: analyses
+    menuGroup: Power
+    menuSubgroup: Power Analysis by meddecide
+    menuTitle: Power Approach for the Number of Subjects Required
+    menuSubtitle: Find sample size based on power
+    description: >
+      Sample size for an interobserver agreement study sized to reject a null
+      kappa (kappa0) in favour of an alternative kappa (kappa1) at a given
+      two-sided significance level and power - the power approach of the
+      kappaSize package. Use kappaSizeCI for a target confidence-interval width,
+      and kappaSizeFixedN when the number of subjects is already fixed.
+  - title: LASSO Logistic Regression
+    name: lassologistic
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Prediction Models
+    menuTitle: LASSO Logistic
+    menuSubtitle: Penalized feature selection for binary classification
+    description: >
+      Performs LASSO-penalized logistic regression for variable selection in
+      binary classification problems. Ideal for diagnostic pathology studies
+      that build classifiers (e.g., tumor type A vs B) with automatic feature
+      selection.
+  - title: Analysis Without Gold Standard
+    name: nogoldstandard
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Analysis Without Gold Standard
+    menuSubtitle: Multiple Test Analysis Without Gold Standard
+    description: >
+      Analysis of multiple binary tests when no perfect reference exists.
+      Implements a conditional-independence two-class latent class model,
+      fixed-prior penalized EM point estimation with numerical refinement, and
+      descriptive agreement with self-built reference rules. Latent classes are
+      unlabeled, and reference-rule results are not diagnostic-accuracy
+      estimates.
+  - title: Advanced ROC Analysis
+    name: psychopdaROC
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: ROC
+    menuTitle: Advanced ROC Analysis
+    menuSubtitle: Advanced ROC analysis with statistical comparisons and effect sizes
+    description: >
+      Exploratory Receiver Operating Characteristic (ROC) curve analysis with
+      optimal cutpoint determination. Analyse independent rows or a prespecified
+      mean or median per patient. Patient summaries require an ID and a
+      consistent outcome within each patient; all calculations and resampling
+      then use one summary per patient. Nominal coverage is not guaranteed in
+      small or imbalanced samples. Cutpoints selected on these data report
+      apparent performance and require validation in the intended setting.
+  - title: Sequential Testing Analysis
+    name: sequentialtests
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Calculators
+    menuTitle: Sequential Testing Analysis
+    menuSubtitle: Sequential Test Analysis
+    description: >
+      Analyzes how diagnostic accuracy changes when applying two tests in
+      sequence, comparing three different testing strategies: serial positive
+      (confirmation), serial negative (exclusion), and parallel testing.
+      Provides comprehensive analysis including population flow, cost
+      implications, and diagnostic plots, so you can explore how diagnostic
+      strategies behave under explicit assumptions, compare hypothetical test
+      sequences, weigh trade-offs between sensitivity and specificity, and
+      illustrate expected testing volume and cost under user-supplied
+      assumptions. The named scenarios and their values are teaching examples
+      only, not clinical guidance or validated diagnostic pathways. Replace all
+      example parameters with estimates applicable to the intended population
+      before interpreting results.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

@@ -1,0 +1,71 @@
+---
+name:  kappaSizePower
+title: Power Approach for the Number of Subjects Required
+jrs:   '1.1'
+
+items:
+    - name:  notices
+      title: Notes
+      type:  Html
+      clearWith:
+          - outcome
+          - kappa0
+          - kappa1
+          - props
+          - raters
+          - alpha
+          - power
+
+    # Both engine panes print kappaSize's own sentence, "A minimum of N subjects are required", which is
+    # the published-formula N. For a binary outcome the Notes can give a larger simulated N beside it, so
+    # the titles say which figure these panes hold.
+    - name:  text1
+      title: Result by the published formula (kappaSize)
+      type:  Preformatted
+      clearWith:
+          - outcome
+          - kappa0
+          - kappa1
+          - props
+          - raters
+          - alpha
+          - power
+
+    - name:  text_summary
+      title: Summary by the published formula (kappaSize)
+      type:  Preformatted
+      clearWith:
+          - outcome
+          - kappa0
+          - kappa1
+          - props
+          - raters
+          - alpha
+          - power
+
+    - name:  text2
+      title: Study Explanation
+      type:  Preformatted
+      clearWith:
+          - outcome
+          - kappa0
+          - kappa1
+          - props
+          - raters
+          - alpha
+          - power
+
+refs:
+    - ClinicoPathJamoviModule
+    - kappaSize
+    # The Notes panel attributes the power approach to Donner and Eliasziw (two raters,
+    # binary) and Altaye and colleagues (more raters / categories), as implemented in
+    # kappaSize (Rotondi and Donner, the CI paper that introduced the package). Every
+    # name in that sentence must be citable from the output.
+    - rotondiDonnerKappaCI
+    - donnerEliasziwKappaGOF
+    - altayeDonnerKlarKappaRaters
+    - altayeDonnerEliasziwKappaGOF
+
+
+...

@@ -13,7 +13,9 @@ kappaSizeCIOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             kappaU = 0.8,
             props = "0.20, 0.80",
             raters = "2",
-            alpha = 0.05, ...) {
+            alpha = 0.05,
+            showExplanations = FALSE,
+            showSummary = FALSE, ...) {
 
             super$initialize(
                 package="meddecide",
@@ -75,6 +77,14 @@ kappaSizeCIOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                 default=0.05,
                 min=0.001,
                 max=0.2)
+            private$..showExplanations <- jmvcore::OptionBool$new(
+                "showExplanations",
+                showExplanations,
+                default=FALSE)
+            private$..showSummary <- jmvcore::OptionBool$new(
+                "showSummary",
+                showSummary,
+                default=FALSE)
 
             self$.addOption(private$..outcome)
             self$.addOption(private$..citype)
@@ -84,6 +94,8 @@ kappaSizeCIOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
             self$.addOption(private$..props)
             self$.addOption(private$..raters)
             self$.addOption(private$..alpha)
+            self$.addOption(private$..showExplanations)
+            self$.addOption(private$..showSummary)
         }),
     active = list(
         outcome = function() private$..outcome$value,
@@ -93,7 +105,9 @@ kappaSizeCIOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
         kappaU = function() private$..kappaU$value,
         props = function() private$..props$value,
         raters = function() private$..raters$value,
-        alpha = function() private$..alpha$value),
+        alpha = function() private$..alpha$value,
+        showExplanations = function() private$..showExplanations$value,
+        showSummary = function() private$..showSummary$value),
     private = list(
         ..outcome = NA,
         ..citype = NA,
@@ -102,7 +116,9 @@ kappaSizeCIOptions <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
         ..kappaU = NA,
         ..props = NA,
         ..raters = NA,
-        ..alpha = NA)
+        ..alpha = NA,
+        ..showExplanations = NA,
+        ..showSummary = NA)
 )
 
 kappaSizeCIResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
@@ -124,7 +140,10 @@ kappaSizeCIResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                     "ClinicoPathJamoviModule",
                     "kappaSize",
                     "rotondiDonnerKappaCI",
-                    "donnerEliasziwKappaGOF"))
+                    "donnerEliasziwKappaGOF",
+                    "altayeDonnerKlarKappaRaters",
+                    "altayeDonnerEliasziwKappaGOF",
+                    "Byrt1993"))
             self$add(jmvcore::Html$new(
                 options=options,
                 name="notices",
@@ -137,7 +156,9 @@ kappaSizeCIResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                     "kappaU",
                     "props",
                     "raters",
-                    "alpha")))
+                    "alpha",
+                    "showExplanations",
+                    "showSummary")))
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="text1",
@@ -155,6 +176,7 @@ kappaSizeCIResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                 options=options,
                 name="text_summary",
                 title="Summary",
+                visible="(showSummary)",
                 clearWith=list(
                     "outcome",
                     "citype",
@@ -163,11 +185,13 @@ kappaSizeCIResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                     "kappaU",
                     "props",
                     "raters",
-                    "alpha")))
+                    "alpha",
+                    "showSummary")))
             self$add(jmvcore::Preformatted$new(
                 options=options,
                 name="text2",
                 title="Study Explanation",
+                visible="(showExplanations)",
                 clearWith=list(
                     "outcome",
                     "citype",
@@ -176,7 +200,8 @@ kappaSizeCIResults <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class
                     "kappaU",
                     "props",
                     "raters",
-                    "alpha")))}))
+                    "alpha",
+                    "showExplanations")))}))
 
 kappaSizeCIBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
     "kappaSizeCIBase",
@@ -186,7 +211,7 @@ kappaSizeCIBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
             super$initialize(
                 package = "meddecide",
                 name = "kappaSizeCI",
-                version = c(1,0,83),
+                version = c(1,0,9),
                 options = options,
                 results = kappaSizeCIResults$new(options=options),
                 data = data,
@@ -210,7 +235,7 @@ kappaSizeCIBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' 
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # kappaSize::CIBinary example: anticipated kappa 0.60 to be reported with a
 #' # 95 percent CI of [0.40, 0.80], 2 raters, trait prevalence 0.20
 #' kappaSizeCI(
@@ -232,8 +257,8 @@ kappaSizeCIBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #'   the null being tested.
 #' @param kappaL Lower confidence limit you want the study to achieve for
 #'   kappa. Must be strictly below kappa0. The required sample size grows
-#'   roughly as one over the square of the distance from kappa0 to the nearer
-#'   limit.
+#'   roughly as one over the square of the distance from kappa0 to the limit
+#'   that governs it - usually, but not always, the nearer one.
 #' @param kappaU Upper confidence limit you want the study to achieve for
 #'   kappa. Must be strictly above kappa0. Ignored when citype is 'one_sided'
 #'   (passed to kappaSize as NA, which is how that package requests a one-sided
@@ -247,6 +272,10 @@ kappaSizeCIBase <- if (requireNamespace("jmvcore", quietly=TRUE)) R6::R6Class(
 #' @param alpha Significance level of the confidence interval - 0.05 gives a
 #'   95 percent interval (capped at 0.20). Two-sided intervals use qchisq(1 -
 #'   alpha, 1); a one-sided lower bound uses qchisq(1 - 2*alpha, 1).
+#' @param showExplanations If TRUE, adds the Methodology panel to the Notes
+#'   and shows the Study Explanation.
+#' @param showSummary If TRUE, shows the kappaSize package's own summary
+#'   output.
 #' @return A results object containing:
 #' \tabular{llllll}{
 #'   \code{results$notices} \tab \tab \tab \tab \tab a html \cr
@@ -264,7 +293,9 @@ kappaSizeCI <- function(
     kappaU = 0.8,
     props = "0.20, 0.80",
     raters = "2",
-    alpha = 0.05) {
+    alpha = 0.05,
+    showExplanations = FALSE,
+    showSummary = FALSE) {
 
     if ( ! requireNamespace("jmvcore", quietly=TRUE))
         stop("kappaSizeCI requires jmvcore to be installed (restart may be required)")
@@ -278,7 +309,9 @@ kappaSizeCI <- function(
         kappaU = kappaU,
         props = props,
         raters = raters,
-        alpha = alpha)
+        alpha = alpha,
+        showExplanations = showExplanations,
+        showSummary = showSummary)
 
     analysis <- kappaSizeCIClass$new(
         options = options,

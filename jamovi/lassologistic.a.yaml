@@ -1,0 +1,347 @@
+---
+name: lassologistic
+title: LASSO Logistic Regression
+menuGroup: meddecide
+menuSubgroup: Prediction Models
+menuTitle: LASSO Logistic
+menuSubtitle: Penalized feature selection for binary classification
+version: '1.0.9'
+jas: '1.2'
+
+description:
+    main: >
+        Performs LASSO-penalized logistic regression for variable selection in binary
+        classification problems. Ideal for diagnostic pathology studies that build
+        classifiers (e.g., tumor type A vs B) with automatic feature selection.
+    # R:
+    #     dontrun: true
+    #     usage: |
+    #         lassologistic(data = data, outcome = "diagnosis",
+    #             outcomeLevel = "PanNEC", explanatory = vars(p53, Rb1, Ki67, SSTR2A))
+
+options:
+    - name: data
+      type: Data
+      description:
+          R: The data as a data frame, with one independent observation per row.
+
+    - name: outcome
+      title: 'Binary Outcome'
+      type: Variable
+      suggested: [ ordinal, nominal ]
+      permitted: [ factor, numeric ]
+      description:
+        R: >
+          Binary outcome variable to classify. Can be factor or
+          numeric with exactly two observed values.
+
+    # allowNone: without it the jamovi client pre-selects levels[0] - usually the
+    # reference level - and every odds ratio comes out inverted. Never inferred.
+    - name: outcomeLevel
+      title: Event level
+      type: Level
+      variable: (outcome)
+      allowNone: true
+      description:
+        R: >
+          Level of the outcome that is the event (positive class), for example
+          Malignant. Required for a nominal or ordinal outcome: it is never taken
+          from the order of the levels, and until it is chosen the analysis shows
+          the levels found and fits nothing. A numeric outcome coded 0/1 is read as
+          1 = event without a choice; for any other numeric coding, set the
+          outcome's measure type to Nominal and choose the level. From R the
+          argument has no default: pass the level, or NULL for a 0/1 outcome.
+
+    - name: explanatory
+      title: Explanatory Variables
+      type: Variables
+      suggested: [ nominal, ordinal, continuous ]
+      permitted: [ factor, numeric ]
+      description:
+        R: >
+          Variables to be considered for selection. At least 2 required.
+          Constant variables are removed automatically.
+
+    - name: penalty
+      title: Penalty type
+      type: List
+      options:
+        - title: LASSO (L1)
+          name: lasso
+        - title: Ridge (L2)
+          name: ridge
+        - title: Elastic Net
+          name: elasticnet
+      default: lasso
+      description:
+        R: >
+          Type of regularization penalty. LASSO (L1) produces sparse models
+          by setting coefficients to zero. Ridge (L2) shrinks but retains all.
+          Elastic Net combines both.
+
+    - name: alpha
+      title: Elastic net mixing (0 = ridge, 1 = LASSO)
+      type: Number
+      default: 0.5
+      min: 0.01
+      max: 0.99
+      description:
+        R: >
+          Mixing parameter for elastic net. Only used when penalty is elasticnet.
+
+    - name: lambda
+      title: Lambda selection method
+      type: List
+      options:
+        - title: Minimum CV Error
+          name: lambda.min
+        - title: 1SE Rule (More Parsimonious)
+          name: lambda.1se
+      default: lambda.1se
+      description:
+        R: >
+          Method for selecting the optimal lambda from cross-validation.
+          1SE rule tends to select fewer variables (more conservative).
+
+    - name: nfolds
+      title: Number of CV folds
+      type: Integer
+      default: 10
+      min: 3
+      description:
+        R: >
+          Number of folds for cross-validation. Automatically reduced
+          when sample size is limited.
+
+    - name: random_seed
+      title: Random seed
+      type: Integer
+      default: 123456
+      min: 1
+      max: 999999
+      description:
+        R: Random seed for reproducible cross-validation fold assignment.
+
+    - name: standardize
+      title: Variable standardization
+      type: Bool
+      default: true
+      description:
+        R: >
+          Whether glmnet standardizes predictors within each training fold and
+          bootstrap fit, using its population (1/n) standard deviation. Reported
+          coefficients remain on the original measurement scale.
+
+    - name: suitabilityCheck
+      title: Data suitability assessment
+      type: Bool
+      default: true
+      description:
+        R: >
+          Check sample size, events-per-variable ratio, multicollinearity,
+          and whether regularization is needed.
+
+    - name: bootstrapValidation
+      title: Bootstrap internal validation
+      type: Bool
+      default: false
+      description:
+        R: >
+          Perform bootstrap optimism-corrected validation (Harrell method).
+          Reports corrected AUC, calibration slope, and Brier score. Scaling and
+          lambda selection are repeated within every resample. Copies of an
+          observation in a bootstrap sample remain in the same CV fold.
+
+    - name: bootstrapN
+      title: Bootstrap iterations
+      type: Integer
+      default: 200
+      min: 50
+      max: 1000
+      description:
+        R: Number of bootstrap iterations for internal validation.
+
+    - name: cv_plot
+      title: Cross-validation plot
+      type: Bool
+      default: true
+      description:
+        R: Show cross-validation deviance vs lambda plot.
+
+    - name: coef_plot
+      title: Coefficient plot
+      type: Bool
+      default: true
+      description:
+        R: Show bar plot of selected variable coefficients.
+
+    - name: roc_plot
+      title: ROC curve
+      type: Bool
+      default: true
+      description:
+        R: Show ROC curve with AUC and confidence interval.
+
+    - name: scoringSystem
+      title: Scoring system
+      type: Bool
+      default: false
+      description:
+        R: >
+          Convert model coefficients to an integer-point scoring system.
+          Multiple methods available following published standards.
+
+    - name: scoringMethod
+      title: Scoring method
+      type: List
+      options:
+        - title: "Beta10 (coefficient x 10, rounded)"
+          name: beta10
+        - title: "Smallest-contribution units (divide by the smallest)"
+          name: smallest
+        - title: "Max-scaled (strongest predictor = max points)"
+          name: maxscaled
+        - title: "Compare All Methods"
+          name: compare
+      default: maxscaled
+      description:
+        R: >
+          Method for converting each predictor's log-odds contribution (the coefficient
+          times the contrast its criterion applies) to integer points.
+          Beta10: multiply by 10 and round (the Beta10/integer method of Mehta et al. 2016).
+          Smallest: divide by the smallest contribution and round, a Sullivan-type scale
+          with one point per smallest contribution (Sullivan et al. 2004); contributions
+          below 1e-8 of the largest are not used as the divisor. This option was previously
+          labelled "Schneeweiss"; Schneeweiss et al. 2003 instead add one point per 0.3
+          increase in the log odds ratio.
+          Max-scaled: divide by the largest absolute coefficient and multiply by
+          scoringMaxPoints, so the strongest predictor scores exactly the maximum. This
+          option was previously labelled "Sullivan/D'Agostino"; it is not the Sullivan 2004
+          Framingham procedure, which awards points per category of each factor relative to a
+          reference factor's per-category distance.
+          Compare: generate all three and show performance comparison; the selected points
+          and score performance then use Max-scaled, the default. Every method
+          gives a selected predictor at least one point (of its sign) when its points
+          would round to zero, and caps a single predictor at 1000 points.
+
+    - name: scoringMaxPoints
+      title: Maximum points per feature
+      type: Integer
+      default: 10
+      min: 3
+      max: 20
+      description:
+        R: >
+          Points assigned to the strongest predictor in the Max-scaled method. The Beta10 method uses a fixed x10 coefficient
+          scaling and ignores this value; the Smallest method scales by the
+          smallest contribution and also ignores it.
+
+    - name: scoreCutMethod
+      title: Cut point for continuous predictors
+      type: List
+      options:
+        - title: "Median of this dataset"
+          name: median
+        - title: "Mean of this dataset"
+          name: mean
+        - title: "Upper tertile (top third scores)"
+          name: tertile
+        - title: "Upper quartile (top quarter scores)"
+          name: quartile
+        - title: "Manual cut points"
+          name: manual
+      default: median
+      description:
+        R: >
+          How continuous predictors are dichotomized when awarding points. A
+          predictor earns its points when the patient's value exceeds this cut.
+          'median' (the default) splits at the sample median, which is
+          data-derived and will differ in another cohort. 'manual' lets you enter
+          established clinical thresholds. Fixed cutoffs alone do not establish
+          transportability; the score still requires external validation.
+
+    - name: scoreCutPoints
+      title: Manual cut points
+      type: String
+      default: ''
+      description:
+        R: >
+          Cut points on the ORIGINAL measurement scale, as
+          'variable=value' pairs separated by commas or semicolons, e.g.
+          'ki67=20, age=65'. Used when Cut Point method is 'manual'. Any
+          continuous predictor not listed falls back to the sample median, and
+          that fallback is reported. Binary predictors ignore this - they score
+          when present.
+
+    - name: scoreLookupTable
+      title: Score lookup table (observed event rates)
+      type: Bool
+      default: true
+      description:
+        R: >
+          Generate a table listing each observed total score with its number of
+          cases, events and observed (in-sample) event rate. These are proportions
+          in this dataset, not model predictions.
+
+    - name: predictions
+      title: Predicted probabilities
+      type: Output
+      description:
+        R: Adds predicted probabilities to the dataset.
+
+    - name: showSummary
+      title: Results summary
+      type: Bool
+      default: false
+      description:
+        R: Display a natural-language summary of the main results.
+
+    - name: showExplanations
+      title: Method explanations
+      type: Bool
+      default: false
+      description:
+        R: Display explanations of LASSO logistic regression methodology.
+
+    - name: showMethodologyNotes
+      title: Detailed methodology notes
+      type: Bool
+      default: false
+      description:
+        R: Show technical notes about regularization and validation.
+
+    - name: includeClinicalGuidance
+      title: Clinical interpretation guidance
+      type: Bool
+      default: false
+      description:
+        R: Include guidance for clinical interpretation of results.
+
+    - name: showVariableImportance
+      title: Variable importance analysis
+      type: Bool
+      default: false
+      description:
+        R: Display variable importance rankings across lambda values.
+
+    - name: showModelComparison
+      title: Model comparison analysis
+      type: Bool
+      default: false
+      description:
+        R: Compare the selected penalized model with unpenalized logistic refits.
+
+    - name: patientID
+      title: Patient ID (optional duplicate check)
+      type: Variable
+      default: NULL
+      suggested: [ nominal, id ]
+      permitted: [ factor, numeric, id ]
+      description:
+        R: >
+          Optional identifier for independent patients. Repeated or missing IDs among
+          analyzed rows are rejected. Each row is otherwise assumed independent;
+          repeated lesions, visits, or readings require a patient-level summary or
+          a method that accounts for clustering.
+
+...

@@ -1,0 +1,1068 @@
+---
+name: enhancedROC
+title: Clinical ROC Analysis
+menuGroup: meddecide
+menuSubgroup: ROC
+menuSubtitle: "Clinical ROC analysis with diagnostic metrics and optimal cutoffs"
+version: '1.0.9'
+jas: '1.2'
+
+description:
+    main: >
+        Clinical ROC analysis toolkit for comprehensive diagnostic performance
+        evaluation. Includes ROC curve analysis, Youden Index optimization,
+        sensitivity/specificity analysis, optimal cutoff determination, and
+        comparative ROC analysis. Essential for biomarker validation, diagnostic
+        test evaluation, and clinical decision support in medical research.
+    R:
+        dontrun: true
+        usage: |
+            # pROC::aSAH ships with pROC, an Import, so the example runs in every module that
+            # carries this analysis. positiveClass is a Level option: always a required argument.
+            enhancedROC(
+                data = pROC::aSAH,
+                outcome = "outcome",
+                positiveClass = "Poor",
+                predictors = c("s100b", "ndka"))
+
+options:
+    - name: data
+      type: Data
+      description:
+          R: >
+            The data as a data frame.
+
+    - name: outcome
+      title: 'Outcome variable'
+      type: Variable
+      suggested:
+          - nominal
+          - ordinal
+      permitted:
+          - factor
+          - numeric
+      description: >
+          Outcome variable (disease status). A factor with two levels, or with more than two
+          (choose one as Positive class and the others are pooled as negative, or use Multi-class
+          ROC). A numeric outcome must have exactly two values; 0/1 reads 1 as positive. Each row
+          must be a different patient: every interval and test assumes independent rows.
+
+    # allowNone: without it the jamovi client pre-selects levels[0] - usually the NEGATIVE
+    # level - and the whole analysis runs reversed. The positive class is never inferred.
+    - name: positiveClass
+      title: 'Positive class'
+      type: Level
+      variable: (outcome)
+      allowNone: true
+      description:
+          ui: >
+            Choose the outcome level that means the condition is present (for example
+            Malignant). Required for a nominal or ordinal outcome: levels are never chosen
+            from their order. A numeric outcome coded 0/1 is read as 1 = positive without a
+            choice; for any other numeric coding, set the outcome's measure type to Nominal in
+            Data > Setup so its values are listed here. Every other level is analysed as
+            negative. The Outcome coding table shows which level was used and how.
+          R: >
+            Level of outcome treated as the positive class (condition present), matched
+            exactly. Pass NULL to leave it unset: a numeric outcome coded 0/1 then reads 1 as
+            positive, and any other outcome leaves the analysis waiting for a choice, because
+            levels are never chosen from their order. Every other level is analysed as
+            negative (pooled when there are more than two). A numeric outcome must have
+            exactly two values; to choose among more, make it a factor.
+
+    - name: predictors
+      title: 'Predictor variables'
+      type: Variables
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+      description: >
+          Numeric predictor variables for ROC analysis, one value per patient (row).
+
+    - name: analysisType
+      title: 'Analysis type'
+      type: List
+      options:
+          - title: 'Single ROC Analysis'
+            name: single
+          - title: 'Comparative ROC Analysis'
+            name: comparative
+          - title: 'Comprehensive Diagnostic Performance'
+            name: comprehensive
+      default: single
+      description: >
+          Single analyses each predictor on its own; Comparative adds the pairwise comparison
+          tables and the comparative ROC plot. Comprehensive Diagnostic Performance currently
+          gives the same output as Single.
+
+    - name: direction
+      title: 'Direction'
+      type: List
+      options:
+          - title: 'Auto (determine automatically)'
+            name: auto
+          - title: 'Higher values indicate positive outcome'
+            name: higher
+          - title: 'Lower values indicate positive outcome'
+            name: lower
+      default: higher
+      description: >
+        Direction of the predictor-outcome relationship. The default is "Higher values indicate
+        positive outcome" because it is a stated hypothesis rather than an estimate. "Auto" reads
+        the orientation off the same data that supply the AUC - pROC compares the two groups'
+        median values - so the direction is fitted rather than assumed, and every AUC is biased
+        upward (for n = 20 the AUC expected under no association is about 0.60, not 0.50, and
+        exceeds 0.60 in roughly 45 of every 100 markers carrying no information at all). It is
+        not floored at 0.5 either: a median split can disagree with the ranks, so about 12 of
+        those 100 null markers are still reported below 0.5. "Auto" can also silently invert a
+        marker and report 0.825 where the un-inverted reading is 0.175. Use "Auto" only for
+        exploratory screening of markers whose direction is genuinely unknown, and say so.
+
+    # Youden Index Options
+    - name: youdenOptimization
+      title: "Youden index optimization"
+      type: Bool
+      default: true
+      description: >
+          Find the optimal cutoff by maximising the Youden index (sensitivity + specificity - 1),
+          subject to the minimum sensitivity/specificity below. When off, the cutoff closest to
+          the top-left corner of the ROC curve is reported instead. The minimum sensitivity and
+          specificity are used only by the Youden search; with this off they are not applied and a
+          warning says so.
+
+    - name: customCutoffs
+      title: 'Custom cutoffs'
+      type: String
+      default: ''
+      description: 'Comma-separated list of custom cutoffs to evaluate (e.g., 0.1, 0.5, 0.9)'
+
+    - name: sensitivityThreshold
+      title: 'Minimum sensitivity'
+      type: Number
+      default: 0.0
+      min: 0.0
+      max: 1.0
+      description: >
+          Minimum sensitivity a cutoff must achieve to be considered. 0 (the default) searches for
+          the overall Youden optimum with no constraint. Raising it restricts the search, which is
+          what you want for a screening test, but the reported cutoff is then the best one meeting
+          your minimum rather than the Youden maximum - a notice says so when the two differ. Used
+          only when Youden index optimization is on.
+
+    - name: specificityThreshold
+      title: 'Minimum specificity'
+      type: Number
+      default: 0.0
+      min: 0.0
+      max: 1.0
+      description: >
+          Minimum specificity a cutoff must achieve to be considered. 0 (the default) searches for
+          the overall Youden optimum with no constraint. Raising it restricts the search, which is
+          what you want for a confirmatory test, but the reported cutoff is then the best one
+          meeting your minimum rather than the Youden maximum - a notice says so when the two
+          differ. Used only when Youden index optimization is on.
+
+    # Statistical Options
+    - name: confidenceLevel
+      title: 'Confidence level'
+      type: Number
+      default: 95
+      min: 50
+      max: 99.9
+      description: 'Confidence level for AUC confidence intervals'
+
+    - name: bootstrapSamples
+      title: 'Bootstrap samples'
+      type: Integer
+      default: 1000
+      min: 100
+      max: 10000
+      description: >
+          Number of resamples for every resampling step except the frozen-model report: bootstrap
+          confidence intervals (AUC, partial AUC, multi-class), the ROC confidence bands, the
+          bootstrap comparison test, and the number of permutations for Venkatraman's test. With
+          B permutations no p-value below 1/(B + 1) can be shown, so keep at least 1000 for a test.
+
+    - name: useBootstrap
+      title: "Bootstrap confidence intervals"
+      type: Bool
+      default: false
+      description: 'Use bootstrap methods for confidence intervals'
+
+    - name: bootstrapMethod
+      title: 'Bootstrap method'
+      type: List
+      options:
+          - title: 'Percentile Method'
+            name: percentile
+          - title: 'BCa (Bias-Corrected and Accelerated)'
+            name: bca
+          - title: 'Basic Bootstrap'
+            name: basic
+      default: bca
+      description: >
+          Method for calculating bootstrap confidence intervals. BCa corrects for bias and
+          skewness and is second-order accurate in large samples; for a single AUC in small
+          samples no interval method is uniformly best (Obuchowski and Lieber 1998; Feng et al.
+          2017).
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: bootstrapCutoffCI
+#       title: "Bootstrap CI for optimal cutoff"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Calculate bootstrap confidence intervals for sensitivity and specificity at optimal cutoff'
+
+    - name: bootstrapPartialAUC
+      title: "Bootstrap CI for partial AUC"
+      type: Bool
+      default: false
+      description: >
+        Bootstrap confidence interval for the partial AUC, using the resample count, interval
+        type (BCa/percentile/basic) and stratification set above. The interval is for the raw
+        partial AUC on the chosen focus range, not for the McClish-normalised value.
+
+    - name: stratifiedBootstrap
+      title: "Stratified bootstrap"
+      type: Bool
+      default: false
+      description: >
+          Resample cases and controls separately, keeping the outcome proportions, in every
+          bootstrap of this analysis: the AUC and partial-AUC intervals, the bootstrap comparison
+          test and the ROC confidence bands (recommended for imbalanced data). Off by default:
+          unticked, these bootstraps resample patients without regard to outcome.
+
+    - name: seed
+      title: "Random seed"
+      type: Integer
+      default: 0
+      description:
+          ui: >
+            Seed for every resampling step. Each interval, band and test starts from it, so the
+            same data and options always give the same result.
+          R: >
+            Random seed used for every resampling step - bootstrap confidence intervals,
+            bootstrap ROC comparisons, and internal validation resamples or cross-validation
+            folds. Each step starts from this seed, so a predictor's result does not depend on
+            which predictors or options were resampled before it. Fixing it makes a run reproducible: the same data and options give the
+            same intervals every time. Change it to check how sensitive a result is to the
+            particular resamples drawn.
+
+    # Comparison Options
+    - name: pairwiseComparisons
+      title: "Pairwise comparisons"
+      type: Bool
+      default: false
+      description: 'Perform pairwise comparisons between ROC curves'
+
+    - name: comparisonMethod
+      title: 'Comparison method'
+      type: List
+      options:
+          - title: 'DeLong et al. (1988)'
+            name: delong
+          - title: 'Bootstrap'
+            name: bootstrap
+          - title: 'Venkatraman permutation test (equality of ROC curves)'
+            name: venkatraman
+      default: delong
+      description: >
+        Method for comparing ROC curves. DeLong et al. (1988) and Bootstrap test whether the
+        two AUCs differ. The Venkatraman permutation test (Venkatraman & Begg 1996, paired
+        data) tests whether the two ROC curves are identical over their whole range, not
+        whether their AUCs differ.
+
+    # Output Options
+    - name: rocCurve
+      title: "ROC curve plot"
+      type: Bool
+      default: true
+      description: 'Display ROC curve plot'
+
+    - name: aucTable
+      title: "AUC summary table"
+      type: Bool
+      default: true
+      description: 'Display AUC summary table'
+
+    - name: cutoffTable
+      title: "Cutoff analysis table"
+      type: Bool
+      default: false
+      description: 'Display detailed cutoff analysis'
+
+    - name: optimalCutoffs
+      title: "Optimal cutoffs summary"
+      type: Bool
+      default: true
+      description: 'Display optimal cutoff summary'
+
+    - name: diagnosticMetrics
+      title: "Diagnostic metrics"
+      type: Bool
+      default: true
+      description: 'Display comprehensive diagnostic metrics'
+
+    - name: clinicalMetrics
+      title: "Clinical metrics"
+      type: Bool
+      default: false
+      description: 'Display clinical application metrics (PPV, NPV, LR+, LR-)'
+
+    # Advanced Options
+    - name: smoothMethod
+      title: 'ROC curve smoothing'
+      type: List
+      options:
+          - title: 'None'
+            name: none
+          - title: 'Binormal'
+            name: binormal
+          - title: 'Kernel'
+            name: kernel
+      default: none
+      description: 'Method for smoothing ROC curves'
+
+    - name: partialAuc
+      title: "Partial AUC analysis"
+      type: Bool
+      default: false
+      description: 'Calculate partial AUC for specific sensitivity/specificity ranges'
+
+    - name: partialAucType
+      title: 'Partial AUC type'
+      type: List
+      options:
+          - title: 'Specificity Range (for high-specificity applications)'
+            name: specificity
+          - title: 'Sensitivity Range (for high-sensitivity applications)'
+            name: sensitivity
+      default: specificity
+      description: 'Whether to calculate pAUC over a specificity or sensitivity range'
+
+    - name: partialRange
+      title: 'Partial AUC range'
+      type: String
+      default: '0.8,1.0'
+      description: 'Range for partial AUC (min,max) - e.g., 0.8,1.0 for high specificity or sensitivity'
+
+    # CROC Options
+    - name: crocAnalysis
+      title: "CROC analysis"
+      type: Bool
+      default: false
+      description: 'Calculate Concentrated ROC curves for early retrieval analysis'
+
+    - name: crocAlpha
+      title: 'CROC alpha parameter'
+      type: Number
+      default: 7.0
+      min: 1.0
+      max: 20.0
+      description: 'Concentration parameter for CROC exponential magnifier function'
+
+    - name: convexHull
+      title: "ROC convex hull"
+      type: Bool
+      default: false
+      description: 'Calculate the ROC convex hull (operating points reachable by randomly mixing two cut-offs; in-sample, so optimistic)'
+
+    # RETIRED - replaced by an automatic tie note under the AUC table (ties always count one half; the note gives the bounds).
+#     - name: tiedScoreHandling
+#       title: 'Tied score handling'
+#       type: List
+#       options:
+#           - title: 'Average'
+#             name: average
+#           - title: 'Upper Bound'
+#             name: upper
+#           - title: 'Lower Bound'
+#             name: lower
+#       default: average
+#       description: 'Method for handling tied predictor scores in ROC calculation'
+
+    # Imbalance Detection Options
+    - name: detectImbalance
+      title: "Class imbalance detection"
+      type: Bool
+      default: false
+      description: 'Automatically detect class imbalance and recommend PRC when appropriate'
+
+    - name: imbalanceThreshold
+      title: 'Imbalance threshold'
+      type: Number
+      default: 3.0
+      min: 1.5
+      max: 10.0
+      description: 'Ratio threshold for imbalance detection (e.g., 3.0 means 3:1 or 1:3 ratio)'
+
+    - name: showImbalanceWarning
+      title: "Explain the imbalance warning in full"
+      type: Bool
+      default: false
+      description: >-
+        Add the explanatory detail to the class-imbalance warning. The warning
+        itself is always shown when imbalance is detected; this only controls
+        how much it explains.
+
+    - name: recommendPRC
+      title: "PRC recommendation for imbalanced data"
+      type: Bool
+      default: false
+      description: >
+          Recommend adding the Precision-Recall curve alongside the ROC curve when imbalance is
+          detected.
+
+    # Clinical Context
+    - name: prevalence
+      title: 'Disease prevalence'
+      type: Number
+      default: 0.1
+      min: 0.000000001
+      max: 0.999999999
+      description: 'Disease prevalence to assume when computing predictive values. Used only when "Use observed prevalence" is unticked - set it to the prevalence of the population the test will actually be used in, which for a screening setting is usually far lower than in a case-control sample.'
+
+    - name: useObservedPrevalence
+      title: "Observed prevalence"
+      type: Bool
+      default: true
+      description: 'Compute PPV, NPV and the clinical impact metrics at the prevalence observed in these data (the default). Untick it to assume a different prevalence instead - appropriate when the sample is enriched for cases and does not reflect the population the test will be used in. The prevalence actually used is printed in the results.'
+
+    - name: clinicalContext
+      title: 'Clinical context'
+      type: List
+      options:
+          - title: 'Screening'
+            name: screening
+          - title: 'Diagnosis'
+            name: diagnosis
+          - title: 'Prognosis'
+            name: prognosis
+          - title: 'Monitoring'
+            name: monitoring
+          - title: 'General'
+            name: general
+      default: general
+      description: 'Clinical application context for interpretation'
+
+    - name: clinicalPresets
+      title: 'Clinical presets'
+      type: List
+      options:
+          - title: 'Custom Configuration'
+            name: custom
+          - title: 'Biomarker Screening (High Sensitivity)'
+            name: biomarker_screening
+          - title: 'Diagnostic Test Validation (Balanced)'
+            name: diagnostic_validation
+          - title: 'Confirmatory Testing (High Specificity)'
+            name: confirmatory_testing
+          - title: 'Research (Youden with Your Minimums)'
+            name: research_comprehensive
+      default: custom
+      description: >
+          Sets how the optimal cutoff is searched for: each preset turns Youden index optimization
+          on and sets the minimums (Screening: sensitivity 0.90; Diagnostic validation: 0.80 and
+          0.80; Confirmatory: specificity 0.95; Research: keeps the minimums you enter, so it differs
+          from Custom only by switching Youden optimization on). No other option changes.
+
+    # Advanced Output Options
+    - name: comprehensive_output
+      title: "Comprehensive statistical output"
+      type: Bool
+      default: false
+      description: 'Include comprehensive statistical details'
+
+    - name: clinical_interpretation
+      title: "Clinical interpretation"
+      type: Bool
+      default: false
+      description: 'Provide clinical context for ROC analysis results'
+
+    - name: showAnalysisSummary
+      title: "Analysis summary"
+      type: Bool
+      default: false
+      description: >
+          A plain-language summary of the main results: the best AUC with its interval and the
+          cutoff with its sensitivity and specificity. Internal validation results appear in the
+          same panel whenever Internal validation is ticked.
+
+    - name: showClinicalReport
+      title: "Report sentences"
+      type: Bool
+      default: false
+      description: >
+          Copy-ready Methods and Results sentences built from these results. Check them against
+          the tables before pasting them into a report.
+
+    - name: showTableNotes
+      title: "Table notes"
+      type: Bool
+      default: false
+      description: >
+          Show explanatory notes and cell footnotes below the results tables, including
+          methods, definitions and cautions for reading each table. The random seed of a
+          resampled result is always shown.
+
+    # Plotting Options
+    - name: plotTheme
+      title: 'Plot theme'
+      type: List
+      options:
+          - title: 'Classic'
+            name: classic
+          - title: 'Modern'
+            name: modern
+          - title: 'Clinical'
+            name: clinical
+      default: clinical
+      description: 'Visual theme for ROC plots'
+
+    - name: plotWidth
+      title: 'Plot width'
+      type: Integer
+      default: 600
+      min: 300
+      max: 1200
+      description: 'Width of ROC plots'
+
+    - name: plotHeight
+      title: 'Plot height'
+      type: Integer
+      default: 600
+      min: 300
+      max: 1200
+      description: 'Height of ROC plots'
+
+    - name: showCutoffPoints
+      title: "Cutoff points"
+      type: Bool
+      default: false
+      description: 'Highlight optimal cutoff points on ROC curve'
+
+    - name: showConfidenceBands
+      title: "Confidence bands"
+      type: Bool
+      default: false
+      description: 'Display confidence bands around ROC curve'
+
+    # Model Comparison Enhancements
+    - name: showMetricsDiff
+      title: "Metrics differences"
+      type: Bool
+      default: false
+      description: 'Display detailed differences between model metrics'
+
+    - name: statisticalComparison
+      title: "Statistical model comparison"
+      type: Bool
+      default: false
+      description: 'Perform comprehensive statistical comparison between models'
+
+    # Calibration Analysis Options
+    - name: calibrationAnalysis
+      title: "Calibration analysis"
+      type: Bool
+      default: false
+      description: 'Assess calibration (agreement between observed and predicted probabilities)'
+
+    - name: calibrationPlot
+      title: "Calibration plot"
+      type: Bool
+      default: false
+      description: 'Display the calibration plot: observed proportion against predicted probability in the Hosmer-Lemeshow risk groups, with an optional flexible spline curve (splineCalibration)'
+
+    - name: hosmerLemeshow
+      title: "Hosmer-Lemeshow test"
+      type: Bool
+      default: false
+      description: 'Perform Hosmer-Lemeshow goodness-of-fit test'
+
+    - name: hlGroups
+      title: 'Risk groups'
+      type: Integer
+      default: 10
+      min: 5
+      max: 20
+      description: 'Number of equal-sized risk groups used both for the Hosmer-Lemeshow test and for binning the calibration plot'
+
+    - name: brierScore
+      title: "Brier score"
+      type: Bool
+      default: false
+      description: 'Calculate Brier score and scaled Brier score'
+
+    - name: calibrationMetrics
+      title: "Calibration metrics"
+      type: Bool
+      default: false
+      description: 'Calculate calibration slope, intercept, and calibration-in-the-large'
+
+    # Advanced Calibration Methods
+    - name: splineCalibration
+      title: "Spline calibration curve"
+      type: Bool
+      default: false
+      description: >
+        Fit a flexible calibration curve by logistic regression of the outcome on a natural
+        cubic spline of the logit of the predicted probability, a variant of the flexible
+        calibration curves of Austin & Steyerberg (2019), who used loess and restricted cubic
+        splines on the probability scale. Adds the smooth curve to the calibration plot and
+        the integrated calibration index (ICI, the mean absolute difference between the curve
+        and the diagonal) with E50, E90 and Emax to the calibration summary. Requires
+        calibrationAnalysis.
+
+    - name: splineKnots
+      title: 'Number of knots'
+      type: Integer
+      default: 4
+      min: 3
+      max: 7
+      description: >
+        Knots of the spline calibration curve (3 to 7). The spline has knots - 1 degrees of
+        freedom; more knots follow the data more closely but need more events per knot. Used
+        only when splineCalibration is on.
+
+    - name: eoRatio
+      title: "E/O ratio"
+      type: Bool
+      default: false
+      description: >
+        Expected/Observed ratio for overall calibration. Reported only when the predictor is
+        supplied as a probability in 0 to 1; when a logistic model has to be fitted here to get
+        probabilities the ratio is 1 by construction and the cell is left blank.
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: namDagostino
+#       title: "Nam-D'Agostino test"
+#       type: Bool
+#       default: false
+#       description: "NOT YET IMPLEMENTED - selecting this produces no output. Perform Nam-D'Agostino calibration test (more powerful than H-L)"
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: greenwoodNam
+#       title: "Greenwood-Nam-D'Agostino test"
+#       type: Bool
+#       default: false
+#       description: "NOT YET IMPLEMENTED - selecting this produces no output. Greenwood-Nam-D'Agostino test for survival model calibration"
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: calibrationBelt
+#       title: "Calibration belt"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Display calibration belt showing uncertainty around calibration curve'
+
+    - name: calibrationDensity
+      title: "Calibration density plot"
+      type: Bool
+      default: false
+      description: >
+        Overlay the distribution of predicted probabilities along the bottom of the calibration
+        plot, so a calibration point backed by two patients is not read like one backed by two
+        hundred. Skipped when there are fewer than 10 usable probabilities to smooth.
+
+    # Multi-Class ROC Options
+    - name: multiClassROC
+      title: "Multi-class ROC analysis"
+      type: Bool
+      default: false
+      description: 'Enable multi-class ROC analysis for outcomes with >2 levels'
+
+    - name: multiClassStrategy
+      title: 'Multi-class strategy'
+      type: List
+      options:
+          - title: 'One-vs-Rest (OVR)'
+            name: ovr
+          - title: 'One-vs-One (OVO)'
+            name: ovo
+      default: ovr
+      description: 'Strategy for multi-class ROC analysis'
+
+    - name: multiClassAveraging
+      title: 'Multi-class AUC averaging'
+      type: List
+      options:
+          - title: 'Macro Average (unweighted)'
+            name: macro
+          - title: 'Weighted Average (by prevalence)'
+            name: weighted
+      default: macro
+      description: >
+          Method for averaging AUC across classes. Both averages are reported side by side for the
+          One-vs-Rest strategy: Macro weights every class equally, Weighted weights each class by
+          how many cases it contains. The One-vs-One strategy reports only its own unweighted
+          average over class pairs, which is what that statistic is defined as. Both averages are
+          always shown, so this setting changes no displayed value; with One-vs-One, Weighted only
+          raises a notice.
+
+    # Time-Dependent ROC Options (NOT IMPLEMENTED - COMMENTED OUT)
+    # - name: timeDependentROC
+    #   title: 'Time-Dependent ROC'
+    #   type: Bool
+    #   default: false
+    #   description: 'Enable time-dependent ROC analysis for survival/time-to-event outcomes'
+    #
+    # - name: timePoints
+    #   title: 'Time Points'
+    #   type: String
+    #   default: '12,24,36'
+    #   description: 'Comma-separated time points for time-dependent ROC (e.g., 12,24,36 months)'
+    #
+    # - name: tdRocMethod
+    #   title: 'Time-Dependent ROC Method'
+    #   type: List
+    #   options:
+    #       - title: 'Kaplan-Meier (KM)'
+    #         name: km
+    #       - title: 'Nearest Neighbor Estimation (NNE)'
+    #         name: nne
+    #       - title: 'Cox Model'
+    #         name: cox
+    #   default: km
+    #   description: 'Method for estimating time-dependent ROC curves'
+
+    # Clinical Impact Options
+    - name: clinicalImpact
+      title: "Clinical impact analysis"
+      type: Bool
+      default: false
+      description: 'Calculate observed or projected workload at independently supplied score cutoffs'
+
+    - name: nntCalculation
+      title: "Inverse net benefit and inverse Youden columns"
+      type: Bool
+      default: false
+      description: 'Show inverse net benefit and inverse Youden index; neither is a count of tests or reviews'
+
+    - name: clinicalUtilityCurve
+      title: "Clinical utility curve"
+      type: Bool
+      default: false
+      description: 'Display clinical utility curve showing test consequences'
+
+    - name: decisionImpactTable
+      title: "Decision impact table"
+      type: Bool
+      default: false
+      description: 'Show decision impact at various thresholds'
+
+    # Survival ROC Enhancements (NOT IMPLEMENTED - COMMENTED OUT)
+    # - name: survivalROC
+    #   title: 'Survival ROC Analysis'
+    #   type: Bool
+    #   default: false
+    #   description: 'Enable survival-specific ROC methods (requires time-to-event data)'
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+    # Triage 2026-09-21: on this analysis's BINARY, uncensored outcome Harrell's C is
+    # identical to the AUC already reported in the AUC Summary table, so implementing it
+    # would ship a relabelled duplicate. Left commented rather than implemented or deleted:
+    # it becomes real only if enhancedROC ever takes a time-to-event outcome.
+#     - name: harrellCIndex
+#       title: "Harrell's C-index"
+#       type: Bool
+#       default: false
+#       description: "NOT YET IMPLEMENTED - selecting this produces no output. Calculate Harrell's concordance index for time-to-event outcomes"
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: unoCStatistic
+#       title: "Uno's C-statistic"
+#       type: Bool
+#       default: false
+#       description: "NOT YET IMPLEMENTED - selecting this produces no output. Calculate Uno's C-statistic (more robust to censoring)"
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: incidentDynamic
+#       title: 'Incident/Dynamic AUC'
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Calculate incident/dynamic AUC (sensitivity for events at specific time)'
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: cumulativeDynamic
+#       title: 'Cumulative/Dynamic AUC'
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Calculate cumulative/dynamic AUC (sensitivity for events by specific time)'
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: competingRisksConcordance
+#       title: "Competing risks concordance"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Calculate cause-specific concordance for competing risks'
+
+    # Clinical Prediction Model Validation
+    - name: internalValidation
+      title: "Internal validation"
+      type: Bool
+      default: false
+      description: 'Perform internal validation using cross-validation or bootstrap'
+
+    - name: validationMethod
+      title: 'Validation method'
+      type: List
+      options:
+          - title: 'Bootstrap Validation'
+            name: bootstrap
+          - title: 'Cross-Validation'
+            name: cv
+          - title: 'Both Methods'
+            name: both
+      default: bootstrap
+      description: >
+          Bootstrap: Harrell's optimism-corrected AUC of a logistic model of the marker (resamples
+          holding one outcome group are dropped and counted). Cross-validation: stratified
+          10-fold, or one fold per patient of the smaller outcome group when it has fewer than 10,
+          reporting the mean fold AUC and the SD across folds, which is not a standard error.
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+    # Triage 2026-09-21: this duplicates the existing Internal Validation option with
+    # validationMethod = bootstrap, which already reports an optimism-corrected AUC under a
+    # clearer name. Left commented rather than wired as an alias, so there is one control
+    # for one analysis.
+#     - name: optimismCorrection
+#       title: "Optimism correction"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Apply optimism correction to performance metrics'
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: externalValidation
+#       title: "External validation framework"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Enable external validation reporting framework'
+
+    - name: decisionImpactCurves
+      title: "Decision impact curves"
+      type: Bool
+      default: false
+      description: >
+        Plot the clinical impact curve: how many of 1000 tested patients would be called high
+        risk at each threshold probability, and how many of those actually have the event.
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: netBenefitRegression
+#       title: "Net benefit regression"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Model net benefit as function of threshold probabilities'
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: modelUpdating
+#       title: "Model updating analysis"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Analyze need for model recalibration or updating'
+
+    # NOT IMPLEMENTED - commented out so jamovi does not offer a control that produces no output.
+#     - name: transportability
+#       title: "Transportability analysis"
+#       type: Bool
+#       default: false
+#       description: 'NOT YET IMPLEMENTED - selecting this produces no output. Assess model transportability across populations'
+
+# Advanced analyses removed - can be added in future versions if needed
+    # - name: effectSizeAnalysis
+    # - name: powerAnalysis
+
+    - name: impactCutoffs
+      title: Fixed score cutoffs (comma separated)
+      type: String
+      default: '0.5'
+      description: >
+          Fixed score cutoffs on the marker's own scale, comma separated. The default 0.5 is meant
+          for predicted probabilities (Prediction scale = probability); for a raw marker enter
+          cutoffs inside its observed range. A warning names any cutoff that classifies every
+          analysed patient the same way.
+    - name: utilityThreshold
+      title: Utility threshold (harm/benefit)
+      type: Number
+      default: 0.1
+      min: 1.0e-09
+      max: 0.999999999
+      description: >
+          Threshold probability for net benefit: the risk at which a clinician is indifferent between
+          acting and not acting, so its odds are the harm of a false positive relative to the benefit
+          of a true positive (0.1 means one true positive is worth nine false positives). Used by the
+          clinical impact and workload tables; it is not a score cutoff.
+    - name: workloadPopulationSize
+      title: Target population size
+      type: Integer
+      default: 1000
+      min: 1
+      max: 1000000000
+      description: >
+          Size of the population the projected workload counts are scaled to. Used for every
+          projected row: the main prevalence when Observed prevalence is unticked, and every
+          additional target prevalence. Observed rows count the analysed patients instead.
+    - name: analysisUnit
+      title: Unit of observation
+      type: String
+      default: slide
+      description: >
+          What one row is (slide, core, patient...). Printed in the frozen-model report; every
+          analysed row weighs equally in its metrics.
+    - name: prevalenceScenarios
+      title: Additional target prevalences (proportions)
+      type: String
+      default: ''
+      description: >
+          Extra target-population prevalences, as proportions between 0 and 1 separated by commas
+          (for example 0.05, 0.2). Each adds projected rows to the workload table at the same fixed
+          cutoffs. Leave blank for none; an unreadable entry is ignored with a warning.
+    - name: validationPanel
+      title: Frozen-model validation report
+      type: Bool
+      default: false
+      description: >
+          Evaluates an already-fitted model or score at prespecified fixed cutoffs, without
+          refitting or choosing a cutoff from these data, and replaces every other output with the
+          validation context, denominator ledger and frozen-model metrics. Needs a positive class, an
+          explicit negative level, an explicit Direction and the fixed score cutoffs.
+    - name: validationNegative
+      title: Explicit negative reference level
+      type: String
+      default: ''
+      description: >
+          The outcome level that means the condition is absent, typed exactly as it appears in the
+          data. Required by the frozen-model report, which refuses any outcome level that is neither
+          this nor the positive class instead of pooling it as negative.
+    - name: referenceDescription
+      title: Reference standard and blinding
+      type: String
+      default: ''
+      description: >
+          Free text describing the reference standard and whether its readers were blinded to the
+          score (for example histology, blinded). Printed in the frozen-model validation context.
+    - name: modelVersion
+      title: Frozen model version
+      type: String
+      default: ''
+      description: >
+          Identifier of the fitted model or score version being evaluated. Required when Cohort role
+          is frozen, so the report names exactly which model the metrics belong to.
+    - name: cohortRole
+      title: Cohort role
+      type: List
+      default: frozen
+      options:
+      - name: development
+        title: Development / exploratory
+      - name: frozen
+        title: Frozen external / temporal evaluation
+      description: >
+          Declared by you and printed in the frozen-model report; the analysis does not check it.
+          A value left at its default is printed as (default setting).
+    - name: samplingDesign
+      title: Sampling design
+      type: List
+      default: other
+      options:
+      - name: consecutive
+        title: Consecutive
+      - name: enriched
+        title: Enriched
+      - name: positive_only
+        title: Positive only
+      - name: other
+        title: Other / unknown
+      description: >
+          Declared by you and printed in the frozen-model report; the analysis does not check it.
+          A value left at its default is printed as (default setting). The default is Other /
+          unknown so that an untouched report does not assert a sampling design; how PPV and NPV
+          should be read depends on it.
+    - name: thresholdSource
+      title: Threshold source
+      type: List
+      default: prespecified
+      options:
+      - name: prespecified
+        title: Prespecified independently
+      - name: development
+        title: Selected in development
+      - name: exploratory
+        title: Selected in evaluation data
+      description: >
+          Declared by you and printed in the frozen-model report; the analysis does not check it.
+          A value left at its default is printed as (default setting).
+    - name: predictionScale
+      title: Prediction scale
+      type: List
+      default: score
+      options:
+      - name: score
+        title: Score
+      - name: probability
+        title: Probability of selected positive class
+      description: >
+        What the predictor values are. Score (default) is any marker or model score: the
+        calibration summary and plot, Brier score, E/O ratio, Hosmer-Lemeshow test and the
+        decision and clinical impact curves then use risks from a logistic model of the score
+        fitted to these data (in-sample). Probability means the values are predicted
+        probabilities of the selected positive class, assessed as supplied; a predictor with a
+        value outside 0 to 1 gets none of those outputs, and a probability is never reversed.
+        Values between 0 and 1 are not taken as probabilities unless this says so. Frozen-model
+        validation uses the same setting.
+    - name: patientID
+      title: Patient identifier
+      type: Variable
+      default: null
+      suggested:
+      - nominal
+      permitted:
+      - factor
+      - numeric
+      description: >
+          Patient identifier. On the main analysis it is used only to warn when a patient has
+          several rows: every panel except the Frozen-model validation report treats each row as
+          an independent patient, so their intervals and tests are too narrow then. Only the
+          Frozen-model validation report resamples whole patients.
+    - name: siteID
+      title: Site identifier
+      type: Variable
+      default: null
+      suggested:
+      - nominal
+      permitted:
+      - factor
+      - numeric
+      description: >
+          Optional site or centre of each row. The frozen-model report then adds one set of metrics
+          per site, conditional on the observed sites, and resamples within sites. Every row needs
+          a site, and a patient may not appear at two sites.
+    - name: partitionID
+      title: Development / validation partition identifier
+      type: Variable
+      default: null
+      suggested:
+      - nominal
+      permitted:
+      - factor
+      - numeric
+      description: >
+          Optional development or validation label of each row, used by the frozen-model report to
+          check that no patient appears in more than one partition (leakage). Requires a patient
+          identifier.
+    - name: validationBootstrap
+      title: Bootstrap frozen-model metrics
+      type: Bool
+      default: false
+      description: >
+          Adds percentile confidence intervals to the frozen-model metrics, resampling whole patients
+          when a patient identifier is given (jointly across models, within sites). Without it the
+          report shows point estimates only.
+    - name: validationDraws
+      title: Bootstrap replicates
+      type: Integer
+      default: 999
+      min: 100
+      max: 10000
+      description: >
+          Number of patient-level bootstrap replicates for the frozen-model intervals. Separate from
+          Bootstrap samples, which serves the other panels.

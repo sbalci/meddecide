@@ -1,0 +1,741 @@
+---
+name:  decision
+title: Medical Decision
+jrs:   '1.1'
+
+items:
+
+    - name: welcome
+      title: 'Getting Started'
+      type: Html
+      # Must not start with '!': jmvcore routes to the R evaluator only on
+      # ^\([\$A-Za-z].*\)$, so a leading '!' returns the raw (truthy) string and
+      # the panel is permanently visible. Bare option names are also unusable
+      # here -- a Variable's value is a list, which R's && rejects.
+      visible: (referenceType:legacy && (length(gold) == 0 || length(newtest) == 0 || length(goldPositive) == 0 || length(testPositive) == 0) || referenceType:disease && (length(gold) == 0 || length(newtest) == 0 || length(goldPositive) == 0 || length(testPositive) == 0))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    # An Html panel, not jmvcore::Notice items: the notices here run to several
+    # sentences, and Notice content renders as single-line plain text.
+    - name: notices
+      title: 'Important Information'
+      type: Html
+      refs:
+          - HosmerLemeshow2013
+          - Buderer1996
+          - haldane1956
+          - anscombe1956
+          - ClopperPearson1934
+          - youden1950
+          - AltmanBland1994b
+          - UsherSmith2016
+          - STARD2015
+          - Schuetz2012
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+        - pp
+        - pprob
+        - ci
+        - showMisclassified
+        - maxCasesShow
+
+    - name: rawContingency
+      title: Analysed Contingency Table
+      type: Table
+      visible: (referenceType:legacy && (od) || referenceType:disease && (od))
+      rows: 0
+      columns:
+        - name: test_level
+          title: ''
+          type: text
+        - name: gold_pos
+          title: ''
+          type: integer
+        - name: gold_neg
+          title: ''
+          type: integer
+        - name: row_total
+          title: Total
+          type: integer
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name: rawCounts
+      title: Analysed Combination Counts
+      type: Table
+      visible: (referenceType:legacy && (od) || referenceType:disease && (od))
+      rows: 0
+      columns:
+        - name: test_level
+          title: ''
+          type: text
+        - name: gold_level
+          title: ''
+          type: text
+        - name: count
+          title: Count
+          type: integer
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name:  cTable
+      title: '2x2 Table'
+      type: Table
+      visible: (referenceType:legacy || referenceType:disease)
+      rows: 0
+      columns:
+        - name: newtest
+          title: ''
+          type: text
+        - name: GP
+          title: 'Reference Positive'
+          type: number
+        - name: GN
+          title: 'Reference Negative'
+          type: number
+        - name: Total
+          title: 'Total'
+          type: number
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - gold
+          - newtest
+          - goldPositive
+          - testPositive
+          - goldNegative
+          - testNegative
+
+    - name:  nTable
+      title: 'n'
+      type: Table
+      visible: (referenceType:legacy || referenceType:disease)
+      swapRowsColumns: true
+      rows:  1
+      columns:
+        - name: tablename
+          title: ''
+          type: text
+        - name: TotalPop
+          title: 'Total'
+          type: number
+        - name: DiseaseP
+          title: 'Reference Positive'
+          type: number
+        - name: DiseaseN
+          title: 'Reference Negative'
+          type: number
+        - name: TestP
+          title: 'Positive Tests'
+          type: number
+        - name: TestN
+          title: 'Negative Tests'
+          type: number
+        - name: TestT
+          title: 'Agree with Reference'
+          type: number
+        - name: TestW
+          title: 'Disagree with Reference'
+          type: number
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - pp
+          - pprob
+          - gold
+          - newtest
+          - goldPositive
+          - testPositive
+          - goldNegative
+          - testNegative
+      refs:
+          - Ying2020
+
+    - name:  ratioTable
+      title: ''
+      type: Table
+      visible: (referenceType:legacy || referenceType:disease)
+      swapRowsColumns: true
+      rows:  1
+      columns:
+        - name: tablename
+          title: ''
+          type: text
+        - name: Sens
+          title: 'Sensitivity'
+          type: number
+          format: pc
+        - name: Spec
+          title: 'Specificity'
+          type: number
+          format: pc
+        - name: AccurT
+          title: 'Sample Accuracy'
+          type: number
+          format: pc
+        - name: PrevalenceD
+          title: 'Prevalence'
+          type: number
+          format: pc
+        - name: PPV
+          title: 'Positive Predictive Value'
+          type: number
+          format: pc
+        - name: NPV
+          title: 'Negative Predictive Value'
+          type: number
+          format: pc
+        - name: LRP
+          title: Positive Likelihood Ratio
+          type: number
+        - name: LRN
+          title: Negative Likelihood Ratio
+          type: number
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - pp
+          - pprob
+          - gold
+          - newtest
+          - goldPositive
+          - testPositive
+          - goldNegative
+          - testNegative
+      refs:
+          - AltmanBland1994
+          - AltmanBland1994b
+          - DeeksAltman2004
+          - jaeschke1994
+          - haldane1956
+          - anscombe1956
+          - Alberg2004
+          - UsherSmith2016
+          - Pewsner2004
+
+    - name: missingDataSummary
+      title: 'Data Quality Summary'
+      type: Html
+      visible: (referenceType:legacy && (od) || referenceType:disease && (od))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name: epirTable_ratio
+      title: 'Sensitivity, Specificity and Predictive Values with 95% CI'
+      type: Table
+      visible: (referenceType:legacy && (ci) || referenceType:disease && (ci))
+      rows: 0
+      columns:
+        - name: statsnames
+          title: "Decision Statistics"
+          type: text
+        - name: est
+          title: "Estimate"
+          type: number
+          format: pc
+        - name: lower
+          title: 'Lower'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+        - name: upper
+          title: 'Upper'
+          superTitle: '95% Confidence Interval'
+          type: number
+          format: pc
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - pp
+          - pprob
+          - gold
+          - newtest
+          - goldPositive
+          - testPositive
+          - goldNegative
+          - testNegative
+          - ci
+      refs:
+          - epiR
+          - ClopperPearson1934
+          - AltmanBland1994b
+          - Pewsner2004
+
+    - name: epirTable_number
+      title: ''
+      type: Table
+      visible: (referenceType:legacy && (ci) || referenceType:disease && (ci))
+      rows: 0
+      columns:
+        - name: statsnames
+          title: "Decision Statistics"
+          type: text
+        - name: est
+          title: "Estimate"
+          type: number
+        - name: lower
+          title: 'Lower'
+          superTitle: '95% Confidence Interval'
+          type: number
+        - name: upper
+          title: 'Upper'
+          superTitle: '95% Confidence Interval'
+          type: number
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - pp
+          - pprob
+          - gold
+          - newtest
+          - goldPositive
+          - testPositive
+          - goldNegative
+          - testNegative
+          - ci
+      refs:
+          - epiR
+          - Simel1991
+          - Glas2003
+          - youden1950
+          - AgrestiCaffo2000
+          - LinnGrunau2006
+          - jaeschke1994
+          - haldane1956
+          - anscombe1956
+
+    - name: plot1
+      title: 'Fagan nomogram'
+      type: Image
+      width:  600
+      height: 450
+      renderFun: .plot1
+      visible: (referenceType:legacy && (fagan) || referenceType:disease && (fagan))
+      clearWith:
+          - referenceType
+          - referenceDescription
+          - targetDefinition
+          - pp
+          - pprob
+          - fagan
+          - gold
+          - newtest
+          - goldPositive
+          - testPositive
+          - goldNegative
+          - testNegative
+      refs:
+          - Fagan1975
+          - Fagan
+
+    - name: naturalLanguageSummary
+      title: 'Clinical Summary'
+      type: Html
+      visible: (referenceType:legacy && (showNaturalLanguage) || referenceType:disease && (showNaturalLanguage))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+      refs:
+          - jaeschke1994
+          - HosmerLemeshow2013
+          - AltmanBland1994b
+          - haldane1956
+          - anscombe1956
+
+    - name: clinicalInterpretation
+      title: 'Clinical Interpretation Guide'
+      type: Html
+      visible: (referenceType:legacy && (showClinicalInterpretation) || referenceType:disease && (showClinicalInterpretation))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+      refs:
+          - jaeschke1994
+          - DeeksAltman2004
+          - HosmerLemeshow2013
+          - youden1950
+          - AltmanBland1994b
+          - haldane1956
+          - anscombe1956
+
+    - name: reportTemplate
+      title: 'Copy-Ready Results Paragraph'
+      type: Html
+      visible: (referenceType:legacy && (showReportTemplate) || referenceType:disease && (showReportTemplate))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+      refs:
+          - STARD2015
+          - ClopperPearson1934
+          - Simel1991
+          - jaeschke1994
+          - haldane1956
+          - anscombe1956
+          - AltmanBland1994b
+
+    - name: aboutAnalysis
+      title: 'About This Analysis'
+      type: Html
+      visible: (referenceType:legacy && (showAboutAnalysis) || referenceType:disease && (showAboutAnalysis))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+      refs:
+          - jaeschke1994
+          - HosmerLemeshow2013
+          - Pewsner2004
+          - Buderer1996
+          - ClopperPearson1934
+          - Simel1991
+          - Glas2003
+          - AgrestiCaffo2000
+          - AltmanBland1994b
+          - Ying2020
+          - Valenstein1990
+
+    # Misclassified Cases Analysis ----
+
+    - name: misclassifiedHeading
+      title: 'Misclassified Cases Analysis'
+      type: Html
+      visible: (referenceType:legacy && (showMisclassified) || referenceType:disease && (showMisclassified))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name: confusionMatrixSummary
+      title: 'Confusion Matrix Summary'
+      type: Table
+      visible: (referenceType:legacy && (showMisclassified) || referenceType:disease && (showMisclassified))
+      rows: 0
+      columns:
+        - name: classification
+          title: 'Classification'
+          type: text
+        - name: count
+          title: 'Count'
+          type: integer
+        - name: percentage
+          title: 'Percentage'
+          type: number
+          format: pc
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name: falsePositiveTable
+      title: 'False Positive Cases (Test+ but Disease-)'
+      type: Table
+      visible: (referenceType:legacy && (showMisclassified) || referenceType:disease && (showMisclassified))
+      rows: 0
+      columns:
+        - name: case_id
+          title: 'Row'
+          type: integer
+        - name: gold_value
+          title: 'Reference Result'
+          type: text
+        - name: test_value
+          title: 'Test Result'
+          type: text
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name: falseNegativeTable
+      title: 'False Negative Cases (Test- but Disease+)'
+      type: Table
+      visible: (referenceType:legacy && (showMisclassified) || referenceType:disease && (showMisclassified))
+      rows: 0
+      columns:
+        - name: case_id
+          title: 'Row'
+          type: integer
+        - name: gold_value
+          title: 'Reference Result'
+          type: text
+        - name: test_value
+          title: 'Test Result'
+          type: text
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name: misclassificationInterpretation
+      title: 'Interpretation of Misclassified Cases'
+      type: Html
+      visible: (referenceType:legacy && (showMisclassified) || referenceType:disease && (showMisclassified))
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+    - name: saveClassifications
+      title: 'Classification Groups'
+      type: Output
+      varTitle: "Classification Group"
+      varDescription: "Classification of each case: True Positive, False Positive, False Negative, or True Negative"
+      measureType: nominal
+      clearWith:
+        - referenceType
+        - referenceDescription
+        - targetDefinition
+        - gold
+        - newtest
+        - goldPositive
+        - testPositive
+        - goldNegative
+        - testNegative
+
+
+    - name: referenceDefinition
+      title: Reference and target
+      type: Table
+      visible: true
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, newtest, testPositive, testNegative, showMisclassified, saveClassifications]
+      columns:
+        - name: setting
+          title: "Setting"
+          type: text
+        - name: value
+          title: "Value"
+          type: text
+
+    - name: comparatorCounts
+      title: Binary comparator counts
+      type: Table
+      visible: (referenceType:consensus || referenceType:method)
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, newtest, testPositive, testNegative, showMisclassified, saveClassifications]
+      columns:
+        - name: test
+          title: "Test"
+          type: text
+        - name: call
+          title: "Call"
+          type: text
+        - name: refPositive
+          title: "Reference positive"
+          type: integer
+        - name: refNegative
+          title: "Reference negative"
+          type: integer
+
+    - name: comparatorPopulation
+      title: Comparison populations
+      type: Table
+      visible: (referenceType:consensus || referenceType:method)
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, newtest, testPositive, testNegative, showMisclassified, saveClassifications]
+      columns:
+        - name: test
+          title: "Test"
+          type: text
+        - name: selected
+          title: "Selected rows"
+          type: integer
+        - name: analyzed
+          title: "Analyzed pairs"
+          type: integer
+        - name: excluded
+          title: "Excluded pairs"
+          type: integer
+
+    - name: comparatorMetrics
+      title: Agreement with comparator
+      type: Table
+      visible: (referenceType:consensus || referenceType:method)
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, newtest, testPositive, testNegative, showMisclassified, saveClassifications]
+      columns:
+        - name: test
+          title: "Test"
+          type: text
+        - name: metric
+          title: "Metric"
+          type: text
+        - name: numerator
+          title: "Numerator"
+          type: integer
+        - name: denominator
+          title: "Denominator"
+          type: integer
+        - name: estimate
+          title: "Estimate"
+          type: number
+          format: pc
+        - name: lower
+          title: "Lower 95% CI"
+          type: number
+          format: pc
+        - name: upper
+          title: "Upper 95% CI"
+          type: number
+          format: pc
+        - name: method
+          title: "Interval method"
+          type: text
+
+    - name: comparatorReport
+      title: Comparator interpretation
+      type: Html
+      visible: (referenceType:consensus || referenceType:method)
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, newtest, testPositive, testNegative, showMisclassified, saveClassifications]
+
+    - name: comparatorCases
+      title: Discordant comparator calls
+      type: Table
+      visible: (referenceType:consensus && (showMisclassified) || referenceType:method && (showMisclassified))
+      rows: 0
+      clearWith: [referenceType, referenceDescription, targetDefinition, gold, goldPositive, goldNegative, ci, pp, pprob, newtest, testPositive, testNegative, showMisclassified, saveClassifications]
+      columns:
+        - name: row
+          title: "Row"
+          type: integer
+        - name: reference
+          title: "Reference value"
+          type: text
+        - name: test
+          title: "Test value"
+          type: text
+        - name: classification
+          title: "Comparison"
+          type: text
+
+    - name: validationContext
+      title: Validation context
+      type: Table
+      visible: (showValidationContext)
+      clearWith:
+      - showValidationContext
+      - cohortRole
+      - samplingDesign
+      - thresholdSource
+      - modelVersion
+      - analysisUnit
+      - referenceType
+      - referenceDescription
+      columns:
+      - name: setting
+        title: Setting
+        type: text
+      - name: value
+        title: Value
+        type: text
+
+refs:
+    - ClinicoPathJamoviModule
+    - epiR
+    - forcats
+
+...

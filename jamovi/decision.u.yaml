@@ -1,0 +1,159 @@
+jus: '3.0'
+title: Medical Decision
+name: decision
+
+stage: 0
+compilerMode: tame
+children:
+  - type: CollapseBox
+    label: Reference interpretation
+    collapsed: false
+    children:
+      - type: ComboBox
+        name: referenceType
+      - type: TextBox
+        name: referenceDescription
+        format: string
+      - type: TextBox
+        name: targetDefinition
+        format: string
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Reference Standard (Gold Standard)
+        children:
+          - type: VariablesListBox
+            name: gold
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: goldPositive
+            enable: (gold)
+          - type: LevelSelector
+            name: goldNegative
+            enable: (gold)
+      - type: TargetLayoutBox
+        label: Test Under Evaluation
+        children:
+          - type: VariablesListBox
+            name: newtest
+            maxItemCount: 1
+            isTarget: true
+          - type: LevelSelector
+            name: testPositive
+            enable: (newtest)
+          - type: LevelSelector
+            name: testNegative
+            enable: (newtest)
+  - type: CollapseBox
+    label: Analysis Options
+    collapsed: true
+    children:
+      - type: LayoutBox
+        margin: large
+        children:
+          - type: CheckBox
+            name: ci
+            label: 95% confidence intervals
+          - type: CheckBox
+            name: fnote
+            enable: (referenceType:legacy || referenceType:disease)
+            label: Explanatory footnotes
+          - type: CheckBox
+            name: od
+            enable: (referenceType:legacy || referenceType:disease)
+            label: Raw data tables
+  - type: CollapseBox
+    label: Population Prevalence Settings
+    collapsed: true
+    children:
+      - type: Label
+        label: Use when sample doesn't represent target population disease prevalence
+      - type: CheckBox
+        name: pp
+        enable: (referenceType:legacy || referenceType:disease)
+        label: Known population prevalence
+      - type: TextBox
+        name: pprob
+        label: Disease prevalence in target population (0.001-0.999)
+        format: number
+        enable: ((pp) && (referenceType:legacy || referenceType:disease))
+  - type: CollapseBox
+    label: Visualization
+    collapsed: true
+    children:
+      - type: CheckBox
+        name: fagan
+        enable: (referenceType:legacy || referenceType:disease)
+        label: Fagan nomogram
+  - type: CollapseBox
+    label: Output Options
+    collapsed: true
+    children:
+      - type: CheckBox
+        name: showNaturalLanguage
+        enable: (referenceType:legacy || referenceType:disease)
+        label: Clinical summary
+      - type: CheckBox
+        name: showClinicalInterpretation
+        enable: (referenceType:legacy || referenceType:disease)
+        label: Clinical interpretation guide
+      - type: CheckBox
+        name: showReportTemplate
+        enable: (referenceType:legacy || referenceType:disease)
+        label: Copy-ready results paragraph
+      - type: CheckBox
+        name: showAboutAnalysis
+        enable: (referenceType:legacy || referenceType:disease)
+        label: About this analysis
+  - type: CollapseBox
+    label: Discordant Cases
+    collapsed: true
+    children:
+      - type: Label
+        label: Inspect discordant calls under the selected reference interpretation
+      - type: CheckBox
+        name: showMisclassified
+        label: Discordant cases tables
+      - type: LayoutBox
+        margin: small
+        children:
+          - type: Label
+            label: 'Maximum cases to display:'
+            fitToGrid: true
+          - type: TextBox
+            name: maxCasesShow
+            format: number
+            enable: (showMisclassified)
+      - type: LayoutBox
+        margin: small
+        children:
+          - type: Label
+            label: 'Save classification groups under the selected reference interpretation:'
+            fitToGrid: true
+          - type: Output
+            name: saveClassifications
+
+  - type: CollapseBox
+    label: Validation Provenance
+    collapsed: true
+    children:
+    - type: CheckBox
+      name: showValidationContext
+    - type: TextBox
+      name: cohortRole
+      format: string
+    - type: TextBox
+      name: samplingDesign
+      format: string
+    - type: TextBox
+      name: thresholdSource
+      format: string
+    - type: TextBox
+      name: modelVersion
+      format: string
+    - type: TextBox
+      name: analysisUnit
+      format: string
