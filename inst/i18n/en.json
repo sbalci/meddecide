@@ -3670,6 +3670,9 @@
             "Choose the diagnostic test you want to evaluate": [
                 ""
             ],
+            "Choose the Disease Present Level": [
+                ""
+            ],
             "Choose the event level": [
                 ""
             ],
@@ -3697,13 +3700,22 @@
             "Choose the positive class": [
                 ""
             ],
+            "Choose the Positive Level for {test}": [
+                ""
+            ],
             "Choose the positive level for {tests}. A test enters the analysis only after its positive level is chosen, so no results are shown yet.": [
                 ""
             ],
             "Choose the Positive Outcome Level": [
                 ""
             ],
+            "Choose the Reference Positive Level": [
+                ""
+            ],
             "Choose the reference-standard variable that defines disease status in this analysis (e.g., biopsy result, final diagnosis)": [
+                ""
+            ],
+            "Choose the Test Positive Level": [
                 ""
             ],
             "Choose whether to calculate confidence intervals.": [
@@ -10471,9 +10483,6 @@
             "No finite limit: the interval is unbounded on this side.": [
                 ""
             ],
-            "No Gold Positive Level": [
-                ""
-            ],
             "No Gold Standard": [
                 ""
             ],
@@ -10652,15 +10661,6 @@
                 ""
             ],
             "No Test 1": [
-                ""
-            ],
-            "No Test 1 Positive Level": [
-                ""
-            ],
-            "No Test 2 Positive Level": [
-                ""
-            ],
-            "No Test 3 Positive Level": [
                 ""
             ],
             "No test could be ranked by balanced accuracy because one reference-standard class has no cases; the figures below describe %s, the first test selected.": [
@@ -10952,6 +10952,9 @@
                 ""
             ],
             "Nothing about the clinical rule is shown until then.": [
+                ""
+            ],
+            "Nothing is computed until it is chosen.": [
                 ""
             ],
             "Notices": [
@@ -14440,19 +14443,28 @@
             "Select the Class Variable (Gold Standard), then explicitly choose Positive Class and Negative Class.": [
                 ""
             ],
-            "Select the disease-present level for the gold standard.": [
-                ""
-            ],
             "Select the first diagnostic test to evaluate (e.g., imaging result, biomarker, clinical assessment). This should be a test you want to validate against the gold standard.": [
                 ""
             ],
-            "Select the level indicating disease presence (e.g., \"1\", \"positive\", \"malignant\").": [
+            "Select the level indicating disease presence (e.g., \"1\", \"positive\", \"malignant\"). It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
+                ""
+            ],
+            "Select the level of {var} that counts as positive, under \"Reference positive level\".": [
+                ""
+            ],
+            "Select the level of {var} that is a positive result for {test}, under \"Positive level\".": [
+                ""
+            ],
+            "Select the level of {var} that is a positive test result, under \"Test positive level\".": [
                 ""
             ],
             "Select the level of {var} that is the event the models predict, under \"Positive Outcome\".": [
                 ""
             ],
-            "Select the level representing a positive result for Test 1.": [
+            "Select the level of {var} that means disease is present, under \"Disease present level\".": [
+                ""
+            ],
+            "Select the level representing a positive result for Test 1. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
                 ""
             ],
             "Select the level that indicates disease is absent in your gold standard variable. Only the disease-present and disease-absent levels take part; cases at any other level are excluded from the analysis, not counted as disease-absent. With a two-level variable this is inferred; with three or more levels you must choose it.": [
@@ -14470,7 +14482,7 @@
             "Select the level that represents a POSITIVE result for Test 3.": [
                 ""
             ],
-            "Select the level that represents a positive test result. This should correspond to the level indicating suspected disease presence.": [
+            "Select the level that represents a positive test result. This should correspond to the level indicating suspected disease presence. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
                 ""
             ],
             "Select the most reliable diagnostic method available (e.g., biopsy, final pathology, expert consensus). Choose Reference interpretation before interpreting estimates; consensus is a comparator, not an independent disease standard. Select distinct positive and negative levels explicitly. Other observed levels require explicit exclusion or recoding before analysis.": [
@@ -14479,19 +14491,10 @@
             "Select the outcome, for example disease status or malignant versus benign.": [
                 ""
             ],
-            "Select the positive level for Test 1.": [
-                ""
-            ],
-            "Select the positive level for Test 2.": [
-                ""
-            ],
-            "Select the positive level for Test 3.": [
-                ""
-            ],
             "Select the positive reference level (e.g., \"positive\", \"malignant\", \"1\"). This represents the condition you want to detect.": [
                 ""
             ],
-            "Select the positive reference level. This represents the condition you want to detect or diagnose.": [
+            "Select the positive reference level. This represents the condition you want to detect or diagnose. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
                 ""
             ],
             "Select the reference standard (e.g., biopsy, final diagnosis). This represents the reference classification. Binary variables are intended; with additional levels, all non-positive levels are grouped as negative and a warning is shown.": [

@@ -9587,6 +9587,10 @@ msgstr ""
 msgid "Choose the diagnostic test you want to evaluate"
 msgstr "Değerlendirmek istediğiniz tanısal testi seçin"
 
+#: R/decisioncombine.b.R
+msgid "Choose the Disease Present Level"
+msgstr "Hastalık var düzeyini seçin"
+
 #: R/lassologistic.b.R
 msgid "Choose the event level"
 msgstr "Olay düzeyini seçin"
@@ -9658,6 +9662,10 @@ msgstr ""
 msgid "Choose the positive class"
 msgstr "Pozitif sınıfı seçin"
 
+#: R/decisioncombine.b.R
+msgid "Choose the Positive Level for {test}"
+msgstr "{test} için pozitif düzeyi seçin"
+
 #: R/nogoldstandard.b.R
 msgid ""
 "Choose the positive level for {tests}. A test enters the analysis only after "
@@ -9671,6 +9679,10 @@ msgid "Choose the Positive Outcome Level"
 msgstr "Pozitif Sonuç Düzeyini Seçin"
 
 #: R/decision.b.R
+msgid "Choose the Reference Positive Level"
+msgstr "Referans pozitif düzeyini seçin"
+
+#: R/decision.b.R
 #: R/decisioncombine.b.R
 msgid ""
 "Choose the reference-standard variable that defines disease status in this "
@@ -9678,6 +9690,10 @@ msgid ""
 msgstr ""
 "Bu analizde hastalık durumunu tanımlayan referans standart değişkenini seçin "
 "(ör. biyopsi sonucu, nihai tanı)"
+
+#: R/decision.b.R
+msgid "Choose the Test Positive Level"
+msgstr "Test pozitif düzeyini seçin"
 
 #: R/decisioncalculator.b.R
 msgid "Choose whether to calculate confidence intervals."
@@ -20144,6 +20160,8 @@ msgstr "Düzeyler (sırasıyla)"
 msgid "Levels found:"
 msgstr "Bulunan düzeyler:"
 
+#: R/decision.b.R
+#: R/decisioncombine.b.R
 #: R/decisioncurve.b.R
 msgid "Levels found: {levels}."
 msgstr "Bulunan düzeyler: {levels}."
@@ -23418,10 +23436,6 @@ msgid "No finite limit: the interval is unbounded on this side."
 msgstr "Sonlu sınır yok: aralık bu tarafta sınırsızdır."
 
 #: R/decisioncombine.b.R
-msgid "No Gold Positive Level"
-msgstr "Altın Pozitif Düzeyi Yok"
-
-#: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 msgid "No Gold Standard"
 msgstr "Altın Standart Yok"
@@ -23886,18 +23900,6 @@ msgstr "Hiçbir terim tutulmadı."
 msgid "No Test 1"
 msgstr "Test 1 Yok"
 
-#: R/decisioncombine.b.R
-msgid "No Test 1 Positive Level"
-msgstr "Test 1 Pozitif Düzeyi Yok"
-
-#: R/decisioncombine.b.R
-msgid "No Test 2 Positive Level"
-msgstr "Test 2 Pozitif Düzeyi Yok"
-
-#: R/decisioncombine.b.R
-msgid "No Test 3 Positive Level"
-msgstr "Test 3 Pozitif Düzeyi Yok"
-
 #: R/decisioncompare.b.R
 msgid ""
 "No test could be ranked by balanced accuracy because one reference-standard "
@@ -24049,6 +24051,8 @@ msgid "None"
 msgstr "Yok"
 
 #: R/agreement.b.R
+#: R/decision.b.R
+#: R/decisioncombine.b.R
 msgid "none"
 msgstr "yok"
 
@@ -24502,6 +24506,11 @@ msgstr "Notlar"
 #: R/decisioncurve.b.R
 msgid "Nothing about the clinical rule is shown until then."
 msgstr "O zamana kadar klinik kuralla ilgili hiçbir şey gösterilmez."
+
+#: R/decision.b.R
+#: R/decisioncombine.b.R
+msgid "Nothing is computed until it is chosen."
+msgstr "Seçilene kadar hiçbir şey hesaplanmaz."
 
 #: decisioncombine/results/notices.title
 msgid "Notices"
@@ -31656,10 +31665,6 @@ msgstr ""
 "Sınıf Değişkenini (Altın Standart) seçin; ardından Pozitif Sınıfı ve Negatif "
 "Sınıfı açıkça belirtin."
 
-#: R/decisioncombine.b.R
-msgid "Select the disease-present level for the gold standard."
-msgstr "Altın standart için hastalık var düzeyini seçin."
-
 #: decisioncompare/options/test1.description.ui
 msgid ""
 "Select the first diagnostic test to evaluate (e.g., imaging result, "
@@ -31673,10 +31678,37 @@ msgstr ""
 #: decisioncombine/options/goldPositive.description.ui
 msgid ""
 "Select the level indicating disease presence (e.g., \"1\", \"positive\", "
-"\"malignant\")."
+"\"malignant\"). It must be chosen: it is never taken from the order of the "
+"levels, and until it is chosen the analysis lists the levels found and "
+"computes nothing."
 msgstr ""
-"Hastalık varlığını gösteren düzeyi seçin (ör. \"1\", \"pozitif\", "
-"\"malign\")."
+"Hastalığın varlığını gösteren düzeyi seçin (ör. \"1\", \"pozitif\", "
+"\"malign\"). Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz ve "
+"seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
+
+#: R/decision.b.R
+msgid ""
+"Select the level of {var} that counts as positive, under \"Reference "
+"positive level\"."
+msgstr ""
+"\"Referans pozitif düzeyi\" altında {var} değişkeninin pozitif sayılan "
+"düzeyini seçin."
+
+#: R/decisioncombine.b.R
+msgid ""
+"Select the level of {var} that is a positive result for {test}, under "
+"\"Positive level\"."
+msgstr ""
+"\"Pozitif düzey\" altında {var} değişkeninin {test} için pozitif sonuç olan "
+"düzeyini seçin."
+
+#: R/decision.b.R
+msgid ""
+"Select the level of {var} that is a positive test result, under \"Test "
+"positive level\"."
+msgstr ""
+"\"Test pozitif düzeyi\" altında {var} değişkeninin pozitif test sonucu olan "
+"düzeyini seçin."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -31686,9 +31718,23 @@ msgstr ""
 "\"Pozitif Sonuç\" altında, {var} değişkeninin modellerin öngördüğü olay olan "
 "düzeyini seçin."
 
+#: R/decisioncombine.b.R
+msgid ""
+"Select the level of {var} that means disease is present, under \"Disease "
+"present level\"."
+msgstr ""
+"\"Hastalık var düzeyi\" altında {var} değişkeninin hastalığın varlığını "
+"gösteren düzeyini seçin."
+
 #: decisioncombine/options/test1Positive.description.ui
-msgid "Select the level representing a positive result for Test 1."
-msgstr "Test 1 için pozitif bir sonucu temsil eden düzeyi seçin."
+msgid ""
+"Select the level representing a positive result for Test 1. It must be "
+"chosen: it is never taken from the order of the levels, and until it is "
+"chosen the analysis lists the levels found and computes nothing."
+msgstr ""
+"Test 1 için pozitif sonucu temsil eden düzeyi seçin. Seçilmesi zorunludur: "
+"düzeylerin sırasından asla alınmaz ve seçilene kadar analiz bulunan "
+"düzeyleri listeler, hiçbir şey hesaplamaz."
 
 #: decision/options/goldNegative.description.ui
 msgid ""
@@ -31736,10 +31782,14 @@ msgstr "Test 3 için POZİTİF bir sonucu temsil eden düzeyi seçin."
 #: decision/options/testPositive.description.ui
 msgid ""
 "Select the level that represents a positive test result. This should "
-"correspond to the level indicating suspected disease presence."
+"correspond to the level indicating suspected disease presence. It must be "
+"chosen: it is never taken from the order of the levels, and until it is "
+"chosen the analysis lists the levels found and computes nothing."
 msgstr ""
-"Pozitif bir test sonucunu temsil eden düzeyi seçin. Bu, şüphelenilen "
-"hastalık varlığını gösteren düzeye karşılık gelmelidir."
+"Pozitif test sonucunu temsil eden düzeyi seçin. Bu, hastalık şüphesini "
+"gösteren düzeye karşılık gelmelidir. Seçilmesi zorunludur: düzeylerin "
+"sırasından asla alınmaz ve seçilene kadar analiz bulunan düzeyleri listeler, "
+"hiçbir şey hesaplamaz."
 
 #: decisioncompare/options/gold.description.ui
 msgid ""
@@ -31759,18 +31809,6 @@ msgstr ""
 msgid "Select the outcome, for example disease status or malignant versus benign."
 msgstr "Sonlanımı seçin; örneğin hastalık durumu veya malign ile benign."
 
-#: R/decisioncombine.b.R
-msgid "Select the positive level for Test 1."
-msgstr "Test 1 için pozitif düzeyi seçin."
-
-#: R/decisioncombine.b.R
-msgid "Select the positive level for Test 2."
-msgstr "Test 2 için pozitif düzeyi seçin."
-
-#: R/decisioncombine.b.R
-msgid "Select the positive level for Test 3."
-msgstr "Test 3 için pozitif düzeyi seçin."
-
 #: decisioncompare/options/goldPositive.description.ui
 msgid ""
 "Select the positive reference level (e.g., \"positive\", \"malignant\", "
@@ -31782,8 +31820,13 @@ msgstr ""
 #: decision/options/goldPositive.description.ui
 msgid ""
 "Select the positive reference level. This represents the condition you want "
-"to detect or diagnose."
+"to detect or diagnose. It must be chosen: it is never taken from the order "
+"of the levels, and until it is chosen the analysis lists the levels found "
+"and computes nothing."
 msgstr ""
+"Pozitif referans düzeyini seçin. Bu, saptamak ya da tanılamak istediğiniz "
+"durumu temsil eder. Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz "
+"ve seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
 
 #: decisioncombine/options/gold.description.ui
 msgid ""

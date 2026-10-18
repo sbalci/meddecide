@@ -3670,6 +3670,9 @@
             "Choose the diagnostic test you want to evaluate": [
                 "Değerlendirmek istediğiniz tanısal testi seçin"
             ],
+            "Choose the Disease Present Level": [
+                "Hastalık var düzeyini seçin"
+            ],
             "Choose the event level": [
                 "Olay düzeyini seçin"
             ],
@@ -3697,14 +3700,23 @@
             "Choose the positive class": [
                 "Pozitif sınıfı seçin"
             ],
+            "Choose the Positive Level for {test}": [
+                "{test} için pozitif düzeyi seçin"
+            ],
             "Choose the positive level for {tests}. A test enters the analysis only after its positive level is chosen, so no results are shown yet.": [
                 "{tests} için pozitif düzeyi seçin. Bir test ancak pozitif düzeyi seçildikten sonra analize girer; bu nedenle henüz sonuç gösterilmiyor."
             ],
             "Choose the Positive Outcome Level": [
                 "Pozitif Sonuç Düzeyini Seçin"
             ],
+            "Choose the Reference Positive Level": [
+                "Referans pozitif düzeyini seçin"
+            ],
             "Choose the reference-standard variable that defines disease status in this analysis (e.g., biopsy result, final diagnosis)": [
                 "Bu analizde hastalık durumunu tanımlayan referans standart değişkenini seçin (ör. biyopsi sonucu, nihai tanı)"
+            ],
+            "Choose the Test Positive Level": [
+                "Test pozitif düzeyini seçin"
             ],
             "Choose whether to calculate confidence intervals.": [
                 "Güven aralıklarının hesaplanıp hesaplanmayacağını seçin."
@@ -10471,9 +10483,6 @@
             "No finite limit: the interval is unbounded on this side.": [
                 "Sonlu sınır yok: aralık bu tarafta sınırsızdır."
             ],
-            "No Gold Positive Level": [
-                "Altın Pozitif Düzeyi Yok"
-            ],
             "No Gold Standard": [
                 "Altın Standart Yok"
             ],
@@ -10653,15 +10662,6 @@
             ],
             "No Test 1": [
                 "Test 1 Yok"
-            ],
-            "No Test 1 Positive Level": [
-                "Test 1 Pozitif Düzeyi Yok"
-            ],
-            "No Test 2 Positive Level": [
-                "Test 2 Pozitif Düzeyi Yok"
-            ],
-            "No Test 3 Positive Level": [
-                "Test 3 Pozitif Düzeyi Yok"
             ],
             "No test could be ranked by balanced accuracy because one reference-standard class has no cases; the figures below describe %s, the first test selected.": [
                 "Bir referans standart sınıfında hiç olgu olmadığı için hiçbir test dengeli doğruluğa göre sıralanamadı; aşağıdaki değerler ilk seçilen test olan %s testini tanımlar."
@@ -10953,6 +10953,9 @@
             ],
             "Nothing about the clinical rule is shown until then.": [
                 "O zamana kadar klinik kuralla ilgili hiçbir şey gösterilmez."
+            ],
+            "Nothing is computed until it is chosen.": [
+                "Seçilene kadar hiçbir şey hesaplanmaz."
             ],
             "Notices": [
                 "Bildirimler"
@@ -14440,20 +14443,29 @@
             "Select the Class Variable (Gold Standard), then explicitly choose Positive Class and Negative Class.": [
                 "Sınıf Değişkenini (Altın Standart) seçin; ardından Pozitif Sınıfı ve Negatif Sınıfı açıkça belirtin."
             ],
-            "Select the disease-present level for the gold standard.": [
-                "Altın standart için hastalık var düzeyini seçin."
-            ],
             "Select the first diagnostic test to evaluate (e.g., imaging result, biomarker, clinical assessment). This should be a test you want to validate against the gold standard.": [
                 "Değerlendirilecek ilk tanı testini seçin (ör. görüntüleme sonucu, biyobelirteç, klinik değerlendirme). Bu, altın standarda karşı doğrulamak istediğiniz bir test olmalıdır."
             ],
-            "Select the level indicating disease presence (e.g., \"1\", \"positive\", \"malignant\").": [
-                "Hastalık varlığını gösteren düzeyi seçin (ör. \"1\", \"pozitif\", \"malign\")."
+            "Select the level indicating disease presence (e.g., \"1\", \"positive\", \"malignant\"). It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
+                "Hastalığın varlığını gösteren düzeyi seçin (ör. \"1\", \"pozitif\", \"malign\"). Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz ve seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
+            ],
+            "Select the level of {var} that counts as positive, under \"Reference positive level\".": [
+                "\"Referans pozitif düzeyi\" altında {var} değişkeninin pozitif sayılan düzeyini seçin."
+            ],
+            "Select the level of {var} that is a positive result for {test}, under \"Positive level\".": [
+                "\"Pozitif düzey\" altında {var} değişkeninin {test} için pozitif sonuç olan düzeyini seçin."
+            ],
+            "Select the level of {var} that is a positive test result, under \"Test positive level\".": [
+                "\"Test pozitif düzeyi\" altında {var} değişkeninin pozitif test sonucu olan düzeyini seçin."
             ],
             "Select the level of {var} that is the event the models predict, under \"Positive Outcome\".": [
                 "\"Pozitif Sonuç\" altında, {var} değişkeninin modellerin öngördüğü olay olan düzeyini seçin."
             ],
-            "Select the level representing a positive result for Test 1.": [
-                "Test 1 için pozitif bir sonucu temsil eden düzeyi seçin."
+            "Select the level of {var} that means disease is present, under \"Disease present level\".": [
+                "\"Hastalık var düzeyi\" altında {var} değişkeninin hastalığın varlığını gösteren düzeyini seçin."
+            ],
+            "Select the level representing a positive result for Test 1. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
+                "Test 1 için pozitif sonucu temsil eden düzeyi seçin. Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz ve seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
             ],
             "Select the level that indicates disease is absent in your gold standard variable. Only the disease-present and disease-absent levels take part; cases at any other level are excluded from the analysis, not counted as disease-absent. With a two-level variable this is inferred; with three or more levels you must choose it.": [
                 "Altın standart değişkeninizde hastalığın olmadığını gösteren düzeyi seçin. Yalnızca hastalık var ve hastalık yok düzeyleri yer alır; başka herhangi bir düzeydeki olgular analizden hariç tutulur, hastalık yok olarak sayılmaz. İki düzeyli bir değişkende bu çıkarımlanır; üç veya daha fazla düzeyde bunu siz seçmelisiniz."
@@ -14470,8 +14482,8 @@
             "Select the level that represents a POSITIVE result for Test 3.": [
                 "Test 3 için POZİTİF bir sonucu temsil eden düzeyi seçin."
             ],
-            "Select the level that represents a positive test result. This should correspond to the level indicating suspected disease presence.": [
-                "Pozitif bir test sonucunu temsil eden düzeyi seçin. Bu, şüphelenilen hastalık varlığını gösteren düzeye karşılık gelmelidir."
+            "Select the level that represents a positive test result. This should correspond to the level indicating suspected disease presence. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
+                "Pozitif test sonucunu temsil eden düzeyi seçin. Bu, hastalık şüphesini gösteren düzeye karşılık gelmelidir. Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz ve seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
             ],
             "Select the most reliable diagnostic method available (e.g., biopsy, final pathology, expert consensus). Choose Reference interpretation before interpreting estimates; consensus is a comparator, not an independent disease standard. Select distinct positive and negative levels explicitly. Other observed levels require explicit exclusion or recoding before analysis.": [
                 "Mevcut en güvenilir tanı yöntemini seçin (ör. biyopsi, son patoloji, uzman uzlaşısı). Tahminleri yorumlamadan önce Referans yorumunu seçin; uzlaşı bağımsız bir hastalık standardı değil, bir karşılaştırıcıdır. Birbirinden farklı pozitif ve negatif düzeyleri açıkça seçin. Gözlenen diğer düzeyler analizden önce açıkça dışlanmalı ya da yeniden kodlanmalıdır."
@@ -14479,20 +14491,11 @@
             "Select the outcome, for example disease status or malignant versus benign.": [
                 "Sonlanımı seçin; örneğin hastalık durumu veya malign ile benign."
             ],
-            "Select the positive level for Test 1.": [
-                "Test 1 için pozitif düzeyi seçin."
-            ],
-            "Select the positive level for Test 2.": [
-                "Test 2 için pozitif düzeyi seçin."
-            ],
-            "Select the positive level for Test 3.": [
-                "Test 3 için pozitif düzeyi seçin."
-            ],
             "Select the positive reference level (e.g., \"positive\", \"malignant\", \"1\"). This represents the condition you want to detect.": [
                 "Pozitif referans düzeyini seçin (ör. \"pozitif\", \"malign\", \"1\"). Bu, tespit etmek istediğiniz durumu temsil eder."
             ],
-            "Select the positive reference level. This represents the condition you want to detect or diagnose.": [
-                ""
+            "Select the positive reference level. This represents the condition you want to detect or diagnose. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
+                "Pozitif referans düzeyini seçin. Bu, saptamak ya da tanılamak istediğiniz durumu temsil eder. Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz ve seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
             ],
             "Select the reference standard (e.g., biopsy, final diagnosis). This represents the reference classification. Binary variables are intended; with additional levels, all non-positive levels are grouped as negative and a warning is shown.": [
                 "Referans standardı seçin (ör. biyopsi, nihai tanı). Bu, referans sınıflandırmayı temsil eder. İkili değişkenler amaçlanmıştır; ek düzeyler olduğunda, pozitif olmayan tüm düzeyler negatif olarak gruplandırılır ve bir uyarı gösterilir."
