@@ -1,3 +1,233 @@
+# meddecide 1.0.9 (2026-10-17)
+
+The analyses were validated against independent calculations and then independently reviewed.
+Much of what follows changes a number, label or verdict you may have reported, so behaviour changes
+come first; a saved `.omv` keeps its old results until you re-run it. This is the first release
+since 1.0.81, and it also contains the 1.0.83.03 changes below, never released on their own.
+
+## Behaviour changes -- saved analyses may produce different results
+
+### Across the module
+
+- **The positive (event) level is no longer filled in for you.** jamovi used to pre-select the
+  outcome's first level, usually the negative one ("No", "0", "Benign"), so a new analysis could
+  compute everything for the wrong event. In Clinical ROC Analysis, Advanced ROC Analysis, Compare
+  Medical Decision Tests, Analysis Without Gold Standard, Decision Curve Analysis and LASSO Logistic
+  Regression the level boxes now start empty, and the analysis waits until you choose. A saved
+  analysis keeps the level it was saved with: check it when you reopen the file.
+- **Out-of-range entries are reported, not silently replaced.** In Co-Testing Analysis and
+  Sequential Testing Analysis, typing `80` for an 80% sensitivity was quietly changed to 0.99 and
+  the analysis ran on that value. It now tells you the entry is out of range.
+
+### Interrater Reliability (`agreement`)
+
+- **Kappa for three or more raters uses every observed rating.** One missing reading used to drop
+  the whole case. Fleiss' and Conger's kappa now keep the other readers' ratings and add a standard
+  error, interval and p-value; values are unchanged on complete data.
+- **Weighted kappa keeps the grade order** when raters used different grades: G1/G2/G4 for one rater
+  and G1/G2/G3 for another built the scale G1, G2, G4, G3 (0.370 instead of 0.213). All pairs,
+  subgroups and institutions now share one scale.
+- **Stuart-Maxwell and Bhapkar use the full table.** Dropping categories both raters used equally
+  often could give chi-squared = 4.00, p = 0.046 where the correct test gives 0.145, p = 0.930.
+- **Other coefficients:** Krippendorff's alpha is exact for 3+ raters with complete data (0.4355
+  becomes 0.4374); Lin's CCC uses every case both raters scored; Gwet's AC p-value is always
+  two-sided; macro-averaged F1 counts never-matched classes (0.81 becomes 0.54). The multi-centre
+  ICC is estimated within institution; its G-coefficient row and "Shrinkage estimates" are removed.
+- **Labels and verdicts.** Robinson's A and Kendall's W are graded on chance-corrected values (46%
+  of pairs of independent raters had read "Moderate agreement"); every table uses one name per
+  coefficient; Light's kappa loses a p-value that was not valid; Iota is titled "single variable",
+  since it never was the multivariate index the guide described (its value is unchanged).
+- **Rater clustering groups readers by agreement.** The default distance is now Concordance (1 -
+  Lin's CCC); the old correlation distance ignores a constant offset, so a reader who read 25 points
+  high was clustered with the accurate readers. Analyses that never set the metric will re-cluster.
+
+### Medical Decision (`decision`)
+
+- **Levels other than the two you select are excluded, never counted as negative.** With 40 Benign
+  (35 test-negative) and 10 Equivocal (all test-positive) cases, specificity read 70.0% instead of
+  87.5%. Excluded cases are counted in the notices and the copy-ready paragraph.
+- **Only the likelihood ratio with the zero cell is continuity-corrected:** TP 20, FP 2, FN 0, TN 19
+  keeps its observed LR+ of 10.5 ("large") instead of 8.59 ("moderate").
+- **Youden's index has an Agresti-Caffo interval** (the old one covered about 99.7% under a 95%
+  label). Likelihood ratios use one band in every panel, and "worse than chance" is an error only
+  when the Youden interval lies wholly below 0.
+
+### Compare Medical Decision Tests (`decisioncompare`)
+
+- **Positive and negative levels must be chosen for the reference and every test.** Any other
+  observed level stops the analysis unless **Exclude other observed levels** is ticked, and a new
+  table shows the levels used and excluded. Saved analyses that relied on an implicit negative
+  level must select one to re-run.
+- **Pairwise p-values come from the McNemar mid-p test** (Fagerland, Lydersen & Laake 2013) instead
+  of the exact or continuity-corrected test. P-values are smaller: with 6 and 16 discordant pairs,
+  0.052 becomes 0.035. A new **McNemar Test** option offers the asymptotic test without correction.
+- **The text names the test each significant comparison favours.** It used to name the test with
+  the highest balanced accuracy beside "a significant difference" even when that test was
+  significantly less accurate (95%/70% against 60%/97.5% at 20% prevalence). Sensitivity and
+  specificity get their own p-values in the Differences table.
+- **A 0/0 likelihood ratio is blank, not invented:** a test that never called positive got a finite
+  LR+ labelled "Moderate" or "Strong".
+
+### Combine Medical Decision Tests (`decisioncombine`)
+
+- **Each test alone is now a row and a candidate in the ranking.** A strong test (0.90/0.90) with a
+  weak one (0.60) used to give combinations tied at Youden's J 0.50 while Test 1 alone, at 0.80,
+  appeared nowhere. With three tests every pair also gets Parallel and Serial rows (11 rows become
+  20).
+- **"Positive Levels May Be Inverted" checks each test** and fires only when its Youden's J is below
+  0 beyond sampling variation. Heatmap colours for the ratios use a log scale centred on 1.
+
+### Decision Curve Analysis (`decisioncurve`)
+
+- **Curve points sit exactly on the thresholds the axis shows.** Rounding had put the points
+  labelled 6, 12, 15, 21 and 22% a hair above them, so patients at the threshold counted differently
+  in plot and table. The clinical decision rule now enters both comparison tables, which changes the
+  Holm-adjusted p-values when there are several models.
+- **Removed:** the "Net benefit confidence intervals" checkbox, a duplicate of "Bootstrap confidence
+  intervals" (a saved analysis that ticked only it reopens without ribbons), and the "Conclusion"
+  column of the exploratory pairwise table. The Clinical Interpretation panel is opt-in.
+
+### LASSO Logistic Regression (`lassologistic`)
+
+- **The event level is never guessed.** jamovi took the outcome's first level and R the second, so
+  the same data gave inverted odds ratios. A numeric 0/1 outcome still reads 1 as the event.
+- **Standardization is repeated inside every cross-validation fold and bootstrap fit**, so lambda,
+  coefficients and validation estimates can change.
+- **The default scoring method is Max-scaled.** "Schneeweiss" was not Schneeweiss's method and is
+  renamed "Smallest-contribution units" (on the bundled example it gave a -23 to 120 point scale).
+  Ordinal predictors get one indicator per level, ending rules such as "grade.L > 0".
+
+### Clinical ROC Analysis (`enhancedROC`) and Advanced ROC Analysis (`psychopdaROC`)
+
+- **AUC-PR is the interpolated precision-recall area in both**, not the trapezoid that overstated
+  tied scores (a constant marker at 10% prevalence reported 0.55, not 0.10).
+- **Advanced ROC Analysis needs both a Positive Class and a Negative Class**; saved analyses must
+  select the Negative Class to re-run. Single-AUC intervals use logit DeLong by default, paired
+  DeLong comparisons add Holm-adjusted p-values, and power tests each marker against AUC 0.5 however
+  many markers are selected (a duplicate marker had raised one example from 12.1% to 99.98% power).
+- **Clinical ROC Analysis separates fixed score cutoffs, target prevalence and utility thresholds**
+  in its impact analysis, so re-enter the intended cutoffs in saved impact analyses. "Stratified
+  bootstrap" now also governs the comparison test and confidence bands. Table notes, the Analysis
+  summary and the Report sentences are opt-in.
+
+### Analysis Without Gold Standard (`nogoldstandard`)
+
+- **Penalized EM estimates can change.** The fit now starts from several points and is refined
+  numerically, instead of one EM pass clipped to 0.1%-99.9%.
+- **Unreliable latent estimates are blank, not shown with a caveat.** A fit that does not converge,
+  is not identified, or cannot tell its two classes apart ("Class orientation is ambiguous") leaves
+  prevalence, sensitivities and specificities blank with a strong warning. Bootstrap intervals with
+  fewer than 20 usable resamples are blank and can otherwise be wider than before; a rare test's
+  interval can now reach 0%; with three tests the dependence check reads "Not assessable".
+
+### Kappa sample-size analyses (`kappaSizeCI`, `kappaSizePower`, `kappaSizeFixedN`)
+
+- **Confidence Interval Approach for the Number of Subjects Required (`kappaSizeCI`): larger n for
+  most designs with 3+ raters or 3-5 categories.** At the published n, the interval the study should
+  report covered kappa only 91-93% of the time. Rotondi & Donner's own example now needs 190
+  subjects, not 171 (147, not 110, with 6 raters); a binary outcome with two raters is unchanged.
+  The n is the exact minimum, shown with its arithmetic (3.84146 / 0.032634, rounded up, = 118).
+- **Power Approach for the Number of Subjects Required (`kappaSizePower`): binary designs are
+  checked by simulation.** When the recommended test falls more than 0.03 short of the stated power,
+  the result names both figures: 6 raters, a 5% finding, kappa0 0.40 against 0.60 and power 0.80
+  need 316 subjects by the published formula and about 572 by simulation (316 give about 0.59). The
+  "0 subjects" result for 5-6 raters and a finding at or below 0.1% (181,129 needed) is fixed.
+- **Lowest Expected Kappa for a Fixed Sample Size (`kappaSizeFixedN`, formerly "Lowest Expected
+  Value for a fixed sample size"):** the bound is solved exactly and rounded down (0.419 at the
+  defaults, where kappaSize gives 0.418). With 3+ raters or categories it allows for re-estimating
+  the proportions: 3 raters, kappa0 0.60, prevalence 0.30 and 60 subjects give 0.443 (was 0.445).
+  With fewer than one expected subject per rater in the rarest category it no longer claims the
+  study "can show that agreement exceeds chance".
+- In all three, the "Sparse categories" check judges the cells the test actually uses (19 of 40
+  designs had been flagged spuriously in `kappaSizeCI`).
+
+### Medical Decision Calculator (`decisioncalculator`)
+
+- **A test that was never positive no longer gets a likelihood ratio.** TP 0, FP 0, FN 10, TN 100
+  showed LR+ 9.18 (a function of the group sizes alone) and a nomogram promising a rise from 9.1% to
+  47.9%; the cell is now blank with a note. "Post-test Reference-negative Probability", which
+  repeated the NPV, is replaced by the probability of disease after a negative test (1 - NPV).
+- **The illustrative cut-off comparison ranks on the Youden index intervals** (a scenario with
+  accuracy 0.595 could be called clearly better than one with 0.941), and its scenarios must share
+  the same numbers of reference positives and negatives.
+
+## New features
+
+- **Interrater Reliability (`agreement`): Pathologist Grading Analysis.** For grades, keeping cases
+  some pathologists did not read: grade use per pathologist, agreement with colleagues at each
+  grade boundary, each pathologist's grading tendency with a forest plot, and model-based agreement
+  (latent ICC and kappa, Nelson & Edwards 2015). Model-based numbers appear only in designs where
+  simulation showed them accurate (for example from 50 cases and 3 pathologists); otherwise a note
+  says why.
+- **`agreement`, also:** multi-centre analysis of categorical ratings with a stratified kappa; a
+  Case ID so the mixed-effects comparison compares each case with itself; a Kappa interval method
+  option (Wald or Fisher z); an exploratory patient-level bootstrap for specific agreement.
+- **Medical Decision (`decision`) and Compare Medical Decision Tests (`decisioncompare`): say what
+  the reference is.** Against an expert consensus or a comparative method the output reports
+  positive and negative percent agreement, with comparator tables and plots, and leaves out
+  disease-risk figures such as PPV. An optional Validation context table records the cohort,
+  sampling design, threshold source, model version and unit of observation.
+- **Combine Medical Decision Tests (`decisioncombine`):** a "Combination Rules vs Each Test Alone"
+  table; Youden's J with an interval, optionally corrected for picking the best rule on the same
+  data; a notice when results are missing because of another result (reflex testing, partial
+  verification), which biases every complete-case row. Notices now appear at the top.
+- **Medical Decision Calculator (`decisioncalculator`): observed and projected workload** -- flags
+  per 1000 tested and tests per detected positive at target prevalences (default 0.01%, 0.1%, 1%).
+  Prevalences below 0.1% are accepted here and in Compare Medical Decision Tests.
+- **Clinical ROC Analysis (`enhancedROC`): frozen-model validation report** with reference mapping,
+  patient-level bootstrap intervals, paired score comparisons and workload at rare prevalences.
+- **Advanced ROC Analysis (`psychopdaROC`):** a Patient ID with mean or median summaries for
+  repeated measurements. **LASSO Logistic Regression (`lassologistic`):** an optional patient ID.
+- **Analysis Without Gold Standard (`nogoldstandard`):** PPV and NPV have confidence intervals; a
+  warning says when categories other than the positive level (equivocal too) count as negative.
+- **Decision Curve Analysis (`decisioncurve`):** warnings for values that run opposite to the
+  positive level, fewer than 25 patients without the outcome, and thresholds with fewer than 10
+  positive classifications.
+- **Kappa sample-size analyses:** the Notes name the model and test each number rests on; new
+  warnings flag a rare category, a small sample and (fixed sample) a design that cannot support a
+  reliability claim. The step-by-step explanation and kappaSize's own summary are optional in the
+  CI and fixed-sample analyses.
+
+## Fixes
+
+- **`agreement`:** "Benjamini-Hochberg (FDR)" in the mixed-effects comparison stopped the analysis;
+  notes and numbers no longer carry over into the next run; interval columns follow the confidence
+  level you chose; "ER+" and "ER-" are no longer merged; long runs can be cancelled.
+- **`decision`:** the nomogram's negative-result line no longer vanishes at low prevalence; levels
+  such as `<LOD` display. **`decisioncompare`:** paired differences no longer fail on a few hundred
+  cases or more; copy-ready text prints "p < 0.001" and names the tests and intervals used.
+- **`decisioncombine`:** no longer stops on large samples (about 93,000 cases) with a few missing
+  values; a test column named like an internal working column is no longer silently replaced.
+- **`decisioncurve`:** bootstrap intervals are about 17 times faster with identical results;
+  undefined cells are blank with a footnote instead of "." or "NaN"; impact bars are colour-blind
+  safe.
+- **`decisioncalculator`:** studies of more than about 430 cases (for example 180/20/30/270) no
+  longer stop with an error; blank cells no longer show "NaN".
+- **Co-Testing Analysis (`cotest`):** the numbers were right but several sentences were not. The
+  copy-ready summary now leads with the co-testing rule's own result, a positive on either test
+  (42.5% at the defaults; only both-positive, 89.1%, was given). Magnitude words follow the
+  likelihood ratio (a rise from 92% to 99.9% had read "minimal change"), and an impossible result
+  combination is footnoted instead of showing "NaN".
+- **Sequential Testing Analysis (`sequentialtests`):** the test-order warning is replaced by a note
+  that appears only when swapping the tests would save second tests (order never changes the
+  combined figures); each test's PPV and NPV are labelled as values for that test alone; cells that
+  round to 100.0% get a footnote with the real value; long test names wrap in the flow diagram.
+- **`nogoldstandard`:** a test added without its positive level is named instead of silently
+  dropped. **`psychopdaROC`:** numeric columns imported as Nominal keep their codes.
+  **`enhancedROC`:** a minimum sensitivity or specificity no longer yields an infinite cutoff, and
+  every resampled result shows its seed.
+
+## Packaging and translations
+
+- **Turkish:** 6,253 of the module's 6,304 texts are translated, up from 3,738 of 4,881 in
+  1.0.83.03.
+- A message containing its own placeholder could freeze jamovi's analysis engine, and a table
+  emptied on a re-run could stop the analysis; neither can happen now.
+- Syntax copied from the syntax pane quotes free-text fields safely, so it runs for names with
+  quotes or spaces and cannot carry other code.
+- `ordinal` is added to the install list (for the Pathologist Grading Analysis); `tibble` is
+  dropped.
+
 # meddecide 1.0.83.03 (2026-09-23)
 
 This release is the result of an external review of the module. Most of it is
@@ -34,6 +264,81 @@ about results that did not survive leaving the screen.
   its label and description now say plainly that only the bootstrap is
   implemented.
 
+# meddecide 1.0.81 (2026-09-09)
+
+These notes were written after the release, which was published without a description. 1.0.81 was
+the first release after 1.0.6, so it also delivered the 1.0.6.03 changes listed below.
+
+## New analysis
+
+- **Decision Curve Analysis (`decisioncurve`)** joins the meddecide menu. It compares the net
+  benefit of predicted risks, or of a yes/no clinical rule, with treating everyone and treating no
+  one across a range of threshold probabilities. It reports a Range of Benefit (the thresholds where
+  a model beats both default strategies) rather than an "optimal threshold", which does not exist
+  for net benefit. Model comparisons are bootstrapped with a fixed seed (default 42), so a re-run
+  gives the same p-values, and are Holm-adjusted; intervals can be pointwise or a simultaneous band
+  over the whole curve. The output states that net benefit is apparent, not optimism-corrected,
+  when the risks were developed on the same data.
+
+## Behaviour changes -- saved analyses may produce different results
+
+- **Interrater Reliability (`agreement`): Robinson's A is now Robinson's (1957) coefficient.** The
+  value shown before was Goodman-Kruskal's gamma, an association measure: two raters one grade
+  apart on every case scored 1.0. It now comes with a bootstrap interval. The table headed
+  "Maxwell's RE" did not compute Maxwell's statistic; it is now the "Rater Variance Decomposition",
+  a two-way (case and rater) split of disagreement. The bootstrap ICC row follows the chosen ICC
+  model, and paired-comparison intervals follow the confidence level.
+- **Compare Medical Decision Tests (`decisioncompare`): tests with equivocal results on different
+  cases stay aligned.** Paired comparisons could match one patient's result with another's. Each
+  test's estimates now use its own determinate cases, and McNemar, Cochran's Q and the paired
+  differences use the cases determinate on both, with the denominators shown. The "noninferiority
+  margin", described as a regulatory convention, is now a descriptive "Minimum OPA criterion". The
+  same test chosen twice, or the reference reused as a test, is rejected.
+- **Lowest Expected Value for a fixed sample size (`kappaSizeFixedN`):** the anticipated kappa now
+  defaults to 0.60 (the agreement you expect, as in the confidence-interval approach, not the 0.40
+  null of the power approach) and is labelled "Anticipated kappa (kappa0)". A bound below the lowest
+  agreement the model allows (for example -0.841 against a floor of -0.0004) is refused with an
+  explanation instead of being printed. The description no longer states the bound backwards, and
+  the estimand is named as the intraclass (Fleiss-type) kappa, not Cohen's.
+- **Power Approach for the Number of Subjects Required (`kappaSizePower`):** the sparse-cell warning
+  checks the agreement-pattern cells the method uses, not the category proportions: six raters at
+  5% prevalence gave N = 316 with no warning while three of seven cells had expected counts below
+  0.5. New warnings flag N below 10, power below 0.5, a kappa gap under 0.05 and N above 2000.
+- **LASSO Logistic Regression (`lassologistic`):** the "Sullivan/D'Agostino" scoring method is
+  renamed "Max-scaled"; a saved analysis that used it must select it again.
+- **Clinical ROC Analysis (`enhancedROC`):** custom cutoffs under "lower is positive" follow pROC's
+  rule for ties; with Youden optimisation off the cutoff is the point closest to the top-left
+  corner; internal validation labels its interval honestly; one-vs-rest curves use one direction
+  per marker.
+- **Advanced ROC Analysis (`psychopdaROC`):** the power curve uses the table's Hanley-McNeil power,
+  and the decision-curve plot uses the table's risk fit and prevalence; effect-size columns are
+  labelled as differences.
+
+## New features
+
+- **Interrater Reliability (`agreement`):** "Case agreement categorization column" now adds the
+  per-case agreement categories to your data (the option existed, but no column was added).
+- **Co-Testing Analysis (`cotest`):** name fields for the two tests and a "Guidance and
+  explanations" switch. **Combine Medical Decision Tests (`decisioncombine`):** an optional "About
+  this analysis" panel; "Add Test Pattern to Data" is now a "Test pattern column" output, and the
+  "Optimal Pattern Recommendation" is now a "Descriptive Candidate-Rule Ranking".
+- **Analysis Without Gold Standard (`nogoldstandard`):** optional Plain-Language Summary and Method
+  Guide; tables are retitled "Estimated Class or Rule Proportion" and "Estimated Test Metrics or
+  Rule Agreement".
+
+## Fixes
+
+- **`psychopdaROC`:** re-running after ROC smoothing, an unselected positive class and a missing
+  subgroup value no longer crash the analysis. **`enhancedROC`:** plots redraw after a saved file is
+  reopened. **`sequentialtests`:** the explanation and formula panels show their numbers instead of
+  `{placeholders}`. **`agreement`:** tables no longer duplicate rows on re-run, and weighted kappa
+  on unordered categories stops with a clear message.
+
+## Packaging and translations
+
+- First Turkish translation catalogue, with partial coverage (see 1.0.83.03 above).
+- `boot` and `splines` are added to the install list; `gridExtra` and `htmltools` are dropped.
+
 # meddecide 1.0.6.03 (2026-08-22)
 
 This release removes clinical advice from analysis output and corrects statistical statements that
@@ -52,20 +357,20 @@ wrong or misleading number on screen and are listed first.
   the non-finite case arises when specificity is 0%, and the message now names that condition
   correctly.
 
-- **`decisioncompare`: predictive values are attributed to the prevalence actually used.**When the
+- **`decisioncompare`: predictive values are attributed to the prevalence actually used.** When the
   prior-probability option is on, PPV and NPV are computed by Bayes at the prevalence you supply,
   while overall accuracy stays at the prevalence of the sample. The copy-ready summary sentence
   asserted a single sample prevalence for all three, so a manuscript-ready sentence could carry the
   wrong prevalence for the predictive values. The sentence now branches on the option and states
   which prevalence each figure rests on.
 
-- **`decisioncompare`: the best-performing test is described by the criterion actually used.**The
+- **`decisioncompare`: the best-performing test is described by the criterion actually used.** The
   summary said the winning test "had the highest observed accuracy", but the selection maximises
   the Youden index plus accuracy, so the winner need not be the most accurate test in the table.
 
 ## Changed -- results no longer give clinical advice
 
-- **Recommendation columns now report performance instead of issuing verdicts.**In
+- **Recommendation columns now report performance instead of issuing verdicts.** In
   `decisioncalculator`, `psychopdaroc` and `enhancedroc`, columns titled *Clinical Recommendation*
   returned strings such as *"Excellent performance - Recommended"* and *"Suitable for clinical
   use"*, keyed on point estimates alone. They are retitled *Performance Summary* and now report the
@@ -73,14 +378,14 @@ wrong or misleading number on screen and are listed first.
   data that measured it. `sequentialtests`' *Clinical Guidance* panel is retitled *Testing Strategy
   Notes*.
 
-- **`enhancedroc`: the AUC context column is populated for every setting.**The column was blank on
+- **`enhancedroc`: the AUC context column is populated for every setting.** The column was blank on
   every row under the default `general` context. It now explains the AUC in plain language for all
   contexts -- for example *"Ranks a random case above a random non-case 81% of the time"* -- and says
   where a conventional reference level exists and where none does.
 
 ## Fixed -- statements that were not true
 
-- **`agreement`: non-significant tests no longer establish agreement.**The Stuart-Maxwell and
+- **`agreement`: non-significant tests no longer establish agreement.** The Stuart-Maxwell and
   Bhapkar tables reported *"marginal homogeneity holds"* and *"no systematic rater bias"* whenever
   p was at or above 0.05, stating the null hypothesis as established fact. Worked examples went
   further, concluding from p = 0.68 that a digital pathology platform yields *"equivalent"*
@@ -88,30 +393,30 @@ wrong or misleading number on screen and are listed first.
   (22C3 and SP263) are interchangeable. These now report that no difference was detected and state
   plainly that this does not establish equivalence.
 
-- **`agreement`: quantitative claims the module never computed have been removed.**The output
+- **`agreement`: quantitative claims the module never computed have been removed.** The output
   asserted that confidence intervals overlap in a table that has no confidence-interval columns,
   and that a test had limited power where no power calculation exists. Kendall's W and Robinson's A
   examples claimed to validate treatment timing, credentialing and regulatory submissions from
   statistics that contain no outcome data at all.
 
-- **`decisioncompare`, `cotest`, `nogoldstandard`:**non-significant comparisons no longer describe
+- **`decisioncompare`, `cotest`, `nogoldstandard`:** non-significant comparisons no longer describe
   the tests as performing equally, and the McNemar note now explains that the test uses only the
   discordant pairs, so few discordant pairs mean little power.
 
-- **`psychopdaroc`: AUC is described correctly.**An AUC of 0.90 was said to mean the test "can
+- **`psychopdaroc`: AUC is described correctly.** An AUC of 0.90 was said to mean the test "can
   reliably distinguish between diseased and healthy patients". AUC is the probability that a
   randomly chosen case outranks a randomly chosen non-case -- a property of pairs, not a
   classification accuracy for any individual patient.
 
 ## Fixed -- output hygiene
 
-- **R package chatter no longer appears in Analysis Notes.**jamovi surfaces `message()` and
+- **R package chatter no longer appears in Analysis Notes.** jamovi surfaces `message()` and
   `warning()` conditions to the user, so third-party notices leaked into results -- a single
   Lasso-Cox run displayed the glmnet tie-handling notice twelve times. Third-party calls are now
   wrapped so package chatter and deprecation notices are suppressed while substantive warnings,
   such as non-convergence, still reach you.
 
-- **A malformed reference no longer prevents results from rendering.**A citation with an empty
+- **A malformed reference no longer prevents results from rendering.** A citation with an empty
   publication year caused a serialization failure that produced no output at all, with an error
   mentioning `serialize` rather than anything about the analysis. All references now carry a year.
 
@@ -130,7 +435,7 @@ a correction to a number a clinician could already have copied into a report.
 ## Breaking changes
 
 - **`decisioncompare()` has four new required arguments: `goldNegative`, `test1Negative`,
-  `test2Negative` and `test3Negative`.**They name the level of each variable that represents a
+  `test2Negative` and `test3Negative`.** They name the level of each variable that represents a
   genuine negative result, so that a third, equivocal level can be told apart from a negative one.
   jamovi does not permit a default on a `Level` option, so all four compile to bare parameters of
   the R wrapper: **existing scripts that call `decisioncompare()` will fail with `argument
@@ -146,7 +451,7 @@ a correction to a number a clinician could already have copied into a report.
   the removed values now fails** with `Argument 'filterPattern' must be one of ...`; use
   `allPositive` for the old `serial` and `all` for the old `parallel`. The jamovi GUI shows only
   the current levels.
-- **`nogoldstandard()`'s default `method` changed from `all_positive` to `latent_class`.**The old
+- **`nogoldstandard()`'s default `method` changed from `all_positive` to `latent_class`.** The old
   default defines the reference standard as "every test positive", which fixes sensitivity and NPV
   at 1 for every test on every dataset -- it cannot estimate accuracy, which is the entire point of
   the analysis. `latent_class` is the only method here that estimates sensitivity and specificity
@@ -160,32 +465,32 @@ a correction to a number a clinician could already have copied into a report.
 
 ### `decisioncompare` (Compare Medical Decision Tests)
 
-- **Every results table grew on each re-run.**The six calls meant to clear old rows used
+- **Every results table grew on each re-run.** The six calls meant to clear old rows used
   `clearRows()`, which is not a `jmvcore` Table method -- only `deleteRows()` exists -- and each call
   was wrapped in `try(silent = TRUE)`, so the error was swallowed and nothing was ever cleared. In
   jamovi, toggling *any* option re-runs the analysis on the same object, so the comparison table
   went 4 -> 8 -> 12 rows across three runs and each test appeared twice, then three times, then four.
   Anyone who changed a checkbox mid-session was reading a duplicated table.
-- **`excludeIndeterminate` was a complete no-op.**It filtered on
+- **`excludeIndeterminate` was a complete no-op.** It filtered on
   `c(positiveLevel, setdiff(levels, positiveLevel))` -- that is, on every level -- so equivocal
   results were still collapsed into Negative and still inflated specificity and NPV, the exact harm
   the checkbox promises to prevent. On a 60-case fixture with 20 Equivocal results, specificity read
   0.950 with the option both off and on; excluding the equivocal cases gives 0.900. With the new
   negative-level options supplied, equivocal rows are now genuinely dropped; when they are not
   supplied the analysis says so explicitly rather than pretending to have acted.
-- **The manuscript-ready report named a winner the data could not support.**On a fixture where
+- **The manuscript-ready report named a winner the data could not support.** On a fixture where
   Cochran's Q gives p = 0.076 and no pairwise comparison survives Holm correction, the report read
   "t1 demonstrated OPTIMAL diagnostic performance" one sentence before "did not reveal a
   statistically significant difference". It now says "had the highest observed accuracy" with an
   explicit caveat, and the clinical recommendation panel carries a matching caution block.
-- **Four result panels were permanently visible.**The `visible:` expressions began with `!`
+- **Four result panels were permanently visible.** The `visible:` expressions began with `!`
   (`(!is.null(test3) && test3 != "")`), and `jmvcore` routes an expression to the R evaluator only
   when it matches `^\([\$A-Za-z].*\)$`; a leading `!` fails that test, so the raw -- and therefore
   truthy -- string was returned instead of being evaluated. An empty "Test 3 -- Recoded Data" table
   sat under every two-test analysis, and the stratified table showed with no stratifier selected.
 - **The manuscript text printed a literal placeholder,**`95% CI: [see confidence interval table]`.
   It now prints real Clopper-Pearson intervals.
-- **A tie for best-performing test was broken by whichever test came first, silently.**Ties are
+- **A tie for best-performing test was broken by whichever test came first, silently.** Ties are
   now disclosed.
 - **The difference table's "95% Confidence Interval" header did not say which method produced it.**
   It is now footnoted as the paired Wald interval for correlated proportions, and distinguished
@@ -214,7 +519,7 @@ a correction to a number a clinician could already have copied into a report.
   branches carry a footnote naming which prevalence was used, and the `epiR` interval pane -- whose
   exact binomial values cannot be moved to a different prevalence -- gains a note saying it is at
   the observed sample prevalence.
-- **The `epiR` "number" table's footnotes described the wrong statistics.**They were attached by
+- **The `epiR` "number" table's footnotes described the wrong statistics.** They were attached by
   hard-coded row number while the rows render LR+, LR-, DOR, Youden and NNDx, so LR+ was described
   as the diagnostic odds ratio, LR- as the number needed to diagnose, and DOR as Youden's index.
   Footnotes are now keyed to the `epiR` statistic name carried alongside the data.
@@ -225,7 +530,7 @@ a correction to a number a clinician could already have copied into a report.
   self-consistent instead of clamping to an arbitrary epsilon. `Plr`/`Nlr` are no longer passed:
   `nomogrammer` ignores them when sensitivity and specificity are supplied, and warned on every
   render.
-- **With a zero cell, the interval pane disagreed with the estimates beside it.**LR+, LR- and DOR
+- **With a zero cell, the interval pane disagreed with the estimates beside it.** LR+, LR- and DOR
   in the main tables are computed from Haldane-Anscombe corrected counts (LR+ 145), while
   `epi.tests()` was run on the raw table and returned `Inf` with a `NaN` lower bound -- two numbers
   for one statistic on one screen. Those three rows now come from a second `epi.tests()` call on
@@ -240,7 +545,7 @@ a correction to a number a clinician could already have copied into a report.
   by `jmvcore::naOmit()` for genuine missingness, and again when an explicit negative level is set
   and other levels are recoded to `NA`. The summary now counts the two separately, says plainly
   that level-excluded cases are not missing values, and reports "N of M cases analysed".
-- **A likelihood ratio of exactly 1.0 was called flawed, and in the wrong direction.**It fell
+- **A likelihood ratio of exactly 1.0 was called flawed, and in the wrong direction.** It fell
   through the `lr_pos > 1` band into "Decreases probability of disease (test may be flawed)"; it
   now reads "Uninformative".
 - The clinical summary called the user's population prior the *sample* prevalence. The copy-ready
@@ -264,7 +569,7 @@ a correction to a number a clinician could already have copied into a report.
   alphabetically) and is now fed integer factor codes, and `irrCAC::gwet.ac1.raw` now receives an
   explicit `categ.labels`. Unweighted kappa and Gwet's AC1 are order-invariant and were unaffected;
   only the weighted options bite.
-- **Weighted kappa was applied to nominal variables.**Ordinality was inferred from category count
+- **Weighted kappa was applied to nominal variables.** Ordinality was inferred from category count
   alone (`length(all_levels) >= 3`), so quadratic weights -- which assume a meaningful distance
   between categories -- were applied to any nominal variable with three or more levels, such as
   tumour type or mutation class. It now also requires `is.ordered()` on at least one of the two
@@ -276,7 +581,7 @@ a correction to a number a clinician could already have copied into a report.
   test H0: kappa = 0 off the *null* SE and so z is not kappa divided by the interval's SE. For
   three or more raters the interval is deliberately left blank with a note, because `irr` supplies
   only the null-SE test for Fleiss'/Conger's kappa.
-- **A non-finite kappa crashed the entire analysis, not just the panel that produced it.**The
+- **A non-finite kappa crashed the entire analysis, not just the panel that produced it.** The
   "Clinical Meaning" block ran `if (kappa_val >= 0.60)` without the `is.na()` guard the Landis &
   Koch chain above it had, so `if (NA >= 0.60)` threw "missing value where TRUE/FALSE needed".
   Reachable with weighted kappa on nominal data, exact kappa with two raters, a single rating
@@ -286,12 +591,12 @@ a correction to a number a clinician could already have copied into a report.
   the data. Kappa is now blanked with a note explaining that there is no chance-agreement baseline
   when there is no variation.
 - **Subgroup forest-plot intervals used the null-hypothesis standard error and ignored
-  `confLevel`.**The subgroup path derived `se <- abs(kappa / z)` from `irr`'s z -- the H0 SE, the
+  `confLevel`.** The subgroup path derived `se <- abs(kappa / z)` from `irr`'s z -- the H0 SE, the
   same defect corrected elsewhere in the file -- and hard-coded 1.96. Two-rater subgroups now use
   the non-null ASE, falling back to the null SE only when it is unavailable, and the multiplier is
   `qnorm()` at the user's confidence level. The plot subtitle, previously hard-coded to "95%
   confidence intervals", now prints the level actually used.
-- **The same kappa was given two different words in one output.**The subgroup table used its own
+- **The same kappa was given two different words in one output.** The subgroup table used its own
   unattributed cut-points (0.40/0.60/0.75/0.90 -> Poor/Fair/Good/Excellent/Outstanding) while the
   plain-language summary used Landis & Koch 1977 (0.20/0.40/0.60/0.80), so 0.61 read "substantial"
   in the summary and "Good" in the table, and 0.56 read "moderate" there and "Fair" here. One named
@@ -320,7 +625,7 @@ a correction to a number a clinician could already have copied into a report.
 ### `lassologistic`
 
 - **Coefficients and odds ratios were reported on the standardized scale, not the original
-  measurement scale.**The design matrix is standardized in-module and `glmnet` is then called with
+  measurement scale.** The design matrix is standardized in-module and `glmnet` is then called with
   `standardize = FALSE`, so nothing was back-transformed and every coefficient was per 1 SD. For a
   0/1 dummy from a balanced marker (sd ~ 0.5) the printed per-SD odds ratio is roughly the square
   root of the model's actual present-versus-absent odds ratio: 1.81 printed where the model implies
@@ -339,14 +644,14 @@ a correction to a number a clinician could already have copied into a report.
   apart. A new "Award points when" column publishes the criterion on the original measurement
   scale; previously the median cut never reached the output at all, so a clinician had no way to
   apply the score to a new patient.
-- **The Brier score was graded against fixed cut-offs and mislabelled as calibration.**It is an
+- **The Brier score was graded against fixed cut-offs and mislabelled as calibration.** It is an
   overall accuracy score whose scale is driven by outcome prevalence: a no-information model that
   always predicts the base rate scores p(1-p), already 0.09 at 10% prevalence, which the old code
   graded "Excellent calibration". It is now graded by the Brier skill score against that null
   model ("Good (x% better than predicting the base rate)" / "Marginal" / "No better than predicting
   the base rate").
 - **With zero selected variables, a model that calls everyone positive was presented as perfectly
-  sensitive.**Every predicted probability is identical, the ROC is degenerate, and `pROC` returns
+  sensitive.** Every predicted probability is identical, the ROC is degenerate, and `pROC` returns
   `-Inf`, which was printed as "Optimal threshold: -Inf" beside Sensitivity 1.000 and Specificity
   0.000. Non-finite thresholds now fall back to 0.5.
 - **Selecting exactly one predictor produced a completely blank result** -- no panel, no notice, no
@@ -359,7 +664,7 @@ a correction to a number a clinician could already have copied into a report.
   analysed" and "Excluded (incomplete data)" separately, and a warning fires whenever any case is
   excluded, pointing out that a single sparsely-measured predictor can remove a large share of the
   cohort.
-- **The bootstrap optimism correction did not disclose how many replicates it rested on.**Failed
+- **The bootstrap optimism correction did not disclose how many replicates it rested on.** Failed
   replicates are caught by `tryCatch`, left as `NA` and dropped by `na.rm = TRUE`, so a correction
   computed from 50 survivors of 200 looked identical to one computed from all 200. The table now
   footnotes the completed and failed counts, and warns separately when fewer than 20 replicates
@@ -371,14 +676,14 @@ a correction to a number a clinician could already have copied into a report.
   binding* on `jmvcore::Table`, so `tbl$asDF` already returns the data frame; the code wrote
   `tbl$asDF()`, invoking that data frame as a function -- "attempt to apply non-function". The
   recommendation and all four plots were affected.
-- **The tables grew on every re-run and then broke.**Nothing called `deleteRows()`, and jamovi
+- **The tables grew on every re-run and then broke.** Nothing called `deleteRows()`, and jamovi
   re-runs `.run()` on the same object whenever an option changes, so rows went 5 -> 10 -> 15; the
   duplicated row keys then made `$asDF` fail with `duplicate 'row.names' are not allowed`, taking
   down the second run entirely.
 - **The analysis explained nothing when it stopped.**`.renderNotices()` sat after three early
   returns in `.run()`, so the notice saying *why* it had stopped was collected and then discarded,
   leaving a blank analysis with no message.
-- **The "optimal" rule was an uncorrected argmax.**It ranks 5 candidate rules with two tests, or
+- **The "optimal" rule was an uncorrected argmax.** It ranks 5 candidate rules with two tests, or
   10 with three, using no interval and no test, so on pure noise it still names a winner -- and
   called it optimal. It now discloses how many rules were compared and that the winner is not an
   established finding. Serial (AND) and the all-positive pattern are the same 2x2 under two
@@ -387,7 +692,7 @@ a correction to a number a clinician could already have copied into a report.
   percentage in one table and as 0.813 in another. Now split. Serial (AND) also gained its own
   named row: it was numerically identical to the "+/+/+" pattern and had been omitted, leaving a
   reader to know that the pattern *was* the serial rule.
-- **The "mixed" pattern filter dropped genuinely mixed patterns.**It excluded anything *starting
+- **The "mixed" pattern filter dropped genuinely mixed patterns.** It excluded anything *starting
   with* `+/+` or `-/-`, removing `+/+/-` and `-/-/+`; and when no pattern matched it fell back to
   the whole unfiltered table rather than to nothing. A multi-level variable is now flagged rather
   than silently dichotomised, and a gold standard with one outcome yields `NA` with a notice
@@ -410,7 +715,7 @@ a correction to a number a clinician could already have copied into a report.
   reading -- prevalence, likelihood ratios, post-test probabilities -- to stdout under
   `Verbose = TRUE`, and jamovi never shows stdout. It is now rendered beside the figure, at the
   tables' precision rather than `nomogrammer`'s whole percents, and tracks the supplied prior.
-- **The cut-off comparison named the wrong alternative.**The verdict was an if/else-if chain, so
+- **The cut-off comparison named the wrong alternative.** The verdict was an if/else-if chain, so
   when both alternatives beat the current cut-off only the first was ever named, however much
   better the second was. It now picks the best of the three, declines to call a trivial advantage
   better performance, flags cut-offs whose totals differ (moving a threshold cannot change how
@@ -424,12 +729,12 @@ a correction to a number a clinician could already have copied into a report.
 
 ### `nogoldstandard` (Analysis Without Gold Standard)
 
-- **Latent-class analysis reported sensitivity and specificity swapped.**The diseased class was
+- **Latent-class analysis reported sensitivity and specificity swapped.** The diseased class was
   identified with `probs[[i]][class, outcome]` but read back as `probs[[i]][2, disease_class]` --
   the transpose. `[2,2]` and `[1,1]` coincide, so the error surfaced only when poLCA happened to
   label the diseased group as class 1, which is about half of all runs. Verified against `poLCA`
   on identical data and against the known truth of simulated data.
-- **The default method could not estimate accuracy at all, and now does not hide it.**Under
+- **The default method could not estimate accuracy at all, and now does not hide it.** Under
   `all_positive` the reference standard is "every test positive", so a diseased case can never be
   test-negative: FN is identically 0 and sensitivity and NPV are 1 for every test on every
   dataset. It printed "100% (95% CI 100-100%)". `any_positive` is the mirror image (FP == 0,
@@ -439,7 +744,7 @@ a correction to a number a clinician could already have copied into a report.
 - **The confidence intervals were too narrow -- by about 1.8x for sensitivity at 30% prevalence.**
   The standard error used the total n for both metrics; the denominators are n x prevalence for
   sensitivity and n x (1 - prevalence) for specificity.
-- **The analysis claimed its latent-class model handles the assumption it actually makes.**The
+- **The analysis claimed its latent-class model handles the assumption it actually makes.** The
   always-visible method guide advertised "Handles conditional dependence" and "No identifiability
   issues", while `poLCA(nclass = 2, ~ 1)` assumes the tests err *independently* given true status.
   The guide now says so; a new **Conditional Independence Check** table reports bivariate residuals
@@ -448,7 +753,7 @@ a correction to a number a clinician could already have copied into a report.
   with three the model is just-identified and reproduces every table exactly. Two tests cannot
   identify a two-class model at all (5 parameters against 3 degrees of freedom) and are now
   refused rather than answered with numbers determined by the starting values.
-- **The Bayesian method disclosed neither its priors nor its nature.**Beta(2, 1) on both
+- **The Bayesian method disclosed neither its priors nor its nature.** Beta(2, 1) on both
   sensitivity and specificity has mean 2/3 and increases toward 1, so it pulls estimates upward;
   nothing mentioned any prior, or that the results are not draws from a posterior. Both are now
   stated.
@@ -467,7 +772,7 @@ a correction to a number a clinician could already have copied into a report.
 ### `cotest` (Co-Testing Analysis)
 
 - **A 0% post-test probability was reported for a test combination the model had made
-  impossible.**When two tests are modelled as conditionally dependent, the joint probability
+  impossible.** When two tests are modelled as conditionally dependent, the joint probability
   P(Test1+, Test2+) cannot exceed the smaller of the two marginals -- a Frechet bound. Beyond it the
   requested dependence is unattainable and `cotest` truncated it to the bound. That truncation is
   correct, but it forces one of the four test combinations to have probability exactly zero in one
@@ -497,13 +802,13 @@ a correction to a number a clinician could already have copied into a report.
   was right and the expected values were fabricated. Eight further assertions passed an error
   message containing parentheses as a regular expression, so they never matched, and because
   testthat re-raises a non-matching error they masked one another.
-- **The joint-probability validation could never fail.**It compared the sum of the four cells
+- **The joint-probability validation could never fail.** It compared the sum of the four cells
   against 1, but the caller *defines* the fourth cell as one minus the other three, so the sum was
   1 by construction and the check passed on any input -- including a set whose cells no longer
   matched the sensitivities they were built from. It now also verifies that every cell is a
   probability and that P(both) + P(one only) still reproduces the marginal it came from, which is
   the invariant the clamping could actually break.
-- **Negative conditional dependence is now accepted.**The parameter was bounded at 0, so tests
+- **Negative conditional dependence is now accepted.** The parameter was bounded at 0, so tests
   that partly compensate for each other's errors could not be expressed. The permitted range is
   now -1 to 1 across the option definition, the UI clamp and the backend validation. The existing
   Frechet clamping already handled negative values; the resulting joint distributions were
@@ -517,14 +822,14 @@ a correction to a number a clinician could already have copied into a report.
 
 ### `sequentialtests` (Sequential Testing Analysis)
 
-- **Clinical presets were ignored whenever the analysis was called from R.**The eight presets are
+- **Clinical presets were ignored whenever the analysis was called from R.** The eight presets are
   applied by `jamovi/js/sequentialtests.events.js`, which writes the values into the interface
   controls; nothing runs that JavaScript outside jamovi, so asking for the HIV scenario silently
   analysed the panel defaults - 0.95/0.70 with 0.80/0.98 at 10% prevalence - instead of ELISA and
   Western Blot at 2%. `preset` was the only declared option the backend never read. Presets are now
   applied in the backend as well, and a regression test parses the JavaScript configuration and
   compares it field by field against the R table, so the two cannot drift apart.
-- **Illustrative teaching values were presented as evidence.**The preset control was documented as
+- **Illustrative teaching values were presented as evidence.** The preset control was documented as
   loading "evidence-based test parameters and optimal strategies from medical literature". They are
   rounded approximations with no citation, no confidence interval and no population behind them,
   chosen to make each strategy's behaviour visible. Selecting a preset now raises a warning that
@@ -535,15 +840,15 @@ a correction to a number a clinician could already have copied into a report.
   sensitivity figure hides variation by assay, operator and disease stage, that the prevalences are
   illustrative settings rather than yours, and that a label such as `"RT-PCR"` names the scenario
   rather than asserting anything about that test as actually performed.
-- **A Fagan nomogram was advertised that does not exist.**The word appeared in the analysis
+- **A Fagan nomogram was advertised that does not exist.** The word appeared in the analysis
   description and nowhere else in the module - no option, no results item, no code - while every
   sibling analysis in the same menu does provide one.
-- **Two of the three strategies are the same rule, and nothing said so.**Serial testing of
+- **Two of the three strategies are the same rule, and nothing said so.** Serial testing of
   negatives and parallel testing both call a subject positive if *either* test is positive, so they
   are algebraically identical in sensitivity, specificity, PPV and NPV; they differ only in how many
   second tests are performed, which only the cost table reveals. Verified identical to 1e-12. A note
   now explains it.
-- **The conditional-independence caveat went stale.**It was attached only to parallel testing, and
+- **The conditional-independence caveat went stale.** It was attached only to parallel testing, and
   because the summary table declares no `clearWith` it survived a change of strategy - leaving a
   note about parallel testing under a row labelled "Serial Testing". The assumption applies to all
   three strategies and is now stated for all three, alongside a note that sensitivity, specificity
@@ -556,14 +861,14 @@ a correction to a number a clinician could already have copied into a report.
 
 ### `enhancedROC` (Clinical ROC Analysis)
 
-- **Every results table doubled on each re-run, and then broke.**Twenty-one `addRow()` calls and
+- **Every results table doubled on each re-run, and then broke.** Twenty-one `addRow()` calls and
   not one `deleteRows()`. jamovi re-runs an analysis on the same object whenever an option changes,
   so the AUC summary went 2 to 4 to 6 rows and the cut-off table 32 to 64 to 96; from the second run
   onward the tables could not be read at all, failing with `duplicate 'row.names' are not allowed`.
   Anyone who changed a checkbox mid-session was reading each predictor two or three times over.
   Fixed on all 18 tables populated by `addRow`; the two driven by `setRow` cannot duplicate and
   were left alone.
-- **Nothing in 4,500 lines set a random seed,**while the analysis resamples in four places:
+- **Nothing in 4,500 lines set a random seed,** while the analysis resamples in four places:
   bootstrap AUC confidence intervals, bootstrap ROC comparisons, internal-validation resamples and
   cross-validation fold assignment. Two identical runs returned 95% intervals of 0.775-0.862 and
   0.771-0.862, so a figure copied into a manuscript could not be reproduced. A new **Random Seed**
@@ -577,11 +882,11 @@ a correction to a number a clinician could already have copied into a report.
   biomarker. The notice named the direction chosen but not this consequence, and was filed as
   informational. It is now a warning quoting the expected AUC for an uninformative marker at the
   study's own sample size, and recommending that Direction be set explicitly.
-- **Three comparison options did nothing, without explanation.**Pairwise comparisons, metric
+- **Three comparison options did nothing, without explanation.** Pairwise comparisons, metric
   differences and statistical comparison all require Analysis Type to be "Comparative ROC
   Analysis", but the interface offers them as plain checkboxes with no such dependency; ticking one
   under the default Analysis Type produced no output and no message. They now say what to change.
-- **Nineteen options were documented as working features but do nothing.**They reach the public R
+- **Nineteen options were documented as working features but do nothing.** They reach the public R
   wrapper and `?enhancedROC` described them in the present tense - "Calculate Harrell's concordance
   index for time-to-event outcomes" - while the backend only lists them in a "planned features"
   notice at run time. None has an interface control, so this affected R callers and the help page
@@ -597,12 +902,12 @@ a correction to a number a clinician could already have copied into a report.
 
 ### `psychopdaROC` (Advanced ROC Analysis)
 
-- **Fourteen of the sixteen results tables doubled on every re-run.**Twenty-one `addRow()` calls
+- **Fourteen of the sixteen results tables doubled on every re-run.** Twenty-one `addRow()` calls
   against two `deleteRows()`. jamovi re-runs an analysis on the same object whenever any option
   changes, so rows went 1 to 2 to 3 per predictor and the decision curve 40 to 80 to 120. Every
   table is now cleared once at the top of the run - after the manual-run gate, so that manual mode
   keeps its results when an option is edited.
-- **Leaving the positive class unset ran the whole analysis backwards.**The fallback took the
+- **Leaving the positive class unset ran the whole analysis backwards.** The fallback took the
   FIRST factor level, which for every ordinary coding - Healthy/Disease, Negative/Positive,
   Control/Case, 0/1 - is the NEGATIVE group. On the bundled example data it reported AUC 0.1001
   where naming the positive class gives 0.8999, with no error and no warning. Worse, the positive
@@ -612,13 +917,13 @@ a correction to a number a clinician could already have copied into a report.
   so on the results tables. With three or more levels it refuses instead of guessing, matching
   `enhancedROC`: on a three-level recode of the bundled data, assuming "Disease" gives AUC 0.8012
   and assuming "Severe" gives 0.8263, and there is no basis for preferring either.
-- **The reported "optimal cutpoint" was usually not the optimum.**The metric tolerance defaulted
+- **The reported "optimal cutpoint" was usually not the optimum.** The metric tolerance defaulted
   to 0.05 while the underlying `cutpointr` package uses 1e-06. Every cutpoint scoring within 0.05
   Youden of the best was treated as equivalent and averaged: on the bundled data 39 of 200
   candidate thresholds, spanning 52.1 to 67.7, giving a cutpoint with 84.5 percent sensitivity in
   place of the 94.4 percent available at the true optimum. The default now matches `cutpointr`,
   and any tolerance still in force is disclosed beside the cutpoint.
-- **The Hanley-McNeil fallback footnote pointed the wrong way.**It warned that the approximation
+- **The Hanley-McNeil fallback footnote pointed the wrong way.** It warned that the approximation
   "may produce narrower confidence intervals than appropriate". On the shipped data its standard
   error is 0.025863 against DeLong's 0.021092 - 22.6 percent WIDER, i.e. conservative. The formula
   itself is the standard Hanley-McNeil variance and is correct; only the footnote was wrong.
@@ -635,7 +940,7 @@ a correction to a number a clinician could already have copied into a report.
   flip still happens, because the test requires it, but the affected markers are now named both in
   the DeLong output and in a note on the comparison table, with the instruction to change
   Classification Direction and re-run if the reversed direction is the clinically correct one.
-- **DeLong's test printed confident p-values on samples too small to support them.**Its variance
+- **DeLong's test printed confident p-values on samples too small to support them.** Its variance
   is a large-sample approximation, so with few cases in either class the p-values and confidence
   intervals are too narrow. A note now appears when either class holds fewer than ten cases - the
   conventional floor for a stable AUC variance - and says that any difference should be treated as
@@ -658,7 +963,7 @@ difference 3.2e-15, maximum CI difference exactly zero - and both matched `pROC`
 hand-computed Mann-Whitney AUC, including on data rounded to only twenty distinct values. What
 differs is defaults and scope, and one of those matters:
 
-- **Their direction defaults disagree, and both analyses now explain this on screen.**For a
+- **Their direction defaults disagree, and both analyses now explain this on screen.** For a
   marker where LOWER values indicate disease - a falling haemoglobin, a falling ejection fraction
   - the same column of numbers came back as AUC 0.8999 from `enhancedROC` and 0.1001 from
   `psychopdaROC`, with nothing on screen saying why. The cause is a default, not a calculation:
@@ -709,7 +1014,7 @@ differs is defaults and scope, and one of those matters:
   wrong quantity and get a different answer without any indication. All three descriptions now
   match the package, each says explicitly what it is NOT, and `kappaSizeCI`'s printed output no
   longer labels its anticipated kappa "Null hypothesis kappa".
-- **The three analyses now agree on their shared options.**The significance level was bounded
+- **The three analyses now agree on their shared options.** The significance level was bounded
   0.01-0.99 in Power and CI but 0.01-0.20 in FixedN; all three are now 0.001-0.20. The old floor
   made a Bonferroni-adjusted alpha inexpressible, and the old ceiling admitted values that are not
   significance levels at all. Proportions parse identically everywhere (commas, semicolons or
@@ -719,10 +1024,10 @@ differs is defaults and scope, and one of those matters:
   A European decimal comma (`0,30 0,70`) used to report "Each proportion must be strictly between
   0 and 1", which is true and useless; it now names the decimal separator as the problem.
 - **The power and confidence-interval approaches answer different questions, and each now says
-  so.**For the same study they can differ by nearly threefold in required sample size, with
+  so.** For the same study they can differ by nearly threefold in required sample size, with
   nothing in either output explaining why. Each now opens by stating whether it is sizing the study
   to reject a null value or to achieve a target interval width, and names the other analysis.
-- **An alternative kappa below the null was answered silently.**It is a legitimate question -
+- **An alternative kappa below the null was answered silently.** It is a legitimate question -
   how many subjects to show agreement is WORSE than the null - but it is more often a
   transposition, and it returns a different sample size from the mirrored input (149 against 191
   on the default scenario). The output now states which way round it read the two values.
@@ -747,18 +1052,18 @@ differs is defaults and scope, and one of those matters:
   interrupt an interpreted loop) and, if it expires, refuses with a message naming the distance to
   the nearer limit and telling the user to widen the interval. Demanding but finite designs are
   untouched: 0.55-0.65, 0.58-0.62 and 0.59-0.61 still return 1,625, 9,707 and 38,203.
-- **The explanation reported the wrong quantity as the driver of the sample size.**It showed the
+- **The explanation reported the wrong quantity as the driver of the sample size.** It showed the
   "Precision width" of the interval, but `kappaSize` sizes on whichever limit lies nearer `kappa0`:
   with `kappaL = 0.55` the answer is 1,625 for every `kappaU` from 0.65 to 0.99. In one-sided mode
   `kappaU` is not used at all. The output now states the distance to the nearer limit and says
   explicitly that this, not the full width, is what determines the number of subjects.
-- **Proportions were parsed with a character class that did not mean what it looked like.**The
+- **Proportions were parsed with a character class that did not mean what it looked like.** The
   separator set was written `"[,;|\\t]+"`, which in R is the *set* of characters `,` `;` `|` `\` and
   the letter `t` - it matched a literal backslash and the letter t, but neither an actual tab nor a
   space. So `0.2, 0.3; 0.5` was accepted and `0.2, 0.3 0.5` was rejected. It is now
   `[,;|[:space:]]+`, which handles tabs and spaces properly. A European decimal comma is diagnosed
   as such rather than reported as an out-of-range proportion.
-- **`kappaSize`'s own sparse-cell caveat reached only the Summary pane.**When the computed sample
+- **`kappaSize`'s own sparse-cell caveat reached only the Summary pane.** When the computed sample
   size leaves a category with fewer than five expected subjects, the package says so in its summary
   text - a real warning about the large-sample approximation it relies on, in the one place a
   reader looking for caveats would not think to look. It is now raised in the Notes panel as well.
@@ -767,7 +1072,7 @@ differs is defaults and scope, and one of those matters:
 
 #### `kappaSizeFixedN`
 
-- **The analysis could display a lower bound of -23.78 for Cohen's kappa.**Kappa is bounded below
+- **The analysis could display a lower bound of -23.78 for Cohen's kappa.** Kappa is bounded below
   by -1. `kappaSize` searches by decrementing rho from `kappa0` in steps of 0.001 with no floor, so
   a combination that is inside every declared option bound - `kappa0 = 0.01`, `n = 11`, a 2%
   prevalence, `alpha = 0.001` - walks straight past -1, and the result was printed as an ordinary
@@ -775,34 +1080,34 @@ differs is defaults and scope, and one of those matters:
   down at this combination and what to change. A bound that is negative but still valid (for
   example -0.293) is reported as before, now with a sentence saying that a bound at or below zero
   means this many subjects cannot rule out agreement no better than chance.
-- **A sample size of infinity hung the analysis forever.**The guard read
+- **A sample size of infinity hung the analysis forever.** The guard read
   `is.na(n) || n < 2 || n != round(n)`, and `Inf` passes all three clauses - `is.na(Inf)` is FALSE,
   `Inf < 2` is FALSE, and `Inf != round(Inf)` is FALSE. Inside the engine the test statistic
   becomes NaN and the search never terminates. `n` is now bounded 11 to 1,000,000 at the option
   level and checked for finiteness and integrality in the backend.
-- **Sample sizes below 11 produced the package's own message, which is off by one.**Every
+- **Sample sizes below 11 produced the package's own message, which is off by one.** Every
   `kappaSize` FixedN engine contains `if (n <= 10) stop("Sorry, your study should enroll at least
   10 subjects.")`, while the option permitted `n` down to 2 - so 2 through 10 reached the engine
   only to bounce back as a raw vendor string that names the wrong threshold. The option floor is
   now 11 and the message explains that the method is a large-sample approximation.
-- **The significance level was checked against the wrong bounds in the backend.**The backend
+- **The significance level was checked against the wrong bounds in the backend.** The backend
   accepted anything in (0, 1) while the option compiles to 0.001-0.20, so an R caller passing
   `alpha = 0.5` reached the engine and got "missing value where TRUE/FALSE needed". The two now
   agree. The proportions-sum tolerance likewise used `all.equal`, which accepts a sum within 0.001
   inclusive, while the engine rejects at 0.001 exclusive; the module now uses the engine's own
   predicate so no input can slip past the clear message into the vendor one.
-- **A rejected re-run left the previous run's numbers on screen.**jamovi calls `.run()` on the
+- **A rejected re-run left the previous run's numbers on screen.** jamovi calls `.run()` on the
   same object for every option change, and validation rejects before anything new is written, so an
   invalid edit produced a red error above a stale, still-plausible-looking result. All panels are
   cleared first, as the two sibling analyses already did.
-- **The study explanation invited a misreading.**It opened "Researchers would like to determine
+- **The study explanation invited a misreading.** It opened "Researchers would like to determine
   the expected lower bound for kappa0=0.6", which reads as though the bound belonged to `kappa0`.
   It does not: `kappa0` here is the agreement the researchers *anticipate observing*, and the bound
   is the worst case still compatible with it at this sample size. The wording now says so, states
   the confidence level, reports the answer it is explaining, and says "the prevalence of the trait
   is" rather than "the proportions of the outcome categories are" when a single binary prevalence
   was entered.
-- **A Notes panel was added.**It states the method and, in particular, that `kappa0` here is the
+- **A Notes panel was added.** It states the method and, in particular, that `kappa0` here is the
   anticipated agreement and *not* a null hypothesis value as it is in `kappaSizePower` - the two
   analyses sit in the same menu and take an identically named argument with different meanings. It
   warns when a category is expected to contain fewer than five subjects, and warns in red when the
@@ -847,7 +1152,7 @@ definitions. These articles are published to
   is mainly about a shipped analysis and only borrows one of these, at the point of use - saying
   that the analysis is documented ahead of a future release, that its options and output may change,
   and that it will not appear in the jamovi menu yet. No article was deleted.
-- **`07-kappasizeci-comprehensive.Rmd` described `kappa0` as a null hypothesis value.**For
+- **`07-kappasizeci-comprehensive.Rmd` described `kappa0` as a null hypothesis value.** For
   `kappaSizeCI` it is the *anticipated* kappa; only `kappaSizePower` treats it as a null. The
   article now states which it is and names the other analysis, since the two sit in the same menu
   and take an identically named argument meaning different things. The same article claimed that
@@ -855,10 +1160,10 @@ definitions. These articles are published to
   sizes on whichever limit lies nearer `kappa0`, so with `kappaL = 0.55` the answer is 1,625
   subjects for every `kappaU` from 0.65 to 0.99, and in one-sided mode `kappaU` is ignored
   entirely. It also listed the rater options as 2 to 5 where the analysis accepts 2 to 6.
-- **`nogoldstandard-documentation.md` still gave the old default.**It listed
+- **`nogoldstandard-documentation.md` still gave the old default.** It listed
   `method` as defaulting to `all_positive` in two places; the 1.0.4 default is `latent_class`, and
   the reason for the change is now stated alongside it.
-- **Four articles illustrate `agreement()` with an argument list that no longer exists.**Twenty-
+- **Four articles illustrate `agreement()` with an argument list that no longer exists.** Twenty-
   eight code chunks use names such as `rater1_var`, `agreement_type`, `pathologyContext` and
   `diagnosticStyleAnalysis`, none of which have existed for some time - copying them yields
   `unused argument`. Every chunk in these articles is `eval = FALSE`, so nothing broke and the
@@ -876,13 +1181,13 @@ definitions. These articles are published to
 
 ## Removed
 
-- **Pruned NAMESPACE exports for analyses that this module does not ship,**together with unused
+- **Pruned NAMESPACE exports for analyses that this module does not ship,** together with unused
   `importFrom` declarations. Seven exports were removed (`clinicalscore`, `decisioncurve`,
   `latentbiomarker`, `leaveonecenterout`, `mageeequation`, `misclassificationbias`,
   `timedependentdca`) along with about 25 unused imports (`dplyr::arrange`/`filter`/`summarise`,
   several `ggplot2` and `graphics` functions, `stats::complete.cases`, and others). No shipped
   analysis was affected. `.Rbuildignore` gained `temp` and `backups` patterns.
-- **`boot` and `survival` were dropped from `Imports`.**Neither is used anywhere in the package:
+- **`boot` and `survival` were dropped from `Imports`.** Neither is used anywhere in the package:
   no `::` call, no `NAMESPACE` import, and no bare call to any function they export. jamovi
   installs every package in `Imports` the first time a module is used, so two unused dependencies
   and their own dependency trees were being downloaded by every user for nothing.
@@ -906,13 +1211,13 @@ definition was touched.
   interval changed** -- only the label was wrong. `decisioncombine` was checked and left alone: its
   own `.calcWilsonCI()` genuinely is Wilson and genuinely populates the CI table it describes, so
   its labelling was already correct.
-- **`decisioncompare` advertised likelihood-ratio confidence intervals it never computes.**The
+- **`decisioncompare` advertised likelihood-ratio confidence intervals it never computes.** The
   per-test table is filtered to a row set that excludes `lr.pos`/`lr.neg`, and the LRP/LRN columns
   carry no lower/upper bounds -- so no likelihood-ratio interval is rendered anywhere in that
   analysis. The Assumptions panel now states that likelihood ratios are point estimates only, and
   describes the intervals that *are* shown: Clopper-Pearson for the proportions, the user's chosen
   method (Wilson by default) for Overall Percent Agreement, and Wald for paired differences.
-- **`decisioncalculator` overstated the reach of its continuity correction.**The notice said the
+- **`decisioncalculator` overstated the reach of its continuity correction.** The notice said the
   Haldane-Anscombe 0.5 correction was applied to "likelihood ratios, diagnostic odds ratio, and
   confidence intervals". It is applied to the point estimates only -- `epi.tests()` is fed the raw
   table -- so the intervals are uncorrected and may be undefined for those statistics when a cell
@@ -925,7 +1230,7 @@ definition was touched.
   `NA_character_` as the "unset" sentinel, which compares to a full-length, never-matching
   condition. Behaviour with the levels *set* is unchanged: an explicitly chosen negative level
   still restricts the analysis to those two levels and drops rows with any other level.
-- **Test and gold-standard variables were required arguments of the R function.**An option with
+- **Test and gold-standard variables were required arguments of the R function.** An option with
   no default in its jamovi definition compiles to a bare parameter, so calling the analysis from
   R without it failed with `argument "X" is missing, with no default` before the analysis's own
   validation could produce a usable message. Now defaulting to `NULL`: `agreement` (`vars`),
@@ -935,7 +1240,7 @@ definition was touched.
 
 ## Added
 
-- **Automated GitHub release (`.github/workflows/release.yaml`).**A push to the default branch
+- **Automated GitHub release (`.github/workflows/release.yaml`).** A push to the default branch
   touching `DESCRIPTION` or `jamovi/0000.yaml` cross-checks the two version strings, refuses to
   proceed if they disagree, and -- if the tag does not already exist -- tags `v<version>` and
   publishes a release whose notes are the matching section of this file.
@@ -950,7 +1255,7 @@ definition was touched.
 
 # meddecide 0.0.46 (2026-07-04)
 
-This release consolidates every change since 0.0.32.69 (unreleased versions 0.0.33 through 0.0.46 roll into this entry). The headline is a large expansion of **`agreement()`**into a comprehensive interrater/intrarater reliability suite (20+ new agreement statistics, tests, and visualizations), robustness and input-validation hardening of the ROC modules, one-sided confidence-interval support in the kappa sample-size tools, and package infrastructure updates (minimum jamovi app raised to 2.7.27, new imports, dataset cleanup).
+This release consolidates every change since 0.0.32.69 (unreleased versions 0.0.33 through 0.0.46 roll into this entry). The headline is a large expansion of **`agreement()`** into a comprehensive interrater/intrarater reliability suite (20+ new agreement statistics, tests, and visualizations), robustness and input-validation hardening of the ROC modules, one-sided confidence-interval support in the kappa sample-size tools, and package infrastructure updates (minimum jamovi app raised to 2.7.27, new imports, dataset cleanup).
 
 ## Major Changes
 
