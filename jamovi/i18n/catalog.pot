@@ -9839,8 +9839,8 @@ msgstr ""
 msgid "DECISION BASED ON MEASURE"
 msgstr ""
 
-#: package/analyses/cotest.menuSubgroup
 #: package/analyses/decisioncalculator.menuSubgroup
+#: package/analyses/cotest.menuSubgroup
 #: package/analyses/sequentialtests.menuSubgroup
 #: cotest/options.menuSubgroup
 #: decisioncalculator/options.menuSubgroup
@@ -17024,9 +17024,9 @@ msgid "Measures"
 msgstr ""
 
 #: package/analyses/agreement.menuGroup
-#: package/analyses/cotest.menuGroup
 #: package/analyses/decision.menuGroup
 #: package/analyses/decisioncalculator.menuGroup
+#: package/analyses/cotest.menuGroup
 #: package/analyses/decisioncombine.menuGroup
 #: package/analyses/decisioncompare.menuGroup
 #: package/analyses/decisioncurve.menuGroup

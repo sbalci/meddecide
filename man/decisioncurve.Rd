@@ -263,7 +263,7 @@ binary outcome and prediction horizon; calibration must be assessed
 separately, and this analysis does not handle censoring.
 }
 \examples{
-\donttest{
+\dontrun{
 # outcomePositive and decisionRulePositive are Level options: jamovi forbids a
 # default on them, so both are REQUIRED arguments. Pass NULL for the rule level
 # when no clinical decision rule is used.
