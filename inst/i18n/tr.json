@@ -1603,6 +1603,9 @@
             "A residual above %.2f (the 5%% point of chi-squared on 1 degree of freedom) is evidence that the pair does not err independently. This is a descriptive check, not a formal test: the residuals are correlated with one another and no multiplicity adjustment is applied.": [
                 "%.2f üzerindeki bir kalıntı (1 serbestlik derecesinde ki-karenin %%5 noktası), çiftin bağımsız olarak hata yapmadığının kanıtıdır. Bu betimsel bir kontroldür, resmi bir test değildir: kalıntılar birbiriyle korelasyonludur ve hiçbir çokluk düzeltmesi uygulanmaz."
             ],
+            "A screening test and a confirmatory test against a gold standard, for serial and parallel combinations.": [
+                ""
+            ],
             "A sensitive imaging test paired with a highly specific microbiological one; advanced disease makes both more likely to be positive.": [
                 "Duyarlı bir görüntüleme testi, son derece özgül bir mikrobiyolojik testle eşleştirilmiştir; ileri evre hastalık her ikisinin de pozitif olma olasılığını artırır."
             ],
@@ -3415,6 +3418,12 @@
             "Cannot interpret": [
                 "Yorumlanamaz"
             ],
+            "Cardiac Biomarker ROC": [
+                ""
+            ],
+            "Cardiac Risk Models": [
+                ""
+            ],
             "Case": [
                 "Olgu"
             ],
@@ -5025,6 +5034,9 @@
             ],
             "CT Scan": [
                 "BT Taraması"
+            ],
+            "CT, MRI and a biomarker against pathology, for comparing diagnostic tests.": [
+                ""
             ],
             "Current": [
                 "Mevcut"
@@ -6994,6 +7006,9 @@
             "Fit a flexible calibration curve by logistic regression of the outcome on a natural cubic spline of the logit of the predicted probability, a variant of the flexible calibration curves of Austin & Steyerberg (2019), who used loess and restricted cubic splines on the probability scale. Adds the smooth curve to the calibration plot and the integrated calibration index (ICI, the mean absolute difference between the curve and the diagonal) with E50, E90 and Emax to the calibration summary. Requires calibrationAnalysis.": [
                 "Sonlanımın, tahmin edilen olasılığın logitinin doğal kübik spline'ı üzerine lojistik regresyonuyla esnek bir kalibrasyon eğrisi uydurur; bu, Austin & Steyerberg (2019) çalışmasındaki esnek kalibrasyon eğrilerinin bir varyantıdır (onlar olasılık ölçeğinde loess ve kısıtlı kübik spline kullanmıştır). Düzgün eğriyi kalibrasyon grafiğine, entegre kalibrasyon indeksini (ICI, eğri ile köşegen arasındaki ortalama mutlak fark) ise E50, E90 ve Emax ile birlikte kalibrasyon özetine ekler. calibrationAnalysis gerektirir."
             ],
+            "Five cytopathologists rating thyroid nodules on the Bethesda categories.": [
+                ""
+            ],
             "Fixed Analysis Type": [
                 "Sabit Analiz Türü"
             ],
@@ -7881,6 +7896,9 @@
             ],
             "Illustrative unit cost": [
                 "Açıklayıcı birim maliyet"
+            ],
+            "Imaging Tests Comparison": [
+                ""
             ],
             "Imbalance Severity": [
                 "Dengesizlik Şiddeti"
@@ -11809,6 +11827,9 @@
             "Pairwise McNemar p-values were adjusted for multiple comparisons with the Holm-Bonferroni method; the confidence intervals for the paired differences were not.": [
                 "İkili McNemar p değerleri Holm-Bonferroni yöntemiyle çoklu karşılaştırma için düzeltildi; eşleştirilmiş farkların güven aralıkları düzeltilmedi."
             ],
+            "PanNEN Classification": [
+                ""
+            ],
             "Pap cytology": [
                 "Pap sitoloji"
             ],
@@ -11931,6 +11952,12 @@
             ],
             "Pathologists linked through shared cases": [
                 "Ortak olgular aracılığıyla bağlantılı patologlar"
+            ],
+            "Pathologists Without a Gold Standard": [
+                ""
+            ],
+            "Pathology features separating PanNEC from PanNET G3, for LASSO logistic regression.": [
+                ""
             ],
             "patient": [
                 "hasta"
@@ -12741,6 +12768,9 @@
             ],
             "Predicted risks differing by at most sqrt(machine epsilon), approximately 1.5e-8, are treated as numerical ties in both continuous and categorical NRI. This prevents numerical roundoff from becoming reclassification and is not a threshold for clinical importance.": [
                 "En fazla sqrt(makine epsilonu), yaklaşık 1.5e-8, kadar farklı olan tahmini riskler hem sürekli hem kategorik NRI'de sayısal eşitlik olarak değerlendirilir. Bu, sayısal yuvarlamanın yeniden sınıflandırma sayılmasını önler; klinik önem eşiği değildir."
+            ],
+            "Predicted risks from three cardiac risk models and the observed events, for decision curve analysis.": [
+                ""
             ],
             "Prediction column (first rater)": [
                 "Tahmin sütunu (ilk değerlendirici)"
@@ -14319,6 +14349,9 @@
             ],
             "Screening": [
                 "Tarama"
+            ],
+            "Screening and Confirmatory Testing": [
+                ""
             ],
             "Screening Application Guidelines": [
                 "Tarama Uygulama Kılavuzu"
@@ -17545,6 +17578,9 @@
             "This was read from the data, not specified in advance — set Direction explicitly to pin it.": [
                 "Bu, önceden belirtilmek yerine verilerden okundu — sabitlemek için Yön ayarını açıkça belirleyin."
             ],
+            "Three pathologists' benign/malignant calls with no reference standard.": [
+                ""
+            ],
             "Threshold": [
                 "Eşik"
             ],
@@ -17595,6 +17631,9 @@
             ],
             "Thresholds for table (probabilities 0-1, comma-separated)": [
                 "Tablo için eşikler (0-1 arası olasılıklar, virgülle ayrılmış)"
+            ],
+            "Thyroid Cytology Agreement (Bethesda)": [
+                ""
             ],
             "Tie Breakers": [
                 "Eşitlikleri Çözme Yöntemi"
@@ -17814,6 +17853,9 @@
             ],
             "Troponin + ECG (demo only)": [
                 "Troponin + EKG (yalnızca demo)"
+            ],
+            "Troponin, BNP and creatinine for myocardial infarction, for ROC and cutpoint analysis.": [
+                ""
             ],
             "True Negative": [
                 "Gerçek Negatif"

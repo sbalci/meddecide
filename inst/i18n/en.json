@@ -1603,6 +1603,9 @@
             "A residual above %.2f (the 5%% point of chi-squared on 1 degree of freedom) is evidence that the pair does not err independently. This is a descriptive check, not a formal test: the residuals are correlated with one another and no multiplicity adjustment is applied.": [
                 ""
             ],
+            "A screening test and a confirmatory test against a gold standard, for serial and parallel combinations.": [
+                ""
+            ],
             "A sensitive imaging test paired with a highly specific microbiological one; advanced disease makes both more likely to be positive.": [
                 ""
             ],
@@ -3415,6 +3418,12 @@
             "Cannot interpret": [
                 ""
             ],
+            "Cardiac Biomarker ROC": [
+                ""
+            ],
+            "Cardiac Risk Models": [
+                ""
+            ],
             "Case": [
                 ""
             ],
@@ -5024,6 +5033,9 @@
                 ""
             ],
             "CT Scan": [
+                ""
+            ],
+            "CT, MRI and a biomarker against pathology, for comparing diagnostic tests.": [
                 ""
             ],
             "Current": [
@@ -6994,6 +7006,9 @@
             "Fit a flexible calibration curve by logistic regression of the outcome on a natural cubic spline of the logit of the predicted probability, a variant of the flexible calibration curves of Austin & Steyerberg (2019), who used loess and restricted cubic splines on the probability scale. Adds the smooth curve to the calibration plot and the integrated calibration index (ICI, the mean absolute difference between the curve and the diagonal) with E50, E90 and Emax to the calibration summary. Requires calibrationAnalysis.": [
                 ""
             ],
+            "Five cytopathologists rating thyroid nodules on the Bethesda categories.": [
+                ""
+            ],
             "Fixed Analysis Type": [
                 ""
             ],
@@ -7880,6 +7895,9 @@
                 ""
             ],
             "Illustrative unit cost": [
+                ""
+            ],
+            "Imaging Tests Comparison": [
                 ""
             ],
             "Imbalance Severity": [
@@ -11809,6 +11827,9 @@
             "Pairwise McNemar p-values were adjusted for multiple comparisons with the Holm-Bonferroni method; the confidence intervals for the paired differences were not.": [
                 ""
             ],
+            "PanNEN Classification": [
+                ""
+            ],
             "Pap cytology": [
                 ""
             ],
@@ -11930,6 +11951,12 @@
                 ""
             ],
             "Pathologists linked through shared cases": [
+                ""
+            ],
+            "Pathologists Without a Gold Standard": [
+                ""
+            ],
+            "Pathology features separating PanNEC from PanNET G3, for LASSO logistic regression.": [
                 ""
             ],
             "patient": [
@@ -12740,6 +12767,9 @@
                 ""
             ],
             "Predicted risks differing by at most sqrt(machine epsilon), approximately 1.5e-8, are treated as numerical ties in both continuous and categorical NRI. This prevents numerical roundoff from becoming reclassification and is not a threshold for clinical importance.": [
+                ""
+            ],
+            "Predicted risks from three cardiac risk models and the observed events, for decision curve analysis.": [
                 ""
             ],
             "Prediction column (first rater)": [
@@ -14318,6 +14348,9 @@
                 ""
             ],
             "Screening": [
+                ""
+            ],
+            "Screening and Confirmatory Testing": [
                 ""
             ],
             "Screening Application Guidelines": [
@@ -17545,6 +17578,9 @@
             "This was read from the data, not specified in advance — set Direction explicitly to pin it.": [
                 ""
             ],
+            "Three pathologists' benign/malignant calls with no reference standard.": [
+                ""
+            ],
             "Threshold": [
                 ""
             ],
@@ -17594,6 +17630,9 @@
                 ""
             ],
             "Thresholds for table (probabilities 0-1, comma-separated)": [
+                ""
+            ],
+            "Thyroid Cytology Agreement (Bethesda)": [
                 ""
             ],
             "Tie Breakers": [
@@ -17813,6 +17852,9 @@
                 ""
             ],
             "Troponin + ECG (demo only)": [
+                ""
+            ],
+            "Troponin, BNP and creatinine for myocardial infarction, for ROC and cutpoint analysis.": [
                 ""
             ],
             "True Negative": [

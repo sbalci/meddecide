@@ -5169,6 +5169,12 @@ msgstr ""
 "bir kontroldür, resmi bir test değildir: kalıntılar birbiriyle "
 "korelasyonludur ve hiçbir çokluk düzeltmesi uygulanmaz."
 
+#: package/datasets/ScreeningandConfirmatoryTesting.description
+msgid ""
+"A screening test and a confirmatory test against a gold standard, for serial "
+"and parallel combinations."
+msgstr ""
+
 #: R/cotest.b.R
 msgid ""
 "A sensitive imaging test paired with a highly specific microbiological one; "
@@ -9080,6 +9086,14 @@ msgstr ""
 msgid "Cannot interpret"
 msgstr "Yorumlanamaz"
 
+#: package/datasets/CardiacBiomarkerROC.name
+msgid "Cardiac Biomarker ROC"
+msgstr ""
+
+#: package/datasets/CardiacRiskModels.name
+msgid "Cardiac Risk Models"
+msgstr ""
+
 #: agreement/results/loaDetailTable.columns.title
 msgid "Case"
 msgstr "Olgu"
@@ -12139,6 +12153,10 @@ msgstr "Çapraz doğrulama grafiği"
 #: R/sequentialtests.b.R
 msgid "CT Scan"
 msgstr "BT Taraması"
+
+#: package/datasets/ImagingTestsComparison.description
+msgid "CT, MRI and a biomarker against pathology, for comparing diagnostic tests."
+msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Current"
@@ -16266,6 +16284,10 @@ msgstr ""
 "E90 ve Emax ile birlikte kalibrasyon özetine ekler. calibrationAnalysis "
 "gerektirir."
 
+#: package/datasets/ThyroidCytologyAgreement(Bethesda).description
+msgid "Five cytopathologists rating thyroid nodules on the Bethesda categories."
+msgstr ""
+
 #: psychopdaROC/options/fixedAnalysisType.title
 msgid "Fixed Analysis Type"
 msgstr "Sabit Analiz Türü"
@@ -18129,6 +18151,10 @@ msgstr "Açıklayıcı tümör belirteci senaryosu"
 #: sequentialtests/options/test2_cost.title
 msgid "Illustrative unit cost"
 msgstr "Açıklayıcı birim maliyet"
+
+#: package/datasets/ImagingTestsComparison.name
+msgid "Imaging Tests Comparison"
+msgstr ""
 
 #: enhancedROC/results/results/imbalanceMetrics.columns.title
 msgid "Imbalance Severity"
@@ -26445,6 +26471,10 @@ msgstr ""
 "İkili McNemar p değerleri Holm-Bonferroni yöntemiyle çoklu karşılaştırma "
 "için düzeltildi; eşleştirilmiş farkların güven aralıkları düzeltilmedi."
 
+#: package/datasets/PanNENClassification.name
+msgid "PanNEN Classification"
+msgstr ""
+
 #: R/cotest.b.R
 msgid "Pap cytology"
 msgstr "Pap sitoloji"
@@ -26656,6 +26686,16 @@ msgstr "Patologlar"
 #: R/agreement.b.R
 msgid "Pathologists linked through shared cases"
 msgstr "Ortak olgular aracılığıyla bağlantılı patologlar"
+
+#: package/datasets/PathologistsWithoutaGoldStandard.name
+msgid "Pathologists Without a Gold Standard"
+msgstr ""
+
+#: package/datasets/PanNENClassification.description
+msgid ""
+"Pathology features separating PanNEC from PanNET G3, for LASSO logistic "
+"regression."
+msgstr ""
 
 #: decisioncalculator/options/analysisUnit.default
 msgid "patient"
@@ -28315,6 +28355,12 @@ msgstr ""
 "değerlendirilir. Bu, sayısal yuvarlamanın yeniden sınıflandırma sayılmasını "
 "önler; klinik önem eşiği değildir."
 
+#: package/datasets/CardiacRiskModels.description
+msgid ""
+"Predicted risks from three cardiac risk models and the observed events, for "
+"decision curve analysis."
+msgstr ""
+
 #: agreement/options/predictionColumn.title
 msgid "Prediction column (first rater)"
 msgstr "Tahmin sütunu (ilk değerlendirici)"
@@ -29967,11 +30013,11 @@ msgstr "Referans sınıf"
 
 #: R/decisioncompare.b.R
 #: decision/options/referenceType.title
-#: decision/ui[0].label
 #: decisioncompare/options/referenceType.title
 msgid "Reference interpretation"
 msgstr "Referans yorumu"
 
+#: decision/ui[0].label
 #: decisioncompare/ui[0].label
 msgid "Reference Interpretation"
 msgstr "Referans Yorumu"
@@ -31422,6 +31468,10 @@ msgstr "Puanlama Sistemi Ters Yönde Çalışıyor"
 #: enhancedROC/options/clinicalContext/screening.title
 msgid "Screening"
 msgstr "Tarama"
+
+#: package/datasets/ScreeningandConfirmatoryTesting.name
+msgid "Screening and Confirmatory Testing"
+msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Screening Application Guidelines"
@@ -40030,6 +40080,10 @@ msgstr ""
 "Bu, önceden belirtilmek yerine verilerden okundu — sabitlemek için Yön "
 "ayarını açıkça belirleyin."
 
+#: package/datasets/PathologistsWithoutaGoldStandard.description
+msgid "Three pathologists' benign/malignant calls with no reference standard."
+msgstr ""
+
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
 #: decisioncurve/results/clinicalImpactTable.columns.title
@@ -40135,6 +40189,10 @@ msgstr "Eşikler ve Kesme Noktaları"
 #: decisioncurve/ui[2][0]/selectedThresholds.label
 msgid "Thresholds for table (probabilities 0-1, comma-separated)"
 msgstr "Tablo için eşikler (0-1 arası olasılıklar, virgülle ayrılmış)"
+
+#: package/datasets/ThyroidCytologyAgreement(Bethesda).name
+msgid "Thyroid Cytology Agreement (Bethesda)"
+msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Tie Breakers"
@@ -40514,6 +40572,12 @@ msgstr "Troponin (Test 1) + EKG (Test 2)"
 #: cotest/options/preset/troponin_ecg.title
 msgid "Troponin + ECG (demo only)"
 msgstr "Troponin + EKG (yalnızca demo)"
+
+#: package/datasets/CardiacBiomarkerROC.description
+msgid ""
+"Troponin, BNP and creatinine for myocardial infarction, for ROC and cutpoint "
+"analysis."
+msgstr ""
 
 #: R/decision.b.R
 #: decisioncurve/results/decisionConsequencesTable.columns.title

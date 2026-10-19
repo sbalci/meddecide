@@ -3660,6 +3660,12 @@ msgid ""
 "no multiplicity adjustment is applied."
 msgstr ""
 
+#: package/datasets/ScreeningandConfirmatoryTesting.description
+msgid ""
+"A screening test and a confirmatory test against a gold standard, for serial "
+"and parallel combinations."
+msgstr ""
+
 #: R/cotest.b.R
 msgid ""
 "A sensitive imaging test paired with a highly specific microbiological one; "
@@ -6868,6 +6874,14 @@ msgstr ""
 msgid "Cannot interpret"
 msgstr ""
 
+#: package/datasets/CardiacBiomarkerROC.name
+msgid "Cardiac Biomarker ROC"
+msgstr ""
+
+#: package/datasets/CardiacRiskModels.name
+msgid "Cardiac Risk Models"
+msgstr ""
+
 #: agreement/results/loaDetailTable.columns.title
 msgid "Case"
 msgstr ""
@@ -9527,6 +9541,10 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "CT Scan"
+msgstr ""
+
+#: package/datasets/ImagingTestsComparison.description
+msgid "CT, MRI and a biomarker against pathology, for comparing diagnostic tests."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -12971,6 +12989,10 @@ msgid ""
 "and Emax to the calibration summary. Requires calibrationAnalysis."
 msgstr ""
 
+#: package/datasets/ThyroidCytologyAgreement(Bethesda).description
+msgid "Five cytopathologists rating thyroid nodules on the Bethesda categories."
+msgstr ""
+
 #: psychopdaROC/options/fixedAnalysisType.title
 msgid "Fixed Analysis Type"
 msgstr ""
@@ -14508,6 +14530,10 @@ msgstr ""
 #: sequentialtests/options/test1_cost.title
 #: sequentialtests/options/test2_cost.title
 msgid "Illustrative unit cost"
+msgstr ""
+
+#: package/datasets/ImagingTestsComparison.name
+msgid "Imaging Tests Comparison"
 msgstr ""
 
 #: enhancedROC/results/results/imbalanceMetrics.columns.title
@@ -21404,6 +21430,10 @@ msgid ""
 "were not."
 msgstr ""
 
+#: package/datasets/PanNENClassification.name
+msgid "PanNEN Classification"
+msgstr ""
+
 #: R/cotest.b.R
 msgid "Pap cytology"
 msgstr ""
@@ -21594,6 +21624,16 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Pathologists linked through shared cases"
+msgstr ""
+
+#: package/datasets/PathologistsWithoutaGoldStandard.name
+msgid "Pathologists Without a Gold Standard"
+msgstr ""
+
+#: package/datasets/PanNENClassification.description
+msgid ""
+"Pathology features separating PanNEC from PanNET G3, for LASSO logistic "
+"regression."
 msgstr ""
 
 #: decisioncalculator/options/analysisUnit.default
@@ -23014,6 +23054,12 @@ msgid ""
 "not a threshold for clinical importance."
 msgstr ""
 
+#: package/datasets/CardiacRiskModels.description
+msgid ""
+"Predicted risks from three cardiac risk models and the observed events, for "
+"decision curve analysis."
+msgstr ""
+
 #: agreement/options/predictionColumn.title
 msgid "Prediction column (first rater)"
 msgstr ""
@@ -24430,11 +24476,11 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 #: decision/options/referenceType.title
-#: decision/ui[0].label
 #: decisioncompare/options/referenceType.title
 msgid "Reference interpretation"
 msgstr ""
 
+#: decision/ui[0].label
 #: decisioncompare/ui[0].label
 msgid "Reference Interpretation"
 msgstr ""
@@ -25685,6 +25731,10 @@ msgstr ""
 #: R/enhancedROC.b.R
 #: enhancedROC/options/clinicalContext/screening.title
 msgid "Screening"
+msgstr ""
+
+#: package/datasets/ScreeningandConfirmatoryTesting.name
+msgid "Screening and Confirmatory Testing"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -32200,6 +32250,10 @@ msgid ""
 "explicitly to pin it."
 msgstr ""
 
+#: package/datasets/PathologistsWithoutaGoldStandard.description
+msgid "Three pathologists' benign/malignant calls with no reference standard."
+msgstr ""
+
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
 #: decisioncurve/results/clinicalImpactTable.columns.title
@@ -32294,6 +32348,10 @@ msgstr ""
 
 #: decisioncurve/ui[2][0]/selectedThresholds.label
 msgid "Thresholds for table (probabilities 0-1, comma-separated)"
+msgstr ""
+
+#: package/datasets/ThyroidCytologyAgreement(Bethesda).name
+msgid "Thyroid Cytology Agreement (Bethesda)"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -32639,6 +32697,12 @@ msgstr ""
 
 #: cotest/options/preset/troponin_ecg.title
 msgid "Troponin + ECG (demo only)"
+msgstr ""
+
+#: package/datasets/CardiacBiomarkerROC.description
+msgid ""
+"Troponin, BNP and creatinine for myocardial infarction, for ROC and cutpoint "
+"analysis."
 msgstr ""
 
 #: R/decision.b.R

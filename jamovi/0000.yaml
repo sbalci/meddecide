@@ -6,7 +6,7 @@ jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-10-18'
+date: '2026-10-19'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -277,6 +277,51 @@ datasets:
     tags:
       - Kappa
       - Sensitivity
+  - name: Imaging Tests Comparison
+    path: decisioncompare_imaging.omv
+    description: CT, MRI and a biomarker against pathology, for comparing diagnostic tests.
+    tags:
+      - Diagnostic Test Comparison
+  - name: Screening and Confirmatory Testing
+    path: decisioncombine_screening.omv
+    description: >-
+      A screening test and a confirmatory test against a gold standard, for
+      serial and parallel combinations.
+    tags:
+      - Combined Tests
+  - name: Pathologists Without a Gold Standard
+    path: nogoldstandard_pathology.omv
+    description: Three pathologists' benign/malignant calls with no reference standard.
+    tags:
+      - No Gold Standard
+  - name: Thyroid Cytology Agreement (Bethesda)
+    path: thyroid_agreement_data.omv
+    description: Five cytopathologists rating thyroid nodules on the Bethesda categories.
+    tags:
+      - Kappa
+      - Agreement
+  - name: Cardiac Biomarker ROC
+    path: psychopdaROC_cardiac.omv
+    description: >-
+      Troponin, BNP and creatinine for myocardial infarction, for ROC and
+      cutpoint analysis.
+    tags:
+      - ROC
+  - name: Cardiac Risk Models
+    path: dca_test_data.omv
+    description: >-
+      Predicted risks from three cardiac risk models and the observed events,
+      for decision curve analysis.
+    tags:
+      - Decision Curve Analysis
+  - name: PanNEN Classification
+    path: lassologistic_pannen.omv
+    description: >-
+      Pathology features separating PanNEC from PanNET G3, for LASSO logistic
+      regression.
+    tags:
+      - LASSO
+      - Prediction Model
 usesNative: true
 minApp: 2.7.27
 
