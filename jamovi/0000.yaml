@@ -1,12 +1,12 @@
 ---
 title: Functions for Medical Decision in ClinicoPath jamovi Module
 name: meddecide
-version: 1.1.0
+version: 1.1.1
 jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-10-19'
+date: '2026-10-20'
 type: R
 description: >-
   A comprehensive toolkit for medical decision analysis and reliability
@@ -128,40 +128,6 @@ analyses:
       ratios, accuracy, and uncertainty intervals. Descriptive rankings are
       sample-dependent analytical summaries, not clinical guides or validated
       recommendations.
-  - title: Compare Medical Decision Tests
-    name: decisioncompare
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision
-    menuTitle: Compare Medical Decision Tests
-    menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
-    description: >
-      Function for comparing multiple Medical Decision Tests. Compares
-      sensitivity, specificity, positive predictive value, negative predictive
-      value, and other metrics between different tests against the same gold
-      standard. Includes statistical comparison using McNemar's test and
-      confidence intervals for differences. Tests are paired within each case;
-      cases must be independent across rows. Repeated specimens or lesions from
-      one patient require a method that accounts for clustering. Explicit
-      positive and negative levels are required for the reference and every
-      selected test. Other observed levels require explicit exclusion or prior
-      recoding; they are never pooled as negative.
-  - title: Decision Curve Analysis
-    name: decisioncurve
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision Curve Analysis
-    menuTitle: Decision Curve Analysis
-    menuSubtitle: Clinical Utility, Net Benefit, Threshold Analysis
-    description: >
-      Decision Curve Analysis for evaluating the clinical utility of prediction
-      models and diagnostic tests. Calculates net benefit across threshold
-      probabilities to determine if using a model provides more benefit than
-      default strategies. Inputs must be probabilities for a clearly defined
-      binary outcome and prediction horizon; calibration must be assessed
-      separately, and this analysis does not handle censoring.
   - title: Clinical ROC Analysis
     name: enhancedROC
     ns: meddecide
@@ -205,6 +171,61 @@ analyses:
       two-sided significance level and power - the power approach of the
       kappaSize package. Use kappaSizeCI for a target confidence-interval width,
       and kappaSizeFixedN when the number of subjects is already fixed.
+  - title: Sequential Testing Analysis
+    name: sequentialtests
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Calculators
+    menuTitle: Sequential Testing Analysis
+    menuSubtitle: Sequential Test Analysis
+    description: >
+      Analyzes how diagnostic accuracy changes when applying two tests in
+      sequence, comparing three different testing strategies: serial positive
+      (confirmation), serial negative (exclusion), and parallel testing.
+      Provides comprehensive analysis including population flow, cost
+      implications, and diagnostic plots, so you can explore how diagnostic
+      strategies behave under explicit assumptions, compare hypothetical test
+      sequences, weigh trade-offs between sensitivity and specificity, and
+      illustrate expected testing volume and cost under user-supplied
+      assumptions. The named scenarios and their values are teaching examples
+      only, not clinical guidance or validated diagnostic pathways. Replace all
+      example parameters with estimates applicable to the intended population
+      before interpreting results.
+  - title: Compare Medical Decision Tests
+    name: decisioncompare
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision
+    menuTitle: Compare Medical Decision Tests
+    menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
+    description: >
+      Function for comparing multiple Medical Decision Tests. Compares
+      sensitivity, specificity, positive predictive value, negative predictive
+      value, and other metrics between different tests against the same gold
+      standard. Includes statistical comparison using McNemar's test and
+      confidence intervals for differences. Tests are paired within each case;
+      cases must be independent across rows. Repeated specimens or lesions from
+      one patient require a method that accounts for clustering. Explicit
+      positive and negative levels are required for the reference and every
+      selected test. Other observed levels require explicit exclusion or prior
+      recoding; they are never pooled as negative.
+  - title: Decision Curve Analysis
+    name: decisioncurve
+    ns: meddecide
+    category: analyses
+    menuGroup: meddecide
+    menuSubgroup: Decision Curve Analysis
+    menuTitle: Decision Curve Analysis
+    menuSubtitle: Clinical Utility, Net Benefit, Threshold Analysis
+    description: >
+      Decision Curve Analysis for evaluating the clinical utility of prediction
+      models and diagnostic tests. Calculates net benefit across threshold
+      probabilities to determine if using a model provides more benefit than
+      default strategies. Inputs must be probabilities for a clearly defined
+      binary outcome and prediction horizon; calibration must be assessed
+      separately, and this analysis does not handle censoring.
   - title: LASSO Logistic Regression
     name: lassologistic
     ns: meddecide
@@ -249,27 +270,6 @@ analyses:
       then use one summary per patient. Nominal coverage is not guaranteed in
       small or imbalanced samples. Cutpoints selected on these data report
       apparent performance and require validation in the intended setting.
-  - title: Sequential Testing Analysis
-    name: sequentialtests
-    ns: meddecide
-    category: analyses
-    menuGroup: meddecide
-    menuSubgroup: Decision Calculators
-    menuTitle: Sequential Testing Analysis
-    menuSubtitle: Sequential Test Analysis
-    description: >
-      Analyzes how diagnostic accuracy changes when applying two tests in
-      sequence, comparing three different testing strategies: serial positive
-      (confirmation), serial negative (exclusion), and parallel testing.
-      Provides comprehensive analysis including population flow, cost
-      implications, and diagnostic plots, so you can explore how diagnostic
-      strategies behave under explicit assumptions, compare hypothetical test
-      sequences, weigh trade-offs between sensitivity and specificity, and
-      illustrate expected testing volume and cost under user-supplied
-      assumptions. The named scenarios and their values are teaching examples
-      only, not clinical guidance or validated diagnostic pathways. Replace all
-      example parameters with estimates applicable to the intended population
-      before interpreting results.
 datasets:
   - name: histopathology including analysis
     path: histopathologyMedicalDecision.omv

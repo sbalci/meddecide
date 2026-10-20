@@ -1,3 +1,24 @@
+# meddecide 1.1.1 (2026-10-20)
+
+- Fix full-response serialization when citation pages are numeric in YAML.
+- Report 0% categorical unanimity correctly for valid complete disagreement.
+- Correct the explanation of selective zero-cell likelihood-ratio corrections;
+  estimates and interval methods are unchanged.
+- Add regressions for citation types, zero unanimity and correction explanations.
+- Retain epiR and its calculations. pander declares AGPL-3 or the OSL-3.0 in its
+  LICENSE file; library acceptance can be discussed with the jamovi team if needed.
+
+# meddecide 1.1.0 (2026-10-20)
+
+- Packages the medical-decision, ROC, agreement and kappa-planning analyses at
+  version 1.1.0. The statistical and interpretation changes since 1.0.81 are
+  documented in the 1.0.9 notes below.
+- Adds installed-package decision and ROC-wrapper regression checks with
+  synthetic, reproducible fixtures and testthat edition 3.
+
+The earlier 1.1.0 archive is superseded by the 1.1.1 candidate. Local checks and
+library submission status are recorded separately in the release preparation report.
+
 # meddecide 1.0.9 (2026-10-17)
 
 The analyses were validated against independent calculations and then independently reviewed.

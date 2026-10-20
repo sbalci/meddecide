@@ -1,42 +1,19 @@
-context("ROC Analysis")
-
-library(pROC)
-
-# synthetic dataset
-scores_neg <- c(0.1, 0.2, 0.3, 0.25, 0.35, 0.15, 0.4, 0.45, 0.05, 0.3)
-scores_pos <- c(0.2, 0.3, 0.4, 0.6, 0.7, 0.65, 0.8, 0.75, 0.9, 0.5)
-response <- factor(c(rep("neg", length(scores_neg)), rep("pos", length(scores_pos))),
-                   levels = c("neg", "pos"))
-values <- c(scores_neg, scores_pos)
-
-roc_obj <- pROC::roc(response, values, quiet = TRUE)
-
-# Basic ROC metrics
-auc_val <- pROC::auc(roc_obj)
-best_coords <- pROC::coords(roc_obj, "best", best.method = "youden")
-
-test_that("basic ROC output is correct", {
-  expect_equal(round(as.numeric(auc_val), 2), 0.88)
-  # expect_equal(round(best_coords$threshold, 2), 0.5)  # disabled: optimal youden threshold is 0.48, not 0.5
-})
-
-# Partial AUC
-p_auc <- pROC::auc(roc_obj, partial.auc = c(0.8, 1),
-                   partial.auc.focus = "specificity")
-
-test_that("partial AUC is computed", {
-  expect_true(as.numeric(p_auc) < as.numeric(auc_val))
-  expect_gt(as.numeric(p_auc), 0)
-})
-
-# DeLong test comparing with a second predictor
-scores_pos_b <- c(0.25, 0.35, 0.45, 0.65, 0.75, 0.7, 0.85, 0.8, 0.95, 0.55)
-values_b <- c(scores_neg, scores_pos_b)
-roc_obj_b <- pROC::roc(response, values_b, quiet = TRUE)
-
-delong_res <- pROC::roc.test(roc_obj, roc_obj_b, paired = TRUE, method = "delong")
-
-test_that("DeLong test runs", {
-  expect_true(is.numeric(delong_res$p.value))
-  expect_equal(delong_res$method, "DeLong's test for two correlated ROC curves")
+test_that("installed ROC wrappers agree with an independent pair-count AUC", {
+  # Fixed overlapping scores avoid perfect-separation warnings.
+  d <- data.frame(y = factor(rep(c("N", "P"), each = 40)),
+                  score = c(seq(0, .8, length.out = 40), seq(.2, 1, length.out = 40)))
+  neg <- d$score[d$y == "N"]
+  pos <- d$score[d$y == "P"]
+  differences <- outer(pos, neg, "-")
+  expected <- mean((differences > 0) + .5 * (differences == 0))
+  e <- suppressWarnings(enhancedROC(data = d, outcome = "y", positiveClass = "P",
+                                     predictors = "score", direction = "higher"))
+  expect_equal(e$results$aucSummary$asDF$auc[1], expected)
+  ns <- environment(enhancedROC)
+  # enhancedROC also ships independently in JamoviTest while under repair.
+  if (exists("psychopdaROC", envir = ns, inherits = FALSE)) {
+    p <- suppressWarnings(ns$psychopdaROC(data = d, classVar = "y", positiveClass = "P",
+      negativeClass = "N", dependentVars = "score", direction = ">=", run = TRUE))
+    expect_equal(p$aucSummaryTable$asDF$auc[1], expected)
+  }
 })

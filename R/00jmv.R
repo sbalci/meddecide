@@ -10,7 +10,7 @@
         `publisher`="BMJ", 
         `volume`=308, 
         `issue`=6943, 
-        `pages`=1552, 
+        `pages`="1552", 
         `doi`="10.1136/bmj.308.6943.1552", 
         `url`="https://doi.org/10.1136/bmj.308.6943.1552"), 
     `AustinSteyerberg2019ICI`=list(
@@ -255,7 +255,7 @@
         `publisher`="New England Journal of Medicine", 
         `volume`=293, 
         `issue`=5, 
-        `pages`=257, 
+        `pages`="257", 
         `doi`="10.1056/NEJM197507312930513", 
         `url`="https://doi.org/10.1056/NEJM197507312930513"), 
     `Fleiss1971`=list(
@@ -577,7 +577,7 @@
         `publisher`="Diagnostic and Prognostic Research", 
         `volume`=7, 
         `issue`=1, 
-        `pages`=11, 
+        `pages`="11", 
         `doi`="10.1186/s41512-023-00148-y", 
         `url`="https://doi.org/10.1186/s41512-023-00148-y"), 
     `agresti2013`=list(
@@ -789,7 +789,7 @@
         `title`="The McNemar test for binary matched-pairs data: mid-p and asymptotic are better than exact conditional", 
         `publisher`="BMC Medical Research Methodology", 
         `volume`=13, 
-        `pages`=91, 
+        `pages`="91", 
         `doi`="10.1186/1471-2288-13-91", 
         `url`="https://doi.org/10.1186/1471-2288-13-91"), 
     `newcombe1998paired`=list(
@@ -942,7 +942,7 @@
         `publisher`="American Sociological Review", 
         `volume`=22, 
         `issue`=1, 
-        `pages`=17, 
+        `pages`="17", 
         `doi`="10.2307/2088760", 
         `url`="https://doi.org/10.2307/2088760"), 
     `Spearman1904`=list(
@@ -953,7 +953,7 @@
         `publisher`="The American Journal of Psychology", 
         `volume`=15, 
         `issue`=1, 
-        `pages`=72, 
+        `pages`="72", 
         `doi`="10.2307/1412159", 
         `url`="https://doi.org/10.2307/1412159"), 
     `Walter1998`=list(
@@ -975,7 +975,7 @@
         `publisher`="BMJ", 
         `volume`=309, 
         `issue`=6947, 
-        `pages`=102, 
+        `pages`="102", 
         `doi`="10.1136/bmj.309.6947.102", 
         `url`="https://doi.org/10.1136/bmj.309.6947.102"), 
     `Simel1991`=list(
@@ -1070,7 +1070,7 @@
         `publisher`="Investigative Ophthalmology & Visual Science", 
         `volume`=61, 
         `issue`=11, 
-        `pages`=29, 
+        `pages`="29", 
         `doi`="10.1167/iovs.61.11.29", 
         `url`="https://doi.org/10.1167/iovs.61.11.29"), 
     `Alberg2004`=list(
