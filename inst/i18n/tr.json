@@ -145,6 +145,9 @@
             "{fp} of {n} disease-free cases flagged positive here": [
                 "burada {n} hastalıksız olgudan {fp} tanesi pozitif işaretlendi"
             ],
+            "{gold}: positive = {gpos}; negative = {gneg} | {test}: positive = {tpos}; negative = {tneg}": [
+                ""
+            ],
             "{head} and {last}": [
                 "{head} ve {last}"
             ],
@@ -1671,6 +1674,9 @@
             ],
             "A zero count makes a proportion exactly 0% or 100%. Read the 95% confidence intervals (95% confidence intervals option), not the point estimate. For the likelihood ratios, see Continuity correction applied.": [
                 "Sıfır bir sayım bir oranı tam olarak %0 veya %100 yapar. Nokta tahminini değil, %95 güven aralıklarını (%95 güven aralıkları seçeneği) okuyun. Olabilirlik oranları için bkz. Süreklilik düzeltmesi uygulandı."
+            ],
+            "A zero count makes an agreement proportion 0% or 100%. Inspect the exact 95% confidence intervals; no continuity correction is applied to agreement proportions.": [
+                ""
             ],
             "About {needed} subjects gave a simulated power of about {simN} (random seed {seed}).": [
                 "Yaklaşık {needed} olgu, yaklaşık {simN} simüle güç verdi (rastgelelik tohumu {seed})."
@@ -3720,6 +3726,9 @@
             ],
             "Choose the Reference Positive Level": [
                 "Referans pozitif düzeyini seçin"
+            ],
+            "Choose the reference-negative level": [
+                ""
             ],
             "Choose the reference-standard variable that defines disease status in this analysis (e.g., biopsy result, final diagnosis)": [
                 "Bu analizde hastalık durumunu tanımlayan referans standart değişkenini seçin (ör. biyopsi sonucu, nihai tanı)"
@@ -5968,6 +5977,9 @@
             "Each difference is the first-named test minus the second: for 'A vs B', a positive value favours A and a negative value favours B.": [
                 "Her fark, ilk adı geçen testten ikincisinin çıkarılmasıyla elde edilir: 'A ile B' için pozitif bir değer A'nın, negatif bir değer B'nin lehinedir."
             ],
+            "Each factor term is compared with its predictor's reference (first) level: %s. Points for a factor level apply relative to that reference level (0 points).": [
+                ""
+            ],
             "Each factor term is compared with its predictor's reference (first) level: %s. The penalized estimates depend on that choice: with another reference level the coefficients differ, and LASSO or Elastic Net can retain a different set of terms.": [
                 "Her faktör terimi, ait olduğu tahmin edicinin referans (ilk) düzeyiyle karşılaştırılır: %s. Cezalandırılmış tahminler bu seçime bağlıdır: başka bir referans düzeyiyle katsayılar değişir ve LASSO veya Elastic Net farklı bir terim kümesini tutabilir."
             ],
@@ -6348,6 +6360,9 @@
             ],
             "Events per variable": [
                 "Değişken başına olay"
+            ],
+            "Every analysed case has reference level \"{pos}\". No reference-negative denominator is available; check exclusions and level selection.": [
+                ""
             ],
             "Every analysed case has the gold-standard level \"{pos}\", so there are no disease-absent cases to estimate specificity from. Check the data, any exclusions reported in the warnings, and the level selection.": [
                 "Analiz edilen her olgu \"{pos}\" altın standart düzeyine sahiptir, bu nedenle özgüllüğü tahmin etmek için hastalığın olmadığı olgu bulunmamaktadır. Verileri, uyarılarda bildirilen hariç tutmaları ve düzey seçimini kontrol edin."
@@ -6916,6 +6931,9 @@
             "Fewer than 5 valid cases for concordance analysis.": [
                 "Uyum analizi için 5’ten az geçerli olgu."
             ],
+            "Fewer than 50 bootstrap resamples gave a usable difference, so no interval or p-value is reported.": [
+                ""
+            ],
             "Fewer than 50 bootstrap resamples gave a usable difference, so no p-value is reported.": [
                 "Kullanılabilir bir fark veren bootstrap yeniden örneklemi 50'den az olduğundan p değeri raporlanmadı."
             ],
@@ -7122,6 +7140,9 @@
             ],
             "Footnotes": [
                 "Dipnotlar"
+            ],
+            "For {raters} raters, the theoretical lower bound for ICC is -1 / (k - 1) = {minIcc}. Both H0 and H1 ICC values must be strictly greater than {minIcc}.": [
+                ""
             ],
             "For 2 tests: McNemar's test compares diagnostic CORRECTNESS (agreement with gold standard) between paired tests. For 3+ tests: Cochran's Q test provides an overall test, followed by pairwise McNemar's tests, Holm-Bonferroni adjusted whenever more than one pair is tested. Tests examine discordant pairs (cases where one test is correct and the other is wrong relative to the gold standard) to determine if differences in accuracy are statistically significant.": [
                 "2 test için: McNemar testi, eşleştirilmiş testler arasındaki tanısal DOĞRULUĞU (altın standartla uyumu) karşılaştırır. 3+ test için: Cochran Q testi genel bir test sağlar, ardından ikili McNemar testleri gelir; birden fazla çift test edildiğinde bunlar Holm-Bonferroni ile düzeltilir. Testler, doğruluktaki farklılıkların istatistiksel olarak anlamlı olup olmadığını belirlemek için uyumsuz çiftleri (altın standarda göre bir testin doğru ve diğerinin yanlış olduğu durumlar) inceler."
@@ -8550,6 +8571,9 @@
             ],
             "kappa1": [
                 "kappa1"
+            ],
+            "kappa1 must be strictly between 0 and 1.": [
+                ""
             ],
             "kappaL": [
                 "kappaL"
@@ -11407,6 +11431,9 @@
             "Only one pairwise comparison was tested by McNemar's test, so neither this interval nor the McNemar p-value is adjusted for multiplicity.": [
                 "McNemar testiyle yalnızca bir ikili karşılaştırma test edildi; bu nedenle ne bu aralık ne de McNemar p değeri çoklu karşılaştırma için düzeltildi."
             ],
+            "Only selected positive/negative reference and test levels; missing and other levels excluded": [
+                ""
+            ],
             "OPA": [
                 "OPA"
             ],
@@ -12619,6 +12646,9 @@
             "Power Approach for the Number of Subjects Required": [
                 "Gerekli Olgu Sayısı için Güç Yaklaşımı"
             ],
+            "Power must be between 0.01 and 0.99.": [
+                ""
+            ],
             "Power to detect AUC different from 0.5 (Hanley-McNeil)": [
                 "AUC'nin 0.5'ten farklı olduğunu saptama gücü (Hanley-McNeil)"
             ],
@@ -13705,6 +13735,9 @@
             "Reference-standard prevalence in this sample": [
                 "Bu örneklemde referans standart prevalansı"
             ],
+            "Reference: {gold} positive {gpos} negative {gneg} ; test: {test} positive {tpos} negative {tneg}": [
+                ""
+            ],
             "Reference: %1$s, Predicted: %2$s. N = %3$s complete cases.": [
                 "Referans: %1$s, Tahmin Edilen: %2$s. N = %3$s eksiksiz olgu."
             ],
@@ -14534,6 +14567,9 @@
                 "Referans standardı seçin (ör. biyopsi, nihai tanı). Bu, referans sınıflandırmayı temsil eder. İkili değişkenler amaçlanmıştır; ek düzeyler olduğunda, pozitif olmayan tüm düzeyler negatif olarak gruplandırılır ve bir uyarı gösterilir."
             ],
             "Select the reference variable and its interpretation: disease reference, expert consensus, or comparative method. Only a suitable disease reference supports disease-accuracy interpretation.": [
+                ""
+            ],
+            "Selected binary pairs only; missing and unselected levels excluded": [
                 ""
             ],
             "Selected cutpoint": [
@@ -16354,6 +16390,15 @@
             "the cut points you supplied, and the sample median for the predictors you did not give one for": [
                 "sağladığınız kesim noktaları ve bir tane vermediğiniz tahmin ediciler için örneklem medyanı"
             ],
+            "the cut points you supplied, and the sample median where a supplied cut left all cases on one side": [
+                ""
+            ],
+            "the cut points you supplied, and the sample median where none was supplied or a supplied cut left all cases on one side": [
+                ""
+            ],
+            "the cut points you supply (or the sample median when none is supplied)": [
+                ""
+            ],
             "The cut-off comparison is omitted because these scenarios have invalid frequencies: {scenarios}. Their rows are left blank; the other rows and the rest of the analysis are unaffected.": [
                 "Şu senaryolar geçersiz frekanslara sahip olduğu için kesim değeri karşılaştırması yapılmadı: {scenarios}. Bu senaryoların satırları boş bırakıldı; diğer satırlar ve analizin geri kalanı etkilenmez."
             ],
@@ -16903,6 +16948,9 @@
             "The positive likelihood ratio is {lr}. A nomogram assumes that a positive result raises the probability of the outcome; here it lowers that probability, so the plot is omitted. Check the test coding.": [
                 "Pozitif olabilirlik oranı {lr}'dir. Bir nomogram pozitif bir sonucun sonucun olasılığını yükselttiğini varsayar; burada bu olasılığı düşürür, bu nedenle grafik atlanmıştır. Test kodlamasını kontrol edin."
             ],
+            "The positive likelihood ratio is {lrp} and the negative likelihood ratio is {lrn}. A Fagan nomogram requires an informative test with LR+ > 1 and LR- < 1 (sensitivity + specificity > 1); here the plot is omitted.": [
+                ""
+            ],
             "The positive likelihood ratio is not estimable: the test was never positive in this table.": [
                 "Pozitif olabilirlik oranı tahmin edilemez: test bu tabloda hiç pozitif sonuç vermedi."
             ],
@@ -16968,6 +17016,12 @@
             ],
             "The raw partial AUC could not be estimated for the requested specificity range; its cell is blank.": [
                 "İstenen özgüllük aralığı için ham kısmi AUC kestirilemedi; hücresi boş bırakıldı."
+            ],
+            "The reference has multiple levels besides \"{pos}\" ({lvls}). Select one Reference negative level. Unselected levels are excluded from the binary comparison.": [
+                ""
+            ],
+            "The reference has only one level among the analysed cases": [
+                ""
             ],
             "The reference rater {name} is also selected under Raters, so it is compared only with the other raters, not with itself.": [
                 "Referans değerlendirici {name} aynı zamanda Değerlendiriciler altında da seçilmiş; bu nedenle kendisiyle değil, yalnızca diğer değerlendiricilerle karşılaştırılır."
@@ -17280,6 +17334,9 @@
             ],
             "These cases carry a level that codes missingness rather than a result. They are excluded rather than counted as negative, which would have biased sensitivity and specificity.": [
                 "Bu olgular bir sonuç yerine eksikliği kodlayan bir düzey taşır. Duyarlılık ve özgüllüğü yanlı kılacak şekilde negatif olarak sayılmak yerine hariç tutulurlar."
+            ],
+            "These cases carry a missingness code. They are excluded from agreement denominators rather than counted as negative.": [
+                ""
             ],
             "These dependence values are the analysis defaults, not estimates from data.": [
                 "Bu bağımlılık değerleri analizin varsayılanlarıdır, verilerden elde edilmiş tahminler değildir."
@@ -18444,6 +18501,9 @@
             ],
             "Weighted AUC averages the one-vs-rest AUCs in proportion to how many cases each class contains; Macro AUC weights every class equally. The One-vs-One strategy is defined as an unweighted average over class PAIRS, so no weighted value is given for it.": [
                 "Ağırlıklı AUC, bire-karşı-diğerleri AUC'lerinin ortalamasını her sınıfın içerdiği olgu sayısıyla orantılı olarak alır; Makro AUC her sınıfa eşit ağırlık verir. Bire-Karşı-Bir stratejisi sınıf ÇİFTLERİ üzerinden ağırlıksız bir ortalama olarak tanımlanır; bu nedenle bu strateji için ağırlıklı bir değer verilmez."
+            ],
+            "Weighted AUC requires at least two threshold points with positive range width.": [
+                ""
             ],
             "Weighted Average (by prevalence)": [
                 "Ağırlıklı Ortalama (prevalansa göre)"

@@ -273,6 +273,12 @@ msgstr ""
 msgid "{fp} of {n} disease-free cases flagged positive here"
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"{gold}: positive = {gpos}; negative = {gneg} | {test}: positive = {tpos}; "
+"negative = {tneg}"
+msgstr ""
+
 #: R/kappaSizeCI.b.R
 #: R/kappaSizeFixedN.b.R
 msgid "{head} and {last}"
@@ -777,6 +783,7 @@ msgstr ""
 msgid "%1$.1f percentage points above strict accuracy (%2$.4f), same %3$d cases"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "%1$.1f%% (%2$d/%3$d)"
 msgstr ""
@@ -1168,6 +1175,7 @@ msgstr ""
 msgid "%1$s: positive = %2$s; negative = %3$s"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "%1$s: PPA %2$s, NPA %3$s; %4$d analyzed cases, %5$d excluded."
 msgstr ""
@@ -3841,6 +3849,13 @@ msgid ""
 "likelihood ratios, see Continuity correction applied."
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"A zero count makes an agreement proportion 0% or 100%. Inspect the exact 95% "
+"confidence intervals; no continuity correction is applied to agreement "
+"proportions."
+msgstr ""
+
 #: R/kappaSizePower.b.R
 msgid ""
 "About {needed} subjects gave a simulated power of about {simN} (random seed "
@@ -4396,6 +4411,7 @@ msgstr ""
 msgid "Agree with Reference"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: R/nogoldstandard.b.R
 #: package/analyses/agreement.menuSubgroup
@@ -4523,6 +4539,7 @@ msgstr ""
 msgid "Agreement with the reference rater: %1$s"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "Agreement with this comparator does not establish disease status. PPA/NPA "
@@ -5028,6 +5045,7 @@ msgstr ""
 msgid "Analysis Options Explained"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Analysis population"
 msgstr ""
@@ -6848,6 +6866,7 @@ msgstr ""
 msgid "Call"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Call / reference"
 msgstr ""
@@ -7282,6 +7301,7 @@ msgstr ""
 msgid "Choose at least 2 diagnostic tests to analyze"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Choose different positive and negative levels."
 msgstr ""
@@ -7406,6 +7426,10 @@ msgstr ""
 
 #: R/decision.b.R
 msgid "Choose the Reference Positive Level"
+msgstr ""
+
+#: R/decision.b.R
+msgid "Choose the reference-negative level"
 msgstr ""
 
 #: R/decision.b.R
@@ -8269,6 +8293,7 @@ msgid ""
 "calling from R - and kappa will be computed."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/cohortRole.title
 #: decisioncompare/options/cohortRole.title
@@ -8412,6 +8437,7 @@ msgstr ""
 msgid "Comparative Analysis"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/referenceType/method.title
 #: decisioncompare/options/referenceType/method.title
@@ -8440,6 +8466,7 @@ msgstr ""
 msgid "Comparator agreement (radar)"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/referenceDescription.title
 #: decisioncompare/options/referenceDescription.title
@@ -10500,6 +10527,7 @@ msgid ""
 "Fagerland et al. (2013) recommend for use in any situation."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "Diagnostic interpretation assumes the selected reference establishes the "
@@ -10840,6 +10868,7 @@ msgstr ""
 msgid "Disease Probability (%)"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/referenceType/disease.title
 #: decisioncompare/options/referenceType/disease.title
@@ -11174,6 +11203,13 @@ msgstr ""
 msgid ""
 "Each difference is the first-named test minus the second: for 'A vs B', a "
 "positive value favours A and a negative value favours B."
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid ""
+"Each factor term is compared with its predictor's reference (first) level: "
+"%s. Points for a factor level apply relative to that reference level (0 "
+"points)."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -11852,6 +11888,12 @@ msgstr ""
 
 #: R/decision.b.R
 msgid ""
+"Every analysed case has reference level \"{pos}\". No reference-negative "
+"denominator is available; check exclusions and level selection."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
 "Every analysed case has the gold-standard level \"{pos}\", so there are no "
 "disease-absent cases to estimate specificity from. Check the data, any "
 "exclusions reported in the warnings, and the level selection."
@@ -12051,6 +12093,7 @@ msgstr ""
 msgid "Exact agreement with colleagues %"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Exact binomial (independent cases)"
 msgstr ""
@@ -12192,6 +12235,7 @@ msgstr ""
 msgid "Exclude other observed levels"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decisioncompare/results/comparisonTable.columns.title
 #: decisioncompare/results/opaTable.columns.title
@@ -12278,6 +12322,7 @@ msgid ""
 "the cell is left blank."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/referenceType/consensus.title
 #: decisioncompare/options/referenceType/consensus.title
@@ -12572,6 +12617,7 @@ msgstr ""
 msgid "Fagan nomogram - parallel rule (positive if either test is positive)"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncalculator.b.R
 msgid "Fagan nomogram not drawn"
 msgstr ""
@@ -12849,6 +12895,12 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Fewer than 5 valid cases for concordance analysis."
+msgstr ""
+
+#: R/decisioncurve.b.R
+msgid ""
+"Fewer than 50 bootstrap resamples gave a usable difference, so no interval "
+"or p-value is reported."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -13190,6 +13242,12 @@ msgstr ""
 #: cotest/options/fnote.title
 #: decisioncompare/options/fnote.title
 msgid "Footnotes"
+msgstr ""
+
+#: R/agreement.b.R
+msgid ""
+"For {raters} raters, the theoretical lower bound for ICC is -1 / (k - 1) = "
+"{minIcc}. Both H0 and H1 ICC values must be strictly greater than {minIcc}."
 msgstr ""
 
 #: decisioncompare/results/mcnemarTable.notes.note
@@ -14725,6 +14783,7 @@ msgstr ""
 msgid "Independence Assumption"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Independent cases; repeated reads require a reader/cluster analysis"
 msgstr ""
@@ -15756,6 +15815,7 @@ msgid "kappa0 must be greater than kappaL"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 msgid "kappa0 must be strictly between 0 and 1."
 msgstr ""
 
@@ -15765,6 +15825,10 @@ msgstr ""
 
 #: kappaSizePower/options/kappa1.title
 msgid "kappa1"
+msgstr ""
+
+#: R/kappaSizePower.b.R
+msgid "kappa1 must be strictly between 0 and 1."
 msgstr ""
 
 #: kappaSizeCI/options/kappaL.title
@@ -17786,6 +17850,7 @@ msgstr ""
 msgid "Model Type"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: decision/options/modelVersion.title
@@ -18287,6 +18352,7 @@ msgstr ""
 msgid "Needs improvement"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -18311,6 +18377,7 @@ msgstr ""
 msgid "Negative (pooled with the other non-positive levels)"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Negative call / positive reference"
 msgstr ""
@@ -18387,6 +18454,7 @@ msgstr ""
 msgid "Negative LR"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Negative match"
 msgstr ""
@@ -18399,6 +18467,7 @@ msgstr ""
 msgid "Negative Path"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Negative percent agreement (NPA)"
 msgstr ""
@@ -18466,6 +18535,7 @@ msgstr ""
 msgid "Negative rows"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Negative specific agreement (symmetric)"
 msgstr ""
@@ -19002,6 +19072,7 @@ msgstr ""
 msgid "No discrimination (Youden's index 0, equivalent AUC 0.50)"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "No eligible denominator"
 msgstr ""
@@ -19695,6 +19766,7 @@ msgstr ""
 msgid "Not estimable (0/0): no patient tests positive at this cutoff."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Not estimable (denominator 0), not drawn: %s"
 msgstr ""
@@ -19791,6 +19863,7 @@ msgstr ""
 msgid "not reported - fixed at 100% by construction"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Not requested"
 msgstr ""
@@ -19814,6 +19887,7 @@ msgstr ""
 msgid "Not significantly different"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/referenceType/legacy.title
 #: decisioncompare/options/referenceType/legacy.title
@@ -20074,6 +20148,7 @@ msgid "Number of outcome levels (categories) of the rated variable."
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 msgid "Number of outcome levels must be 2, 3, 4, or 5."
 msgstr ""
 
@@ -20113,6 +20188,7 @@ msgid "Number of raters"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 msgid "Number of raters must be 2, 3, 4, 5, or 6."
 msgstr ""
 
@@ -20318,6 +20394,7 @@ msgid ""
 "mapping on an independent cohort before clinical use."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "Observed levels outside the selected positive/negative pair: %s. Select "
@@ -20733,6 +20810,12 @@ msgstr ""
 msgid ""
 "Only one pairwise comparison was tested by McNemar's test, so neither this "
 "interval nor the McNemar p-value is adjusted for multiplicity."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"Only selected positive/negative reference and test levels; missing and other "
+"levels excluded"
 msgstr ""
 
 #: decisioncompare/results/opaTable.columns.title
@@ -21168,6 +21251,7 @@ msgstr ""
 msgid "Overall Percent Agreement (Descriptive)"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Overall percent agreement (OPA)"
 msgstr ""
@@ -22346,6 +22430,7 @@ msgstr ""
 msgid "Population-adjusted predictive values"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/lassologistic.b.R
@@ -22388,10 +22473,12 @@ msgid ""
 "population prevalence. No confidence intervals were requested."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Positive and negative rules"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Positive call / negative reference"
 msgstr ""
@@ -22516,6 +22603,7 @@ msgstr ""
 msgid "Positive LR"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Positive match"
 msgstr ""
@@ -22545,6 +22633,7 @@ msgstr ""
 msgid "Positive Path"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Positive percent agreement (PPA)"
 msgstr ""
@@ -22622,6 +22711,7 @@ msgstr ""
 msgid "Positive rule level"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Positive specific agreement (symmetric)"
 msgstr ""
@@ -22781,6 +22871,10 @@ msgstr ""
 msgid "Power Approach for the Number of Subjects Required"
 msgstr ""
 
+#: R/kappaSizePower.b.R
+msgid "Power must be between 0.01 and 0.99."
+msgstr ""
+
 #: R/psychopdaROC.b.R
 msgid "Power to detect AUC different from 0.5 (Hanley-McNeil)"
 msgstr ""
@@ -22803,6 +22897,7 @@ msgid ""
 "and Donner)."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "PPA/NPA condition on reference-positive/reference-negative cases. Reverse "
@@ -24505,6 +24600,7 @@ msgstr ""
 msgid "Reference class"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/referenceType.title
 #: decisioncompare/options/referenceType.title
@@ -24516,6 +24612,7 @@ msgstr ""
 msgid "Reference Interpretation"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "Reference interpretation is not specified. Existing diagnostic wording is "
@@ -24546,6 +24643,7 @@ msgstr ""
 msgid "Reference Negative"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Reference negative given negative call"
 msgstr ""
@@ -24570,6 +24668,7 @@ msgstr ""
 msgid "Reference Positive"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Reference positive given positive call"
 msgstr ""
@@ -24688,6 +24787,12 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Reference-standard prevalence in this sample"
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"Reference: {gold} positive {gpos} negative {gneg} ; test: {test} positive "
+"{tpos} negative {tneg}"
 msgstr ""
 
 #: R/agreement.b.R
@@ -25613,6 +25718,7 @@ msgstr ""
 msgid "Samples"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: decision/options/samplingDesign.title
@@ -25625,6 +25731,7 @@ msgstr ""
 msgid "Sampling Design"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Sampling unit"
 msgstr ""
@@ -25885,12 +25992,14 @@ msgstr ""
 msgid "Select a subgroup variable to estimate agreement within each of its groups."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "Select an explicit negative level. Both positive and negative levels are "
 "required; no level is inferred."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "Select an explicit positive level. Both positive and negative levels are "
@@ -26109,6 +26218,10 @@ msgid ""
 "supports disease-accuracy interpretation."
 msgstr ""
 
+#: R/decision.b.R
+msgid "Selected binary pairs only; missing and unselected levels excluded"
+msgstr ""
+
 #: psychopdaROC/ui[8][0][0][0]/showOptimalPoint.label
 msgid "Selected cutpoint"
 msgstr ""
@@ -26127,6 +26240,7 @@ msgstr ""
 msgid "Selected Levels and Exclusions"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Selected row"
 msgstr ""
@@ -26745,6 +26859,7 @@ msgid "Significance Level (alpha)"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 msgid "Significance level (alpha) must be between 0.001 and 0.20."
 msgstr ""
 
@@ -27994,6 +28109,7 @@ msgid ""
 "Application Metrics table."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "Symmetric ratio; binomial CI not applicable"
 msgstr ""
@@ -28056,6 +28172,7 @@ msgstr ""
 msgid "Target AUC minus 0.5"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: decision/options/targetDefinition.title
 #: decisioncompare/options/targetDefinition.title
@@ -28186,6 +28303,7 @@ msgstr ""
 msgid "Tertiles (Data-Driven)"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: agreement/results/raterBiasTable.columns.title
 #: agreement/results/bhapkarTable.columns.title
@@ -29358,6 +29476,22 @@ msgid ""
 "did not give one for"
 msgstr ""
 
+#: R/lassologistic.b.R
+msgid ""
+"the cut points you supplied, and the sample median where a supplied cut left "
+"all cases on one side"
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid ""
+"the cut points you supplied, and the sample median where none was supplied "
+"or a supplied cut left all cases on one side"
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid "the cut points you supply (or the sample median when none is supplied)"
+msgstr ""
+
 #: R/decisioncalculator.b.R
 msgid ""
 "The cut-off comparison is omitted because these scenarios have invalid "
@@ -30314,6 +30448,7 @@ msgid ""
 "biased and does not establish clinical utility."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "The negative level \"%1$s\" is not available. Available levels: %2$s."
 msgstr ""
@@ -30632,6 +30767,7 @@ msgid ""
 "and capitalisation. Available levels: {available}."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "The positive level \"%1$s\" is not available. Available levels: %2$s."
 msgstr ""
@@ -30651,6 +30787,13 @@ msgid ""
 "The positive likelihood ratio is {lr}. A nomogram assumes that a positive "
 "result raises the probability of the outcome; here it lowers that "
 "probability, so the plot is omitted. Check the test coding."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"The positive likelihood ratio is {lrp} and the negative likelihood ratio is "
+"{lrn}. A Fagan nomogram requires an informative test with LR+ > 1 and LR- < "
+"1 (sensitivity + specificity > 1); here the plot is omitted."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -30810,6 +30953,17 @@ msgstr ""
 msgid ""
 "The raw partial AUC could not be estimated for the requested specificity "
 "range; its cell is blank."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"The reference has multiple levels besides \"{pos}\" ({lvls}). Select one "
+"Reference negative level. Unselected levels are excluded from the binary "
+"comparison."
+msgstr ""
+
+#: R/decision.b.R
+msgid "The reference has only one level among the analysed cases"
 msgstr ""
 
 #: R/agreement.b.R
@@ -31572,6 +31726,12 @@ msgid ""
 "sensitivity and specificity."
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"These cases carry a missingness code. They are excluded from agreement "
+"denominators rather than counted as negative."
+msgstr ""
+
 #: R/cotest.b.R
 msgid "These dependence values are the analysis defaults, not estimates from data."
 msgstr ""
@@ -31651,6 +31811,7 @@ msgid ""
 "was not significant."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "These quantities describe agreement with the selected comparator. The tables "
@@ -32356,6 +32517,7 @@ msgstr ""
 msgid "Threshold range: {lo}% to {hi}%."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: decision/options/thresholdSource.title
@@ -32935,6 +33097,7 @@ msgstr ""
 msgid "unavailable"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid "unavailable (denominator 0)"
 msgstr ""
@@ -33058,6 +33221,7 @@ msgstr ""
 msgid "Unit of Analysis"
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: decision/options/analysisUnit.title
@@ -33239,6 +33403,7 @@ msgid ""
 "proportion (e.g., 0.05 for 5%, 0.15 for 15%)."
 msgstr ""
 
+#: R/decision.b.R
 #: R/decisioncompare.b.R
 msgid ""
 "User-declared context does not verify independence or external validation. "
@@ -33788,6 +33953,12 @@ msgid ""
 "each class contains; Macro AUC weights every class equally. The One-vs-One "
 "strategy is defined as an unweighted average over class PAIRS, so no "
 "weighted value is given for it."
+msgstr ""
+
+#: R/decisioncurve.b.R
+msgid ""
+"Weighted AUC requires at least two threshold points with positive range "
+"width."
 msgstr ""
 
 #: enhancedROC/options/multiClassAveraging/weighted.title
