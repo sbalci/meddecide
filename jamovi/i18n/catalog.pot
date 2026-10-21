@@ -8541,16 +8541,6 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid ""
-"A zero cell was present, so the likelihood ratios and the diagnostic odds "
-"ratio here, as in the tables above, use the table with 0.5 added to every "
-"cell, and so do their intervals. A ratio whose denominator count is zero has "
-"no finite upper limit, which is left blank and footnoted; one whose "
-"numerator count is zero has a lower limit of 0. Youden's index and the "
-"number needed to diagnose use the observed counts."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
 "A zero cell was present, so the likelihood ratios and the probabilities read "
 "from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive "
 "values and post-test probabilities in the Measures table are computed from "
@@ -8563,6 +8553,16 @@ msgid ""
 "0.5 correction, while the predictive values above use the observed counts. "
 "Multiplying the pre-test odds by these likelihood ratios therefore need not "
 "reproduce the predictive values exactly."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A zero cell was present. As in the tables above, a likelihood ratio with a "
+"zero among its own cells (TP or FP for LR+, FN or TN for LR-) and the "
+"diagnostic odds ratio use the table with 0.5 added to every cell "
+"(Haldane-Anscombe), and so do their intervals; the other likelihood ratio "
+"uses the observed counts. These corrected limits are approximate. Youden's "
+"index and the number needed to diagnose use the observed counts."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -23069,6 +23069,10 @@ msgstr ""
 msgid "Max-scaled method (strongest predictor = maximum points)"
 msgstr ""
 
+#: R/psychopdaROC.b.R
+msgid "maximising"
+msgstr ""
+
 #: psychopdaROC/options/method/maximize_metric.title
 msgid "Maximize metric"
 msgstr ""
@@ -23083,6 +23087,10 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Maximum"
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid "maximum"
 msgstr ""
 
 #: decision/options/maxCasesShow.title
@@ -23661,6 +23669,10 @@ msgstr ""
 msgid "Minimal rater bias"
 msgstr ""
 
+#: R/psychopdaROC.b.R
+msgid "minimising"
+msgstr ""
+
 #: psychopdaROC/options/metric/abs_d_ppv_npv.title
 msgid "Minimize |PPV - NPV|"
 msgstr ""
@@ -23679,6 +23691,10 @@ msgstr ""
 
 #: psychopdaROC/options/method/minimize_loess_metric.title
 msgid "Minimize metric (LOESS smoothed)"
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid "minimum"
 msgstr ""
 
 #: decisioncompare/ui[4]/niMargin.label
@@ -33330,6 +33346,13 @@ msgid ""
 "likelihood ratios."
 msgstr ""
 
+#: R/nogoldstandard.b.R
+msgid ""
+"Sensitivity plus specificity is below 1 for: {tests}. Such a test agrees "
+"with the fitted disease class less often than chance. Check that its "
+"positive level is not reversed before interpreting it as a poor test."
+msgstr ""
+
 #: R/decision.b.R
 msgid ""
 "Sensitivity plus specificity is below 1, and the 95% confidence interval for "
@@ -35632,6 +35655,10 @@ msgid "Test all subjects with both tests (parallel)"
 msgstr ""
 
 #: R/nogoldstandard.b.R
+msgid "Test below chance"
+msgstr ""
+
+#: R/nogoldstandard.b.R
 msgid "Test categories collapsed"
 msgstr ""
 
@@ -35882,6 +35909,12 @@ msgid ""
 "The '%1$s' preset replaced settings you can still see in the options panel: "
 "%2$s. Choose the Custom Configuration preset if you want the values you "
 "entered to be used."
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"The '%s' metric is best at its %s, so the cut-point was found by %s it; the "
+"Cutpoint method setting asked for the opposite direction."
 msgstr ""
 
 #: R/lassologistic.b.R

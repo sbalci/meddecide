@@ -10094,22 +10094,6 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid ""
-"A zero cell was present, so the likelihood ratios and the diagnostic odds "
-"ratio here, as in the tables above, use the table with 0.5 added to every "
-"cell, and so do their intervals. A ratio whose denominator count is zero has "
-"no finite upper limit, which is left blank and footnoted; one whose "
-"numerator count is zero has a lower limit of 0. Youden's index and the "
-"number needed to diagnose use the observed counts."
-msgstr ""
-"Sıfır hücre bulunduğu için buradaki olabilirlik oranları ve tanısal odds "
-"oranı, yukarıdaki tablolarda olduğu gibi, her hücresine 0.5 eklenmiş tabloyu "
-"kullanır; aralıkları da öyle. Payda sayısı sıfır olan bir oranın sonlu bir "
-"üst sınırı yoktur; bu sınır boş bırakılır ve dipnotla açıklanır. Pay sayısı "
-"sıfır olan bir oranın alt sınırı 0'dır. Youden indeksi ve tanı için gereken "
-"sayı gözlenen sayıları kullanır."
-
-#: R/decisioncalculator.b.R
-msgid ""
 "A zero cell was present, so the likelihood ratios and the probabilities read "
 "from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive "
 "values and post-test probabilities in the Measures table are computed from "
@@ -10131,6 +10115,16 @@ msgstr ""
 "düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları "
 "kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak "
 "öngörü değerlerini tam olarak vermeyebilir."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A zero cell was present. As in the tables above, a likelihood ratio with a "
+"zero among its own cells (TP or FP for LR+, FN or TN for LR-) and the "
+"diagnostic odds ratio use the table with 0.5 added to every cell "
+"(Haldane-Anscombe), and so do their intervals; the other likelihood ratio "
+"uses the observed counts. These corrected limits are approximate. Youden's "
+"index and the number needed to diagnose use the observed counts."
+msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid ""
@@ -27153,6 +27147,10 @@ msgstr ""
 "Maksimuma göre ölçeklendirilmiş yöntem (en güçlü tahmin edici = maksimum "
 "puan)"
 
+#: R/psychopdaROC.b.R
+msgid "maximising"
+msgstr ""
+
 #: psychopdaROC/options/method/maximize_metric.title
 msgid "Maximize metric"
 msgstr "Ölçütü maksimize et"
@@ -27167,6 +27165,10 @@ msgstr "Ölçütü maksimize et (LOESS ile düzeltilmiş)"
 
 #: R/agreement.b.R
 msgid "Maximum"
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid "maximum"
 msgstr ""
 
 #: decision/options/maxCasesShow.title
@@ -27803,6 +27805,10 @@ msgstr "Hastalık olasılığında minimal artış"
 msgid "Minimal rater bias"
 msgstr "Minimal değerlendirici yanlılığı"
 
+#: R/psychopdaROC.b.R
+msgid "minimising"
+msgstr ""
+
 #: psychopdaROC/options/metric/abs_d_ppv_npv.title
 msgid "Minimize |PPV - NPV|"
 msgstr "|PÖD - NÖD| minimize et"
@@ -27822,6 +27828,10 @@ msgstr "Ölçütü minimize et (bootstrap ile)"
 #: psychopdaROC/options/method/minimize_loess_metric.title
 msgid "Minimize metric (LOESS smoothed)"
 msgstr "Ölçütü minimize et (LOESS ile düzeltilmiş)"
+
+#: R/psychopdaROC.b.R
+msgid "minimum"
+msgstr ""
 
 #: decisioncompare/ui[4]/niMargin.label
 msgid "Minimum acceptable OPA (%)"
@@ -39146,6 +39156,13 @@ msgstr ""
 "negatif sonuçlar nadir olduğunda bir olabilirlik oranı yine de 1'den farklı "
 "olabilir; bu nedenle her iki olabilirlik oranını da kontrol edin."
 
+#: R/nogoldstandard.b.R
+msgid ""
+"Sensitivity plus specificity is below 1 for: {tests}. Such a test agrees "
+"with the fitted disease class less often than chance. Check that its "
+"positive level is not reversed before interpreting it as a poor test."
+msgstr ""
+
 #: R/decision.b.R
 msgid ""
 "Sensitivity plus specificity is below 1, and the 95% confidence interval for "
@@ -41780,6 +41797,10 @@ msgid "Test all subjects with both tests (parallel)"
 msgstr "Tüm denekleri her iki testle test et (paralel)"
 
 #: R/nogoldstandard.b.R
+msgid "Test below chance"
+msgstr ""
+
+#: R/nogoldstandard.b.R
 msgid "Test categories collapsed"
 msgstr "Test kategorileri birleştirildi"
 
@@ -42044,6 +42065,12 @@ msgstr ""
 "'%1$s' ön ayarı, seçenekler panelinde hâlâ görebildiğiniz ayarların yerini "
 "aldı: %2$s. Girdiğiniz değerlerin kullanılmasını istiyorsanız Özel "
 "Yapılandırma ön ayarını seçin."
+
+#: R/psychopdaROC.b.R
+msgid ""
+"The '%s' metric is best at its %s, so the cut-point was found by %s it; the "
+"Cutpoint method setting asked for the opposite direction."
+msgstr ""
 
 #: R/lassologistic.b.R
 msgid ""

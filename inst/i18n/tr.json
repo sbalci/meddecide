@@ -4210,14 +4210,14 @@
             "A zero cell was present, so 0.5 was added to every cell for the likelihood ratios and the diagnostic odds ratio. Their confidence intervals use the same corrected counts.": [
                 "Sıfır hücre bulunduğu için olabilirlik oranları ve tanısal odds oranı için her hücreye 0.5 eklendi. Güven aralıkları da aynı düzeltilmiş sayıları kullanır."
             ],
-            "A zero cell was present, so the likelihood ratios and the diagnostic odds ratio here, as in the tables above, use the table with 0.5 added to every cell, and so do their intervals. A ratio whose denominator count is zero has no finite upper limit, which is left blank and footnoted; one whose numerator count is zero has a lower limit of 0. Youden's index and the number needed to diagnose use the observed counts.": [
-                "Sıfır hücre bulunduğu için buradaki olabilirlik oranları ve tanısal odds oranı, yukarıdaki tablolarda olduğu gibi, her hücresine 0.5 eklenmiş tabloyu kullanır; aralıkları da öyle. Payda sayısı sıfır olan bir oranın sonlu bir üst sınırı yoktur; bu sınır boş bırakılır ve dipnotla açıklanır. Pay sayısı sıfır olan bir oranın alt sınırı 0'dır. Youden indeksi ve tanı için gereken sayı gözlenen sayıları kullanır."
-            ],
             "A zero cell was present, so the likelihood ratios and the probabilities read from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive values and post-test probabilities in the Measures table are computed from the raw counts and can differ, by a wide margin in a small table.": [
                 "Sıfır hücre bulunduğu için olabilirlik oranları ve nomogramdan okunan olasılıklar 0.5 Haldane-Anscombe düzeltmesini kullanır. Ölçüler tablosundaki öngörü değerleri ve test sonrası olasılıklar ham sayılardan hesaplanır ve küçük bir tabloda belirgin biçimde farklı olabilir."
             ],
             "A zero cell was present, so the likelihood ratios use the Haldane-Anscombe 0.5 correction, while the predictive values above use the observed counts. Multiplying the pre-test odds by these likelihood ratios therefore need not reproduce the predictive values exactly.": [
                 "Sıfır hücre bulunduğu için olabilirlik oranları 0.5 Haldane-Anscombe düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak öngörü değerlerini tam olarak vermeyebilir."
+            ],
+            "A zero cell was present. As in the tables above, a likelihood ratio with a zero among its own cells (TP or FP for LR+, FN or TN for LR-) and the diagnostic odds ratio use the table with 0.5 added to every cell (Haldane-Anscombe), and so do their intervals; the other likelihood ratio uses the observed counts. These corrected limits are approximate. Youden's index and the number needed to diagnose use the observed counts.": [
+                ""
             ],
             "A zero cell was present. For LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, 0.5 is added to all four cells for that ratio and its confidence interval. The diagnostic odds ratio and its interval use all four cells plus 0.5 whenever any cell is zero (Haldane-Anscombe correction). Sensitivity, specificity, predictive values and their intervals use the observed counts. The corrected diagnostic odds ratio need not equal the ratio of the displayed likelihood ratios.": [
                 ""
@@ -12625,6 +12625,9 @@
             "Max-scaled method (strongest predictor = maximum points)": [
                 "Maksimuma göre ölçeklendirilmiş yöntem (en güçlü tahmin edici = maksimum puan)"
             ],
+            "maximising": [
+                ""
+            ],
             "Maximize metric": [
                 "Ölçütü maksimize et"
             ],
@@ -12635,6 +12638,9 @@
                 "Ölçütü maksimize et (LOESS ile düzeltilmiş)"
             ],
             "Maximum": [
+                ""
+            ],
+            "maximum": [
                 ""
             ],
             "Maximum cases to display": [
@@ -12952,6 +12958,9 @@
             "Minimal rater bias": [
                 "Minimal değerlendirici yanlılığı"
             ],
+            "minimising": [
+                ""
+            ],
             "Minimize |PPV - NPV|": [
                 "|PÖD - NÖD| minimize et"
             ],
@@ -12966,6 +12975,9 @@
             ],
             "Minimize metric (LOESS smoothed)": [
                 "Ölçütü minimize et (LOESS ile düzeltilmiş)"
+            ],
+            "minimum": [
+                ""
             ],
             "Minimum acceptable OPA (%)": [
                 "Kabul edilebilir minimum OPA (%)"
@@ -18565,6 +18577,9 @@
             "Sensitivity plus specificity equals 1 to three decimal places: the test calls about the same share of disease-present and disease-free cases positive, which is what a coin toss achieves. When positive or negative results are rare, a likelihood ratio can still differ from 1, so check both likelihood ratios.": [
                 "Duyarlılık ile özgüllüğün toplamı üç ondalık basamakta 1'e eşittir: test, hastalık var olan ve hastalıksız olguların yaklaşık aynı oranını pozitif olarak sınıflandırır; yazı tura atmak da aynı sonucu verir. Pozitif veya negatif sonuçlar nadir olduğunda bir olabilirlik oranı yine de 1'den farklı olabilir; bu nedenle her iki olabilirlik oranını da kontrol edin."
             ],
+            "Sensitivity plus specificity is below 1 for: {tests}. Such a test agrees with the fitted disease class less often than chance. Check that its positive level is not reversed before interpreting it as a poor test.": [
+                ""
+            ],
             "Sensitivity plus specificity is below 1, and the 95% confidence interval for Youden's index ({lower} to {upper}) lies entirely below 0, so this is not sampling noise: a positive result argues AGAINST disease and a negative result argues for it. The usual cause is a wrong choice under Test positive level or Disease present level; swapping it would give the mirror-image performance. Check the level selection before reading any number in these tables.": [
                 "Duyarlılık ile özgüllüğün toplamı 1'in altındadır ve Youden indeksinin %95 güven aralığı ({lower} ile {upper} arası) tümüyle 0'ın altında kalmaktadır; dolayısıyla bu bir örnekleme gürültüsü değildir: pozitif bir sonuç hastalık ALEYHİNE, negatif bir sonuç ise hastalık lehine kanıt oluşturur. Olağan neden, Test pozitif düzeyi veya Hastalık var düzeyi altında yapılan yanlış bir seçimdir; bu seçimi tersine çevirmek performansın ayna görüntüsünü verir. Bu tablolardaki herhangi bir sayıyı okumadan önce düzey seçimini kontrol edin."
             ],
@@ -19933,6 +19948,9 @@
             "Test all subjects with both tests (parallel)": [
                 "Tüm denekleri her iki testle test et (paralel)"
             ],
+            "Test below chance": [
+                ""
+            ],
             "Test categories collapsed": [
                 "Test kategorileri birleştirildi"
             ],
@@ -20097,6 +20115,9 @@
             ],
             "The '%1$s' preset replaced settings you can still see in the options panel: %2$s. Choose the Custom Configuration preset if you want the values you entered to be used.": [
                 "'%1$s' ön ayarı, seçenekler panelinde hâlâ görebildiğiniz ayarların yerini aldı: %2$s. Girdiğiniz değerlerin kullanılmasını istiyorsanız Özel Yapılandırma ön ayarını seçin."
+            ],
+            "The '%s' metric is best at its %s, so the cut-point was found by %s it; the Cutpoint method setting asked for the opposite direction.": [
+                ""
             ],
             "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); their apparent AUC is typically higher than the penalized row because refitting removes shrinkage. All metrics are apparent (in-sample) - use Bootstrap Internal Validation for optimism-corrected discrimination.": [
                 "'Lojistik' satırları cezalandırılmamış yeniden uyarlamalardır (AIC karşılaştırılabilirliği için gösterilmiştir); görünürdeki AUC değerleri tipik olarak cezalandırılmış satırdakinden daha yüksektir çünkü yeniden uyarlama daralmayı ortadan kaldırır. Tüm metrikler görünürdedir (örneklem içi) - iyimserlik düzeltmeli ayrım için Bootstrap Dahili Doğrulamayı kullanın."
