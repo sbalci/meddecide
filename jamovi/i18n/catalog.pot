@@ -69,7 +69,7 @@ msgstr ""
 #: R/decisioncurve.b.R
 msgid ""
 "\"Clinical decision rule\" is enabled but no rule variable has been "
-"selected: drop a binary variable into \"Clinical Decision Rule (binary)\"."
+"selected: drop a binary variable into \"Clinical decision rule (binary)\"."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -297,6 +297,10 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
+msgid "{level} (inferred: the only other level)"
+msgstr ""
+
+#: R/decision.b.R
 msgid ""
 "{level} of the {total} cases were excluded before analysis because their "
 "test or reference-standard level was neither of the two selected (for "
@@ -313,8 +317,28 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
-"{lo}% to {hi}% threshold probability - the range over which this model beats "
-"both treating everyone and treating no one."
+"{lo}% to {hi}% threshold probability - the observed range over which this "
+"model's apparent (in-sample) net benefit exceeds both treating everyone and "
+"treating no one. It carries no allowance for sampling variation, and a "
+"narrow range can arise by chance."
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{marker}: in these data the proportion of {positive} cases rises as the "
+"values fall, the opposite direction to the Classification Direction you "
+"selected. IDI and NRI compare fitted logistic risks, which do not depend on "
+"the selected direction, so this marker enters with the risk model the data "
+"support."
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{marker}: in these data the proportion of {positive} cases rises as the "
+"values rise, the opposite direction to the Classification Direction you "
+"selected. IDI and NRI compare fitted logistic risks, which do not depend on "
+"the selected direction, so this marker enters with the risk model the data "
+"support."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -5019,6 +5043,20 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid ""
+"{test}: no false positive was observed, so LR+ is infinite, and adding 0.5 "
+"to every cell would give a value of 1 or less, reversing its direction; LR+ "
+"is left blank."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"{test}: no true negative was observed, so LR- is infinite, and adding 0.5 to "
+"every cell would give a value of 1 or less, reversing its direction; LR- is "
+"left blank."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
 "{test}: PPA rests on {positives} comparator-positive cases and NPA on "
 "{negatives} comparator-negative cases. A percentage computed on a "
 "denominator this small is far less precise than the overall analyzed N "
@@ -5099,6 +5137,12 @@ msgid ""
 "missingness."
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"{used} of {total} cases have both a test and a reference value; any further "
+"exclusions are listed below. Consider investigating patterns of missingness."
+msgstr ""
+
 #: R/enhancedROC.b.R
 msgid "{value} (default setting)"
 msgstr ""
@@ -5113,6 +5157,18 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid "{variable} has {n} levels"
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{variable}: the achieved sensitivity, {achieved}, is below the target of "
+"{target}. Choose Stepwise to get the cutoff that meets or exceeds the target."
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{variable}: the achieved specificity, {achieved}, is below the target of "
+"{target}. Choose Stepwise to get the cutoff that meets or exceeds the target."
 msgstr ""
 
 #: enhancedROC/ui[4][0][0]/confidenceLevel.suffix
@@ -5309,6 +5365,13 @@ msgid ""
 "%1$d of %2$d cases were dropped because at least one rater was missing: "
 "Light's kappa uses complete cases only, and the Cases count above refers to "
 "the %3$d retained cases."
+msgstr ""
+
+#: R/agreement.b.R
+msgid ""
+"%1$d of %2$d subgroups are not shown because they have fewer than %3$d cases "
+"rated by at least two raters: %4$s. This table is therefore not a complete "
+"breakdown of the data."
 msgstr ""
 
 #: R/agreement.b.R
@@ -6800,6 +6863,26 @@ msgid ""
 "clinical adoption.</li>"
 msgstr ""
 
+#: R/sequentialtests.b.R
+msgid ""
+"<li>Among people with the disease, given a positive Test 1, the probability "
+"that Test 2 is positive is assumed equal to Se<sub>2</sub> (conditional "
+"independence): {value}</li>"
+msgstr ""
+
+#: R/sequentialtests.b.R
+msgid ""
+"<li>Among people with the disease, probability of testing positive on both, "
+"assuming conditional independence: {sens1} × {sens2} = {both}</li>"
+msgstr ""
+
+#: R/sequentialtests.b.R
+msgid ""
+"<li>Among people without the disease, given a negative Test 1, the "
+"probability that Test 2 is negative is assumed equal to Sp<sub>2</sub> "
+"(conditional independence): {value}</li>"
+msgstr ""
+
 #: R/lassologistic.b.R
 msgid ""
 "<li>An events-per-variable (EPV) of 10 is a rule of thumb (Peduzzi et al. "
@@ -6877,18 +6960,6 @@ msgstr ""
 msgid ""
 "<li>Evaluating if a new test is significantly better/worse than standard "
 "test</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a negative Test 1, probability of testing negative on Test 2: "
-"{value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a positive Test 1, probability of testing positive on Test 2: "
-"{value}</li>"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -6977,10 +7048,6 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "<li>Probability of testing negative on Test 2: {value}</li>"
-msgstr ""
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on both: {sens1} × {sens2} = {both}</li>"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -7136,6 +7203,13 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid ""
+"<p><b>Descriptive interpretation:</b> no test is ranked on the cases common "
+"to all tests. Review the pairwise comparisons above for inferential "
+"results.</p>"
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
 "<p><b>Overall comparison:</b> Cochran's Q test (Q = %1$.2f, p %2$s) <span "
 "style='color:inherit;'><b>did not detect a significant difference</b></span> "
 "among the three tests. This is not evidence that they perform equally: with "
@@ -7161,6 +7235,16 @@ msgstr ""
 msgid ""
 "<p><strong>Accuracy:</strong> Overall probability of correct "
 "classification</p>"
+msgstr ""
+
+#: R/sequentialtests.b.R
+msgid ""
+"<p><strong>Assumption:</strong> combined sensitivity is computed among "
+"people with the disease and combined specificity among people without it. "
+"All products below assume the two tests are conditionally independent given "
+"disease status. If the tests are correlated within a disease-status group "
+"(for example, the same specimen or related biology), the true combined "
+"values differ.</p>"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -8064,6 +8148,21 @@ msgid ""
 "good, 0.90 and above excellent."
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"A blank likelihood ratio is not estimable from these counts: its denominator "
+"count is zero, so it would be infinite, and the continuity correction (0.5 "
+"added to every cell) would not keep it above 1. Read the sensitivity and "
+"specificity with their confidence intervals instead."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"A blank ratio is not estimable from these counts: its denominator count is "
+"zero, so it would be infinite, and the continuity correction (0.5 added to "
+"every cell) would not keep it above 1."
+msgstr ""
+
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "A bound at or below zero means this many subjects cannot rule out agreement "
@@ -8078,54 +8177,50 @@ msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. A likelihood ratio that would be zero, "
-"infinite or undefined on the observed counts is computed from the "
-"Haldane-Anscombe corrected table (0.5 added to every cell) and reflects that "
-"correction, not the observed data: the positive likelihood ratio when "
-"sensitivity is 0% or specificity is 100%, the negative likelihood ratio when "
-"sensitivity is 100% or specificity is 0%. Sensitivity, specificity, "
-"accuracy, the predictive values and any other likelihood ratio are not "
-"corrected."
+"A cell of the 2x2 table is zero. A likelihood ratio whose denominator count "
+"is zero would be infinite, so it is computed from the Haldane-Anscombe "
+"corrected table (0.5 added to every cell) and reflects that correction, not "
+"the observed data: the positive likelihood ratio when specificity is 100%, "
+"the negative likelihood ratio when specificity is 0%. Sensitivity, "
+"specificity, accuracy, the predictive values and any other likelihood ratio "
+"use the observed counts."
 msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. A likelihood ratio that would be zero, "
-"infinite or undefined on the observed counts, and the diagnostic odds ratio, "
-"are computed from the Haldane-Anscombe corrected table (0.5 added to every "
-"cell). The other rows use the observed counts. Because only one likelihood "
-"ratio is corrected, the diagnostic odds ratio shown need not equal LR+ / LR- "
-"as displayed."
+"A cell of the 2x2 table is zero. A ratio whose denominator count is zero "
+"would be infinite (LR+: no false positives; LR-: no true negatives; "
+"diagnostic odds ratio: no false positives or no false negatives), so it is "
+"computed from the Haldane-Anscombe corrected table (0.5 added to every "
+"cell). A ratio whose numerator count is zero is exactly 0 and is not "
+"corrected. Sensitivity, specificity, accuracy, the predictive values and "
+"every other ratio use the observed counts, so a corrected, finite likelihood "
+"ratio can sit beside a sensitivity or specificity of 0% or 100%."
 msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. A likelihood ratio whose formula contains "
-"the zero count, and the diagnostic odds ratio, are computed from the "
-"Haldane-Anscombe corrected table (0.5 added to every cell), because on the "
-"observed counts they would be zero or infinite. The other rows use the "
-"observed counts."
+"A cell of the 2x2 table is zero. A ratio whose denominator count is zero "
+"would be infinite, so it is computed from the Haldane-Anscombe corrected "
+"table (0.5 added to every cell). The other rows use the observed counts."
 msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. Each likelihood ratio that would be zero, "
-"infinite or undefined on the observed counts, and the diagnostic odds ratio, "
-"are computed from the Haldane-Anscombe corrected table (0.5 added to every "
-"cell). Sensitivity, specificity, accuracy, the predictive values and any "
-"other likelihood ratio are not corrected. The Fagan nomogram shows the "
-"table's likelihood ratios when one is above 1 and the other below 1; "
-"otherwise it takes both from the corrected table. The two sets therefore do "
-"not reconcile exactly: a non-zero, finite likelihood ratio can sit beside a "
-"sensitivity or specificity of 0% or 100%."
+"A cell of the 2x2 table is zero. A ratio whose denominator count is zero "
+"would be infinite, so it is computed from the Haldane-Anscombe corrected "
+"table (0.5 added to every cell). The other rows use the observed counts. "
+"Because the ratios do not all come from the same table, the diagnostic odds "
+"ratio shown need not equal LR+ / LR- as displayed."
 msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table was zero. A likelihood ratio that would be zero or "
-"infinite on the observed counts is computed from the Haldane-Anscombe "
-"corrected table (0.5 added to every cell); sensitivity, specificity and the "
-"predictive values above are not corrected."
+"A cell of the 2x2 table was zero. A likelihood ratio whose denominator count "
+"is zero would be infinite, so it is computed from the Haldane-Anscombe "
+"corrected table (0.5 added to every cell); a likelihood ratio with a zero "
+"numerator count is exactly 0 and is not corrected. Sensitivity, specificity "
+"and the predictive values above are not corrected."
 msgstr ""
 
 #: R/agreement.b.R
@@ -8212,6 +8307,36 @@ msgstr ""
 msgid "A latent-class EM point estimator using fixed Beta priors."
 msgstr ""
 
+#: R/decisioncalculator.b.R
+msgid ""
+"A likelihood ratio is not estimable for this table (see the notices above), "
+"so it cannot be placed on the nomogram."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"A likelihood ratio of exactly 0 is the observed value: its numerator count "
+"is zero (no true positives for LR+, no false negatives for LR-), so no "
+"correction is applied."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe "
+"0.5 correction, and so do the probabilities read from the nomogram. The "
+"predictive values and post-test probabilities in the Measures table are "
+"computed from the raw counts and can differ, by a wide margin in a small "
+"table."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe "
+"0.5 correction, while the predictive values above use the observed counts. "
+"Multiplying the pre-test odds by these likelihood ratios therefore need not "
+"reproduce the predictive values exactly."
+msgstr ""
+
 #: R/agreement.b.R
 msgid ""
 "A linear mixed-effects model that compares measurement conditions (e.g., "
@@ -8233,6 +8358,12 @@ msgstr ""
 #: R/decisioncalculator.b.R
 msgid ""
 "A negative result has a likelihood ratio of {lr} and lowers the probability "
+"from {prevalence} to {posttest}."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A negative result has a likelihood ratio of {lr} and raises the probability "
 "from {prevalence} to {posttest}."
 msgstr ""
 
@@ -8369,6 +8500,26 @@ msgstr ""
 msgid ""
 "A random case has a lower value than a random non-case %.0f%% of the time "
 "(ties count one half)"
+msgstr ""
+
+#: R/decisioncombine.b.R
+msgid ""
+"A ratio is corrected only when the cell in its denominator is zero and its "
+"numerator is not (FP for LR+, TN for LR-, FP or FN for the odds ratio): 0.5 "
+"is then added to all four cells for that ratio and its confidence interval "
+"(Haldane-Anscombe for the odds ratio). A zero numerator gives exactly 0, "
+"uncorrected; a corrected value of 1 or below is left blank as not estimable. "
+"On a row with no test-positive patients LR+ and the odds ratio are blank and "
+"its LR- is exactly 1; the mirror case blanks LR- and shows LR+ as exactly 1."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"A ratio shown as exactly 0 has a zero numerator count (LR+: no true "
+"positives; LR-: no false negatives; diagnostic odds ratio: no true positives "
+"or no true negatives). It is the observed value and is not corrected. Its "
+"confidence interval runs from 0 to the upper limit of the same log-scale "
+"interval computed with 0.5 added to every cell (Haldane-Anscombe correction)."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -8516,13 +8667,17 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid ""
-"A zero cell required a continuity correction in {n} row(s) ({patterns}). For "
-"LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, 0.5 "
-"is added to all four cells for that ratio and its confidence interval. The "
-"diagnostic odds ratio and its interval use all four cells plus 0.5 whenever "
-"any cell is zero (Haldane-Anscombe correction). The corrected diagnostic "
-"odds ratio need not equal the ratio of the displayed likelihood ratios. "
-"Sensitivity, specificity, PPV and NPV use observed counts."
+"A zero cell required a continuity correction in {n} row(s) ({patterns}). LR+ "
+"is corrected only when FP is zero and TP is not, LR- only when TN is zero "
+"and FN is not, and the diagnostic odds ratio only when FP or FN is zero and "
+"neither TP nor TN is: 0.5 is then added to all four cells for that ratio and "
+"its confidence interval (for the odds ratio, the Haldane-Anscombe "
+"correction). A ratio whose numerator cell is zero is reported as exactly 0 "
+"instead. A corrected ratio stands in for an infinite one, so when the "
+"correction would bring it to 1 or below it is left blank as not estimable. "
+"The corrected diagnostic odds ratio need not equal the ratio of the "
+"displayed likelihood ratios. Sensitivity, specificity, PPV and NPV use "
+"observed counts."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -8534,53 +8689,40 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid ""
-"A zero cell was present, so 0.5 was added to every cell for the likelihood "
-"ratios and the diagnostic odds ratio. Their confidence intervals use the "
-"same corrected counts."
+"A zero cell was present. A likelihood ratio or the diagnostic odds ratio is "
+"corrected only when its denominator cell is empty and its numerator is not "
+"(FP for LR+, TN for LR-, FP or FN for the diagnostic odds ratio): 0.5 is "
+"then added to all four cells for that ratio and its confidence interval "
+"(Haldane-Anscombe correction). When its numerator cell is empty (TP for LR+, "
+"FN for LR-, TP or TN for the diagnostic odds ratio) the ratio is exactly 0, "
+"and its confidence interval runs from 0 to the upper limit of the same "
+"log-scale interval computed with 0.5 added to every cell; when both are "
+"empty it is not estimable. Sensitivity, specificity, predictive values and "
+"their intervals use the observed counts. The corrected diagnostic odds ratio "
+"need not equal the ratio of the displayed likelihood ratios."
 msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid ""
-"A zero cell was present, so the likelihood ratios and the probabilities read "
-"from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive "
-"values and post-test probabilities in the Measures table are computed from "
-"the raw counts and can differ, by a wide margin in a small table."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
-"A zero cell was present, so the likelihood ratios use the Haldane-Anscombe "
-"0.5 correction, while the predictive values above use the observed counts. "
-"Multiplying the pre-test odds by these likelihood ratios therefore need not "
-"reproduce the predictive values exactly."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
-"A zero cell was present. As in the tables above, a likelihood ratio with a "
-"zero among its own cells (TP or FP for LR+, FN or TN for LR-) and the "
-"diagnostic odds ratio use the table with 0.5 added to every cell "
-"(Haldane-Anscombe), and so do their intervals; the other likelihood ratio "
-"uses the observed counts. These corrected limits are approximate. Youden's "
-"index and the number needed to diagnose use the observed counts."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
-"A zero cell was present. For LR+ only when TP or FP is zero, and for LR- "
-"only when FN or TN is zero, 0.5 is added to all four cells for that ratio "
-"and its confidence interval. The diagnostic odds ratio and its interval use "
-"all four cells plus 0.5 whenever any cell is zero (Haldane-Anscombe "
-"correction). Sensitivity, specificity, predictive values and their intervals "
-"use the observed counts. The corrected diagnostic odds ratio need not equal "
-"the ratio of the displayed likelihood ratios."
+"A zero cell was present. As in the tables above, a ratio whose denominator "
+"cell is empty (FP for LR+, TN for LR-, FP or FN for the diagnostic odds "
+"ratio) while its numerator cell is not uses the table with 0.5 added to "
+"every cell (Haldane-Anscombe), and so does its interval; these corrected "
+"limits are approximate. If that correction would put the ratio at or below 1 "
+"it is left blank, because it would reverse the direction of an infinite "
+"observed value. A ratio whose numerator cell is empty and denominator cell "
+"is not is exactly 0, and its interval runs from 0 to the upper limit of the "
+"same log-scale interval computed with 0.5 added to every cell; one with both "
+"cells empty (0/0) is not estimable. Every other ratio, Youden's index and "
+"the number needed to diagnose use the observed counts."
 msgstr ""
 
 #: R/decision.b.R
 msgid ""
 "A zero count makes a proportion exactly 0% or 100%. Read the 95% confidence "
 "intervals (95% confidence intervals option), not the point estimate. For the "
-"likelihood ratios, see Continuity correction applied."
+"likelihood ratios and the diagnostic odds ratio, see the notes under the "
+"tables."
 msgstr ""
 
 #: R/decision.b.R
@@ -10218,7 +10360,7 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
-"At a prevalence of %1$.1f%%, the %2$s is especially sensitive to changes in "
+"At a prevalence of %1$s%%, the %2$s is especially sensitive to changes in "
 "prevalence."
 msgstr ""
 
@@ -10360,7 +10502,7 @@ msgid ""
 "standard error (kappa divided by its H0 test statistic) because the non-null "
 "asymptotic standard error from vcd::Kappa was unavailable for that subgroup. "
 "Null-SE intervals use a variance under zero agreement; their coverage at "
-"nonzero kappa is uncertain; three or more raters always use this fallback."
+"nonzero kappa is uncertain."
 msgstr ""
 
 #: R/agreement.b.R
@@ -10424,6 +10566,15 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "At optimal threshold = %1$s (sensitivity %2$s%%, specificity %3$s%%)"
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"At the %1$s%% disease prevalence among the %2$d cases analysed for %3$s, "
+"%4$s positive predictive value, %5$s negative predictive value, and %6$s "
+"overall accuracy were observed; predictive values and accuracy change with "
+"prevalence and would need to be recomputed for a population with a different "
+"disease rate."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -11054,13 +11205,6 @@ msgid ""
 "the numbers)."
 msgstr ""
 
-#: R/kappaSizePower.b.R
-msgid ""
-"Because the goodness-of-fit test has to estimate the expected proportions "
-"from the ratings, this sample size can fall well short of power {power}; "
-"confirm it by simulating the intended analysis."
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "Because the probabilities for '%s' were derived here by a linear logistic "
@@ -11095,6 +11239,10 @@ msgstr ""
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
 msgid "Below chance"
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid "below chance"
 msgstr ""
 
 #: R/agreement.b.R
@@ -12331,8 +12479,8 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
-"Check that \"Positive Outcome Level\" is the level the model predicts and "
-"that the column is not one minus the risk."
+"Check that \"Positive Outcome\" is the level the model predicts and that the "
+"column is not one minus the risk."
 msgstr ""
 
 #: R/decision.b.R
@@ -12366,6 +12514,12 @@ msgstr ""
 msgid ""
 "Check the missing values of this test variable, or remove it from the "
 "analysis."
+msgstr ""
+
+#: R/decisioncurve.b.R
+msgid ""
+"Check whether the model's bootstrap interval on the decision curve plot "
+"stays above both reference lines over this range."
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -14069,8 +14223,16 @@ msgstr ""
 msgid "Condition/method variable"
 msgstr ""
 
+#: R/nogoldstandard.b.R
+msgid "Conditional independence cannot be checked with three tests"
+msgstr ""
+
 #: nogoldstandard/results/conditional_dependence.title
 msgid "Conditional Independence Check (Bivariate Residuals)"
+msgstr ""
+
+#: R/nogoldstandard.b.R
+msgid "Conditional independence not checked"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -14464,10 +14626,6 @@ msgstr ""
 msgid "consistent correlation"
 msgstr ""
 
-#: R/nogoldstandard.b.R
-msgid "Consistent with independence"
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid "Constant Predictor: %s"
 msgstr ""
@@ -14634,6 +14792,15 @@ msgid ""
 "was picked again in {stability}% of the samples. The correction is "
 "approximate: it leaves part of the optimism when rules are nearly tied, and "
 "it does not allow for how the tests, levels or patients were chosen."
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid ""
+"Corrected values are an optimism-corrected internal validation (Harrell's "
+"bootstrap) on the same patients, not an external validation. With variable "
+"and lambda selection in a modest sample the correction removes only part of "
+"the optimism, so the corrected AUC can still be too high; confirm "
+"performance on independent data."
 msgstr ""
 
 #: agreement/options/clusterDistance/correlation.title
@@ -15470,6 +15637,10 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#: R/lassologistic.b.R
+msgid "Default (no discrimination)"
+msgstr ""
+
 #: R/decisioncombine.b.R
 #: decisioncombine/options/filterStatistic/all.title
 msgid "Default Metric Set"
@@ -15900,6 +16071,10 @@ msgid "Diagnostic odds ratio"
 msgstr ""
 
 #: R/decisioncalculator.b.R
+msgid "diagnostic odds ratio"
+msgstr ""
+
+#: R/decisioncalculator.b.R
 msgid ""
 "Diagnostic odds ratio compares the odds of a positive result between "
 "reference-positive and reference-negative groups. Its magnitude is "
@@ -15917,9 +16092,10 @@ msgstr ""
 msgid ""
 "Diagnostic odds ratio: the odds of a positive test in patients with the "
 "disease divided by the odds of a positive test in patients without it. On "
-"one 2x2 table it equals LR+ / LR- (Glas et al. 2003); here it and only one "
-"of the likelihood ratios come from the zero-cell corrected table, so the "
-"displayed values need not satisfy that identity."
+"one 2x2 table it equals LR+ / LR- (Glas et al. 2003); here the displayed "
+"ratios do not all come from the same table (a ratio with a zero denominator "
+"count is computed from the zero-cell corrected table), so they need not "
+"satisfy that identity."
 msgstr ""
 
 #: decisioncombine/options/filterStatistic/dor.title
@@ -16910,7 +17086,9 @@ msgid "Empirical Total Deviation Index (TDI)"
 msgstr ""
 
 #: R/nogoldstandard.b.R
-msgid "Enable bootstrap confidence intervals for robust estimates"
+msgid ""
+"Enable bootstrap for approximate confidence intervals (estimates do not "
+"change)"
 msgstr ""
 
 #: decisioncompare/options/pp.description.ui
@@ -17022,10 +17200,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Equal"
-msgstr ""
-
-#: R/decisioncurve.b.R
-msgid "Equal Numbers of Events and Non-Events"
 msgstr ""
 
 #: psychopdaROC/options/method/oc_equal_sens_spec.title
@@ -17415,8 +17589,10 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "Every predictor produced a single distinct predicted probability, so there "
-"is nothing to group into calibration bins. This usually means the predictor "
-"is constant within the analysed rows."
+"is nothing to group into calibration bins. That happens only when a "
+"predictor is constant within the analysed rows: with Prediction scale Score "
+"its logistic slope is then not estimable, and every patient receives the "
+"sample prevalence as risk."
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -18886,19 +19062,6 @@ msgid ""
 "                        has no unique mode and is excluded."
 msgstr ""
 
-#: R/decisioncombine.b.R
-msgid ""
-"For LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, "
-"0.5 is added to all four cells for that ratio and its confidence interval. "
-"The diagnostic odds ratio and its interval use all four cells plus 0.5 "
-"whenever any cell is zero (Haldane-Anscombe correction). The corrected "
-"diagnostic odds ratio need not equal the ratio of the displayed likelihood "
-"ratios. No correction is made on a row with no test-positive patients: its "
-"LR+ and odds ratio are blank and its LR- is exactly 1, and the mirror case "
-"blanks LR- and the odds ratio and shows LR+ as exactly 1. In a sample with "
-"one reference outcome all three are blank."
-msgstr ""
-
 #: R/agreement.b.R
 msgid ""
 "For multi-category data, calculates agreement index for each category "
@@ -19143,7 +19306,7 @@ msgid "Full"
 msgstr ""
 
 #: R/lassologistic.b.R
-msgid "Full LASSO model (continuous)"
+msgid "Full %s model (continuous)"
 msgstr ""
 
 #: package/analyses/decisioncompare.description
@@ -19845,6 +20008,14 @@ msgid ""
 "and that is the figure reported."
 msgstr ""
 
+#: R/kappaSizeFixedN.b.R
+msgid ""
+"Holding the category proportions at their anticipated values, as the "
+"published calculation and kappaSize do, gives {fixed}; the figure shown "
+"re-estimates them at each value of kappa, as the analysis of the study "
+"should, and is the lower of the two."
+msgstr ""
+
 #: R/agreement.b.R
 #: agreement/options/multipleTestCorrection/holm.title
 msgid "Holm"
@@ -20222,7 +20393,7 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
-"If cases and controls were sampled separately, the 50% prevalence is a "
+"If cases and controls were sampled separately, the {pct}% prevalence is a "
 "design choice rather than the outcome rate of the target population, and the "
 "net benefit, the treat-all line and every projection here do not apply to "
 "that population."
@@ -20458,6 +20629,15 @@ msgstr ""
 msgid "Improvement"
 msgstr ""
 
+#: R/decisioncombine.b.R
+msgid ""
+"In {n} row(s) ({patterns}) LR+, LR- or the diagnostic odds ratio is exactly "
+"0 because the cell in its numerator is zero; no continuity correction is "
+"applied to that estimate. Its confidence interval runs from 0 to the upper "
+"limit of the same log-scale interval computed with 0.5 added to every cell "
+"(Haldane-Anscombe correction)."
+msgstr ""
+
 #: R/agreement.b.R
 msgid ""
 "In a breast cancer grading study, the contingency table might reveal that "
@@ -20525,6 +20705,17 @@ msgid ""
 "commonly used, had the worst overall bias and root mean square error of the "
 "four estimators compared (normal, transformed-normal, empirical and kernel); "
 "for the cut-point itself their results were more variable."
+msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"In these data the fitted logistic risk of %2$s runs opposite to the "
+"direction in which the ROC tables read %1$s (AUC %3$.3f in that direction). "
+"A one-marker logistic model does not depend on Direction, so calibration, "
+"the Brier score, the Hosmer-Lemeshow test, the decision and clinical impact "
+"curves and internal validation use the risk model the data support. Under "
+"the direction selected, %1$s performs worse than those outputs show. Check "
+"Direction and Positive class."
 msgstr ""
 
 #: R/agreement.b.R
@@ -20901,13 +21092,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Insufficient Predictors"
-msgstr ""
-
-#: R/enhancedROC.b.R
-msgid ""
-"Insufficient unique predicted probability values for Hosmer-Lemeshow "
-"grouping (need at least 3 distinct break points). This typically occurs when "
-"the predictor has very few unique values."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -22299,6 +22483,10 @@ msgstr ""
 msgid "Levels found: {levels}."
 msgstr ""
 
+#: R/decisioncompare.b.R
+msgid "Levels Not Yet Selected"
+msgstr ""
+
 #: R/agreement.b.R
 msgid "Light = few cases, dark = many; no color required"
 msgstr ""
@@ -22364,12 +22552,14 @@ msgid ""
 "Like the published formulas, it treats the expected proportions as known and "
 "rests on a large-sample approximation, so the power actually achieved can "
 "differ from the stated power in either direction: by several percentage "
-"points in many designs, and by much more with several raters and a rare "
-"finding, where estimating the proportions costs power. For a binary outcome "
-"the analysis therefore simulates the recommended test at the sample size "
-"shown and, when the simulated power falls more than 0.03 short, gives a "
-"simulated sample size; with three to five categories a note flags designs "
-"where the loss is likely to be large (both from 10 subjects upwards)."
+"points in many designs, and by much more with several raters or a rare "
+"finding. For a binary outcome the analysis therefore simulates the "
+"recommended test at the sample size shown and, when the simulated power "
+"falls more than 0.03 short, gives a simulated sample size; with three to "
+"five categories and three or more raters, where the simulated power at the "
+"published sample size was below 0.75 for a stated 0.80 in 8 of 12 designs "
+"checked, a note asks for the sample size to be confirmed by simulation (both "
+"from 10 subjects upwards)."
 msgstr ""
 
 #: R/decision.b.R
@@ -22915,17 +23105,26 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid ""
-"LR+, LR- and the diagnostic odds ratio add 0.5 to all four cells when a cell "
-"is zero, so they stay finite (for the odds ratio this is the "
-"Haldane-Anscombe correction; the likelihood ratios use the same adjustment); "
-"the proportions on the same row use the observed counts, so the two need not "
-"agree exactly at a zero cell. The correction repairs a sampling zero, not a "
-"structural one. On a row with no test-positive patients (a pattern nobody "
-"shows, or a rule that is never positive), LR+ and the odds ratio are 0/0 and "
-"are left BLANK rather than corrected, while LR- is exactly 1: any other "
-"result leaves the odds unchanged. On a row with no test-negative patients, "
-"LR- and the odds ratio are blank and LR+ is exactly 1. In a sample with only "
-"one reference outcome all three are blank in every row, as are PPV and NPV, "
+"LR+, LR- and the diagnostic odds ratio add 0.5 to all four cells only when a "
+"cell in the ratio's denominator is zero and its numerator is not (FP for "
+"LR+, TN for LR-, FP or FN for the odds ratio), so the ratio stays finite "
+"(for the odds ratio this is the Haldane-Anscombe correction; the likelihood "
+"ratios use the same adjustment). When the numerator cell is zero instead (TP "
+"for LR+, FN for LR-, TP or TN for the odds ratio), the ratio is exactly 0 "
+"and is not corrected: adding 0.5 there would turn a test that never detected "
+"disease into one that seems to point towards it. Its confidence interval "
+"runs from 0 to the upper limit of the same log-scale interval computed with "
+"0.5 added to every cell. A corrected ratio stands in for an infinite one, so "
+"when the correction would bring it to 1 or below (an empty cell in a much "
+"smaller reference group) it is left blank as not estimable. The proportions "
+"on the same row use the observed counts, so the two need not agree exactly "
+"at a zero cell. The correction repairs a sampling zero, not a structural "
+"one. On a row with no test-positive patients (a pattern nobody shows, or a "
+"rule that is never positive), LR+ and the odds ratio are 0/0 and are left "
+"BLANK rather than corrected, while LR- is exactly 1: any other result leaves "
+"the odds unchanged. On a row with no test-negative patients, LR- and the "
+"odds ratio are blank and LR+ is exactly 1. In a sample with only one "
+"reference outcome all three are blank in every row, as are PPV and NPV, "
 "which the sampling alone fixes, and Accuracy, which then only repeats the "
 "sensitivity or specificity."
 msgstr ""
@@ -23641,6 +23840,10 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
+#: R/psychopdaROC.b.R
+msgid "minimal"
+msgstr ""
+
 #: R/decision.b.R
 msgid "Minimal decrease in probability of disease"
 msgstr ""
@@ -23838,10 +24041,6 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "Missing Positive Level"
-msgstr ""
-
-#: R/decisioncompare.b.R
-msgid "Missing Positive Levels"
 msgstr ""
 
 #: R/agreement.b.R
@@ -24718,6 +24917,10 @@ msgstr ""
 msgid "Negative likelihood ratio"
 msgstr ""
 
+#: R/decisioncalculator.b.R
+msgid "negative likelihood ratio"
+msgstr ""
+
 #: R/decision.b.R
 msgid "Negative likelihood ratio unavailable due to data limitations"
 msgstr ""
@@ -25410,6 +25613,10 @@ msgstr ""
 msgid "No eligible paired cases"
 msgstr ""
 
+#: R/nogoldstandard.b.R
+msgid "No evidence against conditional independence (descriptive)"
+msgstr ""
+
 #: R/agreement.b.R
 msgid "No evidence of a difference"
 msgstr ""
@@ -25661,6 +25868,20 @@ msgid "No reference-negative subjects"
 msgstr ""
 
 #: R/decisioncalculator.b.R
+msgid ""
+"No reference-positive subject tested negative (FN = 0), so the negative "
+"likelihood ratio is exactly 0. A ratio of 0 cannot be placed on the "
+"nomogram's logarithmic scale."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"No reference-positive subject tested positive (TP = 0), so the positive "
+"likelihood ratio is exactly 0. A ratio of 0 cannot be placed on the "
+"nomogram's logarithmic scale."
+msgstr ""
+
+#: R/decisioncalculator.b.R
 msgid "No reference-positive subjects"
 msgstr ""
 
@@ -25813,6 +26034,16 @@ msgstr ""
 msgid ""
 "No test could be ranked by balanced accuracy because one reference-standard "
 "class has no cases; the figures below describe %s, the first test selected."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"No test could be ranked on the cases common to all tests; the figures below "
+"describe %s, the first test selected."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid "No test is ranked on the cases common to all tests."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -26045,10 +26276,6 @@ msgstr ""
 msgid "not calculated"
 msgstr ""
 
-#: R/decision.b.R
-msgid "not calculated (needs both sensitivity and specificity)"
-msgstr ""
-
 #: R/agreement.b.R
 msgid ""
 "Not comparable with strict accuracy: strict is defined on only %1$d of these "
@@ -26103,6 +26330,7 @@ msgid "Not estimable"
 msgstr ""
 
 #: R/cotest.b.R
+#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -26139,8 +26367,18 @@ msgid ""
 "undefined."
 msgstr ""
 
+#: R/decision.b.R
+msgid "not estimable from these counts"
+msgstr ""
+
 #: R/enhancedROC.b.R
 msgid "Not estimable; see the notice above the results."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"Not estimable: FP = 0 makes LR+ infinite, and the 0.5 correction would "
+"reverse its direction."
 msgstr ""
 
 #: R/decision.b.R
@@ -26177,6 +26415,12 @@ msgstr ""
 msgid ""
 "Not estimable: this rater and the reference rater used only one and the same "
 "category, so chance agreement is complete and kappa is 0 divided by 0."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"Not estimable: TN = 0 makes LR- infinite, and the 0.5 correction would "
+"reverse its direction."
 msgstr ""
 
 #: R/cotest.b.R
@@ -26780,11 +27024,19 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
+msgid ""
+"Observed levels outside the selected positive/negative pair: %s. Choose the "
+"positive and negative levels to compare under the level selectors, or recode "
+"the variable before analysis. Cases at other levels are excluded, never "
+"treated as negative."
+msgstr ""
+
 #: R/decisioncompare.b.R
 msgid ""
 "Observed levels outside the selected positive/negative pair: %s. Select "
-"'Exclude other observed levels' to omit these results, or explicitly recode "
-"the variable before analysis. Other levels are never treated as negative."
+"'Selected positive and negative levels only' to omit these results, or "
+"explicitly recode the variable before analysis. Other levels are never "
+"treated as negative."
 msgstr ""
 
 #: psychopdaROC/results/powerAnalysisTable.columns.title
@@ -26801,6 +27053,15 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Observed Proportion"
+msgstr ""
+
+#: R/decisioncurve.b.R
+msgid ""
+"Observed range of threshold probabilities over which the model's apparent "
+"(in-sample) net benefit exceeds both treat-all and treat-none. It carries no "
+"allowance for sampling variation: near the outcome prevalence even a "
+"predictor unrelated to the outcome often shows a short range by chance, so a "
+"narrow range or a small margin is not evidence of benefit."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -27041,6 +27302,14 @@ msgstr ""
 
 #: R/decision.b.R
 msgid ""
+"Only \"{pos}\" (reference-positive) and \"{neg}\" (reference-negative) take "
+"part. Cases at any other level are removed, not counted as "
+"reference-negative. Removing them can bias the estimates. Report how many "
+"were removed (STARD 2015)."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
 "Only \"{pos}\" (test-positive) and \"{neg}\" (test-negative) take part. "
 "Cases at any other level are removed, not counted as negative. If these are "
 "inconclusive results, removing them can make the test look more accurate "
@@ -27265,9 +27534,9 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid ""
-"Open points: rows with a zero cell, whose LR+, LR- and DOR use a 0.5 "
-"continuity correction; without it at least one of the three would be 0 or "
-"infinite."
+"Open points: rows where at least one of LR+, LR- and DOR uses a 0.5 "
+"continuity correction, because a cell in its denominator is zero; without it "
+"that ratio would be infinite."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -27312,8 +27581,8 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid ""
-"Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) is a "
-"more realistic estimate of future performance."
+"Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) removes "
+"the estimated optimism."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -27564,6 +27833,10 @@ msgid ""
 "Outcome selection excluded %1$d row(s) in unselected levels and %2$d row(s) "
 "with missing outcomes. All analyses use only %3$s (positive) and %4$s "
 "(negative), with marker-specific complete cases."
+msgstr ""
+
+#: R/decisioncurve.b.R
+msgid "Outcome Split Matches a Case-Control Ratio"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -28509,6 +28782,13 @@ msgstr ""
 msgid "Penalized EM Sample Size"
 msgstr ""
 
+#: R/nogoldstandard.b.R
+msgid ""
+"Penalized EM: residuals come from the unpenalized (maximum-likelihood) fit "
+"of the same conditional-independence model, so the fixed priors do not enter "
+"them. They check the model assumption, not the prior-adjusted estimates."
+msgstr ""
+
 #: package/analyses/lassologistic.menuSubtitle
 #: lassologistic/options.menuSubtitle
 msgid "Penalized feature selection for binary classification"
@@ -28798,12 +29078,6 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Please specify at least two dependent variables to use DeLong's test."
-msgstr ""
-
-#: R/decisioncompare.b.R
-msgid ""
-"Please specify positive levels for: {slots}. Use the level selector in the "
-"variable panel to choose which level represents a positive test result."
 msgstr ""
 
 #: enhancedROC/options/plotHeight.title
@@ -29154,6 +29428,10 @@ msgstr ""
 
 #: R/decision.b.R
 msgid "Positive likelihood ratio"
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid "positive likelihood ratio"
 msgstr ""
 
 #: R/decision.b.R
@@ -29532,13 +29810,13 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid ""
 "PPV and NPV below are adjusted to the user-specified target prevalence "
-"(%.1f%%), not the prevalence observed in this sample. Transport to that "
+"(%s%%), not the prevalence observed in this sample. Transport to that "
 "population assumes comparable case mix and conditional score distributions."
 msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
-"PPV and NPV below are computed at the prevalence of this sample (%.1f%%) and "
+"PPV and NPV below are computed at the prevalence of this sample (%s%%) and "
 "do not carry over to a population where the condition is more or less common "
 "- sensitivity and specificity also require comparable case mix and "
 "conditional score distributions. Recompute them for your own setting's "
@@ -30044,6 +30322,7 @@ msgstr ""
 #: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
+#: R/sequentialtests.b.R
 #: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncalculator/results/screeningWorkload.columns.title
@@ -30878,12 +31157,6 @@ msgstr ""
 msgid "Range of Benefit:"
 msgstr ""
 
-#: R/decisioncurve.b.R
-msgid ""
-"Range of threshold probabilities over which the model's net benefit exceeds "
-"both treat-all and treat-none; a model is only worth using within this range."
-msgstr ""
-
 #: enhancedROC/results/results/partialAucAnalysis.columns.title
 msgid "Range Type"
 msgstr ""
@@ -31307,7 +31580,6 @@ msgid "reduced to %sx of prevalence"
 msgstr ""
 
 #: R/agreement.b.R
-#: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: agreement/results/confusionMatrixTable.columns.title
 #: lassologistic/results/methodComparison.columns.title
@@ -31358,6 +31630,10 @@ msgid ""
 "consensus or comparative method when measuring agreement."
 msgstr ""
 
+#: R/decision.b.R
+msgid "Reference levels excluded from analysis: {lvls}"
+msgstr ""
+
 #: decisioncurve/options/showReferenceLinesLabels.title
 #: decisioncurve/ui[3][0]/showReferenceLinesLabels.label
 msgid "Reference line labels"
@@ -31383,6 +31659,7 @@ msgstr ""
 msgid "Reference negative given negative call"
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decision/options/goldNegative.title
 #: decisioncompare/options/goldNegative.title
 msgid "Reference negative level"
@@ -31416,6 +31693,7 @@ msgid ""
 "calls \"{tpos}\"."
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decision/options/goldPositive.title
 #: decisioncompare/options/goldPositive.title
 msgid "Reference positive level"
@@ -31985,6 +32263,10 @@ msgstr ""
 msgid "Risk groups"
 msgstr ""
 
+#: R/enhancedROC.b.R
+msgid "Risk Model Runs Against the ROC Direction: %s"
+msgstr ""
+
 #: psychopdaROC/options/metric/risk_ratio.title
 msgid "Risk ratio"
 msgstr ""
@@ -32084,9 +32366,7 @@ msgid ""
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid ""
-"ROC analysis failed for every selected predictor, so the tables and plots "
-"below have no results. The warnings name the reason for each predictor."
+msgid "ROC analysis failed for every selected predictor, so there are no results."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -32816,9 +33096,7 @@ msgid "Select a binary Outcome Variable (the condition you want to predict)."
 msgstr ""
 
 #: R/decisioncurve.b.R
-msgid ""
-"Select a binary rule variable or disable \"Clinical Decision Rule "
-"Integration\"."
+msgid "Select a binary rule variable or disable \"Clinical decision rule\"."
 msgstr ""
 
 #: R/decision.b.R
@@ -35274,6 +35552,10 @@ msgid ""
 msgstr ""
 
 #: R/sequentialtests.b.R
+msgid "Teaching Example Replaced Entered Values"
+msgstr ""
+
+#: R/sequentialtests.b.R
 msgid "Teaching Example Values Are Not Clinical Guidance"
 msgstr ""
 
@@ -35387,7 +35669,6 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
-#: R/decisioncompare.b.R
 #: R/sequentialtests.b.R
 #: decisioncompare/ui[1][1].label
 #: nogoldstandard/options/test1.title
@@ -35421,6 +35702,7 @@ msgstr ""
 msgid "Test 1 Low Performance"
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decisioncompare/options/test1Negative.title
 msgid "Test 1 negative level"
 msgstr ""
@@ -35440,12 +35722,14 @@ msgid ""
 "intended illustrative comparison."
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decisioncombine/options/test1Positive.title
 #: decisioncompare/options/test1Positive.title
 msgid "Test 1 positive level"
 msgstr ""
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test1_sens.title
 msgid "Test 1 sensitivity"
 msgstr ""
@@ -35461,6 +35745,7 @@ msgid ""
 msgstr ""
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test1_spec.title
 msgid "Test 1 specificity"
 msgstr ""
@@ -35481,7 +35766,6 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
-#: R/decisioncompare.b.R
 #: R/sequentialtests.b.R
 #: decisioncompare/ui[1][2].label
 #: nogoldstandard/options/test2.title
@@ -35514,6 +35798,7 @@ msgstr ""
 msgid "Test 2 Low Performance"
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decisioncompare/options/test2Negative.title
 msgid "Test 2 negative level"
 msgstr ""
@@ -35533,6 +35818,7 @@ msgid ""
 "intended illustrative comparison."
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decisioncombine/options/test2Positive.title
 #: decisioncompare/options/test2Positive.title
 msgid "Test 2 positive level"
@@ -35543,6 +35829,7 @@ msgid "Test 2 Required Before Test 3"
 msgstr ""
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test2_sens.title
 msgid "Test 2 sensitivity"
 msgstr ""
@@ -35558,6 +35845,7 @@ msgid ""
 msgstr ""
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test2_spec.title
 msgid "Test 2 specificity"
 msgstr ""
@@ -35577,7 +35865,6 @@ msgid "Test 2: {name}"
 msgstr ""
 
 #: R/decisioncombine.b.R
-#: R/decisioncompare.b.R
 #: decisioncompare/ui[1][3].label
 #: nogoldstandard/options/test3.title
 msgid "Test 3"
@@ -35608,6 +35895,7 @@ msgid ""
 "level, or remove Test 3."
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decisioncompare/options/test3Negative.title
 msgid "Test 3 negative level"
 msgstr ""
@@ -35616,6 +35904,7 @@ msgstr ""
 msgid "Test 3 Performance"
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decisioncombine/options/test3Positive.title
 #: decisioncompare/options/test3Positive.title
 msgid "Test 3 positive level"
@@ -35877,6 +36166,7 @@ msgstr ""
 msgid "Testing Strategy"
 msgstr ""
 
+#: R/sequentialtests.b.R
 #: sequentialtests/options/strategy.title
 msgid "Testing strategy"
 msgstr ""
@@ -35904,17 +36194,17 @@ msgid ""
 "with case and rater as random effects"
 msgstr ""
 
+#: R/psychopdaROC.b.R
+msgid ""
+"The '%1$s' metric is best at its %2$s, so the cut-point was found by %3$s "
+"it; the Cutpoint method setting asked for the opposite direction."
+msgstr ""
+
 #: R/enhancedROC.b.R
 msgid ""
 "The '%1$s' preset replaced settings you can still see in the options panel: "
 "%2$s. Choose the Custom Configuration preset if you want the values you "
 "entered to be used."
-msgstr ""
-
-#: R/psychopdaROC.b.R
-msgid ""
-"The '%s' metric is best at its %s, so the cut-point was found by %s it; the "
-"Cutpoint method setting asked for the opposite direction."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -35934,6 +36224,14 @@ msgid ""
 "guidance and must not be used to design a real testing protocol or advise a "
 "patient. Replace every value with sensitivity, specificity and prevalence "
 "estimates from your own setting or from a source you have checked."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The {ratio} has an empty denominator cell, so its observed value is "
+"infinite. Adding 0.5 to every cell would put it at or below 1 and reverse "
+"its direction, because the empty cell lies in the smaller reference group, "
+"so it is left blank."
 msgstr ""
 
 #: R/agreement.b.R
@@ -36054,8 +36352,10 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
-"The analysed cases contain exactly as many patients with the outcome as "
-"without it ({n} each), as a 1:1 case-control design would."
+"The analysed cases contain {events} patients with the outcome and "
+"{nonevents} without it, an exact {ratio} ratio of patients with the outcome "
+"to patients without it, as a case-control design that samples a fixed number "
+"of controls per case (or of cases per control) would produce."
 msgstr ""
 
 #: R/agreement.b.R
@@ -36389,6 +36689,10 @@ msgid ""
 "clamped to the nearest bound"
 msgstr ""
 
+#: R/lassologistic.b.R
+msgid "The Coefficient Plot is empty because no term was retained."
+msgstr ""
+
 #: R/decisioncombine.b.R
 msgid ""
 "The combination table therefore contains no case with {test} negative: the "
@@ -36640,6 +36944,13 @@ msgid ""
 "and no rule has both: every complete case has the same reference-standard "
 "result, so one of the two cannot be estimated. The notice about the "
 "reference standard says which."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The denominator cell of this ratio is zero, so 0.5 was added to every cell "
+"(Haldane-Anscombe correction). Its confidence interval uses the same "
+"corrected counts."
 msgstr ""
 
 #: R/cotest.b.R
@@ -37059,7 +37370,7 @@ msgstr ""
 #: R/decision.b.R
 msgid ""
 "The gold standard has more than one level besides \"{pos}\" ({lvls}), so the "
-"disease-absent level cannot be inferred. Select it under Disease absent "
+"disease-absent level cannot be inferred. Select it under Reference negative "
 "level. Levels you do not name are excluded from the analysis rather than "
 "counted as disease-absent."
 msgstr ""
@@ -37411,6 +37722,13 @@ msgstr ""
 msgid "The logistic model did not converge."
 msgstr ""
 
+#: R/enhancedROC.b.R
+msgid ""
+"The logistic slope of %s is not estimable because the marker is constant in "
+"the analysed rows, so every patient receives the same predicted risk (the "
+"sample prevalence) and there are no risk groups to compare."
+msgstr ""
+
 #: R/decisioncompare.b.R
 msgid ""
 "The logit interval is undefined at 0% or 100% agreement, so this row shows "
@@ -37431,6 +37749,12 @@ msgid ""
 "the rule's sensitivity and specificity and subtracts 1. It is usually more "
 "conservative than the Agresti-Caffo interval shown beside Youden's J in the "
 "combination table, so the two lower limits can differ."
+msgstr ""
+
+#: R/kappaSizeCI.b.R
+msgid ""
+"The lower limit ({lower}) drives the sample size; the expected upper limit "
+"then falls at or inside {upper}."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -37617,14 +37941,18 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid ""
-"The negative likelihood ratio is not estimable: the test was never negative "
-"in this table."
+"The negative likelihood ratio is not estimable for this table; the notices "
+"above say why."
 msgstr ""
 
 #: R/nogoldstandard.b.R
 msgid ""
 "The negative-response probability and PPV are fixed at 100% by construction "
 "and therefore are left blank."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid "The nomogram is omitted."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -37684,6 +38012,14 @@ msgid ""
 "Klar); for three to five categories no such figure was given, and the "
 "expected cell counts are the guide (Rotondi and Donner). Below 25 subjects "
 "it has not been shown to hold, so read the bound with caution."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The numerator cell of this ratio is zero, so the ratio is exactly 0 and is "
+"not corrected. Its confidence interval runs from 0 to the upper limit of the "
+"same log-scale interval computed with 0.5 added to every cell "
+"(Haldane-Anscombe correction)."
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -37948,14 +38284,8 @@ msgstr ""
 #: R/decisioncalculator.b.R
 msgid ""
 "The positive likelihood ratio is {lr}, so a positive result lowers the "
-"probability of a reference-positive outcome rather than raising it."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
-"The positive likelihood ratio is {lr}. A nomogram assumes that a positive "
-"result raises the probability of the outcome; here it lowers that "
-"probability, so the plot is omitted. Check the test coding."
+"probability of a reference-positive outcome rather than raising it. A "
+"nomogram assumes that a positive result raises it. Check the test coding."
 msgstr ""
 
 #: R/decision.b.R
@@ -37965,10 +38295,19 @@ msgid ""
 "1 (sensitivity + specificity > 1); here the plot is omitted."
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"The positive likelihood ratio is {lrp} and the negative likelihood ratio is "
+"{lrn}. A likelihood ratio that is exactly 0 or not estimable cannot be "
+"placed on the nomogram's logarithmic scale, so the plot is omitted. Both "
+"come from a zero count in the 2x2 table; see the confidence intervals of "
+"sensitivity and specificity."
+msgstr ""
+
 #: R/decisioncalculator.b.R
 msgid ""
-"The positive likelihood ratio is not estimable: the test was never positive "
-"in this table."
+"The positive likelihood ratio is not estimable for this table; the notices "
+"above say why."
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -37982,6 +38321,14 @@ msgid ""
 "The power curve for '{var}' is unavailable for this degenerate "
 "configuration. Use a target AUC strictly between 0.5 and 1 for prospective "
 "planning."
+msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"The predicted risks of %1$s take only %2$s distinct values, too few for "
+"Hosmer-Lemeshow grouping, which needs at least 3 distinct quantile break "
+"points. This happens when the marker has very few distinct values or is "
+"heavily tied."
 msgstr ""
 
 #: R/decision.b.R
@@ -38018,7 +38365,7 @@ msgid "the prevalence observed in these data"
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "the prevalence you entered (%.3f)"
+msgid "the prevalence you entered (%s)"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -38052,8 +38399,11 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "The published formula behind this sample size treats the expected "
-"proportions as known. The goodness-of-fit test has to estimate them from the "
-"ratings, and in this design that can leave it well short of the stated power "
+"proportions as known and rests on a large-sample approximation. With three "
+"or more raters and three to five categories, simulations of the recommended "
+"goodness-of-fit test at the published sample size gave a power of about 0.64 "
+"to 0.81 for a stated 0.80, below 0.75 in 8 of 12 designs, balanced "
+"proportions included, so this design can fall well short of the stated power "
 "of {power} at {n} subjects. How far short cannot be computed reliably here, "
 "so confirm the sample size by simulating the intended analysis."
 msgstr ""
@@ -38301,6 +38651,20 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "The ROC analysis used the following specifications."
+msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"The ROC tables read %1$s in the direction in which it ranks patients well "
+"(AUC %3$.3f), but its group means point the other way, so the slope of the "
+"fitted logistic risk of %2$s runs opposite to that direction. This happens "
+"with a skewed marker or an outlying value. Calibration, the Brier score, the "
+"Hosmer-Lemeshow test, the decision and clinical impact curves and internal "
+"validation use that fitted model, the risk model the data support, which "
+"ranks patients the opposite way to the ROC, cut-point and fixed-cutoff "
+"tables; they do not describe %1$s as those tables read it, and can disagree "
+"with them. A log or rank transformation of the marker usually removes the "
+"conflict."
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -38652,6 +39016,13 @@ msgid ""
 "Enter comma-separated proportions, for example 0.001,0.01."
 msgstr ""
 
+#: R/sequentialtests.b.R
+msgid ""
+"The teaching example replaced these entered values (entered -> used): "
+"{values}. Set the teaching example to \"Custom Values\" to analyse your own "
+"values."
+msgstr ""
+
 #: R/psychopdaROC.b.R
 msgid "The test '%1$s' has an AUC of %2$.3f"
 msgstr ""
@@ -38692,19 +39063,7 @@ msgstr ""
 #: R/decisioncalculator.b.R
 msgid ""
 "The test was never negative in this table, so the negative likelihood ratio "
-"is not estimable and the nomogram is omitted."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
-"The test was never negative in this table, so the negative likelihood ratio "
 "is not estimable."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
-"The test was never positive in this table, so the positive likelihood ratio "
-"is not estimable and the nomogram is omitted."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -38718,6 +39077,20 @@ msgid ""
 "The tests have similar marginal sensitivity and specificity. Similar "
 "marginal performance does not establish redundancy or independence; assess "
 "conditional dependence using external evidence."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"The tests were evaluated on different sets of cases, and the {n} cases with "
+"a determinate result for every test do not include both reference-standard "
+"classes, so the tests cannot be ranked on common cases."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"The tests were evaluated on different sets of cases, so this ranking "
+"compares them on the {n} cases with a determinate result for every test; the "
+"per-test figures use each test's own available cases."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -38739,6 +39112,12 @@ msgid ""
 "The Treatment Threshold Range could not be read as \"min,max,step\" with 0 < "
 "min <= max < 1 and a positive step. The default range 0.05 to 0.50 in steps "
 "of 0.05 was used instead."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The two likelihood ratios in the table cannot be drawn together on one "
+"nomogram."
 msgstr ""
 
 #: R/agreement.b.R
@@ -38774,6 +39153,14 @@ msgid ""
 "Cohen's kappa to distinguish systematic bias from poor agreement."
 msgstr ""
 
+#: R/nogoldstandard.b.R
+msgid ""
+"The unpenalized companion fit did not converge, so the bivariate residuals "
+"could not be computed. Penalized EM assumes the tests err independently "
+"within each class; run the latent class analysis and check its residuals "
+"before interpreting these estimates."
+msgstr ""
+
 #: R/lassologistic.b.R
 msgid ""
 "The unpenalized refit on all candidate variables could not be fitted (%s), "
@@ -38784,6 +39171,12 @@ msgstr ""
 msgid ""
 "The unpenalized refit on the retained terms could not be fitted (%s), so its "
 "row is omitted."
+msgstr ""
+
+#: R/kappaSizeCI.b.R
+msgid ""
+"The upper limit ({upper}) drives the sample size; the expected lower limit "
+"then falls at or inside {lower}."
 msgstr ""
 
 #: R/decision.b.R
@@ -38898,6 +39291,14 @@ msgid ""
 "These are single-cohort estimates. Their practical meaning depends on "
 "intended use, error consequences, prevalence, patient spectrum, and "
 "reference-standard quality. This educational summary is not a clinical guide."
+msgstr ""
+
+#: R/decisioncombine.b.R
+msgid ""
+"These are Wilson score 95% confidence intervals. The decision and "
+"decisioncompare analyses report exact (Clopper-Pearson) intervals for the "
+"same proportions, which are usually a little wider, so the two sets of "
+"limits differ."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -39095,6 +39496,12 @@ msgid ""
 "(Van Calster et al. 2019); this sample has %1$s with and %2$s without. "
 "Sampling noise alone inflates them, so a well-calibrated model can look "
 "miscalibrated, and a small value is no proof of good calibration either."
+msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"They are Wald intervals on the AUC scale: the AUC plus or minus z times "
+"DeLong's standard error, truncated to 0-1."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -39460,6 +39867,15 @@ msgid ""
 "this method scores each test against a reference built from the tests "
 "themselves, so the figures describe agreement with that rule rather than "
 "diagnostic accuracy."
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"This metric counts every false positive and every false negative at an equal "
+"unit cost (and every correct classification at an equal unit utility), so it "
+"selects the same cut-point as accuracy. Cost ratio (FP:FN) is not used here; "
+"to weigh the two errors unequally, choose the Cost-benefit optimized "
+"cutpoint method."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -39855,7 +40271,7 @@ msgid ""
 "TN + FN equals zero: the test was never negative. The negative predictive "
 "value, the negative likelihood ratio and the diagnostic odds ratio are not "
 "estimable, and the test cannot separate the two groups. The positive "
-"likelihood ratio differs from 1 only because of the 0.5 zero-cell correction."
+"likelihood ratio is exactly 1: a positive result carries no information."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -39881,6 +40297,12 @@ msgstr ""
 
 #: lassologistic/results/todo.title
 msgid "To Do"
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"To finish setting up the analysis, choose: {boxes}. The reference and every "
+"test need both a positive and a negative level; no level is inferred."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -40078,7 +40500,7 @@ msgid ""
 "TP + FP equals zero: the test was never positive. The positive predictive "
 "value, the positive likelihood ratio and the diagnostic odds ratio are not "
 "estimable, and the test cannot separate the two groups. The negative "
-"likelihood ratio differs from 1 only because of the 0.5 zero-cell correction."
+"likelihood ratio is exactly 1: a negative result carries no information."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -40253,6 +40675,12 @@ msgstr ""
 msgid "Tumor Marker Evaluation (example)"
 msgstr ""
 
+#: R/decisioncurve.b.R
+msgid ""
+"Turn on Bootstrap confidence intervals (with the Decision curve plot) to see "
+"the uncertainty of the net benefit over this range."
+msgstr ""
+
 #: R/cotest.b.R
 msgid ""
 "Two assays for the same organism on the same swab; both track viral load, so "
@@ -40307,8 +40735,11 @@ msgid ""
 "disease status carries over, which is a stronger requirement than each "
 "test's sensitivity and specificity carrying over. Parallel and Serial "
 "figures here will also generally NOT match the textbook independence "
-"formulas computed by hand from the individual tests, and will usually be "
-"worse when the tests are correlated."
+"formulas computed by hand from the individual tests. With positively "
+"correlated tests each strategy gains less than those formulas predict on the "
+"measure it is chosen for -- Parallel raises sensitivity less, Serial raises "
+"specificity less -- while the other measure loses less than predicted, so "
+"Youden's J can be the same as the formulas give."
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -41770,10 +42201,11 @@ msgid ""
 "When the study is analysed, estimate the category prevalences by maximum "
 "likelihood at each candidate value of kappa. With three or more raters or "
 "categories, plugging in the overall proportions of ratings instead can give "
-"an interval that covers kappa less often than stated when a category makes "
-"up less than about a fifth of the ratings (about 0.90 to 0.94 instead of "
-"0.95 in the designs of that kind simulated for this analysis); without such "
-"a category it stayed close to 0.95."
+"an interval that covers kappa less often than stated (about 0.86 to 0.94 "
+"instead of 0.95 in the designs simulated for this analysis), generally more "
+"so with more raters or categories. Balanced categories do not prevent it: "
+"with four equally common categories and four raters the plug-in interval "
+"covered kappa about 0.88 of the time."
 msgstr ""
 
 #: R/kappaSizeCI.b.R
@@ -42227,6 +42659,24 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
+"With three or more raters and three to five categories, this sample size can "
+"fall well short of power {power}; confirm it by simulating the intended "
+"analysis."
+msgstr ""
+
+#: R/agreement.b.R
+msgid ""
+"With three or more raters each interval is kappa plus or minus the t "
+"quantile on n - 1 degrees of freedom times Gwet's subject-sampling standard "
+"error (irrCAC), where n is the number of cases with at least one rating (the "
+"N Cases column). The raters are treated as fixed, so the interval reflects "
+"the sampling of cases, not of raters. The kappa interval method option (Wald "
+"or Fisher z) applies to Cohen's kappa for two raters only and does not "
+"change these intervals."
+msgstr ""
+
+#: R/kappaSizePower.b.R
+msgid ""
 "With three or more raters, do not compute the chi-square over every count of "
 "raters calling the finding present (none, one, ..., all): that statistic has "
 "more than one degree of freedom and, read on one, rejects a true kappa0 much "
@@ -42270,6 +42720,17 @@ msgid ""
 "latent-class model need not reproduce the observed table. These residuals "
 "describe discrepancies; they are not chi-squared tests of conditional "
 "independence. A small residual does not establish the assumption."
+msgstr ""
+
+#: R/nogoldstandard.b.R
+msgid ""
+"With three tests the two-class model has as many parameters as the data have "
+"free cell frequencies, so it usually reproduces the observed table exactly "
+"and conditional independence cannot be checked from these data. If two of "
+"the tests share a mechanism (same target, same reader or same specimen), the "
+"estimates can be strongly biased in either direction with no sign of it in "
+"the fit statistics or the bivariate residuals. Detecting such dependence "
+"needs at least four tests."
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -42693,13 +43154,22 @@ msgstr ""
 msgid ""
 "Zero cell detected. A 0.5 continuity correction is applied only to a "
 "likelihood ratio whose own denominator cell is empty while its numerator is "
-"not (FP = 0 with TP > 0 for LR+, TN = 0 with FN > 0 for LR-); a ratio that "
-"is 0/0 is left blank, and every other statistic uses these raw counts. "
-"Interpret cautiously."
+"not (FP = 0 with TP > 0 for LR+, TN = 0 with FN > 0 for LR-), and only when "
+"the corrected value stays above 1; an empty numerator gives an exact 0, a "
+"ratio that is 0/0 or whose correction would fall to 1 or below is left "
+"blank, and every other statistic uses these raw counts. Interpret cautiously."
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid "Zero cell in the table"
 msgstr ""
 
 #: R/decision.b.R
 msgid "Zero counts detected in contingency table"
+msgstr ""
+
+#: R/decisioncalculator.b.R
+msgid "Zero-cell ratio not estimable"
 msgstr ""
 
 #: psychopdaROC/results/effectSizeTable.columns.title

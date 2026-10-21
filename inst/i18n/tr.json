@@ -34,7 +34,7 @@
             "\"Clinical decision rule\" is enabled but its positive level has not been chosen: select the level that means the rule recommends intervention.": [
                 "\"Klinik karar kuralı\" etkin, ancak pozitif düzeyi seçilmedi: kuralın müdahale önerdiği anlamına gelen düzeyi seçin."
             ],
-            "\"Clinical decision rule\" is enabled but no rule variable has been selected: drop a binary variable into \"Clinical Decision Rule (binary)\".": [
+            "\"Clinical decision rule\" is enabled but no rule variable has been selected: drop a binary variable into \"Clinical decision rule (binary)\".": [
                 "\"Klinik karar kuralı\" etkin, ancak bir kural değişkeni seçilmedi: \"Klinik Karar Kuralı (ikili)\" kutusuna ikili bir değişken bırakın."
             ],
             "\"Enhanced pairwise comparison\" is enabled but only one prediction model is selected, so the Exploratory Pairwise Model Comparison table stays empty.": [
@@ -157,6 +157,9 @@
             "{kept} complete cases; {excluded} of {total} rows excluded for missing required values": [
                 "{kept} eksiksiz olgu; gerekli değerlerin eksik olması nedeniyle {total} satırdan {excluded} satır hariç tutuldu"
             ],
+            "{level} (inferred: the only other level)": [
+                "{level} (çıkarımlandı: diğer tek düzey)"
+            ],
             "{level} of the {total} cases were excluded before analysis because their test or reference-standard level was neither of the two selected (for example, an indeterminate result).": [
                 "{total} olgudan {level} tanesi, test veya referans standart düzeyi seçilen iki düzeyden hiçbiri olmadığı için (örneğin belirsiz bir sonuç) analizden önce hariç tutuldu."
             ],
@@ -166,8 +169,14 @@
             "{lo}% to {hi}%": [
                 "%{lo} ila %{hi}"
             ],
-            "{lo}% to {hi}% threshold probability - the range over which this model beats both treating everyone and treating no one.": [
-                "%{lo} ila %{hi} eşik olasılığı - bu modelin hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi geçtiği aralık."
+            "{lo}% to {hi}% threshold probability - the observed range over which this model's apparent (in-sample) net benefit exceeds both treating everyone and treating no one. It carries no allowance for sampling variation, and a narrow range can arise by chance.": [
+                "%{lo} ila %{hi} eşik olasılığı - bu modelin görünen (örneklem içi) net faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi aştığı gözlenen aralık. Örnekleme değişkenliği için hiçbir pay içermez ve dar bir aralık şans eseri ortaya çıkabilir."
+            ],
+            "{marker}: in these data the proportion of {positive} cases rises as the values fall, the opposite direction to the Classification Direction you selected. IDI and NRI compare fitted logistic risks, which do not depend on the selected direction, so this marker enters with the risk model the data support.": [
+                "{marker}: bu verilerde {positive} olguların oranı değerler azaldıkça artıyor; bu, seçtiğiniz Sınıflandırma Yönünün tersidir. IDI ve NRI, seçilen yöne bağlı olmayan uyarlanmış lojistik riskleri karşılaştırır; bu nedenle bu belirteç analize verilerin desteklediği risk modeliyle girer."
+            ],
+            "{marker}: in these data the proportion of {positive} cases rises as the values rise, the opposite direction to the Classification Direction you selected. IDI and NRI compare fitted logistic risks, which do not depend on the selected direction, so this marker enters with the risk model the data support.": [
+                "{marker}: bu verilerde {positive} olguların oranı değerler arttıkça artıyor; bu, seçtiğiniz Sınıflandırma Yönünün tersidir. IDI ve NRI, seçilen yöne bağlı olmayan uyarlanmış lojistik riskleri karşılaştırır; bu nedenle bu belirteç analize verilerin desteklediği risk modeliyle girer."
             ],
             "{metric} ({a} vs {b})": [
                 "{metric} ({a} ile {b})"
@@ -2635,6 +2644,12 @@
             "{test}: {ratio} would be undefined because the cell in its denominator is empty, so it was computed after adding {correction} to all four cells of the 2x2, giving {shown}. Every other statistic in the same row, including the likelihood ratio that was not affected, uses the raw counts. Interpret the corrected value cautiously.": [
                 "{test}: paydasındaki hücre boş olduğu için {ratio} tanımsız olurdu; bu nedenle 2x2 tablonun dört hücresinin hepsine {correction} eklendikten sonra hesaplandı ve {shown} bulundu. Aynı satırdaki diğer tüm istatistikler, etkilenmeyen olabilirlik oranı dahil, ham sayıları kullanır. Düzeltilmiş değeri dikkatle yorumlayın."
             ],
+            "{test}: no false positive was observed, so LR+ is infinite, and adding 0.5 to every cell would give a value of 1 or less, reversing its direction; LR+ is left blank.": [
+                "{test}: hiç yanlış pozitif gözlenmedi, bu nedenle LR+ sonsuzdur; her hücreye 0.5 eklemek 1 veya daha küçük bir değer vererek yönünü tersine çevirirdi; LR+ boş bırakıldı."
+            ],
+            "{test}: no true negative was observed, so LR- is infinite, and adding 0.5 to every cell would give a value of 1 or less, reversing its direction; LR- is left blank.": [
+                "{test}: hiç gerçek negatif gözlenmedi, bu nedenle LR- sonsuzdur; her hücreye 0.5 eklemek 1 veya daha küçük bir değer vererek yönünü tersine çevirirdi; LR- boş bırakıldı."
+            ],
             "{test}: PPA rests on {positives} comparator-positive cases and NPA on {negatives} comparator-negative cases. A percentage computed on a denominator this small is far less precise than the overall analyzed N suggests. Enable the 95% CI option and read the interval before quoting either figure.": [
                 "{test}: PPA {positives} karşılaştırıcı-pozitif olguya, NPA ise {negatives} karşılaştırıcı-negatif olguya dayanıyor. Bu kadar küçük bir paydadan hesaplanan bir yüzde, analiz edilen toplam N'nin düşündürdüğünden çok daha az kesindir. Bu değerlerden birini aktarmadan önce %95 GA seçeneğini açın ve aralığı okuyun."
             ],
@@ -2665,6 +2680,9 @@
             "{used} of {total} cases have both a test and a gold-standard value; any further exclusions are listed below. Consider investigating patterns of missingness.": [
                 "{total} olgudan {used} tanesinde hem test hem de altın standart değeri mevcuttur; varsa diğer hariç tutmalar aşağıda listelenmiştir. Eksiklik örüntülerini araştırmayı düşünün."
             ],
+            "{used} of {total} cases have both a test and a reference value; any further exclusions are listed below. Consider investigating patterns of missingness.": [
+                "{total} olgudan {used} tanesinde hem test hem de referans değeri var; diğer dışlamalar aşağıda listelenmiştir. Eksik veri örüntülerini incelemeyi düşünün."
+            ],
             "{value} (default setting)": [
                 "{value} (varsayılan ayar)"
             ],
@@ -2676,6 +2694,12 @@
             ],
             "{variable} has {n} levels": [
                 "{variable} değişkeni {n} düzeye sahip"
+            ],
+            "{variable}: the achieved sensitivity, {achieved}, is below the target of {target}. Choose Stepwise to get the cutoff that meets or exceeds the target.": [
+                "{variable}: ulaşılan duyarlılık ({achieved}) {target} hedefinin altında. Hedefi karşılayan ya da aşan kesim noktasını elde etmek için Adımlı yöntemi seçin."
+            ],
+            "{variable}: the achieved specificity, {achieved}, is below the target of {target}. Choose Stepwise to get the cutoff that meets or exceeds the target.": [
+                "{variable}: ulaşılan özgüllük ({achieved}) {target} hedefinin altında. Hedefi karşılayan ya da aşan kesim noktasını elde etmek için Adımlı yöntemi seçin."
             ],
             "%": [
                 "%"
@@ -2766,6 +2790,9 @@
             ],
             "%1$d of %2$d cases were dropped because at least one rater was missing: Light's kappa uses complete cases only, and the Cases count above refers to the %3$d retained cases.": [
                 "En az bir değerlendirici eksik olduğu için %1$d olgu (toplam %2$d olgudan) hariç tutuldu: Light'ın kappası yalnızca eksiksiz olguları kullanır ve yukarıdaki Olgu sayısı, analizde tutulan %3$d olguyu ifade eder."
+            ],
+            "%1$d of %2$d subgroups are not shown because they have fewer than %3$d cases rated by at least two raters: %4$s. This table is therefore not a complete breakdown of the data.": [
+                "%2$d alt gruptan %1$d tanesi, en az iki değerlendirici tarafından değerlendirilmiş olgu sayıları %3$d değerinin altında kaldığı için gösterilmiyor: %4$s. Bu nedenle bu tablo verilerin eksiksiz bir dökümü değildir."
             ],
             "%1$d of %2$d subgroups are not shown because they have fewer than %3$d complete cases: %4$s. This table is therefore not a complete breakdown of the data.": [
                 "%1$d alt grup (toplam %2$d alt gruptan) en az %3$d eksiksiz olgu içermediği için gösterilmiyor: %4$s. Bu nedenle bu tablo, verilerin eksiksiz bir dökümü değildir."
@@ -3343,6 +3370,15 @@
             "<li>Always validate the scoring system on an independent cohort before clinical adoption.</li>": [
                 "<li>Klinik benimsemeden önce puanlama sistemini her zaman bağımsız bir kohortta doğrulayın.</li>"
             ],
+            "<li>Among people with the disease, given a positive Test 1, the probability that Test 2 is positive is assumed equal to Se<sub>2</sub> (conditional independence): {value}</li>": [
+                "<li>Hastalığı olanlarda, Test 1 pozitif olduğunda Test 2'nin pozitif olma olasılığının Se<sub>2</sub> değerine eşit olduğu varsayılır (koşullu bağımsızlık): {value}</li>"
+            ],
+            "<li>Among people with the disease, probability of testing positive on both, assuming conditional independence: {sens1} × {sens2} = {both}</li>": [
+                "<li>Hastalığı olanlarda, koşullu bağımsızlık varsayımıyla her iki testte de pozitif çıkma olasılığı: {sens1} × {sens2} = {both}</li>"
+            ],
+            "<li>Among people without the disease, given a negative Test 1, the probability that Test 2 is negative is assumed equal to Sp<sub>2</sub> (conditional independence): {value}</li>": [
+                "<li>Hastalığı olmayanlarda, Test 1 negatif olduğunda Test 2'nin negatif olma olasılığının Sp<sub>2</sub> değerine eşit olduğu varsayılır (koşullu bağımsızlık): {value}</li>"
+            ],
             "<li>An events-per-variable (EPV) of 10 is a rule of thumb (Peduzzi et al. 1996), not a guarantee. Sample-size criteria for prediction models (Riley et al. 2019, 2020) are preferred, and penalization does not make a small sample reliable (Riley et al. 2021).</li>": [
                 "<li>Değişken başına 10 olay (EPV) bir genel kuraldır (Peduzzi ve ark. 1996), bir güvence değildir. Tahmin modelleri için örneklem büyüklüğü ölçütleri (Riley ve ark. 2019, 2020) tercih edilir ve cezalandırma küçük bir örneklemi güvenilir kılmaz (Riley ve ark. 2021).</li>"
             ],
@@ -3384,12 +3420,6 @@
             ],
             "<li>Evaluating if a new test is significantly better/worse than standard test</li>": [
                 "<li>Yeni bir testin standart testten anlamlı olarak daha iyi/kötü olup olmadığının değerlendirilmesi</li>"
-            ],
-            "<li>Given a negative Test 1, probability of testing negative on Test 2: {value}</li>": [
-                "<li>Negatif Test 1 verildiğinde, Test 2'de negatif test etme olasılığı: {value}</li>"
-            ],
-            "<li>Given a positive Test 1, probability of testing positive on Test 2: {value}</li>": [
-                "<li>Pozitif Test 1 verildiğinde, Test 2'de pozitif test etme olasılığı: {value}</li>"
             ],
             "<li>Higher total scores indicate a higher event rate only when the score discriminates in the right direction (score AUC above 0.5 in the Scoring System Performance table); a warning is shown when it does not.</li>": [
                 "<li>Daha yüksek toplam puanlar, yalnızca puan doğru yönde ayırt ettiğinde (Puanlama Sistemi Performansı tablosunda puan AUC değeri 0.5'in üzerinde) daha yüksek bir olay oranını gösterir; doğru yönde ayırt etmediğinde bir uyarı gösterilir.</li>"
@@ -3438,9 +3468,6 @@
             ],
             "<li>Probability of testing negative on Test 2: {value}</li>": [
                 "<li>Test 2'de negatif test etme olasılığı: {value}</li>"
-            ],
-            "<li>Probability of testing positive on both: {sens1} × {sens2} = {both}</li>": [
-                "<li>Her iki testte de pozitif çıkma olasılığı: {sens1} × {sens2} = {both}</li>"
             ],
             "<li>Probability of testing positive on Test 1: {value}</li>": [
                 "<li>Test 1'de pozitif çıkma olasılığı: {value}</li>"
@@ -3517,6 +3544,9 @@
             "<p><b>Descriptive interpretation:</b> balanced accuracy could not be estimated for any test because one reference-standard class has no cases, so no test is ranked. Review the pairwise comparisons above for inferential results.</p>": [
                 "<p><b>Betimsel yorum:</b> bir referans standart sınıfında hiç olgu olmadığı için hiçbir testin dengeli doğruluğu tahmin edilemedi; bu nedenle hiçbir test sıralanmadı. Çıkarımsal sonuçlar için yukarıdaki ikili karşılaştırmalara bakın.</p>"
             ],
+            "<p><b>Descriptive interpretation:</b> no test is ranked on the cases common to all tests. Review the pairwise comparisons above for inferential results.</p>": [
+                "<p><b>Betimsel yorum:</b> tüm testlerde ortak olan olgularda hiçbir test sıralanmadı. Çıkarımsal sonuçlar için yukarıdaki ikili karşılaştırmalara bakın.</p>"
+            ],
             "<p><b>Overall comparison:</b> Cochran's Q test (Q = %1$.2f, p %2$s) <span style='color:inherit;'><b>did not detect a significant difference</b></span> among the three tests. This is not evidence that they perform equally: with this sample size a clinically important accuracy difference could go undetected, and no test of one test against another across a pre-specified equivalence margin was performed. (If requested, the criterion column in the Overall Percent Agreement table compares each test with a user-specified descriptive OPA threshold; it is not a noninferiority comparison between tests or clinical guidance.) The confidence intervals for the paired differences in the Differences with 95%% Confidence Intervals table show how large a difference remains compatible with these data.</p>": [
                 "<p><b>Genel karşılaştırma:</b> Cochran Q testi (Q = %1$.2f, p %2$s), üç test arasında <span style='color:inherit;'><b>anlamlı bir fark saptamadı</b></span>. Bu, testlerin eşit performans gösterdiğinin kanıtı değildir: bu örneklem büyüklüğünde klinik açıdan önemli bir doğruluk farkı saptanamayabilir ve testler arasında önceden belirlenmiş bir eşdeğerlik sınırına dayalı karşılaştırma yapılmamıştır. (İstenirse, Genel Yüzde Uyum tablosundaki ölçüt sütunu her testi kullanıcı tarafından belirlenen tanımlayıcı OPA eşiğiyle karşılaştırır; bu, testler arasında bir aşağı olmama karşılaştırması veya klinik rehber değildir.) 95%% Güven Aralıklarıyla Farklar tablosundaki eşleştirilmiş farkların güven aralıkları, bu verilerle ne büyüklükte bir farkın uyumlu olduğunu gösterir.</p>"
             ],
@@ -3525,6 +3555,9 @@
             ],
             "<p><strong>Accuracy:</strong> Overall probability of correct classification</p>": [
                 "<p><strong>Doğruluk:</strong> Doğru sınıflandırmanın genel olasılığı</p>"
+            ],
+            "<p><strong>Assumption:</strong> combined sensitivity is computed among people with the disease and combined specificity among people without it. All products below assume the two tests are conditionally independent given disease status. If the tests are correlated within a disease-status group (for example, the same specimen or related biology), the true combined values differ.</p>": [
+                "<p><strong>Varsayım:</strong> birleşik duyarlılık hastalığı olanlarda, birleşik özgüllük ise hastalığı olmayanlarda hesaplanır. Aşağıdaki tüm çarpımlar, iki testin hastalık durumu verildiğinde koşullu olarak bağımsız olduğunu varsayar. Testler aynı hastalık durumu grubu içinde korelasyonluysa (örneğin aynı örnek ya da ilişkili biyoloji), gerçek birleşik değerler farklıdır.</p>"
             ],
             "<p><strong>Important:</strong> These thresholds and use cases are examples only. They are not clinical guides, validated decision rules, or recommendations for patient care.</p>": [
                 "<p><strong>Önemli:</strong> Bu eşikler ve kullanım durumları yalnızca örnektir. Klinik kılavuz, doğrulanmış karar kuralı ya da hasta bakımı için öneri değildir.</p>"
@@ -4009,26 +4042,32 @@
             "A = 1 - within-case variance / total variance (Robinson 1957): 1 means every rater gave every case the same value. Raters who agree no better than chance score about 1/%6$d here, not 0, so the label is read from the chance-corrected value (%6$d A - 1) / %7$d = %8$.3f, which is 0 at chance. %1$s (A = %2$.3f). The interval is a percentile bootstrap over cases (%3$d resamples, seed %4$d) at the %5$d%% level. Bands used for the label, on the chance-corrected value: below 0.50 poor, 0.50 to 0.75 moderate, 0.75 to 0.90 good, 0.90 and above excellent.": [
                 "A = 1 - olgu içi varyans / toplam varyans (Robinson 1957): 1, her değerlendiricinin her olguya aynı değeri verdiği anlamına gelir. Şanstan daha iyi uyum göstermeyen değerlendiriciler burada 0 değil, yaklaşık 1/%6$d puan alır; bu nedenle etiket şans düzeltmeli değerden okunur: (%6$d A - 1) / %7$d = %8$.3f; bu değer şans düzeyinde 0'dır. %1$s (A = %2$.3f). Aralık, olgular üzerinden yapılan yüzdelik bootstrap aralığıdır (%3$d yeniden örneklem, rastgelelik tohumu %4$d) ve %%%5$d düzeyindedir. Etiket için şans düzeltmeli değere uygulanan yorum aralıkları: 0.50 altı zayıf, 0.50 ile 0.75 arası orta, 0.75 ile 0.90 arası iyi, 0.90 ve üzeri mükemmel."
             ],
+            "A blank likelihood ratio is not estimable from these counts: its denominator count is zero, so it would be infinite, and the continuity correction (0.5 added to every cell) would not keep it above 1. Read the sensitivity and specificity with their confidence intervals instead.": [
+                "Boş bir olabilirlik oranı bu sayımlardan tahmin edilemez: payda sayımı sıfır olduğundan sonsuz olurdu ve süreklilik düzeltmesi (her hücreye 0.5 eklenmesi) onu 1'in üzerinde tutmazdı. Bunun yerine duyarlılık ve özgüllüğü güven aralıklarıyla birlikte okuyun."
+            ],
+            "A blank ratio is not estimable from these counts: its denominator count is zero, so it would be infinite, and the continuity correction (0.5 added to every cell) would not keep it above 1.": [
+                "Boş bir oran bu sayımlardan tahmin edilemez: payda sayımı sıfır olduğundan sonsuz olurdu ve süreklilik düzeltmesi (her hücreye 0.5 eklenmesi) onu 1'in üzerinde tutmazdı."
+            ],
             "A bound at or below zero means this many subjects cannot rule out agreement no better than chance.": [
                 "Sıfır veya altında bir sınır, bu sayıda olgunun şansa bağlı uyumdan daha iyisini dışlayamayacağı anlamına gelir."
             ],
             "A case ID variable was given, but no case appears under more than one condition, so this is still a comparison between cases.": [
                 "Bir olgu kimliği değişkeni verildi, ancak hiçbir olgu birden fazla koşul altında yer almıyor; bu nedenle bu hâlâ olgular arası bir karşılaştırmadır."
             ],
-            "A cell of the 2x2 table is zero. A likelihood ratio that would be zero, infinite or undefined on the observed counts is computed from the Haldane-Anscombe corrected table (0.5 added to every cell) and reflects that correction, not the observed data: the positive likelihood ratio when sensitivity is 0% or specificity is 100%, the negative likelihood ratio when sensitivity is 100% or specificity is 0%. Sensitivity, specificity, accuracy, the predictive values and any other likelihood ratio are not corrected.": [
-                "2x2 tablonun bir hücresi sıfırdır. Gözlemlenen sayımlarla sıfır, sonsuz veya tanımsız olacak bir olabilirlik oranı, Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır ve gözlemlenen verileri değil, bu düzeltmeyi yansıtır: duyarlılık %0 veya özgüllük %100 olduğunda pozitif olabilirlik oranı, duyarlılık %100 veya özgüllük %0 olduğunda negatif olabilirlik oranı. Duyarlılık, özgüllük, doğruluk, öngörü değerleri ve diğer herhangi bir olabilirlik oranı düzeltilmez."
+            "A cell of the 2x2 table is zero. A likelihood ratio whose denominator count is zero would be infinite, so it is computed from the Haldane-Anscombe corrected table (0.5 added to every cell) and reflects that correction, not the observed data: the positive likelihood ratio when specificity is 100%, the negative likelihood ratio when specificity is 0%. Sensitivity, specificity, accuracy, the predictive values and any other likelihood ratio use the observed counts.": [
+                "2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir olabilirlik oranı sonsuz olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır ve gözlemlenen verileri değil, bu düzeltmeyi yansıtır: özgüllük %100 olduğunda pozitif olabilirlik oranı, özgüllük %0 olduğunda negatif olabilirlik oranı. Duyarlılık, özgüllük, doğruluk, öngörü değerleri ve diğer herhangi bir olabilirlik oranı gözlemlenen sayımları kullanır."
             ],
-            "A cell of the 2x2 table is zero. A likelihood ratio that would be zero, infinite or undefined on the observed counts, and the diagnostic odds ratio, are computed from the Haldane-Anscombe corrected table (0.5 added to every cell). The other rows use the observed counts. Because only one likelihood ratio is corrected, the diagnostic odds ratio shown need not equal LR+ / LR- as displayed.": [
-                "2x2 tablonun bir hücresi sıfırdır. Gözlemlenen sayımlarla sıfır, sonsuz veya tanımsız olacak bir olabilirlik oranı ve tanısal odds oranı, Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. Diğer satırlar gözlemlenen sayımları kullanır. Yalnızca bir olabilirlik oranı düzeltildiği için, gösterilen tanısal odds oranının görüntülenen LR+ / LR- değerine eşit olması gerekmez."
+            "A cell of the 2x2 table is zero. A ratio whose denominator count is zero would be infinite (LR+: no false positives; LR-: no true negatives; diagnostic odds ratio: no false positives or no false negatives), so it is computed from the Haldane-Anscombe corrected table (0.5 added to every cell). A ratio whose numerator count is zero is exactly 0 and is not corrected. Sensitivity, specificity, accuracy, the predictive values and every other ratio use the observed counts, so a corrected, finite likelihood ratio can sit beside a sensitivity or specificity of 0% or 100%.": [
+                "2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir oran sonsuz olacağından (LR+: yanlış pozitif yok; LR-: gerçek negatif yok; tanısal odds oranı: yanlış pozitif ya da yanlış negatif yok) Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. Pay sayımı sıfır olan bir oran tam olarak 0'dır ve düzeltilmez. Duyarlılık, özgüllük, doğruluk, öngörü değerleri ve diğer tüm oranlar gözlemlenen sayımları kullanır; bu nedenle düzeltilmiş, sonlu bir olabilirlik oranı %0 veya %100 duyarlılık ya da özgüllüğün yanında yer alabilir."
             ],
-            "A cell of the 2x2 table is zero. A likelihood ratio whose formula contains the zero count, and the diagnostic odds ratio, are computed from the Haldane-Anscombe corrected table (0.5 added to every cell), because on the observed counts they would be zero or infinite. The other rows use the observed counts.": [
-                "2x2 tablonun bir hücresi sıfırdır. Formülü sıfır sayımı içeren bir olabilirlik oranı ve tanısal odds oranı, gözlemlenen sayımlarla sıfır veya sonsuz olacakları için Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. Diğer satırlar gözlemlenen sayımları kullanır."
+            "A cell of the 2x2 table is zero. A ratio whose denominator count is zero would be infinite, so it is computed from the Haldane-Anscombe corrected table (0.5 added to every cell). The other rows use the observed counts.": [
+                "2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir oran sonsuz olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. Diğer satırlar gözlemlenen sayımları kullanır."
             ],
-            "A cell of the 2x2 table is zero. Each likelihood ratio that would be zero, infinite or undefined on the observed counts, and the diagnostic odds ratio, are computed from the Haldane-Anscombe corrected table (0.5 added to every cell). Sensitivity, specificity, accuracy, the predictive values and any other likelihood ratio are not corrected. The Fagan nomogram shows the table's likelihood ratios when one is above 1 and the other below 1; otherwise it takes both from the corrected table. The two sets therefore do not reconcile exactly: a non-zero, finite likelihood ratio can sit beside a sensitivity or specificity of 0% or 100%.": [
-                "2x2 tablonun bir hücresi sıfırdır. Gözlemlenen sayımlarla sıfır, sonsuz veya tanımsız olacak her olabilirlik oranı ile tanısal odds oranı, Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. Duyarlılık, özgüllük, doğruluk, öngörü değerleri ve diğer herhangi bir olabilirlik oranı düzeltilmez. Fagan nomogramı, oranlardan biri 1'in üzerinde ve diğeri 1'in altında olduğunda tablonun olabilirlik oranlarını gösterir; aksi takdirde her ikisini de düzeltilmiş tablodan alır. Bu nedenle iki küme tam olarak uyuşmaz: sıfır olmayan, sonlu bir olabilirlik oranı, %0 veya %100 duyarlılık ya da özgüllüğün yanında yer alabilir."
+            "A cell of the 2x2 table is zero. A ratio whose denominator count is zero would be infinite, so it is computed from the Haldane-Anscombe corrected table (0.5 added to every cell). The other rows use the observed counts. Because the ratios do not all come from the same table, the diagnostic odds ratio shown need not equal LR+ / LR- as displayed.": [
+                "2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir oran sonsuz olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. Diğer satırlar gözlemlenen sayımları kullanır. Oranların tümü aynı tablodan gelmediği için gösterilen tanısal odds oranının görüntülenen LR+ / LR- değerine eşit olması gerekmez."
             ],
-            "A cell of the 2x2 table was zero. A likelihood ratio that would be zero or infinite on the observed counts is computed from the Haldane-Anscombe corrected table (0.5 added to every cell); sensitivity, specificity and the predictive values above are not corrected.": [
-                "2x2 tablonun bir hücresi sıfırdı. Gözlemlenen sayımlarla sıfır veya sonsuz olacak bir olabilirlik oranı, Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır; yukarıdaki duyarlılık, özgüllük ve öngörü değerleri düzeltilmez."
+            "A cell of the 2x2 table was zero. A likelihood ratio whose denominator count is zero would be infinite, so it is computed from the Haldane-Anscombe corrected table (0.5 added to every cell); a likelihood ratio with a zero numerator count is exactly 0 and is not corrected. Sensitivity, specificity and the predictive values above are not corrected.": [
+                "2x2 tablonun bir hücresi sıfırdı. Payda sayımı sıfır olan bir olabilirlik oranı sonsuz olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır; pay sayımı sıfır olan bir olabilirlik oranı tam olarak 0'dır ve düzeltilmez. Yukarıdaki duyarlılık, özgüllük ve öngörü değerleri düzeltilmez."
             ],
             "A cluster with one member has no within-cluster similarity, so that row is left blank.": [
                 "Tek üyeli bir kümenin küme içi benzerliği yoktur, bu nedenle o satır boş bırakılmıştır."
@@ -4060,6 +4099,18 @@
             "A latent-class EM point estimator using fixed Beta priors.": [
                 "Sabit Beta öncüllerini kullanan bir örtük sınıf EM nokta tahmincisi."
             ],
+            "A likelihood ratio is not estimable for this table (see the notices above), so it cannot be placed on the nomogram.": [
+                "Bu tablo için bir olabilirlik oranı tahmin edilemez (yukarıdaki bildirimlere bakın), bu nedenle nomogram üzerine yerleştirilemez."
+            ],
+            "A likelihood ratio of exactly 0 is the observed value: its numerator count is zero (no true positives for LR+, no false negatives for LR-), so no correction is applied.": [
+                "Tam olarak 0 olan bir olabilirlik oranı gözlenen değerdir: pay sayımı sıfırdır (LR+ için gerçek pozitif yok, LR- için yanlış negatif yok), bu nedenle düzeltme uygulanmaz."
+            ],
+            "A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe 0.5 correction, and so do the probabilities read from the nomogram. The predictive values and post-test probabilities in the Measures table are computed from the raw counts and can differ, by a wide margin in a small table.": [
+                "Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe düzeltmesini kullanır; nomogramdan okunan olasılıklar da öyle. Ölçüler tablosundaki öngörü değerleri ve test sonrası olasılıklar ham sayılardan hesaplanır ve küçük bir tabloda belirgin biçimde farklı olabilir."
+            ],
+            "A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe 0.5 correction, while the predictive values above use the observed counts. Multiplying the pre-test odds by these likelihood ratios therefore need not reproduce the predictive values exactly.": [
+                "Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak öngörü değerlerini tam olarak vermeyebilir."
+            ],
             "A linear mixed-effects model that compares measurement conditions (e.g., AI-assisted vs.\n                    conventional scoring) while properly accounting for the crossed structure of rater x case data.": [
                 ""
             ],
@@ -4071,6 +4122,9 @@
             ],
             "A negative result has a likelihood ratio of {lr} and lowers the probability from {prevalence} to {posttest}.": [
                 "Negatif bir sonuç {lr} olabilirlik oranına sahiptir ve olasılığı {prevalence}'den {posttest}'ye düşürür."
+            ],
+            "A negative result has a likelihood ratio of {lr} and raises the probability from {prevalence} to {posttest}.": [
+                "Negatif bir sonucun olabilirlik oranı {lr} olup olasılığı {prevalence} değerinden {posttest} değerine yükseltir."
             ],
             "A negative result increases the probability of disease: the level chosen as test-positive may be inverted": [
                 "Negatif bir sonuç hastalık olasılığını artırır: test pozitif olarak seçilen düzey ters çevrilmiş olabilir"
@@ -4138,6 +4192,12 @@
             "A random case has a lower value than a random non-case %.0f%% of the time (ties count one half)": [
                 "Rastgele bir olgunun değerinin rastgele bir olgu olmayanınkinden düşük olma olasılığı: %.0f%% (eşitlikler yarım sayılır)"
             ],
+            "A ratio is corrected only when the cell in its denominator is zero and its numerator is not (FP for LR+, TN for LR-, FP or FN for the odds ratio): 0.5 is then added to all four cells for that ratio and its confidence interval (Haldane-Anscombe for the odds ratio). A zero numerator gives exactly 0, uncorrected; a corrected value of 1 or below is left blank as not estimable. On a row with no test-positive patients LR+ and the odds ratio are blank and its LR- is exactly 1; the mirror case blanks LR- and shows LR+ as exactly 1.": [
+                "Bir oran yalnızca paydasındaki hücre sıfır, payı ise sıfır olmadığında düzeltilir (LR+ için YP, LR- için GN, odds oranı için YP veya YN): bu durumda o oran ve güven aralığı için dört hücrenin tümüne 0.5 eklenir (odds oranı için Haldane-Anscombe). Sıfır bir pay, düzeltilmemiş tam 0 verir; 1 veya altındaki düzeltilmiş bir değer tahmin edilemez olarak boş bırakılır. Test-pozitif hastası olmayan bir satırda LR+ ve odds oranı boştur ve LR- tam olarak 1'dir; ayna durumda LR- boş bırakılır ve LR+ tam olarak 1 olarak gösterilir."
+            ],
+            "A ratio shown as exactly 0 has a zero numerator count (LR+: no true positives; LR-: no false negatives; diagnostic odds ratio: no true positives or no true negatives). It is the observed value and is not corrected. Its confidence interval runs from 0 to the upper limit of the same log-scale interval computed with 0.5 added to every cell (Haldane-Anscombe correction).": [
+                "Tam olarak 0 gösterilen bir oranın pay sayımı sıfırdır (LR+: gerçek pozitif yok; LR-: yanlış negatif yok; tanısal odds oranı: gerçek pozitif ya da gerçek negatif yok). Bu gözlenen değerdir ve düzeltilmez. Güven aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına kadar uzanır (Haldane-Anscombe düzeltmesi)."
+            ],
             "A required sample size is unavailable for this null or degenerate observed AUC.": [
                 "Bu sıfır etkiyi gösteren veya dejenere gözlenen AUC için gerekli örneklem büyüklüğü hesaplanamaz."
             ],
@@ -4201,29 +4261,20 @@
             "A well-agreeing pair of raters will have most counts concentrated on the diagonal": [
                 ""
             ],
-            "A zero cell required a continuity correction in {n} row(s) ({patterns}). For LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, 0.5 is added to all four cells for that ratio and its confidence interval. The diagnostic odds ratio and its interval use all four cells plus 0.5 whenever any cell is zero (Haldane-Anscombe correction). The corrected diagnostic odds ratio need not equal the ratio of the displayed likelihood ratios. Sensitivity, specificity, PPV and NPV use observed counts.": [
-                ""
+            "A zero cell required a continuity correction in {n} row(s) ({patterns}). LR+ is corrected only when FP is zero and TP is not, LR- only when TN is zero and FN is not, and the diagnostic odds ratio only when FP or FN is zero and neither TP nor TN is: 0.5 is then added to all four cells for that ratio and its confidence interval (for the odds ratio, the Haldane-Anscombe correction). A ratio whose numerator cell is zero is reported as exactly 0 instead. A corrected ratio stands in for an infinite one, so when the correction would bring it to 1 or below it is left blank as not estimable. The corrected diagnostic odds ratio need not equal the ratio of the displayed likelihood ratios. Sensitivity, specificity, PPV and NPV use observed counts.": [
+                "{n} satırda ({patterns}) sıfır hücre nedeniyle süreklilik düzeltmesi gerekti. LR+ yalnızca YP sıfır ve GP sıfır değilken, LR- yalnızca GN sıfır ve YN sıfır değilken, tanısal odds oranı ise yalnızca YP veya YN sıfır ve ne GP ne de GN sıfırken düzeltilir: bu durumda o oran ve güven aralığı için dört hücrenin tümüne 0.5 eklenir (odds oranı için Haldane-Anscombe düzeltmesi). Pay hücresi sıfır olan bir oran ise tam olarak 0 olarak bildirilir. Düzeltilmiş bir oran sonsuz bir oranın yerini tutar; bu nedenle düzeltme onu 1'e ya da altına indirecekse tahmin edilemez olarak boş bırakılır. Düzeltilmiş tanısal odds oranının görüntülenen olabilirlik oranlarının oranına eşit olması gerekmez. Duyarlılık, özgüllük, PPV ve NPV gözlenen sayıları kullanır."
             ],
             "A zero cell was detected. Estimates pinned at 0% or 100% may reflect limited validation data, and a Haldane-Anscombe correction was applied to the likelihood ratios and diagnostic odds ratio.": [
                 "Sıfır hücre saptandı. %0 veya %100'e sabitlenen tahminler sınırlı doğrulama verisini yansıtıyor olabilir; olabilirlik oranlarına ve tanısal odds oranına Haldane-Anscombe düzeltmesi uygulandı."
             ],
-            "A zero cell was present, so 0.5 was added to every cell for the likelihood ratios and the diagnostic odds ratio. Their confidence intervals use the same corrected counts.": [
-                "Sıfır hücre bulunduğu için olabilirlik oranları ve tanısal odds oranı için her hücreye 0.5 eklendi. Güven aralıkları da aynı düzeltilmiş sayıları kullanır."
+            "A zero cell was present. A likelihood ratio or the diagnostic odds ratio is corrected only when its denominator cell is empty and its numerator is not (FP for LR+, TN for LR-, FP or FN for the diagnostic odds ratio): 0.5 is then added to all four cells for that ratio and its confidence interval (Haldane-Anscombe correction). When its numerator cell is empty (TP for LR+, FN for LR-, TP or TN for the diagnostic odds ratio) the ratio is exactly 0, and its confidence interval runs from 0 to the upper limit of the same log-scale interval computed with 0.5 added to every cell; when both are empty it is not estimable. Sensitivity, specificity, predictive values and their intervals use the observed counts. The corrected diagnostic odds ratio need not equal the ratio of the displayed likelihood ratios.": [
+                "Sıfır hücre bulunuyordu. Bir olabilirlik oranı ya da tanısal odds oranı yalnızca payda hücresi boş, pay hücresi boş değilken düzeltilir (LR+ için YP, LR- için GN, tanısal odds oranı için YP veya YN): bu durumda o oran ve güven aralığı için dört hücrenin tümüne 0.5 eklenir (Haldane-Anscombe düzeltmesi). Pay hücresi boş olduğunda (LR+ için GP, LR- için YN, tanısal odds oranı için GP veya GN) oran tam olarak 0'dır ve güven aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına kadar uzanır; her ikisi de boş olduğunda tahmin edilemez. Duyarlılık, özgüllük, öngörü değerleri ve bunların aralıkları gözlenen sayıları kullanır. Düzeltilmiş tanısal odds oranının görüntülenen olabilirlik oranlarının oranına eşit olması gerekmez."
             ],
-            "A zero cell was present, so the likelihood ratios and the probabilities read from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive values and post-test probabilities in the Measures table are computed from the raw counts and can differ, by a wide margin in a small table.": [
-                "Sıfır hücre bulunduğu için olabilirlik oranları ve nomogramdan okunan olasılıklar 0.5 Haldane-Anscombe düzeltmesini kullanır. Ölçüler tablosundaki öngörü değerleri ve test sonrası olasılıklar ham sayılardan hesaplanır ve küçük bir tabloda belirgin biçimde farklı olabilir."
+            "A zero cell was present. As in the tables above, a ratio whose denominator cell is empty (FP for LR+, TN for LR-, FP or FN for the diagnostic odds ratio) while its numerator cell is not uses the table with 0.5 added to every cell (Haldane-Anscombe), and so does its interval; these corrected limits are approximate. If that correction would put the ratio at or below 1 it is left blank, because it would reverse the direction of an infinite observed value. A ratio whose numerator cell is empty and denominator cell is not is exactly 0, and its interval runs from 0 to the upper limit of the same log-scale interval computed with 0.5 added to every cell; one with both cells empty (0/0) is not estimable. Every other ratio, Youden's index and the number needed to diagnose use the observed counts.": [
+                "Sıfır hücre bulunuyordu. Yukarıdaki tablolarda olduğu gibi, pay hücresi boş değilken payda hücresi boş olan bir oran (LR+ için YP, LR- için GN, tanısal odds oranı için YP veya YN) her hücresine 0.5 eklenmiş tabloyu (Haldane-Anscombe) kullanır; aralığı da öyle. Bu düzeltilmiş sınırlar yaklaşıktır. Bu düzeltme oranı 1'e veya altına çekecekse, gözlenen sonsuz değerin yönünü tersine çevireceği için oran boş bırakılır. Payda hücresi boş değilken pay hücresi boş olan bir oran tam olarak 0'dır ve aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına kadar uzanır; iki hücresi de boş olan (0/0) bir oran tahmin edilemez. Diğer tüm oranlar, Youden indeksi ve tanı için gereken sayı gözlenen sayıları kullanır."
             ],
-            "A zero cell was present, so the likelihood ratios use the Haldane-Anscombe 0.5 correction, while the predictive values above use the observed counts. Multiplying the pre-test odds by these likelihood ratios therefore need not reproduce the predictive values exactly.": [
-                "Sıfır hücre bulunduğu için olabilirlik oranları 0.5 Haldane-Anscombe düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak öngörü değerlerini tam olarak vermeyebilir."
-            ],
-            "A zero cell was present. As in the tables above, a likelihood ratio with a zero among its own cells (TP or FP for LR+, FN or TN for LR-) and the diagnostic odds ratio use the table with 0.5 added to every cell (Haldane-Anscombe), and so do their intervals; the other likelihood ratio uses the observed counts. These corrected limits are approximate. Youden's index and the number needed to diagnose use the observed counts.": [
-                ""
-            ],
-            "A zero cell was present. For LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, 0.5 is added to all four cells for that ratio and its confidence interval. The diagnostic odds ratio and its interval use all four cells plus 0.5 whenever any cell is zero (Haldane-Anscombe correction). Sensitivity, specificity, predictive values and their intervals use the observed counts. The corrected diagnostic odds ratio need not equal the ratio of the displayed likelihood ratios.": [
-                ""
-            ],
-            "A zero count makes a proportion exactly 0% or 100%. Read the 95% confidence intervals (95% confidence intervals option), not the point estimate. For the likelihood ratios, see Continuity correction applied.": [
-                "Sıfır bir sayım bir oranı tam olarak %0 veya %100 yapar. Nokta tahminini değil, %95 güven aralıklarını (%95 güven aralıkları seçeneği) okuyun. Olabilirlik oranları için bkz. Süreklilik düzeltmesi uygulandı."
+            "A zero count makes a proportion exactly 0% or 100%. Read the 95% confidence intervals (95% confidence intervals option), not the point estimate. For the likelihood ratios and the diagnostic odds ratio, see the notes under the tables.": [
+                "Sıfır bir sayım bir oranı tam olarak %0 veya %100 yapar. Nokta tahminini değil, %95 güven aralıklarını (%95 güven aralıkları seçeneği) okuyun. Olabilirlik oranları ve tanısal odds oranı için tabloların altındaki notlara bakın."
             ],
             "A zero count makes an agreement proportion 0% or 100%. Inspect the exact 95% confidence intervals; no continuity correction is applied to agreement proportions.": [
                 ""
@@ -5161,8 +5212,8 @@
             "At {prevalence} prevalence": [
                 "%{prevalence} prevalansta"
             ],
-            "At a prevalence of %1$.1f%%, the %2$s is especially sensitive to changes in prevalence.": [
-                ""
+            "At a prevalence of %1$s%%, the %2$s is especially sensitive to changes in prevalence.": [
+                "%%%1$s prevalansta %2$s, prevalanstaki değişikliklere özellikle duyarlıdır."
             ],
             "At least {n} subjects are needed for the confidence limits to fall within {limits}, if the observed kappa comes in at {kappa0}.": [
                 "Gözlenen kappa {kappa0} çıkarsa, güven sınırlarının {limits} içinde kalması için en az {n} olgu gerekir."
@@ -5236,8 +5287,8 @@
             "At least one interval in this table was built from the null-hypothesis standard error (kappa divided by its H0 test statistic) because the non-null asymptotic standard error from vcd::Kappa was unavailable for that rater, most often because a rating category is unused at one time point and the agreement table is near-degenerate. Null-SE intervals use a variance under zero agreement; their coverage at nonzero kappa is uncertain.": [
                 ""
             ],
-            "At least one interval in this table was built from the null-hypothesis standard error (kappa divided by its H0 test statistic) because the non-null asymptotic standard error from vcd::Kappa was unavailable for that subgroup. Null-SE intervals use a variance under zero agreement; their coverage at nonzero kappa is uncertain; three or more raters always use this fallback.": [
-                ""
+            "At least one interval in this table was built from the null-hypothesis standard error (kappa divided by its H0 test statistic) because the non-null asymptotic standard error from vcd::Kappa was unavailable for that subgroup. Null-SE intervals use a variance under zero agreement; their coverage at nonzero kappa is uncertain.": [
+                "Bu tablodaki en az bir aralık, o alt grup için vcd::Kappa'dan sıfır-dışı asimptotik standart hata elde edilemediğinden sıfır hipotezi standart hatasından (kappa bölü H0 test istatistiği) oluşturuldu. Sıfır hipotezi standart hatasıyla kurulan aralıklar sıfır uyum altındaki bir varyansı kullanır; sıfırdan farklı kappa değerlerinde kapsamaları belirsizdir."
             ],
             "At least one interval was built from the null-hypothesis standard error, because vcd::Kappa returned no finite asymptotic standard error for that institution (most often a category unused there). These intervals use a variance under zero agreement; their coverage at nonzero kappa is uncertain.": [
                 ""
@@ -5268,6 +5319,9 @@
             ],
             "At optimal threshold = %1$s (sensitivity %2$s%%, specificity %3$s%%)": [
                 "En uygun eşik = %1$s (duyarlılık %2$s%%, özgüllük %3$s%%)"
+            ],
+            "At the %1$s%% disease prevalence among the %2$d cases analysed for %3$s, %4$s positive predictive value, %5$s negative predictive value, and %6$s overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
+                "%3$s için analiz edilen %2$d olguda, %%%1$s hastalık prevalansında %4$s pozitif öngörü değeri, %5$s negatif öngörü değeri ve %6$s genel doğruluk gözlendi; öngörü değerleri ve doğruluk prevalansla değişir ve farklı hastalık oranına sahip bir popülasyon için yeniden hesaplanmalıdır."
             ],
             "At the %1$s%% disease prevalence observed in this sample, %2$s positive predictive value, %3$s negative predictive value, and %4$s overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
                 "Bu örneklemde gözlenen %%%1$s hastalık prevalansında pozitif öngörü değeri %2$s, negatif öngörü değeri %3$s ve genel doğruluk %4$s olarak gözlendi; öngörü değerleri ve doğruluk prevalansla değişir ve hastalık oranı farklı bir popülasyon için yeniden hesaplanmaları gerekir."
@@ -5602,9 +5656,6 @@
             "Because the expected goodness-of-fit chi-square grows in proportion to the number of subjects, that number is computed directly: the chi-square critical value divided by the chi-square each subject contributes at the limit that drives the sample size, rounded up (the Study Explanation shows the numbers).": [
                 "Beklenen uyum iyiliği ki-karesi olgu sayısıyla orantılı olarak arttığından bu sayı doğrudan hesaplanır: ki-kare kritik değerinin, örneklem büyüklüğünü belirleyen sınırda her olgunun katkıda bulunduğu ki-kareye bölümü, yukarı yuvarlanmış (sayılar Çalışma Açıklaması bölümünde gösterilir)."
             ],
-            "Because the goodness-of-fit test has to estimate the expected proportions from the ratings, this sample size can fall well short of power {power}; confirm it by simulating the intended analysis.": [
-                "Uyum iyiliği testi beklenen oranları değerlendirmelerden kestirmek zorunda olduğundan, bu örneklem büyüklüğü {power} gücünün oldukça altında kalabilir; planlanan analizi simüle ederek doğrulayın."
-            ],
             "Because the probabilities for '%s' were derived here by a linear logistic fit, the spline curve only tests whether that logit-linear form is adequate for this marker; it says nothing about the calibration of an external model.": [
                 "'%s' olasılıkları burada doğrusal bir lojistik uyumla türetildiğinden, spline eğrisi yalnızca o logit-doğrusal formun bu belirteç için yeterli olup olmadığını test eder; harici bir modelin kalibrasyonu hakkında hiçbir şey söylemez."
             ],
@@ -5625,6 +5676,9 @@
             ],
             "Below chance": [
                 "Şans düzeyinin altında"
+            ],
+            "below chance": [
+                "şansın altında"
             ],
             "Below chance agreement": [
                 "Şansın altında uyum"
@@ -6397,8 +6451,8 @@
             "Check Classification Direction. Unselected outcome levels and missing outcomes are excluded and counted.": [
                 "Sınıflandırma Yönünü kontrol edin. Seçilmeyen sonuç düzeyleri ve eksik sonuçlar dışlanır ve sayıları bildirilir."
             ],
-            "Check that \"Positive Outcome Level\" is the level the model predicts and that the column is not one minus the risk.": [
-                "\"Pozitif Sonuç Düzeyi\" seçeneğinin modelin tahmin ettiği düzey olduğunu ve sütunun bir eksi risk olmadığını kontrol edin."
+            "Check that \"Positive Outcome\" is the level the model predicts and that the column is not one minus the risk.": [
+                "\"Pozitif Sonuç\" seçeneğinin modelin tahmin ettiği düzey olduğunu ve sütunun bir eksi risk olmadığını kontrol edin."
             ],
             "Check that the level selected under Test positive level is the one you meant: this analysis has no numeric cut-point, it simply treats that level as a positive result.": [
                 "Test pozitif düzeyi altında seçilen düzeyin amaçladığınız düzey olduğunu kontrol edin: bu analizin sayısal bir kesme noktası yoktur, yalnızca o düzeyi pozitif bir sonuç olarak ele alır."
@@ -6414,6 +6468,9 @@
             ],
             "Check the missing values of this test variable, or remove it from the analysis.": [
                 "Bu test değişkeninin eksik değerlerini kontrol edin veya değişkeni analizden çıkarın."
+            ],
+            "Check whether the model's bootstrap interval on the decision curve plot stays above both reference lines over this range.": [
+                "Modelin karar eğrisi grafiğindeki bootstrap aralığının bu aralık boyunca her iki referans çizgisinin üzerinde kalıp kalmadığını kontrol edin."
             ],
             "Chest Imaging + Culture (Illustrative)": [
                 "Göğüs Görüntüleme + Kültür (Açıklayıcı)"
@@ -7462,8 +7519,14 @@
             "Condition/method variable": [
                 "Koşul/yöntem değişkeni"
             ],
+            "Conditional independence cannot be checked with three tests": [
+                "Üç testle koşullu bağımsızlık denetlenemez"
+            ],
             "Conditional Independence Check (Bivariate Residuals)": [
                 "Koşullu Bağımsızlık Kontrolü (İki Değişkenli Kalıntılar)"
+            ],
+            "Conditional independence not checked": [
+                "Koşullu bağımsızlık denetlenmedi"
             ],
             "Conditional on observed sites; no site-population extrapolation": [
                 "Gözlenen merkezlere koşullu; merkez popülasyonuna genelleme yapılmaz"
@@ -7696,9 +7759,6 @@
             "consistent correlation": [
                 "tutarlı korelasyon"
             ],
-            "Consistent with independence": [
-                "Bağımsızlıkla tutarlı"
-            ],
             "Constant Predictor: %s": [
                 "Sabit Öngörücü: %s"
             ],
@@ -7803,6 +7863,9 @@
             ],
             "Corrected J estimates how a rule picked by this ranking would score in new patients like these. The whole ranking was repeated in {nboot} bootstrap samples drawn within each reference group; Expected drop is the average amount by which the rule picked in a sample scored higher there than in the original data (Monte Carlo standard error {mcse}). The highest-ranked rule was picked again in {stability}% of the samples. The correction is approximate: it leaves part of the optimism when rules are nearly tied, and it does not allow for how the tests, levels or patients were chosen.": [
                 "Düzeltilmiş J, bu sıralamanın seçtiği bir kuralın bunlara benzer yeni hastalarda nasıl bir sonuç vereceğini tahmin eder. Sıralamanın tamamı, her referans grubu içinden çekilen {nboot} bootstrap örnekleminde yinelendi; Beklenen düşüş, bir örneklemde seçilen kuralın o örneklemde orijinal verilere göre ortalama ne kadar yüksek puan aldığıdır (Monte Carlo standart hatası {mcse}). En yüksek sıralı kural örneklemlerin %{stability} kadarında yeniden seçildi. Düzeltme yaklaşıktır: kurallar neredeyse eşit olduğunda iyimserliğin bir kısmını bırakır ve testlerin, düzeylerin veya hastaların nasıl seçildiğini hesaba katmaz."
+            ],
+            "Corrected values are an optimism-corrected internal validation (Harrell's bootstrap) on the same patients, not an external validation. With variable and lambda selection in a modest sample the correction removes only part of the optimism, so the corrected AUC can still be too high; confirm performance on independent data.": [
+                "Düzeltilmiş değerler, aynı hastalar üzerinde iyimserlik düzeltmeli bir iç doğrulamadır (Harrell bootstrap yöntemi), dış doğrulama değildir. Orta büyüklükte bir örneklemde değişken ve lambda seçimi yapıldığında düzeltme iyimserliğin yalnızca bir kısmını giderir; bu nedenle düzeltilmiş AUC hâlâ fazla yüksek olabilir. Performansı bağımsız verilerde doğrulayın."
             ],
             "Correlation (1 - r), pattern only": [
                 "Korelasyon (1 - r), yalnızca desen"
@@ -8302,6 +8365,9 @@
             "Default": [
                 "Varsayılan"
             ],
+            "Default (no discrimination)": [
+                "Varsayılan (ayırt edicilik yok)"
+            ],
             "Default Metric Set": [
                 "Varsayılan Metrik Seti"
             ],
@@ -8566,14 +8632,17 @@
             "Diagnostic odds ratio": [
                 "Tanısal odds oranı"
             ],
+            "diagnostic odds ratio": [
+                "tanısal odds oranı"
+            ],
             "Diagnostic odds ratio compares the odds of a positive result between reference-positive and reference-negative groups. Its magnitude is descriptive and has no universal clinical cut-off.": [
                 "Tanısal odds oranı referans pozitif ve referans negatif gruplar arasında pozitif bir sonucun odds'unu karşılaştırır. Büyüklüğü betimseldir ve evrensel bir klinik kesim değerine sahip değildir."
             ],
             "Diagnostic odds ratio: the odds of a positive test in patients with the disease divided by the odds of a positive test in patients without it, equal to LR+ / LR- (Glas et al. 2003).": [
                 "Tanısal odds oranı: hastalığı olan hastalarda pozitif test odds'unun, hastalığı olmayan hastalarda pozitif test odds'una bölümüdür; LR+ / LR- değerine eşittir (Glas et al. 2003)."
             ],
-            "Diagnostic odds ratio: the odds of a positive test in patients with the disease divided by the odds of a positive test in patients without it. On one 2x2 table it equals LR+ / LR- (Glas et al. 2003); here it and only one of the likelihood ratios come from the zero-cell corrected table, so the displayed values need not satisfy that identity.": [
-                "Tanısal odds oranı: hastalığı olan hastalarda pozitif test odds'unun, hastalığı olmayan hastalarda pozitif test odds'una bölümüdür. Tek bir 2x2 tabloda LR+ / LR- değerine eşittir (Glas et al. 2003); burada bu oran ve olabilirlik oranlarından yalnızca biri sıfır hücre düzeltmesi uygulanmış tablodan elde edildiği için görüntülenen değerlerin bu özdeşliği sağlaması gerekmez."
+            "Diagnostic odds ratio: the odds of a positive test in patients with the disease divided by the odds of a positive test in patients without it. On one 2x2 table it equals LR+ / LR- (Glas et al. 2003); here the displayed ratios do not all come from the same table (a ratio with a zero denominator count is computed from the zero-cell corrected table), so they need not satisfy that identity.": [
+                "Tanısal odds oranı: hastalığı olan hastalarda pozitif test odds'unun, hastalığı olmayan hastalarda pozitif test odds'una bölümüdür. Tek bir 2x2 tabloda LR+ / LR- değerine eşittir (Glas et al. 2003); burada görüntülenen oranların tümü aynı tablodan gelmediği için (payda sayımı sıfır olan bir oran sıfır hücre düzeltmeli tablodan hesaplanır) bu özdeşliği sağlamaları gerekmez."
             ],
             "Diagnostic OR": [
                 "Tanısal Odds Oranı (DOR)"
@@ -9112,8 +9181,8 @@
             "Empirical Total Deviation Index (TDI)": [
                 "Ampirik Toplam Sapma İndeksi (TDI)"
             ],
-            "Enable bootstrap confidence intervals for robust estimates": [
-                "Sağlam tahminler için bootstrap güven aralıklarını etkinleştirin"
+            "Enable bootstrap for approximate confidence intervals (estimates do not change)": [
+                "Yaklaşık güven aralıkları için bootstrap'ı etkinleştirin (tahminler değişmez)"
             ],
             "Enable custom disease prevalence for calculating PPV and NPV. Use when your study population differs from the dataset prevalence (e.g., screening vs high-risk populations).": [
                 "PÖD ve NÖD hesaplamak için özel hastalık yaygınlığını etkinleştirin. Çalışma popülasyonunuz veri seti yaygınlığından farklı olduğunda kullanın (ör. tarama popülasyonlarına karşı yüksek riskli popülasyonlar)."
@@ -9183,9 +9252,6 @@
             ],
             "Equal": [
                 "Eşit"
-            ],
-            "Equal Numbers of Events and Non-Events": [
-                "Olaylı ve Olaysız Hasta Sayıları Eşit"
             ],
             "Equal sensitivity and specificity": [
                 "Eşit duyarlılık ve özgüllük"
@@ -9400,8 +9466,8 @@
             "Every pair of predictors is tested separately, so with {k} predictors this table reports {m} tests. At the 5% level roughly one verdict in twenty is expected to read “significant” by chance alone, so with several pairs on screen treat an isolated significant row as a hypothesis to confirm rather than as a finding. No multiplicity adjustment is applied to these p-values.": [
                 "Her öngörücü çifti ayrı ayrı test edilir; bu nedenle {k} öngörücüyle bu tablo {m} test raporlar. %5 düzeyinde, yalnızca şans eseri yaklaşık yirmi karardan birinin “anlamlı” olarak okunması beklenir; bu nedenle ekranda birkaç çift varken tek başına anlamlı bir satırı bir bulgu olarak değil, doğrulanması gereken bir hipotez olarak değerlendirin. Bu p değerlerine çoklu karşılaştırma düzeltmesi uygulanmaz."
             ],
-            "Every predictor produced a single distinct predicted probability, so there is nothing to group into calibration bins. This usually means the predictor is constant within the analysed rows.": [
-                "Her öngörücü tek bir farklı tahmin edilen olasılık üretti; bu nedenle kalibrasyon gruplarına ayrılacak bir şey yoktur. Bu genellikle öngörücünün analiz edilen satırlarda sabit olduğu anlamına gelir."
+            "Every predictor produced a single distinct predicted probability, so there is nothing to group into calibration bins. That happens only when a predictor is constant within the analysed rows: with Prediction scale Score its logistic slope is then not estimable, and every patient receives the sample prevalence as risk.": [
+                "Her öngörücü tek bir farklı tahmin edilen olasılık üretti; bu nedenle kalibrasyon gruplarına ayrılacak bir şey yoktur. Bu yalnızca bir öngörücü analiz edilen satırlarda sabit olduğunda olur: Tahmin ölçeği Skor iken lojistik eğimi tahmin edilemez ve her hasta risk olarak örneklem prevalansını alır."
             ],
             "Every recorded result of {test} ({variable}) is \"{level}\", the level chosen as positive, so {test} cannot separate disease-present from disease-absent cases in these data: on its own it reads sensitivity 100% and specificity 0% by construction.": [
                 "{test} ({variable}) için kaydedilmiş her sonuç, pozitif olarak seçilen düzey olan \"{level}\" değeridir; bu nedenle {test} bu verilerde hastalığı olan olguları hastalığı olmayanlardan ayıramaz: tek başına yapısı gereği %100 duyarlılık ve %0 özgüllük gösterir."
@@ -10231,9 +10297,6 @@
             "For each rating category {tag1}c{tag2}, this metric reports the mean\n                        within-case agreement rate {tag3}across raters{tag4} on the cases whose\n                        modal rating is {tag5}c{tag6}. In a 4-rater study, a case all 4 raters\n                        score the same gets agreement 1.00; a 3-1 split gets 0.75; a 2-2 split\n                        has no unique mode and is excluded.": [
                 ""
             ],
-            "For LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, 0.5 is added to all four cells for that ratio and its confidence interval. The diagnostic odds ratio and its interval use all four cells plus 0.5 whenever any cell is zero (Haldane-Anscombe correction). The corrected diagnostic odds ratio need not equal the ratio of the displayed likelihood ratios. No correction is made on a row with no test-positive patients: its LR+ and odds ratio are blank and its LR- is exactly 1, and the mirror case blanks LR- and the odds ratio and shows LR+ as exactly 1. In a sample with one reference outcome all three are blank.": [
-                ""
-            ],
             "For multi-category data, calculates agreement index for each category separately.": [
                 ""
             ],
@@ -10366,8 +10429,8 @@
             "Full": [
                 ""
             ],
-            "Full LASSO model (continuous)": [
-                "Tam LASSO modeli (sürekli)"
+            "Full %s model (continuous)": [
+                "Tam %s modeli (sürekli)"
             ],
             "Function for comparing multiple Medical Decision Tests. Compares sensitivity, specificity, positive predictive value, negative predictive value, and other metrics between different tests against the same gold standard. Includes statistical comparison using McNemar's test and confidence intervals for differences. Tests are paired within each case; cases must be independent across rows. Repeated specimens or lesions from one patient require a method that accounts for clustering. Explicit positive and negative levels are required for the reference and every selected test. Other observed levels require explicit exclusion or prior recoding; they are never pooled as negative.": [
                 "Birden fazla Tıbbi Karar Testini karşılaştırma fonksiyonu. Aynı altın standarda karşı farklı testler arasındaki duyarlılık, özgüllük, pozitif öngörü değeri, negatif öngörü değeri ve diğer metrikleri karşılaştırır. McNemar testi ve farklar için güven aralıkları kullanarak istatistiksel karşılaştırmayı içerir. Testler her olgu içinde eşleştirilmiştir; olgular satırlar arasında bağımsız olmalıdır. Aynı hastadan alınan tekrarlanan örnekler ya da lezyonlar, kümelenmeyi hesaba katan bir yöntem gerektirir. Referans ve seçilen her test için açık pozitif ve negatif düzeyler gereklidir. Gözlenen diğer düzeyler açıkça dışlanmalı ya da önceden yeniden kodlanmalıdır; bunlar hiçbir zaman negatif olarak birleştirilmez."
@@ -10801,6 +10864,9 @@
             "Holding the category proportions at their anticipated values (the published calculation, and kappaSize's) the bound would be {fixed}; re-estimating them at each value of kappa, as the analysis of the study should, gives {bound}, and that is the figure reported.": [
                 "Kategori oranları beklenen değerlerinde sabit tutulduğunda (yayımlanmış hesaplama ve kappaSize'ın hesaplaması) sınır {fixed} olurdu; çalışmanın analizinde yapılması gerektiği gibi bunları her kappa değerinde yeniden kestirmek {bound} verir ve bildirilen değer budur."
             ],
+            "Holding the category proportions at their anticipated values, as the published calculation and kappaSize do, gives {fixed}; the figure shown re-estimates them at each value of kappa, as the analysis of the study should, and is the lower of the two.": [
+                "Kategori oranlarını beklenen değerlerinde sabit tutmak, yayımlanmış hesaplamanın ve kappaSize'ın yaptığı gibi, {fixed} verir; gösterilen değer ise çalışmanın analizinde yapılması gerektiği gibi bunları her kappa değerinde yeniden kestirir ve ikisinden düşük olanıdır."
+            ],
             "Holm": [
                 "Holm"
             ],
@@ -11029,8 +11095,8 @@
             "If a test was done because of another test's result, a strategy that combines them describes the second test only among the cases that triggered it, not the accuracy of testing everyone with both, and the second test's figures here and in its own table equal its accuracy in all patients only if the two tests err independently given disease status. The test that triggered the testing is unaffected in its own table, which does not need the other test. When a test was done only after a positive result, a serial strategy can still be evaluated on all patients: record its final result (positive only when every test is positive) as a separate variable and analyse it as a single test.": [
                 "Bir test başka bir testin sonucu nedeniyle yapıldıysa, ikisini birleştiren bir strateji ikinci testi, herkesin iki testle test edilmesinin doğruluğu olarak değil, yalnızca onu tetikleyen olgular arasında tanımlar; ikinci testin burada ve kendi tablosundaki değerleri, ancak iki test hastalık durumuna göre birbirinden bağımsız hata yapıyorsa tüm hastalardaki doğruluğuna eşittir. Testi tetikleyen test kendi tablosunda etkilenmez, çünkü o tablo diğer teste ihtiyaç duymaz. Bir test yalnızca pozitif bir sonuçtan sonra yapıldıysa seri strateji yine de tüm hastalarda değerlendirilebilir: nihai sonucunu (yalnızca her test pozitif olduğunda pozitif) ayrı bir değişken olarak kaydedin ve tek bir test olarak analiz edin."
             ],
-            "If cases and controls were sampled separately, the 50% prevalence is a design choice rather than the outcome rate of the target population, and the net benefit, the treat-all line and every projection here do not apply to that population.": [
-                "Olgular ve kontroller ayrı ayrı örneklendiyse %50 prevalans, hedef popülasyonun sonuç oranı değil bir tasarım tercihidir; net fayda, herkesi tedavi et çizgisi ve buradaki tüm projeksiyonlar o popülasyona uygulanamaz."
+            "If cases and controls were sampled separately, the {pct}% prevalence is a design choice rather than the outcome rate of the target population, and the net benefit, the treat-all line and every projection here do not apply to that population.": [
+                "Olgular ve kontroller ayrı ayrı örneklendiyse %{pct} prevalans, hedef popülasyonun sonuç oranı değil bir tasarım tercihidir; net fayda, herkesi tedavi et çizgisi ve buradaki tüm projeksiyonlar o popülasyona uygulanamaz."
             ],
             "If one of the tests being evaluated also contributed to establishing the reference standard, that test is being compared against itself and its apparent accuracy is inflated. This is easy to do accidentally when the reference is a final diagnosis assembled from all available information.": [
                 "Değerlendirilen testlerden biri referans standardın belirlenmesine de katkıda bulunduysa, o test kendisiyle karşılaştırılıyor demektir ve görünürdeki doğruluğu şişirilir. Referans, mevcut tüm bilgilerden bir araya getirilmiş nihai bir tanı olduğunda bunu kazara yapmak kolaydır."
@@ -11167,6 +11233,9 @@
             "Improvement": [
                 "Gelişme / İyileşme"
             ],
+            "In {n} row(s) ({patterns}) LR+, LR- or the diagnostic odds ratio is exactly 0 because the cell in its numerator is zero; no continuity correction is applied to that estimate. Its confidence interval runs from 0 to the upper limit of the same log-scale interval computed with 0.5 added to every cell (Haldane-Anscombe correction).": [
+                "{n} satırda ({patterns}) LR+, LR- veya tanısal odds oranı, payındaki hücre sıfır olduğu için tam olarak 0'dır; bu kestirime süreklilik düzeltmesi uygulanmaz. Güven aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına kadar uzanır (Haldane-Anscombe düzeltmesi)."
+            ],
             "In a breast cancer grading study, the contingency table might reveal that Grade 1 vs Grade 2\n                        is the most common disagreement (off-diagonal counts concentrated there), while Grade 1 vs Grade 3\n                        disagreements are rare. This directs targeted training efforts.": [
                 ""
             ],
@@ -11190,6 +11259,9 @@
             ],
             "In the simulations of Fluss et al. (2005) this empirical estimator, the most commonly used, had the worst overall bias and root mean square error of the four estimators compared (normal, transformed-normal, empirical and kernel); for the cut-point itself their results were more variable.": [
                 "Fluss ve ark. (2005) simülasyonlarında, en yaygın kullanılan bu ampirik kestirici, karşılaştırılan dört kestirici (normal, dönüştürülmüş normal, ampirik ve çekirdek) arasında genel olarak en kötü yanlılığa ve kök ortalama kare hataya sahipti; kesme noktasının kendisi için sonuçları daha değişkendi."
+            ],
+            "In these data the fitted logistic risk of %2$s runs opposite to the direction in which the ROC tables read %1$s (AUC %3$.3f in that direction). A one-marker logistic model does not depend on Direction, so calibration, the Brier score, the Hosmer-Lemeshow test, the decision and clinical impact curves and internal validation use the risk model the data support. Under the direction selected, %1$s performs worse than those outputs show. Check Direction and Positive class.": [
+                "Bu verilerde %2$s için uyarlanan lojistik risk, ROC tablolarının %1$s belirtecini okuduğu yönün tersine işliyor (o yönde AUC %3$.3f). Tek belirteçli bir lojistik model Yön ayarına bağlı değildir; bu nedenle kalibrasyon, Brier skoru, Hosmer-Lemeshow testi, karar ve klinik etki eğrileri ile iç doğrulama verilerin desteklediği risk modelini kullanır. Seçilen yön altında %1$s, bu çıktıların gösterdiğinden daha kötü performans gösterir. Yön ve Pozitif sınıf ayarlarını kontrol edin."
             ],
             "In this run at least one pair of confidence intervals does not overlap (%1$d of %2$d rows carry an interval). Non-overlap is not a test of difference: the comparison was not planned, the number of subgroups is not adjusted for, and a gap can be produced by differing case mix alone.": [
                 "Bu çalıştırmada en az bir güven aralığı çifti örtüşmüyor (aralık içeren satır: %1$d / %2$d). Örtüşmeme bir fark testi değildir: karşılaştırma planlanmamıştır, alt grup sayısı için düzeltme yapılmamıştır ve olgu bileşimindeki farklılık tek başına bir boşluk oluşturabilir."
@@ -11418,9 +11490,6 @@
             ],
             "Insufficient Predictors": [
                 "Yetersiz Öngörücüler"
-            ],
-            "Insufficient unique predicted probability values for Hosmer-Lemeshow grouping (need at least 3 distinct break points). This typically occurs when the predictor has very few unique values.": [
-                "Hosmer-Lemeshow gruplandırması için yetersiz benzersiz tahmin edilen olasılık değerleri (en az 3 farklı kesme noktası gerekir). Bu durum tipik olarak öngörücünün çok az benzersiz değere sahip olması durumunda ortaya çıkar."
             ],
             "Insufficient valid replicates": [
                 "Yetersiz geçerli tekrar"
@@ -11873,7 +11942,7 @@
                 "kappa1"
             ],
             "kappa1 must be strictly between 0 and 1.": [
-                ""
+                "kappa1 kesinlikle 0 ile 1 arasında olmalıdır."
             ],
             "kappaL": [
                 "kappaL"
@@ -12169,6 +12238,9 @@
             "Levels found: {levels}.": [
                 "Bulunan düzeyler: {levels}."
             ],
+            "Levels Not Yet Selected": [
+                "Düzeyler Henüz Seçilmedi"
+            ],
             "Light = few cases, dark = many; no color required": [
                 ""
             ],
@@ -12202,8 +12274,8 @@
             "Light's Kappa vs Fleiss' Kappa": [
                 ""
             ],
-            "Like the published formulas, it treats the expected proportions as known and rests on a large-sample approximation, so the power actually achieved can differ from the stated power in either direction: by several percentage points in many designs, and by much more with several raters and a rare finding, where estimating the proportions costs power. For a binary outcome the analysis therefore simulates the recommended test at the sample size shown and, when the simulated power falls more than 0.03 short, gives a simulated sample size; with three to five categories a note flags designs where the loss is likely to be large (both from 10 subjects upwards).": [
-                "Yayımlanmış formüller gibi beklenen oranları biliniyor kabul eder ve büyük örneklem yaklaşımına dayanır; bu nedenle gerçekte ulaşılan güç belirtilen güçten her iki yönde de farklı olabilir: birçok tasarımda birkaç yüzde puanı, birkaç değerlendirici ve nadir bir bulgu olduğunda ise çok daha fazla, çünkü bu durumda oranların kestirilmesi güç kaybettirir. Bu nedenle ikili bir sonuçta analiz, önerilen testi gösterilen örneklem büyüklüğünde simüle eder ve simüle güç 0.03'ten fazla düştüğünde simülasyonla bulunan bir örneklem büyüklüğü verir; üç ila beş kategoride ise bir not, kaybın büyük olmasının beklendiği tasarımları işaret eder (her ikisi de 10 olgudan itibaren)."
+            "Like the published formulas, it treats the expected proportions as known and rests on a large-sample approximation, so the power actually achieved can differ from the stated power in either direction: by several percentage points in many designs, and by much more with several raters or a rare finding. For a binary outcome the analysis therefore simulates the recommended test at the sample size shown and, when the simulated power falls more than 0.03 short, gives a simulated sample size; with three to five categories and three or more raters, where the simulated power at the published sample size was below 0.75 for a stated 0.80 in 8 of 12 designs checked, a note asks for the sample size to be confirmed by simulation (both from 10 subjects upwards).": [
+                "Yayımlanmış formüller gibi beklenen oranları biliniyor kabul eder ve büyük örneklem yaklaşımına dayanır; bu nedenle gerçekte ulaşılan güç belirtilen güçten her iki yönde de farklı olabilir: birçok tasarımda birkaç yüzde puanı, birkaç değerlendirici ya da nadir bir bulgu olduğunda ise çok daha fazla. Bu nedenle ikili bir sonuçta analiz, önerilen testi gösterilen örneklem büyüklüğünde simüle eder ve simüle güç 0.03'ten fazla düştüğünde simülasyonla bulunan bir örneklem büyüklüğü verir; üç ila beş kategori ve üç veya daha fazla değerlendirici olduğunda, yayımlanmış örneklem büyüklüğündeki simüle gücün denetlenen 12 tasarımın 8'inde belirtilen 0.80 için 0.75'in altında kaldığı durumda, bir not örneklem büyüklüğünün simülasyonla doğrulanmasını ister (her ikisi de 10 olgudan itibaren)."
             ],
             "Likelihood Ratio Interpretation (point estimates; rule of thumb, Jaeschke et al. 1994)": [
                 "Olabilirlik Oranı Yorumu (nokta tahminleri; pratik kural, Jaeschke et al. 1994)"
@@ -12529,8 +12601,8 @@
             "LR+ Quality": [
                 "LR+ Kalitesi"
             ],
-            "LR+, LR- and the diagnostic odds ratio add 0.5 to all four cells when a cell is zero, so they stay finite (for the odds ratio this is the Haldane-Anscombe correction; the likelihood ratios use the same adjustment); the proportions on the same row use the observed counts, so the two need not agree exactly at a zero cell. The correction repairs a sampling zero, not a structural one. On a row with no test-positive patients (a pattern nobody shows, or a rule that is never positive), LR+ and the odds ratio are 0/0 and are left BLANK rather than corrected, while LR- is exactly 1: any other result leaves the odds unchanged. On a row with no test-negative patients, LR- and the odds ratio are blank and LR+ is exactly 1. In a sample with only one reference outcome all three are blank in every row, as are PPV and NPV, which the sampling alone fixes, and Accuracy, which then only repeats the sensitivity or specificity.": [
-                "Bir hücre sıfır olduğunda LR+, LR- ve tanısal odds oranı, sonlu kalmaları için dört hücrenin tümüne 0,5 eklenerek hesaplanır (odds oranı için bu Haldane-Anscombe düzeltmesidir; olabilirlik oranları da aynı düzeltmeyi kullanır); aynı satırdaki yüzdeler gözlenen sayıları kullanır, bu nedenle ikisi sıfır hücrede tam olarak uyuşmayabilir. Düzeltme yapısal değil örneklemsel bir sıfırı onarır. Test-pozitif hastası olmayan bir satırda (hiç kimsenin göstermediği bir patern ya da hiçbir zaman pozitif olmayan bir kural) LR+ ve odds oranı 0/0'dır ve düzeltilmek yerine BOŞ bırakılır; LR- ise tam 1'dir: başka herhangi bir sonuç odds'u değiştirmez. Test-negatif hastası olmayan bir satırda LR- ve odds oranı boştur ve LR+ tam 1'dir. Yalnızca tek bir referans sonucunun bulunduğu bir örneklemde üç oran da her satırda boştur; örneklemenin tek başına sabitlediği PPV ve NPV ile o durumda yalnızca duyarlılığı ya da özgüllüğü tekrarlayan Doğruluk da öyle."
+            "LR+, LR- and the diagnostic odds ratio add 0.5 to all four cells only when a cell in the ratio's denominator is zero and its numerator is not (FP for LR+, TN for LR-, FP or FN for the odds ratio), so the ratio stays finite (for the odds ratio this is the Haldane-Anscombe correction; the likelihood ratios use the same adjustment). When the numerator cell is zero instead (TP for LR+, FN for LR-, TP or TN for the odds ratio), the ratio is exactly 0 and is not corrected: adding 0.5 there would turn a test that never detected disease into one that seems to point towards it. Its confidence interval runs from 0 to the upper limit of the same log-scale interval computed with 0.5 added to every cell. A corrected ratio stands in for an infinite one, so when the correction would bring it to 1 or below (an empty cell in a much smaller reference group) it is left blank as not estimable. The proportions on the same row use the observed counts, so the two need not agree exactly at a zero cell. The correction repairs a sampling zero, not a structural one. On a row with no test-positive patients (a pattern nobody shows, or a rule that is never positive), LR+ and the odds ratio are 0/0 and are left BLANK rather than corrected, while LR- is exactly 1: any other result leaves the odds unchanged. On a row with no test-negative patients, LR- and the odds ratio are blank and LR+ is exactly 1. In a sample with only one reference outcome all three are blank in every row, as are PPV and NPV, which the sampling alone fixes, and Accuracy, which then only repeats the sensitivity or specificity.": [
+                "LR+, LR- ve tanısal odds oranı, dört hücrenin tümüne 0.5'i yalnızca oranın paydasındaki bir hücre sıfır ve payı sıfır değilken ekler (LR+ için YP, LR- için GN, odds oranı için YP veya YN); böylece oran sonlu kalır (odds oranı için bu Haldane-Anscombe düzeltmesidir; olabilirlik oranları da aynı düzeltmeyi kullanır). Bunun yerine pay hücresi sıfır olduğunda (LR+ için GP, LR- için YN, odds oranı için GP veya GN) oran tam olarak 0'dır ve düzeltilmez: oraya 0.5 eklemek, hastalığı hiç saptamamış bir testi hastalığa işaret ediyormuş gibi gösterirdi. Güven aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına kadar uzanır. Düzeltilmiş bir oran sonsuz bir oranın yerini tutar; bu nedenle düzeltme onu 1'e ya da altına indirecekse (çok daha küçük bir referans grubunda boş bir hücre) tahmin edilemez olarak boş bırakılır. Aynı satırdaki yüzdeler gözlenen sayıları kullanır, bu nedenle ikisi sıfır hücrede tam olarak uyuşmayabilir. Düzeltme yapısal değil örneklemsel bir sıfırı onarır. Test-pozitif hastası olmayan bir satırda (hiç kimsenin göstermediği bir patern ya da hiçbir zaman pozitif olmayan bir kural) LR+ ve odds oranı 0/0'dır ve düzeltilmek yerine BOŞ bırakılır; LR- ise tam 1'dir: başka herhangi bir sonuç odds'u değiştirmez. Test-negatif hastası olmayan bir satırda LR- ve odds oranı boştur ve LR+ tam 1'dir. Yalnızca tek bir referans sonucunun bulunduğu bir örneklemde üç oran da her satırda boştur; örneklemenin tek başına sabitlediği PPV ve NPV ile o durumda yalnızca duyarlılığı ya da özgüllüğü tekrarlayan Doğruluk da öyle."
             ],
             "Macro AUC": [
                 "Makro EAA"
@@ -12626,7 +12698,7 @@
                 "Maksimuma göre ölçeklendirilmiş yöntem (en güçlü tahmin edici = maksimum puan)"
             ],
             "maximising": [
-                ""
+                "en büyük yapılarak"
             ],
             "Maximize metric": [
                 "Ölçütü maksimize et"
@@ -12641,7 +12713,7 @@
                 ""
             ],
             "maximum": [
-                ""
+                "maksimum"
             ],
             "Maximum cases to display": [
                 "Görüntülenecek maksimum olgu"
@@ -12937,6 +13009,9 @@
             "Minimal": [
                 "Minimal"
             ],
+            "minimal": [
+                "minimal"
+            ],
             "Minimal decrease in probability of disease": [
                 "Hastalık olasılığında minimal azalma"
             ],
@@ -12959,7 +13034,7 @@
                 "Minimal değerlendirici yanlılığı"
             ],
             "minimising": [
-                ""
+                "en küçük yapılarak"
             ],
             "Minimize |PPV - NPV|": [
                 "|PÖD - NÖD| minimize et"
@@ -12977,7 +13052,7 @@
                 "Ölçütü minimize et (LOESS ile düzeltilmiş)"
             ],
             "minimum": [
-                ""
+                "minimum"
             ],
             "Minimum acceptable OPA (%)": [
                 "Kabul edilebilir minimum OPA (%)"
@@ -13074,9 +13149,6 @@
             ],
             "Missing Positive Level": [
                 "Pozitif Düzey Eksik"
-            ],
-            "Missing Positive Levels": [
-                "Pozitif Düzeyler Eksik"
             ],
             "Missing ratings, or raters who did not all see every case": [
                 ""
@@ -13645,6 +13717,9 @@
             "Negative likelihood ratio": [
                 "Negatif olabilirlik oranı"
             ],
+            "negative likelihood ratio": [
+                "negatif olabilirlik oranı"
+            ],
             "Negative likelihood ratio unavailable due to data limitations": [
                 "veri kısıtlılıkları nedeniyle negatif olabilirlik oranı mevcut değil"
             ],
@@ -14032,6 +14107,9 @@
             "No eligible paired cases": [
                 "Uygun eşleştirilmiş olgu yok"
             ],
+            "No evidence against conditional independence (descriptive)": [
+                "Koşullu bağımsızlığa karşı kanıt yok (betimsel)"
+            ],
             "No evidence of a difference": [
                 "Fark olduğuna dair kanıt yok"
             ],
@@ -14158,6 +14236,12 @@
             "No reference-negative subjects": [
                 "Referans negatif denek yok"
             ],
+            "No reference-positive subject tested negative (FN = 0), so the negative likelihood ratio is exactly 0. A ratio of 0 cannot be placed on the nomogram's logarithmic scale.": [
+                "Hiçbir referans-pozitif denek negatif test sonucu vermedi (YN = 0), bu nedenle negatif olabilirlik oranı tam olarak 0'dır. 0 değerindeki bir oran nomogramın logaritmik ölçeğine yerleştirilemez."
+            ],
+            "No reference-positive subject tested positive (TP = 0), so the positive likelihood ratio is exactly 0. A ratio of 0 cannot be placed on the nomogram's logarithmic scale.": [
+                "Hiçbir referans-pozitif denek pozitif test sonucu vermedi (GP = 0), bu nedenle pozitif olabilirlik oranı tam olarak 0'dır. 0 değerindeki bir oran nomogramın logaritmik ölçeğine yerleştirilemez."
+            ],
             "No reference-positive subjects": [
                 "Referans pozitif denek yok"
             ],
@@ -14241,6 +14325,12 @@
             ],
             "No test could be ranked by balanced accuracy because one reference-standard class has no cases; the figures below describe %s, the first test selected.": [
                 "Bir referans standart sınıfında hiç olgu olmadığı için hiçbir test dengeli doğruluğa göre sıralanamadı; aşağıdaki değerler ilk seçilen test olan %s testini tanımlar."
+            ],
+            "No test could be ranked on the cases common to all tests; the figures below describe %s, the first test selected.": [
+                "Tüm testlerde ortak olan olgularda hiçbir test sıralanamadı; aşağıdaki değerler seçilen ilk test olan %s testini tanımlar."
+            ],
+            "No test is ranked on the cases common to all tests.": [
+                "Tüm testlerde ortak olan olgularda hiçbir test sıralanmadı."
             ],
             "No Test Variables": [
                 "Test Değişkeni Yok"
@@ -14371,9 +14461,6 @@
             "not calculated": [
                 "hesaplanmadı"
             ],
-            "not calculated (needs both sensitivity and specificity)": [
-                "hesaplanmadı (hem duyarlılık hem özgüllük gerektirir)"
-            ],
             "Not comparable with strict accuracy: strict is defined on only %1$d of these %2$d cases, so the two are not differenced here": [
                 "Katı doğrulukla karşılaştırılamaz: katı doğruluk bu olguların yalnızca %1$d tanesinde tanımlıdır (toplam %2$d olgu), bu nedenle ikisinin farkı burada hesaplanmaz"
             ],
@@ -14428,8 +14515,14 @@
             "Not estimable for this table: a denominator is zero or the quantity is undefined.": [
                 "Bu tablo için tahmin edilemez: bir payda sıfırdır veya nicelik tanımsızdır."
             ],
+            "not estimable from these counts": [
+                "bu sayımlardan tahmin edilemez"
+            ],
             "Not estimable; see the notice above the results.": [
                 "Tahmin edilemez; sonuçların üzerindeki bildirime bakın."
+            ],
+            "Not estimable: FP = 0 makes LR+ infinite, and the 0.5 correction would reverse its direction.": [
+                "Tahmin edilemez: YP = 0 LR+ değerini sonsuz yapar ve 0.5 düzeltmesi yönünü tersine çevirirdi."
             ],
             "not estimable: no gold-standard negative cases": [
                 "tahmin edilemiyor: altın standart negatif olgu yok"
@@ -14454,6 +14547,9 @@
             ],
             "Not estimable: this rater and the reference rater used only one and the same category, so chance agreement is complete and kappa is 0 divided by 0.": [
                 "Kestirilemiyor: bu değerlendirici ve referans değerlendirici yalnızca tek ve aynı kategoriyi kullandı; bu nedenle şans eseri uyum tamdır ve kappa 0 bölü 0'dır."
+            ],
+            "Not estimable: TN = 0 makes LR- infinite, and the 0.5 correction would reverse its direction.": [
+                "Tahmin edilemez: GN = 0 LR- değerini sonsuz yapar ve 0.5 düzeltmesi yönünü tersine çevirirdi."
             ],
             "Not estimable: with these parameters this result combination cannot occur in either disease group, so no post-test probability exists. This follows from the conditional dependence being at, or truncated to, the limit the entered sensitivities and specificities allow — move it toward 0 to leave this regime.": [
                 "Tahmin edilemiyor: bu parametrelerle bu sonuç kombinasyonu iki hastalık grubunun hiçbirinde ortaya çıkamaz; bu nedenle bir test sonrası olasılık yoktur. Bu, koşullu bağımlılığın girilen duyarlılık ve özgüllüklerin izin verdiği sınırda olmasından ya da bu sınıra kırpılmasından kaynaklanır — bu durumdan çıkmak için bağımlılığı 0'a doğru yaklaştırın."
@@ -14785,8 +14881,11 @@
             "Observed Event Rate is the share of cases with each total score that had the event, in this dataset (events / N): an in-sample proportion, not a model prediction, so it need not rise with the score, and scores based on few cases are unstable and can read as 0% or 100%. Validate the score-to-risk mapping on an independent cohort before clinical use.": [
                 "Gözlenen Olay Oranı, bu veri setinde her toplam puana sahip olgular arasında olayı yaşayanların payıdır (olaylar / N): bir model tahmini değil, örneklem içi bir orandır; bu nedenle puanla birlikte artması gerekmez ve az sayıda olguya dayanan puanlar kararsızdır, %0 veya %100 olarak görünebilir. Klinik kullanımdan önce puan-risk eşleştirmesini bağımsız bir kohortta doğrulayın."
             ],
-            "Observed levels outside the selected positive/negative pair: %s. Select 'Exclude other observed levels' to omit these results, or explicitly recode the variable before analysis. Other levels are never treated as negative.": [
-                "Seçilen pozitif/negatif çiftin dışında gözlenen düzeyler: %s. Bu sonuçları dışarıda bırakmak için 'Gözlenen diğer düzeyleri dışla' seçeneğini işaretleyin ya da değişkeni analizden önce açıkça yeniden kodlayın. Diğer düzeyler hiçbir zaman negatif kabul edilmez."
+            "Observed levels outside the selected positive/negative pair: %s. Choose the positive and negative levels to compare under the level selectors, or recode the variable before analysis. Cases at other levels are excluded, never treated as negative.": [
+                "Seçilen pozitif/negatif çiftin dışında gözlenen düzeyler: %s. Karşılaştırılacak pozitif ve negatif düzeyleri düzey seçicilerinden seçin ya da değişkeni analizden önce yeniden kodlayın. Diğer düzeylerdeki olgular dışlanır, hiçbir zaman negatif kabul edilmez."
+            ],
+            "Observed levels outside the selected positive/negative pair: %s. Select 'Selected positive and negative levels only' to omit these results, or explicitly recode the variable before analysis. Other levels are never treated as negative.": [
+                "Seçilen pozitif/negatif çiftin dışında gözlenen düzeyler: %s. Bu sonuçları dışarıda bırakmak için 'Yalnızca seçilen pozitif ve negatif düzeyler' seçeneğini işaretleyin ya da değişkeni analizden önce açıkça yeniden kodlayın. Diğer düzeyler hiçbir zaman negatif kabul edilmez."
             ],
             "Observed Power": [
                 "Gözlemlenen Güç"
@@ -14799,6 +14898,9 @@
             ],
             "Observed Proportion": [
                 "Gözlemlenen Oran"
+            ],
+            "Observed range of threshold probabilities over which the model's apparent (in-sample) net benefit exceeds both treat-all and treat-none. It carries no allowance for sampling variation: near the outcome prevalence even a predictor unrelated to the outcome often shows a short range by chance, so a narrow range or a small margin is not evidence of benefit.": [
+                "Modelin görünen (örneklem içi) net faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi aştığı gözlenen eşik olasılıkları aralığı. Örnekleme değişkenliği için hiçbir pay içermez: sonuç prevalansına yakın eşiklerde, sonuçla ilişkisiz bir öngörücü bile şans eseri sıklıkla kısa bir aralık gösterir; bu nedenle dar bir aralık ya da küçük bir fark yarar kanıtı değildir."
             ],
             "Observed sample counts and PPV; unit is given in the workload table.": [
                 "Gözlenen örneklem sayıları ve PÖD; birim, iş yükü tablosunda verilmiştir."
@@ -14923,6 +15025,9 @@
             "Only \"{pos}\" (disease-present) and \"{neg}\" (disease-absent) take part. Cases at any other level are removed, not counted as disease-absent. Removing them can bias the estimates. Report how many were removed (STARD 2015).": [
                 "Yalnızca \"{pos}\" (hastalık var) ve \"{neg}\" (hastalık yok) yer alır. Başka herhangi bir düzeydeki olgular kaldırılır, hastalık yok olarak sayılmaz. Bunların kaldırılması tahminleri yanlı kılabilir. Kaç olgunun kaldırıldığını raporlayın (STARD 2015)."
             ],
+            "Only \"{pos}\" (reference-positive) and \"{neg}\" (reference-negative) take part. Cases at any other level are removed, not counted as reference-negative. Removing them can bias the estimates. Report how many were removed (STARD 2015).": [
+                "Yalnızca \"{pos}\" (referans-pozitif) ve \"{neg}\" (referans-negatif) yer alır. Başka herhangi bir düzeydeki olgular kaldırılır, referans-negatif olarak sayılmaz. Bunların kaldırılması tahminleri yanlı hale getirebilir. Kaç olgunun kaldırıldığını bildirin (STARD 2015)."
+            ],
             "Only \"{pos}\" (test-positive) and \"{neg}\" (test-negative) take part. Cases at any other level are removed, not counted as negative. If these are inconclusive results, removing them can make the test look more accurate than it is (Schuetz et al. 2012). Report how many were removed; the Data Quality Summary under Raw data tables shows the count.": [
                 "Yalnızca \"{pos}\" (test pozitif) ve \"{neg}\" (test negatif) yer alır. Başka herhangi bir düzeydeki olgular kaldırılır, negatif olarak sayılmaz. Bunlar kesin olmayan sonuçlarsa, kaldırılmaları testin olduğundan daha doğru görünmesine yol açabilir (Schuetz et al. 2012). Kaç olgunun kaldırıldığını raporlayın; Ham veri tabloları altındaki Veri Kalitesi Özeti bu sayıyı gösterir."
             ],
@@ -15025,8 +15130,8 @@
             "OPA Criterion": [
                 "OPA Kriteri"
             ],
-            "Open points: rows with a zero cell, whose LR+, LR- and DOR use a 0.5 continuity correction; without it at least one of the three would be 0 or infinite.": [
-                "Boş noktalar: LR+, LR- ve DOR değerlerinde 0,5 süreklilik düzeltmesi kullanılan, sıfır hücresi olan satırlar; düzeltme olmasaydı üçünden en az biri 0 ya da sonsuz olurdu."
+            "Open points: rows where at least one of LR+, LR- and DOR uses a 0.5 continuity correction, because a cell in its denominator is zero; without it that ratio would be infinite.": [
+                "Boş noktalar: LR+, LR- ve DOR'dan en az birinin, paydasındaki bir hücre sıfır olduğu için 0.5 süreklilik düzeltmesi kullandığı satırlar; düzeltme olmasaydı o oran sonsuz olurdu."
             ],
             "Optimal (closest to top-left)": [
                 "Optimal (sol üste en yakın)"
@@ -15058,8 +15163,8 @@
             "Optimism": [
                 "İyimserlik"
             ],
-            "Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) is a more realistic estimate of future performance.": [
-                "İyimserlik = %1$.3f aşırı uyuma işaret ediyor. Düzeltilmiş AUC (%2$.3f), gelecekteki performansın daha gerçekçi bir tahminidir."
+            "Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) removes the estimated optimism.": [
+                "İyimserlik = %1$.3f aşırı uyuma işaret ediyor. Düzeltilmiş AUC (%2$.3f) tahmin edilen iyimserliği çıkarır."
             ],
             "Optimism correction uses {b} bootstrap resamples (capped at 200 regardless of the Bootstrap samples setting, which is {req}).": [
                 "İyimserlik düzeltmesi {b} bootstrap yeniden örneklemi kullanır (Bootstrap örneklemleri ayarından bağımsız olarak 200 ile sınırlıdır; bu ayarın değeri {req})."
@@ -15213,6 +15318,9 @@
             ],
             "Outcome selection excluded %1$d row(s) in unselected levels and %2$d row(s) with missing outcomes. All analyses use only %3$s (positive) and %4$s (negative), with marker-specific complete cases.": [
                 "Sonuç seçimi nedeniyle seçilmeyen düzeylerdeki %1$d satır ve sonucu eksik %2$d satır dışlandı. Tüm analizler yalnızca %3$s (pozitif) ve %4$s (negatif) sınıflarını, belirtece özgü eksiksiz olgularla kullanır."
+            ],
+            "Outcome Split Matches a Case-Control Ratio": [
+                "Sonuç Dağılımı Bir Olgu-Kontrol Oranıyla Örtüşüyor"
             ],
             "Outcome Type": [
                 "Sonuç Türü"
@@ -15769,6 +15877,9 @@
             "Penalized EM Sample Size": [
                 "Cezalandırılmış EM Örneklem Büyüklüğü"
             ],
+            "Penalized EM: residuals come from the unpenalized (maximum-likelihood) fit of the same conditional-independence model, so the fixed priors do not enter them. They check the model assumption, not the prior-adjusted estimates.": [
+                "Cezalandırılmış EM: kalıntılar aynı koşullu bağımsızlık modelinin cezalandırılmamış (en çok olabilirlik) uyumundan gelir, bu nedenle sabit öncüller bunlara girmez. Kalıntılar öncüllere göre ayarlanmış tahminleri değil, model varsayımını denetler."
+            ],
             "Penalized feature selection for binary classification": [
                 "İkili sınıflandırma için cezalandırılmış özellik seçimi"
             ],
@@ -15939,9 +16050,6 @@
             ],
             "Please specify at least two dependent variables to use DeLong's test.": [
                 "DeLong testini kullanmak için lütfen en az iki bağımlı değişken belirtin."
-            ],
-            "Please specify positive levels for: {slots}. Use the level selector in the variable panel to choose which level represents a positive test result.": [
-                "Lütfen şu alanlar için pozitif düzeyleri belirtin: {slots}. Hangi düzeyin pozitif test sonucunu temsil ettiğini seçmek için değişken panelindeki düzey seçiciyi kullanın."
             ],
             "Plot height": [
                 "Grafik yüksekliği"
@@ -16156,6 +16264,9 @@
             "Positive likelihood ratio": [
                 "Pozitif olabilirlik oranı"
             ],
+            "positive likelihood ratio": [
+                "pozitif olabilirlik oranı"
+            ],
             "Positive likelihood ratio unavailable due to data limitations": [
                 "veri kısıtlılıkları nedeniyle pozitif olabilirlik oranı mevcut değil"
             ],
@@ -16328,7 +16439,7 @@
                 "Gerekli Olgu Sayısı için Güç Yaklaşımı"
             ],
             "Power must be between 0.01 and 0.99.": [
-                ""
+                "Güç 0.01 ile 0.99 arasında olmalıdır."
             ],
             "Power to detect AUC different from 0.5 (Hanley-McNeil)": [
                 "AUC'nin 0.5'ten farklı olduğunu saptama gücü (Hanley-McNeil)"
@@ -16357,11 +16468,11 @@
             "PPV and NPV are post-test probabilities and depend on prevalence.": [
                 "PÖD ve NÖD test sonrası olasılıklardır ve prevalansa bağlıdır."
             ],
-            "PPV and NPV below are adjusted to the user-specified target prevalence (%.1f%%), not the prevalence observed in this sample. Transport to that population assumes comparable case mix and conditional score distributions.": [
-                ""
+            "PPV and NPV below are adjusted to the user-specified target prevalence (%s%%), not the prevalence observed in this sample. Transport to that population assumes comparable case mix and conditional score distributions.": [
+                "Aşağıdaki PPV ve NPV, bu örneklemde gözlenen prevalansa değil, kullanıcının belirttiği hedef prevalansa (%%%s) göre ayarlanmıştır. O popülasyona aktarım, benzer olgu dağılımı ve koşullu skor dağılımlarını varsayar."
             ],
-            "PPV and NPV below are computed at the prevalence of this sample (%.1f%%) and do not carry over to a population where the condition is more or less common - sensitivity and specificity also require comparable case mix and conditional score distributions. Recompute them for your own setting's prevalence before quoting them.": [
-                "Aşağıdaki PPV ve NPV, bu örneklemin prevalansında (%.1f%%) hesaplanır ve durumun daha sık veya daha seyrek olduğu bir popülasyona doğrudan taşınamaz; duyarlılık ve özgüllük de benzer olgu dağılımı ve koşullu skor dağılımları gerektirir. Bunları bildirmeden önce kendi ortamınızın prevalansına göre yeniden hesaplayın."
+            "PPV and NPV below are computed at the prevalence of this sample (%s%%) and do not carry over to a population where the condition is more or less common - sensitivity and specificity also require comparable case mix and conditional score distributions. Recompute them for your own setting's prevalence before quoting them.": [
+                "Aşağıdaki PPV ve NPV, bu örneklemin prevalansında (%%%s) hesaplanır ve durumun daha sık veya daha seyrek olduğu bir popülasyona doğrudan taşınamaz; duyarlılık ve özgüllük de benzer olgu dağılımı ve koşullu skor dağılımları gerektirir. Bunları bildirmeden önce kendi ortamınızın prevalansına göre yeniden hesaplayın."
             ],
             "PPV and NPV depend on prevalence, so they transfer to another population only if its disease rate is similar. Sensitivity, specificity and the likelihood ratios are less prevalence-dependent, though not independent of it. LR+ and LR- are the more useful numbers to carry elsewhere not because they are more stable -- being functions of sensitivity and specificity, they inherit exactly the same dependence -- but because they convert a pre-test probability into a post-test probability at whatever prevalence the new setting has.": [
                 "PPV ve NPV prevalansa bağlıdır, bu nedenle yalnızca hastalık oranı benzer olduğunda başka bir popülasyona aktarılabilir. Duyarlılık, özgüllük ve olabilirlik oranları prevalansa daha az bağımlıdır, ancak bundan bağımsız değildir. LR+ ve LR- başka yerlere taşınacak daha kullanışlı sayılardır; çünkü daha kararlı oldukları için değil -- duyarlılık ve özgüllüğün fonksiyonları oldukları için tam olarak aynı bağımlılığı devralırlar -- ancak yeni ortamın sahip olduğu herhangi bir prevalansta ön test olasılığını son test olasılığına dönüştürdükleri için."
@@ -17137,9 +17248,6 @@
             "Range of Benefit:": [
                 "Fayda Aralığı:"
             ],
-            "Range of threshold probabilities over which the model's net benefit exceeds both treat-all and treat-none; a model is only worth using within this range.": [
-                "Modelin net faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi aştığı eşik olasılıkları aralığı; bir model yalnızca bu aralıkta kullanılmaya değerdir."
-            ],
             "Range Type": [
                 "Aralık Türü"
             ],
@@ -17418,6 +17526,9 @@
             ],
             "Reference interpretation is not specified. Existing diagnostic wording is retained for compatibility; it requires a suitable disease reference. Choose consensus or comparative method when measuring agreement.": [
                 "Referans yorumu belirtilmemiş. Mevcut tanısal ifadeler uyumluluk için korunur; bunlar uygun bir hastalık referansı gerektirir. Uyum ölçülürken uzman uzlaşısı ya da karşılaştırmalı yöntemi seçin."
+            ],
+            "Reference levels excluded from analysis: {lvls}": [
+                "Analizden dışlanan referans düzeyleri: {lvls}"
             ],
             "Reference line labels": [
                 "Referans çizgisi etiketleri"
@@ -17806,6 +17917,9 @@
             "Risk groups": [
                 "Risk grupları"
             ],
+            "Risk Model Runs Against the ROC Direction: %s": [
+                "Risk Modeli ROC Yönünün Tersine İşliyor: %s"
+            ],
             "Risk ratio": [
                 "Risk oranı"
             ],
@@ -17848,8 +17962,8 @@
             "ROC analysis completed successfully. • Analyzed %1$s with n=%2$s observations. • Review AUC values, confidence intervals, and optimal cutoffs in results tables below. • Check any warnings or recommendations above for data quality concerns.": [
                 "ROC analizi başarıyla tamamlandı. • %1$s, n=%2$s gözlemle analiz edildi. • Aşağıdaki sonuç tablolarında AUC değerlerini, güven aralıklarını ve optimal kesme noktalarını inceleyin. • Veri kalitesine ilişkin endişeler için yukarıdaki uyarıları veya önerileri kontrol edin."
             ],
-            "ROC analysis failed for every selected predictor, so the tables and plots below have no results. The warnings name the reason for each predictor.": [
-                "Seçilen her öngörücü için ROC analizi başarısız oldu, bu nedenle aşağıdaki tablo ve grafiklerde sonuç yok. Uyarılar her öngörücünün nedenini belirtir."
+            "ROC analysis failed for every selected predictor, so there are no results.": [
+                "Seçilen her öngörücü için ROC analizi başarısız oldu, bu nedenle sonuç yok."
             ],
             "ROC analysis failed for predictor '%1$s': %2$s. Please check your data quality and variable selection.": [
                 "'%1$s' öngörücüsü için ROC analizi başarısız oldu: %2$s. Lütfen veri kalitenizi ve değişken seçiminizi kontrol edin."
@@ -18304,8 +18418,8 @@
             "Select a binary Outcome Variable (the condition you want to predict).": [
                 "İkili bir Sonuç Değişkeni seçin (tahmin etmek istediğiniz durum)."
             ],
-            "Select a binary rule variable or disable \"Clinical Decision Rule Integration\".": [
-                "İkili bir kural değişkeni seçin veya \"Klinik Karar Kuralı Entegrasyonu\"nu devre dışı bırakın."
+            "Select a binary rule variable or disable \"Clinical decision rule\".": [
+                "İkili bir kural değişkeni seçin veya \"Klinik karar kuralı\" seçeneğini devre dışı bırakın."
             ],
             "Select a different variable for the test under evaluation. Comparing a variable against itself always yields perfect agreement and tells you nothing about the test.": [
                 "Değerlendirilen test için farklı bir değişken seçin. Bir değişkeni kendisiyle karşılaştırmak her zaman mükemmel uyum verir ve test hakkında size hiçbir şey söylemez."
@@ -18578,7 +18692,7 @@
                 "Duyarlılık ile özgüllüğün toplamı üç ondalık basamakta 1'e eşittir: test, hastalık var olan ve hastalıksız olguların yaklaşık aynı oranını pozitif olarak sınıflandırır; yazı tura atmak da aynı sonucu verir. Pozitif veya negatif sonuçlar nadir olduğunda bir olabilirlik oranı yine de 1'den farklı olabilir; bu nedenle her iki olabilirlik oranını da kontrol edin."
             ],
             "Sensitivity plus specificity is below 1 for: {tests}. Such a test agrees with the fitted disease class less often than chance. Check that its positive level is not reversed before interpreting it as a poor test.": [
-                ""
+                "Şu testlerde duyarlılık ile özgüllüğün toplamı 1'in altında: {tests}. Böyle bir test, uyarlanan hastalık sınıfıyla şanstan daha seyrek uyuşur. Bunu zayıf bir test olarak yorumlamadan önce pozitif düzeyinin ters çevrilmediğini kontrol edin."
             ],
             "Sensitivity plus specificity is below 1, and the 95% confidence interval for Youden's index ({lower} to {upper}) lies entirely below 0, so this is not sampling noise: a positive result argues AGAINST disease and a negative result argues for it. The usual cause is a wrong choice under Test positive level or Disease present level; swapping it would give the mirror-image performance. Check the level selection before reading any number in these tables.": [
                 "Duyarlılık ile özgüllüğün toplamı 1'in altındadır ve Youden indeksinin %95 güven aralığı ({lower} ile {upper} arası) tümüyle 0'ın altında kalmaktadır; dolayısıyla bu bir örnekleme gürültüsü değildir: pozitif bir sonuç hastalık ALEYHİNE, negatif bir sonuç ise hastalık lehine kanıt oluşturur. Olağan neden, Test pozitif düzeyi veya Hastalık var düzeyi altında yapılan yanlış bir seçimdir; bu seçimi tersine çevirmek performansın ayna görüntüsünü verir. Bu tablolardaki herhangi bir sayıyı okumadan önce düzey seçimini kontrol edin."
@@ -19720,6 +19834,9 @@
             "Teaching example \"{preset}\" is not recognised; the values shown in the panel were used instead.": [
                 "\"{preset}\" eğitim örneği tanınmıyor; bunun yerine panelde gösterilen değerler kullanıldı."
             ],
+            "Teaching Example Replaced Entered Values": [
+                "Eğitim Örneği Girilen Değerlerin Yerini Aldı"
+            ],
             "Teaching Example Values Are Not Clinical Guidance": [
                 "Eğitim Örneği Değerleri Klinik Kılavuz Değildir"
             ],
@@ -19949,7 +20066,7 @@
                 "Tüm denekleri her iki testle test et (paralel)"
             ],
             "Test below chance": [
-                ""
+                "Test şansın altında"
             ],
             "Test categories collapsed": [
                 "Test kategorileri birleştirildi"
@@ -20113,17 +20230,20 @@
             "Tests whether measurements differ between conditions (e.g., two platforms), with case and rater as random effects": [
                 ""
             ],
+            "The '%1$s' metric is best at its %2$s, so the cut-point was found by %3$s it; the Cutpoint method setting asked for the opposite direction.": [
+                "'%1$s' ölçütü %2$s değerinde en iyidir; bu nedenle kesim noktası ölçüt %3$s bulundu. Kesme noktası yöntemi ayarı ise ters yönü istemişti."
+            ],
             "The '%1$s' preset replaced settings you can still see in the options panel: %2$s. Choose the Custom Configuration preset if you want the values you entered to be used.": [
                 "'%1$s' ön ayarı, seçenekler panelinde hâlâ görebildiğiniz ayarların yerini aldı: %2$s. Girdiğiniz değerlerin kullanılmasını istiyorsanız Özel Yapılandırma ön ayarını seçin."
-            ],
-            "The '%s' metric is best at its %s, so the cut-point was found by %s it; the Cutpoint method setting asked for the opposite direction.": [
-                ""
             ],
             "The 'Logistic' rows are unpenalized refits (shown for AIC comparability); their apparent AUC is typically higher than the penalized row because refitting removes shrinkage. All metrics are apparent (in-sample) - use Bootstrap Internal Validation for optimism-corrected discrimination.": [
                 "'Lojistik' satırları cezalandırılmamış yeniden uyarlamalardır (AIC karşılaştırılabilirliği için gösterilmiştir); görünürdeki AUC değerleri tipik olarak cezalandırılmış satırdakinden daha yüksektir çünkü yeniden uyarlama daralmayı ortadan kaldırır. Tüm metrikler görünürdedir (örneklem içi) - iyimserlik düzeltmeli ayrım için Bootstrap Dahili Doğrulamayı kullanın."
             ],
             "The \"{preset}\" teaching example supplies round, illustrative numbers chosen to demonstrate how sequential testing behaves. They are NOT validated clinical parameters, they are not taken from any specific published study, and the prevalence is not your population's. This example is not clinical guidance and must not be used to design a real testing protocol or advise a patient. Replace every value with sensitivity, specificity and prevalence estimates from your own setting or from a source you have checked.": [
                 "\"{preset}\" eğitim örneği, sıralı testin nasıl davrandığını göstermek için seçilmiş yuvarlak, açıklayıcı sayılar sunar. Bunlar doğrulanmış klinik parametreler DEĞİLDİR, yayınlanmış belirli bir çalışmadan alınmamıştır ve prevalans sizin popülasyonunuzun prevalansı değildir. Bu örnek klinik rehberlik değildir ve gerçek bir test protokolü tasarlamak ya da bir hastaya tavsiyede bulunmak için kullanılmamalıdır. Her değeri kendi ortamınızdan veya kontrol ettiğiniz bir kaynaktan alınan duyarlılık, özgüllük ve prevalans tahminleriyle değiştirin."
+            ],
+            "The {ratio} has an empty denominator cell, so its observed value is infinite. Adding 0.5 to every cell would put it at or below 1 and reverse its direction, because the empty cell lies in the smaller reference group, so it is left blank.": [
+                "{ratio} için payda hücresi boştur, bu nedenle gözlenen değeri sonsuzdur. Boş hücre daha küçük referans grubunda yer aldığından, her hücreye 0.5 eklemek onu 1'e ya da altına indirip yönünü tersine çevirirdi; bu nedenle boş bırakıldı."
             ],
             "The {tag1}multivariate{tag2} form of iota - several variables, say tumor size,\n                            grade and mitotic count, scored by the same raters and summarised in one coefficient -\n                            is {tag3}not computed by this analysis{tag4}. Nothing in this dialog can say which\n                            columns belong to which variable. Entering the columns of several variables side by\n                            side does {tag5}not{tag6} produce the multivariate coefficient: it produces the\n                            single-variable iota of a table whose {tag7}raters{tag8} are really different\n                            measurements, and that number does not describe your study. For the multivariate\n                            form, call {tag9}irr::iota(){tag10} in R with one matrix per variable.": [
                 ""
@@ -20161,8 +20281,8 @@
             "The alternative kappa ({kappa1}) is BELOW the null ({kappa0}). This sizes a study to demonstrate that agreement is WORSE than the null value, not better. If you meant to detect an improvement, swap the two values - the required sample size is not the same either way.": [
                 "Alternatif kappa ({kappa1}) sıfır hipotezi değerinin ({kappa0}) ALTINDADIR. Bu, uyumun sıfır hipotezi değerinden daha iyi değil daha KÖTÜ olduğunu göstermek üzere bir çalışma boyutlandırır. Bir iyileşmeyi saptamayı amaçlıyorsanız iki değeri yer değiştirin; gerekli örneklem büyüklüğü iki yönde aynı değildir."
             ],
-            "The analysed cases contain exactly as many patients with the outcome as without it ({n} each), as a 1:1 case-control design would.": [
-                "Analiz edilen olgularda sonucu olan ve olmayan hasta sayıları tam olarak eşittir (her biri {n}); 1:1 olgu-kontrol tasarımı da bu dağılımı üretir."
+            "The analysed cases contain {events} patients with the outcome and {nonevents} without it, an exact {ratio} ratio of patients with the outcome to patients without it, as a case-control design that samples a fixed number of controls per case (or of cases per control) would produce.": [
+                "Analiz edilen olgularda sonucu olan {events} ve olmayan {nonevents} hasta var; bu, sonucu olan hastaların olmayanlara tam olarak {ratio} oranıdır ve olgu başına (ya da kontrol başına) sabit sayıda kontrol (ya da olgu) örnekleyen bir olgu-kontrol tasarımının üreteceği orandır."
             ],
             "The analysis automatically selects appropriate statistics based on data type:": [
                 ""
@@ -20314,6 +20434,9 @@
             "the coefficient fell outside the -1 to 1 parameter space and has been clamped to the nearest bound": [
                 "katsayı -1 ile 1 arasındaki parametre uzayının dışına düştü ve en yakın sınıra çekildi"
             ],
+            "The Coefficient Plot is empty because no term was retained.": [
+                "Hiçbir terim tutulmadığı için Katsayı Grafiği boş."
+            ],
             "The combination table therefore contains no case with {test} negative: the \"{alone}\" row reads sensitivity 100% and specificity 0% by construction, every pattern with {test} negative is empty, and the other rows, the ranking included, describe the tests only among cases with {test} positive.": [
                 "Bu nedenle kombinasyon tablosunda {test} sonucu negatif olan hiçbir olgu yoktur: \"{alone}\" satırı yapısı gereği %100 duyarlılık ve %0 özgüllük gösterir, {test} sonucunun negatif olduğu her patern boştur ve sıralama da dahil olmak üzere diğer satırlar testleri yalnızca {test} sonucu pozitif olan olgular arasında tanımlar."
             ],
@@ -20427,6 +20550,9 @@
             ],
             "The decision-space plot places each rule by its sensitivity and specificity, and no rule has both: every complete case has the same reference-standard result, so one of the two cannot be estimated. The notice about the reference standard says which.": [
                 "Karar uzayı grafiği her kuralı duyarlılığına ve özgüllüğüne göre yerleştirir ve hiçbir kuralda ikisi birden yoktur: tüm eksiksiz olgular aynı referans standart sonucuna sahiptir, bu nedenle ikisinden biri tahmin edilemez. Referans standarda ilişkin bildirim hangisi olduğunu belirtir."
+            ],
+            "The denominator cell of this ratio is zero, so 0.5 was added to every cell (Haldane-Anscombe correction). Its confidence interval uses the same corrected counts.": [
+                "Bu oranın payda hücresi sıfırdır, bu nedenle her hücreye 0.5 eklendi (Haldane-Anscombe düzeltmesi). Güven aralığı da aynı düzeltilmiş sayıları kullanır."
             ],
             "The dependence parameter for the diseased group (%1$.2f) is not attainable with these sensitivities, so the joint positive probability was truncated from %2$.4f to its bound %3$.4f. The model actually fitted is therefore not the one you specified, and at least one combination of results becomes impossible in that group. Move the value toward 0 until this note disappears; the realized correlation is reported in the Test Dependence panel.": [
                 "Hastalığı olan grup için bağımlılık parametresine (%1$.2f) bu duyarlılıklarla ulaşılamaz; bu nedenle birleşik pozitif olasılık %2$.4f değerinden sınırı olan %3$.4f değerine kırpıldı. Dolayısıyla gerçekte uydurulan model sizin belirttiğiniz model değildir ve bu grupta en az bir sonuç kombinasyonu imkânsız hâle gelir. Bu not kaybolana kadar değeri 0'a doğru yaklaştırın; gerçekleşen korelasyon Test Bağımlılığı panelinde bildirilir."
@@ -20590,8 +20716,8 @@
             "The gold standard and the test are the same variable": [
                 "Altın standart ve test aynı değişkendir"
             ],
-            "The gold standard has more than one level besides \"{pos}\" ({lvls}), so the disease-absent level cannot be inferred. Select it under Disease absent level. Levels you do not name are excluded from the analysis rather than counted as disease-absent.": [
-                "Altın standart \"{pos}\" dışında birden fazla düzeye sahiptir ({lvls}), bu nedenle hastalık yok düzeyi çıkarımlanamaz. Bunu Hastalık yok düzeyi altında seçin. Belirtmediğiniz düzeyler hastalık yok olarak sayılmak yerine analizden hariç tutulur."
+            "The gold standard has more than one level besides \"{pos}\" ({lvls}), so the disease-absent level cannot be inferred. Select it under Reference negative level. Levels you do not name are excluded from the analysis rather than counted as disease-absent.": [
+                "Altın standart \"{pos}\" dışında birden fazla düzeye sahiptir ({lvls}), bu nedenle hastalık yok düzeyi çıkarımlanamaz. Bunu Referans negatif düzeyi altında seçin. Belirtmediğiniz düzeyler hastalık yok olarak sayılmak yerine analizden hariç tutulur."
             ],
             "The gold standard has only one level among the analysed cases": [
                 "Altın standart, analiz edilen olgular arasında yalnızca bir düzeye sahiptir"
@@ -20731,6 +20857,9 @@
             "The logistic model did not converge.": [
                 "Lojistik model yakınsamadı."
             ],
+            "The logistic slope of %s is not estimable because the marker is constant in the analysed rows, so every patient receives the same predicted risk (the sample prevalence) and there are no risk groups to compare.": [
+                "Belirteç analiz edilen satırlarda sabit olduğundan %s için lojistik eğim tahmin edilemez; bu nedenle her hasta aynı tahmin edilen riski (örneklem prevalansı) alır ve karşılaştırılacak risk grubu yoktur."
+            ],
             "The logit interval is undefined at 0% or 100% agreement, so this row shows Clopper-Pearson (exact) limits.": [
                 "Logit aralığı %0 ya da %100 uyumda tanımsızdır; bu nedenle bu satır Clopper-Pearson (kesin) sınırlarını gösterir."
             ],
@@ -20739,6 +20868,9 @@
             ],
             "The lower bound quoted under Interpretation adds the lower Wilson limits of the rule's sensitivity and specificity and subtracts 1. It is usually more conservative than the Agresti-Caffo interval shown beside Youden's J in the combination table, so the two lower limits can differ.": [
                 "Yorum sütununda belirtilen alt sınır, kuralın duyarlılık ve özgüllüğünün alt Wilson sınırlarını toplayıp 1 çıkarır. Genellikle kombinasyon tablosunda Youden J'nin yanında gösterilen Agresti-Caffo aralığından daha muhafazakârdır, bu nedenle iki alt sınır farklı olabilir."
+            ],
+            "The lower limit ({lower}) drives the sample size; the expected upper limit then falls at or inside {upper}.": [
+                "Örneklem büyüklüğünü alt sınır ({lower}) belirler; beklenen üst sınır bu durumda {upper} değerinde ya da onun içinde kalır."
             ],
             "The marker could not be scaled to finite values.": [
                 "Belirteç sonlu değerlere ölçeklenemedi."
@@ -20824,11 +20956,14 @@
             "The negative level \"%1$s\" is not available. Available levels: %2$s.": [
                 "Negatif düzey \"%1$s\" mevcut değil. Mevcut düzeyler: %2$s."
             ],
-            "The negative likelihood ratio is not estimable: the test was never negative in this table.": [
-                "Negatif olabilirlik oranı tahmin edilemez: test bu tabloda hiç negatif sonuç vermedi."
+            "The negative likelihood ratio is not estimable for this table; the notices above say why.": [
+                "Bu tablo için negatif olabilirlik oranı tahmin edilemez; nedeni yukarıdaki bildirimlerde açıklanmıştır."
             ],
             "The negative-response probability and PPV are fixed at 100% by construction and therefore are left blank.": [
                 "Negatif yanıt olasılığı ve PÖD yapı gereği %100'e sabitlenmiştir ve bu nedenle boş bırakılmıştır."
+            ],
+            "The nomogram is omitted.": [
+                "Nomogram çizilmedi."
             ],
             "The normalized partial AUC is unavailable. The correction is undefined when the partial curve falls below the diagonal; the raw partial AUC is reported separately.": [
                 "Normalize edilmiş kısmi AUC hesaplanamıyor. Kısmi eğri köşegenin altına düştüğünde düzeltme tanımsızdır; ham kısmi AUC ayrı bildirilir."
@@ -20853,6 +20988,9 @@
             ],
             "The number of subjects is below 25. For a binary outcome, the goodness-of-fit interval this calculation assumes was found close to its stated coverage from about 25 subjects when the rarer category makes up at least about a fifth of the ratings (Donner and Eliasziw; Altaye, Donner and Klar); for three to five categories no such figure was given, and the expected cell counts are the guide (Rotondi and Donner). Below 25 subjects it has not been shown to hold, so read the bound with caution.": [
                 "Olgu sayısı 25'in altında. İkili bir sonuç için, bu hesaplamanın varsaydığı uyum iyiliği aralığının, daha nadir kategori değerlendirmelerin en az yaklaşık beşte birini oluşturduğunda yaklaşık 25 olgudan itibaren belirtilen kapsama oranına yakın olduğu bulunmuştur (Donner ve Eliasziw; Altaye, Donner ve Klar); üç ila beş kategori için böyle bir değer verilmemiştir ve yol gösterici olan beklenen hücre sayılarıdır (Rotondi ve Donner). 25 olgunun altında bunun geçerli olduğu gösterilmemiştir; bu nedenle sınırı dikkatle okuyun."
+            ],
+            "The numerator cell of this ratio is zero, so the ratio is exactly 0 and is not corrected. Its confidence interval runs from 0 to the upper limit of the same log-scale interval computed with 0.5 added to every cell (Haldane-Anscombe correction).": [
+                "Bu oranın pay hücresi sıfırdır, bu nedenle oran tam olarak 0'dır ve düzeltilmez. Güven aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına kadar uzanır (Haldane-Anscombe düzeltmesi)."
             ],
             "The observed results involve a trade-off between sensitivity and specificity.": [
                 "Gözlemlenen sonuçlar duyarlılık ve özgüllük arasında bir ödünleşim içerir."
@@ -20965,23 +21103,26 @@
             "The positive level is never taken from the order of the levels.": [
                 "Pozitif düzey hiçbir zaman düzeylerin sırasından çıkarılmaz."
             ],
-            "The positive likelihood ratio is {lr}, so a positive result lowers the probability of a reference-positive outcome rather than raising it.": [
-                "Pozitif olabilirlik oranı {lr}'dir, bu nedenle pozitif bir sonuç referans pozitif bir sonucun olasılığını yükseltmek yerine düşürür."
-            ],
-            "The positive likelihood ratio is {lr}. A nomogram assumes that a positive result raises the probability of the outcome; here it lowers that probability, so the plot is omitted. Check the test coding.": [
-                "Pozitif olabilirlik oranı {lr}'dir. Bir nomogram pozitif bir sonucun sonucun olasılığını yükselttiğini varsayar; burada bu olasılığı düşürür, bu nedenle grafik atlanmıştır. Test kodlamasını kontrol edin."
+            "The positive likelihood ratio is {lr}, so a positive result lowers the probability of a reference-positive outcome rather than raising it. A nomogram assumes that a positive result raises it. Check the test coding.": [
+                "Pozitif olabilirlik oranı {lr} olduğundan pozitif bir sonuç, referans-pozitif bir sonucun olasılığını yükseltmek yerine düşürür. Bir nomogram pozitif sonucun bu olasılığı yükselttiğini varsayar. Test kodlamasını kontrol edin."
             ],
             "The positive likelihood ratio is {lrp} and the negative likelihood ratio is {lrn}. A Fagan nomogram requires an informative test with LR+ > 1 and LR- < 1 (sensitivity + specificity > 1); here the plot is omitted.": [
                 ""
             ],
-            "The positive likelihood ratio is not estimable: the test was never positive in this table.": [
-                "Pozitif olabilirlik oranı tahmin edilemez: test bu tabloda hiç pozitif sonuç vermedi."
+            "The positive likelihood ratio is {lrp} and the negative likelihood ratio is {lrn}. A likelihood ratio that is exactly 0 or not estimable cannot be placed on the nomogram's logarithmic scale, so the plot is omitted. Both come from a zero count in the 2x2 table; see the confidence intervals of sensitivity and specificity.": [
+                "Pozitif olabilirlik oranı {lrp}, negatif olabilirlik oranı {lrn}. Tam olarak 0 olan ya da tahmin edilemeyen bir olabilirlik oranı nomogramın logaritmik ölçeğine yerleştirilemez, bu nedenle grafik çizilmedi. Her iki durum da 2x2 tablodaki sıfır bir sayımdan kaynaklanır; duyarlılık ve özgüllüğün güven aralıklarına bakın."
+            ],
+            "The positive likelihood ratio is not estimable for this table; the notices above say why.": [
+                "Bu tablo için pozitif olabilirlik oranı tahmin edilemez; nedeni yukarıdaki bildirimlerde açıklanmıştır."
             ],
             "The positive-response probability and NPV are fixed at 100% by construction and therefore are left blank.": [
                 "Pozitif yanıt olasılığı ve NÖD yapı gereği %100'e sabitlenmiştir ve bu nedenle boş bırakılmıştır."
             ],
             "The power curve for '{var}' is unavailable for this degenerate configuration. Use a target AUC strictly between 0.5 and 1 for prospective planning.": [
                 ""
+            ],
+            "The predicted risks of %1$s take only %2$s distinct values, too few for Hosmer-Lemeshow grouping, which needs at least 3 distinct quantile break points. This happens when the marker has very few distinct values or is heavily tied.": [
+                "%1$s için tahmin edilen riskler yalnızca %2$s farklı değer alıyor; bu, en az 3 farklı kantil kesme noktası gerektiren Hosmer-Lemeshow gruplandırması için çok azdır. Bu durum belirteç çok az farklı değere sahip olduğunda ya da çok sayıda eşit değer (bağ) içerdiğinde ortaya çıkar."
             ],
             "The predictive values above are computed by Bayes' theorem at the assumed population prevalence stated above, not at the prevalence observed in this sample, so no confidence interval is given for them.": [
                 "Yukarıdaki öngörü değerleri, bu örneklemde gözlemlenen prevalansta değil, yukarıda belirtilen varsayılmış popülasyon prevalansında Bayes teoremi ile hesaplanmıştır; bu nedenle bunlar için güven aralığı verilmemiştir."
@@ -20998,8 +21139,8 @@
             "the prevalence observed in these data": [
                 "bu verilerde gözlemlenen prevalans"
             ],
-            "the prevalence you entered (%.3f)": [
-                "girdiğiniz prevalans (%.3f)"
+            "the prevalence you entered (%s)": [
+                "girdiğiniz prevalans (%s)"
             ],
             "The priors are fixed and its intervals are approximate case-bootstrap confidence intervals, not Bayesian credible intervals. The cited Bayesian studies are background; their posterior-sampling or dependence-adjusted methods are not implemented here.": [
                 "Önsel dağılımlar sabittir ve aralıkları Bayesçi inanılırlık aralıkları değil, yaklaşık olgu bootstrap güven aralıklarıdır. Atıf yapılan Bayesçi çalışmalar arka plan bilgisidir; sonsal örnekleme veya bağımlılığa göre düzeltilmiş yöntemleri burada uygulanmamıştır."
@@ -21013,8 +21154,8 @@
             "The published formula behind this sample size is a large-sample approximation that treats the expected proportions as known. In {R} simulated studies of {n} subjects analysed with the recommended goodness-of-fit test (prevalence estimated by maximum likelihood with kappa held at kappa0), the power to reject kappa0 when kappa equals kappa1 was about {sim}, short of the stated {power}.": [
                 "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül, beklenen oranları biliniyor kabul eden bir büyük örneklem yaklaşımıdır. Önerilen uyum iyiliği testiyle (prevalans, kappa kappa0'da sabit tutularak en çok olabilirlik yöntemiyle kestirilerek) çözümlenen {n} olguluk {R} simüle edilmiş çalışmada, kappa kappa1'e eşitken kappa0'ı reddetme gücü yaklaşık {sim} oldu ve belirtilen {power} değerinin altında kaldı."
             ],
-            "The published formula behind this sample size treats the expected proportions as known. The goodness-of-fit test has to estimate them from the ratings, and in this design that can leave it well short of the stated power of {power} at {n} subjects. How far short cannot be computed reliably here, so confirm the sample size by simulating the intended analysis.": [
-                "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül beklenen oranları biliniyor kabul eder. Uyum iyiliği testi bu oranları değerlendirmelerden kestirmek zorundadır ve bu tasarımda bu durum, testin {n} olguda belirtilen {power} gücünün oldukça altında kalmasına yol açabilir. Kaybın ne kadar olduğu burada güvenilir biçimde hesaplanamaz; bu nedenle örneklem büyüklüğünü planlanan analizi simüle ederek doğrulayın."
+            "The published formula behind this sample size treats the expected proportions as known and rests on a large-sample approximation. With three or more raters and three to five categories, simulations of the recommended goodness-of-fit test at the published sample size gave a power of about 0.64 to 0.81 for a stated 0.80, below 0.75 in 8 of 12 designs, balanced proportions included, so this design can fall well short of the stated power of {power} at {n} subjects. How far short cannot be computed reliably here, so confirm the sample size by simulating the intended analysis.": [
+                "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül beklenen oranları biliniyor kabul eder ve büyük örneklem yaklaşımına dayanır. Üç veya daha fazla değerlendirici ve üç ila beş kategori ile, önerilen uyum iyiliği testinin yayımlanmış örneklem büyüklüğündeki simülasyonları belirtilen 0.80 için yaklaşık 0.64 ila 0.81 güç verdi; 12 tasarımın 8'inde, dengeli oranlar dahil, 0.75'in altında kaldı. Bu nedenle bu tasarım {n} olguda belirtilen {power} gücünün oldukça altında kalabilir. Kaybın ne kadar olduğu burada güvenilir biçimde hesaplanamaz; bu nedenle örneklem büyüklüğünü planlanan analizi simüle ederek doğrulayın."
             ],
             "The ranking": [
                 "Sıralama"
@@ -21114,6 +21255,9 @@
             ],
             "The ROC analysis used the following specifications.": [
                 "ROC analizinde aşağıdaki ayarlar kullanıldı."
+            ],
+            "The ROC tables read %1$s in the direction in which it ranks patients well (AUC %3$.3f), but its group means point the other way, so the slope of the fitted logistic risk of %2$s runs opposite to that direction. This happens with a skewed marker or an outlying value. Calibration, the Brier score, the Hosmer-Lemeshow test, the decision and clinical impact curves and internal validation use that fitted model, the risk model the data support, which ranks patients the opposite way to the ROC, cut-point and fixed-cutoff tables; they do not describe %1$s as those tables read it, and can disagree with them. A log or rank transformation of the marker usually removes the conflict.": [
+                "ROC tabloları %1$s belirtecini hastaları iyi sıraladığı yönde okur (AUC %3$.3f), ancak grup ortalamaları ters yönü gösterir; bu nedenle %2$s için uyarlanan lojistik riskin eğimi o yönün tersine işler. Bu durum çarpık dağılımlı bir belirteçte ya da aykırı bir değerde ortaya çıkar. Kalibrasyon, Brier skoru, Hosmer-Lemeshow testi, karar ve klinik etki eğrileri ile iç doğrulama bu uyarlanmış modeli, yani verilerin desteklediği risk modelini kullanır; bu model hastaları ROC, kesim noktası ve sabit kesim değeri tablolarının tersine sıralar. Bu çıktılar %1$s belirtecini o tabloların okuduğu biçimde betimlemez ve onlarla çelişebilir. Belirtecin log ya da sıra (rank) dönüşümü genellikle bu çelişkiyi ortadan kaldırır."
             ],
             "The rows are not independent: every rule is scored on the same patients, so the differences between them are correlated. A formal comparison needs a paired procedure -- McNemar's test applied SEPARATELY within the diseased patients to compare sensitivity and within the non-diseased patients to compare specificity, because a single McNemar over the whole sample compares positivity rates rather than accuracy. Paired PPV and NPV comparisons need a generalised score test instead. The optional table \"Combination Rules vs Each Test Alone\" (option \"Combinations vs each test alone\") makes this comparison within each reference group for every combination strategy (Parallel, Serial and Majority) against each test it combines: a Parallel or Serial strategy can move only one way, so the table gives its change with an interval, and McNemar's test is used for Majority. Paired PPV and NPV comparisons are not performed.": [
                 "Satırlar bağımsız değildir: her kural aynı hastalar üzerinde puanlanır, bu nedenle aralarındaki farklar korelasyonludur. Resmi bir karşılaştırma eşleştirilmiş bir prosedür gerektirir -- duyarlılığı karşılaştırmak için hastalıklı hastalar içinde ve özgüllüğü karşılaştırmak için hastalıksız hastalar içinde AYRI AYRI uygulanan McNemar testi, çünkü tüm örneklem üzerinde tek bir McNemar doğruluktan ziyade pozitiflik oranlarını karşılaştırır. Eşleştirilmiş PPV ve NPV karşılaştırmaları bunun yerine genelleştirilmiş bir puan testi gerektirir. İsteğe bağlı \"Kombinasyon Kuralları ile Tek Başına Testler\" tablosu (\"Kombinasyonlar ile tek başına testler\" seçeneği) bu karşılaştırmayı her referans grubu içinde, her kombinasyon stratejisi (Paralel, Seri ve Çoğunluk) için birleştirdiği her teste karşı yapar: Paralel veya Seri bir strateji yalnızca tek yönde değişebildiğinden tablo değişimini bir aralıkla verir ve Çoğunluk için McNemar testi kullanılır. Eşleştirilmiş PPV ve NPV karşılaştırmaları yapılmaz."
@@ -21250,6 +21394,9 @@
             "The target-prevalence list is empty, so no projected rows are added from it. Enter comma-separated proportions, for example 0.001,0.01.": [
                 ""
             ],
+            "The teaching example replaced these entered values (entered -> used): {values}. Set the teaching example to \"Custom Values\" to analyse your own values.": [
+                "Eğitim örneği girilen şu değerlerin yerini aldı (girilen -> kullanılan): {values}. Kendi değerlerinizi analiz etmek için eğitim örneğini \"Özel Değerler\" olarak ayarlayın."
+            ],
             "The test '%1$s' has an AUC of %2$.3f": [
                 "'%1$s' testinin AUC değeri %2$.3f"
             ],
@@ -21268,20 +21415,20 @@
             "The test has only one level among the analysed cases": [
                 "Test, analiz edilen olgular arasında yalnızca bir düzeye sahiptir"
             ],
-            "The test was never negative in this table, so the negative likelihood ratio is not estimable and the nomogram is omitted.": [
-                "Test bu tabloda hiç negatif sonuç vermediği için negatif olabilirlik oranı tahmin edilemez ve nomogram çizilmedi."
-            ],
             "The test was never negative in this table, so the negative likelihood ratio is not estimable.": [
                 "Test bu tabloda hiç negatif sonuç vermediği için negatif olabilirlik oranı tahmin edilemez."
-            ],
-            "The test was never positive in this table, so the positive likelihood ratio is not estimable and the nomogram is omitted.": [
-                "Test bu tabloda hiç pozitif sonuç vermediği için pozitif olabilirlik oranı tahmin edilemez ve nomogram çizilmedi."
             ],
             "The test was never positive in this table, so the positive likelihood ratio is not estimable.": [
                 "Test bu tabloda hiç pozitif sonuç vermediği için pozitif olabilirlik oranı tahmin edilemez."
             ],
             "The tests have similar marginal sensitivity and specificity. Similar marginal performance does not establish redundancy or independence; assess conditional dependence using external evidence.": [
                 "Testler benzer marjinal duyarlılık ve özgüllüğe sahiptir. Benzer marjinal performans fazlalığı veya bağımsızlığı kanıtlamaz; harici kanıtları kullanarak koşullu bağımlılığı değerlendirin."
+            ],
+            "The tests were evaluated on different sets of cases, and the {n} cases with a determinate result for every test do not include both reference-standard classes, so the tests cannot be ranked on common cases.": [
+                "Testler farklı olgu kümelerinde değerlendirildi ve her test için belirli bir sonucu olan {n} olgu her iki referans standart sınıfını birden içermiyor; bu nedenle testler ortak olgular üzerinde sıralanamaz."
+            ],
+            "The tests were evaluated on different sets of cases, so this ranking compares them on the {n} cases with a determinate result for every test; the per-test figures use each test's own available cases.": [
+                "Testler farklı olgu kümelerinde değerlendirildi; bu nedenle bu sıralama testleri her test için belirli bir sonucu olan {n} olgu üzerinde karşılaştırır. Teste özgü değerler her testin kendi mevcut olgularını kullanır."
             ],
             "The threshold range you entered, {lo}% to {hi}%, is narrower than the step size of {step}%, so it produces only one threshold ({one}%) and no decision curve can be drawn.": [
                 "Girdiğiniz %{lo} ila %{hi} eşik aralığı %{step} adım boyutundan daha dardır, bu nedenle yalnızca bir eşik (%{one}) üretir ve hiçbir karar eğrisi çizilemez."
@@ -21291,6 +21438,9 @@
             ],
             "The Treatment Threshold Range could not be read as \"min,max,step\" with 0 < min <= max < 1 and a positive step. The default range 0.05 to 0.50 in steps of 0.05 was used instead.": [
                 "Tedavi Eşiği Aralığı, 0 < en küçük <= en büyük < 1 ve pozitif adım koşullarıyla \"en küçük,en büyük,adım\" olarak okunamadı. Bunun yerine 0.05 ile 0.50 arasında 0.05 adımlı varsayılan aralık kullanıldı."
+            ],
+            "The two likelihood ratios in the table cannot be drawn together on one nomogram.": [
+                "Tablodaki iki olabilirlik oranı tek bir nomogram üzerinde birlikte çizilemez."
             ],
             "The two rater variables declare different category sets. q is taken from the larger of the two, not from both combined - combining them would count the same clinical category twice and inflate PABAK. Give both variables the same levels if they are meant to share a scale.": [
                 "İki değerlendirici değişkeni farklı kategori setleri tanımlıyor. q, ikisinin birleşiminden değil, ikisinden büyük olandan alınır - birleştirmek aynı klinik kategoriyi iki kez sayar ve PABAK değerini şişirir. Aynı ölçeği paylaşmaları amaçlanıyorsa her iki değişkene de aynı düzeyleri verin."
@@ -21304,11 +21454,17 @@
             "The two raters use rating categories with significantly different frequencies (%s). This indicates systematic change or bias in category usage between the two conditions/raters. Examine marginal frequency tables to identify which categories show the largest shifts. Consider this alongside Cohen's kappa to distinguish systematic bias from poor agreement.": [
                 "İki değerlendirici, değerlendirme kategorilerini anlamlı ölçüde farklı sıklıklarla kullanıyor (%s). Bu, iki koşul/değerlendirici arasında kategori kullanımında sistematik bir değişikliğe veya yanlılığa işaret eder. En büyük kaymaları hangi kategorilerin gösterdiğini belirlemek için marjinal frekans tablolarını inceleyin. Sistematik yanlılığı zayıf uyumdan ayırt etmek için bunu Cohen kappası ile birlikte değerlendirin."
             ],
+            "The unpenalized companion fit did not converge, so the bivariate residuals could not be computed. Penalized EM assumes the tests err independently within each class; run the latent class analysis and check its residuals before interpreting these estimates.": [
+                "Cezalandırılmamış eşlik eden uyum yakınsamadı, bu nedenle iki değişkenli kalıntılar hesaplanamadı. Cezalandırılmış EM, testlerin her sınıf içinde birbirinden bağımsız hata yaptığını varsayar; bu tahminleri yorumlamadan önce örtük sınıf analizini çalıştırın ve kalıntılarını kontrol edin."
+            ],
             "The unpenalized refit on all candidate variables could not be fitted (%s), so its row is omitted.": [
                 "Tüm aday değişkenler üzerindeki cezalandırılmamış yeniden uyarlama uyarlanamadı (%s), bu nedenle satırı atlandı."
             ],
             "The unpenalized refit on the retained terms could not be fitted (%s), so its row is omitted.": [
                 "Modelde tutulan terimler üzerindeki cezalandırılmamış yeniden uyarlama uyarlanamadı (%s), bu nedenle satırı atlandı."
+            ],
+            "The upper limit ({upper}) drives the sample size; the expected lower limit then falls at or inside {lower}.": [
+                "Örneklem büyüklüğünü üst sınır ({upper}) belirler; beklenen alt sınır bu durumda {lower} değerinde ya da onun içinde kalır."
             ],
             "The upper limit of the number needed to diagnose is not shown: the Youden's index interval includes 0, so the interval for its inverse has no upper bound.": [
                 "Tanı için gereken sayının üst sınırı gösterilmemektedir: Youden indeksi aralığı 0'ı içerir, bu nedenle tersinin aralığının üst sınırı yoktur."
@@ -21357,6 +21513,9 @@
             ],
             "These are single-cohort estimates. Their practical meaning depends on intended use, error consequences, prevalence, patient spectrum, and reference-standard quality. This educational summary is not a clinical guide.": [
                 "Bunlar tek kohortlu tahminlerdir. Pratik anlamları amaçlanan kullanıma, hata sonuçlarına, prevalansa, hasta spektrumuna ve referans standart kalitesine bağlıdır. Bu eğitici özet klinik bir kılavuz değildir."
+            ],
+            "These are Wilson score 95% confidence intervals. The decision and decisioncompare analyses report exact (Clopper-Pearson) intervals for the same proportions, which are usually a little wider, so the two sets of limits differ.": [
+                "Bunlar Wilson skor %95 güven aralıklarıdır. decision ve decisioncompare analizleri aynı oranlar için kesin (Clopper-Pearson) aralıklar bildirir; bunlar genellikle biraz daha geniştir, bu nedenle iki sınır kümesi birbirinden farklıdır."
             ],
             "These bands are a rough teaching scale, not a clinical standard; other authors label the same ranges differently (Hosmer, Lemeshow & Sturdivant 2013 call 0.7-0.8 acceptable, 0.8-0.9 excellent and 0.9 or more outstanding).": [
                 "Bu bantlar klinik bir standart değil, kaba bir öğretim ölçeğidir; diğer yazarlar aynı aralıkları farklı şekilde adlandırır (Hosmer, Lemeshow & Sturdivant 2013, 0.7-0.8'i kabul edilebilir, 0.8-0.9'u mükemmel ve 0.9 veya üzerini olağanüstü olarak adlandırır)."
@@ -21435,6 +21594,9 @@
             ],
             "They are imprecise below about 200 patients with and 200 without the event (Van Calster et al. 2019); this sample has %1$s with and %2$s without. Sampling noise alone inflates them, so a well-calibrated model can look miscalibrated, and a small value is no proof of good calibration either.": [
                 "Olayı olan yaklaşık 200 ve olayı olmayan 200 hastanın altında bu değerlerin kesinliği düşüktür (Van Calster ve ark. 2019); bu örneklemde olayı olan %1$s ve olayı olmayan %2$s hasta var. Yalnızca örnekleme gürültüsü bu değerleri şişirir; bu nedenle iyi kalibre edilmiş bir model kötü kalibre edilmiş gibi görünebilir ve küçük bir değer de iyi kalibrasyonun kanıtı değildir."
+            ],
+            "They are Wald intervals on the AUC scale: the AUC plus or minus z times DeLong's standard error, truncated to 0-1.": [
+                "Bunlar AUC ölçeğinde Wald aralıklarıdır: AUC artı/eksi z çarpı DeLong standart hatası, 0-1 aralığına kırpılmış."
             ],
             "They cover each threshold separately and are not a simultaneous band; choose the simultaneous band to read the whole curve at once.": [
                 "Her eşiği ayrı ayrı kapsarlar ve eşzamanlı bir bant değillerdir; tüm eğriyi bir kerede okumak için eşzamanlı bandı seçin."
@@ -21591,6 +21753,9 @@
             ],
             "this method scores each test against a reference built from the tests themselves, so the figures describe agreement with that rule rather than diagnostic accuracy.": [
                 "bu yöntem her testi testlerin kendisinden oluşturulan bir referansa göre puanlar, bu nedenle rakamlar tanısal doğruluktan ziyade bu kural ile uyumu tanımlar."
+            ],
+            "This metric counts every false positive and every false negative at an equal unit cost (and every correct classification at an equal unit utility), so it selects the same cut-point as accuracy. Cost ratio (FP:FN) is not used here; to weigh the two errors unequally, choose the Cost-benefit optimized cutpoint method.": [
+                "Bu ölçüt her yanlış pozitifi ve her yanlış negatifi eşit birim maliyetle (ve her doğru sınıflandırmayı eşit birim yararla) sayar; bu nedenle doğrulukla aynı kesim noktasını seçer. Maliyet Oranı (YP:YN) burada kullanılmaz; iki hatayı farklı ağırlıklandırmak için Maliyet-fayda optimize edilmiş kesme noktası yöntemini seçin."
             ],
             "This model assigns every case the same predicted probability, so it does not discriminate at all and no meaningful threshold exists. A default of 0.500 was used, which classifies every case into one group: the resulting sensitivity of 1.000 (or specificity of 1.000, depending on which side of 0.500 that constant probability falls) and the F1 score are artefacts of that, not evidence of a sensitive or specific test. Only the AUC of 0.500 is informative here.": [
                 "Bu model her olguya aynı tahmin edilen olasılığı atar, bu nedenle hiç ayrım yapmaz ve anlamlı bir eşik bulunmaz. Herkesi bir gruba sınıflandıran 0.500 varsayılanı kullanılmıştır: ortaya çıkan 1.000 duyarlılık (veya bu sabit olasılığın 0.500'ün hangi tarafına düştüğüne bağlı olarak 1.000 özgüllük) ve F1 puanı bunun yapaylıklarıdır, duyarlı veya özgül bir testin kanıtı değildir. Burada yalnızca 0.500 EAA bilgilendiricidir."
@@ -21784,8 +21949,8 @@
             "TN (n={n})": [
                 "GN (n={n})"
             ],
-            "TN + FN equals zero: the test was never negative. The negative predictive value, the negative likelihood ratio and the diagnostic odds ratio are not estimable, and the test cannot separate the two groups. The positive likelihood ratio differs from 1 only because of the 0.5 zero-cell correction.": [
-                "GN + YN sıfıra eşittir: test hiç negatif sonuç vermedi. Negatif öngörü değeri, negatif olabilirlik oranı ve tanısal odds oranı tahmin edilemez ve test iki grubu ayıramaz. Pozitif olabilirlik oranı yalnızca 0.5 sıfır hücre düzeltmesi nedeniyle 1'den farklıdır."
+            "TN + FN equals zero: the test was never negative. The negative predictive value, the negative likelihood ratio and the diagnostic odds ratio are not estimable, and the test cannot separate the two groups. The positive likelihood ratio is exactly 1: a positive result carries no information.": [
+                "GN + YN sıfıra eşittir: test hiç negatif sonuç vermedi. Negatif öngörü değeri, negatif olabilirlik oranı ve tanısal odds oranı tahmin edilemez ve test iki grubu ayıramaz. Pozitif olabilirlik oranı tam olarak 1'dir: pozitif bir sonuç hiçbir bilgi taşımaz."
             ],
             "TN + FP equals zero, so specificity and related measures cannot be calculated.": [
                 "GN + YP sıfıra eşittir, bu nedenle özgüllük ve ilgili ölçütler hesaplanamaz."
@@ -21801,6 +21966,9 @@
             ],
             "To Do": [
                 "Yapılacaklar"
+            ],
+            "To finish setting up the analysis, choose: {boxes}. The reference and every test need both a positive and a negative level; no level is inferred.": [
+                "Analizin kurulumunu tamamlamak için şunları seçin: {boxes}. Referans ve her test için hem pozitif hem de negatif düzey gerekir; hiçbir düzey çıkarımlanmaz."
             ],
             "To get started:": [
                 "Başlamak için:"
@@ -21922,8 +22090,8 @@
             "TP + FN equals zero, so sensitivity and related measures cannot be calculated.": [
                 "GP + YN sıfıra eşittir, bu nedenle duyarlılık ve ilgili ölçütler hesaplanamaz."
             ],
-            "TP + FP equals zero: the test was never positive. The positive predictive value, the positive likelihood ratio and the diagnostic odds ratio are not estimable, and the test cannot separate the two groups. The negative likelihood ratio differs from 1 only because of the 0.5 zero-cell correction.": [
-                "GP + YP sıfıra eşittir: test hiç pozitif sonuç vermedi. Pozitif öngörü değeri, pozitif olabilirlik oranı ve tanısal odds oranı tahmin edilemez ve test iki grubu ayıramaz. Negatif olabilirlik oranı yalnızca 0.5 sıfır hücre düzeltmesi nedeniyle 1'den farklıdır."
+            "TP + FP equals zero: the test was never positive. The positive predictive value, the positive likelihood ratio and the diagnostic odds ratio are not estimable, and the test cannot separate the two groups. The negative likelihood ratio is exactly 1: a negative result carries no information.": [
+                "GP + YP sıfıra eşittir: test hiç pozitif sonuç vermedi. Pozitif öngörü değeri, pozitif olabilirlik oranı ve tanısal odds oranı tahmin edilemez ve test iki grubu ayıramaz. Negatif olabilirlik oranı tam olarak 1'dir: negatif bir sonuç hiçbir bilgi taşımaz."
             ],
             "TP, FP, TN, and FN must be finite numbers. Check the input values.": [
                 "GP, YP, GN ve YN sonlu sayılar olmalıdır. Girdi değerlerini kontrol edin."
@@ -22039,6 +22207,9 @@
             "Tumor Marker Evaluation (example)": [
                 "Tümör Belirteci Değerlendirmesi (örnek)"
             ],
+            "Turn on Bootstrap confidence intervals (with the Decision curve plot) to see the uncertainty of the net benefit over this range.": [
+                "Bu aralıktaki net fayda belirsizliğini görmek için Bootstrap güven aralıkları seçeneğini (Karar eğrisi grafiği ile birlikte) açın."
+            ],
             "Two assays for the same organism on the same swab; both track viral load, so dependence among diseased subjects is set high.": [
                 "Aynı sürüntü örneğinde aynı organizma için iki test; her ikisi de viral yükü izler, bu nedenle hastalığı olan deneklerdeki bağımlılık yüksek ayarlanmıştır."
             ],
@@ -22054,8 +22225,8 @@
             "Two tests run in parallel": [
                 "Paralel yürütülen iki test"
             ],
-            "Two things that assumption-free estimation does not buy. Precision: the sample is split across four or eight pattern cells instead of being pooled into two marginal proportions, so the intervals are wider -- that width is what the assumption was paying for. Transport: these numbers carry to another population only if the whole joint distribution of results given disease status carries over, which is a stronger requirement than each test's sensitivity and specificity carrying over. Parallel and Serial figures here will also generally NOT match the textbook independence formulas computed by hand from the individual tests, and will usually be worse when the tests are correlated.": [
-                "Varsayımsız tahminin kazandırmadığı iki şey. Kesinlik: örneklem iki marjinal oranda birleştirilmek yerine dört veya sekiz patern hücresine bölünür, bu nedenle aralıklar daha geniştir -- bu genişlik varsayımın bedelini ödediği şeydir. Taşınabilirlik: bu sayılar yalnızca hastalık durumu verildiğinde tüm ortak sonuç dağılımı aktarıldığında başka bir popülasyona aktarılır, bu da her testin duyarlılık ve özgüllüğünün aktarılmasından daha güçlü bir gereksinimdir. Buradaki Paralel ve Seri rakamlar genellikle bireysel testlerden elle hesaplanan ders kitabı bağımsızlık formülleriyle EŞLEŞMEYECEKTİR ve testler korelasyonlu olduğunda genellikle daha kötü olacaktır."
+            "Two things that assumption-free estimation does not buy. Precision: the sample is split across four or eight pattern cells instead of being pooled into two marginal proportions, so the intervals are wider -- that width is what the assumption was paying for. Transport: these numbers carry to another population only if the whole joint distribution of results given disease status carries over, which is a stronger requirement than each test's sensitivity and specificity carrying over. Parallel and Serial figures here will also generally NOT match the textbook independence formulas computed by hand from the individual tests. With positively correlated tests each strategy gains less than those formulas predict on the measure it is chosen for -- Parallel raises sensitivity less, Serial raises specificity less -- while the other measure loses less than predicted, so Youden's J can be the same as the formulas give.": [
+                "Varsayımsız tahminin kazandırmadığı iki şey. Kesinlik: örneklem iki marjinal oranda birleştirilmek yerine dört veya sekiz patern hücresine bölünür, bu nedenle aralıklar daha geniştir -- bu genişlik varsayımın bedelini ödediği şeydir. Taşınabilirlik: bu sayılar yalnızca hastalık durumu verildiğinde tüm ortak sonuç dağılımı aktarıldığında başka bir popülasyona aktarılır, bu da her testin duyarlılık ve özgüllüğünün aktarılmasından daha güçlü bir gereksinimdir. Buradaki Paralel ve Seri rakamlar genellikle bireysel testlerden elle hesaplanan ders kitabı bağımsızlık formülleriyle EŞLEŞMEYECEKTİR. Pozitif korelasyonlu testlerde her strateji, seçildiği ölçütte bu formüllerin öngördüğünden daha az kazanç sağlar -- Paralel duyarlılığı daha az, Seri özgüllüğü daha az artırır -- diğer ölçüt ise öngörülenden daha az kaybeder; bu nedenle Youden J değeri formüllerin verdiğiyle aynı olabilir."
             ],
             "Two-sided": [
                 "İki yönlü"
@@ -22885,8 +23056,8 @@
             "When raters should give identical values": [
                 ""
             ],
-            "When the study is analysed, estimate the category prevalences by maximum likelihood at each candidate value of kappa. With three or more raters or categories, plugging in the overall proportions of ratings instead can give an interval that covers kappa less often than stated when a category makes up less than about a fifth of the ratings (about 0.90 to 0.94 instead of 0.95 in the designs of that kind simulated for this analysis); without such a category it stayed close to 0.95.": [
-                "Çalışma analiz edilirken kategori yaygınlıklarını her aday kappa değerinde en çok olabilirlik ile kestirin. Üç veya daha fazla değerlendirici ya da kategori olduğunda, bunun yerine değerlendirmelerin genel oranlarını yerine koymak, bir kategori değerlendirmelerin yaklaşık beşte birinden azını oluşturduğunda kappayı belirtilenden daha seyrek kapsayan bir aralık verebilir (bu analiz için simüle edilen bu türden tasarımlarda 0.95 yerine yaklaşık 0.90 ila 0.94); böyle bir kategori olmadığında kapsama 0.95'e yakın kaldı."
+            "When the study is analysed, estimate the category prevalences by maximum likelihood at each candidate value of kappa. With three or more raters or categories, plugging in the overall proportions of ratings instead can give an interval that covers kappa less often than stated (about 0.86 to 0.94 instead of 0.95 in the designs simulated for this analysis), generally more so with more raters or categories. Balanced categories do not prevent it: with four equally common categories and four raters the plug-in interval covered kappa about 0.88 of the time.": [
+                "Çalışma analiz edilirken kategori yaygınlıklarını her aday kappa değerinde en çok olabilirlik ile kestirin. Üç veya daha fazla değerlendirici ya da kategori olduğunda, bunun yerine değerlendirmelerin genel oranlarını yerine koymak kappayı belirtilenden daha seyrek kapsayan bir aralık verebilir (bu analiz için simüle edilen tasarımlarda 0.95 yerine yaklaşık 0.86 ila 0.94); bu durum genellikle değerlendirici ya da kategori sayısı arttıkça belirginleşir. Dengeli kategoriler bunu önlemez: eşit sıklıkta dört kategori ve dört değerlendirici ile yerine koyma aralığı kappayı zamanın yaklaşık 0.88'inde kapsadı."
             ],
             "When the study is analysed, estimate the category prevalences by maximum likelihood at each candidate value of κ: with three or more raters, or three or more categories, plugging in the overall proportions of ratings gives an interval that covers κ less often than stated (about 0.91 to 0.93 instead of 0.95 in the designs simulated for this analysis).": [
                 "Çalışma analiz edilirken kategori prevalanslarını her aday κ değerinde en çok olabilirlikle kestirin: üç veya daha fazla değerlendirici ya da üç veya daha fazla kategoriyle, değerlendirmelerin genel oranlarını yerine koymak κ değerini belirtilenden daha seyrek kapsayan bir aralık verir (bu analiz için simüle edilen tasarımlarda 0.95 yerine yaklaşık 0.91 ila 0.93)."
@@ -23164,6 +23335,12 @@
             "With the sample size already fixed, this reports the expected lower bound of the one-sided {level} goodness-of-fit confidence interval for the intraclass (Fleiss-type) kappa of the common-correlation model, on the models of Donner and Eliasziw (two raters, binary outcome), Altaye, Donner and Klar (binary outcome, more raters) and Altaye, Donner and Eliasziw (three to five categories), in the confidence-interval approach of Rotondi and Donner implemented in the kappaSize package; for two raters with equal marginal frequencies this kappa coincides with Cohen's kappa.": [
                 "Örneklem büyüklüğü önceden belirlenmişken bu analiz, ortak korelasyon modelinin sınıf içi (Fleiss türü) kappası için tek yönlü {level} uyum iyiliği güven aralığının beklenen alt sınırını bildirir; Donner ve Eliasziw (iki değerlendirici, ikili sonuç), Altaye, Donner ve Klar (ikili sonuç, daha fazla değerlendirici) ve Altaye, Donner ve Eliasziw (üç ila beş kategori) modellerine, kappaSize paketinde uygulanan Rotondi ve Donner güven aralığı yaklaşımı içinde dayanır; marjinal sıklıkları eşit iki değerlendirici için bu kappa Cohen'in kappasıyla örtüşür."
             ],
+            "With three or more raters and three to five categories, this sample size can fall well short of power {power}; confirm it by simulating the intended analysis.": [
+                "Üç veya daha fazla değerlendirici ve üç ila beş kategori ile bu örneklem büyüklüğü {power} gücünün oldukça altında kalabilir; planlanan analizi simüle ederek doğrulayın."
+            ],
+            "With three or more raters each interval is kappa plus or minus the t quantile on n - 1 degrees of freedom times Gwet's subject-sampling standard error (irrCAC), where n is the number of cases with at least one rating (the N Cases column). The raters are treated as fixed, so the interval reflects the sampling of cases, not of raters. The kappa interval method option (Wald or Fisher z) applies to Cohen's kappa for two raters only and does not change these intervals.": [
+                "Üç veya daha fazla değerlendirici olduğunda her aralık, kappa artı/eksi n - 1 serbestlik dereceli t kantili çarpı Gwet'in denek örneklemesine dayalı standart hatasıdır (irrCAC); burada n, en az bir değerlendirmesi olan olgu sayısıdır (Olgu Sayısı (N) sütunu). Değerlendiriciler sabit kabul edilir; bu nedenle aralık değerlendiricilerin değil olguların örneklemesini yansıtır. Kappa aralık yöntemi seçeneği (Wald veya Fisher z) yalnızca iki değerlendirici için Cohen kappasına uygulanır ve bu aralıkları değiştirmez."
+            ],
             "With three or more raters, do not compute the chi-square over every count of raters calling the finding present (none, one, ..., all): that statistic has more than one degree of freedom and, read on one, rejects a true kappa0 much more often than the stated significance level.": [
                 "Üç veya daha fazla değerlendirici olduğunda ki-kareyi, bulguyu var olarak bildiren değerlendirici sayısının her değeri (hiçbiri, biri, ..., tümü) üzerinden hesaplamayın: bu istatistiğin serbestlik derecesi birden fazladır ve bir serbestlik derecesiyle değerlendirildiğinde doğru bir kappa0'ı belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddeder."
             ],
@@ -23178,6 +23355,9 @@
             ],
             "With three tests the nominal residual degrees of freedom are zero, but the latent-class model need not reproduce the observed table. These residuals describe discrepancies; they are not chi-squared tests of conditional independence. A small residual does not establish the assumption.": [
                 "Üç testle nominal kalıntı serbestlik derecesi sıfırdır, ancak örtük sınıf modelinin gözlenen tabloyu yeniden üretmesi gerekmez. Bu kalıntılar farklılıkları tanımlar; koşullu bağımsızlığın ki-kare testleri değildir. Küçük bir kalıntı varsayımı kanıtlamaz."
+            ],
+            "With three tests the two-class model has as many parameters as the data have free cell frequencies, so it usually reproduces the observed table exactly and conditional independence cannot be checked from these data. If two of the tests share a mechanism (same target, same reader or same specimen), the estimates can be strongly biased in either direction with no sign of it in the fit statistics or the bivariate residuals. Detecting such dependence needs at least four tests.": [
+                "Üç testle iki sınıflı model, verideki serbest hücre frekansı sayısı kadar parametreye sahiptir; bu nedenle genellikle gözlenen tabloyu tam olarak yeniden üretir ve koşullu bağımsızlık bu verilerden denetlenemez. Testlerden ikisi ortak bir mekanizmayı paylaşıyorsa (aynı hedef, aynı okuyucu ya da aynı örnek), tahminler uyum istatistiklerinde ya da iki değişkenli kalıntılarda hiçbir belirti olmaksızın her iki yönde de güçlü biçimde yanlı olabilir. Böyle bir bağımlılığı saptamak için en az dört test gerekir."
             ],
             "With three tests there are 0 nominal residual degrees of freedom. This does not guarantee exact fit: the model also imposes constraints on the observed probabilities. G-squared and Chi-squared are descriptive discrepancies, without a chi-squared reference test. Small discrepancies do not verify conditional independence or parameter identifiability.": [
                 "Üç testle 0 nominal kalıntı serbestlik derecesi vardır. Bu tam uyumu garanti etmez: model gözlenen olasılıklara da kısıtlar uygular. G-kare ve Ki-kare, ki-kare referans testi olmadan betimsel farklılıklardır. Küçük farklılıklar koşullu bağımsızlığı veya parametre tanımlanabilirliğini doğrulamaz."
@@ -23383,11 +23563,17 @@
             "Zero Cell Continuity Correction": [
                 "Sıfır Hücre Süreklilik Düzeltmesi"
             ],
-            "Zero cell detected. A 0.5 continuity correction is applied only to a likelihood ratio whose own denominator cell is empty while its numerator is not (FP = 0 with TP > 0 for LR+, TN = 0 with FN > 0 for LR-); a ratio that is 0/0 is left blank, and every other statistic uses these raw counts. Interpret cautiously.": [
-                "Sıfır hücre saptandı. 0.5 süreklilik düzeltmesi yalnızca kendi payda hücresi boş, payı ise boş olmayan bir olabilirlik oranına uygulanır (LR+ için GP > 0 iken YP = 0, LR- için YN > 0 iken GN = 0); 0/0 olan bir oran boş bırakılır ve diğer tüm istatistikler bu ham sayıları kullanır. Dikkatle yorumlayın."
+            "Zero cell detected. A 0.5 continuity correction is applied only to a likelihood ratio whose own denominator cell is empty while its numerator is not (FP = 0 with TP > 0 for LR+, TN = 0 with FN > 0 for LR-), and only when the corrected value stays above 1; an empty numerator gives an exact 0, a ratio that is 0/0 or whose correction would fall to 1 or below is left blank, and every other statistic uses these raw counts. Interpret cautiously.": [
+                "Sıfır hücre saptandı. 0.5 süreklilik düzeltmesi yalnızca kendi payda hücresi boş, payı ise boş olmayan bir olabilirlik oranına (LR+ için GP > 0 iken YP = 0, LR- için YN > 0 iken GN = 0) ve yalnızca düzeltilmiş değer 1'in üzerinde kaldığında uygulanır; boş bir pay tam 0 verir, 0/0 olan ya da düzeltmesi 1'e veya altına düşecek bir oran boş bırakılır ve diğer tüm istatistikler bu ham sayıları kullanır. Dikkatle yorumlayın."
+            ],
+            "Zero cell in the table": [
+                "Tabloda sıfır hücre"
             ],
             "Zero counts detected in contingency table": [
                 "Kontenjans tablosunda sıfır sayımları tespit edildi"
+            ],
+            "Zero-cell ratio not estimable": [
+                "Sıfır hücreli oran tahmin edilemez"
             ],
             "Δ Cohen's d": [
                 "Δ Cohen d"

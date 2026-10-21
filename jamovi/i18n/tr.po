@@ -89,7 +89,7 @@ msgstr ""
 #: R/decisioncurve.b.R
 msgid ""
 "\"Clinical decision rule\" is enabled but no rule variable has been "
-"selected: drop a binary variable into \"Clinical Decision Rule (binary)\"."
+"selected: drop a binary variable into \"Clinical decision rule (binary)\"."
 msgstr ""
 "\"Klinik karar kuralı\" etkin, ancak bir kural değişkeni seçilmedi: \"Klinik "
 "Karar Kuralı (ikili)\" kutusuna ikili bir değişken bırakın."
@@ -379,6 +379,10 @@ msgstr ""
 "satırdan {excluded} satır hariç tutuldu"
 
 #: R/decision.b.R
+msgid "{level} (inferred: the only other level)"
+msgstr "{level} (çıkarımlandı: diğer tek düzey)"
+
+#: R/decision.b.R
 msgid ""
 "{level} of the {total} cases were excluded before analysis because their "
 "test or reference-standard level was neither of the two selected (for "
@@ -398,11 +402,41 @@ msgstr "%{lo} ila %{hi}"
 
 #: R/decisioncurve.b.R
 msgid ""
-"{lo}% to {hi}% threshold probability - the range over which this model beats "
-"both treating everyone and treating no one."
+"{lo}% to {hi}% threshold probability - the observed range over which this "
+"model's apparent (in-sample) net benefit exceeds both treating everyone and "
+"treating no one. It carries no allowance for sampling variation, and a "
+"narrow range can arise by chance."
 msgstr ""
-"%{lo} ila %{hi} eşik olasılığı - bu modelin hem herkesi tedavi etmeyi hem de "
-"hiç kimseyi tedavi etmemeyi geçtiği aralık."
+"%{lo} ila %{hi} eşik olasılığı - bu modelin görünen (örneklem içi) net "
+"faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi etmemeyi "
+"aştığı gözlenen aralık. Örnekleme değişkenliği için hiçbir pay içermez ve "
+"dar bir aralık şans eseri ortaya çıkabilir."
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{marker}: in these data the proportion of {positive} cases rises as the "
+"values fall, the opposite direction to the Classification Direction you "
+"selected. IDI and NRI compare fitted logistic risks, which do not depend on "
+"the selected direction, so this marker enters with the risk model the data "
+"support."
+msgstr ""
+"{marker}: bu verilerde {positive} olguların oranı değerler azaldıkça "
+"artıyor; bu, seçtiğiniz Sınıflandırma Yönünün tersidir. IDI ve NRI, seçilen "
+"yöne bağlı olmayan uyarlanmış lojistik riskleri karşılaştırır; bu nedenle bu "
+"belirteç analize verilerin desteklediği risk modeliyle girer."
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{marker}: in these data the proportion of {positive} cases rises as the "
+"values rise, the opposite direction to the Classification Direction you "
+"selected. IDI and NRI compare fitted logistic risks, which do not depend on "
+"the selected direction, so this marker enters with the risk model the data "
+"support."
+msgstr ""
+"{marker}: bu verilerde {positive} olguların oranı değerler arttıkça artıyor; "
+"bu, seçtiğiniz Sınıflandırma Yönünün tersidir. IDI ve NRI, seçilen yöne "
+"bağlı olmayan uyarlanmış lojistik riskleri karşılaştırır; bu nedenle bu "
+"belirteç analize verilerin desteklediği risk modeliyle girer."
 
 #: R/enhancedROC.b.R
 msgid "{metric} ({a} vs {b})"
@@ -5196,6 +5230,26 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid ""
+"{test}: no false positive was observed, so LR+ is infinite, and adding 0.5 "
+"to every cell would give a value of 1 or less, reversing its direction; LR+ "
+"is left blank."
+msgstr ""
+"{test}: hiç yanlış pozitif gözlenmedi, bu nedenle LR+ sonsuzdur; her hücreye "
+"0.5 eklemek 1 veya daha küçük bir değer vererek yönünü tersine çevirirdi; "
+"LR+ boş bırakıldı."
+
+#: R/decisioncompare.b.R
+msgid ""
+"{test}: no true negative was observed, so LR- is infinite, and adding 0.5 to "
+"every cell would give a value of 1 or less, reversing its direction; LR- is "
+"left blank."
+msgstr ""
+"{test}: hiç gerçek negatif gözlenmedi, bu nedenle LR- sonsuzdur; her hücreye "
+"0.5 eklemek 1 veya daha küçük bir değer vererek yönünü tersine çevirirdi; "
+"LR- boş bırakıldı."
+
+#: R/decisioncompare.b.R
+msgid ""
 "{test}: PPA rests on {positives} comparator-positive cases and NPA on "
 "{negatives} comparator-negative cases. A percentage computed on a "
 "denominator this small is far less precise than the overall analyzed N "
@@ -5317,6 +5371,15 @@ msgstr ""
 "mevcuttur; varsa diğer hariç tutmalar aşağıda listelenmiştir. Eksiklik "
 "örüntülerini araştırmayı düşünün."
 
+#: R/decision.b.R
+msgid ""
+"{used} of {total} cases have both a test and a reference value; any further "
+"exclusions are listed below. Consider investigating patterns of missingness."
+msgstr ""
+"{total} olgudan {used} tanesinde hem test hem de referans değeri var; diğer "
+"dışlamalar aşağıda listelenmiştir. Eksik veri örüntülerini incelemeyi "
+"düşünün."
+
 #: R/enhancedROC.b.R
 msgid "{value} (default setting)"
 msgstr "{value} (varsayılan ayar)"
@@ -5332,6 +5395,24 @@ msgstr "{var}: {positive} pozitif, {negative} negatif eksiksiz gözlem"
 #: R/decisioncombine.b.R
 msgid "{variable} has {n} levels"
 msgstr "{variable} değişkeni {n} düzeye sahip"
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{variable}: the achieved sensitivity, {achieved}, is below the target of "
+"{target}. Choose Stepwise to get the cutoff that meets or exceeds the target."
+msgstr ""
+"{variable}: ulaşılan duyarlılık ({achieved}) {target} hedefinin altında. "
+"Hedefi karşılayan ya da aşan kesim noktasını elde etmek için Adımlı yöntemi "
+"seçin."
+
+#: R/psychopdaROC.b.R
+msgid ""
+"{variable}: the achieved specificity, {achieved}, is below the target of "
+"{target}. Choose Stepwise to get the cutoff that meets or exceeds the target."
+msgstr ""
+"{variable}: ulaşılan özgüllük ({achieved}) {target} hedefinin altında. "
+"Hedefi karşılayan ya da aşan kesim noktasını elde etmek için Adımlı yöntemi "
+"seçin."
 
 #: enhancedROC/ui[4][0][0]/confidenceLevel.suffix
 msgid "%"
@@ -5601,6 +5682,17 @@ msgstr ""
 "En az bir değerlendirici eksik olduğu için %1$d olgu (toplam %2$d olgudan) "
 "hariç tutuldu: Light'ın kappası yalnızca eksiksiz olguları kullanır ve "
 "yukarıdaki Olgu sayısı, analizde tutulan %3$d olguyu ifade eder."
+
+#: R/agreement.b.R
+msgid ""
+"%1$d of %2$d subgroups are not shown because they have fewer than %3$d cases "
+"rated by at least two raters: %4$s. This table is therefore not a complete "
+"breakdown of the data."
+msgstr ""
+"%2$d alt gruptan %1$d tanesi, en az iki değerlendirici tarafından "
+"değerlendirilmiş olgu sayıları %3$d değerinin altında kaldığı için "
+"gösterilmiyor: %4$s. Bu nedenle bu tablo verilerin eksiksiz bir dökümü "
+"değildir."
 
 #: R/agreement.b.R
 msgid ""
@@ -7834,6 +7926,34 @@ msgstr ""
 "<li>Klinik benimsemeden önce puanlama sistemini her zaman bağımsız bir "
 "kohortta doğrulayın.</li>"
 
+#: R/sequentialtests.b.R
+msgid ""
+"<li>Among people with the disease, given a positive Test 1, the probability "
+"that Test 2 is positive is assumed equal to Se<sub>2</sub> (conditional "
+"independence): {value}</li>"
+msgstr ""
+"<li>Hastalığı olanlarda, Test 1 pozitif olduğunda Test 2'nin pozitif olma "
+"olasılığının Se<sub>2</sub> değerine eşit olduğu varsayılır (koşullu "
+"bağımsızlık): {value}</li>"
+
+#: R/sequentialtests.b.R
+msgid ""
+"<li>Among people with the disease, probability of testing positive on both, "
+"assuming conditional independence: {sens1} × {sens2} = {both}</li>"
+msgstr ""
+"<li>Hastalığı olanlarda, koşullu bağımsızlık varsayımıyla her iki testte de "
+"pozitif çıkma olasılığı: {sens1} × {sens2} = {both}</li>"
+
+#: R/sequentialtests.b.R
+msgid ""
+"<li>Among people without the disease, given a negative Test 1, the "
+"probability that Test 2 is negative is assumed equal to Sp<sub>2</sub> "
+"(conditional independence): {value}</li>"
+msgstr ""
+"<li>Hastalığı olmayanlarda, Test 1 negatif olduğunda Test 2'nin negatif olma "
+"olasılığının Sp<sub>2</sub> değerine eşit olduğu varsayılır (koşullu "
+"bağımsızlık): {value}</li>"
+
 #: R/lassologistic.b.R
 msgid ""
 "<li>An events-per-variable (EPV) of 10 is a rule of thumb (Peduzzi et al. "
@@ -7934,22 +8054,6 @@ msgid ""
 msgstr ""
 "<li>Yeni bir testin standart testten anlamlı olarak daha iyi/kötü olup "
 "olmadığının değerlendirilmesi</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a negative Test 1, probability of testing negative on Test 2: "
-"{value}</li>"
-msgstr ""
-"<li>Negatif Test 1 verildiğinde, Test 2'de negatif test etme olasılığı: "
-"{value}</li>"
-
-#: R/sequentialtests.b.R
-msgid ""
-"<li>Given a positive Test 1, probability of testing positive on Test 2: "
-"{value}</li>"
-msgstr ""
-"<li>Pozitif Test 1 verildiğinde, Test 2'de pozitif test etme olasılığı: "
-"{value}</li>"
 
 #: R/lassologistic.b.R
 msgid ""
@@ -8063,12 +8167,6 @@ msgstr "<li>Test 1'de negatif test etme olasılığı: {value}</li>"
 #: R/sequentialtests.b.R
 msgid "<li>Probability of testing negative on Test 2: {value}</li>"
 msgstr "<li>Test 2'de negatif test etme olasılığı: {value}</li>"
-
-#: R/sequentialtests.b.R
-msgid "<li>Probability of testing positive on both: {sens1} × {sens2} = {both}</li>"
-msgstr ""
-"<li>Her iki testte de pozitif çıkma olasılığı: {sens1} × {sens2} = "
-"{both}</li>"
 
 #: R/sequentialtests.b.R
 msgid "<li>Probability of testing positive on Test 1: {value}</li>"
@@ -8272,6 +8370,16 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid ""
+"<p><b>Descriptive interpretation:</b> no test is ranked on the cases common "
+"to all tests. Review the pairwise comparisons above for inferential "
+"results.</p>"
+msgstr ""
+"<p><b>Betimsel yorum:</b> tüm testlerde ortak olan olgularda hiçbir test "
+"sıralanmadı. Çıkarımsal sonuçlar için yukarıdaki ikili karşılaştırmalara "
+"bakın.</p>"
+
+#: R/decisioncompare.b.R
+msgid ""
 "<p><b>Overall comparison:</b> Cochran's Q test (Q = %1$.2f, p %2$s) <span "
 "style='color:inherit;'><b>did not detect a significant difference</b></span> "
 "among the three tests. This is not evidence that they perform equally: with "
@@ -8313,6 +8421,22 @@ msgid ""
 "<p><strong>Accuracy:</strong> Overall probability of correct "
 "classification</p>"
 msgstr "<p><strong>Doğruluk:</strong> Doğru sınıflandırmanın genel olasılığı</p>"
+
+#: R/sequentialtests.b.R
+msgid ""
+"<p><strong>Assumption:</strong> combined sensitivity is computed among "
+"people with the disease and combined specificity among people without it. "
+"All products below assume the two tests are conditionally independent given "
+"disease status. If the tests are correlated within a disease-status group "
+"(for example, the same specimen or related biology), the true combined "
+"values differ.</p>"
+msgstr ""
+"<p><strong>Varsayım:</strong> birleşik duyarlılık hastalığı olanlarda, "
+"birleşik özgüllük ise hastalığı olmayanlarda hesaplanır. Aşağıdaki tüm "
+"çarpımlar, iki testin hastalık durumu verildiğinde koşullu olarak bağımsız "
+"olduğunu varsayar. Testler aynı hastalık durumu grubu içinde korelasyonluysa "
+"(örneğin aynı örnek ya da ilişkili biyoloji), gerçek birleşik değerler "
+"farklıdır.</p>"
 
 #: R/decisioncompare.b.R
 msgid ""
@@ -9429,6 +9553,28 @@ msgstr ""
 "düzeltmeli değere uygulanan yorum aralıkları: 0.50 altı zayıf, 0.50 ile 0.75 "
 "arası orta, 0.75 ile 0.90 arası iyi, 0.90 ve üzeri mükemmel."
 
+#: R/decision.b.R
+msgid ""
+"A blank likelihood ratio is not estimable from these counts: its denominator "
+"count is zero, so it would be infinite, and the continuity correction (0.5 "
+"added to every cell) would not keep it above 1. Read the sensitivity and "
+"specificity with their confidence intervals instead."
+msgstr ""
+"Boş bir olabilirlik oranı bu sayımlardan tahmin edilemez: payda sayımı sıfır "
+"olduğundan sonsuz olurdu ve süreklilik düzeltmesi (her hücreye 0.5 "
+"eklenmesi) onu 1'in üzerinde tutmazdı. Bunun yerine duyarlılık ve özgüllüğü "
+"güven aralıklarıyla birlikte okuyun."
+
+#: R/decision.b.R
+msgid ""
+"A blank ratio is not estimable from these counts: its denominator count is "
+"zero, so it would be infinite, and the continuity correction (0.5 added to "
+"every cell) would not keep it above 1."
+msgstr ""
+"Boş bir oran bu sayımlardan tahmin edilemez: payda sayımı sıfır olduğundan "
+"sonsuz olurdu ve süreklilik düzeltmesi (her hücreye 0.5 eklenmesi) onu 1'in "
+"üzerinde tutmazdı."
+
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "A bound at or below zero means this many subjects cannot rule out agreement "
@@ -9447,84 +9593,78 @@ msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. A likelihood ratio that would be zero, "
-"infinite or undefined on the observed counts is computed from the "
-"Haldane-Anscombe corrected table (0.5 added to every cell) and reflects that "
-"correction, not the observed data: the positive likelihood ratio when "
-"sensitivity is 0% or specificity is 100%, the negative likelihood ratio when "
-"sensitivity is 100% or specificity is 0%. Sensitivity, specificity, "
-"accuracy, the predictive values and any other likelihood ratio are not "
-"corrected."
+"A cell of the 2x2 table is zero. A likelihood ratio whose denominator count "
+"is zero would be infinite, so it is computed from the Haldane-Anscombe "
+"corrected table (0.5 added to every cell) and reflects that correction, not "
+"the observed data: the positive likelihood ratio when specificity is 100%, "
+"the negative likelihood ratio when specificity is 0%. Sensitivity, "
+"specificity, accuracy, the predictive values and any other likelihood ratio "
+"use the observed counts."
 msgstr ""
-"2x2 tablonun bir hücresi sıfırdır. Gözlemlenen sayımlarla sıfır, sonsuz veya "
-"tanımsız olacak bir olabilirlik oranı, Haldane-Anscombe düzeltmeli tablodan "
-"(her hücreye 0.5 eklenerek) hesaplanır ve gözlemlenen verileri değil, bu "
-"düzeltmeyi yansıtır: duyarlılık %0 veya özgüllük %100 olduğunda pozitif "
-"olabilirlik oranı, duyarlılık %100 veya özgüllük %0 olduğunda negatif "
-"olabilirlik oranı. Duyarlılık, özgüllük, doğruluk, öngörü değerleri ve diğer "
-"herhangi bir olabilirlik oranı düzeltilmez."
+"2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir olabilirlik "
+"oranı sonsuz olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye "
+"0.5 eklenerek) hesaplanır ve gözlemlenen verileri değil, bu düzeltmeyi "
+"yansıtır: özgüllük %100 olduğunda pozitif olabilirlik oranı, özgüllük %0 "
+"olduğunda negatif olabilirlik oranı. Duyarlılık, özgüllük, doğruluk, öngörü "
+"değerleri ve diğer herhangi bir olabilirlik oranı gözlemlenen sayımları "
+"kullanır."
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. A likelihood ratio that would be zero, "
-"infinite or undefined on the observed counts, and the diagnostic odds ratio, "
-"are computed from the Haldane-Anscombe corrected table (0.5 added to every "
-"cell). The other rows use the observed counts. Because only one likelihood "
-"ratio is corrected, the diagnostic odds ratio shown need not equal LR+ / LR- "
-"as displayed."
+"A cell of the 2x2 table is zero. A ratio whose denominator count is zero "
+"would be infinite (LR+: no false positives; LR-: no true negatives; "
+"diagnostic odds ratio: no false positives or no false negatives), so it is "
+"computed from the Haldane-Anscombe corrected table (0.5 added to every "
+"cell). A ratio whose numerator count is zero is exactly 0 and is not "
+"corrected. Sensitivity, specificity, accuracy, the predictive values and "
+"every other ratio use the observed counts, so a corrected, finite likelihood "
+"ratio can sit beside a sensitivity or specificity of 0% or 100%."
 msgstr ""
-"2x2 tablonun bir hücresi sıfırdır. Gözlemlenen sayımlarla sıfır, sonsuz veya "
-"tanımsız olacak bir olabilirlik oranı ve tanısal odds oranı, "
-"Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. "
-"Diğer satırlar gözlemlenen sayımları kullanır. Yalnızca bir olabilirlik "
-"oranı düzeltildiği için, gösterilen tanısal odds oranının görüntülenen LR+ / "
-"LR- değerine eşit olması gerekmez."
+"2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir oran sonsuz "
+"olacağından (LR+: yanlış pozitif yok; LR-: gerçek negatif yok; tanısal odds "
+"oranı: yanlış pozitif ya da yanlış negatif yok) Haldane-Anscombe düzeltmeli "
+"tablodan (her hücreye 0.5 eklenerek) hesaplanır. Pay sayımı sıfır olan bir "
+"oran tam olarak 0'dır ve düzeltilmez. Duyarlılık, özgüllük, doğruluk, öngörü "
+"değerleri ve diğer tüm oranlar gözlemlenen sayımları kullanır; bu nedenle "
+"düzeltilmiş, sonlu bir olabilirlik oranı %0 veya %100 duyarlılık ya da "
+"özgüllüğün yanında yer alabilir."
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. A likelihood ratio whose formula contains "
-"the zero count, and the diagnostic odds ratio, are computed from the "
-"Haldane-Anscombe corrected table (0.5 added to every cell), because on the "
-"observed counts they would be zero or infinite. The other rows use the "
-"observed counts."
+"A cell of the 2x2 table is zero. A ratio whose denominator count is zero "
+"would be infinite, so it is computed from the Haldane-Anscombe corrected "
+"table (0.5 added to every cell). The other rows use the observed counts."
 msgstr ""
-"2x2 tablonun bir hücresi sıfırdır. Formülü sıfır sayımı içeren bir "
-"olabilirlik oranı ve tanısal odds oranı, gözlemlenen sayımlarla sıfır veya "
-"sonsuz olacakları için Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 "
-"eklenerek) hesaplanır. Diğer satırlar gözlemlenen sayımları kullanır."
+"2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir oran sonsuz "
+"olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) "
+"hesaplanır. Diğer satırlar gözlemlenen sayımları kullanır."
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table is zero. Each likelihood ratio that would be zero, "
-"infinite or undefined on the observed counts, and the diagnostic odds ratio, "
-"are computed from the Haldane-Anscombe corrected table (0.5 added to every "
-"cell). Sensitivity, specificity, accuracy, the predictive values and any "
-"other likelihood ratio are not corrected. The Fagan nomogram shows the "
-"table's likelihood ratios when one is above 1 and the other below 1; "
-"otherwise it takes both from the corrected table. The two sets therefore do "
-"not reconcile exactly: a non-zero, finite likelihood ratio can sit beside a "
-"sensitivity or specificity of 0% or 100%."
+"A cell of the 2x2 table is zero. A ratio whose denominator count is zero "
+"would be infinite, so it is computed from the Haldane-Anscombe corrected "
+"table (0.5 added to every cell). The other rows use the observed counts. "
+"Because the ratios do not all come from the same table, the diagnostic odds "
+"ratio shown need not equal LR+ / LR- as displayed."
 msgstr ""
-"2x2 tablonun bir hücresi sıfırdır. Gözlemlenen sayımlarla sıfır, sonsuz veya "
-"tanımsız olacak her olabilirlik oranı ile tanısal odds oranı, "
-"Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) hesaplanır. "
-"Duyarlılık, özgüllük, doğruluk, öngörü değerleri ve diğer herhangi bir "
-"olabilirlik oranı düzeltilmez. Fagan nomogramı, oranlardan biri 1'in "
-"üzerinde ve diğeri 1'in altında olduğunda tablonun olabilirlik oranlarını "
-"gösterir; aksi takdirde her ikisini de düzeltilmiş tablodan alır. Bu nedenle "
-"iki küme tam olarak uyuşmaz: sıfır olmayan, sonlu bir olabilirlik oranı, %0 "
-"veya %100 duyarlılık ya da özgüllüğün yanında yer alabilir."
+"2x2 tablonun bir hücresi sıfırdır. Payda sayımı sıfır olan bir oran sonsuz "
+"olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye 0.5 eklenerek) "
+"hesaplanır. Diğer satırlar gözlemlenen sayımları kullanır. Oranların tümü "
+"aynı tablodan gelmediği için gösterilen tanısal odds oranının görüntülenen "
+"LR+ / LR- değerine eşit olması gerekmez."
 
 #: R/decision.b.R
 msgid ""
-"A cell of the 2x2 table was zero. A likelihood ratio that would be zero or "
-"infinite on the observed counts is computed from the Haldane-Anscombe "
-"corrected table (0.5 added to every cell); sensitivity, specificity and the "
-"predictive values above are not corrected."
+"A cell of the 2x2 table was zero. A likelihood ratio whose denominator count "
+"is zero would be infinite, so it is computed from the Haldane-Anscombe "
+"corrected table (0.5 added to every cell); a likelihood ratio with a zero "
+"numerator count is exactly 0 and is not corrected. Sensitivity, specificity "
+"and the predictive values above are not corrected."
 msgstr ""
-"2x2 tablonun bir hücresi sıfırdı. Gözlemlenen sayımlarla sıfır veya sonsuz "
-"olacak bir olabilirlik oranı, Haldane-Anscombe düzeltmeli tablodan (her "
-"hücreye 0.5 eklenerek) hesaplanır; yukarıdaki duyarlılık, özgüllük ve öngörü "
+"2x2 tablonun bir hücresi sıfırdı. Payda sayımı sıfır olan bir olabilirlik "
+"oranı sonsuz olacağından Haldane-Anscombe düzeltmeli tablodan (her hücreye "
+"0.5 eklenerek) hesaplanır; pay sayımı sıfır olan bir olabilirlik oranı tam "
+"olarak 0'dır ve düzeltilmez. Yukarıdaki duyarlılık, özgüllük ve öngörü "
 "değerleri düzeltilmez."
 
 #: R/agreement.b.R
@@ -9640,6 +9780,49 @@ msgstr ""
 msgid "A latent-class EM point estimator using fixed Beta priors."
 msgstr "Sabit Beta öncüllerini kullanan bir örtük sınıf EM nokta tahmincisi."
 
+#: R/decisioncalculator.b.R
+msgid ""
+"A likelihood ratio is not estimable for this table (see the notices above), "
+"so it cannot be placed on the nomogram."
+msgstr ""
+"Bu tablo için bir olabilirlik oranı tahmin edilemez (yukarıdaki bildirimlere "
+"bakın), bu nedenle nomogram üzerine yerleştirilemez."
+
+#: R/decision.b.R
+msgid ""
+"A likelihood ratio of exactly 0 is the observed value: its numerator count "
+"is zero (no true positives for LR+, no false negatives for LR-), so no "
+"correction is applied."
+msgstr ""
+"Tam olarak 0 olan bir olabilirlik oranı gözlenen değerdir: pay sayımı "
+"sıfırdır (LR+ için gerçek pozitif yok, LR- için yanlış negatif yok), bu "
+"nedenle düzeltme uygulanmaz."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe "
+"0.5 correction, and so do the probabilities read from the nomogram. The "
+"predictive values and post-test probabilities in the Measures table are "
+"computed from the raw counts and can differ, by a wide margin in a small "
+"table."
+msgstr ""
+"Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe "
+"düzeltmesini kullanır; nomogramdan okunan olasılıklar da öyle. Ölçüler "
+"tablosundaki öngörü değerleri ve test sonrası olasılıklar ham sayılardan "
+"hesaplanır ve küçük bir tabloda belirgin biçimde farklı olabilir."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe "
+"0.5 correction, while the predictive values above use the observed counts. "
+"Multiplying the pre-test odds by these likelihood ratios therefore need not "
+"reproduce the predictive values exactly."
+msgstr ""
+"Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe "
+"düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları "
+"kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak "
+"öngörü değerlerini tam olarak vermeyebilir."
+
 #: R/agreement.b.R
 msgid ""
 "A linear mixed-effects model that compares measurement conditions (e.g., "
@@ -9669,6 +9852,14 @@ msgid ""
 msgstr ""
 "Negatif bir sonuç {lr} olabilirlik oranına sahiptir ve olasılığı "
 "{prevalence}'den {posttest}'ye düşürür."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A negative result has a likelihood ratio of {lr} and raises the probability "
+"from {prevalence} to {posttest}."
+msgstr ""
+"Negatif bir sonucun olabilirlik oranı {lr} olup olasılığı {prevalence} "
+"değerinden {posttest} değerine yükseltir."
 
 #: R/decision.b.R
 msgid ""
@@ -9859,6 +10050,39 @@ msgid ""
 msgstr ""
 "Rastgele bir olgunun değerinin rastgele bir olgu olmayanınkinden düşük olma "
 "olasılığı: %.0f%% (eşitlikler yarım sayılır)"
+
+#: R/decisioncombine.b.R
+msgid ""
+"A ratio is corrected only when the cell in its denominator is zero and its "
+"numerator is not (FP for LR+, TN for LR-, FP or FN for the odds ratio): 0.5 "
+"is then added to all four cells for that ratio and its confidence interval "
+"(Haldane-Anscombe for the odds ratio). A zero numerator gives exactly 0, "
+"uncorrected; a corrected value of 1 or below is left blank as not estimable. "
+"On a row with no test-positive patients LR+ and the odds ratio are blank and "
+"its LR- is exactly 1; the mirror case blanks LR- and shows LR+ as exactly 1."
+msgstr ""
+"Bir oran yalnızca paydasındaki hücre sıfır, payı ise sıfır olmadığında "
+"düzeltilir (LR+ için YP, LR- için GN, odds oranı için YP veya YN): bu "
+"durumda o oran ve güven aralığı için dört hücrenin tümüne 0.5 eklenir (odds "
+"oranı için Haldane-Anscombe). Sıfır bir pay, düzeltilmemiş tam 0 verir; 1 "
+"veya altındaki düzeltilmiş bir değer tahmin edilemez olarak boş bırakılır. "
+"Test-pozitif hastası olmayan bir satırda LR+ ve odds oranı boştur ve LR- tam "
+"olarak 1'dir; ayna durumda LR- boş bırakılır ve LR+ tam olarak 1 olarak "
+"gösterilir."
+
+#: R/decision.b.R
+msgid ""
+"A ratio shown as exactly 0 has a zero numerator count (LR+: no true "
+"positives; LR-: no false negatives; diagnostic odds ratio: no true positives "
+"or no true negatives). It is the observed value and is not corrected. Its "
+"confidence interval runs from 0 to the upper limit of the same log-scale "
+"interval computed with 0.5 added to every cell (Haldane-Anscombe correction)."
+msgstr ""
+"Tam olarak 0 gösterilen bir oranın pay sayımı sıfırdır (LR+: gerçek pozitif "
+"yok; LR-: yanlış negatif yok; tanısal odds oranı: gerçek pozitif ya da "
+"gerçek negatif yok). Bu gözlenen değerdir ve düzeltilmez. Güven aralığı "
+"0'dan, her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst "
+"sınırına kadar uzanır (Haldane-Anscombe düzeltmesi)."
 
 #: R/psychopdaROC.b.R
 msgid ""
@@ -10063,14 +10287,29 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 msgid ""
-"A zero cell required a continuity correction in {n} row(s) ({patterns}). For "
-"LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, 0.5 "
-"is added to all four cells for that ratio and its confidence interval. The "
-"diagnostic odds ratio and its interval use all four cells plus 0.5 whenever "
-"any cell is zero (Haldane-Anscombe correction). The corrected diagnostic "
-"odds ratio need not equal the ratio of the displayed likelihood ratios. "
-"Sensitivity, specificity, PPV and NPV use observed counts."
+"A zero cell required a continuity correction in {n} row(s) ({patterns}). LR+ "
+"is corrected only when FP is zero and TP is not, LR- only when TN is zero "
+"and FN is not, and the diagnostic odds ratio only when FP or FN is zero and "
+"neither TP nor TN is: 0.5 is then added to all four cells for that ratio and "
+"its confidence interval (for the odds ratio, the Haldane-Anscombe "
+"correction). A ratio whose numerator cell is zero is reported as exactly 0 "
+"instead. A corrected ratio stands in for an infinite one, so when the "
+"correction would bring it to 1 or below it is left blank as not estimable. "
+"The corrected diagnostic odds ratio need not equal the ratio of the "
+"displayed likelihood ratios. Sensitivity, specificity, PPV and NPV use "
+"observed counts."
 msgstr ""
+"{n} satırda ({patterns}) sıfır hücre nedeniyle süreklilik düzeltmesi "
+"gerekti. LR+ yalnızca YP sıfır ve GP sıfır değilken, LR- yalnızca GN sıfır "
+"ve YN sıfır değilken, tanısal odds oranı ise yalnızca YP veya YN sıfır ve ne "
+"GP ne de GN sıfırken düzeltilir: bu durumda o oran ve güven aralığı için "
+"dört hücrenin tümüne 0.5 eklenir (odds oranı için Haldane-Anscombe "
+"düzeltmesi). Pay hücresi sıfır olan bir oran ise tam olarak 0 olarak "
+"bildirilir. Düzeltilmiş bir oran sonsuz bir oranın yerini tutar; bu nedenle "
+"düzeltme onu 1'e ya da altına indirecekse tahmin edilemez olarak boş "
+"bırakılır. Düzeltilmiş tanısal odds oranının görüntülenen olabilirlik "
+"oranlarının oranına eşit olması gerekmez. Duyarlılık, özgüllük, PPV ve NPV "
+"gözlenen sayıları kullanır."
 
 #: R/decisioncalculator.b.R
 msgid ""
@@ -10084,68 +10323,67 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid ""
-"A zero cell was present, so 0.5 was added to every cell for the likelihood "
-"ratios and the diagnostic odds ratio. Their confidence intervals use the "
-"same corrected counts."
+"A zero cell was present. A likelihood ratio or the diagnostic odds ratio is "
+"corrected only when its denominator cell is empty and its numerator is not "
+"(FP for LR+, TN for LR-, FP or FN for the diagnostic odds ratio): 0.5 is "
+"then added to all four cells for that ratio and its confidence interval "
+"(Haldane-Anscombe correction). When its numerator cell is empty (TP for LR+, "
+"FN for LR-, TP or TN for the diagnostic odds ratio) the ratio is exactly 0, "
+"and its confidence interval runs from 0 to the upper limit of the same "
+"log-scale interval computed with 0.5 added to every cell; when both are "
+"empty it is not estimable. Sensitivity, specificity, predictive values and "
+"their intervals use the observed counts. The corrected diagnostic odds ratio "
+"need not equal the ratio of the displayed likelihood ratios."
 msgstr ""
-"Sıfır hücre bulunduğu için olabilirlik oranları ve tanısal odds oranı için "
-"her hücreye 0.5 eklendi. Güven aralıkları da aynı düzeltilmiş sayıları "
+"Sıfır hücre bulunuyordu. Bir olabilirlik oranı ya da tanısal odds oranı "
+"yalnızca payda hücresi boş, pay hücresi boş değilken düzeltilir (LR+ için "
+"YP, LR- için GN, tanısal odds oranı için YP veya YN): bu durumda o oran ve "
+"güven aralığı için dört hücrenin tümüne 0.5 eklenir (Haldane-Anscombe "
+"düzeltmesi). Pay hücresi boş olduğunda (LR+ için GP, LR- için YN, tanısal "
+"odds oranı için GP veya GN) oran tam olarak 0'dır ve güven aralığı 0'dan, "
+"her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına "
+"kadar uzanır; her ikisi de boş olduğunda tahmin edilemez. Duyarlılık, "
+"özgüllük, öngörü değerleri ve bunların aralıkları gözlenen sayıları "
+"kullanır. Düzeltilmiş tanısal odds oranının görüntülenen olabilirlik "
+"oranlarının oranına eşit olması gerekmez."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"A zero cell was present. As in the tables above, a ratio whose denominator "
+"cell is empty (FP for LR+, TN for LR-, FP or FN for the diagnostic odds "
+"ratio) while its numerator cell is not uses the table with 0.5 added to "
+"every cell (Haldane-Anscombe), and so does its interval; these corrected "
+"limits are approximate. If that correction would put the ratio at or below 1 "
+"it is left blank, because it would reverse the direction of an infinite "
+"observed value. A ratio whose numerator cell is empty and denominator cell "
+"is not is exactly 0, and its interval runs from 0 to the upper limit of the "
+"same log-scale interval computed with 0.5 added to every cell; one with both "
+"cells empty (0/0) is not estimable. Every other ratio, Youden's index and "
+"the number needed to diagnose use the observed counts."
+msgstr ""
+"Sıfır hücre bulunuyordu. Yukarıdaki tablolarda olduğu gibi, pay hücresi boş "
+"değilken payda hücresi boş olan bir oran (LR+ için YP, LR- için GN, tanısal "
+"odds oranı için YP veya YN) her hücresine 0.5 eklenmiş tabloyu "
+"(Haldane-Anscombe) kullanır; aralığı da öyle. Bu düzeltilmiş sınırlar "
+"yaklaşıktır. Bu düzeltme oranı 1'e veya altına çekecekse, gözlenen sonsuz "
+"değerin yönünü tersine çevireceği için oran boş bırakılır. Payda hücresi boş "
+"değilken pay hücresi boş olan bir oran tam olarak 0'dır ve aralığı 0'dan, "
+"her hücreye 0.5 eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına "
+"kadar uzanır; iki hücresi de boş olan (0/0) bir oran tahmin edilemez. Diğer "
+"tüm oranlar, Youden indeksi ve tanı için gereken sayı gözlenen sayıları "
 "kullanır."
-
-#: R/decisioncalculator.b.R
-msgid ""
-"A zero cell was present, so the likelihood ratios and the probabilities read "
-"from the nomogram use the Haldane-Anscombe 0.5 correction. The predictive "
-"values and post-test probabilities in the Measures table are computed from "
-"the raw counts and can differ, by a wide margin in a small table."
-msgstr ""
-"Sıfır hücre bulunduğu için olabilirlik oranları ve nomogramdan okunan "
-"olasılıklar 0.5 Haldane-Anscombe düzeltmesini kullanır. Ölçüler tablosundaki "
-"öngörü değerleri ve test sonrası olasılıklar ham sayılardan hesaplanır ve "
-"küçük bir tabloda belirgin biçimde farklı olabilir."
-
-#: R/decisioncalculator.b.R
-msgid ""
-"A zero cell was present, so the likelihood ratios use the Haldane-Anscombe "
-"0.5 correction, while the predictive values above use the observed counts. "
-"Multiplying the pre-test odds by these likelihood ratios therefore need not "
-"reproduce the predictive values exactly."
-msgstr ""
-"Sıfır hücre bulunduğu için olabilirlik oranları 0.5 Haldane-Anscombe "
-"düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları "
-"kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak "
-"öngörü değerlerini tam olarak vermeyebilir."
-
-#: R/decisioncalculator.b.R
-msgid ""
-"A zero cell was present. As in the tables above, a likelihood ratio with a "
-"zero among its own cells (TP or FP for LR+, FN or TN for LR-) and the "
-"diagnostic odds ratio use the table with 0.5 added to every cell "
-"(Haldane-Anscombe), and so do their intervals; the other likelihood ratio "
-"uses the observed counts. These corrected limits are approximate. Youden's "
-"index and the number needed to diagnose use the observed counts."
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid ""
-"A zero cell was present. For LR+ only when TP or FP is zero, and for LR- "
-"only when FN or TN is zero, 0.5 is added to all four cells for that ratio "
-"and its confidence interval. The diagnostic odds ratio and its interval use "
-"all four cells plus 0.5 whenever any cell is zero (Haldane-Anscombe "
-"correction). Sensitivity, specificity, predictive values and their intervals "
-"use the observed counts. The corrected diagnostic odds ratio need not equal "
-"the ratio of the displayed likelihood ratios."
-msgstr ""
 
 #: R/decision.b.R
 msgid ""
 "A zero count makes a proportion exactly 0% or 100%. Read the 95% confidence "
 "intervals (95% confidence intervals option), not the point estimate. For the "
-"likelihood ratios, see Continuity correction applied."
+"likelihood ratios and the diagnostic odds ratio, see the notes under the "
+"tables."
 msgstr ""
 "Sıfır bir sayım bir oranı tam olarak %0 veya %100 yapar. Nokta tahminini "
 "değil, %95 güven aralıklarını (%95 güven aralıkları seçeneği) okuyun. "
-"Olabilirlik oranları için bkz. Süreklilik düzeltmesi uygulandı."
+"Olabilirlik oranları ve tanısal odds oranı için tabloların altındaki notlara "
+"bakın."
 
 #: R/decision.b.R
 msgid ""
@@ -12058,9 +12296,9 @@ msgstr "%{prevalence} prevalansta"
 
 #: R/psychopdaROC.b.R
 msgid ""
-"At a prevalence of %1$.1f%%, the %2$s is especially sensitive to changes in "
+"At a prevalence of %1$s%%, the %2$s is especially sensitive to changes in "
 "prevalence."
-msgstr ""
+msgstr "%%%1$s prevalansta %2$s, prevalanstaki değişikliklere özellikle duyarlıdır."
 
 #: R/kappaSizeCI.b.R
 msgid ""
@@ -12234,8 +12472,13 @@ msgid ""
 "standard error (kappa divided by its H0 test statistic) because the non-null "
 "asymptotic standard error from vcd::Kappa was unavailable for that subgroup. "
 "Null-SE intervals use a variance under zero agreement; their coverage at "
-"nonzero kappa is uncertain; three or more raters always use this fallback."
+"nonzero kappa is uncertain."
 msgstr ""
+"Bu tablodaki en az bir aralık, o alt grup için vcd::Kappa'dan sıfır-dışı "
+"asimptotik standart hata elde edilemediğinden sıfır hipotezi standart "
+"hatasından (kappa bölü H0 test istatistiği) oluşturuldu. Sıfır hipotezi "
+"standart hatasıyla kurulan aralıklar sıfır uyum altındaki bir varyansı "
+"kullanır; sıfırdan farklı kappa değerlerinde kapsamaları belirsizdir."
 
 #: R/agreement.b.R
 msgid ""
@@ -12314,6 +12557,19 @@ msgstr "En fazla 100 senaryo değeri veya kesme noktası girilebilir."
 #: R/psychopdaROC.b.R
 msgid "At optimal threshold = %1$s (sensitivity %2$s%%, specificity %3$s%%)"
 msgstr "En uygun eşik = %1$s (duyarlılık %2$s%%, özgüllük %3$s%%)"
+
+#: R/decisioncompare.b.R
+msgid ""
+"At the %1$s%% disease prevalence among the %2$d cases analysed for %3$s, "
+"%4$s positive predictive value, %5$s negative predictive value, and %6$s "
+"overall accuracy were observed; predictive values and accuracy change with "
+"prevalence and would need to be recomputed for a population with a different "
+"disease rate."
+msgstr ""
+"%3$s için analiz edilen %2$d olguda, %%%1$s hastalık prevalansında %4$s "
+"pozitif öngörü değeri, %5$s negatif öngörü değeri ve %6$s genel doğruluk "
+"gözlendi; öngörü değerleri ve doğruluk prevalansla değişir ve farklı "
+"hastalık oranına sahip bir popülasyon için yeniden hesaplanmalıdır."
 
 #: R/decisioncompare.b.R
 msgid ""
@@ -13104,16 +13360,6 @@ msgstr ""
 "belirleyen sınırda her olgunun katkıda bulunduğu ki-kareye bölümü, yukarı "
 "yuvarlanmış (sayılar Çalışma Açıklaması bölümünde gösterilir)."
 
-#: R/kappaSizePower.b.R
-msgid ""
-"Because the goodness-of-fit test has to estimate the expected proportions "
-"from the ratings, this sample size can fall well short of power {power}; "
-"confirm it by simulating the intended analysis."
-msgstr ""
-"Uyum iyiliği testi beklenen oranları değerlendirmelerden kestirmek zorunda "
-"olduğundan, bu örneklem büyüklüğü {power} gücünün oldukça altında kalabilir; "
-"planlanan analizi simüle ederek doğrulayın."
-
 #: R/enhancedROC.b.R
 msgid ""
 "Because the probabilities for '%s' were derived here by a linear logistic "
@@ -13157,6 +13403,10 @@ msgstr "Rastgele sıralamanın altında (alfa {a})"
 #: R/psychopdaROC.b.R
 msgid "Below chance"
 msgstr "Şans düzeyinin altında"
+
+#: R/psychopdaROC.b.R
+msgid "below chance"
+msgstr "şansın altında"
 
 #: R/agreement.b.R
 msgid "Below chance agreement"
@@ -14541,10 +14791,10 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
-"Check that \"Positive Outcome Level\" is the level the model predicts and "
-"that the column is not one minus the risk."
+"Check that \"Positive Outcome\" is the level the model predicts and that the "
+"column is not one minus the risk."
 msgstr ""
-"\"Pozitif Sonuç Düzeyi\" seçeneğinin modelin tahmin ettiği düzey olduğunu ve "
+"\"Pozitif Sonuç\" seçeneğinin modelin tahmin ettiği düzey olduğunu ve "
 "sütunun bir eksi risk olmadığını kontrol edin."
 
 #: R/decision.b.R
@@ -14594,6 +14844,14 @@ msgid ""
 msgstr ""
 "Bu test değişkeninin eksik değerlerini kontrol edin veya değişkeni analizden "
 "çıkarın."
+
+#: R/decisioncurve.b.R
+msgid ""
+"Check whether the model's bootstrap interval on the decision curve plot "
+"stays above both reference lines over this range."
+msgstr ""
+"Modelin karar eğrisi grafiğindeki bootstrap aralığının bu aralık boyunca her "
+"iki referans çizgisinin üzerinde kalıp kalmadığını kontrol edin."
 
 #: R/sequentialtests.b.R
 #: sequentialtests/options/preset/tb_screening_confirmation.title
@@ -16486,9 +16744,17 @@ msgstr "Koşul: %s"
 msgid "Condition/method variable"
 msgstr "Koşul/yöntem değişkeni"
 
+#: R/nogoldstandard.b.R
+msgid "Conditional independence cannot be checked with three tests"
+msgstr "Üç testle koşullu bağımsızlık denetlenemez"
+
 #: nogoldstandard/results/conditional_dependence.title
 msgid "Conditional Independence Check (Bivariate Residuals)"
 msgstr "Koşullu Bağımsızlık Kontrolü (İki Değişkenli Kalıntılar)"
+
+#: R/nogoldstandard.b.R
+msgid "Conditional independence not checked"
+msgstr "Koşullu bağımsızlık denetlenmedi"
 
 #: R/enhancedROC.b.R
 msgid "Conditional on observed sites; no site-population extrapolation"
@@ -16956,10 +17222,6 @@ msgstr "tutarlı uyum"
 msgid "consistent correlation"
 msgstr "tutarlı korelasyon"
 
-#: R/nogoldstandard.b.R
-msgid "Consistent with independence"
-msgstr "Bağımsızlıkla tutarlı"
-
 #: R/enhancedROC.b.R
 msgid "Constant Predictor: %s"
 msgstr "Sabit Öngörücü: %s"
@@ -17156,6 +17418,20 @@ msgstr ""
 "yeniden seçildi. Düzeltme yaklaşıktır: kurallar neredeyse eşit olduğunda "
 "iyimserliğin bir kısmını bırakır ve testlerin, düzeylerin veya hastaların "
 "nasıl seçildiğini hesaba katmaz."
+
+#: R/lassologistic.b.R
+msgid ""
+"Corrected values are an optimism-corrected internal validation (Harrell's "
+"bootstrap) on the same patients, not an external validation. With variable "
+"and lambda selection in a modest sample the correction removes only part of "
+"the optimism, so the corrected AUC can still be too high; confirm "
+"performance on independent data."
+msgstr ""
+"Düzeltilmiş değerler, aynı hastalar üzerinde iyimserlik düzeltmeli bir iç "
+"doğrulamadır (Harrell bootstrap yöntemi), dış doğrulama değildir. Orta "
+"büyüklükte bir örneklemde değişken ve lambda seçimi yapıldığında düzeltme "
+"iyimserliğin yalnızca bir kısmını giderir; bu nedenle düzeltilmiş AUC hâlâ "
+"fazla yüksek olabilir. Performansı bağımsız verilerde doğrulayın."
 
 #: agreement/options/clusterDistance/correlation.title
 msgid "Correlation (1 - r), pattern only"
@@ -18123,6 +18399,10 @@ msgstr ""
 msgid "Default"
 msgstr "Varsayılan"
 
+#: R/lassologistic.b.R
+msgid "Default (no discrimination)"
+msgstr "Varsayılan (ayırt edicilik yok)"
+
 #: R/decisioncombine.b.R
 #: decisioncombine/options/filterStatistic/all.title
 msgid "Default Metric Set"
@@ -18615,6 +18895,10 @@ msgid "Diagnostic odds ratio"
 msgstr "Tanısal odds oranı"
 
 #: R/decisioncalculator.b.R
+msgid "diagnostic odds ratio"
+msgstr "tanısal odds oranı"
+
+#: R/decisioncalculator.b.R
 msgid ""
 "Diagnostic odds ratio compares the odds of a positive result between "
 "reference-positive and reference-negative groups. Its magnitude is "
@@ -18638,15 +18922,16 @@ msgstr ""
 msgid ""
 "Diagnostic odds ratio: the odds of a positive test in patients with the "
 "disease divided by the odds of a positive test in patients without it. On "
-"one 2x2 table it equals LR+ / LR- (Glas et al. 2003); here it and only one "
-"of the likelihood ratios come from the zero-cell corrected table, so the "
-"displayed values need not satisfy that identity."
+"one 2x2 table it equals LR+ / LR- (Glas et al. 2003); here the displayed "
+"ratios do not all come from the same table (a ratio with a zero denominator "
+"count is computed from the zero-cell corrected table), so they need not "
+"satisfy that identity."
 msgstr ""
 "Tanısal odds oranı: hastalığı olan hastalarda pozitif test odds'unun, "
 "hastalığı olmayan hastalarda pozitif test odds'una bölümüdür. Tek bir 2x2 "
-"tabloda LR+ / LR- değerine eşittir (Glas et al. 2003); burada bu oran ve "
-"olabilirlik oranlarından yalnızca biri sıfır hücre düzeltmesi uygulanmış "
-"tablodan elde edildiği için görüntülenen değerlerin bu özdeşliği sağlaması "
+"tabloda LR+ / LR- değerine eşittir (Glas et al. 2003); burada görüntülenen "
+"oranların tümü aynı tablodan gelmediği için (payda sayımı sıfır olan bir "
+"oran sıfır hücre düzeltmeli tablodan hesaplanır) bu özdeşliği sağlamaları "
 "gerekmez."
 
 #: decisioncombine/options/filterStatistic/dor.title
@@ -19883,8 +20168,10 @@ msgid "Empirical Total Deviation Index (TDI)"
 msgstr "Ampirik Toplam Sapma İndeksi (TDI)"
 
 #: R/nogoldstandard.b.R
-msgid "Enable bootstrap confidence intervals for robust estimates"
-msgstr "Sağlam tahminler için bootstrap güven aralıklarını etkinleştirin"
+msgid ""
+"Enable bootstrap for approximate confidence intervals (estimates do not "
+"change)"
+msgstr "Yaklaşık güven aralıkları için bootstrap'ı etkinleştirin (tahminler değişmez)"
 
 #: decisioncompare/options/pp.description.ui
 msgid ""
@@ -20006,10 +20293,6 @@ msgstr "EPV = %.1f (geleneksel EPV >= 10 ölçütünü karşılıyor)"
 #: R/enhancedROC.b.R
 msgid "Equal"
 msgstr "Eşit"
-
-#: R/decisioncurve.b.R
-msgid "Equal Numbers of Events and Non-Events"
-msgstr "Olaylı ve Olaysız Hasta Sayıları Eşit"
 
 #: psychopdaROC/options/method/oc_equal_sens_spec.title
 msgid "Equal sensitivity and specificity"
@@ -20465,12 +20748,16 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "Every predictor produced a single distinct predicted probability, so there "
-"is nothing to group into calibration bins. This usually means the predictor "
-"is constant within the analysed rows."
+"is nothing to group into calibration bins. That happens only when a "
+"predictor is constant within the analysed rows: with Prediction scale Score "
+"its logistic slope is then not estimable, and every patient receives the "
+"sample prevalence as risk."
 msgstr ""
 "Her öngörücü tek bir farklı tahmin edilen olasılık üretti; bu nedenle "
-"kalibrasyon gruplarına ayrılacak bir şey yoktur. Bu genellikle öngörücünün "
-"analiz edilen satırlarda sabit olduğu anlamına gelir."
+"kalibrasyon gruplarına ayrılacak bir şey yoktur. Bu yalnızca bir öngörücü "
+"analiz edilen satırlarda sabit olduğunda olur: Tahmin ölçeği Skor iken "
+"lojistik eğimi tahmin edilemez ve her hasta risk olarak örneklem "
+"prevalansını alır."
 
 #: R/decisioncombine.b.R
 msgid ""
@@ -22214,19 +22501,6 @@ msgid ""
 "                        has no unique mode and is excluded."
 msgstr ""
 
-#: R/decisioncombine.b.R
-msgid ""
-"For LR+ only when TP or FP is zero, and for LR- only when FN or TN is zero, "
-"0.5 is added to all four cells for that ratio and its confidence interval. "
-"The diagnostic odds ratio and its interval use all four cells plus 0.5 "
-"whenever any cell is zero (Haldane-Anscombe correction). The corrected "
-"diagnostic odds ratio need not equal the ratio of the displayed likelihood "
-"ratios. No correction is made on a row with no test-positive patients: its "
-"LR+ and odds ratio are blank and its LR- is exactly 1, and the mirror case "
-"blanks LR- and the odds ratio and shows LR+ as exactly 1. In a sample with "
-"one reference outcome all three are blank."
-msgstr ""
-
 #: R/agreement.b.R
 msgid ""
 "For multi-category data, calculates agreement index for each category "
@@ -22526,8 +22800,8 @@ msgid "Full"
 msgstr ""
 
 #: R/lassologistic.b.R
-msgid "Full LASSO model (continuous)"
-msgstr "Tam LASSO modeli (sürekli)"
+msgid "Full %s model (continuous)"
+msgstr "Tam %s modeli (sürekli)"
 
 #: package/analyses/decisioncompare.description
 #: decisioncompare/options.description.main
@@ -23327,6 +23601,18 @@ msgstr ""
 "analizinde yapılması gerektiği gibi bunları her kappa değerinde yeniden "
 "kestirmek {bound} verir ve bildirilen değer budur."
 
+#: R/kappaSizeFixedN.b.R
+msgid ""
+"Holding the category proportions at their anticipated values, as the "
+"published calculation and kappaSize do, gives {fixed}; the figure shown "
+"re-estimates them at each value of kappa, as the analysis of the study "
+"should, and is the lower of the two."
+msgstr ""
+"Kategori oranlarını beklenen değerlerinde sabit tutmak, yayımlanmış "
+"hesaplamanın ve kappaSize'ın yaptığı gibi, {fixed} verir; gösterilen değer "
+"ise çalışmanın analizinde yapılması gerektiği gibi bunları her kappa "
+"değerinde yeniden kestirir ve ikisinden düşük olanıdır."
+
 #: R/agreement.b.R
 #: agreement/options/multipleTestCorrection/holm.title
 msgid "Holm"
@@ -23760,12 +24046,12 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
-"If cases and controls were sampled separately, the 50% prevalence is a "
+"If cases and controls were sampled separately, the {pct}% prevalence is a "
 "design choice rather than the outcome rate of the target population, and the "
 "net benefit, the treat-all line and every projection here do not apply to "
 "that population."
 msgstr ""
-"Olgular ve kontroller ayrı ayrı örneklendiyse %50 prevalans, hedef "
+"Olgular ve kontroller ayrı ayrı örneklendiyse %{pct} prevalans, hedef "
 "popülasyonun sonuç oranı değil bir tasarım tercihidir; net fayda, herkesi "
 "tedavi et çizgisi ve buradaki tüm projeksiyonlar o popülasyona uygulanamaz."
 
@@ -24036,6 +24322,19 @@ msgstr "Önemli uyarı"
 msgid "Improvement"
 msgstr "Gelişme / İyileşme"
 
+#: R/decisioncombine.b.R
+msgid ""
+"In {n} row(s) ({patterns}) LR+, LR- or the diagnostic odds ratio is exactly "
+"0 because the cell in its numerator is zero; no continuity correction is "
+"applied to that estimate. Its confidence interval runs from 0 to the upper "
+"limit of the same log-scale interval computed with 0.5 added to every cell "
+"(Haldane-Anscombe correction)."
+msgstr ""
+"{n} satırda ({patterns}) LR+, LR- veya tanısal odds oranı, payındaki hücre "
+"sıfır olduğu için tam olarak 0'dır; bu kestirime süreklilik düzeltmesi "
+"uygulanmaz. Güven aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı "
+"log ölçekli aralığın üst sınırına kadar uzanır (Haldane-Anscombe düzeltmesi)."
+
 #: R/agreement.b.R
 msgid ""
 "In a breast cancer grading study, the contingency table might reveal that "
@@ -24114,6 +24413,24 @@ msgstr ""
 "kestirici, karşılaştırılan dört kestirici (normal, dönüştürülmüş normal, "
 "ampirik ve çekirdek) arasında genel olarak en kötü yanlılığa ve kök ortalama "
 "kare hataya sahipti; kesme noktasının kendisi için sonuçları daha değişkendi."
+
+#: R/enhancedROC.b.R
+msgid ""
+"In these data the fitted logistic risk of %2$s runs opposite to the "
+"direction in which the ROC tables read %1$s (AUC %3$.3f in that direction). "
+"A one-marker logistic model does not depend on Direction, so calibration, "
+"the Brier score, the Hosmer-Lemeshow test, the decision and clinical impact "
+"curves and internal validation use the risk model the data support. Under "
+"the direction selected, %1$s performs worse than those outputs show. Check "
+"Direction and Positive class."
+msgstr ""
+"Bu verilerde %2$s için uyarlanan lojistik risk, ROC tablolarının %1$s "
+"belirtecini okuduğu yönün tersine işliyor (o yönde AUC %3$.3f). Tek "
+"belirteçli bir lojistik model Yön ayarına bağlı değildir; bu nedenle "
+"kalibrasyon, Brier skoru, Hosmer-Lemeshow testi, karar ve klinik etki "
+"eğrileri ile iç doğrulama verilerin desteklediği risk modelini kullanır. "
+"Seçilen yön altında %1$s, bu çıktıların gösterdiğinden daha kötü performans "
+"gösterir. Yön ve Pozitif sınıf ayarlarını kontrol edin."
 
 #: R/agreement.b.R
 msgid ""
@@ -24553,17 +24870,6 @@ msgstr "Yetersiz Sonuç Değişkeni Düzeyleri"
 #: R/enhancedROC.b.R
 msgid "Insufficient Predictors"
 msgstr "Yetersiz Öngörücüler"
-
-#: R/enhancedROC.b.R
-msgid ""
-"Insufficient unique predicted probability values for Hosmer-Lemeshow "
-"grouping (need at least 3 distinct break points). This typically occurs when "
-"the predictor has very few unique values."
-msgstr ""
-"Hosmer-Lemeshow gruplandırması için yetersiz benzersiz tahmin edilen "
-"olasılık değerleri (en az 3 farklı kesme noktası gerekir). Bu durum tipik "
-"olarak öngörücünün çok az benzersiz değere sahip olması durumunda ortaya "
-"çıkar."
 
 #: R/enhancedROC.b.R
 msgid "Insufficient valid replicates"
@@ -25652,7 +25958,7 @@ msgstr "kappa1"
 
 #: R/kappaSizePower.b.R
 msgid "kappa1 must be strictly between 0 and 1."
-msgstr ""
+msgstr "kappa1 kesinlikle 0 ile 1 arasında olmalıdır."
 
 #: kappaSizeCI/options/kappaL.title
 msgid "kappaL"
@@ -26266,6 +26572,10 @@ msgstr "Bulunan düzeyler:"
 msgid "Levels found: {levels}."
 msgstr "Bulunan düzeyler: {levels}."
 
+#: R/decisioncompare.b.R
+msgid "Levels Not Yet Selected"
+msgstr "Düzeyler Henüz Seçilmedi"
+
 #: R/agreement.b.R
 msgid "Light = few cases, dark = many; no color required"
 msgstr ""
@@ -26345,23 +26655,26 @@ msgid ""
 "Like the published formulas, it treats the expected proportions as known and "
 "rests on a large-sample approximation, so the power actually achieved can "
 "differ from the stated power in either direction: by several percentage "
-"points in many designs, and by much more with several raters and a rare "
-"finding, where estimating the proportions costs power. For a binary outcome "
-"the analysis therefore simulates the recommended test at the sample size "
-"shown and, when the simulated power falls more than 0.03 short, gives a "
-"simulated sample size; with three to five categories a note flags designs "
-"where the loss is likely to be large (both from 10 subjects upwards)."
+"points in many designs, and by much more with several raters or a rare "
+"finding. For a binary outcome the analysis therefore simulates the "
+"recommended test at the sample size shown and, when the simulated power "
+"falls more than 0.03 short, gives a simulated sample size; with three to "
+"five categories and three or more raters, where the simulated power at the "
+"published sample size was below 0.75 for a stated 0.80 in 8 of 12 designs "
+"checked, a note asks for the sample size to be confirmed by simulation (both "
+"from 10 subjects upwards)."
 msgstr ""
 "Yayımlanmış formüller gibi beklenen oranları biliniyor kabul eder ve büyük "
 "örneklem yaklaşımına dayanır; bu nedenle gerçekte ulaşılan güç belirtilen "
 "güçten her iki yönde de farklı olabilir: birçok tasarımda birkaç yüzde "
-"puanı, birkaç değerlendirici ve nadir bir bulgu olduğunda ise çok daha "
-"fazla, çünkü bu durumda oranların kestirilmesi güç kaybettirir. Bu nedenle "
-"ikili bir sonuçta analiz, önerilen testi gösterilen örneklem büyüklüğünde "
-"simüle eder ve simüle güç 0.03'ten fazla düştüğünde simülasyonla bulunan bir "
-"örneklem büyüklüğü verir; üç ila beş kategoride ise bir not, kaybın büyük "
-"olmasının beklendiği tasarımları işaret eder (her ikisi de 10 olgudan "
-"itibaren)."
+"puanı, birkaç değerlendirici ya da nadir bir bulgu olduğunda ise çok daha "
+"fazla. Bu nedenle ikili bir sonuçta analiz, önerilen testi gösterilen "
+"örneklem büyüklüğünde simüle eder ve simüle güç 0.03'ten fazla düştüğünde "
+"simülasyonla bulunan bir örneklem büyüklüğü verir; üç ila beş kategori ve üç "
+"veya daha fazla değerlendirici olduğunda, yayımlanmış örneklem "
+"büyüklüğündeki simüle gücün denetlenen 12 tasarımın 8'inde belirtilen 0.80 "
+"için 0.75'in altında kaldığı durumda, bir not örneklem büyüklüğünün "
+"simülasyonla doğrulanmasını ister (her ikisi de 10 olgudan itibaren)."
 
 #: R/decision.b.R
 msgid ""
@@ -26968,33 +27281,51 @@ msgstr "LR+ Kalitesi"
 
 #: R/decisioncombine.b.R
 msgid ""
-"LR+, LR- and the diagnostic odds ratio add 0.5 to all four cells when a cell "
-"is zero, so they stay finite (for the odds ratio this is the "
-"Haldane-Anscombe correction; the likelihood ratios use the same adjustment); "
-"the proportions on the same row use the observed counts, so the two need not "
-"agree exactly at a zero cell. The correction repairs a sampling zero, not a "
-"structural one. On a row with no test-positive patients (a pattern nobody "
-"shows, or a rule that is never positive), LR+ and the odds ratio are 0/0 and "
-"are left BLANK rather than corrected, while LR- is exactly 1: any other "
-"result leaves the odds unchanged. On a row with no test-negative patients, "
-"LR- and the odds ratio are blank and LR+ is exactly 1. In a sample with only "
-"one reference outcome all three are blank in every row, as are PPV and NPV, "
+"LR+, LR- and the diagnostic odds ratio add 0.5 to all four cells only when a "
+"cell in the ratio's denominator is zero and its numerator is not (FP for "
+"LR+, TN for LR-, FP or FN for the odds ratio), so the ratio stays finite "
+"(for the odds ratio this is the Haldane-Anscombe correction; the likelihood "
+"ratios use the same adjustment). When the numerator cell is zero instead (TP "
+"for LR+, FN for LR-, TP or TN for the odds ratio), the ratio is exactly 0 "
+"and is not corrected: adding 0.5 there would turn a test that never detected "
+"disease into one that seems to point towards it. Its confidence interval "
+"runs from 0 to the upper limit of the same log-scale interval computed with "
+"0.5 added to every cell. A corrected ratio stands in for an infinite one, so "
+"when the correction would bring it to 1 or below (an empty cell in a much "
+"smaller reference group) it is left blank as not estimable. The proportions "
+"on the same row use the observed counts, so the two need not agree exactly "
+"at a zero cell. The correction repairs a sampling zero, not a structural "
+"one. On a row with no test-positive patients (a pattern nobody shows, or a "
+"rule that is never positive), LR+ and the odds ratio are 0/0 and are left "
+"BLANK rather than corrected, while LR- is exactly 1: any other result leaves "
+"the odds unchanged. On a row with no test-negative patients, LR- and the "
+"odds ratio are blank and LR+ is exactly 1. In a sample with only one "
+"reference outcome all three are blank in every row, as are PPV and NPV, "
 "which the sampling alone fixes, and Accuracy, which then only repeats the "
 "sensitivity or specificity."
 msgstr ""
-"Bir hücre sıfır olduğunda LR+, LR- ve tanısal odds oranı, sonlu kalmaları "
-"için dört hücrenin tümüne 0,5 eklenerek hesaplanır (odds oranı için bu "
-"Haldane-Anscombe düzeltmesidir; olabilirlik oranları da aynı düzeltmeyi "
-"kullanır); aynı satırdaki yüzdeler gözlenen sayıları kullanır, bu nedenle "
-"ikisi sıfır hücrede tam olarak uyuşmayabilir. Düzeltme yapısal değil "
-"örneklemsel bir sıfırı onarır. Test-pozitif hastası olmayan bir satırda (hiç "
-"kimsenin göstermediği bir patern ya da hiçbir zaman pozitif olmayan bir "
-"kural) LR+ ve odds oranı 0/0'dır ve düzeltilmek yerine BOŞ bırakılır; LR- "
-"ise tam 1'dir: başka herhangi bir sonuç odds'u değiştirmez. Test-negatif "
-"hastası olmayan bir satırda LR- ve odds oranı boştur ve LR+ tam 1'dir. "
-"Yalnızca tek bir referans sonucunun bulunduğu bir örneklemde üç oran da her "
-"satırda boştur; örneklemenin tek başına sabitlediği PPV ve NPV ile o durumda "
-"yalnızca duyarlılığı ya da özgüllüğü tekrarlayan Doğruluk da öyle."
+"LR+, LR- ve tanısal odds oranı, dört hücrenin tümüne 0.5'i yalnızca oranın "
+"paydasındaki bir hücre sıfır ve payı sıfır değilken ekler (LR+ için YP, LR- "
+"için GN, odds oranı için YP veya YN); böylece oran sonlu kalır (odds oranı "
+"için bu Haldane-Anscombe düzeltmesidir; olabilirlik oranları da aynı "
+"düzeltmeyi kullanır). Bunun yerine pay hücresi sıfır olduğunda (LR+ için GP, "
+"LR- için YN, odds oranı için GP veya GN) oran tam olarak 0'dır ve "
+"düzeltilmez: oraya 0.5 eklemek, hastalığı hiç saptamamış bir testi hastalığa "
+"işaret ediyormuş gibi gösterirdi. Güven aralığı 0'dan, her hücreye 0.5 "
+"eklenerek hesaplanan aynı log ölçekli aralığın üst sınırına kadar uzanır. "
+"Düzeltilmiş bir oran sonsuz bir oranın yerini tutar; bu nedenle düzeltme onu "
+"1'e ya da altına indirecekse (çok daha küçük bir referans grubunda boş bir "
+"hücre) tahmin edilemez olarak boş bırakılır. Aynı satırdaki yüzdeler "
+"gözlenen sayıları kullanır, bu nedenle ikisi sıfır hücrede tam olarak "
+"uyuşmayabilir. Düzeltme yapısal değil örneklemsel bir sıfırı onarır. "
+"Test-pozitif hastası olmayan bir satırda (hiç kimsenin göstermediği bir "
+"patern ya da hiçbir zaman pozitif olmayan bir kural) LR+ ve odds oranı "
+"0/0'dır ve düzeltilmek yerine BOŞ bırakılır; LR- ise tam 1'dir: başka "
+"herhangi bir sonuç odds'u değiştirmez. Test-negatif hastası olmayan bir "
+"satırda LR- ve odds oranı boştur ve LR+ tam 1'dir. Yalnızca tek bir referans "
+"sonucunun bulunduğu bir örneklemde üç oran da her satırda boştur; "
+"örneklemenin tek başına sabitlediği PPV ve NPV ile o durumda yalnızca "
+"duyarlılığı ya da özgüllüğü tekrarlayan Doğruluk da öyle."
 
 #: enhancedROC/results/results/multiClassAverage.columns.title
 msgid "Macro AUC"
@@ -27149,7 +27480,7 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "maximising"
-msgstr ""
+msgstr "en büyük yapılarak"
 
 #: psychopdaROC/options/method/maximize_metric.title
 msgid "Maximize metric"
@@ -27169,7 +27500,7 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "maximum"
-msgstr ""
+msgstr "maksimum"
 
 #: decision/options/maxCasesShow.title
 msgid "Maximum cases to display"
@@ -27777,6 +28108,10 @@ msgstr "Minimum ρ"
 msgid "Minimal"
 msgstr "Minimal"
 
+#: R/psychopdaROC.b.R
+msgid "minimal"
+msgstr "minimal"
+
 #: R/decision.b.R
 msgid "Minimal decrease in probability of disease"
 msgstr "Hastalık olasılığında minimal azalma"
@@ -27807,7 +28142,7 @@ msgstr "Minimal değerlendirici yanlılığı"
 
 #: R/psychopdaROC.b.R
 msgid "minimising"
-msgstr ""
+msgstr "en küçük yapılarak"
 
 #: psychopdaROC/options/metric/abs_d_ppv_npv.title
 msgid "Minimize |PPV - NPV|"
@@ -27831,7 +28166,7 @@ msgstr "Ölçütü minimize et (LOESS ile düzeltilmiş)"
 
 #: R/psychopdaROC.b.R
 msgid "minimum"
-msgstr ""
+msgstr "minimum"
 
 #: decisioncompare/ui[4]/niMargin.label
 msgid "Minimum acceptable OPA (%)"
@@ -27989,10 +28324,6 @@ msgstr "Eksik Paketler"
 #: R/decisioncompare.b.R
 msgid "Missing Positive Level"
 msgstr "Pozitif Düzey Eksik"
-
-#: R/decisioncompare.b.R
-msgid "Missing Positive Levels"
-msgstr "Pozitif Düzeyler Eksik"
 
 #: R/agreement.b.R
 msgid "Missing ratings, or raters who did not all see every case"
@@ -28945,6 +29276,10 @@ msgstr "Negatif Olabilirlik Oranı"
 msgid "Negative likelihood ratio"
 msgstr "Negatif olabilirlik oranı"
 
+#: R/decisioncalculator.b.R
+msgid "negative likelihood ratio"
+msgstr "negatif olabilirlik oranı"
+
 #: R/decision.b.R
 msgid "Negative likelihood ratio unavailable due to data limitations"
 msgstr "veri kısıtlılıkları nedeniyle negatif olabilirlik oranı mevcut değil"
@@ -29800,6 +30135,10 @@ msgstr "Uygun payda yok"
 msgid "No eligible paired cases"
 msgstr "Uygun eşleştirilmiş olgu yok"
 
+#: R/nogoldstandard.b.R
+msgid "No evidence against conditional independence (descriptive)"
+msgstr "Koşullu bağımsızlığa karşı kanıt yok (betimsel)"
+
 #: R/agreement.b.R
 msgid "No evidence of a difference"
 msgstr "Fark olduğuna dair kanıt yok"
@@ -30130,6 +30469,26 @@ msgid "No reference-negative subjects"
 msgstr "Referans negatif denek yok"
 
 #: R/decisioncalculator.b.R
+msgid ""
+"No reference-positive subject tested negative (FN = 0), so the negative "
+"likelihood ratio is exactly 0. A ratio of 0 cannot be placed on the "
+"nomogram's logarithmic scale."
+msgstr ""
+"Hiçbir referans-pozitif denek negatif test sonucu vermedi (YN = 0), bu "
+"nedenle negatif olabilirlik oranı tam olarak 0'dır. 0 değerindeki bir oran "
+"nomogramın logaritmik ölçeğine yerleştirilemez."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"No reference-positive subject tested positive (TP = 0), so the positive "
+"likelihood ratio is exactly 0. A ratio of 0 cannot be placed on the "
+"nomogram's logarithmic scale."
+msgstr ""
+"Hiçbir referans-pozitif denek pozitif test sonucu vermedi (GP = 0), bu "
+"nedenle pozitif olabilirlik oranı tam olarak 0'dır. 0 değerindeki bir oran "
+"nomogramın logaritmik ölçeğine yerleştirilemez."
+
+#: R/decisioncalculator.b.R
 msgid "No reference-positive subjects"
 msgstr "Referans pozitif denek yok"
 
@@ -30326,6 +30685,18 @@ msgstr ""
 "Bir referans standart sınıfında hiç olgu olmadığı için hiçbir test dengeli "
 "doğruluğa göre sıralanamadı; aşağıdaki değerler ilk seçilen test olan %s "
 "testini tanımlar."
+
+#: R/decisioncompare.b.R
+msgid ""
+"No test could be ranked on the cases common to all tests; the figures below "
+"describe %s, the first test selected."
+msgstr ""
+"Tüm testlerde ortak olan olgularda hiçbir test sıralanamadı; aşağıdaki "
+"değerler seçilen ilk test olan %s testini tanımlar."
+
+#: R/decisioncompare.b.R
+msgid "No test is ranked on the cases common to all tests."
+msgstr "Tüm testlerde ortak olan olgularda hiçbir test sıralanmadı."
 
 #: R/decisioncompare.b.R
 msgid "No Test Variables"
@@ -30605,10 +30976,6 @@ msgstr "Faydalı değil"
 msgid "not calculated"
 msgstr "hesaplanmadı"
 
-#: R/decision.b.R
-msgid "not calculated (needs both sensitivity and specificity)"
-msgstr "hesaplanmadı (hem duyarlılık hem özgüllük gerektirir)"
-
 #: R/agreement.b.R
 msgid ""
 "Not comparable with strict accuracy: strict is defined on only %1$d of these "
@@ -30675,6 +31042,7 @@ msgid "Not estimable"
 msgstr "Kestirilemiyor"
 
 #: R/cotest.b.R
+#: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -30717,9 +31085,21 @@ msgid ""
 "undefined."
 msgstr "Bu tablo için tahmin edilemez: bir payda sıfırdır veya nicelik tanımsızdır."
 
+#: R/decision.b.R
+msgid "not estimable from these counts"
+msgstr "bu sayımlardan tahmin edilemez"
+
 #: R/enhancedROC.b.R
 msgid "Not estimable; see the notice above the results."
 msgstr "Tahmin edilemez; sonuçların üzerindeki bildirime bakın."
+
+#: R/decisioncompare.b.R
+msgid ""
+"Not estimable: FP = 0 makes LR+ infinite, and the 0.5 correction would "
+"reverse its direction."
+msgstr ""
+"Tahmin edilemez: YP = 0 LR+ değerini sonsuz yapar ve 0.5 düzeltmesi yönünü "
+"tersine çevirirdi."
 
 #: R/decision.b.R
 msgid "not estimable: no gold-standard negative cases"
@@ -30763,6 +31143,14 @@ msgstr ""
 "Kestirilemiyor: bu değerlendirici ve referans değerlendirici yalnızca tek ve "
 "aynı kategoriyi kullandı; bu nedenle şans eseri uyum tamdır ve kappa 0 bölü "
 "0'dır."
+
+#: R/decisioncompare.b.R
+msgid ""
+"Not estimable: TN = 0 makes LR- infinite, and the 0.5 correction would "
+"reverse its direction."
+msgstr ""
+"Tahmin edilemez: GN = 0 LR- değerini sonsuz yapar ve 0.5 düzeltmesi yönünü "
+"tersine çevirirdi."
 
 #: R/cotest.b.R
 msgid ""
@@ -31463,16 +31851,28 @@ msgstr ""
 "kullanımdan önce puan-risk eşleştirmesini bağımsız bir kohortta doğrulayın."
 
 #: R/decision.b.R
+msgid ""
+"Observed levels outside the selected positive/negative pair: %s. Choose the "
+"positive and negative levels to compare under the level selectors, or recode "
+"the variable before analysis. Cases at other levels are excluded, never "
+"treated as negative."
+msgstr ""
+"Seçilen pozitif/negatif çiftin dışında gözlenen düzeyler: %s. "
+"Karşılaştırılacak pozitif ve negatif düzeyleri düzey seçicilerinden seçin ya "
+"da değişkeni analizden önce yeniden kodlayın. Diğer düzeylerdeki olgular "
+"dışlanır, hiçbir zaman negatif kabul edilmez."
+
 #: R/decisioncompare.b.R
 msgid ""
 "Observed levels outside the selected positive/negative pair: %s. Select "
-"'Exclude other observed levels' to omit these results, or explicitly recode "
-"the variable before analysis. Other levels are never treated as negative."
+"'Selected positive and negative levels only' to omit these results, or "
+"explicitly recode the variable before analysis. Other levels are never "
+"treated as negative."
 msgstr ""
 "Seçilen pozitif/negatif çiftin dışında gözlenen düzeyler: %s. Bu sonuçları "
-"dışarıda bırakmak için 'Gözlenen diğer düzeyleri dışla' seçeneğini "
-"işaretleyin ya da değişkeni analizden önce açıkça yeniden kodlayın. Diğer "
-"düzeyler hiçbir zaman negatif kabul edilmez."
+"dışarıda bırakmak için 'Yalnızca seçilen pozitif ve negatif düzeyler' "
+"seçeneğini işaretleyin ya da değişkeni analizden önce açıkça yeniden "
+"kodlayın. Diğer düzeyler hiçbir zaman negatif kabul edilmez."
 
 #: psychopdaROC/results/powerAnalysisTable.columns.title
 msgid "Observed Power"
@@ -31489,6 +31889,21 @@ msgstr "gözlenen prevalans {prev}"
 #: R/enhancedROC.b.R
 msgid "Observed Proportion"
 msgstr "Gözlemlenen Oran"
+
+#: R/decisioncurve.b.R
+msgid ""
+"Observed range of threshold probabilities over which the model's apparent "
+"(in-sample) net benefit exceeds both treat-all and treat-none. It carries no "
+"allowance for sampling variation: near the outcome prevalence even a "
+"predictor unrelated to the outcome often shows a short range by chance, so a "
+"narrow range or a small margin is not evidence of benefit."
+msgstr ""
+"Modelin görünen (örneklem içi) net faydasının hem herkesi tedavi etmeyi hem "
+"de hiç kimseyi tedavi etmemeyi aştığı gözlenen eşik olasılıkları aralığı. "
+"Örnekleme değişkenliği için hiçbir pay içermez: sonuç prevalansına yakın "
+"eşiklerde, sonuçla ilişkisiz bir öngörücü bile şans eseri sıklıkla kısa bir "
+"aralık gösterir; bu nedenle dar bir aralık ya da küçük bir fark yarar kanıtı "
+"değildir."
 
 #: R/enhancedROC.b.R
 msgid "Observed sample counts and PPV; unit is given in the workload table."
@@ -31801,6 +32216,18 @@ msgstr ""
 "Başka herhangi bir düzeydeki olgular kaldırılır, hastalık yok olarak "
 "sayılmaz. Bunların kaldırılması tahminleri yanlı kılabilir. Kaç olgunun "
 "kaldırıldığını raporlayın (STARD 2015)."
+
+#: R/decision.b.R
+msgid ""
+"Only \"{pos}\" (reference-positive) and \"{neg}\" (reference-negative) take "
+"part. Cases at any other level are removed, not counted as "
+"reference-negative. Removing them can bias the estimates. Report how many "
+"were removed (STARD 2015)."
+msgstr ""
+"Yalnızca \"{pos}\" (referans-pozitif) ve \"{neg}\" (referans-negatif) yer "
+"alır. Başka herhangi bir düzeydeki olgular kaldırılır, referans-negatif "
+"olarak sayılmaz. Bunların kaldırılması tahminleri yanlı hale getirebilir. "
+"Kaç olgunun kaldırıldığını bildirin (STARD 2015)."
 
 #: R/decision.b.R
 msgid ""
@@ -32121,13 +32548,13 @@ msgstr "OPA Kriteri"
 
 #: R/decisioncombine.b.R
 msgid ""
-"Open points: rows with a zero cell, whose LR+, LR- and DOR use a 0.5 "
-"continuity correction; without it at least one of the three would be 0 or "
-"infinite."
+"Open points: rows where at least one of LR+, LR- and DOR uses a 0.5 "
+"continuity correction, because a cell in its denominator is zero; without it "
+"that ratio would be infinite."
 msgstr ""
-"Boş noktalar: LR+, LR- ve DOR değerlerinde 0,5 süreklilik düzeltmesi "
-"kullanılan, sıfır hücresi olan satırlar; düzeltme olmasaydı üçünden en az "
-"biri 0 ya da sonsuz olurdu."
+"Boş noktalar: LR+, LR- ve DOR'dan en az birinin, paydasındaki bir hücre "
+"sıfır olduğu için 0.5 süreklilik düzeltmesi kullandığı satırlar; düzeltme "
+"olmasaydı o oran sonsuz olurdu."
 
 #: R/enhancedROC.b.R
 msgid "Optimal (closest to top-left)"
@@ -32171,11 +32598,11 @@ msgstr "İyimserlik"
 
 #: R/lassologistic.b.R
 msgid ""
-"Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) is a "
-"more realistic estimate of future performance."
+"Optimism = %1$.3f indicates overfitting. The corrected AUC (%2$.3f) removes "
+"the estimated optimism."
 msgstr ""
-"İyimserlik = %1$.3f aşırı uyuma işaret ediyor. Düzeltilmiş AUC (%2$.3f), "
-"gelecekteki performansın daha gerçekçi bir tahminidir."
+"İyimserlik = %1$.3f aşırı uyuma işaret ediyor. Düzeltilmiş AUC (%2$.3f) "
+"tahmin edilen iyimserliği çıkarır."
 
 #: R/enhancedROC.b.R
 msgid ""
@@ -32463,6 +32890,10 @@ msgstr ""
 "Sonuç seçimi nedeniyle seçilmeyen düzeylerdeki %1$d satır ve sonucu eksik "
 "%2$d satır dışlandı. Tüm analizler yalnızca %3$s (pozitif) ve %4$s (negatif) "
 "sınıflarını, belirtece özgü eksiksiz olgularla kullanır."
+
+#: R/decisioncurve.b.R
+msgid "Outcome Split Matches a Case-Control Ratio"
+msgstr "Sonuç Dağılımı Bir Olgu-Kontrol Oranıyla Örtüşüyor"
 
 #: R/decisioncurve.b.R
 msgid "Outcome Type"
@@ -33551,6 +33982,17 @@ msgstr ""
 msgid "Penalized EM Sample Size"
 msgstr "Cezalandırılmış EM Örneklem Büyüklüğü"
 
+#: R/nogoldstandard.b.R
+msgid ""
+"Penalized EM: residuals come from the unpenalized (maximum-likelihood) fit "
+"of the same conditional-independence model, so the fixed priors do not enter "
+"them. They check the model assumption, not the prior-adjusted estimates."
+msgstr ""
+"Cezalandırılmış EM: kalıntılar aynı koşullu bağımsızlık modelinin "
+"cezalandırılmamış (en çok olabilirlik) uyumundan gelir, bu nedenle sabit "
+"öncüller bunlara girmez. Kalıntılar öncüllere göre ayarlanmış tahminleri "
+"değil, model varsayımını denetler."
+
 #: package/analyses/lassologistic.menuSubtitle
 #: lassologistic/options.menuSubtitle
 msgid "Penalized feature selection for binary classification"
@@ -33891,15 +34333,6 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid "Please specify at least two dependent variables to use DeLong's test."
 msgstr "DeLong testini kullanmak için lütfen en az iki bağımlı değişken belirtin."
-
-#: R/decisioncompare.b.R
-msgid ""
-"Please specify positive levels for: {slots}. Use the level selector in the "
-"variable panel to choose which level represents a positive test result."
-msgstr ""
-"Lütfen şu alanlar için pozitif düzeyleri belirtin: {slots}. Hangi düzeyin "
-"pozitif test sonucunu temsil ettiğini seçmek için değişken panelindeki düzey "
-"seçiciyi kullanın."
 
 #: enhancedROC/options/plotHeight.title
 msgid "Plot height"
@@ -34291,6 +34724,10 @@ msgstr "Pozitif Olabilirlik Oranı"
 msgid "Positive likelihood ratio"
 msgstr "Pozitif olabilirlik oranı"
 
+#: R/decisioncalculator.b.R
+msgid "positive likelihood ratio"
+msgstr "pozitif olabilirlik oranı"
+
 #: R/decision.b.R
 msgid "Positive likelihood ratio unavailable due to data limitations"
 msgstr "veri kısıtlılıkları nedeniyle pozitif olabilirlik oranı mevcut değil"
@@ -34628,7 +35065,7 @@ msgstr "Gerekli Olgu Sayısı için Güç Yaklaşımı"
 
 #: R/kappaSizePower.b.R
 msgid "Power must be between 0.01 and 0.99."
-msgstr ""
+msgstr "Güç 0.01 ile 0.99 arasında olmalıdır."
 
 #: R/psychopdaROC.b.R
 msgid "Power to detect AUC different from 0.5 (Hanley-McNeil)"
@@ -34719,19 +35156,22 @@ msgstr "PÖD ve NÖD test sonrası olasılıklardır ve prevalansa bağlıdır."
 #: R/psychopdaROC.b.R
 msgid ""
 "PPV and NPV below are adjusted to the user-specified target prevalence "
-"(%.1f%%), not the prevalence observed in this sample. Transport to that "
+"(%s%%), not the prevalence observed in this sample. Transport to that "
 "population assumes comparable case mix and conditional score distributions."
 msgstr ""
+"Aşağıdaki PPV ve NPV, bu örneklemde gözlenen prevalansa değil, kullanıcının "
+"belirttiği hedef prevalansa (%%%s) göre ayarlanmıştır. O popülasyona "
+"aktarım, benzer olgu dağılımı ve koşullu skor dağılımlarını varsayar."
 
 #: R/psychopdaROC.b.R
 msgid ""
-"PPV and NPV below are computed at the prevalence of this sample (%.1f%%) and "
+"PPV and NPV below are computed at the prevalence of this sample (%s%%) and "
 "do not carry over to a population where the condition is more or less common "
 "- sensitivity and specificity also require comparable case mix and "
 "conditional score distributions. Recompute them for your own setting's "
 "prevalence before quoting them."
 msgstr ""
-"Aşağıdaki PPV ve NPV, bu örneklemin prevalansında (%.1f%%) hesaplanır ve "
+"Aşağıdaki PPV ve NPV, bu örneklemin prevalansında (%%%s) hesaplanır ve "
 "durumun daha sık veya daha seyrek olduğu bir popülasyona doğrudan taşınamaz; "
 "duyarlılık ve özgüllük de benzer olgu dağılımı ve koşullu skor dağılımları "
 "gerektirir. Bunları bildirmeden önce kendi ortamınızın prevalansına göre "
@@ -35344,6 +35784,7 @@ msgstr "Bağımsız olarak önceden belirlendi"
 #: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
+#: R/sequentialtests.b.R
 #: decision/results/ratioTable.columns.title
 #: decisioncalculator/results/ratioTable.columns.title
 #: decisioncalculator/results/screeningWorkload.columns.title
@@ -36305,15 +36746,6 @@ msgstr "Fayda aralığı tablosu"
 msgid "Range of Benefit:"
 msgstr "Fayda Aralığı:"
 
-#: R/decisioncurve.b.R
-msgid ""
-"Range of threshold probabilities over which the model's net benefit exceeds "
-"both treat-all and treat-none; a model is only worth using within this range."
-msgstr ""
-"Modelin net faydasının hem herkesi tedavi etmeyi hem de hiç kimseyi tedavi "
-"etmemeyi aştığı eşik olasılıkları aralığı; bir model yalnızca bu aralıkta "
-"kullanılmaya değerdir."
-
 #: enhancedROC/results/results/partialAucAnalysis.columns.title
 msgid "Range Type"
 msgstr "Aralık Türü"
@@ -36789,7 +37221,6 @@ msgid "reduced to %sx of prevalence"
 msgstr "prevalansın %sx katına düştü"
 
 #: R/agreement.b.R
-#: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: agreement/results/confusionMatrixTable.columns.title
 #: lassologistic/results/methodComparison.columns.title
@@ -36843,6 +37274,10 @@ msgstr ""
 "korunur; bunlar uygun bir hastalık referansı gerektirir. Uyum ölçülürken "
 "uzman uzlaşısı ya da karşılaştırmalı yöntemi seçin."
 
+#: R/decision.b.R
+msgid "Reference levels excluded from analysis: {lvls}"
+msgstr "Analizden dışlanan referans düzeyleri: {lvls}"
+
 #: decisioncurve/options/showReferenceLinesLabels.title
 #: decisioncurve/ui[3][0]/showReferenceLinesLabels.label
 msgid "Reference line labels"
@@ -36868,6 +37303,7 @@ msgstr "Referans Negatif"
 msgid "Reference negative given negative call"
 msgstr "Negatif sonuçta referansın negatif olması"
 
+#: R/decisioncompare.b.R
 #: decision/options/goldNegative.title
 #: decisioncompare/options/goldNegative.title
 msgid "Reference negative level"
@@ -36905,6 +37341,7 @@ msgstr ""
 "\"{gpos}\" olgularından testin \"{tpos}\" olarak sınıflandırdıklarının "
 "oranıdır."
 
+#: R/decisioncompare.b.R
 #: decision/options/goldPositive.title
 #: decisioncompare/options/goldPositive.title
 msgid "Reference positive level"
@@ -37545,6 +37982,10 @@ msgstr "Risk grubu"
 msgid "Risk groups"
 msgstr "Risk grupları"
 
+#: R/enhancedROC.b.R
+msgid "Risk Model Runs Against the ROC Direction: %s"
+msgstr "Risk Modeli ROC Yönünün Tersine İşliyor: %s"
+
 #: psychopdaROC/options/metric/risk_ratio.title
 msgid "Risk ratio"
 msgstr "Risk oranı"
@@ -37676,12 +38117,8 @@ msgstr ""
 "yukarıdaki uyarıları veya önerileri kontrol edin."
 
 #: R/enhancedROC.b.R
-msgid ""
-"ROC analysis failed for every selected predictor, so the tables and plots "
-"below have no results. The warnings name the reason for each predictor."
-msgstr ""
-"Seçilen her öngörücü için ROC analizi başarısız oldu, bu nedenle aşağıdaki "
-"tablo ve grafiklerde sonuç yok. Uyarılar her öngörücünün nedenini belirtir."
+msgid "ROC analysis failed for every selected predictor, so there are no results."
+msgstr "Seçilen her öngörücü için ROC analizi başarısız oldu, bu nedenle sonuç yok."
 
 #: R/enhancedROC.b.R
 msgid ""
@@ -38501,11 +38938,9 @@ msgid "Select a binary Outcome Variable (the condition you want to predict)."
 msgstr "İkili bir Sonuç Değişkeni seçin (tahmin etmek istediğiniz durum)."
 
 #: R/decisioncurve.b.R
-msgid ""
-"Select a binary rule variable or disable \"Clinical Decision Rule "
-"Integration\"."
+msgid "Select a binary rule variable or disable \"Clinical decision rule\"."
 msgstr ""
-"İkili bir kural değişkeni seçin veya \"Klinik Karar Kuralı Entegrasyonu\"nu "
+"İkili bir kural değişkeni seçin veya \"Klinik karar kuralı\" seçeneğini "
 "devre dışı bırakın."
 
 #: R/decision.b.R
@@ -39162,6 +39597,10 @@ msgid ""
 "with the fitted disease class less often than chance. Check that its "
 "positive level is not reversed before interpreting it as a poor test."
 msgstr ""
+"Şu testlerde duyarlılık ile özgüllüğün toplamı 1'in altında: {tests}. Böyle "
+"bir test, uyarlanan hastalık sınıfıyla şanstan daha seyrek uyuşur. Bunu "
+"zayıf bir test olarak yorumlamadan önce pozitif düzeyinin ters "
+"çevrilmediğini kontrol edin."
 
 #: R/decision.b.R
 msgid ""
@@ -41388,6 +41827,10 @@ msgstr ""
 "değerler kullanıldı."
 
 #: R/sequentialtests.b.R
+msgid "Teaching Example Replaced Entered Values"
+msgstr "Eğitim Örneği Girilen Değerlerin Yerini Aldı"
+
+#: R/sequentialtests.b.R
 msgid "Teaching Example Values Are Not Clinical Guidance"
 msgstr "Eğitim Örneği Değerleri Klinik Kılavuz Değildir"
 
@@ -41513,7 +41956,6 @@ msgstr "Test %d"
 
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
-#: R/decisioncompare.b.R
 #: R/sequentialtests.b.R
 #: decisioncompare/ui[1][1].label
 #: nogoldstandard/options/test1.title
@@ -41547,6 +41989,7 @@ msgstr "Test 1 zorunludur. En az bir test değişkeni seçin."
 msgid "Test 1 Low Performance"
 msgstr "Test 1 Düşük Performans"
 
+#: R/decisioncompare.b.R
 #: decisioncompare/options/test1Negative.title
 msgid "Test 1 negative level"
 msgstr "Test 1 Negatif Düzey"
@@ -41569,12 +42012,14 @@ msgstr ""
 "Özgüllük=%%%.1f). Bu varsayımların amaçlanan açıklayıcı karşılaştırma için "
 "uygun olup olmadığını doğrulayın."
 
+#: R/decisioncompare.b.R
 #: decisioncombine/options/test1Positive.title
 #: decisioncompare/options/test1Positive.title
 msgid "Test 1 positive level"
 msgstr "Test 1 Pozitif Düzey"
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test1_sens.title
 msgid "Test 1 sensitivity"
 msgstr "Test 1 duyarlılığı"
@@ -41592,6 +42037,7 @@ msgstr ""
 "ortam için geçerli olduğunu doğrulayın."
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test1_spec.title
 msgid "Test 1 specificity"
 msgstr "Test 1 özgüllüğü"
@@ -41614,7 +42060,6 @@ msgstr "Test 1: {name}"
 
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
-#: R/decisioncompare.b.R
 #: R/sequentialtests.b.R
 #: decisioncompare/ui[1][2].label
 #: nogoldstandard/options/test2.title
@@ -41647,6 +42092,7 @@ msgstr "Test 2 (Karşılaştırma İçin Zorunlu)"
 msgid "Test 2 Low Performance"
 msgstr "Test 2 Düşük Performans"
 
+#: R/decisioncompare.b.R
 #: decisioncompare/options/test2Negative.title
 msgid "Test 2 negative level"
 msgstr "Test 2 Negatif Düzey"
@@ -41669,6 +42115,7 @@ msgstr ""
 "Özgüllük=%%%.1f). Bu varsayımların amaçlanan açıklayıcı karşılaştırma için "
 "uygun olup olmadığını doğrulayın."
 
+#: R/decisioncompare.b.R
 #: decisioncombine/options/test2Positive.title
 #: decisioncompare/options/test2Positive.title
 msgid "Test 2 positive level"
@@ -41679,6 +42126,7 @@ msgid "Test 2 Required Before Test 3"
 msgstr "Test 3'ten Önce Test 2 Zorunludur"
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test2_sens.title
 msgid "Test 2 sensitivity"
 msgstr "Test 2 duyarlılığı"
@@ -41696,6 +42144,7 @@ msgstr ""
 "ortam için geçerli olduğunu doğrulayın."
 
 #: R/cotest.b.R
+#: R/sequentialtests.b.R
 #: cotest/options/test2_spec.title
 msgid "Test 2 specificity"
 msgstr "Test 2 özgüllüğü"
@@ -41717,7 +42166,6 @@ msgid "Test 2: {name}"
 msgstr "Test 2: {name}"
 
 #: R/decisioncombine.b.R
-#: R/decisioncompare.b.R
 #: decisioncompare/ui[1][3].label
 #: nogoldstandard/options/test3.title
 msgid "Test 3"
@@ -41750,6 +42198,7 @@ msgstr ""
 "Test 3, Test 2 olmadan birleştirilemez. Test 2'yi ve pozitif düzeyini seçin "
 "veya Test 3'ü kaldırın."
 
+#: R/decisioncompare.b.R
 #: decisioncompare/options/test3Negative.title
 msgid "Test 3 negative level"
 msgstr "Test 3 Negatif Düzey"
@@ -41758,6 +42207,7 @@ msgstr "Test 3 Negatif Düzey"
 msgid "Test 3 Performance"
 msgstr "Test 3 Performansı"
 
+#: R/decisioncompare.b.R
 #: decisioncombine/options/test3Positive.title
 #: decisioncompare/options/test3Positive.title
 msgid "Test 3 positive level"
@@ -41798,7 +42248,7 @@ msgstr "Tüm denekleri her iki testle test et (paralel)"
 
 #: R/nogoldstandard.b.R
 msgid "Test below chance"
-msgstr ""
+msgstr "Test şansın altında"
 
 #: R/nogoldstandard.b.R
 msgid "Test categories collapsed"
@@ -42029,6 +42479,7 @@ msgstr "Test Aşaması"
 msgid "Testing Strategy"
 msgstr "Test Stratejisi"
 
+#: R/sequentialtests.b.R
 #: sequentialtests/options/strategy.title
 msgid "Testing strategy"
 msgstr "Test stratejisi"
@@ -42056,6 +42507,14 @@ msgid ""
 "with case and rater as random effects"
 msgstr ""
 
+#: R/psychopdaROC.b.R
+msgid ""
+"The '%1$s' metric is best at its %2$s, so the cut-point was found by %3$s "
+"it; the Cutpoint method setting asked for the opposite direction."
+msgstr ""
+"'%1$s' ölçütü %2$s değerinde en iyidir; bu nedenle kesim noktası ölçüt %3$s "
+"bulundu. Kesme noktası yöntemi ayarı ise ters yönü istemişti."
+
 #: R/enhancedROC.b.R
 msgid ""
 "The '%1$s' preset replaced settings you can still see in the options panel: "
@@ -42065,12 +42524,6 @@ msgstr ""
 "'%1$s' ön ayarı, seçenekler panelinde hâlâ görebildiğiniz ayarların yerini "
 "aldı: %2$s. Girdiğiniz değerlerin kullanılmasını istiyorsanız Özel "
 "Yapılandırma ön ayarını seçin."
-
-#: R/psychopdaROC.b.R
-msgid ""
-"The '%s' metric is best at its %s, so the cut-point was found by %s it; the "
-"Cutpoint method setting asked for the opposite direction."
-msgstr ""
 
 #: R/lassologistic.b.R
 msgid ""
@@ -42104,6 +42557,18 @@ msgstr ""
 "tavsiyede bulunmak için kullanılmamalıdır. Her değeri kendi ortamınızdan "
 "veya kontrol ettiğiniz bir kaynaktan alınan duyarlılık, özgüllük ve "
 "prevalans tahminleriyle değiştirin."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The {ratio} has an empty denominator cell, so its observed value is "
+"infinite. Adding 0.5 to every cell would put it at or below 1 and reverse "
+"its direction, because the empty cell lies in the smaller reference group, "
+"so it is left blank."
+msgstr ""
+"{ratio} için payda hücresi boştur, bu nedenle gözlenen değeri sonsuzdur. Boş "
+"hücre daha küçük referans grubunda yer aldığından, her hücreye 0.5 eklemek "
+"onu 1'e ya da altına indirip yönünü tersine çevirirdi; bu nedenle boş "
+"bırakıldı."
 
 #: R/agreement.b.R
 msgid ""
@@ -42278,11 +42743,15 @@ msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
-"The analysed cases contain exactly as many patients with the outcome as "
-"without it ({n} each), as a 1:1 case-control design would."
+"The analysed cases contain {events} patients with the outcome and "
+"{nonevents} without it, an exact {ratio} ratio of patients with the outcome "
+"to patients without it, as a case-control design that samples a fixed number "
+"of controls per case (or of cases per control) would produce."
 msgstr ""
-"Analiz edilen olgularda sonucu olan ve olmayan hasta sayıları tam olarak "
-"eşittir (her biri {n}); 1:1 olgu-kontrol tasarımı da bu dağılımı üretir."
+"Analiz edilen olgularda sonucu olan {events} ve olmayan {nonevents} hasta "
+"var; bu, sonucu olan hastaların olmayanlara tam olarak {ratio} oranıdır ve "
+"olgu başına (ya da kontrol başına) sabit sayıda kontrol (ya da olgu) "
+"örnekleyen bir olgu-kontrol tasarımının üreteceği orandır."
 
 #: R/agreement.b.R
 msgid "The analysis automatically selects appropriate statistics based on data type:"
@@ -42736,6 +43205,10 @@ msgstr ""
 "katsayı -1 ile 1 arasındaki parametre uzayının dışına düştü ve en yakın "
 "sınıra çekildi"
 
+#: R/lassologistic.b.R
+msgid "The Coefficient Plot is empty because no term was retained."
+msgstr "Hiçbir terim tutulmadığı için Katsayı Grafiği boş."
+
 #: R/decisioncombine.b.R
 msgid ""
 "The combination table therefore contains no case with {test} negative: the "
@@ -43086,6 +43559,16 @@ msgstr ""
 "ve hiçbir kuralda ikisi birden yoktur: tüm eksiksiz olgular aynı referans "
 "standart sonucuna sahiptir, bu nedenle ikisinden biri tahmin edilemez. "
 "Referans standarda ilişkin bildirim hangisi olduğunu belirtir."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The denominator cell of this ratio is zero, so 0.5 was added to every cell "
+"(Haldane-Anscombe correction). Its confidence interval uses the same "
+"corrected counts."
+msgstr ""
+"Bu oranın payda hücresi sıfırdır, bu nedenle her hücreye 0.5 eklendi "
+"(Haldane-Anscombe düzeltmesi). Güven aralığı da aynı düzeltilmiş sayıları "
+"kullanır."
 
 #: R/cotest.b.R
 msgid ""
@@ -43681,13 +44164,13 @@ msgstr "Altın standart ve test aynı değişkendir"
 #: R/decision.b.R
 msgid ""
 "The gold standard has more than one level besides \"{pos}\" ({lvls}), so the "
-"disease-absent level cannot be inferred. Select it under Disease absent "
+"disease-absent level cannot be inferred. Select it under Reference negative "
 "level. Levels you do not name are excluded from the analysis rather than "
 "counted as disease-absent."
 msgstr ""
 "Altın standart \"{pos}\" dışında birden fazla düzeye sahiptir ({lvls}), bu "
-"nedenle hastalık yok düzeyi çıkarımlanamaz. Bunu Hastalık yok düzeyi altında "
-"seçin. Belirtmediğiniz düzeyler hastalık yok olarak sayılmak yerine "
+"nedenle hastalık yok düzeyi çıkarımlanamaz. Bunu Referans negatif düzeyi "
+"altında seçin. Belirtmediğiniz düzeyler hastalık yok olarak sayılmak yerine "
 "analizden hariç tutulur."
 
 #: R/decision.b.R
@@ -44189,6 +44672,16 @@ msgstr ""
 msgid "The logistic model did not converge."
 msgstr "Lojistik model yakınsamadı."
 
+#: R/enhancedROC.b.R
+msgid ""
+"The logistic slope of %s is not estimable because the marker is constant in "
+"the analysed rows, so every patient receives the same predicted risk (the "
+"sample prevalence) and there are no risk groups to compare."
+msgstr ""
+"Belirteç analiz edilen satırlarda sabit olduğundan %s için lojistik eğim "
+"tahmin edilemez; bu nedenle her hasta aynı tahmin edilen riski (örneklem "
+"prevalansı) alır ve karşılaştırılacak risk grubu yoktur."
+
 #: R/decisioncompare.b.R
 msgid ""
 "The logit interval is undefined at 0% or 100% agreement, so this row shows "
@@ -44221,6 +44714,14 @@ msgstr ""
 "Wilson sınırlarını toplayıp 1 çıkarır. Genellikle kombinasyon tablosunda "
 "Youden J'nin yanında gösterilen Agresti-Caffo aralığından daha "
 "muhafazakârdır, bu nedenle iki alt sınır farklı olabilir."
+
+#: R/kappaSizeCI.b.R
+msgid ""
+"The lower limit ({lower}) drives the sample size; the expected upper limit "
+"then falls at or inside {upper}."
+msgstr ""
+"Örneklem büyüklüğünü alt sınır ({lower}) belirler; beklenen üst sınır bu "
+"durumda {upper} değerinde ya da onun içinde kalır."
 
 #: R/psychopdaROC.b.R
 msgid "The marker could not be scaled to finite values."
@@ -44477,11 +44978,11 @@ msgstr "Negatif düzey \"%1$s\" mevcut değil. Mevcut düzeyler: %2$s."
 
 #: R/decisioncalculator.b.R
 msgid ""
-"The negative likelihood ratio is not estimable: the test was never negative "
-"in this table."
+"The negative likelihood ratio is not estimable for this table; the notices "
+"above say why."
 msgstr ""
-"Negatif olabilirlik oranı tahmin edilemez: test bu tabloda hiç negatif sonuç "
-"vermedi."
+"Bu tablo için negatif olabilirlik oranı tahmin edilemez; nedeni yukarıdaki "
+"bildirimlerde açıklanmıştır."
 
 #: R/nogoldstandard.b.R
 msgid ""
@@ -44490,6 +44991,10 @@ msgid ""
 msgstr ""
 "Negatif yanıt olasılığı ve PÖD yapı gereği %100'e sabitlenmiştir ve bu "
 "nedenle boş bırakılmıştır."
+
+#: R/decisioncalculator.b.R
+msgid "The nomogram is omitted."
+msgstr "Nomogram çizilmedi."
 
 #: R/psychopdaROC.b.R
 msgid ""
@@ -44576,6 +45081,17 @@ msgstr ""
 "gösterici olan beklenen hücre sayılarıdır (Rotondi ve Donner). 25 olgunun "
 "altında bunun geçerli olduğu gösterilmemiştir; bu nedenle sınırı dikkatle "
 "okuyun."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The numerator cell of this ratio is zero, so the ratio is exactly 0 and is "
+"not corrected. Its confidence interval runs from 0 to the upper limit of the "
+"same log-scale interval computed with 0.5 added to every cell "
+"(Haldane-Anscombe correction)."
+msgstr ""
+"Bu oranın pay hücresi sıfırdır, bu nedenle oran tam olarak 0'dır ve "
+"düzeltilmez. Güven aralığı 0'dan, her hücreye 0.5 eklenerek hesaplanan aynı "
+"log ölçekli aralığın üst sınırına kadar uzanır (Haldane-Anscombe düzeltmesi)."
 
 #: R/decisioncombine.b.R
 msgid "The observed results involve a trade-off between sensitivity and specificity."
@@ -44953,20 +45469,13 @@ msgstr "Pozitif düzey hiçbir zaman düzeylerin sırasından çıkarılmaz."
 #: R/decisioncalculator.b.R
 msgid ""
 "The positive likelihood ratio is {lr}, so a positive result lowers the "
-"probability of a reference-positive outcome rather than raising it."
+"probability of a reference-positive outcome rather than raising it. A "
+"nomogram assumes that a positive result raises it. Check the test coding."
 msgstr ""
-"Pozitif olabilirlik oranı {lr}'dir, bu nedenle pozitif bir sonuç referans "
-"pozitif bir sonucun olasılığını yükseltmek yerine düşürür."
-
-#: R/decisioncalculator.b.R
-msgid ""
-"The positive likelihood ratio is {lr}. A nomogram assumes that a positive "
-"result raises the probability of the outcome; here it lowers that "
-"probability, so the plot is omitted. Check the test coding."
-msgstr ""
-"Pozitif olabilirlik oranı {lr}'dir. Bir nomogram pozitif bir sonucun sonucun "
-"olasılığını yükselttiğini varsayar; burada bu olasılığı düşürür, bu nedenle "
-"grafik atlanmıştır. Test kodlamasını kontrol edin."
+"Pozitif olabilirlik oranı {lr} olduğundan pozitif bir sonuç, "
+"referans-pozitif bir sonucun olasılığını yükseltmek yerine düşürür. Bir "
+"nomogram pozitif sonucun bu olasılığı yükselttiğini varsayar. Test "
+"kodlamasını kontrol edin."
 
 #: R/decision.b.R
 msgid ""
@@ -44975,13 +45484,27 @@ msgid ""
 "1 (sensitivity + specificity > 1); here the plot is omitted."
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"The positive likelihood ratio is {lrp} and the negative likelihood ratio is "
+"{lrn}. A likelihood ratio that is exactly 0 or not estimable cannot be "
+"placed on the nomogram's logarithmic scale, so the plot is omitted. Both "
+"come from a zero count in the 2x2 table; see the confidence intervals of "
+"sensitivity and specificity."
+msgstr ""
+"Pozitif olabilirlik oranı {lrp}, negatif olabilirlik oranı {lrn}. Tam olarak "
+"0 olan ya da tahmin edilemeyen bir olabilirlik oranı nomogramın logaritmik "
+"ölçeğine yerleştirilemez, bu nedenle grafik çizilmedi. Her iki durum da 2x2 "
+"tablodaki sıfır bir sayımdan kaynaklanır; duyarlılık ve özgüllüğün güven "
+"aralıklarına bakın."
+
 #: R/decisioncalculator.b.R
 msgid ""
-"The positive likelihood ratio is not estimable: the test was never positive "
-"in this table."
+"The positive likelihood ratio is not estimable for this table; the notices "
+"above say why."
 msgstr ""
-"Pozitif olabilirlik oranı tahmin edilemez: test bu tabloda hiç pozitif sonuç "
-"vermedi."
+"Bu tablo için pozitif olabilirlik oranı tahmin edilemez; nedeni yukarıdaki "
+"bildirimlerde açıklanmıştır."
 
 #: R/nogoldstandard.b.R
 msgid ""
@@ -44997,6 +45520,18 @@ msgid ""
 "configuration. Use a target AUC strictly between 0.5 and 1 for prospective "
 "planning."
 msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"The predicted risks of %1$s take only %2$s distinct values, too few for "
+"Hosmer-Lemeshow grouping, which needs at least 3 distinct quantile break "
+"points. This happens when the marker has very few distinct values or is "
+"heavily tied."
+msgstr ""
+"%1$s için tahmin edilen riskler yalnızca %2$s farklı değer alıyor; bu, en az "
+"3 farklı kantil kesme noktası gerektiren Hosmer-Lemeshow gruplandırması için "
+"çok azdır. Bu durum belirteç çok az farklı değere sahip olduğunda ya da çok "
+"sayıda eşit değer (bağ) içerdiğinde ortaya çıkar."
 
 #: R/decision.b.R
 msgid ""
@@ -45045,8 +45580,8 @@ msgid "the prevalence observed in these data"
 msgstr "bu verilerde gözlemlenen prevalans"
 
 #: R/enhancedROC.b.R
-msgid "the prevalence you entered (%.3f)"
-msgstr "girdiğiniz prevalans (%.3f)"
+msgid "the prevalence you entered (%s)"
+msgstr "girdiğiniz prevalans (%s)"
 
 #: R/nogoldstandard.b.R
 msgid ""
@@ -45091,17 +45626,23 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "The published formula behind this sample size treats the expected "
-"proportions as known. The goodness-of-fit test has to estimate them from the "
-"ratings, and in this design that can leave it well short of the stated power "
+"proportions as known and rests on a large-sample approximation. With three "
+"or more raters and three to five categories, simulations of the recommended "
+"goodness-of-fit test at the published sample size gave a power of about 0.64 "
+"to 0.81 for a stated 0.80, below 0.75 in 8 of 12 designs, balanced "
+"proportions included, so this design can fall well short of the stated power "
 "of {power} at {n} subjects. How far short cannot be computed reliably here, "
 "so confirm the sample size by simulating the intended analysis."
 msgstr ""
 "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül beklenen oranları "
-"biliniyor kabul eder. Uyum iyiliği testi bu oranları değerlendirmelerden "
-"kestirmek zorundadır ve bu tasarımda bu durum, testin {n} olguda belirtilen "
-"{power} gücünün oldukça altında kalmasına yol açabilir. Kaybın ne kadar "
-"olduğu burada güvenilir biçimde hesaplanamaz; bu nedenle örneklem "
-"büyüklüğünü planlanan analizi simüle ederek doğrulayın."
+"biliniyor kabul eder ve büyük örneklem yaklaşımına dayanır. Üç veya daha "
+"fazla değerlendirici ve üç ila beş kategori ile, önerilen uyum iyiliği "
+"testinin yayımlanmış örneklem büyüklüğündeki simülasyonları belirtilen 0.80 "
+"için yaklaşık 0.64 ila 0.81 güç verdi; 12 tasarımın 8'inde, dengeli oranlar "
+"dahil, 0.75'in altında kaldı. Bu nedenle bu tasarım {n} olguda belirtilen "
+"{power} gücünün oldukça altında kalabilir. Kaybın ne kadar olduğu burada "
+"güvenilir biçimde hesaplanamaz; bu nedenle örneklem büyüklüğünü planlanan "
+"analizi simüle ederek doğrulayın."
 
 #: R/decisioncombine.b.R
 msgid "The ranking"
@@ -45466,6 +46007,30 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid "The ROC analysis used the following specifications."
 msgstr "ROC analizinde aşağıdaki ayarlar kullanıldı."
+
+#: R/enhancedROC.b.R
+msgid ""
+"The ROC tables read %1$s in the direction in which it ranks patients well "
+"(AUC %3$.3f), but its group means point the other way, so the slope of the "
+"fitted logistic risk of %2$s runs opposite to that direction. This happens "
+"with a skewed marker or an outlying value. Calibration, the Brier score, the "
+"Hosmer-Lemeshow test, the decision and clinical impact curves and internal "
+"validation use that fitted model, the risk model the data support, which "
+"ranks patients the opposite way to the ROC, cut-point and fixed-cutoff "
+"tables; they do not describe %1$s as those tables read it, and can disagree "
+"with them. A log or rank transformation of the marker usually removes the "
+"conflict."
+msgstr ""
+"ROC tabloları %1$s belirtecini hastaları iyi sıraladığı yönde okur (AUC "
+"%3$.3f), ancak grup ortalamaları ters yönü gösterir; bu nedenle %2$s için "
+"uyarlanan lojistik riskin eğimi o yönün tersine işler. Bu durum çarpık "
+"dağılımlı bir belirteçte ya da aykırı bir değerde ortaya çıkar. Kalibrasyon, "
+"Brier skoru, Hosmer-Lemeshow testi, karar ve klinik etki eğrileri ile iç "
+"doğrulama bu uyarlanmış modeli, yani verilerin desteklediği risk modelini "
+"kullanır; bu model hastaları ROC, kesim noktası ve sabit kesim değeri "
+"tablolarının tersine sıralar. Bu çıktılar %1$s belirtecini o tabloların "
+"okuduğu biçimde betimlemez ve onlarla çelişebilir. Belirtecin log ya da sıra "
+"(rank) dönüşümü genellikle bu çelişkiyi ortadan kaldırır."
 
 #: R/decisioncombine.b.R
 msgid ""
@@ -45983,6 +46548,16 @@ msgid ""
 "Enter comma-separated proportions, for example 0.001,0.01."
 msgstr ""
 
+#: R/sequentialtests.b.R
+msgid ""
+"The teaching example replaced these entered values (entered -> used): "
+"{values}. Set the teaching example to \"Custom Values\" to analyse your own "
+"values."
+msgstr ""
+"Eğitim örneği girilen şu değerlerin yerini aldı (girilen -> kullanılan): "
+"{values}. Kendi değerlerinizi analiz etmek için eğitim örneğini \"Özel "
+"Değerler\" olarak ayarlayın."
+
 #: R/psychopdaROC.b.R
 msgid "The test '%1$s' has an AUC of %2$.3f"
 msgstr "'%1$s' testinin AUC değeri %2$.3f"
@@ -46036,26 +46611,10 @@ msgstr "Test, analiz edilen olgular arasında yalnızca bir düzeye sahiptir"
 #: R/decisioncalculator.b.R
 msgid ""
 "The test was never negative in this table, so the negative likelihood ratio "
-"is not estimable and the nomogram is omitted."
-msgstr ""
-"Test bu tabloda hiç negatif sonuç vermediği için negatif olabilirlik oranı "
-"tahmin edilemez ve nomogram çizilmedi."
-
-#: R/decisioncalculator.b.R
-msgid ""
-"The test was never negative in this table, so the negative likelihood ratio "
 "is not estimable."
 msgstr ""
 "Test bu tabloda hiç negatif sonuç vermediği için negatif olabilirlik oranı "
 "tahmin edilemez."
-
-#: R/decisioncalculator.b.R
-msgid ""
-"The test was never positive in this table, so the positive likelihood ratio "
-"is not estimable and the nomogram is omitted."
-msgstr ""
-"Test bu tabloda hiç pozitif sonuç vermediği için pozitif olabilirlik oranı "
-"tahmin edilemez ve nomogram çizilmedi."
 
 #: R/decisioncalculator.b.R
 msgid ""
@@ -46074,6 +46633,27 @@ msgstr ""
 "Testler benzer marjinal duyarlılık ve özgüllüğe sahiptir. Benzer marjinal "
 "performans fazlalığı veya bağımsızlığı kanıtlamaz; harici kanıtları "
 "kullanarak koşullu bağımlılığı değerlendirin."
+
+#: R/decisioncompare.b.R
+msgid ""
+"The tests were evaluated on different sets of cases, and the {n} cases with "
+"a determinate result for every test do not include both reference-standard "
+"classes, so the tests cannot be ranked on common cases."
+msgstr ""
+"Testler farklı olgu kümelerinde değerlendirildi ve her test için belirli bir "
+"sonucu olan {n} olgu her iki referans standart sınıfını birden içermiyor; bu "
+"nedenle testler ortak olgular üzerinde sıralanamaz."
+
+#: R/decisioncompare.b.R
+msgid ""
+"The tests were evaluated on different sets of cases, so this ranking "
+"compares them on the {n} cases with a determinate result for every test; the "
+"per-test figures use each test's own available cases."
+msgstr ""
+"Testler farklı olgu kümelerinde değerlendirildi; bu nedenle bu sıralama "
+"testleri her test için belirli bir sonucu olan {n} olgu üzerinde "
+"karşılaştırır. Teste özgü değerler her testin kendi mevcut olgularını "
+"kullanır."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -46104,6 +46684,12 @@ msgstr ""
 "Tedavi Eşiği Aralığı, 0 < en küçük <= en büyük < 1 ve pozitif adım "
 "koşullarıyla \"en küçük,en büyük,adım\" olarak okunamadı. Bunun yerine 0.05 "
 "ile 0.50 arasında 0.05 adımlı varsayılan aralık kullanıldı."
+
+#: R/decisioncalculator.b.R
+msgid ""
+"The two likelihood ratios in the table cannot be drawn together on one "
+"nomogram."
+msgstr "Tablodaki iki olabilirlik oranı tek bir nomogram üzerinde birlikte çizilemez."
 
 #: R/agreement.b.R
 msgid ""
@@ -46157,6 +46743,18 @@ msgstr ""
 "tablolarını inceleyin. Sistematik yanlılığı zayıf uyumdan ayırt etmek için "
 "bunu Cohen kappası ile birlikte değerlendirin."
 
+#: R/nogoldstandard.b.R
+msgid ""
+"The unpenalized companion fit did not converge, so the bivariate residuals "
+"could not be computed. Penalized EM assumes the tests err independently "
+"within each class; run the latent class analysis and check its residuals "
+"before interpreting these estimates."
+msgstr ""
+"Cezalandırılmamış eşlik eden uyum yakınsamadı, bu nedenle iki değişkenli "
+"kalıntılar hesaplanamadı. Cezalandırılmış EM, testlerin her sınıf içinde "
+"birbirinden bağımsız hata yaptığını varsayar; bu tahminleri yorumlamadan "
+"önce örtük sınıf analizini çalıştırın ve kalıntılarını kontrol edin."
+
 #: R/lassologistic.b.R
 msgid ""
 "The unpenalized refit on all candidate variables could not be fitted (%s), "
@@ -46172,6 +46770,14 @@ msgid ""
 msgstr ""
 "Modelde tutulan terimler üzerindeki cezalandırılmamış yeniden uyarlama "
 "uyarlanamadı (%s), bu nedenle satırı atlandı."
+
+#: R/kappaSizeCI.b.R
+msgid ""
+"The upper limit ({upper}) drives the sample size; the expected lower limit "
+"then falls at or inside {lower}."
+msgstr ""
+"Örneklem büyüklüğünü üst sınır ({upper}) belirler; beklenen alt sınır bu "
+"durumda {lower} değerinde ya da onun içinde kalır."
 
 #: R/decision.b.R
 msgid ""
@@ -46341,6 +46947,18 @@ msgstr ""
 "Bunlar tek kohortlu tahminlerdir. Pratik anlamları amaçlanan kullanıma, hata "
 "sonuçlarına, prevalansa, hasta spektrumuna ve referans standart kalitesine "
 "bağlıdır. Bu eğitici özet klinik bir kılavuz değildir."
+
+#: R/decisioncombine.b.R
+msgid ""
+"These are Wilson score 95% confidence intervals. The decision and "
+"decisioncompare analyses report exact (Clopper-Pearson) intervals for the "
+"same proportions, which are usually a little wider, so the two sets of "
+"limits differ."
+msgstr ""
+"Bunlar Wilson skor %95 güven aralıklarıdır. decision ve decisioncompare "
+"analizleri aynı oranlar için kesin (Clopper-Pearson) aralıklar bildirir; "
+"bunlar genellikle biraz daha geniştir, bu nedenle iki sınır kümesi "
+"birbirinden farklıdır."
 
 #: R/enhancedROC.b.R
 msgid ""
@@ -46624,6 +47242,14 @@ msgstr ""
 "ve olayı olmayan %2$s hasta var. Yalnızca örnekleme gürültüsü bu değerleri "
 "şişirir; bu nedenle iyi kalibre edilmiş bir model kötü kalibre edilmiş gibi "
 "görünebilir ve küçük bir değer de iyi kalibrasyonun kanıtı değildir."
+
+#: R/enhancedROC.b.R
+msgid ""
+"They are Wald intervals on the AUC scale: the AUC plus or minus z times "
+"DeLong's standard error, truncated to 0-1."
+msgstr ""
+"Bunlar AUC ölçeğinde Wald aralıklarıdır: AUC artı/eksi z çarpı DeLong "
+"standart hatası, 0-1 aralığına kırpılmış."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -47143,6 +47769,20 @@ msgstr ""
 "puanlar, bu nedenle rakamlar tanısal doğruluktan ziyade bu kural ile uyumu "
 "tanımlar."
 
+#: R/psychopdaROC.b.R
+msgid ""
+"This metric counts every false positive and every false negative at an equal "
+"unit cost (and every correct classification at an equal unit utility), so it "
+"selects the same cut-point as accuracy. Cost ratio (FP:FN) is not used here; "
+"to weigh the two errors unequally, choose the Cost-benefit optimized "
+"cutpoint method."
+msgstr ""
+"Bu ölçüt her yanlış pozitifi ve her yanlış negatifi eşit birim maliyetle (ve "
+"her doğru sınıflandırmayı eşit birim yararla) sayar; bu nedenle doğrulukla "
+"aynı kesim noktasını seçer. Maliyet Oranı (YP:YN) burada kullanılmaz; iki "
+"hatayı farklı ağırlıklandırmak için Maliyet-fayda optimize edilmiş kesme "
+"noktası yöntemini seçin."
+
 #: R/lassologistic.b.R
 msgid ""
 "This model assigns every case the same predicted probability, so it does not "
@@ -47651,12 +48291,12 @@ msgid ""
 "TN + FN equals zero: the test was never negative. The negative predictive "
 "value, the negative likelihood ratio and the diagnostic odds ratio are not "
 "estimable, and the test cannot separate the two groups. The positive "
-"likelihood ratio differs from 1 only because of the 0.5 zero-cell correction."
+"likelihood ratio is exactly 1: a positive result carries no information."
 msgstr ""
 "GN + YN sıfıra eşittir: test hiç negatif sonuç vermedi. Negatif öngörü "
 "değeri, negatif olabilirlik oranı ve tanısal odds oranı tahmin edilemez ve "
-"test iki grubu ayıramaz. Pozitif olabilirlik oranı yalnızca 0.5 sıfır hücre "
-"düzeltmesi nedeniyle 1'den farklıdır."
+"test iki grubu ayıramaz. Pozitif olabilirlik oranı tam olarak 1'dir: pozitif "
+"bir sonuç hiçbir bilgi taşımaz."
 
 #: R/decisioncalculator.b.R
 msgid ""
@@ -47688,6 +48328,15 @@ msgstr ""
 #: lassologistic/results/todo.title
 msgid "To Do"
 msgstr "Yapılacaklar"
+
+#: R/decisioncompare.b.R
+msgid ""
+"To finish setting up the analysis, choose: {boxes}. The reference and every "
+"test need both a positive and a negative level; no level is inferred."
+msgstr ""
+"Analizin kurulumunu tamamlamak için şunları seçin: {boxes}. Referans ve her "
+"test için hem pozitif hem de negatif düzey gerekir; hiçbir düzey "
+"çıkarımlanmaz."
 
 #: R/decisioncalculator.b.R
 #: R/decisioncurve.b.R
@@ -47891,12 +48540,12 @@ msgid ""
 "TP + FP equals zero: the test was never positive. The positive predictive "
 "value, the positive likelihood ratio and the diagnostic odds ratio are not "
 "estimable, and the test cannot separate the two groups. The negative "
-"likelihood ratio differs from 1 only because of the 0.5 zero-cell correction."
+"likelihood ratio is exactly 1: a negative result carries no information."
 msgstr ""
 "GP + YP sıfıra eşittir: test hiç pozitif sonuç vermedi. Pozitif öngörü "
 "değeri, pozitif olabilirlik oranı ve tanısal odds oranı tahmin edilemez ve "
-"test iki grubu ayıramaz. Negatif olabilirlik oranı yalnızca 0.5 sıfır hücre "
-"düzeltmesi nedeniyle 1'den farklıdır."
+"test iki grubu ayıramaz. Negatif olabilirlik oranı tam olarak 1'dir: negatif "
+"bir sonuç hiçbir bilgi taşımaz."
 
 #: R/decisioncalculator.b.R
 msgid "TP, FP, TN, and FN must be finite numbers. Check the input values."
@@ -48074,6 +48723,14 @@ msgstr ""
 msgid "Tumor Marker Evaluation (example)"
 msgstr "Tümör Belirteci Değerlendirmesi (örnek)"
 
+#: R/decisioncurve.b.R
+msgid ""
+"Turn on Bootstrap confidence intervals (with the Decision curve plot) to see "
+"the uncertainty of the net benefit over this range."
+msgstr ""
+"Bu aralıktaki net fayda belirsizliğini görmek için Bootstrap güven "
+"aralıkları seçeneğini (Karar eğrisi grafiği ile birlikte) açın."
+
 #: R/cotest.b.R
 msgid ""
 "Two assays for the same organism on the same swab; both track viral load, so "
@@ -48134,8 +48791,11 @@ msgid ""
 "disease status carries over, which is a stronger requirement than each "
 "test's sensitivity and specificity carrying over. Parallel and Serial "
 "figures here will also generally NOT match the textbook independence "
-"formulas computed by hand from the individual tests, and will usually be "
-"worse when the tests are correlated."
+"formulas computed by hand from the individual tests. With positively "
+"correlated tests each strategy gains less than those formulas predict on the "
+"measure it is chosen for -- Parallel raises sensitivity less, Serial raises "
+"specificity less -- while the other measure loses less than predicted, so "
+"Youden's J can be the same as the formulas give."
 msgstr ""
 "Varsayımsız tahminin kazandırmadığı iki şey. Kesinlik: örneklem iki marjinal "
 "oranda birleştirilmek yerine dört veya sekiz patern hücresine bölünür, bu "
@@ -48145,8 +48805,11 @@ msgstr ""
 "her testin duyarlılık ve özgüllüğünün aktarılmasından daha güçlü bir "
 "gereksinimdir. Buradaki Paralel ve Seri rakamlar genellikle bireysel "
 "testlerden elle hesaplanan ders kitabı bağımsızlık formülleriyle "
-"EŞLEŞMEYECEKTİR ve testler korelasyonlu olduğunda genellikle daha kötü "
-"olacaktır."
+"EŞLEŞMEYECEKTİR. Pozitif korelasyonlu testlerde her strateji, seçildiği "
+"ölçütte bu formüllerin öngördüğünden daha az kazanç sağlar -- Paralel "
+"duyarlılığı daha az, Seri özgüllüğü daha az artırır -- diğer ölçüt ise "
+"öngörülenden daha az kaybeder; bu nedenle Youden J değeri formüllerin "
+"verdiğiyle aynı olabilir."
 
 #: R/kappaSizeCI.b.R
 #: kappaSizeCI/options/citype/two_sided.title
@@ -49855,19 +50518,21 @@ msgid ""
 "When the study is analysed, estimate the category prevalences by maximum "
 "likelihood at each candidate value of kappa. With three or more raters or "
 "categories, plugging in the overall proportions of ratings instead can give "
-"an interval that covers kappa less often than stated when a category makes "
-"up less than about a fifth of the ratings (about 0.90 to 0.94 instead of "
-"0.95 in the designs of that kind simulated for this analysis); without such "
-"a category it stayed close to 0.95."
+"an interval that covers kappa less often than stated (about 0.86 to 0.94 "
+"instead of 0.95 in the designs simulated for this analysis), generally more "
+"so with more raters or categories. Balanced categories do not prevent it: "
+"with four equally common categories and four raters the plug-in interval "
+"covered kappa about 0.88 of the time."
 msgstr ""
 "Çalışma analiz edilirken kategori yaygınlıklarını her aday kappa değerinde "
 "en çok olabilirlik ile kestirin. Üç veya daha fazla değerlendirici ya da "
 "kategori olduğunda, bunun yerine değerlendirmelerin genel oranlarını yerine "
-"koymak, bir kategori değerlendirmelerin yaklaşık beşte birinden azını "
-"oluşturduğunda kappayı belirtilenden daha seyrek kapsayan bir aralık "
-"verebilir (bu analiz için simüle edilen bu türden tasarımlarda 0.95 yerine "
-"yaklaşık 0.90 ila 0.94); böyle bir kategori olmadığında kapsama 0.95'e yakın "
-"kaldı."
+"koymak kappayı belirtilenden daha seyrek kapsayan bir aralık verebilir (bu "
+"analiz için simüle edilen tasarımlarda 0.95 yerine yaklaşık 0.86 ila 0.94); "
+"bu durum genellikle değerlendirici ya da kategori sayısı arttıkça "
+"belirginleşir. Dengeli kategoriler bunu önlemez: eşit sıklıkta dört kategori "
+"ve dört değerlendirici ile yerine koyma aralığı kappayı zamanın yaklaşık "
+"0.88'inde kapsadı."
 
 #: R/kappaSizeCI.b.R
 msgid ""
@@ -50396,6 +51061,34 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
+"With three or more raters and three to five categories, this sample size can "
+"fall well short of power {power}; confirm it by simulating the intended "
+"analysis."
+msgstr ""
+"Üç veya daha fazla değerlendirici ve üç ila beş kategori ile bu örneklem "
+"büyüklüğü {power} gücünün oldukça altında kalabilir; planlanan analizi "
+"simüle ederek doğrulayın."
+
+#: R/agreement.b.R
+msgid ""
+"With three or more raters each interval is kappa plus or minus the t "
+"quantile on n - 1 degrees of freedom times Gwet's subject-sampling standard "
+"error (irrCAC), where n is the number of cases with at least one rating (the "
+"N Cases column). The raters are treated as fixed, so the interval reflects "
+"the sampling of cases, not of raters. The kappa interval method option (Wald "
+"or Fisher z) applies to Cohen's kappa for two raters only and does not "
+"change these intervals."
+msgstr ""
+"Üç veya daha fazla değerlendirici olduğunda her aralık, kappa artı/eksi n - "
+"1 serbestlik dereceli t kantili çarpı Gwet'in denek örneklemesine dayalı "
+"standart hatasıdır (irrCAC); burada n, en az bir değerlendirmesi olan olgu "
+"sayısıdır (Olgu Sayısı (N) sütunu). Değerlendiriciler sabit kabul edilir; bu "
+"nedenle aralık değerlendiricilerin değil olguların örneklemesini yansıtır. "
+"Kappa aralık yöntemi seçeneği (Wald veya Fisher z) yalnızca iki "
+"değerlendirici için Cohen kappasına uygulanır ve bu aralıkları değiştirmez."
+
+#: R/kappaSizePower.b.R
+msgid ""
 "With three or more raters, do not compute the chi-square over every count of "
 "raters calling the finding present (none, one, ..., all): that statistic has "
 "more than one degree of freedom and, read on one, rejects a true kappa0 much "
@@ -50471,6 +51164,24 @@ msgstr ""
 "modelinin gözlenen tabloyu yeniden üretmesi gerekmez. Bu kalıntılar "
 "farklılıkları tanımlar; koşullu bağımsızlığın ki-kare testleri değildir. "
 "Küçük bir kalıntı varsayımı kanıtlamaz."
+
+#: R/nogoldstandard.b.R
+msgid ""
+"With three tests the two-class model has as many parameters as the data have "
+"free cell frequencies, so it usually reproduces the observed table exactly "
+"and conditional independence cannot be checked from these data. If two of "
+"the tests share a mechanism (same target, same reader or same specimen), the "
+"estimates can be strongly biased in either direction with no sign of it in "
+"the fit statistics or the bivariate residuals. Detecting such dependence "
+"needs at least four tests."
+msgstr ""
+"Üç testle iki sınıflı model, verideki serbest hücre frekansı sayısı kadar "
+"parametreye sahiptir; bu nedenle genellikle gözlenen tabloyu tam olarak "
+"yeniden üretir ve koşullu bağımsızlık bu verilerden denetlenemez. Testlerden "
+"ikisi ortak bir mekanizmayı paylaşıyorsa (aynı hedef, aynı okuyucu ya da "
+"aynı örnek), tahminler uyum istatistiklerinde ya da iki değişkenli "
+"kalıntılarda hiçbir belirti olmaksızın her iki yönde de güçlü biçimde yanlı "
+"olabilir. Böyle bir bağımlılığı saptamak için en az dört test gerekir."
 
 #: R/nogoldstandard.b.R
 msgid ""
@@ -51024,18 +51735,29 @@ msgstr "Sıfır Hücre Süreklilik Düzeltmesi"
 msgid ""
 "Zero cell detected. A 0.5 continuity correction is applied only to a "
 "likelihood ratio whose own denominator cell is empty while its numerator is "
-"not (FP = 0 with TP > 0 for LR+, TN = 0 with FN > 0 for LR-); a ratio that "
-"is 0/0 is left blank, and every other statistic uses these raw counts. "
-"Interpret cautiously."
+"not (FP = 0 with TP > 0 for LR+, TN = 0 with FN > 0 for LR-), and only when "
+"the corrected value stays above 1; an empty numerator gives an exact 0, a "
+"ratio that is 0/0 or whose correction would fall to 1 or below is left "
+"blank, and every other statistic uses these raw counts. Interpret cautiously."
 msgstr ""
 "Sıfır hücre saptandı. 0.5 süreklilik düzeltmesi yalnızca kendi payda hücresi "
-"boş, payı ise boş olmayan bir olabilirlik oranına uygulanır (LR+ için GP > 0 "
-"iken YP = 0, LR- için YN > 0 iken GN = 0); 0/0 olan bir oran boş bırakılır "
-"ve diğer tüm istatistikler bu ham sayıları kullanır. Dikkatle yorumlayın."
+"boş, payı ise boş olmayan bir olabilirlik oranına (LR+ için GP > 0 iken YP = "
+"0, LR- için YN > 0 iken GN = 0) ve yalnızca düzeltilmiş değer 1'in üzerinde "
+"kaldığında uygulanır; boş bir pay tam 0 verir, 0/0 olan ya da düzeltmesi 1'e "
+"veya altına düşecek bir oran boş bırakılır ve diğer tüm istatistikler bu ham "
+"sayıları kullanır. Dikkatle yorumlayın."
+
+#: R/decisioncalculator.b.R
+msgid "Zero cell in the table"
+msgstr "Tabloda sıfır hücre"
 
 #: R/decision.b.R
 msgid "Zero counts detected in contingency table"
 msgstr "Kontenjans tablosunda sıfır sayımları tespit edildi"
+
+#: R/decisioncalculator.b.R
+msgid "Zero-cell ratio not estimable"
+msgstr "Sıfır hücreli oran tahmin edilemez"
 
 #: psychopdaROC/results/effectSizeTable.columns.title
 msgid "Δ Cohen's d"
