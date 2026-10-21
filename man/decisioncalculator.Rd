@@ -145,7 +145,7 @@ visualization for educational interpretation. Presets and examples are
 illustrative only and are not clinical guides.
 }
 \examples{
-\dontrun{
+\donttest{
 # Illustrative examples only; these are not clinical guides.
 result1 <- decisioncalculator(
   TP = 90, FN = 20, TN = 80, FP = 30

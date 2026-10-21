@@ -114,7 +114,7 @@ diagnostic pathways. Replace all example parameters with estimates
 applicable to the intended population before interpreting results.
 }
 \examples{
-\dontrun{
+\donttest{
 # No data: every input is an assumed parameter, not an estimate.
 sequentialtests(
     test1_sens = 0.95, test1_spec = 0.70,

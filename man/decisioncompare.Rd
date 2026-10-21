@@ -240,7 +240,7 @@ selected test. Other observed levels require explicit exclusion or prior
 recoding; they are never pooled as negative.
 }
 \examples{
-\dontrun{
+\donttest{
 # Level arguments are explicit in the generated R API. Pass NULL for
 # the unused optional third test selectors only.
 decisioncompare(
