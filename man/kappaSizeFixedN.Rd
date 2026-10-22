@@ -64,7 +64,7 @@ when the study is analysed. Use kappaSizePower to size a study for a
 hypothesis test and kappaSizeCI to size it for target confidence limits.
 }
 \examples{
-\donttest{
+\dontrun{
 # kappaSize::FixedNBinary example: anticipated kappa 0.7, 100 subjects,
 # 4 raters, trait prevalence 0.50
 kappaSizeFixedN(

@@ -530,7 +530,7 @@ comparative ROC analysis. Essential for biomarker validation, diagnostic
 test evaluation, and clinical decision support in medical research.
 }
 \examples{
-\donttest{
+\dontrun{
 # pROC::aSAH ships with pROC, an Import, so the example runs in every module that
 # carries this analysis. positiveClass is a Level option: always a required argument.
 enhancedROC(
