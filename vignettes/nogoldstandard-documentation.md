@@ -345,37 +345,30 @@ flowchart TD
 
 ## 9. Example Usage
 
-### Example Dataset Requirements
+The bundled GUI example is `data/nogoldstandard_validation.omv`, listed as
+**Three Imperfect Tests Without a Gold Standard** in the Data Library. It replaces
+the pathologist-reading example and contains 190 simulated patient records.
 
-- **Variables**: 2-5 factor variables representing diagnostic test results
-- **Levels**: Each test should have clear positive/negative levels
-- **Sample size**: Minimum 50 observations recommended, 200+ preferred for bootstrap
-- **Missing data**: Handled automatically but complete cases preferred
+| Setting | Saved value |
+| --- | --- |
+| Test 1 / positive level | `New_Test` / `Positive` |
+| Test 2 / positive level | `Reference1` / `Positive` |
+| Test 3 / positive level | `Reference2` / `Positive` |
+| Method | `latent_class` |
+| Bootstrap / samples / alpha | `TRUE` / `1000` / `0.05` |
+| Seed | `42` |
+| Diagnostics / plain-language summary | Both enabled |
+| Tests 4 and 5 | Unassigned |
 
-### Example Option Configuration
+All 190 cases have results for all three selected tests. Neither reference test is
+assumed perfect. Class labels remain unidentified; response probabilities and the
+class proportion are not automatically clinical sensitivity, specificity or disease
+prevalence. With three tests, a small fit discrepancy cannot establish conditional
+independence. Bootstrap intervals have approximate coverage.
 
-```yaml
-test1: "PCR_Result"
-test1Positive: "Positive"
-test2: "Antigen_Test"  
-test2Positive: "Pos"
-test3: "Clinical_Diagnosis"
-test3Positive: "Disease_Present"
-method: "latent_class"
-bootstrap: true
-nboot: 1000
-alpha: 0.05
-verbose: false
-```
-
-### Expected Outputs
-
-- **Disease prevalence** with 95% CI
-- **Test performance metrics** (sensitivity, specificity, PPV, NPV) for each test
-- **Model fit statistics** (AIC, BIC for LCA)
-- **Cross-tabulation** showing test result combinations
-- **Clinical summary** with interpretation guidance
-- **Agreement plots** visualizing test concordance
+See [the example guide](nogoldstandard-validation-example.md) for provenance,
+GUI steps and the reproducible R call. The name `validation` describes the simulated
+study scenario and does not establish clinical validity.
 
 ## 10. Appendix (Schemas & Snippets)
 

@@ -7549,9 +7549,6 @@
             "Confidence bands on the ROC plot are pointwise 95% Wilson score intervals for sensitivity; quantile error bars are pointwise 95% Wilson score intervals for both sensitivity and specificity. Each is computed separately at its operating point, so neither is a simultaneous confidence region for the curve as a whole.": [
                 ""
             ],
-            "Confidence Interval": [
-                ""
-            ],
             "Confidence Interval Approach for the Number of Subjects Required": [
                 ""
             ],
@@ -15742,9 +15739,6 @@
             "Pathologists linked through shared cases": [
                 ""
             ],
-            "Pathologists Without a Gold Standard": [
-                ""
-            ],
             "Pathology Examples": [
                 ""
             ],
@@ -18973,6 +18967,9 @@
             "Simulated power below the stated power.": [
                 ""
             ],
+            "Simulated teaching example: 190 patients and three imperfect binary diagnostic tests, with a saved latent-class analysis and bootstrap intervals. Neither reference test is a gold standard; this is not clinical validation.": [
+                ""
+            ],
             "Simultaneous band (whole curve at once)": [
                 ""
             ],
@@ -20470,13 +20467,13 @@
             "the confidence interval came back inverted, with the lower bound above the upper bound, and has been suppressed": [
                 ""
             ],
-            "The Confidence Interval columns of the table above put that range at %1$.3f to %2$.3f for these data.": [
-                ""
-            ],
             "The confidence interval includes 0.5, so these data are compatible with no discrimination.": [
                 ""
             ],
             "The confidence interval is left blank for {n} row(s) ({patterns}) whose ratio is determinate but whose standard error is not estimable: the row has an empty test margin (no patient, or every patient, is positive under it), so the delta-method standard error on the log scale is exactly zero and an interval computed from it would be zero-width. A zero-width interval would assert that the ratio is known exactly on a row carrying no information, so the point estimate is shown without one.": [
+                ""
+            ],
+            "The confidence interval rows of the table above put that range at %1$.3f to %2$.3f for these data.": [
                 ""
             ],
             "The corrected AUC (%1$.3f) is below 0.500. This is a real result, not an error: the bootstrap replicates fit models that pick up chance associations, so the optimism (%2$.3f) exceeds what the model actually achieves. Read it as evidence that these predictors carry no usable signal at this sample size - the model performs no better than, and by this estimate slightly worse than, guessing.": [
@@ -21847,7 +21844,7 @@
             "This was read from the data, not specified in advance — set Direction explicitly to pin it.": [
                 ""
             ],
-            "Three pathologists' benign/malignant calls with no reference standard.": [
+            "Three Imperfect Tests Without a Gold Standard": [
                 ""
             ],
             "Threshold": [

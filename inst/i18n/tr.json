@@ -7549,9 +7549,6 @@
             "Confidence bands on the ROC plot are pointwise 95% Wilson score intervals for sensitivity; quantile error bars are pointwise 95% Wilson score intervals for both sensitivity and specificity. Each is computed separately at its operating point, so neither is a simultaneous confidence region for the curve as a whole.": [
                 "ROC grafiğindeki güven bantları, duyarlılık için noktasal %95 Wilson skor aralıklarıdır; kantil hata çubukları ise hem duyarlılık hem özgüllük için noktasal %95 Wilson skor aralıklarıdır. Her biri kendi çalışma noktasında ayrı hesaplandığından, hiçbiri eğrinin tamamı için eşzamanlı güven bölgesi değildir."
             ],
-            "Confidence Interval": [
-                "Güven Aralığı"
-            ],
             "Confidence Interval Approach for the Number of Subjects Required": [
                 "Gerekli Olgu Sayısı için Güven Aralığı Yaklaşımı"
             ],
@@ -15742,9 +15739,6 @@
             "Pathologists linked through shared cases": [
                 "Ortak olgular aracılığıyla bağlantılı patologlar"
             ],
-            "Pathologists Without a Gold Standard": [
-                ""
-            ],
             "Pathology Examples": [
                 ""
             ],
@@ -18973,6 +18967,9 @@
             "Simulated power below the stated power.": [
                 "Simülasyonla bulunan güç belirtilen gücün altında."
             ],
+            "Simulated teaching example: 190 patients and three imperfect binary diagnostic tests, with a saved latent-class analysis and bootstrap intervals. Neither reference test is a gold standard; this is not clinical validation.": [
+                ""
+            ],
             "Simultaneous band (whole curve at once)": [
                 "Eşzamanlı bant (tüm eğri bir kerede)"
             ],
@@ -20470,14 +20467,14 @@
             "the confidence interval came back inverted, with the lower bound above the upper bound, and has been suppressed": [
                 "güven aralığı ters çıktı, alt sınır üst sınırın üzerinde kaldı ve aralık gizlendi"
             ],
-            "The Confidence Interval columns of the table above put that range at %1$.3f to %2$.3f for these data.": [
-                "Yukarıdaki tablonun Güven Aralığı sütunları, bu veriler için söz konusu aralığı %1$.3f ile %2$.3f arası olarak veriyor."
-            ],
             "The confidence interval includes 0.5, so these data are compatible with no discrimination.": [
                 "Güven aralığı 0.5 değerini içerdiğinden bu veriler ayırt etme olmamasıyla uyumludur."
             ],
             "The confidence interval is left blank for {n} row(s) ({patterns}) whose ratio is determinate but whose standard error is not estimable: the row has an empty test margin (no patient, or every patient, is positive under it), so the delta-method standard error on the log scale is exactly zero and an interval computed from it would be zero-width. A zero-width interval would assert that the ratio is known exactly on a row carrying no information, so the point estimate is shown without one.": [
                 "Oranı tanımlı olan ancak standart hatası tahmin edilemeyen {n} satır ({patterns}) için güven aralığı boş bırakıldı: satırın test kenar toplamı boştur (bu satırda ya hiçbir hasta pozitif değildir ya da her hasta pozitiftir), bu nedenle log ölçeğindeki delta yöntemi standart hatası tam olarak sıfırdır ve bundan hesaplanan bir aralığın genişliği sıfır olurdu. Sıfır genişlikli bir aralık, hiçbir bilgi taşımayan bir satırda oranın tam olarak bilindiğini ileri sürerdi; bu nedenle nokta tahmini aralıksız gösterilir."
+            ],
+            "The confidence interval rows of the table above put that range at %1$.3f to %2$.3f for these data.": [
+                ""
             ],
             "The corrected AUC (%1$.3f) is below 0.500. This is a real result, not an error: the bootstrap replicates fit models that pick up chance associations, so the optimism (%2$.3f) exceeds what the model actually achieves. Read it as evidence that these predictors carry no usable signal at this sample size - the model performs no better than, and by this estimate slightly worse than, guessing.": [
                 "Düzeltilmiş AUC (%1$.3f) 0.500'ün altındadır. Bu bir hata değil, gerçek bir sonuçtur: bootstrap tekrarları şans eseri ortaya çıkan ilişkileri yakalayan modeller kurar, bu nedenle iyimserlik (%2$.3f) modelin gerçekte ulaştığı değeri aşar. Bunu, bu örneklem büyüklüğünde bu tahmin edicilerin kullanılabilir bir sinyal taşımadığının kanıtı olarak okuyun - model rastgele tahminden daha iyi değildir, hatta bu kestirime göre ondan biraz daha kötüdür."
@@ -21847,7 +21844,7 @@
             "This was read from the data, not specified in advance — set Direction explicitly to pin it.": [
                 "Bu, önceden belirtilmek yerine verilerden okundu — sabitlemek için Yön ayarını açıkça belirleyin."
             ],
-            "Three pathologists' benign/malignant calls with no reference standard.": [
+            "Three Imperfect Tests Without a Gold Standard": [
                 ""
             ],
             "Threshold": [

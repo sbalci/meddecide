@@ -1,5 +1,14 @@
 # meddecide 1.1.1 (2026-10-21)
 
+Example dataset update (2026-10-23):
+
+- Replaced the no-gold-standard Data Library entry for pathologist readings with
+  `nogoldstandard_validation.omv`: 190 simulated patients, three imperfect binary
+  diagnostic tests, a GUI-configured latent-class analysis, 1,000 bootstrap refits,
+  95% confidence intervals, seed 42, diagnostics, a summary and a teaching annotation.
+  Neither reference test is treated as a gold standard. The example is not clinical validation.
+
+
 Independent-review corrections (2026-10-21):
 
 - psychopdaROC: IDI and NRI no longer replace a marker whose risk runs against the

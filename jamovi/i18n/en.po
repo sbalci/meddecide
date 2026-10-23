@@ -8067,6 +8067,7 @@ msgstr ""
 msgid "95% CI"
 msgstr ""
 
+#: agreement/results/irrtable.columns.title
 #: agreement/results/pathologistTable.columns.title
 #: agreement/results/boundaryTable.columns.title
 #: agreement/results/latentModelTable.columns.title
@@ -8090,6 +8091,7 @@ msgstr ""
 msgid "95% CI Lower"
 msgstr ""
 
+#: agreement/results/irrtable.columns.title
 #: agreement/results/pathologistTable.columns.title
 #: agreement/results/boundaryTable.columns.title
 #: agreement/results/latentModelTable.columns.title
@@ -14299,10 +14301,6 @@ msgid ""
 "intervals for both sensitivity and specificity. Each is computed separately "
 "at its operating point, so neither is a simultaneous confidence region for "
 "the curve as a whole."
-msgstr ""
-
-#: agreement/results/irrtable.columns.superTitle
-msgid "Confidence Interval"
 msgstr ""
 
 #: package/analyses/kappaSizeCI.title
@@ -22917,7 +22915,6 @@ msgstr ""
 msgid "Low→High cell: Minimal"
 msgstr ""
 
-#: agreement/results/irrtable.columns.title
 #: agreement/results/bootstrapCITable.columns.title
 #: agreement/results/iccTable.columns.title
 #: agreement/results/linCCCTable.columns.title
@@ -24934,6 +24931,8 @@ msgstr ""
 msgid "Negative independent units"
 msgstr ""
 
+#: decision/ui[1][0]/goldNegative.label
+#: decision/ui[1][1]/testNegative.label
 #: decisioncompare/results/levelMapping.columns.title
 msgid "Negative level"
 msgstr ""
@@ -28585,10 +28584,6 @@ msgstr ""
 msgid "Pathologists linked through shared cases"
 msgstr ""
 
-#: package/datasets/PathologistsWithoutaGoldStandard.name
-msgid "Pathologists Without a Gold Standard"
-msgstr ""
-
 #: R/agreement.b.R
 msgid "Pathology Examples"
 msgstr ""
@@ -29431,6 +29426,8 @@ msgid "Positive independent units"
 msgstr ""
 
 #: R/decisioncombine.b.R
+#: decision/ui[1][0]/goldPositive.label
+#: decision/ui[1][1]/testPositive.label
 #: decisioncombine/ui[0][1]/test1Positive.label
 #: decisioncombine/ui[0][2]/test2Positive.label
 #: decisioncombine/ui[0][3]/test3Positive.label
@@ -31674,6 +31671,7 @@ msgstr ""
 #: decisioncalculator/ui[0][0][1][1][0].label
 #: decisioncalculator/ui[5][1][1][1][0].label
 #: decisioncalculator/ui[5][2][1][1][0].label
+#: decisioncompare/options/goldNegative.title
 #: decisioncompare/results/comparatorCounts.columns.title
 msgid "Reference negative"
 msgstr ""
@@ -31692,7 +31690,6 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 #: decision/options/goldNegative.title
-#: decisioncompare/options/goldNegative.title
 msgid "Reference negative level"
 msgstr ""
 
@@ -31700,6 +31697,7 @@ msgstr ""
 #: decisioncalculator/ui[0][0][1][0][0].label
 #: decisioncalculator/ui[5][1][1][0][0].label
 #: decisioncalculator/ui[5][2][1][0][0].label
+#: decisioncompare/options/goldPositive.title
 #: decisioncompare/results/comparatorCounts.columns.title
 msgid "Reference positive"
 msgstr ""
@@ -31726,7 +31724,6 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 #: decision/options/goldPositive.title
-#: decisioncompare/options/goldPositive.title
 msgid "Reference positive level"
 msgstr ""
 
@@ -34142,6 +34139,14 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid "Simulated power below the stated power."
+msgstr ""
+
+#: package/datasets/ThreeImperfectTestsWithoutaGoldStandard.description
+msgid ""
+"Simulated teaching example: 190 patients and three imperfect binary "
+"diagnostic tests, with a saved latent-class analysis and bootstrap "
+"intervals. Neither reference test is a gold standard; this is not clinical "
+"validation."
 msgstr ""
 
 #: decisioncurve/options/ciBand/simultaneous.title
@@ -36796,12 +36801,6 @@ msgid ""
 "upper bound, and has been suppressed"
 msgstr ""
 
-#: R/agreement.b.R
-msgid ""
-"The Confidence Interval columns of the table above put that range at %1$.3f "
-"to %2$.3f for these data."
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "The confidence interval includes 0.5, so these data are compatible with no "
@@ -36817,6 +36816,12 @@ msgid ""
 "interval computed from it would be zero-width. A zero-width interval would "
 "assert that the ratio is known exactly on a row carrying no information, so "
 "the point estimate is shown without one."
+msgstr ""
+
+#: R/agreement.b.R
+msgid ""
+"The confidence interval rows of the table above put that range at %1$.3f to "
+"%2$.3f for these data."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -40121,8 +40126,8 @@ msgid ""
 "explicitly to pin it."
 msgstr ""
 
-#: package/datasets/PathologistsWithoutaGoldStandard.description
-msgid "Three pathologists' benign/malignant calls with no reference standard."
+#: package/datasets/ThreeImperfectTestsWithoutaGoldStandard.name
+msgid "Three Imperfect Tests Without a Gold Standard"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -41095,7 +41100,6 @@ msgid ""
 "different consequences for the two error types."
 msgstr ""
 
-#: agreement/results/irrtable.columns.title
 #: agreement/results/bootstrapCITable.columns.title
 #: agreement/results/iccTable.columns.title
 #: agreement/results/linCCCTable.columns.title

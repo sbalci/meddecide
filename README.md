@@ -26,7 +26,7 @@
 | **Diagnostic Evaluation** | **Combine Tests** | `decisioncombine` | Evaluates all combinatorial permutations of 2 to 3 diagnostic tests to find optimal diagnostic panel algorithms; includes decision matrices and performance heatmaps. |
 | **Diagnostic Evaluation** | **Co-Testing Analysis** | `cotest` | Evaluates simultaneous (parallel) testing strategies (e.g. HPV + cytology co-testing) to quantify gains in diagnostic sensitivity and trade-offs in specificity. |
 | **Diagnostic Evaluation** | **Sequential Testing** | `sequentialtests` | Evaluates two-stage serial testing algorithms (screening followed by confirmatory reflex testing) to minimize invasive testing costs while maintaining diagnostic precision. |
-| **Diagnostic Evaluation** | **No Gold Standard** | `nogoldstandard` | Evaluates diagnostic accuracy when an imperfect or absent gold standard exists, utilizing latent class analysis and Bayesian Hui-Walter estimation. |
+| **Diagnostic Evaluation** | **No Gold Standard** | `nogoldstandard` | Fits a two-class conditional-independence latent model, fixed-prior penalized EM estimates, or descriptive test-reference rules when no perfect reference exists. |
 | **Decision Curve Analysis** | **Decision Curve Analysis (DCA)** | `decisioncurve` | Evaluates clinical net benefit across a continuum of patient decision thresholds; compares "treat all", "treat none", and model-guided strategies; calculates standardized net benefit and number of unnecessary interventions avoided. |
 | **ROC Modeling** | **Clinical ROC Analysis** | `enhancedROC` | Publication-ready ROC curves, empirical and smooth AUC estimation with DeLong/bootstrap confidence intervals, and automated optimal cutpoint detection (Youden's J, closest-to-(0,1)). |
 | **ROC Modeling** | **Advanced ROC Analysis** | `psychopdaROC` | In-depth ROC coordinates evaluation with customizable threshold tables, sensitivity/specificity tradeoffs, and cost-weighted cutoff optimization. |
@@ -37,6 +37,21 @@
 | **Sample Size Planning** | **Kappa Power Analysis** | `kappaSizePower` | Hypothesis testing power calculator computing sample size required to demonstrate agreement exceeding a minimum acceptable threshold. |
 
 ---
+
+## No-gold-standard teaching example
+
+Open **Three Imperfect Tests Without a Gold Standard** in the jamovi Data Library.
+The file [nogoldstandard_validation.omv](data/nogoldstandard_validation.omv) contains
+190 simulated patient records and a configured `nogoldstandard` analysis of `New_Test`,
+`Reference1` and `Reference2`, with `Positive` selected for each. Neither reference test
+is assumed perfect. It includes 1,000 bootstrap refits at 95% confidence, seed 42,
+analysis diagnostics and a plain-language summary. This replaces the pathologist-reading
+example; reader reproducibility belongs in the agreement examples.
+
+The high-positive latent class is not automatically disease, and three tests cannot
+establish conditional independence. The filename describes a simulated validation-study
+scenario, not demonstrated clinical validation. See the
+[example guide](vignettes/nogoldstandard-validation-example.md) for settings and interpretation.
 
 ## 🚀 Installation
 

@@ -4,7 +4,7 @@ title: Compare Medical Decision Tests
 menuGroup: meddecide
 menuSubgroup: Decision
 menuSubtitle: Compare sensitivity, specificity, PPV, NPV, ...
-version: '1.1.1'
+version: '1.1.2'
 jas: '1.2'
 
 description:
@@ -93,7 +93,7 @@ options:
             The reference variable; its interpretation is selected separately.
 
     - name: goldPositive
-      title: Reference positive level
+      title: Reference positive
       type: Level
       variable: (gold)
       allowNone: true
@@ -105,7 +105,7 @@ options:
             The positive reference level; disease interpretation requires a disease standard.
 
     - name: goldNegative
-      title: Reference negative level
+      title: Reference negative
       type: Level
       variable: (gold)
       allowNone: true
