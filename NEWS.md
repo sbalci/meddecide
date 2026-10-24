@@ -1,13 +1,25 @@
-# meddecide 1.1.1 (2026-10-21)
+# meddecide (development version)
 
-Example dataset update (2026-10-23):
+Text changes only. No statistics or options changed, and saved analyses open as before.
 
-- Replaced the no-gold-standard Data Library entry for pathologist readings with
-  `nogoldstandard_validation.omv`: 190 simulated patients, three imperfect binary
+- **Severity labels in sentence case.** Notices start with "Error:", "Strong warning:", "Warning:"
+  or "Info:" instead of capitals, and the confusion-matrix headers in ROC analysis read "Decision
+  based on measure" and "Criterion".
+- **American spelling throughout** (analyzed, modeled, color, behavior, center, favor). The Turkish
+  translations follow.
+- **Repository:** a personal settings file is no longer tracked.
+
+# meddecide 1.1.2 (2026-10-23)
+
+- **Example dataset update:** replaced the no-gold-standard Data Library entry for pathologist
+  readings with `nogoldstandard_validation.omv`: 190 simulated patients, three imperfect binary
   diagnostic tests, a GUI-configured latent-class analysis, 1,000 bootstrap refits,
   95% confidence intervals, seed 42, diagnostics, a summary and a teaching annotation.
   Neither reference test is treated as a gold standard. The example is not clinical validation.
+- **Documentation:** a worked example for the no-gold-standard analysis, and updated Turkish
+  translations.
 
+# meddecide 1.1.1 (2026-10-21)
 
 Independent-review corrections (2026-10-21):
 

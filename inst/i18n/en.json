@@ -19,7 +19,7 @@
             "...": [
                 ""
             ],
-            "'{var}' was analysed with only {pos} positive and {neg} negative case(s). Below about 10 per class the AUC, its confidence interval and the selected cutpoint are unstable; treat these results as exploratory.": [
+            "'{var}' was analyzed with only {pos} positive and {neg} negative case(s). Below about 10 per class the AUC, its confidence interval and the selected cutpoint are unstable; treat these results as exploratory.": [
                 ""
             ],
             "'Treat All' assumes all patients receive the intervention; 'Treat None' assumes no intervention.": [
@@ -631,13 +631,13 @@
             "{tag1}Application:{tag2} Identifies which residents need additional mentoring and whether\n                            training is producing consistent grading standards across the cohort.": [
                 ""
             ],
-            "{tag1}Application:{tag2} The systematic offset falls in the range that spans the 1% and 50%\n                            TPS cutoffs, so scores from the two clones are not directly comparable at those cutoffs without\n                            further study of clone-specific behaviour.": [
+            "{tag1}Application:{tag2} The systematic offset falls in the range that spans the 1% and 50%\n                            TPS cutoffs, so scores from the two clones are not directly comparable at those cutoffs without\n                            further study of clone-specific behavior.": [
                 ""
             ],
             "{tag1}Application:{tag2} These point estimates are consistent with stable adequacy assessment\n                            across the shift, but kappas from a single study carry wide confidence intervals, and a small\n                            difference between the two hours would be within sampling noise. The comparison does not by itself\n                            settle any question about scheduling.": [
                 ""
             ],
-            "{tag1}Application:{tag2} This level of concordance in one cohort supports proceeding to a\n                            formal validation study. A single-cohort CCC does not itself validate substituting WSI for glass\n                            slides: it does not address readers outside the study, case-mix effects, or behaviour at the\n                            mitotic-count thresholds that change grade.": [
+            "{tag1}Application:{tag2} This level of concordance in one cohort supports proceeding to a\n                            formal validation study. A single-cohort CCC does not itself validate substituting WSI for glass\n                            slides: it does not address readers outside the study, case-mix effects, or behavior at the\n                            mitotic-count thresholds that change grade.": [
                 ""
             ],
             "{tag1}Application:{tag2} Top-ranked specimens used as reference standards for cytotechnologist training": [
@@ -793,7 +793,7 @@
             "{tag1}Cell Annotations:{tag2} Shows counts and/or percentages for each cell": [
                 ""
             ],
-            "{tag1}Cell Colour:{tag2} The share of all cases that fall in the cell, on a fixed 0-100% scale shared by every panel.": [
+            "{tag1}Cell Color:{tag2} The share of all cases that fall in the cell, on a fixed 0-100% scale shared by every panel.": [
                 ""
             ],
             "{tag1}Cell counts{tag2} - Mitotic figures per 10 HPF": [
@@ -1612,13 +1612,13 @@
             "{tag1}Morphometric analysis{tag2} - Nuclear size, gland area measurements": [
                 ""
             ],
+            "{tag1}Multi-center reader studies{tag2}: cases from several hospitals scored by the same pathologists": [
+                ""
+            ],
             "{tag1}Multi-center studies{tag2} - Ensuring consistent grading across sites": [
                 ""
             ],
-            "{tag1}Multi-centre reader studies{tag2}: cases from several hospitals scored by the same pathologists": [
-                ""
-            ],
-            "{tag1}Multi-scanner studies{tag2}: images from several imaging centres": [
+            "{tag1}Multi-scanner studies{tag2}: images from several imaging centers": [
                 ""
             ],
             "{tag1}Multiple categories ({tag2}2):{tag3} For 2{tag4}2 tables, use McNemar's test instead": [
@@ -1732,7 +1732,7 @@
             "{tag1}Ordinal nature:{tag2} Fibrosis stages represent clear progression from none to cirrhosis": [
                 ""
             ],
-            "{tag1}Ordinal scales with roughly equal steps{tag2} - tumour grade, fibrosis stage, activity scores": [
+            "{tag1}Ordinal scales with roughly equal steps{tag2} - tumor grade, fibrosis stage, activity scores": [
                 ""
             ],
             "{tag1}Ordinal scales{tag2} - Tumor grade (G1/G2/G3), severity scores, stage classifications": [
@@ -1912,7 +1912,7 @@
             "{tag1}Quality control{tag2}: identifying institutions where agreement is lower": [
                 ""
             ],
-            "{tag1}Random disagreement needs a different remedy{tag2} - protocol standardisation, training, or averaging replicate reads.": [
+            "{tag1}Random disagreement needs a different remedy{tag2} - protocol standardization, training, or averaging replicate reads.": [
                 ""
             ],
             "{tag1}Random disagreement{tag2} (residual) - inconsistent, case-by-case variation that no offset explains.": [
@@ -1924,7 +1924,7 @@
             "{tag1}Random effect (rater){tag2}: Accounts for systematic rater differences": [
                 ""
             ],
-            "{tag1}Random share = random disagreement / (systematic + random disagreement){tag2}, from 0 (all disagreement is systematic) to 1 (all of it is random).\n                        This table used to be labelled \"Maxwell's RE\"; Maxwell's (1977) random-error coefficient is a different statistic for dichotomous ratings and is not what is computed here.": [
+            "{tag1}Random share = random disagreement / (systematic + random disagreement){tag2}, from 0 (all disagreement is systematic) to 1 (all of it is random).\n                        This table used to be labeled \"Maxwell's RE\"; Maxwell's (1977) random-error coefficient is a different statistic for dichotomous ratings and is not what is computed here.": [
                 ""
             ],
             "{tag1}Range restriction:{tag2} Limited measurement range can artificially inflate CCC": [
@@ -2554,7 +2554,7 @@
             "{tag1}What the numbers do and do not report:{tag2} the 3.2 mm is an average difference over\n                            200 cases and says nothing about how far a single case can be off - the Bland-Altman limits of\n                            agreement in this analysis carry that spread. Because C{tag3}b{tag4} is not the only shortfall,\n                            subtracting the average offset would leave the two measurements still disagreeing.": [
                 ""
             ],
-            "{tag1}What these ICCs cover:{tag2} how consistently each pathologist reproduced their own\n                            mitotic count across the two platforms, and how consistently the four ranked the same cases, in\n                            this one cohort. They carry no information about the size of any glass-to-WSI offset, nor about\n                            behaviour at the mitotic-count thresholds that change grade - the Bland-Altman output and\n                            agreement measured at those thresholds are the parts of this analysis that address those.": [
+            "{tag1}What these ICCs cover:{tag2} how consistently each pathologist reproduced their own\n                            mitotic count across the two platforms, and how consistently the four ranked the same cases, in\n                            this one cohort. They carry no information about the size of any glass-to-WSI offset, nor about\n                            behavior at the mitotic-count thresholds that change grade - the Bland-Altman output and\n                            agreement measured at those thresholds are the parts of this analysis that address those.": [
                 ""
             ],
             "{tag1}What this analysis does:{tag2}": [
@@ -2623,7 +2623,7 @@
             "{test} (J = {youden}, 95% CI {lower} to {upper})": [
                 ""
             ],
-            "{test} classifies worse than chance in this sample, beyond sampling variation: Youden's J = {youden} (Agresti-Caffo 95% CI {lower} to {upper}) on the {n} complete cases analysed here. Its sensitivity and specificity add up to less than 1, so calling its other level positive would do better; this is the signature of a reversed positive level. Check the level chosen as positive for {test} and for the reference standard before interpreting any of these results.": [
+            "{test} classifies worse than chance in this sample, beyond sampling variation: Youden's J = {youden} (Agresti-Caffo 95% CI {lower} to {upper}) on the {n} complete cases analyzed here. Its sensitivity and specificity add up to less than 1, so calling its other level positive would do better; this is the signature of a reversed positive level. Check the level chosen as positive for {test} and for the reference standard before interpreting any of these results.": [
                 ""
             ],
             "{test} Has No Positive Results": [
@@ -2806,7 +2806,7 @@
             "%1$d row(s) with a missing value in the subgroup variable (%2$s) were excluded from the subgroup analysis.": [
                 ""
             ],
-            "%1$d selected variable(s) had the same value in every case and were removed before fitting: %2$s. A constant carries no information and cannot be penalised or selected. %3$d variables remain and are shown as Variables analysed.": [
+            "%1$d selected variable(s) had the same value in every case and were removed before fitting: %2$s. A constant carries no information and cannot be penalised or selected. %3$d variables remain and are shown as Variables analyzed.": [
                 ""
             ],
             "%1$d term(s) were retained (largest absolute standardized coefficient first): %2$s.": [
@@ -2842,7 +2842,7 @@
             "%1$s and %2$s were tied for the highest observed balanced accuracy, but %2$s classified significantly more cases correctly.": [
                 ""
             ],
-            "%1$s at cutoff %2$s (analysed values %3$s to %4$s)": [
+            "%1$s at cutoff %2$s (analyzed values %3$s to %4$s)": [
                 ""
             ],
             "%1$s cases rated by %2$s raters": [
@@ -2884,10 +2884,10 @@
             "%1$s had the highest observed balanced accuracy but classified significantly fewer cases correctly than %2$s.": [
                 ""
             ],
-            "%1$s has a value for %2$d case(s) of the negative class (%3$s); at least 2 are needed to analyse it.": [
+            "%1$s has a value for %2$d case(s) of the negative class (%3$s); at least 2 are needed to analyze it.": [
                 ""
             ],
-            "%1$s has a value for %2$d case(s) of the positive class (%3$s); at least 2 are needed to analyse it.": [
+            "%1$s has a value for %2$d case(s) of the positive class (%3$s); at least 2 are needed to analyze it.": [
                 ""
             ],
             "%1$s has an AUC of %2$s and its whole confidence interval lies below 0.5: it separates the groups, but in the opposite direction to the one assumed (%3$s). • First check Positive class: is %4$s the level that means the condition is present? Naming the wrong level turns the AUC into 1 minus its true value, exactly this pattern. • Only if it is, setting Direction to '%5$s' gives an AUC of %6$s and re-estimates the cut-point, sensitivity and specificity. • Change Direction only if that matches what the marker means clinically.": [
@@ -2905,7 +2905,7 @@
             "%1$s has an AUC of 0: in these data it separates the groups perfectly, but in the opposite direction to the one assumed (%2$s). • First check Positive class: is %3$s the level that means the condition is present? Naming the wrong level turns the AUC into 1 minus its true value, exactly this pattern. • Only if it is, setting Direction to '%4$s' gives an AUC of 1 and re-estimates the cut-point, sensitivity and specificity. • Change Direction only if that matches what the marker means clinically.": [
                 ""
             ],
-            "%1$s has the same value (%2$s) in every analysed row, so it cannot separate the groups: its AUC is 0.5 by construction and no cut-point exists. Choose a predictor that varies, or check how the data were imported.": [
+            "%1$s has the same value (%2$s) in every analyzed row, so it cannot separate the groups: its AUC is 0.5 by construction and no cut-point exists. Choose a predictor that varies, or check how the data were imported.": [
                 ""
             ],
             "%1$s logistic regression with %2$s lambda selection and %3$d-fold cross-validation was applied to %4$d candidate variables (%5$d model terms after dummy coding) in %6$d independent observations (%7$d events, %8$d non-events).": [
@@ -2914,7 +2914,7 @@
             "%1$s minus %2$s": [
                 ""
             ],
-            "%1$s of %2$s rows can be analysed: a row is used only when the outcome and every selected predictor are present.": [
+            "%1$s of %2$s rows can be analyzed: a row is used only when the outcome and every selected predictor are present.": [
                 ""
             ],
             "%1$s predictors (best: %2$s, AUC=%3$s)": [
@@ -2941,7 +2941,7 @@
             "%1$s: %2$s": [
                 ""
             ],
-            "%1$s: %2$s%% of case-control pairs are tied; ties count one half. If every tie favoured the cases the AUC would be %3$s, if every tie favoured the non-cases %4$s.": [
+            "%1$s: %2$s%% of case-control pairs are tied; ties count one half. If every tie favored the cases the AUC would be %3$s, if every tie favored the non-cases %4$s.": [
                 ""
             ],
             "%1$s: positive = %2$s; negative = %3$s": [
@@ -2962,7 +2962,7 @@
             "%1$s%% confidence intervals for the AUC are bootstrap intervals (%2$s) from %3$s usable resamples of %4$s attempted, drawn within each outcome class (boot package; Davison & Hinkley, 1997), random seed %5$s.": [
                 ""
             ],
-            "%1$s%% of the analysed patients are positive. • Sensitivity, specificity and the AUC do not depend on prevalence, but with so few negatives specificity is imprecise, and the NPV will be low unless sensitivity is very high.": [
+            "%1$s%% of the analyzed patients are positive. • Sensitivity, specificity and the AUC do not depend on prevalence, but with so few negatives specificity is imprecise, and the NPV will be low unless sensitivity is very high.": [
                 ""
             ],
             "%d case pair(s) had an undefined correlation (a case rated identically by every rater, or too few shared raters) and were treated as uncorrelated (similarity 0.00).": [
@@ -3064,7 +3064,7 @@
             "%s were tied for the highest observed balanced accuracy; this descriptive ranking was not tested as a superiority claim and is not a clinical recommendation.": [
                 ""
             ],
-            "%s: an integer column set to Nominal or Ordinal was analysed by its numeric values, as ordered codes read in the direction set under Direction. This is right for an ordinal rating scale; if the numbers merely label unordered categories, the AUC depends on the arbitrary numbering and is meaningless.": [
+            "%s: an integer column set to Nominal or Ordinal was analyzed by its numeric values, as ordered codes read in the direction set under Direction. This is right for an ordinal rating scale; if the numbers merely label unordered categories, the AUC depends on the arbitrary numbering and is meaningless.": [
                 ""
             ],
             "%s: net benefit is computed on the direction the data support, which is the opposite of the Classification Direction you selected. Under the direction you selected this marker performs worse than shown here.": [
@@ -3715,7 +3715,7 @@
             "<p>You selected a <strong>serial-positive teaching strategy</strong>. Everyone first receives {test1} (sensitivity {sens1}%, specificity {spec1}%). Only first-test positives receive {test2} (sensitivity {sens2}%, specificity {spec2}%), and a final result is positive only when both tests are positive.</p><p>The sensitivities and false-positive rates therefore multiply. Combined specificity increases while combined sensitivity decreases. Two positive results are not automatically a confirmed diagnosis; PPV still depends on prevalence, and false negatives are shown in the population-flow table.</p>": [
                 ""
             ],
-            "<span style='color:inherit;'><b>Significant difference detected.</b></span> %1$s classified significantly more cases correctly than %2$s: of the %3$d cases where exactly one test was correct, %4$d favoured %1$s. McNemar's test compares overall correctness only; the two tests may still differ in the sensitivity/specificity balance.</p>": [
+            "<span style='color:inherit;'><b>Significant difference detected.</b></span> %1$s classified significantly more cases correctly than %2$s: of the %3$d cases where exactly one test was correct, %4$d favored %1$s. McNemar's test compares overall correctness only; the two tests may still differ in the sensitivity/specificity balance.</p>": [
                 ""
             ],
             "<strong>Cases where Test A and Test B have different CORRECTNESS</strong> relative to the reference standard (e.g., Test A correct but Test B wrong, or vice versa). McNemar's test examines whether the imbalance between these discordant types is statistically significant. The p-value comes from the McNemar mid-p test or, if chosen, the asymptotic test without continuity correction, the two versions recommended by Fagerland et al. (2013); precision and power still depend on the number of discordant pairs.": [
@@ -4180,7 +4180,7 @@
             "A predictive value is undefined and shown as blank when its conditioning group has no observations or its adjusted denominator is zero.": [
                 ""
             ],
-            "A predictor analysed on its own could use up to %s rows.": [
+            "A predictor analyzed on its own could use up to %s rows.": [
                 ""
             ],
             "A probability of exactly 0% or 100% here is set by the dependence being at the limit the entered values allow; it is not an estimate.": [
@@ -4210,7 +4210,7 @@
             "A sensitive imaging test paired with a highly specific microbiological one; advanced disease makes both more likely to be positive.": [
                 ""
             ],
-            "A sensitive test paired with a specific one, both read from the same cervical sample, so they are modelled as conditionally dependent.": [
+            "A sensitive test paired with a specific one, both read from the same cervical sample, so they are modeled as conditionally dependent.": [
                 ""
             ],
             "a sensitivity of 1.000 here means the model calls every case positive, not that it is a sensitive test": [
@@ -4675,7 +4675,7 @@
             "Agreement focus, skewed distributions": [
                 ""
             ],
-            "Agreement for a design in which every case belongs to one cluster (institution, centre,\n                    scanner) and the same raters score the cases. It reports agreement WITHIN cluster, so that\n                    clusters which differ in case mix do not masquerade as better or worse agreement, and it shows\n                    each cluster separately so you can see whether agreement is similar across them.": [
+            "Agreement for a design in which every case belongs to one cluster (institution, center,\n                    scanner) and the same raters score the cases. It reports agreement WITHIN cluster, so that\n                    clusters which differ in case mix do not masquerade as better or worse agreement, and it shows\n                    each cluster separately so you can see whether agreement is similar across them.": [
                 ""
             ],
             "Agreement Heatmap (Confusion Matrix)": [
@@ -4963,16 +4963,7 @@
             "An unpenalized logistic refit in the Model Comparison table showed complete/quasi-complete separation (non-convergence or fitted probabilities at 0/1). Its AUC/AIC are unreliable; prefer the penalized row.": [
                 ""
             ],
-            "Analysed Combination Counts": [
-                ""
-            ],
-            "Analysed Contingency Table": [
-                ""
-            ],
             "Analyses two diagnostic tests applied in parallel: both are performed on the same subject at the same time, before either result is known, and the two results are then combined. Reports the post-test probability of disease for every result combination (either test positive, test 1 only, test 2 only, both positive, both negative), optionally allowing the two tests to be conditionally dependent. For tests performed one after another, where the second is ordered only after a particular first result, use Sequential Test Analysis instead. Note that Sequential Test Analysis also offers a parallel strategy, but its combined figures assume conditional independence; this analysis is the one that models conditional dependence numerically.": [
-                ""
-            ],
-            "Analysing %d cases": [
                 ""
             ],
             "Analysis calculation failed": [
@@ -5068,7 +5059,13 @@
             "Analyze diagnostic test performance when no perfect reference test (gold standard) is available.": [
                 ""
             ],
+            "Analyzed Combination Counts": [
+                ""
+            ],
             "Analyzed common cases": [
+                ""
+            ],
+            "Analyzed Contingency Table": [
                 ""
             ],
             "Analyzed independent units": [
@@ -5090,6 +5087,9 @@
                 ""
             ],
             "Analyzes how diagnostic accuracy changes when applying two tests in sequence, comparing three different testing strategies: serial positive (confirmation), serial negative (exclusion), and parallel testing. Provides comprehensive analysis including population flow, cost implications, and diagnostic plots, so you can explore how diagnostic strategies behave under explicit assumptions, compare hypothetical test sequences, weigh trade-offs between sensitivity and specificity, and illustrate expected testing volume and cost under user-supplied assumptions. The named scenarios and their values are teaching examples only, not clinical guidance or validated diagnostic pathways. Replace all example parameters with estimates applicable to the intended population before interpreting results.": [
+                ""
+            ],
+            "Analyzing %d cases": [
                 ""
             ],
             "Anticipated Agreement": [
@@ -5320,7 +5320,7 @@
             "At optimal threshold = %1$s (sensitivity %2$s%%, specificity %3$s%%)": [
                 ""
             ],
-            "At the %1$s%% disease prevalence among the %2$d cases analysed for %3$s, %4$s positive predictive value, %5$s negative predictive value, and %6$s overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
+            "At the %1$s%% disease prevalence among the %2$d cases analyzed for %3$s, %4$s positive predictive value, %5$s negative predictive value, and %6$s overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
                 ""
             ],
             "At the %1$s%% disease prevalence observed in this sample, %2$s positive predictive value, %3$s negative predictive value, and %4$s overall accuracy were observed; predictive values and accuracy change with prevalence and would need to be recomputed for a population with a different disease rate.": [
@@ -5335,7 +5335,7 @@
             "At the cutoff closest to the top-left corner of the ROC curve, %1$s, sensitivity was %2$.1f%% and specificity %3$.1f%% (Youden index %4$.3f).": [
                 ""
             ],
-            "At the cutoff that maximised the Youden index, %1$s, sensitivity was %2$.1f%% and specificity %3$.1f%% (Youden index %4$.3f).": [
+            "At the cutoff that maximized the Youden index, %1$s, sensitivity was %2$.1f%% and specificity %3$.1f%% (Youden index %4$.3f).": [
                 ""
             ],
             "At the cutoff with the highest Youden index among those meeting the minimum sensitivity and specificity set for this analysis, %1$s, sensitivity was %2$.1f%% and specificity %3$.1f%% (Youden index %4$.3f).": [
@@ -5353,10 +5353,10 @@
             "At the required sample size the rarest outcome category is expected in only {min} subjects. Fewer than five cases of a category makes the large-sample chi-square approximation behind this method unreliable, and it leaves the study with too few examples of that category for the raters to disagree about.": [
                 ""
             ],
-            "At these fixed score cutoffs every analysed patient is classified as positive: %s. The clinical impact and workload rows at such a cutoff describe testing everyone (sensitivity 1, specificity 0, the net benefit of treating all), not the marker. Enter cutoffs on the marker's own scale under Fixed score cutoffs; the default 0.5 suits predicted probabilities only.": [
+            "At these fixed score cutoffs every analyzed patient is classified as positive: %s. The clinical impact and workload rows at such a cutoff describe testing everyone (sensitivity 1, specificity 0, the net benefit of treating all), not the marker. Enter cutoffs on the marker's own scale under Fixed score cutoffs; the default 0.5 suits predicted probabilities only.": [
                 ""
             ],
-            "At these fixed score cutoffs no analysed patient is classified as positive: %s. The clinical impact and workload rows at such a cutoff describe testing no one (sensitivity 0, specificity 1, net benefit 0), not the marker. Enter cutoffs on the marker's own scale under Fixed score cutoffs; the default 0.5 suits predicted probabilities only.": [
+            "At these fixed score cutoffs no analyzed patient is classified as positive: %s. The clinical impact and workload rows at such a cutoff describe testing no one (sensitivity 0, specificity 1, net benefit 0), not the marker. Enter cutoffs on the marker's own scale under Fixed score cutoffs; the default 0.5 suits predicted probabilities only.": [
                 ""
             ],
             "At this sample size the goodness-of-fit cells (all raters agreeing on one category, or the single pooled cell for any disagreement) are too sparse at the reported lower bound: the smallest expected count is {min}, and the number of cells below 5 is {below} of {total}. The calculation rests on a large-sample chi-square approximation, so the bound shown is less dependable here.": [
@@ -5890,7 +5890,7 @@
             "Bootstrap confidence interval computation failed for %s because no resample contained both outcome classes. DeLong's method is used instead; limits are shown only when estimable.": [
                 ""
             ],
-            "Bootstrap confidence interval for the partial AUC, using the resample count, interval type (BCa/percentile/basic) and stratification set above. The interval is for the raw partial AUC on the chosen focus range, not for the McClish-normalised value.": [
+            "Bootstrap confidence interval for the partial AUC, using the resample count, interval type (BCa/percentile/basic) and stratification set above. The interval is for the raw partial AUC on the chosen focus range, not for the McClish-normalized value.": [
                 ""
             ],
             "Bootstrap Confidence Intervals": [
@@ -6022,7 +6022,7 @@
             "Both Positive LR": [
                 ""
             ],
-            "Both tests are driven by the extent of myocardial injury, so they are modelled as dependent among diseased subjects in particular.": [
+            "Both tests are driven by the extent of myocardial injury, so they are modeled as dependent among diseased subjects in particular.": [
                 ""
             ],
             "Both Tests Negative": [
@@ -6187,7 +6187,7 @@
             "Calibration-in-the-large": [
                 ""
             ],
-            "Calibration, standardisation, bias correction": [
+            "Calibration, standardization, bias correction": [
                 ""
             ],
             "Call": [
@@ -6271,7 +6271,7 @@
             "Case clustering is limited to %1$d cases: it compares every case with every other case, so its memory and run time grow with the square of the case count. %2$d cases were supplied. Filter the data to a subset of cases to cluster them.": [
                 ""
             ],
-            "Case exclusion summary: {details}. {analysed} of {total} cases analysed.": [
+            "Case exclusion summary: {details}. {analyzed} of {total} cases analyzed.": [
                 ""
             ],
             "Case ID": [
@@ -6349,7 +6349,7 @@
             "Categorical NRI, using risk category boundaries at {thr}.": [
                 ""
             ],
-            "Categorical or ordinal ratings for kappa; continuous measurements are analysed with ICC, Lin's CCC, TDI and the Bland-Altman limits instead": [
+            "Categorical or ordinal ratings for kappa; continuous measurements are analyzed with ICC, Lin's CCC, TDI and the Bland-Altman limits instead": [
                 ""
             ],
             "Categorical ratings (grades, subtypes, positive/negative)": [
@@ -6409,10 +6409,10 @@
             "Cell annotation size": [
                 ""
             ],
-            "Cell colour: share of all rated cases": [
+            "Cell color: share of all rated cases": [
                 ""
             ],
-            "Cell colour: similarity (1 - distance)": [
+            "Cell color: similarity (1 - distance)": [
                 ""
             ],
             "Central tendency bias, avoiding extremes": [
@@ -6565,7 +6565,7 @@
             "Choose the maximum acceptable confidence-interval half-width for sensitivity and specificity before collecting data.": [
                 ""
             ],
-            "Choose the outcome level that means the condition is present (for example Malignant). Required for a nominal or ordinal outcome: levels are never chosen from their order. A numeric outcome coded 0/1 is read as 1 = positive without a choice; for any other numeric coding, set the outcome's measure type to Nominal in Data > Setup so its values are listed here. Every other level is analysed as negative. The Outcome coding table shows which level was used and how.": [
+            "Choose the outcome level that means the condition is present (for example Malignant). Required for a nominal or ordinal outcome: levels are never chosen from their order. A numeric outcome coded 0/1 is read as 1 = positive without a choice; for any other numeric coding, set the outcome's measure type to Nominal in Data > Setup so its values are listed here. Every other level is analyzed as negative. The Outcome coding table shows which level was used and how.": [
                 ""
             ],
             "Choose the outcome level that represents the condition of interest.": [
@@ -6889,7 +6889,7 @@
             "Clinical Pathology Use Cases": [
                 ""
             ],
-            "Clinical preset in force: %s (it turns Youden optimisation on and may replace the minimum sensitivity and specificity).": [
+            "Clinical preset in force: %s (it turns Youden optimization on and may replace the minimum sensitivity and specificity).": [
                 ""
             ],
             "Clinical Preset Overrode Your Settings": [
@@ -7357,7 +7357,7 @@
             "Complete cases": [
                 ""
             ],
-            "Complete cases analysed": [
+            "Complete cases analyzed": [
                 ""
             ],
             "Complete consensus (100%) among the raters who rated the case": [
@@ -7966,7 +7966,7 @@
             "Create Consensus Variable (Any Data Type)": [
                 ""
             ],
-            "CRITERION": [
+            "Criterion": [
                 ""
             ],
             "Criterion Met?": [
@@ -8134,10 +8134,10 @@
             "Cut-offs describe different cohorts": [
                 ""
             ],
-            "Cut-points maximise the Youden index, J = sensitivity + specificity - 1 (Youden, 1950), over the thresholds midway between adjacent observed values: the empirical estimator of the Youden-optimal cut-point (Fluss et al., 2005). A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
+            "Cut-points maximize the Youden index, J = sensitivity + specificity - 1 (Youden, 1950), over the thresholds midway between adjacent observed values: the empirical estimator of the Youden-optimal cut-point (Fluss et al., 2005). A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
                 ""
             ],
-            "Cut-points minimise the squared distance to the top-left corner of the ROC plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway between adjacent observed values (Perkins & Schisterman, 2006); Youden optimisation was switched off. A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
+            "Cut-points minimize the squared distance to the top-left corner of the ROC plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway between adjacent observed values (Perkins & Schisterman, 2006); Youden optimization was switched off. A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
                 ""
             ],
             "Cutoff": [
@@ -8176,7 +8176,7 @@
             "Cutpoint Optimization": [
                 ""
             ],
-            "cutpointr could not analyse %1$s (%2$s). A built-in Youden-index search was used instead, so the selected cutpoint method, metric and tolerance were not applied to that marker.": [
+            "cutpointr could not analyze %1$s (%2$s). A built-in Youden-index search was used instead, so the selected cutpoint method, metric and tolerance were not applied to that marker.": [
                 ""
             ],
             "Cutpoints selected on these data require external validation before clinical use.": [
@@ -8254,7 +8254,7 @@
             "Decision": [
                 "Decision"
             ],
-            "DECISION BASED ON MEASURE": [
+            "Decision based on measure": [
                 ""
             ],
             "Decision Calculators": [
@@ -8923,7 +8923,7 @@
             "Display tables of the false positive and false negative cases (where the test disagrees with the reference standard), with their row numbers so the records can be reviewed.": [
                 ""
             ],
-            "Display the 2x2 table and level-combination counts of the analysed cases, and a summary of the cases excluded for missing values or unselected levels. Useful for verifying data entry and understanding the underlying counts.": [
+            "Display the 2x2 table and level-combination counts of the analyzed cases, and a summary of the cases excluded for missing values or unselected levels. Useful for verifying data entry and understanding the underlying counts.": [
                 ""
             ],
             "Display the calibration plot: observed proportion against predicted probability in the Hosmer-Lemeshow risk groups, with an optional flexible spline curve (splineCalibration)": [
@@ -8935,7 +8935,7 @@
             "Display two tables of 95 percent confidence intervals for sensitivity, specificity, predictive values, likelihood ratios, diagnostic odds ratio, Youden's index and number needed to diagnose. Their predictive values use the sample prevalence, even when a population prevalence is supplied.": [
                 ""
             ],
-            "Displays the analysed contingency table and combination counts, and a summary of excluded cases, for verification.": [
+            "Displays the analyzed contingency table and combination counts, and a summary of excluded cases, for verification.": [
                 ""
             ],
             "Distance": [
@@ -9016,7 +9016,7 @@
             "Each data row is treated as a separate case. If the same case was measured under both conditions on two rows, the model does not know they are one case, so this compares conditions between cases and is less precise than a within-case comparison would be. Give a case ID variable to link them.": [
                 ""
             ],
-            "Each difference is the first-named test minus the second: for 'A vs B', a positive value favours A and a negative value favours B.": [
+            "Each difference is the first-named test minus the second: for 'A vs B', a positive value favors A and a negative value favors B.": [
                 ""
             ],
             "Each factor term is compared with its predictor's reference (first) level: %s. Points for a factor level apply relative to that reference level (0 points).": [
@@ -9064,7 +9064,7 @@
             "Each row must be a different patient: several slides, cores or lesions from one patient make the confidence intervals too narrow.": [
                 ""
             ],
-            "Each row must be a different, independent patient. If patients contribute several specimens (cores, blocks, lesions), the confidence intervals are too narrow: analyse one specimen per patient or use a method for clustered data.": [
+            "Each row must be a different, independent patient. If patients contribute several specimens (cores, blocks, lesions), the confidence intervals are too narrow: analyze one specimen per patient or use a method for clustered data.": [
                 ""
             ],
             "Each row must be an independent observation. Repeated measurements from the same patient require a method that accounts for clustering.": [
@@ -9082,7 +9082,7 @@
             "Each row uses the cases that both raters in that pair scored (pairwise-complete), so the Cases count can differ between rows. %d pair(s) with fewer than 10 paired observations are omitted.": [
                 ""
             ],
-            "Each row was analysed as a separate, independent patient; the confidence intervals and tests assume this.": [
+            "Each row was analyzed as a separate, independent patient; the confidence intervals and tests assume this.": [
                 ""
             ],
             "Each rule is compared with each test it combines on the same {n} complete cases: sensitivity among the {npos} disease-present and specificity among the {nneg} disease-absent cases. Gained counts the cases the rule classifies correctly and the test alone does not, Lost the reverse, and Change is the rule minus the test.": [
@@ -9254,9 +9254,6 @@
                 ""
             ],
             "Error": [
-                ""
-            ],
-            "ERROR": [
                 ""
             ],
             "Error Balance": [
@@ -9463,7 +9460,7 @@
             "Every pair of predictors is tested separately, so with {k} predictors this table reports {m} tests. At the 5% level roughly one verdict in twenty is expected to read “significant” by chance alone, so with several pairs on screen treat an isolated significant row as a hypothesis to confirm rather than as a finding. No multiplicity adjustment is applied to these p-values.": [
                 ""
             ],
-            "Every predictor produced a single distinct predicted probability, so there is nothing to group into calibration bins. That happens only when a predictor is constant within the analysed rows: with Prediction scale Score its logistic slope is then not estimable, and every patient receives the sample prevalence as risk.": [
+            "Every predictor produced a single distinct predicted probability, so there is nothing to group into calibration bins. That happens only when a predictor is constant within the analyzed rows: with Prediction scale Score its logistic slope is then not estimable, and every patient receives the sample prevalence as risk.": [
                 ""
             ],
             "Every recorded result of {test} ({variable}) is \"{level}\", the level chosen as positive, so {test} cannot separate disease-present from disease-absent cases in these data: on its own it reads sensitivity 100% and specificity 0% by construction.": [
@@ -9730,7 +9727,7 @@
             "Exploratory Pairwise Model Comparison": [
                 ""
             ],
-            "Exploratory Receiver Operating Characteristic (ROC) curve analysis with optimal cutpoint determination. Analyse independent rows or a prespecified mean or median per patient. Patient summaries require an ID and a consistent outcome within each patient; all calculations and resampling then use one summary per patient. Nominal coverage is not guaranteed in small or imbalanced samples. Cutpoints selected on these data report apparent performance and require validation in the intended setting.": [
+            "Exploratory Receiver Operating Characteristic (ROC) curve analysis with optimal cutpoint determination. Analyze independent rows or a prespecified mean or median per patient. Patient summaries require an ID and a consistent outcome within each patient; all calculations and resampling then use one summary per patient. Nominal coverage is not guaranteed in small or imbalanced samples. Cutpoints selected on these data report apparent performance and require validation in the intended setting.": [
                 ""
             ],
             "Exploratory ROC analysis: analysis units must be independent; selected cutpoints need validation. Nominal interval coverage is not guaranteed in small or imbalanced samples.": [
@@ -10057,7 +10054,7 @@
             "Find sample size based on power": [
                 ""
             ],
-            "Find the optimal cutoff by maximising the Youden index (sensitivity + specificity - 1), subject to the minimum sensitivity/specificity below. When off, the cutoff closest to the top-left corner of the ROC curve is reported instead. The minimum sensitivity and specificity are used only by the Youden search; with this off they are not applied and a warning says so.": [
+            "Find the optimal cutoff by maximizing the Youden index (sensitivity + specificity - 1), subject to the minimum sensitivity/specificity below. When off, the cutoff closest to the top-left corner of the ROC curve is reported instead. The minimum sensitivity and specificity are used only by the Youden search; with this off they are not applied and a warning says so.": [
                 ""
             ],
             "Finn (1970) proposed no interpretive bands for this coefficient himself. The 0.40, 0.60 and 0.75 cut-points follow the Cicchetti (1994) reliability convention, which was written for the ICC and for kappa rather than for Finn's coefficient; the split at 0.90 into Excellent and Outstanding is this module's own. They are not the Landis {tag1} Koch (1977) kappa bands or the Koo {tag2} Li (2016) ICC bands used elsewhere in this analysis, so the same number is described differently there.": [
@@ -10150,7 +10147,7 @@
             "Fixed Score Cutoffs Not Read": [
                 ""
             ],
-            "Fixed score cutoffs on the marker's own scale, comma separated. The default 0.5 is meant for predicted probabilities (Prediction scale = probability); for a raw marker enter cutoffs inside its observed range. A warning names any cutoff that classifies every analysed patient the same way.": [
+            "Fixed score cutoffs on the marker's own scale, comma separated. The default 0.5 is meant for predicted probabilities (Prediction scale = probability); for a raw marker enter cutoffs inside its observed range. A warning names any cutoff that classifies every analyzed patient the same way.": [
                 ""
             ],
             "Fixed Sensitivity": [
@@ -10255,7 +10252,7 @@
             "For a case-control or otherwise enriched sample the curves do not apply to the source population; this analysis does not accept an external prevalence.": [
                 ""
             ],
-            "For an interobserver agreement study whose number of subjects is already fixed, the lowest kappa the study would still be unable to rule out - the lower bound of the one-sided confidence interval around the anticipated kappa (kappa0); every value below it is excluded. Solved from the goodness-of-fit models of the kappaSize package; with three or more raters or categories it also allows for re-estimating the category proportions when the study is analysed. Use kappaSizePower to size a study for a hypothesis test and kappaSizeCI to size it for target confidence limits.": [
+            "For an interobserver agreement study whose number of subjects is already fixed, the lowest kappa the study would still be unable to rule out - the lower bound of the one-sided confidence interval around the anticipated kappa (kappa0); every value below it is excluded. Solved from the goodness-of-fit models of the kappaSize package; with three or more raters or categories it also allows for re-estimating the category proportions when the study is analyzed. Use kappaSizePower to size a study for a hypothesis test and kappaSizeCI to size it for target confidence limits.": [
                 ""
             ],
             "For any pair of raters this kappa equals Cohen's kappa when the raters share the same category frequencies (no rater bias); when their frequencies differ, it does not.": [
@@ -10405,7 +10402,7 @@
             "Frozen model version": [
                 ""
             ],
-            "Frozen scores; no refitting or threshold optimization. Every analysed row ({unit}) weighs equally in the metrics; paired differences use common cases.": [
+            "Frozen scores; no refitting or threshold optimization. Every analyzed row ({unit}) weighs equally in the metrics; paired differences use common cases.": [
                 ""
             ],
             "Frozen-Model Evaluation Not Run": [
@@ -10690,7 +10687,7 @@
             "Heatmap - Metrics by Pattern": [
                 ""
             ],
-            "Heatmap colour scheme": [
+            "Heatmap color scheme": [
                 ""
             ],
             "Heatmap shows %1$d of %2$d cases (stratified random sample); the table above is not subsampled.": [
@@ -10759,7 +10756,7 @@
             "High sensitivity (>=95%): few false negatives in this sample": [
                 ""
             ],
-            "High sensitivity (above 0.90) is preferred, to minimise false negatives.": [
+            "High sensitivity (above 0.90) is preferred, to minimize false negatives.": [
                 ""
             ],
             "High sensitivity and high specificity in this sample (both >=95%)": [
@@ -11089,7 +11086,7 @@
             "If 220 participants include 110 reference-positive and 110 reference-negative observations, with TP=90 and TN=80, then FN=20 and FP=30.": [
                 ""
             ],
-            "If a test was done because of another test's result, a strategy that combines them describes the second test only among the cases that triggered it, not the accuracy of testing everyone with both, and the second test's figures here and in its own table equal its accuracy in all patients only if the two tests err independently given disease status. The test that triggered the testing is unaffected in its own table, which does not need the other test. When a test was done only after a positive result, a serial strategy can still be evaluated on all patients: record its final result (positive only when every test is positive) as a separate variable and analyse it as a single test.": [
+            "If a test was done because of another test's result, a strategy that combines them describes the second test only among the cases that triggered it, not the accuracy of testing everyone with both, and the second test's figures here and in its own table equal its accuracy in all patients only if the two tests err independently given disease status. The test that triggered the testing is unaffected in its own table, which does not need the other test. When a test was done only after a positive result, a serial strategy can still be evaluated on all patients: record its final result (positive only when every test is positive) as a separate variable and analyze it as a single test.": [
                 ""
             ],
             "If cases and controls were sampled separately, the {pct}% prevalence is a design choice rather than the outcome rate of the target population, and the net benefit, the treat-all line and every projection here do not apply to that population.": [
@@ -11323,7 +11320,7 @@
             "Independent units": [
                 ""
             ],
-            "Independent-row analysis: each analysed row must represent an independent observation.": [
+            "Independent-row analysis: each analyzed row must represent an independent observation.": [
                 ""
             ],
             "Indeterminate / excluded": [
@@ -11365,7 +11362,7 @@
             "Infinite: no true negatives at this cutoff.": [
                 ""
             ],
-            "INFO": [
+            "Info": [
                 ""
             ],
             "Information": [
@@ -11464,7 +11461,7 @@
             "Insufficient data (minimum 5 cases required)": [
                 ""
             ],
-            "Insufficient data after exclusions: {n} cases analysed": [
+            "Insufficient data after exclusions: {n} cases analyzed": [
                 ""
             ],
             "Insufficient data for analysis": [
@@ -11776,7 +11773,7 @@
             "It answers 'given the subjects I have, how little agreement am I still unable to rule out?' - the mirror image of the sample-size question; every kappa below the bound is excluded.": [
                 ""
             ],
-            "It answers 'how many subjects do I need to reject kappa0 in favour of kappa1?' - not how precisely kappa will be estimated; to plan the expected confidence limits around an anticipated kappa, use kappaSizeCI instead.": [
+            "It answers 'how many subjects do I need to reject kappa0 in favor of kappa1?' - not how precisely kappa will be estimated; to plan the expected confidence limits around an anticipated kappa, use kappaSizeCI instead.": [
                 ""
             ],
             "It answers a different question from the confidence-interval approach (kappaSizeCI), which sizes a study so that the expected confidence limits around an anticipated kappa fall at chosen values, so the two will not agree on a sample size for the same study - pick the one that matches how the result will be reported.": [
@@ -11821,7 +11818,7 @@
             "Its advantage is not established: a conservative 95% lower bound for this rule's Youden's J ({lower}, from the lower Wilson limits of its sensitivity and specificity) falls at or below the point estimate of the best rule with a different 2-by-2 table ({runnerUp}), so the ranking may reflect sampling variation rather than a real difference.": [
                 ""
             ],
-            "J = sensitivity + specificity - 1. The cutoff that maximises it weighs sensitivity and specificity equally; at prevalence p that counts one missed case as (1 - p)/p false alarms, the same cost only when half the patients have the condition. That is a convention, not a clinical optimum.": [
+            "J = sensitivity + specificity - 1. The cutoff that maximizes it weighs sensitivity and specificity equally; at prevalence p that counts one missed case as (1 - p)/p false alarms, the same cost only when half the patients have the condition. That is a convention, not a clinical optimum.": [
                 ""
             ],
             "K-means (Requires K)": [
@@ -12154,7 +12151,7 @@
             "Latent class analysis assumes the tests are conditionally independent within each latent class. For each pair this compares the observed two-way table with the one implied by the fitted model. A residual above 3.84 is descriptive evidence against conditional independence, but this squared statistic does not identify the direction or cause of dependence and cannot determine the direction of bias in the fitted parameters. With three tests the nominal residual degrees of freedom are zero, but exact fit is not guaranteed. Residuals remain descriptive and do not provide a formal chi-squared test or establish identifiability.": [
                 ""
             ],
-            "Latent class analysis needs both positive and not-positive results for every test among the analysed cases. Only one result was observed for: {}. Such a test carries no information about the latent classes. Check that the correct positive level is selected, or remove the test.": [
+            "Latent class analysis needs both positive and not-positive results for every test among the analyzed cases. Only one result was observed for: {}. Such a test carries no information about the latent classes. Check that the correct positive level is selected, or remove the test.": [
                 ""
             ],
             "Latent Class Analysis requires at least 3 tests to be statistically identifiable. Please add more tests or select a different method (e.g., Composite Reference).": [
@@ -12694,9 +12691,6 @@
             "Max-scaled method (strongest predictor = maximum points)": [
                 ""
             ],
-            "maximising": [
-                ""
-            ],
             "Maximize metric": [
                 ""
             ],
@@ -12704,6 +12698,9 @@
                 ""
             ],
             "Maximize metric (LOESS smoothed)": [
+                ""
+            ],
+            "maximizing": [
                 ""
             ],
             "Maximum": [
@@ -12979,7 +12976,7 @@
             "Metric tolerance": [
                 ""
             ],
-            "Metric tolerance is %1$s: every cutpoint scoring within %2$s of the best %3$s was treated as equivalent and the reported cutpoint is their %4$s. It is therefore <i>not</i> necessarily the cutpoint that maximises the metric, and its sensitivity and specificity can differ appreciably from the maximum. Set the tolerance to 0 to report the maximising cutpoint itself.": [
+            "Metric tolerance is %1$s: every cutpoint scoring within %2$s of the best %3$s was treated as equivalent and the reported cutpoint is their %4$s. It is therefore <i>not</i> necessarily the cutpoint that maximizes the metric, and its sensitivity and specificity can differ appreciably from the maximum. Set the tolerance to 0 to report the maximizing cutpoint itself.": [
                 ""
             ],
             "Metric Unavailable": [
@@ -13030,9 +13027,6 @@
             "Minimal rater bias": [
                 ""
             ],
-            "minimising": [
-                ""
-            ],
             "Minimize |PPV - NPV|": [
                 ""
             ],
@@ -13046,6 +13040,9 @@
                 ""
             ],
             "Minimize metric (LOESS smoothed)": [
+                ""
+            ],
+            "minimizing": [
                 ""
             ],
             "minimum": [
@@ -13600,10 +13597,10 @@
             "N counts every row with an outcome value.": [
                 ""
             ],
-            "N counts every row with each outcome value before exclusions. Each test is analysed on its complete cases within the two selected classes.": [
+            "N counts every row with each outcome value before exclusions. Each test is analyzed on its complete cases within the two selected classes.": [
                 ""
             ],
-            "N counts the rows analysed: outcome and every selected predictor present (%1$s of %2$s rows).": [
+            "N counts the rows analyzed: outcome and every selected predictor present (%1$s of %2$s rows).": [
                 ""
             ],
             "N False Positives": [
@@ -13822,10 +13819,10 @@
             "Net benefit (Vickers & Elkin 2006) at the mid-point of the treatment threshold range: patients are treated when their predicted risk reaches the threshold probability. The risk model is fitted to these same data, so this is an apparent, uncorrected estimate.": [
                 ""
             ],
-            "Net benefit and the treat-all line use the outcome prevalence of the analysed sample, so they describe the target population only when the sample is a cohort or consecutive series from it.": [
+            "Net benefit and the treat-all line use the outcome prevalence of the analyzed sample, so they describe the target population only when the sample is a cohort or consecutive series from it.": [
                 ""
             ],
-            "Net benefit and the treat-all line use this sample prevalence, so they are valid only when the analysed rows have the outcome rate of the target population (a cohort or consecutive series).": [
+            "Net benefit and the treat-all line use this sample prevalence, so they are valid only when the analyzed rows have the outcome rate of the target population (a cohort or consecutive series).": [
                 ""
             ],
             "Net benefit at every threshold is driven by these events, so the curves and any confidence intervals are imprecise and may be unstable.": [
@@ -13924,10 +13921,10 @@
             "No action needed (assess agreement separately)": [
                 ""
             ],
-            "No analysed cases at one of the positive or negative levels": [
+            "No analyzable cases were found in any observed stratum of '{variable}'. Check subgroup values and test/reference availability.": [
                 ""
             ],
-            "No analyzable cases were found in any observed stratum of '{variable}'. Check subgroup values and test/reference availability.": [
+            "No analyzed cases at one of the positive or negative levels": [
                 ""
             ],
             "No AUC confidence interval is reported because the interval is not estimable.": [
@@ -13975,7 +13972,7 @@
             "No case observations found for predictor '%s'. Check that your outcome variable has both positive and negative cases.": [
                 ""
             ],
-            "No case of the positive class (%1$s) has a value of %2$s, so %2$s cannot be analysed.": [
+            "No case of the positive class (%1$s) has a value of %2$s, so %2$s cannot be analyzed.": [
                 ""
             ],
             "No case where every test was negative has a reference result: every pattern with all tests negative is empty in the combination table, and the Parallel rule reads sensitivity 100% and specificity 0% by construction.": [
@@ -14206,7 +14203,7 @@
             "No positive test results": [
                 ""
             ],
-            "No Predictor Could Be Analysed": [
+            "No Predictor Could Be Analyzed": [
                 ""
             ],
             "No rater has multiple time points. Each rater needs at least 2 time points for test-retest analysis.": [
@@ -14344,7 +14341,7 @@
             "No usable cut-point exists for this marker in the classification direction currently selected: no threshold separates the groups better than chance. First check Positive Class: is %1$s the level that means the condition is present? Only if it is, check Classification Direction. The AUC and its confidence interval in the Area Under the ROC Curve table are unaffected.": [
                 ""
             ],
-            "No usable cut-point is shown for this marker: the cut-point chosen by the selected method lies beyond the observed values, so every patient would be classified negative, although some cut-points do separate the groups better than chance in the classification direction currently selected. This happens, for example, when accuracy, a misclassification cost or a total utility is optimised in an imbalanced sample, when at the cost ratio entered the cost-benefit method finds classifying every patient negative the least costly choice, or when Metric Tolerance is wide enough to count that choice as tied with the best cut-point. If a cut-point is needed, lower Metric Tolerance or choose another Cutpoint Method or Optimization Metric. The AUC and its confidence interval in the Area Under the ROC Curve table are unaffected.": [
+            "No usable cut-point is shown for this marker: the cut-point chosen by the selected method lies beyond the observed values, so every patient would be classified negative, although some cut-points do separate the groups better than chance in the classification direction currently selected. This happens, for example, when accuracy, a misclassification cost or a total utility is optimized in an imbalanced sample, when at the cost ratio entered the cost-benefit method finds classifying every patient negative the least costly choice, or when Metric Tolerance is wide enough to count that choice as tied with the best cut-point. If a cut-point is needed, lower Metric Tolerance or choose another Cutpoint Method or Optimization Metric. The AUC and its confidence interval in the Area Under the ROC Curve table are unaffected.": [
                 ""
             ],
             "No usable threshold probabilities were found in the list, so the default 5%, 10%, 15%, 20%, 25% and 30% are used.": [
@@ -14701,7 +14698,7 @@
             "Number of bootstrap samples": [
                 ""
             ],
-            "Number of cases analysed. Excluded: cases with a missing test or reference result, or with a level other than the selected positive and negative levels.": [
+            "Number of cases analyzed. Excluded: cases with a missing test or reference result, or with a level other than the selected positive and negative levels.": [
                 ""
             ],
             "Number of cases with the target condition (Reference Positive)": [
@@ -15052,7 +15049,7 @@
             "Only %1$d paired observations. Each limit of agreement is itself an estimate and carries a 95%% interval of about +/-%2$.3g here, which is wide relative to the limits themselves. Bland & Altman recommend roughly 100 pairs before quoting limits of agreement as a specification.": [
                 ""
             ],
-            "Only %1$s%% of the analysed patients are positive. • Sensitivity, specificity and the AUC do not depend on prevalence, but with so few positives sensitivity is imprecise, and the PPV will be low unless specificity is very high. • When negatives far outnumber positives the ROC curve can look reassuring while most positive results are false positives; the Precision-Recall curve shows precision directly and complements the ROC curve.": [
+            "Only %1$s%% of the analyzed patients are positive. • Sensitivity, specificity and the AUC do not depend on prevalence, but with so few positives sensitivity is imprecise, and the PPV will be low unless specificity is very high. • When negatives far outnumber positives the ROC curve can look reassuring while most positive results are false positives; the Precision-Recall curve shows precision directly and complements the ROC curve.": [
                 ""
             ],
             "Only %d cases in the smaller outcome class. The AUC, interval and p-value can be unstable in sparse samples. Ten per class is a warning threshold, not a guarantee of reliable inference above it; imbalance and score distributions also affect coverage. Treat these estimates as provisional.": [
@@ -15181,7 +15178,7 @@
             "Optional development or validation label of each row, used by the frozen-model report to check that no patient appears in more than one partition (leakage). Requires a patient identifier.": [
                 ""
             ],
-            "Optional site or centre of each row. The frozen-model report then adds one set of metrics per site, conditional on the observed sites, and resamples within sites. Every row needs a site, and a patient may not appear at two sites.": [
+            "Optional site or center of each row. The frozen-model report then adds one set of metrics per site, conditional on the observed sites, and resamples within sites. Every row needs a site, and a patient may not appear at two sites.": [
                 ""
             ],
             "Optional third test for 3-way combination analysis (8 patterns).": [
@@ -15238,7 +15235,7 @@
             "Ordinal data, robust to outliers": [
                 ""
             ],
-            "Ordinal predictor(s) %s are coded with one indicator per level, each compared with that predictor's lowest level; they are not modelled as a linear trend.": [
+            "Ordinal predictor(s) %s are coded with one indicator per level, each compared with that predictor's lowest level; they are not modeled as a linear trend.": [
                 ""
             ],
             "Ordinal scale with meaningful distances between categories": [
@@ -15292,7 +15289,7 @@
             "Outcome level": [
                 ""
             ],
-            "Outcome level %1$s (%2$s rows) has no row with a value for every selected predictor, so it cannot be analysed: rows are used only when the outcome and ALL selected predictors are present. • Missing values among those rows: %3$s. • Remove that predictor, analyse the predictors in separate runs, or supply the missing values; choosing a different positive class would answer a different question.": [
+            "Outcome level %1$s (%2$s rows) has no row with a value for every selected predictor, so it cannot be analyzed: rows are used only when the outcome and ALL selected predictors are present. • Missing values among those rows: %3$s. • Remove that predictor, analyze the predictors in separate runs, or supply the missing values; choosing a different positive class would answer a different question.": [
                 ""
             ],
             "Outcome Level Lost to Missing Predictor Values": [
@@ -15952,7 +15949,7 @@
             "Percentile intervals resample whole cases or patient clusters, complete across all selected raters. Inference concerns fixed readers and specimen-weighted agreement. Any undefined draw or a constant distribution suppresses the interval; counts and reasons are shown. These intervals are exploratory; simulations found undercoverage even with 60 clusters. Rare categories and few clusters limit inference. Other agreement outputs do not automatically use this cluster correction.": [
                 ""
             ],
-            "Percentile intervals resample whole patients when an ID is supplied, jointly across models and within fixed sites. These approximate intervals can under-cover, especially with rare outcomes or unequal cluster sizes. Counts and metrics weight every analysed row equally (unit of observation: %s). Undefined or degenerate intervals are unavailable. Calibration logits require probabilities strictly between 0 and 1 and a converged nonseparated fit. Positive-only cohorts cannot estimate specificity or discrimination. No model is refitted and no cutoff is optimized.": [
+            "Percentile intervals resample whole patients when an ID is supplied, jointly across models and within fixed sites. These approximate intervals can under-cover, especially with rare outcomes or unequal cluster sizes. Counts and metrics weight every analyzed row equally (unit of observation: %s). Undefined or degenerate intervals are unavailable. Calibration logits require probabilities strictly between 0 and 1 and a converged nonseparated fit. Positive-only cohorts cannot estimate specificity or discrimination. No model is refitted and no cutoff is optimized.": [
                 ""
             ],
             "Percentile Method": [
@@ -16345,7 +16342,7 @@
             "Positive Tests": [
                 ""
             ],
-            "Positive values favour the model; negative values favour treating everyone.": [
+            "Positive values favor the model; negative values favor treating everyone.": [
                 ""
             ],
             "Positive-response probabilities in the high-positive class:": [
@@ -16501,7 +16498,7 @@
             "PPV, NPV and overall accuracy all depend on disease prevalence.": [
                 ""
             ],
-            "PPV, NPV and the other prevalence-dependent metrics use the prevalence you entered (%1$s), not the %2$s observed in the analysed rows.": [
+            "PPV, NPV and the other prevalence-dependent metrics use the prevalence you entered (%1$s), not the %2$s observed in the analyzed rows.": [
                 ""
             ],
             "PPV/NPV will be calculated using the supplied population prevalence (pp=TRUE). Confidence intervals are unavailable in this mode.": [
@@ -16711,7 +16708,7 @@
             "Predictors": [
                 ""
             ],
-            "Predictors constant among the analysed cases": [
+            "Predictors constant among the analyzed cases": [
                 ""
             ],
             "Predictors were NOT standardized, so the penalty acts on each coefficient in that predictor's own units and a predictor recorded on a large scale is penalized less. Coefficient and Odds Ratio are per 1 unit; the Importance column is the per-standard-deviation magnitude, so it can still be compared across predictors. Odds ratios remain penalized (shrunk toward 1).": [
@@ -17020,7 +17017,7 @@
             "Proportions must be fractions, not percentages: write 0.20, 0.80 rather than 20, 80.": [
                 ""
             ],
-            "Proportions must be numbers separated by commas, semicolons or spaces (for example '0.20, 0.80'). One or more entries could not be read as a number. Note that a decimal comma is not recognised - use a point, as in 0.20.": [
+            "Proportions must be numbers separated by commas, semicolons or spaces (for example '0.20, 0.80'). One or more entries could not be read as a number. Note that a decimal comma is not recognized - use a point, as in 0.20.": [
                 ""
             ],
             "Proportions must sum to 1 (current sum = {sum}).": [
@@ -17059,7 +17056,7 @@
             "PSA": [
                 ""
             ],
-            "PSA (positive specific agreement) is for '%s' and NSA (negative specific agreement) for the other category. A gap between them mainly reflects prevalence: when positives are rare, NSA is high and PSA low even if neither rater favours either call. A systematic difference between the raters is measured by the bias index of PABAK or by McNemar's test, not by this gap.": [
+            "PSA (positive specific agreement) is for '%s' and NSA (negative specific agreement) for the other category. A gap between them mainly reflects prevalence: when positives are rare, NSA is high and PSA low even if neither rater favors either call. A systematic difference between the raters is measured by the bias index of PABAK or by McNemar's test, not by this gap.": [
                 ""
             ],
             "PSA (Test 1) + digital rectal examination (Test 2)": [
@@ -17713,7 +17710,7 @@
             "Removed {n} row(s) with missing diagnostic data": [
                 ""
             ],
-            "Removed before fitting: %1$s. Each varies only in rows that were excluded for a missing value, so every analysed case has the same value, and a predictor that does not vary cannot be penalised or selected. %2$d variables remain and are shown as Variables analysed.": [
+            "Removed before fitting: %1$s. Each varies only in rows that were excluded for a missing value, so every analyzed case has the same value, and a predictor that does not vary cannot be penalised or selected. %2$d variables remain and are shown as Variables analyzed.": [
                 ""
             ],
             "Rename the duplicated label(s): {names}.": [
@@ -18172,7 +18169,7 @@
             "Sample Accuracy is the proportion of concordant results at the prevalence observed in this sample ({prevalence}), and it changes with case mix.": [
                 ""
             ],
-            "Sample Accuracy is the proportion of concordant results at the prevalence observed in this sample ({prevalence}), NOT at the population prior you supplied. Unlike the predictive values it is not standardised to that prior, and it changes with case mix.": [
+            "Sample Accuracy is the proportion of concordant results at the prevalence observed in this sample ({prevalence}), NOT at the population prior you supplied. Unlike the predictive values it is not standardized to that prior, and it changes with case mix.": [
                 ""
             ],
             "Sample accuracy is the proportion of concordant results. It is computed at the prevalence observed in this sample ({prevalence}) and changes with case mix.": [
@@ -18217,7 +18214,7 @@
             "Sample Size for Agreement Study (Design)": [
                 ""
             ],
-            "Sample size for an interobserver agreement study sized to reject a null kappa (kappa0) in favour of an alternative kappa (kappa1) at a given two-sided significance level and power - the power approach of the kappaSize package. Use kappaSizeCI for a target confidence-interval width, and kappaSizeFixedN when the number of subjects is already fixed.": [
+            "Sample size for an interobserver agreement study sized to reject a null kappa (kappa0) in favor of an alternative kappa (kappa1) at a given two-sided significance level and power - the power approach of the kappaSize package. Use kappaSizeCI for a target confidence-interval width, and kappaSizeFixedN when the number of subjects is already fixed.": [
                 ""
             ],
             "Sample size not available": [
@@ -18700,7 +18697,7 @@
             "Sensitivity was %1$s%2$s and specificity was %3$s%4$s.": [
                 ""
             ],
-            "Sensitivity, PPV, LR+, every cut-point and the AUC describe the level you choose; every other level is analysed as negative.": [
+            "Sensitivity, PPV, LR+, every cut-point and the AUC describe the level you choose; every other level is analyzed as negative.": [
                 ""
             ],
             "Sensitivity, specificity and accuracy are reported at a cutpoint that was searched for on these same data, so they are optimistic; they are not cross-validated or externally validated estimates.": [
@@ -18811,7 +18808,7 @@
             "Several Rows per Patient": [
                 ""
             ],
-            "Several tests classify worse than chance in this sample, beyond sampling variation, on the {n} complete cases analysed here: {tests}. For each, sensitivity and specificity add up to less than 1, the signature of a reversed positive level. Check the levels chosen as positive for these tests and for the reference standard before interpreting any of these results; when every test is below chance, the reference standard's level is the likelier cause.": [
+            "Several tests classify worse than chance in this sample, beyond sampling variation, on the {n} complete cases analyzed here: {tests}. For each, sensitivity and specificity add up to less than 1, the signature of a reversed positive level. Check the levels chosen as positive for these tests and for the reference standard before interpreting any of these results; when every test is below chance, the reference standard's level is the likelier cause.": [
                 ""
             ],
             "Severe imbalance": [
@@ -18991,7 +18988,7 @@
             "Single test": [
                 ""
             ],
-            "Single-AUC 95% intervals and two-sided tests against AUC 0.5 use a logit delta transformation of the DeLong standard error (or the explicitly labelled fallback standard error). This improves the audited small-sample coverage but remains an asymptotic approximation. It does not change paired DeLong comparisons. Boundary AUCs or zero variance have unavailable inference.": [
+            "Single-AUC 95% intervals and two-sided tests against AUC 0.5 use a logit delta transformation of the DeLong standard error (or the explicitly labeled fallback standard error). This improves the audited small-sample coverage but remains an asymptotic approximation. It does not change paired DeLong comparisons. Boundary AUCs or zero variance have unavailable inference.": [
                 ""
             ],
             "Single-AUC inference uses the legacy untransformed normal approximation. Boundary AUCs or zero variance have unavailable inference. This method undercovered in the audited small, imbalanced sample.": [
@@ -19018,7 +19015,7 @@
             "Size of difference": [
                 ""
             ],
-            "Size of the population the projected workload counts are scaled to. Used for every projected row: the main prevalence when Observed prevalence is unticked, and every additional target prevalence. Observed rows count the analysed patients instead.": [
+            "Size of the population the projected workload counts are scaled to. Used for every projected row: the main prevalence when Observed prevalence is unticked, and every additional target prevalence. Observed rows count the analyzed patients instead.": [
                 ""
             ],
             "slide": [
@@ -19078,7 +19075,7 @@
             "Small sample size: n = {n} (< 50 cases)": [
                 ""
             ],
-            "Small sample size: n=%1$s analysed rows (%2$s positive, %3$s negative). • ROC curve confidence intervals may be unreliable with limited data. • Bootstrap intervals are an alternative to DeLong's, but no interval method is exact at this size, and only more data make the estimates more stable. • Results should be interpreted cautiously and validated in larger samples.": [
+            "Small sample size: n=%1$s analyzed rows (%2$s positive, %3$s negative). • ROC curve confidence intervals may be unreliable with limited data. • Bootstrap intervals are an alternative to DeLong's, but no interval method is exact at this size, and only more data make the estimates more stable. • Results should be interpreted cautiously and validated in larger samples.": [
                 ""
             ],
             "Small sample: %1$d positive and %2$d negative case(s). DeLong's test relies on a large-sample approximation to the variance of the AUC, so with fewer than 10 cases in a class the p-values and confidence intervals below are unreliable and are likely to be too narrow. Treat any difference as provisional and confirm it in a larger sample.": [
@@ -19570,7 +19567,7 @@
             "Strong positive evidence": [
                 ""
             ],
-            "STRONG WARNING": [
+            "Strong warning": [
                 ""
             ],
             "Stuart-Maxwell test (marginal homogeneity for 2 raters)": [
@@ -19618,13 +19615,13 @@
             "Subgroup": [
                 ""
             ],
-            "Subgroup %1$s has %2$d case(s) of the negative class (%3$s) with a value of %4$s; at least 2 are needed to analyse %4$s in that subgroup.": [
+            "Subgroup %1$s has %2$d case(s) of the negative class (%3$s) with a value of %4$s; at least 2 are needed to analyze %4$s in that subgroup.": [
                 ""
             ],
-            "Subgroup %1$s has %2$d case(s) of the positive class (%3$s) with a value of %4$s; at least 2 are needed to analyse %4$s in that subgroup.": [
+            "Subgroup %1$s has %2$d case(s) of the positive class (%3$s) with a value of %4$s; at least 2 are needed to analyze %4$s in that subgroup.": [
                 ""
             ],
-            "Subgroup %1$s has no case of the positive class (%2$s) with a value of %3$s, so %3$s cannot be analysed in that subgroup.": [
+            "Subgroup %1$s has no case of the positive class (%2$s) with a value of %3$s, so %3$s cannot be analyzed in that subgroup.": [
                 ""
             ],
             "Subgroup Variable": [
@@ -19750,7 +19747,7 @@
             "Table notes": [
                 ""
             ],
-            "Table thresholds outside the analysed range": [
+            "Table thresholds outside the analyzed range": [
                 ""
             ],
             "Tables": [
@@ -20242,13 +20239,13 @@
             "The {ratio} has an empty denominator cell, so its observed value is infinite. Adding 0.5 to every cell would put it at or below 1 and reverse its direction, because the empty cell lies in the smaller reference group, so it is left blank.": [
                 ""
             ],
-            "The {tag1}multivariate{tag2} form of iota - several variables, say tumor size,\n                            grade and mitotic count, scored by the same raters and summarised in one coefficient -\n                            is {tag3}not computed by this analysis{tag4}. Nothing in this dialog can say which\n                            columns belong to which variable. Entering the columns of several variables side by\n                            side does {tag5}not{tag6} produce the multivariate coefficient: it produces the\n                            single-variable iota of a table whose {tag7}raters{tag8} are really different\n                            measurements, and that number does not describe your study. For the multivariate\n                            form, call {tag9}irr::iota(){tag10} in R with one matrix per variable.": [
+            "The {tag1}multivariate{tag2} form of iota - several variables, say tumor size,\n                            grade and mitotic count, scored by the same raters and summarized in one coefficient -\n                            is {tag3}not computed by this analysis{tag4}. Nothing in this dialog can say which\n                            columns belong to which variable. Entering the columns of several variables side by\n                            side does {tag5}not{tag6} produce the multivariate coefficient: it produces the\n                            single-variable iota of a table whose {tag7}raters{tag8} are really different\n                            measurements, and that number does not describe your study. For the multivariate\n                            form, call {tag9}irr::iota(){tag10} in R with one matrix per variable.": [
                 ""
             ],
             "The %.0f%% interval is an <i>approximation</i>: a Wilson interval applied to specific agreement, which is not a binomial proportion, on the count of cases rated into the category by at least one rater. Actual coverage is not guaranteed, and the interval is least trustworthy for rare categories and for values near 0 or 1. de Vet and colleagues (2013) recommend a bootstrap interval instead; treat these limits as indicative.": [
                 ""
             ],
-            "The %1$s analysed rows that carry a patient identifier (%2$s) come from %3$s patients, so some patients contribute more than one row (slides, cores or lesions). Every panel except the Frozen-model validation report assumes that each row is an independent patient. Rows from one patient are correlated, so the AUC confidence intervals, the tests comparing markers and the confidence intervals for sensitivity and specificity are too narrow, and p-values too small. • Analyse one row per patient (for example a patient-level score), or • for a fixed model with a prespecified cut-off, enable the Frozen-model validation report, whose intervals resample whole patients (every row of a patient must then share one outcome).": [
+            "The %1$s analyzed rows that carry a patient identifier (%2$s) come from %3$s patients, so some patients contribute more than one row (slides, cores or lesions). Every panel except the Frozen-model validation report assumes that each row is an independent patient. Rows from one patient are correlated, so the AUC confidence intervals, the tests comparing markers and the confidence intervals for sensitivity and specificity are too narrow, and p-values too small. • Analyze one row per patient (for example a patient-level score), or • for a fixed model with a prespecified cut-off, enable the Frozen-model validation report, whose intervals resample whole patients (every row of a patient must then share one outcome).": [
                 ""
             ],
             "The 95 percent confidence interval for the accuracy difference comes from Newcombe's method 10, a different procedure from McNemar's test, and it excludes 0, the value of no difference; the two procedures disagree on these data, so report both rather than either alone.": [
@@ -20425,7 +20422,7 @@
             "The clinical decision rule variable must be binary (exactly 2 levels).": [
                 ""
             ],
-            "The Clopper-Pearson intervals for sensitivity and specificity in the Diagnostic Performance table treat this cutpoint as fixed in advance, so they are centred on these optimistic values and understate the uncertainty.": [
+            "The Clopper-Pearson intervals for sensitivity and specificity in the Diagnostic Performance table treat this cutpoint as fixed in advance, so they are centered on these optimistic values and understate the uncertainty.": [
                 ""
             ],
             "the coefficient fell outside the -1 to 1 parameter space and has been clamped to the nearest bound": [
@@ -20530,7 +20527,7 @@
             "The cutoff is infinite, so everyone is classified the same way.": [
                 ""
             ],
-            "The cutpoint was chosen to optimise %s on these same data. The sensitivity, specificity and other metrics reported at that cutpoint are therefore optimistically biased and will typically be lower in a new sample; the bias grows as the sample gets smaller and as more candidate cutpoints are searched. Use bootstrap or split-sample validation before quoting these figures.": [
+            "The cutpoint was chosen to optimize %s on these same data. The sensitivity, specificity and other metrics reported at that cutpoint are therefore optimistically biased and will typically be lower in a new sample; the bias grows as the sample gets smaller and as more candidate cutpoints are searched. Use bootstrap or split-sample validation before quoting these figures.": [
                 ""
             ],
             "The cutpoint was supplied by you rather than searched for in these data, so the sensitivity and specificity reported at it are not inflated by cutpoint selection. They remain subject to ordinary sampling error.": [
@@ -20680,7 +20677,7 @@
             "The fixed-prior solution does not assign the higher average selected-positive probability to the positive class. Relabeling would change the asymmetric prior objective. Latent estimates and intervals are left blank; reconsider the selected positive levels or use the unpenalized model.": [
                 ""
             ],
-            "The following predictor variable(s) are not numeric: %s. ROC analysis requires continuous or ordinal numeric predictors, such as biomarker levels, test scores or measurements. • If the variable is ORDINAL, recode it to numbers in rank order (for example Low=1, Medium=2, High=3). • Do not number a NOMINAL variable such as tumour site or histological subtype: the AUC would then be decided by the order you happened to assign rather than by the marker. • For a nominal predictor use contingency table analysis instead.": [
+            "The following predictor variable(s) are not numeric: %s. ROC analysis requires continuous or ordinal numeric predictors, such as biomarker levels, test scores or measurements. • If the variable is ORDINAL, recode it to numbers in rank order (for example Low=1, Medium=2, High=3). • Do not number a NOMINAL variable such as tumor site or histological subtype: the AUC would then be decided by the order you happened to assign rather than by the marker. • For a nominal predictor use contingency table analysis instead.": [
                 ""
             ],
             "The forest plot is not drawn for \"{statistic}\" because this analysis does not calculate a confidence interval for that statistic. The bar chart and heatmap can still display it.": [
@@ -20716,7 +20713,7 @@
             "The gold standard has more than one level besides \"{pos}\" ({lvls}), so the disease-absent level cannot be inferred. Select it under Reference negative level. Levels you do not name are excluded from the analysis rather than counted as disease-absent.": [
                 ""
             ],
-            "The gold standard has only one level among the analysed cases": [
+            "The gold standard has only one level among the analyzed cases": [
                 ""
             ],
             "The gold-standard variable cannot also occupy a test slot. Select a different variable for each test.": [
@@ -20740,7 +20737,7 @@
             "The grading-tendency model could not be fitted: %s.": [
                 ""
             ],
-            "The grading-tendency model did not converge (the optimiser stopped away from a maximum), so no tendency is shown.": [
+            "The grading-tendency model did not converge (the optimizer stopped away from a maximum), so no tendency is shown.": [
                 ""
             ],
             "The highest observed Youden's J among the eligible candidate rules was {youden}.": [
@@ -20779,7 +20776,7 @@
             "The interpretation column applies this module's own cut-points to each component's share of the total variance. They are a reading aid, not a published standard, so judge each share against the purpose of the study.": [
                 ""
             ],
-            "The interval beside the apparent AUC is DeLong's 95% CI computed on these fitted probabilities as if they were a fixed, pre-specified marker. It does not account for fitting the coefficients or for selecting the variables and lambda on the same patients, so it is centred on an optimistic estimate and can under-cover the model's discrimination in new patients. Enable Bootstrap Internal Validation for an optimism-corrected AUC.": [
+            "The interval beside the apparent AUC is DeLong's 95% CI computed on these fitted probabilities as if they were a fixed, pre-specified marker. It does not account for fitting the coefficients or for selecting the variables and lambda on the same patients, so it is centered on an optimistic estimate and can under-cover the model's discrimination in new patients. Enable Bootstrap Internal Validation for an optimism-corrected AUC.": [
                 ""
             ],
             "The interval brackets the Weighted Bootstrap AUC in the column beside it, not the AUC itself. The prior is treated as a fixed, known number, so the weighting multiplies the estimate and the interval width alike by n / (n + prior precision): with a prior precision of 20 and 100 complete cases the interval is 83% as wide as the bootstrap interval for the AUC, and it narrows further as you raise the precision. Read the AUC Summary table for an interval that refers to the AUC itself.": [
@@ -20830,7 +20827,7 @@
             "The latent model could not be fitted: %s.": [
                 ""
             ],
-            "The latent model did not converge (the optimiser stopped away from a maximum), so no estimate is shown.": [
+            "The latent model did not converge (the optimizer stopped away from a maximum), so no estimate is shown.": [
                 ""
             ],
             "The latent model needs a median of at least %1$s ratings per case; this study has %2$s.": [
@@ -20854,7 +20851,7 @@
             "The logistic model did not converge.": [
                 ""
             ],
-            "The logistic slope of %s is not estimable because the marker is constant in the analysed rows, so every patient receives the same predicted risk (the sample prevalence) and there are no risk groups to compare.": [
+            "The logistic slope of %s is not estimable because the marker is constant in the analyzed rows, so every patient receives the same predicted risk (the sample prevalence) and there are no risk groups to compare.": [
                 ""
             ],
             "The logit interval is undefined at 0% or 100% agreement, so this row shows Clopper-Pearson (exact) limits.": [
@@ -20872,7 +20869,7 @@
             "The marker could not be scaled to finite values.": [
                 ""
             ],
-            "The marker has the same value for every patient analysed, so it cannot separate the groups: its AUC is 0.5 by construction.": [
+            "The marker has the same value for every patient analyzed, so it cannot separate the groups: its AUC is 0.5 by construction.": [
                 ""
             ],
             "The marker separates the two groups perfectly in these data (AUC = 1); with %1$s positive and %2$s negative cases the true AUC could still be well below 1.": [
@@ -20914,7 +20911,7 @@
             "The minimum probability at which a patient would choose the intervention over no intervention.": [
                 ""
             ],
-            "The minimum sensitivity and specificity settings apply only to Youden optimisation and were not used.": [
+            "The minimum sensitivity and specificity settings apply only to Youden optimization and were not used.": [
                 ""
             ],
             "The minimum threshold is {min}%.": [
@@ -21046,16 +21043,16 @@
             "The pairwise p-values in this table are Holm-Bonferroni adjusted across the {comparisons} pairwise comparisons that were tested (those with discordant pairs). Cochran's Q is a single global test, and its p-value is not adjusted. The confidence intervals and the sensitivity and specificity p-values in the Differences with 95% Confidence Intervals table are not adjusted for multiplicity, so an adjusted p above 0.05 can sit beside an interval that excludes zero.": [
                 ""
             ],
-            "The partial AUC confidence interval is a bootstrap interval of the requested type '%1$s' from %2$s resamples. If any resample contained a single outcome class it is dropped, and a BCa interval is then reported as a percentile interval instead — a notice appears when that happens. The interval is for the raw partial AUC over the chosen focus range, NOT for the McClish-normalised value in the next column.": [
+            "The partial AUC confidence interval is a bootstrap interval of the requested type '%1$s' from %2$s resamples. If any resample contained a single outcome class it is dropped, and a BCa interval is then reported as a percentile interval instead — a notice appears when that happens. The interval is for the raw partial AUC over the chosen focus range, NOT for the McClish-normalized value in the next column.": [
                 ""
             ],
             "The partial AUC is not computed; the rest of the analysis is.": [
                 ""
             ],
-            "The partial AUC was computed over sensitivities from %1$s to %2$s and standardised with the McClish correction (McClish, 1989) to a 0.5-1 scale.": [
+            "The partial AUC was computed over sensitivities from %1$s to %2$s and standardized with the McClish correction (McClish, 1989) to a 0.5-1 scale.": [
                 ""
             ],
-            "The partial AUC was computed over specificities from %1$s to %2$s and standardised with the McClish correction (McClish, 1989) to a 0.5-1 scale.": [
+            "The partial AUC was computed over specificities from %1$s to %2$s and standardized with the McClish correction (McClish, 1989) to a 0.5-1 scale.": [
                 ""
             ],
             "The pathologist grading analysis is for categories and grades; at least one rater variable is a continuous measurement, so it is not computed. Use ICC or Lin's CCC for measurements.": [
@@ -21148,7 +21145,7 @@
             "The proportion of patients without the condition whom the test calls negative.": [
                 ""
             ],
-            "The published formula behind this sample size is a large-sample approximation that treats the expected proportions as known. In {R} simulated studies of {n} subjects analysed with the recommended goodness-of-fit test (prevalence estimated by maximum likelihood with kappa held at kappa0), the power to reject kappa0 when kappa equals kappa1 was about {sim}, short of the stated {power}.": [
+            "The published formula behind this sample size is a large-sample approximation that treats the expected proportions as known. In {R} simulated studies of {n} subjects analyzed with the recommended goodness-of-fit test (prevalence estimated by maximum likelihood with kappa held at kappa0), the power to reject kappa0 when kappa equals kappa1 was about {sim}, short of the stated {power}.": [
                 ""
             ],
             "The published formula behind this sample size treats the expected proportions as known and rests on a large-sample approximation. With three or more raters and three to five categories, simulations of the recommended goodness-of-fit test at the published sample size gave a power of about 0.64 to 0.81 for a stated 0.80, below 0.75 in 8 of 12 designs, balanced proportions included, so this design can fall well short of the stated power of {power} at {n} subjects. How far short cannot be computed reliably here, so confirm the sample size by simulating the intended analysis.": [
@@ -21181,7 +21178,7 @@
             "The reference has multiple levels besides \"{pos}\" ({lvls}). Select one Reference negative level. Unselected levels are excluded from the binary comparison.": [
                 ""
             ],
-            "The reference has only one level among the analysed cases": [
+            "The reference has only one level among the analyzed cases": [
                 ""
             ],
             "The reference rater {name} is also selected under Raters, so it is compared only with the other raters, not with itself.": [
@@ -21319,7 +21316,7 @@
             "The sensitivity and specificity rules of thumb (SnNout: a negative result on a highly sensitive test rules out; SpPin: a positive result on a highly specific test rules in) can mislead when the other property is low. Judge how far a result moves the probability from its likelihood ratio instead (Pewsner et al. 2004).": [
                 ""
             ],
-            "The sentence in the Interpretation column splits the random share at 0.30, 0.50 and 0.70. These cut-points are this module's convention for putting the share into words; no published source defines them and they carry no diagnostic status. Read the share itself and the two variance components beside it, not the label. A low random share implies the disagreement is an offset that a calibration factor or a shared reference set can remove; a high one implies it is case-by-case noise, which instead points to protocol standardisation, training, or averaging replicate reads.": [
+            "The sentence in the Interpretation column splits the random share at 0.30, 0.50 and 0.70. These cut-points are this module's convention for putting the share into words; no published source defines them and they carry no diagnostic status. Read the share itself and the two variance components beside it, not the label. A low random share implies the disagreement is an offset that a calibration factor or a shared reference set can remove; a high one implies it is case-by-case noise, which instead points to protocol standardization, training, or averaging replicate reads.": [
                 ""
             ],
             "The Shapiro-Wilk test of the differences failed (%s). Normality of the differences is therefore UNTESTED, and the Limits of Agreement below assume it.": [
@@ -21397,7 +21394,7 @@
             "The test '%1$s' has an AUC of %2$.3f": [
                 ""
             ],
-            "The test and the reference standard agree on every analysed case.": [
+            "The test and the reference standard agree on every analyzed case.": [
                 ""
             ],
             "The test did not detect a difference in how often each category was used (p = %1$.3f). Absence of a significant result is not evidence that the marginal distributions are the same; it only means no shift was detected in these %2$d subjects. Inspect the marginal frequency table directly.": [
@@ -21409,7 +21406,7 @@
             "The test has more than one level besides \"{pos}\" ({lvls}), so the test-negative level cannot be inferred. Select it under Test negative level. Levels you do not name are excluded from the analysis rather than counted as negative.": [
                 ""
             ],
-            "The test has only one level among the analysed cases": [
+            "The test has only one level among the analyzed cases": [
                 ""
             ],
             "The test was never negative in this table, so the negative likelihood ratio is not estimable.": [
@@ -21535,7 +21532,7 @@
             "These estimates are apparent performance in this dataset and have not been externally validated.": [
                 ""
             ],
-            "These figures are APPARENT (in-sample) and optimistic twice over: the points were derived from a model fitted to this dataset, and the score cutoff was chosen to maximise the Youden index on the same rows. They are not an estimate of how the score would perform on new patients. Enable bootstrap validation for an optimism-corrected estimate of the model, and validate any score externally before clinical use.": [
+            "These figures are APPARENT (in-sample) and optimistic twice over: the points were derived from a model fitted to this dataset, and the score cutoff was chosen to maximize the Youden index on the same rows. They are not an estimate of how the score would perform on new patients. Enable bootstrap validation for an optimism-corrected estimate of the model, and validate any score externally before clinical use.": [
                 ""
             ],
             "These intervals may be conservative: in simulation with at least 100 cases and 3 pathologists, the 95% interval covered the true value in 92 to 99.5% of studies (mean 95.4%), so it is never much too narrow and sometimes wider than necessary.": [
@@ -21547,7 +21544,7 @@
             "These labels describe discrimination in this sample only.": [
                 ""
             ],
-            "These likelihood ratios describe each test <i>on its own</i>. Because the two tests are modelled as conditionally dependent, the combined likelihood ratio is <b>not</b> their product — use the Post-test Odds column of the Co-Testing Results table instead.": [
+            "These likelihood ratios describe each test <i>on its own</i>. Because the two tests are modeled as conditionally dependent, the combined likelihood ratio is <b>not</b> their product — use the Post-test Odds column of the Co-Testing Results table instead.": [
                 ""
             ],
             "These look like percentages: enter {values} instead.": [
@@ -21685,7 +21682,7 @@
             "This is a planning expectation, not a guarantee.": [
                 ""
             ],
-            "This is a POWER calculation: it returns the number of subjects needed to REJECT kappa0 in favour of kappa1 in a two-sided test at the stated significance level and power.": [
+            "This is a POWER calculation: it returns the number of subjects needed to REJECT kappa0 in favor of kappa1 in a two-sided test at the stated significance level and power.": [
                 ""
             ],
             "This is an in-sample estimate with no external validation behind it, and it is additionally optimistic because this predictor was picked as the highest-scoring of %d; the Internal Validation section reports its internal validation.": [
@@ -21790,7 +21787,7 @@
             "This sample size cannot demonstrate agreement.": [
                 ""
             ],
-            "This sample size is for <b>unweighted</b> kappa: categories are treated as nominal and every disagreement counts the same. It does not apply to weighted kappa for ordered grades, so if the Weighted kappa option is set to linear or squared weights, either analyse the study unweighted as well or size it with a dedicated weighted-kappa method.": [
+            "This sample size is for <b>unweighted</b> kappa: categories are treated as nominal and every disagreement counts the same. It does not apply to weighted kappa for ordered grades, so if the Weighted kappa option is set to linear or squared weights, either analyze the study unweighted as well or size it with a dedicated weighted-kappa method.": [
                 ""
             ],
             "This sample size is planned for the model-based goodness-of-fit interval; it does not establish the requested precision for the Wald, Fisher-z or bootstrap intervals that agreement software usually reports for Cohen's or Fleiss' κ. Report the goodness-of-fit interval, or size the study for the interval that will be reported.": [
@@ -21955,7 +21952,7 @@
             "To": [
                 ""
             ],
-            "To analyse every level without choosing one, tick Multi-class ROC analysis.": [
+            "To analyze every level without choosing one, tick Multi-class ROC analysis.": [
                 ""
             ],
             "To compare subgroups formally, prespecify the comparison and adjust for the number of subgroups; as prevalence-adjusted alternatives to kappa this analysis also offers PABAK (two raters) and Gwet's AC1/AC2.": [
@@ -22582,7 +22579,7 @@
             "Value (log scale)": [
                 ""
             ],
-            "Values between 0 and 1 analysed as scores": [
+            "Values between 0 and 1 analyzed as scores": [
                 ""
             ],
             "Values between 0 and 1 are accepted as probabilities, but this analysis does not verify calibration.": [
@@ -22624,7 +22621,7 @@
             "Variable standardization": [
                 ""
             ],
-            "Variables analysed": [
+            "Variables analyzed": [
                 ""
             ],
             "Variables Must Be Distinct": [
@@ -22672,7 +22669,7 @@
             "Very few errors were observed. Small FP or FN counts may produce unstable estimates.": [
                 ""
             ],
-            "Very few events in one or both classes of the analysed rows: %1$s positive, %2$s negative. ROC estimates, confidence intervals, and optimal cutoffs are unreliable with fewer than 10 events per class. Collect more data before drawing clinical conclusions.": [
+            "Very few events in one or both classes of the analyzed rows: %1$s positive, %2$s negative. ROC estimates, confidence intervals, and optimal cutoffs are unreliable with fewer than 10 events per class. Collect more data before drawing clinical conclusions.": [
                 ""
             ],
             "Very high correlation (nearly identical rankings)": [
@@ -22783,9 +22780,6 @@
             "Warning": [
                 ""
             ],
-            "WARNING": [
-                ""
-            ],
             "Warning: %1$s cluster(s) have fewer than 3 cases. Estimates may be unstable: %2$s": [
                 ""
             ],
@@ -22876,19 +22870,19 @@
             "Weighted kappa values cannot be directly compared to unweighted kappa. They measure different aspects of agreement.": [
                 ""
             ],
-            "Weighted kappa was requested but the rater variables are not ordered factors with three or more categories, so unweighted Cohen's kappa is reported here. Weights assume a distance between categories, which a nominal scale (tumour type, mutation class) does not have. Set every rater variable in both conditions to Ordinal to obtain the weighted statistic.": [
+            "Weighted kappa was requested but the rater variables are not ordered factors with three or more categories, so unweighted Cohen's kappa is reported here. Weights assume a distance between categories, which a nominal scale (tumor type, mutation class) does not have. Set every rater variable in both conditions to Ordinal to obtain the weighted statistic.": [
                 ""
             ],
-            "Weighted kappa was requested, but at least one rater variable is nominal (an unordered factor), so unweighted Cohen's kappa is reported here. Weights assume a distance between categories, which a nominal scale such as tumour type does not have. Set the variables' measure type to Ordinal to obtain the weighted statistic.": [
+            "Weighted kappa was requested, but at least one rater variable is nominal (an unordered factor), so unweighted Cohen's kappa is reported here. Weights assume a distance between categories, which a nominal scale such as tumor type does not have. Set the variables' measure type to Ordinal to obtain the weighted statistic.": [
                 ""
             ],
             "Weighted kappa was requested, but the rater variables declare different category sets that do not place every category relative to every other one - so there is no single scale for the weights to sit on, and unweighted Cohen's kappa is reported here instead. Weights assume a distance between categories, and a distance needs one agreed order; merging the declarations would invent one, and the answer would then depend on the order the variables were selected. Declare the same full set of categories, in the same order, on every rater variable and run again to obtain the weighted statistic.": [
                 ""
             ],
-            "Weighted kappa was requested, but the reads of {raters} are not an ordered scale with three or more categories, so unweighted Cohen's kappa is reported for them. Weights assume a distance between categories, which a nominal scale (tumour type, mutation class) does not have. Set the variable's measure type to Ordinal to obtain the weighted statistic.": [
+            "Weighted kappa was requested, but the reads of {raters} are not an ordered scale with three or more categories, so unweighted Cohen's kappa is reported for them. Weights assume a distance between categories, which a nominal scale (tumor type, mutation class) does not have. Set the variable's measure type to Ordinal to obtain the weighted statistic.": [
                 ""
             ],
-            "Weighted kappa was requested, but with three or more raters each subgroup is summarised by Fleiss' kappa, which has no weighted form, so these values are unweighted.": [
+            "Weighted kappa was requested, but with three or more raters each subgroup is summarized by Fleiss' kappa, which has no weighted form, so these values are unweighted.": [
                 ""
             ],
             "Weighted kappa was requested, but with three or more raters per condition the coefficient is Fleiss' kappa, which has no weighted form. Weights apply only to Cohen's kappa for two raters.": [
@@ -23005,7 +22999,7 @@
             "What it points to": [
                 ""
             ],
-            "What one row is (slide, core, patient...). Printed in the frozen-model report; every analysed row weighs equally in its metrics.": [
+            "What one row is (slide, core, patient...). Printed in the frozen-model report; every analyzed row weighs equally in its metrics.": [
                 ""
             ],
             "What the predictor values are. Score (default) is any marker or model score: the calibration summary and plot, Brier score, E/O ratio, Hosmer-Lemeshow test and the decision and clinical impact curves then use risks from a logistic model of the score fitted to these data (in-sample). Probability means the values are predicted probabilities of the selected positive class, assessed as supplied; a predictor with a value outside 0 to 1 gets none of those outputs, and a probability is never reversed. Values between 0 and 1 are not taken as probabilities unless this says so. Frozen-model validation uses the same setting.": [
@@ -23053,10 +23047,10 @@
             "When raters should give identical values": [
                 ""
             ],
-            "When the study is analysed, estimate the category prevalences by maximum likelihood at each candidate value of kappa. With three or more raters or categories, plugging in the overall proportions of ratings instead can give an interval that covers kappa less often than stated (about 0.86 to 0.94 instead of 0.95 in the designs simulated for this analysis), generally more so with more raters or categories. Balanced categories do not prevent it: with four equally common categories and four raters the plug-in interval covered kappa about 0.88 of the time.": [
+            "When the study is analyzed, estimate the category prevalences by maximum likelihood at each candidate value of kappa. With three or more raters or categories, plugging in the overall proportions of ratings instead can give an interval that covers kappa less often than stated (about 0.86 to 0.94 instead of 0.95 in the designs simulated for this analysis), generally more so with more raters or categories. Balanced categories do not prevent it: with four equally common categories and four raters the plug-in interval covered kappa about 0.88 of the time.": [
                 ""
             ],
-            "When the study is analysed, estimate the category prevalences by maximum likelihood at each candidate value of κ: with three or more raters, or three or more categories, plugging in the overall proportions of ratings gives an interval that covers κ less often than stated (about 0.91 to 0.93 instead of 0.95 in the designs simulated for this analysis).": [
+            "When the study is analyzed, estimate the category prevalences by maximum likelihood at each candidate value of κ: with three or more raters, or three or more categories, plugging in the overall proportions of ratings gives an interval that covers κ less often than stated (about 0.91 to 0.93 instead of 0.95 in the designs simulated for this analysis).": [
                 ""
             ],
             "When the test is negative, the probability that the patient does not have the condition named as the positive class": [
@@ -23344,10 +23338,10 @@
             "With three or more raters, estimate the category prevalences by maximum likelihood with kappa held at kappa0, as Altaye, Donner and Eliasziw do; plugging in the overall proportions of ratings makes the test reject a true kappa0 too often.": [
                 ""
             ],
-            "With three or more raters, the lower bound for a binary finding also depends on how agreement among more than two raters is modelled. This analysis uses the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used for three to five categories, which for two categories is the beta-binomial, describes the same kappa, and with the proportions held at their anticipated values it never gave a lower bound than the one shown in the designs checked and usually gave a higher one (by up to about 0.10 when the finding is rare and the study small), so the figure shown is the more cautious of the two.": [
+            "With three or more raters, the lower bound for a binary finding also depends on how agreement among more than two raters is modeled. This analysis uses the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used for three to five categories, which for two categories is the beta-binomial, describes the same kappa, and with the proportions held at their anticipated values it never gave a lower bound than the one shown in the designs checked and usually gave a higher one (by up to about 0.10 when the finding is rare and the study small), so the figure shown is the more cautious of the two.": [
                 ""
             ],
-            "With three or more raters, the sample size for a binary finding also depends on how agreement among more than two raters is modelled. This analysis uses the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used for three to five categories, which for two categories is the beta-binomial, describes the same κ but usually needs fewer subjects (in the designs checked, as few as about half when the finding is rare), so the figure shown is generally the more cautious of the two.": [
+            "With three or more raters, the sample size for a binary finding also depends on how agreement among more than two raters is modeled. This analysis uses the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used for three to five categories, which for two categories is the beta-binomial, describes the same κ but usually needs fewer subjects (in the designs checked, as few as about half when the finding is rare), so the figure shown is generally the more cautious of the two.": [
                 ""
             ],
             "With three tests the nominal residual degrees of freedom are zero, but the latent-class model need not reproduce the observed table. These residuals describe discrepancies; they are not chi-squared tests of conditional independence. A small residual does not establish the assumption.": [
@@ -23362,7 +23356,7 @@
             "With two categories at least %1$d cases are needed for the latent model; this study has %2$d.": [
                 ""
             ],
-            "With two categories at least %1$d pathologists are needed for the grading tendency; this study has %2$d. With fewer, its behaviour was not checked in simulation.": [
+            "With two categories at least %1$d pathologists are needed for the grading tendency; this study has %2$d. With fewer, its behavior was not checked in simulation.": [
                 ""
             ],
             "With two categories the latent model is not computed: in simulation its estimates were biased at every design tested, whatever the number of cases or pathologists, because the approximation used to fit it underestimates agreement for binary calls. The headline kappa, the per-pathologist tables and the boundary table remain valid.": [
@@ -23542,7 +23536,7 @@
             "Youden's J for {rule} is {youden} (Agresti-Caffo 95% CI {lower} to {upper}; equivalent AUC {auc}). The whole interval lies below 0.40, the equivalent of an area under the ROC curve of 0.70, below which discrimination is conventionally read as poor (Hosmer, Lemeshow and Sturdivant 2013). This is a statistical convention, not a verdict on clinical usefulness: the likelihood ratios still show how far each result moves the probability of disease.": [
                 ""
             ],
-            "Youden's J is below 0 but within sampling variation of 0 for {tests}, on the {n} complete cases analysed here. A test with no diagnostic value falls below 0 about half the time at any sample size, so a correctly coded but uninformative test and a test whose positive level is reversed cannot be told apart here. If the level chosen as positive is right, the test adds no information in this sample.": [
+            "Youden's J is below 0 but within sampling variation of 0 for {tests}, on the {n} complete cases analyzed here. A test with no diagnostic value falls below 0 about half the time at any sample size, so a correctly coded but uninformative test and a test whose positive level is reversed cannot be told apart here. If the level chosen as positive is right, the test adds no information in this sample.": [
                 ""
             ],
             "Your Data Type": [

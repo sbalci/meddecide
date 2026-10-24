@@ -32,7 +32,7 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
-"'{var}' was analysed with only {pos} positive and {neg} negative case(s). "
+"'{var}' was analyzed with only {pos} positive and {neg} negative case(s). "
 "Below about 10 per class the AUC, its confidence interval and the selected "
 "cutpoint are unstable; treat these results as exploratory."
 msgstr ""
@@ -1143,7 +1143,7 @@ msgid ""
 "the 1% and 50%\n"
 "                            TPS cutoffs, so scores from the two clones are "
 "not directly comparable at those cutoffs without\n"
-"                            further study of clone-specific behaviour."
+"                            further study of clone-specific behavior."
 msgstr ""
 
 #: R/agreement.b.R
@@ -1164,7 +1164,7 @@ msgid ""
 "                            formal validation study. A single-cohort CCC "
 "does not itself validate substituting WSI for glass\n"
 "                            slides: it does not address readers outside the "
-"study, case-mix effects, or behaviour at the\n"
+"study, case-mix effects, or behavior at the\n"
 "                            mitotic-count thresholds that change grade."
 msgstr ""
 
@@ -1434,7 +1434,7 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid ""
-"{tag1}Cell Colour:{tag2} The share of all cases that fall in the cell, on a "
+"{tag1}Cell Color:{tag2} The share of all cases that fall in the cell, on a "
 "fixed 0-100% scale shared by every panel."
 msgstr ""
 
@@ -2957,17 +2957,17 @@ msgid "{tag1}Morphometric analysis{tag2} - Nuclear size, gland area measurements
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Multi-center studies{tag2} - Ensuring consistent grading across sites"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
-"{tag1}Multi-centre reader studies{tag2}: cases from several hospitals scored "
+"{tag1}Multi-center reader studies{tag2}: cases from several hospitals scored "
 "by the same pathologists"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Multi-scanner studies{tag2}: images from several imaging centres"
+msgid "{tag1}Multi-center studies{tag2} - Ensuring consistent grading across sites"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "{tag1}Multi-scanner studies{tag2}: images from several imaging centers"
 msgstr ""
 
 #: R/agreement.b.R
@@ -3201,7 +3201,7 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid ""
-"{tag1}Ordinal scales with roughly equal steps{tag2} - tumour grade, fibrosis "
+"{tag1}Ordinal scales with roughly equal steps{tag2} - tumor grade, fibrosis "
 "stage, activity scores"
 msgstr ""
 
@@ -3524,7 +3524,7 @@ msgstr ""
 #: R/agreement.b.R
 msgid ""
 "{tag1}Random disagreement needs a different remedy{tag2} - protocol "
-"standardisation, training, or averaging replicate reads."
+"standardization, training, or averaging replicate reads."
 msgstr ""
 
 #: R/agreement.b.R
@@ -3546,7 +3546,7 @@ msgid ""
 "{tag1}Random share = random disagreement / (systematic + random "
 "disagreement){tag2}, from 0 (all disagreement is systematic) to 1 (all of it "
 "is random).\n"
-"                        This table used to be labelled \"Maxwell's RE\"; "
+"                        This table used to be labeled \"Maxwell's RE\"; "
 "Maxwell's (1977) random-error coefficient is a different statistic for "
 "dichotomous ratings and is not what is computed here."
 msgstr ""
@@ -4833,7 +4833,7 @@ msgid ""
 "consistently the four ranked the same cases, in\n"
 "                            this one cohort. They carry no information about "
 "the size of any glass-to-WSI offset, nor about\n"
-"                            behaviour at the mitotic-count thresholds that "
+"                            behavior at the mitotic-count thresholds that "
 "change grade - the Bland-Altman output and\n"
 "                            agreement measured at those thresholds are the "
 "parts of this analysis that address those."
@@ -5000,7 +5000,7 @@ msgstr ""
 msgid ""
 "{test} classifies worse than chance in this sample, beyond sampling "
 "variation: Youden's J = {youden} (Agresti-Caffo 95% CI {lower} to {upper}) "
-"on the {n} complete cases analysed here. Its sensitivity and specificity add "
+"on the {n} complete cases analyzed here. Its sensitivity and specificity add "
 "up to less than 1, so calling its other level positive would do better; this "
 "is the signature of a reversed positive level. Check the level chosen as "
 "positive for {test} and for the reference standard before interpreting any "
@@ -5402,7 +5402,7 @@ msgid ""
 "%1$d selected variable(s) had the same value in every case and were removed "
 "before fitting: %2$s. A constant carries no information and cannot be "
 "penalised or selected. %3$d variables remain and are shown as Variables "
-"analysed."
+"analyzed."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -5457,7 +5457,7 @@ msgid ""
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "%1$s at cutoff %2$s (analysed values %3$s to %4$s)"
+msgid "%1$s at cutoff %2$s (analyzed values %3$s to %4$s)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -5540,13 +5540,13 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid ""
 "%1$s has a value for %2$d case(s) of the negative class (%3$s); at least 2 "
-"are needed to analyse it."
+"are needed to analyze it."
 msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
 "%1$s has a value for %2$d case(s) of the positive class (%3$s); at least 2 "
-"are needed to analyse it."
+"are needed to analyze it."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -5608,7 +5608,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"%1$s has the same value (%2$s) in every analysed row, so it cannot separate "
+"%1$s has the same value (%2$s) in every analyzed row, so it cannot separate "
 "the groups: its AUC is 0.5 by construction and no cut-point exists. Choose a "
 "predictor that varies, or check how the data were imported."
 msgstr ""
@@ -5627,7 +5627,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"%1$s of %2$s rows can be analysed: a row is used only when the outcome and "
+"%1$s of %2$s rows can be analyzed: a row is used only when the outcome and "
 "every selected predictor are present."
 msgstr ""
 
@@ -5677,7 +5677,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "%1$s: %2$s%% of case-control pairs are tied; ties count one half. If every "
-"tie favoured the cases the AUC would be %3$s, if every tie favoured the "
+"tie favored the cases the AUC would be %3$s, if every tie favored the "
 "non-cases %4$s."
 msgstr ""
 
@@ -5721,7 +5721,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"%1$s%% of the analysed patients are positive. • Sensitivity, specificity and "
+"%1$s%% of the analyzed patients are positive. • Sensitivity, specificity and "
 "the AUC do not depend on prevalence, but with so few negatives specificity "
 "is imprecise, and the NPV will be low unless sensitivity is very high."
 msgstr ""
@@ -5911,7 +5911,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
 msgid ""
-"%s: an integer column set to Nominal or Ordinal was analysed by its numeric "
+"%s: an integer column set to Nominal or Ordinal was analyzed by its numeric "
 "values, as ordered codes read in the direction set under Direction. This is "
 "right for an ordinal rating scale; if the numbers merely label unordered "
 "categories, the AUC depends on the arbitrary numbering and is meaningless."
@@ -7618,7 +7618,7 @@ msgstr ""
 msgid ""
 "<span style='color:inherit;'><b>Significant difference detected.</b></span> "
 "%1$s classified significantly more cases correctly than %2$s: of the %3$d "
-"cases where exactly one test was correct, %4$d favoured %1$s. McNemar's test "
+"cases where exactly one test was correct, %4$d favored %1$s. McNemar's test "
 "compares overall correctness only; the two tests may still differ in the "
 "sensitivity/specificity balance.</p>"
 msgstr ""
@@ -8483,7 +8483,7 @@ msgid ""
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "A predictor analysed on its own could use up to %s rows."
+msgid "A predictor analyzed on its own could use up to %s rows."
 msgstr ""
 
 #: R/cotest.b.R
@@ -8553,7 +8553,7 @@ msgstr ""
 #: R/cotest.b.R
 msgid ""
 "A sensitive test paired with a specific one, both read from the same "
-"cervical sample, so they are modelled as conditionally dependent."
+"cervical sample, so they are modeled as conditionally dependent."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -9416,7 +9416,7 @@ msgstr ""
 #: R/agreement.b.R
 msgid ""
 "Agreement for a design in which every case belongs to one cluster "
-"(institution, centre,\n"
+"(institution, center,\n"
 "                    scanner) and the same raters score the cases. It reports "
 "agreement WITHIN cluster, so that\n"
 "                    clusters which differ in case mix do not masquerade as "
@@ -9945,14 +9945,6 @@ msgid ""
 "at 0/1). Its AUC/AIC are unreliable; prefer the penalized row."
 msgstr ""
 
-#: decision/results/rawCounts.title
-msgid "Analysed Combination Counts"
-msgstr ""
-
-#: decision/results/rawContingency.title
-msgid "Analysed Contingency Table"
-msgstr ""
-
 #: package/analyses/cotest.description
 #: cotest/options.description.main
 msgid ""
@@ -9966,10 +9958,6 @@ msgid ""
 "Analysis instead. Note that Sequential Test Analysis also offers a parallel "
 "strategy, but its combined figures assume conditional independence; this "
 "analysis is the one that models conditional dependence numerically."
-msgstr ""
-
-#: R/nogoldstandard.b.R
-msgid "Analysing %d cases"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -10125,8 +10113,16 @@ msgid ""
 "standard) is available."
 msgstr ""
 
+#: decision/results/rawCounts.title
+msgid "Analyzed Combination Counts"
+msgstr ""
+
 #: R/enhancedROC.b.R
 msgid "Analyzed common cases"
+msgstr ""
+
+#: decision/results/rawContingency.title
+msgid "Analyzed Contingency Table"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -10170,6 +10166,10 @@ msgid ""
 "values are teaching examples only, not clinical guidance or validated "
 "diagnostic pathways. Replace all example parameters with estimates "
 "applicable to the intended population before interpreting results."
+msgstr ""
+
+#: R/nogoldstandard.b.R
+msgid "Analyzing %d cases"
 msgstr ""
 
 #: kappaSizeFixedN/ui[1].label
@@ -10572,7 +10572,7 @@ msgstr ""
 
 #: R/decisioncompare.b.R
 msgid ""
-"At the %1$s%% disease prevalence among the %2$d cases analysed for %3$s, "
+"At the %1$s%% disease prevalence among the %2$d cases analyzed for %3$s, "
 "%4$s positive predictive value, %5$s negative predictive value, and %6$s "
 "overall accuracy were observed; predictive values and accuracy change with "
 "prevalence and would need to be recomputed for a population with a different "
@@ -10614,7 +10614,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"At the cutoff that maximised the Youden index, %1$s, sensitivity was "
+"At the cutoff that maximized the Youden index, %1$s, sensitivity was "
 "%2$.1f%% and specificity %3$.1f%% (Youden index %4$.3f)."
 msgstr ""
 
@@ -10663,7 +10663,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"At these fixed score cutoffs every analysed patient is classified as "
+"At these fixed score cutoffs every analyzed patient is classified as "
 "positive: %s. The clinical impact and workload rows at such a cutoff "
 "describe testing everyone (sensitivity 1, specificity 0, the net benefit of "
 "treating all), not the marker. Enter cutoffs on the marker's own scale under "
@@ -10672,7 +10672,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"At these fixed score cutoffs no analysed patient is classified as positive: "
+"At these fixed score cutoffs no analyzed patient is classified as positive: "
 "%s. The clinical impact and workload rows at such a cutoff describe testing "
 "no one (sensitivity 0, specificity 1, net benefit 0), not the marker. Enter "
 "cutoffs on the marker's own scale under Fixed score cutoffs; the default 0.5 "
@@ -11574,7 +11574,7 @@ msgid ""
 "Bootstrap confidence interval for the partial AUC, using the resample count, "
 "interval type (BCa/percentile/basic) and stratification set above. The "
 "interval is for the raw partial AUC on the chosen focus range, not for the "
-"McClish-normalised value."
+"McClish-normalized value."
 msgstr ""
 
 #: R/agreement.b.R
@@ -11783,7 +11783,7 @@ msgstr ""
 #: R/cotest.b.R
 msgid ""
 "Both tests are driven by the extent of myocardial injury, so they are "
-"modelled as dependent among diseased subjects in particular."
+"modeled as dependent among diseased subjects in particular."
 msgstr ""
 
 #: R/cotest.b.R
@@ -12044,7 +12044,7 @@ msgid "Calibration-in-the-large"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "Calibration, standardisation, bias correction"
+msgid "Calibration, standardization, bias correction"
 msgstr ""
 
 #: decision/results/comparatorCounts.columns.title
@@ -12167,7 +12167,7 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
-msgid "Case exclusion summary: {details}. {analysed} of {total} cases analysed."
+msgid "Case exclusion summary: {details}. {analyzed} of {total} cases analyzed."
 msgstr ""
 
 #: agreement/results/caseClusterTable.columns.title
@@ -12330,7 +12330,7 @@ msgstr ""
 #: R/agreement.b.R
 msgid ""
 "Categorical or ordinal ratings for kappa; continuous measurements are "
-"analysed with ICC, Lin's CCC, TDI and the Bland-Altman limits instead"
+"analyzed with ICC, Lin's CCC, TDI and the Bland-Altman limits instead"
 msgstr ""
 
 #: R/agreement.b.R
@@ -12418,11 +12418,11 @@ msgid "Cell annotation size"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "Cell colour: share of all rated cases"
+msgid "Cell color: share of all rated cases"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "Cell colour: similarity (1 - distance)"
+msgid "Cell color: similarity (1 - distance)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -12683,7 +12683,7 @@ msgid ""
 "chosen from their order. A numeric outcome coded 0/1 is read as 1 = positive "
 "without a choice; for any other numeric coding, set the outcome's measure "
 "type to Nominal in Data > Setup so its values are listed here. Every other "
-"level is analysed as negative. The Outcome coding table shows which level "
+"level is analyzed as negative. The Outcome coding table shows which level "
 "was used and how."
 msgstr ""
 
@@ -13183,7 +13183,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Clinical preset in force: %s (it turns Youden optimisation on and may "
+"Clinical preset in force: %s (it turns Youden optimization on and may "
 "replace the minimum sensitivity and specificity)."
 msgstr ""
 
@@ -13973,7 +13973,7 @@ msgid "Complete cases"
 msgstr ""
 
 #: R/lassologistic.b.R
-msgid "Complete cases analysed"
+msgid "Complete cases analyzed"
 msgstr ""
 
 #: R/agreement.b.R
@@ -14984,7 +14984,7 @@ msgid "Create Consensus Variable (Any Data Type)"
 msgstr ""
 
 #: R/psychopdaROC.b.R
-msgid "CRITERION"
+msgid "Criterion"
 msgstr ""
 
 #: decisioncompare/results/opaTable.columns.title
@@ -15231,7 +15231,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Cut-points maximise the Youden index, J = sensitivity + specificity - 1 "
+"Cut-points maximize the Youden index, J = sensitivity + specificity - 1 "
 "(Youden, 1950), over the thresholds midway between adjacent observed values: "
 "the empirical estimator of the Youden-optimal cut-point (Fluss et al., "
 "2005). A patient is test-positive at or above the cutoff (at or below it "
@@ -15240,10 +15240,10 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Cut-points minimise the squared distance to the top-left corner of the ROC "
+"Cut-points minimize the squared distance to the top-left corner of the ROC "
 "plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway "
 "between adjacent observed values (Perkins & Schisterman, 2006); Youden "
-"optimisation was switched off. A patient is test-positive at or above the "
+"optimization was switched off. A patient is test-positive at or above the "
 "cutoff (at or below it when lower values are positive)."
 msgstr ""
 
@@ -15301,7 +15301,7 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
-"cutpointr could not analyse %1$s (%2$s). A built-in Youden-index search was "
+"cutpointr could not analyze %1$s (%2$s). A built-in Youden-index search was "
 "used instead, so the selected cutpoint method, metric and tolerance were not "
 "applied to that marker."
 msgstr ""
@@ -15424,7 +15424,7 @@ msgid "Decision"
 msgstr ""
 
 #: R/psychopdaROC.b.R
-msgid "DECISION BASED ON MEASURE"
+msgid "Decision based on measure"
 msgstr ""
 
 #: package/analyses/decisioncalculator.menuSubgroup
@@ -16585,7 +16585,7 @@ msgstr ""
 
 #: decision/options/od.description.ui
 msgid ""
-"Display the 2x2 table and level-combination counts of the analysed cases, "
+"Display the 2x2 table and level-combination counts of the analyzed cases, "
 "and a summary of the cases excluded for missing values or unselected levels. "
 "Useful for verifying data entry and understanding the underlying counts."
 msgstr ""
@@ -16615,7 +16615,7 @@ msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"Displays the analysed contingency table and combination counts, and a "
+"Displays the analyzed contingency table and combination counts, and a "
 "summary of excluded cases, for verification."
 msgstr ""
 
@@ -16758,7 +16758,7 @@ msgstr ""
 #: R/decisioncompare.b.R
 msgid ""
 "Each difference is the first-named test minus the second: for 'A vs B', a "
-"positive value favours A and a negative value favours B."
+"positive value favors A and a negative value favors B."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -16876,7 +16876,7 @@ msgstr ""
 msgid ""
 "Each row must be a different, independent patient. If patients contribute "
 "several specimens (cores, blocks, lesions), the confidence intervals are too "
-"narrow: analyse one specimen per patient or use a method for clustered data."
+"narrow: analyze one specimen per patient or use a method for clustered data."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -16916,7 +16916,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Each row was analysed as a separate, independent patient; the confidence "
+"Each row was analyzed as a separate, independent patient; the confidence "
 "intervals and tests assume this."
 msgstr ""
 
@@ -17206,16 +17206,13 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
-msgid "Error"
-msgstr ""
-
-#: R/decisioncalculator.b.R
 #: R/nogoldstandard.b.R
 #: R/sequentialtests.b.R
-msgid "ERROR"
+msgid "Error"
 msgstr ""
 
 #: R/decision.b.R
@@ -17588,7 +17585,7 @@ msgstr ""
 msgid ""
 "Every predictor produced a single distinct predicted probability, so there "
 "is nothing to group into calibration bins. That happens only when a "
-"predictor is constant within the analysed rows: with Prediction scale Score "
+"predictor is constant within the analyzed rows: with Prediction scale Score "
 "its logistic slope is then not estimable, and every patient receives the "
 "sample prevalence as risk."
 msgstr ""
@@ -18067,7 +18064,7 @@ msgstr ""
 #: psychopdaROC/options.description.main
 msgid ""
 "Exploratory Receiver Operating Characteristic (ROC) curve analysis with "
-"optimal cutpoint determination. Analyse independent rows or a prespecified "
+"optimal cutpoint determination. Analyze independent rows or a prespecified "
 "mean or median per patient. Patient summaries require an ID and a consistent "
 "outcome within each patient; all calculations and resampling then use one "
 "summary per patient. Nominal coverage is not guaranteed in small or "
@@ -18613,7 +18610,7 @@ msgstr ""
 
 #: enhancedROC/options/youdenOptimization.description
 msgid ""
-"Find the optimal cutoff by maximising the Youden index (sensitivity + "
+"Find the optimal cutoff by maximizing the Youden index (sensitivity + "
 "specificity - 1), subject to the minimum sensitivity/specificity below. When "
 "off, the cutoff closest to the top-left corner of the ROC curve is reported "
 "instead. The minimum sensitivity and specificity are used only by the Youden "
@@ -18783,7 +18780,7 @@ msgid ""
 "Fixed score cutoffs on the marker's own scale, comma separated. The default "
 "0.5 is meant for predicted probabilities (Prediction scale = probability); "
 "for a raw marker enter cutoffs inside its observed range. A warning names "
-"any cutoff that classifies every analysed patient the same way."
+"any cutoff that classifies every analyzed patient the same way."
 msgstr ""
 
 #: psychopdaROC/options/fixedAnalysisType/sensitivity.title
@@ -18960,7 +18957,7 @@ msgid ""
 "kappa (kappa0); every value below it is excluded. Solved from the "
 "goodness-of-fit models of the kappaSize package; with three or more raters "
 "or categories it also allows for re-estimating the category proportions when "
-"the study is analysed. Use kappaSizePower to size a study for a hypothesis "
+"the study is analyzed. Use kappaSizePower to size a study for a hypothesis "
 "test and kappaSizeCI to size it for target confidence limits."
 msgstr ""
 
@@ -19275,7 +19272,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Frozen scores; no refitting or threshold optimization. Every analysed row "
+"Frozen scores; no refitting or threshold optimization. Every analyzed row "
 "({unit}) weighs equally in the metrics; paired differences use common cases."
 msgstr ""
 
@@ -19753,7 +19750,7 @@ msgid "Heatmap - Metrics by Pattern"
 msgstr ""
 
 #: agreement/options/heatmapColorScheme.title
-msgid "Heatmap colour scheme"
+msgid "Heatmap color scheme"
 msgstr ""
 
 #: R/agreement.b.R
@@ -19856,7 +19853,7 @@ msgid "High sensitivity (>=95%): few false negatives in this sample"
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "High sensitivity (above 0.90) is preferred, to minimise false negatives."
+msgid "High sensitivity (above 0.90) is preferred, to minimize false negatives."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -20386,7 +20383,7 @@ msgid ""
 "the other test. When a test was done only after a positive result, a serial "
 "strategy can still be evaluated on all patients: record its final result "
 "(positive only when every test is positive) as a separate variable and "
-"analyse it as a single test."
+"analyze it as a single test."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -20824,7 +20821,7 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
-"Independent-row analysis: each analysed row must represent an independent "
+"Independent-row analysis: each analyzed row must represent an independent "
 "observation."
 msgstr ""
 
@@ -20900,7 +20897,7 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 #: R/nogoldstandard.b.R
-msgid "INFO"
+msgid "Info"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -21057,7 +21054,7 @@ msgid "Insufficient data (minimum 5 cases required)"
 msgstr ""
 
 #: R/decision.b.R
-msgid "Insufficient data after exclusions: {n} cases analysed"
+msgid "Insufficient data after exclusions: {n} cases analyzed"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -21627,7 +21624,7 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"It answers 'how many subjects do I need to reject kappa0 in favour of "
+"It answers 'how many subjects do I need to reject kappa0 in favor of "
 "kappa1?' - not how precisely kappa will be estimated; to plan the expected "
 "confidence limits around an anticipated kappa, use kappaSizeCI instead."
 msgstr ""
@@ -21735,7 +21732,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"J = sensitivity + specificity - 1. The cutoff that maximises it weighs "
+"J = sensitivity + specificity - 1. The cutoff that maximizes it weighs "
 "sensitivity and specificity equally; at prevalence p that counts one missed "
 "case as (1 - p)/p false alarms, the same cost only when half the patients "
 "have the condition. That is a convention, not a clinical optimum."
@@ -22361,7 +22358,7 @@ msgstr ""
 #: R/nogoldstandard.b.R
 msgid ""
 "Latent class analysis needs both positive and not-positive results for every "
-"test among the analysed cases. Only one result was observed for: {}. Such a "
+"test among the analyzed cases. Only one result was observed for: {}. Such a "
 "test carries no information about the latent classes. Check that the correct "
 "positive level is selected, or remove the test."
 msgstr ""
@@ -23265,10 +23262,6 @@ msgstr ""
 msgid "Max-scaled method (strongest predictor = maximum points)"
 msgstr ""
 
-#: R/psychopdaROC.b.R
-msgid "maximising"
-msgstr ""
-
 #: psychopdaROC/options/method/maximize_metric.title
 msgid "Maximize metric"
 msgstr ""
@@ -23279,6 +23272,10 @@ msgstr ""
 
 #: psychopdaROC/options/method/maximize_loess_metric.title
 msgid "Maximize metric (LOESS smoothed)"
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid "maximizing"
 msgstr ""
 
 #: R/agreement.b.R
@@ -23798,9 +23795,9 @@ msgstr ""
 msgid ""
 "Metric tolerance is %1$s: every cutpoint scoring within %2$s of the best "
 "%3$s was treated as equivalent and the reported cutpoint is their %4$s. It "
-"is therefore <i>not</i> necessarily the cutpoint that maximises the metric, "
+"is therefore <i>not</i> necessarily the cutpoint that maximizes the metric, "
 "and its sensitivity and specificity can differ appreciably from the maximum. "
-"Set the tolerance to 0 to report the maximising cutpoint itself."
+"Set the tolerance to 0 to report the maximizing cutpoint itself."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -23869,10 +23866,6 @@ msgstr ""
 msgid "Minimal rater bias"
 msgstr ""
 
-#: R/psychopdaROC.b.R
-msgid "minimising"
-msgstr ""
-
 #: psychopdaROC/options/metric/abs_d_ppv_npv.title
 msgid "Minimize |PPV - NPV|"
 msgstr ""
@@ -23891,6 +23884,10 @@ msgstr ""
 
 #: psychopdaROC/options/method/minimize_loess_metric.title
 msgid "Minimize metric (LOESS smoothed)"
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid "minimizing"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -24737,12 +24734,12 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid ""
 "N counts every row with each outcome value before exclusions. Each test is "
-"analysed on its complete cases within the two selected classes."
+"analyzed on its complete cases within the two selected classes."
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"N counts the rows analysed: outcome and every selected predictor present "
+"N counts the rows analyzed: outcome and every selected predictor present "
 "(%1$s of %2$s rows)."
 msgstr ""
 
@@ -25108,14 +25105,14 @@ msgstr ""
 #: R/decisioncurve.b.R
 msgid ""
 "Net benefit and the treat-all line use the outcome prevalence of the "
-"analysed sample, so they describe the target population only when the sample "
+"analyzed sample, so they describe the target population only when the sample "
 "is a cohort or consecutive series from it."
 msgstr ""
 
 #: R/decisioncurve.b.R
 msgid ""
 "Net benefit and the treat-all line use this sample prevalence, so they are "
-"valid only when the analysed rows have the outcome rate of the target "
+"valid only when the analyzed rows have the outcome rate of the target "
 "population (a cohort or consecutive series)."
 msgstr ""
 
@@ -25277,14 +25274,14 @@ msgstr ""
 msgid "No action needed (assess agreement separately)"
 msgstr ""
 
-#: R/decision.b.R
-msgid "No analysed cases at one of the positive or negative levels"
-msgstr ""
-
 #: R/decisioncompare.b.R
 msgid ""
 "No analyzable cases were found in any observed stratum of '{variable}'. "
 "Check subgroup values and test/reference availability."
+msgstr ""
+
+#: R/decision.b.R
+msgid "No analyzed cases at one of the positive or negative levels"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -25372,7 +25369,7 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid ""
 "No case of the positive class (%1$s) has a value of %2$s, so %2$s cannot be "
-"analysed."
+"analyzed."
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -25814,7 +25811,7 @@ msgid "No positive test results"
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "No Predictor Could Be Analysed"
+msgid "No Predictor Could Be Analyzed"
 msgstr ""
 
 #: R/agreement.b.R
@@ -26079,7 +26076,7 @@ msgid ""
 "classified negative, although some cut-points do separate the groups better "
 "than chance in the classification direction currently selected. This "
 "happens, for example, when accuracy, a misclassification cost or a total "
-"utility is optimised in an imbalanced sample, when at the cost ratio entered "
+"utility is optimized in an imbalanced sample, when at the cost ratio entered "
 "the cost-benefit method finds classifying every patient negative the least "
 "costly choice, or when Metric Tolerance is wide enough to count that choice "
 "as tied with the best cut-point. If a cut-point is needed, lower Metric "
@@ -26710,7 +26707,7 @@ msgstr ""
 
 #: R/decision.b.R
 msgid ""
-"Number of cases analysed. Excluded: cases with a missing test or reference "
+"Number of cases analyzed. Excluded: cases with a missing test or reference "
 "result, or with a level other than the selected positive and negative levels."
 msgstr ""
 
@@ -27367,7 +27364,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Only %1$s%% of the analysed patients are positive. • Sensitivity, "
+"Only %1$s%% of the analyzed patients are positive. • Sensitivity, "
 "specificity and the AUC do not depend on prevalence, but with so few "
 "positives sensitivity is imprecise, and the PPV will be low unless "
 "specificity is very high. • When negatives far outnumber positives the ROC "
@@ -27616,7 +27613,7 @@ msgstr ""
 
 #: enhancedROC/options/siteID.description
 msgid ""
-"Optional site or centre of each row. The frozen-model report then adds one "
+"Optional site or center of each row. The frozen-model report then adds one "
 "set of metrics per site, conditional on the observed sites, and resamples "
 "within sites. Every row needs a site, and a patient may not appear at two "
 "sites."
@@ -27711,7 +27708,7 @@ msgstr ""
 #: R/lassologistic.b.R
 msgid ""
 "Ordinal predictor(s) %s are coded with one indicator per level, each "
-"compared with that predictor's lowest level; they are not modelled as a "
+"compared with that predictor's lowest level; they are not modeled as a "
 "linear trend."
 msgstr ""
 
@@ -27794,9 +27791,9 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "Outcome level %1$s (%2$s rows) has no row with a value for every selected "
-"predictor, so it cannot be analysed: rows are used only when the outcome and "
+"predictor, so it cannot be analyzed: rows are used only when the outcome and "
 "ALL selected predictors are present. • Missing values among those rows: "
-"%3$s. • Remove that predictor, analyse the predictors in separate runs, or "
+"%3$s. • Remove that predictor, analyze the predictors in separate runs, or "
 "supply the missing values; choosing a different positive class would answer "
 "a different question."
 msgstr ""
@@ -28918,7 +28915,7 @@ msgid ""
 "Percentile intervals resample whole patients when an ID is supplied, jointly "
 "across models and within fixed sites. These approximate intervals can "
 "under-cover, especially with rare outcomes or unequal cluster sizes. Counts "
-"and metrics weight every analysed row equally (unit of observation: %s). "
+"and metrics weight every analyzed row equally (unit of observation: %s). "
 "Undefined or degenerate intervals are unavailable. Calibration logits "
 "require probabilities strictly between 0 and 1 and a converged nonseparated "
 "fit. Positive-only cohorts cannot estimate specificity or discrimination. No "
@@ -29580,7 +29577,7 @@ msgid "Positive Tests"
 msgstr ""
 
 #: R/decisioncurve.b.R
-msgid "Positive values favour the model; negative values favour treating everyone."
+msgid "Positive values favor the model; negative values favor treating everyone."
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -29899,7 +29896,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "PPV, NPV and the other prevalence-dependent metrics use the prevalence you "
-"entered (%1$s), not the %2$s observed in the analysed rows."
+"entered (%1$s), not the %2$s observed in the analyzed rows."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -30258,7 +30255,7 @@ msgid "Predictors"
 msgstr ""
 
 #: R/lassologistic.b.R
-msgid "Predictors constant among the analysed cases"
+msgid "Predictors constant among the analyzed cases"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -30809,7 +30806,7 @@ msgstr ""
 msgid ""
 "Proportions must be numbers separated by commas, semicolons or spaces (for "
 "example '0.20, 0.80'). One or more entries could not be read as a number. "
-"Note that a decimal comma is not recognised - use a point, as in 0.20."
+"Note that a decimal comma is not recognized - use a point, as in 0.20."
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
@@ -30878,7 +30875,7 @@ msgid ""
 "PSA (positive specific agreement) is for '%s' and NSA (negative specific "
 "agreement) for the other category. A gap between them mainly reflects "
 "prevalence: when positives are rare, NSA is high and PSA low even if neither "
-"rater favours either call. A systematic difference between the raters is "
+"rater favors either call. A systematic difference between the raters is "
 "measured by the bias index of PABAK or by McNemar's test, not by this gap."
 msgstr ""
 
@@ -31931,9 +31928,9 @@ msgstr ""
 #: R/lassologistic.b.R
 msgid ""
 "Removed before fitting: %1$s. Each varies only in rows that were excluded "
-"for a missing value, so every analysed case has the same value, and a "
+"for a missing value, so every analyzed case has the same value, and a "
 "predictor that does not vary cannot be penalised or selected. %2$d variables "
-"remain and are shown as Variables analysed."
+"remain and are shown as Variables analyzed."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -32711,7 +32708,7 @@ msgstr ""
 msgid ""
 "Sample Accuracy is the proportion of concordant results at the prevalence "
 "observed in this sample ({prevalence}), NOT at the population prior you "
-"supplied. Unlike the predictive values it is not standardised to that prior, "
+"supplied. Unlike the predictive values it is not standardized to that prior, "
 "and it changes with case mix."
 msgstr ""
 
@@ -32791,7 +32788,7 @@ msgstr ""
 #: kappaSizePower/options.description.main
 msgid ""
 "Sample size for an interobserver agreement study sized to reject a null "
-"kappa (kappa0) in favour of an alternative kappa (kappa1) at a given "
+"kappa (kappa0) in favor of an alternative kappa (kappa1) at a given "
 "two-sided significance level and power - the power approach of the kappaSize "
 "package. Use kappaSizeCI for a target confidence-interval width, and "
 "kappaSizeFixedN when the number of subjects is already fixed."
@@ -33656,7 +33653,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "Sensitivity, PPV, LR+, every cut-point and the AUC describe the level you "
-"choose; every other level is analysed as negative."
+"choose; every other level is analyzed as negative."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -33851,7 +33848,7 @@ msgstr ""
 #: R/decisioncombine.b.R
 msgid ""
 "Several tests classify worse than chance in this sample, beyond sampling "
-"variation, on the {n} complete cases analysed here: {tests}. For each, "
+"variation, on the {n} complete cases analyzed here: {tests}. For each, "
 "sensitivity and specificity add up to less than 1, the signature of a "
 "reversed positive level. Check the levels chosen as positive for these tests "
 "and for the reference standard before interpreting any of these results; "
@@ -34157,11 +34154,10 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid ""
 "Single-AUC 95% intervals and two-sided tests against AUC 0.5 use a logit "
-"delta transformation of the DeLong standard error (or the explicitly "
-"labelled fallback standard error). This improves the audited small-sample "
-"coverage but remains an asymptotic approximation. It does not change paired "
-"DeLong comparisons. Boundary AUCs or zero variance have unavailable "
-"inference."
+"delta transformation of the DeLong standard error (or the explicitly labeled "
+"fallback standard error). This improves the audited small-sample coverage "
+"but remains an asymptotic approximation. It does not change paired DeLong "
+"comparisons. Boundary AUCs or zero variance have unavailable inference."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -34205,7 +34201,7 @@ msgid ""
 "Size of the population the projected workload counts are scaled to. Used for "
 "every projected row: the main prevalence when Observed prevalence is "
 "unticked, and every additional target prevalence. Observed rows count the "
-"analysed patients instead."
+"analyzed patients instead."
 msgstr ""
 
 #: decision/options/analysisUnit.default
@@ -34302,7 +34298,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Small sample size: n=%1$s analysed rows (%2$s positive, %3$s negative). • "
+"Small sample size: n=%1$s analyzed rows (%2$s positive, %3$s negative). • "
 "ROC curve confidence intervals may be unreliable with limited data. • "
 "Bootstrap intervals are an alternative to DeLong's, but no interval method "
 "is exact at this size, and only more data make the estimates more stable. • "
@@ -35141,7 +35137,7 @@ msgstr ""
 #: R/decisioncalculator.b.R
 #: R/nogoldstandard.b.R
 #: R/sequentialtests.b.R
-msgid "STRONG WARNING"
+msgid "Strong warning"
 msgstr ""
 
 #: agreement/options/stuartMaxwell.title
@@ -35226,19 +35222,19 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid ""
 "Subgroup %1$s has %2$d case(s) of the negative class (%3$s) with a value of "
-"%4$s; at least 2 are needed to analyse %4$s in that subgroup."
+"%4$s; at least 2 are needed to analyze %4$s in that subgroup."
 msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
 "Subgroup %1$s has %2$d case(s) of the positive class (%3$s) with a value of "
-"%4$s; at least 2 are needed to analyse %4$s in that subgroup."
+"%4$s; at least 2 are needed to analyze %4$s in that subgroup."
 msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
 "Subgroup %1$s has no case of the positive class (%2$s) with a value of %3$s, "
-"so %3$s cannot be analysed in that subgroup."
+"so %3$s cannot be analyzed in that subgroup."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -35432,7 +35428,7 @@ msgid "Table notes"
 msgstr ""
 
 #: R/decisioncurve.b.R
-msgid "Table thresholds outside the analysed range"
+msgid "Table thresholds outside the analyzed range"
 msgstr ""
 
 #: enhancedROC/ui[2][0][0][0].label
@@ -36244,7 +36240,7 @@ msgid ""
 "The {tag1}multivariate{tag2} form of iota - several variables, say tumor "
 "size,\n"
 "                            grade and mitotic count, scored by the same "
-"raters and summarised in one coefficient -\n"
+"raters and summarized in one coefficient -\n"
 "                            is {tag3}not computed by this analysis{tag4}. "
 "Nothing in this dialog can say which\n"
 "                            columns belong to which variable. Entering the "
@@ -36271,13 +36267,13 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"The %1$s analysed rows that carry a patient identifier (%2$s) come from %3$s "
+"The %1$s analyzed rows that carry a patient identifier (%2$s) come from %3$s "
 "patients, so some patients contribute more than one row (slides, cores or "
 "lesions). Every panel except the Frozen-model validation report assumes that "
 "each row is an independent patient. Rows from one patient are correlated, so "
 "the AUC confidence intervals, the tests comparing markers and the confidence "
 "intervals for sensitivity and specificity are too narrow, and p-values too "
-"small. • Analyse one row per patient (for example a patient-level score), or "
+"small. • Analyze one row per patient (for example a patient-level score), or "
 "• for a fixed model with a prespecified cut-off, enable the Frozen-model "
 "validation report, whose intervals resample whole patients (every row of a "
 "patient must then share one outcome)."
@@ -36685,7 +36681,7 @@ msgstr ""
 msgid ""
 "The Clopper-Pearson intervals for sensitivity and specificity in the "
 "Diagnostic Performance table treat this cutpoint as fixed in advance, so "
-"they are centred on these optimistic values and understate the uncertainty."
+"they are centered on these optimistic values and understate the uncertainty."
 msgstr ""
 
 #: R/agreement.b.R
@@ -36916,7 +36912,7 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
-"The cutpoint was chosen to optimise %s on these same data. The sensitivity, "
+"The cutpoint was chosen to optimize %s on these same data. The sensitivity, "
 "specificity and other metrics reported at that cutpoint are therefore "
 "optimistically biased and will typically be lower in a new sample; the bias "
 "grows as the sample gets smaller and as more candidate cutpoints are "
@@ -37298,8 +37294,8 @@ msgid ""
 "requires continuous or ordinal numeric predictors, such as biomarker levels, "
 "test scores or measurements. • If the variable is ORDINAL, recode it to "
 "numbers in rank order (for example Low=1, Medium=2, High=3). • Do not number "
-"a NOMINAL variable such as tumour site or histological subtype: the AUC "
-"would then be decided by the order you happened to assign rather than by the "
+"a NOMINAL variable such as tumor site or histological subtype: the AUC would "
+"then be decided by the order you happened to assign rather than by the "
 "marker. • For a nominal predictor use contingency table analysis instead."
 msgstr ""
 
@@ -37381,7 +37377,7 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
-msgid "The gold standard has only one level among the analysed cases"
+msgid "The gold standard has only one level among the analyzed cases"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -37435,7 +37431,7 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid ""
-"The grading-tendency model did not converge (the optimiser stopped away from "
+"The grading-tendency model did not converge (the optimizer stopped away from "
 "a maximum), so no tendency is shown."
 msgstr ""
 
@@ -37540,7 +37536,7 @@ msgid ""
 "The interval beside the apparent AUC is DeLong's 95% CI computed on these "
 "fitted probabilities as if they were a fixed, pre-specified marker. It does "
 "not account for fitting the coefficients or for selecting the variables and "
-"lambda on the same patients, so it is centred on an optimistic estimate and "
+"lambda on the same patients, so it is centered on an optimistic estimate and "
 "can under-cover the model's discrimination in new patients. Enable Bootstrap "
 "Internal Validation for an optimism-corrected AUC."
 msgstr ""
@@ -37671,7 +37667,7 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid ""
-"The latent model did not converge (the optimiser stopped away from a "
+"The latent model did not converge (the optimizer stopped away from a "
 "maximum), so no estimate is shown."
 msgstr ""
 
@@ -37730,7 +37726,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "The logistic slope of %s is not estimable because the marker is constant in "
-"the analysed rows, so every patient receives the same predicted risk (the "
+"the analyzed rows, so every patient receives the same predicted risk (the "
 "sample prevalence) and there are no risk groups to compare."
 msgstr ""
 
@@ -37768,7 +37764,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"The marker has the same value for every patient analysed, so it cannot "
+"The marker has the same value for every patient analyzed, so it cannot "
 "separate the groups: its AUC is 0.5 by construction."
 msgstr ""
 
@@ -37852,7 +37848,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "The minimum sensitivity and specificity settings apply only to Youden "
-"optimisation and were not used."
+"optimization and were not used."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -38181,7 +38177,7 @@ msgid ""
 "class it is dropped, and a BCa interval is then reported as a percentile "
 "interval instead — a notice appears when that happens. The interval is for "
 "the raw partial AUC over the chosen focus range, NOT for the "
-"McClish-normalised value in the next column."
+"McClish-normalized value in the next column."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -38191,13 +38187,13 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "The partial AUC was computed over sensitivities from %1$s to %2$s and "
-"standardised with the McClish correction (McClish, 1989) to a 0.5-1 scale."
+"standardized with the McClish correction (McClish, 1989) to a 0.5-1 scale."
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
 "The partial AUC was computed over specificities from %1$s to %2$s and "
-"standardised with the McClish correction (McClish, 1989) to a 0.5-1 scale."
+"standardized with the McClish correction (McClish, 1989) to a 0.5-1 scale."
 msgstr ""
 
 #: R/agreement.b.R
@@ -38395,7 +38391,7 @@ msgstr ""
 msgid ""
 "The published formula behind this sample size is a large-sample "
 "approximation that treats the expected proportions as known. In {R} "
-"simulated studies of {n} subjects analysed with the recommended "
+"simulated studies of {n} subjects analyzed with the recommended "
 "goodness-of-fit test (prevalence estimated by maximum likelihood with kappa "
 "held at kappa0), the power to reject kappa0 when kappa equals kappa1 was "
 "about {sim}, short of the stated {power}."
@@ -38487,7 +38483,7 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
-msgid "The reference has only one level among the analysed cases"
+msgid "The reference has only one level among the analyzed cases"
 msgstr ""
 
 #: R/agreement.b.R
@@ -38832,7 +38828,7 @@ msgid ""
 "beside it, not the label. A low random share implies the disagreement is an "
 "offset that a calibration factor or a shared reference set can remove; a "
 "high one implies it is case-by-case noise, which instead points to protocol "
-"standardisation, training, or averaging replicate reads."
+"standardization, training, or averaging replicate reads."
 msgstr ""
 
 #: R/agreement.b.R
@@ -39033,7 +39029,7 @@ msgid "The test '%1$s' has an AUC of %2$.3f"
 msgstr ""
 
 #: R/decision.b.R
-msgid "The test and the reference standard agree on every analysed case."
+msgid "The test and the reference standard agree on every analyzed case."
 msgstr ""
 
 #: R/agreement.b.R
@@ -39062,7 +39058,7 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
-msgid "The test has only one level among the analysed cases"
+msgid "The test has only one level among the analyzed cases"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -39355,7 +39351,7 @@ msgstr ""
 msgid ""
 "These figures are APPARENT (in-sample) and optimistic twice over: the points "
 "were derived from a model fitted to this dataset, and the score cutoff was "
-"chosen to maximise the Youden index on the same rows. They are not an "
+"chosen to maximize the Youden index on the same rows. They are not an "
 "estimate of how the score would perform on new patients. Enable bootstrap "
 "validation for an optimism-corrected estimate of the model, and validate any "
 "score externally before clinical use."
@@ -39383,7 +39379,7 @@ msgstr ""
 #: R/cotest.b.R
 msgid ""
 "These likelihood ratios describe each test <i>on its own</i>. Because the "
-"two tests are modelled as conditionally dependent, the combined likelihood "
+"two tests are modeled as conditionally dependent, the combined likelihood "
 "ratio is <b>not</b> their product — use the Post-test Odds column of the "
 "Co-Testing Results table instead."
 msgstr ""
@@ -39733,7 +39729,7 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "This is a POWER calculation: it returns the number of subjects needed to "
-"REJECT kappa0 in favour of kappa1 in a two-sided test at the stated "
+"REJECT kappa0 in favor of kappa1 in a two-sided test at the stated "
 "significance level and power."
 msgstr ""
 
@@ -39978,7 +39974,7 @@ msgid ""
 "This sample size is for <b>unweighted</b> kappa: categories are treated as "
 "nominal and every disagreement counts the same. It does not apply to "
 "weighted kappa for ordered grades, so if the Weighted kappa option is set to "
-"linear or squared weights, either analyse the study unweighted as well or "
+"linear or squared weights, either analyze the study unweighted as well or "
 "size it with a dedicated weighted-kappa method."
 msgstr ""
 
@@ -40290,7 +40286,7 @@ msgid "To"
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "To analyse every level without choosing one, tick Multi-class ROC analysis."
+msgid "To analyze every level without choosing one, tick Multi-class ROC analysis."
 msgstr ""
 
 #: R/agreement.b.R
@@ -41364,7 +41360,7 @@ msgid "Value (log scale)"
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "Values between 0 and 1 analysed as scores"
+msgid "Values between 0 and 1 analyzed as scores"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -41444,7 +41440,7 @@ msgid "Variable standardization"
 msgstr ""
 
 #: R/lassologistic.b.R
-msgid "Variables analysed"
+msgid "Variables analyzed"
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -41527,7 +41523,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Very few events in one or both classes of the analysed rows: %1$s positive, "
+"Very few events in one or both classes of the analyzed rows: %1$s positive, "
 "%2$s negative. ROC estimates, confidence intervals, and optimal cutoffs are "
 "unreliable with fewer than 10 events per class. Collect more data before "
 "drawing clinical conclusions."
@@ -41706,16 +41702,13 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
-msgid "Warning"
-msgstr ""
-
-#: R/decisioncalculator.b.R
 #: R/nogoldstandard.b.R
 #: R/sequentialtests.b.R
-msgid "WARNING"
+msgid "Warning"
 msgstr ""
 
 #: R/agreement.b.R
@@ -41890,7 +41883,7 @@ msgstr ""
 msgid ""
 "Weighted kappa was requested but the rater variables are not ordered factors "
 "with three or more categories, so unweighted Cohen's kappa is reported here. "
-"Weights assume a distance between categories, which a nominal scale (tumour "
+"Weights assume a distance between categories, which a nominal scale (tumor "
 "type, mutation class) does not have. Set every rater variable in both "
 "conditions to Ordinal to obtain the weighted statistic."
 msgstr ""
@@ -41899,7 +41892,7 @@ msgstr ""
 msgid ""
 "Weighted kappa was requested, but at least one rater variable is nominal (an "
 "unordered factor), so unweighted Cohen's kappa is reported here. Weights "
-"assume a distance between categories, which a nominal scale such as tumour "
+"assume a distance between categories, which a nominal scale such as tumor "
 "type does not have. Set the variables' measure type to Ordinal to obtain the "
 "weighted statistic."
 msgstr ""
@@ -41922,14 +41915,14 @@ msgid ""
 "Weighted kappa was requested, but the reads of {raters} are not an ordered "
 "scale with three or more categories, so unweighted Cohen's kappa is reported "
 "for them. Weights assume a distance between categories, which a nominal "
-"scale (tumour type, mutation class) does not have. Set the variable's "
-"measure type to Ordinal to obtain the weighted statistic."
+"scale (tumor type, mutation class) does not have. Set the variable's measure "
+"type to Ordinal to obtain the weighted statistic."
 msgstr ""
 
 #: R/agreement.b.R
 msgid ""
 "Weighted kappa was requested, but with three or more raters each subgroup is "
-"summarised by Fleiss' kappa, which has no weighted form, so these values are "
+"summarized by Fleiss' kappa, which has no weighted form, so these values are "
 "unweighted."
 msgstr ""
 
@@ -42109,7 +42102,7 @@ msgstr ""
 #: enhancedROC/options/analysisUnit.description
 msgid ""
 "What one row is (slide, core, patient...). Printed in the frozen-model "
-"report; every analysed row weighs equally in its metrics."
+"report; every analyzed row weighs equally in its metrics."
 msgstr ""
 
 #: enhancedROC/options/predictionScale.description
@@ -42202,7 +42195,7 @@ msgstr ""
 
 #: R/kappaSizeFixedN.b.R
 msgid ""
-"When the study is analysed, estimate the category prevalences by maximum "
+"When the study is analyzed, estimate the category prevalences by maximum "
 "likelihood at each candidate value of kappa. With three or more raters or "
 "categories, plugging in the overall proportions of ratings instead can give "
 "an interval that covers kappa less often than stated (about 0.86 to 0.94 "
@@ -42214,7 +42207,7 @@ msgstr ""
 
 #: R/kappaSizeCI.b.R
 msgid ""
-"When the study is analysed, estimate the category prevalences by maximum "
+"When the study is analyzed, estimate the category prevalences by maximum "
 "likelihood at each candidate value of κ: with three or more raters, or three "
 "or more categories, plugging in the overall proportions of ratings gives an "
 "interval that covers κ less often than stated (about 0.91 to 0.93 instead of "
@@ -42698,7 +42691,7 @@ msgstr ""
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "With three or more raters, the lower bound for a binary finding also depends "
-"on how agreement among more than two raters is modelled. This analysis uses "
+"on how agreement among more than two raters is modeled. This analysis uses "
 "the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used "
 "for three to five categories, which for two categories is the beta-binomial, "
 "describes the same kappa, and with the proportions held at their anticipated "
@@ -42710,7 +42703,7 @@ msgstr ""
 #: R/kappaSizeCI.b.R
 msgid ""
 "With three or more raters, the sample size for a binary finding also depends "
-"on how agreement among more than two raters is modelled. This analysis uses "
+"on how agreement among more than two raters is modeled. This analysis uses "
 "the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used "
 "for three to five categories, which for two categories is the beta-binomial, "
 "describes the same κ but usually needs fewer subjects (in the designs "
@@ -42755,7 +42748,7 @@ msgstr ""
 #: R/agreement.b.R
 msgid ""
 "With two categories at least %1$d pathologists are needed for the grading "
-"tendency; this study has %2$d. With fewer, its behaviour was not checked in "
+"tendency; this study has %2$d. With fewer, its behavior was not checked in "
 "simulation."
 msgstr ""
 
@@ -43127,7 +43120,7 @@ msgstr ""
 #: R/decisioncombine.b.R
 msgid ""
 "Youden's J is below 0 but within sampling variation of 0 for {tests}, on the "
-"{n} complete cases analysed here. A test with no diagnostic value falls "
+"{n} complete cases analyzed here. A test with no diagnostic value falls "
 "below 0 about half the time at any sample size, so a correctly coded but "
 "uninformative test and a test whose positive level is reversed cannot be "
 "told apart here. If the level chosen as positive is right, the test adds no "

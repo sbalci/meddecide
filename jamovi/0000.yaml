@@ -44,7 +44,7 @@ analyses:
       kappa (kappa0); every value below it is excluded. Solved from the
       goodness-of-fit models of the kappaSize package; with three or more raters
       or categories it also allows for re-estimating the category proportions
-      when the study is analysed. Use kappaSizePower to size a study for a
+      when the study is analyzed. Use kappaSizePower to size a study for a
       hypothesis test and kappaSizeCI to size it for target confidence limits.
     ribbon: analyses
     category: analyses
@@ -167,7 +167,7 @@ analyses:
     menuSubtitle: Find sample size based on power
     description: >
       Sample size for an interobserver agreement study sized to reject a null
-      kappa (kappa0) in favour of an alternative kappa (kappa1) at a given
+      kappa (kappa0) in favor of an alternative kappa (kappa1) at a given
       two-sided significance level and power - the power approach of the
       kappaSize package. Use kappaSizeCI for a target confidence-interval width,
       and kappaSizeFixedN when the number of subjects is already fixed.
@@ -264,7 +264,7 @@ analyses:
     menuSubtitle: Advanced ROC analysis with statistical comparisons and effect sizes
     description: >
       Exploratory Receiver Operating Characteristic (ROC) curve analysis with
-      optimal cutpoint determination. Analyse independent rows or a prespecified
+      optimal cutpoint determination. Analyze independent rows or a prespecified
       mean or median per patient. Patient summaries require an ID and a
       consistent outcome within each patient; all calculations and resampling
       then use one summary per patient. Nominal coverage is not guaranteed in
