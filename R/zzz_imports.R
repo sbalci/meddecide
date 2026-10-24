@@ -16,7 +16,6 @@
 #' @importFrom irr kappa2
 #' @importFrom irrCAC gwet.ac1.raw
 #' @importFrom kappaSize PowerBinary
-#' @importFrom knitr kable
 #' @importFrom lme4 lmer
 #' @importFrom lmerTest as_lmerModLmerTest
 #' @importFrom poLCA poLCA

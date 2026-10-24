@@ -10356,10 +10356,6 @@ msgstr ""
 msgid "Asymptotic (no continuity correction)"
 msgstr ""
 
-#: R/decisioncalculator.b.R
-msgid "At {prevalence} prevalence"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid ""
 "At a prevalence of %1$s%%, the %2$s is especially sensitive to changes in "
@@ -12469,7 +12465,7 @@ msgstr ""
 msgid "Characteristics"
 msgstr ""
 
-#: R/lassologistic.b.R
+#: lassologistic/results/suitabilityReport.columns.title
 msgid "Check"
 msgstr ""
 
@@ -14491,6 +14487,10 @@ msgstr ""
 msgid "Confusion matrix error: %s"
 msgstr ""
 
+#: psychopdaROC/results/sensSpecTable.template.title
+msgid "Confusion Matrix for ($key)"
+msgstr ""
+
 #: R/agreement.b.R
 msgid ""
 "Confusion matrix requires exactly 2 raters. Only the first 2 selected "
@@ -14916,6 +14916,7 @@ msgstr ""
 #: decision/results/rawCounts.columns.title
 #: decision/results/confusionMatrixSummary.columns.title
 #: decisioncombine/results/goldFreqTable.columns.title
+#: decisioncompare/results/goldFrequency.columns.title
 #: nogoldstandard/results/crosstab.columns.title
 msgid "Count"
 msgstr ""
@@ -14983,7 +14984,7 @@ msgstr ""
 msgid "Create Consensus Variable (Any Data Type)"
 msgstr ""
 
-#: R/psychopdaROC.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.superTitle
 msgid "Criterion"
 msgstr ""
 
@@ -15025,10 +15026,6 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "CROC Plot Error"
-msgstr ""
-
-#: R/decisioncompare.b.R
-msgid "Cross-tabulation of {test} and {gold}"
 msgstr ""
 
 #: R/agreement.b.R
@@ -15283,6 +15280,7 @@ msgid ""
 msgstr ""
 
 #: psychopdaROC/results/resultsTable.template.columns.title
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Cutpoint"
 msgstr ""
 
@@ -15373,7 +15371,6 @@ msgstr ""
 msgid "Data Suitability"
 msgstr ""
 
-#: R/lassologistic.b.R
 #: lassologistic/results/suitabilityReport.title
 msgid "Data Suitability Assessment"
 msgstr ""
@@ -15423,7 +15420,7 @@ msgstr ""
 msgid "Decision"
 msgstr ""
 
-#: R/psychopdaROC.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Decision based on measure"
 msgstr ""
 
@@ -22441,6 +22438,7 @@ msgid "Less susceptible"
 msgstr ""
 
 #: decisioncombine/results/goldFreqTable.columns.title
+#: decisioncompare/results/goldFrequency.columns.title
 msgid "Level"
 msgstr ""
 
@@ -23135,6 +23133,10 @@ msgstr ""
 msgid "Macro Average (unweighted)"
 msgstr ""
 
+#: R/lassologistic.b.R
+msgid "Major concern"
+msgstr ""
+
 #: R/decisioncombine.b.R
 msgid "Majority (>=2/3 pos)"
 msgstr ""
@@ -23194,6 +23196,10 @@ msgstr ""
 #: R/decisioncompare.b.R
 #: decisioncompare/results/reportSentence.title
 msgid "Manuscript-Ready Report"
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid "Marginal"
 msgstr ""
 
 #: psychopdaROC/options/showOptimalPoint.title
@@ -24849,7 +24855,9 @@ msgstr ""
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
+#: R/psychopdaROC.b.R
 #: R/sequentialtests.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Negative"
 msgstr ""
 
@@ -25445,6 +25453,10 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "No complete reference and score rows remain."
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid "No concern"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -26255,7 +26267,6 @@ msgstr ""
 msgid "Not available"
 msgstr ""
 
-#: R/agreement.b.R
 #: R/decision.b.R
 msgid "not available"
 msgstr ""
@@ -26288,6 +26299,10 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Not computed: Nominal data type on continuous measurements"
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid "Not computed: the predictor correlations could not be estimated."
 msgstr ""
 
 #: R/agreement.b.R
@@ -26601,7 +26616,6 @@ msgstr ""
 msgid "Notices"
 msgstr ""
 
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -27721,13 +27735,16 @@ msgctxt "Ordinal/Categorical"
 msgid "Pathologist Grading Analysis"
 msgstr ""
 
-#: decisioncompare/results/text1.title
-#: decisioncompare/results/text2.title
-msgid "Original Data"
-msgstr ""
-
 #: decisioncompare/options/od.title
 msgid "Original data"
+msgstr ""
+
+#: decisioncompare/results/goldFrequency.title
+msgid "Original Data - Reference Standard"
+msgstr ""
+
+#: decisioncompare/results/originalCrossTab.title
+msgid "Original Data - Tests by Reference Standard"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -27998,10 +28015,6 @@ msgstr ""
 msgid ""
 "Overall test: unavailable (contrast covariance is degenerate or inference "
 "could not be computed)."
-msgstr ""
-
-#: R/lassologistic.b.R
-msgid "Overall:"
 msgstr ""
 
 #: enhancedROC/options/calibrationDensity.description
@@ -29286,7 +29299,9 @@ msgstr ""
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/lassologistic.b.R
+#: R/psychopdaROC.b.R
 #: R/sequentialtests.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Positive"
 msgstr ""
 
@@ -29758,7 +29773,6 @@ msgid ""
 "reference/test pairs under the displayed recoding rule."
 msgstr ""
 
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -31387,10 +31401,6 @@ msgstr ""
 msgid "Ratio threshold for imbalance detection (e.g., 3.0 means 3:1 or 1:3 ratio)"
 msgstr ""
 
-#: R/agreement.b.R
-msgid "Raw Agreement"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid ""
 "Raw and Holm-adjusted pairwise p-values are shown. Holm adjustment controls "
@@ -32162,8 +32172,8 @@ msgstr ""
 
 #: R/agreement.b.R
 #: R/decisioncompare.b.R
-#: R/lassologistic.b.R
 #: enhancedROC/results/results/rocComparisons.columns.title
+#: lassologistic/results/suitabilityReport.columns.title
 msgid "Result"
 msgstr ""
 
@@ -32608,6 +32618,13 @@ msgid ""
 "Rows are resampled as independent patients, so the data must have one row "
 "per patient; several specimens, blocks or lesions from the same patient make "
 "these intervals and any comparison p-values too narrow."
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"Rows are the decision at the cutpoint and columns the criterion: the "
+"Positive row holds true and false positives, the Negative row false and true "
+"negatives."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -33400,7 +33417,6 @@ msgid "Selection Method"
 msgstr ""
 
 #: R/decision.b.R
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -34546,7 +34562,6 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -34937,6 +34952,7 @@ msgid "Statistics Omitted from the Forest Plot"
 msgstr ""
 
 #: enhancedROC/results/results/denominatorLedger.columns.title
+#: lassologistic/results/suitabilityReport.columns.title
 msgid "Status"
 msgstr ""
 
@@ -35615,6 +35631,7 @@ msgstr ""
 #: decision/results/comparatorCounts.columns.title
 #: decision/results/comparatorPopulation.columns.title
 #: decision/results/comparatorMetrics.columns.title
+#: decisioncompare/results/originalCrossTab.columns.title
 #: decisioncompare/results/comparisonTable.columns.title
 #: decisioncompare/results/opaTable.columns.title
 #: decisioncompare/results/stratifiedTable.columns.title
@@ -35982,6 +35999,10 @@ msgstr ""
 
 #: cotest/ui[3].label
 msgid "Test Independence"
+msgstr ""
+
+#: decisioncompare/results/originalCrossTab.columns.title
+msgid "Test level"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -40655,14 +40676,6 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "True Status"
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid "True-negative rate"
-msgstr ""
-
-#: R/decisioncalculator.b.R
-msgid "True-positive rate"
 msgstr ""
 
 #: R/lassologistic.b.R

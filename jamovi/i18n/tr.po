@@ -12292,10 +12292,6 @@ msgstr "Varsayımlar, yanlılıklar ve gereksinimler"
 msgid "Asymptotic (no continuity correction)"
 msgstr "Asimptotik (süreklilik düzeltmesiz)"
 
-#: R/decisioncalculator.b.R
-msgid "At {prevalence} prevalence"
-msgstr "%{prevalence} prevalansta"
-
 #: R/psychopdaROC.b.R
 msgid ""
 "At a prevalence of %1$s%%, the %2$s is especially sensitive to changes in "
@@ -14779,7 +14775,7 @@ msgstr ""
 msgid "Characteristics"
 msgstr ""
 
-#: R/lassologistic.b.R
+#: lassologistic/results/suitabilityReport.columns.title
 msgid "Check"
 msgstr "Kontrol"
 
@@ -17061,6 +17057,10 @@ msgstr "Karışıklık Matrisi (Referans Standart ve Test Sonucu)"
 msgid "Confusion matrix error: %s"
 msgstr "Karışıklık matrisi hatası: %s"
 
+#: psychopdaROC/results/sensSpecTable.template.title
+msgid "Confusion Matrix for ($key)"
+msgstr ""
+
 #: R/agreement.b.R
 msgid ""
 "Confusion matrix requires exactly 2 raters. Only the first 2 selected "
@@ -17573,6 +17573,7 @@ msgstr ""
 #: decision/results/rawCounts.columns.title
 #: decision/results/confusionMatrixSummary.columns.title
 #: decisioncombine/results/goldFreqTable.columns.title
+#: decisioncompare/results/goldFrequency.columns.title
 #: nogoldstandard/results/crosstab.columns.title
 msgid "Count"
 msgstr "Sayı"
@@ -17656,7 +17657,7 @@ msgstr ""
 msgid "Create Consensus Variable (Any Data Type)"
 msgstr "Uzlaşı Değişkeni Oluştur (Her Tür Veri)"
 
-#: R/psychopdaROC.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.superTitle
 msgid "Criterion"
 msgstr "Ölçüt"
 
@@ -17699,10 +17700,6 @@ msgstr "CROC Hatası: %s"
 #: R/enhancedROC.b.R
 msgid "CROC Plot Error"
 msgstr "CROC Grafiği Hatası"
-
-#: R/decisioncompare.b.R
-msgid "Cross-tabulation of {test} and {gold}"
-msgstr "{test} ve {gold} çapraz tablosu"
 
 #: R/agreement.b.R
 msgid "Cross-tabulation of ratings from two raters (Reference vs. Predicted)."
@@ -17992,6 +17989,7 @@ msgstr ""
 "raporlanan bir kesme noktası verilerde bulunmayabilir."
 
 #: psychopdaROC/results/resultsTable.template.columns.title
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Cutpoint"
 msgstr "Kesme noktası"
 
@@ -18087,7 +18085,6 @@ msgstr ""
 msgid "Data Suitability"
 msgstr "Veri Uygunluğu"
 
-#: R/lassologistic.b.R
 #: lassologistic/results/suitabilityReport.title
 msgid "Data Suitability Assessment"
 msgstr "Veri Uygunluk Değerlendirmesi"
@@ -18144,7 +18141,7 @@ msgstr ""
 msgid "Decision"
 msgstr "Karar"
 
-#: R/psychopdaROC.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Decision based on measure"
 msgstr "Ölçüme dayalı karar"
 
@@ -26530,6 +26527,7 @@ msgid "Less susceptible"
 msgstr ""
 
 #: decisioncombine/results/goldFreqTable.columns.title
+#: decisioncompare/results/goldFrequency.columns.title
 msgid "Level"
 msgstr "Düzey"
 
@@ -27333,6 +27331,10 @@ msgstr "Makro Ortalama"
 msgid "Macro Average (unweighted)"
 msgstr "Makro Ortalama (ağırlıksız)"
 
+#: R/lassologistic.b.R
+msgid "Major concern"
+msgstr ""
+
 #: R/decisioncombine.b.R
 msgid "Majority (>=2/3 pos)"
 msgstr "Çoğunluk (>=2/3 poz)"
@@ -27398,6 +27400,10 @@ msgstr "Manuel Kesme Noktası Değeri"
 #: decisioncompare/results/reportSentence.title
 msgid "Manuscript-Ready Report"
 msgstr "Makaleye Hazır Rapor"
+
+#: R/lassologistic.b.R
+msgid "Marginal"
+msgstr ""
 
 #: psychopdaROC/options/showOptimalPoint.title
 msgid "Mark selected cutpoint"
@@ -29206,7 +29212,9 @@ msgstr "İyileştirme gerekli"
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
+#: R/psychopdaROC.b.R
 #: R/sequentialtests.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Negative"
 msgstr "Negatif"
 
@@ -29923,6 +29931,10 @@ msgstr "Eksik veriler kaldırıldıktan sonra hiçbir eksiksiz olgu kalmadı."
 #: R/enhancedROC.b.R
 msgid "No complete reference and score rows remain."
 msgstr "Referansı ve skoru eksiksiz olan satır kalmadı."
+
+#: R/lassologistic.b.R
+msgid "No concern"
+msgstr ""
 
 #: R/lassologistic.b.R
 msgid "No concerns flagged by these checks"
@@ -30955,7 +30967,6 @@ msgstr "Henüz atanmadı"
 msgid "Not available"
 msgstr "Mevcut değil"
 
-#: R/agreement.b.R
 #: R/decision.b.R
 msgid "not available"
 msgstr "mevcut değil"
@@ -30992,6 +31003,10 @@ msgstr "Hesaplanmadı: geçersiz frekanslar"
 #: R/agreement.b.R
 msgid "Not computed: Nominal data type on continuous measurements"
 msgstr "Hesaplanmadı: sürekli ölçümlerde Nominal (Kategorik) veri türü"
+
+#: R/lassologistic.b.R
+msgid "Not computed: the predictor correlations could not be estimated."
+msgstr ""
 
 #: R/agreement.b.R
 msgid ""
@@ -31358,7 +31373,6 @@ msgstr "Seçilene kadar hiçbir şey hesaplanmaz."
 msgid "Notices"
 msgstr "Bildirimler"
 
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -32768,14 +32782,17 @@ msgctxt "Ordinal/Categorical"
 msgid "Pathologist Grading Analysis"
 msgstr "Patolog Derecelendirme Analizi"
 
-#: decisioncompare/results/text1.title
-#: decisioncompare/results/text2.title
-msgid "Original Data"
-msgstr "Orijinal Veriler"
-
 #: decisioncompare/options/od.title
 msgid "Original data"
 msgstr "Orijinal veriler"
+
+#: decisioncompare/results/goldFrequency.title
+msgid "Original Data - Reference Standard"
+msgstr ""
+
+#: decisioncompare/results/originalCrossTab.title
+msgid "Original Data - Tests by Reference Standard"
+msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "Original Data Display Omitted"
@@ -33089,10 +33106,6 @@ msgid ""
 msgstr ""
 "Genel test: hesaplanamıyor (karşılaştırma kovaryansı dejenere veya çıkarım "
 "hesaplanamadı)."
-
-#: R/lassologistic.b.R
-msgid "Overall:"
-msgstr "Genel:"
 
 #: enhancedROC/options/calibrationDensity.description
 msgid ""
@@ -34557,7 +34570,9 @@ msgstr "Popülasyona göre ayarlanmış öngörü değerleri"
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/lassologistic.b.R
+#: R/psychopdaROC.b.R
 #: R/sequentialtests.b.R
+#: psychopdaROC/results/sensSpecTable.template.columns.title
 msgid "Positive"
 msgstr "Pozitif"
 
@@ -35102,7 +35117,6 @@ msgstr ""
 "değildir. Tüm ikili tahminler, gösterilen yeniden kodlama kuralı altında "
 "belirli (determinate) referans/test çiftlerini kullanır."
 
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -36987,10 +37001,6 @@ msgstr ""
 "Dengesizlik tespiti için oran eşiği (ör. 3.0, 3:1 veya 1:3 oranı anlamına "
 "gelir)"
 
-#: R/agreement.b.R
-msgid "Raw Agreement"
-msgstr "Ham Uyum"
-
 #: R/psychopdaROC.b.R
 msgid ""
 "Raw and Holm-adjusted pairwise p-values are shown. Holm adjustment controls "
@@ -37874,8 +37884,8 @@ msgstr ""
 
 #: R/agreement.b.R
 #: R/decisioncompare.b.R
-#: R/lassologistic.b.R
 #: enhancedROC/results/results/rocComparisons.columns.title
+#: lassologistic/results/suitabilityReport.columns.title
 msgid "Result"
 msgstr "Sonuç"
 
@@ -38396,6 +38406,13 @@ msgstr ""
 "Satırlar bağımsız hastalar olarak yeniden örneklendiğinden verilerde hasta "
 "başına bir satır bulunmalıdır; aynı hastadan birden çok örnek, blok veya "
 "lezyon bu aralıkları ve karşılaştırma p değerlerini fazla daraltır."
+
+#: R/psychopdaROC.b.R
+msgid ""
+"Rows are the decision at the cutpoint and columns the criterion: the "
+"Positive row holds true and false positives, the Negative row false and true "
+"negatives."
+msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Rows Excluded"
@@ -39321,7 +39338,6 @@ msgid "Selection Method"
 msgstr "Seçim Yöntemi"
 
 #: R/decision.b.R
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -40709,7 +40725,6 @@ msgid ""
 msgstr ""
 
 #: R/decision.b.R
-#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/enhancedROC.b.R
@@ -41136,6 +41151,7 @@ msgid "Statistics Omitted from the Forest Plot"
 msgstr "Orman Grafiğinden Çıkarılan İstatistikler"
 
 #: enhancedROC/results/results/denominatorLedger.columns.title
+#: lassologistic/results/suitabilityReport.columns.title
 msgid "Status"
 msgstr "Durum"
 
@@ -41890,6 +41906,7 @@ msgstr "Üçte Birlikler (Veriye Dayalı)"
 #: decision/results/comparatorCounts.columns.title
 #: decision/results/comparatorPopulation.columns.title
 #: decision/results/comparatorMetrics.columns.title
+#: decisioncompare/results/originalCrossTab.columns.title
 #: decisioncompare/results/comparisonTable.columns.title
 #: decisioncompare/results/opaTable.columns.title
 #: decisioncompare/results/stratifiedTable.columns.title
@@ -42286,6 +42303,10 @@ msgstr "Test Bağımlılığı"
 #: cotest/ui[3].label
 msgid "Test Independence"
 msgstr "Test Bağımsızlığı"
+
+#: decisioncompare/results/originalCrossTab.columns.title
+msgid "Test level"
+msgstr ""
 
 #: R/sequentialtests.b.R
 msgid ""
@@ -48700,14 +48721,6 @@ msgstr "Gerçek yaygınlık"
 #: R/sequentialtests.b.R
 msgid "True Status"
 msgstr "Gerçek Durum"
-
-#: R/decisioncalculator.b.R
-msgid "True-negative rate"
-msgstr "Gerçek negatif oranı"
-
-#: R/decisioncalculator.b.R
-msgid "True-positive rate"
-msgstr "Gerçek pozitif oranı"
 
 #: R/lassologistic.b.R
 msgid ""

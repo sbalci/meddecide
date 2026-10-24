@@ -45,7 +45,6 @@ Imports:
     irrCAC,
     jmvcore,
     kappaSize,
-    knitr,
     lme4,
     lmerTest,
     magrittr,

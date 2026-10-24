@@ -113,7 +113,6 @@ importFrom(irr,
 importFrom(irrCAC,gwet.ac1.raw)
 importFrom(jmvcore,.)
 importFrom(kappaSize,PowerBinary)
-importFrom(knitr,kable)
 importFrom(lme4,lmer)
 importFrom(lmerTest,as_lmerModLmerTest)
 importFrom(magrittr,"%>%")
