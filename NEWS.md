@@ -45,6 +45,9 @@ their defaults (see the R note).
 - **Help only when it helps.** Co-Testing Analysis no longer shows its guidance panel by default
   (tick Guidance and explanations to see it), and Clinical ROC Analysis shows its instructions
   only until an outcome and a predictor are chosen.
+- **Smaller saved files.** Interrater Reliability's rater-profile plot keeps the category counts
+  it draws, not every rating, and Advanced ROC Analysis' dot plot stores its threshold and labels
+  once; analyses saved earlier still open and draw as before.
 - **Severity labels in sentence case.** Notices start with "Error:", "Strong warning:", "Warning:"
   or "Info:" instead of capitals, and the confusion-matrix headers in ROC analysis read "Decision
   based on measure" and "Criterion".
