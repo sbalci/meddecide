@@ -1252,9 +1252,6 @@
             "{tag1}Heatmap Pattern Observed:{tag2}": [
                 ""
             ],
-            "{tag1}Hierarchical/multilevel kappa{tag2}": [
-                ""
-            ],
             "{tag1}High agreement rates{tag2} - Benign vs malignant with 95%+ agreement": [
                 ""
             ],
@@ -1459,9 +1456,6 @@
             "{tag1}Limits of Agreement (LoA){tag2}": [
                 ""
             ],
-            "{tag1}Lin's CCC{tag2}": [
-                ""
-            ],
             "{tag1}Linear relationships{tag2} - When measurements should vary proportionally between raters": [
                 ""
             ],
@@ -1531,9 +1525,6 @@
             "{tag1}Mean Difference (Bias){tag2}": [
                 ""
             ],
-            "{tag1}Mean Pearson / Mean Spearman{tag2}": [
-                ""
-            ],
             "{tag1}Mean r = 0.82:{tag2} High correlation - pathologists identify mitotically active vs. inactive tumors": [
                 ""
             ],
@@ -1592,9 +1583,6 @@
                 ""
             ],
             "{tag1}Mixed scale types{tag2} - Choose nominal, ordinal, interval, or ratio depending on your data": [
-                ""
-            ],
-            "{tag1}Mixed-effects condition comparison{tag2}": [
                 ""
             ],
             "{tag1}Models{tag2}": [
@@ -2356,9 +2344,6 @@
             "{tag1}Systematic disagreement{tag2} (rater component) - consistent offsets between raters or methods, for example one reader scoring every case a few points higher.": [
                 ""
             ],
-            "{tag1}TDI{tag2}": [
-                ""
-            ],
             "{tag1}Technical decision:{tag2} Enhanced sensitivity requires recalibration of clinical cutoffs": [
                 ""
             ],
@@ -2942,6 +2927,15 @@
                 ""
             ],
             "%1$s: %2$s%% of case-control pairs are tied; ties count one half. If every tie favored the cases the AUC would be %3$s, if every tie favored the non-cases %4$s.": [
+                ""
+            ],
+            "%1$s: case agreement, detailed mode (%2$s)": [
+                ""
+            ],
+            "%1$s: case agreement, simple mode (threshold %2$s%%)": [
+                ""
+            ],
+            "%1$s: consensus rating (%2$s)": [
                 ""
             ],
             "%1$s: positive = %2$s; negative = %3$s": [
@@ -4690,9 +4684,6 @@
             "Agreement heatmap requires categorical data. At least one selected variable is a continuous measurement. Use the Bland-Altman plot instead. If these numbers are category codes rather than measurements, set the variables to Nominal or Ordinal - or wrap them in factor() when calling from R - and the heatmap will be drawn.": [
                 ""
             ],
-            "Agreement index for measurements, related to the ICC": [
-                ""
-            ],
             "Agreement is substantial or higher on the Landis &amp; Koch scale - that phrase labels the size of the number, it is not a verdict on any particular use. Kappa is chance-corrected, so it is not the share of cases the raters matched on: that share is the Agreement % shown above, and with three or more raters that column counts only the cases they ALL matched on, which can sit below kappa.": [
                 ""
             ],
@@ -5290,9 +5281,6 @@
             "At least one test variable must be specified. Select diagnostic test variables to compare against the gold standard.": [
                 ""
             ],
-            "At least one variable you selected is a continuous measurement. Cohen's/Fleiss' Kappa requires categorical data, so it has been skipped. If these numbers are category codes, set the variables to Nominal or Ordinal, or wrap them in factor() when calling from R.": [
-                ""
-            ],
             "At least three informative tests are needed; the number of tests alone does not establish identifiability. Estimates are suppressed when the data do not identify the latent parameters.": [
                 ""
             ],
@@ -5525,9 +5513,6 @@
                 ""
             ],
             "Average of pairwise kappas": [
-                ""
-            ],
-            "Average pairwise linear or rank correlation - association between raters, not absolute agreement": [
                 ""
             ],
             "Average Precision": [
@@ -7447,9 +7432,6 @@
             "Concordance Accuracy": [
                 ""
             ],
-            "Concordance Correlation Coefficient - assesses both precision and accuracy (2 raters)": [
-                ""
-            ],
             "Concordance F1": [
                 ""
             ],
@@ -7469,9 +7451,6 @@
                 ""
             ],
             "Concordance of rankings across 3+ raters": [
-                ""
-            ],
-            "Concordance of the raters' rankings of the cases (3+ raters)": [
                 ""
             ],
             "Concordant": [
@@ -7777,9 +7756,6 @@
             "Continuous Agreement Measures": [
                 ""
             ],
-            "Continuous Data Detected": [
-                ""
-            ],
             "Continuous data, comparing medians": [
                 ""
             ],
@@ -8074,6 +8050,9 @@
             "Custom Cutoffs Not Read": [
                 ""
             ],
+            "custom cutoffs, high %1$s%%, low %2$s%%": [
+                ""
+            ],
             "Custom range": [
                 ""
             ],
@@ -8194,16 +8173,10 @@
             "Data dimensions do not match": [
                 ""
             ],
-            "Data Error": [
-                ""
-            ],
             "Data must contain at least two columns (different measures).": [
                 ""
             ],
             "Data must contain at least two rows (observations).": [
-                ""
-            ],
-            "Data preparation failed: %s": [
                 ""
             ],
             "Data Quality Summary": [
@@ -9182,9 +9155,6 @@
                 ""
             ],
             "Enable optional outputs as needed": [
-                ""
-            ],
-            "Enable these options from the panels on the left to analyze your continuous measurements.": [
                 ""
             ],
             "Enhanced multi-model comparison": [
@@ -10265,9 +10235,6 @@
                 ""
             ],
             "For continuous ratings iota is a variance-ratio reliability coefficient rather than a chance-corrected kappa, and it stays close to ICC(2,1), so the Interpretation label uses the Koo & Li (2016) ICC bands - the same scale as the ICC table in this analysis, so the two panels describe one reliability with one word. Iota is not an ICC and no benchmark has been published for iota itself; the bands are borrowed. They are half-open, so a value landing exactly on a cut-point takes the higher band: 0.75 reads Good.": [
-                ""
-            ],
-            "For continuous scores, ICC(2,1) and ICC(2,k) from a mixed model with raters nested in institutions (needs a cluster variable)": [
                 ""
             ],
             "For each category C:": [
@@ -11662,9 +11629,6 @@
             "Intra-Rater Reliability (Test-Retest Consistency)": [
                 ""
             ],
-            "Intraclass Correlation Coefficient - standard measure for continuous rater agreement": [
-                ""
-            ],
             "Intraclass Correlation Coefficient (ICC) Results": [
                 ""
             ],
@@ -12320,9 +12284,6 @@
                 ""
             ],
             "Limits of agreement (bias and precision)": [
-                ""
-            ],
-            "Limits of Agreement plot - visualizes systematic bias and agreement range (2 raters)": [
                 ""
             ],
             "Limits you should know before quoting the number": [
@@ -13126,9 +13087,6 @@
             "Missing data/incomplete ratings": [
                 ""
             ],
-            "Missing Dependency": [
-                ""
-            ],
             "Missing epiR Package": [
                 ""
             ],
@@ -13247,9 +13205,6 @@
                 ""
             ],
             "Model Fit Statistics": [
-                ""
-            ],
-            "Model Fitting Error": [
                 ""
             ],
             "Model fitting failed: %s": [
@@ -14420,6 +14375,12 @@
                 ""
             ],
             "Normalized pAUC": [
+                ""
+            ],
+            "Not %s": [
+                ""
+            ],
+            "Not %s (all other categories)": [
                 ""
             ],
             "Not a numeric column: {model}": [
@@ -15886,9 +15847,6 @@
             "Penalized logistic regression for automatic feature selection in binary classification.": [
                 ""
             ],
-            "Penalized model fitting failed: %s": [
-                ""
-            ],
             "Penalized vs Unpenalized Logistic": [
                 ""
             ],
@@ -17131,6 +17089,9 @@
             "Quantity": [
                 ""
             ],
+            "quartile-based, from the data": [
+                ""
+            ],
             "Quartiles (Data-Driven)": [
                 ""
             ],
@@ -17469,9 +17430,6 @@
             ],
             "Recommendation": [
                 "Recommendation"
-            ],
-            "Recommended Analyses for Continuous Data": [
-                ""
             ],
             "Recommended Method": [
                 ""
@@ -18961,6 +18919,9 @@
             "Simple majority is strict: the modal category must hold more than half of a case's ratings. In %d case(s) it held exactly half - for example a 2-1-1 split among four raters - which is a plurality, not a majority, so those cases were left without a consensus label (an empty cell in the consensus variable). Choose a different rule, or resolve those cases by review, if a plurality should count as consensus.": [
                 ""
             ],
+            "simple majority, more than 50%": [
+                ""
+            ],
             "Simple monetary payoff projection under explicit assumptions; not an ICER, QALY or formal health-economic analysis": [
                 ""
             ],
@@ -19708,6 +19669,9 @@
             "Supermajority (>=75 percent)": [
                 ""
             ],
+            "supermajority, at least 75%": [
+                ""
+            ],
             "Support": [
                 ""
             ],
@@ -19865,6 +19829,9 @@
                 ""
             ],
             "Terms selected": [
+                ""
+            ],
+            "tertile-based, from the data": [
                 ""
             ],
             "Tertiles (Data-Driven)": [
@@ -20225,9 +20192,6 @@
                 ""
             ],
             "Tests per detected positive": [
-                ""
-            ],
-            "Tests whether measurements differ between conditions (e.g., two platforms), with case and rater as random effects": [
                 ""
             ],
             "The '%1$s' metric is best at its %2$s, so the cut-point was found by %3$s it; the Cutpoint method setting asked for the opposite direction.": [
@@ -21586,6 +21550,9 @@
             "These values describe agreement with a majority-vote rule built from the same tests. They are not estimates of diagnostic accuracy.": [
                 ""
             ],
+            "These variables are now available in your dataset for further analysis.": [
+                ""
+            ],
             "They are computed correctly at those exact values, but they are not shown on the decision curve, and the surrounding rows come from the analysed range.": [
                 ""
             ],
@@ -22012,9 +21979,6 @@
             "Total Cost": [
                 ""
             ],
-            "Total Deviation Index - boundary within which a proportion of differences fall": [
-                ""
-            ],
             "Total deviation index (TDI)": [
                 ""
             ],
@@ -22286,6 +22250,9 @@
                 ""
             ],
             "Unanimous (100 percent)": [
+                ""
+            ],
+            "unanimous, 100%": [
                 ""
             ],
             "unavailable": [
@@ -22796,9 +22763,6 @@
                 ""
             ],
             "Warning: Very high apparent AUC with small sample size suggests possible overfitting. Enable bootstrap validation to assess optimism.": [
-                ""
-            ],
-            "Warning.": [
                 ""
             ],
             "Warnings": [
@@ -23387,9 +23351,6 @@
                 ""
             ],
             "Workload uses fixed score cutoffs, not prevalence-selected thresholds. Population prevalence and the utility harm/benefit threshold are separate inputs. Projected counts are expectations, conditional on transportable sensitivity/specificity. Inverse net benefit and inverse Youden are not numbers of tests or reviews. This replaces the legacy prevalence-as-threshold calculation.": [
-                ""
-            ],
-            "Works with any data type including continuous (interval/ratio level)": [
                 ""
             ],
             "Worse than chance": [

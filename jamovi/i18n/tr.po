@@ -2468,10 +2468,6 @@ msgid "{tag1}Heatmap Pattern Observed:{tag2}"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Hierarchical/multilevel kappa{tag2}"
-msgstr ""
-
-#: R/agreement.b.R
 msgid "{tag1}High agreement rates{tag2} - Benign vs malignant with 95%+ agreement"
 msgstr ""
 
@@ -2855,10 +2851,6 @@ msgid "{tag1}Limits of Agreement (LoA){tag2}"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Lin's CCC{tag2}"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
 "{tag1}Linear relationships{tag2} - When measurements should vary "
 "proportionally between raters"
@@ -2981,10 +2973,6 @@ msgid "{tag1}Mean Difference (Bias){tag2}"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Mean Pearson / Mean Spearman{tag2}"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
 "{tag1}Mean r = 0.82:{tag2} High correlation - pathologists identify "
 "mitotically active vs. inactive tumors"
@@ -3093,10 +3081,6 @@ msgstr ""
 msgid ""
 "{tag1}Mixed scale types{tag2} - Choose nominal, ordinal, interval, or ratio "
 "depending on your data"
-msgstr ""
-
-#: R/agreement.b.R
-msgid "{tag1}Mixed-effects condition comparison{tag2}"
 msgstr ""
 
 #: R/agreement.b.R
@@ -4593,10 +4577,6 @@ msgid ""
 "{tag1}Systematic disagreement{tag2} (rater component) - consistent offsets "
 "between raters or methods, for example one reader scoring every case a few "
 "points higher."
-msgstr ""
-
-#: R/agreement.b.R
-msgid "{tag1}TDI{tag2}"
 msgstr ""
 
 #: R/agreement.b.R
@@ -6118,6 +6098,18 @@ msgstr ""
 "%1$s: olgu-kontrol çiftlerinin %%%2$s kadarı bağlıdır; bağlar yarım sayılır. "
 "Her bağ olguların lehine olsaydı AUC %3$s, her bağ olgu olmayanların lehine "
 "olsaydı %4$s olurdu."
+
+#: R/agreement.b.R
+msgid "%1$s: case agreement, detailed mode (%2$s)"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "%1$s: case agreement, simple mode (threshold %2$s%%)"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "%1$s: consensus rating (%2$s)"
+msgstr ""
 
 #: R/decisioncompare.b.R
 msgid "%1$s: positive = %2$s; negative = %3$s"
@@ -11218,10 +11210,6 @@ msgstr ""
 "ısı haritası çizilir."
 
 #: R/agreement.b.R
-msgid "Agreement index for measurements, related to the ICC"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
 "Agreement is substantial or higher on the Landis &amp; Koch scale - that "
 "phrase labels the size of the number, it is not a verdict on any particular "
@@ -12502,14 +12490,6 @@ msgstr ""
 "En az bir test değişkeni belirtilmelidir. Altın standartla karşılaştırılacak "
 "tanı testi değişkenlerini seçin."
 
-#: R/agreement.b.R
-msgid ""
-"At least one variable you selected is a continuous measurement. "
-"Cohen's/Fleiss' Kappa requires categorical data, so it has been skipped. If "
-"these numbers are category codes, set the variables to Nominal or Ordinal, "
-"or wrap them in factor() when calling from R."
-msgstr ""
-
 #: R/nogoldstandard.b.R
 msgid ""
 "At least three informative tests are needed; the number of tests alone does "
@@ -13084,12 +13064,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Average of pairwise kappas"
-msgstr ""
-
-#: R/agreement.b.R
-msgid ""
-"Average pairwise linear or rank correlation - association between raters, "
-"not absolute agreement"
 msgstr ""
 
 #: enhancedROC/results/results/precisionRecallTable.columns.title
@@ -16627,12 +16601,6 @@ msgstr "Uyum (1 - Lin'in CCC katsayısı)"
 msgid "Concordance Accuracy"
 msgstr "Uyum Doğruluğu"
 
-#: R/agreement.b.R
-msgid ""
-"Concordance Correlation Coefficient - assesses both precision and accuracy "
-"(2 raters)"
-msgstr ""
-
 #: agreement/results/concordanceF1PerClassTable.columns.title
 msgid "Concordance F1"
 msgstr "Uyum F1 Skoru"
@@ -16672,10 +16640,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Concordance of rankings across 3+ raters"
-msgstr ""
-
-#: R/agreement.b.R
-msgid "Concordance of the raters' rankings of the cases (3+ raters)"
 msgstr ""
 
 #: decisioncompare/results/opaTable.columns.title
@@ -17258,10 +17222,6 @@ msgid "Continuous Agreement Measures"
 msgstr "Sürekli Uyum Ölçüleri"
 
 #: R/agreement.b.R
-msgid "Continuous Data Detected"
-msgstr ""
-
-#: R/agreement.b.R
 msgid "Continuous data, comparing medians"
 msgstr ""
 
@@ -17822,6 +17782,10 @@ msgstr "Özel kesme noktaları"
 msgid "Custom Cutoffs Not Read"
 msgstr "Özel Kesme Noktaları Okunamadı"
 
+#: R/agreement.b.R
+msgid "custom cutoffs, high %1$s%%, low %2$s%%"
+msgstr ""
+
 #: decisioncurve/options/thresholdRange/custom.title
 msgid "Custom range"
 msgstr "Özel aralık"
@@ -18044,10 +18008,6 @@ msgstr "Veri satır içermiyor"
 msgid "Data dimensions do not match"
 msgstr "Veri boyutları eşleşmiyor"
 
-#: R/lassologistic.b.R
-msgid "Data Error"
-msgstr "Veri Hatası"
-
 #: R/psychopdaROC.b.R
 msgid "Data must contain at least two columns (different measures)."
 msgstr "Veriler en az iki sütun içermelidir (farklı ölçümler)."
@@ -18055,10 +18015,6 @@ msgstr "Veriler en az iki sütun içermelidir (farklı ölçümler)."
 #: R/psychopdaROC.b.R
 msgid "Data must contain at least two rows (observations)."
 msgstr "Veriler en az iki satır içermelidir (gözlemler)."
-
-#: R/lassologistic.b.R
-msgid "Data preparation failed: %s"
-msgstr "Veri hazırlama başarısız oldu: %s"
 
 #: decision/results/missingDataSummary.title
 msgid "Data Quality Summary"
@@ -20187,12 +20143,6 @@ msgstr ">2 düzeyli sonuçlar için çok sınıflı ROC analizini etkinleştir"
 msgid "Enable optional outputs as needed"
 msgstr ""
 
-#: R/agreement.b.R
-msgid ""
-"Enable these options from the panels on the left to analyze your continuous "
-"measurements."
-msgstr ""
-
 #: decisioncurve/options/multiModelComparison.title
 msgid "Enhanced multi-model comparison"
 msgstr "Gelişmiş Çoklu Model Karşılaştırması"
@@ -20289,6 +20239,8 @@ msgstr "Eşit duyarlılık ve özgüllük"
 #: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
 #: R/nogoldstandard.b.R
@@ -22440,12 +22392,6 @@ msgstr ""
 "okunur."
 
 #: R/agreement.b.R
-msgid ""
-"For continuous scores, ICC(2,1) and ICC(2,k) from a mixed model with raters "
-"nested in institutions (needs a cluster variable)"
-msgstr ""
-
-#: R/agreement.b.R
 msgid "For each category C:"
 msgstr ""
 
@@ -24299,6 +24245,10 @@ msgid "Important Note"
 msgstr "Önemli Not"
 
 #: R/decision.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
+#: R/kappaSizeCI.b.R
+#: R/kappaSizeFixedN.b.R
 msgid "Important warning"
 msgstr "Önemli uyarı"
 
@@ -25271,12 +25221,6 @@ msgstr "Girişim maliyet analizi"
 #: agreement/results/interIntraRaterIntraTable.title
 msgid "Intra-Rater Reliability (Test-Retest Consistency)"
 msgstr "Değerlendirici-İçi Güvenilirlik (Test-Tekrar Test Tutarlılığı)"
-
-#: R/agreement.b.R
-msgid ""
-"Intraclass Correlation Coefficient - standard measure for continuous rater "
-"agreement"
-msgstr ""
 
 #: agreement/results/iccTable.title
 msgid "Intraclass Correlation Coefficient (ICC) Results"
@@ -26782,12 +26726,6 @@ msgstr "Sınırlı Tanısal Performans: %s"
 
 #: R/agreement.b.R
 msgid "Limits of agreement (bias and precision)"
-msgstr ""
-
-#: R/agreement.b.R
-msgid ""
-"Limits of Agreement plot - visualizes systematic bias and agreement range (2 "
-"raters)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -28299,10 +28237,6 @@ msgstr "Eksik / sonlu olmayan skor"
 msgid "Missing data/incomplete ratings"
 msgstr ""
 
-#: R/lassologistic.b.R
-msgid "Missing Dependency"
-msgstr "Eksik Bağımlılık"
-
 #: R/decisioncompare.b.R
 msgid "Missing epiR Package"
 msgstr "epiR Paketi Eksik"
@@ -28495,10 +28429,6 @@ msgstr "Model Ayrım Yapmıyor"
 #: nogoldstandard/results/model_fit.title
 msgid "Model Fit Statistics"
 msgstr "Model Uyum İstatistikleri"
-
-#: R/lassologistic.b.R
-msgid "Model Fitting Error"
-msgstr "Model Uyum Hatası"
 
 #: R/agreement.b.R
 msgid "Model fitting failed: %s"
@@ -30913,6 +30843,14 @@ msgstr "Normalizasyon"
 msgid "Normalized pAUC"
 msgstr "Normalize edilmiş pEAA"
 
+#: R/agreement.b.R
+msgid "Not %s"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "Not %s (all other categories)"
+msgstr ""
+
 #: R/decisioncurve.b.R
 msgid "Not a numeric column: {model}"
 msgstr "Sayısal bir sütun değil: {model}"
@@ -31280,7 +31218,12 @@ msgstr ""
 #: R/cotest.b.R
 #: R/decision.b.R
 #: R/decisioncombine.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
+#: R/kappaSizeCI.b.R
+#: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 #: agreement/results/levelInfoTable.columns.title
 msgid "Note"
 msgstr "Not"
@@ -34009,10 +33952,6 @@ msgstr ""
 "İkili sınıflandırmada otomatik özellik seçimi için cezalandırılmış lojistik "
 "regresyon."
 
-#: R/lassologistic.b.R
-msgid "Penalized model fitting failed: %s"
-msgstr "Cezalandırılmış model uyumu başarısız oldu: %s"
-
 #: lassologistic/results/modelComparison.title
 msgid "Penalized vs Unpenalized Logistic"
 msgstr "Cezalandırılmış ve Cezalandırılmamış Lojistik"
@@ -36557,6 +36496,10 @@ msgstr "Kantil konumları"
 msgid "Quantity"
 msgstr "Nicelik"
 
+#: R/agreement.b.R
+msgid "quartile-based, from the data"
+msgstr ""
+
 #: agreement/options/loaThresholds/quartiles.title
 msgid "Quartiles (Data-Driven)"
 msgstr "Çeyreklikler (Veriye Dayalı)"
@@ -37175,10 +37118,6 @@ msgstr ""
 #: psychopdaROC/results/powerAnalysisTable.columns.title
 msgid "Recommendation"
 msgstr "Öneri"
-
-#: R/agreement.b.R
-msgid "Recommended Analyses for Continuous Data"
-msgstr ""
 
 #: R/agreement.b.R
 msgid "Recommended Method"
@@ -40161,6 +40100,10 @@ msgstr ""
 "çoğunluğun uzlaşı sayılması gerekiyorsa farklı bir kural seçin veya bu "
 "olguları inceleyerek karara bağlayın."
 
+#: R/agreement.b.R
+msgid "simple majority, more than 50%"
+msgstr ""
+
 #: decisioncurve/results/costBenefitTable.description
 msgid ""
 "Simple monetary payoff projection under explicit assumptions; not an ICER, "
@@ -41604,6 +41547,10 @@ msgstr "Test Stratejisi Özeti"
 msgid "Supermajority (>=75 percent)"
 msgstr "Nitelikli Çoğunluk (>=%75)"
 
+#: R/agreement.b.R
+msgid "supermajority, at least 75%"
+msgstr ""
+
 #: agreement/results/perClassMetricsTable.columns.title
 msgid "Support"
 msgstr "Destek (Örnek Sayısı)"
@@ -41868,6 +41815,10 @@ msgstr "Terim"
 #: R/lassologistic.b.R
 msgid "Terms selected"
 msgstr "Seçilen terimler"
+
+#: R/agreement.b.R
+msgid "tertile-based, from the data"
+msgstr ""
 
 #: agreement/options/loaThresholds/tertiles.title
 msgid "Tertiles (Data-Driven)"
@@ -42500,12 +42451,6 @@ msgstr "Testler bağımsız olarak hata yapmıyor gibi görünüyor"
 #: enhancedROC/results/results/screeningWorkload.columns.title
 msgid "Tests per detected positive"
 msgstr "Saptanan pozitif başına test"
-
-#: R/agreement.b.R
-msgid ""
-"Tests whether measurements differ between conditions (e.g., two platforms), "
-"with case and rater as random effects"
-msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid ""
@@ -47205,6 +47150,10 @@ msgstr ""
 "Bu değerler aynı testlerden oluşturulmuş bir çoğunluk oyu kuralı ile uyumu "
 "tanımlar. Tanısal doğruluk tahminleri değildirler."
 
+#: R/agreement.b.R
+msgid "These variables are now available in your dataset for further analysis."
+msgstr ""
+
 #: R/decisioncurve.b.R
 msgid ""
 "They are computed correctly at those exact values, but they are not shown on "
@@ -48410,12 +48359,6 @@ msgstr "Toplam Fayda"
 msgid "Total Cost"
 msgstr "Toplam Maliyet"
 
-#: R/agreement.b.R
-msgid ""
-"Total Deviation Index - boundary within which a proportion of differences "
-"fall"
-msgstr ""
-
 #: agreement/options/tdi.title
 msgid "Total deviation index (TDI)"
 msgstr "Toplam sapma indeksi (TDI)"
@@ -48901,6 +48844,10 @@ msgstr "Düzeltilmemiş p"
 #: agreement/options/consensusRule/unanimous.title
 msgid "Unanimous (100 percent)"
 msgstr "Oybirliği (%100)"
+
+#: R/agreement.b.R
+msgid "unanimous, 100%"
+msgstr ""
 
 #: R/cotest.b.R
 #: R/kappaSizeCI.b.R
@@ -49740,6 +49687,7 @@ msgstr "Çok yüksek duyarlılık aralığı - tarama/olgu bulma için kritik"
 msgid "Very large dataset detected ({n} rows)"
 msgstr "Çok büyük veri kümesi tespit edildi ({n} satır)"
 
+#: R/kappaSizeCI.b.R
 #: R/kappaSizePower.b.R
 msgid "Very large sample size."
 msgstr "Çok büyük örneklem büyüklüğü."
@@ -49901,7 +49849,12 @@ msgstr "Ward Bağlantısı (Asgari Varyans)"
 #: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
+#: R/kappaSizeCI.b.R
+#: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 #: R/lassologistic.b.R
 #: R/nogoldstandard.b.R
 #: R/sequentialtests.b.R
@@ -49958,10 +49911,6 @@ msgstr ""
 "Uyarı: Küçük örneklem boyutu ile çok yüksek görünürde EAA olası aşırı uyuma "
 "işaret eder. İyimserliği değerlendirmek için bootstrap doğrulamasını "
 "etkinleştirin."
-
-#: R/kappaSizeCI.b.R
-msgid "Warning."
-msgstr "Uyarı."
 
 #: R/decisioncalculator.b.R
 msgid "Warnings"
@@ -51293,10 +51242,6 @@ msgstr ""
 "taşınabilir olması koşuluna bağlı beklentilerdir. Ters net fayda ve ters "
 "Youden, test veya inceleme sayısı değildir. Bu, prevalansı eşik olarak "
 "kullanan eski hesaplamanın yerini alır."
-
-#: R/agreement.b.R
-msgid "Works with any data type including continuous (interval/ratio level)"
-msgstr ""
 
 #: R/agreement.b.R
 msgid "Worse than chance"

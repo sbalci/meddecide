@@ -37,6 +37,11 @@ their defaults (see the R note).
 - **R users:** in `enhancedROC()`, `partialRange = "0.8,1.0"` is now `partialAucFrom = 0.8,
   partialAucTo = 1`; in `psychopdaROC()`, `treatmentThreshold = "0.05,0.5,0.05"` is now
   `treatmentThresholdMin`, `treatmentThresholdMax` and `treatmentThresholdStep`.
+- **Notices say how serious they are in words** in Compare Medical Decision Tests, Decision Curve
+  Analysis and the three kappa sample-size analyses, not by colour alone. An invalid input is
+  reported once, as the analysis error, in Advanced ROC Analysis and LASSO Logistic Regression.
+  Interrater Reliability no longer repeats its "kappa not computed for continuous ratings" note in
+  a second panel, and its computed-variables message is translated.
 - **Severity labels in sentence case.** Notices start with "Error:", "Strong warning:", "Warning:"
   or "Info:" instead of capitals, and the confusion-matrix headers in ROC analysis read "Decision
   based on measure" and "Criterion".

@@ -2299,10 +2299,6 @@ msgid "{tag1}Heatmap Pattern Observed:{tag2}"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Hierarchical/multilevel kappa{tag2}"
-msgstr ""
-
-#: R/agreement.b.R
 msgid "{tag1}High agreement rates{tag2} - Benign vs malignant with 95%+ agreement"
 msgstr ""
 
@@ -2686,10 +2682,6 @@ msgid "{tag1}Limits of Agreement (LoA){tag2}"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Lin's CCC{tag2}"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
 "{tag1}Linear relationships{tag2} - When measurements should vary "
 "proportionally between raters"
@@ -2812,10 +2804,6 @@ msgid "{tag1}Mean Difference (Bias){tag2}"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}Mean Pearson / Mean Spearman{tag2}"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
 "{tag1}Mean r = 0.82:{tag2} High correlation - pathologists identify "
 "mitotically active vs. inactive tumors"
@@ -2924,10 +2912,6 @@ msgstr ""
 msgid ""
 "{tag1}Mixed scale types{tag2} - Choose nominal, ordinal, interval, or ratio "
 "depending on your data"
-msgstr ""
-
-#: R/agreement.b.R
-msgid "{tag1}Mixed-effects condition comparison{tag2}"
 msgstr ""
 
 #: R/agreement.b.R
@@ -4427,10 +4411,6 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-msgid "{tag1}TDI{tag2}"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
 "{tag1}Technical decision:{tag2} Enhanced sensitivity requires recalibration "
 "of clinical cutoffs"
@@ -5679,6 +5659,18 @@ msgid ""
 "%1$s: %2$s%% of case-control pairs are tied; ties count one half. If every "
 "tie favored the cases the AUC would be %3$s, if every tie favored the "
 "non-cases %4$s."
+msgstr ""
+
+#: R/agreement.b.R
+msgid "%1$s: case agreement, detailed mode (%2$s)"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "%1$s: case agreement, simple mode (threshold %2$s%%)"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "%1$s: consensus rating (%2$s)"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -9447,10 +9439,6 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-msgid "Agreement index for measurements, related to the ICC"
-msgstr ""
-
-#: R/agreement.b.R
 msgid ""
 "Agreement is substantial or higher on the Landis &amp; Koch scale - that "
 "phrase labels the size of the number, it is not a verdict on any particular "
@@ -10519,14 +10507,6 @@ msgid ""
 "variables to compare against the gold standard."
 msgstr ""
 
-#: R/agreement.b.R
-msgid ""
-"At least one variable you selected is a continuous measurement. "
-"Cohen's/Fleiss' Kappa requires categorical data, so it has been skipped. If "
-"these numbers are category codes, set the variables to Nominal or Ordinal, "
-"or wrap them in factor() when calling from R."
-msgstr ""
-
 #: R/nogoldstandard.b.R
 msgid ""
 "At least three informative tests are needed; the number of tests alone does "
@@ -10974,12 +10954,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Average of pairwise kappas"
-msgstr ""
-
-#: R/agreement.b.R
-msgid ""
-"Average pairwise linear or rank correlation - association between raters, "
-"not absolute agreement"
 msgstr ""
 
 #: enhancedROC/results/results/precisionRecallTable.columns.title
@@ -14117,12 +14091,6 @@ msgstr ""
 msgid "Concordance Accuracy"
 msgstr ""
 
-#: R/agreement.b.R
-msgid ""
-"Concordance Correlation Coefficient - assesses both precision and accuracy "
-"(2 raters)"
-msgstr ""
-
 #: agreement/results/concordanceF1PerClassTable.columns.title
 msgid "Concordance F1"
 msgstr ""
@@ -14155,10 +14123,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Concordance of rankings across 3+ raters"
-msgstr ""
-
-#: R/agreement.b.R
-msgid "Concordance of the raters' rankings of the cases (3+ raters)"
 msgstr ""
 
 #: decisioncompare/results/opaTable.columns.title
@@ -14659,10 +14623,6 @@ msgid "Continuous Agreement Measures"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "Continuous Data Detected"
-msgstr ""
-
-#: R/agreement.b.R
 msgid "Continuous data, comparing medians"
 msgstr ""
 
@@ -15138,6 +15098,10 @@ msgstr ""
 msgid "Custom Cutoffs Not Read"
 msgstr ""
 
+#: R/agreement.b.R
+msgid "custom cutoffs, high %1$s%%, low %2$s%%"
+msgstr ""
+
 #: decisioncurve/options/thresholdRange/custom.title
 msgid "Custom range"
 msgstr ""
@@ -15330,20 +15294,12 @@ msgstr ""
 msgid "Data dimensions do not match"
 msgstr ""
 
-#: R/lassologistic.b.R
-msgid "Data Error"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid "Data must contain at least two columns (different measures)."
 msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Data must contain at least two rows (observations)."
-msgstr ""
-
-#: R/lassologistic.b.R
-msgid "Data preparation failed: %s"
 msgstr ""
 
 #: decision/results/missingDataSummary.title
@@ -17099,12 +17055,6 @@ msgstr ""
 msgid "Enable optional outputs as needed"
 msgstr ""
 
-#: R/agreement.b.R
-msgid ""
-"Enable these options from the panels on the left to analyze your continuous "
-"measurements."
-msgstr ""
-
 #: decisioncurve/options/multiModelComparison.title
 msgid "Enhanced multi-model comparison"
 msgstr ""
@@ -17197,6 +17147,8 @@ msgstr ""
 #: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
 #: R/nogoldstandard.b.R
@@ -19009,12 +18961,6 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-msgid ""
-"For continuous scores, ICC(2,1) and ICC(2,k) from a mixed model with raters "
-"nested in institutions (needs a cluster variable)"
-msgstr ""
-
-#: R/agreement.b.R
 msgid "For each category C:"
 msgstr ""
 
@@ -20606,6 +20552,10 @@ msgid "Important Note"
 msgstr ""
 
 #: R/decision.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
+#: R/kappaSizeCI.b.R
+#: R/kappaSizeFixedN.b.R
 msgid "Important warning"
 msgstr ""
 
@@ -21426,12 +21376,6 @@ msgstr ""
 
 #: agreement/results/interIntraRaterIntraTable.title
 msgid "Intra-Rater Reliability (Test-Retest Consistency)"
-msgstr ""
-
-#: R/agreement.b.R
-msgid ""
-"Intraclass Correlation Coefficient - standard measure for continuous rater "
-"agreement"
 msgstr ""
 
 #: agreement/results/iccTable.title
@@ -22647,12 +22591,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Limits of agreement (bias and precision)"
-msgstr ""
-
-#: R/agreement.b.R
-msgid ""
-"Limits of Agreement plot - visualizes systematic bias and agreement range (2 "
-"raters)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -24017,10 +23955,6 @@ msgstr ""
 msgid "Missing data/incomplete ratings"
 msgstr ""
 
-#: R/lassologistic.b.R
-msgid "Missing Dependency"
-msgstr ""
-
 #: R/decisioncompare.b.R
 msgid "Missing epiR Package"
 msgstr ""
@@ -24198,10 +24132,6 @@ msgstr ""
 
 #: nogoldstandard/results/model_fit.title
 msgid "Model Fit Statistics"
-msgstr ""
-
-#: R/lassologistic.b.R
-msgid "Model Fitting Error"
 msgstr ""
 
 #: R/agreement.b.R
@@ -26223,6 +26153,14 @@ msgstr ""
 msgid "Normalized pAUC"
 msgstr ""
 
+#: R/agreement.b.R
+msgid "Not %s"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "Not %s (all other categories)"
+msgstr ""
+
 #: R/decisioncurve.b.R
 msgid "Not a numeric column: {model}"
 msgstr ""
@@ -26536,7 +26474,12 @@ msgstr ""
 #: R/cotest.b.R
 #: R/decision.b.R
 #: R/decisioncombine.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
+#: R/kappaSizeCI.b.R
+#: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 #: agreement/results/levelInfoTable.columns.title
 msgid "Note"
 msgstr ""
@@ -28805,10 +28748,6 @@ msgid ""
 "classification."
 msgstr ""
 
-#: R/lassologistic.b.R
-msgid "Penalized model fitting failed: %s"
-msgstr ""
-
 #: lassologistic/results/modelComparison.title
 msgid "Penalized vs Unpenalized Logistic"
 msgstr ""
@@ -30981,6 +30920,10 @@ msgstr ""
 msgid "Quantity"
 msgstr ""
 
+#: R/agreement.b.R
+msgid "quartile-based, from the data"
+msgstr ""
+
 #: agreement/options/loaThresholds/quartiles.title
 msgid "Quartiles (Data-Driven)"
 msgstr ""
@@ -31539,10 +31482,6 @@ msgstr ""
 #: enhancedROC/results/results/imbalanceMetrics.columns.title
 #: psychopdaROC/results/powerAnalysisTable.columns.title
 msgid "Recommendation"
-msgstr ""
-
-#: R/agreement.b.R
-msgid "Recommended Analyses for Continuous Data"
 msgstr ""
 
 #: R/agreement.b.R
@@ -34102,6 +34041,10 @@ msgid ""
 "plurality should count as consensus."
 msgstr ""
 
+#: R/agreement.b.R
+msgid "simple majority, more than 50%"
+msgstr ""
+
 #: decisioncurve/results/costBenefitTable.description
 msgid ""
 "Simple monetary payoff projection under explicit assumptions; not an ICER, "
@@ -35361,6 +35304,10 @@ msgstr ""
 msgid "Supermajority (>=75 percent)"
 msgstr ""
 
+#: R/agreement.b.R
+msgid "supermajority, at least 75%"
+msgstr ""
+
 #: agreement/results/perClassMetricsTable.columns.title
 msgid "Support"
 msgstr ""
@@ -35603,6 +35550,10 @@ msgstr ""
 
 #: R/lassologistic.b.R
 msgid "Terms selected"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "tertile-based, from the data"
 msgstr ""
 
 #: agreement/options/loaThresholds/tertiles.title
@@ -36197,12 +36148,6 @@ msgstr ""
 #: decisioncalculator/results/screeningWorkload.columns.title
 #: enhancedROC/results/results/screeningWorkload.columns.title
 msgid "Tests per detected positive"
-msgstr ""
-
-#: R/agreement.b.R
-msgid ""
-"Tests whether measurements differ between conditions (e.g., two platforms), "
-"with case and rater as random effects"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -39487,6 +39432,10 @@ msgid ""
 "same tests. They are not estimates of diagnostic accuracy."
 msgstr ""
 
+#: R/agreement.b.R
+msgid "These variables are now available in your dataset for further analysis."
+msgstr ""
+
 #: R/decisioncurve.b.R
 msgid ""
 "They are computed correctly at those exact values, but they are not shown on "
@@ -40392,12 +40341,6 @@ msgstr ""
 msgid "Total Cost"
 msgstr ""
 
-#: R/agreement.b.R
-msgid ""
-"Total Deviation Index - boundary within which a proportion of differences "
-"fall"
-msgstr ""
-
 #: agreement/options/tdi.title
 msgid "Total deviation index (TDI)"
 msgstr ""
@@ -40843,6 +40786,10 @@ msgstr ""
 
 #: agreement/options/consensusRule/unanimous.title
 msgid "Unanimous (100 percent)"
+msgstr ""
+
+#: R/agreement.b.R
+msgid "unanimous, 100%"
 msgstr ""
 
 #: R/cotest.b.R
@@ -41574,6 +41521,7 @@ msgstr ""
 msgid "Very large dataset detected ({n} rows)"
 msgstr ""
 
+#: R/kappaSizeCI.b.R
 #: R/kappaSizePower.b.R
 msgid "Very large sample size."
 msgstr ""
@@ -41712,7 +41660,12 @@ msgstr ""
 #: R/decision.b.R
 #: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
+#: R/decisioncompare.b.R
+#: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
+#: R/kappaSizeCI.b.R
+#: R/kappaSizeFixedN.b.R
+#: R/kappaSizePower.b.R
 #: R/lassologistic.b.R
 #: R/nogoldstandard.b.R
 #: R/sequentialtests.b.R
@@ -41751,10 +41704,6 @@ msgstr ""
 msgid ""
 "Warning: Very high apparent AUC with small sample size suggests possible "
 "overfitting. Enable bootstrap validation to assess optimism."
-msgstr ""
-
-#: R/kappaSizeCI.b.R
-msgid "Warning."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -42821,10 +42770,6 @@ msgid ""
 "sensitivity/specificity. Inverse net benefit and inverse Youden are not "
 "numbers of tests or reviews. This replaces the legacy "
 "prevalence-as-threshold calculation."
-msgstr ""
-
-#: R/agreement.b.R
-msgid "Works with any data type including continuous (interval/ratio level)"
 msgstr ""
 
 #: R/agreement.b.R
