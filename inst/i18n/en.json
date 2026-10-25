@@ -5089,7 +5089,7 @@
             "Any crossed rater x case x condition design": [
                 ""
             ],
-            "Any data type": [
+            "Any Data Type": [
                 ""
             ],
             "Any number of raters": [
@@ -7411,7 +7411,7 @@
             "Computed on the full sample: the subgroup variable is not applied to this table.": [
                 ""
             ],
-            "Computed variables": [
+            "Computed Variables": [
                 ""
             ],
             "Computed Variables Added to Dataset": [
@@ -16561,12 +16561,6 @@
             "Predicted risks from three cardiac risk models and the observed events, for decision curve analysis.": [
                 ""
             ],
-            "Prediction column (first rater)": [
-                ""
-            ],
-            "Prediction column %1$d exceeds number of raters (%2$d). Using last rater column instead.": [
-                ""
-            ],
             "Prediction column: %1$s. Reference annotators: %2$s.": [
                 ""
             ],
@@ -16574,6 +16568,9 @@
                 ""
             ],
             "Prediction Models/Variables": [
+                ""
+            ],
+            "Prediction rater (multi-annotator concordance)": [
                 ""
             ],
             "Prediction Requirement": [
@@ -17260,7 +17257,7 @@
             "Rater A": [
                 ""
             ],
-            "Rater and case diagnostics": [
+            "Rater and Case Diagnostics": [
                 ""
             ],
             "Rater B": [
@@ -18112,7 +18109,7 @@
             "Rule Positive Level Required": [
                 ""
             ],
-            "Rule ranking": [
+            "Rule Ranking": [
                 ""
             ],
             "Rules Left Empty in the Forest Plot": [
@@ -18235,7 +18232,7 @@
             "Save the classification results (True Positive, False Positive, False Negative, True Negative) as a new column in your dataset. This allows you to use the classification groups in other analyses.": [
                 ""
             ],
-            "Save to data": [
+            "Save to Data": [
                 ""
             ],
             "Save Variables": [
@@ -18506,6 +18503,9 @@
                 ""
             ],
             "Select the positive reference level. This represents the condition you want to detect or diagnose. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
+                ""
+            ],
+            "Select the prediction rater: the rater whose ratings are evaluated against the others.": [
                 ""
             ],
             "Select the reference standard (e.g., biopsy, final diagnosis). This represents the reference classification. Binary variables are intended; with additional levels, all non-positive levels are grouped as negative and a warning is shown.": [
@@ -19577,9 +19577,6 @@
                 ""
             ],
             "Study Design": [
-                ""
-            ],
-            "Study design": [
                 ""
             ],
             "Study design and category distribution": [
@@ -21107,6 +21104,9 @@
                 ""
             ],
             "The predicted risks of %1$s take only %2$s distinct values, too few for Hosmer-Lemeshow grouping, which needs at least 3 distinct quantile break points. This happens when the marker has very few distinct values or is heavily tied.": [
+                ""
+            ],
+            "The prediction rater {name} must also be selected under Raters.": [
                 ""
             ],
             "The predictive values above are computed by Bayes' theorem at the assumed population prevalence stated above, not at the prevalence observed in this sample, so no confidence interval is given for them.": [

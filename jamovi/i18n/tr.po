@@ -9273,20 +9273,20 @@ msgid "95% CI"
 msgstr "%95 GA"
 
 #: agreement/results/irrtable.columns.title
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/boundaryTable.columns.title
-#: agreement/results/latentModelTable.columns.title
-#: agreement/results/robinsonATable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
 #: agreement/results/itemModalAgreementTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: psychopdaROC/results/aucSummaryTable.columns.title
 #: psychopdaROC/results/delongComparisonTable.columns.title
 #: psychopdaROC/results/idiTable.columns.title
@@ -9297,20 +9297,20 @@ msgid "95% CI Lower"
 msgstr "%95 GA Alt"
 
 #: agreement/results/irrtable.columns.title
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/boundaryTable.columns.title
-#: agreement/results/latentModelTable.columns.title
-#: agreement/results/robinsonATable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
 #: agreement/results/itemModalAgreementTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: psychopdaROC/results/aucSummaryTable.columns.title
 #: psychopdaROC/results/delongComparisonTable.columns.title
 #: psychopdaROC/results/idiTable.columns.title
@@ -10250,7 +10250,7 @@ msgstr "Alt Gruba Göre Uyum Hakkında"
 msgid "About Agreement Heatmap"
 msgstr "Uyum Isı Haritası Hakkında"
 
-#: agreement/results/agreementSampleSizeExplanation.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeExplanation.title
 msgid "About Agreement Sample Size"
 msgstr "Uyum Örneklem Büyüklüğü Hakkında"
 
@@ -10262,27 +10262,27 @@ msgstr "Tüm İkili Kappa Analizi Hakkında"
 msgid "About analysis content unavailable"
 msgstr "Analiz hakkında içeriği mevcut değil"
 
-#: agreement/results/bhapkarExplanation.title
+#: agreement/results/raterBiasGroup/bhapkarExplanation.title
 msgid "About Bhapkar Test"
 msgstr "Bhapkar Testi Hakkında"
 
-#: agreement/results/blandAltmanExplanation.title
+#: agreement/results/blandAltmanGroup/blandAltmanExplanation.title
 msgid "About Bland-Altman Analysis"
 msgstr "Bland-Altman Analizi Hakkında"
 
-#: agreement/results/bootstrapCIExplanation.title
+#: agreement/results/advancedGroup/bootstrapCIExplanation.title
 msgid "About Bootstrap Confidence Intervals"
 msgstr "Bootstrap Güven Aralıkları Hakkında"
 
-#: agreement/results/caseClusterExplanation.title
+#: agreement/results/raterClusterGroup/caseClusterExplanation.title
 msgid "About Case Clustering"
 msgstr "Olgu Kümeleme Hakkında"
 
-#: agreement/results/confusionMatrixExplanation.title
+#: agreement/results/advancedGroup/confusionMatrixExplanation.title
 msgid "About Confusion Matrix"
 msgstr "Karışıklık Matrisi Hakkında"
 
-#: agreement/results/contingencyTableExplanation.title
+#: agreement/results/contingencyTableGroup/contingencyTableExplanation.title
 msgid "About Contingency Table & Rating Combinations"
 msgstr "Kontenjans Tablosu ve Değerlendirme Kombinasyonları Hakkında"
 
@@ -10294,15 +10294,15 @@ msgstr "Tanısal Test Değerlendirmesi Hakkında"
 msgid "About diagnostic-test evaluation"
 msgstr "Tanı testi değerlendirmesi hakkında"
 
-#: agreement/results/raterBiasExplanation.title
+#: agreement/results/raterBiasGroup/raterBiasExplanation.title
 msgid "About Directional Discordance Test"
 msgstr "Yönlü Uyumsuzluk Testi Hakkında"
 
-#: agreement/results/finnExplanation.title
+#: agreement/results/lightKappaTableGroup/finnExplanation.title
 msgid "About Finn Coefficient"
 msgstr "Finn Katsayısı Hakkında"
 
-#: agreement/results/gwetExplanation.title
+#: agreement/results/gwetGroup/gwetExplanation.title
 msgid "About Gwet's AC Coefficient"
 msgstr "Gwet'in AC Katsayısı Hakkında"
 
@@ -10317,43 +10317,43 @@ msgstr ""
 "ters yönde işlediğini gösterir (önce Pozitif sınıf ayarını, ardından Yön "
 "ayarını kontrol edin)"
 
-#: agreement/results/hierarchicalExplanation.title
+#: agreement/results/hierarchicalGroup/hierarchicalExplanation.title
 msgid "About Hierarchical/Multilevel Kappa"
 msgstr "Hiyerarşik/Çok Düzeyli Kappa Hakkında"
 
-#: agreement/results/interIntraRaterExplanation.title
+#: agreement/results/maxwellREGroup/interIntraRaterExplanation.title
 msgid "About Inter/Intra-Rater Reliability"
 msgstr "Değerlendiriciler-Arası / Değerlendirici-İçi Güvenilirlik Hakkında"
 
-#: agreement/results/iccExplanation.title
+#: agreement/results/iccGroup/iccExplanation.title
 msgid "About Intraclass Correlation Coefficient (ICC)"
 msgstr "Sınıf-İçi Korelasyon Katsayısı (ICC) Hakkında"
 
-#: agreement/results/iotaExplanation.title
+#: agreement/results/maxwellREGroup/iotaExplanation.title
 msgid "About Iota Coefficient"
 msgstr "Iota Katsayısı Hakkında"
 
-#: agreement/results/kendallWExplanation.title
+#: agreement/results/lightKappaTableGroup/kendallWExplanation.title
 msgid "About Kendall's W"
 msgstr "Kendall'ın W Katsayısı Hakkında"
 
-#: agreement/results/krippExplanation.title
+#: agreement/results/krippTableGroup/krippExplanation.title
 msgid "About Krippendorff's Alpha"
 msgstr "Krippendorff'un Alfasu Hakkında"
 
-#: agreement/results/lightKappaExplanation.title
+#: agreement/results/lightKappaTableGroup/lightKappaExplanation.title
 msgid "About Light's Kappa"
 msgstr "Light'ın Kappası Hakkında"
 
-#: agreement/results/linCCCExplanation.title
+#: agreement/results/iccGroup/linCCCExplanation.title
 msgid "About Lin's Concordance Correlation Coefficient"
 msgstr "Lin'in Uyum Korelasyon Katsayısı (CCC) Hakkında"
 
-#: agreement/results/meanPearsonExplanation.title
+#: agreement/results/iccGroup/meanPearsonExplanation.title
 msgid "About Mean Pearson Correlation"
 msgstr "Ortalama Pearson Korelasyonu Hakkında"
 
-#: agreement/results/meanSpearmanExplanation.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanExplanation.title
 msgid "About Mean Spearman Rho"
 msgstr "Ortalama Spearman Rho Hakkında"
 
@@ -10361,19 +10361,19 @@ msgstr "Ortalama Spearman Rho Hakkında"
 msgid "About Medical Decision Test Comparison"
 msgstr "Tıbbi Karar Testi Karşılaştırması Hakkında"
 
-#: agreement/results/mixedEffectsExplanation.title
+#: agreement/results/advancedGroup/mixedEffectsExplanation.title
 msgid "About Mixed-Effects Condition Comparison"
 msgstr "Karma Etkilerle Koşul Karşılaştırması Hakkında"
 
-#: agreement/results/concordanceF1Explanation.title
+#: agreement/results/advancedGroup/concordanceF1Explanation.title
 msgid "About Multi-Annotator Concordance"
 msgstr "Çoklu İşaretleyici Uyumu Hakkında"
 
-#: agreement/results/pabakExplanation.title
+#: agreement/results/gwetGroup/pabakExplanation.title
 msgid "About PABAK & Prevalence/Bias Indices"
 msgstr "PABAK ve Prevalans/Yanlılık İndeksleri Hakkında"
 
-#: agreement/results/pairedAgreementExplanation.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementExplanation.title
 msgid "About Paired Agreement Comparison"
 msgstr "Eşleştirilmiş Uyum Karşılaştırması Hakkında"
 
@@ -10385,7 +10385,7 @@ msgstr "İkili Kappa Analizi Hakkında"
 msgid "About Per-Category Item-Modal Agreement"
 msgstr "Kategori Başına Madde-Mod Uyumu Hakkında"
 
-#: agreement/results/raterClusterExplanation.title
+#: agreement/results/raterClusterGroup/raterClusterExplanation.title
 msgid "About Rater Clustering"
 msgstr "Değerlendirici Kümeleme Hakkında"
 
@@ -10393,23 +10393,23 @@ msgstr "Değerlendirici Kümeleme Hakkında"
 msgid "About Rater Profile Plots"
 msgstr "Değerlendirici Profil Grafikleri Hakkında"
 
-#: agreement/results/robinsonAExplanation.title
+#: agreement/results/lightKappaTableGroup/robinsonAExplanation.title
 msgid "About Robinson's A"
 msgstr "Robinson'ın A Katsayısı Hakkında"
 
-#: agreement/results/specificAgreementExplanation.title
+#: agreement/results/specificAgreementGroup/specificAgreementExplanation.title
 msgid "About Specific Agreement Indices"
 msgstr "Özgül Uyum İndeksleri Hakkında"
 
-#: agreement/results/stuartMaxwellExplanation.title
+#: agreement/results/raterBiasGroup/stuartMaxwellExplanation.title
 msgid "About Stuart-Maxwell Test"
 msgstr "Stuart-Maxwell Testi Hakkında"
 
-#: agreement/results/gradingGuide.title
+#: agreement/results/gradingGroup/gradingGuide.title
 msgid "About the Pathologist Grading Analysis"
 msgstr "Patolog Derecelendirme Analizi Hakkında"
 
-#: agreement/results/maxwellREExplanation.title
+#: agreement/results/maxwellREGroup/maxwellREExplanation.title
 msgid "About the rater variance decomposition"
 msgstr "Değerlendirici varyans ayrıştırması hakkında"
 
@@ -10435,7 +10435,7 @@ msgstr "Bu Analiz Hakkında"
 msgid "About this analysis"
 msgstr "Bu analiz hakkında"
 
-#: agreement/results/tdiExplanation.title
+#: agreement/results/iccGroup/tdiExplanation.title
 msgid "About Total Deviation Index (TDI)"
 msgstr "Toplam Sapma İndeksi (TDI) Hakkında"
 
@@ -10471,7 +10471,7 @@ msgstr ""
 "Kabul edilebilir ayırt etme (eşdeğer AUC 0.70 veya üzeri, 0.80 altı; Youden "
 "indeksi 0.40 veya üzeri, 0.60 altı)"
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "Acceptable Limit"
 msgstr "Kabul Edilebilir Sınır"
 
@@ -10509,7 +10509,7 @@ msgstr "Doğruluk"
 msgid "accuracy"
 msgstr "doğruluk"
 
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 msgid "Accuracy (Cb)"
 msgstr "Doğruluk (Cb)"
 
@@ -10663,7 +10663,7 @@ msgstr ""
 "bootstrap tahmini ve buna göre düzeltilmiş J değerini ekler. Sıralamayı ve "
 "en az iki testi gerektirir."
 
-#: agreement/results/lightKappaTableHeading.title
+#: agreement/results/lightKappaTableGroup.title
 msgid "Additional Categorical Agreement Measures"
 msgstr "Ek Kategorik Uyum Ölçüleri"
 
@@ -10800,7 +10800,7 @@ msgstr ""
 "olmayan çiftler bu düzeltmenin dışında tutulur; duyarlılık ve özgüllük p "
 "değerleri düzeltilmemiş kalır."
 
-#: agreement/results/advancedHeading.title
+#: agreement/results/advancedGroup.title
 msgid "Advanced Agreement Analyses"
 msgstr "İleri Düzey Uyum Analizleri"
 
@@ -11135,7 +11135,7 @@ msgstr ""
 msgid "agreement_level"
 msgstr "uyum_duzeyi"
 
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Agreements (TP)"
 msgstr "Uyumlar (TP)"
 
@@ -11361,7 +11361,7 @@ msgid "Almost perfect concordance"
 msgstr "Neredeyse mükemmel uyum"
 
 #: R/lassologistic.b.R
-#: agreement/results/krippTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
 #: enhancedROC/results/results/crocAnalysisTable.columns.title
 #: kappaSizeCI/ui[4][0][0]/alpha.label
 #: kappaSizeFixedN/ui[3][0][0]/alpha.label
@@ -11940,7 +11940,7 @@ msgid "Any crossed rater x case x condition design"
 msgstr ""
 
 #: agreement/ui[5].label
-msgid "Any data type"
+msgid "Any Data Type"
 msgstr "Her veri türü"
 
 #: R/agreement.b.R
@@ -12546,7 +12546,7 @@ msgstr ""
 "Hesaplama büyük örneklem ki-kare yaklaşımına dayandığından burada gösterilen "
 "sınır daha az güvenilirdir."
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Attempted draws"
 msgstr ""
 
@@ -12933,8 +12933,8 @@ msgstr "Ortalama Alma Yöntemi"
 msgid "Avg Agreement %"
 msgstr "Ortalama Uyum %"
 
-#: agreement/results/raterClusterTable.columns.title
-#: agreement/results/caseClusterTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
+#: agreement/results/raterClusterGroup/caseClusterTable.columns.title
 msgid "Avg Within-Cluster Similarity"
 msgstr "Küme-İçi Ortalama Benzerlik"
 
@@ -13276,7 +13276,7 @@ msgstr "Bhapkar testi (2 değerlendirici için marjinal homojenlik)"
 msgid "Bhapkar Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr "Bhapkar Testi [Kategorik] (Marjinal Homojenlik, 2 Değerlendirici)"
 
-#: agreement/results/bhapkarTable.title
+#: agreement/results/raterBiasGroup/bhapkarTable.title
 msgid "Bhapkar Test for Marginal Homogeneity"
 msgstr "Marjinal Homojenlik İçin Bhapkar Testi"
 
@@ -13326,11 +13326,11 @@ msgstr ""
 "doğru olanı değil, daha liberal olanıdır ve örneklem büyüdükçe iki test "
 "birbirine yakınsar."
 
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 msgid "Bias"
 msgstr "Yanlılık (Bias)"
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "Bias Index"
 msgstr "Yanlılık İndeksi"
 
@@ -13432,11 +13432,11 @@ msgstr ""
 "Bland-Altman uyum sınırları için her iki değerlendirici tarafından "
 "değerlendirilmiş en az 3 olgu gereklidir; %d olgu mevcuttu."
 
-#: agreement/results/blandAltmanHeading.title
+#: agreement/results/blandAltmanGroup.title
 msgid "Bland-Altman Method Comparison"
 msgstr "Bland-Altman Yöntem Karşılaştırması"
 
-#: agreement/results/blandAltman.title
+#: agreement/results/blandAltmanGroup/blandAltman.title
 msgid "Bland-Altman Plot"
 msgstr "Bland-Altman Grafiği"
 
@@ -13448,7 +13448,7 @@ msgstr "Bland-Altman grafiği"
 msgid "Bland-Altman Plot (Visual Assessment)"
 msgstr ""
 
-#: agreement/results/blandAltmanStats.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.title
 msgid "Bland-Altman Statistics"
 msgstr "Bland-Altman İstatistikleri"
 
@@ -13471,7 +13471,7 @@ msgstr "Mavi-Beyaz-Kırmızı"
 msgid "Bonferroni"
 msgstr "Bonferroni"
 
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 msgid "Boot SE"
 msgstr "Önyükleme Standart Hatası (Boot SE)"
 
@@ -13598,7 +13598,7 @@ msgstr ""
 "Bootstrap güven aralıkları yalnızca bire-karşı-diğerleri stratejisi için "
 "geçerlidir."
 
-#: agreement/results/bootstrapCITable.title
+#: agreement/results/advancedGroup/bootstrapCITable.title
 msgid "Bootstrap Confidence Intervals for Agreement Metrics"
 msgstr "Uyum Metrikleri İçin Bootstrap Güven Aralıkları"
 
@@ -13792,7 +13792,7 @@ msgstr "Her İki Yöntem"
 msgid "Both Negative LR"
 msgstr "Her İkisi Negatif LR"
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Both Positive"
 msgstr "Her İkisi Pozitif"
 
@@ -13833,11 +13833,11 @@ msgstr ""
 msgid "Bottom"
 msgstr "Alt"
 
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Boundary"
 msgstr "Sınır"
 
-#: agreement/results/boundaryTable.title
+#: agreement/results/gradingGroup/boundaryTable.title
 msgid "Boundary Excess over Colleagues"
 msgstr "Meslektaşlara Göre Sınır Fazlası"
 
@@ -14206,7 +14206,7 @@ msgstr "Olgu Uyum Kategorizasyonu (Her Tür Veri)"
 msgid "Case agreement categorization column"
 msgstr "Olgu uyum kategorizasyonu sütunu"
 
-#: agreement/results/caseClusterTable.title
+#: agreement/results/raterClusterGroup/caseClusterTable.title
 msgid "Case Cluster Assignments"
 msgstr "Olgu Küme Atamaları"
 
@@ -14223,7 +14223,7 @@ msgid "Case clustering (identify rating pattern groups)"
 msgstr "Olgu kümeleme (puanlama deseni gruplarını belirleme)"
 
 #: R/agreement.b.R
-#: agreement/results/caseDendrogram.title
+#: agreement/results/raterClusterGroup/caseDendrogram.title
 msgid "Case Clustering Dendrogram"
 msgstr "Olgu Kümeleme Dendrogramı"
 
@@ -14245,7 +14245,7 @@ msgstr ""
 "Olgu hariç tutma özeti: {details}. {total} olgudan {analysed} tanesi analiz "
 "edildi."
 
-#: agreement/results/caseClusterTable.columns.title
+#: agreement/results/raterClusterGroup/caseClusterTable.columns.title
 msgid "Case ID"
 msgstr "Olgu Kimliği"
 
@@ -14257,7 +14257,7 @@ msgstr "Olgu Kimliği (aynı olgu birden çok satırda)"
 msgid "Case ID variable"
 msgstr "Olgu Kimliği değişkeni"
 
-#: agreement/results/caseClusterHeatmap.title
+#: agreement/results/raterClusterGroup/caseClusterHeatmap.title
 msgid "Case Similarity Heatmap with Clusters"
 msgstr "Kümelerle Olgu Benzerlik Isı Haritası"
 
@@ -14324,25 +14324,25 @@ msgstr ""
 "dağılımlarla ilgili belirsizliği içermez. Doğrulayıcı kullanımdan önce "
 "kapsamayı çalışmaya özgü bir simülasyonla denetleyin."
 
-#: agreement/results/krippTable.columns.title
-#: agreement/results/lightKappaTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
 #: agreement/results/pairwiseKappaTable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
-#: agreement/results/hierarchicalOverallTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/pabakTable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/linCCCTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/maxwellRETable.columns.title
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 msgid "Cases"
 msgstr "Olgu"
 
@@ -14376,7 +14376,7 @@ msgstr "Patolog başına olgu (min / medyan / maks)"
 msgid "Cases rated"
 msgstr "Değerlendirilen olgular"
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Cases Read"
 msgstr "Okunan Olgular"
 
@@ -14456,7 +14456,7 @@ msgid "Categorical/ordinal data"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
 msgid "Categories"
 msgstr "Kategoriler"
 
@@ -14468,12 +14468,12 @@ msgstr "Kategoriler birbirini dışlar ve tutarlıdır"
 msgid "Categorization method (detailed mode)"
 msgstr "Kategorizasyon yöntemi (ayrıntılı mod)"
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: agreement/results/consensusTable.columns.title
 msgid "Category"
 msgstr "Kategori"
 
-#: agreement/results/categoryDistributionTable.title
+#: agreement/results/gradingGroup/categoryDistributionTable.title
 msgid "Category Distribution by Pathologist"
 msgstr "Patoloğa Göre Kategori Dağılımı"
 
@@ -14491,7 +14491,7 @@ msgstr ""
 msgid "Category frequencies, scale use patterns"
 msgstr ""
 
-#: agreement/results/specificAgreementHeading.title
+#: agreement/results/specificAgreementGroup.title
 msgid "Category-Specific Agreement"
 msgstr "Kategoriye Özgü Uyum"
 
@@ -14504,7 +14504,7 @@ msgstr "Dikkat:"
 msgid "Caution: Major concerns detected"
 msgstr "Dikkat: Önemli sorunlar tespit edildi"
 
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 msgid "CCC"
 msgstr "CCC"
 
@@ -14550,7 +14550,7 @@ msgstr ""
 msgid "Chance-corrected agreement"
 msgstr ""
 
-#: agreement/results/gwetHeading.title
+#: agreement/results/gwetGroup.title
 msgid "Chance-Corrected Agreement Variants"
 msgstr "Şans Düzeltmeli Uyum Varyantları"
 
@@ -14677,10 +14677,10 @@ msgstr "Akciğer grafisi + balgam (yalnızca demo)"
 msgid "Chest X-ray"
 msgstr "Akciğer Grafisi"
 
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
 msgid "Chi-square"
 msgstr "Ki-kare"
 
@@ -14957,8 +14957,8 @@ msgstr "Pozitif Sınıf ve Negatif Sınıf alanlarında seçildi."
 msgid "Chosen in Positive class."
 msgstr "Pozitif sınıf seçeneğinde seçildi."
 
-#: agreement/results/krippTable.columns.title
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: decisioncurve/results/comparisonTable.columns.title
 msgid "CI Lower"
 msgstr "GA Alt"
@@ -14967,7 +14967,7 @@ msgstr "GA Alt"
 msgid "CI lower"
 msgstr "GA alt"
 
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 msgid "CI Method"
 msgstr "GA Yöntemi"
 
@@ -14975,7 +14975,7 @@ msgstr "GA Yöntemi"
 msgid "CI method for agreement"
 msgstr "Uyum için GA Yöntemi"
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "CI method/status"
 msgstr ""
 
@@ -14983,8 +14983,8 @@ msgstr ""
 msgid "CI not requested"
 msgstr "GA istenmedi"
 
-#: agreement/results/krippTable.columns.title
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: decisioncurve/results/comparisonTable.columns.title
 msgid "CI Upper"
 msgstr "GA Üst"
@@ -15016,8 +15016,8 @@ msgstr "Kantillerdeki GA'lar"
 
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/perClassMetricsTable.columns.title
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 #: enhancedROC/results/results/multiClassAUC.columns.title
 msgid "Class"
 msgstr "Sınıf"
@@ -15581,8 +15581,8 @@ msgstr ""
 msgid "Closest to perfect classifier"
 msgstr "Mükemmel sınıflandırıcıya en yakın"
 
-#: agreement/results/raterClusterTable.columns.title
-#: agreement/results/caseClusterTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
+#: agreement/results/raterClusterGroup/caseClusterTable.columns.title
 msgid "Cluster"
 msgstr "Küme"
 
@@ -15599,7 +15599,7 @@ msgstr "Küme ısı haritası"
 msgid "Cluster homogeneity test"
 msgstr "Küme homojenlik testi"
 
-#: agreement/results/homogeneityTestTable.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.title
 msgid "Cluster Homogeneity Test Results"
 msgstr "Küme Homojenlik Testi Sonuçları"
 
@@ -15607,7 +15607,7 @@ msgstr "Küme Homojenlik Testi Sonuçları"
 msgid "Cluster performance rankings"
 msgstr "Küme performans sıralamaları"
 
-#: agreement/results/raterClusterTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
 msgid "Cluster Size"
 msgstr "Küme Büyüklüğü"
 
@@ -15625,7 +15625,7 @@ msgstr "Kümeye Özgü Uyum (Küme Başına ICC)"
 msgid "Cluster-Specific Agreement (Kappa per Cluster)"
 msgstr "Kümeye Özgü Uyum (Küme Başına Kappa)"
 
-#: agreement/results/clusterSpecificTable.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.title
 msgid "Cluster-Specific Kappa Estimates"
 msgstr "Kümeye Özgü Kappa Tahminleri"
 
@@ -15633,7 +15633,7 @@ msgstr "Kümeye Özgü Kappa Tahminleri"
 msgid "Cluster-specific kappa estimates"
 msgstr "Kümeye özgü kappa tahminleri"
 
-#: agreement/results/clusterSpecificTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
 msgid "Cluster/Institution"
 msgstr "Küme/Kurum"
 
@@ -15668,7 +15668,7 @@ msgstr "Kümeleme en az 3 olgu ve 2 değerlendirici gerektirir"
 msgid "Clustering requires at least 3 raters"
 msgstr "Kümeleme en az 3 değerlendirici gerektirir"
 
-#: agreement/results/hierarchicalOverallTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
 msgid "Clusters"
 msgstr "Kümeler"
 
@@ -15791,7 +15791,7 @@ msgstr ""
 "için belirli bir sonuç yok. Aşağıdaki ikili karşılaştırmaların her biri "
 "kendi tam olgularını kullanır."
 
-#: agreement/results/gwetTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
 #: lassologistic/results/coefficients.columns.title
 msgid "Coefficient"
 msgstr "Katsayı"
@@ -15844,7 +15844,7 @@ msgstr ""
 msgid "Cohen's d, second minus first"
 msgstr "Cohen d, ikinci eksi birinci"
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 #: psychopdaROC/options/metric/cohens_kappa.title
 msgid "Cohen's Kappa"
 msgstr "Cohen Kappa"
@@ -16203,9 +16203,9 @@ msgstr ""
 msgid "Comparing AI-assisted vs. conventional scoring"
 msgstr ""
 
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/linCCCTable.columns.title
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 #: decision/results/comparatorCases.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: decisioncompare/results/diffTable.columns.title
@@ -16261,7 +16261,7 @@ msgstr ""
 msgid "Complementary Analyses"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Complete cases"
 msgstr ""
 
@@ -16312,7 +16312,7 @@ msgstr ""
 "göre eksik olan sonuçları ise (refleks veya hakem testi, kısmi doğrulama) "
 "ayrı bir uyarı bildirir."
 
-#: agreement/results/mixedEffectsVarianceTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
 msgid "Component"
 msgstr "Bileşen"
 
@@ -16407,7 +16407,7 @@ msgstr ""
 "uygulanmaz."
 
 #: agreement/ui[8].label
-msgid "Computed variables"
+msgid "Computed Variables"
 msgstr "Hesaplanan değişkenler"
 
 #: agreement/results/computedVariablesInfo.title
@@ -16430,7 +16430,7 @@ msgstr "Üstel büyüteç dönüşümlü Yoğunlaştırılmış ROC eğrisi"
 msgid "Concentration parameter for CROC exponential magnifier function"
 msgstr "CROC üstel büyüteç işlevi için yoğunlaşma parametresi"
 
-#: agreement/results/homogeneityTestTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
 #: enhancedROC/results/results/hosmerLemeshowTable.columns.title
 msgid "Conclusion"
 msgstr "Sonuç"
@@ -16443,7 +16443,7 @@ msgstr "Uyum (1 - Lin'in CCC katsayısı)"
 msgid "Concordance Accuracy"
 msgstr "Uyum Doğruluğu"
 
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 msgid "Concordance F1"
 msgstr "Uyum F1 Skoru"
 
@@ -16496,7 +16496,7 @@ msgstr ""
 msgid "Concordant Results"
 msgstr "Uyumlu Sonuçlar"
 
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 msgid "Condition A"
 msgstr "Koşul A"
 
@@ -16512,7 +16512,7 @@ msgstr ""
 "mesafeye bağlıdır; bu nedenle iki katsayı ortak bir temele dayanmaz. Kappa "
 "satırını okumadan önce her iki koşulu tek bir ölçeğe yeniden kodlayın."
 
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 msgid "Condition B"
 msgstr "Koşul B"
 
@@ -16520,7 +16520,7 @@ msgstr "Koşul B"
 msgid "Condition B raters"
 msgstr "Koşul B değerlendiricileri"
 
-#: agreement/ui[0][7].label
+#: agreement/ui[0][8].label
 msgid "Condition B Raters (e.g., AI-assisted)"
 msgstr "Koşul B Değerlendiricileri (ör. YZ destekli)"
 
@@ -16843,7 +16843,7 @@ msgstr "Karışıklık Matrisleri"
 msgid "Confusion matrices"
 msgstr "Karışıklık matrisleri"
 
-#: agreement/results/confusionMatrixTable.title
+#: agreement/results/advancedGroup/confusionMatrixTable.title
 msgid "Confusion Matrix"
 msgstr "Karışıklık Matrisi"
 
@@ -17036,7 +17036,7 @@ msgstr "Kısıtlamalar Karşılanmadı: %s"
 msgid "Contingency Table"
 msgstr "Kontenjans Tablosu"
 
-#: agreement/results/contingencyTable.title
+#: agreement/results/contingencyTableGroup/contingencyTable.title
 msgid "Contingency Table (2 Raters)"
 msgstr "Kontenjans Tablosu (2 Değerlendirici)"
 
@@ -17063,7 +17063,7 @@ msgstr ""
 "verilmediğinden, yeniden sınıflandırma kategori sınırı geçişleri yerine "
 "tahmin edilen riskteki değişimleri sayar."
 
-#: agreement/results/iccHeading.title
+#: agreement/results/iccGroup.title
 msgid "Continuous Agreement Measures"
 msgstr "Sürekli Uyum Ölçüleri"
 
@@ -17367,7 +17367,7 @@ msgstr ""
 "yetersiz uyumsuz çift ya da özdeş test sonuçları olabilir. Hata: {error}"
 
 #: R/agreement.b.R
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 #: decision/results/rawCounts.columns.title
 #: decision/results/confusionMatrixSummary.columns.title
 #: decisioncombine/results/goldFreqTable.columns.title
@@ -17429,7 +17429,7 @@ msgstr ""
 msgid "Counts in cells"
 msgstr "Hücrelerdeki sayılar"
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "Coverage %"
 msgstr "Kapsama %"
 
@@ -17904,7 +17904,7 @@ msgstr ""
 "Veri uygunluğu: %d küçük sorun. Aşırı uyum riskini değerlendirmek için "
 "bootstrap doğrulamayı etkinleştirin."
 
-#: agreement/results/contingencyTableHeading.title
+#: agreement/results/contingencyTableGroup.title
 msgid "Data Summary"
 msgstr "Veri Özeti"
 
@@ -18461,7 +18461,7 @@ msgstr ""
 msgid "Design"
 msgstr ""
 
-#: agreement/results/designSummaryTable.columns.title
+#: agreement/results/gradingGroup/designSummaryTable.columns.title
 msgid "Design Feature"
 msgstr "Tasarım Özelliği"
 
@@ -18590,23 +18590,23 @@ msgstr "Geliştirme / keşifsel"
 msgid "Development / validation partition identifier"
 msgstr "Geliştirme / doğrulama bölümü tanımlayıcısı"
 
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/homogeneityTestTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: enhancedROC/results/results/hosmerLemeshowTable.columns.title
 msgid "df"
 msgstr "sd"
 
-#: agreement/results/iccTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "df1"
 msgstr "sd1"
 
-#: agreement/results/iccTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "df2"
 msgstr "sd2"
 
@@ -18794,7 +18794,7 @@ msgstr ""
 "Göreli fark (%) = 100 × (değer 1 - değer 2) / değer 2. Değer 1, Ölçüt "
 "sütununda adı geçen ilk öngörücüye aittir."
 
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 msgid "Difference (B - A)"
 msgstr "Fark (B - A)"
 
@@ -18806,7 +18806,7 @@ msgstr "Ortalama Net Faydadaki Fark"
 msgid "Difference in Cohen's d between markers"
 msgstr "Belirteçler arasındaki Cohen d farkı"
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Difference-Mean Slope (p)"
 msgstr "Fark-Ortalama Eğimi (p)"
 
@@ -18913,7 +18913,7 @@ msgstr ""
 msgid "Directional Discordance [Ordinal] (2 Raters)"
 msgstr "Yönlü Uyumsuzluk [Sıralı] (2 Değerlendirici)"
 
-#: agreement/results/raterBiasHeading.title
+#: agreement/results/raterBiasGroup.title
 msgid "Directional Discordance and Marginal Homogeneity Tests"
 msgstr "Yönlü Uyumsuzluk ve Marjinal Homojenlik Testleri"
 
@@ -18925,7 +18925,7 @@ msgstr "Yönlü uyumsuzluk testi (1 sd)"
 msgid "Directional discordance test (ordinal, 2 raters)"
 msgstr "Yönlü uyumsuzluk testi (sıralı, 2 değerlendirici)"
 
-#: agreement/results/raterBiasTable.title
+#: agreement/results/raterBiasGroup/raterBiasTable.title
 msgid "Directional Discordance Test (ordinal, 2 raters)"
 msgstr "Yönlü Uyumsuzluk Testi (sıralı, 2 değerlendirici)"
 
@@ -18933,7 +18933,7 @@ msgstr "Yönlü Uyumsuzluk Testi (sıralı, 2 değerlendirici)"
 msgid "Disagree with Reference"
 msgstr "Referansla Uyuşmayan"
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Disagreement variance"
 msgstr "Uyuşmazlık varyansı"
 
@@ -19951,7 +19951,7 @@ msgstr ""
 msgid "Empirical TDI [Continuous] (Prespecified Difference Limit)"
 msgstr "Ampirik TDI [Sürekli] (Önceden Belirlenmiş Fark Sınırı)"
 
-#: agreement/results/tdiTable.title
+#: agreement/results/iccGroup/tdiTable.title
 msgid "Empirical Total Deviation Index (TDI)"
 msgstr "Ampirik Toplam Sapma İndeksi (TDI)"
 
@@ -20179,7 +20179,7 @@ msgstr "TDI hesaplanırken hata oluştu: %s"
 msgid "Error calculating the directional discordance test: %s"
 msgstr "Yönlü uyumsuzluk testi hesaplanırken hata oluştu: %s"
 
-#: agreement/results/maxwellREHeading.title
+#: agreement/results/maxwellREGroup.title
 msgid "Error Decomposition & Reliability"
 msgstr "Hata Ayrıştırması ve Güvenilirlik"
 
@@ -20243,9 +20243,9 @@ msgstr ""
 msgid "Essential for diagnostic test validation"
 msgstr ""
 
-#: agreement/results/latentModelTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 #: decision/results/epirTable_ratio.columns.title
 #: decision/results/epirTable_number.columns.title
 #: decision/results/comparatorMetrics.columns.title
@@ -20691,7 +20691,7 @@ msgstr ""
 "olguların tümü tek bir kategoride) dışarıda bırakılır. İkisi de her "
 "patoloğun olgularının ne kadar zor olduğuna göre düzeltilmemiştir."
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Exact agreement with colleagues %"
 msgstr "Meslektaşlarla birebir uyum %"
 
@@ -20830,7 +20830,7 @@ msgstr ""
 msgid "Excellent reliability"
 msgstr "Mükemmel güvenilirlik"
 
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Excess over colleagues"
 msgstr "Meslektaşlara göre fazlalık"
 
@@ -21242,7 +21242,7 @@ msgstr ""
 msgid "Extreme Test Imbalance"
 msgstr "Aşırı Test Dengesizliği"
 
-#: agreement/results/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
 msgid "F-statistic"
 msgstr "F istatistiği"
 
@@ -21262,7 +21262,7 @@ msgstr ""
 "örneklem içi değerlerdir."
 
 #: R/lassologistic.b.R
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 #: decisioncalculator/results/advancedMetricsTable.columns.title
 #: psychopdaROC/options/metric/F1_score.title
 #: psychopdaROC/results/rocComparisonTable.columns.title
@@ -21747,7 +21747,7 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
 msgid "Finn Coefficient"
 msgstr "Finn Katsayısı"
 
@@ -21763,7 +21763,7 @@ msgstr "Finn Katsayısı [Kategorik] (Varyansa Dayalı)"
 msgid "Finn coefficient requires at least 2 raters."
 msgstr "Finn katsayısı en az 2 değerlendirici gerektirir."
 
-#: agreement/results/finnTable.title
+#: agreement/results/lightKappaTableGroup/finnTable.title
 msgid "Finn Coefficient Results (Variance-Based Agreement)"
 msgstr "Finn Katsayısı Sonuçları (Varyansa Dayalı Uyum)"
 
@@ -22883,7 +22883,7 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Grading tendency"
 msgstr "Derecelendirme eğilimi"
 
@@ -22916,7 +22916,7 @@ msgstr ""
 "olduğu için, yüksek derece verme eğilimi güçlü olan tek bir patolog diğer "
 "tüm patologların daha düşük görünmesine yol açar."
 
-#: agreement/results/severityPlot.title
+#: agreement/results/gradingGroup/severityPlot.title
 msgid "Grading Tendency per Pathologist"
 msgstr "Patolog Başına Derecelendirme Eğilimi"
 
@@ -23030,7 +23030,7 @@ msgstr "Gwet'in AC1/AC2 Katsayısı (Kategorik/Sıralı)"
 msgid "Gwet's AC1/AC2 (Kappa Paradox Solution)"
 msgstr ""
 
-#: agreement/results/gwetTable.title
+#: agreement/results/gwetGroup/gwetTable.title
 msgid "Gwet's AC1/AC2 Results"
 msgstr "Gwet'in AC1/AC2 Sonuçları"
 
@@ -23122,7 +23122,7 @@ msgstr "ROC grafiklerinin yüksekliği"
 msgid "Hierarchical (Dendrogram)"
 msgstr "Hiyerarşik (Dendrogram)"
 
-#: agreement/results/hierarchicalHeading.title
+#: agreement/results/hierarchicalGroup.title
 msgid "Hierarchical / Multilevel Agreement"
 msgstr "Hiyerarşik / Çok Düzeyli Uyum"
 
@@ -23134,7 +23134,7 @@ msgstr "Hiyerarşik Uyum - Genel (Karma Etkiler ICC)"
 msgid "Hierarchical Agreement - Overall (Stratified Kappa)"
 msgstr "Hiyerarşik Uyum - Genel (Tabakalı Kappa)"
 
-#: agreement/results/hierarchicalICCTable.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.title
 msgid "Hierarchical ICC Decomposition"
 msgstr "Hiyerarşik ICC Ayrıştırması"
 
@@ -23142,7 +23142,7 @@ msgstr "Hiyerarşik ICC Ayrıştırması"
 msgid "Hierarchical ICC decomposition"
 msgstr "Hiyerarşik ICC ayrıştırması"
 
-#: agreement/results/hierarchicalOverallTable.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.title
 msgid "Hierarchical Kappa - Overall Agreement"
 msgstr "Hiyerarşik Kappa - Genel Uyum"
 
@@ -23511,8 +23511,8 @@ msgstr "I² Heterojenlik"
 
 #: R/agreement.b.R
 #: agreement/options/ssMetric/icc.title
-#: agreement/results/hierarchicalICCTable.columns.title
-#: agreement/results/iccTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "ICC"
 msgstr "ICC"
 
@@ -23554,7 +23554,7 @@ msgid ""
 "inter-rater reliability with numeric data."
 msgstr ""
 
-#: agreement/results/iccTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "ICC Model"
 msgstr "ICC Modeli"
 
@@ -23574,7 +23574,7 @@ msgstr ""
 "ICC sürekli (sayısal) veri gerektirir. Verileriniz kategorik görünmektedir. "
 "Bunun yerine kappa kullanın."
 
-#: agreement/results/hierarchicalICCTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.columns.title
 msgid "ICC Type"
 msgstr "ICC Türü"
 
@@ -24093,7 +24093,7 @@ msgstr "Önemli Not"
 msgid "Important warning"
 msgstr "Önemli uyarı"
 
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 msgid "Improvement"
 msgstr "Gelişme / İyileşme"
 
@@ -24662,7 +24662,7 @@ msgstr "Tam Sayı Kodları Sayı Olarak Okundu"
 msgid "Integrated Discrimination Improvement (IDI)"
 msgstr "Entegre Ayırt Etme İyileşmesi (IDI)"
 
-#: agreement/results/interIntraRaterInterTable.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.title
 msgid "Inter-Rater Reliability (Between Raters)"
 msgstr "Değerlendiriciler-Arası Güvenilirlik (Değerlendiriciler Arasında)"
 
@@ -24773,28 +24773,28 @@ msgstr ""
 
 #: R/agreement.b.R
 #: R/enhancedROC.b.R
-#: agreement/results/krippTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/varianceDecompositionTable.columns.title
-#: agreement/results/hierarchicalICCTable.columns.title
-#: agreement/results/mixedEffectsVarianceTable.columns.title
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/pabakTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/linCCCTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/maxwellRETable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
-#: agreement/results/iotaTable.columns.title
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: agreement/results/loaTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: decisioncombine/results/recommendationTable.columns.title
 #: enhancedROC/results/results/detailedComparison.columns.title
 #: enhancedROC/results/results/crocAnalysisTable.columns.title
@@ -25002,7 +25002,6 @@ msgstr ""
 #: agreement/options.title
 #: agreement/ui.title
 #: agreement/results.title
-#: agreement/results/irrtableHeading.title
 #: agreement/results/irrtable.title
 msgid "Interrater Reliability"
 msgstr "Değerlendiriciler Arası Güvenilirlik"
@@ -25059,11 +25058,11 @@ msgstr ""
 msgid "Intervention cost analysis"
 msgstr "Girişim maliyet analizi"
 
-#: agreement/results/interIntraRaterIntraTable.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.title
 msgid "Intra-Rater Reliability (Test-Retest Consistency)"
 msgstr "Değerlendirici-İçi Güvenilirlik (Test-Tekrar Test Tutarlılığı)"
 
-#: agreement/results/iccTable.title
+#: agreement/results/iccGroup/iccTable.title
 msgid "Intraclass Correlation Coefficient (ICC) Results"
 msgstr "Sınıf-İçi Korelasyon Katsayısı (ICC) Sonuçları"
 
@@ -25119,7 +25118,7 @@ msgstr "Ters net fayda ve ters Youden sütunları"
 msgid "Inverse Youden index"
 msgstr "Ters Youden indeksi"
 
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 msgid "Iota"
 msgstr "Iota"
 
@@ -25159,7 +25158,7 @@ msgstr ""
 msgid "Iota Coefficient [Continuous or Categorical] (Single Variable)"
 msgstr "Iota Katsayısı [Sürekli veya Kategorik] (Tek Değişken)"
 
-#: agreement/results/iotaTable.title
+#: agreement/results/maxwellREGroup/iotaTable.title
 msgid "Iota Coefficient Results (Single Variable)"
 msgstr "Iota Katsayısı Sonuçları (Tek Değişken)"
 
@@ -25496,10 +25495,10 @@ msgstr ""
 
 #: R/agreement.b.R
 #: agreement/results/irrtable.columns.title
-#: agreement/results/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
 #: agreement/results/pairwiseKappaTable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
 #: nogoldstandard/results/agreement_stats.columns.title
 msgid "Kappa"
 msgstr "Kappa"
@@ -25842,7 +25841,7 @@ msgid ""
 "grades)."
 msgstr ""
 
-#: agreement/results/kendallWTable.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.title
 msgid "Kendall's Coefficient of Concordance (W) Results"
 msgstr "Kendall Uyum Katsayısı (W) Sonuçları"
 
@@ -25956,7 +25955,7 @@ msgstr "Öngörü Değerleri İçin Bilinen Prevalans"
 msgid "Krippendorff"
 msgstr ""
 
-#: agreement/results/krippTableHeading.title
+#: agreement/results/krippTableGroup.title
 msgid "Krippendorff's Alpha"
 msgstr "Krippendorff Alfasu"
 
@@ -26036,7 +26035,7 @@ msgstr ""
 "uyuşmazlık gösterebileceği bir değişkenlik yoktur. Bu mükemmel uyum değildir "
 "- seçilebilecek ikinci bir kategori hiçbir zaman mevcut olmamıştır."
 
-#: agreement/results/krippTable.title
+#: agreement/results/krippTableGroup/krippTable.title
 msgid "Krippendorff's Alpha Results"
 msgstr "Krippendorff Alfasu Sonuçları"
 
@@ -26411,7 +26410,7 @@ msgstr ""
 "kodlarıysa, değişkenleri Nominal veya Ordinal olarak ayarlayın - ya da R'den "
 "çağırırken factor() içine alın - ve Light'ın kappası hesaplanacaktır."
 
-#: agreement/results/lightKappaTable.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.title
 msgid "Light's Kappa Results"
 msgstr "Light'ın Kappası Sonuçları"
 
@@ -26604,7 +26603,7 @@ msgstr ""
 msgid "Lin's CCC requires continuous numeric data. Categorical data found."
 msgstr "Lin'in CCC katsayısı sürekli sayısal veri gerektirir. Kategorik veri bulundu."
 
-#: agreement/results/linCCCTable.title
+#: agreement/results/iccGroup/linCCCTable.title
 msgid "Lin's Concordance Correlation Coefficient (CCC)"
 msgstr "Lin'in Uyum Korelasyon Katsayısı (CCC)"
 
@@ -26805,9 +26804,9 @@ msgstr ""
 msgid "Low→High cell: Minimal"
 msgstr ""
 
-#: agreement/results/bootstrapCITable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 #: decision/results/epirTable_ratio.columns.title
 #: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
@@ -26861,7 +26860,7 @@ msgid ""
 "chosen above, for example 0.8 for high specificity."
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Lower LoA"
 msgstr "Alt Uyum Sınırı (LoA)"
 
@@ -27227,11 +27226,11 @@ msgstr "Maks |r| = %.2f (>=0.9: yüksek, elastic net düşünün)"
 msgid "Max |r| = %.2f (0.7-0.9: moderate, LASSO will handle)"
 msgstr "Maks |r| = %.2f (0.7-0.9: orta, LASSO ele alacaktır)"
 
-#: agreement/results/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
 msgid "Max r"
 msgstr "Maksimum r"
 
-#: agreement/results/meanSpearmanTable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
 msgid "Max ρ"
 msgstr "Maksimum ρ"
 
@@ -27386,7 +27385,7 @@ msgstr "Ortalama Uyum"
 msgid "Mean Annotator Agreement"
 msgstr "Ortalama İşaretleyici Uyumu"
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Mean Difference"
 msgstr "Ortalama Fark"
 
@@ -27402,7 +27401,7 @@ msgstr "Bu veri setinin ortalaması"
 msgid "Mean of tied cutpoints"
 msgstr "Bağlı kesme noktalarının ortalaması"
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Mean pairwise kappa"
 msgstr "Ortalama ikili kappa"
 
@@ -27410,7 +27409,7 @@ msgstr "Ortalama ikili kappa"
 msgid "Mean Pearson correlation (linear association)"
 msgstr "Ortalama Pearson korelasyonu (doğrusal ilişki)"
 
-#: agreement/results/meanPearsonTable.title
+#: agreement/results/iccGroup/meanPearsonTable.title
 msgid "Mean Pearson Correlation (Linear Association) Results"
 msgstr "Ortalama Pearson Korelasyonu (Doğrusal İlişki) Sonuçları"
 
@@ -27436,7 +27435,7 @@ msgstr "Ortalama Pearson Korelasyonu [Sürekli] (Doğrusal İlişki)"
 msgid "Mean Pearson Correlation requires numeric (continuous) data."
 msgstr "Ortalama Pearson Korelasyonu sayısal (sürekli) veri gerektirir."
 
-#: agreement/results/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
 msgid "Mean r"
 msgstr "Ortalama r"
 
@@ -27466,7 +27465,7 @@ msgstr ""
 msgid "Mean Spearman rho (average rank correlation)"
 msgstr "Ortalama Spearman rho (ortalama sıra korelasyonu)"
 
-#: agreement/results/meanSpearmanTable.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.title
 msgid "Mean Spearman Rho (Average Rank Correlation) Results"
 msgstr "Ortalama Spearman Rho (Ortalama Sıra Korelasyonu) Sonuçları"
 
@@ -27489,7 +27488,7 @@ msgstr ""
 "veya sıralı (Ordinal) olarak ayarlayın ya da nominal uyum için Fleiss "
 "kappasını veya Krippendorff alfasını kullanın."
 
-#: agreement/results/meanSpearmanTable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
 msgid "Mean ρ"
 msgstr "Ortalama ρ"
 
@@ -27655,18 +27654,18 @@ msgstr "Meta-Analiz Uyarısı"
 #: R/agreement.b.R
 #: R/psychopdaROC.b.R
 #: agreement/results/irrtable.columns.title
-#: agreement/results/krippTable.columns.title
-#: agreement/results/lightKappaTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/hierarchicalOverallTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/maxwellRETable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: decisioncompare/results/comparatorDifferences.columns.title
 #: lassologistic/results/methodComparison.columns.title
@@ -27802,9 +27801,9 @@ msgstr "Yöntemler Bölümü:"
 #: R/decisioncombine.b.R
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/bootstrapCITable.columns.title
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: decision/results/comparatorMetrics.columns.title
 #: decisioncompare/results/diffTable.columns.title
 #: decisioncompare/results/comparatorMetrics.columns.title
@@ -27871,11 +27870,11 @@ msgstr "Dengesiz veri analizi için ölçütler"
 msgid "Mid-p"
 msgstr "Mid-p"
 
-#: agreement/results/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
 msgid "Min r"
 msgstr "Minimum r"
 
-#: agreement/results/meanSpearmanTable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
 msgid "Min ρ"
 msgstr "Minimum ρ"
 
@@ -28160,7 +28159,7 @@ msgstr ""
 "olabilir."
 
 #: R/agreement.b.R
-#: agreement/results/mixedEffectsTable.title
+#: agreement/results/advancedGroup/mixedEffectsTable.title
 msgid "Mixed-Effects Condition Comparison"
 msgstr "Karma Etkilerle Koşul Karşılaştırması"
 
@@ -28178,7 +28177,7 @@ msgstr ""
 msgid "Mixed-Effects ICC (hierarchical agreement proxy)"
 msgstr "Karma Etkiler ICC (hiyerarşik uyum için vekil gösterge)"
 
-#: agreement/results/mixedEffectsVarianceTable.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.title
 msgid "Mixed-Effects Variance Components"
 msgstr "Karma Etkiler Varyans Bileşenleri"
 
@@ -28331,7 +28330,7 @@ msgstr "Model sürümü"
 msgid "Model-based agreement (latent ICC and model-based kappa)"
 msgstr "Modele dayalı uyum (gizil ICC ve modele dayalı kappa)"
 
-#: agreement/results/latentModelTable.title
+#: agreement/results/gradingGroup/latentModelTable.title
 msgid "Model-Based Agreement (Latent Probit Model)"
 msgstr "Modele Dayalı Uyum (Gizil Probit Modeli)"
 
@@ -28696,7 +28695,7 @@ msgstr ""
 msgid "Multi-Annotator Concordance [Categorical] (AI Validation)"
 msgstr "Çoklu İşaretleyici Uyumu [Kategorik] (YZ Doğrulaması)"
 
-#: agreement/results/concordanceF1Table.title
+#: agreement/results/advancedGroup/concordanceF1Table.title
 msgid "Multi-Annotator Concordance Metrics"
 msgstr "Çoklu İşaretleyici Uyum Metrikleri"
 
@@ -28837,10 +28836,10 @@ msgstr "Uyuşan Sayı"
 msgid "N Annotators (reference)"
 msgstr "İşaretleyici Sayısı (referans)"
 
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/concordanceF1PerClassTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/loaTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
 msgid "N Cases"
@@ -28892,8 +28891,8 @@ msgstr "Negatif Sayısı"
 msgid "N Positive"
 msgstr "Pozitif Sayısı"
 
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
 msgid "N Raters"
 msgstr "Değerlendirici Sayısı"
@@ -30670,7 +30669,7 @@ msgstr ""
 "Yok: incelenen her eşikte herkesi tedavi etmek ya da hiç kimseyi tedavi "
 "etmemek en az bu model kadar iyidir."
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Normality (p)"
 msgstr "Normallik (p)"
 
@@ -31543,7 +31542,7 @@ msgstr ""
 "güven aralığını kullanın veya önceden belirlenmiş bir hedef AUC ile planlama "
 "yapın."
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "Observed Agreement"
 msgstr "Gözlenen Uyum"
 
@@ -31607,7 +31606,7 @@ msgstr ""
 "Gözlenen ölçüt karşılanmadı - ampirik TDI=%1$.3g, önceden belirlenmiş sınırı "
 "(%2$.3g) %3$.3g aşmaktadır."
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "Observed Criterion?"
 msgstr "Gözlenen Ölçüt?"
 
@@ -32868,7 +32867,7 @@ msgid "Overall ICC(2,1), within institution"
 msgstr "Genel ICC(2,1), kurum içi"
 
 #: R/agreement.b.R
-#: agreement/results/hierarchicalOverallTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
 msgid "Overall Kappa"
 msgstr "Genel Kappa"
 
@@ -32925,7 +32924,7 @@ msgstr "p (Holm, ortalama NF farkı)"
 msgid "p (Holm, grid-point mean difference)"
 msgstr "p (Holm, ızgara noktası ortalama farkı)"
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 #: psychopdaROC/results/delongComparisonTable.columns.title
 msgid "p (Holm)"
 msgstr "p (Holm)"
@@ -32973,17 +32972,17 @@ msgid "p >= 0.05"
 msgstr ""
 
 #: agreement/results/irrtable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
 #: agreement/results/pairwiseKappaTable.columns.title
-#: agreement/results/homogeneityTestTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: decisioncompare/results/diffTable.columns.title
 #: enhancedROC/results/results/rocComparisons.columns.title
@@ -33021,7 +33020,7 @@ msgstr "P(Test- | Sınıf-/Kural-)"
 msgid "P(Test+ | Class+/Rule+)"
 msgstr "P(Test+ | Sınıf+/Kural+)"
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "PABAK"
 msgstr "PABAK"
 
@@ -33036,7 +33035,7 @@ msgid ""
 "                        despite high observed agreement."
 msgstr ""
 
-#: agreement/results/pabakTable.title
+#: agreement/results/gwetGroup/pabakTable.title
 msgid "PABAK & Prevalence/Bias Indices"
 msgstr "PABAK ve Prevalans/Yanlılık İndeksleri"
 
@@ -33119,12 +33118,12 @@ msgstr ""
 "Örtük sınıf analizi için 'poLCA' paketi gereklidir. Lütfen şu komutla "
 "yükleyin: install.packages('poLCA')"
 
-#: agreement/results/pairedAgreementHeading.title
+#: agreement/results/pairedAgreementGroup.title
 msgid "Paired Agreement & Sample Size"
 msgstr "Eşleştirilmiş Uyum ve Örneklem Büyüklüğü"
 
 #: R/agreement.b.R
-#: agreement/results/pairedAgreementTable.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.title
 msgid "Paired Agreement Comparison"
 msgstr "Eşleştirilmiş Uyum Karşılaştırması"
 
@@ -33318,7 +33317,7 @@ msgstr "paralel test stratejisi"
 msgid "Parallel Testing Strategy"
 msgstr "Paralel Test Stratejisi"
 
-#: agreement/results/agreementSampleSizeTable.columns.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeTable.columns.title
 #: psychopdaROC/results/bootstrapCITable.columns.title
 msgid "Parameter"
 msgstr "Parametre"
@@ -33474,9 +33473,9 @@ msgstr ""
 "katsayıları hiçbir zaman sıfıra daraltmadığı için her tahmin edici tüm "
 "lambda değerlerinde tutulur ve oran yapısı gereği 1.0'dır."
 
-#: agreement/results/categoryDistributionTable.columns.title
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/categoryDistributionTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Pathologist"
 msgstr "Patolog"
 
@@ -33485,7 +33484,7 @@ msgstr "Patolog"
 msgid "Pathologist Agreement (example)"
 msgstr "Patolog Uyumu (örnek)"
 
-#: agreement/results/gradingHeading.title
+#: agreement/results/gradingGroup.title
 msgid "Pathologist Grading Analysis"
 msgstr "Patolog Derecelendirme Analizi"
 
@@ -33646,7 +33645,7 @@ msgstr ""
 msgid "Patient; all of the patient's rows ({unit}) retained"
 msgstr "Hasta; hastanın tüm satırları ({unit}) korunur"
 
-#: agreement/ui[0][5].label
+#: agreement/ui[0][6].label
 msgid "Patient/cluster ID (optional)"
 msgstr ""
 
@@ -33821,11 +33820,11 @@ msgstr "Ceza türü"
 msgid "Per-category item-modal agreement"
 msgstr "Kategori başına madde-mod uyumu"
 
-#: agreement/results/perClassMetricsTable.title
+#: agreement/results/advancedGroup/perClassMetricsTable.title
 msgid "Per-Class Classification Metrics"
 msgstr "Sınıf Başına Sınıflandırma Metrikleri"
 
-#: agreement/results/concordanceF1PerClassTable.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.title
 msgid "Per-Class Concordance F1"
 msgstr "Sınıf Başına Uyum F1"
 
@@ -33837,7 +33836,7 @@ msgstr ""
 msgid "Per-pathologist agreement"
 msgstr "Patolog başına uyum"
 
-#: agreement/results/pathologistTable.title
+#: agreement/results/gradingGroup/pathologistTable.title
 msgid "Per-Pathologist Agreement and Grading Tendency"
 msgstr "Patolog Başına Uyum ve Derecelendirme Eğilimi"
 
@@ -35134,7 +35133,7 @@ msgstr "Kesinlik (Pozitif Öngörü Değeri)"
 
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Precision (PPV)"
 msgstr "Kesinlik (PPD)"
 
@@ -35148,7 +35147,7 @@ msgstr ""
 "boş bırakılmıştır. F1, 2TP/(2TP+FP+FN) olarak hesaplanır; bu değer, olaylar "
 "mevcut olduğu hâlde hiçbiri öngörülmediğinde sıfırdır."
 
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 msgid "Precision (r)"
 msgstr "Kesinlik (r)"
 
@@ -35186,7 +35185,7 @@ msgstr "Duyarlılık-Duyarlık Grafiği Hatası"
 msgid "Predefined acceptable limit based on clinical significance"
 msgstr ""
 
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 msgid "Predicted"
 msgstr "Tahmin Edilen"
 
@@ -35238,18 +35237,6 @@ msgid ""
 "decision curve analysis."
 msgstr ""
 
-#: agreement/options/predictionColumn.title
-msgid "Prediction column (first rater)"
-msgstr "Tahmin sütunu (ilk değerlendirici)"
-
-#: R/agreement.b.R
-msgid ""
-"Prediction column %1$d exceeds number of raters (%2$d). Using last rater "
-"column instead."
-msgstr ""
-"Tahmin sütunu %1$d, değerlendirici sayısını (%2$d) aşıyor. Bunun yerine son "
-"değerlendirici sütunu kullanılıyor."
-
 #: R/agreement.b.R
 msgid "Prediction column: %1$s. Reference annotators: %2$s."
 msgstr "Tahmin sütunu: %1$s. Referans işaretleyiciler: %2$s."
@@ -35262,6 +35249,11 @@ msgstr "Tahmin Modelleri"
 #: decisioncurve/ui[0][1].label
 msgid "Prediction Models/Variables"
 msgstr "Tahmin Modelleri/Değişkenleri"
+
+#: agreement/options/predictionRater.title
+#: agreement/ui[0][5].label
+msgid "Prediction rater (multi-annotator concordance)"
+msgstr "Tahmin değerlendiricisi (çoklu açıklayıcı uyumu)"
 
 #: R/decisioncurve.b.R
 msgid "Prediction Requirement"
@@ -35603,7 +35595,7 @@ msgstr ""
 "Çalışma ve hedef ortamlar farklı olduğunda prevalans ekstrapolasyonu PÖD ve "
 "NÖD'yi yanlış yansıtabilir."
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "Prevalence Index"
 msgstr "Prevalans İndeksi"
 
@@ -36007,8 +35999,8 @@ msgstr "Öngörülen Gerçek Pozitifler"
 msgid "Projected Unnecessary Treatments"
 msgstr "Öngörülen Gereksiz Tedaviler"
 
-#: agreement/results/mixedEffectsVarianceTable.columns.title
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 msgid "Proportion"
 msgstr "Oran"
 
@@ -36112,7 +36104,7 @@ msgstr "Sonucun var olduğu doğrulanan deneklerin oranı"
 msgid "Proportion of subjects with the outcome ruled out"
 msgstr "Sonucun olmadığı dışlanan deneklerin oranı"
 
-#: agreement/results/varianceDecompositionTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
 msgid "Proportion of Total"
 msgstr "Toplamın Oranı"
 
@@ -36333,7 +36325,7 @@ msgstr ""
 msgid "Quantile positions"
 msgstr "Kantil konumları"
 
-#: agreement/results/latentModelTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
 msgid "Quantity"
 msgstr "Nicelik"
 
@@ -36413,11 +36405,11 @@ msgstr ""
 msgid "raised to %sx of prevalence"
 msgstr "prevalansın %sx katına yükseldi"
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Random (residual) variance"
 msgstr "Rastgele (artık) varyans"
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Random %"
 msgstr "Rastgele %"
 
@@ -36472,7 +36464,7 @@ msgid "Random seed: {seed}"
 msgstr "Rastgelelik tohumu: {seed}"
 
 #: R/agreement.b.R
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Random share"
 msgstr "Rastgele pay"
 
@@ -36525,7 +36517,7 @@ msgid "Range Type"
 msgstr "Aralık Türü"
 
 #: agreement/results/pairwiseKappaTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
 msgid "Rank"
 msgstr "Sıra"
 
@@ -36594,12 +36586,12 @@ msgstr ""
 
 #: R/agreement.b.R
 #: agreement/results/pairwiseKappaTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/raterClusterTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
 msgid "Rater"
 msgstr "Değerlendirici"
 
-#: agreement/results/raterClusterHeading.title
+#: agreement/results/raterClusterGroup.title
 msgid "Rater & Case Clustering"
 msgstr "Değerlendirici ve Olgu Kümeleme"
 
@@ -36608,14 +36600,14 @@ msgid "Rater A"
 msgstr "Değerlendirici A"
 
 #: agreement/ui[7].label
-msgid "Rater and case diagnostics"
+msgid "Rater and Case Diagnostics"
 msgstr "Değerlendirici ve olgu tanılamaları"
 
 #: agreement/results/allPairsKappaTable.columns.title
 msgid "Rater B"
 msgstr "Değerlendirici B"
 
-#: agreement/results/raterClusterTable.title
+#: agreement/results/raterClusterGroup/raterClusterTable.title
 msgid "Rater Cluster Assignments"
 msgstr "Değerlendirici Küme Atamaları"
 
@@ -36632,11 +36624,11 @@ msgid "Rater clustering (identify rating pattern groups)"
 msgstr "Değerlendirici kümeleme (puanlama deseni gruplarını belirleme)"
 
 #: R/agreement.b.R
-#: agreement/results/raterDendrogram.title
+#: agreement/results/raterClusterGroup/raterDendrogram.title
 msgid "Rater Clustering Dendrogram"
 msgstr "Değerlendirici Kümeleme Dendrogramı"
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Rater Pair"
 msgstr "Değerlendirici Çifti"
 
@@ -36666,7 +36658,7 @@ msgid ""
 "differences{tag4} in how raters use the rating scale."
 msgstr ""
 
-#: agreement/results/raterClusterHeatmap.title
+#: agreement/results/raterClusterGroup/raterClusterHeatmap.title
 msgid "Rater Similarity Heatmap with Clusters"
 msgstr "Kümelerle Değerlendirici Benzerlik Isı Haritası"
 
@@ -36674,7 +36666,7 @@ msgstr "Kümelerle Değerlendirici Benzerlik Isı Haritası"
 msgid "Rater Similarity Matrix (Clustered)"
 msgstr "Değerlendirici Benzerlik Matrisi (Kümelenmiş)"
 
-#: agreement/results/maxwellRETable.title
+#: agreement/results/maxwellREGroup/maxwellRETable.title
 msgid "Rater Variance Decomposition - Systematic vs Random Disagreement"
 msgstr "Değerlendirici Varyans Ayrıştırması - Sistematik ve Rastgele Uyuşmazlık"
 
@@ -36692,19 +36684,19 @@ msgstr ""
 #: agreement/options/vars.title
 #: agreement/ui[0][0].label
 #: agreement/results/irrtable.columns.title
-#: agreement/results/krippTable.columns.title
-#: agreement/results/lightKappaTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/hierarchicalOverallTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 #: kappaSizeCI/ui[0][1][0][0]/raters.label
 #: kappaSizeFixedN/ui[0][1][0][0]/raters.label
 #: kappaSizePower/ui[0][1][0][0]/raters.label
@@ -36729,15 +36721,15 @@ msgstr ""
 msgid "Raters have similar marginal distributions"
 msgstr ""
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Raters/Methods"
 msgstr "Değerlendiriciler / Yöntemler"
 
-#: agreement/results/ratingCombinationsTable.title
+#: agreement/results/contingencyTableGroup/ratingCombinationsTable.title
 msgid "Rating Combinations (3+ Raters)"
 msgstr "Değerlendirme Kombinasyonları (3+ Değerlendirici)"
 
-#: agreement/results/categoryDistributionTable.columns.title
+#: agreement/results/gradingGroup/categoryDistributionTable.columns.title
 msgid "Ratings"
 msgstr "Değerlendirmeler"
 
@@ -36943,7 +36935,7 @@ msgstr "Duyarlık (Recall)"
 
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Recall (Sensitivity)"
 msgstr "Duyarlılık / Yakalama (Recall)"
 
@@ -36992,7 +36984,7 @@ msgstr "prevalansın %sx katına düştü"
 
 #: R/agreement.b.R
 #: R/enhancedROC.b.R
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 #: lassologistic/results/methodComparison.columns.title
 #: psychopdaROC/results/idiTable.columns.title
 #: psychopdaROC/results/nriTable.columns.title
@@ -37790,7 +37782,7 @@ msgstr ""
 msgid "Robinson's A (ordinal agreement index)"
 msgstr "Robinson'ın A katsayısı (sıralı uyum indeksi)"
 
-#: agreement/results/robinsonATable.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.title
 msgid "Robinson's A (Ordinal Agreement Index) Results"
 msgstr "Robinson'ın A Katsayısı (Sıralı Uyum İndeksi) Sonuçları"
 
@@ -38251,7 +38243,7 @@ msgid "Rule Positive Level Required"
 msgstr "Kural Pozitif Düzeyi Gerekli"
 
 #: decisioncombine/ui[2].label
-msgid "Rule ranking"
+msgid "Rule Ranking"
 msgstr "Kural sıralaması"
 
 #: R/decisioncombine.b.R
@@ -38386,7 +38378,7 @@ msgstr "Örneklem büyüklüğü tahmini"
 msgid "Sample Size for Agreement Studies"
 msgstr ""
 
-#: agreement/results/agreementSampleSizeTable.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeTable.title
 msgid "Sample Size for Agreement Study"
 msgstr "Uyum Çalışması İçin Örneklem Büyüklüğü"
 
@@ -38461,7 +38453,7 @@ msgstr "Örnekleme Tasarımı"
 msgid "Sampling unit"
 msgstr "Örnekleme birimi"
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Sampling units"
 msgstr ""
 
@@ -38496,7 +38488,7 @@ msgstr ""
 "sınıflandırma gruplarını diğer analizlerde kullanmanıza olanak tanır."
 
 #: decisioncombine/ui[4].label
-msgid "Save to data"
+msgid "Save to Data"
 msgstr "Veriye kaydet"
 
 #: lassologistic/ui[6][0].label
@@ -38652,19 +38644,19 @@ msgstr "Tarama Testi Değerlendirmesi (örnek)"
 msgid "Screening Tests (Rule-Out):"
 msgstr "Tarama Testleri (Dışlama):"
 
-#: agreement/results/varianceDecompositionTable.columns.title
-#: agreement/results/mixedEffectsVarianceTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
 msgid "SD"
 msgstr "SS"
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "SD of Difference"
 msgstr "Farkın Standart Sapması"
 
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/latentModelTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
 msgid "SE"
 msgstr "SH (Standart Hata)"
 
@@ -39039,6 +39031,14 @@ msgstr ""
 "Pozitif referans düzeyini seçin. Bu, saptamak ya da tanılamak istediğiniz "
 "durumu temsil eder. Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz "
 "ve seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
+
+#: R/agreement.b.R
+msgid ""
+"Select the prediction rater: the rater whose ratings are evaluated against "
+"the others."
+msgstr ""
+"Tahmin değerlendiricisini seçin: değerlendirmeleri diğerlerine karşı sınanan "
+"değerlendirici."
 
 #: decisioncombine/options/gold.description.ui
 msgid ""
@@ -39691,11 +39691,11 @@ msgstr "Gölgeli: %{level} noktasal GA"
 msgid "Shaded: {level}% simultaneous band"
 msgstr "Gölgeli: %{level} eşzamanlı bant"
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Shapiro-Wilk W"
 msgstr "Shapiro-Wilk W"
 
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Shared Cases"
 msgstr "Ortak Olgular"
 
@@ -40444,11 +40444,11 @@ msgid "Spearman Rho vs Other Ordinal Measures"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Specific Agreement"
 msgstr "Özgül Uyum"
 
-#: agreement/results/specificAgreementTable.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.title
 msgid "Specific Agreement Indices (Category-Focused Agreement)"
 msgstr "Özgül Uyum İndeksleri (Kategori Odaklı Uyum)"
 
@@ -40729,8 +40729,8 @@ msgstr "Standartlaştırılmış Net Fayda (NF / Prevalans)"
 msgid "Standardized net benefit plot"
 msgstr "Standartlaştırılmış net fayda grafiği"
 
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
 #: decisioncombine/ui[3][4]/filterStatistic.label
 #: decisioncombine/results/combinationTableCI.columns.title
@@ -40942,7 +40942,7 @@ msgstr ""
 "bir sonlanım ya da sansürlenmiş sağkalım verileri için zamana bağlı ROC "
 "analizi kullanın."
 
-#: agreement/results/gwetTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
 msgid "Std. Error"
 msgstr "Std. Hata"
 
@@ -41104,7 +41104,7 @@ msgstr "Tabaka"
 msgid "Strict Accuracy (vs Consensus)"
 msgstr "Katı Doğruluk (Konsensüse Göre)"
 
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 msgid "Strict F1"
 msgstr "Katı F1 Skoru"
 
@@ -41170,7 +41170,7 @@ msgstr "Stuart-Maxwell testi (2 değerlendirici için marjinal homojenlik)"
 msgid "Stuart-Maxwell Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr "Stuart-Maxwell Testi [Kategorik] (Marjinal Homojenlik, 2 Değerlendirici)"
 
-#: agreement/results/stuartMaxwellTable.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.title
 msgid "Stuart-Maxwell Test for Marginal Homogeneity"
 msgstr "Marjinal Homojenlik İçin Stuart-Maxwell Testi"
 
@@ -41222,12 +41222,9 @@ msgstr ""
 "Hataları her bir örtük sınıf içinde makul düzeyde bağımsız olan en az üç "
 "test içeren çalışmalar."
 
-#: agreement/results/designSummaryTable.title
-msgid "Study Design"
-msgstr ""
-
 #: agreement/ui[9].label
-msgid "Study design"
+#: agreement/results/gradingGroup/designSummaryTable.title
+msgid "Study Design"
 msgstr "Çalışma tasarımı"
 
 #: agreement/options/gradingDesign.title
@@ -41284,7 +41281,7 @@ msgstr ""
 "yoktur; bu nedenle bu alt grupta %3$s analiz edilemez."
 
 #: R/psychopdaROC.b.R
-#: agreement/ui[0][6].label
+#: agreement/ui[0][7].label
 msgid "Subgroup Variable"
 msgstr "Alt Grup Değişkeni"
 
@@ -41408,7 +41405,7 @@ msgstr "Nitelikli Çoğunluk (>=%75)"
 msgid "supermajority, at least 75%"
 msgstr ""
 
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Support"
 msgstr "Destek (Örnek Sayısı)"
 
@@ -41429,11 +41426,11 @@ msgstr ""
 msgid "Symmetric ratio; binomial CI not applicable"
 msgstr "Simetrik oran; binom GA uygulanamaz"
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Systematic (rater) variance"
 msgstr "Sistematik (değerlendirici) varyansı"
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Systematic %"
 msgstr "Sistematik %"
 
@@ -41594,7 +41591,7 @@ msgstr "Hedef Değer"
 msgid "TDI Advantage"
 msgstr ""
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "TDI Estimate"
 msgstr "TDI Tahmini"
 
@@ -41654,7 +41651,7 @@ msgstr "Teknik Notlar"
 msgid "Technical Reference: irr::icc() Parameters"
 msgstr ""
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Tendency"
 msgstr "Eğilim"
 
@@ -41666,7 +41663,7 @@ msgstr ""
 msgid "Tentative conclusions only"
 msgstr "Yalnızca geçici sonuçlar"
 
-#: agreement/results/mixedEffectsTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
 msgid "Term"
 msgstr "Terim"
 
@@ -41685,10 +41682,10 @@ msgstr "Üçte Birlikler (Veriye Dayalı)"
 #: R/agreement.b.R
 #: R/decision.b.R
 #: R/decisioncompare.b.R
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/homogeneityTestTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
 #: cotest/results/testParamsTable.columns.title
 #: decision/results/comparatorCounts.columns.title
 #: decision/results/comparatorPopulation.columns.title
@@ -42221,7 +42218,7 @@ msgstr "Test duyarlılığı"
 msgid "Test specificity"
 msgstr "Test özgüllüğü"
 
-#: agreement/results/homogeneityTestTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
 #: enhancedROC/results/results/rocComparisons.columns.title
 #: enhancedROC/results/results/statisticalSummary.columns.title
 msgid "Test Statistic"
@@ -45333,6 +45330,10 @@ msgstr ""
 "çok azdır. Bu durum belirteç çok az farklı değere sahip olduğunda ya da çok "
 "sayıda eşit değer (bağ) içerdiğinde ortaya çıkar."
 
+#: R/agreement.b.R
+msgid "The prediction rater {name} must also be selected under Raters."
+msgstr "Tahmin değerlendiricisi {name}, Değerlendiriciler altında da seçilmelidir."
+
 #: R/decision.b.R
 msgid ""
 "The predictive values above are computed by Bayes' theorem at the assumed "
@@ -48035,7 +48036,7 @@ msgstr ""
 msgid "Tied Descriptive Ranking"
 msgstr "Eşit Betimsel Sıralama"
 
-#: agreement/results/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
 msgid "Time Points"
 msgstr "Zaman Noktaları"
 
@@ -48265,7 +48266,7 @@ msgstr "Referans pozitif deneklerin toplam sayısı"
 msgid "Total number of subjects"
 msgstr "Toplam denek sayısı"
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Total Positive"
 msgstr "Toplam Pozitif"
 
@@ -48736,7 +48737,7 @@ msgstr "tanımsız"
 msgid "Undefined because the Model 2 value is 0."
 msgstr "Model 2 değeri 0 olduğundan tanımsız."
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Undefined draws"
 msgstr ""
 
@@ -48974,9 +48975,9 @@ msgstr ""
 "Duyarlılık ve özgüllüğün ağırlıksız ortalaması; iki hata türü için farklı "
 "sonuçları kodlamaz."
 
-#: agreement/results/bootstrapCITable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 #: decision/results/epirTable_ratio.columns.title
 #: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
@@ -49020,7 +49021,7 @@ msgstr ""
 msgid "Upper end of the partial AUC range; it must be greater than the lower end."
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Upper LoA"
 msgstr "Üst Uyum Sınırı (LoA)"
 
@@ -49207,7 +49208,7 @@ msgid ""
 "{tag13}({tag14}{tag15}x{tag16}{tag17}{tag18}y{tag19}) (location shift)"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: enhancedROC/results/results/frozenMetrics.columns.title
 msgid "Valid draws"
 msgstr "Geçerli çekimler"
@@ -49280,11 +49281,11 @@ msgstr "Doğrulama Kaynağı"
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/designSummaryTable.columns.title
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
-#: agreement/results/agreementSampleSizeTable.columns.title
+#: agreement/results/gradingGroup/designSummaryTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeTable.columns.title
 #: decision/results/referenceDefinition.columns.title
 #: decision/results/validationContext.columns.title
 #: decisioncompare/results/referenceDefinition.columns.title
@@ -49403,16 +49404,16 @@ msgstr "Analiz edilen değişkenler"
 msgid "Variables Must Be Distinct"
 msgstr "Değişkenler Farklı Olmalıdır"
 
-#: agreement/results/varianceDecompositionTable.columns.title
-#: agreement/results/mixedEffectsVarianceTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
 msgid "Variance"
 msgstr "Varyans"
 
-#: agreement/results/varianceDecompositionTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
 msgid "Variance Component"
 msgstr "Varyans Bileşeni"
 
-#: agreement/results/varianceDecompositionTable.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.title
 msgid "Variance Component Decomposition"
 msgstr "Varyans Bileşeni Ayrıştırması"
 

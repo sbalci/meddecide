@@ -30,14 +30,25 @@ their defaults (see the R note).
   preset greys Youden index optimization and, except for Research, the minimum sensitivity and
   specificity boxes, since the preset sets them.
 - **Panels grouped by the question you are asking.** Interrater Reliability's 38 option boxes are
-  now nine: General Options, Categorical, Ordinal, Continuous, Any data type, Tests, Rater and
-  case diagnostics, Computed variables and Study design, each method under its own heading. The
+  now nine: General Options, Categorical, Ordinal, Continuous, Any Data Type, Tests, Rater and
+  Case Diagnostics, Computed Variables and Study Design, each method under its own heading. The
   shared settings (exact kappa, multiple-testing correction, number of bootstrap samples) are in
   General Options. Combine Medical Decision Tests splits its display options into Tables, Rule
-  ranking, Plots (with the plot filters) and Save to data. In Clinical ROC Analysis the analysis
+  Ranking, Plots (with the plot filters) and Save to Data. In Clinical ROC Analysis the analysis
   settings are in their own box, each heading holds the options under it, and the cost ratio sits
   under the cutpoint method that uses it. Co-Testing Analysis' display options are a collapsed box.
   Nothing is computed differently, and saved analyses keep their settings.
+- **Interrater Reliability results are grouped under their section headings.** Each heading and
+  its tables form one group that shows only when something in it is shown, so the empty heading
+  lines are gone from the output and from copies and exports. Results saved in an older file are
+  recomputed when it is opened.
+- **Name the prediction rater** in Interrater Reliability's multi-annotator concordance, in a
+  variable box, instead of typing its position in the Raters list. It must also be one of the
+  raters. The "Standardize quantitative ratings" box is gone, as it never changed single-variable
+  iota.
+- **R users:** in `agreement()`, `predictionColumn = 1` is now `predictionRater = "<column>"`.
+  Results that sat under a heading are one level down, for example
+  `result$krippTableGroup$krippTable`.
 - **Clinical ROC Analysis** no longer offers "Explain why within-cohort meta-analysis is
   unavailable"; the option remains for saved analyses and R calls.
 - **Validation context boxes greyed when unused.** In Medical Decision, cohort role, sampling

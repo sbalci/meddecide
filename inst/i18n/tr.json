@@ -5089,7 +5089,7 @@
             "Any crossed rater x case x condition design": [
                 ""
             ],
-            "Any data type": [
+            "Any Data Type": [
                 "Her veri türü"
             ],
             "Any number of raters": [
@@ -7411,7 +7411,7 @@
             "Computed on the full sample: the subgroup variable is not applied to this table.": [
                 "Tüm örneklem üzerinden hesaplanmıştır: alt grup değişkeni bu tabloya uygulanmaz."
             ],
-            "Computed variables": [
+            "Computed Variables": [
                 "Hesaplanan değişkenler"
             ],
             "Computed Variables Added to Dataset": [
@@ -16561,12 +16561,6 @@
             "Predicted risks from three cardiac risk models and the observed events, for decision curve analysis.": [
                 ""
             ],
-            "Prediction column (first rater)": [
-                "Tahmin sütunu (ilk değerlendirici)"
-            ],
-            "Prediction column %1$d exceeds number of raters (%2$d). Using last rater column instead.": [
-                "Tahmin sütunu %1$d, değerlendirici sayısını (%2$d) aşıyor. Bunun yerine son değerlendirici sütunu kullanılıyor."
-            ],
             "Prediction column: %1$s. Reference annotators: %2$s.": [
                 "Tahmin sütunu: %1$s. Referans işaretleyiciler: %2$s."
             ],
@@ -16575,6 +16569,9 @@
             ],
             "Prediction Models/Variables": [
                 "Tahmin Modelleri/Değişkenleri"
+            ],
+            "Prediction rater (multi-annotator concordance)": [
+                "Tahmin değerlendiricisi (çoklu açıklayıcı uyumu)"
             ],
             "Prediction Requirement": [
                 "Tahmin Gereksinimi"
@@ -17260,7 +17257,7 @@
             "Rater A": [
                 "Değerlendirici A"
             ],
-            "Rater and case diagnostics": [
+            "Rater and Case Diagnostics": [
                 "Değerlendirici ve olgu tanılamaları"
             ],
             "Rater B": [
@@ -18112,7 +18109,7 @@
             "Rule Positive Level Required": [
                 "Kural Pozitif Düzeyi Gerekli"
             ],
-            "Rule ranking": [
+            "Rule Ranking": [
                 "Kural sıralaması"
             ],
             "Rules Left Empty in the Forest Plot": [
@@ -18235,7 +18232,7 @@
             "Save the classification results (True Positive, False Positive, False Negative, True Negative) as a new column in your dataset. This allows you to use the classification groups in other analyses.": [
                 "Sınıflandırma sonuçlarını (Gerçek Pozitif, Yanlış Pozitif, Yanlış Negatif, Gerçek Negatif) veri kümenizde yeni bir sütun olarak kaydedin. Bu, sınıflandırma gruplarını diğer analizlerde kullanmanıza olanak tanır."
             ],
-            "Save to data": [
+            "Save to Data": [
                 "Veriye kaydet"
             ],
             "Save Variables": [
@@ -18507,6 +18504,9 @@
             ],
             "Select the positive reference level. This represents the condition you want to detect or diagnose. It must be chosen: it is never taken from the order of the levels, and until it is chosen the analysis lists the levels found and computes nothing.": [
                 "Pozitif referans düzeyini seçin. Bu, saptamak ya da tanılamak istediğiniz durumu temsil eder. Seçilmesi zorunludur: düzeylerin sırasından asla alınmaz ve seçilene kadar analiz bulunan düzeyleri listeler, hiçbir şey hesaplamaz."
+            ],
+            "Select the prediction rater: the rater whose ratings are evaluated against the others.": [
+                "Tahmin değerlendiricisini seçin: değerlendirmeleri diğerlerine karşı sınanan değerlendirici."
             ],
             "Select the reference standard (e.g., biopsy, final diagnosis). This represents the reference classification. Binary variables are intended; with additional levels, all non-positive levels are grouped as negative and a warning is shown.": [
                 "Referans standardı seçin (ör. biyopsi, nihai tanı). Bu, referans sınıflandırmayı temsil eder. İkili değişkenler amaçlanmıştır; ek düzeyler olduğunda, pozitif olmayan tüm düzeyler negatif olarak gruplandırılır ve bir uyarı gösterilir."
@@ -19577,9 +19577,6 @@
                 "Hataları her bir örtük sınıf içinde makul düzeyde bağımsız olan en az üç test içeren çalışmalar."
             ],
             "Study Design": [
-                ""
-            ],
-            "Study design": [
                 "Çalışma tasarımı"
             ],
             "Study design and category distribution": [
@@ -21108,6 +21105,9 @@
             ],
             "The predicted risks of %1$s take only %2$s distinct values, too few for Hosmer-Lemeshow grouping, which needs at least 3 distinct quantile break points. This happens when the marker has very few distinct values or is heavily tied.": [
                 "%1$s için tahmin edilen riskler yalnızca %2$s farklı değer alıyor; bu, en az 3 farklı kantil kesme noktası gerektiren Hosmer-Lemeshow gruplandırması için çok azdır. Bu durum belirteç çok az farklı değere sahip olduğunda ya da çok sayıda eşit değer (bağ) içerdiğinde ortaya çıkar."
+            ],
+            "The prediction rater {name} must also be selected under Raters.": [
+                "Tahmin değerlendiricisi {name}, Değerlendiriciler altında da seçilmelidir."
             ],
             "The predictive values above are computed by Bayes' theorem at the assumed population prevalence stated above, not at the prevalence observed in this sample, so no confidence interval is given for them.": [
                 "Yukarıdaki öngörü değerleri, bu örneklemde gözlemlenen prevalansta değil, yukarıda belirtilen varsayılmış popülasyon prevalansında Bayes teoremi ile hesaplanmıştır; bu nedenle bunlar için güven aralığı verilmemiştir."

@@ -8049,20 +8049,20 @@ msgid "95% CI"
 msgstr ""
 
 #: agreement/results/irrtable.columns.title
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/boundaryTable.columns.title
-#: agreement/results/latentModelTable.columns.title
-#: agreement/results/robinsonATable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
 #: agreement/results/itemModalAgreementTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: psychopdaROC/results/aucSummaryTable.columns.title
 #: psychopdaROC/results/delongComparisonTable.columns.title
 #: psychopdaROC/results/idiTable.columns.title
@@ -8073,20 +8073,20 @@ msgid "95% CI Lower"
 msgstr ""
 
 #: agreement/results/irrtable.columns.title
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/boundaryTable.columns.title
-#: agreement/results/latentModelTable.columns.title
-#: agreement/results/robinsonATable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
 #: agreement/results/itemModalAgreementTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: psychopdaROC/results/aucSummaryTable.columns.title
 #: psychopdaROC/results/delongComparisonTable.columns.title
 #: psychopdaROC/results/idiTable.columns.title
@@ -8753,7 +8753,7 @@ msgstr ""
 msgid "About Agreement Heatmap"
 msgstr ""
 
-#: agreement/results/agreementSampleSizeExplanation.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeExplanation.title
 msgid "About Agreement Sample Size"
 msgstr ""
 
@@ -8765,27 +8765,27 @@ msgstr ""
 msgid "About analysis content unavailable"
 msgstr ""
 
-#: agreement/results/bhapkarExplanation.title
+#: agreement/results/raterBiasGroup/bhapkarExplanation.title
 msgid "About Bhapkar Test"
 msgstr ""
 
-#: agreement/results/blandAltmanExplanation.title
+#: agreement/results/blandAltmanGroup/blandAltmanExplanation.title
 msgid "About Bland-Altman Analysis"
 msgstr ""
 
-#: agreement/results/bootstrapCIExplanation.title
+#: agreement/results/advancedGroup/bootstrapCIExplanation.title
 msgid "About Bootstrap Confidence Intervals"
 msgstr ""
 
-#: agreement/results/caseClusterExplanation.title
+#: agreement/results/raterClusterGroup/caseClusterExplanation.title
 msgid "About Case Clustering"
 msgstr ""
 
-#: agreement/results/confusionMatrixExplanation.title
+#: agreement/results/advancedGroup/confusionMatrixExplanation.title
 msgid "About Confusion Matrix"
 msgstr ""
 
-#: agreement/results/contingencyTableExplanation.title
+#: agreement/results/contingencyTableGroup/contingencyTableExplanation.title
 msgid "About Contingency Table & Rating Combinations"
 msgstr ""
 
@@ -8797,15 +8797,15 @@ msgstr ""
 msgid "About diagnostic-test evaluation"
 msgstr ""
 
-#: agreement/results/raterBiasExplanation.title
+#: agreement/results/raterBiasGroup/raterBiasExplanation.title
 msgid "About Directional Discordance Test"
 msgstr ""
 
-#: agreement/results/finnExplanation.title
+#: agreement/results/lightKappaTableGroup/finnExplanation.title
 msgid "About Finn Coefficient"
 msgstr ""
 
-#: agreement/results/gwetExplanation.title
+#: agreement/results/gwetGroup/gwetExplanation.title
 msgid "About Gwet's AC Coefficient"
 msgstr ""
 
@@ -8816,43 +8816,43 @@ msgid ""
 "way (check Positive class, then Direction)"
 msgstr ""
 
-#: agreement/results/hierarchicalExplanation.title
+#: agreement/results/hierarchicalGroup/hierarchicalExplanation.title
 msgid "About Hierarchical/Multilevel Kappa"
 msgstr ""
 
-#: agreement/results/interIntraRaterExplanation.title
+#: agreement/results/maxwellREGroup/interIntraRaterExplanation.title
 msgid "About Inter/Intra-Rater Reliability"
 msgstr ""
 
-#: agreement/results/iccExplanation.title
+#: agreement/results/iccGroup/iccExplanation.title
 msgid "About Intraclass Correlation Coefficient (ICC)"
 msgstr ""
 
-#: agreement/results/iotaExplanation.title
+#: agreement/results/maxwellREGroup/iotaExplanation.title
 msgid "About Iota Coefficient"
 msgstr ""
 
-#: agreement/results/kendallWExplanation.title
+#: agreement/results/lightKappaTableGroup/kendallWExplanation.title
 msgid "About Kendall's W"
 msgstr ""
 
-#: agreement/results/krippExplanation.title
+#: agreement/results/krippTableGroup/krippExplanation.title
 msgid "About Krippendorff's Alpha"
 msgstr ""
 
-#: agreement/results/lightKappaExplanation.title
+#: agreement/results/lightKappaTableGroup/lightKappaExplanation.title
 msgid "About Light's Kappa"
 msgstr ""
 
-#: agreement/results/linCCCExplanation.title
+#: agreement/results/iccGroup/linCCCExplanation.title
 msgid "About Lin's Concordance Correlation Coefficient"
 msgstr ""
 
-#: agreement/results/meanPearsonExplanation.title
+#: agreement/results/iccGroup/meanPearsonExplanation.title
 msgid "About Mean Pearson Correlation"
 msgstr ""
 
-#: agreement/results/meanSpearmanExplanation.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanExplanation.title
 msgid "About Mean Spearman Rho"
 msgstr ""
 
@@ -8860,19 +8860,19 @@ msgstr ""
 msgid "About Medical Decision Test Comparison"
 msgstr ""
 
-#: agreement/results/mixedEffectsExplanation.title
+#: agreement/results/advancedGroup/mixedEffectsExplanation.title
 msgid "About Mixed-Effects Condition Comparison"
 msgstr ""
 
-#: agreement/results/concordanceF1Explanation.title
+#: agreement/results/advancedGroup/concordanceF1Explanation.title
 msgid "About Multi-Annotator Concordance"
 msgstr ""
 
-#: agreement/results/pabakExplanation.title
+#: agreement/results/gwetGroup/pabakExplanation.title
 msgid "About PABAK & Prevalence/Bias Indices"
 msgstr ""
 
-#: agreement/results/pairedAgreementExplanation.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementExplanation.title
 msgid "About Paired Agreement Comparison"
 msgstr ""
 
@@ -8884,7 +8884,7 @@ msgstr ""
 msgid "About Per-Category Item-Modal Agreement"
 msgstr ""
 
-#: agreement/results/raterClusterExplanation.title
+#: agreement/results/raterClusterGroup/raterClusterExplanation.title
 msgid "About Rater Clustering"
 msgstr ""
 
@@ -8892,23 +8892,23 @@ msgstr ""
 msgid "About Rater Profile Plots"
 msgstr ""
 
-#: agreement/results/robinsonAExplanation.title
+#: agreement/results/lightKappaTableGroup/robinsonAExplanation.title
 msgid "About Robinson's A"
 msgstr ""
 
-#: agreement/results/specificAgreementExplanation.title
+#: agreement/results/specificAgreementGroup/specificAgreementExplanation.title
 msgid "About Specific Agreement Indices"
 msgstr ""
 
-#: agreement/results/stuartMaxwellExplanation.title
+#: agreement/results/raterBiasGroup/stuartMaxwellExplanation.title
 msgid "About Stuart-Maxwell Test"
 msgstr ""
 
-#: agreement/results/gradingGuide.title
+#: agreement/results/gradingGroup/gradingGuide.title
 msgid "About the Pathologist Grading Analysis"
 msgstr ""
 
-#: agreement/results/maxwellREExplanation.title
+#: agreement/results/maxwellREGroup/maxwellREExplanation.title
 msgid "About the rater variance decomposition"
 msgstr ""
 
@@ -8934,7 +8934,7 @@ msgstr ""
 msgid "About this analysis"
 msgstr ""
 
-#: agreement/results/tdiExplanation.title
+#: agreement/results/iccGroup/tdiExplanation.title
 msgid "About Total Deviation Index (TDI)"
 msgstr ""
 
@@ -8966,7 +8966,7 @@ msgid ""
 "0.40 to below 0.60)"
 msgstr ""
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "Acceptable Limit"
 msgstr ""
 
@@ -9004,7 +9004,7 @@ msgstr ""
 msgid "accuracy"
 msgstr ""
 
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 msgid "Accuracy (Cb)"
 msgstr ""
 
@@ -9118,7 +9118,7 @@ msgid ""
 "corrected for it. Needs the ranking and at least two tests."
 msgstr ""
 
-#: agreement/results/lightKappaTableHeading.title
+#: agreement/results/lightKappaTableGroup.title
 msgid "Additional Categorical Agreement Measures"
 msgstr ""
 
@@ -9229,7 +9229,7 @@ msgid ""
 "unadjusted."
 msgstr ""
 
-#: agreement/results/advancedHeading.title
+#: agreement/results/advancedGroup.title
 msgid "Advanced Agreement Analyses"
 msgstr ""
 
@@ -9522,7 +9522,7 @@ msgstr ""
 msgid "agreement_level"
 msgstr ""
 
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Agreements (TP)"
 msgstr ""
 
@@ -9722,7 +9722,7 @@ msgid "Almost perfect concordance"
 msgstr ""
 
 #: R/lassologistic.b.R
-#: agreement/results/krippTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
 #: enhancedROC/results/results/crocAnalysisTable.columns.title
 #: kappaSizeCI/ui[4][0][0]/alpha.label
 #: kappaSizeFixedN/ui[3][0][0]/alpha.label
@@ -10200,7 +10200,7 @@ msgid "Any crossed rater x case x condition design"
 msgstr ""
 
 #: agreement/ui[5].label
-msgid "Any data type"
+msgid "Any Data Type"
 msgstr ""
 
 #: R/agreement.b.R
@@ -10675,7 +10675,7 @@ msgid ""
 "here."
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Attempted draws"
 msgstr ""
 
@@ -11006,8 +11006,8 @@ msgstr ""
 msgid "Avg Agreement %"
 msgstr ""
 
-#: agreement/results/raterClusterTable.columns.title
-#: agreement/results/caseClusterTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
+#: agreement/results/raterClusterGroup/caseClusterTable.columns.title
 msgid "Avg Within-Cluster Similarity"
 msgstr ""
 
@@ -11294,7 +11294,7 @@ msgstr ""
 msgid "Bhapkar Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr ""
 
-#: agreement/results/bhapkarTable.title
+#: agreement/results/raterBiasGroup/bhapkarTable.title
 msgid "Bhapkar Test for Marginal Homogeneity"
 msgstr ""
 
@@ -11330,11 +11330,11 @@ msgid ""
 "sample grows."
 msgstr ""
 
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 msgid "Bias"
 msgstr ""
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "Bias Index"
 msgstr ""
 
@@ -11430,11 +11430,11 @@ msgid ""
 "%d were available."
 msgstr ""
 
-#: agreement/results/blandAltmanHeading.title
+#: agreement/results/blandAltmanGroup.title
 msgid "Bland-Altman Method Comparison"
 msgstr ""
 
-#: agreement/results/blandAltman.title
+#: agreement/results/blandAltmanGroup/blandAltman.title
 msgid "Bland-Altman Plot"
 msgstr ""
 
@@ -11446,7 +11446,7 @@ msgstr ""
 msgid "Bland-Altman Plot (Visual Assessment)"
 msgstr ""
 
-#: agreement/results/blandAltmanStats.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.title
 msgid "Bland-Altman Statistics"
 msgstr ""
 
@@ -11469,7 +11469,7 @@ msgstr ""
 msgid "Bonferroni"
 msgstr ""
 
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 msgid "Boot SE"
 msgstr ""
 
@@ -11579,7 +11579,7 @@ msgstr ""
 msgid "Bootstrap confidence intervals apply to the one-vs-rest strategy only."
 msgstr ""
 
-#: agreement/results/bootstrapCITable.title
+#: agreement/results/advancedGroup/bootstrapCITable.title
 msgid "Bootstrap Confidence Intervals for Agreement Metrics"
 msgstr ""
 
@@ -11752,7 +11752,7 @@ msgstr ""
 msgid "Both Negative LR"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Both Positive"
 msgstr ""
 
@@ -11788,11 +11788,11 @@ msgstr ""
 msgid "Bottom"
 msgstr ""
 
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Boundary"
 msgstr ""
 
-#: agreement/results/boundaryTable.title
+#: agreement/results/gradingGroup/boundaryTable.title
 msgid "Boundary Excess over Colleagues"
 msgstr ""
 
@@ -12117,7 +12117,7 @@ msgstr ""
 msgid "Case agreement categorization column"
 msgstr ""
 
-#: agreement/results/caseClusterTable.title
+#: agreement/results/raterClusterGroup/caseClusterTable.title
 msgid "Case Cluster Assignments"
 msgstr ""
 
@@ -12134,7 +12134,7 @@ msgid "Case clustering (identify rating pattern groups)"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/caseDendrogram.title
+#: agreement/results/raterClusterGroup/caseDendrogram.title
 msgid "Case Clustering Dendrogram"
 msgstr ""
 
@@ -12150,7 +12150,7 @@ msgstr ""
 msgid "Case exclusion summary: {details}. {analyzed} of {total} cases analyzed."
 msgstr ""
 
-#: agreement/results/caseClusterTable.columns.title
+#: agreement/results/raterClusterGroup/caseClusterTable.columns.title
 msgid "Case ID"
 msgstr "Case ID"
 
@@ -12162,7 +12162,7 @@ msgstr ""
 msgid "Case ID variable"
 msgstr ""
 
-#: agreement/results/caseClusterHeatmap.title
+#: agreement/results/raterClusterGroup/caseClusterHeatmap.title
 msgid "Case Similarity Heatmap with Clusters"
 msgstr ""
 
@@ -12209,25 +12209,25 @@ msgid ""
 "coverage in a study-specific simulation before confirmatory use."
 msgstr ""
 
-#: agreement/results/krippTable.columns.title
-#: agreement/results/lightKappaTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
 #: agreement/results/pairwiseKappaTable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
-#: agreement/results/hierarchicalOverallTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/pabakTable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/linCCCTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/maxwellRETable.columns.title
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 msgid "Cases"
 msgstr "Cases"
 
@@ -12258,7 +12258,7 @@ msgstr ""
 msgid "Cases rated"
 msgstr ""
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Cases Read"
 msgstr ""
 
@@ -12334,7 +12334,7 @@ msgid "Categorical/ordinal data"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
 msgid "Categories"
 msgstr "Categories"
 
@@ -12346,12 +12346,12 @@ msgstr ""
 msgid "Categorization method (detailed mode)"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: agreement/results/consensusTable.columns.title
 msgid "Category"
 msgstr ""
 
-#: agreement/results/categoryDistributionTable.title
+#: agreement/results/gradingGroup/categoryDistributionTable.title
 msgid "Category Distribution by Pathologist"
 msgstr ""
 
@@ -12366,7 +12366,7 @@ msgstr ""
 msgid "Category frequencies, scale use patterns"
 msgstr ""
 
-#: agreement/results/specificAgreementHeading.title
+#: agreement/results/specificAgreementGroup.title
 msgid "Category-Specific Agreement"
 msgstr ""
 
@@ -12379,7 +12379,7 @@ msgstr ""
 msgid "Caution: Major concerns detected"
 msgstr ""
 
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 msgid "CCC"
 msgstr ""
 
@@ -12423,7 +12423,7 @@ msgstr ""
 msgid "Chance-corrected agreement"
 msgstr ""
 
-#: agreement/results/gwetHeading.title
+#: agreement/results/gwetGroup.title
 msgid "Chance-Corrected Agreement Variants"
 msgstr ""
 
@@ -12529,10 +12529,10 @@ msgstr ""
 msgid "Chest X-ray"
 msgstr ""
 
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
 msgid "Chi-square"
 msgstr ""
 
@@ -12767,8 +12767,8 @@ msgstr ""
 msgid "Chosen in Positive class."
 msgstr ""
 
-#: agreement/results/krippTable.columns.title
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: decisioncurve/results/comparisonTable.columns.title
 msgid "CI Lower"
 msgstr ""
@@ -12777,7 +12777,7 @@ msgstr ""
 msgid "CI lower"
 msgstr ""
 
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 msgid "CI Method"
 msgstr ""
 
@@ -12785,7 +12785,7 @@ msgstr ""
 msgid "CI method for agreement"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "CI method/status"
 msgstr ""
 
@@ -12793,8 +12793,8 @@ msgstr ""
 msgid "CI not requested"
 msgstr ""
 
-#: agreement/results/krippTable.columns.title
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: decisioncurve/results/comparisonTable.columns.title
 msgid "CI Upper"
 msgstr ""
@@ -12822,8 +12822,8 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/perClassMetricsTable.columns.title
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 #: enhancedROC/results/results/multiClassAUC.columns.title
 msgid "Class"
 msgstr ""
@@ -13355,8 +13355,8 @@ msgstr ""
 msgid "Closest to perfect classifier"
 msgstr ""
 
-#: agreement/results/raterClusterTable.columns.title
-#: agreement/results/caseClusterTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
+#: agreement/results/raterClusterGroup/caseClusterTable.columns.title
 msgid "Cluster"
 msgstr ""
 
@@ -13373,7 +13373,7 @@ msgstr ""
 msgid "Cluster homogeneity test"
 msgstr ""
 
-#: agreement/results/homogeneityTestTable.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.title
 msgid "Cluster Homogeneity Test Results"
 msgstr ""
 
@@ -13381,7 +13381,7 @@ msgstr ""
 msgid "Cluster performance rankings"
 msgstr ""
 
-#: agreement/results/raterClusterTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
 msgid "Cluster Size"
 msgstr ""
 
@@ -13399,7 +13399,7 @@ msgstr ""
 msgid "Cluster-Specific Agreement (Kappa per Cluster)"
 msgstr ""
 
-#: agreement/results/clusterSpecificTable.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.title
 msgid "Cluster-Specific Kappa Estimates"
 msgstr ""
 
@@ -13407,7 +13407,7 @@ msgstr ""
 msgid "Cluster-specific kappa estimates"
 msgstr ""
 
-#: agreement/results/clusterSpecificTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
 msgid "Cluster/Institution"
 msgstr ""
 
@@ -13439,7 +13439,7 @@ msgstr ""
 msgid "Clustering requires at least 3 raters"
 msgstr ""
 
-#: agreement/results/hierarchicalOverallTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
 msgid "Clusters"
 msgstr ""
 
@@ -13543,7 +13543,7 @@ msgid ""
 "their own complete cases."
 msgstr ""
 
-#: agreement/results/gwetTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
 #: lassologistic/results/coefficients.columns.title
 msgid "Coefficient"
 msgstr ""
@@ -13588,7 +13588,7 @@ msgstr ""
 msgid "Cohen's d, second minus first"
 msgstr ""
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 #: psychopdaROC/options/metric/cohens_kappa.title
 msgid "Cohen's Kappa"
 msgstr ""
@@ -13910,9 +13910,9 @@ msgstr ""
 msgid "Comparing AI-assisted vs. conventional scoring"
 msgstr ""
 
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/linCCCTable.columns.title
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 #: decision/results/comparatorCases.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: decisioncompare/results/diffTable.columns.title
@@ -13965,7 +13965,7 @@ msgstr ""
 msgid "Complementary Analyses"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Complete cases"
 msgstr ""
 
@@ -14005,7 +14005,7 @@ msgid ""
 "testing, partial verification)."
 msgstr ""
 
-#: agreement/results/mixedEffectsVarianceTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
 msgid "Component"
 msgstr ""
 
@@ -14093,7 +14093,7 @@ msgid ""
 msgstr ""
 
 #: agreement/ui[8].label
-msgid "Computed variables"
+msgid "Computed Variables"
 msgstr ""
 
 #: agreement/results/computedVariablesInfo.title
@@ -14116,7 +14116,7 @@ msgstr ""
 msgid "Concentration parameter for CROC exponential magnifier function"
 msgstr ""
 
-#: agreement/results/homogeneityTestTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
 #: enhancedROC/results/results/hosmerLemeshowTable.columns.title
 msgid "Conclusion"
 msgstr ""
@@ -14129,7 +14129,7 @@ msgstr ""
 msgid "Concordance Accuracy"
 msgstr ""
 
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 msgid "Concordance F1"
 msgstr ""
 
@@ -14175,7 +14175,7 @@ msgstr ""
 msgid "Concordant Results"
 msgstr ""
 
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 msgid "Condition A"
 msgstr ""
 
@@ -14187,7 +14187,7 @@ msgid ""
 "Recode both conditions onto one scale before reading the kappa row."
 msgstr ""
 
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 msgid "Condition B"
 msgstr ""
 
@@ -14195,7 +14195,7 @@ msgstr ""
 msgid "Condition B raters"
 msgstr ""
 
-#: agreement/ui[0][7].label
+#: agreement/ui[0][8].label
 msgid "Condition B Raters (e.g., AI-assisted)"
 msgstr ""
 
@@ -14469,7 +14469,7 @@ msgstr ""
 msgid "Confusion matrices"
 msgstr ""
 
-#: agreement/results/confusionMatrixTable.title
+#: agreement/results/advancedGroup/confusionMatrixTable.title
 msgid "Confusion Matrix"
 msgstr ""
 
@@ -14636,7 +14636,7 @@ msgstr ""
 msgid "Contingency Table"
 msgstr ""
 
-#: agreement/results/contingencyTable.title
+#: agreement/results/contingencyTableGroup/contingencyTable.title
 msgid "Contingency Table (2 Raters)"
 msgstr ""
 
@@ -14660,7 +14660,7 @@ msgid ""
 "crossings of category boundaries."
 msgstr ""
 
-#: agreement/results/iccHeading.title
+#: agreement/results/iccGroup.title
 msgid "Continuous Agreement Measures"
 msgstr ""
 
@@ -14906,7 +14906,7 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 #: decision/results/rawCounts.columns.title
 #: decision/results/confusionMatrixSummary.columns.title
 #: decisioncombine/results/goldFreqTable.columns.title
@@ -14954,7 +14954,7 @@ msgstr ""
 msgid "Counts in cells"
 msgstr ""
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "Coverage %"
 msgstr ""
 
@@ -15381,7 +15381,7 @@ msgid ""
 "overfitting risk."
 msgstr ""
 
-#: agreement/results/contingencyTableHeading.title
+#: agreement/results/contingencyTableGroup.title
 msgid "Data Summary"
 msgstr ""
 
@@ -15855,7 +15855,7 @@ msgstr ""
 msgid "Design"
 msgstr ""
 
-#: agreement/results/designSummaryTable.columns.title
+#: agreement/results/gradingGroup/designSummaryTable.columns.title
 msgid "Design Feature"
 msgstr ""
 
@@ -15976,23 +15976,23 @@ msgstr ""
 msgid "Development / validation partition identifier"
 msgstr ""
 
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/homogeneityTestTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: enhancedROC/results/results/hosmerLemeshowTable.columns.title
 msgid "df"
 msgstr ""
 
-#: agreement/results/iccTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "df1"
 msgstr ""
 
-#: agreement/results/iccTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "df2"
 msgstr ""
 
@@ -16151,7 +16151,7 @@ msgid ""
 "belongs to the first predictor named in Metric."
 msgstr ""
 
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 msgid "Difference (B - A)"
 msgstr ""
 
@@ -16163,7 +16163,7 @@ msgstr ""
 msgid "Difference in Cohen's d between markers"
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Difference-Mean Slope (p)"
 msgstr ""
 
@@ -16248,7 +16248,7 @@ msgstr ""
 msgid "Directional Discordance [Ordinal] (2 Raters)"
 msgstr ""
 
-#: agreement/results/raterBiasHeading.title
+#: agreement/results/raterBiasGroup.title
 msgid "Directional Discordance and Marginal Homogeneity Tests"
 msgstr ""
 
@@ -16260,7 +16260,7 @@ msgstr ""
 msgid "Directional discordance test (ordinal, 2 raters)"
 msgstr ""
 
-#: agreement/results/raterBiasTable.title
+#: agreement/results/raterBiasGroup/raterBiasTable.title
 msgid "Directional Discordance Test (ordinal, 2 raters)"
 msgstr ""
 
@@ -16268,7 +16268,7 @@ msgstr ""
 msgid "Disagree with Reference"
 msgstr ""
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Disagreement variance"
 msgstr ""
 
@@ -17065,7 +17065,7 @@ msgstr ""
 msgid "Empirical TDI [Continuous] (Prespecified Difference Limit)"
 msgstr ""
 
-#: agreement/results/tdiTable.title
+#: agreement/results/iccGroup/tdiTable.title
 msgid "Empirical Total Deviation Index (TDI)"
 msgstr ""
 
@@ -17279,7 +17279,7 @@ msgstr ""
 msgid "Error calculating the directional discordance test: %s"
 msgstr ""
 
-#: agreement/results/maxwellREHeading.title
+#: agreement/results/maxwellREGroup.title
 msgid "Error Decomposition & Reliability"
 msgstr ""
 
@@ -17341,9 +17341,9 @@ msgstr ""
 msgid "Essential for diagnostic test validation"
 msgstr ""
 
-#: agreement/results/latentModelTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
-#: agreement/results/bootstrapCITable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
 #: decision/results/epirTable_ratio.columns.title
 #: decision/results/epirTable_number.columns.title
 #: decision/results/comparatorMetrics.columns.title
@@ -17678,7 +17678,7 @@ msgid ""
 "Neither is adjusted for how difficult each pathologist's cases were."
 msgstr ""
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Exact agreement with colleagues %"
 msgstr ""
 
@@ -17802,7 +17802,7 @@ msgstr ""
 msgid "Excellent reliability"
 msgstr ""
 
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Excess over colleagues"
 msgstr ""
 
@@ -18155,7 +18155,7 @@ msgstr ""
 msgid "Extreme Test Imbalance"
 msgstr ""
 
-#: agreement/results/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
 msgid "F-statistic"
 msgstr ""
 
@@ -18169,7 +18169,7 @@ msgid ""
 msgstr ""
 
 #: R/lassologistic.b.R
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 #: decisioncalculator/results/advancedMetricsTable.columns.title
 #: psychopdaROC/options/metric/F1_score.title
 #: psychopdaROC/results/rocComparisonTable.columns.title
@@ -18607,7 +18607,7 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
 msgid "Finn Coefficient"
 msgstr ""
 
@@ -18623,7 +18623,7 @@ msgstr ""
 msgid "Finn coefficient requires at least 2 raters."
 msgstr ""
 
-#: agreement/results/finnTable.title
+#: agreement/results/lightKappaTableGroup/finnTable.title
 msgid "Finn Coefficient Results (Variance-Based Agreement)"
 msgstr ""
 
@@ -19546,7 +19546,7 @@ msgid ""
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Grading tendency"
 msgstr ""
 
@@ -19570,7 +19570,7 @@ msgid ""
 "lower."
 msgstr ""
 
-#: agreement/results/severityPlot.title
+#: agreement/results/gradingGroup/severityPlot.title
 msgid "Grading Tendency per Pathologist"
 msgstr ""
 
@@ -19669,7 +19669,7 @@ msgstr ""
 msgid "Gwet's AC1/AC2 (Kappa Paradox Solution)"
 msgstr ""
 
-#: agreement/results/gwetTable.title
+#: agreement/results/gwetGroup/gwetTable.title
 msgid "Gwet's AC1/AC2 Results"
 msgstr ""
 
@@ -19747,7 +19747,7 @@ msgstr ""
 msgid "Hierarchical (Dendrogram)"
 msgstr ""
 
-#: agreement/results/hierarchicalHeading.title
+#: agreement/results/hierarchicalGroup.title
 msgid "Hierarchical / Multilevel Agreement"
 msgstr ""
 
@@ -19759,7 +19759,7 @@ msgstr ""
 msgid "Hierarchical Agreement - Overall (Stratified Kappa)"
 msgstr ""
 
-#: agreement/results/hierarchicalICCTable.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.title
 msgid "Hierarchical ICC Decomposition"
 msgstr ""
 
@@ -19767,7 +19767,7 @@ msgstr ""
 msgid "Hierarchical ICC decomposition"
 msgstr ""
 
-#: agreement/results/hierarchicalOverallTable.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.title
 msgid "Hierarchical Kappa - Overall Agreement"
 msgstr ""
 
@@ -20094,8 +20094,8 @@ msgstr ""
 
 #: R/agreement.b.R
 #: agreement/options/ssMetric/icc.title
-#: agreement/results/hierarchicalICCTable.columns.title
-#: agreement/results/iccTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "ICC"
 msgstr ""
 
@@ -20137,7 +20137,7 @@ msgid ""
 "inter-rater reliability with numeric data."
 msgstr ""
 
-#: agreement/results/iccTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
 msgid "ICC Model"
 msgstr ""
 
@@ -20155,7 +20155,7 @@ msgid ""
 "Use kappa instead."
 msgstr ""
 
-#: agreement/results/hierarchicalICCTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.columns.title
 msgid "ICC Type"
 msgstr ""
 
@@ -20596,7 +20596,7 @@ msgstr ""
 msgid "Important warning"
 msgstr ""
 
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 msgid "Improvement"
 msgstr ""
 
@@ -21081,7 +21081,7 @@ msgstr ""
 msgid "Integrated Discrimination Improvement (IDI)"
 msgstr ""
 
-#: agreement/results/interIntraRaterInterTable.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.title
 msgid "Inter-Rater Reliability (Between Raters)"
 msgstr ""
 
@@ -21175,28 +21175,28 @@ msgstr ""
 
 #: R/agreement.b.R
 #: R/enhancedROC.b.R
-#: agreement/results/krippTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/varianceDecompositionTable.columns.title
-#: agreement/results/hierarchicalICCTable.columns.title
-#: agreement/results/mixedEffectsVarianceTable.columns.title
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/pabakTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/linCCCTable.columns.title
-#: agreement/results/tdiTable.columns.title
-#: agreement/results/maxwellRETable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
-#: agreement/results/iotaTable.columns.title
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalICCTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: agreement/results/loaTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: decisioncombine/results/recommendationTable.columns.title
 #: enhancedROC/results/results/detailedComparison.columns.title
 #: enhancedROC/results/results/crocAnalysisTable.columns.title
@@ -21361,7 +21361,6 @@ msgstr ""
 #: agreement/options.title
 #: agreement/ui.title
 #: agreement/results.title
-#: agreement/results/irrtableHeading.title
 #: agreement/results/irrtable.title
 msgid "Interrater Reliability"
 msgstr ""
@@ -21411,11 +21410,11 @@ msgstr ""
 msgid "Intervention cost analysis"
 msgstr ""
 
-#: agreement/results/interIntraRaterIntraTable.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.title
 msgid "Intra-Rater Reliability (Test-Retest Consistency)"
 msgstr ""
 
-#: agreement/results/iccTable.title
+#: agreement/results/iccGroup/iccTable.title
 msgid "Intraclass Correlation Coefficient (ICC) Results"
 msgstr ""
 
@@ -21471,7 +21470,7 @@ msgstr ""
 msgid "Inverse Youden index"
 msgstr ""
 
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 msgid "Iota"
 msgstr ""
 
@@ -21508,7 +21507,7 @@ msgstr ""
 msgid "Iota Coefficient [Continuous or Categorical] (Single Variable)"
 msgstr ""
 
-#: agreement/results/iotaTable.title
+#: agreement/results/maxwellREGroup/iotaTable.title
 msgid "Iota Coefficient Results (Single Variable)"
 msgstr ""
 
@@ -21757,10 +21756,10 @@ msgstr ""
 
 #: R/agreement.b.R
 #: agreement/results/irrtable.columns.title
-#: agreement/results/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
 #: agreement/results/pairwiseKappaTable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
 #: nogoldstandard/results/agreement_stats.columns.title
 msgid "Kappa"
 msgstr ""
@@ -22023,7 +22022,7 @@ msgid ""
 "grades)."
 msgstr ""
 
-#: agreement/results/kendallWTable.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.title
 msgid "Kendall's Coefficient of Concordance (W) Results"
 msgstr ""
 
@@ -22127,7 +22126,7 @@ msgstr ""
 msgid "Krippendorff"
 msgstr ""
 
-#: agreement/results/krippTableHeading.title
+#: agreement/results/krippTableGroup.title
 msgid "Krippendorff's Alpha"
 msgstr ""
 
@@ -22187,7 +22186,7 @@ msgid ""
 "not perfect agreement - no second category was ever available to be chosen."
 msgstr ""
 
-#: agreement/results/krippTable.title
+#: agreement/results/krippTableGroup/krippTable.title
 msgid "Krippendorff's Alpha Results"
 msgstr ""
 
@@ -22504,7 +22503,7 @@ msgid ""
 "them in factor() when calling from R - and Light's kappa will be computed."
 msgstr ""
 
-#: agreement/results/lightKappaTable.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.title
 msgid "Light's Kappa Results"
 msgstr ""
 
@@ -22661,7 +22660,7 @@ msgstr ""
 msgid "Lin's CCC requires continuous numeric data. Categorical data found."
 msgstr ""
 
-#: agreement/results/linCCCTable.title
+#: agreement/results/iccGroup/linCCCTable.title
 msgid "Lin's Concordance Correlation Coefficient (CCC)"
 msgstr ""
 
@@ -22845,9 +22844,9 @@ msgstr ""
 msgid "Low→High cell: Minimal"
 msgstr ""
 
-#: agreement/results/bootstrapCITable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 #: decision/results/epirTable_ratio.columns.title
 #: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
@@ -22897,7 +22896,7 @@ msgid ""
 "chosen above, for example 0.8 for high specificity."
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Lower LoA"
 msgstr ""
 
@@ -23215,11 +23214,11 @@ msgstr ""
 msgid "Max |r| = %.2f (0.7-0.9: moderate, LASSO will handle)"
 msgstr ""
 
-#: agreement/results/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
 msgid "Max r"
 msgstr ""
 
-#: agreement/results/meanSpearmanTable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
 msgid "Max ρ"
 msgstr ""
 
@@ -23362,7 +23361,7 @@ msgstr ""
 msgid "Mean Annotator Agreement"
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Mean Difference"
 msgstr ""
 
@@ -23378,7 +23377,7 @@ msgstr ""
 msgid "Mean of tied cutpoints"
 msgstr ""
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Mean pairwise kappa"
 msgstr ""
 
@@ -23386,7 +23385,7 @@ msgstr ""
 msgid "Mean Pearson correlation (linear association)"
 msgstr ""
 
-#: agreement/results/meanPearsonTable.title
+#: agreement/results/iccGroup/meanPearsonTable.title
 msgid "Mean Pearson Correlation (Linear Association) Results"
 msgstr ""
 
@@ -23412,7 +23411,7 @@ msgstr ""
 msgid "Mean Pearson Correlation requires numeric (continuous) data."
 msgstr ""
 
-#: agreement/results/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
 msgid "Mean r"
 msgstr ""
 
@@ -23442,7 +23441,7 @@ msgstr ""
 msgid "Mean Spearman rho (average rank correlation)"
 msgstr ""
 
-#: agreement/results/meanSpearmanTable.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.title
 msgid "Mean Spearman Rho (Average Rank Correlation) Results"
 msgstr ""
 
@@ -23459,7 +23458,7 @@ msgid ""
 "kappa or Krippendorff's alpha for nominal agreement."
 msgstr ""
 
-#: agreement/results/meanSpearmanTable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
 msgid "Mean ρ"
 msgstr ""
 
@@ -23612,18 +23611,18 @@ msgstr ""
 #: R/agreement.b.R
 #: R/psychopdaROC.b.R
 #: agreement/results/irrtable.columns.title
-#: agreement/results/krippTable.columns.title
-#: agreement/results/lightKappaTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/hierarchicalOverallTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/maxwellRETable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: decisioncompare/results/comparatorDifferences.columns.title
 #: lassologistic/results/methodComparison.columns.title
@@ -23736,9 +23735,9 @@ msgstr ""
 #: R/decisioncombine.b.R
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/bootstrapCITable.columns.title
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/pairedAgreementTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.columns.title
 #: decision/results/comparatorMetrics.columns.title
 #: decisioncompare/results/diffTable.columns.title
 #: decisioncompare/results/comparatorMetrics.columns.title
@@ -23799,11 +23798,11 @@ msgstr ""
 msgid "Mid-p"
 msgstr ""
 
-#: agreement/results/meanPearsonTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
 msgid "Min r"
 msgstr ""
 
-#: agreement/results/meanSpearmanTable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
 msgid "Min ρ"
 msgstr ""
 
@@ -24064,7 +24063,7 @@ msgid "Mixed model fitting failed: %s. Data may have insufficient variability."
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/mixedEffectsTable.title
+#: agreement/results/advancedGroup/mixedEffectsTable.title
 msgid "Mixed-Effects Condition Comparison"
 msgstr ""
 
@@ -24080,7 +24079,7 @@ msgstr ""
 msgid "Mixed-Effects ICC (hierarchical agreement proxy)"
 msgstr ""
 
-#: agreement/results/mixedEffectsVarianceTable.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.title
 msgid "Mixed-Effects Variance Components"
 msgstr ""
 
@@ -24229,7 +24228,7 @@ msgstr ""
 msgid "Model-based agreement (latent ICC and model-based kappa)"
 msgstr ""
 
-#: agreement/results/latentModelTable.title
+#: agreement/results/gradingGroup/latentModelTable.title
 msgid "Model-Based Agreement (Latent Probit Model)"
 msgstr ""
 
@@ -24549,7 +24548,7 @@ msgstr ""
 msgid "Multi-Annotator Concordance [Categorical] (AI Validation)"
 msgstr ""
 
-#: agreement/results/concordanceF1Table.title
+#: agreement/results/advancedGroup/concordanceF1Table.title
 msgid "Multi-Annotator Concordance Metrics"
 msgstr ""
 
@@ -24684,10 +24683,10 @@ msgstr ""
 msgid "N Annotators (reference)"
 msgstr ""
 
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/concordanceF1PerClassTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/loaTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
 msgid "N Cases"
@@ -24735,8 +24734,8 @@ msgstr ""
 msgid "N Positive"
 msgstr ""
 
-#: agreement/results/clusterSpecificTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
 msgid "N Raters"
 msgstr ""
@@ -26176,7 +26175,7 @@ msgid ""
 "does at least as well as this model."
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Normality (p)"
 msgstr ""
 
@@ -26931,7 +26930,7 @@ msgid ""
 "target AUC."
 msgstr ""
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "Observed Agreement"
 msgstr ""
 
@@ -26981,7 +26980,7 @@ msgid ""
 "limit (%2$.3g) by %3$.3g."
 msgstr ""
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "Observed Criterion?"
 msgstr ""
 
@@ -27976,7 +27975,7 @@ msgid "Overall ICC(2,1), within institution"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/hierarchicalOverallTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
 msgid "Overall Kappa"
 msgstr ""
 
@@ -28027,7 +28026,7 @@ msgstr ""
 msgid "p (Holm, grid-point mean difference)"
 msgstr ""
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 #: psychopdaROC/results/delongComparisonTable.columns.title
 msgid "p (Holm)"
 msgstr ""
@@ -28070,17 +28069,17 @@ msgid "p >= 0.05"
 msgstr ""
 
 #: agreement/results/irrtable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
 #: agreement/results/pairwiseKappaTable.columns.title
-#: agreement/results/homogeneityTestTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: decisioncompare/results/mcnemarTable.columns.title
 #: decisioncompare/results/diffTable.columns.title
 #: enhancedROC/results/results/rocComparisons.columns.title
@@ -28116,7 +28115,7 @@ msgstr ""
 msgid "P(Test+ | Class+/Rule+)"
 msgstr ""
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "PABAK"
 msgstr ""
 
@@ -28131,7 +28130,7 @@ msgid ""
 "                        despite high observed agreement."
 msgstr ""
 
-#: agreement/results/pabakTable.title
+#: agreement/results/gwetGroup/pabakTable.title
 msgid "PABAK & Prevalence/Bias Indices"
 msgstr ""
 
@@ -28192,12 +28191,12 @@ msgid ""
 "with: install.packages('poLCA')"
 msgstr ""
 
-#: agreement/results/pairedAgreementHeading.title
+#: agreement/results/pairedAgreementGroup.title
 msgid "Paired Agreement & Sample Size"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/pairedAgreementTable.title
+#: agreement/results/pairedAgreementGroup/pairedAgreementTable.title
 msgid "Paired Agreement Comparison"
 msgstr ""
 
@@ -28365,7 +28364,7 @@ msgstr ""
 msgid "Parallel Testing Strategy"
 msgstr ""
 
-#: agreement/results/agreementSampleSizeTable.columns.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeTable.columns.title
 #: psychopdaROC/results/bootstrapCITable.columns.title
 msgid "Parameter"
 msgstr ""
@@ -28510,9 +28509,9 @@ msgid ""
 "lambdas and the proportion is trivially 1.0."
 msgstr ""
 
-#: agreement/results/categoryDistributionTable.columns.title
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/categoryDistributionTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Pathologist"
 msgstr ""
 
@@ -28521,7 +28520,7 @@ msgstr ""
 msgid "Pathologist Agreement (example)"
 msgstr ""
 
-#: agreement/results/gradingHeading.title
+#: agreement/results/gradingGroup.title
 msgid "Pathologist Grading Analysis"
 msgstr ""
 
@@ -28656,7 +28655,7 @@ msgstr ""
 msgid "Patient; all of the patient's rows ({unit}) retained"
 msgstr ""
 
-#: agreement/ui[0][5].label
+#: agreement/ui[0][6].label
 msgid "Patient/cluster ID (optional)"
 msgstr ""
 
@@ -28813,11 +28812,11 @@ msgstr ""
 msgid "Per-category item-modal agreement"
 msgstr ""
 
-#: agreement/results/perClassMetricsTable.title
+#: agreement/results/advancedGroup/perClassMetricsTable.title
 msgid "Per-Class Classification Metrics"
 msgstr ""
 
-#: agreement/results/concordanceF1PerClassTable.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.title
 msgid "Per-Class Concordance F1"
 msgstr ""
 
@@ -28829,7 +28828,7 @@ msgstr ""
 msgid "Per-pathologist agreement"
 msgstr ""
 
-#: agreement/results/pathologistTable.title
+#: agreement/results/gradingGroup/pathologistTable.title
 msgid "Per-Pathologist Agreement and Grading Tendency"
 msgstr ""
 
@@ -29940,7 +29939,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Precision (PPV)"
 msgstr ""
 
@@ -29951,7 +29950,7 @@ msgid ""
 "when events are present but none are predicted."
 msgstr ""
 
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 msgid "Precision (r)"
 msgstr ""
 
@@ -29989,7 +29988,7 @@ msgstr ""
 msgid "Predefined acceptable limit based on clinical significance"
 msgstr ""
 
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 msgid "Predicted"
 msgstr ""
 
@@ -30030,16 +30029,6 @@ msgid ""
 "decision curve analysis."
 msgstr ""
 
-#: agreement/options/predictionColumn.title
-msgid "Prediction column (first rater)"
-msgstr ""
-
-#: R/agreement.b.R
-msgid ""
-"Prediction column %1$d exceeds number of raters (%2$d). Using last rater "
-"column instead."
-msgstr ""
-
 #: R/agreement.b.R
 msgid "Prediction column: %1$s. Reference annotators: %2$s."
 msgstr ""
@@ -30051,6 +30040,11 @@ msgstr ""
 
 #: decisioncurve/ui[0][1].label
 msgid "Prediction Models/Variables"
+msgstr ""
+
+#: agreement/options/predictionRater.title
+#: agreement/ui[0][5].label
+msgid "Prediction rater (multi-annotator concordance)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -30337,7 +30331,7 @@ msgid ""
 "settings differ."
 msgstr ""
 
-#: agreement/results/pabakTable.columns.title
+#: agreement/results/gwetGroup/pabakTable.columns.title
 msgid "Prevalence Index"
 msgstr ""
 
@@ -30670,8 +30664,8 @@ msgstr ""
 msgid "Projected Unnecessary Treatments"
 msgstr ""
 
-#: agreement/results/mixedEffectsVarianceTable.columns.title
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 msgid "Proportion"
 msgstr ""
 
@@ -30757,7 +30751,7 @@ msgstr ""
 msgid "Proportion of subjects with the outcome ruled out"
 msgstr ""
 
-#: agreement/results/varianceDecompositionTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
 msgid "Proportion of Total"
 msgstr ""
 
@@ -30953,7 +30947,7 @@ msgstr ""
 msgid "Quantile positions"
 msgstr ""
 
-#: agreement/results/latentModelTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
 msgid "Quantity"
 msgstr ""
 
@@ -31030,11 +31024,11 @@ msgstr ""
 msgid "raised to %sx of prevalence"
 msgstr ""
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Random (residual) variance"
 msgstr ""
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Random %"
 msgstr ""
 
@@ -31085,7 +31079,7 @@ msgid "Random seed: {seed}"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Random share"
 msgstr ""
 
@@ -31138,7 +31132,7 @@ msgid "Range Type"
 msgstr ""
 
 #: agreement/results/pairwiseKappaTable.columns.title
-#: agreement/results/clusterSpecificTable.columns.title
+#: agreement/results/hierarchicalGroup/clusterSpecificTable.columns.title
 msgid "Rank"
 msgstr ""
 
@@ -31200,12 +31194,12 @@ msgstr ""
 
 #: R/agreement.b.R
 #: agreement/results/pairwiseKappaTable.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/raterClusterTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/raterClusterGroup/raterClusterTable.columns.title
 msgid "Rater"
 msgstr ""
 
-#: agreement/results/raterClusterHeading.title
+#: agreement/results/raterClusterGroup.title
 msgid "Rater & Case Clustering"
 msgstr ""
 
@@ -31214,14 +31208,14 @@ msgid "Rater A"
 msgstr ""
 
 #: agreement/ui[7].label
-msgid "Rater and case diagnostics"
+msgid "Rater and Case Diagnostics"
 msgstr ""
 
 #: agreement/results/allPairsKappaTable.columns.title
 msgid "Rater B"
 msgstr ""
 
-#: agreement/results/raterClusterTable.title
+#: agreement/results/raterClusterGroup/raterClusterTable.title
 msgid "Rater Cluster Assignments"
 msgstr ""
 
@@ -31238,11 +31232,11 @@ msgid "Rater clustering (identify rating pattern groups)"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/raterDendrogram.title
+#: agreement/results/raterClusterGroup/raterDendrogram.title
 msgid "Rater Clustering Dendrogram"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Rater Pair"
 msgstr ""
 
@@ -31272,7 +31266,7 @@ msgid ""
 "differences{tag4} in how raters use the rating scale."
 msgstr ""
 
-#: agreement/results/raterClusterHeatmap.title
+#: agreement/results/raterClusterGroup/raterClusterHeatmap.title
 msgid "Rater Similarity Heatmap with Clusters"
 msgstr ""
 
@@ -31280,7 +31274,7 @@ msgstr ""
 msgid "Rater Similarity Matrix (Clustered)"
 msgstr ""
 
-#: agreement/results/maxwellRETable.title
+#: agreement/results/maxwellREGroup/maxwellRETable.title
 msgid "Rater Variance Decomposition - Systematic vs Random Disagreement"
 msgstr ""
 
@@ -31296,19 +31290,19 @@ msgstr ""
 #: agreement/options/vars.title
 #: agreement/ui[0][0].label
 #: agreement/results/irrtable.columns.title
-#: agreement/results/krippTable.columns.title
-#: agreement/results/lightKappaTable.columns.title
-#: agreement/results/finnTable.columns.title
-#: agreement/results/kendallWTable.columns.title
-#: agreement/results/robinsonATable.columns.title
-#: agreement/results/meanSpearmanTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/hierarchicalOverallTable.columns.title
-#: agreement/results/gwetTable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/meanPearsonTable.columns.title
-#: agreement/results/iotaTable.columns.title
+#: agreement/results/krippTableGroup/krippTable.columns.title
+#: agreement/results/lightKappaTableGroup/lightKappaTable.columns.title
+#: agreement/results/lightKappaTableGroup/finnTable.columns.title
+#: agreement/results/lightKappaTableGroup/kendallWTable.columns.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.columns.title
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/hierarchicalOverallTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/meanPearsonTable.columns.title
+#: agreement/results/maxwellREGroup/iotaTable.columns.title
 #: kappaSizeCI/ui[0][1][0][0]/raters.label
 #: kappaSizeFixedN/ui[0][1][0][0]/raters.label
 #: kappaSizePower/ui[0][1][0][0]/raters.label
@@ -31333,15 +31327,15 @@ msgstr ""
 msgid "Raters have similar marginal distributions"
 msgstr ""
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Raters/Methods"
 msgstr ""
 
-#: agreement/results/ratingCombinationsTable.title
+#: agreement/results/contingencyTableGroup/ratingCombinationsTable.title
 msgid "Rating Combinations (3+ Raters)"
 msgstr ""
 
-#: agreement/results/categoryDistributionTable.columns.title
+#: agreement/results/gradingGroup/categoryDistributionTable.columns.title
 msgid "Ratings"
 msgstr ""
 
@@ -31506,7 +31500,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Recall (Sensitivity)"
 msgstr ""
 
@@ -31553,7 +31547,7 @@ msgstr ""
 
 #: R/agreement.b.R
 #: R/enhancedROC.b.R
-#: agreement/results/confusionMatrixTable.columns.title
+#: agreement/results/advancedGroup/confusionMatrixTable.columns.title
 #: lassologistic/results/methodComparison.columns.title
 #: psychopdaROC/results/idiTable.columns.title
 #: psychopdaROC/results/nriTable.columns.title
@@ -32271,7 +32265,7 @@ msgstr ""
 msgid "Robinson's A (ordinal agreement index)"
 msgstr ""
 
-#: agreement/results/robinsonATable.title
+#: agreement/results/lightKappaTableGroup/robinsonATable.title
 msgid "Robinson's A (Ordinal Agreement Index) Results"
 msgstr ""
 
@@ -32650,7 +32644,7 @@ msgid "Rule Positive Level Required"
 msgstr ""
 
 #: decisioncombine/ui[2].label
-msgid "Rule ranking"
+msgid "Rule Ranking"
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -32765,7 +32759,7 @@ msgstr ""
 msgid "Sample Size for Agreement Studies"
 msgstr ""
 
-#: agreement/results/agreementSampleSizeTable.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeTable.title
 msgid "Sample Size for Agreement Study"
 msgstr ""
 
@@ -32832,7 +32826,7 @@ msgstr ""
 msgid "Sampling unit"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Sampling units"
 msgstr ""
 
@@ -32860,7 +32854,7 @@ msgid ""
 msgstr ""
 
 #: decisioncombine/ui[4].label
-msgid "Save to data"
+msgid "Save to Data"
 msgstr ""
 
 #: lassologistic/ui[6][0].label
@@ -33016,19 +33010,19 @@ msgstr ""
 msgid "Screening Tests (Rule-Out):"
 msgstr ""
 
-#: agreement/results/varianceDecompositionTable.columns.title
-#: agreement/results/mixedEffectsVarianceTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
 msgid "SD"
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "SD of Difference"
 msgstr ""
 
-#: agreement/results/pathologistTable.columns.title
-#: agreement/results/latentModelTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
+#: agreement/results/gradingGroup/latentModelTable.columns.title
 #: agreement/results/allPairsKappaTable.columns.title
-#: agreement/results/mixedEffectsTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
 msgid "SE"
 msgstr ""
 
@@ -33323,6 +33317,12 @@ msgid ""
 "to detect or diagnose. It must be chosen: it is never taken from the order "
 "of the levels, and until it is chosen the analysis lists the levels found "
 "and computes nothing."
+msgstr ""
+
+#: R/agreement.b.R
+msgid ""
+"Select the prediction rater: the rater whose ratings are evaluated against "
+"the others."
 msgstr ""
 
 #: decisioncombine/options/gold.description.ui
@@ -33871,11 +33871,11 @@ msgstr ""
 msgid "Shaded: {level}% simultaneous band"
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Shapiro-Wilk W"
 msgstr ""
 
-#: agreement/results/boundaryTable.columns.title
+#: agreement/results/gradingGroup/boundaryTable.columns.title
 msgid "Shared Cases"
 msgstr ""
 
@@ -34493,11 +34493,11 @@ msgid "Spearman Rho vs Other Ordinal Measures"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Specific Agreement"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.title
 msgid "Specific Agreement Indices (Category-Focused Agreement)"
 msgstr ""
 
@@ -34752,8 +34752,8 @@ msgstr ""
 msgid "Standardized net benefit plot"
 msgstr ""
 
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
 #: decisioncombine/ui[3][4]/filterStatistic.label
 #: decisioncombine/results/combinationTableCI.columns.title
@@ -34945,7 +34945,7 @@ msgid ""
 "followed to, or a time-dependent ROC analysis for censored survival data."
 msgstr ""
 
-#: agreement/results/gwetTable.columns.title
+#: agreement/results/gwetGroup/gwetTable.columns.title
 msgid "Std. Error"
 msgstr ""
 
@@ -35079,7 +35079,7 @@ msgstr ""
 msgid "Strict Accuracy (vs Consensus)"
 msgstr ""
 
-#: agreement/results/concordanceF1PerClassTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1PerClassTable.columns.title
 msgid "Strict F1"
 msgstr ""
 
@@ -35145,7 +35145,7 @@ msgstr ""
 msgid "Stuart-Maxwell Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr ""
 
-#: agreement/results/stuartMaxwellTable.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.title
 msgid "Stuart-Maxwell Test for Marginal Homogeneity"
 msgstr ""
 
@@ -35186,12 +35186,9 @@ msgid ""
 "within each latent class."
 msgstr ""
 
-#: agreement/results/designSummaryTable.title
-msgid "Study Design"
-msgstr ""
-
 #: agreement/ui[9].label
-msgid "Study design"
+#: agreement/results/gradingGroup/designSummaryTable.title
+msgid "Study Design"
 msgstr ""
 
 #: agreement/options/gradingDesign.title
@@ -35239,7 +35236,7 @@ msgid ""
 msgstr ""
 
 #: R/psychopdaROC.b.R
-#: agreement/ui[0][6].label
+#: agreement/ui[0][7].label
 msgid "Subgroup Variable"
 msgstr ""
 
@@ -35361,7 +35358,7 @@ msgstr ""
 msgid "supermajority, at least 75%"
 msgstr ""
 
-#: agreement/results/perClassMetricsTable.columns.title
+#: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 msgid "Support"
 msgstr ""
 
@@ -35380,11 +35377,11 @@ msgstr ""
 msgid "Symmetric ratio; binomial CI not applicable"
 msgstr ""
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Systematic (rater) variance"
 msgstr ""
 
-#: agreement/results/maxwellRETable.columns.title
+#: agreement/results/maxwellREGroup/maxwellRETable.columns.title
 msgid "Systematic %"
 msgstr ""
 
@@ -35530,7 +35527,7 @@ msgstr ""
 msgid "TDI Advantage"
 msgstr ""
 
-#: agreement/results/tdiTable.columns.title
+#: agreement/results/iccGroup/tdiTable.columns.title
 msgid "TDI Estimate"
 msgstr ""
 
@@ -35586,7 +35583,7 @@ msgstr ""
 msgid "Technical Reference: irr::icc() Parameters"
 msgstr ""
 
-#: agreement/results/pathologistTable.columns.title
+#: agreement/results/gradingGroup/pathologistTable.columns.title
 msgid "Tendency"
 msgstr ""
 
@@ -35598,7 +35595,7 @@ msgstr ""
 msgid "Tentative conclusions only"
 msgstr ""
 
-#: agreement/results/mixedEffectsTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsTable.columns.title
 msgid "Term"
 msgstr ""
 
@@ -35617,10 +35614,10 @@ msgstr ""
 #: R/agreement.b.R
 #: R/decision.b.R
 #: R/decisioncompare.b.R
-#: agreement/results/raterBiasTable.columns.title
-#: agreement/results/bhapkarTable.columns.title
-#: agreement/results/stuartMaxwellTable.columns.title
-#: agreement/results/homogeneityTestTable.columns.title
+#: agreement/results/raterBiasGroup/raterBiasTable.columns.title
+#: agreement/results/raterBiasGroup/bhapkarTable.columns.title
+#: agreement/results/raterBiasGroup/stuartMaxwellTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
 #: cotest/results/testParamsTable.columns.title
 #: decision/results/comparatorCounts.columns.title
 #: decision/results/comparatorPopulation.columns.title
@@ -36115,7 +36112,7 @@ msgstr ""
 msgid "Test specificity"
 msgstr ""
 
-#: agreement/results/homogeneityTestTable.columns.title
+#: agreement/results/hierarchicalGroup/homogeneityTestTable.columns.title
 #: enhancedROC/results/results/rocComparisons.columns.title
 #: enhancedROC/results/results/statisticalSummary.columns.title
 msgid "Test Statistic"
@@ -38344,6 +38341,10 @@ msgid ""
 "heavily tied."
 msgstr ""
 
+#: R/agreement.b.R
+msgid "The prediction rater {name} must also be selected under Raters."
+msgstr ""
+
 #: R/decision.b.R
 msgid ""
 "The predictive values above are computed by Bayes' theorem at the assumed "
@@ -40237,7 +40238,7 @@ msgstr ""
 msgid "Tied Descriptive Ranking"
 msgstr ""
 
-#: agreement/results/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
 msgid "Time Points"
 msgstr ""
 
@@ -40443,7 +40444,7 @@ msgstr ""
 msgid "Total number of subjects"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Total Positive"
 msgstr ""
 
@@ -40875,7 +40876,7 @@ msgstr ""
 msgid "Undefined because the Model 2 value is 0."
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 msgid "Undefined draws"
 msgstr ""
 
@@ -41074,9 +41075,9 @@ msgid ""
 "different consequences for the two error types."
 msgstr ""
 
-#: agreement/results/bootstrapCITable.columns.title
-#: agreement/results/iccTable.columns.title
-#: agreement/results/linCCCTable.columns.title
+#: agreement/results/advancedGroup/bootstrapCITable.columns.title
+#: agreement/results/iccGroup/iccTable.columns.title
+#: agreement/results/iccGroup/linCCCTable.columns.title
 #: decision/results/epirTable_ratio.columns.title
 #: decision/results/epirTable_number.columns.title
 #: decisioncalculator/results/epirTable_ratio.columns.title
@@ -41118,7 +41119,7 @@ msgstr ""
 msgid "Upper end of the partial AUC range; it must be greater than the lower end."
 msgstr ""
 
-#: agreement/results/blandAltmanStats.columns.title
+#: agreement/results/blandAltmanGroup/blandAltmanStats.columns.title
 msgid "Upper LoA"
 msgstr ""
 
@@ -41277,7 +41278,7 @@ msgid ""
 "{tag13}({tag14}{tag15}x{tag16}{tag17}{tag18}y{tag19}) (location shift)"
 msgstr ""
 
-#: agreement/results/specificAgreementTable.columns.title
+#: agreement/results/specificAgreementGroup/specificAgreementTable.columns.title
 #: enhancedROC/results/results/frozenMetrics.columns.title
 msgid "Valid draws"
 msgstr ""
@@ -41346,11 +41347,11 @@ msgstr ""
 #: R/decisioncombine.b.R
 #: R/decisioncompare.b.R
 #: R/psychopdaROC.b.R
-#: agreement/results/designSummaryTable.columns.title
-#: agreement/results/concordanceF1Table.columns.title
-#: agreement/results/interIntraRaterIntraTable.columns.title
-#: agreement/results/interIntraRaterInterTable.columns.title
-#: agreement/results/agreementSampleSizeTable.columns.title
+#: agreement/results/gradingGroup/designSummaryTable.columns.title
+#: agreement/results/advancedGroup/concordanceF1Table.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterIntraTable.columns.title
+#: agreement/results/maxwellREGroup/interIntraRaterInterTable.columns.title
+#: agreement/results/pairedAgreementGroup/agreementSampleSizeTable.columns.title
 #: decision/results/referenceDefinition.columns.title
 #: decision/results/validationContext.columns.title
 #: decisioncompare/results/referenceDefinition.columns.title
@@ -41460,16 +41461,16 @@ msgstr ""
 msgid "Variables Must Be Distinct"
 msgstr ""
 
-#: agreement/results/varianceDecompositionTable.columns.title
-#: agreement/results/mixedEffectsVarianceTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
+#: agreement/results/advancedGroup/mixedEffectsVarianceTable.columns.title
 msgid "Variance"
 msgstr ""
 
-#: agreement/results/varianceDecompositionTable.columns.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.columns.title
 msgid "Variance Component"
 msgstr ""
 
-#: agreement/results/varianceDecompositionTable.title
+#: agreement/results/hierarchicalGroup/varianceDecompositionTable.title
 msgid "Variance Component Decomposition"
 msgstr ""
 
