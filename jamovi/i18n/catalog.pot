@@ -9117,7 +9117,7 @@ msgid "Additional Prevalences Not Read"
 msgstr ""
 
 #: psychopdaROC/options/interactiveROC.title
-#: psychopdaROC/ui[8][0][0][1]/interactiveROC.label
+#: psychopdaROC/ui[8][0][0][1][0]/interactiveROC.label
 msgid "Additional static ROC plot"
 msgstr ""
 
@@ -9381,7 +9381,7 @@ msgid "Agreement by stratum"
 msgstr ""
 
 #: R/agreement.b.R
-#: agreement/ui[34].label
+#: agreement/ui[7][2].label
 #: agreement/results/subgroupAgreementTable.title
 msgid "Agreement by Subgroup (Stratified Analysis)"
 msgstr ""
@@ -9414,7 +9414,7 @@ msgstr ""
 msgid "Agreement heatmap (confusion matrix)"
 msgstr ""
 
-#: agreement/ui[18].label
+#: agreement/ui[7][0].label
 msgid "Agreement Heatmap [Categorical] (Confusion Matrix Visualization)"
 msgstr ""
 
@@ -9574,7 +9574,7 @@ msgid ""
 msgstr ""
 
 #: psychopdaROC/options/allObserved.title
-#: psychopdaROC/ui[5][1]/allObserved.label
+#: psychopdaROC/ui[5][1][0]/allObserved.label
 msgid "All observed cutpoints"
 msgstr ""
 
@@ -9632,7 +9632,6 @@ msgstr ""
 #: R/nogoldstandard.b.R
 #: decisioncombine/options/filterPattern/allPositive.title
 #: nogoldstandard/options/method/all_positive.title
-#: nogoldstandard/ui[1][0]/method/all_positive.title
 msgid "All Tests Positive"
 msgstr ""
 
@@ -9953,7 +9952,7 @@ msgstr ""
 msgid "Analysis Completed Successfully"
 msgstr ""
 
-#: psychopdaROC/ui[3][0].label
+#: psychopdaROC/ui[3].label
 msgid "Analysis Configuration"
 msgstr ""
 
@@ -10182,13 +10181,16 @@ msgstr ""
 msgid "Any crossed rater x case x condition design"
 msgstr ""
 
+#: agreement/ui[5].label
+msgid "Any data type"
+msgstr ""
+
 #: R/agreement.b.R
 msgid "Any number of raters"
 msgstr ""
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/any_positive.title
-#: nogoldstandard/ui[1][0]/method/any_positive.title
 msgid "Any Test Positive"
 msgstr ""
 
@@ -11089,7 +11091,7 @@ msgid ""
 msgstr ""
 
 #: decisioncombine/options/showBarPlot.title
-#: decisioncombine/ui[1][7]/showBarPlot.label
+#: decisioncombine/ui[3]/showBarPlot.label
 msgid "Bar chart"
 msgstr ""
 
@@ -11270,7 +11272,7 @@ msgstr ""
 msgid "Bhapkar test (marginal homogeneity for 2 raters)"
 msgstr ""
 
-#: agreement/ui[27].label
+#: agreement/ui[6][1].label
 msgid "Bhapkar Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr ""
 
@@ -11388,7 +11390,7 @@ msgstr ""
 msgid "Bland-Altman"
 msgstr ""
 
-#: agreement/ui[17].label
+#: agreement/ui[4][4].label
 msgid "Bland-Altman Analysis [Continuous] (Limits of Agreement)"
 msgstr ""
 
@@ -11547,11 +11549,11 @@ msgstr ""
 #: decisioncurve/ui[7][0]/confidenceIntervals.label
 #: enhancedROC/options/useBootstrap.title
 #: psychopdaROC/options/bootstrapCI.title
-#: psychopdaROC/ui[9][1]/bootstrapCI.label
+#: psychopdaROC/ui[9][1][0]/bootstrapCI.label
 msgid "Bootstrap confidence intervals"
 msgstr ""
 
-#: agreement/ui[23].label
+#: agreement/ui[1][1].label
 msgid "Bootstrap Confidence Intervals (Any Data Type)"
 msgstr ""
 
@@ -11617,11 +11619,11 @@ msgstr ""
 
 #: lassologistic/options/bootstrapN.title
 #: psychopdaROC/options/boot_runs.title
-#: psychopdaROC/ui[5][1]/boot_runs.label
+#: psychopdaROC/ui[5][1][0]/boot_runs.label
 msgid "Bootstrap iterations"
 msgstr ""
 
-#: psychopdaROC/ui[10][1]/idiNriBootRuns.label
+#: psychopdaROC/ui[10][1][0]/idiNriBootRuns.label
 msgid "Bootstrap iterations for IDI/NRI"
 msgstr ""
 
@@ -11641,7 +11643,7 @@ msgstr ""
 #: decisioncurve/options/bootReps.title
 #: decisioncurve/ui[7][0]/bootReps.label
 #: psychopdaROC/options/bootstrapReps.title
-#: psychopdaROC/ui[9][1]/bootstrapReps.label
+#: psychopdaROC/ui[9][1][0]/bootstrapReps.label
 msgid "Bootstrap replications"
 msgstr ""
 
@@ -12089,7 +12091,7 @@ msgstr ""
 msgid "Case agreement categorization"
 msgstr ""
 
-#: agreement/ui[31].label
+#: agreement/ui[8][1].label
 msgid "Case Agreement Categorization (Any Data Type)"
 msgstr ""
 
@@ -12105,7 +12107,7 @@ msgstr ""
 msgid "Case Clustering"
 msgstr ""
 
-#: agreement/ui[36].label
+#: agreement/ui[7][4].label
 msgid "Case Clustering (Identify Rating Pattern Groups)"
 msgstr ""
 
@@ -12277,6 +12279,10 @@ msgstr ""
 
 #: agreement/results/itemModalAgreementTable.columns.title
 msgid "Cases with this Mode"
+msgstr ""
+
+#: agreement/ui[2].label
+msgid "Categorical"
 msgstr ""
 
 #: R/agreement.b.R
@@ -12792,7 +12798,7 @@ msgid ""
 msgstr ""
 
 #: psychopdaROC/options/quantileCIs.title
-#: psychopdaROC/ui[8][0][1][0]/quantileCIs.label
+#: psychopdaROC/ui[8][0][1][0][0]/quantileCIs.label
 msgid "CIs at quantiles"
 msgstr ""
 
@@ -13710,7 +13716,7 @@ msgstr ""
 msgid "Combined PPV"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][0][0]/combinePlots.label
+#: psychopdaROC/ui[8][0][0][0][0]/combinePlots.label
 msgid "Combined ROC curves"
 msgstr ""
 
@@ -13988,7 +13994,6 @@ msgstr ""
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/composite.title
-#: nogoldstandard/ui[1][0]/method/composite.title
 msgid "Composite Reference (strict majority)"
 msgstr ""
 
@@ -14054,6 +14059,10 @@ msgstr ""
 msgid ""
 "Computed on the full sample: the subgroup variable is not applied to this "
 "table."
+msgstr ""
+
+#: agreement/ui[8].label
+msgid "Computed variables"
 msgstr ""
 
 #: agreement/results/computedVariablesInfo.title
@@ -14209,7 +14218,7 @@ msgstr ""
 
 #: enhancedROC/options/showConfidenceBands.title
 #: psychopdaROC/options/showConfidenceBands.title
-#: psychopdaROC/ui[8][0][1][0]/showConfidenceBands.label
+#: psychopdaROC/ui[8][0][1][0][0]/showConfidenceBands.label
 msgid "Confidence bands"
 msgstr ""
 
@@ -14609,6 +14618,10 @@ msgstr ""
 msgid "Continuity correction applied"
 msgstr ""
 
+#: agreement/ui[4].label
+msgid "Continuous"
+msgstr ""
+
 #: R/psychopdaROC.b.R
 msgid ""
 "Continuous (category-free) NRI: no usable risk category boundaries were "
@@ -14828,7 +14841,7 @@ msgstr ""
 msgid "Cost per treatment"
 msgstr ""
 
-#: psychopdaROC/ui[4][0]/costratioFP.label
+#: psychopdaROC/ui[5][0]/costratioFP.label
 msgid "Cost Ratio (False Positive : False Negative)"
 msgstr ""
 
@@ -14930,7 +14943,7 @@ msgid ""
 "classified positive."
 msgstr ""
 
-#: agreement/ui[30].label
+#: agreement/ui[8][0].label
 msgid "Create Consensus Variable (Any Data Type)"
 msgstr ""
 
@@ -15520,7 +15533,7 @@ msgid "Decision Space - Sensitivity vs Specificity"
 msgstr ""
 
 #: decisioncombine/options/showDecisionTree.title
-#: decisioncombine/ui[1][7]/showDecisionTree.label
+#: decisioncombine/ui[3]/showDecisionTree.label
 msgid "Decision space (sensitivity vs specificity)"
 msgstr ""
 
@@ -15749,7 +15762,7 @@ msgid "Descriptive Average Net Benefit Over Threshold Range"
 msgstr ""
 
 #: decisioncombine/options/showRecommendation.title
-#: decisioncombine/ui[1]/showRecommendation.label
+#: decisioncombine/ui[2]/showRecommendation.label
 msgid "Descriptive candidate-rule ranking"
 msgstr ""
 
@@ -16166,7 +16179,7 @@ msgid ""
 msgstr ""
 
 #: psychopdaROC/options/directLabel.title
-#: psychopdaROC/ui[8][0][0][0]/directLabel.label
+#: psychopdaROC/ui[8][0][0][0][0]/directLabel.label
 msgid "Direct curve labels"
 msgstr ""
 
@@ -16200,7 +16213,7 @@ msgid ""
 "markers whose direction is genuinely unknown, and say so."
 msgstr ""
 
-#: agreement/ui[26].label
+#: agreement/ui[6][0].label
 msgid "Directional Discordance [Ordinal] (2 Raters)"
 msgstr ""
 
@@ -16501,8 +16514,7 @@ msgstr ""
 
 #: cotest/ui[5].label
 #: decisioncalculator/ui[1].label
-#: decisioncombine/ui[1].label
-#: decisioncompare/ui[7].label
+#: decisioncompare/ui[6].label
 #: sequentialtests/ui[5].label
 msgid "Display Options"
 msgstr ""
@@ -17018,7 +17030,7 @@ msgid ""
 "pairs (Mann & Whitney, 1947)."
 msgstr ""
 
-#: agreement/ui[15].label
+#: agreement/ui[4][3].label
 msgid "Empirical TDI [Continuous] (Prespecified Difference Limit)"
 msgstr ""
 
@@ -17895,10 +17907,6 @@ msgstr ""
 msgid "Explain the imbalance warning in full"
 msgstr ""
 
-#: psychopdaROC/ui/metaAnalysis.label
-msgid "Explain why within-cohort meta-analysis is unavailable"
-msgstr ""
-
 #: cotest/results/explanation.title
 #: sequentialtests/results/explanation_text.title
 msgid "Explanation"
@@ -18512,7 +18520,7 @@ msgid ""
 "always shows every row so patterns remain comparable."
 msgstr ""
 
-#: decisioncombine/ui[2].label
+#: decisioncombine/ui[3][4].label
 msgid "Filters"
 msgstr ""
 
@@ -18576,7 +18584,7 @@ msgstr ""
 msgid "Finn coefficient (variance-based agreement)"
 msgstr ""
 
-#: agreement/ui[8].label
+#: agreement/ui[2][3].label
 msgid "Finn Coefficient [Categorical] (Variance-Based)"
 msgstr ""
 
@@ -19079,7 +19087,7 @@ msgstr ""
 
 #: agreement/options/subgroupForestPlot.title
 #: decisioncombine/options/showForest.title
-#: decisioncombine/ui[1][7]/showForest.label
+#: decisioncombine/ui[3]/showForest.label
 msgid "Forest plot"
 msgstr ""
 
@@ -19178,7 +19186,7 @@ msgstr ""
 msgid "From"
 msgstr ""
 
-#: psychopdaROC/ui[9][0]/partialAUCfrom.label
+#: psychopdaROC/ui[9][0][0]/partialAUCfrom.label
 msgid "From specificity"
 msgstr ""
 
@@ -19622,7 +19630,7 @@ msgstr ""
 msgid "Gwet's AC1/AC2"
 msgstr ""
 
-#: agreement/ui[6].label
+#: agreement/ui[2][1].label
 msgid "Gwet's AC1/AC2 (Categorical/Ordinal)"
 msgstr ""
 
@@ -19674,7 +19682,7 @@ msgid ""
 msgstr ""
 
 #: decisioncombine/options/showHeatmap.title
-#: decisioncombine/ui[1][7]/showHeatmap.label
+#: decisioncombine/ui[3]/showHeatmap.label
 msgid "Heatmap"
 msgstr ""
 
@@ -19740,7 +19748,7 @@ msgstr ""
 msgid "Hierarchical/multilevel kappa"
 msgstr ""
 
-#: agreement/ui[20].label
+#: agreement/ui[2][6].label
 msgid "Hierarchical/Multilevel Kappa [Categorical] (Multi-Center Studies)"
 msgstr ""
 
@@ -20068,7 +20076,7 @@ msgstr ""
 msgid "ICC (Intraclass Correlation Coefficient)"
 msgstr ""
 
-#: agreement/ui[12].label
+#: agreement/ui[4][0].label
 msgid "ICC [Continuous] (Intraclass Correlation)"
 msgstr ""
 
@@ -20250,7 +20258,7 @@ msgstr ""
 msgid "IDI"
 msgstr ""
 
-#: psychopdaROC/ui[10][1]/calculateIDI.label
+#: psychopdaROC/ui[10][1][0]/calculateIDI.label
 msgid "IDI (integrated discrimination improvement)"
 msgstr ""
 
@@ -21050,7 +21058,7 @@ msgstr ""
 msgid "Inter/intra-rater reliability (test-retest)"
 msgstr ""
 
-#: agreement/ui[29].label
+#: agreement/ui[5][2].label
 msgid "Inter/Intra-Rater Reliability [Any Data Type] (Test-Retest Studies)"
 msgstr ""
 
@@ -21465,7 +21473,7 @@ msgstr ""
 msgid "Iota Coefficient (Single Variable)"
 msgstr ""
 
-#: agreement/ui[16].label
+#: agreement/ui[5][1].label
 msgid "Iota Coefficient [Continuous or Categorical] (Single Variable)"
 msgstr ""
 
@@ -21996,7 +22004,7 @@ msgstr ""
 msgid "Kendall's W (concordance for rankings)"
 msgstr ""
 
-#: agreement/ui[9].label
+#: agreement/ui[3][2].label
 msgid "Kendall's W [Ordinal] (Concordance for Rankings)"
 msgstr ""
 
@@ -22100,7 +22108,7 @@ msgstr ""
 msgid "Krippendorff's Alpha ({method})"
 msgstr ""
 
-#: agreement/ui[4].label
+#: agreement/ui[5][0].label
 msgid "Krippendorff's Alpha (Any Data Type)"
 msgstr ""
 
@@ -22265,7 +22273,6 @@ msgstr ""
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/latent_class.title
-#: nogoldstandard/ui[1][0]/method/latent_class.title
 msgid "Latent Class Analysis"
 msgstr ""
 
@@ -22363,7 +22370,7 @@ msgid "Legacy ROC correlation (ignored)"
 msgstr ""
 
 #: psychopdaROC/options/legendPosition.title
-#: psychopdaROC/ui[8][0][0][1]/legendPosition.label
+#: psychopdaROC/ui[8][0][0][1][0]/legendPosition.label
 msgid "Legend position"
 msgstr ""
 
@@ -22430,7 +22437,7 @@ msgstr ""
 msgid "Light's Kappa (average of pairwise kappas)"
 msgstr ""
 
-#: agreement/ui[5].label
+#: agreement/ui[2][0].label
 msgid "Light's Kappa [Categorical] (3+ Raters)"
 msgstr ""
 
@@ -22599,7 +22606,7 @@ msgstr ""
 msgid "Lin's CCC"
 msgstr ""
 
-#: agreement/ui[14].label
+#: agreement/ui[4][2].label
 msgid "Lin's CCC [Continuous] (Concordance - Method Comparison)"
 msgstr ""
 
@@ -22682,7 +22689,7 @@ msgid "LoA distribution table"
 msgstr ""
 
 #: psychopdaROC/options/smoothing.title
-#: psychopdaROC/ui[8][0][0][1]/smoothing.label
+#: psychopdaROC/ui[8][0][0][1][0]/smoothing.label
 msgid "LOESS smoothing"
 msgstr ""
 
@@ -23366,7 +23373,7 @@ msgid ""
 "indicate raters' measurements vary together linearly."
 msgstr ""
 
-#: agreement/ui[13].label
+#: agreement/ui[4][1].label
 msgid "Mean Pearson Correlation [Continuous] (Linear Association)"
 msgstr ""
 
@@ -23408,7 +23415,7 @@ msgstr ""
 msgid "Mean Spearman Rho (Average Rank Correlation) Results"
 msgstr ""
 
-#: agreement/ui[11].label
+#: agreement/ui[3][4].label
 msgid "Mean Spearman Rho [Ordinal] (Average Rank Correlation)"
 msgstr ""
 
@@ -23727,7 +23734,7 @@ msgid "Metric Tolerance"
 msgstr ""
 
 #: psychopdaROC/options/tol_metric.title
-#: psychopdaROC/ui[5][1]/tol_metric.label
+#: psychopdaROC/ui[5][1][0]/tol_metric.label
 msgid "Metric tolerance"
 msgstr ""
 
@@ -23834,7 +23841,7 @@ msgstr ""
 msgid "minimum"
 msgstr ""
 
-#: decisioncompare/ui[4]/niMargin.label
+#: decisioncompare/ui[3]/niMargin.label
 msgid "Minimum acceptable OPA (%)"
 msgstr ""
 
@@ -24034,7 +24041,7 @@ msgstr ""
 msgid "Mixed-effects condition comparison"
 msgstr ""
 
-#: agreement/ui[21].label
+#: agreement/ui[6][4].label
 msgid "Mixed-Effects Condition Comparison [Continuous] (AI vs Manual, Pre vs Post)"
 msgstr ""
 
@@ -24507,7 +24514,7 @@ msgstr ""
 msgid "Multi-Annotator Concordance"
 msgstr ""
 
-#: agreement/ui[24].label
+#: agreement/ui[2][8].label
 msgid "Multi-Annotator Concordance [Categorical] (AI Validation)"
 msgstr ""
 
@@ -24535,7 +24542,7 @@ msgstr ""
 msgid "Multi-Class Confusion Matrix"
 msgstr ""
 
-#: agreement/ui[22].label
+#: agreement/ui[2][7].label
 msgid "Multi-Class Confusion Matrix [Categorical] (Classification Evaluation)"
 msgstr ""
 
@@ -26603,7 +26610,7 @@ msgstr ""
 msgid "NRI"
 msgstr ""
 
-#: psychopdaROC/ui[10][1]/calculateNRI.label
+#: psychopdaROC/ui[10][1][0]/calculateNRI.label
 msgid "NRI (net reclassification index)"
 msgstr ""
 
@@ -26621,7 +26628,7 @@ msgstr ""
 msgid "NRI risk categories"
 msgstr ""
 
-#: psychopdaROC/ui[10][1]/nriThresholds.label
+#: psychopdaROC/ui[10][1][0]/nriThresholds.label
 msgid "NRI thresholds (comma-separated)"
 msgstr ""
 
@@ -27623,6 +27630,7 @@ msgid ""
 msgstr ""
 
 #: agreement/options/krippMethod/ordinal.title
+#: agreement/ui[3].label
 msgid "Ordinal"
 msgstr ""
 
@@ -27673,7 +27681,7 @@ msgstr ""
 msgid "Ordinal scale with meaningful distances between categories"
 msgstr ""
 
-#: agreement/ui[3].label
+#: agreement/ui[3][1].label
 msgctxt "Ordinal/Categorical"
 msgid "Pathologist Grading Analysis"
 msgstr ""
@@ -28100,7 +28108,7 @@ msgstr ""
 msgid "PABAK & prevalence/bias indices"
 msgstr ""
 
-#: agreement/ui[7].label
+#: agreement/ui[2][2].label
 msgid "PABAK & Prevalence/Bias Indices (2 Raters)"
 msgstr ""
 
@@ -28166,7 +28174,7 @@ msgstr ""
 msgid "Paired agreement comparison"
 msgstr ""
 
-#: agreement/ui[37].label
+#: agreement/ui[6][3].label
 msgid "Paired Agreement Comparison [Categorical] (With vs Without AI)"
 msgstr ""
 
@@ -28233,7 +28241,7 @@ msgstr ""
 msgid "Pairwise kappa (vs reference)"
 msgstr ""
 
-#: agreement/ui[25].label
+#: agreement/ui[2][5].label
 msgid "Pairwise Kappa [Categorical] (vs Reference Rater)"
 msgstr ""
 
@@ -28339,7 +28347,7 @@ msgstr ""
 #: enhancedROC/results/results/partialAucAnalysis.columns.title
 #: psychopdaROC/options/partialAUC.title
 #: psychopdaROC/ui[9][0][0].label
-#: psychopdaROC/ui[9][0]/partialAUC.label
+#: psychopdaROC/ui[9][0][0]/partialAUC.label
 #: psychopdaROC/results/partialAUCTable.columns.title
 msgid "Partial AUC"
 msgstr ""
@@ -28650,7 +28658,7 @@ msgstr ""
 msgid "Pattern"
 msgstr ""
 
-#: decisioncombine/ui[2]/filterPattern.label
+#: decisioncombine/ui[3][4]/filterPattern.label
 msgid "Pattern type"
 msgstr ""
 
@@ -28689,7 +28697,6 @@ msgstr ""
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/bayesian.title
-#: nogoldstandard/ui[1][0]/method/bayesian.title
 msgid "Penalized EM (MAP-like; fixed priors; 3+ tests)"
 msgstr ""
 
@@ -29057,6 +29064,7 @@ msgid "Plot width"
 msgstr ""
 
 #: decisioncalculator/ui[4][0].label
+#: decisioncombine/ui[3].label
 #: decisioncurve/ui[3].label
 #: enhancedROC/ui[2][0][1][0].label
 #: lassologistic/ui[5].label
@@ -29926,7 +29934,7 @@ msgid "Precision-Recall Curve"
 msgstr ""
 
 #: psychopdaROC/options/precisionRecallCurve.title
-#: psychopdaROC/ui[8][0][1][1]/precisionRecallCurve.label
+#: psychopdaROC/ui[8][0][1][1][0]/precisionRecallCurve.label
 msgid "Precision-recall curve"
 msgstr ""
 
@@ -30135,7 +30143,7 @@ msgstr ""
 msgid "Predictive Values vs. Prevalence"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][1][1]/showPrevalencePlot.label
+#: psychopdaROC/ui[8][0][1][1][0]/showPrevalencePlot.label
 msgid "Predictive values vs. prevalence"
 msgstr ""
 
@@ -30340,7 +30348,7 @@ msgstr ""
 msgid "Prevalence observed in this study sample."
 msgstr ""
 
-#: decisioncompare/ui[5].label
+#: decisioncompare/ui[4].label
 msgid "Prevalence Settings"
 msgstr ""
 
@@ -30422,7 +30430,7 @@ msgstr ""
 msgid "Prior prevalence value (0-1)"
 msgstr ""
 
-#: decisioncompare/ui[5]/pprob.label
+#: decisioncompare/ui[4]/pprob.label
 msgid "Prior Probability"
 msgstr ""
 
@@ -30849,7 +30857,7 @@ msgstr ""
 msgid "PSA/NSA"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][0][1]/cleanPlot.label
+#: psychopdaROC/ui[8][0][0][1][0]/cleanPlot.label
 msgid "Publication-quality plot"
 msgstr ""
 
@@ -30910,7 +30918,7 @@ msgid "Quantifies actual differences"
 msgstr ""
 
 #: psychopdaROC/options/quantiles.title
-#: psychopdaROC/ui[8][0][1][0]/quantiles.label
+#: psychopdaROC/ui[8][0][1][0][0]/quantiles.label
 msgid "Quantile positions"
 msgstr ""
 
@@ -31031,7 +31039,7 @@ msgstr ""
 #: nogoldstandard/options/seed.title
 #: nogoldstandard/ui[2][0]/seed.label
 #: psychopdaROC/options/seed.title
-#: psychopdaROC/ui[5][1]/seed.label
+#: psychopdaROC/ui[5][1][0]/seed.label
 msgid "Random seed"
 msgstr ""
 
@@ -31174,6 +31182,10 @@ msgstr ""
 msgid "Rater A"
 msgstr ""
 
+#: agreement/ui[7].label
+msgid "Rater and case diagnostics"
+msgstr ""
+
 #: agreement/results/allPairsKappaTable.columns.title
 msgid "Rater B"
 msgstr ""
@@ -31186,7 +31198,7 @@ msgstr ""
 msgid "Rater Clustering"
 msgstr ""
 
-#: agreement/ui[35].label
+#: agreement/ui[7][3].label
 msgid "Rater Clustering (Identify Rating Pattern Groups)"
 msgstr ""
 
@@ -31207,7 +31219,7 @@ msgstr ""
 msgid "Rater performance ranking"
 msgstr ""
 
-#: agreement/ui[33].label
+#: agreement/ui[7][1].label
 msgid "Rater Profile Plots (Distribution Comparison)"
 msgstr ""
 
@@ -31245,7 +31257,7 @@ msgstr ""
 msgid "Rater variance decomposition (systematic vs random)"
 msgstr ""
 
-#: agreement/ui[19].label
+#: agreement/ui[4][5].label
 msgid "Rater Variance Decomposition [Continuous] (Systematic vs Random Disagreement)"
 msgstr ""
 
@@ -31547,7 +31559,7 @@ msgid "Reference interpretation"
 msgstr ""
 
 #: decision/ui[1].label
-#: decisioncompare/ui[1].label
+#: decisioncompare/ui[2].label
 msgid "Reference Interpretation"
 msgstr ""
 
@@ -32232,7 +32244,7 @@ msgstr ""
 msgid "Robinson's A (Ordinal Agreement Index) Results"
 msgstr ""
 
-#: agreement/ui[10].label
+#: agreement/ui[3][3].label
 msgid "Robinson's A [Ordinal] (Agreement Index)"
 msgstr ""
 
@@ -32441,7 +32453,7 @@ msgid "ROC Curves"
 msgstr ""
 
 #: psychopdaROC/options/plotROC.title
-#: psychopdaROC/ui[8][0][0][0]/plotROC.label
+#: psychopdaROC/ui[8][0][0][0][0]/plotROC.label
 msgid "ROC curves"
 msgstr ""
 
@@ -32606,6 +32618,10 @@ msgstr ""
 msgid "Rule Positive Level Required"
 msgstr ""
 
+#: decisioncombine/ui[2].label
+msgid "Rule ranking"
+msgstr ""
+
 #: R/decisioncombine.b.R
 msgid "Rules Left Empty in the Forest Plot"
 msgstr ""
@@ -32722,7 +32738,7 @@ msgstr ""
 msgid "Sample Size for Agreement Study"
 msgstr ""
 
-#: agreement/ui[38].label
+#: agreement/ui[9][0].label
 msgid "Sample Size for Agreement Study (Design)"
 msgstr ""
 
@@ -32810,6 +32826,10 @@ msgid ""
 "Save the classification results (True Positive, False Positive, False "
 "Negative, True Negative) as a new column in your dataset. This allows you to "
 "use the classification groups in other analyses."
+msgstr ""
+
+#: decisioncombine/ui[4].label
+msgid "Save to data"
 msgstr ""
 
 #: lassologistic/ui[6][0].label
@@ -33089,7 +33109,7 @@ msgstr ""
 msgid "Select Disease present level"
 msgstr ""
 
-#: decisioncompare/ui[3].label
+#: decisioncompare/ui[1].label
 msgid ""
 "Select exact positive and negative levels. Recode ordinal cutoffs before "
 "analysis."
@@ -33293,7 +33313,7 @@ msgstr ""
 msgid "Selected binary pairs only; missing and unselected levels excluded"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][0][0]/showOptimalPoint.label
+#: psychopdaROC/ui[8][0][0][0][0]/showOptimalPoint.label
 msgid "Selected cutpoint"
 msgstr ""
 
@@ -33669,7 +33689,7 @@ msgstr ""
 msgid "Sensitivity/Specificity vs. Threshold"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][1][1]/showCriterionPlot.label
+#: psychopdaROC/ui[8][0][1][1][0]/showCriterionPlot.label
 msgid "Sensitivity/specificity vs. threshold"
 msgstr ""
 
@@ -34297,7 +34317,7 @@ msgstr ""
 msgid "Smoothed-curve confidence band"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][0][1]/displaySE.label
+#: psychopdaROC/ui[8][0][0][1][0]/displaySE.label
 msgid "Smoothed-curve confidence band (95%)"
 msgstr ""
 
@@ -34313,7 +34333,7 @@ msgstr ""
 msgid "Smoothing Failed: %s"
 msgstr ""
 
-#: psychopdaROC/ui[9][1]/rocSmoothingMethod.label
+#: psychopdaROC/ui[9][1][0]/rocSmoothingMethod.label
 msgid "Smoothing method"
 msgstr ""
 
@@ -34454,7 +34474,7 @@ msgstr ""
 msgid "Specific agreement indices (category-focused)"
 msgstr ""
 
-#: agreement/ui[32].label
+#: agreement/ui[2][4].label
 msgid "Specific Agreement Indices [Categorical] (Category-Focused)"
 msgstr ""
 
@@ -34704,7 +34724,7 @@ msgstr ""
 #: agreement/results/interIntraRaterIntraTable.columns.title
 #: agreement/results/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: decisioncombine/ui[2]/filterStatistic.label
+#: decisioncombine/ui[3][4]/filterStatistic.label
 #: decisioncombine/results/combinationTableCI.columns.title
 #: decisioncombine/results/combinationTableCIRatios.columns.title
 #: decisioncombine/results/individualTest1/test1Stats.columns.title
@@ -34835,7 +34855,7 @@ msgid "Statistical Notes"
 msgstr ""
 
 #: decisioncalculator/ui[2].label
-#: decisioncompare/ui[4].label
+#: decisioncompare/ui[3].label
 #: enhancedROC/ui[4].label
 msgid "Statistical Options"
 msgstr ""
@@ -35090,7 +35110,7 @@ msgstr ""
 msgid "Stuart-Maxwell test (marginal homogeneity for 2 raters)"
 msgstr ""
 
-#: agreement/ui[28].label
+#: agreement/ui[6][2].label
 msgid "Stuart-Maxwell Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr ""
 
@@ -35137,6 +35157,10 @@ msgstr ""
 
 #: agreement/results/designSummaryTable.title
 msgid "Study Design"
+msgstr ""
+
+#: agreement/ui[9].label
+msgid "Study design"
 msgstr ""
 
 #: agreement/options/gradingDesign.title
@@ -35381,6 +35405,7 @@ msgstr ""
 msgid "Table thresholds outside the analyzed range"
 msgstr ""
 
+#: decisioncombine/ui[1].label
 #: enhancedROC/ui[2][0][0][0].label
 msgid "Tables"
 msgstr ""
@@ -36082,7 +36107,7 @@ msgstr ""
 msgid "Test Values Distribution"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][1][1]/showDotPlot.label
+#: psychopdaROC/ui[8][0][1][1][0]/showDotPlot.label
 msgid "Test values distribution"
 msgstr ""
 
@@ -36133,6 +36158,10 @@ msgstr ""
 
 #: sequentialtests/results/plot_flow_diagram.title
 msgid "Testing Strategy Flow Diagram"
+msgstr ""
+
+#: agreement/ui[6].label
+msgid "Tests"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -40153,7 +40182,7 @@ msgid "Tie Breakers"
 msgstr ""
 
 #: psychopdaROC/options/break_ties.title
-#: psychopdaROC/ui[5][1]/break_ties.label
+#: psychopdaROC/ui[5][1][0]/break_ties.label
 msgid "Tie breaking method"
 msgstr ""
 
@@ -40268,7 +40297,7 @@ msgid ""
 "categories' to see each one separately."
 msgstr ""
 
-#: psychopdaROC/ui[9][0]/partialAUCto.label
+#: psychopdaROC/ui[9][0][0]/partialAUCto.label
 msgid "To specificity"
 msgstr ""
 
@@ -41279,7 +41308,7 @@ msgid "Validation Notices"
 msgstr ""
 
 #: decision/ui[7].label
-#: decisioncompare/ui[8].label
+#: decisioncompare/ui[7].label
 msgid "Validation Provenance"
 msgstr ""
 
@@ -41628,8 +41657,7 @@ msgstr ""
 msgid "Visualization"
 msgstr ""
 
-#: decisioncombine/ui[1][7].label
-#: decisioncompare/ui[6].label
+#: decisioncompare/ui[5].label
 msgid "Visualizations"
 msgstr ""
 
@@ -41804,7 +41832,7 @@ msgstr ""
 msgid "Weighted Kappa (Ordinal Data)"
 msgstr ""
 
-#: agreement/ui[2].label
+#: agreement/ui[3][0].label
 msgid "Weighted Kappa (Ordinal)"
 msgstr ""
 
@@ -43026,7 +43054,7 @@ msgid "Youden's J 95% CI"
 msgstr ""
 
 #: decisioncombine/options/optimismCorrection.title
-#: decisioncombine/ui[1]/showRecommendation/optimismCorrection.label
+#: decisioncombine/ui[2]/showRecommendation/optimismCorrection.label
 msgid "Youden's J corrected for rule selection"
 msgstr ""
 

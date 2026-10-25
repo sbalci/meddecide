@@ -10677,7 +10677,7 @@ msgid "Additional Prevalences Not Read"
 msgstr "Ek Prevalanslar Okunamadı"
 
 #: psychopdaROC/options/interactiveROC.title
-#: psychopdaROC/ui[8][0][0][1]/interactiveROC.label
+#: psychopdaROC/ui[8][0][0][1][0]/interactiveROC.label
 msgid "Additional static ROC plot"
 msgstr "Ek statik ROC grafiği"
 
@@ -10993,7 +10993,7 @@ msgid "Agreement by stratum"
 msgstr "Tabakaya göre uyum"
 
 #: R/agreement.b.R
-#: agreement/ui[34].label
+#: agreement/ui[7][2].label
 #: agreement/results/subgroupAgreementTable.title
 msgid "Agreement by Subgroup (Stratified Analysis)"
 msgstr "Alt Gruba Göre Uyum (Tabakalı Analiz)"
@@ -11026,7 +11026,7 @@ msgstr "Uyum Isı Haritası (Karışıklık Matrisi)"
 msgid "Agreement heatmap (confusion matrix)"
 msgstr "Uyum ısı haritası (karışıklık matrisi)"
 
-#: agreement/ui[18].label
+#: agreement/ui[7][0].label
 msgid "Agreement Heatmap [Categorical] (Confusion Matrix Visualization)"
 msgstr "Uyum Isı Haritası [Kategorik] (Karışıklık Matrisi Görselleştirmesi)"
 
@@ -11211,7 +11211,7 @@ msgstr ""
 "yalnızca açıklama amaçlıdır, klinik kılavuz değildir"
 
 #: psychopdaROC/options/allObserved.title
-#: psychopdaROC/ui[5][1]/allObserved.label
+#: psychopdaROC/ui[5][1][0]/allObserved.label
 msgid "All observed cutpoints"
 msgstr "Tüm gözlemlenen kesme noktaları"
 
@@ -11273,7 +11273,6 @@ msgstr "Tüm Testler Negatif"
 #: R/nogoldstandard.b.R
 #: decisioncombine/options/filterPattern/allPositive.title
 #: nogoldstandard/options/method/all_positive.title
-#: nogoldstandard/ui[1][0]/method/all_positive.title
 msgid "All Tests Positive"
 msgstr "Tüm Testler Pozitif"
 
@@ -11694,7 +11693,7 @@ msgstr "Analiz Tamamlandı"
 msgid "Analysis Completed Successfully"
 msgstr "Analiz Başarıyla Tamamlandı"
 
-#: psychopdaROC/ui[3][0].label
+#: psychopdaROC/ui[3].label
 msgid "Analysis Configuration"
 msgstr "Analiz Yapılandırması"
 
@@ -11940,13 +11939,16 @@ msgstr ""
 msgid "Any crossed rater x case x condition design"
 msgstr ""
 
+#: agreement/ui[5].label
+msgid "Any data type"
+msgstr "Her veri türü"
+
 #: R/agreement.b.R
 msgid "Any number of raters"
 msgstr ""
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/any_positive.title
-#: nogoldstandard/ui[1][0]/method/any_positive.title
 msgid "Any Test Positive"
 msgstr "Herhangi Bir Test Pozitif"
 
@@ -13068,7 +13070,7 @@ msgstr ""
 "değişir."
 
 #: decisioncombine/options/showBarPlot.title
-#: decisioncombine/ui[1][7]/showBarPlot.label
+#: decisioncombine/ui[3]/showBarPlot.label
 msgid "Bar chart"
 msgstr "Çubuk grafik"
 
@@ -13270,7 +13272,7 @@ msgstr ""
 msgid "Bhapkar test (marginal homogeneity for 2 raters)"
 msgstr "Bhapkar testi (2 değerlendirici için marjinal homojenlik)"
 
-#: agreement/ui[27].label
+#: agreement/ui[6][1].label
 msgid "Bhapkar Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr "Bhapkar Testi [Kategorik] (Marjinal Homojenlik, 2 Değerlendirici)"
 
@@ -13402,7 +13404,7 @@ msgstr ""
 msgid "Bland-Altman"
 msgstr ""
 
-#: agreement/ui[17].label
+#: agreement/ui[4][4].label
 msgid "Bland-Altman Analysis [Continuous] (Limits of Agreement)"
 msgstr "Bland-Altman Analizi [Sürekli] (Uyum Sınırları)"
 
@@ -13582,11 +13584,11 @@ msgstr "Bootstrap Güven Aralıkları"
 #: decisioncurve/ui[7][0]/confidenceIntervals.label
 #: enhancedROC/options/useBootstrap.title
 #: psychopdaROC/options/bootstrapCI.title
-#: psychopdaROC/ui[9][1]/bootstrapCI.label
+#: psychopdaROC/ui[9][1][0]/bootstrapCI.label
 msgid "Bootstrap confidence intervals"
 msgstr "Bootstrap güven aralıkları"
 
-#: agreement/ui[23].label
+#: agreement/ui[1][1].label
 msgid "Bootstrap Confidence Intervals (Any Data Type)"
 msgstr "Bootstrap Güven Aralıkları (Her Tür Veri)"
 
@@ -13658,11 +13660,11 @@ msgstr "Bootstrap Yinelemesi"
 
 #: lassologistic/options/bootstrapN.title
 #: psychopdaROC/options/boot_runs.title
-#: psychopdaROC/ui[5][1]/boot_runs.label
+#: psychopdaROC/ui[5][1][0]/boot_runs.label
 msgid "Bootstrap iterations"
 msgstr "Bootstrap yinelemeleri"
 
-#: psychopdaROC/ui[10][1]/idiNriBootRuns.label
+#: psychopdaROC/ui[10][1][0]/idiNriBootRuns.label
 msgid "Bootstrap iterations for IDI/NRI"
 msgstr "IDI/NRI için bootstrap yinelemeleri"
 
@@ -13682,7 +13684,7 @@ msgstr "Bootstrap tekrarları"
 #: decisioncurve/options/bootReps.title
 #: decisioncurve/ui[7][0]/bootReps.label
 #: psychopdaROC/options/bootstrapReps.title
-#: psychopdaROC/ui[9][1]/bootstrapReps.label
+#: psychopdaROC/ui[9][1][0]/bootstrapReps.label
 msgid "Bootstrap replications"
 msgstr "Bootstrap tekrarlamaları"
 
@@ -14196,7 +14198,7 @@ msgstr "Olgu (Denek)"
 msgid "Case agreement categorization"
 msgstr "Olgu uyum kategorizasyonu"
 
-#: agreement/ui[31].label
+#: agreement/ui[8][1].label
 msgid "Case Agreement Categorization (Any Data Type)"
 msgstr "Olgu Uyum Kategorizasyonu (Her Tür Veri)"
 
@@ -14212,7 +14214,7 @@ msgstr "Olgu Küme Atamaları"
 msgid "Case Clustering"
 msgstr ""
 
-#: agreement/ui[36].label
+#: agreement/ui[7][4].label
 msgid "Case Clustering (Identify Rating Pattern Groups)"
 msgstr "Olgu Kümeleme (Puanlama Deseni Gruplarını Belirleme)"
 
@@ -14418,6 +14420,10 @@ msgstr ""
 #: agreement/results/itemModalAgreementTable.columns.title
 msgid "Cases with this Mode"
 msgstr "Bu Mod Değerine Sahip Olgular"
+
+#: agreement/ui[2].label
+msgid "Categorical"
+msgstr "Kategorik (Nominal)"
 
 #: R/agreement.b.R
 msgid "Categorical agreement (nominal or ordinal categories)"
@@ -15004,7 +15010,7 @@ msgstr ""
 "dejenere) tablo için sonlu bir SH döndüremedi."
 
 #: psychopdaROC/options/quantileCIs.title
-#: psychopdaROC/ui[8][0][1][0]/quantileCIs.label
+#: psychopdaROC/ui[8][0][1][0][0]/quantileCIs.label
 msgid "CIs at quantiles"
 msgstr "Kantillerdeki GA'lar"
 
@@ -16021,7 +16027,7 @@ msgstr "Birleşik NÖD"
 msgid "Combined PPV"
 msgstr "Birleşik PÖD"
 
-#: psychopdaROC/ui[8][0][0][0]/combinePlots.label
+#: psychopdaROC/ui[8][0][0][0][0]/combinePlots.label
 msgid "Combined ROC curves"
 msgstr "Birleşik ROC eğrileri"
 
@@ -16326,7 +16332,6 @@ msgstr "Bileşik Referans"
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/composite.title
-#: nogoldstandard/ui[1][0]/method/composite.title
 msgid "Composite Reference (strict majority)"
 msgstr "Bileşik Referans (kesin çoğunluk)"
 
@@ -16400,6 +16405,10 @@ msgid ""
 msgstr ""
 "Tüm örneklem üzerinden hesaplanmıştır: alt grup değişkeni bu tabloya "
 "uygulanmaz."
+
+#: agreement/ui[8].label
+msgid "Computed variables"
+msgstr "Hesaplanan değişkenler"
 
 #: agreement/results/computedVariablesInfo.title
 msgid "Computed Variables Added to Dataset"
@@ -16565,7 +16574,7 @@ msgstr "{preds} için güven bandı çizilmedi: {why}"
 
 #: enhancedROC/options/showConfidenceBands.title
 #: psychopdaROC/options/showConfidenceBands.title
-#: psychopdaROC/ui[8][0][1][0]/showConfidenceBands.label
+#: psychopdaROC/ui[8][0][1][0][0]/showConfidenceBands.label
 msgid "Confidence bands"
 msgstr "Güven bantları"
 
@@ -17040,6 +17049,10 @@ msgstr "Süreklilik Düzeltmesi"
 msgid "Continuity correction applied"
 msgstr "Süreklilik düzeltmesi uygulandı"
 
+#: agreement/ui[4].label
+msgid "Continuous"
+msgstr "Sürekli"
+
 #: R/psychopdaROC.b.R
 msgid ""
 "Continuous (category-free) NRI: no usable risk category boundaries were "
@@ -17314,7 +17327,7 @@ msgstr "Test başına maliyet"
 msgid "Cost per treatment"
 msgstr "Tedavi başına maliyet"
 
-#: psychopdaROC/ui[4][0]/costratioFP.label
+#: psychopdaROC/ui[5][0]/costratioFP.label
 msgid "Cost Ratio (False Positive : False Negative)"
 msgstr "Maliyet Oranı (Yanlış Pozitif : Yanlış Negatif)"
 
@@ -17438,7 +17451,7 @@ msgstr ""
 "Kapsama yaklaşıktır ve az hastanın pozitif sınıflandığı yerlerde nominal "
 "düzeyin altına düşer."
 
-#: agreement/ui[30].label
+#: agreement/ui[8][0].label
 msgid "Create Consensus Variable (Any Data Type)"
 msgstr "Uzlaşı Değişkeni Oluştur (Her Tür Veri)"
 
@@ -18104,7 +18117,7 @@ msgid "Decision Space - Sensitivity vs Specificity"
 msgstr "Karar Uzayı - Duyarlılık ve Özgüllük"
 
 #: decisioncombine/options/showDecisionTree.title
-#: decisioncombine/ui[1][7]/showDecisionTree.label
+#: decisioncombine/ui[3]/showDecisionTree.label
 msgid "Decision space (sensitivity vs specificity)"
 msgstr "Karar uzayı (duyarlılık ve özgüllük)"
 
@@ -18380,7 +18393,7 @@ msgid "Descriptive Average Net Benefit Over Threshold Range"
 msgstr "Eşik Aralığında Tanımlayıcı Ortalama Net Fayda"
 
 #: decisioncombine/options/showRecommendation.title
-#: decisioncombine/ui[1]/showRecommendation.label
+#: decisioncombine/ui[2]/showRecommendation.label
 msgid "Descriptive candidate-rule ranking"
 msgstr "Betimsel aday kural sıralaması"
 
@@ -18849,7 +18862,7 @@ msgstr ""
 "değildir"
 
 #: psychopdaROC/options/directLabel.title
-#: psychopdaROC/ui[8][0][0][0]/directLabel.label
+#: psychopdaROC/ui[8][0][0][0][0]/directLabel.label
 msgid "Direct curve labels"
 msgstr "Doğrudan eğri etiketleri"
 
@@ -18896,7 +18909,7 @@ msgstr ""
 "raporlayabilir. \"Otomatik\" seçeneğini yalnızca yönü gerçekten bilinmeyen "
 "belirteçlerin keşifsel taraması için kullanın ve bunu belirtin."
 
-#: agreement/ui[26].label
+#: agreement/ui[6][0].label
 msgid "Directional Discordance [Ordinal] (2 Raters)"
 msgstr "Yönlü Uyumsuzluk [Sıralı] (2 Değerlendirici)"
 
@@ -19255,8 +19268,7 @@ msgstr "Optimal kesme noktası özetini görüntüle"
 
 #: cotest/ui[5].label
 #: decisioncalculator/ui[1].label
-#: decisioncombine/ui[1].label
-#: decisioncompare/ui[7].label
+#: decisioncompare/ui[6].label
 #: sequentialtests/ui[5].label
 msgid "Display Options"
 msgstr "Görüntüleme Seçenekleri"
@@ -19935,7 +19947,7 @@ msgstr ""
 "istatistiğinin olgu/olgu olmayan çiftlerinin sayısına bölümüne eşittir (Mann "
 "& Whitney, 1947)."
 
-#: agreement/ui[15].label
+#: agreement/ui[4][3].label
 msgid "Empirical TDI [Continuous] (Prespecified Difference Limit)"
 msgstr "Ampirik TDI [Sürekli] (Önceden Belirlenmiş Fark Sınırı)"
 
@@ -20977,10 +20989,6 @@ msgstr "Meta-analiz kısıtını açıkla"
 msgid "Explain the imbalance warning in full"
 msgstr "Dengesizlik uyarısını tam olarak açıkla"
 
-#: psychopdaROC/ui/metaAnalysis.label
-msgid "Explain why within-cohort meta-analysis is unavailable"
-msgstr "Aynı kohort içinde meta-analizin neden kullanılamadığını açıkla"
-
 #: cotest/results/explanation.title
 #: sequentialtests/results/explanation_text.title
 msgid "Explanation"
@@ -21673,7 +21681,7 @@ msgstr ""
 "uzayı grafiği her zaman her satırı gösterir, böylece paternler "
 "karşılaştırılabilir kalır."
 
-#: decisioncombine/ui[2].label
+#: decisioncombine/ui[3][4].label
 msgid "Filters"
 msgstr "Filtreler"
 
@@ -21747,7 +21755,7 @@ msgstr "Finn Katsayısı"
 msgid "Finn coefficient (variance-based agreement)"
 msgstr "Finn katsayısı (varyansa dayalı uyum)"
 
-#: agreement/ui[8].label
+#: agreement/ui[2][3].label
 msgid "Finn Coefficient [Categorical] (Variance-Based)"
 msgstr "Finn Katsayısı [Kategorik] (Varyansa Dayalı)"
 
@@ -22383,7 +22391,7 @@ msgstr ""
 
 #: agreement/options/subgroupForestPlot.title
 #: decisioncombine/options/showForest.title
-#: decisioncombine/ui[1][7]/showForest.label
+#: decisioncombine/ui[3]/showForest.label
 msgid "Forest plot"
 msgstr "Orman grafiği"
 
@@ -22497,7 +22505,7 @@ msgstr "Frekans tabloları"
 msgid "From"
 msgstr "Başlangıç"
 
-#: psychopdaROC/ui[9][0]/partialAUCfrom.label
+#: psychopdaROC/ui[9][0][0]/partialAUCfrom.label
 msgid "From specificity"
 msgstr "Başlangıç özgüllüğü"
 
@@ -23014,7 +23022,7 @@ msgstr ""
 msgid "Gwet's AC1/AC2"
 msgstr "Gwet'in AC1/AC2 Katsayısı"
 
-#: agreement/ui[6].label
+#: agreement/ui[2][1].label
 msgid "Gwet's AC1/AC2 (Categorical/Ordinal)"
 msgstr "Gwet'in AC1/AC2 Katsayısı (Kategorik/Sıralı)"
 
@@ -23075,7 +23083,7 @@ msgstr ""
 "görünür AUC'si eksi ortalama iyimserliktir."
 
 #: decisioncombine/options/showHeatmap.title
-#: decisioncombine/ui[1][7]/showHeatmap.label
+#: decisioncombine/ui[3]/showHeatmap.label
 msgid "Heatmap"
 msgstr "Isı haritası"
 
@@ -23146,7 +23154,7 @@ msgstr ""
 msgid "Hierarchical/multilevel kappa"
 msgstr "Hiyerarşik/Çok düzeyli kappa"
 
-#: agreement/ui[20].label
+#: agreement/ui[2][6].label
 msgid "Hierarchical/Multilevel Kappa [Categorical] (Multi-Center Studies)"
 msgstr "Hiyerarşik/Çok Düzeyli Kappa [Kategorik] (Çok Merkezli Çalışmalar)"
 
@@ -23516,7 +23524,7 @@ msgstr "ICC (sürekli veri)"
 msgid "ICC (Intraclass Correlation Coefficient)"
 msgstr ""
 
-#: agreement/ui[12].label
+#: agreement/ui[4][0].label
 msgid "ICC [Continuous] (Intraclass Correlation)"
 msgstr "ICC [Sürekli] (Sınıf-İçi Korelasyon)"
 
@@ -23712,7 +23720,7 @@ msgstr ""
 msgid "IDI"
 msgstr "IDI"
 
-#: psychopdaROC/ui[10][1]/calculateIDI.label
+#: psychopdaROC/ui[10][1][0]/calculateIDI.label
 msgid "IDI (integrated discrimination improvement)"
 msgstr "IDI (entegre ayırt etme iyileşmesi)"
 
@@ -24662,7 +24670,7 @@ msgstr "Değerlendiriciler-Arası Güvenilirlik (Değerlendiriciler Arasında)"
 msgid "Inter/intra-rater reliability (test-retest)"
 msgstr "Değerlendiriciler-arası / değerlendirici-içi güvenilirlik (test-tekrar test)"
 
-#: agreement/ui[29].label
+#: agreement/ui[5][2].label
 msgid "Inter/Intra-Rater Reliability [Any Data Type] (Test-Retest Studies)"
 msgstr ""
 "Değerlendiriciler-Arası / Değerlendirici-İçi Güvenilirlik [Her Tür Veri] "
@@ -25147,7 +25155,7 @@ msgstr "Iota katsayısı (tek değişken)"
 msgid "Iota Coefficient (Single Variable)"
 msgstr ""
 
-#: agreement/ui[16].label
+#: agreement/ui[5][1].label
 msgid "Iota Coefficient [Continuous or Categorical] (Single Variable)"
 msgstr "Iota Katsayısı [Sürekli veya Kategorik] (Tek Değişken)"
 
@@ -25846,7 +25854,7 @@ msgstr "Kendall'ın W katsayısı (uyum katsayısı)"
 msgid "Kendall's W (concordance for rankings)"
 msgstr "Kendall'ın W katsayısı (sıralamalar için uyum)"
 
-#: agreement/ui[9].label
+#: agreement/ui[3][2].label
 msgid "Kendall's W [Ordinal] (Concordance for Rankings)"
 msgstr "Kendall'ın W Katsayısı [Sıralı] (Sıralamalar İçin Uyum)"
 
@@ -25960,7 +25968,7 @@ msgstr "Krippendorff alfasu"
 msgid "Krippendorff's Alpha ({method})"
 msgstr "Krippendorff Alfası ({method})"
 
-#: agreement/ui[4].label
+#: agreement/ui[5][0].label
 msgid "Krippendorff's Alpha (Any Data Type)"
 msgstr "Krippendorff Alfasu (Her Tür Veri)"
 
@@ -26168,7 +26176,6 @@ msgstr "LASSO, Ridge veya Elastic Net cezası"
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/latent_class.title
-#: nogoldstandard/ui[1][0]/method/latent_class.title
 msgid "Latent Class Analysis"
 msgstr "Örtük Sınıf Analizi"
 
@@ -26287,7 +26294,7 @@ msgid "Legacy ROC correlation (ignored)"
 msgstr ""
 
 #: psychopdaROC/options/legendPosition.title
-#: psychopdaROC/ui[8][0][0][1]/legendPosition.label
+#: psychopdaROC/ui[8][0][0][1][0]/legendPosition.label
 msgid "Legend position"
 msgstr "Gösterge konumu"
 
@@ -26354,7 +26361,7 @@ msgstr "Light'ın kappası (3+ değerlendirici)"
 msgid "Light's Kappa (average of pairwise kappas)"
 msgstr "Light'ın Kappası (ikili kappaların ortalaması)"
 
-#: agreement/ui[5].label
+#: agreement/ui[2][0].label
 msgid "Light's Kappa [Categorical] (3+ Raters)"
 msgstr "Light'ın Kappası [Kategorik] (3+ Değerlendirici)"
 
@@ -26569,7 +26576,7 @@ msgstr ""
 msgid "Lin's CCC"
 msgstr ""
 
-#: agreement/ui[14].label
+#: agreement/ui[4][2].label
 msgid "Lin's CCC [Continuous] (Concordance - Method Comparison)"
 msgstr "Lin'in CCC Katsayısı [Sürekli] (Uyum - Yöntem Karşılaştırması)"
 
@@ -26660,7 +26667,7 @@ msgid "LoA distribution table"
 msgstr "Uyum Sınırı (LoA) dağılım tablosu"
 
 #: psychopdaROC/options/smoothing.title
-#: psychopdaROC/ui[8][0][0][1]/smoothing.label
+#: psychopdaROC/ui[8][0][0][1][0]/smoothing.label
 msgid "LOESS smoothing"
 msgstr "LOESS düzeltme"
 
@@ -27421,7 +27428,7 @@ msgid ""
 "indicate raters' measurements vary together linearly."
 msgstr ""
 
-#: agreement/ui[13].label
+#: agreement/ui[4][1].label
 msgid "Mean Pearson Correlation [Continuous] (Linear Association)"
 msgstr "Ortalama Pearson Korelasyonu [Sürekli] (Doğrusal İlişki)"
 
@@ -27463,7 +27470,7 @@ msgstr "Ortalama Spearman rho (ortalama sıra korelasyonu)"
 msgid "Mean Spearman Rho (Average Rank Correlation) Results"
 msgstr "Ortalama Spearman Rho (Ortalama Sıra Korelasyonu) Sonuçları"
 
-#: agreement/ui[11].label
+#: agreement/ui[3][4].label
 msgid "Mean Spearman Rho [Ordinal] (Average Rank Correlation)"
 msgstr "Ortalama Spearman Rho [Sıralı] (Ortalama Sıra Korelasyonu)"
 
@@ -27824,7 +27831,7 @@ msgid "Metric Tolerance"
 msgstr "Ölçüt Toleransı"
 
 #: psychopdaROC/options/tol_metric.title
-#: psychopdaROC/ui[5][1]/tol_metric.label
+#: psychopdaROC/ui[5][1][0]/tol_metric.label
 msgid "Metric tolerance"
 msgstr "Ölçüt toleransı"
 
@@ -27937,7 +27944,7 @@ msgstr "en küçük yapılarak"
 msgid "minimum"
 msgstr "minimum"
 
-#: decisioncompare/ui[4]/niMargin.label
+#: decisioncompare/ui[3]/niMargin.label
 msgid "Minimum acceptable OPA (%)"
 msgstr "Kabul edilebilir minimum OPA (%)"
 
@@ -28161,7 +28168,7 @@ msgstr "Karma Etkilerle Koşul Karşılaştırması"
 msgid "Mixed-effects condition comparison"
 msgstr "Karma etkilerle koşul karşılaştırması"
 
-#: agreement/ui[21].label
+#: agreement/ui[6][4].label
 msgid "Mixed-Effects Condition Comparison [Continuous] (AI vs Manual, Pre vs Post)"
 msgstr ""
 "Karma Etkilerle Koşul Karşılaştırması [Sürekli] (YZ ve Manuel, Öncesi ve "
@@ -28685,7 +28692,7 @@ msgstr "Çoklu işaretleyici uyumu"
 msgid "Multi-Annotator Concordance"
 msgstr ""
 
-#: agreement/ui[24].label
+#: agreement/ui[2][8].label
 msgid "Multi-Annotator Concordance [Categorical] (AI Validation)"
 msgstr "Çoklu İşaretleyici Uyumu [Kategorik] (YZ Doğrulaması)"
 
@@ -28713,7 +28720,7 @@ msgstr "Çok Sınıflı Ortalama EAA"
 msgid "Multi-Class Confusion Matrix"
 msgstr ""
 
-#: agreement/ui[22].label
+#: agreement/ui[2][7].label
 msgid "Multi-Class Confusion Matrix [Categorical] (Classification Evaluation)"
 msgstr "Çok Sınıflı Karışıklık Matrisi [Kategorik] (Sınıflandırma Değerlendirmesi)"
 
@@ -31195,7 +31202,7 @@ msgstr "NÖD girilen popülasyon prevalansını kullanır."
 msgid "NRI"
 msgstr "NRI"
 
-#: psychopdaROC/ui[10][1]/calculateNRI.label
+#: psychopdaROC/ui[10][1][0]/calculateNRI.label
 msgid "NRI (net reclassification index)"
 msgstr "NRI (net yeniden sınıflandırma indeksi)"
 
@@ -31213,7 +31220,7 @@ msgstr "{variable} için NRI hesaplanamadı çünkü 10'dan az eksiksiz olgu mev
 msgid "NRI risk categories"
 msgstr "NRI Risk Kategorileri"
 
-#: psychopdaROC/ui[10][1]/nriThresholds.label
+#: psychopdaROC/ui[10][1][0]/nriThresholds.label
 msgid "NRI thresholds (comma-separated)"
 msgstr "NRI eşikleri (virgülle ayrılmış)"
 
@@ -32502,6 +32509,7 @@ msgstr ""
 "bileşenlerini ölçüm birimleri olarak değil, sıralı uzaklıklar olarak okuyun."
 
 #: agreement/options/krippMethod/ordinal.title
+#: agreement/ui[3].label
 msgid "Ordinal"
 msgstr "Sıralı (Ordinal)"
 
@@ -32555,7 +32563,7 @@ msgstr ""
 msgid "Ordinal scale with meaningful distances between categories"
 msgstr "Kategoriler arasında anlamlı uzaklıklar olan sıralı ölçek"
 
-#: agreement/ui[3].label
+#: agreement/ui[3][1].label
 msgctxt "Ordinal/Categorical"
 msgid "Pathologist Grading Analysis"
 msgstr "Patolog Derecelendirme Analizi"
@@ -33036,7 +33044,7 @@ msgstr "PABAK ve Prevalans/Yanlılık İndeksleri"
 msgid "PABAK & prevalence/bias indices"
 msgstr "PABAK ve prevalans/yanlılık indeksleri"
 
-#: agreement/ui[7].label
+#: agreement/ui[2][2].label
 msgid "PABAK & Prevalence/Bias Indices (2 Raters)"
 msgstr "PABAK ve Prevalans/Yanlılık İndeksleri (2 Değerlendirici)"
 
@@ -33124,7 +33132,7 @@ msgstr "Eşleştirilmiş Uyum Karşılaştırması"
 msgid "Paired agreement comparison"
 msgstr "Eşleştirilmiş uyum karşılaştırması"
 
-#: agreement/ui[37].label
+#: agreement/ui[6][3].label
 msgid "Paired Agreement Comparison [Categorical] (With vs Without AI)"
 msgstr "Eşleştirilmiş Uyum Karşılaştırması [Kategorik] (YZ ile ve YZ olmadan)"
 
@@ -33198,7 +33206,7 @@ msgstr "İkili Kappa (Her Değerlendirici ve Referans)"
 msgid "Pairwise kappa (vs reference)"
 msgstr "İkili kappa (referansa karşı)"
 
-#: agreement/ui[25].label
+#: agreement/ui[2][5].label
 msgid "Pairwise Kappa [Categorical] (vs Reference Rater)"
 msgstr "İkili Kappa [Kategorik] (Referans Değerlendiriciye Karşı)"
 
@@ -33323,7 +33331,7 @@ msgstr "Kısmi eğri altındaki alan analizi"
 #: enhancedROC/results/results/partialAucAnalysis.columns.title
 #: psychopdaROC/options/partialAUC.title
 #: psychopdaROC/ui[9][0][0].label
-#: psychopdaROC/ui[9][0]/partialAUC.label
+#: psychopdaROC/ui[9][0][0]/partialAUC.label
 #: psychopdaROC/results/partialAUCTable.columns.title
 msgid "Partial AUC"
 msgstr "Kısmi EAA"
@@ -33676,7 +33684,7 @@ msgstr ""
 msgid "Pattern"
 msgstr "Örüntü"
 
-#: decisioncombine/ui[2]/filterPattern.label
+#: decisioncombine/ui[3][4]/filterPattern.label
 msgid "Pattern type"
 msgstr "Patern tipi"
 
@@ -33715,7 +33723,6 @@ msgstr ""
 
 #: R/nogoldstandard.b.R
 #: nogoldstandard/options/method/bayesian.title
-#: nogoldstandard/ui[1][0]/method/bayesian.title
 msgid "Penalized EM (MAP-like; fixed priors; 3+ tests)"
 msgstr "Cezalandırılmış EM (MAP benzeri; sabit öncüller; 3+ test)"
 
@@ -34145,6 +34152,7 @@ msgid "Plot width"
 msgstr "Grafik genişliği"
 
 #: decisioncalculator/ui[4][0].label
+#: decisioncombine/ui[3].label
 #: decisioncurve/ui[3].label
 #: enhancedROC/ui[2][0][1][0].label
 #: lassologistic/ui[5].label
@@ -35154,7 +35162,7 @@ msgid "Precision-Recall Curve"
 msgstr "Duyarlılık-Duyarlık Eğrisi"
 
 #: psychopdaROC/options/precisionRecallCurve.title
-#: psychopdaROC/ui[8][0][1][1]/precisionRecallCurve.label
+#: psychopdaROC/ui[8][0][1][1][0]/precisionRecallCurve.label
 msgid "Precision-recall curve"
 msgstr "Duyarlılık-duyarlık eğrisi"
 
@@ -35410,7 +35418,7 @@ msgstr "Hastalık Prevalansına Göre Öngörü Değerleri"
 msgid "Predictive Values vs. Prevalence"
 msgstr "Öngörü Değerleri ve Prevalans"
 
-#: psychopdaROC/ui[8][0][1][1]/showPrevalencePlot.label
+#: psychopdaROC/ui[8][0][1][1][0]/showPrevalencePlot.label
 msgid "Predictive values vs. prevalence"
 msgstr "Öngörü değerleri ve prevalans"
 
@@ -35651,7 +35659,7 @@ msgstr "Prevalans Düşük"
 msgid "Prevalence observed in this study sample."
 msgstr "Bu çalışma örnekleminde gözlemlenen prevalans."
 
-#: decisioncompare/ui[5].label
+#: decisioncompare/ui[4].label
 msgid "Prevalence Settings"
 msgstr "Yaygınlık Ayarları"
 
@@ -35753,7 +35761,7 @@ msgstr "Öncül Prevalans Değeri"
 msgid "Prior prevalence value (0-1)"
 msgstr "Öncül prevalans değeri (0-1)"
 
-#: decisioncompare/ui[5]/pprob.label
+#: decisioncompare/ui[4]/pprob.label
 msgid "Prior Probability"
 msgstr "Ön Test Olasılığı"
 
@@ -36257,7 +36265,7 @@ msgstr "PSA Testi"
 msgid "PSA/NSA"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][0][1]/cleanPlot.label
+#: psychopdaROC/ui[8][0][0][1][0]/cleanPlot.label
 msgid "Publication-quality plot"
 msgstr "Yayın kalitesinde grafik"
 
@@ -36321,7 +36329,7 @@ msgid "Quantifies actual differences"
 msgstr ""
 
 #: psychopdaROC/options/quantiles.title
-#: psychopdaROC/ui[8][0][1][0]/quantiles.label
+#: psychopdaROC/ui[8][0][1][0][0]/quantiles.label
 msgid "Quantile positions"
 msgstr "Kantil konumları"
 
@@ -36449,7 +36457,7 @@ msgstr ""
 #: nogoldstandard/options/seed.title
 #: nogoldstandard/ui[2][0]/seed.label
 #: psychopdaROC/options/seed.title
-#: psychopdaROC/ui[5][1]/seed.label
+#: psychopdaROC/ui[5][1][0]/seed.label
 msgid "Random seed"
 msgstr "Rastgelelik tohumu"
 
@@ -36599,6 +36607,10 @@ msgstr "Değerlendirici ve Olgu Kümeleme"
 msgid "Rater A"
 msgstr "Değerlendirici A"
 
+#: agreement/ui[7].label
+msgid "Rater and case diagnostics"
+msgstr "Değerlendirici ve olgu tanılamaları"
+
 #: agreement/results/allPairsKappaTable.columns.title
 msgid "Rater B"
 msgstr "Değerlendirici B"
@@ -36611,7 +36623,7 @@ msgstr "Değerlendirici Küme Atamaları"
 msgid "Rater Clustering"
 msgstr ""
 
-#: agreement/ui[35].label
+#: agreement/ui[7][3].label
 msgid "Rater Clustering (Identify Rating Pattern Groups)"
 msgstr "Değerlendirici Kümeleme (Puanlama Deseni Gruplarını Belirleme)"
 
@@ -36632,7 +36644,7 @@ msgstr "Değerlendirici Çifti"
 msgid "Rater performance ranking"
 msgstr "Değerlendirici performans sıralaması"
 
-#: agreement/ui[33].label
+#: agreement/ui[7][1].label
 msgid "Rater Profile Plots (Distribution Comparison)"
 msgstr "Değerlendirici Profil Grafikleri (Dağılım Karşılaştırması)"
 
@@ -36670,7 +36682,7 @@ msgstr "Değerlendirici Varyans Ayrıştırması - Sistematik ve Rastgele Uyuşm
 msgid "Rater variance decomposition (systematic vs random)"
 msgstr "Değerlendirici varyans ayrıştırması (sistematik ve rastgele)"
 
-#: agreement/ui[19].label
+#: agreement/ui[4][5].label
 msgid "Rater Variance Decomposition [Continuous] (Systematic vs Random Disagreement)"
 msgstr ""
 "Değerlendirici Varyans Ayrıştırması [Sürekli] (Sistematik ve Rastgele "
@@ -37017,7 +37029,7 @@ msgid "Reference interpretation"
 msgstr "Referans yorumu"
 
 #: decision/ui[1].label
-#: decisioncompare/ui[1].label
+#: decisioncompare/ui[2].label
 msgid "Reference Interpretation"
 msgstr "Referans Yorumu"
 
@@ -37782,7 +37794,7 @@ msgstr "Robinson'ın A katsayısı (sıralı uyum indeksi)"
 msgid "Robinson's A (Ordinal Agreement Index) Results"
 msgstr "Robinson'ın A Katsayısı (Sıralı Uyum İndeksi) Sonuçları"
 
-#: agreement/ui[10].label
+#: agreement/ui[3][3].label
 msgid "Robinson's A [Ordinal] (Agreement Index)"
 msgstr "Robinson'ın A Katsayısı [Sıralı] (Uyum İndeksi)"
 
@@ -38039,7 +38051,7 @@ msgid "ROC Curves"
 msgstr "ROC Eğrileri"
 
 #: psychopdaROC/options/plotROC.title
-#: psychopdaROC/ui[8][0][0][0]/plotROC.label
+#: psychopdaROC/ui[8][0][0][0][0]/plotROC.label
 msgid "ROC curves"
 msgstr "ROC eğrileri"
 
@@ -38238,6 +38250,10 @@ msgstr "Kural İkili Değil"
 msgid "Rule Positive Level Required"
 msgstr "Kural Pozitif Düzeyi Gerekli"
 
+#: decisioncombine/ui[2].label
+msgid "Rule ranking"
+msgstr "Kural sıralaması"
+
 #: R/decisioncombine.b.R
 msgid "Rules Left Empty in the Forest Plot"
 msgstr "Orman Grafiğinde Boş Bırakılan Kurallar"
@@ -38374,7 +38390,7 @@ msgstr ""
 msgid "Sample Size for Agreement Study"
 msgstr "Uyum Çalışması İçin Örneklem Büyüklüğü"
 
-#: agreement/ui[38].label
+#: agreement/ui[9][0].label
 msgid "Sample Size for Agreement Study (Design)"
 msgstr "Uyum Çalışması İçin Örneklem Büyüklüğü (Tasarım)"
 
@@ -38478,6 +38494,10 @@ msgstr ""
 "Sınıflandırma sonuçlarını (Gerçek Pozitif, Yanlış Pozitif, Yanlış Negatif, "
 "Gerçek Negatif) veri kümenizde yeni bir sütun olarak kaydedin. Bu, "
 "sınıflandırma gruplarını diğer analizlerde kullanmanıza olanak tanır."
+
+#: decisioncombine/ui[4].label
+msgid "Save to data"
+msgstr "Veriye kaydet"
 
 #: lassologistic/ui[6][0].label
 msgid "Save Variables"
@@ -38774,7 +38794,7 @@ msgstr "Pozitif ve negatif sonuçlar için farklı düzeyler seçin."
 msgid "Select Disease present level"
 msgstr "Hastalık var düzeyini seçin"
 
-#: decisioncompare/ui[3].label
+#: decisioncompare/ui[1].label
 msgid ""
 "Select exact positive and negative levels. Recode ordinal cutoffs before "
 "analysis."
@@ -39043,7 +39063,7 @@ msgstr ""
 msgid "Selected binary pairs only; missing and unselected levels excluded"
 msgstr ""
 
-#: psychopdaROC/ui[8][0][0][0]/showOptimalPoint.label
+#: psychopdaROC/ui[8][0][0][0][0]/showOptimalPoint.label
 msgid "Selected cutpoint"
 msgstr "Seçilen kesim noktası"
 
@@ -39504,7 +39524,7 @@ msgstr "Duyarlılık/Özgüllük - eşik"
 msgid "Sensitivity/Specificity vs. Threshold"
 msgstr "Duyarlılık/Özgüllük - Eşik"
 
-#: psychopdaROC/ui[8][0][1][1]/showCriterionPlot.label
+#: psychopdaROC/ui[8][0][1][1][0]/showCriterionPlot.label
 msgid "Sensitivity/specificity vs. threshold"
 msgstr "Eşiğe göre duyarlılık/özgüllük"
 
@@ -40241,7 +40261,7 @@ msgstr ""
 msgid "Smoothed-curve confidence band"
 msgstr "Düzleştirilmiş eğri güven bandı"
 
-#: psychopdaROC/ui[8][0][0][1]/displaySE.label
+#: psychopdaROC/ui[8][0][0][1][0]/displaySE.label
 msgid "Smoothed-curve confidence band (95%)"
 msgstr "Düzleştirilmiş eğri güven bandı (%95)"
 
@@ -40257,7 +40277,7 @@ msgstr "Düzeltme Yalnızca Eğri İçin Geçerlidir"
 msgid "Smoothing Failed: %s"
 msgstr "Düzeltme Başarısız Oldu: %s"
 
-#: psychopdaROC/ui[9][1]/rocSmoothingMethod.label
+#: psychopdaROC/ui[9][1][0]/rocSmoothingMethod.label
 msgid "Smoothing method"
 msgstr "Düzeltme yöntemi"
 
@@ -40436,7 +40456,7 @@ msgstr "Özgül Uyum İndeksleri (Kategori Odaklı Uyum)"
 msgid "Specific agreement indices (category-focused)"
 msgstr "Özgül uyum indeksleri (kategori odaklı)"
 
-#: agreement/ui[32].label
+#: agreement/ui[2][4].label
 msgid "Specific Agreement Indices [Categorical] (Category-Focused)"
 msgstr "Özgül Uyum İndeksleri [Kategorik] (Kategori Odaklı)"
 
@@ -40712,7 +40732,7 @@ msgstr "Standartlaştırılmış net fayda grafiği"
 #: agreement/results/interIntraRaterIntraTable.columns.title
 #: agreement/results/interIntraRaterInterTable.columns.title
 #: agreement/results/subgroupAgreementTable.columns.title
-#: decisioncombine/ui[2]/filterStatistic.label
+#: decisioncombine/ui[3][4]/filterStatistic.label
 #: decisioncombine/results/combinationTableCI.columns.title
 #: decisioncombine/results/combinationTableCIRatios.columns.title
 #: decisioncombine/results/individualTest1/test1Stats.columns.title
@@ -40858,7 +40878,7 @@ msgid "Statistical Notes"
 msgstr ""
 
 #: decisioncalculator/ui[2].label
-#: decisioncompare/ui[4].label
+#: decisioncompare/ui[3].label
 #: enhancedROC/ui[4].label
 msgid "Statistical Options"
 msgstr "İstatistiksel Seçenekler"
@@ -41146,7 +41166,7 @@ msgstr "Güçlü uyarı"
 msgid "Stuart-Maxwell test (marginal homogeneity for 2 raters)"
 msgstr "Stuart-Maxwell testi (2 değerlendirici için marjinal homojenlik)"
 
-#: agreement/ui[28].label
+#: agreement/ui[6][2].label
 msgid "Stuart-Maxwell Test [Categorical] (Marginal Homogeneity, 2 Raters)"
 msgstr "Stuart-Maxwell Testi [Kategorik] (Marjinal Homojenlik, 2 Değerlendirici)"
 
@@ -41205,6 +41225,10 @@ msgstr ""
 #: agreement/results/designSummaryTable.title
 msgid "Study Design"
 msgstr ""
+
+#: agreement/ui[9].label
+msgid "Study design"
+msgstr "Çalışma tasarımı"
 
 #: agreement/options/gradingDesign.title
 msgid "Study design and category distribution"
@@ -41470,6 +41494,7 @@ msgstr "Tablo notları"
 msgid "Table thresholds outside the analyzed range"
 msgstr "Analiz edilen aralığın dışındaki tablo eşikleri"
 
+#: decisioncombine/ui[1].label
 #: enhancedROC/ui[2][0][0][0].label
 msgid "Tables"
 msgstr "Tablolar"
@@ -42219,7 +42244,7 @@ msgstr "Test değeri dağılımı"
 msgid "Test Values Distribution"
 msgstr "Test Değerleri Dağılımı"
 
-#: psychopdaROC/ui[8][0][1][1]/showDotPlot.label
+#: psychopdaROC/ui[8][0][1][1][0]/showDotPlot.label
 msgid "Test values distribution"
 msgstr "Test değerleri dağılımı"
 
@@ -42271,6 +42296,10 @@ msgstr "Test stratejisi"
 #: sequentialtests/results/plot_flow_diagram.title
 msgid "Testing Strategy Flow Diagram"
 msgstr "Test Stratejisi Akış Diyagramı"
+
+#: agreement/ui[6].label
+msgid "Tests"
+msgstr "Testler"
 
 #: R/nogoldstandard.b.R
 msgid "Tests analyzed:"
@@ -47977,7 +48006,7 @@ msgid "Tie Breakers"
 msgstr "Eşitlikleri Çözme Yöntemi"
 
 #: psychopdaROC/options/break_ties.title
-#: psychopdaROC/ui[5][1]/break_ties.label
+#: psychopdaROC/ui[5][1][0]/break_ties.label
 msgid "Tie breaking method"
 msgstr "Eşitlik bozma yöntemi"
 
@@ -48121,7 +48150,7 @@ msgstr ""
 "tanımlar; her birini ayrı ayrı görmek için 'Tüm kategoriler için tahminler' "
 "seçeneğini işaretleyin."
 
-#: psychopdaROC/ui[9][0]/partialAUCto.label
+#: psychopdaROC/ui[9][0][0]/partialAUCto.label
 msgid "To specificity"
 msgstr "Bitiş özgüllüğü"
 
@@ -49244,7 +49273,7 @@ msgid "Validation Notices"
 msgstr "Doğrulama Bildirimleri"
 
 #: decision/ui[7].label
-#: decisioncompare/ui[8].label
+#: decisioncompare/ui[7].label
 msgid "Validation Provenance"
 msgstr "Doğrulama Kaynağı"
 
@@ -49642,8 +49671,7 @@ msgstr ""
 msgid "Visualization"
 msgstr "Görselleştirme"
 
-#: decisioncombine/ui[1][7].label
-#: decisioncompare/ui[6].label
+#: decisioncompare/ui[5].label
 msgid "Visualizations"
 msgstr "Görselleştirmeler"
 
@@ -49866,7 +49894,7 @@ msgstr "Ağırlıklı kappa (yalnızca sıralı veri)"
 msgid "Weighted Kappa (Ordinal Data)"
 msgstr ""
 
-#: agreement/ui[2].label
+#: agreement/ui[3][0].label
 msgid "Weighted Kappa (Ordinal)"
 msgstr "Ağırlıklı Kappa (Sıralı)"
 
@@ -51391,7 +51419,7 @@ msgid "Youden's J 95% CI"
 msgstr "Youden J %95 GA"
 
 #: decisioncombine/options/optimismCorrection.title
-#: decisioncombine/ui[1]/showRecommendation/optimismCorrection.label
+#: decisioncombine/ui[2]/showRecommendation/optimismCorrection.label
 msgid "Youden's J corrected for rule selection"
 msgstr "Kural seçimi için düzeltilmiş Youden J"
 

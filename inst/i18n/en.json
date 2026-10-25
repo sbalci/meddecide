@@ -5089,6 +5089,9 @@
             "Any crossed rater x case x condition design": [
                 ""
             ],
+            "Any data type": [
+                ""
+            ],
             "Any number of raters": [
                 ""
             ],
@@ -6316,6 +6319,9 @@
             "Cases with this Mode": [
                 ""
             ],
+            "Categorical": [
+                ""
+            ],
             "Categorical agreement (nominal or ordinal categories)": [
                 ""
             ],
@@ -7405,6 +7411,9 @@
             "Computed on the full sample: the subgroup variable is not applied to this table.": [
                 ""
             ],
+            "Computed variables": [
+                ""
+            ],
             "Computed Variables Added to Dataset": [
                 ""
             ],
@@ -7745,6 +7754,9 @@
                 ""
             ],
             "Continuity correction applied": [
+                ""
+            ],
+            "Continuous": [
                 ""
             ],
             "Continuous (category-free) NRI: no usable risk category boundaries were supplied, so reclassification counts changes in predicted risk rather than crossings of category boundaries.": [
@@ -9620,9 +9632,6 @@
                 ""
             ],
             "Explain the imbalance warning in full": [
-                ""
-            ],
-            "Explain why within-cohort meta-analysis is unavailable": [
                 ""
             ],
             "Explanation": [
@@ -17251,6 +17260,9 @@
             "Rater A": [
                 ""
             ],
+            "Rater and case diagnostics": [
+                ""
+            ],
             "Rater B": [
                 ""
             ],
@@ -18100,6 +18112,9 @@
             "Rule Positive Level Required": [
                 ""
             ],
+            "Rule ranking": [
+                ""
+            ],
             "Rules Left Empty in the Forest Plot": [
                 ""
             ],
@@ -18218,6 +18233,9 @@
                 ""
             ],
             "Save the classification results (True Positive, False Positive, False Negative, True Negative) as a new column in your dataset. This allows you to use the classification groups in other analyses.": [
+                ""
+            ],
+            "Save to data": [
                 ""
             ],
             "Save Variables": [
@@ -19561,6 +19579,9 @@
             "Study Design": [
                 ""
             ],
+            "Study design": [
+                ""
+            ],
             "Study design and category distribution": [
                 ""
             ],
@@ -20180,6 +20201,9 @@
                 ""
             ],
             "Testing Strategy Flow Diagram": [
+                ""
+            ],
+            "Tests": [
                 ""
             ],
             "Tests analyzed:": [

@@ -29,6 +29,17 @@ their defaults (see the R note).
 - **Clinical presets show what they override.** In Clinical ROC Analysis, choosing a clinical
   preset greys Youden index optimization and, except for Research, the minimum sensitivity and
   specificity boxes, since the preset sets them.
+- **Panels grouped by the question you are asking.** Interrater Reliability's 38 option boxes are
+  now nine: General Options, Categorical, Ordinal, Continuous, Any data type, Tests, Rater and
+  case diagnostics, Computed variables and Study design, each method under its own heading. The
+  shared settings (exact kappa, multiple-testing correction, number of bootstrap samples) are in
+  General Options. Combine Medical Decision Tests splits its display options into Tables, Rule
+  ranking, Plots (with the plot filters) and Save to data. In Clinical ROC Analysis the analysis
+  settings are in their own box, each heading holds the options under it, and the cost ratio sits
+  under the cutpoint method that uses it. Co-Testing Analysis' display options are a collapsed box.
+  Nothing is computed differently, and saved analyses keep their settings.
+- **Clinical ROC Analysis** no longer offers "Explain why within-cohort meta-analysis is
+  unavailable"; the option remains for saved analyses and R calls.
 - **Validation context boxes greyed when unused.** In Medical Decision, cohort role, sampling
   design, threshold source, model version and unit of observation are greyed until Validation
   context is ticked, as they already were in Compare Medical Decision Tests.

@@ -5089,6 +5089,9 @@
             "Any crossed rater x case x condition design": [
                 ""
             ],
+            "Any data type": [
+                "Her veri türü"
+            ],
             "Any number of raters": [
                 ""
             ],
@@ -6316,6 +6319,9 @@
             "Cases with this Mode": [
                 "Bu Mod Değerine Sahip Olgular"
             ],
+            "Categorical": [
+                "Kategorik (Nominal)"
+            ],
             "Categorical agreement (nominal or ordinal categories)": [
                 ""
             ],
@@ -7405,6 +7411,9 @@
             "Computed on the full sample: the subgroup variable is not applied to this table.": [
                 "Tüm örneklem üzerinden hesaplanmıştır: alt grup değişkeni bu tabloya uygulanmaz."
             ],
+            "Computed variables": [
+                "Hesaplanan değişkenler"
+            ],
             "Computed Variables Added to Dataset": [
                 "Veri Setine Eklenen Hesaplanan Değişkenler"
             ],
@@ -7746,6 +7755,9 @@
             ],
             "Continuity correction applied": [
                 "Süreklilik düzeltmesi uygulandı"
+            ],
+            "Continuous": [
+                "Sürekli"
             ],
             "Continuous (category-free) NRI: no usable risk category boundaries were supplied, so reclassification counts changes in predicted risk rather than crossings of category boundaries.": [
                 "Sürekli (kategorisiz) NRI: kullanılabilir risk kategorisi sınırları verilmediğinden, yeniden sınıflandırma kategori sınırı geçişleri yerine tahmin edilen riskteki değişimleri sayar."
@@ -9621,9 +9633,6 @@
             ],
             "Explain the imbalance warning in full": [
                 "Dengesizlik uyarısını tam olarak açıkla"
-            ],
-            "Explain why within-cohort meta-analysis is unavailable": [
-                "Aynı kohort içinde meta-analizin neden kullanılamadığını açıkla"
             ],
             "Explanation": [
                 "Açıklama"
@@ -17251,6 +17260,9 @@
             "Rater A": [
                 "Değerlendirici A"
             ],
+            "Rater and case diagnostics": [
+                "Değerlendirici ve olgu tanılamaları"
+            ],
             "Rater B": [
                 "Değerlendirici B"
             ],
@@ -18100,6 +18112,9 @@
             "Rule Positive Level Required": [
                 "Kural Pozitif Düzeyi Gerekli"
             ],
+            "Rule ranking": [
+                "Kural sıralaması"
+            ],
             "Rules Left Empty in the Forest Plot": [
                 "Orman Grafiğinde Boş Bırakılan Kurallar"
             ],
@@ -18219,6 +18234,9 @@
             ],
             "Save the classification results (True Positive, False Positive, False Negative, True Negative) as a new column in your dataset. This allows you to use the classification groups in other analyses.": [
                 "Sınıflandırma sonuçlarını (Gerçek Pozitif, Yanlış Pozitif, Yanlış Negatif, Gerçek Negatif) veri kümenizde yeni bir sütun olarak kaydedin. Bu, sınıflandırma gruplarını diğer analizlerde kullanmanıza olanak tanır."
+            ],
+            "Save to data": [
+                "Veriye kaydet"
             ],
             "Save Variables": [
                 "Değişkenleri Kaydet"
@@ -19561,6 +19579,9 @@
             "Study Design": [
                 ""
             ],
+            "Study design": [
+                "Çalışma tasarımı"
+            ],
             "Study design and category distribution": [
                 "Çalışma tasarımı ve kategori dağılımı"
             ],
@@ -20181,6 +20202,9 @@
             ],
             "Testing Strategy Flow Diagram": [
                 "Test Stratejisi Akış Diyagramı"
+            ],
+            "Tests": [
+                "Testler"
             ],
             "Tests analyzed:": [
                 "Analiz edilen testler:"
