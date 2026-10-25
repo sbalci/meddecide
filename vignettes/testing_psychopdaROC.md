@@ -181,10 +181,10 @@ All data files are available in `data/` folder as `.rda`, `.csv`, `.xlsx`, and `
 
 | # | File | Class Var / Positive Class | Test Variables | Options to Test |
 |---|------|----------------------------|----------------|-----------------|
-| 57 | `psychopdaROC_test` | disease_status / "Disease" | biomarker | `clinicalUtilityAnalysis`: on, `treatmentThreshold`: "0.05,0.5,0.05", `harmBenefitRatio`: 0.25. Verify clinicalUtilityTable and decisionCurvePlot |
+| 57 | `psychopdaROC_test` | disease_status / "Disease" | biomarker | `clinicalUtilityAnalysis`: on, `treatmentThresholdMin`: 0.05, `treatmentThresholdMax`: 0.5, `treatmentThresholdStep`: 0.05, `harmBenefitRatio`: 0.25. Verify clinicalUtilityTable and decisionCurvePlot |
 | 58 | `psychopdaROC_test` | disease_status / "Disease" | biomarker | `interventionCost`: on, `harmBenefitRatio`: 1.0 |
 
-**Options covered:** `clinicalUtilityAnalysis`, `treatmentThreshold`, `harmBenefitRatio`, `interventionCost`
+**Options covered:** `clinicalUtilityAnalysis`, `treatmentThresholdMin`, `treatmentThresholdMax`, `treatmentThresholdStep`, `harmBenefitRatio`, `interventionCost`
 
 ---
 
@@ -384,7 +384,7 @@ All data files are available in `data/` folder as `.rda`, `.csv`, `.xlsx`, and `
 
 ### Clinical Utility
 - [x] `clinicalUtilityAnalysis` — #57
-- [x] `treatmentThreshold` — #57
+- [x] `treatmentThresholdMin`, `treatmentThresholdMax`, `treatmentThresholdStep` — #57
 - [x] `harmBenefitRatio` — #57, #58
 - [x] `interventionCost` — #58
 

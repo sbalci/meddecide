@@ -7716,10 +7716,6 @@ msgstr ""
 msgid "0.05, 0.10, 0.15, 0.20, 0.25, 0.30"
 msgstr ""
 
-#: psychopdaROC/options/treatmentThreshold.default
-msgid "0.05,0.5,0.05"
-msgstr ""
-
 #: psychopdaROC/options/quantiles.default
 msgid "0.1,0.25,0.5,0.75,0.9"
 msgstr ""
@@ -7800,10 +7796,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "0.75 to {tag1} 0.90"
-msgstr ""
-
-#: enhancedROC/options/partialRange.default
-msgid "0.8,1.0"
 msgstr ""
 
 #: R/agreement.b.R
@@ -12170,7 +12162,7 @@ msgstr ""
 msgid "Case ID"
 msgstr ""
 
-#: agreement/ui[21][0][1][1].label
+#: agreement/ui[0][3].label
 msgid "Case ID (same case on several rows)"
 msgstr ""
 
@@ -13035,7 +13027,7 @@ msgid "Clinical decision rule"
 msgstr ""
 
 #: decisioncurve/options/decisionRuleVar.title
-#: decisioncurve/ui[1][2][0].label
+#: decisioncurve/ui[0][2].label
 msgid "Clinical decision rule (binary)"
 msgstr ""
 
@@ -13423,7 +13415,7 @@ msgstr ""
 msgid "Cluster/Institution"
 msgstr ""
 
-#: agreement/ui[20][0][1][0].label
+#: agreement/ui[0][1].label
 msgid "Cluster/Institution Variable"
 msgstr ""
 
@@ -14201,11 +14193,11 @@ msgstr ""
 msgid "Condition B raters"
 msgstr ""
 
-#: agreement/ui[37][0][1][0].label
+#: agreement/ui[0][7].label
 msgid "Condition B Raters (e.g., AI-assisted)"
 msgstr ""
 
-#: agreement/ui[21][0][1][0].label
+#: agreement/ui[0][2].label
 msgid "Condition Variable (e.g., AI vs Manual)"
 msgstr ""
 
@@ -15561,7 +15553,7 @@ msgid "Decision impact table"
 msgstr ""
 
 #: decisioncurve/options/decisionRuleLabel.title
-#: decisioncurve/ui[1][3]/decisionRuleLabel.label
+#: decisioncurve/ui[1][2]/decisionRuleLabel.label
 msgid "Decision rule label"
 msgstr ""
 
@@ -22925,6 +22917,12 @@ msgid ""
 "width."
 msgstr ""
 
+#: enhancedROC/options/partialAucFrom.description
+msgid ""
+"Lower end of the partial AUC range, on the specificity or sensitivity scale "
+"chosen above, for example 0.8 for high specificity."
+msgstr ""
+
 #: agreement/results/blandAltmanStats.columns.title
 msgid "Lower LoA"
 msgstr ""
@@ -24905,8 +24903,8 @@ msgstr ""
 msgid "Negative independent units"
 msgstr ""
 
-#: decision/ui[1][0]/goldNegative.label
-#: decision/ui[1][1]/testNegative.label
+#: decision/ui[0][0]/goldNegative.label
+#: decision/ui[0][1]/testNegative.label
 #: decisioncompare/results/levelMapping.columns.title
 msgid "Negative level"
 msgstr ""
@@ -26291,6 +26289,10 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Not computed for this table; the notices at the top say why."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid "Not computed; the notice above says why."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -28427,32 +28429,20 @@ msgstr ""
 msgid "Partial AUC for specific diagnostic range"
 msgstr ""
 
+#: enhancedROC/options/partialAucFrom.title
+msgid "Partial AUC from"
+msgstr ""
+
 #: psychopdaROC/options/partialAUCfrom.title
 msgid "Partial AUC from (specificity)"
 msgstr ""
 
 #: R/enhancedROC.b.R
+msgid "Partial AUC from must be less than Partial AUC to."
+msgstr ""
+
+#: R/enhancedROC.b.R
 msgid "Partial AUC over sensitivity range"
-msgstr ""
-
-#: enhancedROC/options/partialRange.title
-msgid "Partial AUC range"
-msgstr ""
-
-#: R/enhancedROC.b.R
-msgid ""
-"Partial AUC range must be valid: the first value must be less than the "
-"second, and both must lie between 0 and 1, for example 0.8,1.0."
-msgstr ""
-
-#: R/enhancedROC.b.R
-msgid ""
-"Partial AUC range must contain exactly two comma-separated numbers, for "
-"example 0.8,1.0."
-msgstr ""
-
-#: R/enhancedROC.b.R
-msgid "Partial AUC range values must be numeric, for example 0.8,1.0."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -28463,6 +28453,10 @@ msgstr ""
 
 #: psychopdaROC/results/partialAUCTable.title
 msgid "Partial AUC Results"
+msgstr ""
+
+#: enhancedROC/options/partialAucTo.title
+msgid "Partial AUC to"
 msgstr ""
 
 #: psychopdaROC/options/partialAUCto.title
@@ -28682,7 +28676,7 @@ msgstr ""
 msgid "Patient; all of the patient's rows ({unit}) retained"
 msgstr ""
 
-#: agreement/ui[32][0][5][0].label
+#: agreement/ui[0][5].label
 msgid "Patient/cluster ID (optional)"
 msgstr ""
 
@@ -29407,8 +29401,8 @@ msgid "Positive independent units"
 msgstr ""
 
 #: R/decisioncombine.b.R
-#: decision/ui[1][0]/goldPositive.label
-#: decision/ui[1][1]/testPositive.label
+#: decision/ui[0][0]/goldPositive.label
+#: decision/ui[0][1]/testPositive.label
 #: decisioncombine/ui[0][1]/test1Positive.label
 #: decisioncombine/ui[0][2]/test2Positive.label
 #: decisioncombine/ui[0][3]/test3Positive.label
@@ -29577,7 +29571,7 @@ msgstr ""
 msgid "Positive rows"
 msgstr ""
 
-#: decisioncurve/ui[1][2][0]/decisionRulePositive.label
+#: decisioncurve/ui[0][2]/decisionRulePositive.label
 msgid "Positive rule level"
 msgstr ""
 
@@ -31119,12 +31113,6 @@ msgstr ""
 msgid "Random-ranking CROC AUC"
 msgstr ""
 
-#: enhancedROC/options/partialRange.description
-msgid ""
-"Range for partial AUC (min,max) - e.g., 0.8,1.0 for high specificity or "
-"sensitivity"
-msgstr ""
-
 #: R/nogoldstandard.b.R
 msgid "Range from {minimum}% to {maximum}%"
 msgstr ""
@@ -31601,7 +31589,7 @@ msgstr ""
 msgid "Reference / comparator"
 msgstr ""
 
-#: decisioncompare/ui[1][0].label
+#: decisioncompare/ui[0][0].label
 msgid "Reference / Comparator"
 msgstr ""
 
@@ -31621,8 +31609,8 @@ msgstr ""
 msgid "Reference interpretation"
 msgstr ""
 
-#: decision/ui[0].label
-#: decisioncompare/ui[0].label
+#: decision/ui[1].label
+#: decisioncompare/ui[1].label
 msgid "Reference Interpretation"
 msgstr ""
 
@@ -31703,7 +31691,7 @@ msgstr ""
 msgid "Reference positive level"
 msgstr ""
 
-#: agreement/ui[25][0][1][0].label
+#: agreement/ui[0][4].label
 msgid "Reference Rater"
 msgstr ""
 
@@ -31728,7 +31716,7 @@ msgstr ""
 msgid "Reference standard"
 msgstr ""
 
-#: decision/ui[1][0].label
+#: decision/ui[0][0].label
 msgid "Reference Standard (Gold Standard)"
 msgstr ""
 
@@ -35026,7 +35014,7 @@ msgid ""
 "{specificity}"
 msgstr ""
 
-#: decisioncompare/ui[1][4].label
+#: decisioncompare/ui[0][4].label
 msgid "Stratification (Optional)"
 msgstr ""
 
@@ -35254,7 +35242,7 @@ msgid ""
 msgstr ""
 
 #: R/psychopdaROC.b.R
-#: agreement/ui[34][0][1][0].label
+#: agreement/ui[0][6].label
 msgid "Subgroup Variable"
 msgstr ""
 
@@ -35688,7 +35676,7 @@ msgstr ""
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
 #: R/sequentialtests.b.R
-#: decisioncompare/ui[1][1].label
+#: decisioncompare/ui[0][1].label
 #: nogoldstandard/options/test1.title
 #: nogoldstandard/ui[0][0].label
 msgid "Test 1"
@@ -35785,7 +35773,7 @@ msgstr ""
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
 #: R/sequentialtests.b.R
-#: decisioncompare/ui[1][2].label
+#: decisioncompare/ui[0][2].label
 #: nogoldstandard/options/test2.title
 #: nogoldstandard/ui[0][1].label
 msgid "Test 2"
@@ -35883,7 +35871,7 @@ msgid "Test 2: {name}"
 msgstr ""
 
 #: R/decisioncombine.b.R
-#: decisioncompare/ui[1][3].label
+#: decisioncompare/ui[0][3].label
 #: nogoldstandard/options/test3.title
 msgid "Test 3"
 msgstr ""
@@ -36128,7 +36116,7 @@ msgid "Test Statistic"
 msgstr ""
 
 #: decision/options/newtest.title
-#: decision/ui[1][1].label
+#: decision/ui[0][1].label
 msgid "Test Under Evaluation"
 msgstr ""
 
@@ -38129,10 +38117,9 @@ msgstr ""
 
 #: enhancedROC/options/validationNegative.description
 msgid ""
-"The outcome level that means the condition is absent, typed exactly as it "
-"appears in the data. Required by the frozen-model report, which refuses any "
-"outcome level that is neither this nor the positive class instead of pooling "
-"it as negative."
+"The outcome level that means the condition is absent. Required by the "
+"frozen-model report, which refuses any outcome level that is neither this "
+"nor the positive class instead of pooling it as negative."
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -39127,13 +39114,6 @@ msgid ""
 "The time-point separator is empty, so the rater and the time point cannot be "
 "told apart in the column names. Enter the character that separates them, for "
 "example an underscore for columns named Rater1_Time1 and Rater1_Time2."
-msgstr ""
-
-#: R/psychopdaROC.b.R
-msgid ""
-"The Treatment Threshold Range could not be read as \"min,max,step\" with 0 < "
-"min <= max < 1 and a positive step. The default range 0.05 to 0.50 in steps "
-"of 0.05 was used instead."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -40587,12 +40567,22 @@ msgstr ""
 msgid "Treat None Net Benefit"
 msgstr ""
 
-#: psychopdaROC/ui[13][0]/treatmentThreshold.label
-msgid "Treatment threshold (min,max,step)"
+#: psychopdaROC/options/treatmentThresholdMin.title
+msgid "Treatment threshold from"
 msgstr ""
 
-#: psychopdaROC/options/treatmentThreshold.title
-msgid "Treatment threshold range"
+#: R/psychopdaROC.b.R
+msgid ""
+"Treatment threshold from is greater than Treatment threshold to. The default "
+"range 0.05 to 0.50 in steps of 0.05 was used instead."
+msgstr ""
+
+#: psychopdaROC/options/treatmentThresholdStep.title
+msgid "Treatment threshold step"
+msgstr ""
+
+#: psychopdaROC/options/treatmentThresholdMax.title
+msgid "Treatment threshold to"
 msgstr ""
 
 #: R/agreement.b.R
@@ -41116,6 +41106,10 @@ msgstr ""
 msgid ""
 "Upper confidence limit you want the study to achieve for kappa. It must be "
 "above kappa0, and is ignored for a one-sided interval."
+msgstr ""
+
+#: enhancedROC/options/partialAucTo.description
+msgid "Upper end of the partial AUC range; it must be greater than the lower end."
 msgstr ""
 
 #: agreement/results/blandAltmanStats.columns.title

@@ -3766,9 +3766,6 @@
             "0.05, 0.10, 0.15, 0.20, 0.25, 0.30": [
                 "0.05, 0.10, 0.15, 0.20, 0.25, 0.30"
             ],
-            "0.05,0.5,0.05": [
-                "0.05,0.5,0.05"
-            ],
             "0.1,0.25,0.5,0.75,0.9": [
                 "0.1,0.25,0.5,0.75,0.9"
             ],
@@ -3828,9 +3825,6 @@
             ],
             "0.75 to {tag1} 0.90": [
                 ""
-            ],
-            "0.8,1.0": [
-                "0.8,1.0"
             ],
             "0.80 to 1.00": [
                 ""
@@ -12493,6 +12487,9 @@
             "Lower confidence limit you want the study to achieve for kappa. It must be below kappa0. The sample size is set by the limit that is harder to reach - usually, but not always, the one nearer kappa0 - not by the full interval width.": [
                 "Çalışmanın kappa için ulaşmasını istediğiniz alt güven sınırı. kappa0 değerinin altında olmalıdır. Örneklem büyüklüğünü tam aralık genişliği değil, ulaşılması daha zor olan sınır belirler; bu genellikle, ancak her zaman değil, kappa0 değerine daha yakın olan sınırdır."
             ],
+            "Lower end of the partial AUC range, on the specificity or sensitivity scale chosen above, for example 0.8 for high specificity.": [
+                ""
+            ],
             "Lower LoA": [
                 "Alt Uyum Sınırı (LoA)"
             ],
@@ -14467,6 +14464,9 @@
             "Not computed for this table; the notices at the top say why.": [
                 "Bu tablo için hesaplanmadı; nedeni üstteki bildirimlerde belirtilmiştir."
             ],
+            "Not computed; the notice above says why.": [
+                ""
+            ],
             "Not computed: invalid frequencies": [
                 "Hesaplanmadı: geçersiz frekanslar"
             ],
@@ -15655,29 +15655,26 @@
             "Partial AUC for specific diagnostic range": [
                 "Belirli tanısal aralık için kısmi EAA"
             ],
+            "Partial AUC from": [
+                ""
+            ],
             "Partial AUC from (specificity)": [
                 "Kısmi EAA Başlangıcı (Özgüllük)"
             ],
+            "Partial AUC from must be less than Partial AUC to.": [
+                ""
+            ],
             "Partial AUC over sensitivity range": [
                 "Duyarlılık aralığında kısmi EAA"
-            ],
-            "Partial AUC range": [
-                "Kısmi EAA aralığı"
-            ],
-            "Partial AUC range must be valid: the first value must be less than the second, and both must lie between 0 and 1, for example 0.8,1.0.": [
-                "Kısmi EAA aralığı geçerli olmalıdır: birinci değer ikinciden küçük olmalı ve her ikisi de 0 ile 1 arasında yer almalıdır, örneğin 0.8,1.0."
-            ],
-            "Partial AUC range must contain exactly two comma-separated numbers, for example 0.8,1.0.": [
-                "Kısmi EAA aralığı virgülle ayrılmış tam olarak iki sayı içermelidir, örneğin 0.8,1.0."
-            ],
-            "Partial AUC range values must be numeric, for example 0.8,1.0.": [
-                "Kısmi EAA aralık değerleri sayısal olmalıdır, örneğin 0.8,1.0."
             ],
             "Partial AUC requires the specificity From value to be smaller than the To value. Choose a range with positive width.": [
                 "Kısmi AUC için özgüllük Başlangıç değeri Bitiş değerinden küçük olmalıdır. Genişliği pozitif olan bir aralık seçin."
             ],
             "Partial AUC Results": [
                 "Kısmi EAA Sonuçları"
+            ],
+            "Partial AUC to": [
+                ""
             ],
             "Partial AUC to (specificity)": [
                 "Kısmi EAA Bitişi (Özgüllük)"
@@ -17214,9 +17211,6 @@
             ],
             "Random-ranking CROC AUC": [
                 "Rastgele sıralamada CROC AUC"
-            ],
-            "Range for partial AUC (min,max) - e.g., 0.8,1.0 for high specificity or sensitivity": [
-                "Kısmi EAA için aralık (min,maks) - ör. yüksek özgüllük veya duyarlılık için 0.8,1.0"
             ],
             "Range from {minimum}% to {maximum}%": [
                 "%{minimum} ile %{maximum} arasında aralık"
@@ -21028,8 +21022,8 @@
             "The outcome is numeric and coded 0/1, so 1 is read as the positive class. If 0 marks the condition, recode the outcome or set it to Nominal in Data > Setup and choose 0 in Positive class.": [
                 "Sonlanım sayısaldır ve 0/1 olarak kodlanmıştır; bu nedenle 1 pozitif sınıf olarak okunur. Durumu 0 gösteriyorsa sonlanımı yeniden kodlayın ya da Veri > Ayarlar bölümünde Nominal olarak ayarlayıp Pozitif sınıf alanında 0 seçin."
             ],
-            "The outcome level that means the condition is absent, typed exactly as it appears in the data. Required by the frozen-model report, which refuses any outcome level that is neither this nor the positive class instead of pooling it as negative.": [
-                "Durumun yokluğunu ifade eden sonlanım düzeyi; verilerde göründüğü şekliyle tam olarak yazılmalıdır. Dondurulmuş model raporu tarafından gereklidir; rapor, ne bu ne de pozitif sınıf olan herhangi bir sonlanım düzeyini negatif olarak birleştirmek yerine reddeder."
+            "The outcome level that means the condition is absent. Required by the frozen-model report, which refuses any outcome level that is neither this nor the positive class instead of pooling it as negative.": [
+                ""
             ],
             "The outcome variable cannot also be an explanatory variable.": [
                 "Sonuç değişkeni aynı zamanda açıklayıcı değişken olamaz."
@@ -21441,9 +21435,6 @@
             ],
             "The time-point separator is empty, so the rater and the time point cannot be told apart in the column names. Enter the character that separates them, for example an underscore for columns named Rater1_Time1 and Rater1_Time2.": [
                 "Zaman noktası ayırıcısı boş olduğundan, sütun adlarında değerlendirici ile zaman noktası birbirinden ayırt edilemiyor. Bunları ayıran karakteri girin; örneğin Rater1_Time1 ve Rater1_Time2 adlı sütunlar için bir alt çizgi."
-            ],
-            "The Treatment Threshold Range could not be read as \"min,max,step\" with 0 < min <= max < 1 and a positive step. The default range 0.05 to 0.50 in steps of 0.05 was used instead.": [
-                "Tedavi Eşiği Aralığı, 0 < en küçük <= en büyük < 1 ve pozitif adım koşullarıyla \"en küçük,en büyük,adım\" olarak okunamadı. Bunun yerine 0.05 ile 0.50 arasında 0.05 adımlı varsayılan aralık kullanıldı."
             ],
             "The two likelihood ratios in the table cannot be drawn together on one nomogram.": [
                 "Tablodaki iki olabilirlik oranı tek bir nomogram üzerinde birlikte çizilemez."
@@ -22144,11 +22135,17 @@
             "Treat None Net Benefit": [
                 "Hiç Kimseyi Tedavi Etme Net Faydası"
             ],
-            "Treatment threshold (min,max,step)": [
-                "Tedavi eşiği (en küçük,en büyük,adım)"
+            "Treatment threshold from": [
+                ""
             ],
-            "Treatment threshold range": [
-                "Tedavi Eşik Aralığı"
+            "Treatment threshold from is greater than Treatment threshold to. The default range 0.05 to 0.50 in steps of 0.05 was used instead.": [
+                ""
+            ],
+            "Treatment threshold step": [
+                ""
+            ],
+            "Treatment threshold to": [
+                ""
             ],
             "Treats all disagreements equally (benign→malignant = malignant→benign)": [
                 ""
@@ -22437,6 +22434,9 @@
             ],
             "Upper confidence limit you want the study to achieve for kappa. It must be above kappa0, and is ignored for a one-sided interval.": [
                 "Çalışmanın kappa için ulaşmasını istediğiniz üst güven sınırı. kappa0 değerinin üzerinde olmalıdır ve tek taraflı bir aralık için yok sayılır."
+            ],
+            "Upper end of the partial AUC range; it must be greater than the lower end.": [
+                ""
             ],
             "Upper LoA": [
                 "Üst Uyum Sınırı (LoA)"

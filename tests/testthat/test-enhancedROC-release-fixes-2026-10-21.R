@@ -2,7 +2,7 @@
 
 library(testthat)
 
-rf_run <- function(...) suppressWarnings(do.call(meddecide::enhancedROC, list(...)))
+rf_run <- function(...) suppressWarnings(do.call(meddecide::enhancedROC, utils::modifyList(list(validationNegative = NULL), list(...), keep.null = TRUE)))
 rf_private <- function(d, ...) {
     o <- do.call(meddecide:::enhancedROCOptions$new, list(...))
     a <- meddecide:::enhancedROCClass$new(options = o, data = d)

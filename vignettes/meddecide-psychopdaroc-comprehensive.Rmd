@@ -922,7 +922,9 @@ psychopdaROC(
   positiveClass = "Disease",
   dependentVars = "biomarker",
   clinicalUtilityAnalysis = TRUE,
-  treatmentThreshold = "0.05,0.5,0.05",
+  treatmentThresholdMin = 0.05,
+  treatmentThresholdMax = 0.5,
+  treatmentThresholdStep = 0.05,
   harmBenefitRatio = 0.25,
   refVar = NULL
 )

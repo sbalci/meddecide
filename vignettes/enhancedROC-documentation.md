@@ -44,7 +44,7 @@
 | `prevalence` | TextBox | Clinical Application | `prevalence` | default: 0.1, min: 0.001, max: 0.999 | Always visible |
 | `smoothMethod` | ComboBox | Advanced Options | `smoothMethod` | default: none | Always visible |
 | `partialAuc` | CheckBox | Advanced Options | `partialAuc` | default: false | Always visible |
-| `partialRange` | TextBox | Advanced Options | `partialRange` | default: '0.8,1.0' | enable: (partialAuc) |
+| `partialAucFrom` / `partialAucTo` | TextBox | Advanced Options | `partialAucFrom` / `partialAucTo` | default: '0.8,1.0' | enable: (partialAuc) |
 | `comprehensive_output` | CheckBox | Advanced Output | `comprehensive_output` | default: false | Always visible |
 | `clinical_interpretation` | CheckBox | Advanced Output | `clinical_interpretation` | default: true | Always visible |
 | `plotWidth` | TextBox | Plot Settings | `plotWidth` | default: 600, min: 300, max: 1200 | Always visible |
@@ -84,7 +84,7 @@
 ### Advanced Options
 - **smoothMethod** / List / none : ROC curve smoothing method (none, binormal, kernel)
 - **partialAuc** / Bool / false : Calculate partial AUC for specific ranges
-- **partialRange** / String / '0.8,1.0' : Range for partial AUC analysis
+- **partialAucFrom/partialAucTo** / Number / 0.8 and 1 : Range for partial AUC analysis
 - **comprehensive_output** / Bool / false : Include comprehensive statistical details
 - **clinical_interpretation** / Bool / true : Provide clinical context for results
 
@@ -119,7 +119,7 @@
 - **self$options$clinical_interpretation**: Controls clinical interpretation (line 116)
 
 ### Data Preparation (.prepareData method)
-- **self$options$partialRange**: Validated for format and range (lines 156-178)
+- **self$options$partialAucFrom/partialAucTo**: Validated for format and range (lines 156-178)
 - **self$options$positiveClass**: Used for multi-level outcome conversion (line 226+)
 - **self$options$outcome, self$options$predictors**: Core data validation
 
@@ -131,7 +131,7 @@
 - **.populateAUCSummary()**: Uses `self$options$confidenceLevel`, `self$options$useBootstrap`
 - **.populateROCComparisons()**: Uses `self$options$comparisonMethod`
 - **.populateClinicalMetrics()**: Uses `self$options$prevalence`
-- **.populatePartialAUC()**: Uses `self$options$partialRange`
+- **.populatePartialAUC()**: Uses `self$options$partialAucFrom/partialAucTo`
 - **Plotting functions**: Use `self$options$plotTheme`, `self$options$plotWidth`, `self$options$plotHeight`
 
 ## 5. Results Definition (.r.yaml)

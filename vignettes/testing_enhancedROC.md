@@ -69,13 +69,13 @@ All data files are available in `data/` folder as `.rda`, `.csv`, `.xlsx`, and `
 | # | File | Outcome / Positive Class | Predictors | Options to Test |
 |---|------|--------------------------|------------|-----------------|
 | 16 | `enhancedroc_validation` | outcome / "Positive" | biomarker | `smoothMethod`: binormal then kernel. Verify smoothed ROC curve |
-| 17 | `enhancedroc_validation` | outcome / "Positive" | biomarker | `partialAuc`: on, `partialAucType`: specificity, `partialRange`: "0.8,1.0". Verify partialAucAnalysis table |
-| 18 | `enhancedroc_validation` | outcome / "Positive" | biomarker | `partialAucType`: sensitivity, `partialRange`: "0.9,1.0" |
+| 17 | `enhancedroc_validation` | outcome / "Positive" | biomarker | `partialAuc`: on, `partialAucType`: specificity, `partialAucFrom`: 0.8, `partialAucTo`: 1.0. Verify partialAucAnalysis table |
+| 18 | `enhancedroc_validation` | outcome / "Positive" | biomarker | `partialAucType`: sensitivity, `partialAucFrom`: 0.9, `partialAucTo`: 1.0 |
 | 19 | `enhancedroc_validation` | outcome / "Positive" | biomarker | `crocAnalysis`: on, `crocAlpha`: 7.0. Verify crocAnalysisTable and crocCurvePlot |
 | 20 | `enhancedroc_validation` | outcome / "Positive" | biomarker | `convexHull`: on. Verify convexHullTable and convexHullPlot |
 | 21 | `enhancedroc_tiedscores` | disease / "Disease" | ordinal_score, rounded_lab, composite_score | `tiedScoreHandling`: average then upper then lower |
 
-**Options covered:** `smoothMethod` (none/binormal/kernel), `partialAuc`, `partialAucType` (specificity/sensitivity), `partialRange`, `crocAnalysis`, `crocAlpha`, `convexHull`, `tiedScoreHandling` (average/upper/lower)
+**Options covered:** `smoothMethod` (none/binormal/kernel), `partialAuc`, `partialAucType` (specificity/sensitivity), `partialAucFrom`, `partialAucTo`, `crocAnalysis`, `crocAlpha`, `convexHull`, `tiedScoreHandling` (average/upper/lower)
 
 ---
 
@@ -234,7 +234,7 @@ These options exist in YAML but are **not yet implemented** in the backend. Veri
 
 ### Advanced ROC
 - [x] `smoothMethod` (none/binormal/kernel) — #16
-- [x] `partialAuc`, `partialAucType`, `partialRange` — #17, #18
+- [x] `partialAuc`, `partialAucType`, `partialAucFrom`, `partialAucTo` — #17, #18
 - [x] `crocAnalysis`, `crocAlpha` — #19
 - [x] `convexHull` — #20
 - [x] `tiedScoreHandling` (average/upper/lower) — #21

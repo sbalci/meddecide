@@ -3766,9 +3766,6 @@
             "0.05, 0.10, 0.15, 0.20, 0.25, 0.30": [
                 ""
             ],
-            "0.05,0.5,0.05": [
-                ""
-            ],
             "0.1,0.25,0.5,0.75,0.9": [
                 ""
             ],
@@ -3827,9 +3824,6 @@
                 ""
             ],
             "0.75 to {tag1} 0.90": [
-                ""
-            ],
-            "0.8,1.0": [
                 ""
             ],
             "0.80 to 1.00": [
@@ -12493,6 +12487,9 @@
             "Lower confidence limit you want the study to achieve for kappa. It must be below kappa0. The sample size is set by the limit that is harder to reach - usually, but not always, the one nearer kappa0 - not by the full interval width.": [
                 ""
             ],
+            "Lower end of the partial AUC range, on the specificity or sensitivity scale chosen above, for example 0.8 for high specificity.": [
+                ""
+            ],
             "Lower LoA": [
                 ""
             ],
@@ -14467,6 +14464,9 @@
             "Not computed for this table; the notices at the top say why.": [
                 ""
             ],
+            "Not computed; the notice above says why.": [
+                ""
+            ],
             "Not computed: invalid frequencies": [
                 ""
             ],
@@ -15655,28 +15655,25 @@
             "Partial AUC for specific diagnostic range": [
                 ""
             ],
+            "Partial AUC from": [
+                ""
+            ],
             "Partial AUC from (specificity)": [
                 ""
             ],
+            "Partial AUC from must be less than Partial AUC to.": [
+                ""
+            ],
             "Partial AUC over sensitivity range": [
-                ""
-            ],
-            "Partial AUC range": [
-                ""
-            ],
-            "Partial AUC range must be valid: the first value must be less than the second, and both must lie between 0 and 1, for example 0.8,1.0.": [
-                ""
-            ],
-            "Partial AUC range must contain exactly two comma-separated numbers, for example 0.8,1.0.": [
-                ""
-            ],
-            "Partial AUC range values must be numeric, for example 0.8,1.0.": [
                 ""
             ],
             "Partial AUC requires the specificity From value to be smaller than the To value. Choose a range with positive width.": [
                 ""
             ],
             "Partial AUC Results": [
+                ""
+            ],
+            "Partial AUC to": [
                 ""
             ],
             "Partial AUC to (specificity)": [
@@ -17213,9 +17210,6 @@
                 ""
             ],
             "Random-ranking CROC AUC": [
-                ""
-            ],
-            "Range for partial AUC (min,max) - e.g., 0.8,1.0 for high specificity or sensitivity": [
                 ""
             ],
             "Range from {minimum}% to {maximum}%": [
@@ -21028,7 +21022,7 @@
             "The outcome is numeric and coded 0/1, so 1 is read as the positive class. If 0 marks the condition, recode the outcome or set it to Nominal in Data > Setup and choose 0 in Positive class.": [
                 ""
             ],
-            "The outcome level that means the condition is absent, typed exactly as it appears in the data. Required by the frozen-model report, which refuses any outcome level that is neither this nor the positive class instead of pooling it as negative.": [
+            "The outcome level that means the condition is absent. Required by the frozen-model report, which refuses any outcome level that is neither this nor the positive class instead of pooling it as negative.": [
                 ""
             ],
             "The outcome variable cannot also be an explanatory variable.": [
@@ -21440,9 +21434,6 @@
                 ""
             ],
             "The time-point separator is empty, so the rater and the time point cannot be told apart in the column names. Enter the character that separates them, for example an underscore for columns named Rater1_Time1 and Rater1_Time2.": [
-                ""
-            ],
-            "The Treatment Threshold Range could not be read as \"min,max,step\" with 0 < min <= max < 1 and a positive step. The default range 0.05 to 0.50 in steps of 0.05 was used instead.": [
                 ""
             ],
             "The two likelihood ratios in the table cannot be drawn together on one nomogram.": [
@@ -22144,10 +22135,16 @@
             "Treat None Net Benefit": [
                 ""
             ],
-            "Treatment threshold (min,max,step)": [
+            "Treatment threshold from": [
                 ""
             ],
-            "Treatment threshold range": [
+            "Treatment threshold from is greater than Treatment threshold to. The default range 0.05 to 0.50 in steps of 0.05 was used instead.": [
+                ""
+            ],
+            "Treatment threshold step": [
+                ""
+            ],
+            "Treatment threshold to": [
                 ""
             ],
             "Treats all disagreements equally (benign→malignant = malignant→benign)": [
@@ -22436,6 +22433,9 @@
                 ""
             ],
             "Upper confidence limit you want the study to achieve for kappa. It must be above kappa0, and is ignored for a one-sided interval.": [
+                ""
+            ],
+            "Upper end of the partial AUC range; it must be greater than the lower end.": [
                 ""
             ],
             "Upper LoA": [

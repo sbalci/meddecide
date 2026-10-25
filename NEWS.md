@@ -1,7 +1,39 @@
 # meddecide (development version)
 
-Text changes only. No statistics or options changed, and saved analyses open as before.
+No statistic changes. Saved analyses open as before, except that the two ranges below return to
+their defaults (see the R note).
 
+- **Tables instead of HTML.** Advanced ROC Analysis shows its confusion matrices as tables (rows:
+  the decision at the cutpoint; columns: the selected positive and negative levels). Compare
+  Medical Decision Tests shows its original data as two tables: reference-standard counts, and
+  each test against the reference levels. The LASSO Logistic Regression suitability check is a
+  table whose status column says "No concern", "Marginal" or "Major concern" in words. The
+  bordered summary grids in the Medical Decision Calculator and in Interrater Reliability are
+  gone; those numbers are in their tables. All of them now follow your number format and copy into
+  a spreadsheet as cells.
+- **Results stay in place when an input is invalid.** jamovi greys them and shows the error over
+  them; panels no longer vanish or go blank while you type through an invalid value.
+- **Tables keep their shape while computing.** Comparison, agreement, McNemar and difference
+  tables in Compare Medical Decision Tests, the combination tables in Combine Medical Decision
+  Tests and the workload table in the Medical Decision Calculator show their rows from the start.
+  A pair of tests that cannot be compared, and Cochran's Q when it is undefined, now keep their
+  row and say "Not computed".
+- **Variables first.** In Interrater Reliability and Decision Curve Analysis every variable box is
+  in the top variable list, greyed until the analysis that uses it is ticked. In Medical Decision
+  and Compare Medical Decision Tests the variables come before the reference-interpretation box.
+- **Choose, don't type, the negative reference level** in Clinical ROC Analysis' frozen-model
+  validation: it is now a level list. In Interrater Reliability the positive category is still
+  typed, and an extra space or different capitalization no longer stops it matching.
+- **R users:** `enhancedROC()` now has a required argument `validationNegative`, like
+  `positiveClass`. Pass `validationNegative = NULL` unless you use the frozen-model report.
+- **Ranges as number boxes.** Clinical ROC Analysis' partial AUC range is two boxes, Partial AUC
+  from and to, and Advanced ROC Analysis' treatment threshold range is three, from, to and step;
+  each box checks its own value. A saved analysis that used another range returns to the defaults
+  (0.8 to 1, and 0.05 to 0.50 in steps of 0.05). Lists of any length, such as cutoffs and target
+  prevalences, stay as comma-separated text.
+- **R users:** in `enhancedROC()`, `partialRange = "0.8,1.0"` is now `partialAucFrom = 0.8,
+  partialAucTo = 1`; in `psychopdaROC()`, `treatmentThreshold = "0.05,0.5,0.05"` is now
+  `treatmentThresholdMin`, `treatmentThresholdMax` and `treatmentThresholdStep`.
 - **Severity labels in sentence case.** Notices start with "Error:", "Strong warning:", "Warning:"
   or "Info:" instead of capitals, and the confusion-matrix headers in ROC analysis read "Decision
   based on measure" and "Criterion".

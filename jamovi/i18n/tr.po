@@ -9107,10 +9107,6 @@ msgstr "0.0001,0.001,0.01"
 msgid "0.05, 0.10, 0.15, 0.20, 0.25, 0.30"
 msgstr "0.05, 0.10, 0.15, 0.20, 0.25, 0.30"
 
-#: psychopdaROC/options/treatmentThreshold.default
-msgid "0.05,0.5,0.05"
-msgstr "0.05,0.5,0.05"
-
 #: psychopdaROC/options/quantiles.default
 msgid "0.1,0.25,0.5,0.75,0.9"
 msgstr "0.1,0.25,0.5,0.75,0.9"
@@ -9192,10 +9188,6 @@ msgstr "0.70 ile 0.80'in altı arası = Makul"
 #: R/agreement.b.R
 msgid "0.75 to {tag1} 0.90"
 msgstr ""
-
-#: enhancedROC/options/partialRange.default
-msgid "0.8,1.0"
-msgstr "0.8,1.0"
 
 #: R/agreement.b.R
 msgid "0.80 to 1.00"
@@ -14448,7 +14440,7 @@ msgstr ""
 msgid "Case ID"
 msgstr "Olgu Kimliği"
 
-#: agreement/ui[21][0][1][1].label
+#: agreement/ui[0][3].label
 msgid "Case ID (same case on several rows)"
 msgstr "Olgu Kimliği (aynı olgu birden çok satırda)"
 
@@ -15429,7 +15421,7 @@ msgid "Clinical decision rule"
 msgstr "Klinik karar kuralı"
 
 #: decisioncurve/options/decisionRuleVar.title
-#: decisioncurve/ui[1][2][0].label
+#: decisioncurve/ui[0][2].label
 msgid "Clinical decision rule (binary)"
 msgstr "Klinik Karar Kuralı (ikili)"
 
@@ -15832,7 +15824,7 @@ msgstr "Kümeye özgü kappa tahminleri"
 msgid "Cluster/Institution"
 msgstr "Küme/Kurum"
 
-#: agreement/ui[20][0][1][0].label
+#: agreement/ui[0][1].label
 msgid "Cluster/Institution Variable"
 msgstr "Küme/Kurum Değişkeni"
 
@@ -16722,11 +16714,11 @@ msgstr "Koşul B"
 msgid "Condition B raters"
 msgstr "Koşul B değerlendiricileri"
 
-#: agreement/ui[37][0][1][0].label
+#: agreement/ui[0][7].label
 msgid "Condition B Raters (e.g., AI-assisted)"
 msgstr "Koşul B Değerlendiricileri (ör. YZ destekli)"
 
-#: agreement/ui[21][0][1][0].label
+#: agreement/ui[0][2].label
 msgid "Condition Variable (e.g., AI vs Manual)"
 msgstr "Koşul Değişkeni (ör. YZ ve Manuel)"
 
@@ -18310,7 +18302,7 @@ msgid "Decision impact table"
 msgstr "Karar etkisi tablosu"
 
 #: decisioncurve/options/decisionRuleLabel.title
-#: decisioncurve/ui[1][3]/decisionRuleLabel.label
+#: decisioncurve/ui[1][2]/decisionRuleLabel.label
 msgid "Decision rule label"
 msgstr "Karar kuralı etiketi"
 
@@ -27085,6 +27077,12 @@ msgstr ""
 "değil, ulaşılması daha zor olan sınır belirler; bu genellikle, ancak her "
 "zaman değil, kappa0 değerine daha yakın olan sınırdır."
 
+#: enhancedROC/options/partialAucFrom.description
+msgid ""
+"Lower end of the partial AUC range, on the specificity or sensitivity scale "
+"chosen above, for example 0.8 for high specificity."
+msgstr ""
+
 #: agreement/results/blandAltmanStats.columns.title
 msgid "Lower LoA"
 msgstr "Alt Uyum Sınırı (LoA)"
@@ -29264,8 +29262,8 @@ msgstr "Negatif sayılar tespit edildi"
 msgid "Negative independent units"
 msgstr "Negatif bağımsız birimler"
 
-#: decision/ui[1][0]/goldNegative.label
-#: decision/ui[1][1]/testNegative.label
+#: decision/ui[0][0]/goldNegative.label
+#: decision/ui[0][1]/testNegative.label
 #: decisioncompare/results/levelMapping.columns.title
 msgid "Negative level"
 msgstr "Negatif düzey"
@@ -30995,6 +30993,10 @@ msgstr ""
 #: R/decisioncalculator.b.R
 msgid "Not computed for this table; the notices at the top say why."
 msgstr "Bu tablo için hesaplanmadı; nedeni üstteki bildirimlerde belirtilmiştir."
+
+#: R/decisioncompare.b.R
+msgid "Not computed; the notice above says why."
+msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Not computed: invalid frequencies"
@@ -33578,37 +33580,21 @@ msgstr "Kısmi EAA Hatası: %s"
 msgid "Partial AUC for specific diagnostic range"
 msgstr "Belirli tanısal aralık için kısmi EAA"
 
+#: enhancedROC/options/partialAucFrom.title
+msgid "Partial AUC from"
+msgstr ""
+
 #: psychopdaROC/options/partialAUCfrom.title
 msgid "Partial AUC from (specificity)"
 msgstr "Kısmi EAA Başlangıcı (Özgüllük)"
 
 #: R/enhancedROC.b.R
+msgid "Partial AUC from must be less than Partial AUC to."
+msgstr ""
+
+#: R/enhancedROC.b.R
 msgid "Partial AUC over sensitivity range"
 msgstr "Duyarlılık aralığında kısmi EAA"
-
-#: enhancedROC/options/partialRange.title
-msgid "Partial AUC range"
-msgstr "Kısmi EAA aralığı"
-
-#: R/enhancedROC.b.R
-msgid ""
-"Partial AUC range must be valid: the first value must be less than the "
-"second, and both must lie between 0 and 1, for example 0.8,1.0."
-msgstr ""
-"Kısmi EAA aralığı geçerli olmalıdır: birinci değer ikinciden küçük olmalı ve "
-"her ikisi de 0 ile 1 arasında yer almalıdır, örneğin 0.8,1.0."
-
-#: R/enhancedROC.b.R
-msgid ""
-"Partial AUC range must contain exactly two comma-separated numbers, for "
-"example 0.8,1.0."
-msgstr ""
-"Kısmi EAA aralığı virgülle ayrılmış tam olarak iki sayı içermelidir, örneğin "
-"0.8,1.0."
-
-#: R/enhancedROC.b.R
-msgid "Partial AUC range values must be numeric, for example 0.8,1.0."
-msgstr "Kısmi EAA aralık değerleri sayısal olmalıdır, örneğin 0.8,1.0."
 
 #: R/psychopdaROC.b.R
 msgid ""
@@ -33621,6 +33607,10 @@ msgstr ""
 #: psychopdaROC/results/partialAUCTable.title
 msgid "Partial AUC Results"
 msgstr "Kısmi EAA Sonuçları"
+
+#: enhancedROC/options/partialAucTo.title
+msgid "Partial AUC to"
+msgstr ""
 
 #: psychopdaROC/options/partialAUCto.title
 msgid "Partial AUC to (specificity)"
@@ -33872,7 +33862,7 @@ msgstr ""
 msgid "Patient; all of the patient's rows ({unit}) retained"
 msgstr "Hasta; hastanın tüm satırları ({unit}) korunur"
 
-#: agreement/ui[32][0][5][0].label
+#: agreement/ui[0][5].label
 msgid "Patient/cluster ID (optional)"
 msgstr ""
 
@@ -34701,8 +34691,8 @@ msgid "Positive independent units"
 msgstr "Pozitif bağımsız birimler"
 
 #: R/decisioncombine.b.R
-#: decision/ui[1][0]/goldPositive.label
-#: decision/ui[1][1]/testPositive.label
+#: decision/ui[0][0]/goldPositive.label
+#: decision/ui[0][1]/testPositive.label
 #: decisioncombine/ui[0][1]/test1Positive.label
 #: decisioncombine/ui[0][2]/test2Positive.label
 #: decisioncombine/ui[0][3]/test3Positive.label
@@ -34896,7 +34886,7 @@ msgstr "Pozitif Sonuç"
 msgid "Positive rows"
 msgstr "Pozitif satırlar"
 
-#: decisioncurve/ui[1][2][0]/decisionRulePositive.label
+#: decisioncurve/ui[0][2]/decisionRulePositive.label
 msgid "Positive rule level"
 msgstr "Pozitif kural düzeyi"
 
@@ -36706,14 +36696,6 @@ msgstr "Rastgele pay"
 msgid "Random-ranking CROC AUC"
 msgstr "Rastgele sıralamada CROC AUC"
 
-#: enhancedROC/options/partialRange.description
-msgid ""
-"Range for partial AUC (min,max) - e.g., 0.8,1.0 for high specificity or "
-"sensitivity"
-msgstr ""
-"Kısmi EAA için aralık (min,maks) - ör. yüksek özgüllük veya duyarlılık için "
-"0.8,1.0"
-
 #: R/nogoldstandard.b.R
 msgid "Range from {minimum}% to {maximum}%"
 msgstr "%{minimum} ile %{maximum} arasında aralık"
@@ -37242,7 +37224,7 @@ msgstr "Referans (yuvarlama yok)"
 msgid "Reference / comparator"
 msgstr "Referans / karşılaştırıcı"
 
-#: decisioncompare/ui[1][0].label
+#: decisioncompare/ui[0][0].label
 msgid "Reference / Comparator"
 msgstr "Referans / Karşılaştırıcı"
 
@@ -37262,8 +37244,8 @@ msgstr "Referans sınıf"
 msgid "Reference interpretation"
 msgstr "Referans yorumu"
 
-#: decision/ui[0].label
-#: decisioncompare/ui[0].label
+#: decision/ui[1].label
+#: decisioncompare/ui[1].label
 msgid "Reference Interpretation"
 msgstr "Referans Yorumu"
 
@@ -37351,7 +37333,7 @@ msgstr ""
 msgid "Reference positive level"
 msgstr "Referans pozitif düzeyi"
 
-#: agreement/ui[25][0][1][0].label
+#: agreement/ui[0][4].label
 msgid "Reference Rater"
 msgstr "Referans Değerlendirici"
 
@@ -37376,7 +37358,7 @@ msgstr "Referans kuralı örneklemi çok dengesiz bölüyor"
 msgid "Reference standard"
 msgstr "Referans standart"
 
-#: decision/ui[1][0].label
+#: decision/ui[0][0].label
 msgid "Reference Standard (Gold Standard)"
 msgstr "Referans Standart (Altın Standart)"
 
@@ -41238,7 +41220,7 @@ msgid ""
 "{specificity}"
 msgstr "Strateji: {strategy} | Duyarlılık: {sensitivity} | Özgüllük: {specificity}"
 
-#: decisioncompare/ui[1][4].label
+#: decisioncompare/ui[0][4].label
 msgid "Stratification (Optional)"
 msgstr "Tabakalandırma (İsteğe Bağlı)"
 
@@ -41506,7 +41488,7 @@ msgstr ""
 "yoktur; bu nedenle bu alt grupta %3$s analiz edilemez."
 
 #: R/psychopdaROC.b.R
-#: agreement/ui[34][0][1][0].label
+#: agreement/ui[0][6].label
 msgid "Subgroup Variable"
 msgstr "Alt Grup Değişkeni"
 
@@ -41975,7 +41957,7 @@ msgstr "Test %d"
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
 #: R/sequentialtests.b.R
-#: decisioncompare/ui[1][1].label
+#: decisioncompare/ui[0][1].label
 #: nogoldstandard/options/test1.title
 #: nogoldstandard/ui[0][0].label
 msgid "Test 1"
@@ -42079,7 +42061,7 @@ msgstr "Test 1: {name}"
 #: R/cotest.b.R
 #: R/decisioncombine.b.R
 #: R/sequentialtests.b.R
-#: decisioncompare/ui[1][2].label
+#: decisioncompare/ui[0][2].label
 #: nogoldstandard/options/test2.title
 #: nogoldstandard/ui[0][1].label
 msgid "Test 2"
@@ -42184,7 +42166,7 @@ msgid "Test 2: {name}"
 msgstr "Test 2: {name}"
 
 #: R/decisioncombine.b.R
-#: decisioncompare/ui[1][3].label
+#: decisioncompare/ui[0][3].label
 #: nogoldstandard/options/test3.title
 msgid "Test 3"
 msgstr "Test 3"
@@ -42441,7 +42423,7 @@ msgid "Test Statistic"
 msgstr "Test İstatistiği"
 
 #: decision/options/newtest.title
-#: decision/ui[1][1].label
+#: decision/ui[0][1].label
 msgid "Test Under Evaluation"
 msgstr "Değerlendirilen Test"
 
@@ -45241,15 +45223,10 @@ msgstr ""
 
 #: enhancedROC/options/validationNegative.description
 msgid ""
-"The outcome level that means the condition is absent, typed exactly as it "
-"appears in the data. Required by the frozen-model report, which refuses any "
-"outcome level that is neither this nor the positive class instead of pooling "
-"it as negative."
+"The outcome level that means the condition is absent. Required by the "
+"frozen-model report, which refuses any outcome level that is neither this "
+"nor the positive class instead of pooling it as negative."
 msgstr ""
-"Durumun yokluğunu ifade eden sonlanım düzeyi; verilerde göründüğü şekliyle "
-"tam olarak yazılmalıdır. Dondurulmuş model raporu tarafından gereklidir; "
-"rapor, ne bu ne de pozitif sınıf olan herhangi bir sonlanım düzeyini negatif "
-"olarak birleştirmek yerine reddeder."
 
 #: R/lassologistic.b.R
 msgid "The outcome variable cannot also be an explanatory variable."
@@ -46694,16 +46671,6 @@ msgstr ""
 "Zaman noktası ayırıcısı boş olduğundan, sütun adlarında değerlendirici ile "
 "zaman noktası birbirinden ayırt edilemiyor. Bunları ayıran karakteri girin; "
 "örneğin Rater1_Time1 ve Rater1_Time2 adlı sütunlar için bir alt çizgi."
-
-#: R/psychopdaROC.b.R
-msgid ""
-"The Treatment Threshold Range could not be read as \"min,max,step\" with 0 < "
-"min <= max < 1 and a positive step. The default range 0.05 to 0.50 in steps "
-"of 0.05 was used instead."
-msgstr ""
-"Tedavi Eşiği Aralığı, 0 < en küçük <= en büyük < 1 ve pozitif adım "
-"koşullarıyla \"en küçük,en büyük,adım\" olarak okunamadı. Bunun yerine 0.05 "
-"ile 0.50 arasında 0.05 adımlı varsayılan aralık kullanıldı."
 
 #: R/decisioncalculator.b.R
 msgid ""
@@ -48631,13 +48598,23 @@ msgstr "Hiç kimseyi tedavi etme"
 msgid "Treat None Net Benefit"
 msgstr "Hiç Kimseyi Tedavi Etme Net Faydası"
 
-#: psychopdaROC/ui[13][0]/treatmentThreshold.label
-msgid "Treatment threshold (min,max,step)"
-msgstr "Tedavi eşiği (en küçük,en büyük,adım)"
+#: psychopdaROC/options/treatmentThresholdMin.title
+msgid "Treatment threshold from"
+msgstr ""
 
-#: psychopdaROC/options/treatmentThreshold.title
-msgid "Treatment threshold range"
-msgstr "Tedavi Eşik Aralığı"
+#: R/psychopdaROC.b.R
+msgid ""
+"Treatment threshold from is greater than Treatment threshold to. The default "
+"range 0.05 to 0.50 in steps of 0.05 was used instead."
+msgstr ""
+
+#: psychopdaROC/options/treatmentThresholdStep.title
+msgid "Treatment threshold step"
+msgstr ""
+
+#: psychopdaROC/options/treatmentThresholdMax.title
+msgid "Treatment threshold to"
+msgstr ""
 
 #: R/agreement.b.R
 msgid "Treats all disagreements equally (benign→malignant = malignant→benign)"
@@ -49233,6 +49210,10 @@ msgid ""
 msgstr ""
 "Çalışmanın kappa için ulaşmasını istediğiniz üst güven sınırı. kappa0 "
 "değerinin üzerinde olmalıdır ve tek taraflı bir aralık için yok sayılır."
+
+#: enhancedROC/options/partialAucTo.description
+msgid "Upper end of the partial AUC range; it must be greater than the lower end."
+msgstr ""
 
 #: agreement/results/blandAltmanStats.columns.title
 msgid "Upper LoA"
