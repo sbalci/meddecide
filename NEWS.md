@@ -29,6 +29,9 @@ their defaults (see the R note).
 - **Clinical presets show what they override.** In Clinical ROC Analysis, choosing a clinical
   preset greys Youden index optimization and, except for Research, the minimum sensitivity and
   specificity boxes, since the preset sets them.
+- **Validation context boxes greyed when unused.** In Medical Decision, cohort role, sampling
+  design, threshold source, model version and unit of observation are greyed until Validation
+  context is ticked, as they already were in Compare Medical Decision Tests.
 - **Ranges as number boxes.** Clinical ROC Analysis' partial AUC range is two boxes, Partial AUC
   from and to, and Advanced ROC Analysis' treatment threshold range is three, from, to and step;
   each box checks its own value. A saved analysis that used another range returns to the defaults
