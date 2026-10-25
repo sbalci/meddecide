@@ -42,6 +42,10 @@ their defaults (see the R note).
   reported once, as the analysis error, in Advanced ROC Analysis and LASSO Logistic Regression.
   Interrater Reliability no longer repeats its "kappa not computed for continuous ratings" note in
   a second panel, and its computed-variables message is translated.
+- **A sub-analysis that cannot run says so at the top.** In Interrater Reliability, an optional
+  analysis that cannot be computed (rater clustering with two raters, Bland-Altman with fewer than
+  three complete pairs, and so on) raises a warning naming it above the results, instead of a
+  footnote under its empty table.
 - **Help only when it helps.** Co-Testing Analysis no longer shows its guidance panel by default
   (tick Guidance and explanations to see it), and Clinical ROC Analysis shows its instructions
   only until an outcome and a predictor are chosen.

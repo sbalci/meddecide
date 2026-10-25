@@ -29,10 +29,6 @@ msgstr ""
 msgid "-LR"
 msgstr "-LR"
 
-#: R/agreement.b.R
-msgid "..."
-msgstr "..."
-
 #: R/psychopdaROC.b.R
 msgid ""
 "'{var}' was analyzed with only {pos} positive and {neg} negative case(s). "

@@ -16,9 +16,6 @@
             "-LR": [
                 ""
             ],
-            "...": [
-                ""
-            ],
             "'{var}' was analyzed with only {pos} positive and {neg} negative case(s). Below about 10 per class the AUC, its confidence interval and the selected cutpoint are unstable; treat these results as exploratory.": [
                 ""
             ],

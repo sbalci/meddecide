@@ -16,9 +16,6 @@
             "-LR": [
                 "-LR"
             ],
-            "...": [
-                "..."
-            ],
             "'{var}' was analyzed with only {pos} positive and {neg} negative case(s). Below about 10 per class the AUC, its confidence interval and the selected cutpoint are unstable; treat these results as exploratory.": [
                 "'{var}', yalnızca {pos} pozitif ve {neg} negatif olguyla analiz edildi. Sınıf başına yaklaşık 10 olgunun altında AUC, güven aralığı ve seçilen kesim noktası kararsızdır; bu sonuçları keşifsel olarak değerlendirin."
             ],
