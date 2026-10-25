@@ -42,6 +42,9 @@ their defaults (see the R note).
   reported once, as the analysis error, in Advanced ROC Analysis and LASSO Logistic Regression.
   Interrater Reliability no longer repeats its "kappa not computed for continuous ratings" note in
   a second panel, and its computed-variables message is translated.
+- **Help only when it helps.** Co-Testing Analysis no longer shows its guidance panel by default
+  (tick Guidance and explanations to see it), and Clinical ROC Analysis shows its instructions
+  only until an outcome and a predictor are chosen.
 - **Severity labels in sentence case.** Notices start with "Error:", "Strong warning:", "Warning:"
   or "Info:" instead of capitals, and the confusion-matrix headers in ROC analysis read "Decision
   based on measure" and "Criterion".
