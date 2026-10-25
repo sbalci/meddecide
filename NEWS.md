@@ -26,6 +26,9 @@ their defaults (see the R note).
   typed, and an extra space or different capitalization no longer stops it matching.
 - **R users:** `enhancedROC()` now has a required argument `validationNegative`, like
   `positiveClass`. Pass `validationNegative = NULL` unless you use the frozen-model report.
+- **Clinical presets show what they override.** In Clinical ROC Analysis, choosing a clinical
+  preset greys Youden index optimization and, except for Research, the minimum sensitivity and
+  specificity boxes, since the preset sets them.
 - **Ranges as number boxes.** Clinical ROC Analysis' partial AUC range is two boxes, Partial AUC
   from and to, and Advanced ROC Analysis' treatment threshold range is three, from, to and step;
   each box checks its own value. A saved analysis that used another range returns to the defaults
