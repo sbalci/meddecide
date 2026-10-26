@@ -5083,6 +5083,9 @@
             "Anticipated Agreement": [
                 ""
             ],
+            "Anticipated kappa": [
+                ""
+            ],
             "Anticipated kappa (κ₀)": [
                 ""
             ],
@@ -9394,7 +9397,7 @@
             "Estimate": [
                 ""
             ],
-            "Estimate the prevalence for that test by maximum likelihood from the same pooled cells, with kappa held at kappa0: the published procedure plugs in the overall proportion of positive ratings, which makes the test reject a true kappa0 too often with four or more raters and a rare finding.": [
+            "Estimate the prevalence for that test by maximum likelihood from the same pooled cells, with kappa held at κ₀: the published procedure plugs in the overall proportion of positive ratings, which makes the test reject a true κ₀ too often with four or more raters and a rare finding.": [
                 ""
             ],
             "Estimated Class or Rule Proportion": [
@@ -11140,7 +11143,7 @@
             "If the reference standard was obtained mainly on patients whose test was positive, then test-negative patients of BOTH disease states are under-represented: the missing false negatives inflate sensitivity, and the missing true negatives deflate specificity. This is the usual situation when the reference standard is a biopsy or resection that is only performed after a positive test.": [
                 ""
             ],
-            "If the reference standard was obtained only after a positive result on some test, or only where the tests disagreed (discrepant resolution), sensitivity, specificity and the predictive values can all be biased, in either direction, for every test and rule in the table. These data cannot tell this from results withheld because of disease status, and a correction needs the reference standard on a random sample of the cases verified less often.": [
+            "If the reference standard was obtained only after a positive result on some test, or only where the tests disagreed (discrepant resolution), sensitivity and specificity can be biased, in either direction, for every test and rule in the table, and so can the predictive values of each single test and each combined rule. The predictive values of an exact result pattern (a row such as +/-) are not biased by this, provided whether a case was verified depended only on its pattern and no reference result was filled in from the tests. These data cannot tell this from results withheld because of disease status, and a correction needs the reference standard on a random sample of the cases verified less often.": [
                 ""
             ],
             "If they were - including a cutpoint, a score, or a regression developed here - the net benefit is apparent and optimistically biased, and the model can appear to beat treat-all when it does not.": [
@@ -11803,7 +11806,7 @@
             "It answers 'given the subjects I have, how little agreement am I still unable to rule out?' - the mirror image of the sample-size question; every kappa below the bound is excluded.": [
                 ""
             ],
-            "It answers 'how many subjects do I need to reject kappa0 in favor of kappa1?' - not how precisely kappa will be estimated; to plan the expected confidence limits around an anticipated kappa, use kappaSizeCI instead.": [
+            "It answers 'how many subjects do I need to reject κ₀ in favor of κ₁?' - not how precisely kappa will be estimated; to plan the expected confidence limits around an anticipated kappa, use kappaSizeCI instead.": [
                 ""
             ],
             "It answers a different question from the confidence-interval approach (kappaSizeCI), which sizes a study so that the expected confidence limits around an anticipated kappa fall at chosen values, so the two will not agree on a sample size for the same study - pick the one that matches how the result will be reported.": [
@@ -11953,28 +11956,10 @@
             "kappa0": [
                 ""
             ],
-            "kappa0 (null) and kappa1 (alternative) must differ; equal values make the required sample size undefined.": [
-                ""
-            ],
-            "kappa0 must be greater than kappaL": [
-                ""
-            ],
-            "kappa0 must be strictly between 0 and 1.": [
-                ""
-            ],
-            "kappa0 must be strictly within the confidence interval (kappaL, kappaU)": [
-                ""
-            ],
             "kappa1": [
                 ""
             ],
-            "kappa1 must be strictly between 0 and 1.": [
-                ""
-            ],
             "kappaL": [
-                ""
-            ],
-            "kappaL must be less than kappaU": [
                 ""
             ],
             "kappaSize package is required for validated kappa sample size calculations.": [
@@ -14671,10 +14656,10 @@
             "Note": [
                 ""
             ],
-            "Note that kappa0 here is the agreement you anticipate observing, not a null hypothesis value as it is in kappaSizePower.": [
+            "Note that the anticipated kappa here is the agreement you expect to observe, not a null hypothesis value as it is in kappaSizePower.": [
                 ""
             ],
-            "Note that kappa0 here is the null hypothesis value, whereas in kappaSizeCI and kappaSizeFixedN it is the agreement you anticipate observing.": [
+            "Note that κ₀ here is the null hypothesis value, whereas in kappaSizeCI and kappaSizeFixedN it is the agreement you anticipate observing.": [
                 ""
             ],
             "Note: %1$d of %2$d cases excluded due to missing values (%3$.1f%%). Analysis based on %4$d complete cases.": [
@@ -16510,7 +16495,7 @@
             "Power uses a two-sided normal approximation with the AUC variance approximation of Hanley JA, McNeil BJ (1982). The meaning and use of the area under a ROC curve. Radiology 143(1):29-36. This is approximate planning, not an exact or simulation-validated sample-size guarantee.": [
                 ""
             ],
-            "Power-based sample size for a two-sided test of H0: kappa = kappa0 against H1: kappa = kappa1, using the goodness-of-fit (non-central chi-square) approach of Donner and Eliasziw (two raters, binary outcome), Altaye, Donner and Klar (binary outcome, more raters) and Altaye, Donner and Eliasziw (three to five categories), as implemented in the kappaSize package (Rotondi and Donner).": [
+            "Power-based sample size for a two-sided test of H0: kappa = κ₀ against H1: kappa = κ₁, using the goodness-of-fit (non-central chi-square) approach of Donner and Eliasziw (two raters, binary outcome), Altaye, Donner and Klar (binary outcome, more raters) and Altaye, Donner and Eliasziw (three to five categories), as implemented in the kappaSize package (Rotondi and Donner).": [
                 ""
             ],
             "PPA/NPA condition on reference-positive/reference-negative cases. Reverse conditional agreement is not a patient's probability of disease. Symmetric specific agreement is not PPA/NPA. All binary estimates use determinate reference/test pairs under the displayed recoding rule.": [
@@ -20416,6 +20401,9 @@
             "The annotators tied on %1$d of %2$d cases (no single most-frequent label). %3$d of those could not be resolved under the selected tie-breaking rule and are excluded from the strict-consensus figures; the remainder were resolved by that rule. Strict agreement is sensitive to this choice when ties are common.": [
                 ""
             ],
+            "The anticipated kappa must be strictly between 0 and 1.": [
+                ""
+            ],
             "The association (weighted) kappa of Nelson and Edwards is a function of the latent ICC alone, so it adds nothing to it and is not shown.": [
                 ""
             ],
@@ -20671,7 +20659,7 @@
             "The dependence parameter for the non-diseased group (%1$.2f) is not attainable with these specificities, so the joint false-positive probability was truncated from %2$.4f to its bound %3$.4f. The model actually fitted is therefore not the one you specified, and at least one combination of results becomes impossible in that group. Move the value toward 0 until this note disappears; the realized correlation is reported in the Test Dependence panel.": [
                 ""
             ],
-            "The design needs {n} subjects; few agreement studies can enrol this many. Moving kappa1 closer to kappa0 from the same side, or raising the power target, always inflates the sample size, and a rare finding usually does too (for a binary outcome, a prevalence far from 0.5; with more categories, very unequal category proportions) - revisit whichever of these is not a firm requirement.": [
+            "The design needs {n} subjects; few agreement studies can enrol this many. Moving κ₁ closer to κ₀ from the same side, or raising the power target, always inflates the sample size, and a rare finding usually does too (for a binary outcome, a prevalence far from 0.5; with more categories, very unequal category proportions) - revisit whichever of these is not a firm requirement.": [
                 ""
             ],
             "The detailed clinical interpretation could not be generated.": [
@@ -20836,7 +20824,7 @@
             "The gold-standard variable cannot also occupy a test slot. Select a different variable for each test.": [
                 ""
             ],
-            "The goodness-of-fit test also tests that model: if the raters follow another model with the same kappa, it can reject a true kappa0 far more often than the stated significance level, whereas Fleiss' kappa with a jackknife or bootstrap interval that resamples subjects is not tied to the model.": [
+            "The goodness-of-fit test also tests that model: if the raters follow another model with the same kappa, it can reject a true κ₀ far more often than the stated significance level, whereas Fleiss' kappa with a jackknife or bootstrap interval that resamples subjects is not tied to the model.": [
                 ""
             ],
             "The grading tendency needs ordered categories (a higher and a lower grade); these ratings are nominal, so it is not computed. If the categories have a natural order, set the rater variables to Ordinal.": [
@@ -21079,7 +21067,7 @@
             "The normalized partial AUC is unavailable. The correction is undefined when the partial curve falls below the diagonal; the raw partial AUC is reported separately.": [
                 ""
             ],
-            "The null and alternative kappa differ by only {delta}. Check that kappa0 is the agreement you want to rule OUT (not the agreement you expect to observe) and that kappa1 is a clinically meaningful difference from it; very close values need very large studies.": [
+            "The null and alternative kappa differ by only {delta}. Check that κ₀ is the agreement you want to rule OUT (not the agreement you expect to observe) and that κ₁ is a clinically meaningful difference from it; very close values need very large studies.": [
                 ""
             ],
             "The null hypothesis value of kappa - the level of agreement the study tests against. kappaSize documents this as \"the null hypothesis for the kappa hypothesis test\"; it is NOT the value you expect to observe.": [
@@ -21265,7 +21253,7 @@
             "The proportion of patients without the condition whom the test calls negative.": [
                 ""
             ],
-            "The published formula behind this sample size is a large-sample approximation that treats the expected proportions as known. In {R} simulated studies of {n} subjects analyzed with the recommended goodness-of-fit test (prevalence estimated by maximum likelihood with kappa held at kappa0), the power to reject kappa0 when kappa equals kappa1 was about {sim}, short of the stated {power}.": [
+            "The published formula behind this sample size is a large-sample approximation that treats the expected proportions as known. In {R} simulated studies of {n} subjects analyzed with the recommended goodness-of-fit test (prevalence estimated by maximum likelihood with kappa held at κ₀), the power to reject κ₀ when kappa equals κ₁ was about {sim}, short of the stated {power}.": [
                 ""
             ],
             "The published formula behind this sample size treats the expected proportions as known and rests on a large-sample approximation. With three or more raters and three to five categories, simulations of the recommended goodness-of-fit test at the published sample size gave a power of about 0.64 to 0.81 for a stated 0.80, below 0.75 in 8 of 12 designs, balanced proportions included, so this design can fall well short of the stated power of {power} at {n} subjects. How far short cannot be computed reliably here, so confirm the sample size by simulating the intended analysis.": [
@@ -21334,10 +21322,10 @@
             "The requested bootstrap interval could not be computed; DeLong's method was used as the fallback.": [
                 ""
             ],
-            "The requested confidence interval is too narrow to size in reasonable time: it would need about {n} subjects. The limit that governs the sample size is {dist} away from kappa0, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
+            "The requested confidence interval is too narrow to size in reasonable time: it would need about {n} subjects. The limit that governs the sample size is {dist} away from κ₀, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
                 ""
             ],
-            "The requested confidence interval is too narrow to size in reasonable time: no sample size can deliver it. The limit that governs the sample size is {dist} away from kappa0, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
+            "The requested confidence interval is too narrow to size in reasonable time: no sample size can deliver it. The limit that governs the sample size is {dist} away from κ₀, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
                 ""
             ],
             "The requested power is {power}. A study powered below 50% is more likely to miss the alternative kappa than to detect it; conventional values are 0.80 or 0.90.": [
@@ -21802,7 +21790,7 @@
             "This is a planning expectation, not a guarantee.": [
                 ""
             ],
-            "This is a POWER calculation: it returns the number of subjects needed to REJECT kappa0 in favor of kappa1 in a two-sided test at the stated significance level and power.": [
+            "This is a POWER calculation: it returns the number of subjects needed to REJECT κ₀ in favor of κ₁ in a two-sided test at the stated significance level and power.": [
                 ""
             ],
             "This is an in-sample estimate with no external validation behind it, and it is additionally optimistic because this predictor was picked as the highest-scoring of %d; the Internal Validation section reports its internal validation.": [
@@ -21832,7 +21820,7 @@
             "This is not posterior sampling, priors are not configurable, intervals are not credible intervals, and latent-class labels remain unidentified.": [
                 ""
             ],
-            "This is the bound the study reaches if the agreement it observes lands exactly on kappa0 and its category proportions match the anticipated ones. Roughly half of such studies will observe less agreement than anticipated and end with a lower bound below the figure shown, so read it as a planning expectation rather than a guarantee.": [
+            "This is the bound the study reaches if the agreement it observes lands exactly on the anticipated kappa and its category proportions match the anticipated ones. Roughly half of such studies will observe less agreement than anticipated and end with a lower bound below the figure shown, so read it as a planning expectation rather than a guarantee.": [
                 ""
             ],
             "This is the fitted proportion of the high-positive latent class. It is not automatically disease prevalence because latent-class labels are unidentified.": [
@@ -23461,10 +23449,10 @@
             "With three or more raters each interval is kappa plus or minus the t quantile on n - 1 degrees of freedom times Gwet's subject-sampling standard error (irrCAC), where n is the number of cases with at least one rating (the N Cases column). The raters are treated as fixed, so the interval reflects the sampling of cases, not of raters. The kappa interval method option (Wald or Fisher z) applies to Cohen's kappa for two raters only and does not change these intervals.": [
                 ""
             ],
-            "With three or more raters, do not compute the chi-square over every count of raters calling the finding present (none, one, ..., all): that statistic has more than one degree of freedom and, read on one, rejects a true kappa0 much more often than the stated significance level.": [
+            "With three or more raters, do not compute the chi-square over every count of raters calling the finding present (none, one, ..., all): that statistic has more than one degree of freedom and, read on one, rejects a true κ₀ much more often than the stated significance level.": [
                 ""
             ],
-            "With three or more raters, estimate the category prevalences by maximum likelihood with kappa held at kappa0, as Altaye, Donner and Eliasziw do; plugging in the overall proportions of ratings makes the test reject a true kappa0 too often.": [
+            "With three or more raters, estimate the category prevalences by maximum likelihood with kappa held at κ₀, as Altaye, Donner and Eliasziw do; plugging in the overall proportions of ratings makes the test reject a true κ₀ too often.": [
                 ""
             ],
             "With three or more raters, the lower bound for a binary finding also depends on how agreement among more than two raters is modeled. This analysis uses the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used for three to five categories, which for two categories is the beta-binomial, describes the same kappa, and with the proportions held at their anticipated values it never gave a lower bound than the one shown in the designs checked and usually gave a higher one (by up to about 0.10 when the finding is rare and the study small), so the figure shown is the more cautious of the two.": [
@@ -23494,7 +23482,7 @@
             "With two categories the latent model needs a median of at least %1$s ratings per case, because its approximation is biased with fewer ratings per case whatever the number of cases; this study has %2$s.": [
                 ""
             ],
-            "With two raters, estimate the prevalence for the test by maximum likelihood with kappa held at kappa0 rather than plugging in the overall proportion of positive ratings, as the published procedure does: in simulations of a rare finding (1 to 5 cases in 100) at a 0.05 level, the plug-in test rejected a true kappa0 at a rate of 0.055-0.066 and the maximum-likelihood version at 0.043-0.052.": [
+            "With two raters, estimate the prevalence for the test by maximum likelihood with kappa held at κ₀ rather than plugging in the overall proportion of positive ratings, as the published procedure does: in simulations of a rare finding (1 to 5 cases in 100) at a 0.05 level, the plug-in test rejected a true κ₀ at a rate of 0.055-0.066 and the maximum-likelihood version at 0.043-0.052.": [
                 ""
             ],
             "With two tests, a strict majority requires both tests to be positive; a one-positive tie is rule negative. This is identical to the all-tests-positive rule, so the positive-response probability and NPV are fixed at 100% by construction and are left blank. Add a third test for a non-degenerate majority rule; all values from a self-built rule describe agreement, not diagnostic accuracy.": [
@@ -23696,6 +23684,24 @@
                 ""
             ],
             "Δ Hedges' g": [
+                ""
+            ],
+            "κ₀ (null) and κ₁ (alternative) must differ; equal values make the required sample size undefined.": [
+                ""
+            ],
+            "κ₀ must be greater than κL": [
+                ""
+            ],
+            "κ₀ must be strictly between 0 and 1.": [
+                ""
+            ],
+            "κ₀ must be strictly within the confidence interval (κL, κU)": [
+                ""
+            ],
+            "κ₁ must be strictly between 0 and 1.": [
+                ""
+            ],
+            "κL must be less than κU": [
                 ""
             ],
             "τ² Between-Study Variance": [

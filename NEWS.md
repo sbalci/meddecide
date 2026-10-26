@@ -54,6 +54,13 @@ their defaults (see the R note).
 - **Clinical ROC Analysis plots follow jamovi's theme.** Plot theme has a new first choice,
   "jamovi (follow global)", which is now the default, so these plots match the rest of the
   document. Classic, Modern and Clinical (the previous default) are still there to override it.
+- **A more precise verification-bias caution** in Combine Medical Decision Tests: when the
+  reference standard was obtained only after a positive test, sensitivity, specificity and the
+  predictive values of single tests and combined rules can be biased, but an exact result
+  pattern's predictive values are not, if verification depended only on that pattern.
+- **Worked examples name their tests in your language.** In Co-Testing Analysis, the test names a
+  worked example puts in the name boxes are shown translated in the tables and summary; a name you
+  type yourself is kept as typed.
 - **Fagan nomograms follow jamovi's colors and name their lines.** In Medical Decision, the Medical
   Decision Calculator and Co-Testing Analysis, the two lines now use the palette chosen in jamovi,
   and a legend says which is the positive result and which the negative. "Fagan line colors" ->
@@ -68,7 +75,7 @@ their defaults (see the R note).
   intervals" reads the same in Medical Decision, the Medical Decision Calculator and Compare
   Medical Decision Tests; and two options that shared a title now have their own ("Known
   population prevalence" and "Population disease prevalence"; "Bootstrap interval for
-  Krippendorff's alpha"). The kappa sample-size labels write κ₀ instead of the R argument name kappa0, the prevalence
+  Krippendorff's alpha"). The kappa sample-size labels and their messages name the inputs one way: κ₀, κ₁, κL and κU instead of the R argument names in the CI and power analyses, and "the anticipated kappa" in the fixed-sample analysis, the prevalence
   box gives its real range (between 0 and 1), Interrater Reliability's percent boxes show "%",
   and its method headings use one style of brackets. Clinical ROC Analysis says "cutoff"
   throughout. Only labels changed: saved analyses and R calls work as before.

@@ -10182,8 +10182,11 @@ msgstr ""
 msgid "Anticipated Agreement"
 msgstr ""
 
-#: kappaSizeCI/ui[2][0]/kappa0.label
 #: kappaSizeFixedN/ui[1][0]/kappa0.label
+msgid "Anticipated kappa"
+msgstr ""
+
+#: kappaSizeCI/ui[2][0]/kappa0.label
 msgid "Anticipated kappa (κ₀)"
 msgstr ""
 
@@ -17439,9 +17442,9 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "Estimate the prevalence for that test by maximum likelihood from the same "
-"pooled cells, with kappa held at kappa0: the published procedure plugs in "
-"the overall proportion of positive ratings, which makes the test reject a "
-"true kappa0 too often with four or more raters and a rare finding."
+"pooled cells, with kappa held at κ₀: the published procedure plugs in the "
+"overall proportion of positive ratings, which makes the test reject a true "
+"κ₀ too often with four or more raters and a rare finding."
 msgstr ""
 
 #: nogoldstandard/results/prevalence.title
@@ -20500,12 +20503,15 @@ msgstr ""
 #: R/decisioncombine.b.R
 msgid ""
 "If the reference standard was obtained only after a positive result on some "
-"test, or only where the tests disagreed (discrepant resolution), "
-"sensitivity, specificity and the predictive values can all be biased, in "
-"either direction, for every test and rule in the table. These data cannot "
-"tell this from results withheld because of disease status, and a correction "
-"needs the reference standard on a random sample of the cases verified less "
-"often."
+"test, or only where the tests disagreed (discrepant resolution), sensitivity "
+"and specificity can be biased, in either direction, for every test and rule "
+"in the table, and so can the predictive values of each single test and each "
+"combined rule. The predictive values of an exact result pattern (a row such "
+"as +/-) are not biased by this, provided whether a case was verified "
+"depended only on its pattern and no reference result was filled in from the "
+"tests. These data cannot tell this from results withheld because of disease "
+"status, and a correction needs the reference standard on a random sample of "
+"the cases verified less often."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -21676,9 +21682,9 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"It answers 'how many subjects do I need to reject kappa0 in favor of "
-"kappa1?' - not how precisely kappa will be estimated; to plan the expected "
-"confidence limits around an anticipated kappa, use kappaSizeCI instead."
+"It answers 'how many subjects do I need to reject κ₀ in favor of κ₁?' - not "
+"how precisely kappa will be estimated; to plan the expected confidence "
+"limits around an anticipated kappa, use kappaSizeCI instead."
 msgstr ""
 
 #: R/kappaSizePower.b.R
@@ -21996,39 +22002,12 @@ msgstr ""
 msgid "kappa0"
 msgstr ""
 
-#: R/kappaSizePower.b.R
-msgid ""
-"kappa0 (null) and kappa1 (alternative) must differ; equal values make the "
-"required sample size undefined."
-msgstr ""
-
-#: R/kappaSizeCI.b.R
-msgid "kappa0 must be greater than kappaL"
-msgstr ""
-
-#: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
-msgid "kappa0 must be strictly between 0 and 1."
-msgstr ""
-
-#: R/kappaSizeCI.b.R
-msgid "kappa0 must be strictly within the confidence interval (kappaL, kappaU)"
-msgstr ""
-
 #: kappaSizePower/options/kappa1.title
 msgid "kappa1"
 msgstr ""
 
-#: R/kappaSizePower.b.R
-msgid "kappa1 must be strictly between 0 and 1."
-msgstr ""
-
 #: kappaSizeCI/options/kappaL.title
 msgid "kappaL"
-msgstr ""
-
-#: R/kappaSizeCI.b.R
-msgid "kappaL must be less than kappaU"
 msgstr ""
 
 #: R/agreement.b.R
@@ -26632,14 +26611,14 @@ msgstr ""
 
 #: R/kappaSizeFixedN.b.R
 msgid ""
-"Note that kappa0 here is the agreement you anticipate observing, not a null "
-"hypothesis value as it is in kappaSizePower."
+"Note that the anticipated kappa here is the agreement you expect to observe, "
+"not a null hypothesis value as it is in kappaSizePower."
 msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"Note that kappa0 here is the null hypothesis value, whereas in kappaSizeCI "
-"and kappaSizeFixedN it is the agreement you anticipate observing."
+"Note that κ₀ here is the null hypothesis value, whereas in kappaSizeCI and "
+"kappaSizeFixedN it is the agreement you anticipate observing."
 msgstr ""
 
 #: R/agreement.b.R
@@ -29856,12 +29835,11 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"Power-based sample size for a two-sided test of H0: kappa = kappa0 against "
-"H1: kappa = kappa1, using the goodness-of-fit (non-central chi-square) "
-"approach of Donner and Eliasziw (two raters, binary outcome), Altaye, Donner "
-"and Klar (binary outcome, more raters) and Altaye, Donner and Eliasziw "
-"(three to five categories), as implemented in the kappaSize package (Rotondi "
-"and Donner)."
+"Power-based sample size for a two-sided test of H0: kappa = κ₀ against H1: "
+"kappa = κ₁, using the goodness-of-fit (non-central chi-square) approach of "
+"Donner and Eliasziw (two raters, binary outcome), Altaye, Donner and Klar "
+"(binary outcome, more raters) and Altaye, Donner and Eliasziw (three to five "
+"categories), as implemented in the kappaSize package (Rotondi and Donner)."
 msgstr ""
 
 #: R/decision.b.R
@@ -36567,6 +36545,10 @@ msgid ""
 "common."
 msgstr ""
 
+#: R/kappaSizeFixedN.b.R
+msgid "The anticipated kappa must be strictly between 0 and 1."
+msgstr ""
+
 #: R/agreement.b.R
 msgid ""
 "The association (weighted) kappa of Nelson and Edwards is a function of the "
@@ -37148,9 +37130,9 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "The design needs {n} subjects; few agreement studies can enrol this many. "
-"Moving kappa1 closer to kappa0 from the same side, or raising the power "
-"target, always inflates the sample size, and a rare finding usually does too "
-"(for a binary outcome, a prevalence far from 0.5; with more categories, very "
+"Moving κ₁ closer to κ₀ from the same side, or raising the power target, "
+"always inflates the sample size, and a rare finding usually does too (for a "
+"binary outcome, a prevalence far from 0.5; with more categories, very "
 "unequal category proportions) - revisit whichever of these is not a firm "
 "requirement."
 msgstr ""
@@ -37558,8 +37540,8 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "The goodness-of-fit test also tests that model: if the raters follow another "
-"model with the same kappa, it can reject a true kappa0 far more often than "
-"the stated significance level, whereas Fleiss' kappa with a jackknife or "
+"model with the same kappa, it can reject a true κ₀ far more often than the "
+"stated significance level, whereas Fleiss' kappa with a jackknife or "
 "bootstrap interval that resamples subjects is not tied to the model."
 msgstr ""
 
@@ -38134,10 +38116,10 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"The null and alternative kappa differ by only {delta}. Check that kappa0 is "
-"the agreement you want to rule OUT (not the agreement you expect to observe) "
-"and that kappa1 is a clinically meaningful difference from it; very close "
-"values need very large studies."
+"The null and alternative kappa differ by only {delta}. Check that κ₀ is the "
+"agreement you want to rule OUT (not the agreement you expect to observe) and "
+"that κ₁ is a clinically meaningful difference from it; very close values "
+"need very large studies."
 msgstr ""
 
 #: kappaSizePower/options/kappa0.description.ui
@@ -38565,8 +38547,8 @@ msgid ""
 "approximation that treats the expected proportions as known. In {R} "
 "simulated studies of {n} subjects analyzed with the recommended "
 "goodness-of-fit test (prevalence estimated by maximum likelihood with kappa "
-"held at kappa0), the power to reject kappa0 when kappa equals kappa1 was "
-"about {sim}, short of the stated {power}."
+"held at κ₀), the power to reject κ₀ when kappa equals κ₁ was about {sim}, "
+"short of the stated {power}."
 msgstr ""
 
 #: R/kappaSizePower.b.R
@@ -38744,20 +38726,20 @@ msgstr ""
 msgid ""
 "The requested confidence interval is too narrow to size in reasonable time: "
 "it would need about {n} subjects. The limit that governs the sample size is "
-"{dist} away from kappa0, and the required sample size grows roughly as one "
-"over the square of that distance. Widen the interval, use more raters, or "
-"accept a lower confidence level. As a guide, halving that distance "
-"multiplies the required sample size by about four."
+"{dist} away from κ₀, and the required sample size grows roughly as one over "
+"the square of that distance. Widen the interval, use more raters, or accept "
+"a lower confidence level. As a guide, halving that distance multiplies the "
+"required sample size by about four."
 msgstr ""
 
 #: R/kappaSizeCI.b.R
 msgid ""
 "The requested confidence interval is too narrow to size in reasonable time: "
 "no sample size can deliver it. The limit that governs the sample size is "
-"{dist} away from kappa0, and the required sample size grows roughly as one "
-"over the square of that distance. Widen the interval, use more raters, or "
-"accept a lower confidence level. As a guide, halving that distance "
-"multiplies the required sample size by about four."
+"{dist} away from κ₀, and the required sample size grows roughly as one over "
+"the square of that distance. Widen the interval, use more raters, or accept "
+"a lower confidence level. As a guide, halving that distance multiplies the "
+"required sample size by about four."
 msgstr ""
 
 #: R/kappaSizePower.b.R
@@ -39898,8 +39880,8 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "This is a POWER calculation: it returns the number of subjects needed to "
-"REJECT kappa0 in favor of kappa1 in a two-sided test at the stated "
-"significance level and power."
+"REJECT κ₀ in favor of κ₁ in a two-sided test at the stated significance "
+"level and power."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -39968,10 +39950,10 @@ msgstr ""
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "This is the bound the study reaches if the agreement it observes lands "
-"exactly on kappa0 and its category proportions match the anticipated ones. "
-"Roughly half of such studies will observe less agreement than anticipated "
-"and end with a lower bound below the figure shown, so read it as a planning "
-"expectation rather than a guarantee."
+"exactly on the anticipated kappa and its category proportions match the "
+"anticipated ones. Roughly half of such studies will observe less agreement "
+"than anticipated and end with a lower bound below the figure shown, so read "
+"it as a planning expectation rather than a guarantee."
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -42862,16 +42844,16 @@ msgstr ""
 msgid ""
 "With three or more raters, do not compute the chi-square over every count of "
 "raters calling the finding present (none, one, ..., all): that statistic has "
-"more than one degree of freedom and, read on one, rejects a true kappa0 much "
+"more than one degree of freedom and, read on one, rejects a true κ₀ much "
 "more often than the stated significance level."
 msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
 "With three or more raters, estimate the category prevalences by maximum "
-"likelihood with kappa held at kappa0, as Altaye, Donner and Eliasziw do; "
+"likelihood with kappa held at κ₀, as Altaye, Donner and Eliasziw do; "
 "plugging in the overall proportions of ratings makes the test reject a true "
-"kappa0 too often."
+"κ₀ too often."
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
@@ -42957,10 +42939,10 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "With two raters, estimate the prevalence for the test by maximum likelihood "
-"with kappa held at kappa0 rather than plugging in the overall proportion of "
+"with kappa held at κ₀ rather than plugging in the overall proportion of "
 "positive ratings, as the published procedure does: in simulations of a rare "
 "finding (1 to 5 cases in 100) at a 0.05 level, the plug-in test rejected a "
-"true kappa0 at a rate of 0.055-0.066 and the maximum-likelihood version at "
+"true κ₀ at a rate of 0.055-0.066 and the maximum-likelihood version at "
 "0.043-0.052."
 msgstr ""
 
@@ -43356,6 +43338,32 @@ msgstr ""
 
 #: psychopdaROC/results/effectSizeTable.columns.title
 msgid "Δ Hedges' g"
+msgstr ""
+
+#: R/kappaSizePower.b.R
+msgid ""
+"κ₀ (null) and κ₁ (alternative) must differ; equal values make the required "
+"sample size undefined."
+msgstr ""
+
+#: R/kappaSizeCI.b.R
+msgid "κ₀ must be greater than κL"
+msgstr ""
+
+#: R/kappaSizePower.b.R
+msgid "κ₀ must be strictly between 0 and 1."
+msgstr ""
+
+#: R/kappaSizeCI.b.R
+msgid "κ₀ must be strictly within the confidence interval (κL, κU)"
+msgstr ""
+
+#: R/kappaSizePower.b.R
+msgid "κ₁ must be strictly between 0 and 1."
+msgstr ""
+
+#: R/kappaSizeCI.b.R
+msgid "κL must be less than κU"
 msgstr ""
 
 #: psychopdaROC/results/metaAnalysisTable.columns.title

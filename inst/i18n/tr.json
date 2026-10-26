@@ -5083,6 +5083,9 @@
             "Anticipated Agreement": [
                 "Beklenen Uyum"
             ],
+            "Anticipated kappa": [
+                "Beklenen kappa"
+            ],
             "Anticipated kappa (κ₀)": [
                 "Beklenen kappa (κ₀)"
             ],
@@ -6341,7 +6344,7 @@
                 "Bu Mod Değerine Sahip Olgular"
             ],
             "Categorical": [
-                "Kategorik (Nominal)"
+                "Kategorik"
             ],
             "Categorical agreement (nominal or ordinal categories)": [
                 ""
@@ -9394,8 +9397,8 @@
             "Estimate": [
                 "Tahmin"
             ],
-            "Estimate the prevalence for that test by maximum likelihood from the same pooled cells, with kappa held at kappa0: the published procedure plugs in the overall proportion of positive ratings, which makes the test reject a true kappa0 too often with four or more raters and a rare finding.": [
-                "Bu test için prevalansı, kappa kappa0'da sabit tutularak aynı birleştirilmiş hücrelerden en çok olabilirlik yöntemiyle kestirin: yayımlanmış yöntem pozitif değerlendirmelerin genel oranını doğrudan kullanır; bu da dört veya daha fazla değerlendirici ve nadir bir bulgu olduğunda testin doğru bir kappa0'ı çok sık reddetmesine yol açar."
+            "Estimate the prevalence for that test by maximum likelihood from the same pooled cells, with kappa held at κ₀: the published procedure plugs in the overall proportion of positive ratings, which makes the test reject a true κ₀ too often with four or more raters and a rare finding.": [
+                "Bu test için prevalansı, kappa κ₀'da sabit tutularak aynı birleştirilmiş hücrelerden en çok olabilirlik yöntemiyle kestirin: yayımlanmış yöntem pozitif değerlendirmelerin genel oranını doğrudan kullanır; bu da dört veya daha fazla değerlendirici ve nadir bir bulgu olduğunda testin doğru bir κ₀'ı çok sık reddetmesine yol açar."
             ],
             "Estimated Class or Rule Proportion": [
                 "Tahmini Sınıf veya Kural Oranı"
@@ -10640,7 +10643,7 @@
                 "Grup"
             ],
             "Group Variable (Optional)": [
-                "Grup değişkeni (isteğe bağlı)"
+                "Grup Değişkeni (İsteğe Bağlı)"
             ],
             "Grouped bar chart comparing sensitivity, specificity, PPV, NPV, and accuracy across test combinations": [
                 "Test kombinasyonları genelinde duyarlılık, özgüllük, PPV, NPV ve doğruluğu karşılaştıran gruplandırılmış çubuk grafik"
@@ -11140,8 +11143,8 @@
             "If the reference standard was obtained mainly on patients whose test was positive, then test-negative patients of BOTH disease states are under-represented: the missing false negatives inflate sensitivity, and the missing true negatives deflate specificity. This is the usual situation when the reference standard is a biopsy or resection that is only performed after a positive test.": [
                 "Referans standart esas olarak testi pozitif olan hastalardan elde edildiyse, o zaman HER İKİ hastalık durumunun test negatif hastaları yetersiz temsil edilir: eksik yanlış negatifler duyarlılığı şişirir ve eksik gerçek negatifler özgüllüğü düşürür. Bu, referans standardın yalnızca pozitif bir testten sonra yapılan bir biyopsi veya rezeksiyon olduğu olağan durumdur."
             ],
-            "If the reference standard was obtained only after a positive result on some test, or only where the tests disagreed (discrepant resolution), sensitivity, specificity and the predictive values can all be biased, in either direction, for every test and rule in the table. These data cannot tell this from results withheld because of disease status, and a correction needs the reference standard on a random sample of the cases verified less often.": [
-                "Referans standart yalnızca bir testte pozitif sonuç çıktıktan sonra ya da yalnızca testlerin uyuşmadığı durumlarda (uyuşmazlık çözümlemesi) elde edildiyse, tablodaki her test ve kural için duyarlılık, özgüllük ve öngörü değerleri her iki yönde de yanlı olabilir. Bu veriler bunu hastalık durumu nedeniyle elde edilmeyen sonuçlardan ayıramaz; bir düzeltme, daha az doğrulanan olguların rastgele bir örnekleminde referans standardı gerektirir."
+            "If the reference standard was obtained only after a positive result on some test, or only where the tests disagreed (discrepant resolution), sensitivity and specificity can be biased, in either direction, for every test and rule in the table, and so can the predictive values of each single test and each combined rule. The predictive values of an exact result pattern (a row such as +/-) are not biased by this, provided whether a case was verified depended only on its pattern and no reference result was filled in from the tests. These data cannot tell this from results withheld because of disease status, and a correction needs the reference standard on a random sample of the cases verified less often.": [
+                "Referans standart yalnızca bir testte pozitif sonuç çıktıktan sonra ya da yalnızca testlerin uyuşmadığı durumlarda (uyuşmazlık çözümlemesi) elde edildiyse, tablodaki her test ve kural için duyarlılık ve özgüllük her iki yönde de yanlı olabilir; her tek testin ve her birleşik kuralın öngörü değerleri de öyle. Bir olgunun doğrulanıp doğrulanmaması yalnızca sonuç örüntüsüne bağlıysa ve hiçbir referans sonucu testlerden doldurulmadıysa, tam bir sonuç örüntüsünün (+/- gibi bir satır) öngörü değerleri bundan dolayı yanlı değildir. Bu veriler bunu hastalık durumu nedeniyle elde edilmeyen sonuçlardan ayıramaz; bir düzeltme, daha az doğrulanan olguların rastgele bir örnekleminde referans standardı gerektirir."
             ],
             "If they were - including a cutpoint, a score, or a regression developed here - the net benefit is apparent and optimistically biased, and the model can appear to beat treat-all when it does not.": [
                 "Öyleyse - burada geliştirilen bir kesim noktası, skor veya regresyon dahil - net fayda görünür (apparent) ve iyimser yönde yanlıdır; model aslında yenmediği hâlde herkesi tedavi et stratejisini yeniyor gibi görünebilir."
@@ -11803,8 +11806,8 @@
             "It answers 'given the subjects I have, how little agreement am I still unable to rule out?' - the mirror image of the sample-size question; every kappa below the bound is excluded.": [
                 "'Elimdeki olgularla ne kadar düşük bir uyumu hâlâ dışlayamıyorum?' sorusunu yanıtlar; örneklem büyüklüğü sorusunun ayna görüntüsü. Sınırın altındaki her kappa dışlanır."
             ],
-            "It answers 'how many subjects do I need to reject kappa0 in favor of kappa1?' - not how precisely kappa will be estimated; to plan the expected confidence limits around an anticipated kappa, use kappaSizeCI instead.": [
-                "'kappa0'ı kappa1 lehine reddetmek için kaç olguya ihtiyacım var?' sorusunu yanıtlar; kappanın ne kadar kesin kestirileceğini değil. Öngörülen bir kappa çevresindeki beklenen güven sınırlarını planlamak için kappaSizeCI kullanın."
+            "It answers 'how many subjects do I need to reject κ₀ in favor of κ₁?' - not how precisely kappa will be estimated; to plan the expected confidence limits around an anticipated kappa, use kappaSizeCI instead.": [
+                "'κ₀'ı κ₁ lehine reddetmek için kaç olguya ihtiyacım var?' sorusunu yanıtlar; kappanın ne kadar kesin kestirileceğini değil. Öngörülen bir kappa çevresindeki beklenen güven sınırlarını planlamak için kappaSizeCI kullanın."
             ],
             "It answers a different question from the confidence-interval approach (kappaSizeCI), which sizes a study so that the expected confidence limits around an anticipated kappa fall at chosen values, so the two will not agree on a sample size for the same study - pick the one that matches how the result will be reported.": [
                 "Çalışmayı, öngörülen bir kappa çevresindeki beklenen güven sınırlarının seçilen değerlere düşeceği biçimde boyutlandıran güven aralığı yaklaşımından (kappaSizeCI) farklı bir soruyu yanıtlar; bu nedenle aynı çalışma için ikisi aynı örneklem büyüklüğünü vermez. Sonucun nasıl raporlanacağına uyan yaklaşımı seçin."
@@ -11953,29 +11956,11 @@
             "kappa0": [
                 "kappa0"
             ],
-            "kappa0 (null) and kappa1 (alternative) must differ; equal values make the required sample size undefined.": [
-                "kappa0 (sıfır hipotezi) ile kappa1 (alternatif) farklı olmalıdır; eşit değerlerde gerekli örneklem büyüklüğü tanımsızdır."
-            ],
-            "kappa0 must be greater than kappaL": [
-                "kappa0, kappaL değerinden büyük olmalıdır"
-            ],
-            "kappa0 must be strictly between 0 and 1.": [
-                "kappa0 0 ile 1 arasında (sınırlar hariç) olmalıdır."
-            ],
-            "kappa0 must be strictly within the confidence interval (kappaL, kappaU)": [
-                "kappa0, güven aralığının (kappaL, kappaU) kesinlikle içinde olmalıdır"
-            ],
             "kappa1": [
                 "kappa1"
             ],
-            "kappa1 must be strictly between 0 and 1.": [
-                "kappa1 kesinlikle 0 ile 1 arasında olmalıdır."
-            ],
             "kappaL": [
                 "kappaL"
-            ],
-            "kappaL must be less than kappaU": [
-                "kappaL, kappaU değerinden küçük olmalıdır"
             ],
             "kappaSize package is required for validated kappa sample size calculations.": [
                 "Doğrulanmış kappa örneklem büyüklüğü hesaplamaları için kappaSize paketi gereklidir."
@@ -13103,7 +13088,7 @@
                 "Minimum ÇD Hatası"
             ],
             "Minimum CV error": [
-                "Minimum ÇD Hatası"
+                "En düşük çapraz doğrulama hatası"
             ],
             "Minimum OPA criterion": [
                 "Minimum OPA kriteri"
@@ -14671,11 +14656,11 @@
             "Note": [
                 "Not"
             ],
-            "Note that kappa0 here is the agreement you anticipate observing, not a null hypothesis value as it is in kappaSizePower.": [
-                "Burada kappa0 gözlemlemeyi beklediğiniz uyumdur; kappaSizePower'daki gibi bir sıfır hipotezi değeri değildir."
+            "Note that the anticipated kappa here is the agreement you expect to observe, not a null hypothesis value as it is in kappaSizePower.": [
+                "Burada beklenen kappa, gözlemlemeyi beklediğiniz uyumdur; kappaSizePower'daki gibi bir sıfır hipotezi değeri değildir."
             ],
-            "Note that kappa0 here is the null hypothesis value, whereas in kappaSizeCI and kappaSizeFixedN it is the agreement you anticipate observing.": [
-                "Burada kappa0 sıfır hipotezi değeridir; kappaSizeCI ve kappaSizeFixedN'de ise gözlemlemeyi beklediğiniz uyum düzeyidir."
+            "Note that κ₀ here is the null hypothesis value, whereas in kappaSizeCI and kappaSizeFixedN it is the agreement you anticipate observing.": [
+                "Burada κ₀ sıfır hipotezi değeridir; kappaSizeCI ve kappaSizeFixedN'de ise gözlemlemeyi beklediğiniz uyum düzeyidir."
             ],
             "Note: %1$d of %2$d cases excluded due to missing values (%3$.1f%%). Analysis based on %4$d complete cases.": [
                 "Not: %1$d olgu (toplam %2$d olgudan, %%%3$.1f) eksik değerler nedeniyle dışlandı. Analiz %4$d eksiksiz olguya dayanmaktadır."
@@ -16510,8 +16495,8 @@
             "Power uses a two-sided normal approximation with the AUC variance approximation of Hanley JA, McNeil BJ (1982). The meaning and use of the area under a ROC curve. Radiology 143(1):29-36. This is approximate planning, not an exact or simulation-validated sample-size guarantee.": [
                 ""
             ],
-            "Power-based sample size for a two-sided test of H0: kappa = kappa0 against H1: kappa = kappa1, using the goodness-of-fit (non-central chi-square) approach of Donner and Eliasziw (two raters, binary outcome), Altaye, Donner and Klar (binary outcome, more raters) and Altaye, Donner and Eliasziw (three to five categories), as implemented in the kappaSize package (Rotondi and Donner).": [
-                "H0: kappa = kappa0 hipotezinin H1: kappa = kappa1 hipotezine karşı iki yönlü testi için, Donner ve Eliasziw (iki değerlendirici, ikili sonuç), Altaye, Donner ve Klar (ikili sonuç, daha çok değerlendirici) ile Altaye, Donner ve Eliasziw'in (üç ila beş kategori) uyum iyiliği (merkezi olmayan ki-kare) yaklaşımıyla, kappaSize paketinde (Rotondi ve Donner) uygulandığı biçimde hesaplanan güce dayalı örneklem büyüklüğü."
+            "Power-based sample size for a two-sided test of H0: kappa = κ₀ against H1: kappa = κ₁, using the goodness-of-fit (non-central chi-square) approach of Donner and Eliasziw (two raters, binary outcome), Altaye, Donner and Klar (binary outcome, more raters) and Altaye, Donner and Eliasziw (three to five categories), as implemented in the kappaSize package (Rotondi and Donner).": [
+                "H0: kappa = κ₀ hipotezinin H1: kappa = κ₁ hipotezine karşı iki yönlü testi için, Donner ve Eliasziw (iki değerlendirici, ikili sonuç), Altaye, Donner ve Klar (ikili sonuç, daha çok değerlendirici) ile Altaye, Donner ve Eliasziw'in (üç ila beş kategori) uyum iyiliği (merkezi olmayan ki-kare) yaklaşımıyla, kappaSize paketinde (Rotondi ve Donner) uygulandığı biçimde hesaplanan güce dayalı örneklem büyüklüğü."
             ],
             "PPA/NPA condition on reference-positive/reference-negative cases. Reverse conditional agreement is not a patient's probability of disease. Symmetric specific agreement is not PPA/NPA. All binary estimates use determinate reference/test pairs under the displayed recoding rule.": [
                 "PPA/NPA referans pozitif/referans negatif olgulara koşulludur. Ters koşullu uyum, bir hastanın hastalık olasılığı değildir. Simetrik özgül uyum PPA/NPA değildir. Tüm ikili tahminler, gösterilen yeniden kodlama kuralı altında belirli (determinate) referans/test çiftlerini kullanır."
@@ -20416,6 +20401,9 @@
             "The annotators tied on %1$d of %2$d cases (no single most-frequent label). %3$d of those could not be resolved under the selected tie-breaking rule and are excluded from the strict-consensus figures; the remainder were resolved by that rule. Strict agreement is sensitive to this choice when ties are common.": [
                 "İşaretleyiciler %1$d/%2$d olguda eşit oylu kaldı (en sık verilen tek bir etiket yok). Bunlardan %3$d tanesi seçilen eşitlik bozma kuralıyla çözülemedi ve katı uzlaşı değerlerinin dışında bırakıldı; geri kalanlar bu kuralla çözüldü. Eşitlikler sık olduğunda katı uyum bu seçime duyarlıdır."
             ],
+            "The anticipated kappa must be strictly between 0 and 1.": [
+                "Beklenen kappa 0 ile 1 arasında (sınırlar hariç) olmalıdır."
+            ],
             "The association (weighted) kappa of Nelson and Edwards is a function of the latent ICC alone, so it adds nothing to it and is not shown.": [
                 "Nelson ve Edwards'ın ilişki (ağırlıklı) kappası yalnızca gizil ICC'nin bir fonksiyonudur; bu nedenle ona hiçbir şey eklemez ve gösterilmez."
             ],
@@ -20671,8 +20659,8 @@
             "The dependence parameter for the non-diseased group (%1$.2f) is not attainable with these specificities, so the joint false-positive probability was truncated from %2$.4f to its bound %3$.4f. The model actually fitted is therefore not the one you specified, and at least one combination of results becomes impossible in that group. Move the value toward 0 until this note disappears; the realized correlation is reported in the Test Dependence panel.": [
                 "Hastalığı olmayan grup için bağımlılık parametresine (%1$.2f) bu özgüllüklerle ulaşılamaz; bu nedenle birleşik yanlış pozitif olasılığı %2$.4f değerinden sınırı olan %3$.4f değerine kırpıldı. Dolayısıyla gerçekte uydurulan model sizin belirttiğiniz model değildir ve bu grupta en az bir sonuç kombinasyonu imkânsız hâle gelir. Bu not kaybolana kadar değeri 0'a doğru yaklaştırın; gerçekleşen korelasyon Test Bağımlılığı panelinde bildirilir."
             ],
-            "The design needs {n} subjects; few agreement studies can enrol this many. Moving kappa1 closer to kappa0 from the same side, or raising the power target, always inflates the sample size, and a rare finding usually does too (for a binary outcome, a prevalence far from 0.5; with more categories, very unequal category proportions) - revisit whichever of these is not a firm requirement.": [
-                "Tasarım {n} olgu gerektiriyor; çok az uyum çalışması bu kadar olgu toplayabilir. kappa1'i aynı taraftan kappa0'a yaklaştırmak veya güç hedefini yükseltmek örneklem büyüklüğünü her zaman artırır; nadir bir bulgu da genellikle artırır (ikili sonuçta 0.5'ten uzak bir prevalans, daha çok kategoride ise çok dengesiz kategori oranları). Bunlardan kesin bir gereklilik olmayanı gözden geçirin."
+            "The design needs {n} subjects; few agreement studies can enrol this many. Moving κ₁ closer to κ₀ from the same side, or raising the power target, always inflates the sample size, and a rare finding usually does too (for a binary outcome, a prevalence far from 0.5; with more categories, very unequal category proportions) - revisit whichever of these is not a firm requirement.": [
+                "Tasarım {n} olgu gerektiriyor; çok az uyum çalışması bu kadar olgu toplayabilir. κ₁'i aynı taraftan κ₀'a yaklaştırmak veya güç hedefini yükseltmek örneklem büyüklüğünü her zaman artırır; nadir bir bulgu da genellikle artırır (ikili sonuçta 0.5'ten uzak bir prevalans, daha çok kategoride ise çok dengesiz kategori oranları). Bunlardan kesin bir gereklilik olmayanı gözden geçirin."
             ],
             "The detailed clinical interpretation could not be generated.": [
                 "Ayrıntılı klinik yorum oluşturulamadı."
@@ -20836,8 +20824,8 @@
             "The gold-standard variable cannot also occupy a test slot. Select a different variable for each test.": [
                 "Altın standart değişkeni aynı zamanda bir test alanında yer alamaz. Her test için farklı bir değişken seçin."
             ],
-            "The goodness-of-fit test also tests that model: if the raters follow another model with the same kappa, it can reject a true kappa0 far more often than the stated significance level, whereas Fleiss' kappa with a jackknife or bootstrap interval that resamples subjects is not tied to the model.": [
-                "Uyum iyiliği testi bu modeli de sınar: değerlendiriciler aynı kappa değerine sahip başka bir modele uyuyorsa test, doğru bir kappa0'ı belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddedebilir; olguları yeniden örnekleyen jackknife veya bootstrap aralığıyla Fleiss kappası ise modele bağlı değildir."
+            "The goodness-of-fit test also tests that model: if the raters follow another model with the same kappa, it can reject a true κ₀ far more often than the stated significance level, whereas Fleiss' kappa with a jackknife or bootstrap interval that resamples subjects is not tied to the model.": [
+                "Uyum iyiliği testi bu modeli de sınar: değerlendiriciler aynı kappa değerine sahip başka bir modele uyuyorsa test, doğru bir κ₀'ı belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddedebilir; olguları yeniden örnekleyen jackknife veya bootstrap aralığıyla Fleiss kappası ise modele bağlı değildir."
             ],
             "The grading tendency needs ordered categories (a higher and a lower grade); these ratings are nominal, so it is not computed. If the categories have a natural order, set the rater variables to Ordinal.": [
                 "Derecelendirme eğilimi sıralı kategoriler gerektirir (daha yüksek ve daha düşük bir derece); bu değerlendirmeler nominal olduğundan hesaplanmadı. Kategorilerin doğal bir sırası varsa değerlendirici değişkenlerini Ordinal olarak ayarlayın."
@@ -21079,8 +21067,8 @@
             "The normalized partial AUC is unavailable. The correction is undefined when the partial curve falls below the diagonal; the raw partial AUC is reported separately.": [
                 "Normalize edilmiş kısmi AUC hesaplanamıyor. Kısmi eğri köşegenin altına düştüğünde düzeltme tanımsızdır; ham kısmi AUC ayrı bildirilir."
             ],
-            "The null and alternative kappa differ by only {delta}. Check that kappa0 is the agreement you want to rule OUT (not the agreement you expect to observe) and that kappa1 is a clinically meaningful difference from it; very close values need very large studies.": [
-                "Sıfır hipotezi ve alternatif kappa yalnızca {delta} kadar farklıdır. kappa0'ın DIŞLAMAK istediğiniz uyum (gözlemlemeyi beklediğiniz uyum değil) ve kappa1'in bundan klinik olarak anlamlı bir fark olduğunu denetleyin; birbirine çok yakın değerler çok büyük çalışmalar gerektirir."
+            "The null and alternative kappa differ by only {delta}. Check that κ₀ is the agreement you want to rule OUT (not the agreement you expect to observe) and that κ₁ is a clinically meaningful difference from it; very close values need very large studies.": [
+                "Sıfır hipotezi ve alternatif kappa yalnızca {delta} kadar farklıdır. κ₀'ın DIŞLAMAK istediğiniz uyum (gözlemlemeyi beklediğiniz uyum değil) ve κ₁'in bundan klinik olarak anlamlı bir fark olduğunu denetleyin; birbirine çok yakın değerler çok büyük çalışmalar gerektirir."
             ],
             "The null hypothesis value of kappa - the level of agreement the study tests against. kappaSize documents this as \"the null hypothesis for the kappa hypothesis test\"; it is NOT the value you expect to observe.": [
                 "Kappanın sıfır hipotezi değeri; çalışmanın karşısında test ettiği uyum düzeyi. kappaSize bunu \"kappa hipotez testi için sıfır hipotezi\" olarak belgeler; gözlemlemeyi beklediğiniz değer DEĞİLDİR."
@@ -21265,8 +21253,8 @@
             "The proportion of patients without the condition whom the test calls negative.": [
                 "Durumu olmayan hastalar arasında testin negatif olarak sınıfladıklarının oranı."
             ],
-            "The published formula behind this sample size is a large-sample approximation that treats the expected proportions as known. In {R} simulated studies of {n} subjects analyzed with the recommended goodness-of-fit test (prevalence estimated by maximum likelihood with kappa held at kappa0), the power to reject kappa0 when kappa equals kappa1 was about {sim}, short of the stated {power}.": [
-                "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül, beklenen oranları biliniyor kabul eden bir büyük örneklem yaklaşımıdır. Önerilen uyum iyiliği testiyle (prevalans, kappa kappa0'da sabit tutularak en çok olabilirlik yöntemiyle kestirilerek) çözümlenen {n} olguluk {R} simüle edilmiş çalışmada, kappa kappa1'e eşitken kappa0'ı reddetme gücü yaklaşık {sim} oldu ve belirtilen {power} değerinin altında kaldı."
+            "The published formula behind this sample size is a large-sample approximation that treats the expected proportions as known. In {R} simulated studies of {n} subjects analyzed with the recommended goodness-of-fit test (prevalence estimated by maximum likelihood with kappa held at κ₀), the power to reject κ₀ when kappa equals κ₁ was about {sim}, short of the stated {power}.": [
+                "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül, beklenen oranları biliniyor kabul eden bir büyük örneklem yaklaşımıdır. Önerilen uyum iyiliği testiyle (prevalans, kappa κ₀'da sabit tutularak en çok olabilirlik yöntemiyle kestirilerek) çözümlenen {n} olguluk {R} simüle edilmiş çalışmada, kappa κ₁'e eşitken κ₀'ı reddetme gücü yaklaşık {sim} oldu ve belirtilen {power} değerinin altında kaldı."
             ],
             "The published formula behind this sample size treats the expected proportions as known and rests on a large-sample approximation. With three or more raters and three to five categories, simulations of the recommended goodness-of-fit test at the published sample size gave a power of about 0.64 to 0.81 for a stated 0.80, below 0.75 in 8 of 12 designs, balanced proportions included, so this design can fall well short of the stated power of {power} at {n} subjects. How far short cannot be computed reliably here, so confirm the sample size by simulating the intended analysis.": [
                 "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül beklenen oranları biliniyor kabul eder ve büyük örneklem yaklaşımına dayanır. Üç veya daha fazla değerlendirici ve üç ila beş kategori ile, önerilen uyum iyiliği testinin yayımlanmış örneklem büyüklüğündeki simülasyonları belirtilen 0.80 için yaklaşık 0.64 ila 0.81 güç verdi; 12 tasarımın 8'inde, dengeli oranlar dahil, 0.75'in altında kaldı. Bu nedenle bu tasarım {n} olguda belirtilen {power} gücünün oldukça altında kalabilir. Kaybın ne kadar olduğu burada güvenilir biçimde hesaplanamaz; bu nedenle örneklem büyüklüğünü planlanan analizi simüle ederek doğrulayın."
@@ -21334,11 +21322,11 @@
             "The requested bootstrap interval could not be computed; DeLong's method was used as the fallback.": [
                 "İstenen bootstrap aralığı hesaplanamadı; yedek yöntem olarak DeLong yöntemi kullanıldı."
             ],
-            "The requested confidence interval is too narrow to size in reasonable time: it would need about {n} subjects. The limit that governs the sample size is {dist} away from kappa0, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
-                "İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: yaklaşık {n} olgu gerektirir. Örneklem büyüklüğünü belirleyen sınır kappa0 değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem büyüklüğünü yaklaşık dört katına çıkarır."
+            "The requested confidence interval is too narrow to size in reasonable time: it would need about {n} subjects. The limit that governs the sample size is {dist} away from κ₀, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
+                "İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: yaklaşık {n} olgu gerektirir. Örneklem büyüklüğünü belirleyen sınır κ₀ değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem büyüklüğünü yaklaşık dört katına çıkarır."
             ],
-            "The requested confidence interval is too narrow to size in reasonable time: no sample size can deliver it. The limit that governs the sample size is {dist} away from kappa0, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
-                "İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: hiçbir örneklem büyüklüğü bunu sağlayamaz. Örneklem büyüklüğünü belirleyen sınır kappa0 değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem büyüklüğünü yaklaşık dört katına çıkarır."
+            "The requested confidence interval is too narrow to size in reasonable time: no sample size can deliver it. The limit that governs the sample size is {dist} away from κ₀, and the required sample size grows roughly as one over the square of that distance. Widen the interval, use more raters, or accept a lower confidence level. As a guide, halving that distance multiplies the required sample size by about four.": [
+                "İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: hiçbir örneklem büyüklüğü bunu sağlayamaz. Örneklem büyüklüğünü belirleyen sınır κ₀ değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem büyüklüğünü yaklaşık dört katına çıkarır."
             ],
             "The requested power is {power}. A study powered below 50% is more likely to miss the alternative kappa than to detect it; conventional values are 0.80 or 0.90.": [
                 "İstenen güç {power}. Gücü %50'nin altında olan bir çalışmanın alternatif kappayı saptamaktan çok kaçırması olasıdır; alışılmış değerler 0.80 veya 0.90'dır."
@@ -21802,8 +21790,8 @@
             "This is a planning expectation, not a guarantee.": [
                 "Bu bir planlama beklentisidir, garanti değildir."
             ],
-            "This is a POWER calculation: it returns the number of subjects needed to REJECT kappa0 in favor of kappa1 in a two-sided test at the stated significance level and power.": [
-                "Bu bir GÜÇ hesaplamasıdır: belirtilen anlamlılık düzeyi ve güçte, iki yönlü bir testte kappa0'ı kappa1 lehine REDDETMEK için gereken olgu sayısını verir."
+            "This is a POWER calculation: it returns the number of subjects needed to REJECT κ₀ in favor of κ₁ in a two-sided test at the stated significance level and power.": [
+                "Bu bir GÜÇ hesaplamasıdır: belirtilen anlamlılık düzeyi ve güçte, iki yönlü bir testte κ₀'ı κ₁ lehine REDDETMEK için gereken olgu sayısını verir."
             ],
             "This is an in-sample estimate with no external validation behind it, and it is additionally optimistic because this predictor was picked as the highest-scoring of %d; the Internal Validation section reports its internal validation.": [
                 "Bu, arkasında dış doğrulama bulunmayan örneklem içi bir tahmindir ve bu öngörücü %d öngörücü arasından en yüksek skoru alan olarak seçildiği için ayrıca iyimserdir; iç doğrulaması Dahili Doğrulama bölümünde raporlanmaktadır."
@@ -21832,8 +21820,8 @@
             "This is not posterior sampling, priors are not configurable, intervals are not credible intervals, and latent-class labels remain unidentified.": [
                 "Bu sonsal örnekleme değildir, öncüller yapılandırılamaz, aralıklar inandırıcılık (credible) aralıkları değildir ve örtük sınıf etiketleri tanımlanamaz kalır."
             ],
-            "This is the bound the study reaches if the agreement it observes lands exactly on kappa0 and its category proportions match the anticipated ones. Roughly half of such studies will observe less agreement than anticipated and end with a lower bound below the figure shown, so read it as a planning expectation rather than a guarantee.": [
-                "Bu, çalışmanın gözlemlediği uyum tam olarak kappa0 üzerine düşerse ve kategori oranları beklenenlerle örtüşürse ulaşacağı sınırdır. Bu tür çalışmaların yaklaşık yarısı beklenenden daha az uyum gözlemleyecek ve gösterilen değerin altında bir alt sınırla sonuçlanacaktır, bu nedenle bunu bir garanti yerine bir planlama beklentisi olarak okuyun."
+            "This is the bound the study reaches if the agreement it observes lands exactly on the anticipated kappa and its category proportions match the anticipated ones. Roughly half of such studies will observe less agreement than anticipated and end with a lower bound below the figure shown, so read it as a planning expectation rather than a guarantee.": [
+                "Bu, çalışmanın gözlemlediği uyum tam olarak beklenen kappa üzerine düşerse ve kategori oranları beklenenlerle örtüşürse ulaşacağı sınırdır. Bu tür çalışmaların yaklaşık yarısı beklenenden daha az uyum gözlemleyecek ve gösterilen değerin altında bir alt sınırla sonuçlanacaktır, bu nedenle bunu bir garanti yerine bir planlama beklentisi olarak okuyun."
             ],
             "This is the fitted proportion of the high-positive latent class. It is not automatically disease prevalence because latent-class labels are unidentified.": [
                 "Bu, yüksek pozitif örtük sınıfın uyarlanan oranıdır. Örtük sınıf etiketleri tanımlanmadığından otomatik olarak hastalık prevalansı değildir."
@@ -23461,11 +23449,11 @@
             "With three or more raters each interval is kappa plus or minus the t quantile on n - 1 degrees of freedom times Gwet's subject-sampling standard error (irrCAC), where n is the number of cases with at least one rating (the N Cases column). The raters are treated as fixed, so the interval reflects the sampling of cases, not of raters. The kappa interval method option (Wald or Fisher z) applies to Cohen's kappa for two raters only and does not change these intervals.": [
                 "Üç veya daha fazla değerlendirici olduğunda her aralık, kappa artı/eksi n - 1 serbestlik dereceli t kantili çarpı Gwet'in denek örneklemesine dayalı standart hatasıdır (irrCAC); burada n, en az bir değerlendirmesi olan olgu sayısıdır (Olgu Sayısı (N) sütunu). Değerlendiriciler sabit kabul edilir; bu nedenle aralık değerlendiricilerin değil olguların örneklemesini yansıtır. Kappa aralık yöntemi seçeneği (Wald veya Fisher z) yalnızca iki değerlendirici için Cohen kappasına uygulanır ve bu aralıkları değiştirmez."
             ],
-            "With three or more raters, do not compute the chi-square over every count of raters calling the finding present (none, one, ..., all): that statistic has more than one degree of freedom and, read on one, rejects a true kappa0 much more often than the stated significance level.": [
-                "Üç veya daha fazla değerlendirici olduğunda ki-kareyi, bulguyu var olarak bildiren değerlendirici sayısının her değeri (hiçbiri, biri, ..., tümü) üzerinden hesaplamayın: bu istatistiğin serbestlik derecesi birden fazladır ve bir serbestlik derecesiyle değerlendirildiğinde doğru bir kappa0'ı belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddeder."
+            "With three or more raters, do not compute the chi-square over every count of raters calling the finding present (none, one, ..., all): that statistic has more than one degree of freedom and, read on one, rejects a true κ₀ much more often than the stated significance level.": [
+                "Üç veya daha fazla değerlendirici olduğunda ki-kareyi, bulguyu var olarak bildiren değerlendirici sayısının her değeri (hiçbiri, biri, ..., tümü) üzerinden hesaplamayın: bu istatistiğin serbestlik derecesi birden fazladır ve bir serbestlik derecesiyle değerlendirildiğinde doğru bir κ₀'ı belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddeder."
             ],
-            "With three or more raters, estimate the category prevalences by maximum likelihood with kappa held at kappa0, as Altaye, Donner and Eliasziw do; plugging in the overall proportions of ratings makes the test reject a true kappa0 too often.": [
-                "Üç veya daha fazla değerlendirici olduğunda kategori prevalanslarını, Altaye, Donner ve Eliasziw'in yaptığı gibi, kappa kappa0'da sabit tutularak en çok olabilirlik yöntemiyle kestirin; tüm değerlendirmelerin genel oranlarını doğrudan kullanmak testin doğru bir kappa0'ı çok sık reddetmesine yol açar."
+            "With three or more raters, estimate the category prevalences by maximum likelihood with kappa held at κ₀, as Altaye, Donner and Eliasziw do; plugging in the overall proportions of ratings makes the test reject a true κ₀ too often.": [
+                "Üç veya daha fazla değerlendirici olduğunda kategori prevalanslarını, Altaye, Donner ve Eliasziw'in yaptığı gibi, kappa κ₀'da sabit tutularak en çok olabilirlik yöntemiyle kestirin; tüm değerlendirmelerin genel oranlarını doğrudan kullanmak testin doğru bir κ₀'ı çok sık reddetmesine yol açar."
             ],
             "With three or more raters, the lower bound for a binary finding also depends on how agreement among more than two raters is modeled. This analysis uses the model of Altaye, Donner and Klar; the Dirichlet-multinomial model used for three to five categories, which for two categories is the beta-binomial, describes the same kappa, and with the proportions held at their anticipated values it never gave a lower bound than the one shown in the designs checked and usually gave a higher one (by up to about 0.10 when the finding is rare and the study small), so the figure shown is the more cautious of the two.": [
                 "Üç veya daha fazla değerlendiriciyle, ikili bir bulgu için alt sınır ikiden fazla değerlendirici arasındaki uyumun nasıl modellendiğine de bağlıdır. Bu analiz Altaye, Donner ve Klar modelini kullanır; üç ila beş kategori için kullanılan ve iki kategoride beta-binom modele indirgenen Dirichlet-multinom model aynı kappa değerini tanımlar ve oranlar beklenen değerlerinde tutulduğunda incelenen tasarımlarda hiçbir zaman gösterilenden daha düşük bir sınır vermemiş, genellikle daha yüksek bir sınır vermiştir (bulgu nadir ve çalışma küçük olduğunda yaklaşık 0.10'a kadar); bu nedenle gösterilen değer ikisinden daha temkinli olanıdır."
@@ -23494,8 +23482,8 @@
             "With two categories the latent model needs a median of at least %1$s ratings per case, because its approximation is biased with fewer ratings per case whatever the number of cases; this study has %2$s.": [
                 "İki kategoriyle gizil model, olgu başına değerlendirme sayısının medyanının en az %1$s olmasını gerektirir, çünkü olgu sayısı ne olursa olsun olgu başına daha az değerlendirmeyle yaklaşımı yanlıdır; bu çalışmada medyan %2$s."
             ],
-            "With two raters, estimate the prevalence for the test by maximum likelihood with kappa held at kappa0 rather than plugging in the overall proportion of positive ratings, as the published procedure does: in simulations of a rare finding (1 to 5 cases in 100) at a 0.05 level, the plug-in test rejected a true kappa0 at a rate of 0.055-0.066 and the maximum-likelihood version at 0.043-0.052.": [
-                "İki değerlendirici olduğunda test için prevalansı, yayımlanmış yöntemin yaptığı gibi pozitif değerlendirmelerin genel oranını doğrudan kullanarak değil, kappa kappa0'da sabit tutularak en çok olabilirlik yöntemiyle kestirin: nadir bir bulgunun (100 olguda 1 ila 5) 0.05 düzeyindeki simülasyonlarında, genel oranı doğrudan kullanan test doğru bir kappa0'ı 0.055-0.066 oranında, en çok olabilirlik sürümü ise 0.043-0.052 oranında reddetti."
+            "With two raters, estimate the prevalence for the test by maximum likelihood with kappa held at κ₀ rather than plugging in the overall proportion of positive ratings, as the published procedure does: in simulations of a rare finding (1 to 5 cases in 100) at a 0.05 level, the plug-in test rejected a true κ₀ at a rate of 0.055-0.066 and the maximum-likelihood version at 0.043-0.052.": [
+                "İki değerlendirici olduğunda test için prevalansı, yayımlanmış yöntemin yaptığı gibi pozitif değerlendirmelerin genel oranını doğrudan kullanarak değil, kappa κ₀'da sabit tutularak en çok olabilirlik yöntemiyle kestirin: nadir bir bulgunun (100 olguda 1 ila 5) 0.05 düzeyindeki simülasyonlarında, genel oranı doğrudan kullanan test doğru bir κ₀'ı 0.055-0.066 oranında, en çok olabilirlik sürümü ise 0.043-0.052 oranında reddetti."
             ],
             "With two tests, a strict majority requires both tests to be positive; a one-positive tie is rule negative. This is identical to the all-tests-positive rule, so the positive-response probability and NPV are fixed at 100% by construction and are left blank. Add a third test for a non-degenerate majority rule; all values from a self-built rule describe agreement, not diagnostic accuracy.": [
                 "İki testle, kesin bir çoğunluk her iki testin de pozitif olmasını gerektirir; bir pozitif beraberlik kural negatiftir. Bu, tümü pozitif kuralıyla özdeştir, bu nedenle pozitif yanıt olasılığı ve NÖD yapı gereği %100'e sabitlenmiştir ve boş bırakılmıştır. Dejeneratif olmayan bir çoğunluk kuralı için üçüncü bir test ekleyin; kendi kendine oluşturulmuş bir kuraldan gelen tüm değerler tanısal doğruluğu değil, uyumu tanımlar."
@@ -23697,6 +23685,24 @@
             ],
             "Δ Hedges' g": [
                 "Δ Hedges g"
+            ],
+            "κ₀ (null) and κ₁ (alternative) must differ; equal values make the required sample size undefined.": [
+                "κ₀ (sıfır hipotezi) ile κ₁ (alternatif) farklı olmalıdır; eşit değerlerde gerekli örneklem büyüklüğü tanımsızdır."
+            ],
+            "κ₀ must be greater than κL": [
+                "κ₀, κL değerinden büyük olmalıdır"
+            ],
+            "κ₀ must be strictly between 0 and 1.": [
+                "κ₀ 0 ile 1 arasında (sınırlar hariç) olmalıdır."
+            ],
+            "κ₀ must be strictly within the confidence interval (κL, κU)": [
+                "κ₀, güven aralığının (κL, κU) kesinlikle içinde olmalıdır"
+            ],
+            "κ₁ must be strictly between 0 and 1.": [
+                "κ₁ kesinlikle 0 ile 1 arasında olmalıdır."
+            ],
+            "κL must be less than κU": [
+                "κL, κU değerinden küçük olmalıdır"
             ],
             "τ² Between-Study Variance": [
                 "τ² Çalışmalar Arası Varyans"

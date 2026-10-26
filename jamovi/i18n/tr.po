@@ -11913,8 +11913,11 @@ msgstr "%d olgu analiz ediliyor"
 msgid "Anticipated Agreement"
 msgstr "Beklenen Uyum"
 
-#: kappaSizeCI/ui[2][0]/kappa0.label
 #: kappaSizeFixedN/ui[1][0]/kappa0.label
+msgid "Anticipated kappa"
+msgstr "Beklenen kappa"
+
+#: kappaSizeCI/ui[2][0]/kappa0.label
 msgid "Anticipated kappa (κ₀)"
 msgstr "Beklenen kappa (κ₀)"
 
@@ -14449,7 +14452,7 @@ msgstr "Bu Mod Değerine Sahip Olgular"
 
 #: agreement/ui[2].label
 msgid "Categorical"
-msgstr "Kategorik (Nominal)"
+msgstr "Kategorik"
 
 #: R/agreement.b.R
 msgid "Categorical agreement (nominal or ordinal categories)"
@@ -15973,7 +15976,10 @@ msgid ""
 "Colors of the Fagan nomogram's positive-result and negative-result lines. "
 "\"jamovi (follow global)\" uses the palette chosen in jamovi, like the other "
 "plots; a legend names the two lines."
-msgstr "Fagan nomogramının pozitif sonuç ve negatif sonuç çizgilerinin renkleri. \"jamovi (genel ayarı izle)\", diğer grafikler gibi jamovi'de seçilen paleti kullanır; bir lejant iki çizgiyi adlandırır."
+msgstr ""
+"Fagan nomogramının pozitif sonuç ve negatif sonuç çizgilerinin renkleri. "
+"\"jamovi (genel ayarı izle)\", diğer grafikler gibi jamovi'de seçilen paleti "
+"kullanır; bir lejant iki çizgiyi adlandırır."
 
 #: agreement/options/interIntraSeparator.title
 msgid "Column name separator (inter/intra)"
@@ -20341,15 +20347,10 @@ msgstr "Tahmin"
 #: R/kappaSizePower.b.R
 msgid ""
 "Estimate the prevalence for that test by maximum likelihood from the same "
-"pooled cells, with kappa held at kappa0: the published procedure plugs in "
-"the overall proportion of positive ratings, which makes the test reject a "
-"true kappa0 too often with four or more raters and a rare finding."
-msgstr ""
-"Bu test için prevalansı, kappa kappa0'da sabit tutularak aynı birleştirilmiş "
-"hücrelerden en çok olabilirlik yöntemiyle kestirin: yayımlanmış yöntem "
-"pozitif değerlendirmelerin genel oranını doğrudan kullanır; bu da dört veya "
-"daha fazla değerlendirici ve nadir bir bulgu olduğunda testin doğru bir "
-"kappa0'ı çok sık reddetmesine yol açar."
+"pooled cells, with kappa held at κ₀: the published procedure plugs in the "
+"overall proportion of positive ratings, which makes the test reject a true "
+"κ₀ too often with four or more raters and a rare finding."
+msgstr "Bu test için prevalansı, kappa κ₀'da sabit tutularak aynı birleştirilmiş hücrelerden en çok olabilirlik yöntemiyle kestirin: yayımlanmış yöntem pozitif değerlendirmelerin genel oranını doğrudan kullanır; bu da dört veya daha fazla değerlendirici ve nadir bir bulgu olduğunda testin doğru bir κ₀'ı çok sık reddetmesine yol açar."
 
 #: nogoldstandard/results/prevalence.title
 msgid "Estimated Class or Rule Proportion"
@@ -23027,7 +23028,7 @@ msgstr "Grup"
 
 #: psychopdaROC/ui[0][2].label
 msgid "Group Variable (Optional)"
-msgstr "Grup değişkeni (isteğe bağlı)"
+msgstr "Grup Değişkeni (İsteğe Bağlı)"
 
 #: decisioncombine/results/barPlot.description
 msgid ""
@@ -23985,19 +23986,26 @@ msgstr ""
 #: R/decisioncombine.b.R
 msgid ""
 "If the reference standard was obtained only after a positive result on some "
-"test, or only where the tests disagreed (discrepant resolution), "
-"sensitivity, specificity and the predictive values can all be biased, in "
-"either direction, for every test and rule in the table. These data cannot "
-"tell this from results withheld because of disease status, and a correction "
-"needs the reference standard on a random sample of the cases verified less "
-"often."
+"test, or only where the tests disagreed (discrepant resolution), sensitivity "
+"and specificity can be biased, in either direction, for every test and rule "
+"in the table, and so can the predictive values of each single test and each "
+"combined rule. The predictive values of an exact result pattern (a row such "
+"as +/-) are not biased by this, provided whether a case was verified "
+"depended only on its pattern and no reference result was filled in from the "
+"tests. These data cannot tell this from results withheld because of disease "
+"status, and a correction needs the reference standard on a random sample of "
+"the cases verified less often."
 msgstr ""
 "Referans standart yalnızca bir testte pozitif sonuç çıktıktan sonra ya da "
 "yalnızca testlerin uyuşmadığı durumlarda (uyuşmazlık çözümlemesi) elde "
-"edildiyse, tablodaki her test ve kural için duyarlılık, özgüllük ve öngörü "
-"değerleri her iki yönde de yanlı olabilir. Bu veriler bunu hastalık durumu "
-"nedeniyle elde edilmeyen sonuçlardan ayıramaz; bir düzeltme, daha az "
-"doğrulanan olguların rastgele bir örnekleminde referans standardı gerektirir."
+"edildiyse, tablodaki her test ve kural için duyarlılık ve özgüllük her iki "
+"yönde de yanlı olabilir; her tek testin ve her birleşik kuralın öngörü "
+"değerleri de öyle. Bir olgunun doğrulanıp doğrulanmaması yalnızca sonuç "
+"örüntüsüne bağlıysa ve hiçbir referans sonucu testlerden doldurulmadıysa, "
+"tam bir sonuç örüntüsünün (+/- gibi bir satır) öngörü değerleri bundan "
+"dolayı yanlı değildir. Bu veriler bunu hastalık durumu nedeniyle elde "
+"edilmeyen sonuçlardan ayıramaz; bir düzeltme, daha az doğrulanan olguların "
+"rastgele bir örnekleminde referans standardı gerektirir."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -25346,13 +25354,10 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"It answers 'how many subjects do I need to reject kappa0 in favor of "
-"kappa1?' - not how precisely kappa will be estimated; to plan the expected "
-"confidence limits around an anticipated kappa, use kappaSizeCI instead."
-msgstr ""
-"'kappa0'ı kappa1 lehine reddetmek için kaç olguya ihtiyacım var?' sorusunu "
-"yanıtlar; kappanın ne kadar kesin kestirileceğini değil. Öngörülen bir kappa "
-"çevresindeki beklenen güven sınırlarını planlamak için kappaSizeCI kullanın."
+"It answers 'how many subjects do I need to reject κ₀ in favor of κ₁?' - not "
+"how precisely kappa will be estimated; to plan the expected confidence "
+"limits around an anticipated kappa, use kappaSizeCI instead."
+msgstr "'κ₀'ı κ₁ lehine reddetmek için kaç olguya ihtiyacım var?' sorusunu yanıtlar; kappanın ne kadar kesin kestirileceğini değil. Öngörülen bir kappa çevresindeki beklenen güven sınırlarını planlamak için kappaSizeCI kullanın."
 
 #: R/kappaSizePower.b.R
 msgid ""
@@ -25789,42 +25794,13 @@ msgstr "Kappa tanımsız (mükemmel marjinal uyum)"
 msgid "kappa0"
 msgstr "kappa0"
 
-#: R/kappaSizePower.b.R
-msgid ""
-"kappa0 (null) and kappa1 (alternative) must differ; equal values make the "
-"required sample size undefined."
-msgstr ""
-"kappa0 (sıfır hipotezi) ile kappa1 (alternatif) farklı olmalıdır; eşit "
-"değerlerde gerekli örneklem büyüklüğü tanımsızdır."
-
-#: R/kappaSizeCI.b.R
-msgid "kappa0 must be greater than kappaL"
-msgstr "kappa0, kappaL değerinden büyük olmalıdır"
-
-#: R/kappaSizeFixedN.b.R
-#: R/kappaSizePower.b.R
-msgid "kappa0 must be strictly between 0 and 1."
-msgstr "kappa0 0 ile 1 arasında (sınırlar hariç) olmalıdır."
-
-#: R/kappaSizeCI.b.R
-msgid "kappa0 must be strictly within the confidence interval (kappaL, kappaU)"
-msgstr "kappa0, güven aralığının (kappaL, kappaU) kesinlikle içinde olmalıdır"
-
 #: kappaSizePower/options/kappa1.title
 msgid "kappa1"
 msgstr "kappa1"
 
-#: R/kappaSizePower.b.R
-msgid "kappa1 must be strictly between 0 and 1."
-msgstr "kappa1 kesinlikle 0 ile 1 arasında olmalıdır."
-
 #: kappaSizeCI/options/kappaL.title
 msgid "kappaL"
 msgstr "kappaL"
-
-#: R/kappaSizeCI.b.R
-msgid "kappaL must be less than kappaU"
-msgstr "kappaL, kappaU değerinden küçük olmalıdır"
 
 #: R/agreement.b.R
 msgid "kappaSize package is required for validated kappa sample size calculations."
@@ -28056,7 +28032,7 @@ msgstr "Minimum ÇD Hatası"
 
 #: lassologistic/options/lambda/lambda.min.title
 msgid "Minimum CV error"
-msgstr "Minimum ÇD Hatası"
+msgstr "En düşük çapraz doğrulama hatası"
 
 #: decisioncompare/options/useOpaCriterion.title
 msgid "Minimum OPA criterion"
@@ -31173,19 +31149,15 @@ msgstr "Not"
 
 #: R/kappaSizeFixedN.b.R
 msgid ""
-"Note that kappa0 here is the agreement you anticipate observing, not a null "
-"hypothesis value as it is in kappaSizePower."
-msgstr ""
-"Burada kappa0 gözlemlemeyi beklediğiniz uyumdur; kappaSizePower'daki gibi "
-"bir sıfır hipotezi değeri değildir."
+"Note that the anticipated kappa here is the agreement you expect to observe, "
+"not a null hypothesis value as it is in kappaSizePower."
+msgstr "Burada beklenen kappa, gözlemlemeyi beklediğiniz uyumdur; kappaSizePower'daki gibi bir sıfır hipotezi değeri değildir."
 
 #: R/kappaSizePower.b.R
 msgid ""
-"Note that kappa0 here is the null hypothesis value, whereas in kappaSizeCI "
-"and kappaSizeFixedN it is the agreement you anticipate observing."
-msgstr ""
-"Burada kappa0 sıfır hipotezi değeridir; kappaSizeCI ve kappaSizeFixedN'de "
-"ise gözlemlemeyi beklediğiniz uyum düzeyidir."
+"Note that κ₀ here is the null hypothesis value, whereas in kappaSizeCI and "
+"kappaSizeFixedN it is the agreement you anticipate observing."
+msgstr "Burada κ₀ sıfır hipotezi değeridir; kappaSizeCI ve kappaSizeFixedN'de ise gözlemlemeyi beklediğiniz uyum düzeyidir."
 
 #: R/agreement.b.R
 msgid ""
@@ -34983,19 +34955,12 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"Power-based sample size for a two-sided test of H0: kappa = kappa0 against "
-"H1: kappa = kappa1, using the goodness-of-fit (non-central chi-square) "
-"approach of Donner and Eliasziw (two raters, binary outcome), Altaye, Donner "
-"and Klar (binary outcome, more raters) and Altaye, Donner and Eliasziw "
-"(three to five categories), as implemented in the kappaSize package (Rotondi "
-"and Donner)."
-msgstr ""
-"H0: kappa = kappa0 hipotezinin H1: kappa = kappa1 hipotezine karşı iki yönlü "
-"testi için, Donner ve Eliasziw (iki değerlendirici, ikili sonuç), Altaye, "
-"Donner ve Klar (ikili sonuç, daha çok değerlendirici) ile Altaye, Donner ve "
-"Eliasziw'in (üç ila beş kategori) uyum iyiliği (merkezi olmayan ki-kare) "
-"yaklaşımıyla, kappaSize paketinde (Rotondi ve Donner) uygulandığı biçimde "
-"hesaplanan güce dayalı örneklem büyüklüğü."
+"Power-based sample size for a two-sided test of H0: kappa = κ₀ against H1: "
+"kappa = κ₁, using the goodness-of-fit (non-central chi-square) approach of "
+"Donner and Eliasziw (two raters, binary outcome), Altaye, Donner and Klar "
+"(binary outcome, more raters) and Altaye, Donner and Eliasziw (three to five "
+"categories), as implemented in the kappaSize package (Rotondi and Donner)."
+msgstr "H0: kappa = κ₀ hipotezinin H1: kappa = κ₁ hipotezine karşı iki yönlü testi için, Donner ve Eliasziw (iki değerlendirici, ikili sonuç), Altaye, Donner ve Klar (ikili sonuç, daha çok değerlendirici) ile Altaye, Donner ve Eliasziw'in (üç ila beş kategori) uyum iyiliği (merkezi olmayan ki-kare) yaklaşımıyla, kappaSize paketinde (Rotondi ve Donner) uygulandığı biçimde hesaplanan güce dayalı örneklem büyüklüğü."
 
 #: R/decision.b.R
 #: R/decisioncompare.b.R
@@ -42757,6 +42722,10 @@ msgstr ""
 "çözülemedi ve katı uzlaşı değerlerinin dışında bırakıldı; geri kalanlar bu "
 "kuralla çözüldü. Eşitlikler sık olduğunda katı uyum bu seçime duyarlıdır."
 
+#: R/kappaSizeFixedN.b.R
+msgid "The anticipated kappa must be strictly between 0 and 1."
+msgstr "Beklenen kappa 0 ile 1 arasında (sınırlar hariç) olmalıdır."
+
 #: R/agreement.b.R
 msgid ""
 "The association (weighted) kappa of Nelson and Edwards is a function of the "
@@ -43561,18 +43530,12 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "The design needs {n} subjects; few agreement studies can enrol this many. "
-"Moving kappa1 closer to kappa0 from the same side, or raising the power "
-"target, always inflates the sample size, and a rare finding usually does too "
-"(for a binary outcome, a prevalence far from 0.5; with more categories, very "
+"Moving κ₁ closer to κ₀ from the same side, or raising the power target, "
+"always inflates the sample size, and a rare finding usually does too (for a "
+"binary outcome, a prevalence far from 0.5; with more categories, very "
 "unequal category proportions) - revisit whichever of these is not a firm "
 "requirement."
-msgstr ""
-"Tasarım {n} olgu gerektiriyor; çok az uyum çalışması bu kadar olgu "
-"toplayabilir. kappa1'i aynı taraftan kappa0'a yaklaştırmak veya güç hedefini "
-"yükseltmek örneklem büyüklüğünü her zaman artırır; nadir bir bulgu da "
-"genellikle artırır (ikili sonuçta 0.5'ten uzak bir prevalans, daha çok "
-"kategoride ise çok dengesiz kategori oranları). Bunlardan kesin bir "
-"gereklilik olmayanı gözden geçirin."
+msgstr "Tasarım {n} olgu gerektiriyor; çok az uyum çalışması bu kadar olgu toplayabilir. κ₁'i aynı taraftan κ₀'a yaklaştırmak veya güç hedefini yükseltmek örneklem büyüklüğünü her zaman artırır; nadir bir bulgu da genellikle artırır (ikili sonuçta 0.5'ten uzak bir prevalans, daha çok kategoride ise çok dengesiz kategori oranları). Bunlardan kesin bir gereklilik olmayanı gözden geçirin."
 
 #: R/decision.b.R
 msgid "The detailed clinical interpretation could not be generated."
@@ -44140,15 +44103,10 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "The goodness-of-fit test also tests that model: if the raters follow another "
-"model with the same kappa, it can reject a true kappa0 far more often than "
-"the stated significance level, whereas Fleiss' kappa with a jackknife or "
+"model with the same kappa, it can reject a true κ₀ far more often than the "
+"stated significance level, whereas Fleiss' kappa with a jackknife or "
 "bootstrap interval that resamples subjects is not tied to the model."
-msgstr ""
-"Uyum iyiliği testi bu modeli de sınar: değerlendiriciler aynı kappa değerine "
-"sahip başka bir modele uyuyorsa test, doğru bir kappa0'ı belirtilen "
-"anlamlılık düzeyinin öngördüğünden çok daha sık reddedebilir; olguları "
-"yeniden örnekleyen jackknife veya bootstrap aralığıyla Fleiss kappası ise "
-"modele bağlı değildir."
+msgstr "Uyum iyiliği testi bu modeli de sınar: değerlendiriciler aynı kappa değerine sahip başka bir modele uyuyorsa test, doğru bir κ₀'ı belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddedebilir; olguları yeniden örnekleyen jackknife veya bootstrap aralığıyla Fleiss kappası ise modele bağlı değildir."
 
 #: R/agreement.b.R
 msgid ""
@@ -44959,15 +44917,11 @@ msgstr ""
 
 #: R/kappaSizePower.b.R
 msgid ""
-"The null and alternative kappa differ by only {delta}. Check that kappa0 is "
-"the agreement you want to rule OUT (not the agreement you expect to observe) "
-"and that kappa1 is a clinically meaningful difference from it; very close "
-"values need very large studies."
-msgstr ""
-"Sıfır hipotezi ve alternatif kappa yalnızca {delta} kadar farklıdır. "
-"kappa0'ın DIŞLAMAK istediğiniz uyum (gözlemlemeyi beklediğiniz uyum değil) "
-"ve kappa1'in bundan klinik olarak anlamlı bir fark olduğunu denetleyin; "
-"birbirine çok yakın değerler çok büyük çalışmalar gerektirir."
+"The null and alternative kappa differ by only {delta}. Check that κ₀ is the "
+"agreement you want to rule OUT (not the agreement you expect to observe) and "
+"that κ₁ is a clinically meaningful difference from it; very close values "
+"need very large studies."
+msgstr "Sıfır hipotezi ve alternatif kappa yalnızca {delta} kadar farklıdır. κ₀'ın DIŞLAMAK istediğiniz uyum (gözlemlemeyi beklediğiniz uyum değil) ve κ₁'in bundan klinik olarak anlamlı bir fark olduğunu denetleyin; birbirine çok yakın değerler çok büyük çalışmalar gerektirir."
 
 #: kappaSizePower/options/kappa0.description.ui
 msgid ""
@@ -45564,15 +45518,9 @@ msgid ""
 "approximation that treats the expected proportions as known. In {R} "
 "simulated studies of {n} subjects analyzed with the recommended "
 "goodness-of-fit test (prevalence estimated by maximum likelihood with kappa "
-"held at kappa0), the power to reject kappa0 when kappa equals kappa1 was "
-"about {sim}, short of the stated {power}."
-msgstr ""
-"Bu örneklem büyüklüğünün dayandığı yayımlanmış formül, beklenen oranları "
-"biliniyor kabul eden bir büyük örneklem yaklaşımıdır. Önerilen uyum iyiliği "
-"testiyle (prevalans, kappa kappa0'da sabit tutularak en çok olabilirlik "
-"yöntemiyle kestirilerek) çözümlenen {n} olguluk {R} simüle edilmiş "
-"çalışmada, kappa kappa1'e eşitken kappa0'ı reddetme gücü yaklaşık {sim} oldu "
-"ve belirtilen {power} değerinin altında kaldı."
+"held at κ₀), the power to reject κ₀ when kappa equals κ₁ was about {sim}, "
+"short of the stated {power}."
+msgstr "Bu örneklem büyüklüğünün dayandığı yayımlanmış formül, beklenen oranları biliniyor kabul eden bir büyük örneklem yaklaşımıdır. Önerilen uyum iyiliği testiyle (prevalans, kappa κ₀'da sabit tutularak en çok olabilirlik yöntemiyle kestirilerek) çözümlenen {n} olguluk {R} simüle edilmiş çalışmada, kappa κ₁'e eşitken κ₀'ı reddetme gücü yaklaşık {sim} oldu ve belirtilen {power} değerinin altında kaldı."
 
 #: R/kappaSizePower.b.R
 msgid ""
@@ -45833,35 +45781,21 @@ msgstr ""
 msgid ""
 "The requested confidence interval is too narrow to size in reasonable time: "
 "it would need about {n} subjects. The limit that governs the sample size is "
-"{dist} away from kappa0, and the required sample size grows roughly as one "
-"over the square of that distance. Widen the interval, use more raters, or "
-"accept a lower confidence level. As a guide, halving that distance "
-"multiplies the required sample size by about four."
-msgstr ""
-"İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: "
-"yaklaşık {n} olgu gerektirir. Örneklem büyüklüğünü belirleyen sınır kappa0 "
-"değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu "
-"uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha "
-"fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. "
-"Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem "
-"büyüklüğünü yaklaşık dört katına çıkarır."
+"{dist} away from κ₀, and the required sample size grows roughly as one over "
+"the square of that distance. Widen the interval, use more raters, or accept "
+"a lower confidence level. As a guide, halving that distance multiplies the "
+"required sample size by about four."
+msgstr "İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: yaklaşık {n} olgu gerektirir. Örneklem büyüklüğünü belirleyen sınır κ₀ değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem büyüklüğünü yaklaşık dört katına çıkarır."
 
 #: R/kappaSizeCI.b.R
 msgid ""
 "The requested confidence interval is too narrow to size in reasonable time: "
 "no sample size can deliver it. The limit that governs the sample size is "
-"{dist} away from kappa0, and the required sample size grows roughly as one "
-"over the square of that distance. Widen the interval, use more raters, or "
-"accept a lower confidence level. As a guide, halving that distance "
-"multiplies the required sample size by about four."
-msgstr ""
-"İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: hiçbir "
-"örneklem büyüklüğü bunu sağlayamaz. Örneklem büyüklüğünü belirleyen sınır "
-"kappa0 değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu "
-"uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha "
-"fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. "
-"Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem "
-"büyüklüğünü yaklaşık dört katına çıkarır."
+"{dist} away from κ₀, and the required sample size grows roughly as one over "
+"the square of that distance. Widen the interval, use more raters, or accept "
+"a lower confidence level. As a guide, halving that distance multiplies the "
+"required sample size by about four."
+msgstr "İstenen güven aralığı makul bir sürede hesaplanamayacak kadar dardır: hiçbir örneklem büyüklüğü bunu sağlayamaz. Örneklem büyüklüğünü belirleyen sınır κ₀ değerinden {dist} uzaktadır ve gerekli örneklem büyüklüğü kabaca bu uzaklığın karesiyle ters orantılı olarak artar. Aralığı genişletin, daha fazla değerlendirici kullanın veya daha düşük bir güven düzeyini kabul edin. Yol gösterici olarak, bu uzaklığı yarıya indirmek gerekli örneklem büyüklüğünü yaklaşık dört katına çıkarır."
 
 #: R/kappaSizePower.b.R
 msgid ""
@@ -47519,11 +47453,9 @@ msgstr "Bu bir planlama beklentisidir, garanti değildir."
 #: R/kappaSizePower.b.R
 msgid ""
 "This is a POWER calculation: it returns the number of subjects needed to "
-"REJECT kappa0 in favor of kappa1 in a two-sided test at the stated "
-"significance level and power."
-msgstr ""
-"Bu bir GÜÇ hesaplamasıdır: belirtilen anlamlılık düzeyi ve güçte, iki yönlü "
-"bir testte kappa0'ı kappa1 lehine REDDETMEK için gereken olgu sayısını verir."
+"REJECT κ₀ in favor of κ₁ in a two-sided test at the stated significance "
+"level and power."
+msgstr "Bu bir GÜÇ hesaplamasıdır: belirtilen anlamlılık düzeyi ve güçte, iki yönlü bir testte κ₀'ı κ₁ lehine REDDETMEK için gereken olgu sayısını verir."
 
 #: R/enhancedROC.b.R
 msgid ""
@@ -47618,16 +47550,11 @@ msgstr ""
 #: R/kappaSizeFixedN.b.R
 msgid ""
 "This is the bound the study reaches if the agreement it observes lands "
-"exactly on kappa0 and its category proportions match the anticipated ones. "
-"Roughly half of such studies will observe less agreement than anticipated "
-"and end with a lower bound below the figure shown, so read it as a planning "
-"expectation rather than a guarantee."
-msgstr ""
-"Bu, çalışmanın gözlemlediği uyum tam olarak kappa0 üzerine düşerse ve "
-"kategori oranları beklenenlerle örtüşürse ulaşacağı sınırdır. Bu tür "
-"çalışmaların yaklaşık yarısı beklenenden daha az uyum gözlemleyecek ve "
-"gösterilen değerin altında bir alt sınırla sonuçlanacaktır, bu nedenle bunu "
-"bir garanti yerine bir planlama beklentisi olarak okuyun."
+"exactly on the anticipated kappa and its category proportions match the "
+"anticipated ones. Roughly half of such studies will observe less agreement "
+"than anticipated and end with a lower bound below the figure shown, so read "
+"it as a planning expectation rather than a guarantee."
+msgstr "Bu, çalışmanın gözlemlediği uyum tam olarak beklenen kappa üzerine düşerse ve kategori oranları beklenenlerle örtüşürse ulaşacağı sınırdır. Bu tür çalışmaların yaklaşık yarısı beklenenden daha az uyum gözlemleyecek ve gösterilen değerin altında bir alt sınırla sonuçlanacaktır, bu nedenle bunu bir garanti yerine bir planlama beklentisi olarak okuyun."
 
 #: R/nogoldstandard.b.R
 msgid ""
@@ -51052,27 +50979,17 @@ msgstr ""
 msgid ""
 "With three or more raters, do not compute the chi-square over every count of "
 "raters calling the finding present (none, one, ..., all): that statistic has "
-"more than one degree of freedom and, read on one, rejects a true kappa0 much "
+"more than one degree of freedom and, read on one, rejects a true κ₀ much "
 "more often than the stated significance level."
-msgstr ""
-"Üç veya daha fazla değerlendirici olduğunda ki-kareyi, bulguyu var olarak "
-"bildiren değerlendirici sayısının her değeri (hiçbiri, biri, ..., tümü) "
-"üzerinden hesaplamayın: bu istatistiğin serbestlik derecesi birden fazladır "
-"ve bir serbestlik derecesiyle değerlendirildiğinde doğru bir kappa0'ı "
-"belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddeder."
+msgstr "Üç veya daha fazla değerlendirici olduğunda ki-kareyi, bulguyu var olarak bildiren değerlendirici sayısının her değeri (hiçbiri, biri, ..., tümü) üzerinden hesaplamayın: bu istatistiğin serbestlik derecesi birden fazladır ve bir serbestlik derecesiyle değerlendirildiğinde doğru bir κ₀'ı belirtilen anlamlılık düzeyinin öngördüğünden çok daha sık reddeder."
 
 #: R/kappaSizePower.b.R
 msgid ""
 "With three or more raters, estimate the category prevalences by maximum "
-"likelihood with kappa held at kappa0, as Altaye, Donner and Eliasziw do; "
+"likelihood with kappa held at κ₀, as Altaye, Donner and Eliasziw do; "
 "plugging in the overall proportions of ratings makes the test reject a true "
-"kappa0 too often."
-msgstr ""
-"Üç veya daha fazla değerlendirici olduğunda kategori prevalanslarını, "
-"Altaye, Donner ve Eliasziw'in yaptığı gibi, kappa kappa0'da sabit tutularak "
-"en çok olabilirlik yöntemiyle kestirin; tüm değerlendirmelerin genel "
-"oranlarını doğrudan kullanmak testin doğru bir kappa0'ı çok sık reddetmesine "
-"yol açar."
+"κ₀ too often."
+msgstr "Üç veya daha fazla değerlendirici olduğunda kategori prevalanslarını, Altaye, Donner ve Eliasziw'in yaptığı gibi, kappa κ₀'da sabit tutularak en çok olabilirlik yöntemiyle kestirin; tüm değerlendirmelerin genel oranlarını doğrudan kullanmak testin doğru bir κ₀'ı çok sık reddetmesine yol açar."
 
 #: R/kappaSizeFixedN.b.R
 msgid ""
@@ -51202,19 +51119,12 @@ msgstr ""
 #: R/kappaSizePower.b.R
 msgid ""
 "With two raters, estimate the prevalence for the test by maximum likelihood "
-"with kappa held at kappa0 rather than plugging in the overall proportion of "
+"with kappa held at κ₀ rather than plugging in the overall proportion of "
 "positive ratings, as the published procedure does: in simulations of a rare "
 "finding (1 to 5 cases in 100) at a 0.05 level, the plug-in test rejected a "
-"true kappa0 at a rate of 0.055-0.066 and the maximum-likelihood version at "
+"true κ₀ at a rate of 0.055-0.066 and the maximum-likelihood version at "
 "0.043-0.052."
-msgstr ""
-"İki değerlendirici olduğunda test için prevalansı, yayımlanmış yöntemin "
-"yaptığı gibi pozitif değerlendirmelerin genel oranını doğrudan kullanarak "
-"değil, kappa kappa0'da sabit tutularak en çok olabilirlik yöntemiyle "
-"kestirin: nadir bir bulgunun (100 olguda 1 ila 5) 0.05 düzeyindeki "
-"simülasyonlarında, genel oranı doğrudan kullanan test doğru bir kappa0'ı "
-"0.055-0.066 oranında, en çok olabilirlik sürümü ise 0.043-0.052 oranında "
-"reddetti."
+msgstr "İki değerlendirici olduğunda test için prevalansı, yayımlanmış yöntemin yaptığı gibi pozitif değerlendirmelerin genel oranını doğrudan kullanarak değil, kappa κ₀'da sabit tutularak en çok olabilirlik yöntemiyle kestirin: nadir bir bulgunun (100 olguda 1 ila 5) 0.05 düzeyindeki simülasyonlarında, genel oranı doğrudan kullanan test doğru bir κ₀'ı 0.055-0.066 oranında, en çok olabilirlik sürümü ise 0.043-0.052 oranında reddetti."
 
 #: R/nogoldstandard.b.R
 msgid ""
@@ -51722,6 +51632,32 @@ msgstr "Δ Glass Δ"
 #: psychopdaROC/results/effectSizeTable.columns.title
 msgid "Δ Hedges' g"
 msgstr "Δ Hedges g"
+
+#: R/kappaSizePower.b.R
+msgid ""
+"κ₀ (null) and κ₁ (alternative) must differ; equal values make the required "
+"sample size undefined."
+msgstr "κ₀ (sıfır hipotezi) ile κ₁ (alternatif) farklı olmalıdır; eşit değerlerde gerekli örneklem büyüklüğü tanımsızdır."
+
+#: R/kappaSizeCI.b.R
+msgid "κ₀ must be greater than κL"
+msgstr "κ₀, κL değerinden büyük olmalıdır"
+
+#: R/kappaSizePower.b.R
+msgid "κ₀ must be strictly between 0 and 1."
+msgstr "κ₀ 0 ile 1 arasında (sınırlar hariç) olmalıdır."
+
+#: R/kappaSizeCI.b.R
+msgid "κ₀ must be strictly within the confidence interval (κL, κU)"
+msgstr "κ₀, güven aralığının (κL, κU) kesinlikle içinde olmalıdır"
+
+#: R/kappaSizePower.b.R
+msgid "κ₁ must be strictly between 0 and 1."
+msgstr "κ₁ kesinlikle 0 ile 1 arasında olmalıdır."
+
+#: R/kappaSizeCI.b.R
+msgid "κL must be less than κU"
+msgstr "κL, κU değerinden küçük olmalıdır"
 
 #: psychopdaROC/results/metaAnalysisTable.columns.title
 msgid "τ² Between-Study Variance"
