@@ -54,6 +54,9 @@ their defaults (see the R note).
 - **Clinical ROC Analysis plots follow jamovi's theme.** Plot theme has a new first choice,
   "jamovi (follow global)", which is now the default, so these plots match the rest of the
   document. Classic, Modern and Clinical (the previous default) are still there to override it.
+- **Sample-size numbers follow your number format.** Interrater Reliability's Sample Size for
+  Agreement Study table now holds its values as numbers rather than text formatted in R; the
+  agreement metric is named in its first row.
 - **One label style.** Variable boxes and result titles are in title case; options and list
   choices in sentence case. Youden's index has one name (columns: "Youden's J"); "95% confidence
   intervals" reads the same in Medical Decision, the Medical Decision Calculator and Compare

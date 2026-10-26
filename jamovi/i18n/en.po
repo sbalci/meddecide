@@ -9471,6 +9471,10 @@ msgid "Agreement metric"
 msgstr ""
 
 #: R/agreement.b.R
+msgid "Agreement metric: {metric}"
+msgstr ""
+
+#: R/agreement.b.R
 msgid ""
 "Agreement on positive vs. negative calls (a gap reflects prevalence; test "
 "rater bias with McNemar or the PABAK bias index)"
