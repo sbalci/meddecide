@@ -51,6 +51,9 @@ their defaults (see the R note).
   `result$krippTableGroup$krippTable`.
 - **Clinical ROC Analysis** no longer offers "Explain why within-cohort meta-analysis is
   unavailable"; the option remains for saved analyses and R calls.
+- **Clinical ROC Analysis plots follow jamovi's theme.** Plot theme has a new first choice,
+  "jamovi (follow global)", which is now the default, so these plots match the rest of the
+  document. Classic, Modern and Clinical (the previous default) are still there to override it.
 - **Validation context boxes greyed when unused.** In Medical Decision, cohort role, sampling
   design, threshold source, model version and unit of observation are greyed until Validation
   context is ticked, as they already were in Compare Medical Decision Tests.

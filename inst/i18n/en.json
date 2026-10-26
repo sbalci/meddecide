@@ -11782,6 +11782,9 @@
             "J = sensitivity + specificity - 1. The cutoff that maximizes it weighs sensitivity and specificity equally; at prevalence p that counts one missed case as (1 - p)/p false alarms, the same cost only when half the patients have the condition. That is a convention, not a clinical optimum.": [
                 ""
             ],
+            "jamovi (follow global)": [
+                ""
+            ],
             "K-means (Requires K)": [
                 ""
             ],
@@ -22750,7 +22753,7 @@
             "Visual representation of probability changes": [
                 ""
             ],
-            "Visual theme for ROC plots": [
+            "Visual theme for the ROC plots. \"jamovi (follow global)\" draws them with the theme chosen in jamovi, like every other plot in the document. Classic, Modern and Clinical adjust the grid lines and border on top of it.": [
                 ""
             ],
             "Visual tool showing how test results change disease probability. Shows relationship between pre-test probability, likelihood ratios, and post-test probability.": [

@@ -25430,6 +25430,10 @@ msgstr ""
 "hastaların yarısında durum mevcut olduğunda eşittir. Bu klinik bir optimum "
 "değil, bir uzlaşımdır."
 
+#: enhancedROC/options/plotTheme/jamovi.title
+msgid "jamovi (follow global)"
+msgstr "jamovi (genel ayarı izle)"
+
 #: agreement/options/clusterMethod/kmeans.title
 #: agreement/options/caseClusterMethod/kmeans.title
 msgid "K-means (Requires K)"
@@ -49653,8 +49657,11 @@ msgid "Visual representation of probability changes"
 msgstr "Olasılık değişikliklerinin görsel temsili"
 
 #: enhancedROC/options/plotTheme.description
-msgid "Visual theme for ROC plots"
-msgstr "ROC grafikleri için görsel tema"
+msgid ""
+"Visual theme for the ROC plots. \"jamovi (follow global)\" draws them with "
+"the theme chosen in jamovi, like every other plot in the document. Classic, "
+"Modern and Clinical adjust the grid lines and border on top of it."
+msgstr "ROC grafiklerinin görsel teması. \"jamovi (genel ayarı izle)\", grafikleri belgedeki diğer tüm grafikler gibi jamovi'de seçilen temayla çizer. Klasik, Modern ve Klinik, bunun üzerine ızgara çizgilerini ve çerçeveyi ayarlar."
 
 #: R/decision.b.R
 msgid ""

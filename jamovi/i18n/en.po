@@ -21707,6 +21707,10 @@ msgid ""
 "have the condition. That is a convention, not a clinical optimum."
 msgstr ""
 
+#: enhancedROC/options/plotTheme/jamovi.title
+msgid "jamovi (follow global)"
+msgstr ""
+
 #: agreement/options/clusterMethod/kmeans.title
 #: agreement/options/caseClusterMethod/kmeans.title
 msgid "K-means (Requires K)"
@@ -41673,7 +41677,10 @@ msgid "Visual representation of probability changes"
 msgstr ""
 
 #: enhancedROC/options/plotTheme.description
-msgid "Visual theme for ROC plots"
+msgid ""
+"Visual theme for the ROC plots. \"jamovi (follow global)\" draws them with "
+"the theme chosen in jamovi, like every other plot in the document. Classic, "
+"Modern and Clinical adjust the grid lines and border on top of it."
 msgstr ""
 
 #: R/decision.b.R
