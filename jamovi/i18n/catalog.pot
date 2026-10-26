@@ -4310,7 +4310,7 @@ msgstr ""
 #: R/agreement.b.R
 msgid ""
 "{tag1}Standardizing does nothing in this scope.{tag2} Standardization exists "
-"to equalise the contribution of several variables. With one variable it is "
+"to equalize the contribution of several variables. With one variable it is "
 "an affine rescaling, which leaves the coefficient unchanged."
 msgstr ""
 
@@ -5147,6 +5147,10 @@ msgid ""
 "{target}. Choose Stepwise to get the cutoff that meets or exceeds the target."
 msgstr ""
 
+#: agreement/ui[4][3][0]/tdiCoverage.suffix
+#: agreement/ui[8][1][0]/simpleThreshold.suffix
+#: agreement/ui[8][1][0]/loaHighThreshold.suffix
+#: agreement/ui[8][1][0]/loaLowThreshold.suffix
 #: enhancedROC/ui[4][0][0]/confidenceLevel.suffix
 msgid "%"
 msgstr ""
@@ -5532,7 +5536,7 @@ msgid ""
 "(%3$s). • First check Positive class: is %4$s the level that means the "
 "condition is present? Naming the wrong level turns the AUC into 1 minus its "
 "true value, exactly this pattern. • Only if it is, setting Direction to "
-"'%5$s' gives an AUC of %6$s and re-estimates the cut-point, sensitivity and "
+"'%5$s' gives an AUC of %6$s and re-estimates the cutoff, sensitivity and "
 "specificity. • Change Direction only if that matches what the marker means "
 "clinically."
 msgstr ""
@@ -5578,14 +5582,14 @@ msgid ""
 "class: is %3$s the level that means the condition is present? Naming the "
 "wrong level turns the AUC into 1 minus its true value, exactly this pattern. "
 "• Only if it is, setting Direction to '%4$s' gives an AUC of 1 and "
-"re-estimates the cut-point, sensitivity and specificity. • Change Direction "
+"re-estimates the cutoff, sensitivity and specificity. • Change Direction "
 "only if that matches what the marker means clinically."
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
 "%1$s has the same value (%2$s) in every analyzed row, so it cannot separate "
-"the groups: its AUC is 0.5 by construction and no cut-point exists. Choose a "
+"the groups: its AUC is 0.5 by construction and no cutoff exists. Choose a "
 "predictor that varies, or check how the data were imported."
 msgstr ""
 
@@ -5953,8 +5957,8 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "%s%% intervals for sensitivity and specificity are Clopper-Pearson exact "
-"binomial intervals (Clopper & Pearson, 1934); they treat the cut-point as "
-"fixed and do not reflect its selection on these data."
+"binomial intervals (Clopper & Pearson, 1934); they treat the cutoff as fixed "
+"and do not reflect its selection on these data."
 msgstr ""
 
 #: R/cotest.b.R
@@ -7883,7 +7887,7 @@ msgid "100(1 - alpha)"
 msgstr ""
 
 #: lassologistic/options/lambda/lambda.1se.title
-msgid "1SE Rule (More Parsimonious)"
+msgid "1SE rule (more parsimonious)"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -8018,15 +8022,6 @@ msgstr ""
 msgid "5. Treatment Response Priority Ranking (Clinical Trial Design):"
 msgstr ""
 
-#: decisioncompare/options/ci.title
-msgid "95 percent CI"
-msgstr ""
-
-#: decision/options/ci.title
-#: decisioncalculator/options/ci.title
-msgid "95 percent confidence intervals"
-msgstr ""
-
 #: decisioncombine/results/combinationTableCI.columns.superTitle
 #: decisioncombine/results/combinationTableCIRatios.columns.superTitle
 #: decisioncompare/results/opaTable.columns.superTitle
@@ -8096,7 +8091,10 @@ msgstr ""
 msgid "95% Confidence Intervals"
 msgstr ""
 
+#: decision/options/ci.title
 #: decision/ui[2][0]/ci.label
+#: decisioncalculator/options/ci.title
+#: decisioncompare/options/ci.title
 msgid "95% confidence intervals"
 msgstr ""
 
@@ -8894,7 +8892,7 @@ msgid "About the Pathologist Grading Analysis"
 msgstr ""
 
 #: agreement/results/maxwellREGroup/maxwellREExplanation.title
-msgid "About the rater variance decomposition"
+msgid "About the Rater Variance Decomposition"
 msgstr ""
 
 #: R/cotest.b.R
@@ -9377,7 +9375,7 @@ msgid "Agreement by Item Modal Category"
 msgstr ""
 
 #: decisioncompare/results/comparatorStrata.title
-msgid "Agreement by stratum"
+msgid "Agreement by Stratum"
 msgstr ""
 
 #: R/agreement.b.R
@@ -9406,16 +9404,16 @@ msgid ""
 "is similar across them."
 msgstr ""
 
+#: agreement/ui[7][0].label
+msgid "Agreement Heatmap (Categorical, Confusion Matrix Visualization)"
+msgstr ""
+
 #: agreement/results/agreementHeatmapPlot.title
 msgid "Agreement Heatmap (Confusion Matrix)"
 msgstr ""
 
 #: agreement/options/agreementHeatmap.title
 msgid "Agreement heatmap (confusion matrix)"
-msgstr ""
-
-#: agreement/ui[7][0].label
-msgid "Agreement Heatmap [Categorical] (Confusion Matrix Visualization)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -9483,7 +9481,7 @@ msgstr ""
 
 #: decision/results/comparatorMetrics.title
 #: decisioncompare/results/comparatorMetrics.title
-msgid "Agreement with comparator"
+msgid "Agreement with Comparator"
 msgstr ""
 
 #: R/agreement.b.R
@@ -9583,7 +9581,7 @@ msgid "All Observed Cutpoints"
 msgstr ""
 
 #: psychopdaROC/results/effectSizePlot.template.title
-msgid "All pairwise comparisons"
+msgid "All Pairwise Comparisons"
 msgstr ""
 
 #: R/agreement.b.R
@@ -9591,8 +9589,11 @@ msgid "All pathologists"
 msgstr ""
 
 #: R/decisioncombine.b.R
-#: decisioncombine/options/filterPattern/all.title
 msgid "All Patterns"
+msgstr ""
+
+#: decisioncombine/options/filterPattern/all.title
+msgid "All patterns"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -9624,15 +9625,21 @@ msgid "All subjects rated by all raters"
 msgstr ""
 
 #: R/decisioncombine.b.R
-#: decisioncombine/options/filterPattern/allNegative.title
 msgid "All Tests Negative"
+msgstr ""
+
+#: decisioncombine/options/filterPattern/allNegative.title
+msgid "All tests negative"
 msgstr ""
 
 #: R/decisioncombine.b.R
 #: R/nogoldstandard.b.R
+msgid "All Tests Positive"
+msgstr ""
+
 #: decisioncombine/options/filterPattern/allPositive.title
 #: nogoldstandard/options/method/all_positive.title
-msgid "All Tests Positive"
+msgid "All tests positive"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -9747,7 +9754,7 @@ msgid "Alternative below the null."
 msgstr ""
 
 #: kappaSizePower/ui[1][1]/kappa1.label
-msgid "Alternative kappa (kappa1)"
+msgid "Alternative kappa (κ₁)"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -10027,7 +10034,7 @@ msgstr ""
 
 #: kappaSizeCI/results/text1.title
 #: kappaSizeFixedN/results/text1.title
-msgid "Analysis result"
+msgid "Analysis Result"
 msgstr ""
 
 #: enhancedROC/results/results.title
@@ -10155,7 +10162,7 @@ msgstr ""
 
 #: kappaSizeCI/ui[2][0]/kappa0.label
 #: kappaSizeFixedN/ui[1][0]/kappa0.label
-msgid "Anticipated kappa (kappa0)"
+msgid "Anticipated kappa (κ₀)"
 msgstr ""
 
 #: kappaSizeCI/options/props.description.ui
@@ -10190,8 +10197,11 @@ msgid "Any number of raters"
 msgstr ""
 
 #: R/nogoldstandard.b.R
-#: nogoldstandard/options/method/any_positive.title
 msgid "Any Test Positive"
+msgstr ""
+
+#: nogoldstandard/options/method/any_positive.title
+msgid "Any test positive"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -10927,7 +10937,7 @@ msgstr ""
 
 #: agreement/options/clusterLinkage/average.title
 #: agreement/options/caseClusterLinkage/average.title
-msgid "Average Linkage (UPGMA)"
+msgid "Average linkage (UPGMA)"
 msgstr ""
 
 #: decisioncurve/results/weightedAUCTable.columns.title
@@ -11022,7 +11032,6 @@ msgstr ""
 
 #: R/decisioncombine.b.R
 #: decisioncalculator/results/advancedMetricsTable.columns.title
-#: decisioncombine/options/filterStatistic/balancedAccuracy.title
 #: decisioncombine/results/combinationTable.columns.title
 #: enhancedROC/results/results/diagnosticPerformance.columns.title
 #: psychopdaROC/results/rocComparisonTable.columns.title
@@ -11030,6 +11039,7 @@ msgid "Balanced Accuracy"
 msgstr ""
 
 #: R/decisioncalculator.b.R
+#: decisioncombine/options/filterStatistic/balancedAccuracy.title
 msgid "Balanced accuracy"
 msgstr ""
 
@@ -11100,7 +11110,7 @@ msgid "Bar Chart - Performance Comparison"
 msgstr ""
 
 #: agreement/options/raterProfileType/barplot.title
-msgid "Bar Plot (Category Frequencies)"
+msgid "Bar plot (category frequencies)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -11132,7 +11142,7 @@ msgid "Basic (recommended)"
 msgstr ""
 
 #: enhancedROC/options/bootstrapMethod/basic.title
-msgid "Basic Bootstrap"
+msgid "Basic bootstrap"
 msgstr ""
 
 #: R/decision.b.R
@@ -11150,7 +11160,7 @@ msgid ""
 msgstr ""
 
 #: enhancedROC/options/bootstrapMethod/bca.title
-msgid "BCa (Bias-Corrected and Accelerated)"
+msgid "BCa (bias-corrected and accelerated)"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -11268,12 +11278,12 @@ msgstr ""
 msgid "Better than chance, but disagreement with the reference is the common case"
 msgstr ""
 
-#: agreement/options/bhapkar.title
-msgid "Bhapkar test (marginal homogeneity for 2 raters)"
+#: agreement/ui[6][1].label
+msgid "Bhapkar Test (Categorical, Marginal Homogeneity, 2 Raters)"
 msgstr ""
 
-#: agreement/ui[6][1].label
-msgid "Bhapkar Test [Categorical] (Marginal Homogeneity, 2 Raters)"
+#: agreement/options/bhapkar.title
+msgid "Bhapkar test (marginal homogeneity for 2 raters)"
 msgstr ""
 
 #: agreement/results/raterBiasGroup/bhapkarTable.title
@@ -11338,7 +11348,7 @@ msgstr ""
 
 #: decision/results/comparatorCounts.title
 #: decisioncompare/results/comparatorCounts.title
-msgid "Binary comparator counts"
+msgid "Binary Comparator Counts"
 msgstr ""
 
 #: R/agreement.b.R
@@ -11365,8 +11375,11 @@ msgid "Binormal"
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: sequentialtests/options/preset/mi_emergency_parallel.title
 msgid "Biomarker + ECG (Illustrative)"
+msgstr ""
+
+#: sequentialtests/options/preset/mi_emergency_parallel.title
+msgid "Biomarker + ECG (illustrative)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -11374,8 +11387,11 @@ msgid "Biomarker assay method-comparison studies"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/clinicalPresets/biomarker_screening.title
 msgid "Biomarker Screening (High Sensitivity)"
+msgstr ""
+
+#: enhancedROC/options/clinicalPresets/biomarker_screening.title
+msgid "Biomarker screening (high sensitivity)"
 msgstr ""
 
 #: nogoldstandard/results/conditional_dependence.columns.title
@@ -11391,7 +11407,7 @@ msgid "Bland-Altman"
 msgstr ""
 
 #: agreement/ui[4][4].label
-msgid "Bland-Altman Analysis [Continuous] (Limits of Agreement)"
+msgid "Bland-Altman Analysis (Limits of Agreement)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -11543,7 +11559,6 @@ msgstr ""
 msgid "Bootstrap Confidence Intervals"
 msgstr ""
 
-#: agreement/options/bootstrap.title
 #: agreement/options/bootstrapCI.title
 #: decisioncurve/options/confidenceIntervals.title
 #: decisioncurve/ui[7][0]/confidenceIntervals.label
@@ -11593,8 +11608,12 @@ msgstr ""
 msgid "Bootstrap internal validation"
 msgstr ""
 
+#: agreement/options/bootstrap.title
+msgid "Bootstrap interval for Krippendorff's alpha"
+msgstr ""
+
 #: psychopdaROC/results/bootstrapCITable.title
-msgid "Bootstrap Intervals (AUC and Youden Reference)"
+msgid "Bootstrap Intervals (AUC and Youden's Index Reference)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -11684,7 +11703,7 @@ msgid "Bootstrap test with %1$s replications (seed = %2$s). N = %3$s cases."
 msgstr ""
 
 #: enhancedROC/options/validationMethod/bootstrap.title
-msgid "Bootstrap Validation"
+msgid "Bootstrap validation"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -11709,7 +11728,7 @@ msgid ""
 msgstr ""
 
 #: psychopdaROC/options/metaAnalysisMethod/both.title
-msgid "Both Fixed and Random Effects"
+msgid "Both fixed and random effects"
 msgstr ""
 
 #: R/agreement.b.R
@@ -11727,7 +11746,7 @@ msgid ""
 msgstr ""
 
 #: enhancedROC/options/validationMethod/both.title
-msgid "Both Methods"
+msgid "Both methods"
 msgstr ""
 
 #: R/cotest.b.R
@@ -11786,12 +11805,15 @@ msgid ""
 msgstr ""
 
 #: agreement/options/raterProfileType/boxplot.title
-msgid "Box Plot (Median + IQR)"
+msgid "Box plot (median + IQR)"
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: sequentialtests/options/preset/breast_cancer_screening.title
 msgid "Breast Imaging + Tissue Sampling (Illustrative)"
+msgstr ""
+
+#: sequentialtests/options/preset/breast_cancer_screening.title
+msgid "Breast imaging + tissue sampling (illustrative)"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -12137,7 +12159,7 @@ msgid "Case ID"
 msgstr ""
 
 #: agreement/ui[0][3].label
-msgid "Case ID (same case on several rows)"
+msgid "Case ID (Same Case on Several Rows)"
 msgstr ""
 
 #: agreement/options/caseIdVariable.title
@@ -12491,8 +12513,11 @@ msgid ""
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: sequentialtests/options/preset/tb_screening_confirmation.title
 msgid "Chest Imaging + Culture (Illustrative)"
+msgstr ""
+
+#: sequentialtests/options/preset/tb_screening_confirmation.title
+msgid "Chest imaging + culture (illustrative)"
 msgstr ""
 
 #: R/cotest.b.R
@@ -12882,8 +12907,11 @@ msgid "Class Variable"
 msgstr ""
 
 #: psychopdaROC/options/classVar.title
-#: psychopdaROC/ui[0][1].label
 msgid "Class variable (gold standard)"
+msgstr ""
+
+#: psychopdaROC/ui[0][1].label
+msgid "Class Variable (Gold Standard)"
 msgstr ""
 
 #: enhancedROC/options/plotTheme/classic.title
@@ -12958,8 +12986,11 @@ msgid "Clinical Assessment"
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: sequentialtests/options/preset/stroke_emergency_parallel.title
 msgid "Clinical Assessment + CT (Illustrative)"
+msgstr ""
+
+#: sequentialtests/options/preset/stroke_emergency_parallel.title
+msgid "Clinical assessment + CT (illustrative)"
 msgstr ""
 
 #: enhancedROC/results/results/decisionImpactSummary.description
@@ -13005,8 +13036,11 @@ msgid "Clinical decision rule"
 msgstr ""
 
 #: decisioncurve/options/decisionRuleVar.title
-#: decisioncurve/ui[0][2].label
 msgid "Clinical decision rule (binary)"
+msgstr ""
+
+#: decisioncurve/ui[0][2].label
+msgid "Clinical Decision Rule (Binary)"
 msgstr ""
 
 #: decisioncurve/options/clinicalDecisionRule.title
@@ -13309,11 +13343,8 @@ msgid "Clinical Value"
 msgstr ""
 
 #: R/decisioncompare.b.R
-msgid "Clopper-Pearson (exact)"
-msgstr ""
-
 #: decisioncompare/options/ciMethod/exact.title
-msgid "Clopper-Pearson (Exact)"
+msgid "Clopper-Pearson (exact)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -13770,9 +13801,12 @@ msgid "Comparative method"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/analysisType/comparative.title
 #: enhancedROC/results/results/comparativeROCPlot.title
 msgid "Comparative ROC Analysis"
+msgstr ""
+
+#: enhancedROC/options/analysisType/comparative.title
+msgid "Comparative ROC analysis"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -13780,15 +13814,15 @@ msgid "Comparative ROC Plot Error"
 msgstr ""
 
 #: decisioncompare/results/comparatorPlot.title
-msgid "Comparator agreement (bar)"
+msgid "Comparator Agreement (Bar)"
 msgstr ""
 
 #: decisioncompare/results/comparatorHeatmap.title
-msgid "Comparator agreement (heatmap)"
+msgid "Comparator Agreement (Heatmap)"
 msgstr ""
 
 #: decisioncompare/results/comparatorRadar.title
-msgid "Comparator agreement (radar)"
+msgid "Comparator Agreement (Radar)"
 msgstr ""
 
 #: R/decision.b.R
@@ -13800,7 +13834,7 @@ msgstr ""
 
 #: decision/results/comparatorReport.title
 #: decisioncompare/results/comparatorReport.title
-msgid "Comparator interpretation"
+msgid "Comparator Interpretation"
 msgstr ""
 
 #: R/agreement.b.R
@@ -13808,7 +13842,7 @@ msgid "Compare agreement across tumor types (benign vs. malignant)"
 msgstr ""
 
 #: lassologistic/options/scoringMethod/compare.title
-msgid "Compare All Methods"
+msgid "Compare all methods"
 msgstr ""
 
 #: psychopdaROC/options/compareClassifiers.title
@@ -13917,7 +13951,7 @@ msgstr ""
 
 #: decision/results/comparatorPopulation.title
 #: decisioncompare/results/comparatorPopulation.title
-msgid "Comparison populations"
+msgid "Comparison Populations"
 msgstr ""
 
 #: R/agreement.b.R
@@ -13948,7 +13982,7 @@ msgstr ""
 
 #: agreement/options/clusterLinkage/complete.title
 #: agreement/options/caseClusterLinkage/complete.title
-msgid "Complete Linkage (Furthest Neighbor)"
+msgid "Complete linkage (furthest neighbor)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -13993,8 +14027,11 @@ msgid "Composite Reference"
 msgstr ""
 
 #: R/nogoldstandard.b.R
-#: nogoldstandard/options/method/composite.title
 msgid "Composite Reference (strict majority)"
+msgstr ""
+
+#: nogoldstandard/options/method/composite.title
+msgid "Composite reference (strict majority)"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -14026,8 +14063,11 @@ msgid "Comprehensive comparison of diagnostic metrics between models"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/analysisType/comprehensive.title
 msgid "Comprehensive Diagnostic Performance"
+msgstr ""
+
+#: enhancedROC/options/analysisType/comprehensive.title
+msgid "Comprehensive diagnostic performance"
 msgstr ""
 
 #: enhancedROC/results/results/diagnosticPerformance.description
@@ -14165,7 +14205,7 @@ msgid "Condition B raters"
 msgstr ""
 
 #: agreement/ui[0][8].label
-msgid "Condition B Raters (e.g., AI-assisted)"
+msgid "Condition B Raters (e.g., AI-Assisted)"
 msgstr ""
 
 #: agreement/ui[0][2].label
@@ -14248,9 +14288,12 @@ msgstr ""
 msgid "Confidence interval tables"
 msgstr ""
 
-#: kappaSizeCI/options/citype.title
 #: kappaSizeCI/ui[1].label
 msgid "Confidence Interval Type"
+msgstr ""
+
+#: kappaSizeCI/options/citype.title
+msgid "Confidence interval type"
 msgstr ""
 
 #: R/decision.b.R
@@ -14417,8 +14460,11 @@ msgid "Confirmatory Test"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/clinicalPresets/confirmatory_testing.title
 msgid "Confirmatory Testing (High Specificity)"
+msgstr ""
+
+#: enhancedROC/options/clinicalPresets/confirmatory_testing.title
+msgid "Confirmatory testing (high specificity)"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -14695,7 +14741,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Convex hull: operating points reachable by randomly mixing two cut-offs "
+"Convex hull: operating points reachable by randomly mixing two cutoffs "
 "(Provost & Fawcett 2001); in-sample, so optimistic"
 msgstr ""
 
@@ -14723,7 +14769,7 @@ msgstr ""
 msgid ""
 "Copy-ready report sentences were not generated because %1$s. Check Positive "
 "class (is %2$s the level that means the condition is present?), then "
-"Direction, before quoting any cut-point from this analysis."
+"Direction, before quoting any cutoff from this analysis."
 msgstr ""
 
 #: decision/options/showReportTemplate.title
@@ -14842,7 +14888,7 @@ msgid "Cost per treatment"
 msgstr ""
 
 #: psychopdaROC/ui[5][0]/costratioFP.label
-msgid "Cost Ratio (False Positive : False Negative)"
+msgid "Cost ratio (false positive : false negative)"
 msgstr ""
 
 #: psychopdaROC/options/costratioFP.title
@@ -15093,8 +15139,11 @@ msgid "Custom {i}"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/clinicalPresets/custom.title
 msgid "Custom Configuration"
+msgstr ""
+
+#: enhancedROC/options/clinicalPresets/custom.title
+msgid "Custom configuration"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -15118,14 +15167,11 @@ msgid "Custom range"
 msgstr ""
 
 #: agreement/options/loaThresholds/custom.title
-msgid "Custom Thresholds"
-msgstr ""
-
-#: sequentialtests/options/preset/custom.title
-msgid "Custom Values"
+msgid "Custom thresholds"
 msgstr ""
 
 #: cotest/options/preset/custom.title
+#: sequentialtests/options/preset/custom.title
 msgid "Custom values"
 msgstr ""
 
@@ -15193,24 +15239,6 @@ msgstr ""
 msgid "Cut-offs describe different cohorts"
 msgstr ""
 
-#: R/enhancedROC.b.R
-msgid ""
-"Cut-points maximize the Youden index, J = sensitivity + specificity - 1 "
-"(Youden, 1950), over the thresholds midway between adjacent observed values: "
-"the empirical estimator of the Youden-optimal cut-point (Fluss et al., "
-"2005). A patient is test-positive at or above the cutoff (at or below it "
-"when lower values are positive)."
-msgstr ""
-
-#: R/enhancedROC.b.R
-msgid ""
-"Cut-points minimize the squared distance to the top-left corner of the ROC "
-"plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway "
-"between adjacent observed values (Perkins & Schisterman, 2006); Youden "
-"optimization was switched off. A patient is test-positive at or above the "
-"cutoff (at or below it when lower values are positive)."
-msgstr ""
-
 #: enhancedROC/results/results/cutoffAnalysis.columns.title
 #: enhancedROC/results/results/diagnosticPerformance.columns.title
 msgid "Cutoff"
@@ -15244,6 +15272,24 @@ msgstr ""
 msgid ""
 "Cutoffs lie midway between adjacent observed values, so a reported cutoff "
 "need not occur in the data."
+msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"Cutoffs maximize the Youden index, J = sensitivity + specificity - 1 "
+"(Youden, 1950), over the thresholds midway between adjacent observed values: "
+"the empirical estimator of the Youden-optimal cutoff (Fluss et al., 2005). A "
+"patient is test-positive at or above the cutoff (at or below it when lower "
+"values are positive)."
+msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"Cutoffs minimize the squared distance to the top-left corner of the ROC "
+"plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway "
+"between adjacent observed values (Perkins & Schisterman, 2006); Youden "
+"optimization was switched off. A patient is test-positive at or above the "
+"cutoff (at or below it when lower values are positive)."
 msgstr ""
 
 #: psychopdaROC/results/resultsTable.template.columns.title
@@ -15596,8 +15642,11 @@ msgid "Default (no discrimination)"
 msgstr ""
 
 #: R/decisioncombine.b.R
-#: decisioncombine/options/filterStatistic/all.title
 msgid "Default Metric Set"
+msgstr ""
+
+#: decisioncombine/options/filterStatistic/all.title
+msgid "Default metric set"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -16081,13 +16130,19 @@ msgid "Diagnostic Statistics"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/clinicalPresets/diagnostic_validation.title
 msgid "Diagnostic Test Validation (Balanced)"
 msgstr ""
 
+#: enhancedROC/options/clinicalPresets/diagnostic_validation.title
+msgid "Diagnostic test validation (balanced)"
+msgstr ""
+
 #: R/nogoldstandard.b.R
-#: nogoldstandard/options/clinicalPreset/diagnostic_validation.title
 msgid "Diagnostic Test Validation (example)"
+msgstr ""
+
+#: nogoldstandard/options/clinicalPreset/diagnostic_validation.title
+msgid "Diagnostic test validation (example)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -16214,7 +16269,7 @@ msgid ""
 msgstr ""
 
 #: agreement/ui[6][0].label
-msgid "Directional Discordance [Ordinal] (2 Raters)"
+msgid "Directional Discordance (Ordinal, 2 Raters)"
 msgstr ""
 
 #: agreement/results/raterBiasGroup.title
@@ -16275,7 +16330,7 @@ msgid "Discordant cases tables"
 msgstr ""
 
 #: decision/results/comparatorCases.title
-msgid "Discordant comparator calls"
+msgid "Discordant Comparator Calls"
 msgstr ""
 
 #: decisioncalculator/results/nTable.columns.title
@@ -16341,7 +16396,7 @@ msgid "Disease prevalence"
 msgstr ""
 
 #: decision/ui[3]/pprob.label
-msgid "Disease prevalence in target population (0.001-0.999)"
+msgid "Disease prevalence in target population (between 0 and 1)"
 msgstr ""
 
 #: enhancedROC/options/prevalence.description
@@ -16992,8 +17047,11 @@ msgid "Either Test Positive (Parallel Rule)"
 msgstr ""
 
 #: R/lassologistic.b.R
-#: lassologistic/options/penalty/elasticnet.title
 msgid "Elastic Net"
+msgstr ""
+
+#: lassologistic/options/penalty/elasticnet.title
+msgid "Elastic net"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -17031,7 +17089,7 @@ msgid ""
 msgstr ""
 
 #: agreement/ui[4][3].label
-msgid "Empirical TDI [Continuous] (Prespecified Difference Limit)"
+msgid "Empirical TDI (Prespecified Difference Limit)"
 msgstr ""
 
 #: agreement/results/iccGroup/tdiTable.title
@@ -17360,7 +17418,7 @@ msgstr ""
 
 #: agreement/options/clusterDistance/euclidean.title
 #: agreement/options/caseClusterDistance/euclidean.title
-msgid "Euclidean Distance"
+msgid "Euclidean distance"
 msgstr ""
 
 #: R/agreement.b.R
@@ -17635,7 +17693,7 @@ msgstr ""
 
 #: agreement/options/clusterDistance/agreement.title
 #: agreement/options/caseClusterDistance/agreement.title
-msgid "Exact Agreement (categorical)"
+msgid "Exact agreement (categorical)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -17899,14 +17957,6 @@ msgstr ""
 msgid "Expert consensus"
 msgstr ""
 
-#: psychopdaROC/options/metaAnalysis.title
-msgid "Explain meta-analysis limitation"
-msgstr ""
-
-#: enhancedROC/options/showImbalanceWarning.title
-msgid "Explain the imbalance warning in full"
-msgstr ""
-
 #: cotest/results/explanation.title
 #: sequentialtests/results/explanation_text.title
 msgid "Explanation"
@@ -18140,13 +18190,13 @@ msgstr ""
 #: R/lassologistic.b.R
 #: agreement/results/advancedGroup/perClassMetricsTable.columns.title
 #: decisioncalculator/results/advancedMetricsTable.columns.title
-#: psychopdaROC/options/metric/F1_score.title
 #: psychopdaROC/results/rocComparisonTable.columns.title
 msgid "F1 Score"
 msgstr ""
 
 #: R/decisioncalculator.b.R
 #: R/enhancedROC.b.R
+#: psychopdaROC/options/metric/F1_score.title
 msgid "F1 score"
 msgstr ""
 
@@ -18175,19 +18225,19 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: decision/results/plot1.title
+#: decisioncalculator/results/plot1.title
 msgid "Fagan Nomogram"
 msgstr ""
 
 #: cotest/options/fagan.title
 #: cotest/ui[5][0]/fagan.label
 #: decision/ui[4]/fagan.label
-#: decision/results/plot1.title
-#: decisioncalculator/results/plot1.title
 msgid "Fagan nomogram"
 msgstr ""
 
 #: cotest/results/plot1.title
-msgid "Fagan nomogram - parallel rule (positive if either test is positive)"
+msgid "Fagan Nomogram - Parallel Rule (Positive if Either Test Is Positive)"
 msgstr ""
 
 #: R/decision.b.R
@@ -18297,9 +18347,12 @@ msgid "False Negative"
 msgstr ""
 
 #: R/decisioncompare.b.R
+msgid "False Negative (FN)"
+msgstr ""
+
 #: decisioncalculator/options/FN.title
 #: decisioncalculator/ui[0][0][1][0]/FN.label
-msgid "False Negative (FN)"
+msgid "False negative (FN)"
 msgstr ""
 
 #: decision/results/falseNegativeTable.title
@@ -18335,9 +18388,12 @@ msgid "False Positive"
 msgstr ""
 
 #: R/decisioncompare.b.R
+msgid "False Positive (FP)"
+msgstr ""
+
 #: decisioncalculator/options/FP.title
 #: decisioncalculator/ui[0][0][1][1]/FP.label
-msgid "False Positive (FP)"
+msgid "False positive (FP)"
 msgstr ""
 
 #: decision/results/falsePositiveTable.title
@@ -18585,7 +18641,7 @@ msgid "Finn coefficient (variance-based agreement)"
 msgstr ""
 
 #: agreement/ui[2][3].label
-msgid "Finn Coefficient [Categorical] (Variance-Based)"
+msgid "Finn Coefficient (Variance-Based)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -18694,7 +18750,7 @@ msgid "Fixed Effects"
 msgstr ""
 
 #: psychopdaROC/options/metaAnalysisMethod/fixed.title
-msgid "Fixed Effects Model"
+msgid "Fixed effects model"
 msgstr ""
 
 #: psychopdaROC/options/showFixedROC.title
@@ -18731,7 +18787,7 @@ msgid ""
 msgstr ""
 
 #: psychopdaROC/options/fixedAnalysisType/sensitivity.title
-msgid "Fixed Sensitivity"
+msgid "Fixed sensitivity"
 msgstr ""
 
 #: psychopdaROC/ui[6].label
@@ -18761,7 +18817,7 @@ msgid "Fixed Sensitivity/Specificity ROC Curves"
 msgstr ""
 
 #: psychopdaROC/options/fixedAnalysisType/specificity.title
-msgid "Fixed Specificity"
+msgid "Fixed specificity"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -18818,11 +18874,11 @@ msgid "FN"
 msgstr ""
 
 #: decisioncalculator/options/fn1.title
-msgid "FN (Cut-off 1)"
+msgid "FN (cut-off 1)"
 msgstr ""
 
 #: decisioncalculator/options/fn2.title
-msgid "FN (Cut-off 2)"
+msgid "FN (cut-off 2)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -19036,7 +19092,7 @@ msgid ""
 "supplementary table in\n"
 "                        interobserver reliability studies, complementing the "
 "single overall\n"
-"                        Fleiss kappa."
+"                        Fleiss' kappa."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -19151,11 +19207,11 @@ msgid "FP"
 msgstr ""
 
 #: decisioncalculator/options/fp1.title
-msgid "FP (Cut-off 1)"
+msgid "FP (cut-off 1)"
 msgstr ""
 
 #: decisioncalculator/options/fp2.title
-msgid "FP (Cut-off 2)"
+msgid "FP (cut-off 2)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -19226,7 +19282,7 @@ msgid "Frozen-model evaluation requires an explicit score direction."
 msgstr ""
 
 #: enhancedROC/results/results/frozenMetrics.title
-msgid "Frozen-model performance and paired differences"
+msgid "Frozen-Model Performance and Paired Differences"
 msgstr ""
 
 #: enhancedROC/ui[13].label
@@ -19430,11 +19486,11 @@ msgid "gold standard"
 msgstr ""
 
 #: R/decisioncombine.b.R
+#: decisioncombine/ui[0][0].label
 msgid "Gold Standard (Reference Test)"
 msgstr ""
 
 #: decisioncombine/options/gold.title
-#: decisioncombine/ui[0][0].label
 msgid "Gold standard (reference test)"
 msgstr ""
 
@@ -19555,12 +19611,12 @@ msgid ""
 "because with fewer its intervals were too narrow in simulation."
 msgstr ""
 
-#: agreement/options/heatmapColorScheme/grayscale.title
-msgid "Gray Scale (Print-Friendly)"
-msgstr ""
-
 #: R/agreement.b.R
 msgid "Grayscale"
+msgstr ""
+
+#: agreement/options/heatmapColorScheme/grayscale.title
+msgid "Grayscale (print-friendly)"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -19568,7 +19624,7 @@ msgid "Group"
 msgstr ""
 
 #: psychopdaROC/ui[0][2].label
-msgid "Group variable (optional)"
+msgid "Group Variable (Optional)"
 msgstr ""
 
 #: decisioncombine/results/barPlot.description
@@ -19713,7 +19769,7 @@ msgstr ""
 
 #: agreement/options/clusterMethod/hierarchical.title
 #: agreement/options/caseClusterMethod/hierarchical.title
-msgid "Hierarchical (Dendrogram)"
+msgid "Hierarchical (dendrogram)"
 msgstr ""
 
 #: agreement/results/hierarchicalGroup.title
@@ -19749,7 +19805,7 @@ msgid "Hierarchical/multilevel kappa"
 msgstr ""
 
 #: agreement/ui[2][6].label
-msgid "Hierarchical/Multilevel Kappa [Categorical] (Multi-Center Studies)"
+msgid "Hierarchical/Multilevel Kappa (Multi-Center Studies)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -19924,8 +19980,11 @@ msgid "histopathology including analysis"
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: sequentialtests/options/preset/hiv_screening_confirmation.title
 msgid "HIV Ag/Ab + Differentiation Assay (Illustrative)"
+msgstr ""
+
+#: sequentialtests/options/preset/hiv_screening_confirmation.title
+msgid "HIV Ag/Ab + differentiation assay (illustrative)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -20077,7 +20136,7 @@ msgid "ICC (Intraclass Correlation Coefficient)"
 msgstr ""
 
 #: agreement/ui[4][0].label
-msgid "ICC [Continuous] (Intraclass Correlation)"
+msgid "ICC (Intraclass Correlation)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -20347,7 +20406,7 @@ msgstr ""
 msgid ""
 "If that reading looks reversed for a marker, first check Positive class: is "
 "%s the level that means the condition is present? Only if it is, change "
-"Direction: the AUC becomes 1 minus the value shown, and the cutpoint, "
+"Direction: the AUC becomes 1 minus the value shown, and the cutoff, "
 "sensitivity and specificity are re-estimated."
 msgstr ""
 
@@ -20510,6 +20569,10 @@ msgstr ""
 msgid "Imbalance threshold"
 msgstr ""
 
+#: enhancedROC/options/showImbalanceWarning.title
+msgid "Imbalance warning details"
+msgstr ""
+
 #: R/agreement.b.R
 msgid "Immediately shows which specific disagreements are most common"
 msgstr ""
@@ -20644,7 +20707,7 @@ msgid ""
 "In the simulations of Fluss et al. (2005) this empirical estimator, the most "
 "commonly used, had the worst overall bias and root mean square error of the "
 "four estimators compared (normal, transformed-normal, empirical and kernel); "
-"for the cut-point itself their results were more variable."
+"for the cutoff itself their results were more variable."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -21054,12 +21117,12 @@ msgstr ""
 msgid "Inter-Rater Reliability (Between Raters)"
 msgstr ""
 
-#: agreement/options/interIntraRater.title
-msgid "Inter/intra-rater reliability (test-retest)"
+#: agreement/ui[5][2].label
+msgid "Inter/Intra-Rater Reliability (Test-Retest Studies)"
 msgstr ""
 
-#: agreement/ui[5][2].label
-msgid "Inter/Intra-Rater Reliability [Any Data Type] (Test-Retest Studies)"
+#: agreement/options/interIntraRater.title
+msgid "Inter/intra-rater reliability (test-retest)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -21432,11 +21495,11 @@ msgid "Inverse net benefit"
 msgstr ""
 
 #: enhancedROC/options/nntCalculation.title
-msgid "Inverse net benefit and inverse Youden columns"
+msgid "Inverse net benefit and inverse Youden's index columns"
 msgstr ""
 
 #: enhancedROC/results/results/clinicalImpactTable.columns.title
-msgid "Inverse Youden index"
+msgid "Inverse Youden's index"
 msgstr ""
 
 #: agreement/results/maxwellREGroup/iotaTable.columns.title
@@ -21464,16 +21527,16 @@ msgid ""
 "only, so no confidence interval and no p-value are available."
 msgstr ""
 
+#: agreement/ui[5][1].label
+msgid "Iota Coefficient (Continuous or Categorical, Single Variable)"
+msgstr ""
+
 #: agreement/options/iota.title
 msgid "Iota coefficient (single variable)"
 msgstr ""
 
 #: R/agreement.b.R
 msgid "Iota Coefficient (Single Variable)"
-msgstr ""
-
-#: agreement/ui[5][1].label
-msgid "Iota Coefficient [Continuous or Categorical] (Single Variable)"
 msgstr ""
 
 #: agreement/results/maxwellREGroup/iotaTable.title
@@ -21591,7 +21654,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"It is computed over all cutpoints and does not depend on which cutpoint was "
+"It is computed over all cutoffs and does not depend on which cutoff was "
 "selected."
 msgstr ""
 
@@ -21682,7 +21745,7 @@ msgstr ""
 
 #: agreement/options/clusterMethod/kmeans.title
 #: agreement/options/caseClusterMethod/kmeans.title
-msgid "K-means (Requires K)"
+msgid "K-means (requires K)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -22008,7 +22071,7 @@ msgid "Kendall's W (concordance for rankings)"
 msgstr ""
 
 #: agreement/ui[3][2].label
-msgid "Kendall's W [Ordinal] (Concordance for Rankings)"
+msgid "Kendall's W (Concordance for Rankings)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -22088,6 +22151,7 @@ msgstr ""
 #: decision/options/pp.title
 #: decision/ui[3]/pp.label
 #: decisioncalculator/options/pp.title
+#: decisioncompare/options/pp.title
 msgid "Known population prevalence"
 msgstr ""
 
@@ -22275,11 +22339,11 @@ msgid "LASSO, Ridge, or Elastic Net penalty"
 msgstr ""
 
 #: R/nogoldstandard.b.R
-#: nogoldstandard/options/method/latent_class.title
 msgid "Latent Class Analysis"
 msgstr ""
 
 #: R/nogoldstandard.b.R
+#: nogoldstandard/options/method/latent_class.title
 msgid "Latent class analysis"
 msgstr ""
 
@@ -22436,12 +22500,12 @@ msgstr ""
 msgid "Light's kappa (3+ raters)"
 msgstr ""
 
-#: R/agreement.b.R
-msgid "Light's Kappa (average of pairwise kappas)"
+#: agreement/ui[2][0].label
+msgid "Light's Kappa (3+ Raters)"
 msgstr ""
 
-#: agreement/ui[2][0].label
-msgid "Light's Kappa [Categorical] (3+ Raters)"
+#: R/agreement.b.R
+msgid "Light's Kappa (average of pairwise kappas)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -22610,7 +22674,7 @@ msgid "Lin's CCC"
 msgstr ""
 
 #: agreement/ui[4][2].label
-msgid "Lin's CCC [Continuous] (Concordance - Method Comparison)"
+msgid "Lin's CCC (Concordance, Method Comparison)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -22654,7 +22718,7 @@ msgid "Linear cutoff; empirical rates"
 msgstr ""
 
 #: psychopdaROC/options/fixedInterpolation/linear.title
-msgid "Linear Interpolation"
+msgid "Linear interpolation"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -22666,11 +22730,11 @@ msgid ""
 msgstr ""
 
 #: agreement/options/wght/equal.title
-msgid "Linear Weights (Equal Steps)"
+msgid "Linear weights (equal steps)"
 msgstr ""
 
 #: agreement/options/gwetWeights/linear.title
-msgid "Linear Weights (ordinal)"
+msgid "Linear weights (ordinal)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -22852,7 +22916,7 @@ msgid "Lower CI"
 msgstr ""
 
 #: kappaSizeCI/ui[2][1]/kappaL.label
-msgid "Lower confidence limit (kappaL)"
+msgid "Lower confidence limit (κL)"
 msgstr ""
 
 #: kappaSizeCI/options/kappaL.description.ui
@@ -23074,7 +23138,7 @@ msgid "Macro Average"
 msgstr ""
 
 #: enhancedROC/options/multiClassAveraging/macro.title
-msgid "Macro Average (unweighted)"
+msgid "Macro average (unweighted)"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -23117,7 +23181,7 @@ msgstr ""
 
 #: agreement/options/clusterDistance/manhattan.title
 #: agreement/options/caseClusterDistance/manhattan.title
-msgid "Manhattan Distance"
+msgid "Manhattan distance"
 msgstr ""
 
 #: lassologistic/options/scoreCutMethod/manual.title
@@ -23358,6 +23422,10 @@ msgstr ""
 msgid "Mean Pearson correlation (linear association)"
 msgstr ""
 
+#: agreement/ui[4][1].label
+msgid "Mean Pearson Correlation (Linear Association)"
+msgstr ""
+
 #: agreement/results/iccGroup/meanPearsonTable.title
 msgid "Mean Pearson Correlation (Linear Association) Results"
 msgstr ""
@@ -23374,10 +23442,6 @@ msgid ""
 "{tag9}+1 (perfect positive correlation){tag10}.\n"
 "                        For interrater agreement, high positive values "
 "indicate raters' measurements vary together linearly."
-msgstr ""
-
-#: agreement/ui[4][1].label
-msgid "Mean Pearson Correlation [Continuous] (Linear Association)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -23414,12 +23478,12 @@ msgstr ""
 msgid "Mean Spearman rho (average rank correlation)"
 msgstr ""
 
-#: agreement/results/lightKappaTableGroup/meanSpearmanTable.title
-msgid "Mean Spearman Rho (Average Rank Correlation) Results"
+#: agreement/ui[3][4].label
+msgid "Mean Spearman Rho (Average Rank Correlation)"
 msgstr ""
 
-#: agreement/ui[3][4].label
-msgid "Mean Spearman Rho [Ordinal] (Average Rank Correlation)"
+#: agreement/results/lightKappaTableGroup/meanSpearmanTable.title
+msgid "Mean Spearman Rho (Average Rank Correlation) Results"
 msgstr ""
 
 #: R/agreement.b.R
@@ -23571,6 +23635,10 @@ msgid ""
 "independent studies. No pooled AUC, interval, heterogeneity statistic or "
 "forest plot is computed. Use paired DeLong comparisons for these markers, or "
 "a study-level meta-analysis with independent cohorts."
+msgstr ""
+
+#: psychopdaROC/options/metaAnalysis.title
+msgid "Meta-analysis limitation"
 msgstr ""
 
 #: psychopdaROC/results/metaAnalysisTable.title
@@ -23857,8 +23925,11 @@ msgid "Minimum cases per subgroup"
 msgstr ""
 
 #: R/lassologistic.b.R
-#: lassologistic/options/lambda/lambda.min.title
 msgid "Minimum CV Error"
+msgstr ""
+
+#: lassologistic/options/lambda/lambda.min.title
+msgid "Minimum CV error"
 msgstr ""
 
 #: decisioncompare/options/useOpaCriterion.title
@@ -24045,7 +24116,7 @@ msgid "Mixed-effects condition comparison"
 msgstr ""
 
 #: agreement/ui[6][4].label
-msgid "Mixed-Effects Condition Comparison [Continuous] (AI vs Manual, Pre vs Post)"
+msgid "Mixed-Effects Condition Comparison (Continuous, AI vs Manual, Pre vs Post)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -24057,8 +24128,11 @@ msgid "Mixed-Effects Variance Components"
 msgstr ""
 
 #: R/decisioncombine.b.R
-#: decisioncombine/options/filterPattern/mixed.title
 msgid "Mixed/Discordant"
+msgstr ""
+
+#: decisioncombine/options/filterPattern/mixed.title
+msgid "Mixed/discordant"
 msgstr ""
 
 #: agreement/results/itemModalAgreementTable.columns.title
@@ -24155,7 +24229,7 @@ msgid "Model names"
 msgstr ""
 
 #: decisioncurve/ui[0][1]/modelNames.label
-msgid "Model Names (optional)"
+msgid "Model names (optional)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -24518,7 +24592,7 @@ msgid "Multi-Annotator Concordance"
 msgstr ""
 
 #: agreement/ui[2][8].label
-msgid "Multi-Annotator Concordance [Categorical] (AI Validation)"
+msgid "Multi-Annotator Concordance (AI Validation)"
 msgstr ""
 
 #: agreement/results/advancedGroup/concordanceF1Table.title
@@ -24546,7 +24620,7 @@ msgid "Multi-Class Confusion Matrix"
 msgstr ""
 
 #: agreement/ui[2][7].label
-msgid "Multi-Class Confusion Matrix [Categorical] (Classification Evaluation)"
+msgid "Multi-Class Confusion Matrix (Classification Evaluation)"
 msgstr ""
 
 #: enhancedROC/ui[8].label
@@ -24752,8 +24826,11 @@ msgid "NB = (TP/n) - (FP/n) × pt/(1-pt), where pt is the threshold probability.
 msgstr ""
 
 #: R/psychopdaROC.b.R
-#: psychopdaROC/options/fixedInterpolation/nearest.title
 msgid "Nearest Point"
+msgstr ""
+
+#: psychopdaROC/options/fixedInterpolation/nearest.title
+msgid "Nearest point"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -25601,9 +25678,9 @@ msgstr ""
 msgid ""
 "No headline kappa is reported: Fleiss' kappa for three or more raters is "
 "unweighted, so applying the selected weights would require a different "
-"coefficient and silently showing unweighted Fleiss kappa would not answer "
+"coefficient and silently showing unweighted Fleiss' kappa would not answer "
 "the request. Choose Unweighted for Fleiss' kappa, use ordinal Krippendorff's "
-"alpha or weighted Gwet's AC2, or enable All-Pairs Kappa for weighted Cohen "
+"alpha or weighted Gwet's AC2, or enable All-Pairs Kappa for weighted Cohen's "
 "kappa between each rater pair."
 msgstr ""
 
@@ -26002,12 +26079,6 @@ msgstr ""
 msgid "No threshold separates the groups better than chance in the direction used."
 msgstr ""
 
-#: R/enhancedROC.b.R
-msgid ""
-"no usable cut-point exists - every threshold gives a Youden index of zero or "
-"less"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid ""
 "No usable cut-point exists for this marker in the classification direction "
@@ -26031,6 +26102,12 @@ msgid ""
 "Tolerance or choose another Cutpoint Method or Optimization Metric. The AUC "
 "and its confidence interval in the Area Under the ROC Curve table are "
 "unaffected."
+msgstr ""
+
+#: R/enhancedROC.b.R
+msgid ""
+"no usable cutoff exists - every threshold gives a Youden index of zero or "
+"less"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -26640,7 +26717,7 @@ msgid "Null kappa (H0)"
 msgstr ""
 
 #: kappaSizePower/ui[1][0]/kappa0.label
-msgid "Null kappa (kappa0)"
+msgid "Null kappa (κ₀)"
 msgstr ""
 
 #: R/decision.b.R
@@ -26908,9 +26985,12 @@ msgid "Observed Agreement"
 msgstr ""
 
 #: decisioncalculator/options/showWorkload.title
+msgid "Observed and projected workload"
+msgstr ""
+
 #: decisioncalculator/results/screeningWorkload.title
 #: enhancedROC/results/results/screeningWorkload.title
-msgid "Observed and projected workload"
+msgid "Observed and Projected Workload"
 msgstr ""
 
 #: enhancedROC/results/results/statisticalSummary.columns.title
@@ -27684,11 +27764,6 @@ msgstr ""
 msgid "Ordinal scale with meaningful distances between categories"
 msgstr ""
 
-#: agreement/ui[3][1].label
-msgctxt "Ordinal/Categorical"
-msgid "Pathologist Grading Analysis"
-msgstr ""
-
 #: decisioncompare/options/od.title
 msgid "Original data"
 msgstr ""
@@ -27743,11 +27818,11 @@ msgid "Outcome %1$s has the levels %2$s."
 msgstr ""
 
 #: psychopdaROC/results/outcomeCoding.title
-msgid "Outcome coding: positive and negative classes"
+msgid "Outcome Coding: Positive and Negative Classes"
 msgstr ""
 
 #: enhancedROC/results/results/outcomeCoding.title
-msgid "Outcome coding: which level is positive"
+msgid "Outcome Coding: Which Level Is Positive"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -27811,12 +27886,12 @@ msgid "Outcome Type"
 msgstr ""
 
 #: R/decisioncurve.b.R
+#: decisioncurve/ui[0][0].label
 #: enhancedROC/ui[0][0].label
 msgid "Outcome Variable"
 msgstr ""
 
 #: decisioncurve/options/outcome.title
-#: decisioncurve/ui[0][0].label
 #: enhancedROC/options/outcome.title
 msgid "Outcome variable"
 msgstr ""
@@ -28178,7 +28253,7 @@ msgid "Paired agreement comparison"
 msgstr ""
 
 #: agreement/ui[6][3].label
-msgid "Paired Agreement Comparison [Categorical] (With vs Without AI)"
+msgid "Paired Agreement Comparison (Categorical, With vs Without AI)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -28189,7 +28264,7 @@ msgid ""
 msgstr ""
 
 #: decisioncompare/results/comparatorDifferences.title
-msgid "Paired agreement differences"
+msgid "Paired Agreement Differences"
 msgstr ""
 
 #: R/agreement.b.R
@@ -28240,12 +28315,12 @@ msgstr ""
 msgid "Pairwise Kappa (Each Rater vs Reference)"
 msgstr ""
 
-#: agreement/options/pairwiseKappa.title
-msgid "Pairwise kappa (vs reference)"
+#: agreement/ui[2][5].label
+msgid "Pairwise Kappa (vs Reference Rater)"
 msgstr ""
 
-#: agreement/ui[2][5].label
-msgid "Pairwise Kappa [Categorical] (vs Reference Rater)"
+#: agreement/options/pairwiseKappa.title
+msgid "Pairwise kappa (vs reference)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -28432,7 +28507,7 @@ msgid "Partition audit"
 msgstr ""
 
 #: enhancedROC/ui[0][4].label
-msgid "Partition identifier"
+msgid "Partition Identifier"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -28489,12 +28564,19 @@ msgid "Pathologist"
 msgstr ""
 
 #: R/nogoldstandard.b.R
-#: nogoldstandard/options/clinicalPreset/pathology_agreement.title
 msgid "Pathologist Agreement (example)"
+msgstr ""
+
+#: nogoldstandard/options/clinicalPreset/pathology_agreement.title
+msgid "Pathologist agreement (example)"
 msgstr ""
 
 #: agreement/results/gradingGroup.title
 msgid "Pathologist Grading Analysis"
+msgstr ""
+
+#: agreement/ui[3][1].label
+msgid "Pathologist Grading Analysis (Ordinal or Categorical)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -28556,8 +28638,11 @@ msgid ""
 msgstr ""
 
 #: enhancedROC/options/patientID.title
-#: enhancedROC/ui[0][2].label
 msgid "Patient identifier"
+msgstr ""
+
+#: enhancedROC/ui[0][2].label
+msgid "Patient Identifier"
 msgstr ""
 
 #: enhancedROC/options/patientID.description
@@ -28629,7 +28714,7 @@ msgid "Patient; all of the patient's rows ({unit}) retained"
 msgstr ""
 
 #: agreement/ui[0][6].label
-msgid "Patient/cluster ID (optional)"
+msgid "Patient/Cluster ID (Optional)"
 msgstr ""
 
 #: agreement/options/specificCluster.title
@@ -28877,7 +28962,7 @@ msgid ""
 msgstr ""
 
 #: enhancedROC/options/bootstrapMethod/percentile.title
-msgid "Percentile Method"
+msgid "Percentile method"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -28954,8 +29039,8 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "Perkins & Schisterman (2006) show that this criterion and the Youden index "
-"can choose different cut-points, and that only the Youden index is optimal "
-"with respect to the overall misclassification rate."
+"can choose different cutoffs, and that only the Youden index is optimal with "
+"respect to the overall misclassification rate."
 msgstr ""
 
 #: enhancedROC/results/results/analysisSummary.description
@@ -29196,6 +29281,8 @@ msgid "Population Characteristics:"
 msgstr ""
 
 #: decision/options/pprob.title
+#: decisioncompare/options/pprob.title
+#: decisioncompare/ui[4]/pprob.label
 msgid "Population disease prevalence"
 msgstr ""
 
@@ -29333,13 +29420,13 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Positive class: %1$s. Sensitivity, PPV, LR+, every cut-point and the AUC "
+"Positive class: %1$s. Sensitivity, PPV, LR+, every cutoff and the AUC "
 "describe how well each test detects %1$s; specificity and NPV refer to %2$s."
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Positive class: %1$s. Sensitivity, PPV, LR+, every cut-point and the AUC "
+"Positive class: %1$s. Sensitivity, PPV, LR+, every cutoff and the AUC "
 "describe how well each test detects %1$s; specificity and NPV refer to the "
 "other levels combined (%2$s)."
 msgstr ""
@@ -29430,7 +29517,7 @@ msgid "Positive only"
 msgstr ""
 
 #: decisioncurve/ui[0][0]/outcomePositive.label
-msgid "Positive Outcome"
+msgid "Positive outcome"
 msgstr ""
 
 #: decisioncurve/options/outcomePositive.title
@@ -29966,8 +30053,11 @@ msgid "Predicted"
 msgstr ""
 
 #: lassologistic/options/predictions.title
-#: lassologistic/results/predictions.title
 msgid "Predicted probabilities"
+msgstr ""
+
+#: lassologistic/results/predictions.title
+msgid "Predicted Probabilities"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -30016,8 +30106,11 @@ msgid "Prediction Models/Variables"
 msgstr ""
 
 #: agreement/options/predictionRater.title
-#: agreement/ui[0][5].label
 msgid "Prediction rater (multi-annotator concordance)"
+msgstr ""
+
+#: agreement/ui[0][5].label
+msgid "Prediction Rater (Multi-Annotator Concordance)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -30428,10 +30521,6 @@ msgstr ""
 msgid "Prior prevalence value (0-1)"
 msgstr ""
 
-#: decisioncompare/ui[4]/pprob.label
-msgid "Prior Probability"
-msgstr ""
-
 #: decisioncalculator/options/pprob.description.ui
 #: decisioncompare/options/pprob.description.ui
 msgid ""
@@ -30440,11 +30529,6 @@ msgid ""
 msgstr ""
 
 #: decisioncalculator/options/pprob.title
-msgid "Prior Probability (prevalence)"
-msgstr ""
-
-#: decisioncompare/options/pp.title
-#: decisioncompare/options/pprob.title
 msgid "Prior probability (prevalence)"
 msgstr ""
 
@@ -30835,8 +30919,11 @@ msgid "PSA (Test 1) + digital rectal examination (Test 2)"
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: sequentialtests/options/preset/prostate_screening_exclusion.title
 msgid "PSA + MRI (Illustrative)"
+msgstr ""
+
+#: sequentialtests/options/preset/prostate_screening_exclusion.title
+msgid "PSA + MRI (illustrative)"
 msgstr ""
 
 #: cotest/options/preset/psa_dre.title
@@ -30873,7 +30960,7 @@ msgid "Q p-value"
 msgstr ""
 
 #: agreement/options/gwetWeights/quadratic.title
-msgid "Quadratic Weights (ordinal)"
+msgid "Quadratic weights (ordinal)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -30929,7 +31016,7 @@ msgid "quartile-based, from the data"
 msgstr ""
 
 #: agreement/options/loaThresholds/quartiles.title
-msgid "Quartiles (Data-Driven)"
+msgid "Quartiles (data-driven)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -31010,7 +31097,7 @@ msgid "Random Effects"
 msgstr ""
 
 #: psychopdaROC/options/metaAnalysisMethod/random.title
-msgid "Random Effects Model (DerSimonian-Laird)"
+msgid "Random effects model (DerSimonian-Laird)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -31251,12 +31338,12 @@ msgstr ""
 msgid "Rater Variance Decomposition - Systematic vs Random Disagreement"
 msgstr ""
 
-#: agreement/options/maxwellRE.title
-msgid "Rater variance decomposition (systematic vs random)"
+#: agreement/ui[4][5].label
+msgid "Rater Variance Decomposition (Systematic vs Random Disagreement)"
 msgstr ""
 
-#: agreement/ui[4][5].label
-msgid "Rater Variance Decomposition [Continuous] (Systematic vs Random Disagreement)"
+#: agreement/options/maxwellRE.title
+msgid "Rater variance decomposition (systematic vs random)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -31507,7 +31594,7 @@ msgid ""
 msgstr ""
 
 #: agreement/options/heatmapColorScheme/traffic.title
-msgid "Red-Yellow-Green (Traffic Light)"
+msgid "Red-yellow-green (traffic light)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -31542,7 +31629,7 @@ msgstr ""
 
 #: decision/results/referenceDefinition.title
 #: decisioncompare/results/referenceDefinition.title
-msgid "Reference and target"
+msgid "Reference and Target"
 msgstr ""
 
 #: R/lassologistic.b.R
@@ -31684,7 +31771,7 @@ msgid "Reference test for IDI/NRI"
 msgstr ""
 
 #: psychopdaROC/ui[0][4].label
-msgid "Reference test for IDI/NRI (optional)"
+msgid "Reference Test for IDI/NRI (Optional)"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -31927,7 +32014,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Reporting a cut-point and a sensitivity from this analysis would misdescribe "
+"Reporting a cutoff and a sensitivity from this analysis would misdescribe "
 "the marker."
 msgstr ""
 
@@ -31942,7 +32029,7 @@ msgid "Reporting Options"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "Reporting per-category agreement alongside an overall Fleiss kappa"
+msgid "Reporting per-category agreement alongside an overall Fleiss' kappa"
 msgstr ""
 
 #: R/decision.b.R
@@ -32043,8 +32130,11 @@ msgid "Research (multi-rater study reliability)"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/clinicalPresets/research_comprehensive.title
 msgid "Research (Youden with Your Minimums)"
+msgstr ""
+
+#: enhancedROC/options/clinicalPresets/research_comprehensive.title
+msgid "Research (Youden's index with your minimums)"
 msgstr ""
 
 #: R/kappaSizeFixedN.b.R
@@ -32090,8 +32180,11 @@ msgid "Resource utilization projected to the selected population size"
 msgstr ""
 
 #: R/sequentialtests.b.R
-#: sequentialtests/options/preset/covid_screening_confirmation.title
 msgid "Respiratory Testing (Illustrative)"
+msgstr ""
+
+#: sequentialtests/options/preset/covid_screening_confirmation.title
+msgid "Respiratory testing (illustrative)"
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -32113,7 +32206,7 @@ msgid "Result"
 msgstr ""
 
 #: kappaSizePower/results/text1.title
-msgid "Result by the published formula (kappaSize)"
+msgid "Result by the Published Formula"
 msgstr ""
 
 #: R/decision.b.R
@@ -32234,16 +32327,16 @@ msgid ""
 "enter as their level codes (G1 = 1, G2 = 2, ...)."
 msgstr ""
 
+#: agreement/ui[3][3].label
+msgid "Robinson's A (Agreement Index)"
+msgstr ""
+
 #: agreement/options/robinsonA.title
 msgid "Robinson's A (ordinal agreement index)"
 msgstr ""
 
 #: agreement/results/lightKappaTableGroup/robinsonATable.title
 msgid "Robinson's A (Ordinal Agreement Index) Results"
-msgstr ""
-
-#: agreement/ui[3][3].label
-msgid "Robinson's A [Ordinal] (Agreement Index)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -32975,8 +33068,11 @@ msgid "Screening Test"
 msgstr ""
 
 #: R/nogoldstandard.b.R
-#: nogoldstandard/options/clinicalPreset/screening_evaluation.title
 msgid "Screening Test Assessment (example)"
+msgstr ""
+
+#: nogoldstandard/options/clinicalPreset/screening_evaluation.title
+msgid "Screening test assessment (example)"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -33429,18 +33525,18 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "Sensitivity %1$.2f and specificity %2$.2f, both at or above 0.80 at this "
-"cutpoint."
+"cutoff."
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "Sensitivity %1$.2f, specificity %2$.2f at this cutpoint."
+msgid "Sensitivity %1$.2f, specificity %2$.2f at this cutoff."
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Sensitivity %1$.2f, specificity %2$.2f: at this cutpoint few cases were "
-"missed in this sample. What share of the positive results are true positives "
-"is not fixed by these two numbers; it also depends on prevalence."
+"Sensitivity %1$.2f, specificity %2$.2f: at this cutoff few cases were missed "
+"in this sample. What share of the positive results are true positives is not "
+"fixed by these two numbers; it also depends on prevalence."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -33608,7 +33704,7 @@ msgid ""
 msgstr ""
 
 #: enhancedROC/options/partialAucType/sensitivity.title
-msgid "Sensitivity Range (for high-sensitivity applications)"
+msgid "Sensitivity range (for high-sensitivity applications)"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -33617,24 +33713,23 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Sensitivity, PPV, LR+, every cut-point and the AUC describe the level you "
+"Sensitivity, PPV, LR+, every cutoff and the AUC describe the level you "
 "choose; every other level is analyzed as negative."
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Sensitivity, specificity and accuracy are reported at a cutpoint that was "
+"Sensitivity, specificity and accuracy are reported at a cutoff that was "
 "searched for on these same data, so they are optimistic; they are not "
 "cross-validated or externally validated estimates."
 msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Sensitivity, specificity and accuracy compare each marker at its own "
-"cut-point, chosen on these same patients. McNemar's test (asymptotic, no "
-"continuity correction) treats both cut-points as fixed in advance, so its "
-"p-values ignore that selection. Rows with fewer than 10 discordant patients "
-"are not tested."
+"Sensitivity, specificity and accuracy compare each marker at its own cutoff, "
+"chosen on these same patients. McNemar's test (asymptotic, no continuity "
+"correction) treats both cutoffs as fixed in advance, so its p-values ignore "
+"that selection. Rows with fewer than 10 discordant patients are not tested."
 msgstr ""
 
 #: decision/results/epirTable_ratio.title
@@ -34050,7 +34145,7 @@ msgid "Simple (3 categories)"
 msgstr ""
 
 #: agreement/options/consensusRule/majority.title
-msgid "Simple Majority (>50 percent)"
+msgid "Simple majority (>50 percent)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -34109,12 +34204,15 @@ msgstr ""
 
 #: agreement/options/clusterLinkage/single.title
 #: agreement/options/caseClusterLinkage/single.title
-msgid "Single Linkage (Nearest Neighbor)"
+msgid "Single linkage (nearest neighbor)"
 msgstr ""
 
 #: R/enhancedROC.b.R
-#: enhancedROC/options/analysisType/single.title
 msgid "Single ROC Analysis"
+msgstr ""
+
+#: enhancedROC/options/analysisType/single.title
+msgid "Single ROC analysis"
 msgstr ""
 
 #: R/decisioncombine.b.R
@@ -34146,8 +34244,11 @@ msgid "Site"
 msgstr ""
 
 #: enhancedROC/options/siteID.title
-#: enhancedROC/ui[0][3].label
 msgid "Site identifier"
+msgstr ""
+
+#: enhancedROC/ui[0][3].label
+msgid "Site Identifier"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -34479,7 +34580,7 @@ msgid "Specific agreement indices (category-focused)"
 msgstr ""
 
 #: agreement/ui[2][4].label
-msgid "Specific Agreement Indices [Categorical] (Category-Focused)"
+msgid "Specific Agreement Indices (Category-Focused)"
 msgstr ""
 
 #: agreement/options/specificCIMethod.title
@@ -34603,7 +34704,7 @@ msgid "Specificity Range"
 msgstr ""
 
 #: enhancedROC/options/partialAucType/specificity.title
-msgid "Specificity Range (for high-specificity applications)"
+msgid "Specificity range (for high-specificity applications)"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -34681,7 +34782,7 @@ msgid "Sputum microscopy"
 msgstr ""
 
 #: agreement/options/wght/squared.title
-msgid "Squared Weights (Severity Weighted)"
+msgid "Squared weights (severity weighted)"
 msgstr ""
 
 #: decisioncurve/options/plotStyle/standard.title
@@ -34931,12 +35032,15 @@ msgid ""
 msgstr ""
 
 #: decisioncurve/ui[1][0][0]/thresholdStep.label
-msgid "Step Size"
+msgid "Step size"
 msgstr ""
 
 #: R/psychopdaROC.b.R
-#: psychopdaROC/options/fixedInterpolation/stepwise.title
 msgid "Stepwise (Conservative)"
+msgstr ""
+
+#: psychopdaROC/options/fixedInterpolation/stepwise.title
+msgid "Stepwise (conservative)"
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -35110,12 +35214,12 @@ msgstr ""
 msgid "Strong warning"
 msgstr ""
 
-#: agreement/options/stuartMaxwell.title
-msgid "Stuart-Maxwell test (marginal homogeneity for 2 raters)"
+#: agreement/ui[6][2].label
+msgid "Stuart-Maxwell Test (Categorical, Marginal Homogeneity, 2 Raters)"
 msgstr ""
 
-#: agreement/ui[6][2].label
-msgid "Stuart-Maxwell Test [Categorical] (Marginal Homogeneity, 2 Raters)"
+#: agreement/options/stuartMaxwell.title
+msgid "Stuart-Maxwell test (marginal homogeneity for 2 raters)"
 msgstr ""
 
 #: agreement/results/raterBiasGroup/stuartMaxwellTable.title
@@ -35306,7 +35410,7 @@ msgstr ""
 
 #: kappaSizeFixedN/results/text_summary.title
 #: kappaSizePower/results/text_summary.title
-msgid "Summary by the published formula (kappaSize)"
+msgid "Summary by the Published Formula"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -35581,7 +35685,7 @@ msgid "tertile-based, from the data"
 msgstr ""
 
 #: agreement/options/loaThresholds/tertiles.title
-msgid "Tertiles (Data-Driven)"
+msgid "Tertiles (data-driven)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -35667,11 +35771,11 @@ msgid "Test 1 - Recoded Data"
 msgstr ""
 
 #: R/decisioncombine.b.R
+#: decisioncombine/ui[0][1].label
 msgid "Test 1 (Required)"
 msgstr ""
 
 #: decisioncombine/options/test1.title
-#: decisioncombine/ui[0][1].label
 #: decisioncompare/options/test1.title
 msgid "Test 1 (required)"
 msgstr ""
@@ -35764,11 +35868,11 @@ msgid "Test 2 - Recoded Data"
 msgstr ""
 
 #: R/decisioncombine.b.R
+#: decisioncombine/ui[0][2].label
 msgid "Test 2 (Required for Combinations)"
 msgstr ""
 
 #: decisioncombine/options/test2.title
-#: decisioncombine/ui[0][2].label
 msgid "Test 2 (required for combinations)"
 msgstr ""
 
@@ -35861,12 +35965,12 @@ msgid "Test 3 - Recoded Data"
 msgstr ""
 
 #: R/decisioncombine.b.R
+#: decisioncombine/ui[0][3].label
 #: nogoldstandard/ui[0][2].label
 msgid "Test 3 (Optional)"
 msgstr ""
 
 #: decisioncombine/options/test3.title
-#: decisioncombine/ui[0][3].label
 #: decisioncompare/options/test3.title
 msgid "Test 3 (optional)"
 msgstr ""
@@ -36122,8 +36226,11 @@ msgid "Test variable levels excluded from analysis: {lvls}"
 msgstr ""
 
 #: psychopdaROC/options/dependentVars.title
-#: psychopdaROC/ui[0][0].label
 msgid "Test variables"
+msgstr ""
+
+#: psychopdaROC/ui[0][0].label
+msgid "Test Variables"
 msgstr ""
 
 #: R/decision.b.R
@@ -36257,7 +36364,7 @@ msgid ""
 "the AUC confidence intervals, the tests comparing markers and the confidence "
 "intervals for sensitivity and specificity are too narrow, and p-values too "
 "small. • Analyze one row per patient (for example a patient-level score), or "
-"• for a fixed model with a prespecified cut-off, enable the Frozen-model "
+"• for a fixed model with a prespecified cutoff, enable the Frozen-model "
 "validation report, whose intervals resample whole patients (every row of a "
 "patient must then share one outcome)."
 msgstr ""
@@ -36663,8 +36770,8 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "The Clopper-Pearson intervals for sensitivity and specificity in the "
-"Diagnostic Performance table treat this cutpoint as fixed in advance, so "
-"they are centered on these optimistic values and understate the uncertainty."
+"Diagnostic Performance table treat this cutoff as fixed in advance, so they "
+"are centered on these optimistic values and understate the uncertainty."
 msgstr ""
 
 #: R/agreement.b.R
@@ -36884,13 +36991,13 @@ msgid ""
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid ""
-"The cut-point was chosen on these same data, so the sensitivity, specificity "
-"and accuracy reported at it are optimistic."
+msgid "The cutoff is infinite, so everyone is classified the same way."
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid "The cutoff is infinite, so everyone is classified the same way."
+msgid ""
+"The cutoff was chosen on these same data, so the sensitivity, specificity "
+"and accuracy reported at it are optimistic."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -37051,9 +37158,9 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "The displayed ROC curve is smoothed (%s), but every reported statistic — "
-"AUC, confidence intervals, optimal cut-points and all "
-"sensitivity/specificity values — is computed from the empirical curve. A "
-"smoothed curve carries no thresholds, so it cannot produce a cut-point."
+"AUC, confidence intervals, optimal cutoffs and all sensitivity/specificity "
+"values — is computed from the empirical curve. A smoothed curve carries no "
+"thresholds, so it cannot produce a cutoff."
 msgstr ""
 
 #: R/psychopdaROC.b.R
@@ -37474,7 +37581,7 @@ msgstr ""
 #: R/enhancedROC.b.R
 msgid ""
 "The hull is {gap} above the empirical AUC; points between empirical "
-"operating points are reachable only by randomly mixing two cut-offs (Provost "
+"operating points are reachable only by randomly mixing two cutoffs (Provost "
 "& Fawcett 2001); in-sample and optimistic"
 msgstr ""
 
@@ -38648,9 +38755,9 @@ msgid ""
 "with a skewed marker or an outlying value. Calibration, the Brier score, the "
 "Hosmer-Lemeshow test, the decision and clinical impact curves and internal "
 "validation use that fitted model, the risk model the data support, which "
-"ranks patients the opposite way to the ROC, cut-point and fixed-cutoff "
-"tables; they do not describe %1$s as those tables read it, and can disagree "
-"with them. A log or rank transformation of the marker usually removes the "
+"ranks patients the opposite way to the ROC, cutoff and fixed-cutoff tables; "
+"they do not describe %1$s as those tables read it, and can disagree with "
+"them. A log or rank transformation of the marker usually removes the "
 "conflict."
 msgstr ""
 
@@ -38745,9 +38852,9 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"The search was restricted to cut-points with sensitivity of at least %1$s "
-"and specificity of at least %2$s; where none met both, the unconstrained "
-"optimum was used and a notice says so."
+"The search was restricted to cutoffs with sensitivity of at least %1$s and "
+"specificity of at least %2$s; where none met both, the unconstrained optimum "
+"was used and a notice says so."
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -38782,17 +38889,17 @@ msgid ""
 "still carry ordinary sampling error."
 msgstr ""
 
+#: R/enhancedROC.b.R
+msgid ""
+"The sensitivity and specificity quoted at the selected cutoff are a separate "
+"matter: those ARE optimistic, because that cutoff was searched for on these "
+"same data."
+msgstr ""
+
 #: R/psychopdaROC.b.R
 msgid ""
 "The sensitivity and specificity quoted at the selected cutpoint are a "
 "separate matter: those are optimistic, because that cutpoint was searched "
-"for on these same data."
-msgstr ""
-
-#: R/enhancedROC.b.R
-msgid ""
-"The sensitivity and specificity quoted at the selected cutpoint are a "
-"separate matter: those ARE optimistic, because that cutpoint was searched "
 "for on these same data."
 msgstr ""
 
@@ -38875,7 +38982,7 @@ msgid ""
 "of the AUC from 1 (from 0 for an AUC below 0.5): it was about 93%% wherever "
 "that product was 6, so this warning appears when the smaller group has fewer "
 "than 30 patients or that product is below 6 (fewer than 60 patients at an "
-"AUC of 0.90, fewer than 120 at 0.95); the cut-off is a heuristic. • Read the "
+"AUC of 0.90, fewer than 120 at 0.95); the cutoff is a heuristic. • Read the "
 "interval as approximate and probably too narrow. • Bootstrap confidence "
 "intervals are an alternative, but no method is exact at this size, and no "
 "bootstrap interval can be formed when the groups are perfectly separated."
@@ -39593,8 +39700,8 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"This AUC is apparent (in-sample), and where a cutpoint was searched for on "
-"these data the cutpoint metrics are optimistic. Independent validation is "
+"This AUC is apparent (in-sample), and where a cutoff was searched for on "
+"these data the cutoff metrics are optimistic. Independent validation is "
 "needed before these figures describe performance in new patients."
 msgstr ""
 
@@ -39891,7 +39998,7 @@ msgid ""
 "This outcome is numeric with %s distinct values, so it looks like a "
 "measurement rather than a two-level outcome (condition present / absent). "
 "Choose a different outcome variable, or a 0/1 variable made from this one at "
-"a clinically justified cut-off."
+"a clinically justified cutoff."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -40239,11 +40346,11 @@ msgid "TN"
 msgstr ""
 
 #: decisioncalculator/options/tn1.title
-msgid "TN (Cut-off 1)"
+msgid "TN (cut-off 1)"
 msgstr ""
 
 #: decisioncalculator/options/tn2.title
-msgid "TN (Cut-off 2)"
+msgid "TN (cut-off 2)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -40456,11 +40563,11 @@ msgid "TP"
 msgstr ""
 
 #: decisioncalculator/options/tp1.title
-msgid "TP (Cut-off 1)"
+msgid "TP (cut-off 1)"
 msgstr ""
 
 #: decisioncalculator/options/tp2.title
-msgid "TP (Cut-off 2)"
+msgid "TP (cut-off 2)"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -40591,9 +40698,12 @@ msgid "True Negative"
 msgstr ""
 
 #: R/decisioncompare.b.R
+msgid "True Negative (TN)"
+msgstr ""
+
 #: decisioncalculator/options/TN.title
 #: decisioncalculator/ui[0][0][1][1]/TN.label
-msgid "True Negative (TN)"
+msgid "True negative (TN)"
 msgstr ""
 
 #: sequentialtests/results/population_flow_table.columns.title
@@ -40612,9 +40722,12 @@ msgid "True Positive"
 msgstr ""
 
 #: R/decisioncompare.b.R
+msgid "True Positive (TP)"
+msgstr ""
+
 #: decisioncalculator/options/TP.title
 #: decisioncalculator/ui[0][0][1][0]/TP.label
-msgid "True Positive (TP)"
+msgid "True positive (TP)"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -40651,8 +40764,11 @@ msgid ""
 msgstr ""
 
 #: R/nogoldstandard.b.R
-#: nogoldstandard/options/clinicalPreset/tumor_markers.title
 msgid "Tumor Marker Evaluation (example)"
+msgstr ""
+
+#: nogoldstandard/options/clinicalPreset/tumor_markers.title
+msgid "Tumor marker evaluation (example)"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -41039,7 +41155,7 @@ msgid "Unweighted (AC1 for nominal)"
 msgstr ""
 
 #: agreement/options/wght/unweighted.title
-msgid "Unweighted (Standard)"
+msgid "Unweighted (standard)"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -41079,7 +41195,7 @@ msgid "Upper CI"
 msgstr ""
 
 #: kappaSizeCI/ui[2][2]/kappaU.label
-msgid "Upper confidence limit (kappaU)"
+msgid "Upper confidence limit (κU)"
 msgstr ""
 
 #: kappaSizeCI/options/kappaU.description.ui
@@ -41281,15 +41397,18 @@ msgid "Validation & Model Performance"
 msgstr ""
 
 #: decision/options/showValidationContext.title
-#: decision/results/validationContext.title
 #: decisioncompare/options/showValidationContext.title
-#: decisioncompare/results/validationContext.title
-#: enhancedROC/results/results/validationContext.title
 msgid "Validation context"
 msgstr ""
 
+#: decision/results/validationContext.title
+#: decisioncompare/results/validationContext.title
+#: enhancedROC/results/results/validationContext.title
+msgid "Validation Context"
+msgstr ""
+
 #: enhancedROC/results/results/denominatorLedger.title
-msgid "Validation denominator ledger"
+msgid "Validation Denominator Ledger"
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -41624,7 +41743,7 @@ msgid ""
 msgstr ""
 
 #: agreement/options/raterProfileType/violin.title
-msgid "Violin Plot (Full Distribution)"
+msgid "Violin plot (full distribution)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -41638,7 +41757,7 @@ msgid "Viridis"
 msgstr ""
 
 #: agreement/options/heatmapColorScheme/viridis.title
-msgid "Viridis (Colorblind-Friendly)"
+msgid "Viridis (colorblind-friendly)"
 msgstr ""
 
 #: R/decision.b.R
@@ -41682,12 +41801,12 @@ msgid ""
 msgstr ""
 
 #: agreement/options/kappaCIMethod/wald.title
-msgid "Wald (symmetric, matches psych::cohen.kappa)"
+msgid "Wald (symmetric)"
 msgstr ""
 
 #: agreement/options/clusterLinkage/ward.title
 #: agreement/options/caseClusterLinkage/ward.title
-msgid "Ward Linkage (Minimum Variance)"
+msgid "Ward linkage (minimum variance)"
 msgstr ""
 
 #: R/cotest.b.R
@@ -41809,7 +41928,7 @@ msgid ""
 msgstr ""
 
 #: enhancedROC/options/multiClassAveraging/weighted.title
-msgid "Weighted Average (by prevalence)"
+msgid "Weighted average (by prevalence)"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -42454,9 +42573,9 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Where several cut-points tie on this criterion (ties are found exactly from "
-"the counts), this module reports the one closest to the top-left corner and "
-"then the smallest cutoff; a notice lists the alternatives."
+"Where several cutoffs tie on this criterion (ties are found exactly from the "
+"counts), this module reports the one closest to the top-left corner and then "
+"the smallest cutoff; a notice lists the alternatives."
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -42512,11 +42631,8 @@ msgid "Width of ROC plots"
 msgstr ""
 
 #: R/decisioncompare.b.R
-msgid "Wilson score"
-msgstr ""
-
 #: decisioncompare/options/ciMethod/wilson.title
-msgid "Wilson Score"
+msgid "Wilson score"
 msgstr ""
 
 #: decisioncombine/results/combinationTableCI.description
@@ -42882,27 +42998,9 @@ msgid ""
 "positive case."
 msgstr ""
 
-#: decisioncalculator/results/multipleCutoffTable.columns.title
-#: enhancedROC/results/results/optimalCutoffSummary.columns.title
-#: enhancedROC/results/results/cutoffAnalysis.columns.title
-msgid "Youden Index"
-msgstr ""
-
 #: R/enhancedROC.b.R
 #: R/lassologistic.b.R
 msgid "Youden index"
-msgstr ""
-
-#: psychopdaROC/options/method/oc_youden_kernel.title
-msgid "Youden Index (kernel smoothed)"
-msgstr ""
-
-#: psychopdaROC/options/method/oc_youden_normal.title
-msgid "Youden Index (parametric normal)"
-msgstr ""
-
-#: psychopdaROC/options/metric/youden.title
-msgid "Youden Index (Sens + Spec - 1)"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -42910,13 +43008,7 @@ msgid "Youden Index (Sensitivity + Specificity - 1)"
 msgstr ""
 
 #: R/enhancedROC.b.R
-msgid ""
-"Youden index %1$.2f at this cutpoint (sensitivity %2$.2f, specificity "
-"%3$.2f)."
-msgstr ""
-
-#: enhancedROC/options/youdenOptimization.title
-msgid "Youden index optimization"
+msgid "Youden index %1$.2f at this cutoff (sensitivity %2$.2f, specificity %3$.2f)."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -42927,10 +43019,6 @@ msgid ""
 "to Youden optimization and were not used, so a reported cutoff may fall "
 "below them. Turn Youden index optimization on to restrict the search to "
 "cutoffs that meet these minimums."
-msgstr ""
-
-#: enhancedROC/results/results/youdenIndexPlot.title
-msgid "Youden Index Optimization Plot"
 msgstr ""
 
 #: enhancedROC/results/results/optimalCutoffSummary.description
@@ -42954,7 +43042,6 @@ msgid "Youden Index vs Threshold"
 msgstr ""
 
 #: R/decision.b.R
-#: decisioncalculator/results/advancedMetricsTable.columns.title
 msgid "Youden's Index"
 msgstr ""
 
@@ -42966,6 +43053,18 @@ msgstr ""
 
 #: R/decisioncalculator.b.R
 msgid "Youden's index (J)"
+msgstr ""
+
+#: psychopdaROC/options/method/oc_youden_kernel.title
+msgid "Youden's index (kernel smoothed)"
+msgstr ""
+
+#: psychopdaROC/options/method/oc_youden_normal.title
+msgid "Youden's index (parametric normal)"
+msgstr ""
+
+#: psychopdaROC/options/metric/youden.title
+msgid "Youden's index (Sens + Spec - 1)"
 msgstr ""
 
 #: R/decisioncalculator.b.R
@@ -43047,10 +43146,22 @@ msgid ""
 "to 1 if both sensitivity and specificity are high (i.e. close to 1)."
 msgstr ""
 
+#: enhancedROC/options/youdenOptimization.title
+msgid "Youden's index optimization"
+msgstr ""
+
+#: enhancedROC/results/results/youdenIndexPlot.title
+msgid "Youden's Index Optimization Plot"
+msgstr ""
+
 #: R/decisioncombine.b.R
+#: decisioncalculator/results/advancedMetricsTable.columns.title
+#: decisioncalculator/results/multipleCutoffTable.columns.title
 #: decisioncombine/options/filterStatistic/youden.title
 #: decisioncombine/results/combinationTable.columns.title
 #: decisioncombine/results/recommendationTable.columns.title
+#: enhancedROC/results/results/optimalCutoffSummary.columns.title
+#: enhancedROC/results/results/cutoffAnalysis.columns.title
 #: psychopdaROC/results/resultsTable.template.columns.title
 #: psychopdaROC/results/thresholdTable.columns.title
 #: psychopdaROC/results/fixedSensSpecTable.columns.title

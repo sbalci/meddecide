@@ -54,6 +54,15 @@ their defaults (see the R note).
 - **Clinical ROC Analysis plots follow jamovi's theme.** Plot theme has a new first choice,
   "jamovi (follow global)", which is now the default, so these plots match the rest of the
   document. Classic, Modern and Clinical (the previous default) are still there to override it.
+- **One label style.** Variable boxes and result titles are in title case; options and list
+  choices in sentence case. Youden's index has one name (columns: "Youden's J"); "95% confidence
+  intervals" reads the same in Medical Decision, the Medical Decision Calculator and Compare
+  Medical Decision Tests; and two options that shared a title now have their own ("Known
+  population prevalence" and "Population disease prevalence"; "Bootstrap interval for
+  Krippendorff's alpha"). The kappa sample-size labels write κ₀ instead of the R argument name kappa0, the prevalence
+  box gives its real range (between 0 and 1), Interrater Reliability's percent boxes show "%",
+  and its method headings use one style of brackets. Clinical ROC Analysis says "cutoff"
+  throughout. Only labels changed: saved analyses and R calls work as before.
 - **Validation context boxes greyed when unused.** In Medical Decision, cohort role, sampling
   design, threshold source, model version and unit of observation are greyed until Validation
   context is ticked, as they already were in Compare Medical Decision Tests.

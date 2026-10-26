@@ -2290,7 +2290,7 @@
             "{tag1}Specific Agreement Values:{tag2}": [
                 ""
             ],
-            "{tag1}Standardizing does nothing in this scope.{tag2} Standardization exists to equalise the contribution of several variables. With one variable it is an affine rescaling, which leaves the coefficient unchanged.": [
+            "{tag1}Standardizing does nothing in this scope.{tag2} Standardization exists to equalize the contribution of several variables. With one variable it is an affine rescaling, which leaves the coefficient unchanged.": [
                 ""
             ],
             "{tag1}Statistical issue:{tag2} Low variance between raters makes kappa unstable": [
@@ -2872,7 +2872,7 @@
             "%1$s has a value for %2$d case(s) of the positive class (%3$s); at least 2 are needed to analyze it.": [
                 ""
             ],
-            "%1$s has an AUC of %2$s and its whole confidence interval lies below 0.5: it separates the groups, but in the opposite direction to the one assumed (%3$s). • First check Positive class: is %4$s the level that means the condition is present? Naming the wrong level turns the AUC into 1 minus its true value, exactly this pattern. • Only if it is, setting Direction to '%5$s' gives an AUC of %6$s and re-estimates the cut-point, sensitivity and specificity. • Change Direction only if that matches what the marker means clinically.": [
+            "%1$s has an AUC of %2$s and its whole confidence interval lies below 0.5: it separates the groups, but in the opposite direction to the one assumed (%3$s). • First check Positive class: is %4$s the level that means the condition is present? Naming the wrong level turns the AUC into 1 minus its true value, exactly this pattern. • Only if it is, setting Direction to '%5$s' gives an AUC of %6$s and re-estimates the cutoff, sensitivity and specificity. • Change Direction only if that matches what the marker means clinically.": [
                 ""
             ],
             "%1$s has an AUC of %2$s, below the 0.5 expected from a coin toss, and no confidence interval could be formed for it, so these data cannot show whether the marker runs backwards. • If you expected it to run the other way, first check Positive class (is %3$s the level that means the condition is present?), then Direction, before drawing any conclusion.": [
@@ -2884,10 +2884,10 @@
             "%1$s has an AUC of %2$s, below the 0.5 expected from a coin toss, but its confidence interval still crosses 0.5. • With Direction set to auto the direction is read from these same data, so a marker carrying no information at all falls below 0.5 less often than with a fixed direction: about 1 in 9 at 10 positive and 10 negative patients, rising toward 1 in 6 in large samples. This is still not evidence that the marker runs backwards. • It is consistent with a marker that simply does not discriminate. • If you expected it to run the other way, first check Positive class (is %3$s the level that means the condition is present?), then Direction, before drawing any conclusion.": [
                 ""
             ],
-            "%1$s has an AUC of 0: in these data it separates the groups perfectly, but in the opposite direction to the one assumed (%2$s). • First check Positive class: is %3$s the level that means the condition is present? Naming the wrong level turns the AUC into 1 minus its true value, exactly this pattern. • Only if it is, setting Direction to '%4$s' gives an AUC of 1 and re-estimates the cut-point, sensitivity and specificity. • Change Direction only if that matches what the marker means clinically.": [
+            "%1$s has an AUC of 0: in these data it separates the groups perfectly, but in the opposite direction to the one assumed (%2$s). • First check Positive class: is %3$s the level that means the condition is present? Naming the wrong level turns the AUC into 1 minus its true value, exactly this pattern. • Only if it is, setting Direction to '%4$s' gives an AUC of 1 and re-estimates the cutoff, sensitivity and specificity. • Change Direction only if that matches what the marker means clinically.": [
                 ""
             ],
-            "%1$s has the same value (%2$s) in every analyzed row, so it cannot separate the groups: its AUC is 0.5 by construction and no cut-point exists. Choose a predictor that varies, or check how the data were imported.": [
+            "%1$s has the same value (%2$s) in every analyzed row, so it cannot separate the groups: its AUC is 0.5 by construction and no cutoff exists. Choose a predictor that varies, or check how the data were imported.": [
                 ""
             ],
             "%1$s logistic regression with %2$s lambda selection and %3$d-fold cross-validation was applied to %4$d candidate variables (%5$d model terms after dummy coding) in %6$d independent observations (%7$d events, %8$d non-events).": [
@@ -3085,7 +3085,7 @@
             "%s%% confidence intervals for the AUC use DeLong's method (DeLong et al., 1988).": [
                 ""
             ],
-            "%s%% intervals for sensitivity and specificity are Clopper-Pearson exact binomial intervals (Clopper & Pearson, 1934); they treat the cut-point as fixed and do not reflect its selection on these data.": [
+            "%s%% intervals for sensitivity and specificity are Clopper-Pearson exact binomial intervals (Clopper & Pearson, 1934); they treat the cutoff as fixed and do not reflect its selection on these data.": [
                 ""
             ],
             "%sx increase": [
@@ -3886,7 +3886,7 @@
             "100(1 - alpha)": [
                 ""
             ],
-            "1SE Rule (More Parsimonious)": [
+            "1SE rule (more parsimonious)": [
                 ""
             ],
             "1SE Rule (parsimonious)": [
@@ -3986,12 +3986,6 @@
                 ""
             ],
             "5. Treatment Response Priority Ranking (Clinical Trial Design):": [
-                ""
-            ],
-            "95 percent CI": [
-                ""
-            ],
-            "95 percent confidence intervals": [
                 ""
             ],
             "95% CI": [
@@ -4390,7 +4384,7 @@
             "About the Pathologist Grading Analysis": [
                 ""
             ],
-            "About the rater variance decomposition": [
+            "About the Rater Variance Decomposition": [
                 ""
             ],
             "about the same as the prevalence": [
@@ -4648,7 +4642,7 @@
             "Agreement by Item Modal Category": [
                 ""
             ],
-            "Agreement by stratum": [
+            "Agreement by Stratum": [
                 ""
             ],
             "Agreement by Subgroup (Stratified Analysis)": [
@@ -4663,13 +4657,13 @@
             "Agreement for a design in which every case belongs to one cluster (institution, center,\n                    scanner) and the same raters score the cases. It reports agreement WITHIN cluster, so that\n                    clusters which differ in case mix do not masquerade as better or worse agreement, and it shows\n                    each cluster separately so you can see whether agreement is similar across them.": [
                 ""
             ],
+            "Agreement Heatmap (Categorical, Confusion Matrix Visualization)": [
+                ""
+            ],
             "Agreement Heatmap (Confusion Matrix)": [
                 ""
             ],
             "Agreement heatmap (confusion matrix)": [
-                ""
-            ],
-            "Agreement Heatmap [Categorical] (Confusion Matrix Visualization)": [
                 ""
             ],
             "Agreement heatmap requires at least 10 complete observations.": [
@@ -4708,7 +4702,7 @@
             "Agreement study sample size": [
                 ""
             ],
-            "Agreement with comparator": [
+            "Agreement with Comparator": [
                 ""
             ],
             "Agreement with the reference rater: %1$s": [
@@ -4774,13 +4768,16 @@
             "All Observed Cutpoints": [
                 ""
             ],
-            "All pairwise comparisons": [
+            "All Pairwise Comparisons": [
                 ""
             ],
             "All pathologists": [
                 ""
             ],
             "All Patterns": [
+                ""
+            ],
+            "All patterns": [
                 ""
             ],
             "All People (n={n})": [
@@ -4804,7 +4801,13 @@
             "All Tests Negative": [
                 ""
             ],
+            "All tests negative": [
+                ""
+            ],
             "All Tests Positive": [
+                ""
+            ],
+            "All tests positive": [
                 ""
             ],
             "All three methods are shown for comparison; Points (Selected), the score performance and the lookup table use Max-scaled": [
@@ -4876,7 +4879,7 @@
             "Alternative below the null.": [
                 ""
             ],
-            "Alternative kappa (kappa1)": [
+            "Alternative kappa (κ₁)": [
                 ""
             ],
             "Although the global test was not significant, these pairwise comparisons reached p < 0.05 after Holm-Bonferroni adjustment; treat them as exploratory.": [
@@ -5002,7 +5005,7 @@
             "Analysis population": [
                 ""
             ],
-            "Analysis result": [
+            "Analysis Result": [
                 ""
             ],
             "Analysis Results": [
@@ -5077,7 +5080,7 @@
             "Anticipated Agreement": [
                 ""
             ],
-            "Anticipated kappa (kappa0)": [
+            "Anticipated kappa (κ₀)": [
                 ""
             ],
             "Anticipated share of subjects in each outcome category, separated by commas, semicolons or spaces, using a decimal point, and summing to 1 (for example 0.20, 0.80 for a finding present in one case in five). For a binary outcome a single prevalence is enough. Enter exactly one value per outcome level otherwise.": [
@@ -5096,6 +5099,9 @@
                 ""
             ],
             "Any Test Positive": [
+                ""
+            ],
+            "Any test positive": [
                 ""
             ],
             "Any-test-positive reference rule": [
@@ -5494,7 +5500,7 @@
             "Average kappa across %1$d raters: %2$.3f. Raters are compared individually against the reference rater using Cohen's kappa. These are point estimates against a single reference rater whose own reliability is unknown, and no confidence intervals are shown here, so apparent differences between raters may reflect sampling variation alone; any ranking shown is not a measure of individual competence.": [
                 ""
             ],
-            "Average Linkage (UPGMA)": [
+            "Average linkage (UPGMA)": [
                 ""
             ],
             "Average Net Benefit": [
@@ -5590,7 +5596,7 @@
             "Bar Chart - Performance Comparison": [
                 ""
             ],
-            "Bar Plot (Category Frequencies)": [
+            "Bar plot (category frequencies)": [
                 ""
             ],
             "Barely better than chance; this rater and the reference are not measuring the same thing": [
@@ -5611,7 +5617,7 @@
             "Basic (recommended)": [
                 ""
             ],
-            "Basic Bootstrap": [
+            "Basic bootstrap": [
                 ""
             ],
             "Basic Results": [
@@ -5623,7 +5629,7 @@
             "Bayesian ROC analysis for '{var}' failed ({msg}), so it has no row in the Bayesian table.": [
                 ""
             ],
-            "BCa (Bias-Corrected and Accelerated)": [
+            "BCa (bias-corrected and accelerated)": [
                 ""
             ],
             "Because the differences in overall accuracy were not statistically significant, this ranking reflects the observed sample and should not be reported as evidence that one test outperforms the others.": [
@@ -5698,10 +5704,10 @@
             "Better than chance, but disagreement with the reference is the common case": [
                 ""
             ],
-            "Bhapkar test (marginal homogeneity for 2 raters)": [
+            "Bhapkar Test (Categorical, Marginal Homogeneity, 2 Raters)": [
                 ""
             ],
-            "Bhapkar Test [Categorical] (Marginal Homogeneity, 2 Raters)": [
+            "Bhapkar test (marginal homogeneity for 2 raters)": [
                 ""
             ],
             "Bhapkar Test for Marginal Homogeneity": [
@@ -5740,7 +5746,7 @@
             "Binary (two unordered categories)": [
                 ""
             ],
-            "Binary comparator counts": [
+            "Binary Comparator Counts": [
                 ""
             ],
             "Binary marginal homogeneity": [
@@ -5761,10 +5767,16 @@
             "Biomarker + ECG (Illustrative)": [
                 ""
             ],
+            "Biomarker + ECG (illustrative)": [
+                ""
+            ],
             "Biomarker assay method-comparison studies": [
                 ""
             ],
             "Biomarker Screening (High Sensitivity)": [
+                ""
+            ],
+            "Biomarker screening (high sensitivity)": [
                 ""
             ],
             "Bivariate Residual": [
@@ -5776,7 +5788,7 @@
             "Bland-Altman": [
                 ""
             ],
-            "Bland-Altman Analysis [Continuous] (Limits of Agreement)": [
+            "Bland-Altman Analysis (Limits of Agreement)": [
                 ""
             ],
             "Bland-Altman analysis requires continuous (numeric) data. Your data appears to be categorical.": [
@@ -5905,7 +5917,10 @@
             "Bootstrap internal validation": [
                 ""
             ],
-            "Bootstrap Intervals (AUC and Youden Reference)": [
+            "Bootstrap interval for Krippendorff's alpha": [
+                ""
+            ],
+            "Bootstrap Intervals (AUC and Youden's Index Reference)": [
                 ""
             ],
             "Bootstrap intervals need at least 10 cases rated by two or more raters; %d were available.": [
@@ -5965,7 +5980,7 @@
             "Bootstrap test with %1$s replications (seed = %2$s). N = %3$s cases.": [
                 ""
             ],
-            "Bootstrap Validation": [
+            "Bootstrap validation": [
                 ""
             ],
             "Bootstrap Youden-reference coordinate intervals are unavailable ({msg}). Point estimates are shown with blank interval cells.": [
@@ -5977,7 +5992,7 @@
             "Both are in-sample estimates from these data; the AUC Lower CI and AUC Upper CI columns show how precisely this sample pins the AUC down.": [
                 ""
             ],
-            "Both Fixed and Random Effects": [
+            "Both fixed and random effects": [
                 ""
             ],
             "Both kappa values must lie strictly between 0 and 1. A kappa of 0 (chance agreement) or 1 (perfect agreement) cannot serve as a hypothesis value for this method; enter for example 0.40 under H0 and 0.70 under H1.": [
@@ -5986,7 +6001,7 @@
             "Both markers separate the groups perfectly in these data (AUC = 1), so their AUC difference and its standard error are both 0 and no test statistic exists.": [
                 ""
             ],
-            "Both Methods": [
+            "Both methods": [
                 ""
             ],
             "Both Negative LR": [
@@ -6025,10 +6040,13 @@
             "Boundary excess: at each grade boundary, how much more often this pathologist calls a case at or above it than colleagues who read the same cases. It shows where a difference in grading lies.": [
                 ""
             ],
-            "Box Plot (Median + IQR)": [
+            "Box plot (median + IQR)": [
                 ""
             ],
             "Breast Imaging + Tissue Sampling (Illustrative)": [
+                ""
+            ],
+            "Breast imaging + tissue sampling (illustrative)": [
                 ""
             ],
             "Brier Score": [
@@ -6253,7 +6271,7 @@
             "Case ID": [
                 "Case ID"
             ],
-            "Case ID (same case on several rows)": [
+            "Case ID (Same Case on Several Rows)": [
                 ""
             ],
             "Case ID variable": [
@@ -6452,6 +6470,9 @@
                 ""
             ],
             "Chest Imaging + Culture (Illustrative)": [
+                ""
+            ],
+            "Chest imaging + culture (illustrative)": [
                 ""
             ],
             "Chest radiograph": [
@@ -6691,6 +6712,9 @@
             "Class variable (gold standard)": [
                 ""
             ],
+            "Class Variable (Gold Standard)": [
+                ""
+            ],
             "Classic": [
                 ""
             ],
@@ -6742,6 +6766,9 @@
             "Clinical Assessment + CT (Illustrative)": [
                 ""
             ],
+            "Clinical assessment + CT (illustrative)": [
+                ""
+            ],
             "Clinical consequences at various decision thresholds": [
                 ""
             ],
@@ -6773,6 +6800,9 @@
                 ""
             ],
             "Clinical decision rule (binary)": [
+                ""
+            ],
+            "Clinical Decision Rule (Binary)": [
                 ""
             ],
             "Clinical decision rule integration": [
@@ -6971,9 +7001,6 @@
                 ""
             ],
             "Clopper-Pearson (exact)": [
-                ""
-            ],
-            "Clopper-Pearson (Exact)": [
                 ""
             ],
             "Close alignment with the reference rater on this case set; no training gap is indicated by this comparison": [
@@ -7240,28 +7267,31 @@
             "Comparative ROC Analysis": [
                 ""
             ],
+            "Comparative ROC analysis": [
+                ""
+            ],
             "Comparative ROC Plot Error": [
                 ""
             ],
-            "Comparator agreement (bar)": [
+            "Comparator Agreement (Bar)": [
                 ""
             ],
-            "Comparator agreement (heatmap)": [
+            "Comparator Agreement (Heatmap)": [
                 ""
             ],
-            "Comparator agreement (radar)": [
+            "Comparator Agreement (Radar)": [
                 ""
             ],
             "Comparator description": [
                 ""
             ],
-            "Comparator interpretation": [
+            "Comparator Interpretation": [
                 ""
             ],
             "Compare agreement across tumor types (benign vs. malignant)": [
                 ""
             ],
-            "Compare All Methods": [
+            "Compare all methods": [
                 ""
             ],
             "Compare classifier performance": [
@@ -7321,7 +7351,7 @@
             "Comparison plot": [
                 ""
             ],
-            "Comparison populations": [
+            "Comparison Populations": [
                 ""
             ],
             "Comparison with Overall Metrics": [
@@ -7342,7 +7372,7 @@
             "Complete consensus (100%) among the raters who rated the case": [
                 ""
             ],
-            "Complete Linkage (Furthest Neighbor)": [
+            "Complete linkage (furthest neighbor)": [
                 ""
             ],
             "Complete-Case Analysis": [
@@ -7369,6 +7399,9 @@
             "Composite Reference (strict majority)": [
                 ""
             ],
+            "Composite reference (strict majority)": [
+                ""
+            ],
             "Composite reference has incorporation bias": [
                 ""
             ],
@@ -7391,6 +7424,9 @@
                 ""
             ],
             "Comprehensive Diagnostic Performance": [
+                ""
+            ],
+            "Comprehensive diagnostic performance": [
                 ""
             ],
             "Comprehensive diagnostic performance measures at optimal cutoff": [
@@ -7480,7 +7516,7 @@
             "Condition B raters": [
                 ""
             ],
-            "Condition B Raters (e.g., AI-assisted)": [
+            "Condition B Raters (e.g., AI-Assisted)": [
                 ""
             ],
             "Condition Variable (e.g., AI vs Manual)": [
@@ -7535,6 +7571,9 @@
                 ""
             ],
             "Confidence Interval Type": [
+                ""
+            ],
+            "Confidence interval type": [
                 ""
             ],
             "Confidence Intervals": [
@@ -7625,6 +7664,9 @@
                 ""
             ],
             "Confirmatory Testing (High Specificity)": [
+                ""
+            ],
+            "Confirmatory testing (high specificity)": [
                 ""
             ],
             "Confirmatory Tests (Rule-In):": [
@@ -7807,7 +7849,7 @@
             "Convex Hull Plot Error": [
                 ""
             ],
-            "Convex hull: operating points reachable by randomly mixing two cut-offs (Provost & Fawcett 2001); in-sample, so optimistic": [
+            "Convex hull: operating points reachable by randomly mixing two cutoffs (Provost & Fawcett 2001); in-sample, so optimistic": [
                 ""
             ],
             "Copy and adapt to your manuscript. Verify all statistical values and add clinical context.": [
@@ -7822,7 +7864,7 @@
             "Copy-ready Methods and Results sentences built from these results. Check them against the tables before pasting them into a report.": [
                 ""
             ],
-            "Copy-ready report sentences were not generated because %1$s. Check Positive class (is %2$s the level that means the condition is present?), then Direction, before quoting any cut-point from this analysis.": [
+            "Copy-ready report sentences were not generated because %1$s. Check Positive class (is %2$s the level that means the condition is present?), then Direction, before quoting any cutoff from this analysis.": [
                 ""
             ],
             "Copy-ready results paragraph": [
@@ -7885,7 +7927,7 @@
             "Cost per treatment": [
                 ""
             ],
-            "Cost Ratio (False Positive : False Negative)": [
+            "Cost ratio (false positive : false negative)": [
                 ""
             ],
             "Cost ratio (FP:FN)": [
@@ -8050,6 +8092,9 @@
             "Custom Configuration": [
                 ""
             ],
+            "Custom configuration": [
+                ""
+            ],
             "Custom Cutoff Error: %s": [
                 ""
             ],
@@ -8065,10 +8110,7 @@
             "Custom range": [
                 ""
             ],
-            "Custom Thresholds": [
-                ""
-            ],
-            "Custom Values": [
+            "Custom thresholds": [
                 ""
             ],
             "Custom values": [
@@ -8113,12 +8155,6 @@
             "Cut-offs describe different cohorts": [
                 ""
             ],
-            "Cut-points maximize the Youden index, J = sensitivity + specificity - 1 (Youden, 1950), over the thresholds midway between adjacent observed values: the empirical estimator of the Youden-optimal cut-point (Fluss et al., 2005). A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
-                ""
-            ],
-            "Cut-points minimize the squared distance to the top-left corner of the ROC plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway between adjacent observed values (Perkins & Schisterman, 2006); Youden optimization was switched off. A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
-                ""
-            ],
             "Cutoff": [
                 ""
             ],
@@ -8141,6 +8177,12 @@
                 ""
             ],
             "Cutoffs lie midway between adjacent observed values, so a reported cutoff need not occur in the data.": [
+                ""
+            ],
+            "Cutoffs maximize the Youden index, J = sensitivity + specificity - 1 (Youden, 1950), over the thresholds midway between adjacent observed values: the empirical estimator of the Youden-optimal cutoff (Fluss et al., 2005). A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
+                ""
+            ],
+            "Cutoffs minimize the squared distance to the top-left corner of the ROC plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway between adjacent observed values (Perkins & Schisterman, 2006); Youden optimization was switched off. A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
                 ""
             ],
             "Cutpoint": [
@@ -8339,6 +8381,9 @@
                 ""
             ],
             "Default Metric Set": [
+                ""
+            ],
+            "Default metric set": [
                 ""
             ],
             "Define Positive Levels:": [
@@ -8635,7 +8680,13 @@
             "Diagnostic Test Validation (Balanced)": [
                 ""
             ],
+            "Diagnostic test validation (balanced)": [
+                ""
+            ],
             "Diagnostic Test Validation (example)": [
+                ""
+            ],
+            "Diagnostic test validation (example)": [
                 ""
             ],
             "Diagnostic test validation where false positives and false negatives have different implications": [
@@ -8707,7 +8758,7 @@
             "Direction of the predictor-outcome relationship. The default is \"Higher values indicate positive outcome\" because it is a stated hypothesis rather than an estimate. \"Auto\" reads the orientation off the same data that supply the AUC - pROC compares the two groups' median values - so the direction is fitted rather than assumed, and every AUC is biased upward (for n = 20 the AUC expected under no association is about 0.60, not 0.50, and exceeds 0.60 in roughly 45 of every 100 markers carrying no information at all). It is not floored at 0.5 either: a median split can disagree with the ranks, so about 12 of those 100 null markers are still reported below 0.5. \"Auto\" can also silently invert a marker and report 0.825 where the un-inverted reading is 0.175. Use \"Auto\" only for exploratory screening of markers whose direction is genuinely unknown, and say so.": [
                 ""
             ],
-            "Directional Discordance [Ordinal] (2 Raters)": [
+            "Directional Discordance (Ordinal, 2 Raters)": [
                 ""
             ],
             "Directional Discordance and Marginal Homogeneity Tests": [
@@ -8743,7 +8794,7 @@
             "Discordant cases tables": [
                 ""
             ],
-            "Discordant comparator calls": [
+            "Discordant Comparator Calls": [
                 ""
             ],
             "Discordant Results": [
@@ -8785,7 +8836,7 @@
             "Disease prevalence": [
                 ""
             ],
-            "Disease prevalence in target population (0.001-0.999)": [
+            "Disease prevalence in target population (between 0 and 1)": [
                 ""
             ],
             "Disease prevalence to assume when computing predictive values. Used only when \"Use observed prevalence\" is unticked - set it to the prevalence of the population the test will actually be used in, which for a screening setting is usually far lower than in a case-control sample.": [
@@ -9124,6 +9175,9 @@
             "Elastic Net": [
                 ""
             ],
+            "Elastic net": [
+                ""
+            ],
             "Elastic Net Logistic Regression": [
                 ""
             ],
@@ -9145,7 +9199,7 @@
             "Empirical ROC curves were computed with the pROC package (Robin et al., 2011). The AUC is the Mann-Whitney probability that a randomly chosen case lies further than a randomly chosen non-case in the direction that indicates the condition, with ties counted as one half (Hanley & McNeil, 1982); it equals the Mann-Whitney U statistic divided by the number of case/non-case pairs (Mann & Whitney, 1947).": [
                 ""
             ],
-            "Empirical TDI [Continuous] (Prespecified Difference Limit)": [
+            "Empirical TDI (Prespecified Difference Limit)": [
                 ""
             ],
             "Empirical Total Deviation Index (TDI)": [
@@ -9349,7 +9403,7 @@
             "Estimates Conditional on Selected Levels": [
                 ""
             ],
-            "Euclidean Distance": [
+            "Euclidean distance": [
                 ""
             ],
             "Evaluate agreement across anatomical sites": [
@@ -9475,7 +9529,7 @@
             "Exact + partial credit matching": [
                 ""
             ],
-            "Exact Agreement (categorical)": [
+            "Exact agreement (categorical)": [
                 ""
             ],
             "Exact agreement pools every pair of readings this pathologist shares with a colleague on the same case. Mean pairwise kappa averages unweighted Cohen's kappa over the colleagues who read at least 2 of the same cases, leaving out a colleague for whom kappa is undefined (every shared case in one category). Neither is adjusted for how difficult each pathologist's cases were.": [
@@ -9628,12 +9682,6 @@
             "Expert consensus": [
                 ""
             ],
-            "Explain meta-analysis limitation": [
-                ""
-            ],
-            "Explain the imbalance warning in full": [
-                ""
-            ],
             "Explanation": [
                 ""
             ],
@@ -9781,7 +9829,7 @@
             "Fagan nomogram": [
                 ""
             ],
-            "Fagan nomogram - parallel rule (positive if either test is positive)": [
+            "Fagan Nomogram - Parallel Rule (Positive if Either Test Is Positive)": [
                 ""
             ],
             "Fagan nomogram not drawn": [
@@ -9862,6 +9910,9 @@
             "False Negative (FN)": [
                 ""
             ],
+            "False negative (FN)": [
+                ""
+            ],
             "False Negative Cases (Test- but Disease+)": [
                 ""
             ],
@@ -9884,6 +9935,9 @@
                 ""
             ],
             "False Positive (FP)": [
+                ""
+            ],
+            "False positive (FP)": [
                 ""
             ],
             "False Positive Cases (Test+ but Disease-)": [
@@ -10033,7 +10087,7 @@
             "Finn coefficient (variance-based agreement)": [
                 ""
             ],
-            "Finn Coefficient [Categorical] (Variance-Based)": [
+            "Finn Coefficient (Variance-Based)": [
                 ""
             ],
             "Finn coefficient requires at least 2 raters.": [
@@ -10096,7 +10150,7 @@
             "Fixed Effects": [
                 ""
             ],
-            "Fixed Effects Model": [
+            "Fixed effects model": [
                 ""
             ],
             "Fixed point ROC curve": [
@@ -10117,7 +10171,7 @@
             "Fixed score cutoffs on the marker's own scale, comma separated. The default 0.5 is meant for predicted probabilities (Prediction scale = probability); for a raw marker enter cutoffs inside its observed range. A warning names any cutoff that classifies every analyzed patient the same way.": [
                 ""
             ],
-            "Fixed Sensitivity": [
+            "Fixed sensitivity": [
                 ""
             ],
             "Fixed Sensitivity / Specificity Analysis": [
@@ -10138,7 +10192,7 @@
             "Fixed Sensitivity/Specificity ROC Curves": [
                 ""
             ],
-            "Fixed Specificity": [
+            "Fixed specificity": [
                 ""
             ],
             "Fixed Specificity ROC: {var}": [
@@ -10177,10 +10231,10 @@
             "FN": [
                 ""
             ],
-            "FN (Cut-off 1)": [
+            "FN (cut-off 1)": [
                 ""
             ],
-            "FN (Cut-off 2)": [
+            "FN (cut-off 2)": [
                 ""
             ],
             "FN (n={n})": [
@@ -10267,7 +10321,7 @@
             "For reference, n=%1$d would be required for %2$.1f%% power against an AUC of %3$.3f.": [
                 ""
             ],
-            "For studies with three or more raters, the All-Pairs table reports\n                        Cohen's kappa, observed agreement, standard error, a confidence\n                        interval at the confidence level set in the options, z, and p-value for {tag1}every pair{tag2} of raters\n                        (C(k,2) rows). This is the conventional supplementary table in\n                        interobserver reliability studies, complementing the single overall\n                        Fleiss kappa.": [
+            "For studies with three or more raters, the All-Pairs table reports\n                        Cohen's kappa, observed agreement, standard error, a confidence\n                        interval at the confidence level set in the options, z, and p-value for {tag1}every pair{tag2} of raters\n                        (C(k,2) rows). This is the conventional supplementary table in\n                        interobserver reliability studies, complementing the single overall\n                        Fleiss' kappa.": [
                 ""
             ],
             "For such a model the calibration slope, intercept, calibration-in-the-large and E/O are 1, 0, 0 and 1 by construction, so they are left blank.": [
@@ -10330,10 +10384,10 @@
             "FP": [
                 ""
             ],
-            "FP (Cut-off 1)": [
+            "FP (cut-off 1)": [
                 ""
             ],
-            "FP (Cut-off 2)": [
+            "FP (cut-off 2)": [
                 ""
             ],
             "FP (n={n})": [
@@ -10375,7 +10429,7 @@
             "Frozen-model evaluation requires an explicit score direction.": [
                 ""
             ],
-            "Frozen-model performance and paired differences": [
+            "Frozen-Model Performance and Paired Differences": [
                 ""
             ],
             "Frozen-Model Validation": [
@@ -10567,16 +10621,16 @@
             "Grading tendency: at least %1$d cases and %2$d pathologists. With two ordered categories it needs %3$d pathologists, and with three or more categories of which one holds %5$.0f%% or more of the ratings it needs %4$d, because with fewer its intervals were too narrow in simulation.": [
                 ""
             ],
-            "Gray Scale (Print-Friendly)": [
+            "Grayscale": [
                 ""
             ],
-            "Grayscale": [
+            "Grayscale (print-friendly)": [
                 ""
             ],
             "Group": [
                 ""
             ],
-            "Group variable (optional)": [
+            "Group Variable (Optional)": [
                 ""
             ],
             "Grouped bar chart comparing sensitivity, specificity, PPV, NPV, and accuracy across test combinations": [
@@ -10663,7 +10717,7 @@
             "Height of ROC plots": [
                 ""
             ],
-            "Hierarchical (Dendrogram)": [
+            "Hierarchical (dendrogram)": [
                 ""
             ],
             "Hierarchical / Multilevel Agreement": [
@@ -10690,7 +10744,7 @@
             "Hierarchical/multilevel kappa": [
                 ""
             ],
-            "Hierarchical/Multilevel Kappa [Categorical] (Multi-Center Studies)": [
+            "Hierarchical/Multilevel Kappa (Multi-Center Studies)": [
                 ""
             ],
             "High correlation": [
@@ -10813,6 +10867,9 @@
             "HIV Ag/Ab + Differentiation Assay (Illustrative)": [
                 ""
             ],
+            "HIV Ag/Ab + differentiation assay (illustrative)": [
+                ""
+            ],
             "HIV Ag/Ab Assay": [
                 ""
             ],
@@ -10903,7 +10960,7 @@
             "ICC (Intraclass Correlation Coefficient)": [
                 ""
             ],
-            "ICC [Continuous] (Intraclass Correlation)": [
+            "ICC (Intraclass Correlation)": [
                 ""
             ],
             "ICC < 0.50": [
@@ -11059,7 +11116,7 @@
             "If one of the tests being evaluated also contributed to establishing the reference standard, that test is being compared against itself and its apparent accuracy is inflated. This is easy to do accidentally when the reference is a final diagnosis assembled from all available information.": [
                 ""
             ],
-            "If that reading looks reversed for a marker, first check Positive class: is %s the level that means the condition is present? Only if it is, change Direction: the AUC becomes 1 minus the value shown, and the cutpoint, sensitivity and specificity are re-estimated.": [
+            "If that reading looks reversed for a marker, first check Positive class: is %s the level that means the condition is present? Only if it is, change Direction: the AUC becomes 1 minus the value shown, and the cutoff, sensitivity and specificity are re-estimated.": [
                 ""
             ],
             "If the {tag1}upper confidence bound of the empirical TDI <= Acceptable Limit{tag2}:": [
@@ -11155,6 +11212,9 @@
             "Imbalance threshold": [
                 ""
             ],
+            "Imbalance warning details": [
+                ""
+            ],
             "Immediately shows which specific disagreements are most common": [
                 ""
             ],
@@ -11215,7 +11275,7 @@
             "In the analysed rows the clinical rule recommends intervention for no patient, so its curve is the treat-none line at zero.": [
                 ""
             ],
-            "In the simulations of Fluss et al. (2005) this empirical estimator, the most commonly used, had the worst overall bias and root mean square error of the four estimators compared (normal, transformed-normal, empirical and kernel); for the cut-point itself their results were more variable.": [
+            "In the simulations of Fluss et al. (2005) this empirical estimator, the most commonly used, had the worst overall bias and root mean square error of the four estimators compared (normal, transformed-normal, empirical and kernel); for the cutoff itself their results were more variable.": [
                 ""
             ],
             "In these data the fitted logistic risk of %2$s runs opposite to the direction in which the ROC tables read %1$s (AUC %3$.3f in that direction). A one-marker logistic model does not depend on Direction, so calibration, the Brier score, the Hosmer-Lemeshow test, the decision and clinical impact curves and internal validation use the risk model the data support. Under the direction selected, %1$s performs worse than those outputs show. Check Direction and Positive class.": [
@@ -11464,10 +11524,10 @@
             "Inter-Rater Reliability (Between Raters)": [
                 ""
             ],
-            "Inter/intra-rater reliability (test-retest)": [
+            "Inter/Intra-Rater Reliability (Test-Retest Studies)": [
                 ""
             ],
-            "Inter/Intra-Rater Reliability [Any Data Type] (Test-Retest Studies)": [
+            "Inter/intra-rater reliability (test-retest)": [
                 ""
             ],
             "Intercept (ref: %s)": [
@@ -11671,10 +11731,10 @@
             "Inverse net benefit": [
                 ""
             ],
-            "Inverse net benefit and inverse Youden columns": [
+            "Inverse net benefit and inverse Youden's index columns": [
                 ""
             ],
-            "Inverse Youden index": [
+            "Inverse Youden's index": [
                 ""
             ],
             "Iota": [
@@ -11686,13 +11746,13 @@
             "Iota = %1$.3f (%2$s). Iota is chance-corrected: 0 is the agreement expected by chance and 1 is perfect agreement. irr::iota returns a point estimate only, so no confidence interval and no p-value are available.": [
                 ""
             ],
+            "Iota Coefficient (Continuous or Categorical, Single Variable)": [
+                ""
+            ],
             "Iota coefficient (single variable)": [
                 ""
             ],
             "Iota Coefficient (Single Variable)": [
-                ""
-            ],
-            "Iota Coefficient [Continuous or Categorical] (Single Variable)": [
                 ""
             ],
             "Iota Coefficient Results (Single Variable)": [
@@ -11746,7 +11806,7 @@
             "It is computed correctly at that exact value, but it is not shown on the decision curve, and the surrounding rows come from the analysed range.": [
                 ""
             ],
-            "It is computed over all cutpoints and does not depend on which cutpoint was selected.": [
+            "It is computed over all cutoffs and does not depend on which cutoff was selected.": [
                 ""
             ],
             "It is computed separately for each model and any clinical rule and covers that whole curve only approximately; coverage falls below nominal in small samples and where few patients are classified positive.": [
@@ -11785,7 +11845,7 @@
             "jamovi (follow global)": [
                 ""
             ],
-            "K-means (Requires K)": [
+            "K-means (requires K)": [
                 ""
             ],
             "K-means clustering requires continuous data": [
@@ -11953,7 +12013,7 @@
             "Kendall's W (concordance for rankings)": [
                 ""
             ],
-            "Kendall's W [Ordinal] (Concordance for Rankings)": [
+            "Kendall's W (Concordance for Rankings)": [
                 ""
             ],
             "Kendall's W ranks the ratings, so it needs a continuous variable or an ordinal one whose categories carry an order. One or more selected raters is a nominal (unordered) variable: change its measure type to Continuous or Ordinal if the categories really are ordered, otherwise use Fleiss' kappa or Krippendorff's alpha for nominal agreement.": [
@@ -12208,10 +12268,10 @@
             "Light's kappa (3+ raters)": [
                 ""
             ],
-            "Light's Kappa (average of pairwise kappas)": [
+            "Light's Kappa (3+ Raters)": [
                 ""
             ],
-            "Light's Kappa [Categorical] (3+ Raters)": [
+            "Light's Kappa (average of pairwise kappas)": [
                 ""
             ],
             "Light's kappa is <b>unweighted</b> here regardless of the weighting option: it averages unweighted pairwise Cohen's kappas and the underlying routine takes no weights. It is therefore not comparable with the weighted pairwise kappas reported elsewhere in this analysis, and will usually be lower on an ordinal scale where most disagreements are one category apart.": [
@@ -12301,7 +12361,7 @@
             "Lin's CCC": [
                 ""
             ],
-            "Lin's CCC [Continuous] (Concordance - Method Comparison)": [
+            "Lin's CCC (Concordance, Method Comparison)": [
                 ""
             ],
             "Lin's CCC evaluates {tag1}agreement{tag2} (not just association) by measuring both:": [
@@ -12331,16 +12391,16 @@
             "Linear cutoff; empirical rates": [
                 ""
             ],
-            "Linear Interpolation": [
+            "Linear interpolation": [
                 ""
             ],
             "Linear interpolation estimates a cutoff between ROC points. Reported rates are recalculated from observations at that cutoff, so a discrete sample may miss the requested target. If interpolation involves infinity, the endpoint meeting the target is used.": [
                 ""
             ],
-            "Linear Weights (Equal Steps)": [
+            "Linear weights (equal steps)": [
                 ""
             ],
-            "Linear Weights (ordinal)": [
+            "Linear weights (ordinal)": [
                 ""
             ],
             "Linear-weighted κ": [
@@ -12451,7 +12511,7 @@
             "Lower CI": [
                 ""
             ],
-            "Lower confidence limit (kappaL)": [
+            "Lower confidence limit (κL)": [
                 ""
             ],
             "Lower confidence limit you want the study to achieve for kappa. It must be below kappa0. The sample size is set by the limit that is harder to reach - usually, but not always, the one nearer kappa0 - not by the full interval width.": [
@@ -12568,7 +12628,7 @@
             "Macro Average": [
                 ""
             ],
-            "Macro Average (unweighted)": [
+            "Macro average (unweighted)": [
                 ""
             ],
             "Major concern": [
@@ -12595,7 +12655,7 @@
             "Mammography + ultrasound (demo only)": [
                 ""
             ],
-            "Manhattan Distance": [
+            "Manhattan distance": [
                 ""
             ],
             "Manual cut points": [
@@ -12757,13 +12817,13 @@
             "Mean Pearson correlation (linear association)": [
                 ""
             ],
+            "Mean Pearson Correlation (Linear Association)": [
+                ""
+            ],
             "Mean Pearson Correlation (Linear Association) Results": [
                 ""
             ],
             "Mean Pearson Correlation (r) is the {tag1}average linear correlation coefficient{tag2} across all\n                        pairs of raters for continuous measurements. Pearson's r measures the {tag3}strength and direction\n                        of linear association{tag4} between two variables. It ranges from {tag5}-1 (perfect negative){tag6}\n                        through {tag7}0 (no linear relationship){tag8} to {tag9}+1 (perfect positive correlation){tag10}.\n                        For interrater agreement, high positive values indicate raters' measurements vary together linearly.": [
-                ""
-            ],
-            "Mean Pearson Correlation [Continuous] (Linear Association)": [
                 ""
             ],
             "Mean Pearson Correlation requires numeric (continuous) data.": [
@@ -12784,10 +12844,10 @@
             "Mean Spearman rho (average rank correlation)": [
                 ""
             ],
-            "Mean Spearman Rho (Average Rank Correlation) Results": [
+            "Mean Spearman Rho (Average Rank Correlation)": [
                 ""
             ],
-            "Mean Spearman Rho [Ordinal] (Average Rank Correlation)": [
+            "Mean Spearman Rho (Average Rank Correlation) Results": [
                 ""
             ],
             "Mean Spearman's rho needs a rankable scale, so every rater column must be continuous or an ORDERED factor. An unordered (nominal) factor has no order to rank, and ranking its level codes would produce a meaningless coefficient. Set the measure type to continuous or ordinal, or use Fleiss' kappa or Krippendorff's alpha for nominal agreement.": [
@@ -12863,6 +12923,9 @@
                 ""
             ],
             "Meta-analysis is unavailable: markers from the same cohort are not independent studies. No pooled AUC, interval, heterogeneity statistic or forest plot is computed. Use paired DeLong comparisons for these markers, or a study-level meta-analysis with independent cohorts.": [
+                ""
+            ],
+            "Meta-analysis limitation": [
                 ""
             ],
             "Meta-Analysis Results": [
@@ -13030,6 +13093,9 @@
             "Minimum CV Error": [
                 ""
             ],
+            "Minimum CV error": [
+                ""
+            ],
             "Minimum OPA criterion": [
                 ""
             ],
@@ -13150,7 +13216,7 @@
             "Mixed-effects condition comparison": [
                 ""
             ],
-            "Mixed-Effects Condition Comparison [Continuous] (AI vs Manual, Pre vs Post)": [
+            "Mixed-Effects Condition Comparison (Continuous, AI vs Manual, Pre vs Post)": [
                 ""
             ],
             "Mixed-Effects ICC (hierarchical agreement proxy)": [
@@ -13160,6 +13226,9 @@
                 ""
             ],
             "Mixed/Discordant": [
+                ""
+            ],
+            "Mixed/discordant": [
                 ""
             ],
             "Modal Category": [
@@ -13225,7 +13294,7 @@
             "Model names": [
                 ""
             ],
-            "Model Names (optional)": [
+            "Model names (optional)": [
                 ""
             ],
             "Model names cannot be 'Treat All' or 'Treat None' because those labels identify the reference strategies.": [
@@ -13453,7 +13522,7 @@
             "Multi-Annotator Concordance": [
                 ""
             ],
-            "Multi-Annotator Concordance [Categorical] (AI Validation)": [
+            "Multi-Annotator Concordance (AI Validation)": [
                 ""
             ],
             "Multi-Annotator Concordance Metrics": [
@@ -13474,7 +13543,7 @@
             "Multi-Class Confusion Matrix": [
                 ""
             ],
-            "Multi-Class Confusion Matrix [Categorical] (Classification Evaluation)": [
+            "Multi-Class Confusion Matrix (Classification Evaluation)": [
                 ""
             ],
             "Multi-Class ROC": [
@@ -13613,6 +13682,9 @@
                 ""
             ],
             "Nearest Point": [
+                ""
+            ],
+            "Nearest point": [
                 ""
             ],
             "Nearest point uses the observed cutoff closest to the requested target. It does not interpolate and may fall below or above the target.": [
@@ -14092,7 +14164,7 @@
             "No Gold Standard": [
                 ""
             ],
-            "No headline kappa is reported: Fleiss' kappa for three or more raters is unweighted, so applying the selected weights would require a different coefficient and silently showing unweighted Fleiss kappa would not answer the request. Choose Unweighted for Fleiss' kappa, use ordinal Krippendorff's alpha or weighted Gwet's AC2, or enable All-Pairs Kappa for weighted Cohen kappa between each rater pair.": [
+            "No headline kappa is reported: Fleiss' kappa for three or more raters is unweighted, so applying the selected weights would require a different coefficient and silently showing unweighted Fleiss' kappa would not answer the request. Choose Unweighted for Fleiss' kappa, use ordinal Krippendorff's alpha or weighted Gwet's AC2, or enable All-Pairs Kappa for weighted Cohen's kappa between each rater pair.": [
                 ""
             ],
             "No interval could be computed for this kappa, so the table above carries the point estimate only and says nothing about how precisely this sample pins it down.": [
@@ -14302,13 +14374,13 @@
             "No threshold separates the groups better than chance in the direction used.": [
                 ""
             ],
-            "no usable cut-point exists - every threshold gives a Youden index of zero or less": [
-                ""
-            ],
             "No usable cut-point exists for this marker in the classification direction currently selected: no threshold separates the groups better than chance. First check Positive Class: is %1$s the level that means the condition is present? Only if it is, check Classification Direction. The AUC and its confidence interval in the Area Under the ROC Curve table are unaffected.": [
                 ""
             ],
             "No usable cut-point is shown for this marker: the cut-point chosen by the selected method lies beyond the observed values, so every patient would be classified negative, although some cut-points do separate the groups better than chance in the classification direction currently selected. This happens, for example, when accuracy, a misclassification cost or a total utility is optimized in an imbalanced sample, when at the cost ratio entered the cost-benefit method finds classifying every patient negative the least costly choice, or when Metric Tolerance is wide enough to count that choice as tied with the best cut-point. If a cut-point is needed, lower Metric Tolerance or choose another Cutpoint Method or Optimization Metric. The AUC and its confidence interval in the Area Under the ROC Curve table are unaffected.": [
+                ""
+            ],
+            "no usable cutoff exists - every threshold gives a Youden index of zero or less": [
                 ""
             ],
             "No usable threshold probabilities were found in the list, so the default 5%, 10%, 15%, 20%, 25% and 30% are used.": [
@@ -14659,7 +14731,7 @@
             "Null kappa (H0)": [
                 ""
             ],
-            "Null kappa (kappa0)": [
+            "Null kappa (κ₀)": [
                 ""
             ],
             "Number needed to diagnose": [
@@ -14810,6 +14882,9 @@
                 ""
             ],
             "Observed and projected workload": [
+                ""
+            ],
+            "Observed and Projected Workload": [
                 ""
             ],
             "Observed AUC difference": [
@@ -15259,10 +15334,10 @@
             "Outcome %1$s has the levels %2$s.": [
                 ""
             ],
-            "Outcome coding: positive and negative classes": [
+            "Outcome Coding: Positive and Negative Classes": [
                 ""
             ],
-            "Outcome coding: which level is positive": [
+            "Outcome Coding: Which Level Is Positive": [
                 ""
             ],
             "Outcome is not binary after filtering.": [
@@ -15502,13 +15577,13 @@
             "Paired agreement comparison": [
                 "Paired agreement comparison"
             ],
-            "Paired Agreement Comparison [Categorical] (With vs Without AI)": [
+            "Paired Agreement Comparison (Categorical, With vs Without AI)": [
                 ""
             ],
             "Paired agreement comparison compares kappa and exact-match agreement, which need categories, and these variables are continuous measurements: {cols}. Compare an ICC or Lin's CCC computed separately in each condition instead.": [
                 ""
             ],
-            "Paired agreement differences": [
+            "Paired Agreement Differences": [
                 ""
             ],
             "Paired agreement error: %s": [
@@ -15544,10 +15619,10 @@
             "Pairwise Kappa (Each Rater vs Reference)": [
                 ""
             ],
-            "Pairwise kappa (vs reference)": [
+            "Pairwise Kappa (vs Reference Rater)": [
                 ""
             ],
-            "Pairwise Kappa [Categorical] (vs Reference Rater)": [
+            "Pairwise kappa (vs reference)": [
                 ""
             ],
             "Pairwise Kappa Analysis compares {tag1}each rater individually{tag2} against a\n                        {tag3}reference rater{tag4} (gold standard, consensus, or senior expert).\n                        Each comparison produces a separate Cohen's kappa measuring agreement between that\n                        rater and the reference.": [
@@ -15661,7 +15736,7 @@
             "Partition audit": [
                 ""
             ],
-            "Partition identifier": [
+            "Partition Identifier": [
                 ""
             ],
             "Partition labels must be complete.": [
@@ -15700,7 +15775,13 @@
             "Pathologist Agreement (example)": [
                 ""
             ],
+            "Pathologist agreement (example)": [
+                ""
+            ],
             "Pathologist Grading Analysis": [
+                ""
+            ],
+            "Pathologist Grading Analysis (Ordinal or Categorical)": [
                 ""
             ],
             "Pathologist variance": [
@@ -15745,6 +15826,9 @@
             "Patient identifier": [
                 ""
             ],
+            "Patient Identifier": [
+                ""
+            ],
             "Patient identifier. On the main analysis it is used only to warn when a patient has several rows: every panel except the Frozen-model validation report treats each row as an independent patient, so their intervals and tests are too narrow then. Only the Frozen-model validation report resamples whole patients.": [
                 ""
             ],
@@ -15778,7 +15862,7 @@
             "Patient; all of the patient's rows ({unit}) retained": [
                 ""
             ],
-            "Patient/cluster ID (optional)": [
+            "Patient/Cluster ID (Optional)": [
                 ""
             ],
             "Patient/cluster ID for specific agreement": [
@@ -15925,7 +16009,7 @@
             "Percentile intervals resample whole patients when an ID is supplied, jointly across models and within fixed sites. These approximate intervals can under-cover, especially with rare outcomes or unequal cluster sizes. Counts and metrics weight every analyzed row equally (unit of observation: %s). Undefined or degenerate intervals are unavailable. Calibration logits require probabilities strictly between 0 and 1 and a converged nonseparated fit. Positive-only cohorts cannot estimate specificity or discrimination. No model is refitted and no cutoff is optimized.": [
                 ""
             ],
-            "Percentile Method": [
+            "Percentile method": [
                 ""
             ],
             "Percentile; fixed model and sites": [
@@ -15973,7 +16057,7 @@
             "Performs LASSO-penalized logistic regression for variable selection in binary classification problems. Ideal for diagnostic pathology studies that build classifiers (e.g., tumor type A vs B) with automatic feature selection.": [
                 ""
             ],
-            "Perkins & Schisterman (2006) show that this criterion and the Youden index can choose different cut-points, and that only the Youden index is optimal with respect to the overall misclassification rate.": [
+            "Perkins & Schisterman (2006) show that this criterion and the Youden index can choose different cutoffs, and that only the Youden index is optimal with respect to the overall misclassification rate.": [
                 ""
             ],
             "Plain language summary of key findings": [
@@ -16204,10 +16288,10 @@
             "Positive class: %1$s. Negative class: %2$s. Sensitivity, PPV, LR+, every cutpoint and the AUC describe detection of %1$s relative to %2$s. Other outcome levels are excluded.": [
                 ""
             ],
-            "Positive class: %1$s. Sensitivity, PPV, LR+, every cut-point and the AUC describe how well each test detects %1$s; specificity and NPV refer to %2$s.": [
+            "Positive class: %1$s. Sensitivity, PPV, LR+, every cutoff and the AUC describe how well each test detects %1$s; specificity and NPV refer to %2$s.": [
                 ""
             ],
-            "Positive class: %1$s. Sensitivity, PPV, LR+, every cut-point and the AUC describe how well each test detects %1$s; specificity and NPV refer to the other levels combined (%2$s).": [
+            "Positive class: %1$s. Sensitivity, PPV, LR+, every cutoff and the AUC describe how well each test detects %1$s; specificity and NPV refer to the other levels combined (%2$s).": [
                 ""
             ],
             "Positive independent units": [
@@ -16255,7 +16339,7 @@
             "Positive only": [
                 ""
             ],
-            "Positive Outcome": [
+            "Positive outcome": [
                 ""
             ],
             "Positive outcome level": [
@@ -16549,6 +16633,9 @@
             "Predicted probabilities": [
                 ""
             ],
+            "Predicted Probabilities": [
+                ""
+            ],
             "Predicted probabilities as supplied": [
                 ""
             ],
@@ -16574,6 +16661,9 @@
                 ""
             ],
             "Prediction rater (multi-annotator concordance)": [
+                ""
+            ],
+            "Prediction Rater (Multi-Annotator Concordance)": [
                 ""
             ],
             "Prediction Requirement": [
@@ -16792,13 +16882,7 @@
             "Prior prevalence value (0-1)": [
                 ""
             ],
-            "Prior Probability": [
-                ""
-            ],
             "Prior probability (disease prevalence in the community). Requires a value strictly between 0 and 1, default 0.300.": [
-                ""
-            ],
-            "Prior Probability (prevalence)": [
                 ""
             ],
             "Prior probability (prevalence)": [
@@ -17035,6 +17119,9 @@
             "PSA + MRI (Illustrative)": [
                 ""
             ],
+            "PSA + MRI (illustrative)": [
+                ""
+            ],
             "PSA + rectal examination (demo only)": [
                 ""
             ],
@@ -17059,7 +17146,7 @@
             "Q p-value": [
                 ""
             ],
-            "Quadratic Weights (ordinal)": [
+            "Quadratic weights (ordinal)": [
                 ""
             ],
             "Quadratic-weighted κ": [
@@ -17098,7 +17185,7 @@
             "quartile-based, from the data": [
                 ""
             ],
-            "Quartiles (Data-Driven)": [
+            "Quartiles (data-driven)": [
                 ""
             ],
             "Quick Decision Guide": [
@@ -17155,7 +17242,7 @@
             "Random Effects": [
                 ""
             ],
-            "Random Effects Model (DerSimonian-Laird)": [
+            "Random effects model (DerSimonian-Laird)": [
                 ""
             ],
             "Random noise accounts for more of the disagreement than systematic offsets do": [
@@ -17308,10 +17395,10 @@
             "Rater Variance Decomposition - Systematic vs Random Disagreement": [
                 ""
             ],
-            "Rater variance decomposition (systematic vs random)": [
+            "Rater Variance Decomposition (Systematic vs Random Disagreement)": [
                 ""
             ],
-            "Rater Variance Decomposition [Continuous] (Systematic vs Random Disagreement)": [
+            "Rater variance decomposition (systematic vs random)": [
                 ""
             ],
             "Raters": [
@@ -17449,7 +17536,7 @@
             "Red = few cases, through orange and light green, to green = many cases. It shows frequency, not agreement: a crowded off-diagonal cell is green too": [
                 ""
             ],
-            "Red-Yellow-Green (Traffic Light)": [
+            "Red-yellow-green (traffic light)": [
                 ""
             ],
             "Reduce the step size to {maxstep}% or less, or widen the range.": [
@@ -17470,7 +17557,7 @@
             "Reference / Comparator": [
                 ""
             ],
-            "Reference and target": [
+            "Reference and Target": [
                 ""
             ],
             "Reference class": [
@@ -17551,7 +17638,7 @@
             "Reference test for IDI/NRI": [
                 ""
             ],
-            "Reference test for IDI/NRI (optional)": [
+            "Reference Test for IDI/NRI (Optional)": [
                 ""
             ],
             "Reference Test for IDI/NRI holds the class variable, the gold standard itself. Put a test to compare against there, or leave it empty to use the first test variable.": [
@@ -17707,7 +17794,7 @@
             "Reported reason": [
                 ""
             ],
-            "Reporting a cut-point and a sensitivity from this analysis would misdescribe the marker.": [
+            "Reporting a cutoff and a sensitivity from this analysis would misdescribe the marker.": [
                 ""
             ],
             "Reporting in agreement studies that follow Layfield et al. 2020 or Boler et al. 2022 conventions": [
@@ -17716,7 +17803,7 @@
             "Reporting Options": [
                 ""
             ],
-            "Reporting per-category agreement alongside an overall Fleiss kappa": [
+            "Reporting per-category agreement alongside an overall Fleiss' kappa": [
                 ""
             ],
             "Required data: Cases with both a test result and a reference-standard result (the Gold Standard variable). Both variables must be categorical (factor), each with a positive and a negative level; any other level is excluded, and at least 4 cases must remain after exclusions.": [
@@ -17776,6 +17863,9 @@
             "Research (Youden with Your Minimums)": [
                 ""
             ],
+            "Research (Youden's index with your minimums)": [
+                ""
+            ],
             "Researchers anticipate an agreement of kappa = {kappa0} and have access to {n} subjects, each rated by {raters} raters.": [
                 ""
             ],
@@ -17806,6 +17896,9 @@
             "Respiratory Testing (Illustrative)": [
                 ""
             ],
+            "Respiratory testing (illustrative)": [
+                ""
+            ],
             "Response probabilities are shown using sensitivity/specificity terminology only under the assumption that the high-positive latent class represents disease. Latent-class labels are not identified by the data.": [
                 ""
             ],
@@ -17815,7 +17908,7 @@
             "Result": [
                 ""
             ],
-            "Result by the published formula (kappaSize)": [
+            "Result by the Published Formula": [
                 ""
             ],
             "Results are only as good as your gold standard": [
@@ -17890,13 +17983,13 @@
             "Robinson's A (1957) is an {tag1}agreement coefficient for ordinal or numeric ratings{tag2}.\n                        It is the share of the total spread in the ratings that is {tag3}not{tag4} disagreement between raters on the same case:\n                        {tag5}A = 1 {tag6} (within-case variance) / (total variance){tag7}.\n                        A = 1 when every rater gives every case the same value; A = 0 when raters differ on a case as much as\n                        cases differ from one another. Ordered categories enter as their level codes (G1 = 1, G2 = 2, ...).": [
                 ""
             ],
+            "Robinson's A (Agreement Index)": [
+                ""
+            ],
             "Robinson's A (ordinal agreement index)": [
                 ""
             ],
             "Robinson's A (Ordinal Agreement Index) Results": [
-                ""
-            ],
-            "Robinson's A [Ordinal] (Agreement Index)": [
                 ""
             ],
             "Robinson's A and related measures": [
@@ -18340,6 +18433,9 @@
             "Screening Test Assessment (example)": [
                 ""
             ],
+            "Screening test assessment (example)": [
+                ""
+            ],
             "Screening Tests (Rule-Out):": [
                 ""
             ],
@@ -18577,13 +18673,13 @@
             "Sensitivity {pct}% CI": [
                 ""
             ],
-            "Sensitivity %1$.2f and specificity %2$.2f, both at or above 0.80 at this cutpoint.": [
+            "Sensitivity %1$.2f and specificity %2$.2f, both at or above 0.80 at this cutoff.": [
                 ""
             ],
-            "Sensitivity %1$.2f, specificity %2$.2f at this cutpoint.": [
+            "Sensitivity %1$.2f, specificity %2$.2f at this cutoff.": [
                 ""
             ],
-            "Sensitivity %1$.2f, specificity %2$.2f: at this cutpoint few cases were missed in this sample. What share of the positive results are true positives is not fixed by these two numbers; it also depends on prevalence.": [
+            "Sensitivity %1$.2f, specificity %2$.2f: at this cutoff few cases were missed in this sample. What share of the positive results are true positives is not fixed by these two numbers; it also depends on prevalence.": [
                 ""
             ],
             "Sensitivity %1$.2f, specificity %2$.2f: false negatives were not rare in this sample.": [
@@ -18670,19 +18766,19 @@
             "Sensitivity plus specificity minus one; it weights both equally and is not a measure of clinical utility or a universal cut-off.": [
                 ""
             ],
-            "Sensitivity Range (for high-sensitivity applications)": [
+            "Sensitivity range (for high-sensitivity applications)": [
                 ""
             ],
             "Sensitivity was %1$s%2$s and specificity was %3$s%4$s.": [
                 ""
             ],
-            "Sensitivity, PPV, LR+, every cut-point and the AUC describe the level you choose; every other level is analyzed as negative.": [
+            "Sensitivity, PPV, LR+, every cutoff and the AUC describe the level you choose; every other level is analyzed as negative.": [
                 ""
             ],
-            "Sensitivity, specificity and accuracy are reported at a cutpoint that was searched for on these same data, so they are optimistic; they are not cross-validated or externally validated estimates.": [
+            "Sensitivity, specificity and accuracy are reported at a cutoff that was searched for on these same data, so they are optimistic; they are not cross-validated or externally validated estimates.": [
                 ""
             ],
-            "Sensitivity, specificity and accuracy compare each marker at its own cut-point, chosen on these same patients. McNemar's test (asymptotic, no continuity correction) treats both cut-points as fixed in advance, so its p-values ignore that selection. Rows with fewer than 10 discordant patients are not tested.": [
+            "Sensitivity, specificity and accuracy compare each marker at its own cutoff, chosen on these same patients. McNemar's test (asymptotic, no continuity correction) treats both cutoffs as fixed in advance, so its p-values ignore that selection. Rows with fewer than 10 discordant patients are not tested.": [
                 ""
             ],
             "Sensitivity, Specificity and Predictive Values with 95% CI": [
@@ -18931,7 +19027,7 @@
             "Simple (3 categories)": [
                 ""
             ],
-            "Simple Majority (>50 percent)": [
+            "Simple majority (>50 percent)": [
                 ""
             ],
             "Simple majority is strict: the modal category must hold more than half of a case's ratings. In %d case(s) it held exactly half - for example a 2-1-1 split among four raters - which is a plurality, not a majority, so those cases were left without a consensus label (an empty cell in the consensus variable). Choose a different rule, or resolve those cases by review, if a plurality should count as consensus.": [
@@ -18961,10 +19057,13 @@
             "Single index vs. predefined criterion": [
                 ""
             ],
-            "Single Linkage (Nearest Neighbor)": [
+            "Single linkage (nearest neighbor)": [
                 ""
             ],
             "Single ROC Analysis": [
+                ""
+            ],
+            "Single ROC analysis": [
                 ""
             ],
             "Single test": [
@@ -18983,6 +19082,9 @@
                 ""
             ],
             "Site identifier": [
+                ""
+            ],
+            "Site Identifier": [
                 ""
             ],
             "Site IDs must be complete; none were silently dropped.": [
@@ -19174,7 +19276,7 @@
             "Specific agreement indices (category-focused)": [
                 ""
             ],
-            "Specific Agreement Indices [Categorical] (Category-Focused)": [
+            "Specific Agreement Indices (Category-Focused)": [
                 ""
             ],
             "Specific agreement interval method": [
@@ -19234,7 +19336,7 @@
             "Specificity Range": [
                 ""
             ],
-            "Specificity Range (for high-specificity applications)": [
+            "Specificity range (for high-specificity applications)": [
                 ""
             ],
             "Specificity should be balanced to avoid excessive false positives.": [
@@ -19285,7 +19387,7 @@
             "Sputum microscopy": [
                 ""
             ],
-            "Squared Weights (Severity Weighted)": [
+            "Squared weights (severity weighted)": [
                 ""
             ],
             "Standard (with reference lines)": [
@@ -19438,10 +19540,13 @@
             "Std. Error is empty for rows whose confidence limits are bootstrap limits. DeLong's standard error is shown only beside an estimable DeLong interval, including a DeLong fallback after bootstrap failure. Read bootstrap precision from the AUC Lower CI and AUC Upper CI columns.": [
                 ""
             ],
-            "Step Size": [
+            "Step size": [
                 ""
             ],
             "Stepwise (Conservative)": [
+                ""
+            ],
+            "Stepwise (conservative)": [
                 ""
             ],
             "Stepwise uses an observed cutoff that meets or exceeds the target while retaining the best corresponding specificity or sensitivity. Ties and discrete values can make the achieved rate exceed the target.": [
@@ -19552,10 +19657,10 @@
             "Strong warning": [
                 ""
             ],
-            "Stuart-Maxwell test (marginal homogeneity for 2 raters)": [
+            "Stuart-Maxwell Test (Categorical, Marginal Homogeneity, 2 Raters)": [
                 ""
             ],
-            "Stuart-Maxwell Test [Categorical] (Marginal Homogeneity, 2 Raters)": [
+            "Stuart-Maxwell test (marginal homogeneity for 2 raters)": [
                 ""
             ],
             "Stuart-Maxwell Test for Marginal Homogeneity": [
@@ -19672,7 +19777,7 @@
             "Summary (Plain Language)": [
                 ""
             ],
-            "Summary by the published formula (kappaSize)": [
+            "Summary by the Published Formula": [
                 ""
             ],
             "Summary measure using all four cells, ranging from -1 to +1; interpretation is context-dependent.": [
@@ -19852,7 +19957,7 @@
             "tertile-based, from the data": [
                 ""
             ],
-            "Tertiles (Data-Driven)": [
+            "Tertiles (data-driven)": [
                 ""
             ],
             "Test": [
@@ -20179,6 +20284,9 @@
             "Test variables": [
                 ""
             ],
+            "Test Variables": [
+                ""
+            ],
             "Test-negative level \"{lvl}\" not found in test variable": [
                 ""
             ],
@@ -20236,7 +20344,7 @@
             "The %.0f%% interval is an <i>approximation</i>: a Wilson interval applied to specific agreement, which is not a binomial proportion, on the count of cases rated into the category by at least one rater. Actual coverage is not guaranteed, and the interval is least trustworthy for rare categories and for values near 0 or 1. de Vet and colleagues (2013) recommend a bootstrap interval instead; treat these limits as indicative.": [
                 ""
             ],
-            "The %1$s analyzed rows that carry a patient identifier (%2$s) come from %3$s patients, so some patients contribute more than one row (slides, cores or lesions). Every panel except the Frozen-model validation report assumes that each row is an independent patient. Rows from one patient are correlated, so the AUC confidence intervals, the tests comparing markers and the confidence intervals for sensitivity and specificity are too narrow, and p-values too small. • Analyze one row per patient (for example a patient-level score), or • for a fixed model with a prespecified cut-off, enable the Frozen-model validation report, whose intervals resample whole patients (every row of a patient must then share one outcome).": [
+            "The %1$s analyzed rows that carry a patient identifier (%2$s) come from %3$s patients, so some patients contribute more than one row (slides, cores or lesions). Every panel except the Frozen-model validation report assumes that each row is an independent patient. Rows from one patient are correlated, so the AUC confidence intervals, the tests comparing markers and the confidence intervals for sensitivity and specificity are too narrow, and p-values too small. • Analyze one row per patient (for example a patient-level score), or • for a fixed model with a prespecified cutoff, enable the Frozen-model validation report, whose intervals resample whole patients (every row of a patient must then share one outcome).": [
                 ""
             ],
             "The 95 percent confidence interval for the accuracy difference comes from Newcombe's method 10, a different procedure from McNemar's test, and it excludes 0, the value of no difference; the two procedures disagree on these data, so report both rather than either alone.": [
@@ -20413,7 +20521,7 @@
             "The clinical decision rule variable must be binary (exactly 2 levels).": [
                 ""
             ],
-            "The Clopper-Pearson intervals for sensitivity and specificity in the Diagnostic Performance table treat this cutpoint as fixed in advance, so they are centered on these optimistic values and understate the uncertainty.": [
+            "The Clopper-Pearson intervals for sensitivity and specificity in the Diagnostic Performance table treat this cutoff as fixed in advance, so they are centered on these optimistic values and understate the uncertainty.": [
                 ""
             ],
             "the coefficient fell outside the -1 to 1 parameter space and has been clamped to the nearest bound": [
@@ -20512,10 +20620,10 @@
             "The cut-off comparison is omitted because these scenarios have invalid frequencies: {scenarios}. Their rows are left blank; the other rows and the rest of the analysis are unaffected.": [
                 ""
             ],
-            "The cut-point was chosen on these same data, so the sensitivity, specificity and accuracy reported at it are optimistic.": [
+            "The cutoff is infinite, so everyone is classified the same way.": [
                 ""
             ],
-            "The cutoff is infinite, so everyone is classified the same way.": [
+            "The cutoff was chosen on these same data, so the sensitivity, specificity and accuracy reported at it are optimistic.": [
                 ""
             ],
             "The cutpoint was chosen to optimize %s on these same data. The sensitivity, specificity and other metrics reported at that cutpoint are therefore optimistically biased and will typically be lower in a new sample; the bias grows as the sample gets smaller and as more candidate cutpoints are searched. Use bootstrap or split-sample validation before quoting these figures.": [
@@ -20578,7 +20686,7 @@
             "The directional discordance test was not run because the two ordinal variables do not declare exactly the same category levels in the same order. Harmonize their clinical scale definitions before comparing higher versus lower ratings.": [
                 ""
             ],
-            "The displayed ROC curve is smoothed (%s), but every reported statistic — AUC, confidence intervals, optimal cut-points and all sensitivity/specificity values — is computed from the empirical curve. A smoothed curve carries no thresholds, so it cannot produce a cut-point.": [
+            "The displayed ROC curve is smoothed (%s), but every reported statistic — AUC, confidence intervals, optimal cutoffs and all sensitivity/specificity values — is computed from the empirical curve. A smoothed curve carries no thresholds, so it cannot produce a cutoff.": [
                 ""
             ],
             "The enhanced DeLong comparison failed (%s), so a fallback implementation was used; the AUC differences and p-values below come from that fallback.": [
@@ -20749,7 +20857,7 @@
             "The Hosmer-Lemeshow test (Hosmer, Lemeshow & Sturdivant, 2013) used up to %s groups of predicted risk (fewer where predicted risks tie; the Hosmer-Lemeshow table gives the number used); a non-significant result is not evidence of good calibration (Van Calster et al., 2019).": [
                 ""
             ],
-            "The hull is {gap} above the empirical AUC; points between empirical operating points are reachable only by randomly mixing two cut-offs (Provost & Fawcett 2001); in-sample and optimistic": [
+            "The hull is {gap} above the empirical AUC; points between empirical operating points are reachable only by randomly mixing two cutoffs (Provost & Fawcett 2001); in-sample and optimistic": [
                 ""
             ],
             "The institution variance needs at least 3 institutions; this study has %d, so the model was fitted without it.": [
@@ -21244,7 +21352,7 @@
             "The ROC analysis used the following specifications.": [
                 ""
             ],
-            "The ROC tables read %1$s in the direction in which it ranks patients well (AUC %3$.3f), but its group means point the other way, so the slope of the fitted logistic risk of %2$s runs opposite to that direction. This happens with a skewed marker or an outlying value. Calibration, the Brier score, the Hosmer-Lemeshow test, the decision and clinical impact curves and internal validation use that fitted model, the risk model the data support, which ranks patients the opposite way to the ROC, cut-point and fixed-cutoff tables; they do not describe %1$s as those tables read it, and can disagree with them. A log or rank transformation of the marker usually removes the conflict.": [
+            "The ROC tables read %1$s in the direction in which it ranks patients well (AUC %3$.3f), but its group means point the other way, so the slope of the fitted logistic risk of %2$s runs opposite to that direction. This happens with a skewed marker or an outlying value. Calibration, the Brier score, the Hosmer-Lemeshow test, the decision and clinical impact curves and internal validation use that fitted model, the risk model the data support, which ranks patients the opposite way to the ROC, cutoff and fixed-cutoff tables; they do not describe %1$s as those tables read it, and can disagree with them. A log or rank transformation of the marker usually removes the conflict.": [
                 ""
             ],
             "The rows are not independent: every rule is scored on the same patients, so the differences between them are correlated. A formal comparison needs a paired procedure -- McNemar's test applied SEPARATELY within the diseased patients to compare sensitivity and within the non-diseased patients to compare specificity, because a single McNemar over the whole sample compares positivity rates rather than accuracy. Paired PPV and NPV comparisons need a generalised score test instead. The optional table \"Combination Rules vs Each Test Alone\" (option \"Combinations vs each test alone\") makes this comparison within each reference group for every combination strategy (Parallel, Serial and Majority) against each test it combines: a Parallel or Serial strategy can move only one way, so the table gives its change with an interval, and McNemar's test is used for Majority. Paired PPV and NPV comparisons are not performed.": [
@@ -21283,7 +21391,7 @@
             "The score's AUC is %.3f, below 0.500: higher total scores are associated with FEWER events.": [
                 ""
             ],
-            "The search was restricted to cut-points with sensitivity of at least %1$s and specificity of at least %2$s; where none met both, the unconstrained optimum was used and a notice says so.": [
+            "The search was restricted to cutoffs with sensitivity of at least %1$s and specificity of at least %2$s; where none met both, the unconstrained optimum was used and a notice says so.": [
                 ""
             ],
             "The selected prevalence is {prevalence}. Predictive values may be unstable or poorly transportable; verify them in the intended population and report the prevalence used.": [
@@ -21301,10 +21409,10 @@
             "The sensitivity and specificity quoted at the cut score you supplied are a separate matter: those were not inflated by any cutpoint search, but they still carry ordinary sampling error.": [
                 ""
             ],
-            "The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those are optimistic, because that cutpoint was searched for on these same data.": [
+            "The sensitivity and specificity quoted at the selected cutoff are a separate matter: those ARE optimistic, because that cutoff was searched for on these same data.": [
                 ""
             ],
-            "The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those ARE optimistic, because that cutpoint was searched for on these same data.": [
+            "The sensitivity and specificity quoted at the selected cutpoint are a separate matter: those are optimistic, because that cutpoint was searched for on these same data.": [
                 ""
             ],
             "The sensitivity and specificity rules of thumb (SnNout: a negative result on a highly sensitive test rules out; SpPin: a positive result on a highly specific test rules in) can mislead when the other property is low. Judge how far a result moves the probability from its likelihood ratio instead (Pewsner et al. 2004).": [
@@ -21328,7 +21436,7 @@
             "The similarity shown is Lin's concordance correlation coefficient between the two raters: 1.00 means their readings are interchangeable, 0.00 means no concordance at all, and a negative value means they move in opposite directions. It falls when two raters scatter around each other and also when one reads consistently higher or on a wider scale, so unlike a correlation it is comparable across datasets.": [
                 ""
             ],
-            "The smaller outcome group has %1$s patients (%2$s positive, %3$s negative); affected: %4$s. DeLong's interval is a large-sample approximation: for a single AUC it covers the true value less often than its stated level when the smaller group is small, and more so the closer the AUC is to 1 or 0 (Obuchowski & Lieber 1998: more than 200 patients for high-accuracy areas). Feng, Cortese & Baumgartner (2017) found that interval methods for the AUC disagree most when the AUC is high and the sample small. In this module's validation simulation, which drew equal-variance binormal data, a 95%% DeLong interval covered a true AUC of 0.80 in 91%% of datasets with 15 positive and 15 negative cases, and a true AUC of 0.95 in 87%% with 30 and 30 and in 93%% with 100 and 100; these are averages over all datasets of each size, and with unequal variances or skewed data they were about 90%%, 84%% and 92%%. Coverage followed the smaller group's size times the distance of the AUC from 1 (from 0 for an AUC below 0.5): it was about 93%% wherever that product was 6, so this warning appears when the smaller group has fewer than 30 patients or that product is below 6 (fewer than 60 patients at an AUC of 0.90, fewer than 120 at 0.95); the cut-off is a heuristic. • Read the interval as approximate and probably too narrow. • Bootstrap confidence intervals are an alternative, but no method is exact at this size, and no bootstrap interval can be formed when the groups are perfectly separated.": [
+            "The smaller outcome group has %1$s patients (%2$s positive, %3$s negative); affected: %4$s. DeLong's interval is a large-sample approximation: for a single AUC it covers the true value less often than its stated level when the smaller group is small, and more so the closer the AUC is to 1 or 0 (Obuchowski & Lieber 1998: more than 200 patients for high-accuracy areas). Feng, Cortese & Baumgartner (2017) found that interval methods for the AUC disagree most when the AUC is high and the sample small. In this module's validation simulation, which drew equal-variance binormal data, a 95%% DeLong interval covered a true AUC of 0.80 in 91%% of datasets with 15 positive and 15 negative cases, and a true AUC of 0.95 in 87%% with 30 and 30 and in 93%% with 100 and 100; these are averages over all datasets of each size, and with unequal variances or skewed data they were about 90%%, 84%% and 92%%. Coverage followed the smaller group's size times the distance of the AUC from 1 (from 0 for an AUC below 0.5): it was about 93%% wherever that product was 6, so this warning appears when the smaller group has fewer than 30 patients or that product is below 6 (fewer than 60 patients at an AUC of 0.90, fewer than 120 at 0.95); the cutoff is a heuristic. • Read the interval as approximate and probably too narrow. • Bootstrap confidence intervals are an alternative, but no method is exact at this size, and no bootstrap interval can be formed when the groups are perfectly separated.": [
                 ""
             ],
             "The smaller outcome group has %1$s patients, so cross-validation used %2$s folds instead of 10: every fold must hold patients from both groups for its AUC to exist. With so few patients per fold the fold AUCs vary widely.": [
@@ -21628,7 +21736,7 @@
             "This analysis uses the %1$d of %2$d cases (%3$.1f%%) with a result recorded for every selected test. All displayed estimates use these complete cases. If the probability of a missing result is related to an unobserved test result or latent class, the estimates can be biased.": [
                 ""
             ],
-            "This AUC is apparent (in-sample), and where a cutpoint was searched for on these data the cutpoint metrics are optimistic. Independent validation is needed before these figures describe performance in new patients.": [
+            "This AUC is apparent (in-sample), and where a cutoff was searched for on these data the cutoff metrics are optimistic. Independent validation is needed before these figures describe performance in new patients.": [
                 ""
             ],
             "This binary analysis does not account for censoring.": [
@@ -21754,7 +21862,7 @@
             "This only ranks the models against each other; it does not mean the model is useful.": [
                 ""
             ],
-            "This outcome is numeric with %s distinct values, so it looks like a measurement rather than a two-level outcome (condition present / absent). Choose a different outcome variable, or a 0/1 variable made from this one at a clinically justified cut-off.": [
+            "This outcome is numeric with %s distinct values, so it looks like a measurement rather than a two-level outcome (condition present / absent). Choose a different outcome variable, or a 0/1 variable made from this one at a clinically justified cutoff.": [
                 ""
             ],
             "This outcome is numeric with values %s; only a 0/1 outcome is read without a choice (1 = positive). Set its measure type to Nominal in Data > Setup so Positive class lists its values, or recode it 0/1.": [
@@ -21928,10 +22036,10 @@
             "TN": [
                 ""
             ],
-            "TN (Cut-off 1)": [
+            "TN (cut-off 1)": [
                 ""
             ],
-            "TN (Cut-off 2)": [
+            "TN (cut-off 2)": [
                 ""
             ],
             "TN (n={n})": [
@@ -22063,10 +22171,10 @@
             "TP": [
                 ""
             ],
-            "TP (Cut-off 1)": [
+            "TP (cut-off 1)": [
                 ""
             ],
-            "TP (Cut-off 2)": [
+            "TP (cut-off 2)": [
                 ""
             ],
             "TP (n={n})": [
@@ -22156,6 +22264,9 @@
             "True Negative (TN)": [
                 ""
             ],
+            "True negative (TN)": [
+                ""
+            ],
             "True Negatives": [
                 ""
             ],
@@ -22166,6 +22277,9 @@
                 ""
             ],
             "True Positive (TP)": [
+                ""
+            ],
+            "True positive (TP)": [
                 ""
             ],
             "True Positive Rate": [
@@ -22190,6 +22304,9 @@
                 ""
             ],
             "Tumor Marker Evaluation (example)": [
+                ""
+            ],
+            "Tumor marker evaluation (example)": [
                 ""
             ],
             "Turn on Bootstrap confidence intervals (with the Decision curve plot) to see the uncertainty of the net benefit over this range.": [
@@ -22405,7 +22522,7 @@
             "Unweighted (AC1 for nominal)": [
                 ""
             ],
-            "Unweighted (Standard)": [
+            "Unweighted (standard)": [
                 ""
             ],
             "Unweighted average of sensitivity and specificity; it does not encode different consequences for the two error types.": [
@@ -22420,7 +22537,7 @@
             "Upper CI": [
                 ""
             ],
-            "Upper confidence limit (kappaU)": [
+            "Upper confidence limit (κU)": [
                 ""
             ],
             "Upper confidence limit you want the study to achieve for kappa. It must be above kappa0, and is ignored for a one-sided interval.": [
@@ -22546,7 +22663,10 @@
             "Validation context": [
                 ""
             ],
-            "Validation denominator ledger": [
+            "Validation Context": [
+                ""
+            ],
+            "Validation Denominator Ledger": [
                 ""
             ],
             "Validation failed": [
@@ -22738,7 +22858,7 @@
             "Vickers et al. (2023) caution that significance tests and confidence intervals for net benefit are of questionable value for a treatment decision: the strategy with the highest net benefit at the prespecified threshold is preferred whatever the p-value, so read these p-values only as a description of sampling variability.": [
                 ""
             ],
-            "Violin Plot (Full Distribution)": [
+            "Violin plot (full distribution)": [
                 ""
             ],
             "Violin plots better than box plots for detecting bimodality and distribution shape": [
@@ -22747,7 +22867,7 @@
             "Viridis": [
                 ""
             ],
-            "Viridis (Colorblind-Friendly)": [
+            "Viridis (colorblind-friendly)": [
                 ""
             ],
             "Visual representation of probability changes": [
@@ -22768,10 +22888,10 @@
             "W is about 1/m, not 0, for raters who agree no better than chance, so the label is read from the average Spearman correlation between raters, %s here, which is 0 at chance. The labels use the 0.20, 0.40, 0.60 and 0.80 cut-points on that value, half-open, so a value landing exactly on a cut-point takes the higher band; at -0.30 or below the label flags a possibly reversed scale instead. Kendall (1939) publishes no interpretive bands, so these are a display convention of this module and not a standard; report the coefficient itself.": [
                 ""
             ],
-            "Wald (symmetric, matches psych::cohen.kappa)": [
+            "Wald (symmetric)": [
                 ""
             ],
-            "Ward Linkage (Minimum Variance)": [
+            "Ward linkage (minimum variance)": [
                 ""
             ],
             "Warning": [
@@ -22831,7 +22951,7 @@
             "Weighted AUC requires at least two threshold points with positive range width.": [
                 ""
             ],
-            "Weighted Average (by prevalence)": [
+            "Weighted average (by prevalence)": [
                 ""
             ],
             "Weighted Averaging Is Not Available with the One-vs-One Strategy": [
@@ -23227,7 +23347,7 @@
             "When to Use This Test": [
                 ""
             ],
-            "Where several cut-points tie on this criterion (ties are found exactly from the counts), this module reports the one closest to the top-left corner and then the smallest cutoff; a notice lists the alternatives.": [
+            "Where several cutoffs tie on this criterion (ties are found exactly from the counts), this module reports the one closest to the top-left corner and then the smallest cutoff; a notice lists the alternatives.": [
                 ""
             ],
             "Whether it beats treating everyone or no one is the Range of Benefit below.": [
@@ -23270,9 +23390,6 @@
                 ""
             ],
             "Wilson score": [
-                ""
-            ],
-            "Wilson Score": [
                 ""
             ],
             "Wilson score 95 percent confidence intervals for sensitivity, specificity, PPV, NPV and accuracy, shown as percentages to match the combination table above. Likelihood ratios and the diagnostic odds ratio are unbounded ratios rather than proportions, so they appear in their own table below.": [
@@ -23419,34 +23536,16 @@
             "You would need to screen approximately %d people to identify one true positive case.": [
                 ""
             ],
-            "Youden Index": [
-                ""
-            ],
             "Youden index": [
-                ""
-            ],
-            "Youden Index (kernel smoothed)": [
-                ""
-            ],
-            "Youden Index (parametric normal)": [
-                ""
-            ],
-            "Youden Index (Sens + Spec - 1)": [
                 ""
             ],
             "Youden Index (Sensitivity + Specificity - 1)": [
                 ""
             ],
-            "Youden index %1$.2f at this cutpoint (sensitivity %2$.2f, specificity %3$.2f).": [
-                ""
-            ],
-            "Youden index optimization": [
+            "Youden index %1$.2f at this cutoff (sensitivity %2$.2f, specificity %3$.2f).": [
                 ""
             ],
             "Youden index optimization is off, so each reported cutoff is the one closest to the top-left corner of the ROC curve, searched over all thresholds. The minimum sensitivity (%1$s) and minimum specificity (%2$s) you set apply only to Youden optimization and were not used, so a reported cutoff may fall below them. Turn Youden index optimization on to restrict the search to cutoffs that meet these minimums.": [
-                ""
-            ],
-            "Youden Index Optimization Plot": [
                 ""
             ],
             "Youden Index optimization results for each predictor": [
@@ -23471,6 +23570,15 @@
                 ""
             ],
             "Youden's index (J)": [
+                ""
+            ],
+            "Youden's index (kernel smoothed)": [
+                ""
+            ],
+            "Youden's index (parametric normal)": [
+                ""
+            ],
+            "Youden's index (Sens + Spec - 1)": [
                 ""
             ],
             "Youden's index and the advanced metrics are descriptive summaries, not clinical decision thresholds.": [
@@ -23504,6 +23612,12 @@
                 ""
             ],
             "Youden's index is the difference between the true positive rate and the false positive rate. Youden's index ranges from -1 to +1 with values closer to 1 if both sensitivity and specificity are high (i.e. close to 1).": [
+                ""
+            ],
+            "Youden's index optimization": [
+                ""
+            ],
+            "Youden's Index Optimization Plot": [
                 ""
             ],
             "Youden's J": [
@@ -23567,9 +23681,6 @@
                 ""
             ],
             "τ² Between-Study Variance": [
-                ""
-            ],
-            "Ordinal/Categorical\u0004Pathologist Grading Analysis": [
                 ""
             ]
         }
