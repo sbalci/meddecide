@@ -6716,7 +6716,7 @@
                 "Sınıf değişkeni (altın standart)"
             ],
             "Class Variable (Gold Standard)": [
-                "Sınıf değişkeni (altın standart)"
+                "Sınıf Değişkeni (Altın Standart)"
             ],
             "Classic": [
                 "Klasik"
@@ -7182,6 +7182,9 @@
             ],
             "Colorblind-safe, publications": [
                 ""
+            ],
+            "Colors of the Fagan nomogram's positive-result and negative-result lines. \"jamovi (follow global)\" uses the palette chosen in jamovi, like the other plots; a legend names the two lines.": [
+                "Fagan nomogramının pozitif sonuç ve negatif sonuç çizgilerinin renkleri. \"jamovi (genel ayarı izle)\", diğer grafikler gibi jamovi'de seçilen paleti kullanır; bir lejant iki çizgiyi adlandırır."
             ],
             "Column name separator (inter/intra)": [
                 "Sütun adı ayırıcısı (değerlendiriciler-arası/içi)"
@@ -8183,7 +8186,7 @@
                 "Kesme noktaları gözlenen komşu değerlerin ortasında yer alır, bu nedenle raporlanan bir kesme noktası verilerde bulunmayabilir."
             ],
             "Cutoffs maximize the Youden index, J = sensitivity + specificity - 1 (Youden, 1950), over the thresholds midway between adjacent observed values: the empirical estimator of the Youden-optimal cutoff (Fluss et al., 2005). A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
-                ""
+                "Kesme noktaları, gözlenen komşu değerlerin orta noktalarındaki eşikler üzerinden Youden indeksini, J = duyarlılık + özgüllük - 1 (Youden, 1950), en büyük yapar: Youden-optimal kesme noktasının ampirik tahmincisi (Fluss ve ark., 2005). Hasta kesme noktasında veya üzerinde (düşük değerler pozitif olduğunda kesme noktasında veya altında) test-pozitif kabul edilir."
             ],
             "Cutoffs minimize the squared distance to the top-left corner of the ROC plot, (1 - sensitivity)^2 + (1 - specificity)^2, over the thresholds midway between adjacent observed values (Perkins & Schisterman, 2006); Youden optimization was switched off. A patient is test-positive at or above the cutoff (at or below it when lower values are positive).": [
                 "Kesme noktaları, gözlenen komşu değerlerin orta noktalarındaki eşikler üzerinden ROC grafiğinin sol üst köşesine olan kare uzaklığı, (1 - duyarlılık)^2 + (1 - özgüllük)^2, en küçük yapar (Perkins ve Schisterman, 2006); Youden optimizasyonu kapatılmıştı. Hasta kesme noktasında veya üzerinde (düşük değerler pozitif olduğunda kesme noktasında veya altında) test-pozitif kabul edilir."
@@ -9825,6 +9828,9 @@
             ],
             "Factor by which a positive result multiplies pre-test odds; practical importance depends on the starting probability and intended use.": [
                 "Pozitif bir sonucun test öncesi odds'unu çarpma faktörü; pratik önem başlangıç olasılığına ve amaçlanan kullanıma bağlıdır."
+            ],
+            "Fagan line colors": [
+                "Fagan çizgi renkleri"
             ],
             "Fagan Nomogram": [
                 "Fagan Nomogramı"
@@ -11756,7 +11762,7 @@
                 "Iota katsayısı (tek değişken)"
             ],
             "Iota Coefficient (Single Variable)": [
-                ""
+                "Iota katsayısı (tek değişken)"
             ],
             "Iota Coefficient Results (Single Variable)": [
                 "Iota Katsayısı Sonuçları (Tek Değişken)"
@@ -11810,7 +11816,7 @@
                 "Tam o değerde doğru şekilde hesaplanmıştır, ancak karar eğrisinde gösterilmez ve çevreleyen satırlar analiz edilen aralıktan gelir."
             ],
             "It is computed over all cutoffs and does not depend on which cutoff was selected.": [
-                ""
+                "Tüm kesme noktaları üzerinden hesaplanır ve hangi kesme noktasının seçildiğine bağlı değildir."
             ],
             "It is computed separately for each model and any clinical rule and covers that whole curve only approximately; coverage falls below nominal in small samples and where few patients are classified positive.": [
                 "Bant her model ve varsa klinik kural için ayrı hesaplanır ve o eğrinin tamamını yalnızca yaklaşık olarak kapsar; küçük örneklemlerde ve az hastanın pozitif sınıflandığı yerlerde kapsama nominal düzeyin altına düşer."
@@ -12737,7 +12743,7 @@
                 "en büyük yapılarak"
             ],
             "Maximum": [
-                ""
+                "Maksimum"
             ],
             "maximum": [
                 "maksimum"
@@ -13523,7 +13529,7 @@
                 "Çoklu işaretleyici uyumu"
             ],
             "Multi-Annotator Concordance": [
-                ""
+                "Çoklu işaretleyici uyumu"
             ],
             "Multi-Annotator Concordance (AI Validation)": [
                 "Çoklu İşaretleyici Uyumu (YZ Doğrulaması)"
@@ -13815,6 +13821,9 @@
             ],
             "Negative Result": [
                 "Negatif Sonuç"
+            ],
+            "Negative result": [
+                "Negatif sonuç"
             ],
             "Negative rows": [
                 "Negatif satırlar"
@@ -16390,6 +16399,9 @@
             "Positive Result": [
                 "Pozitif Sonuç"
             ],
+            "Positive result": [
+                "Pozitif sonuç"
+            ],
             "Positive rows": [
                 "Pozitif satırlar"
             ],
@@ -17535,6 +17547,9 @@
             ],
             "Rectal examination": [
                 "Rektal muayene"
+            ],
+            "Red / blue (classic)": [
+                "Kırmızı / mavi (klasik)"
             ],
             "Red = few cases, through orange and light green, to green = many cases. It shows frequency, not agreement: a crowded off-diagonal cell is green too": [
                 ""
@@ -18782,7 +18797,7 @@
                 "Duyarlılık, özgüllük ve doğruluk bu aynı veriler üzerinde aranan bir kesme noktasında bildirilmiştir, bu nedenle iyimserdir; çapraz doğrulanmış veya harici olarak doğrulanmış tahminler değildir."
             ],
             "Sensitivity, specificity and accuracy compare each marker at its own cutoff, chosen on these same patients. McNemar's test (asymptotic, no continuity correction) treats both cutoffs as fixed in advance, so its p-values ignore that selection. Rows with fewer than 10 discordant patients are not tested.": [
-                ""
+                "Duyarlılık, özgüllük ve doğruluk, her belirteci bu aynı hastalarda seçilen kendi kesme noktasında karşılaştırır. McNemar testi (asimptotik, süreklilik düzeltmesi olmadan) her iki kesme noktasını da önceden sabitlenmiş kabul eder; bu nedenle p değerleri bu seçimi göz ardı eder. 10'dan az uyumsuz hastası olan satırlar test edilmez."
             ],
             "Sensitivity, Specificity and Predictive Values with 95% CI": [
                 "%95 GA ile Duyarlılık, Özgüllük ve Öngörü Değerleri"
@@ -20288,7 +20303,7 @@
                 "Test değişkenleri"
             ],
             "Test Variables": [
-                "Test değişkenleri"
+                "Test Değişkenleri"
             ],
             "Test-negative level \"{lvl}\" not found in test variable": [
                 "Test negatif düzeyi \"{lvl}\" test değişkeninde bulunamadı"
@@ -20690,7 +20705,7 @@
                 "Yönlü uyumsuzluk testi çalıştırılmadı, çünkü iki sıralı değişken aynı sırada tam olarak aynı kategori düzeylerini tanımlamıyor. Daha yüksek ve daha düşük değerlendirmeleri karşılaştırmadan önce klinik ölçek tanımlarını aynı hale getirin."
             ],
             "The displayed ROC curve is smoothed (%s), but every reported statistic — AUC, confidence intervals, optimal cutoffs and all sensitivity/specificity values — is computed from the empirical curve. A smoothed curve carries no thresholds, so it cannot produce a cutoff.": [
-                ""
+                "Görüntülenen ROC eğrisi düzeltilmiştir (%s), ancak raporlanan her istatistik — AUC, güven aralıkları, optimal kesme noktaları ve tüm duyarlılık/özgüllük değerleri — ampirik eğriden hesaplanır. Düzeltilmiş bir eğri eşik taşımaz, bu nedenle kesme noktası üretemez."
             ],
             "The enhanced DeLong comparison failed (%s), so a fallback implementation was used; the AUC differences and p-values below come from that fallback.": [
                 "Gelişmiş DeLong karşılaştırması başarısız oldu (%s), bu nedenle bir yedek uygulama kullanıldı; aşağıdaki EAA farkları ve p değerleri bu yedekten gelmektedir."

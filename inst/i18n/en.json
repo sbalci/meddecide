@@ -7183,6 +7183,9 @@
             "Colorblind-safe, publications": [
                 ""
             ],
+            "Colors of the Fagan nomogram's positive-result and negative-result lines. \"jamovi (follow global)\" uses the palette chosen in jamovi, like the other plots; a legend names the two lines.": [
+                ""
+            ],
             "Column name separator (inter/intra)": [
                 ""
             ],
@@ -9824,6 +9827,9 @@
                 ""
             ],
             "Factor by which a positive result multiplies pre-test odds; practical importance depends on the starting probability and intended use.": [
+                ""
+            ],
+            "Fagan line colors": [
                 ""
             ],
             "Fagan Nomogram": [
@@ -13816,6 +13822,9 @@
             "Negative Result": [
                 ""
             ],
+            "Negative result": [
+                ""
+            ],
             "Negative rows": [
                 ""
             ],
@@ -16390,6 +16399,9 @@
             "Positive Result": [
                 ""
             ],
+            "Positive result": [
+                ""
+            ],
             "Positive rows": [
                 ""
             ],
@@ -17534,6 +17546,9 @@
                 ""
             ],
             "Rectal examination": [
+                ""
+            ],
+            "Red / blue (classic)": [
                 ""
             ],
             "Red = few cases, through orange and light green, to green = many cases. It shows frequency, not agreement: a crowded off-diagonal cell is green too": [

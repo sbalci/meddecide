@@ -13668,6 +13668,15 @@ msgstr ""
 msgid "Colorblind-safe, publications"
 msgstr ""
 
+#: cotest/options/faganColors.description.ui
+#: decision/options/faganColors.description.ui
+#: decisioncalculator/options/faganColors.description.ui
+msgid ""
+"Colors of the Fagan nomogram's positive-result and negative-result lines. "
+"\"jamovi (follow global)\" uses the palette chosen in jamovi, like the other "
+"plots; a legend names the two lines."
+msgstr ""
+
 #: agreement/options/interIntraSeparator.title
 msgid "Column name separator (inter/intra)"
 msgstr ""
@@ -18227,8 +18236,15 @@ msgid ""
 "importance depends on the starting probability and intended use."
 msgstr ""
 
+#: cotest/options/faganColors.title
+#: decision/options/faganColors.title
+#: decisioncalculator/options/faganColors.title
+msgid "Fagan line colors"
+msgstr ""
+
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 #: decision/results/plot1.title
 #: decisioncalculator/results/plot1.title
 msgid "Fagan Nomogram"
@@ -21743,6 +21759,9 @@ msgid ""
 "have the condition. That is a convention, not a clinical optimum."
 msgstr ""
 
+#: cotest/options/faganColors/jamovi.title
+#: decision/options/faganColors/jamovi.title
+#: decisioncalculator/options/faganColors/jamovi.title
 #: enhancedROC/options/plotTheme/jamovi.title
 msgid "jamovi (follow global)"
 msgstr ""
@@ -25054,6 +25073,12 @@ msgstr ""
 msgid "Negative Result"
 msgstr ""
 
+#: R/cotest.b.R
+#: R/decision.b.R
+#: R/decisioncalculator.b.R
+msgid "Negative result"
+msgstr ""
+
 #: enhancedROC/results/results/frozenMetrics.columns.title
 msgid "Negative rows"
 msgstr ""
@@ -25280,6 +25305,7 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "NLR"
 msgstr ""
 
@@ -29165,6 +29191,7 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "PLR"
 msgstr ""
 
@@ -29606,6 +29633,12 @@ msgstr ""
 msgid "Positive Result"
 msgstr ""
 
+#: R/cotest.b.R
+#: R/decision.b.R
+#: R/decisioncalculator.b.R
+msgid "Positive result"
+msgstr ""
+
 #: enhancedROC/results/results/frozenMetrics.columns.title
 msgid "Positive rows"
 msgstr ""
@@ -29693,16 +29726,19 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "Post(-)"
 msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "Post(+)"
 msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid ""
 "Posterior\n"
 "Prob.\n"
@@ -30360,6 +30396,7 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
@@ -30490,6 +30527,7 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid ""
 "Prior\n"
 "Prob.\n"
@@ -31589,6 +31627,12 @@ msgstr ""
 
 #: R/cotest.b.R
 msgid "Rectal examination"
+msgstr ""
+
+#: cotest/options/faganColors/classic.title
+#: decision/options/faganColors/classic.title
+#: decisioncalculator/options/faganColors/classic.title
+msgid "Red / blue (classic)"
 msgstr ""
 
 #: R/agreement.b.R
@@ -43334,9 +43378,6 @@ msgstr ""
 #~ msgid "CI Method for Agreement"
 #~ msgstr ""
 
-#~ msgid "Class Variable (Gold Standard)"
-#~ msgstr ""
-
 #~ msgid "Clinical Decision Rule (binary)"
 #~ msgstr ""
 
@@ -43487,9 +43528,6 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Test 3 Positive Level"
-#~ msgstr ""
-
-#~ msgid "Test Variables"
 #~ msgstr ""
 
 #~ msgid "Threshold Step Size"

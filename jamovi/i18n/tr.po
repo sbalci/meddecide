@@ -15143,7 +15143,7 @@ msgstr "Sınıf değişkeni (altın standart)"
 
 #: psychopdaROC/ui[0][1].label
 msgid "Class Variable (Gold Standard)"
-msgstr "Sınıf değişkeni (altın standart)"
+msgstr "Sınıf Değişkeni (Altın Standart)"
 
 #: enhancedROC/options/plotTheme/classic.title
 msgid "Classic"
@@ -15965,6 +15965,15 @@ msgstr ""
 #: R/agreement.b.R
 msgid "Colorblind-safe, publications"
 msgstr ""
+
+#: cotest/options/faganColors.description.ui
+#: decision/options/faganColors.description.ui
+#: decisioncalculator/options/faganColors.description.ui
+msgid ""
+"Colors of the Fagan nomogram's positive-result and negative-result lines. "
+"\"jamovi (follow global)\" uses the palette chosen in jamovi, like the other "
+"plots; a legend names the two lines."
+msgstr "Fagan nomogramının pozitif sonuç ve negatif sonuç çizgilerinin renkleri. \"jamovi (genel ayarı izle)\", diğer grafikler gibi jamovi'de seçilen paleti kullanır; bir lejant iki çizgiyi adlandırır."
 
 #: agreement/options/interIntraSeparator.title
 msgid "Column name separator (inter/intra)"
@@ -17819,6 +17828,11 @@ msgid ""
 "patient is test-positive at or above the cutoff (at or below it when lower "
 "values are positive)."
 msgstr ""
+"Kesme noktaları, gözlenen komşu değerlerin orta noktalarındaki eşikler "
+"üzerinden Youden indeksini, J = duyarlılık + özgüllük - 1 (Youden, 1950), en "
+"büyük yapar: Youden-optimal kesme noktasının ampirik tahmincisi (Fluss ve "
+"ark., 2005). Hasta kesme noktasında veya üzerinde (düşük değerler pozitif "
+"olduğunda kesme noktasında veya altında) test-pozitif kabul edilir."
 
 #: R/enhancedROC.b.R
 msgid ""
@@ -21353,8 +21367,15 @@ msgstr ""
 "Pozitif bir sonucun test öncesi odds'unu çarpma faktörü; pratik önem "
 "başlangıç olasılığına ve amaçlanan kullanıma bağlıdır."
 
+#: cotest/options/faganColors.title
+#: decision/options/faganColors.title
+#: decisioncalculator/options/faganColors.title
+msgid "Fagan line colors"
+msgstr "Fagan çizgi renkleri"
+
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 #: decision/results/plot1.title
 #: decisioncalculator/results/plot1.title
 msgid "Fagan Nomogram"
@@ -25218,7 +25239,7 @@ msgstr "Iota katsayısı (tek değişken)"
 
 #: R/agreement.b.R
 msgid "Iota Coefficient (Single Variable)"
-msgstr ""
+msgstr "Iota katsayısı (tek değişken)"
 
 #: agreement/results/maxwellREGroup/iotaTable.title
 msgid "Iota Coefficient Results (Single Variable)"
@@ -25370,6 +25391,8 @@ msgid ""
 "It is computed over all cutoffs and does not depend on which cutoff was "
 "selected."
 msgstr ""
+"Tüm kesme noktaları üzerinden hesaplanır ve hangi kesme noktasının "
+"seçildiğine bağlı değildir."
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -25490,6 +25513,9 @@ msgstr ""
 "hastaların yarısında durum mevcut olduğunda eşittir. Bu klinik bir optimum "
 "değil, bir uzlaşımdır."
 
+#: cotest/options/faganColors/jamovi.title
+#: decision/options/faganColors/jamovi.title
+#: decisioncalculator/options/faganColors/jamovi.title
 #: enhancedROC/options/plotTheme/jamovi.title
 msgid "jamovi (follow global)"
 msgstr "jamovi (genel ayarı izle)"
@@ -27336,7 +27362,7 @@ msgstr "en büyük yapılarak"
 
 #: R/agreement.b.R
 msgid "Maximum"
-msgstr ""
+msgstr "Maksimum"
 
 #: R/psychopdaROC.b.R
 msgid "maximum"
@@ -28764,7 +28790,7 @@ msgstr "Çoklu işaretleyici uyumu"
 
 #: R/agreement.b.R
 msgid "Multi-Annotator Concordance"
-msgstr ""
+msgstr "Çoklu işaretleyici uyumu"
 
 #: agreement/ui[2][8].label
 msgid "Multi-Annotator Concordance (AI Validation)"
@@ -29265,6 +29291,12 @@ msgstr ""
 msgid "Negative Result"
 msgstr "Negatif Sonuç"
 
+#: R/cotest.b.R
+#: R/decision.b.R
+#: R/decisioncalculator.b.R
+msgid "Negative result"
+msgstr "Negatif sonuç"
+
 #: enhancedROC/results/results/frozenMetrics.columns.title
 msgid "Negative rows"
 msgstr "Negatif satırlar"
@@ -29532,6 +29564,7 @@ msgstr "Newcombe eşleştirilmiş %95 GA"
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "NLR"
 msgstr "NLR"
 
@@ -34239,6 +34272,7 @@ msgstr "Grafikler"
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "PLR"
 msgstr "PLR"
 
@@ -34742,6 +34776,12 @@ msgstr ""
 msgid "Positive Result"
 msgstr "Pozitif Sonuç"
 
+#: R/cotest.b.R
+#: R/decision.b.R
+#: R/decisioncalculator.b.R
+msgid "Positive result"
+msgstr "Pozitif sonuç"
+
 #: enhancedROC/results/results/frozenMetrics.columns.title
 msgid "Positive rows"
 msgstr "Pozitif satırlar"
@@ -34839,16 +34879,19 @@ msgstr "Test Sonrası Referans Pozitif Olasılığı (Pozitif Test)"
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "Post(-)"
 msgstr "Test sonrası(-)"
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid "Post(+)"
 msgstr "Test sonrası(+)"
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid ""
 "Posterior\n"
 "Prob.\n"
@@ -35637,6 +35680,7 @@ msgstr "Bağımsız olarak önceden belirlendi"
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 #: R/decisioncombine.b.R
 #: R/decisioncurve.b.R
 #: R/enhancedROC.b.R
@@ -35802,6 +35846,7 @@ msgstr ""
 
 #: R/cotest.b.R
 #: R/decision.b.R
+#: R/decisioncalculator.b.R
 msgid ""
 "Prior\n"
 "Prob.\n"
@@ -37042,6 +37087,12 @@ msgstr ""
 #: R/cotest.b.R
 msgid "Rectal examination"
 msgstr "Rektal muayene"
+
+#: cotest/options/faganColors/classic.title
+#: decision/options/faganColors/classic.title
+#: decisioncalculator/options/faganColors/classic.title
+msgid "Red / blue (classic)"
+msgstr "Kırmızı / mavi (klasik)"
 
 #: R/agreement.b.R
 msgid ""
@@ -39535,6 +39586,11 @@ msgid ""
 "correction) treats both cutoffs as fixed in advance, so its p-values ignore "
 "that selection. Rows with fewer than 10 discordant patients are not tested."
 msgstr ""
+"Duyarlılık, özgüllük ve doğruluk, her belirteci bu aynı hastalarda seçilen "
+"kendi kesme noktasında karşılaştırır. McNemar testi (asimptotik, süreklilik "
+"düzeltmesi olmadan) her iki kesme noktasını da önceden sabitlenmiş kabul "
+"eder; bu nedenle p değerleri bu seçimi göz ardı eder. 10'dan az uyumsuz "
+"hastası olan satırlar test edilmez."
 
 #: decision/results/epirTable_ratio.title
 msgid "Sensitivity, Specificity and Predictive Values with 95% CI"
@@ -42351,7 +42407,7 @@ msgstr "Test değişkenleri"
 
 #: psychopdaROC/ui[0][0].label
 msgid "Test Variables"
-msgstr "Test değişkenleri"
+msgstr "Test Değişkenleri"
 
 #: R/decision.b.R
 msgid "Test-negative level \"{lvl}\" not found in test variable"
@@ -43633,6 +43689,10 @@ msgid ""
 "values — is computed from the empirical curve. A smoothed curve carries no "
 "thresholds, so it cannot produce a cutoff."
 msgstr ""
+"Görüntülenen ROC eğrisi düzeltilmiştir (%s), ancak raporlanan her istatistik "
+"— AUC, güven aralıkları, optimal kesme noktaları ve tüm duyarlılık/özgüllük "
+"değerleri — ampirik eğriden hesaplanır. Düzeltilmiş bir eğri eşik taşımaz, "
+"bu nedenle kesme noktası üretemez."
 
 #: R/psychopdaROC.b.R
 msgid ""
@@ -51740,9 +51800,6 @@ msgstr "τ² Çalışmalar Arası Varyans"
 #~ msgid "CI Method for Agreement"
 #~ msgstr "Uyum için GA Yöntemi"
 
-#~ msgid "Class Variable (Gold Standard)"
-#~ msgstr "Sınıf Değişkeni (Altın Standart)"
-
 #~ msgid "Clinical Decision Rule (binary)"
 #~ msgstr "Klinik Karar Kuralı (ikili)"
 
@@ -51900,9 +51957,6 @@ msgstr "τ² Çalışmalar Arası Varyans"
 
 #~ msgid "Test 3 Positive Level"
 #~ msgstr "Test 3 Pozitif Düzey"
-
-#~ msgid "Test Variables"
-#~ msgstr "Test Değişkenleri"
 
 #~ msgid "Threshold Step Size"
 #~ msgstr "Eşik Adım Boyutu"

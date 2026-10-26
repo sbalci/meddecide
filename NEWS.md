@@ -54,6 +54,10 @@ their defaults (see the R note).
 - **Clinical ROC Analysis plots follow jamovi's theme.** Plot theme has a new first choice,
   "jamovi (follow global)", which is now the default, so these plots match the rest of the
   document. Classic, Modern and Clinical (the previous default) are still there to override it.
+- **Fagan nomograms follow jamovi's colors and name their lines.** In Medical Decision, the Medical
+  Decision Calculator and Co-Testing Analysis, the two lines now use the palette chosen in jamovi,
+  and a legend says which is the positive result and which the negative. "Fagan line colors" ->
+  "Red / blue (classic)" brings back the old red and blue.
 - **Predictor names that start with "<" show in Clinical ROC Analysis tables.** A variable named,
   for example, "<LOD flag" appeared as a blank cell in 18 tables; it now shows as "< LOD flag".
 - **Sample-size numbers follow your number format.** Interrater Reliability's Sample Size for
