@@ -15820,10 +15820,10 @@
             "Patient ID must be different from the markers, outcome and subgroup variables.": [
                 "Hasta kimliği; belirteç, sonuç ve alt grup değişkenlerinden farklı olmalıdır."
             ],
-            "Patient identifier": [
+            "Patient Identifier": [
                 "Hasta tanımlayıcısı"
             ],
-            "Patient Identifier": [
+            "Patient identifier": [
                 "Hasta tanımlayıcısı"
             ],
             "Patient identifier. On the main analysis it is used only to warn when a patient has several rows: every panel except the Frozen-model validation report treats each row as an independent patient, so their intervals and tests are too narrow then. Only the Frozen-model validation report resamples whole patients.": [
@@ -16630,10 +16630,10 @@
             "Predicted": [
                 "Tahmin Edilen"
             ],
-            "Predicted probabilities": [
+            "Predicted Probabilities": [
                 "Tahmin edilen olasılıklar"
             ],
-            "Predicted Probabilities": [
+            "Predicted probabilities": [
                 "Tahmin edilen olasılıklar"
             ],
             "Predicted probabilities as supplied": [

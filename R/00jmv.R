@@ -870,9 +870,8 @@
         `type`="software", 
         `author`="R Core Team", 
         `year`=2026, 
-        `title`="tools: R package", 
-        `publisher`="[R package]. Retrieved from https://CRAN.R-project.org/package=tools", 
-        `url`="https://CRAN.R-project.org/package=tools"), 
+        `title`="tools: Tools for Package Development (Base R)", 
+        `publisher`="[R base package]. R Foundation for Statistical Computing"), 
     `vcd`=list(
         `type`="software", 
         `author`="Meyer, D., Zeileis, A., Hornik, K., Gerber, F., & Friendly, M.", 

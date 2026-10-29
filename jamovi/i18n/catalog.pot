@@ -28646,12 +28646,12 @@ msgid ""
 "variables."
 msgstr ""
 
-#: enhancedROC/options/patientID.title
-msgid "Patient identifier"
-msgstr ""
-
 #: enhancedROC/ui[0][2].label
 msgid "Patient Identifier"
+msgstr ""
+
+#: enhancedROC/options/patientID.title
+msgid "Patient identifier"
 msgstr ""
 
 #: enhancedROC/options/patientID.description
@@ -30070,12 +30070,12 @@ msgstr ""
 msgid "Predicted"
 msgstr ""
 
-#: lassologistic/options/predictions.title
-msgid "Predicted probabilities"
-msgstr ""
-
 #: lassologistic/results/predictions.title
 msgid "Predicted Probabilities"
+msgstr ""
+
+#: lassologistic/options/predictions.title
+msgid "Predicted probabilities"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -43386,6 +43386,9 @@ msgstr ""
 #~ msgid "CI Method for Agreement"
 #~ msgstr ""
 
+#~ msgid "Class Variable (Gold Standard)"
+#~ msgstr ""
+
 #~ msgid "Clinical Decision Rule (binary)"
 #~ msgstr ""
 
@@ -43536,6 +43539,9 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Test 3 Positive Level"
+#~ msgstr ""
+
+#~ msgid "Test Variables"
 #~ msgstr ""
 
 #~ msgid "Threshold Step Size"
