@@ -2,3 +2,41 @@ url: https://www.serdarbalci.com/meddecide/
 template:
   bootstrap: 5
 
+articles:
+  - title: Getting started
+    navbar: Getting started
+    contents:
+      - 01-introduction
+      - 16-use-in-r
+      - 02-comprehensive-guide
+
+  - title: Agreement
+    navbar: Agreement
+    contents:
+      - 03-agreement-analysis
+      - meddecide-agreement-comprehensive
+      - 15-diagnostic-style-clustering
+      - meddecide-09-digital-pathology-validation
+      - meddecide-32-ysrb-interobserver
+
+  - title: Diagnostic tests & decision
+    navbar: Diagnostic tests & decision
+    contents:
+      - 13-diagnostic-tests
+      - 34-cotest-analysis
+      - 36-sequential-testing-comprehensive
+      - 12-nogoldstandard
+
+  - title: ROC
+    navbar: ROC
+    contents:
+      - 03-roc-analysis
+      - meddecide-enhancedroc-comprehensive
+      - meddecide-psychopdaroc-comprehensive
+
+  - title: Sample size
+    navbar: Sample size
+    contents:
+      - 07-kappasizeci-comprehensive
+      - 08-kappasizefixedn-comprehensive
+      - 09-kappasizepower-comprehensive

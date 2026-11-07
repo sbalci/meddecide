@@ -8,8 +8,16 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
+# The example CSV files are in data-raw/non-rda of the ClinicoPath repository
+# (https://github.com/sbalci/ClinicoPathJamoviModule). Point MEDDECIDE_VIGNETTE_DATA
+# at that folder to run the examples; otherwise the code is shown without output.
+data_path <- Sys.getenv("MEDDECIDE_VIGNETTE_DATA", "../data-raw/non-rda/")
+if (!endsWith(data_path, "/")) data_path <- paste0(data_path, "/")
+data_path2 <- data_path
+run_examples <- dir.exists(data_path)
+
 knitr::opts_chunk$set(
-  eval = TRUE,
+  eval = run_examples,
   echo = TRUE,
   collapse = TRUE,
   comment = "#>",
@@ -20,12 +28,7 @@ knitr::opts_chunk$set(
   fig.height = 5
 )
 
-# Load the package
-devtools::load_all("../")
-
-# Base path for data files
-data_path <- "../data-raw/non-rda/"
-data_path2 <- "../data/"
+library(meddecide)
 ```
 
 # Clinical ROC Analysis (enhancedROC)
@@ -38,8 +41,9 @@ ROC curve analysis, Youden Index optimization, sensitivity/specificity analysis,
 optimal cutoff determination, comparative ROC analysis, calibration assessment,
 multi-class ROC, clinical impact metrics, and class imbalance detection.
 
-All examples below use the bundled test datasets. In jamovi, open the corresponding
-`.omv` file. From R, read the `.csv` directly.
+All examples below use the test datasets in the `data-raw/non-rda/` folder of the
+[ClinicoPath repository](https://github.com/sbalci/ClinicoPathJamoviModule)
+(`.omv` for jamovi, `.csv` for R). On this website the code is shown without output.
 
 ---
 
@@ -56,7 +60,7 @@ All examples below use the bundled test datasets. In jamovi, open the correspond
 | `enhancedroc_confirmatory` | 250 | Confirmed/Not | 45% | High-specificity markers | Confirmatory testing |
 | `enhancedroc_small` | 60 | Positive/Negative | 30% | Single simple marker | Small sample testing |
 | `enhancedroc_validation` | 350 | Positive/Negative | 30% | Probability predictors, biomarker | CROC / convex hull |
-| `enhancedroc_tiedscores` | 200 | Disease/No Disease | 35% | Ordinal scores (many ties) | Tied score handling |
+| `enhancedroc_tiedscores` | 200 | Disease/No Disease | 35% | Ordinal scores (many ties) | Scores with many ties |
 
 ---
 
@@ -208,7 +212,7 @@ enhancedROC(
 )
 ```
 
-### 90% CI with bootstrap CIs for cutoff and partial AUC
+### 90% CI with a bootstrap CI for the partial AUC
 
 ```{r bootstrap-90ci}
 enhancedROC(
@@ -220,7 +224,6 @@ enhancedROC(
   confidenceLevel = 90,
   useBootstrap = TRUE,
   bootstrapSamples = 100,
-  bootstrapCutoffCI = TRUE,
   bootstrapPartialAUC = TRUE,
   partialAuc = TRUE,
   customCutoffs = NULL
@@ -409,7 +412,12 @@ enhancedROC(
 )
 ```
 
-### Tied score handling
+### Scores with many ties
+
+Ordinal scores and rounded lab values produce many ties. A tied pair of patients
+(one positive, one negative) always counts one half in the AUC, and a note under
+the AUC table reports how many ties there are and the bounds the AUC could take if
+they were broken either way. No option is needed.
 
 ```{r tied-scores}
 tied_data <- read.csv(paste0(data_path2, "enhancedroc_tiedscores.csv"))
@@ -420,7 +428,6 @@ enhancedROC(
   positiveClass = "Disease",
   validationNegative = NULL,
   predictors = vars(ordinal_score, rounded_lab, composite_score),
-  tiedScoreHandling = "average",
   customCutoffs = NULL
 )
 ```

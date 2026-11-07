@@ -1,58 +1,75 @@
 ---
 title: "Diagnostic Test Evaluation"
-author: "ClinicoPath Development Team"
-date: "`r Sys.Date()`"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Diagnostic Test Evaluation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", warning = FALSE, message = FALSE)
+library(meddecide)
 ```
 
-The **meddecide** package provides tools to evaluate medical diagnostic tests.
-This vignette demonstrates the core functions for decision analysis.
+This article shows the two basic diagnostic-accuracy analyses:
 
-## Example Data
+- **Medical Decision** (`decision()`, **meddecide > Decision**) works from raw data:
+  one column for the reference standard, one for the test.
+- **Medical Decision Calculator** (`decisioncalculator()`,
+  **meddecide > Decision Calculators**) works from the four cell counts.
 
-Small example datasets are included with the package. You can load them
-using `system.file()` and `read.csv()`.
+## From raw data: `decision()`
 
-```{r, eval=FALSE}
+A tiny example file ships with the package.
+
+```{r data}
 df_dec <- read.csv(system.file("extdata", "decision_example.csv", package = "meddecide"))
-head(df_dec)
+df_dec$gold    <- factor(df_dec$gold)
+df_dec$newtest <- factor(df_dec$newtest)
+str(df_dec)
 ```
 
-## Calculating Diagnostic Metrics
+Columns are passed **by name**. Name the positive *and* the negative level of
+both the reference standard and the test; all four are required, so the analysis
+never guesses which level means "disease".
 
-The `decision()` function computes sensitivity, specificity and related
-metrics from raw test results.
-
-```{r, eval=FALSE}
-res <- decision(data = df_dec,
-                gold = df_dec$gold,
-                goldPositive = 1,
-                newtest = df_dec$newtest,
-                testPositive = 1,
-                ci = TRUE)
-res$ratioTable
+```{r decision}
+res <- decision(
+  data = df_dec,
+  gold = "gold",
+  goldPositive = "1",
+  goldNegative = "0",
+  newtest = "newtest",
+  testPositive = "1",
+  testNegative = "0",
+  ci = TRUE
+)
+res$cTable$asDF      # 2 x 2 table
+res$ratioTable$asDF  # sensitivity, specificity, PPV, NPV, likelihood ratios
+res$epirTable_ratio$asDF  # sensitivity, specificity, PPV, NPV with 95% CIs (ci = TRUE)
 ```
 
-When you only have the four counts (true positives, false positives,
-true negatives and false negatives) you can use
-`decisioncalculator()` directly.
+With only 10 cases the confidence intervals are very wide; the example only shows
+the mechanics.
 
-```{r, eval=FALSE}
+## From counts: `decisioncalculator()`
+
+```{r calculator, fig.width = 6, fig.height = 5}
 calc <- decisioncalculator(TP = 90, FN = 10, TN = 80, FP = 20,
                            ci = TRUE, fagan = TRUE)
-calc$ratioTable
+calc$epirTable_ratio$asDF  # estimates with 95% confidence intervals
+calc$plot1           # Fagan nomogram
 ```
 
-The option `fagan = TRUE` adds a Fagan nomogram to illustrate how the
-pre-test probability is updated by the diagnostic result.
+The Fagan nomogram shows how a positive or negative result moves a pre-test
+probability to a post-test probability through the likelihood ratios. By default
+the pre-test probability is the prevalence in the table; set `pp = TRUE` and
+`pprob` to use a prevalence from your own population.
 
-```{r, eval=FALSE}
-calc$fagan
-```
+## See also
 
-These tools help summarise diagnostic performance and can be combined
-with other functions in **meddecide** for more advanced analysis.
+- [Co-Testing Analysis](34-cotest-analysis.html) and
+  [Sequential Testing](36-sequential-testing-comprehensive.html) for two tests.
+- [Analysis Without Gold Standard](12-nogoldstandard.html) when there is no
+  reference standard.

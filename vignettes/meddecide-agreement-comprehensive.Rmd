@@ -8,8 +8,16 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
+# The example CSV files are in data-raw/non-rda of the ClinicoPath repository
+# (https://github.com/sbalci/ClinicoPathJamoviModule). Point MEDDECIDE_VIGNETTE_DATA
+# at that folder to run the examples; otherwise the code is shown without output.
+data_path <- Sys.getenv("MEDDECIDE_VIGNETTE_DATA", "../data-raw/non-rda/")
+if (!endsWith(data_path, "/")) data_path <- paste0(data_path, "/")
+data_path2 <- data_path
+run_examples <- dir.exists(data_path)
+
 knitr::opts_chunk$set(
-  eval = TRUE,
+  eval = run_examples,
   echo = TRUE,
   collapse = TRUE,
   comment = "#>",
@@ -20,11 +28,7 @@ knitr::opts_chunk$set(
   fig.height = 5
 )
 
-# Load the package
-devtools::load_all("../")
-
-# Base path for data files
-data_path <- "../data-raw/non-rda/"
+library(meddecide)
 ```
 
 # Interrater Reliability & Agreement Analysis
@@ -37,7 +41,9 @@ categorical, ordinal, and continuous data with 2 or more raters, and includes
 advanced features such as hierarchical kappa, mixed-effects comparisons,
 bootstrap confidence intervals, and built-in sample size calculators.
 
-All examples below use the bundled test datasets located in `data-raw/non-rda/`.
+All examples below use the test datasets in the `data-raw/non-rda/` folder of the
+[ClinicoPath repository](https://github.com/sbalci/ClinicoPathJamoviModule); on this
+website the code is shown without output.
 In jamovi, open the corresponding `.omv` file. From R, read the `.csv` directly.
 
 ---
@@ -220,7 +226,7 @@ agreement(
     finnLevels = 3,                     # Number of response categories
     finnModel = "oneway",               # "oneway" or "twoway"
     multiAnnotatorConcordance = TRUE,   # Multi-annotator concordance (F1)
-    predictionColumn = 1,               # Which rater is the "prediction"
+    predictionRater = "Rater1",         # Which rater is the "prediction"
     agreementBySubgroup = TRUE,
     subgroupVariable = tissue_site
 )
@@ -502,7 +508,6 @@ agreement(
     clusterSpecificKappa = TRUE,             # Kappa per center
     varianceDecomposition = TRUE,            # Variance components
     testClusterHomogeneity = TRUE,           # Test if agreement differs across centers
-    shrinkageEstimates = TRUE,               # Empirical Bayes shrinkage
     clusterRankings = TRUE,                  # Rank centers by agreement
     iccHierarchical = TRUE,                  # Hierarchical ICC
     multipleTestCorrection = "bonferroni"    # "none", "bonferroni", "bh", "holm"
@@ -768,7 +773,7 @@ agreement(
     conditionBVars = NULL,
     vars = vars(Rater1, Rater2, Rater3),
     multiAnnotatorConcordance = TRUE,
-    predictionColumn = 1            # Which rater is the "prediction" (1-indexed)
+    predictionRater = "Rater1"      # Which rater column is the "prediction"
 )
 ```
 

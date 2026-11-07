@@ -8210,28 +8210,6 @@ msgid ""
 "left blank."
 msgstr ""
 
-#: package.description
-msgid ""
-"A comprehensive toolkit for medical decision analysis and reliability\n"
-"assessment, implemented as a jamovi module. The package provides tools for:\n"
-"* Interrater and intrarater reliability analysis using Cohen's Kappa and\n"
-"  Fleiss' Kappa statistics\n"
-"* Diagnostic test evaluation with sensitivity, specificity, predictive "
-"values,\n"
-"  and likelihood ratios\n"
-"* Sample size calculations for reliability studies using confidence interval\n"
-"  and power-based approaches\n"
-"* Visualization tools including Fagan nomograms for Bayesian probability\n"
-"  updates\n"
-"* Power analysis for interobserver agreement studies with support for\n"
-"  multiple raters and outcome categories\n"
-"Tools are provided through an intuitive graphical interface in jamovi, "
-"making\n"
-"complex medical decision analyses accessible to clinical researchers.\n"
-"For comments, suggestions, feature requests or reporting bugs, please open "
-"an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>."
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "A flexible calibration curve gives ICI, E50, E90 and Emax as defined by "
@@ -8313,9 +8291,9 @@ msgstr ""
 #: R/decisioncalculator.b.R
 msgid ""
 "A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe "
-"0.5 correction, while the predictive values above use the observed counts. "
-"Multiplying the pre-test odds by these likelihood ratios therefore need not "
-"reproduce the predictive values exactly."
+"0.5 correction, while the predictive values in the results tables use the "
+"observed counts. Multiplying the pre-test odds by these likelihood ratios "
+"therefore need not reproduce the predictive values exactly."
 msgstr ""
 
 #: R/agreement.b.R
@@ -12060,18 +12038,6 @@ msgstr ""
 msgid "Cancer diagnosis studies (critical to have high PSA)"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Cannot be calculated: LR- is (1 - sensitivity) / specificity, and one of "
-"those is not estimable here"
-msgstr ""
-
-#: R/decision.b.R
-msgid ""
-"Cannot be calculated: LR+ is sensitivity / (1 - specificity), and one of "
-"those is not estimable here"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid "Cannot compute"
 msgstr ""
@@ -12511,12 +12477,6 @@ msgstr ""
 msgid ""
 "Check the missing values of this test variable, or remove it from the "
 "analysis."
-msgstr ""
-
-#: R/decisioncurve.b.R
-msgid ""
-"Check whether the model's bootstrap interval on the decision curve plot "
-"stays above both reference lines over this range."
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -15412,6 +15372,13 @@ msgid ""
 "overfitting risk."
 msgstr ""
 
+#: R/lassologistic.b.R
+msgid ""
+"Data suitability: high collinearity detected (%s). The predictions are not "
+"affected as such, but the choice and coefficients of correlated predictors "
+"are unstable; see the Data Suitability table."
+msgstr ""
+
 #: agreement/results/contingencyTableGroup.title
 msgid "Data Summary"
 msgstr ""
@@ -17544,6 +17511,12 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid ""
+"Every case received the same ratings, so the standard error is 0 and no "
+"confidence interval or p-value can be estimated from this sample."
+msgstr ""
+
+#: R/agreement.b.R
+msgid ""
 "Every column you select is read as {tag1}another rater of one "
 "variable{tag2}.\n"
 "                            The number reported is therefore the "
@@ -17584,6 +17557,13 @@ msgid ""
 "weight, so this differs slightly from the Difference in Average Net Benefit "
 "in the Exploratory Model Comparison table, which is the area under the curve "
 "divided by the range width."
+msgstr ""
+
+#: R/psychopdaROC.b.R
+msgid ""
+"Every marker is compared in the selected Classification Direction. %s has an "
+"AUC below 0.5 in that direction, so a difference involving it reflects "
+"reading that marker backwards, not which marker discriminates better."
 msgstr ""
 
 #: R/agreement.b.R
@@ -17756,10 +17736,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Example (5-point scale):"
-msgstr ""
-
-#: package/datasets/histopathologyincludinganalysis.description
-msgid "Example analysis for Medical Decision Tests."
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -19346,10 +19322,6 @@ msgid ""
 "Predictive Value, Negative Predictive Value."
 msgstr ""
 
-#: package.title
-msgid "Functions for Medical Decision in ClinicoPath jamovi Module"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid "Further reading"
 msgstr ""
@@ -19998,8 +19970,8 @@ msgstr ""
 msgid "Highly unbalanced test results ({pct} positive)"
 msgstr ""
 
-#: package/datasets/histopathologyincludinganalysis.name
-msgid "histopathology including analysis"
+#: package/datasets/HistopathologyDiagnosticandAgreementExamples.name
+msgid "Histopathology Diagnostic and Agreement Examples"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -23246,11 +23218,22 @@ msgid "Max |r| = %.2f (<0.7: acceptable)"
 msgstr ""
 
 #: R/lassologistic.b.R
-msgid "Max |r| = %.2f (>=0.9: high, consider elastic net)"
+msgid ""
+"Max |r| = %.2f (>=0.9: high; LASSO keeps one of the correlated predictors "
+"more or less arbitrarily, so the selected set is unstable; elastic net or "
+"ridge keeps them together)"
 msgstr ""
 
 #: R/lassologistic.b.R
-msgid "Max |r| = %.2f (0.7-0.9: moderate, LASSO will handle)"
+msgid ""
+"Max |r| = %.2f (>=0.9: high; the coefficients of the correlated predictors "
+"are not separately interpretable)"
+msgstr ""
+
+#: R/lassologistic.b.R
+msgid ""
+"Max |r| = %.2f (0.7-0.9: moderate; which of the correlated predictors is "
+"selected may vary)"
 msgstr ""
 
 #: agreement/results/iccGroup/meanPearsonTable.columns.title
@@ -23589,6 +23572,23 @@ msgstr ""
 msgid "Medical Decision Analysis"
 msgstr ""
 
+#: package.description
+msgid ""
+"Medical decision analysis for clinicians and pathologists. Diagnostic test "
+"accuracy: sensitivity, specificity, predictive values at a chosen prevalence "
+"and likelihood ratios with exact intervals and an explicit zero-cell rule, "
+"Fagan nomograms, comparison and combination of tests, co-testing and "
+"sequential testing, and analysis without a gold standard (latent class "
+"models). ROC analysis: optimal cut-points, partial AUC, DeLong comparisons, "
+"NRI and IDI, calibration and frozen-model validation. Decision curve "
+"analysis and LASSO logistic prediction models. Interrater reliability: "
+"Cohen's, Fleiss' and weighted kappa, Krippendorff's alpha, Gwet's AC1/AC2, "
+"ICC, specific agreement and related measures. Sample-size and power "
+"calculators for kappa studies are in the Power menu. Results support "
+"research and teaching; they do not replace clinical judgement. Report "
+"problems at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>."
+msgstr ""
+
 #: package/analyses/decisioncalculator.title
 #: package/analyses/decisioncalculator.menuTitle
 #: decisioncalculator/options.title
@@ -23612,6 +23612,10 @@ msgid ""
 "Supports confidence interval estimation and Fagan nomogram visualization for "
 "educational interpretation. Presets and examples are illustrative only and "
 "are not clinical guides."
+msgstr ""
+
+#: package.title
+msgid "Medical Decision, Diagnostic Accuracy and Agreement Analysis"
 msgstr ""
 
 #: R/decision.b.R
@@ -25651,6 +25655,12 @@ msgstr ""
 msgid "No evidence of a difference"
 msgstr ""
 
+#: R/decision.b.R
+msgid ""
+"No evidence of discrimination in this sample (the 95% confidence interval "
+"for Youden's index includes 0)"
+msgstr ""
+
 #: R/enhancedROC.b.R
 msgid "No evidence of lack of fit (p >= 0.05)"
 msgstr ""
@@ -26034,6 +26044,10 @@ msgid ""
 "No statistical comparison between these two tests could be computed; the "
 "reason is given in the Important Information panel. Report the per-test "
 "performance only."
+msgstr ""
+
+#: R/decision.b.R
+msgid "no statistically detectable"
 msgstr ""
 
 #: R/agreement.b.R
@@ -26440,6 +26454,18 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid "Not estimable: no patient tests positive at this cutoff."
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"Not estimable: sensitivity or specificity could not be computed, or the "
+"false-positive count is zero and no continuity-corrected value would be valid"
+msgstr ""
+
+#: R/decision.b.R
+msgid ""
+"Not estimable: sensitivity or specificity could not be computed, or the "
+"true-negative count is zero and no continuity-corrected value would be valid"
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -28600,6 +28626,12 @@ msgstr ""
 msgid "Pathologists linked through shared cases"
 msgstr ""
 
+#: package/datasets/HistopathologyDiagnosticandAgreementExamples.description
+msgid ""
+"Pathology dataset with saved Interrater Reliability, Medical Decision, "
+"Medical Decision Calculator, Co-Testing and Sequential Testing analyses."
+msgstr ""
+
 #: R/agreement.b.R
 msgid "Pathology Examples"
 msgstr ""
@@ -30186,7 +30218,7 @@ msgid "Prediction variables/models"
 msgstr ""
 
 #: R/agreement.b.R
-msgid "Prediction: rater %d"
+msgid "Prediction: %s"
 msgstr ""
 
 #: R/decisioncurve.b.R
@@ -31691,6 +31723,7 @@ msgstr ""
 msgid "Reference line labels"
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decision/results/comparatorCounts.columns.title
 #: decisioncalculator/ui[0][0][1][1][0].label
 #: decisioncalculator/ui[5][1][1][1][0].label
@@ -31712,11 +31745,11 @@ msgstr ""
 msgid "Reference negative given negative call"
 msgstr ""
 
-#: R/decisioncompare.b.R
 #: decision/options/goldNegative.title
 msgid "Reference negative level"
 msgstr ""
 
+#: R/decisioncompare.b.R
 #: decision/results/comparatorCounts.columns.title
 #: decisioncalculator/ui[0][0][1][0][0].label
 #: decisioncalculator/ui[5][1][1][0][0].label
@@ -31746,7 +31779,6 @@ msgid ""
 "calls \"{tpos}\"."
 msgstr ""
 
-#: R/decisioncompare.b.R
 #: decision/options/goldPositive.title
 msgid "Reference positive level"
 msgstr ""
@@ -33188,7 +33220,7 @@ msgstr ""
 
 #: R/enhancedROC.b.R
 msgid ""
-"Select a positive reference level and enter a distinct negative reference "
+"Select a positive reference level and choose a distinct negative reference "
 "level."
 msgstr ""
 
@@ -35659,7 +35691,7 @@ msgid ""
 msgstr ""
 
 #: R/sequentialtests.b.R
-msgid "Teaching Example Replaced Entered Values"
+msgid "Teaching Example Replaced Values Given in the Call"
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -36374,11 +36406,13 @@ msgstr ""
 #: R/agreement.b.R
 msgid ""
 "The %.0f%% interval is an <i>approximation</i>: a Wilson interval applied to "
-"specific agreement, which is not a binomial proportion, on the count of "
-"cases rated into the category by at least one rater. Actual coverage is not "
-"guaranteed, and the interval is least trustworthy for rare categories and "
-"for values near 0 or 1. de Vet and colleagues (2013) recommend a bootstrap "
-"interval instead; treat these limits as indicative."
+"specific agreement, which is not a binomial proportion, on n = 2a + b + c, "
+"the number of times either rater assigned the category (a case both raters "
+"placed in it counts twice, so the interval is narrower than one based on "
+"cases). Actual coverage is not guaranteed, and the interval is least "
+"trustworthy for rare categories and for values near 0 or 1. de Vet and "
+"colleagues (2013) recommend a bootstrap interval instead; treat these limits "
+"as indicative."
 msgstr ""
 
 #: R/enhancedROC.b.R
@@ -38374,6 +38408,16 @@ msgid ""
 "own interpretation notes."
 msgstr ""
 
+#: R/decisioncurve.b.R
+msgid ""
+"The pointwise bootstrap intervals on the decision curve plot hold at each "
+"threshold separately and overstate confidence when read across this range; "
+"choose the simultaneous band under Interval type to judge the range as a "
+"whole. The reference lines are estimated from the same data, so an interval "
+"that clears them is not a test of the difference from treat all or treat "
+"none."
+msgstr ""
+
 #: R/enhancedROC.b.R
 msgid ""
 "The positive class (cases) was %1$s and the negative class (non-cases) was "
@@ -38994,6 +39038,14 @@ msgid ""
 "it is comparable across datasets."
 msgstr ""
 
+#: R/decisioncurve.b.R
+msgid ""
+"The simultaneous bootstrap band on the decision curve plot shows the "
+"uncertainty of the model's net benefit over this range. The reference lines "
+"are estimated from the same data, so a band that clears them is not a test "
+"of the difference from treat all or treat none."
+msgstr ""
+
 #: R/enhancedROC.b.R
 msgid ""
 "The smaller outcome group has %1$s patients (%2$s positive, %3$s negative); "
@@ -39142,9 +39194,9 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid ""
-"The teaching example replaced these entered values (entered -> used): "
-"{values}. Set the teaching example to \"Custom Values\" to analyse your own "
-"values."
+"The teaching example replaced these values given in the call (given -> "
+"used): {values}. Set the teaching example to \"Custom values\" to analyze "
+"your own values."
 msgstr ""
 
 #: R/psychopdaROC.b.R

@@ -6,14 +6,7 @@ output: html_document
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE,
-  eval = FALSE,
-  collapse = TRUE,
-  comment = "#>",
-    echo = TRUE,
-  eval = FALSE
-)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, collapse = TRUE, comment = "#>")
 ```
 
 
@@ -47,7 +40,8 @@ roc_result <- psychopdaROC(
   data = cancer_biomarker,
   dependentVars = "PSA",           # Test variable
   classVar = "cancer_status",      # Binary outcome (0/1)
-  positiveClass = "1"              # Which level is positive
+  positiveClass = "1",             # Which level is positive
+  negativeClass = "0"              # Which level is negative (both are required)
 )
 ```
 
@@ -71,6 +65,7 @@ roc_youden <- psychopdaROC(
   dependentVars = "PSA",
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   method = "maximize_metric",
   metric = "youden"  # Sensitivity + Specificity - 1
 )
@@ -81,6 +76,7 @@ roc_cost <- psychopdaROC(
   dependentVars = "PSA",
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   method = "oc_cost_ratio",
   costratioFP = 2.5  # False positives cost 2.5x more than false negatives
 )
@@ -91,6 +87,7 @@ roc_equal <- psychopdaROC(
   dependentVars = "PSA",
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   method = "oc_equal_sens_spec"
 )
 ```
@@ -104,6 +101,7 @@ roc_comparison <- psychopdaROC(
   dependentVars = c("PSA", "CA125", "CEA"),  # Multiple tests
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   combinePlots = TRUE,        # Show all curves in one plot
   delongTest = TRUE           # Statistical comparison of AUCs
 )
@@ -118,6 +116,7 @@ roc_bootstrap <- psychopdaROC(
   dependentVars = "PSA",
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   bootstrapCI = TRUE,
   bootstrapReps = 2000
 )
@@ -128,6 +127,7 @@ roc_partial <- psychopdaROC(
   dependentVars = "PSA",
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   partialAUC = TRUE,
   partialAUCfrom = 0.8,  # Specificity range 80-100%
   partialAUCto = 1.0
@@ -139,6 +139,7 @@ roc_nri <- psychopdaROC(
   dependentVars = c("PSA", "NewBiomarker"),
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   calculateIDI = TRUE,
   calculateNRI = TRUE,
   refVar = "PSA",  # Compare NewBiomarker against PSA
@@ -155,10 +156,11 @@ roc_publication <- psychopdaROC(
   dependentVars = c("PSA", "CA125"),
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   plotROC = TRUE,
   cleanPlot = TRUE,           # Clean plot for publications
   showOptimalPoint = TRUE,    # Mark optimal cutpoint
-  legendPosition = "bottomright"
+  legendPosition = "bottom"
 )
 
 # Additional diagnostic plots
@@ -167,6 +169,7 @@ roc_diagnostic <- psychopdaROC(
   dependentVars = "PSA",
   classVar = "cancer_status",
   positiveClass = "1",
+  negativeClass = "0",
   showCriterionPlot = TRUE,   # Sensitivity/Specificity vs threshold
   showPrevalencePlot = TRUE,  # PPV/NPV vs prevalence
   showDotPlot = TRUE          # Distribution by class
@@ -189,8 +192,10 @@ decision_result <- decision(
   data = diagnostic_data,
   gold = "pcr_result",        # Gold standard test
   goldPositive = "positive",   # Positive level of gold standard
+  goldNegative = "negative",   # Negative level of gold standard
   newtest = "rapid_test",      # New test to evaluate
-  testPositive = "positive"    # Positive level of new test
+  testPositive = "positive",   # Positive level of new test
+  testNegative = "negative"    # Negative level of new test
 )
 ```
 
@@ -216,8 +221,10 @@ decision_adjusted <- decision(
   data = diagnostic_data,
   gold = "pcr_result",
   goldPositive = "positive",
+  goldNegative = "negative",
   newtest = "rapid_test",
   testPositive = "positive",
+  testNegative = "negative",
   pp = TRUE,                  # Use prior probability
   pprob = 0.05                # 5% prevalence in general population
 )
@@ -231,8 +238,10 @@ decision_ci <- decision(
   data = diagnostic_data,
   gold = "pcr_result",
   goldPositive = "positive",
+  goldNegative = "negative",
   newtest = "rapid_test",
   testPositive = "positive",
+  testNegative = "negative",
   ci = TRUE                   # Calculate confidence intervals
 )
 ```
@@ -247,8 +256,10 @@ decision_fagan <- decision(
   data = diagnostic_data,
   gold = "pcr_result",
   goldPositive = "positive",
+  goldNegative = "negative",
   newtest = "rapid_test",
   testPositive = "positive",
+  testNegative = "negative",
   fagan = TRUE                # Generate Fagan nomogram
 )
 ```

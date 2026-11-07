@@ -9502,28 +9502,6 @@ msgstr ""
 "Tek üyeli bir kümenin küme içi benzerliği yoktur, bu nedenle o satır boş "
 "bırakılmıştır."
 
-#: package.description
-msgid ""
-"A comprehensive toolkit for medical decision analysis and reliability\n"
-"assessment, implemented as a jamovi module. The package provides tools for:\n"
-"* Interrater and intrarater reliability analysis using Cohen's Kappa and\n"
-"  Fleiss' Kappa statistics\n"
-"* Diagnostic test evaluation with sensitivity, specificity, predictive "
-"values,\n"
-"  and likelihood ratios\n"
-"* Sample size calculations for reliability studies using confidence interval\n"
-"  and power-based approaches\n"
-"* Visualization tools including Fagan nomograms for Bayesian probability\n"
-"  updates\n"
-"* Power analysis for interobserver agreement studies with support for\n"
-"  multiple raters and outcome categories\n"
-"Tools are provided through an intuitive graphical interface in jamovi, "
-"making\n"
-"complex medical decision analyses accessible to clinical researchers.\n"
-"For comments, suggestions, feature requests or reporting bugs, please open "
-"an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>."
-msgstr ""
-
 #: R/enhancedROC.b.R
 msgid ""
 "A flexible calibration curve gives ICI, E50, E90 and Emax as defined by "
@@ -9641,14 +9619,14 @@ msgstr ""
 #: R/decisioncalculator.b.R
 msgid ""
 "A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe "
-"0.5 correction, while the predictive values above use the observed counts. "
-"Multiplying the pre-test odds by these likelihood ratios therefore need not "
-"reproduce the predictive values exactly."
+"0.5 correction, while the predictive values in the results tables use the "
+"observed counts. Multiplying the pre-test odds by these likelihood ratios "
+"therefore need not reproduce the predictive values exactly."
 msgstr ""
 "Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe "
-"düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları "
-"kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak "
-"öngörü değerlerini tam olarak vermeyebilir."
+"düzeltmesini kullanırken sonuç tablolarındaki öngörü değerleri gözlenen "
+"sayıları kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla "
+"çarpmak öngörü değerlerini tam olarak vermeyebilir."
 
 #: R/agreement.b.R
 msgid ""
@@ -14157,22 +14135,6 @@ msgstr ""
 msgid "Cancer diagnosis studies (critical to have high PSA)"
 msgstr ""
 
-#: R/decision.b.R
-msgid ""
-"Cannot be calculated: LR- is (1 - sensitivity) / specificity, and one of "
-"those is not estimable here"
-msgstr ""
-"Hesaplanamıyor: LR- (1 - duyarlılık) / özgüllük şeklindedir ve bunlardan "
-"biri burada tahmin edilememektedir"
-
-#: R/decision.b.R
-msgid ""
-"Cannot be calculated: LR+ is sensitivity / (1 - specificity), and one of "
-"those is not estimable here"
-msgstr ""
-"Hesaplanamıyor: LR+ duyarlılık / (1 - özgüllük) şeklindedir ve bunlardan "
-"biri burada tahmin edilememektedir"
-
 #: R/psychopdaROC.b.R
 msgid "Cannot compute"
 msgstr "Hesaplanamıyor"
@@ -14676,14 +14638,6 @@ msgid ""
 msgstr ""
 "Bu test değişkeninin eksik değerlerini kontrol edin veya değişkeni analizden "
 "çıkarın."
-
-#: R/decisioncurve.b.R
-msgid ""
-"Check whether the model's bootstrap interval on the decision curve plot "
-"stays above both reference lines over this range."
-msgstr ""
-"Modelin karar eğrisi grafiğindeki bootstrap aralığının bu aralık boyunca her "
-"iki referans çizgisinin üzerinde kalıp kalmadığını kontrol edin."
 
 #: R/sequentialtests.b.R
 msgid "Chest Imaging + Culture (Illustrative)"
@@ -17969,6 +17923,16 @@ msgstr ""
 "Veri uygunluğu: %d küçük sorun. Aşırı uyum riskini değerlendirmek için "
 "bootstrap doğrulamayı etkinleştirin."
 
+#: R/lassologistic.b.R
+msgid ""
+"Data suitability: high collinearity detected (%s). The predictions are not "
+"affected as such, but the choice and coefficients of correlated predictors "
+"are unstable; see the Data Suitability table."
+msgstr ""
+"Veri uygunluğu: yüksek çoklu doğrusallık saptandı (%s). Tahminler bundan "
+"doğrudan etkilenmez, ancak ilişkili yordayıcıların seçimi ve katsayıları "
+"kararsızdır; Veri Uygunluğu tablosuna bakın."
+
 #: agreement/results/contingencyTableGroup.title
 msgid "Data Summary"
 msgstr "Veri Özeti"
@@ -20514,6 +20478,14 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid ""
+"Every case received the same ratings, so the standard error is 0 and no "
+"confidence interval or p-value can be estimated from this sample."
+msgstr ""
+"Her olgu aynı değerlendirmeleri aldı; bu nedenle standart hata 0'dır ve bu "
+"örneklemden güven aralığı ya da p değeri tahmin edilemez."
+
+#: R/agreement.b.R
+msgid ""
 "Every column you select is read as {tag1}another rater of one "
 "variable{tag2}.\n"
 "                            The number reported is therefore the "
@@ -20573,6 +20545,17 @@ msgstr ""
 "alır; bu nedenle bu değer, eğri altındaki alanın aralık genişliğine "
 "bölünmesiyle elde edilen Keşifsel Model Karşılaştırması tablosundaki "
 "Ortalama Net Faydadaki Fark değerinden biraz farklıdır."
+
+#: R/psychopdaROC.b.R
+msgid ""
+"Every marker is compared in the selected Classification Direction. %s has an "
+"AUC below 0.5 in that direction, so a difference involving it reflects "
+"reading that marker backwards, not which marker discriminates better."
+msgstr ""
+"Her belirteç seçilen Sınıflandırma Yönünde karşılaştırılır. %s bu yönde "
+"0.5'in altında bir AUC'ye sahiptir; bu nedenle onu içeren bir fark, hangi "
+"belirtecin daha iyi ayırt ettiğini değil, o belirtecin ters yönde okunduğunu "
+"yansıtır."
 
 #: R/agreement.b.R
 msgid "Every model-based estimate, with confidence intervals."
@@ -20805,10 +20788,6 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Example (5-point scale):"
-msgstr ""
-
-#: package/datasets/histopathologyincludinganalysis.description
-msgid "Example analysis for Medical Decision Tests."
 msgstr ""
 
 #: R/nogoldstandard.b.R
@@ -22690,10 +22669,6 @@ msgstr ""
 "Tıbbi Karar Analizi fonksiyonu. Duyarlılık, Özgüllük, Pozitif Öngörü Değeri, "
 "Negatif Öngörü Değeri."
 
-#: package.title
-msgid "Functions for Medical Decision in ClinicoPath jamovi Module"
-msgstr ""
-
 #: R/psychopdaROC.b.R
 msgid "Further reading"
 msgstr "Ek okuma"
@@ -23425,9 +23400,9 @@ msgstr "Testler arasında çok yüksek düzeyde anlamlı genel fark (p<0.001)"
 msgid "Highly unbalanced test results ({pct} positive)"
 msgstr "Yüksek derecede dengesiz test sonuçları ({pct} pozitif)"
 
-#: package/datasets/histopathologyincludinganalysis.name
-msgid "histopathology including analysis"
-msgstr ""
+#: package/datasets/HistopathologyDiagnosticandAgreementExamples.name
+msgid "Histopathology Diagnostic and Agreement Examples"
+msgstr "Histopatoloji Tanı ve Uyum Örnekleri"
 
 #: R/sequentialtests.b.R
 msgid "HIV Ag/Ab + Differentiation Assay (Illustrative)"
@@ -27294,12 +27269,30 @@ msgid "Max |r| = %.2f (<0.7: acceptable)"
 msgstr "Maks |r| = %.2f (<0.7: kabul edilebilir)"
 
 #: R/lassologistic.b.R
-msgid "Max |r| = %.2f (>=0.9: high, consider elastic net)"
-msgstr "Maks |r| = %.2f (>=0.9: yüksek, elastic net düşünün)"
+msgid ""
+"Max |r| = %.2f (>=0.9: high; LASSO keeps one of the correlated predictors "
+"more or less arbitrarily, so the selected set is unstable; elastic net or "
+"ridge keeps them together)"
+msgstr ""
+"Maks |r| = %.2f (>=0.9: yüksek; LASSO ilişkili yordayıcılardan birini aşağı "
+"yukarı keyfi olarak tutar, bu nedenle seçilen küme kararsızdır; elastic net "
+"veya ridge onları birlikte tutar)"
 
 #: R/lassologistic.b.R
-msgid "Max |r| = %.2f (0.7-0.9: moderate, LASSO will handle)"
-msgstr "Maks |r| = %.2f (0.7-0.9: orta, LASSO ele alacaktır)"
+msgid ""
+"Max |r| = %.2f (>=0.9: high; the coefficients of the correlated predictors "
+"are not separately interpretable)"
+msgstr ""
+"Maks |r| = %.2f (>=0.9: yüksek; ilişkili yordayıcıların katsayıları ayrı "
+"ayrı yorumlanamaz)"
+
+#: R/lassologistic.b.R
+msgid ""
+"Max |r| = %.2f (0.7-0.9: moderate; which of the correlated predictors is "
+"selected may vary)"
+msgstr ""
+"Maks |r| = %.2f (0.7-0.9: orta; ilişkili yordayıcılardan hangisinin "
+"seçildiği değişebilir)"
 
 #: agreement/results/iccGroup/meanPearsonTable.columns.title
 msgid "Max r"
@@ -27655,6 +27648,37 @@ msgstr "Tıbbi Karar"
 msgid "Medical Decision Analysis"
 msgstr "Tıbbi Karar Analizi"
 
+#: package.description
+msgid ""
+"Medical decision analysis for clinicians and pathologists. Diagnostic test "
+"accuracy: sensitivity, specificity, predictive values at a chosen prevalence "
+"and likelihood ratios with exact intervals and an explicit zero-cell rule, "
+"Fagan nomograms, comparison and combination of tests, co-testing and "
+"sequential testing, and analysis without a gold standard (latent class "
+"models). ROC analysis: optimal cut-points, partial AUC, DeLong comparisons, "
+"NRI and IDI, calibration and frozen-model validation. Decision curve "
+"analysis and LASSO logistic prediction models. Interrater reliability: "
+"Cohen's, Fleiss' and weighted kappa, Krippendorff's alpha, Gwet's AC1/AC2, "
+"ICC, specific agreement and related measures. Sample-size and power "
+"calculators for kappa studies are in the Power menu. Results support "
+"research and teaching; they do not replace clinical judgement. Report "
+"problems at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>."
+msgstr ""
+"Klinisyenler ve patologlar için tıbbi karar analizi. Tanısal test doğruluğu: "
+"duyarlılık, özgüllük, seçilen bir prevalansta öngörü değerleri ve kesin "
+"aralıklar ile açık bir sıfır hücre kuralına sahip olabilirlik oranları, "
+"Fagan nomogramları, testlerin karşılaştırılması ve birleştirilmesi, birlikte "
+"test ve sıralı test ile altın standart olmadan analiz (gizil sınıf "
+"modelleri). ROC analizi: optimal kesim noktaları, kısmi AUC, DeLong "
+"karşılaştırmaları, NRI ve IDI, kalibrasyon ve dondurulmuş model doğrulaması. "
+"Karar eğrisi analizi ve LASSO lojistik tahmin modelleri. Değerlendiriciler "
+"arası güvenilirlik: Cohen, Fleiss ve ağırlıklı kappa, Krippendorff alfa, "
+"Gwet AC1/AC2, ICC, özgül uyum ve ilişkili ölçüler. Kappa çalışmaları için "
+"örneklem büyüklüğü ve güç hesaplayıcıları Power menüsündedir. Sonuçlar "
+"araştırma ve eğitimi destekler; klinik yargının yerini tutmaz. Sorunları "
+"<https://github.com/sbalci/ClinicoPathJamoviModule/issues/> adresinden "
+"bildirin."
+
 #: package/analyses/decisioncalculator.title
 #: package/analyses/decisioncalculator.menuTitle
 #: decisioncalculator/options.title
@@ -27687,6 +27711,10 @@ msgstr ""
 "tahminini ve eğitim amaçlı yorum için Fagan nomogramı görselleştirmesini "
 "destekler. Hazır ayarlar ve örnekler yalnızca açıklayıcıdır ve klinik rehber "
 "değildir."
+
+#: package.title
+msgid "Medical Decision, Diagnostic Accuracy and Agreement Analysis"
+msgstr "Tıbbi Karar, Tanısal Doğruluk ve Uyum Analizi"
 
 #: R/decision.b.R
 msgid "Medical device evaluation"
@@ -30013,6 +30041,14 @@ msgstr "Koşullu bağımsızlığa karşı kanıt yok (betimsel)"
 msgid "No evidence of a difference"
 msgstr "Fark olduğuna dair kanıt yok"
 
+#: R/decision.b.R
+msgid ""
+"No evidence of discrimination in this sample (the 95% confidence interval "
+"for Youden's index includes 0)"
+msgstr ""
+"Bu örneklemde ayırt etme gücüne ilişkin kanıt yok (Youden indeksinin %95 "
+"güven aralığı 0'ı içeriyor)"
+
 #: R/enhancedROC.b.R
 msgid "No evidence of lack of fit (p >= 0.05)"
 msgstr "Uyum eksikliğine ilişkin kanıt yok (p >= 0.05)"
@@ -30512,6 +30548,10 @@ msgstr ""
 "Önemli Bilgi panelinde verilmiştir. Yalnızca test başına performansı "
 "raporlayın."
 
+#: R/decision.b.R
+msgid "no statistically detectable"
+msgstr "istatistiksel olarak saptanamayan"
+
 #: R/agreement.b.R
 msgid ""
 "No stratified kappa: fewer than two institutions have a defined kappa. The "
@@ -30996,6 +31036,22 @@ msgid "Not estimable: no patient tests positive at this cutoff."
 msgstr ""
 "Tahmin edilemiyor: bu kesme noktasında hiçbir hasta pozitif test sonucu "
 "vermiyor."
+
+#: R/decision.b.R
+msgid ""
+"Not estimable: sensitivity or specificity could not be computed, or the "
+"false-positive count is zero and no continuity-corrected value would be valid"
+msgstr ""
+"Tahmin edilemez: duyarlılık ya da özgüllük hesaplanamadı veya yanlış pozitif "
+"sayısı sıfırdır ve süreklilik düzeltmeli hiçbir değer geçerli olmaz"
+
+#: R/decision.b.R
+msgid ""
+"Not estimable: sensitivity or specificity could not be computed, or the "
+"true-negative count is zero and no continuity-corrected value would be valid"
+msgstr ""
+"Tahmin edilemez: duyarlılık ya da özgüllük hesaplanamadı veya gerçek negatif "
+"sayısı sıfırdır ve süreklilik düzeltmeli hiçbir değer geçerli olmaz"
 
 #: R/enhancedROC.b.R
 msgid ""
@@ -33593,6 +33649,15 @@ msgstr "Patologlar"
 msgid "Pathologists linked through shared cases"
 msgstr "Ortak olgular aracılığıyla bağlantılı patologlar"
 
+#: package/datasets/HistopathologyDiagnosticandAgreementExamples.description
+msgid ""
+"Pathology dataset with saved Interrater Reliability, Medical Decision, "
+"Medical Decision Calculator, Co-Testing and Sequential Testing analyses."
+msgstr ""
+"Kaydedilmiş Değerlendiriciler Arası Güvenilirlik, Tıbbi Karar, Tıbbi Karar "
+"Hesaplayıcı, Birlikte Test (Co-Testing) ve Sıralı Test analizlerini içeren "
+"patoloji veri seti."
+
 #: R/agreement.b.R
 msgid "Pathology Examples"
 msgstr ""
@@ -35442,8 +35507,8 @@ msgid "Prediction variables/models"
 msgstr "Tahmin Değişkenleri/Modelleri"
 
 #: R/agreement.b.R
-msgid "Prediction: rater %d"
-msgstr "Tahmin: değerlendirici %d"
+msgid "Prediction: %s"
+msgstr "Tahmin: %s"
 
 #: R/decisioncurve.b.R
 msgid ""
@@ -37158,6 +37223,7 @@ msgstr "Analizden dışlanan referans düzeyleri: {lvls}"
 msgid "Reference line labels"
 msgstr "Referans çizgisi etiketleri"
 
+#: R/decisioncompare.b.R
 #: decision/results/comparatorCounts.columns.title
 #: decisioncalculator/ui[0][0][1][1][0].label
 #: decisioncalculator/ui[5][1][1][1][0].label
@@ -37179,11 +37245,11 @@ msgstr "Referans Negatif"
 msgid "Reference negative given negative call"
 msgstr "Negatif sonuçta referansın negatif olması"
 
-#: R/decisioncompare.b.R
 #: decision/options/goldNegative.title
 msgid "Reference negative level"
 msgstr "Referans negatif düzeyi"
 
+#: R/decisioncompare.b.R
 #: decision/results/comparatorCounts.columns.title
 #: decisioncalculator/ui[0][0][1][0][0].label
 #: decisioncalculator/ui[5][1][1][0][0].label
@@ -37217,7 +37283,6 @@ msgstr ""
 "\"{gpos}\" olgularından testin \"{tpos}\" olarak sınıflandırdıklarının "
 "oranıdır."
 
-#: R/decisioncompare.b.R
 #: decision/options/goldPositive.title
 msgid "Reference positive level"
 msgstr "Referans pozitif düzeyi"
@@ -38858,11 +38923,11 @@ msgstr "Hasta düzeyinde özetleri kullanmadan önce bir hasta kimliği seçin."
 
 #: R/enhancedROC.b.R
 msgid ""
-"Select a positive reference level and enter a distinct negative reference "
+"Select a positive reference level and choose a distinct negative reference "
 "level."
 msgstr ""
 "Bir pozitif referans düzeyi seçin ve ondan farklı bir negatif referans "
-"düzeyi girin."
+"düzeyi seçin."
 
 #: decisioncompare/options/test2.description.ui
 msgid ""
@@ -41754,8 +41819,8 @@ msgstr ""
 "değerler kullanıldı."
 
 #: R/sequentialtests.b.R
-msgid "Teaching Example Replaced Entered Values"
-msgstr "Eğitim Örneği Girilen Değerlerin Yerini Aldı"
+msgid "Teaching Example Replaced Values Given in the Call"
+msgstr "Eğitim Örneği Çağrıda Verilen Değerlerin Yerini Aldı"
 
 #: R/sequentialtests.b.R
 msgid "Teaching Example Values Are Not Clinical Guidance"
@@ -42530,18 +42595,22 @@ msgstr ""
 #: R/agreement.b.R
 msgid ""
 "The %.0f%% interval is an <i>approximation</i>: a Wilson interval applied to "
-"specific agreement, which is not a binomial proportion, on the count of "
-"cases rated into the category by at least one rater. Actual coverage is not "
-"guaranteed, and the interval is least trustworthy for rare categories and "
-"for values near 0 or 1. de Vet and colleagues (2013) recommend a bootstrap "
-"interval instead; treat these limits as indicative."
+"specific agreement, which is not a binomial proportion, on n = 2a + b + c, "
+"the number of times either rater assigned the category (a case both raters "
+"placed in it counts twice, so the interval is narrower than one based on "
+"cases). Actual coverage is not guaranteed, and the interval is least "
+"trustworthy for rare categories and for values near 0 or 1. de Vet and "
+"colleagues (2013) recommend a bootstrap interval instead; treat these limits "
+"as indicative."
 msgstr ""
-"%%%.0f aralık bir <i>yaklaşımdır</i>: binom oranı olmayan özgül uyuma, en az "
-"bir değerlendiricinin o kategoriye atadığı olgu sayısı üzerinden uygulanmış "
-"bir Wilson aralığıdır. Gerçek kapsama garanti edilmez ve aralık, nadir "
-"kategorilerde ve 0 ya da 1'e yakın değerlerde en az güvenilirdir. de Vet ve "
-"meslektaşları (2013) bunun yerine bir bootstrap aralığı önerir; bu sınırları "
-"gösterge niteliğinde kabul edin."
+"%%%.0f aralık bir <i>yaklaşımdır</i>: binom oranı olmayan özgül uyuma, n = "
+"2a + b + c üzerinden, yani değerlendiricilerden herhangi birinin kategoriyi "
+"atadığı kez sayısı üzerinden uygulanmış bir Wilson aralığıdır (iki "
+"değerlendiricinin de o kategoriye koyduğu bir olgu iki kez sayılır, bu "
+"nedenle aralık olgulara dayalı bir aralıktan daha dardır). Gerçek kapsama "
+"garanti edilmez ve aralık, nadir kategorilerde ve 0 ya da 1'e yakın "
+"değerlerde en az güvenilirdir. de Vet ve meslektaşları (2013) bunun yerine "
+"bir bootstrap aralığı önerir; bu sınırları gösterge niteliğinde kabul edin."
 
 #: R/enhancedROC.b.R
 msgid ""
@@ -45369,6 +45438,22 @@ msgstr ""
 "içeren ICC, Lin'in CCC katsayısı ve Bland-Altman uyum sınırları sonuçlarını "
 "okuyun."
 
+#: R/decisioncurve.b.R
+msgid ""
+"The pointwise bootstrap intervals on the decision curve plot hold at each "
+"threshold separately and overstate confidence when read across this range; "
+"choose the simultaneous band under Interval type to judge the range as a "
+"whole. The reference lines are estimated from the same data, so an interval "
+"that clears them is not a test of the difference from treat all or treat "
+"none."
+msgstr ""
+"Karar eğrisi grafiğindeki noktasal bootstrap aralıkları her eşik için ayrı "
+"ayrı geçerlidir ve bu aralık boyunca birlikte okunduğunda güveni olduğundan "
+"yüksek gösterir; aralığı bir bütün olarak değerlendirmek için Aralık türü "
+"altında eşzamanlı bandı seçin. Referans çizgileri aynı verilerden tahmin "
+"edilir; bu nedenle onların üzerinde kalan bir aralık, herkesi tedavi etme "
+"veya hiç kimseyi tedavi etmemeden farkın bir testi değildir."
+
 #: R/enhancedROC.b.R
 msgid ""
 "The positive class (cases) was %1$s and the negative class (non-cases) was "
@@ -46275,6 +46360,19 @@ msgstr ""
 "daha yüksek ya da daha geniş bir ölçekte okuduğunda düşer; bu nedenle bir "
 "korelasyonun aksine veri setleri arasında karşılaştırılabilir."
 
+#: R/decisioncurve.b.R
+msgid ""
+"The simultaneous bootstrap band on the decision curve plot shows the "
+"uncertainty of the model's net benefit over this range. The reference lines "
+"are estimated from the same data, so a band that clears them is not a test "
+"of the difference from treat all or treat none."
+msgstr ""
+"Karar eğrisi grafiğindeki eşzamanlı bootstrap bandı, modelin net yararının "
+"bu aralık boyunca belirsizliğini gösterir. Referans çizgileri aynı "
+"verilerden tahmin edilir; bu nedenle onların üzerinde kalan bir bant, "
+"herkesi tedavi etme veya hiç kimseyi tedavi etmemeden farkın bir testi "
+"değildir."
+
 #: R/enhancedROC.b.R
 msgid ""
 "The smaller outcome group has %1$s patients (%2$s positive, %3$s negative); "
@@ -46488,13 +46586,13 @@ msgstr ""
 
 #: R/sequentialtests.b.R
 msgid ""
-"The teaching example replaced these entered values (entered -> used): "
-"{values}. Set the teaching example to \"Custom Values\" to analyse your own "
-"values."
+"The teaching example replaced these values given in the call (given -> "
+"used): {values}. Set the teaching example to \"Custom values\" to analyze "
+"your own values."
 msgstr ""
-"Eğitim örneği girilen şu değerlerin yerini aldı (girilen -> kullanılan): "
-"{values}. Kendi değerlerinizi analiz etmek için eğitim örneğini \"Özel "
-"Değerler\" olarak ayarlayın."
+"Eğitim örneği çağrıda verilen şu değerlerin yerini aldı (verilen -> "
+"kullanılan): {values}. Kendi değerlerinizi analiz etmek için eğitim örneğini "
+"\"Özel değerler\" olarak ayarlayın."
 
 #: R/psychopdaROC.b.R
 msgid "The test '%1$s' has an AUC of %2$.3f"

@@ -197,7 +197,7 @@ Many clinical assessments use three-level classifications:
 three_cat_study <- list(
   description = "Pathological tumor grading agreement",
   outcome = "3",                    # Three grades
-  kappa0 = 0.70,                   # Good expected agreement
+  kappa0 = 0.70,                   # substantial expected agreement
   kappaL = 0.60,                   # Lower bound
   kappaU = 0.80,                   # Upper bound
   props = "0.20, 0.50, 0.30",      # Well, Moderate, Poor differentiation

@@ -10,7 +10,4 @@
 - ROC Curve / AUC: Curve of sensitivity vs 1−specificity across thresholds; AUC ~ overall discrimination (0.5 no better than chance; 1.0 perfect).
 - Decision Curve Analysis (Net Benefit): Weighs true positives against false positives at a chosen threshold probability to show clinical utility.
 - Threshold Probability: The risk level at which you would treat (e.g., treat if risk >=20%).
-- Kappa: Agreement beyond chance between raters/tests; ~0.6 “moderate”, ~0.8 “good”.
-- Markov Model: State-based model (e.g., healthy → sick → death) used to project long-term outcomes and costs.
-- QALY: Quality-adjusted life year; combines survival and quality of life.
-- ICER: Incremental Cost-Effectiveness Ratio = ΔCost / ΔQALY (cost per additional QALY).
+- Kappa: Agreement beyond chance between raters/tests. Landis & Koch bands: 0.41–0.60 moderate, 0.61–0.80 substantial, 0.81–1.00 almost perfect (a convention, not a clinical threshold).

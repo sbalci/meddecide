@@ -43,14 +43,19 @@ Where:
 
 ### Interpretation Guidelines
 
-| Kappa Value | Agreement Level | Clinical Interpretation |
-|------------|----------------|------------------------|
-| < 0.00 | Poor | Less than chance agreement |
-| 0.00-0.20 | Slight | Minimal agreement |
-| 0.21-0.40 | Fair | Weak agreement |
-| 0.41-0.60 | Moderate | Acceptable agreement |
-| 0.61-0.80 | Good | Strong agreement |
-| 0.81-1.00 | Excellent | Near perfect agreement |
+| Kappa | Landis & Koch (1977) label |
+|------------|----------------|
+| < 0.00 | Poor |
+| 0.00-0.20 | Slight |
+| 0.21-0.40 | Fair |
+| 0.41-0.60 | Moderate |
+| 0.61-0.80 | Substantial |
+| 0.81-1.00 | Almost perfect |
+
+These bands are a descriptive convention proposed by Landis and Koch; they are
+not validated clinical thresholds. Which kappa is good enough depends on the
+clinical question and the consequences of disagreement, and should be judged on
+the confidence interval rather than the point estimate.
 
 ## Statistical Framework
 
@@ -130,7 +135,7 @@ kappaSizeFixedN(
 # Emergency department pneumonia detection
 result <- kappaSizeFixedN(
   outcome = "2",
-  kappa0 = 0.65,          # Expected good agreement
+  kappa0 = 0.65,          # Expected substantial agreement
   props = "0.25, 0.75",   # 25% pneumonia prevalence
   raters = "2",           # Two emergency physicians
   alpha = 0.05,
@@ -423,23 +428,13 @@ props = "0.25, 0.80"  # Sums to 1.05
 props = "0.24, 0.76"  # Sums to 1.00
 ```
 
-### "Sample size too small"
+### Warning: "Small sample"
 
-**Cause**: Sample size less than minimum recommended (typically 10)
+**Cause**: fewer than 25 subjects. The goodness-of-fit interval behind the
+calculation has not been shown to keep its stated coverage below about 25
+subjects, so read the lower bound with caution.
 
-**Solution**: 
-- Increase sample size if possible
-- Consider alternative study designs
-- Use specialized small-sample methods
-
-### "kappaSize package not installed"
-
-**Cause**: Required dependency not available
-
-**Solution**: Install the kappaSize package
-```r
-install.packages("kappaSize")
-```
+**Solution**: increase the number of subjects if possible.
 
 ## Computational Issues
 

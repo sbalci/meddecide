@@ -123,15 +123,16 @@ Combined Specificity = Sp₁ × Sp₂
 
 ## Loading the Example Datasets
 
-The package includes comprehensive datasets with realistic clinical scenarios:
+These example datasets are distributed with the umbrella **ClinicoPath** package
+(<https://github.com/sbalci/ClinicoPathJamoviModule>), not with meddecide:
 
 ```{r load-data}
 # Load all sequential testing datasets
-data(sequential_testing_examples)
-data(strategy_comparison) 
-data(cost_effectiveness_examples)
-data(teaching_examples)
-data(common_test_combinations)
+data(sequential_testing_examples, package = "ClinicoPath")
+data(strategy_comparison, package = "ClinicoPath") 
+data(cost_effectiveness_examples, package = "ClinicoPath")
+data(teaching_examples, package = "ClinicoPath")
+data(common_test_combinations, package = "ClinicoPath")
 
 # Display overview of main clinical scenarios
 kable(sequential_testing_examples[1:5, c("scenario", "clinical_setting", "strategy", "combined_sens", "combined_spec")], 
@@ -322,7 +323,7 @@ ggplot(cardiac_analysis, aes(x = combined_sens, y = combined_spec, color = risk_
 ## Economic Considerations
 
 ```{r cost-analysis}
-data(cost_effectiveness_examples)
+data(cost_effectiveness_examples, package = "ClinicoPath")
 
 # Calculate additional metrics
 cost_analysis <- cost_effectiveness_examples %>%
@@ -471,7 +472,7 @@ kable(correlation_scenarios, caption = "Test Correlation Effects")
 ## Step-by-Step Guide
 
 ### 1. **Basic Setup**
-- Navigate to **meddecide** → **Decision** → **Sequential Testing Analysis**
+- Navigate to **meddecide** → **Decision Calculators** → **Sequential Testing Analysis**
 - Enter test characteristics for both tests:
   - **First Test**: Name, sensitivity, specificity
   - **Second Test**: Name, sensitivity, specificity
@@ -481,12 +482,15 @@ kable(correlation_scenarios, caption = "Test Correlation Effects")
 Choose the appropriate testing strategy:
 - **Test all positives from first test** (Serial positive)
 - **Test all negatives from first test** (Serial negative)  
-- **Test all subjects with both tests** (Parallel)
+- **Test all subjects with both tests (parallel)** (Parallel)
 
 ### 3. **Display Options**
-- **Show Explanations**: Detailed strategy explanations
-- **Show Calculation Formulas**: Step-by-step mathematics
-- **Show Fagan Nomogram**: Visual probability progression
+- **Explanations**: Detailed strategy explanations
+- **Calculation formulas**: Step-by-step mathematics
+- **Cost analysis**: Cost per case detected, when test costs are entered
+- **Diagnostic plots**: Flow diagram, performance comparison, probability transformation, population flow, and PPV/NPV versus prevalence
+
+The analysis has no Fagan nomogram option; the *Probability Transformation* plot shows how the probability of disease changes after each test.
 
 ### 4. **Results Interpretation**
 - **Summary Table**: Combined strategy performance

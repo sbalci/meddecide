@@ -2,7 +2,6 @@
 
 **Medical Decision Analysis, Diagnostic Evaluation, and Reliability Assessment for jamovi and R**
 
-[![CRAN Status](https://www.r-pkg.org/badges/version/meddecide)](https://cran.r-project.org/package=meddecide)
 [![R-CMD-check](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml)
 [![License: GPL (>= 2)](https://img.shields.io/badge/License-GPL%20(%3E=%202)-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
 [![jamovi Module](https://img.shields.io/badge/jamovi-module-brightgreen.svg?logo=jamovi)](https://www.jamovi.org/)
@@ -14,27 +13,32 @@
 
 ---
 
-## 🎯 Key Features & Analysis Suite (15 Analyses)
+## 🎯 Analyses (15)
 
-`meddecide` provides **15 specialized analyses** across 6 clinical domains:
+In jamovi, twelve analyses are under the **meddecide** menu and the three kappa planners under
+**Power → Power Analysis by meddecide**. Menu titles are given as they appear in jamovi.
 
-| Domain | Analysis | Function | Key Clinical Features |
+| Menu (subgroup) | Analysis | R function | What it does |
 | :--- | :--- | :--- | :--- |
-| **Diagnostic Evaluation** | **Medical Decision** | `decision` | Comprehensive evaluation of a single diagnostic test against a reference standard: Sensitivity, Specificity, Positive/Negative Predictive Values (PPV/NPV), Positive/Negative Likelihood Ratios (PLR/NLR), Diagnostic Odds Ratio (DOR), and accuracy metrics with 95% confidence intervals. |
-| **Diagnostic Evaluation** | **Decision Calculator** | `decisioncalculator` | Interactive clinical calculator transforming 2x2 counts or known test characteristics into post-test probabilities; generates interactive Fagan nomograms. |
-| **Diagnostic Evaluation** | **Compare Tests** | `decisioncompare` | Direct statistical comparison of two or more diagnostic tests against a common gold standard; highlights differences in sensitivity, specificity, and predictive values. |
-| **Diagnostic Evaluation** | **Combine Tests** | `decisioncombine` | Evaluates all combinatorial permutations of 2 to 3 diagnostic tests to find optimal diagnostic panel algorithms; includes decision matrices and performance heatmaps. |
-| **Diagnostic Evaluation** | **Co-Testing Analysis** | `cotest` | Evaluates simultaneous (parallel) testing strategies (e.g. HPV + cytology co-testing) to quantify gains in diagnostic sensitivity and trade-offs in specificity. |
-| **Diagnostic Evaluation** | **Sequential Testing** | `sequentialtests` | Evaluates two-stage serial testing algorithms (screening followed by confirmatory reflex testing) to minimize invasive testing costs while maintaining diagnostic precision. |
-| **Diagnostic Evaluation** | **No Gold Standard** | `nogoldstandard` | Fits a two-class conditional-independence latent model, fixed-prior penalized EM estimates, or descriptive test-reference rules when no perfect reference exists. |
-| **Decision Curve Analysis** | **Decision Curve Analysis (DCA)** | `decisioncurve` | Evaluates clinical net benefit across a continuum of patient decision thresholds; compares "treat all", "treat none", and model-guided strategies; calculates standardized net benefit and number of unnecessary interventions avoided. |
-| **ROC Modeling** | **Clinical ROC Analysis** | `enhancedROC` | Publication-ready ROC curves, empirical and smooth AUC estimation with DeLong/bootstrap confidence intervals, and automated optimal cutpoint detection (Youden's J, closest-to-(0,1)). |
-| **ROC Modeling** | **Advanced ROC Analysis** | `psychopdaROC` | In-depth ROC coordinates evaluation with customizable threshold tables, sensitivity/specificity tradeoffs, and cost-weighted cutoff optimization. |
-| **Agreement & Reliability** | **Interrater Reliability** | `agreement` | Multi-rater agreement analysis including Cohen's Kappa, Fleiss' Kappa, weighted kappa for ordinal scales, Gwet's AC1/AC2, percentage agreement, and disagreement visualizations. |
-| **Prediction Modeling** | **LASSO Logistic Regression** | `lassologistic` | L1-penalized logistic regression via glmnet for binary clinical outcome prediction and sparse biomarker selection; includes k-fold cross-validation and penalty tuning. |
-| **Sample Size Planning** | **Kappa Sample Size (CI)** | `kappaSizeCI` | Precision-based sample size calculator determining the number of subjects or ratings required to achieve a target confidence interval half-width for Cohen's Kappa. |
-| **Sample Size Planning** | **Kappa Fixed N Analysis** | `kappaSizeFixedN` | Computes the lowest expected Kappa value and achievable lower confidence bound for a predetermined or constrained sample size. |
-| **Sample Size Planning** | **Kappa Power Analysis** | `kappaSizePower` | Hypothesis testing power calculator computing sample size required to demonstrate agreement exceeding a minimum acceptable threshold. |
+| meddecide (Decision) | **Medical Decision** | `decision` | One test against a reference standard: sensitivity, specificity, predictive values (observed or at a prevalence you supply), likelihood ratios, diagnostic odds ratio and Youden's index with 95% confidence intervals; a Fagan nomogram. A zero cell is handled by an explicit rule (a ratio with an empty numerator is exactly 0). |
+| meddecide (Decision Calculators) | **Medical Decision Calculator** | `decisioncalculator` | The same measures from four 2 × 2 counts, with post-test probabilities and a Fagan nomogram. |
+| meddecide (Decision Calculators) | **Co-Testing Analysis** | `cotest` | Two tests used together (for example HPV and cytology): joint sensitivity and specificity, under conditional independence or with a dependence you specify, and post-test probabilities. |
+| meddecide (Decision Calculators) | **Sequential Testing Analysis** | `sequentialtests` | Two tests in sequence (serial, confirming positives or negatives) or in parallel: combined accuracy, predictive values and the number of people tested at each stage. |
+| meddecide (Decision) | **Combine Medical Decision Tests** | `decisioncombine` | All result patterns and the AND/OR (serial/parallel) rules for two or three tests against a reference standard. |
+| meddecide (Decision) | **Compare Medical Decision Tests** | `decisioncompare` | Two or three tests on the same patients: paired McNemar tests, paired differences in sensitivity and specificity (Newcombe), Cochran's Q. |
+| meddecide (Decision) | **Analysis Without Gold Standard** | `nogoldstandard` | Latent class model, penalized EM or composite-reference rules when no test is a perfect reference; checks conditional dependence. |
+| meddecide (Decision Curve Analysis) | **Decision Curve Analysis** | `decisioncurve` | Net benefit of risk models and clinical rules across threshold probabilities against treat all and treat none, interventions avoided, bootstrap intervals (pointwise or simultaneous). |
+| meddecide (ROC) | **Clinical ROC Analysis** | `enhancedROC` | ROC curves, AUC with DeLong intervals, cut-points (Youden's index, closest to top left, clinical presets), calibration and Brier score, frozen-model validation. |
+| meddecide (ROC) | **Advanced ROC Analysis** | `psychopdaROC` | Cut-point methods from `cutpointr`, threshold tables, confusion matrices, partial AUC, DeLong comparison of markers, NRI and IDI, bootstrap intervals. |
+| meddecide (Agreement) | **Interrater Reliability** | `agreement` | Cohen's, weighted and Fleiss' kappa, Krippendorff's alpha, Gwet's AC1/AC2, ICC, Lin's CCC, Bland–Altman, specific (positive/negative) agreement, rater clustering and more. |
+| meddecide (Prediction Models) | **LASSO Logistic** | `lassologistic` | Penalized logistic regression (LASSO, ridge or elastic net) with cross-validated λ and a data-suitability check. |
+| Power (Power Analysis by meddecide) | **Confidence Interval Approach for the Number of Subjects Required** | `kappaSizeCI` | Subjects needed so that the expected kappa confidence interval stays within the lower and upper limits you set. |
+| Power (Power Analysis by meddecide) | **Power Approach for the Number of Subjects Required** | `kappaSizePower` | Subjects needed to show that kappa exceeds a null value with the chosen power. |
+| Power (Power Analysis by meddecide) | **Lowest Expected Kappa for a Fixed Sample Size** | `kappaSizeFixedN` | The lowest kappa you can expect to demonstrate with a given number of subjects. |
+
+The calculations are checked against independent R packages before each release (see
+[NEWS.md](NEWS.md)). That shows the arithmetic is right; it does not establish that a test or
+model is clinically valid for your setting.
 
 ---
 
@@ -57,10 +61,13 @@ scenario, not demonstrated clinical validation. See the
 
 ### In jamovi (Recommended)
 
-1. Open **jamovi** (>= 2.6).
-2. Click the **+** button in the top right corner → **jamovi library**.
-3. Search for **meddecide** (or browse under **meddecide**).
-4. Click **Install**.
+1. Open **jamovi** (2.7 or later; meddecide 1.1.3 needs at least 2.7.27).
+2. Click the **Modules** (+) button in the top right corner, then **jamovi library**.
+3. Search for **meddecide** and click **Install**.
+
+To install a build that is not yet in the library, download `meddecide_<version>.jmo` from the
+[GitHub releases](https://github.com/sbalci/meddecide/releases), then choose
+**Modules → Sideload** in jamovi and select the file.
 
 ### As an R Package
 
@@ -73,45 +80,44 @@ remotes::install_github("sbalci/meddecide")
 
 ## 💡 Quick Start (R Interface)
 
+Each R function takes the same options as the jamovi panel. Level arguments (the positive and
+negative levels) are required; pass `NULL` for one you do not use.
+
 ```r
 library(meddecide)
 
-# Load included clinical histopathology dataset
+# 1. One diagnostic test against a reference standard
 data("histopathology", package = "meddecide")
-
-# 1. Single diagnostic test evaluation
-decision_res <- meddecide::decision(
+histopathology$Reference <- factor(histopathology$`Golden Standart`, levels = c(1, 0),
+                                   labels = c("Disease", "No disease"))
+histopathology$Test <- factor(histopathology$`New Test`, levels = c(1, 0),
+                              labels = c("Positive", "Negative"))
+decision_res <- decision(
   data = histopathology,
-  gold = "Golden Standart",
-  goldPositive = "1",
-  newtest = "New Test",
-  testPositive = "1"
+  gold = "Reference", goldPositive = "Disease", goldNegative = "No disease",
+  newtest = "Test", testPositive = "Positive", testNegative = "Negative"
 )
+decision_res$ratioTable
 
-# 2. Decision Curve Analysis (DCA)
+# 2. Decision curve analysis of three risk models
 data("dca_test_data", package = "meddecide")
-dca_res <- meddecide::decisioncurve(
+dca_test_data$cardiac_event <- factor(dca_test_data$cardiac_event)
+dca_res <- decisioncurve(
   data = dca_test_data,
-  outcome = "Cancer",
-  predictors = vars(Biomarker, Age, PriorBiopsy),
-  thresholds = "0.01, 0.50, 0.01"
+  outcome = "cardiac_event", outcomePositive = "Yes",
+  models = c("basic_model", "enhanced_model", "biomarker_model"),
+  decisionRulePositive = NULL
 )
 
-# 3. Interrater agreement (Cohen's / Fleiss' Kappa)
-data("breast_diagnostic_styles", package = "meddecide")
-agreement_res <- meddecide::agreement(
-  data = breast_diagnostic_styles,
-  vars = vars(Pathologist_A, Pathologist_B)
-)
+# 3. Agreement between two raters (Cohen's kappa)
+histopathology$`Rater 1` <- factor(histopathology$`Rater 1`)
+histopathology$`Rater 2` <- factor(histopathology$`Rater 2`)
+agreement_res <- agreement(data = histopathology, vars = c("Rater 1", "Rater 2"))
+agreement_res$irrtable
 
-# 4. Precision-based sample size calculation for agreement
-k_size <- meddecide::kappaSizeCI(
-  kappa0 = 0.80,
-  w = 0.10,
-  k = 2,
-  props = "0.5, 0.5",
-  alpha = 0.05
-)
+# 4. Subjects needed for a kappa of 0.80 with a 95% CI between 0.70 and 0.90
+kappaSizeCI(outcome = "2", kappa0 = 0.80, kappaL = 0.70, kappaU = 0.90,
+            props = "0.5, 0.5", raters = "2", alpha = 0.05)
 ```
 
 ---

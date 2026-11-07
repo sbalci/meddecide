@@ -4051,9 +4051,6 @@
             "A cluster with one member has no within-cluster similarity, so that row is left blank.": [
                 "Tek üyeli bir kümenin küme içi benzerliği yoktur, bu nedenle o satır boş bırakılmıştır."
             ],
-            "A comprehensive toolkit for medical decision analysis and reliability\nassessment, implemented as a jamovi module. The package provides tools for:\n* Interrater and intrarater reliability analysis using Cohen's Kappa and\n  Fleiss' Kappa statistics\n* Diagnostic test evaluation with sensitivity, specificity, predictive values,\n  and likelihood ratios\n* Sample size calculations for reliability studies using confidence interval\n  and power-based approaches\n* Visualization tools including Fagan nomograms for Bayesian probability\n  updates\n* Power analysis for interobserver agreement studies with support for\n  multiple raters and outcome categories\nTools are provided through an intuitive graphical interface in jamovi, making\ncomplex medical decision analyses accessible to clinical researchers.\nFor comments, suggestions, feature requests or reporting bugs, please open an issue at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.": [
-                ""
-            ],
             "A flexible calibration curve gives ICI, E50, E90 and Emax as defined by Austin & Steyerberg (2019); it is fitted here as a natural cubic spline of the logit of the predicted risk with %s knots, a variant of their loess and restricted cubic spline curves on the probability scale.": [
                 "Esnek bir kalibrasyon eğrisi, Austin & Steyerberg (2019) tarafından tanımlandığı şekliyle ICI, E50, E90 ve Emaks değerlerini verir; burada eğri, tahmin edilen riskin logitinin %s düğümlü doğal kübik spline'ı olarak uydurulmuştur ve bu, onların olasılık ölçeğindeki loess ve kısıtlanmış kübik spline eğrilerinin bir varyantıdır."
             ],
@@ -4087,8 +4084,8 @@
             "A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe 0.5 correction, and so do the probabilities read from the nomogram. The predictive values and post-test probabilities in the Measures table are computed from the raw counts and can differ, by a wide margin in a small table.": [
                 "Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe düzeltmesini kullanır; nomogramdan okunan olasılıklar da öyle. Ölçüler tablosundaki öngörü değerleri ve test sonrası olasılıklar ham sayılardan hesaplanır ve küçük bir tabloda belirgin biçimde farklı olabilir."
             ],
-            "A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe 0.5 correction, while the predictive values above use the observed counts. Multiplying the pre-test odds by these likelihood ratios therefore need not reproduce the predictive values exactly.": [
-                "Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe düzeltmesini kullanırken yukarıdaki öngörü değerleri gözlenen sayıları kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak öngörü değerlerini tam olarak vermeyebilir."
+            "A likelihood ratio whose denominator cell is empty uses the Haldane-Anscombe 0.5 correction, while the predictive values in the results tables use the observed counts. Multiplying the pre-test odds by these likelihood ratios therefore need not reproduce the predictive values exactly.": [
+                "Payda hücresi boş olan bir olabilirlik oranı 0.5 Haldane-Anscombe düzeltmesini kullanırken sonuç tablolarındaki öngörü değerleri gözlenen sayıları kullanır. Bu nedenle test öncesi odds'u bu olabilirlik oranlarıyla çarpmak öngörü değerlerini tam olarak vermeyebilir."
             ],
             "A linear mixed-effects model that compares measurement conditions (e.g., AI-assisted vs.\n                    conventional scoring) while properly accounting for the crossed structure of rater x case data.": [
                 ""
@@ -6205,12 +6202,6 @@
             "Cancer diagnosis studies (critical to have high PSA)": [
                 ""
             ],
-            "Cannot be calculated: LR- is (1 - sensitivity) / specificity, and one of those is not estimable here": [
-                "Hesaplanamıyor: LR- (1 - duyarlılık) / özgüllük şeklindedir ve bunlardan biri burada tahmin edilememektedir"
-            ],
-            "Cannot be calculated: LR+ is sensitivity / (1 - specificity), and one of those is not estimable here": [
-                "Hesaplanamıyor: LR+ duyarlılık / (1 - özgüllük) şeklindedir ve bunlardan biri burada tahmin edilememektedir"
-            ],
             "Cannot compute": [
                 "Hesaplanamıyor"
             ],
@@ -6471,9 +6462,6 @@
             ],
             "Check the missing values of this test variable, or remove it from the analysis.": [
                 "Bu test değişkeninin eksik değerlerini kontrol edin veya değişkeni analizden çıkarın."
-            ],
-            "Check whether the model's bootstrap interval on the decision curve plot stays above both reference lines over this range.": [
-                "Modelin karar eğrisi grafiğindeki bootstrap aralığının bu aralık boyunca her iki referans çizgisinin üzerinde kalıp kalmadığını kontrol edin."
             ],
             "Chest Imaging + Culture (Illustrative)": [
                 "Göğüs Görüntüleme + Kültür (Açıklayıcı)"
@@ -8263,6 +8251,9 @@
             "Data suitability: %d minor concern(s). Enable bootstrap validation to assess overfitting risk.": [
                 "Veri uygunluğu: %d küçük sorun. Aşırı uyum riskini değerlendirmek için bootstrap doğrulamayı etkinleştirin."
             ],
+            "Data suitability: high collinearity detected (%s). The predictions are not affected as such, but the choice and coefficients of correlated predictors are unstable; see the Data Suitability table.": [
+                "Veri uygunluğu: yüksek çoklu doğrusallık saptandı (%s). Tahminler bundan doğrudan etkilenmez, ancak ilişkili yordayıcıların seçimi ve katsayıları kararsızdır; Veri Uygunluğu tablosuna bakın."
+            ],
             "Data Summary": [
                 "Veri Özeti"
             ],
@@ -9469,6 +9460,9 @@
             "Every case received the same predicted probability, so the classification metrics below are artefacts of a default 0.500 threshold that assigns everyone to one group: %s. Only the AUC of 0.500 is interpretable.": [
                 "Her olgu aynı tahmin edilen olasılığı aldı, bu nedenle aşağıdaki sınıflandırma metrikleri herkesi bir gruba atayan varsayılan 0.500 eşiğinin yapaylıklarıdır: %s. Yalnızca 0.500 EAA yorumlanabilir."
             ],
+            "Every case received the same ratings, so the standard error is 0 and no confidence interval or p-value can be estimated from this sample.": [
+                "Her olgu aynı değerlendirmeleri aldı; bu nedenle standart hata 0'dır ve bu örneklemden güven aralığı ya da p değeri tahmin edilemez."
+            ],
             "Every column you select is read as {tag1}another rater of one variable{tag2}.\n                            The number reported is therefore the {tag3}single-variable{tag4} iota over your\n                            rater columns, and the Cases and Raters columns describe that layout.": [
                 ""
             ],
@@ -9483,6 +9477,9 @@
             ],
             "Every evaluated threshold, including both ends of the range, gets equal weight, so this differs slightly from the Difference in Average Net Benefit in the Exploratory Model Comparison table, which is the area under the curve divided by the range width.": [
                 "Değerlendirilen her eşik, aralığın iki ucu da dahil olmak üzere eşit ağırlık alır; bu nedenle bu değer, eğri altındaki alanın aralık genişliğine bölünmesiyle elde edilen Keşifsel Model Karşılaştırması tablosundaki Ortalama Net Faydadaki Fark değerinden biraz farklıdır."
+            ],
+            "Every marker is compared in the selected Classification Direction. %s has an AUC below 0.5 in that direction, so a difference involving it reflects reading that marker backwards, not which marker discriminates better.": [
+                "Her belirteç seçilen Sınıflandırma Yönünde karşılaştırılır. %s bu yönde 0.5'in altında bir AUC'ye sahiptir; bu nedenle onu içeren bir fark, hangi belirtecin daha iyi ayırt ettiğini değil, o belirtecin ters yönde okunduğunu yansıtır."
             ],
             "Every model-based estimate, with confidence intervals.": [
                 "Modele dayalı tüm tahminler, güven aralıklarıyla birlikte."
@@ -9566,9 +9563,6 @@
                 ""
             ],
             "Example (5-point scale):": [
-                ""
-            ],
-            "Example analysis for Medical Decision Tests.": [
                 ""
             ],
             "Example context": [
@@ -10462,9 +10456,6 @@
             "Function for Medical Decision Analysis. Sensitivity, Specificity, Positive Predictive Value, Negative Predictive Value.": [
                 "Tıbbi Karar Analizi fonksiyonu. Duyarlılık, Özgüllük, Pozitif Öngörü Değeri, Negatif Öngörü Değeri."
             ],
-            "Functions for Medical Decision in ClinicoPath jamovi Module": [
-                ""
-            ],
             "Further reading": [
                 "Ek okuma"
             ],
@@ -10873,8 +10864,8 @@
             "Highly unbalanced test results ({pct} positive)": [
                 "Yüksek derecede dengesiz test sonuçları ({pct} pozitif)"
             ],
-            "histopathology including analysis": [
-                ""
+            "Histopathology Diagnostic and Agreement Examples": [
+                "Histopatoloji Tanı ve Uyum Örnekleri"
             ],
             "HIV Ag/Ab + Differentiation Assay (Illustrative)": [
                 "HIV Ag/Ab + Farklılaşma Testi (Açıklayıcı)"
@@ -12691,11 +12682,14 @@
             "Max |r| = %.2f (<0.7: acceptable)": [
                 "Maks |r| = %.2f (<0.7: kabul edilebilir)"
             ],
-            "Max |r| = %.2f (>=0.9: high, consider elastic net)": [
-                "Maks |r| = %.2f (>=0.9: yüksek, elastic net düşünün)"
+            "Max |r| = %.2f (>=0.9: high; LASSO keeps one of the correlated predictors more or less arbitrarily, so the selected set is unstable; elastic net or ridge keeps them together)": [
+                "Maks |r| = %.2f (>=0.9: yüksek; LASSO ilişkili yordayıcılardan birini aşağı yukarı keyfi olarak tutar, bu nedenle seçilen küme kararsızdır; elastic net veya ridge onları birlikte tutar)"
             ],
-            "Max |r| = %.2f (0.7-0.9: moderate, LASSO will handle)": [
-                "Maks |r| = %.2f (0.7-0.9: orta, LASSO ele alacaktır)"
+            "Max |r| = %.2f (>=0.9: high; the coefficients of the correlated predictors are not separately interpretable)": [
+                "Maks |r| = %.2f (>=0.9: yüksek; ilişkili yordayıcıların katsayıları ayrı ayrı yorumlanamaz)"
+            ],
+            "Max |r| = %.2f (0.7-0.9: moderate; which of the correlated predictors is selected may vary)": [
+                "Maks |r| = %.2f (0.7-0.9: orta; ilişkili yordayıcılardan hangisinin seçildiği değişebilir)"
             ],
             "Max r": [
                 "Maksimum r"
@@ -12895,6 +12889,9 @@
             "Medical Decision Analysis": [
                 "Tıbbi Karar Analizi"
             ],
+            "Medical decision analysis for clinicians and pathologists. Diagnostic test accuracy: sensitivity, specificity, predictive values at a chosen prevalence and likelihood ratios with exact intervals and an explicit zero-cell rule, Fagan nomograms, comparison and combination of tests, co-testing and sequential testing, and analysis without a gold standard (latent class models). ROC analysis: optimal cut-points, partial AUC, DeLong comparisons, NRI and IDI, calibration and frozen-model validation. Decision curve analysis and LASSO logistic prediction models. Interrater reliability: Cohen's, Fleiss' and weighted kappa, Krippendorff's alpha, Gwet's AC1/AC2, ICC, specific agreement and related measures. Sample-size and power calculators for kappa studies are in the Power menu. Results support research and teaching; they do not replace clinical judgement. Report problems at <https://github.com/sbalci/ClinicoPathJamoviModule/issues/>.": [
+                "Klinisyenler ve patologlar için tıbbi karar analizi. Tanısal test doğruluğu: duyarlılık, özgüllük, seçilen bir prevalansta öngörü değerleri ve kesin aralıklar ile açık bir sıfır hücre kuralına sahip olabilirlik oranları, Fagan nomogramları, testlerin karşılaştırılması ve birleştirilmesi, birlikte test ve sıralı test ile altın standart olmadan analiz (gizil sınıf modelleri). ROC analizi: optimal kesim noktaları, kısmi AUC, DeLong karşılaştırmaları, NRI ve IDI, kalibrasyon ve dondurulmuş model doğrulaması. Karar eğrisi analizi ve LASSO lojistik tahmin modelleri. Değerlendiriciler arası güvenilirlik: Cohen, Fleiss ve ağırlıklı kappa, Krippendorff alfa, Gwet AC1/AC2, ICC, özgül uyum ve ilişkili ölçüler. Kappa çalışmaları için örneklem büyüklüğü ve güç hesaplayıcıları Power menüsündedir. Sonuçlar araştırma ve eğitimi destekler; klinik yargının yerini tutmaz. Sorunları <https://github.com/sbalci/ClinicoPathJamoviModule/issues/> adresinden bildirin."
+            ],
             "Medical Decision Calculator": [
                 "Tıbbi Karar Hesaplayıcı"
             ],
@@ -12903,6 +12900,9 @@
             ],
             "Medical Decision Calculator for diagnostic test evaluation when you have the four key counts: True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN). Calculates comprehensive diagnostic performance metrics including sensitivity, specificity, positive and negative predictive values, likelihood ratios, and post-test probabilities. Supports confidence interval estimation and Fagan nomogram visualization for educational interpretation. Presets and examples are illustrative only and are not clinical guides.": [
                 "Dört temel sayım elinizdeyken tanı testi değerlendirmesi için Tıbbi Karar Hesaplayıcı: Gerçek Pozitifler (GP), Yanlış Pozitifler (YP), Gerçek Negatifler (GN) ve Yanlış Negatifler (YN). Duyarlılık, özgüllük, pozitif ve negatif öngörü değerleri, olabilirlik oranları ve test sonrası olasılıklar dahil kapsamlı tanısal performans ölçülerini hesaplar. Güven aralığı tahminini ve eğitim amaçlı yorum için Fagan nomogramı görselleştirmesini destekler. Hazır ayarlar ve örnekler yalnızca açıklayıcıdır ve klinik rehber değildir."
+            ],
+            "Medical Decision, Diagnostic Accuracy and Agreement Analysis": [
+                "Tıbbi Karar, Tanısal Doğruluk ve Uyum Analizi"
             ],
             "Medical device evaluation": [
                 "Tıbbi cihaz değerlendirmesi"
@@ -14143,6 +14143,9 @@
             "No evidence of a difference": [
                 "Fark olduğuna dair kanıt yok"
             ],
+            "No evidence of discrimination in this sample (the 95% confidence interval for Youden's index includes 0)": [
+                "Bu örneklemde ayırt etme gücüne ilişkin kanıt yok (Youden indeksinin %95 güven aralığı 0'ı içeriyor)"
+            ],
             "No evidence of lack of fit (p >= 0.05)": [
                 "Uyum eksikliğine ilişkin kanıt yok (p >= 0.05)"
             ],
@@ -14337,6 +14340,9 @@
             ],
             "No statistical comparison between these two tests could be computed; the reason is given in the Important Information panel. Report the per-test performance only.": [
                 "Bu iki test arasında istatistiksel karşılaştırma hesaplanamadı; nedeni Önemli Bilgi panelinde verilmiştir. Yalnızca test başına performansı raporlayın."
+            ],
+            "no statistically detectable": [
+                "istatistiksel olarak saptanamayan"
             ],
             "No stratified kappa: fewer than two institutions have a defined kappa. The cluster-specific table says why each institution's row is empty.": [
                 "Tabakalı kappa yok: tanımlı bir kappası olan kurum sayısı ikiden azdır. Kümeye özgü tablo, her kurumun satırının neden boş olduğunu belirtir."
@@ -14577,6 +14583,12 @@
             ],
             "Not estimable: no patient tests positive at this cutoff.": [
                 "Tahmin edilemiyor: bu kesme noktasında hiçbir hasta pozitif test sonucu vermiyor."
+            ],
+            "Not estimable: sensitivity or specificity could not be computed, or the false-positive count is zero and no continuity-corrected value would be valid": [
+                "Tahmin edilemez: duyarlılık ya da özgüllük hesaplanamadı veya yanlış pozitif sayısı sıfırdır ve süreklilik düzeltmeli hiçbir değer geçerli olmaz"
+            ],
+            "Not estimable: sensitivity or specificity could not be computed, or the true-negative count is zero and no continuity-corrected value would be valid": [
+                "Tahmin edilemez: duyarlılık ya da özgüllük hesaplanamadı veya gerçek negatif sayısı sıfırdır ve süreklilik düzeltmeli hiçbir değer geçerli olmaz"
             ],
             "Not estimable: the recalibration fit did not converge or the predicted risks separate the outcomes, so no finite slope exists.": [
                 "Tahmin edilemiyor: yeniden kalibrasyon uyumu yakınsamadı veya tahmin edilen riskler sonlanımları ayırıyor; bu nedenle sonlu bir eğim yoktur."
@@ -15790,6 +15802,9 @@
             "Pathologists linked through shared cases": [
                 "Ortak olgular aracılığıyla bağlantılı patologlar"
             ],
+            "Pathology dataset with saved Interrater Reliability, Medical Decision, Medical Decision Calculator, Co-Testing and Sequential Testing analyses.": [
+                "Kaydedilmiş Değerlendiriciler Arası Güvenilirlik, Tıbbi Karar, Tıbbi Karar Hesaplayıcı, Birlikte Test (Co-Testing) ve Sıralı Test analizlerini içeren patoloji veri seti."
+            ],
             "Pathology Examples": [
                 ""
             ],
@@ -16693,8 +16708,8 @@
             "Prediction variables/models": [
                 "Tahmin Değişkenleri/Modelleri"
             ],
-            "Prediction: rater %d": [
-                "Tahmin: değerlendirici %d"
+            "Prediction: %s": [
+                "Tahmin: %s"
             ],
             "Predictions from an external dataset or from cross-validation avoid this; report which was used.": [
                 "Dış bir veri kümesinden ya da çapraz doğrulamadan elde edilen tahminler bunu önler; hangisinin kullanıldığını raporlayın."
@@ -18493,8 +18508,8 @@
             "Select a Patient ID before using patient-level summaries.": [
                 "Hasta düzeyinde özetleri kullanmadan önce bir hasta kimliği seçin."
             ],
-            "Select a positive reference level and enter a distinct negative reference level.": [
-                "Bir pozitif referans düzeyi seçin ve ondan farklı bir negatif referans düzeyi girin."
+            "Select a positive reference level and choose a distinct negative reference level.": [
+                "Bir pozitif referans düzeyi seçin ve ondan farklı bir negatif referans düzeyi seçin."
             ],
             "Select a second diagnostic test to compare with Test 1. This enables head-to-head comparison analysis (e.g., new method vs standard method, or two different biomarkers).": [
                 "Test 1 ile karşılaştırmak için ikinci bir tanı testi seçin. Bu, başa baş karşılaştırma analizine olanak tanır (ör. yeni yöntem ve standart yöntem veya iki farklı biyobelirteç)."
@@ -19921,8 +19936,8 @@
             "Teaching example \"{preset}\" is not recognised; the values shown in the panel were used instead.": [
                 "\"{preset}\" eğitim örneği tanınmıyor; bunun yerine panelde gösterilen değerler kullanıldı."
             ],
-            "Teaching Example Replaced Entered Values": [
-                "Eğitim Örneği Girilen Değerlerin Yerini Aldı"
+            "Teaching Example Replaced Values Given in the Call": [
+                "Eğitim Örneği Çağrıda Verilen Değerlerin Yerini Aldı"
             ],
             "Teaching Example Values Are Not Clinical Guidance": [
                 "Eğitim Örneği Değerleri Klinik Kılavuz Değildir"
@@ -20344,8 +20359,8 @@
             "The {tag1}multivariate{tag2} form of iota - several variables, say tumor size,\n                            grade and mitotic count, scored by the same raters and summarized in one coefficient -\n                            is {tag3}not computed by this analysis{tag4}. Nothing in this dialog can say which\n                            columns belong to which variable. Entering the columns of several variables side by\n                            side does {tag5}not{tag6} produce the multivariate coefficient: it produces the\n                            single-variable iota of a table whose {tag7}raters{tag8} are really different\n                            measurements, and that number does not describe your study. For the multivariate\n                            form, call {tag9}irr::iota(){tag10} in R with one matrix per variable.": [
                 ""
             ],
-            "The %.0f%% interval is an <i>approximation</i>: a Wilson interval applied to specific agreement, which is not a binomial proportion, on the count of cases rated into the category by at least one rater. Actual coverage is not guaranteed, and the interval is least trustworthy for rare categories and for values near 0 or 1. de Vet and colleagues (2013) recommend a bootstrap interval instead; treat these limits as indicative.": [
-                "%%%.0f aralık bir <i>yaklaşımdır</i>: binom oranı olmayan özgül uyuma, en az bir değerlendiricinin o kategoriye atadığı olgu sayısı üzerinden uygulanmış bir Wilson aralığıdır. Gerçek kapsama garanti edilmez ve aralık, nadir kategorilerde ve 0 ya da 1'e yakın değerlerde en az güvenilirdir. de Vet ve meslektaşları (2013) bunun yerine bir bootstrap aralığı önerir; bu sınırları gösterge niteliğinde kabul edin."
+            "The %.0f%% interval is an <i>approximation</i>: a Wilson interval applied to specific agreement, which is not a binomial proportion, on n = 2a + b + c, the number of times either rater assigned the category (a case both raters placed in it counts twice, so the interval is narrower than one based on cases). Actual coverage is not guaranteed, and the interval is least trustworthy for rare categories and for values near 0 or 1. de Vet and colleagues (2013) recommend a bootstrap interval instead; treat these limits as indicative.": [
+                "%%%.0f aralık bir <i>yaklaşımdır</i>: binom oranı olmayan özgül uyuma, n = 2a + b + c üzerinden, yani değerlendiricilerden herhangi birinin kategoriyi atadığı kez sayısı üzerinden uygulanmış bir Wilson aralığıdır (iki değerlendiricinin de o kategoriye koyduğu bir olgu iki kez sayılır, bu nedenle aralık olgulara dayalı bir aralıktan daha dardır). Gerçek kapsama garanti edilmez ve aralık, nadir kategorilerde ve 0 ya da 1'e yakın değerlerde en az güvenilirdir. de Vet ve meslektaşları (2013) bunun yerine bir bootstrap aralığı önerir; bu sınırları gösterge niteliğinde kabul edin."
             ],
             "The %1$s analyzed rows that carry a patient identifier (%2$s) come from %3$s patients, so some patients contribute more than one row (slides, cores or lesions). Every panel except the Frozen-model validation report assumes that each row is an independent patient. Rows from one patient are correlated, so the AUC confidence intervals, the tests comparing markers and the confidence intervals for sensitivity and specificity are too narrow, and p-values too small. • Analyze one row per patient (for example a patient-level score), or • for a fixed model with a prespecified cutoff, enable the Frozen-model validation report, whose intervals resample whole patients (every row of a patient must then share one outcome).": [
                 "Hasta tanımlayıcısı (%2$s) taşıyan %1$s analiz edilmiş satır %3$s hastadan gelmektedir; dolayısıyla bazı hastalar birden fazla satırla temsil edilmektedir (lamlar, kor örnekleri veya lezyonlar). Dondurulmuş model doğrulama raporu dışındaki her panel, her satırın bağımsız bir hasta olduğunu varsayar. Aynı hastaya ait satırlar birbiriyle ilişkilidir; bu nedenle AUC güven aralıkları, belirteçleri karşılaştıran testler ve duyarlılık ile özgüllük için güven aralıkları gereğinden dar, p değerleri ise gereğinden küçüktür. • Hasta başına bir satır analiz edin (örneğin hasta düzeyinde bir skor) ya da • önceden belirlenmiş bir kesme noktasına sahip sabit bir model için, aralıkları hastaları bütün olarak yeniden örnekleyen Dondurulmuş model doğrulama raporunu etkinleştirin (bu durumda bir hastanın tüm satırları aynı sonlanımı paylaşmalıdır)."
@@ -21187,6 +21202,9 @@
             "The plain-language summary describes Cohen's or Fleiss' kappa, which is not computed for continuous measurements. For measurements, read the ICC, Lin's CCC and the Bland-Altman limits of agreement, if selected, which carry their own interpretation notes.": [
                 "Sade dilde özet, sürekli ölçümler için hesaplanmayan Cohen kappasını veya Fleiss kappasını açıklar. Ölçümler için, seçildiyse, kendi yorum notlarını içeren ICC, Lin'in CCC katsayısı ve Bland-Altman uyum sınırları sonuçlarını okuyun."
             ],
+            "The pointwise bootstrap intervals on the decision curve plot hold at each threshold separately and overstate confidence when read across this range; choose the simultaneous band under Interval type to judge the range as a whole. The reference lines are estimated from the same data, so an interval that clears them is not a test of the difference from treat all or treat none.": [
+                "Karar eğrisi grafiğindeki noktasal bootstrap aralıkları her eşik için ayrı ayrı geçerlidir ve bu aralık boyunca birlikte okunduğunda güveni olduğundan yüksek gösterir; aralığı bir bütün olarak değerlendirmek için Aralık türü altında eşzamanlı bandı seçin. Referans çizgileri aynı verilerden tahmin edilir; bu nedenle onların üzerinde kalan bir aralık, herkesi tedavi etme veya hiç kimseyi tedavi etmemeden farkın bir testi değildir."
+            ],
             "The positive class (cases) was %1$s and the negative class (non-cases) was %2$s.": [
                 "Pozitif sınıf (olgular) %1$s ve negatif sınıf (olgu olmayanlar) %2$s idi."
             ],
@@ -21442,6 +21460,9 @@
             "The similarity shown is Lin's concordance correlation coefficient between the two raters: 1.00 means their readings are interchangeable, 0.00 means no concordance at all, and a negative value means they move in opposite directions. It falls when two raters scatter around each other and also when one reads consistently higher or on a wider scale, so unlike a correlation it is comparable across datasets.": [
                 "Gösterilen benzerlik, iki değerlendirici arasındaki Lin'in uyum korelasyon katsayısıdır: 1.00, okuma değerlerinin birbirinin yerine kullanılabilir olduğu; 0.00, hiç uyum olmadığı; negatif bir değer ise değerlendiricilerin zıt yönlerde hareket ettiği anlamına gelir. Katsayı, iki değerlendiricinin değerleri birbirinin çevresinde saçıldığında ve ayrıca biri tutarlı biçimde daha yüksek ya da daha geniş bir ölçekte okuduğunda düşer; bu nedenle bir korelasyonun aksine veri setleri arasında karşılaştırılabilir."
             ],
+            "The simultaneous bootstrap band on the decision curve plot shows the uncertainty of the model's net benefit over this range. The reference lines are estimated from the same data, so a band that clears them is not a test of the difference from treat all or treat none.": [
+                "Karar eğrisi grafiğindeki eşzamanlı bootstrap bandı, modelin net yararının bu aralık boyunca belirsizliğini gösterir. Referans çizgileri aynı verilerden tahmin edilir; bu nedenle onların üzerinde kalan bir bant, herkesi tedavi etme veya hiç kimseyi tedavi etmemeden farkın bir testi değildir."
+            ],
             "The smaller outcome group has %1$s patients (%2$s positive, %3$s negative); affected: %4$s. DeLong's interval is a large-sample approximation: for a single AUC it covers the true value less often than its stated level when the smaller group is small, and more so the closer the AUC is to 1 or 0 (Obuchowski & Lieber 1998: more than 200 patients for high-accuracy areas). Feng, Cortese & Baumgartner (2017) found that interval methods for the AUC disagree most when the AUC is high and the sample small. In this module's validation simulation, which drew equal-variance binormal data, a 95%% DeLong interval covered a true AUC of 0.80 in 91%% of datasets with 15 positive and 15 negative cases, and a true AUC of 0.95 in 87%% with 30 and 30 and in 93%% with 100 and 100; these are averages over all datasets of each size, and with unequal variances or skewed data they were about 90%%, 84%% and 92%%. Coverage followed the smaller group's size times the distance of the AUC from 1 (from 0 for an AUC below 0.5): it was about 93%% wherever that product was 6, so this warning appears when the smaller group has fewer than 30 patients or that product is below 6 (fewer than 60 patients at an AUC of 0.90, fewer than 120 at 0.95); the cutoff is a heuristic. • Read the interval as approximate and probably too narrow. • Bootstrap confidence intervals are an alternative, but no method is exact at this size, and no bootstrap interval can be formed when the groups are perfectly separated.": [
                 "Küçük olan sonlanım grubunda %1$s hasta var (%2$s pozitif, %3$s negatif); etkilenen: %4$s. DeLong aralığı büyük örneklem yaklaşımıdır: tek bir AUC için, küçük olan grup az sayıda hasta içerdiğinde gerçek değeri belirtilen düzeyden daha seyrek kapsar ve AUC 1'e ya da 0'a yaklaştıkça bu durum belirginleşir (Obuchowski & Lieber 1998: yüksek doğruluklu alanlar için 200'den fazla hasta). Feng, Cortese & Baumgartner (2017), AUC için aralık yöntemlerinin en çok AUC yüksek ve örneklem küçük olduğunda birbirinden ayrıştığını buldu. Bu modülün eşit varyanslı binormal veriler çeken doğrulama simülasyonunda, %%95 DeLong aralığı gerçek 0.80 AUC değerini 15 pozitif ve 15 negatif olgulu veri setlerinin %%91'inde, gerçek 0.95 AUC değerini ise 30 ve 30 olgulu veri setlerinin %%87'sinde ve 100 ve 100 olgulu veri setlerinin %%93'ünde kapsadı; bunlar her büyüklükteki tüm veri setleri üzerinden alınan ortalamalardır ve eşit olmayan varyanslarda veya çarpık verilerde bu değerler yaklaşık %%90, %%84 ve %%92 idi. Kapsama, küçük grubun büyüklüğü ile AUC'nin 1'den uzaklığının (0.5'in altındaki bir AUC için 0'dan uzaklığının) çarpımını izledi: bu çarpımın 6 olduğu her durumda yaklaşık %%93 idi; bu nedenle bu uyarı, küçük grupta 30'dan az hasta olduğunda veya bu çarpım 6'nın altında olduğunda görünür (0.90 AUC'de 60'tan az, 0.95'te 120'den az hasta); bu sınır sezgisel bir kuraldır. • Aralığı yaklaşık ve muhtemelen fazla dar olarak yorumlayın. • Bootstrap güven aralıkları bir alternatiftir, ancak bu büyüklükte hiçbir yöntem kesin değildir ve gruplar tamamen ayrıştığında hiçbir bootstrap aralığı oluşturulamaz."
             ],
@@ -21496,8 +21517,8 @@
             "The target-prevalence list is empty, so no projected rows are added from it. Enter comma-separated proportions, for example 0.001,0.01.": [
                 ""
             ],
-            "The teaching example replaced these entered values (entered -> used): {values}. Set the teaching example to \"Custom Values\" to analyse your own values.": [
-                "Eğitim örneği girilen şu değerlerin yerini aldı (girilen -> kullanılan): {values}. Kendi değerlerinizi analiz etmek için eğitim örneğini \"Özel Değerler\" olarak ayarlayın."
+            "The teaching example replaced these values given in the call (given -> used): {values}. Set the teaching example to \"Custom values\" to analyze your own values.": [
+                "Eğitim örneği çağrıda verilen şu değerlerin yerini aldı (verilen -> kullanılan): {values}. Kendi değerlerinizi analiz etmek için eğitim örneğini \"Özel değerler\" olarak ayarlayın."
             ],
             "The test '%1$s' has an AUC of %2$.3f": [
                 "'%1$s' testinin AUC değeri %2$.3f"

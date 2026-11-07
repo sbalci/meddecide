@@ -1,7 +1,50 @@
-# meddecide (development version)
+# meddecide 1.1.3 (2026-11-07)
 
-No statistic changes. Saved analyses open as before, except that the two ranges below return to
-their defaults (see the R note).
+No estimate or test changes: every sensitivity, specificity, predictive value, likelihood ratio,
+kappa, AUC, net benefit and sample size is computed as in 1.1.2, and a pre-release review checked
+them against independent packages (see the end of this entry). Saved analyses open as before,
+except that the two ranges below return to their defaults (see the R note).
+
+## Corrections from the pre-release review
+
+- **Medical Decision no longer calls an indistinct test "poor" or "worse than chance".** When the
+  95% confidence interval for Youden's index includes 0, the Clinical Summary now says the test
+  shows "no statistically detectable" discrimination and the Clinical Interpretation panel says
+  "No evidence of discrimination in this sample", matching the warning above them. Before, the
+  warning said not to call the test poor while the panels below it did.
+- **Interrater Reliability matches the positive category under the default settings.** With
+  "All-category estimates" ticked (the default), typing "pos" for a level "Pos" labelled both
+  rows "(Negative)"; extra spaces and different capitalization are now matched in every mode, a
+  category that matches nothing raises a warning instead of being ignored, and a box holding
+  only spaces counts as empty.
+- **Medical Decision Calculator: F1 score is 0, not blank, when there is no true positive**
+  (2TP / (2TP + FP + FN) = 0), and a positive predictive value that cannot be estimated
+  (no positive results) no longer shows an interval of 0 to 1.
+- **Interrater Reliability: Gwet's AC with unanimous ratings** leaves the standard error,
+  interval and p-value blank and says why, instead of showing an interval of [1, 1].
+- **Advanced ROC Analysis:**
+  - the DeLong comparison table warns when a marker has an AUC below 0.5 in the selected
+    direction, since a "significant" difference then reflects reading that marker backwards;
+  - the confusion matrices show their note explaining which cells are true and false positives
+    and negatives (it was set and then erased before display);
+  - no matrix is drawn at an infinite cut-point when no usable cut-point exists, and no empty
+    per-variable matrix appears next to the subgroup matrices.
+- **Corrected sentences.** Medical Decision now gives the actual reason a likelihood ratio is not
+  estimable, and no longer prints an NPV of 99.975% as "100.0%". The specific-agreement interval
+  note states the count it uses (2a + b + c, each agreed case counted twice). A specific agreement
+  between 0.75 and 0.80 is no longer called both "Good" and "Critical". Decision Curve Analysis
+  says when its intervals are pointwise, and that an interval clearing the treat-all line is not
+  a test of the difference. LASSO Logistic says that high collinearity makes the choice of
+  correlated predictors unstable, not the predictions unreliable, and stops suggesting elastic net
+  when elastic net is already fitted. Medical Decision Calculator's summary no longer points to
+  predictive values "above" that were moved into the tables.
+- **Smaller wording fixes.** Sequential Testing Analysis no longer reports default values as
+  "entered" when a teaching example is chosen from R. Compare Medical Decision Tests names the
+  level boxes as they appear in the panel, and does not advise reading an interval for a class
+  with no cases. Interrater Reliability's concordance table names the prediction rater instead of
+  its position. Turkish translations cover every new message.
+
+## Changes in this release
 
 - **Tables instead of HTML.** Advanced ROC Analysis shows its confusion matrices as tables (rows:
   the decision at the cutpoint; columns: the selected positive and negative levels). Compare
@@ -49,7 +92,7 @@ their defaults (see the R note).
 - **R users:** in `agreement()`, `predictionColumn = 1` is now `predictionRater = "<column>"`.
   Results that sat under a heading are one level down, for example
   `result$krippTableGroup$krippTable`.
-- **Clinical ROC Analysis** no longer offers "Explain why within-cohort meta-analysis is
+- **Advanced ROC Analysis** no longer offers "Explain why within-cohort meta-analysis is
   unavailable"; the option remains for saved analyses and R calls.
 - **Clinical ROC Analysis plots follow jamovi's theme.** Plot theme has a new first choice,
   "jamovi (follow global)", which is now the default, so these plots match the rest of the
@@ -111,6 +154,23 @@ their defaults (see the R note).
 - **American spelling throughout** (analyzed, modeled, color, behavior, center, favor). The Turkish
   translations follow.
 - **Repository:** a personal settings file is no longer tracked.
+- **Documentation:** the vignettes cover only the 15 analyses this module ships, use the current
+  R arguments, and state the Landis and Koch kappa bands correctly; pages about analyses that are
+  not part of meddecide (decision trees, Markov models, decision panels and others) and the legacy
+  copies were removed. The README examples run as written.
+
+## What the pre-release review verified
+
+Independent checks against other packages and hand formulas, on the code released here:
+2 x 2 accuracy measures, Clopper-Pearson and Wilson intervals, prior-adjusted predictive values,
+the zero-cell likelihood-ratio rule and Fagan post-test probabilities (`binom`, `DescTools`);
+co-testing and sequential-testing formulas; McNemar, Newcombe paired differences and Cochran's Q
+(`DescTools`); net benefit (`dcurves`); LASSO coefficients and lambda (`glmnet`); latent class
+estimates (`poLCA`); Cohen's, weighted, Fleiss', Conger's and Light's kappa, Krippendorff's alpha,
+Gwet's AC1/AC2, all six ICC forms and Lin's CCC (`irr`, `irrCAC`, `psych`, `vcd`, `DescTools`);
+AUC, DeLong tests, cut-points, partial AUC, NRI/IDI, Brier score and Hosmer-Lemeshow
+(`pROC`, `ResourceSelection`); and every kappa sample-size calculator (`kappaSize`). These checks
+use simulated data; they show the calculations are right, not that a test is clinically valid.
 
 # meddecide 1.1.2 (2026-10-23)
 
