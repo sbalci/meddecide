@@ -211,6 +211,9 @@
             "{models} never exceeds both reference strategies anywhere in the threshold range examined, so no range is shown.": [
                 "{models} incelenen eşik aralığında hiçbir yerde her iki referans stratejiyi birden aşmaz, bu nedenle aralık gösterilmez."
             ],
+            "{models} reaches the boundary of the analysed threshold window, so the full range of benefit may extend beyond the thresholds examined.": [
+                ""
+            ],
             "{n} case(s) ({pct}) removed because their level was neither the positive nor the negative level you selected (these are NOT missing values)": [
                 "Seçtiğiniz pozitif veya negatif düzey olmadığı için {n} olgu ({pct}) kaldırıldı (bunlar eksik değer DEĞİLDİR)"
             ],
@@ -11828,7 +11831,7 @@
                 "Yalnızca {test} sonucu {levels} olduğunda kaydedildi."
             ],
             "Item": [
-                "Öğe"
+                "Madde"
             ],
             "Item-modal agreement requires at least 3 raters. With 2 raters every case either agrees completely or is a tie with no modal category, so the statistic would be 1.000 for every category. Use Cohen's kappa or specific agreement for two raters.": [
                 "Madde-mod uyumu en az 3 değerlendirici gerektirir. 2 değerlendiricide her olgu ya tam uyum gösterir ya da tepe değeri (mod) kategorisi olmayan bir eşitliktir; bu nedenle istatistik her kategori için 1.000 olurdu. İki değerlendirici için Cohen kappası veya özgül uyum kullanın."
@@ -18106,6 +18109,9 @@
             "ROC curve smoothing": [
                 "ROC eğrisi düzeltme"
             ],
+            "ROC curve smoothing ({method}) could not be computed: {reason}": [
+                ""
+            ],
             "ROC curve with AUC and confidence interval": [
                 "EAA ve güven aralığı ile ROC eğrisi"
             ],
@@ -18207,6 +18213,9 @@
             ],
             "Rows such as +/- are exact result patterns, each scored as 'this exact pattern' against all other results; the rows below the line are single tests and testing strategies. Read Youden's J in the table for pattern rows.": [
                 "+/- gibi satırlar tam sonuç paternleridir; her biri 'tam olarak bu patern' olarak diğer tüm sonuçlara karşı değerlendirilir. Çizginin altındaki satırlar tek testler ve test stratejileridir. Patern satırları için tablodaki Youden J değerini okuyun."
+            ],
+            "Rows with a missing test or reference result are omitted from each cross-tabulation ({counts} of {total} rows).": [
+                ""
             ],
             "RT-PCR": [
                 "RT-PCR"
@@ -18978,6 +18987,9 @@
             ],
             "Showing the %1$d most frequent of %2$d rating combinations, which cover %3$d of %4$d cases.": [
                 "En sık görülen %1$d değerlendirme kombinasyonu gösteriliyor (toplam %2$d); bunlar %3$d / %4$d olguyu kapsıyor."
+            ],
+            "Showing the first {shown} of {total} discordant cases.": [
+                ""
             ],
             "Showing the first {shown} of {total} level combinations.": [
                 "{total} düzey kombinasyonunun ilk {shown} tanesi gösteriliyor."

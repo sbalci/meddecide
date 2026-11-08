@@ -406,6 +406,12 @@ msgid ""
 "range examined, so no range is shown."
 msgstr ""
 
+#: R/decisioncurve.b.R
+msgid ""
+"{models} reaches the boundary of the analysed threshold window, so the full "
+"range of benefit may extend beyond the thresholds examined."
+msgstr ""
+
 #: R/decision.b.R
 msgid ""
 "{n} case(s) ({pct}) removed because their level was neither the positive nor "
@@ -31803,6 +31809,7 @@ msgid "Reference positive given positive call"
 msgstr ""
 
 #: R/decision.b.R
+#: R/decisioncompare.b.R
 msgid ""
 "Reference Positive is \"{gpos}\" and Reference Negative is \"{gneg}\" "
 "({gold}); Test Positive is \"{tpos}\" and Test Negative is \"{tneg}\" "
@@ -32604,6 +32611,10 @@ msgstr ""
 msgid "ROC curve smoothing"
 msgstr ""
 
+#: R/psychopdaROC.b.R
+msgid "ROC curve smoothing ({method}) could not be computed: {reason}"
+msgstr ""
+
 #: R/lassologistic.b.R
 msgid "ROC curve with AUC and confidence interval"
 msgstr ""
@@ -32773,6 +32784,12 @@ msgid ""
 "Rows such as +/- are exact result patterns, each scored as 'this exact "
 "pattern' against all other results; the rows below the line are single tests "
 "and testing strategies. Read Youden's J in the table for pattern rows."
+msgstr ""
+
+#: R/decisioncompare.b.R
+msgid ""
+"Rows with a missing test or reference result are omitted from each "
+"cross-tabulation ({counts} of {total} rows)."
 msgstr ""
 
 #: R/sequentialtests.b.R
@@ -34136,6 +34153,10 @@ msgstr ""
 msgid ""
 "Showing the %1$d most frequent of %2$d rating combinations, which cover %3$d "
 "of %4$d cases."
+msgstr ""
+
+#: R/decision.b.R
+msgid "Showing the first {shown} of {total} discordant cases."
 msgstr ""
 
 #: R/decision.b.R

@@ -211,6 +211,9 @@
             "{models} never exceeds both reference strategies anywhere in the threshold range examined, so no range is shown.": [
                 ""
             ],
+            "{models} reaches the boundary of the analysed threshold window, so the full range of benefit may extend beyond the thresholds examined.": [
+                ""
+            ],
             "{n} case(s) ({pct}) removed because their level was neither the positive nor the negative level you selected (these are NOT missing values)": [
                 ""
             ],
@@ -18106,6 +18109,9 @@
             "ROC curve smoothing": [
                 ""
             ],
+            "ROC curve smoothing ({method}) could not be computed: {reason}": [
+                ""
+            ],
             "ROC curve with AUC and confidence interval": [
                 ""
             ],
@@ -18206,6 +18212,9 @@
                 ""
             ],
             "Rows such as +/- are exact result patterns, each scored as 'this exact pattern' against all other results; the rows below the line are single tests and testing strategies. Read Youden's J in the table for pattern rows.": [
+                ""
+            ],
+            "Rows with a missing test or reference result are omitted from each cross-tabulation ({counts} of {total} rows).": [
                 ""
             ],
             "RT-PCR": [
@@ -18977,6 +18986,9 @@
                 ""
             ],
             "Showing the %1$d most frequent of %2$d rating combinations, which cover %3$d of %4$d cases.": [
+                ""
+            ],
+            "Showing the first {shown} of {total} discordant cases.": [
                 ""
             ],
             "Showing the first {shown} of {total} level combinations.": [

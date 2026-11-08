@@ -526,6 +526,12 @@ msgstr ""
 "{models} incelenen eşik aralığında hiçbir yerde her iki referans stratejiyi "
 "birden aşmaz, bu nedenle aralık gösterilmez."
 
+#: R/decisioncurve.b.R
+msgid ""
+"{models} reaches the boundary of the analysed threshold window, so the full "
+"range of benefit may extend beyond the thresholds examined."
+msgstr ""
+
 #: R/decision.b.R
 msgid ""
 "{n} case(s) ({pct}) removed because their level was neither the positive nor "
@@ -25438,7 +25444,7 @@ msgstr "Yalnızca {test} sonucu {levels} olduğunda kaydedildi."
 
 #: sequentialtests/results/cost_analysis_table.columns.title
 msgid "Item"
-msgstr "Öğe"
+msgstr "Madde"
 
 #: R/agreement.b.R
 msgid ""
@@ -37272,6 +37278,7 @@ msgid "Reference positive given positive call"
 msgstr "Pozitif sonuçta referansın pozitif olması"
 
 #: R/decision.b.R
+#: R/decisioncompare.b.R
 msgid ""
 "Reference Positive is \"{gpos}\" and Reference Negative is \"{gneg}\" "
 "({gold}); Test Positive is \"{tpos}\" and Test Negative is \"{tneg}\" "
@@ -38198,6 +38205,10 @@ msgstr "ROC Eğrisi Ayarları"
 msgid "ROC curve smoothing"
 msgstr "ROC eğrisi düzeltme"
 
+#: R/psychopdaROC.b.R
+msgid "ROC curve smoothing ({method}) could not be computed: {reason}"
+msgstr ""
+
 #: R/lassologistic.b.R
 msgid "ROC curve with AUC and confidence interval"
 msgstr "EAA ve güven aralığı ile ROC eğrisi"
@@ -38399,6 +38410,12 @@ msgstr ""
 "olarak diğer tüm sonuçlara karşı değerlendirilir. Çizginin altındaki "
 "satırlar tek testler ve test stratejileridir. Patern satırları için "
 "tablodaki Youden J değerini okuyun."
+
+#: R/decisioncompare.b.R
+msgid ""
+"Rows with a missing test or reference result are omitted from each "
+"cross-tabulation ({counts} of {total} rows)."
+msgstr ""
 
 #: R/sequentialtests.b.R
 msgid "RT-PCR"
@@ -40017,6 +40034,10 @@ msgid ""
 msgstr ""
 "En sık görülen %1$d değerlendirme kombinasyonu gösteriliyor (toplam %2$d); "
 "bunlar %3$d / %4$d olguyu kapsıyor."
+
+#: R/decision.b.R
+msgid "Showing the first {shown} of {total} discordant cases."
+msgstr ""
 
 #: R/decision.b.R
 msgid "Showing the first {shown} of {total} level combinations."

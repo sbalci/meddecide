@@ -6,7 +6,7 @@ jms: '1.0'
 authors:
   - Serdar Balci
 maintainer: Serdar Balci <serdarbalci@serdarbalci.com>
-date: '2026-11-07'
+date: '2026-11-08'
 type: R
 description: >
   Medical decision analysis for clinicians and pathologists. Diagnostic test
