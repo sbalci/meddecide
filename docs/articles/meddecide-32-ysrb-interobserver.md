@@ -31,37 +31,35 @@ categories (I = insufficient, II = benign, III = atypical, IV =
 suspicious, V = malignant) with the characteristic heavily-benign
 marginal distribution.
 
-``` r
-
-library(meddecide)
-
-set.seed(2024)
-n     <- 99
-cats  <- c("I", "II", "III", "IV", "V")
-prob  <- c(0.05, 0.75, 0.05, 0.04, 0.11)   # mostly benign, as in real cytology
-truth <- sample(cats, n, replace = TRUE, prob = prob)
-
-# Each reader agrees with the latent truth most of the time, otherwise slips to
-# an adjacent category. Reader 4 is a little noisier than the rest.
-slip <- function(x) {
-  i <- match(x, cats)
-  cats[pmin(length(cats), pmax(1, i + sample(c(-1, 1), 1)))]
-}
-reader <- function(p_agree) {
-  vapply(truth, function(t) if (runif(1) < p_agree) t else slip(t), character(1))
-}
-
-ysrb <- data.frame(
-  Reader1 = reader(0.92),
-  Reader2 = reader(0.90),
-  Reader3 = reader(0.91),
-  Reader4 = reader(0.84),
-  stringsAsFactors = FALSE
-)
-ysrb[] <- lapply(ysrb, factor, levels = cats, ordered = TRUE)
-
-knitr::kable(head(ysrb), caption = "First few cases (4 readers, YSRB category)")
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`meddecide`](https://github.com/sbalci/ClinicoPathJamoviModule/)`)`\
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``2024``)`\
+`n``     ``<-`` ``99`\
+`cats``  ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"I"``, ``"II"``, ``"III"``, ``"IV"``, ``"V"``)`\
+`prob``  ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.05``, ``0.75``, ``0.05``, ``0.04``, ``0.11``)``   ``# mostly benign, as in real cytology`\
+`truth`` ``<-`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``cats``, ``n``, replace ``=`` ``TRUE``, prob ``=`` ``prob``)`\
+\
+`# Each reader agrees with the latent truth most of the time, otherwise slips to`\
+`# an adjacent category. Reader 4 is a little noisier than the rest.`\
+`slip`` ``<-`` ``function``(``x``)`` ``{`\
+`  ``i`` ``<-`` `[`match`](https://rdrr.io/r/base/match.html)`(``x``, ``cats``)`\
+`  ``cats``[`[`pmin`](https://rdrr.io/r/base/Extremes.html)`(`[`length`](https://rdrr.io/r/base/length.html)`(``cats``)``, `[`pmax`](https://rdrr.io/r/base/Extremes.html)`(``1``, ``i`` ``+`` `[`sample`](https://rdrr.io/r/base/sample.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``-``1``, ``1``)``, ``1``)``)``)``]`\
+`}`\
+`reader`` ``<-`` ``function``(``p_agree``)`` ``{`\
+`  `[`vapply`](https://rdrr.io/r/base/lapply.html)`(``truth``, ``function``(``t``)`` ``if`` ``(`[`runif`](https://rdrr.io/r/stats/Uniform.html)`(``1``)`` ``<`` ``p_agree``)`` ``t`` ``else`` ``slip``(``t``)``, `[`character`](https://rdrr.io/r/base/character.html)`(``1``)``)`\
+`}`\
+\
+`ysrb`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Reader1 ``=`` ``reader``(``0.92``)``,`\
+`  Reader2 ``=`` ``reader``(``0.90``)``,`\
+`  Reader3 ``=`` ``reader``(``0.91``)``,`\
+`  Reader4 ``=`` ``reader``(``0.84``)``,`\
+`  stringsAsFactors ``=`` ``FALSE`\
+`)`\
+`ysrb``[``]`` ``<-`` `[`lapply`](https://rdrr.io/r/base/lapply.html)`(``ysrb``, ``factor``, levels ``=`` ``cats``, ordered ``=`` ``TRUE``)`\
+\
+`knitr``::`[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(`[`head`](https://rdrr.io/r/utils/head.html)`(``ysrb``)``, caption ``=`` ``"First few cases (4 readers, YSRB category)"``)`
 
 | Reader1 | Reader2 | Reader3 | Reader4 |
 |:--------|:--------|:--------|:--------|
@@ -79,24 +77,20 @@ First few cases (4 readers, YSRB category) {.table}
 We turn on the all-pairs table, the per-category item-modal table, and a
 Bonferroni correction for the $`\binom{4}{2} = 6`$ pairwise tests.
 
-``` r
-
-res <- agreement(
-  data                   = ysrb,
-  vars                   = c("Reader1", "Reader2", "Reader3", "Reader4"),
-  allPairsKappa          = TRUE,
-  itemModalCategoryAgreement = TRUE,
-  multipleTestCorrection = "bonferroni"
-)
-```
+\
+`res`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data                   ``=`` ``ysrb``,`\
+`  vars                   ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Reader1"``, ``"Reader2"``, ``"Reader3"``, ``"Reader4"``)``,`\
+`  allPairsKappa          ``=`` ``TRUE``,`\
+`  itemModalCategoryAgreement ``=`` ``TRUE``,`\
+`  multipleTestCorrection ``=`` ``"bonferroni"`\
+`)`
 
 ### Overall agreement
 
-``` r
-
-knitr::kable(res$irrtable$asDF, digits = 3,
-             caption = "Overall agreement (Fleiss' kappa across all four readers)")
-```
+\
+`knitr``::`[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``res``$``irrtable``$``asDF``, digits ``=`` ``3``,`\
+`             caption ``=`` ``"Overall agreement (Fleiss' kappa across all four readers)"``)`
 
 |  | method | subjects | raters | peragree | kappa | ci_lower | ci_upper | z | p |
 |:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -110,18 +104,16 @@ breaks down.
 
 ## Table I - All-pairs Cohen’s kappa
 
-``` r
-
-allpairs <- res$allPairsKappaTable$asDF
-knitr::kable(
-  allpairs[, c("rater_a", "rater_b", "n", "peragree", "kappa",
-               "ci_lower", "ci_upper", "p_adj")],
-  digits = 3,
-  col.names = c("Reader A", "Reader B", "n", "Obs. agree", "Kappa",
-                "CI lower", "CI upper", "p (Bonf.)"),
-  caption = "Cohen's kappa for every reader pair, with 95% CI."
-)
-```
+\
+`allpairs`` ``<-`` ``res``$``allPairsKappaTable``$``asDF`\
+`knitr``::`[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(`\
+`  ``allpairs``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"rater_a"``, ``"rater_b"``, ``"n"``, ``"peragree"``, ``"kappa"``,`\
+`               ``"ci_lower"``, ``"ci_upper"``, ``"p_adj"``)``]``,`\
+`  digits ``=`` ``3``,`\
+`  col.names ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Reader A"``, ``"Reader B"``, ``"n"``, ``"Obs. agree"``, ``"Kappa"``,`\
+`                ``"CI lower"``, ``"CI upper"``, ``"p (Bonf.)"``)``,`\
+`  caption ``=`` ``"Cohen's kappa for every reader pair, with 95% CI."`\
+`)`
 
 |  | Reader A | Reader B | n | Obs. agree | Kappa | CI lower | CI upper | p (Bonf.) |
 |:---|:---|:---|---:|---:|---:|---:|---:|---:|
@@ -157,17 +149,15 @@ readers, then, within each category, average the case-level agreement
 rate. A 4/4 case scores 1.00, a 3/1 split scores 0.75, and a 2/2 split
 has no unique mode and is excluded.
 
-``` r
-
-modal <- res$itemModalAgreementTable$asDF
-knitr::kable(
-  modal,
-  digits = 3,
-  col.names = c("Modal category", "Cases", "Mean agreement",
-                "CI lower", "CI upper"),
-  caption = "Within-case agreement, by the case's modal category."
-)
-```
+\
+`modal`` ``<-`` ``res``$``itemModalAgreementTable``$``asDF`\
+`knitr``::`[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(`\
+`  ``modal``,`\
+`  digits ``=`` ``3``,`\
+`  col.names ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Modal category"``, ``"Cases"``, ``"Mean agreement"``,`\
+`                ``"CI lower"``, ``"CI upper"``)``,`\
+`  caption ``=`` ``"Within-case agreement, by the case's modal category."`\
+`)`
 
 |       | Modal category | Cases | Mean agreement | CI lower | CI upper |
 |:------|:---------------|------:|---------------:|---------:|---------:|
@@ -207,10 +197,8 @@ p-values as if they were one.
 
 ## Reproducibility
 
-``` r
-
-sessionInfo()
-```
+\
+[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`
 
     ## R version 4.6.0 (2026-04-24)
     ## Platform: aarch64-apple-darwin23

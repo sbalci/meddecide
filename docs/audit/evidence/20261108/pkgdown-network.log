@@ -1,0 +1,425 @@
+meddecide 1.1.4 -> release
+── Installing package meddecide into temporary library ─────────────────────────
+── Building pkgdown site for package meddecide ─────────────────────────────────
+Reading from: /Users/serdarbalci/Documents/GitHub/meddecide
+Writing to: /Users/serdarbalci/Documents/GitHub/meddecide/docs
+── Sitrep ──────────────────────────────────────────────────────────────────────
+✔ URLs ok.
+✔ Favicons ok.
+✔ Open graph metadata ok.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+✔ Articles metadata ok.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+✔ Reference metadata ok.
+── Building home ───────────────────────────────────────────────────────────────
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Reading LICENSE.md
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Reading README.md
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `index.html`
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `404.html`
+── Building function reference ─────────────────────────────────────────────────
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/index.html`
+Reading man/agreement.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/agreement.html`
+Reading man/agreementClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/agreementClass.html`
+Reading man/bayesdca_test_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/bayesdca_test_data.html`
+Reading man/bootstrapIDI.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/bootstrapIDI.html`
+Reading man/bootstrapNRI.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/bootstrapNRI.html`
+Reading man/breast_cancer_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/breast_cancer_data.html`
+Reading man/breast_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/breast_data.html`
+Reading man/cancer_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/cancer_data.html`
+Reading man/cardiac_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/cardiac_data.html`
+Reading man/clear_error_log.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/clear_error_log.html`
+Reading man/clinicopath_cleanup.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/clinicopath_cleanup.html`
+Reading man/clinicopath_error_handler.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/clinicopath_error_handler.html`
+Reading man/clinicopath_init.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/clinicopath_init.html`
+Reading man/clinicopath_warning_handler.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/clinicopath_warning_handler.html`
+Reading man/comprehensive_dca_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/comprehensive_dca_data.html`
+Reading man/computeNRI.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/computeNRI.html`
+Reading man/cotest.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/cotest.html`
+Reading man/cotestClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/cotestClass.html`
+Reading man/create_enhanced_result.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/create_enhanced_result.html`
+Reading man/dca_test.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dca_test.html`
+Reading man/dca_test_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dca_test_data.html`
+Reading man/decision.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decision.html`
+Reading man/decisionClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisionClass.html`
+Reading man/decisioncalculator.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncalculator.html`
+Reading man/decisioncalculatorClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncalculatorClass.html`
+Reading man/decisioncombine.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncombine.html`
+Reading man/decisioncombineClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncombineClass.html`
+Reading man/decisioncompare.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncompare.html`
+Reading man/decisioncompareClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncompareClass.html`
+Reading man/decisioncurve.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncurve.html`
+Reading man/decisioncurveClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/decisioncurveClass.html`
+Reading man/dot-asSurvivalFormula.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dot-asSurvivalFormula.html`
+Reading man/dot-clinicopath_errors.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dot-clinicopath_errors.html`
+Reading man/dot-escapeVariableNames.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dot-escapeVariableNames.html`
+Reading man/dot-fmt.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dot-fmt.html`
+Reading man/dot-quietly.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dot-quietly.html`
+Reading man/dot-stripBackticks.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/dot-stripBackticks.html`
+Reading man/enhancedROC.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/enhancedROC.html`
+Reading man/enhancedROCClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/enhancedROCClass.html`
+Reading man/generate_user_friendly_error.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/generate_user_friendly_error.html`
+Reading man/generate_user_friendly_warning.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/generate_user_friendly_warning.html`
+Reading man/get_clinical_context.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/get_clinical_context.html`
+Reading man/get_error_summary.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/get_error_summary.html`
+Reading man/histopathology.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/histopathology.html`
+Reading man/kappaSizeCI.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/kappaSizeCI.html`
+Reading man/kappaSizeCIClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/kappaSizeCIClass.html`
+Reading man/kappaSizeFixedN.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/kappaSizeFixedN.html`
+Reading man/kappaSizeFixedNClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/kappaSizeFixedNClass.html`
+Reading man/kappaSizePower.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/kappaSizePower.html`
+Reading man/kappaSizePowerClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/kappaSizePowerClass.html`
+Reading man/lassologistic.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/lassologistic.html`
+Reading man/lassologisticClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/lassologisticClass.html`
+Reading man/lymphoma_diagnostic_styles.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/lymphoma_diagnostic_styles.html`
+Reading man/master_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/master_data.html`
+Reading man/meddecide-package.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/meddecide-package.html`
+Reading man/nogoldstandard.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/nogoldstandard.html`
+Reading man/nomogrammer.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/nomogrammer.html`
+Reading man/null_coalescing.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/null_coalescing.html`
+Reading man/pipe.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/pipe.html`
+Reading man/psychopdaROC.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/psychopdaROC.html`
+Reading man/psychopdaROCClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/psychopdaROCClass.html`
+Reading man/raw_to_prob.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/raw_to_prob.html`
+Reading man/safe_execute.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/safe_execute.html`
+Reading man/sepsis_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/sepsis_data.html`
+Reading man/sequentialtests.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/sequentialtests.html`
+Reading man/sequentialtestsClass.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/sequentialtestsClass.html`
+Reading man/thyroid_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/thyroid_data.html`
+Reading man/thyroid_function_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/thyroid_function_data.html`
+Reading man/validate_clinical_data.Rd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `reference/validate_clinical_data.html`
+── Building articles ───────────────────────────────────────────────────────────
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/index.html`
+Reading vignettes/01-introduction.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/01-introduction.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/02-comprehensive-guide.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/02-comprehensive-guide.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/03-agreement-analysis.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/03-agreement-analysis.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/03-roc-analysis.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/03-roc-analysis.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/07-kappasizeci-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/07-kappasizeci-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/08-kappasizefixedn-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/08-kappasizefixedn-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/09-kappasizepower-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/09-kappasizepower-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/12-nogoldstandard.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/12-nogoldstandard.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/13-diagnostic-tests.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/13-diagnostic-tests.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/15-diagnostic-style-clustering.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/15-diagnostic-style-clustering.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/16-use-in-r.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/16-use-in-r.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/17-methods-and-interpretation.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/17-methods-and-interpretation.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/34-cotest-analysis.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/34-cotest-analysis.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/36-sequential-testing-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/36-sequential-testing-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/meddecide-09-digital-pathology-validation.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/meddecide-09-digital-pathology-validation.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/meddecide-agreement-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/meddecide-agreement-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/meddecide-enhancedroc-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/meddecide-enhancedroc-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+Reading vignettes/meddecide-psychopdaroc-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/meddecide-psychopdaroc-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+── Building news ───────────────────────────────────────────────────────────────
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `news/index.html`
+── Building sitemap ────────────────────────────────────────────────────────────
+Writing `sitemap.xml`
+── Building docs for llms ──────────────────────────────────────────────────────
+── Building redirects ──────────────────────────────────────────────────────────
+── Building search index ───────────────────────────────────────────────────────
+── Checking for problems ───────────────────────────────────────────────────────
+── Finished building pkgdown site for package meddecide ────────────────────────
+── Finished building pkgdown site for package meddecide ────────────────────────

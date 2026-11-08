@@ -1,0 +1,107 @@
+[
+  {
+    "name": "agreement",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "cotest",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "decision",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "decisioncalculator",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "decisioncombine",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "decisioncompare",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "decisioncurve",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "enhancedROC",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "kappaSizeCI",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "kappaSizeFixedN",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "kappaSizePower",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "lassologistic",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "nogoldstandard",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "psychopdaROC",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  },
+  {
+    "name": "sequentialtests",
+    "schema": "PASS",
+    "header_identical": true,
+    "ui": "PASS",
+    "ui_unchanged": true
+  }
+]

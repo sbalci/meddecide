@@ -48,7 +48,7 @@ Configure the following variables:
 Enable the following options:
 
 - ☑ Show Node Shapes
-- ☑ Show Probabilities  
+- ☑ Show Probabilities\
 - ☑ Show Costs
 - ☑ Show Utilities
 - ☑ Show Node Labels
@@ -57,19 +57,15 @@ Enable the following options:
 
 #### Step 5: Configure Analysis Options
 
-☑ Calculate Expected Values
-
-Sensitivity Analysis (optional)
-
-**Discount Rate:** 3%
-
-**Time Horizon:** 1 year
+- ☑ Calculate Expected Values
+- [ ] Sensitivity Analysis (optional)
+- **Discount Rate:** 3%
+- **Time Horizon:** 1 year
 
 #### Step 6: Configure Output Options
 
-☑ Summary Table
-
-Tornado Diagram (if sensitivity analysis enabled)
+- ☑ Summary Table
+- [ ] Tornado Diagram (if sensitivity analysis enabled)
 
 ### Expected Decision Tree Results
 

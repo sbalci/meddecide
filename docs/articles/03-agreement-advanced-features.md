@@ -16,22 +16,20 @@
 > A working call looks like this — verified against meddecide 1.0.4,
 > three pathologists rating 60 cases on a three-level scale:
 >
-> ``` r
->
-> agreement(
->   data  = ratings,
->   vars  = c("Pathologist_1", "Pathologist_2", "Pathologist_3"),
->   wght  = "unweighted",       # or "squared" / "equal" for an ordinal scale
->   exct  = FALSE,
->   kripp = TRUE,               # Krippendorff's alpha
->   krippMethod = "nominal",
->   confLevel = 0.95,
->   agreementHeatmap = TRUE,
->   pairwiseKappa = TRUE
-> )
-> #> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001
-> #> Krippendorff's Alpha (nominal)                                   alpha 0.735
-> ```
+> \
+> [`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+> `  data  ``=`` ``ratings``,`\
+> `  vars  ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Pathologist_1"``, ``"Pathologist_2"``, ``"Pathologist_3"``)``,`\
+> `  wght  ``=`` ``"unweighted"``,       ``# or "squared" / "equal" for an ordinal scale`\
+> `  exct  ``=`` ``FALSE``,`\
+> `  kripp ``=`` ``TRUE``,               ``# Krippendorff's alpha`\
+> `  krippMethod ``=`` ``"nominal"``,`\
+> `  confLevel ``=`` ``0.95``,`\
+> `  agreementHeatmap ``=`` ``TRUE``,`\
+> `  pairwiseKappa ``=`` ``TRUE`\
+> `)`\
+> `#> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001`\
+> `#> Krippendorff's Alpha (nominal)                                   alpha 0.735`
 
 ## Introduction
 
@@ -54,83 +52,73 @@ pathology-specific metrics.
 We’ll use the `histopathology` dataset which contains ratings from
 multiple observers.
 
-``` r
-
-# Load the histopathology dataset
-data(histopathology)
-
-# Check available rater variables
-rater_vars <- c("Rater 1", "Rater 2", "Rater 3", "Rater A", "Rater B")
-cat("Available rater variables and their values:\n")
-for (var in rater_vars) {
-  if (var %in% names(histopathology)) {
-    values <- unique(histopathology[[var]])
-    cat(sprintf("%s: %s\n", var, paste(values[!is.na(values)], collapse = ", ")))
-  }
-}
-
-# Overview of the dataset
-cat(sprintf("\nDataset: %d cases, %d variables\n", nrow(histopathology), ncol(histopathology)))
-```
+\
+`# Load the histopathology dataset`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``histopathology``)`\
+\
+`# Check available rater variables`\
+`rater_vars`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``, ``"Rater A"``, ``"Rater B"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Available rater variables and their values:\n"``)`\
+`for`` ``(``var`` ``in`` ``rater_vars``)`` ``{`\
+`  ``if`` ``(``var`` `[`%in%`](https://rdrr.io/r/base/match.html)` `[`names`](https://rdrr.io/r/base/names.html)`(``histopathology``)``)`` ``{`\
+`    ``values`` ``<-`` `[`unique`](https://rdrr.io/r/base/unique.html)`(``histopathology``[[``var``]``]``)`\
+`    `[`cat`](https://rdrr.io/r/base/cat.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"%s: %s\n"``, ``var``, `[`paste`](https://rdrr.io/r/base/paste.html)`(``values``[``!`[`is.na`](https://rdrr.io/r/base/NA.html)`(``values``)``]``, collapse ``=`` ``", "``)``)``)`\
+`  ``}`\
+`}`\
+\
+`# Overview of the dataset`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"\nDataset: %d cases, %d variables\n"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``histopathology``)``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``histopathology``)``)``)`
 
 ## Basic Agreement Analysis
 
 ### Example 1: Standard Kappa Analysis
 
-``` r
-
-# Basic agreement analysis with Cohen's kappa (2 raters)
-basic_agreement <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2"),
-  showInterpretation = TRUE,
-  heatmap = TRUE
-)
-```
+\
+`# Basic agreement analysis with Cohen's kappa (2 raters)`\
+`basic_agreement`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``)``,`\
+`  showInterpretation ``=`` ``TRUE``,`\
+`  heatmap ``=`` ``TRUE`\
+`)`
 
 ### Example 2: Fleiss’ Kappa for Multiple Raters
 
-``` r
-
-# Agreement analysis with Fleiss' kappa (3+ raters)
-fleiss_agreement <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3"),
-  exct = TRUE,  # Use exact calculation
-  pairwiseAnalysis = TRUE,
-  categoryAnalysis = TRUE
-)
-```
+\
+`# Agreement analysis with Fleiss' kappa (3+ raters)`\
+`fleiss_agreement`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``)``,`\
+`  exct ``=`` ``TRUE``,  ``# Use exact calculation`\
+`  pairwiseAnalysis ``=`` ``TRUE``,`\
+`  categoryAnalysis ``=`` ``TRUE`\
+`)`
 
 ## Advanced Reliability Measures
 
 ### Example 3: Intraclass Correlation Coefficient (ICC)
 
-``` r
-
-# ICC analysis for ordinal data
-icc_analysis <- agreement(
-  data = histopathology,
-  vars = c("Rater A", "Rater B"),  # Ordinal raters (1, 2, 3)
-  icc = TRUE,
-  iccType = "ICC2k",  # Average measures, consistency
-  confidenceLevel = 0.95
-)
-```
+\
+`# ICC analysis for ordinal data`\
+`icc_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater A"``, ``"Rater B"``)``,  ``# Ordinal raters (1, 2, 3)`\
+`  icc ``=`` ``TRUE``,`\
+`  iccType ``=`` ``"ICC2k"``,  ``# Average measures, consistency`\
+`  confidenceLevel ``=`` ``0.95`\
+`)`
 
 ### Example 4: Krippendorff’s Alpha
 
-``` r
-
-# Krippendorff's alpha for generalized reliability
-kripp_analysis <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3"),
-  kripp = TRUE,
-  krippMethod = "nominal",
-  bootstrap = TRUE  # Bootstrap confidence intervals
-)
-```
+\
+`# Krippendorff's alpha for generalized reliability`\
+`kripp_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``)``,`\
+`  kripp ``=`` ``TRUE``,`\
+`  krippMethod ``=`` ``"nominal"``,`\
+`  bootstrap ``=`` ``TRUE``  ``# Bootstrap confidence intervals`\
+`)`
 
 ## Diagnostic Style Clustering (Usubutun Method)
 
@@ -140,240 +128,222 @@ based on diagnostic patterns.
 
 ### Example 5: Basic Diagnostic Style Analysis
 
-``` r
-
-# Basic diagnostic style clustering
-style_analysis <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3", "Rater A", "Rater B"),
-  diagnosticStyleAnalysis = TRUE,
-  styleClusterMethod = "ward",  # Ward's linkage (original Usubutun method)
-  styleDistanceMetric = "agreement",  # Percentage agreement distance
-  numberOfStyleGroups = 3
-)
-```
+\
+`# Basic diagnostic style clustering`\
+`style_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``, ``"Rater A"``, ``"Rater B"``)``,`\
+`  diagnosticStyleAnalysis ``=`` ``TRUE``,`\
+`  styleClusterMethod ``=`` ``"ward"``,  ``# Ward's linkage (original Usubutun method)`\
+`  styleDistanceMetric ``=`` ``"agreement"``,  ``# Percentage agreement distance`\
+`  numberOfStyleGroups ``=`` ``3`\
+`)`
 
 ### Example 6: Advanced Style Analysis with Rater Characteristics
 
-``` r
-
-# Advanced style analysis including rater characteristics
-advanced_style <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3", "Rater A", "Rater B"),
-  diagnosticStyleAnalysis = TRUE,
-  styleClusterMethod = "ward",
-  styleDistanceMetric = "agreement",
-  numberOfStyleGroups = 3,
-  identifyDiscordantCases = TRUE,
-  raterCharacteristics = TRUE,
-  experienceVar = "Age",      # Use Age as proxy for experience
-  trainingVar = "Group",      # Use Group as proxy for training background
-  institutionVar = "Race",    # Use Race as proxy for institution
-  specialtyVar = "Sex"        # Use Sex as proxy for specialty
-)
-```
+\
+`# Advanced style analysis including rater characteristics`\
+`advanced_style`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``, ``"Rater A"``, ``"Rater B"``)``,`\
+`  diagnosticStyleAnalysis ``=`` ``TRUE``,`\
+`  styleClusterMethod ``=`` ``"ward"``,`\
+`  styleDistanceMetric ``=`` ``"agreement"``,`\
+`  numberOfStyleGroups ``=`` ``3``,`\
+`  identifyDiscordantCases ``=`` ``TRUE``,`\
+`  raterCharacteristics ``=`` ``TRUE``,`\
+`  experienceVar ``=`` ``"Age"``,      ``# Use Age as proxy for experience`\
+`  trainingVar ``=`` ``"Group"``,      ``# Use Group as proxy for training background`\
+`  institutionVar ``=`` ``"Race"``,    ``# Use Race as proxy for institution`\
+`  specialtyVar ``=`` ``"Sex"``        ``# Use Sex as proxy for specialty`\
+`)`
 
 ### Example 7: Different Clustering Methods Comparison
 
-``` r
-
-# Compare different clustering methods
-clustering_methods <- c("ward", "complete", "average")
-distance_metrics <- c("agreement", "correlation", "euclidean")
-
-# Ward's method with agreement distance (original Usubutun)
-usubutun_original <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3"),
-  diagnosticStyleAnalysis = TRUE,
-  styleClusterMethod = "ward",
-  styleDistanceMetric = "agreement",
-  numberOfStyleGroups = 3
-)
-
-# Complete linkage with correlation distance
-complete_corr <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3"),
-  diagnosticStyleAnalysis = TRUE,
-  styleClusterMethod = "complete",
-  styleDistanceMetric = "correlation",
-  numberOfStyleGroups = 3
-)
-```
+\
+`# Compare different clustering methods`\
+`clustering_methods`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"ward"``, ``"complete"``, ``"average"``)`\
+`distance_metrics`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"agreement"``, ``"correlation"``, ``"euclidean"``)`\
+\
+`# Ward's method with agreement distance (original Usubutun)`\
+`usubutun_original`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``)``,`\
+`  diagnosticStyleAnalysis ``=`` ``TRUE``,`\
+`  styleClusterMethod ``=`` ``"ward"``,`\
+`  styleDistanceMetric ``=`` ``"agreement"``,`\
+`  numberOfStyleGroups ``=`` ``3`\
+`)`\
+\
+`# Complete linkage with correlation distance`\
+`complete_corr`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``)``,`\
+`  diagnosticStyleAnalysis ``=`` ``TRUE``,`\
+`  styleClusterMethod ``=`` ``"complete"``,`\
+`  styleDistanceMetric ``=`` ``"correlation"``,`\
+`  numberOfStyleGroups ``=`` ``3`\
+`)`
 
 ## Pathology-Specific Analysis
 
 ### Example 8: Diagnostic Accuracy Analysis
 
-``` r
-
-# Pathology-specific analysis with gold standard
-pathology_analysis <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3"),
-  pathologyContext = TRUE,
-  diagnosisVar = "Outcome",  # Gold standard diagnosis
-  categoryAnalysis = TRUE,
-  outlierAnalysis = TRUE
-)
-```
+\
+`# Pathology-specific analysis with gold standard`\
+`pathology_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``)``,`\
+`  pathologyContext ``=`` ``TRUE``,`\
+`  diagnosisVar ``=`` ``"Outcome"``,  ``# Gold standard diagnosis`\
+`  categoryAnalysis ``=`` ``TRUE``,`\
+`  outlierAnalysis ``=`` ``TRUE`\
+`)`
 
 ### Example 9: Biomarker Scoring Agreement
 
-``` r
-
-# Simulate biomarker scoring data for demonstration
-set.seed(123)
-biomarker_data <- data.frame(
-  case_id = 1:100,
-  pathologist_1 = sample(0:3, 100, replace = TRUE, prob = c(0.3, 0.3, 0.3, 0.1)),
-  pathologist_2 = sample(0:3, 100, replace = TRUE, prob = c(0.25, 0.35, 0.3, 0.1)),
-  pathologist_3 = sample(0:3, 100, replace = TRUE, prob = c(0.2, 0.4, 0.3, 0.1)),
-  gold_standard = sample(0:3, 100, replace = TRUE, prob = c(0.2, 0.4, 0.3, 0.1))
-)
-
-# Agreement analysis for biomarker scoring
-biomarker_agreement <- agreement(
-  data = biomarker_data,
-  vars = c("pathologist_1", "pathologist_2", "pathologist_3"),
-  wght = "squared",  # Weighted kappa for ordinal scores
-  pathologyContext = TRUE,
-  diagnosisVar = "gold_standard",
-  categoryAnalysis = TRUE,
-  confidenceLevel = 0.95
-)
-```
+\
+`# Simulate biomarker scoring data for demonstration`\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
+`biomarker_data`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  case_id ``=`` ``1``:``100``,`\
+`  pathologist_1 ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``0``:``3``, ``100``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.3``, ``0.3``, ``0.3``, ``0.1``)``)``,`\
+`  pathologist_2 ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``0``:``3``, ``100``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.25``, ``0.35``, ``0.3``, ``0.1``)``)``,`\
+`  pathologist_3 ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``0``:``3``, ``100``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.2``, ``0.4``, ``0.3``, ``0.1``)``)``,`\
+`  gold_standard ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``0``:``3``, ``100``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.2``, ``0.4``, ``0.3``, ``0.1``)``)`\
+`)`\
+\
+`# Agreement analysis for biomarker scoring`\
+`biomarker_agreement`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"pathologist_1"``, ``"pathologist_2"``, ``"pathologist_3"``)``,`\
+`  wght ``=`` ``"squared"``,  ``# Weighted kappa for ordinal scores`\
+`  pathologyContext ``=`` ``TRUE``,`\
+`  diagnosisVar ``=`` ``"gold_standard"``,`\
+`  categoryAnalysis ``=`` ``TRUE``,`\
+`  confidenceLevel ``=`` ``0.95`\
+`)`
 
 ## Outlier and Quality Control Analysis
 
 ### Example 10: Identifying Problematic Cases
 
-``` r
-
-# Comprehensive outlier analysis
-outlier_analysis <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3", "Rater A", "Rater B"),
-  outlierAnalysis = TRUE,
-  diagnosticStyleAnalysis = TRUE,
-  identifyDiscordantCases = TRUE,
-  pathologyContext = TRUE
-)
-```
+\
+`# Comprehensive outlier analysis`\
+`outlier_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``, ``"Rater A"``, ``"Rater B"``)``,`\
+`  outlierAnalysis ``=`` ``TRUE``,`\
+`  diagnosticStyleAnalysis ``=`` ``TRUE``,`\
+`  identifyDiscordantCases ``=`` ``TRUE``,`\
+`  pathologyContext ``=`` ``TRUE`\
+`)`
 
 ### Example 11: Quality Assurance Monitoring
 
-``` r
-
-# Create synthetic QA data for demonstration
-set.seed(456)
-qa_data <- data.frame(
-  case_id = 1:200,
-  staff_pathologist = sample(c("Benign", "Malignant", "Atypical"), 200, 
-                           replace = TRUE, prob = c(0.6, 0.3, 0.1)),
-  resident_month_1 = sample(c("Benign", "Malignant", "Atypical"), 200, 
-                          replace = TRUE, prob = c(0.5, 0.35, 0.15)),
-  resident_month_6 = sample(c("Benign", "Malignant", "Atypical"), 200, 
-                          replace = TRUE, prob = c(0.58, 0.32, 0.1)),
-  consensus_diagnosis = sample(c("Benign", "Malignant", "Atypical"), 200, 
-                             replace = TRUE, prob = c(0.65, 0.28, 0.07))
-)
-
-# QA analysis comparing resident progress
-qa_analysis <- agreement(
-  data = qa_data,
-  vars = c("staff_pathologist", "resident_month_1", "resident_month_6"),
-  pathologyContext = TRUE,
-  diagnosisVar = "consensus_diagnosis",
-  pairwiseAnalysis = TRUE,
-  categoryAnalysis = TRUE,
-  outlierAnalysis = TRUE,
-  showInterpretation = TRUE
-)
-```
+\
+`# Create synthetic QA data for demonstration`\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``456``)`\
+`qa_data`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  case_id ``=`` ``1``:``200``,`\
+`  staff_pathologist ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Benign"``, ``"Malignant"``, ``"Atypical"``)``, ``200``, `\
+`                           replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.6``, ``0.3``, ``0.1``)``)``,`\
+`  resident_month_1 ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Benign"``, ``"Malignant"``, ``"Atypical"``)``, ``200``, `\
+`                          replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.5``, ``0.35``, ``0.15``)``)``,`\
+`  resident_month_6 ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Benign"``, ``"Malignant"``, ``"Atypical"``)``, ``200``, `\
+`                          replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.58``, ``0.32``, ``0.1``)``)``,`\
+`  consensus_diagnosis ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Benign"``, ``"Malignant"``, ``"Atypical"``)``, ``200``, `\
+`                             replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.65``, ``0.28``, ``0.07``)``)`\
+`)`\
+\
+`# QA analysis comparing resident progress`\
+`qa_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``qa_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"staff_pathologist"``, ``"resident_month_1"``, ``"resident_month_6"``)``,`\
+`  pathologyContext ``=`` ``TRUE``,`\
+`  diagnosisVar ``=`` ``"consensus_diagnosis"``,`\
+`  pairwiseAnalysis ``=`` ``TRUE``,`\
+`  categoryAnalysis ``=`` ``TRUE``,`\
+`  outlierAnalysis ``=`` ``TRUE``,`\
+`  showInterpretation ``=`` ``TRUE`\
+`)`
 
 ## Weighted Kappa for Ordinal Data
 
 ### Example 12: Grading Agreement with Weighted Kappa
 
-``` r
-
-# Create tumor grading data
-grading_data <- data.frame(
-  case_id = 1:150,
-  pathologist_1 = sample(1:3, 150, replace = TRUE, prob = c(0.4, 0.4, 0.2)),
-  pathologist_2 = sample(1:3, 150, replace = TRUE, prob = c(0.35, 0.45, 0.2)),
-  expert_consensus = sample(1:3, 150, replace = TRUE, prob = c(0.3, 0.5, 0.2))
-)
-
-# Convert to ordered factors for proper weighted kappa
-grading_data$pathologist_1 <- factor(grading_data$pathologist_1, 
-                                    levels = 1:3, ordered = TRUE)
-grading_data$pathologist_2 <- factor(grading_data$pathologist_2, 
-                                    levels = 1:3, ordered = TRUE)
-grading_data$expert_consensus <- factor(grading_data$expert_consensus, 
-                                       levels = 1:3, ordered = TRUE)
-
-# Weighted kappa analysis
-weighted_analysis <- agreement(
-  data = grading_data,
-  vars = c("pathologist_1", "pathologist_2"),
-  wght = "squared",  # Squared weights for ordinal data
-  pathologyContext = TRUE,
-  diagnosisVar = "expert_consensus",
-  categoryAnalysis = TRUE,
-  confidenceLevel = 0.95
-)
-```
+\
+`# Create tumor grading data`\
+`grading_data`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  case_id ``=`` ``1``:``150``,`\
+`  pathologist_1 ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``1``:``3``, ``150``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.4``, ``0.4``, ``0.2``)``)``,`\
+`  pathologist_2 ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``1``:``3``, ``150``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.35``, ``0.45``, ``0.2``)``)``,`\
+`  expert_consensus ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``1``:``3``, ``150``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.3``, ``0.5``, ``0.2``)``)`\
+`)`\
+\
+`# Convert to ordered factors for proper weighted kappa`\
+`grading_data``$``pathologist_1`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``grading_data``$``pathologist_1``, `\
+`                                    levels ``=`` ``1``:``3``, ordered ``=`` ``TRUE``)`\
+`grading_data``$``pathologist_2`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``grading_data``$``pathologist_2``, `\
+`                                    levels ``=`` ``1``:``3``, ordered ``=`` ``TRUE``)`\
+`grading_data``$``expert_consensus`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``grading_data``$``expert_consensus``, `\
+`                                       levels ``=`` ``1``:``3``, ordered ``=`` ``TRUE``)`\
+\
+`# Weighted kappa analysis`\
+`weighted_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``grading_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"pathologist_1"``, ``"pathologist_2"``)``,`\
+`  wght ``=`` ``"squared"``,  ``# Squared weights for ordinal data`\
+`  pathologyContext ``=`` ``TRUE``,`\
+`  diagnosisVar ``=`` ``"expert_consensus"``,`\
+`  categoryAnalysis ``=`` ``TRUE``,`\
+`  confidenceLevel ``=`` ``0.95`\
+`)`
 
 ## Complex Multi-Rater Scenarios
 
 ### Example 13: Comprehensive Multi-Rater Study
 
-``` r
-
-# Comprehensive analysis with all features
-comprehensive_analysis <- agreement(
-  data = histopathology,
-  vars = c("Rater 1", "Rater 2", "Rater 3", "Rater A", "Rater B"),
-  
-  # Basic agreement measures
-  exct = TRUE,
-  icc = TRUE,
-  iccType = "ICC2k",
-  kripp = TRUE,
-  krippMethod = "nominal",
-  
-  # Pathology-specific features
-  pathologyContext = TRUE,
-  diagnosisVar = "Outcome",
-  
-  # Advanced analysis
-  pairwiseAnalysis = TRUE,
-  categoryAnalysis = TRUE,
-  outlierAnalysis = TRUE,
-  
-  # Diagnostic style clustering
-  diagnosticStyleAnalysis = TRUE,
-  styleClusterMethod = "ward",
-  styleDistanceMetric = "agreement",
-  numberOfStyleGroups = 3,
-  identifyDiscordantCases = TRUE,
-  raterCharacteristics = TRUE,
-  
-  # Visualization and interpretation
-  heatmap = TRUE,
-  heatmapDetails = TRUE,
-  showInterpretation = TRUE,
-  sft = TRUE,
-  
-  # Statistical settings
-  confidenceLevel = 0.95,
-  minAgreement = 0.6
-)
-```
+\
+`# Comprehensive analysis with all features`\
+`comprehensive_analysis`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``, ``"Rater A"``, ``"Rater B"``)``,`\
+`  `\
+`  ``# Basic agreement measures`\
+`  exct ``=`` ``TRUE``,`\
+`  icc ``=`` ``TRUE``,`\
+`  iccType ``=`` ``"ICC2k"``,`\
+`  kripp ``=`` ``TRUE``,`\
+`  krippMethod ``=`` ``"nominal"``,`\
+`  `\
+`  ``# Pathology-specific features`\
+`  pathologyContext ``=`` ``TRUE``,`\
+`  diagnosisVar ``=`` ``"Outcome"``,`\
+`  `\
+`  ``# Advanced analysis`\
+`  pairwiseAnalysis ``=`` ``TRUE``,`\
+`  categoryAnalysis ``=`` ``TRUE``,`\
+`  outlierAnalysis ``=`` ``TRUE``,`\
+`  `\
+`  ``# Diagnostic style clustering`\
+`  diagnosticStyleAnalysis ``=`` ``TRUE``,`\
+`  styleClusterMethod ``=`` ``"ward"``,`\
+`  styleDistanceMetric ``=`` ``"agreement"``,`\
+`  numberOfStyleGroups ``=`` ``3``,`\
+`  identifyDiscordantCases ``=`` ``TRUE``,`\
+`  raterCharacteristics ``=`` ``TRUE``,`\
+`  `\
+`  ``# Visualization and interpretation`\
+`  heatmap ``=`` ``TRUE``,`\
+`  heatmapDetails ``=`` ``TRUE``,`\
+`  showInterpretation ``=`` ``TRUE``,`\
+`  sft ``=`` ``TRUE``,`\
+`  `\
+`  ``# Statistical settings`\
+`  confidenceLevel ``=`` ``0.95``,`\
+`  minAgreement ``=`` ``0.6`\
+`)`
 
 ## Interpretation and Clinical Applications
 
@@ -436,7 +406,7 @@ insights into:
 #### Kappa Values
 
 - **\< 0.20**: Poor agreement
-- **0.21-0.40**: Fair agreement  
+- **0.21-0.40**: Fair agreement\
 - **0.41-0.60**: Moderate agreement
 - **0.61-0.80**: Substantial agreement
 - **0.81-1.00**: Almost perfect agreement
@@ -476,8 +446,7 @@ metrics ensure clinical relevance.
 Key advantages include:
 
 - **Comprehensive Analysis**: Multiple reliability measures in one tool
-- **Pathology Focus**: Specialized features for diagnostic
-  applications  
+- **Pathology Focus**: Specialized features for diagnostic applications\
 - **Style Analysis**: Understanding of diagnostic patterns and bias
 - **Quality Control**: Tools for ongoing monitoring and improvement
 - **Research Support**: Robust methods for reliability studies

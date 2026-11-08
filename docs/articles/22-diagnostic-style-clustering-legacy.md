@@ -9,7 +9,7 @@ whether pathologists cluster based on:
 
 - **Training institution** (e.g., different medical schools create
   distinct diagnostic approaches)
-- **Experience level** (junior vs. senior pathologists)  
+- **Experience level** (junior vs. senior pathologists)\
 - **Geographic region** (regional diagnostic preferences)
 - **Specialty focus** (generalist vs. specialist approaches)
 - **Institutional culture** (academic vs. community practice patterns)
@@ -65,16 +65,14 @@ features**: Difficulty level, confounding factors
 Let’s demonstrate the analysis using synthetic data modeled after the
 original study.
 
-``` r
-
-# Load the endometrial diagnostic styles dataset
-
-data("endometrial_diagnostic_styles")
-
-# View structure
-head(endometrial_diagnostic_styles$diagnosis_data)
-head(endometrial_diagnostic_styles$pathologist_info)
-```
+\
+`# Load the endometrial diagnostic styles dataset`\
+\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"endometrial_diagnostic_styles"``)`\
+\
+`# View structure`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``endometrial_diagnostic_styles``$``diagnosis_data``)`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``endometrial_diagnostic_styles``$``pathologist_info``)`
 
 #### Step 1: Basic Agreement Analysis
 
@@ -102,8 +100,8 @@ in original study)
 
 **Expected Results:** - **3 distinct diagnostic styles** identified -
 Style 1: Conservative (tend to undercall EIN) - Style 2: Moderate
-(balanced approach)  
-- Style 3: Aggressive (more likely to diagnose EIN)
+(balanced approach)\
+\- Style 3: Aggressive (more likely to diagnose EIN)
 
 #### Step 3: Include Rater Characteristics
 
@@ -138,11 +136,9 @@ disagreement
 Breast pathology offers distinct diagnostic philosophies around atypia
 and DCIS.
 
-``` r
-
-# Load breast diagnostic data
-data("breast_diagnostic_styles")
-```
+\
+`# Load breast diagnostic data`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"breast_diagnostic_styles"``)`
 
 #### Key Features:
 
@@ -178,11 +174,9 @@ characteristics
 
 Hematopathology demonstrates classification approach differences.
 
-``` r
-
-# Load lymphoma diagnostic data  
-data("lymphoma_diagnostic_styles")
-```
+\
+`# Load lymphoma diagnostic data  `\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"lymphoma_diagnostic_styles"``)`
 
 #### Key Features:
 
@@ -320,8 +314,8 @@ diagnostic approach - Identification of mentor-specific diagnostic
 
 **Analysis Approach:** 1. Identify expert pathologists representing
 different diagnostic styles 2. Select cases that demonstrate
-style-specific disagreements  
-3. Focus consensus discussion on style-distinguishing features 4.
+style-specific disagreements\
+3\. Focus consensus discussion on style-distinguishing features 4.
 Develop guidelines that address common style biases
 
 **Expected Outcome:** - More effective consensus development -
@@ -549,7 +543,7 @@ identifying diagnostic “schools” or “styles,” this analysis offers
 insights into:
 
 - **Quality improvement opportunities**
-- **Training program effectiveness**  
+- **Training program effectiveness**\
 - **Consensus development priorities**
 - **Expert consultation strategies**
 

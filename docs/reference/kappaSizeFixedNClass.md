@@ -1,6 +1,6 @@
-# Lowest Expected Value for a fixed sample size
+# Lowest Expected Kappa for a Fixed Sample Size
 
-Lowest Expected Value for a fixed sample size
+Lowest Expected Kappa for a Fixed Sample Size
 
 ## Value
 

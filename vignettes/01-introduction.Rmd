@@ -72,3 +72,6 @@ plain language, but it does not decide whether a test or a rater panel is good
 enough for clinical use. That depends on the clinical question, the setting and
 the consequences of errors, and it should be judged on the confidence interval,
 not on the point estimate alone.
+
+[Choosing and interpreting an analysis](17-methods-and-interpretation.html) explains
+prevalence, dependence, validation and the different kappa planning targets.

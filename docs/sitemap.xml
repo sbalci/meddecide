@@ -25,6 +25,7 @@
 <url><loc>https://www.serdarbalci.com/meddecide/articles/15-diagnostic-style-clustering.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/16-use-in-r.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/17-introduction-legacy.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/articles/17-methods-and-interpretation.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/18-roc-analysis-legacy.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/19-decisionpanel-advanced-legacy.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/20-decisionpanel-clinical-legacy.html</loc></url>
@@ -56,6 +57,7 @@
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-15-multiclass-diagnostics-comprehensive.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-31-latentbiomarker.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-32-ysrb-interobserver.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-agreement-comprehensive.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-enhancedroc-comprehensive.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/articles/meddecide-psychopdaroc-comprehensive.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/authors.html</loc></url>
@@ -90,12 +92,15 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/clinicopath_init.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/clinicopath_startup_message.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/clinicopath_warning_handler.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/comprehensive_dca_data.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/computeNRI.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/cotest.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/cotestClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/createDecisionTreePlot.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/createSafeHTMLContent.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/create_enhanced_result.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/dca_test.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/dca_test_data.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decision.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisionClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncalculator.html</loc></url>
@@ -104,6 +109,8 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncombineClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncompare.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncompareClass.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncurve.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/decisioncurveClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-asSurvivalFormula.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-buildSurvivalFormula.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-calculate2x2Metrics.html</loc></url>
@@ -120,11 +127,14 @@
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-calculateYouden.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-clinicopath_errors.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-escapeVariableNames.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/dot-fmt.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-formatDiagnosticTable.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-interpretDOR.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-interpretLR.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/dot-quietly.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-sensitivityCI.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/dot-specificityCI.html</loc></url>
+<url><loc>https://www.serdarbalci.com/meddecide/reference/dot-stripBackticks.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/enhancedROC.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/enhancedROCClass.html</loc></url>
 <url><loc>https://www.serdarbalci.com/meddecide/reference/generate_user_friendly_error.html</loc></url>

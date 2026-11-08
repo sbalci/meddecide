@@ -1,10 +1,11 @@
 # Analysis Without Gold Standard
 
-Analysis of diagnostic tests without a gold standard reference using
-multiple statistical approaches. Implements Latent Class Analysis (Hui &
-Walter, 1980), Bayesian methods (Joseph et al., 1995), and composite
-reference standards for estimating test performance when no perfect
-reference test exists.
+Analysis of multiple binary tests when no perfect reference exists.
+Implements a conditional-independence two-class latent class model,
+fixed-prior penalized EM point estimation with numerical refinement, and
+descriptive agreement with self-built reference rules. Latent classes
+are unlabeled, and reference-rule results are not diagnostic-accuracy
+estimates.
 
 ## Usage
 
@@ -27,7 +28,9 @@ nogoldstandard(
   nboot = 1000,
   alpha = 0.05,
   verbose = FALSE,
-  seed = 0
+  seed = 0,
+  showSummary = FALSE,
+  showMethodGuide = FALSE
 )
 ```
 
@@ -39,8 +42,9 @@ nogoldstandard(
 
 - clinicalPreset:
 
-  Predefined clinical scenarios with optimized settings and method
-  recommendations.
+  Illustrative scenario examples only. They do not change analysis
+  settings and are not clinical guides, validated recommendations, or
+  substitutes for a study-specific analysis plan.
 
 - test1:
 
@@ -84,11 +88,20 @@ nogoldstandard(
 
 - method:
 
-  Method for analyzing tests without gold standard.
+  Method for analyzing tests without a gold standard. Composite
+  Reference uses a strict majority (more than half positive); ties with
+  an even number of tests are classified as rule negative.
 
 - bootstrap:
 
-  Calculate bootstrap confidence intervals.
+  Calculate case-resampling percentile confidence intervals. For
+  latent-class and penalized-EM models, confidence intervals are
+  reported only when this option is enabled because ordinary binomial
+  intervals do not account for latent-variable estimation. Latent
+  intervals require a converged, reportable full-sample fit and at least
+  20 finite estimates for each interval. Coverage is approximate and may
+  be poor with small samples, boundaries or weak identification; case
+  resampling assumes independent rows.
 
 - nboot:
 
@@ -100,14 +113,27 @@ nogoldstandard(
 
 - verbose:
 
-  Show detailed progress messages during bootstrap analysis.
+  Show detailed analysis diagnostics, including convergence, random
+  starts, exclusions, and bootstrap failures when bootstrap intervals
+  are enabled.
 
 - seed:
 
-  Base random seed for the reproducible latent-class multi-start search.
-  Each start is offset from this base, so changing it shifts the whole
-  reproducible sequence; the default (0) reproduces the previous
-  behaviour.
+  Base random seed for the reproducible latent-class multi-start search
+  and bootstrap resampling. Each start is offset from this base, so
+  changing it shifts the whole reproducible sequence; the default (0)
+  reproduces the previous behavior.
+
+- showSummary:
+
+  Show an optional plain-language summary. The summary describes the
+  fitted quantities and their assumptions; it is not clinical guidance.
+
+- showMethodGuide:
+
+  Show an optional educational guide to the available methods. The
+  scenarios are illustrative examples, not clinical guides or validated
+  recommendations.
 
 ## Value
 
@@ -123,11 +149,10 @@ A results object containing:
 | `results$prevalence` |  |  |  |  | a table |
 | `results$test_metrics` |  |  |  |  | a table |
 | `results$model_fit` |  |  |  |  | a table |
-| `results$conditional_dependence` |  |  |  |  | Latent class analysis assumes the tests err independently given true disease status. For each pair this compares the observed two-way table with the one the fitted model implies; a residual above 3.84 (the 5 percent point of chi-squared on 1 degree of freedom) is evidence that the pair shares a source of error, which inflates the estimated accuracy. Requires four or more tests: with three the model is just-identified and reproduces every table exactly, so no residual can reveal dependence. |
+| `results$conditional_dependence` |  |  |  |  | Latent class analysis assumes the tests are conditionally independent within each latent class. For each pair this compares the observed two-way table with the one implied by the fitted model. A residual above 3.84 is descriptive evidence against conditional independence, but this squared statistic does not identify the direction or cause of dependence and cannot determine the direction of bias in the fitted parameters. With three tests the nominal residual degrees of freedom are zero, but exact fit is not guaranteed. Residuals remain descriptive and do not provide a formal chi-squared test or establish identifiability. |
 | `results$diagnostics` |  |  |  |  | Detail of how the estimates were produced: sample size, method, convergence, number of random starts used, and bootstrap failures. Shown only when Verbose output is enabled. |
 | `results$crosstab` |  |  |  |  | a table |
 | `results$agreement_plot` |  |  |  |  | an image |
-| `results$agreement_plot2` |  |  |  |  | an image |
 
 Tables can be converted to data frames with `asDF` or
 [`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html). For

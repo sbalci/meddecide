@@ -2,9 +2,12 @@
 
 Systematic evaluation of diagnostic test combinations. Analyzes all
 possible test result patterns (2-test: 4 patterns, 3-test: 8 patterns)
-against a gold standard to identify optimal testing strategies.
-Calculates sensitivity, specificity, PPV, NPV, and accuracy for each
-pattern combination.
+against a gold standard, each test alone, and parallel and serial
+strategies (with three tests also for every pair of tests, and a
+majority rule). Calculates sensitivity, specificity, predictive values,
+likelihood ratios, accuracy, and uncertainty intervals. Descriptive
+rankings are sample-dependent analytical summaries, not clinical guides
+or validated recommendations.
 
 ## Usage
 
@@ -21,12 +24,17 @@ decisioncombine(
   test3Positive,
   showIndividual = FALSE,
   showFrequency = FALSE,
+  showCITables = TRUE,
   showBarPlot = FALSE,
   showHeatmap = FALSE,
   showForest = FALSE,
   showDecisionTree = FALSE,
   showRecommendation = FALSE,
-  addPatternToData = FALSE,
+  optimismCorrection = FALSE,
+  nBoot = 1000,
+  seed = 42,
+  showPairedComparison = FALSE,
+  showAbout = FALSE,
   filterStatistic = "all",
   filterPattern = "all"
 )
@@ -44,7 +52,10 @@ decisioncombine(
 
 - goldPositive:
 
-  The level indicating presence of disease in the gold standard.
+  The level indicating presence of disease in the gold standard. It is
+  never taken from the order of the levels: NULL leaves the analysis
+  pending, listing the levels found. The argument has no default; pass
+  the level.
 
 - test1:
 
@@ -52,7 +63,9 @@ decisioncombine(
 
 - test1Positive:
 
-  The level representing a positive result for Test 1.
+  The level representing a positive result for Test 1. It is never taken
+  from the order of the levels: NULL leaves the analysis pending,
+  listing the levels found. The argument has no default; pass the level.
 
 - test2:
 
@@ -60,7 +73,9 @@ decisioncombine(
 
 - test2Positive:
 
-  The level representing a positive result for Test 2.
+  The level representing a positive result for Test 2. Pass NULL when
+  Test 2 is not selected; with Test 2 selected, NULL leaves the analysis
+  pending.
 
 - test3:
 
@@ -68,7 +83,9 @@ decisioncombine(
 
 - test3Positive:
 
-  The level representing a positive result for Test 3.
+  The level representing a positive result for Test 3. Pass NULL when
+  Test 3 is not selected; with Test 3 selected, NULL leaves the analysis
+  pending.
 
 - showIndividual:
 
@@ -77,6 +94,11 @@ decisioncombine(
 - showFrequency:
 
   Boolean to show frequency tables.
+
+- showCITables:
+
+  Boolean to show the confidence-interval tables for the proportions and
+  for the likelihood ratios and diagnostic odds ratio.
 
 - showBarPlot:
 
@@ -97,21 +119,41 @@ decisioncombine(
 
 - showRecommendation:
 
-  Boolean to show optimal pattern recommendation table.
+  Boolean to show the descriptive candidate-rule ranking table.
 
-- addPatternToData:
+- optimismCorrection:
 
-  Boolean to add test pattern column to the dataset.
+  Boolean to add the bootstrap optimism-corrected Youden's J to the
+  ranking table.
+
+- nBoot:
+
+  Number of bootstrap resamples for the optimism correction of the
+  ranking.
+
+- seed:
+
+  Random seed for the bootstrap resamples of the optimism correction.
+  Change it to obtain a different set of resamples.
+
+- showPairedComparison:
+
+  Boolean to show the paired comparison of each combination rule with
+  each of its component tests.
+
+- showAbout:
+
+  Boolean to show the about-this-analysis and assumptions panels.
 
 - filterStatistic:
 
-  Character indicating which statistic to display in the plots (default:
-  all).
+  Character indicating which statistic to display in the plots; `all`
+  uses each plot's default metric set.
 
 - filterPattern:
 
-  Character indicating which pattern type to display in the plots
-  (default: all).
+  Character indicating which pattern type to display in the bar chart,
+  heatmap and forest plot (default: all).
 
 ## Value
 
@@ -119,10 +161,13 @@ A results object containing:
 
 |  |  |  |  |  |  |
 |----|----|----|----|----|----|
-| `results$combinationTable` |  |  |  |  | Counts and diagnostic performance metrics for each test combination pattern and clinical strategy, including prevalence, balanced accuracy, Youden's J, likelihood ratios, and diagnostic odds ratios |
+| `results$welcome` |  |  |  |  | a html |
+| `results$notices` |  |  |  |  | a html |
+| `results$combinationTable` |  |  |  |  | Counts and diagnostic performance metrics for each test combination pattern, each test alone and each combination strategy, including prevalence, balanced accuracy, Youden's J with its Agresti-Caffo 95 percent confidence interval, likelihood ratios, and diagnostic odds ratios |
 | `results$combinationTableCI` |  |  |  |  | Wilson score 95 percent confidence intervals for sensitivity, specificity, PPV, NPV and accuracy, shown as percentages to match the combination table above. Likelihood ratios and the diagnostic odds ratio are unbounded ratios rather than proportions, so they appear in their own table below. |
 | `results$combinationTableCIRatios` |  |  |  |  | Log-scale 95 percent confidence intervals for LR+, LR- and the diagnostic odds ratio. These are ratios on an unbounded scale, so they are reported separately from the proportions above rather than sharing a column with them. |
-| `results$goldFreqTable` |  |  |  |  | Frequency distribution of the gold standard (reference) test showing counts and percentages for each level |
+| `results$pairedComparisonTable` |  |  |  |  | Each combination rule against each test it combines, on the same patients: the cases gained and lost, and the change in sensitivity (disease-present cases) and specificity (disease-absent cases) with a 95 percent confidence interval |
+| `results$goldFreqTable` |  |  |  |  | Counts and percentages of disease-present and disease-absent cases (the reference standard dichotomised at the chosen positive level) among the complete cases used for the combination table |
 | `results$crossTabTable` |  |  |  |  | Cross-tabulation showing how test combination patterns align with gold standard results |
 | `results$individualTest1$test1Contingency` |  |  |  |  | a table |
 | `results$individualTest1$test1Stats` |  |  |  |  | a table |
@@ -131,12 +176,13 @@ A results object containing:
 | `results$individualTest3$test3Contingency` |  |  |  |  | a table |
 | `results$individualTest3$test3Stats` |  |  |  |  | a table |
 | `results$barPlot` |  |  |  |  | Grouped bar chart comparing sensitivity, specificity, PPV, NPV, and accuracy across test combinations |
-| `results$heatmapPlot` |  |  |  |  | Color-coded heatmap showing all diagnostic metrics for each test pattern |
-| `results$forestPlot` |  |  |  |  | Forest plot displaying 95 percent confidence intervals for key diagnostic metrics |
+| `results$heatmapPlot` |  |  |  |  | Color-coded heatmap of prevalence, sensitivity, specificity, PPV, NPV, accuracy and balanced accuracy for each pattern by default, or of one selected metric |
+| `results$forestPlot` |  |  |  |  | Forest plot of 95 percent confidence intervals: proportions on a 0 to 100 percent axis, and LR+, LR- and the diagnostic odds ratio on a log axis with a dashed reference line at 1 |
 | `results$decisionTreePlot` |  |  |  |  | Decision-space scatter plot positioning each test pattern by its sensitivity and specificity, with point size scaled by Youden's J |
-| `results$recommendationTable` |  |  |  |  | Recommended optimal test combination pattern based on Youden index and clinical performance metrics |
+| `results$recommendationTable` |  |  |  |  | Sample-dependent descriptive ranking of eligible exact-pattern rules, single tests and named testing strategies by observed Youden index; this is not a clinical guide or validated recommendation |
 | `results$addedPattern` |  |  |  |  | an output |
-| `results$notices` |  |  |  |  | a html |
+| `results$about` |  |  |  |  | a html |
+| `results$assumptions` |  |  |  |  | a html |
 
 Tables can be converted to data frames with `asDF` or
 [`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html). For
@@ -145,3 +191,25 @@ example:
 `results$combinationTable$asDF`
 
 `as.data.frame(results$combinationTable)`
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+# Illustrative example only; this is not a clinical guide.
+data(histopathology)
+result <- decisioncombine(
+    data = histopathology,
+    gold = "Golden Standart",
+    goldPositive = "1",
+    test1 = "New Test",
+    test1Positive = "1",
+    test2 = "Rater 1",
+    test2Positive = "1",
+    test3 = NULL,
+    test3Positive = NULL,
+    showIndividual = TRUE,
+    showRecommendation = TRUE
+)
+} # }
+```

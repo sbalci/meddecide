@@ -1,0 +1,15 @@
+agreement
+cotest
+decision
+decisioncalculator
+decisioncombine
+decisioncompare
+decisioncurve
+enhancedROC
+kappaSizeCI
+kappaSizeFixedN
+kappaSizePower
+lassologistic
+nogoldstandard
+psychopdaROC
+sequentialtests

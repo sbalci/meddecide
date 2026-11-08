@@ -1,0 +1,16 @@
+✔ shows the union from every rater, preserving labels and user input (1.469375ms)
+✔ excludes missing/filtered levels and continuous variables (0.192834ms)
+✔ renders HTML and replacement metacharacters as literal category text (0.663959ms)
+✔ a late response cannot replace the newer selection (0.193542ms)
+✔ disabling the analysis clears a pending hint without changing options (0.225167ms)
+✔ a level change refreshes the hint, without reacting to unrelated cell events (0.155708ms)
+✔ handles empty selection, absent columns and metadata failures (0.181208ms)
+✔ bounds long lists and retains the total category count (0.19425ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 148.746083

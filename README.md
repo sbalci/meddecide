@@ -1,89 +1,137 @@
+
 # meddecide
 
-**Medical Decision Analysis, Diagnostic Evaluation, and Reliability Assessment for jamovi and R**
+**Medical Decision Analysis, Diagnostic Evaluation, and Reliability
+Assessment for jamovi and R**
 
 [![R-CMD-check](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sbalci/meddecide/actions/workflows/R-CMD-check.yaml)
-[![License: GPL (>= 2)](https://img.shields.io/badge/License-GPL%20(%3E=%202)-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
-[![jamovi Module](https://img.shields.io/badge/jamovi-module-brightgreen.svg?logo=jamovi)](https://www.jamovi.org/)
+[![License: GPL (\>=
+2)](https://img.shields.io/badge/License-GPL%20(%3E=%202)-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
+[![jamovi
+Module](https://img.shields.io/badge/jamovi-module-brightgreen.svg?logo=jamovi)](https://www.jamovi.org/)
 [![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://www.serdarbalci.com/meddecide/)
 
 ## Abstract
 
-`meddecide` is a comprehensive R package and jamovi module bridging statistical methodology and practical clinical decision-making. As the diagnostic analytics and decision science engine of the **ClinicoPath** ecosystem, it equips clinicians, pathologists, and biomedical researchers with advanced tools for diagnostic test accuracy evaluation, Decision Curve Analysis (DCA), ROC curve modeling, inter-rater reliability assessment, regularized prediction modeling (LASSO Logistic), and precision/power sample size planning—all accessible through an intuitive graphical interface and reproducible R code.
+`meddecide` is a comprehensive R package and jamovi module bridging
+statistical methodology and practical clinical decision-making. As the
+diagnostic analytics and decision science engine of the **ClinicoPath**
+ecosystem, it equips clinicians, pathologists, and biomedical
+researchers with advanced tools for diagnostic test accuracy evaluation,
+Decision Curve Analysis (DCA), ROC curve modeling, inter-rater
+reliability assessment, regularized prediction modeling (LASSO
+Logistic), and precision/power sample size planning—all accessible
+through an intuitive graphical interface and reproducible R code.
 
----
+------------------------------------------------------------------------
 
 ## 🎯 Analyses (15)
 
-In jamovi, twelve analyses are under the **meddecide** menu and the three kappa planners under
-**Power → Power Analysis by meddecide**. Menu titles are given as they appear in jamovi.
+In jamovi, twelve analyses are under the **meddecide** menu and the
+three kappa planners under **Power → Power Analysis by meddecide**. Menu
+titles are given as they appear in jamovi.
 
 | Menu (subgroup) | Analysis | R function | What it does |
-| :--- | :--- | :--- | :--- |
-| meddecide (Decision) | **Medical Decision** | `decision` | One test against a reference standard: sensitivity, specificity, predictive values (observed or at a prevalence you supply), likelihood ratios, diagnostic odds ratio and Youden's index with 95% confidence intervals; a Fagan nomogram. A zero cell is handled by an explicit rule (a ratio with an empty numerator is exactly 0). |
+|:---|:---|:---|:---|
+| meddecide (Decision) | **Medical Decision** | `decision` | One test against a reference standard: sensitivity, specificity, predictive values (observed or at a prevalence you supply), likelihood ratios, diagnostic odds ratio and Youden’s index with 95% confidence intervals; a Fagan nomogram. A zero cell is handled by an explicit rule (a ratio with an empty numerator is exactly 0). |
 | meddecide (Decision Calculators) | **Medical Decision Calculator** | `decisioncalculator` | The same measures from four 2 × 2 counts, with post-test probabilities and a Fagan nomogram. |
 | meddecide (Decision Calculators) | **Co-Testing Analysis** | `cotest` | Two tests used together (for example HPV and cytology): joint sensitivity and specificity, under conditional independence or with a dependence you specify, and post-test probabilities. |
 | meddecide (Decision Calculators) | **Sequential Testing Analysis** | `sequentialtests` | Two tests in sequence (serial, confirming positives or negatives) or in parallel: combined accuracy, predictive values and the number of people tested at each stage. |
 | meddecide (Decision) | **Combine Medical Decision Tests** | `decisioncombine` | All result patterns and the AND/OR (serial/parallel) rules for two or three tests against a reference standard. |
-| meddecide (Decision) | **Compare Medical Decision Tests** | `decisioncompare` | Two or three tests on the same patients: paired McNemar tests, paired differences in sensitivity and specificity (Newcombe), Cochran's Q. |
-| meddecide (Decision) | **Analysis Without Gold Standard** | `nogoldstandard` | Latent class model, penalized EM or composite-reference rules when no test is a perfect reference; checks conditional dependence. |
+| meddecide (Decision) | **Compare Medical Decision Tests** | `decisioncompare` | Two or three tests on the same patients: paired McNemar tests, paired differences in sensitivity and specificity (Newcombe), Cochran’s Q. |
+| meddecide (Decision) | **Analysis Without Gold Standard** | `nogoldstandard` | Two-class latent model or fixed-prior penalized EM (at least three tests); reference rules describe agreement. Dependence diagnostics cannot establish conditional independence. |
 | meddecide (Decision Curve Analysis) | **Decision Curve Analysis** | `decisioncurve` | Net benefit of risk models and clinical rules across threshold probabilities against treat all and treat none, interventions avoided, bootstrap intervals (pointwise or simultaneous). |
-| meddecide (ROC) | **Clinical ROC Analysis** | `enhancedROC` | ROC curves, AUC with DeLong intervals, cut-points (Youden's index, closest to top left, clinical presets), calibration and Brier score, frozen-model validation. |
+| meddecide (ROC) | **Clinical ROC Analysis** | `enhancedROC` | ROC curves, AUC with DeLong intervals, cut-points (Youden’s index, closest to top left, clinical presets), calibration and Brier score, frozen-model validation. |
 | meddecide (ROC) | **Advanced ROC Analysis** | `psychopdaROC` | Cut-point methods from `cutpointr`, threshold tables, confusion matrices, partial AUC, DeLong comparison of markers, NRI and IDI, bootstrap intervals. |
-| meddecide (Agreement) | **Interrater Reliability** | `agreement` | Cohen's, weighted and Fleiss' kappa, Krippendorff's alpha, Gwet's AC1/AC2, ICC, Lin's CCC, Bland–Altman, specific (positive/negative) agreement, rater clustering and more. |
+| meddecide (Agreement) | **Interrater Reliability** | `agreement` | Cohen’s, weighted and Fleiss’ kappa, Krippendorff’s alpha, Gwet’s AC1/AC2, ICC, Lin’s CCC, Bland–Altman, specific (positive/negative) agreement, rater clustering and more. |
 | meddecide (Prediction Models) | **LASSO Logistic** | `lassologistic` | Penalized logistic regression (LASSO, ridge or elastic net) with cross-validated λ and a data-suitability check. |
 | Power (Power Analysis by meddecide) | **Confidence Interval Approach for the Number of Subjects Required** | `kappaSizeCI` | Subjects needed so that the expected kappa confidence interval stays within the lower and upper limits you set. |
 | Power (Power Analysis by meddecide) | **Power Approach for the Number of Subjects Required** | `kappaSizePower` | Subjects needed to show that kappa exceeds a null value with the chosen power. |
-| Power (Power Analysis by meddecide) | **Lowest Expected Kappa for a Fixed Sample Size** | `kappaSizeFixedN` | The lowest kappa you can expect to demonstrate with a given number of subjects. |
+| Power (Power Analysis by meddecide) | **Lowest Expected Kappa for a Fixed Sample Size** | `kappaSizeFixedN` | Expected one-sided lower confidence bound around an anticipated kappa for a fixed number of subjects; this does not calculate power. |
 
-The calculations are checked against independent R packages before each release (see
-[NEWS.md](NEWS.md)). That shows the arithmetic is right; it does not establish that a test or
-model is clinically valid for your setting.
+Release checks distinguish regression tests, independent numerical
+comparisons, native jamovi behavior, and clinical validation. A passing
+comparison supports the methods and cases checked; it does not establish
+correctness of every option or clinical validity in a new population.
+See the [1.1.4 release
+review](https://github.com/sbalci/meddecide/blob/master/docs/audit/RELEASE_READINESS_1.1.4_20261108.md).
 
----
+------------------------------------------------------------------------
+
+## Interpreting results
+
+Sensitivity and specificity require a defensible reference standard and
+representative cases. Predictive values depend on prevalence; a
+case-control sampling fraction is not a population prevalence. Specify
+the positive category and account for missing or indeterminate results.
+Repeated slides or lesions from one patient do not become independent
+patients.
+
+An AUC or kappa label does not establish clinical acceptability.
+Cutpoints selected on the analysis data have apparent performance;
+validate a locked threshold or model in independent patients.
+Cross-validation used to choose a penalty does not make the displayed
+training AUC an external validation result. A decision curve needs
+calibrated risks, a defined outcome and clinically justified thresholds;
+its net benefit is not a count of lives saved.
+
+The kappa planners use a common-correlation model and goodness-of-fit
+inference. Their target is not automatically Cohen’s kappa with unequal
+rater margins, a weighted kappa, or an ICC. Precision planning and power
+planning answer different questions. See the [methods and interpretation
+guide](https://www.serdarbalci.com/meddecide/articles/17-methods-and-interpretation.html).
 
 ## No-gold-standard teaching example
 
-Open **Three Imperfect Tests Without a Gold Standard** in the jamovi Data Library.
-The file [nogoldstandard_validation.omv](data/nogoldstandard_validation.omv) contains
-190 simulated patient records and a configured `nogoldstandard` analysis of `New_Test`,
-`Reference1` and `Reference2`, with `Positive` selected for each. Neither reference test
-is assumed perfect. It includes 1,000 bootstrap refits at 95% confidence, seed 42,
-analysis diagnostics and a plain-language summary. This replaces the pathologist-reading
-example; reader reproducibility belongs in the agreement examples.
+Open **Three Imperfect Tests Without a Gold Standard** in the jamovi
+Data Library. The file
+[nogoldstandard_validation.omv](https://github.com/sbalci/meddecide/blob/master/data/nogoldstandard_validation.omv)
+contains 190 simulated patient records and a configured `nogoldstandard`
+analysis of `New_Test`, `Reference1` and `Reference2`, with `Positive`
+selected for each. Neither reference test is assumed perfect. It
+includes 1,000 bootstrap refits at 95% confidence, seed 42, analysis
+diagnostics and a plain-language summary. This replaces the
+pathologist-reading example; reader reproducibility belongs in the
+agreement examples.
 
-The high-positive latent class is not automatically disease, and three tests cannot
-establish conditional independence. The filename describes a simulated validation-study
-scenario, not demonstrated clinical validation. See the
-[example guide](vignettes/nogoldstandard-validation-example.md) for settings and interpretation.
+The high-positive latent class is not automatically disease, and three
+tests cannot establish conditional independence. The filename describes
+a simulated validation-study scenario, not demonstrated clinical
+validation. See the [example
+guide](https://github.com/sbalci/meddecide/blob/master/vignettes/nogoldstandard-validation-example.md)
+for settings and interpretation.
 
 ## 🚀 Installation
 
 ### In jamovi (Recommended)
 
-1. Open **jamovi** (2.7 or later; meddecide 1.1.3 needs at least 2.7.27).
-2. Click the **Modules** (+) button in the top right corner, then **jamovi library**.
-3. Search for **meddecide** and click **Install**.
+1.  Open **jamovi** (2.7 or later; meddecide 1.1.4 needs at least
+    2.7.27).
+2.  Click the **Modules** (+) button in the top right corner, then
+    **jamovi library**.
+3.  Search for **meddecide** and click **Install**.
 
-To install a build that is not yet in the library, download `meddecide_<version>.jmo` from the
-[GitHub releases](https://github.com/sbalci/meddecide/releases), then choose
+To install a build that is not yet in the library, download
+`meddecide_<version>.jmo` from the [GitHub
+releases](https://github.com/sbalci/meddecide/releases), then choose
 **Modules → Sideload** in jamovi and select the file.
 
 ### As an R Package
 
-```r
+``` r
 # Install development version from GitHub
 remotes::install_github("sbalci/meddecide")
 ```
 
----
+------------------------------------------------------------------------
 
 ## 💡 Quick Start (R Interface)
 
-Each R function takes the same options as the jamovi panel. Level arguments (the positive and
-negative levels) are required; pass `NULL` for one you do not use.
+Each R function takes the same options as the jamovi panel. Level
+arguments (the positive and negative levels) are required; pass `NULL`
+for one you do not use.
 
-```r
+``` r
 library(meddecide)
 
 # 1. One diagnostic test against a reference standard
@@ -115,27 +163,31 @@ histopathology$`Rater 2` <- factor(histopathology$`Rater 2`)
 agreement_res <- agreement(data = histopathology, vars = c("Rater 1", "Rater 2"))
 agreement_res$irrtable
 
-# 4. Subjects needed for a kappa of 0.80 with a 95% CI between 0.70 and 0.90
+# 4. Plan expected goodness-of-fit CI limits around anticipated kappa 0.80
+# This does not guarantee that a realized interval lies within [0.70, 0.90].
 kappaSizeCI(outcome = "2", kappa0 = 0.80, kappaL = 0.70, kappaU = 0.90,
             props = "0.5, 0.5", raters = "2", alpha = 0.05)
 ```
 
----
+------------------------------------------------------------------------
 
 ## 📖 Documentation & Resources
 
-- **Module Website & Vignettes**: [https://www.serdarbalci.com/meddecide/](https://www.serdarbalci.com/meddecide/)
-- **ClinicoPath Umbrella Ecosystem**: [https://www.serdarbalci.com/ClinicoPathJamoviModule/](https://www.serdarbalci.com/ClinicoPathJamoviModule/)
-- **GitHub Repository**: [https://github.com/sbalci/meddecide/](https://github.com/sbalci/meddecide/)
-- **Issue Tracking & Feedback**: [GitHub Issues](https://github.com/sbalci/ClinicoPathJamoviModule/issues)
+- **Module Website & Vignettes**:
+  <https://www.serdarbalci.com/meddecide/>
+- **ClinicoPath Umbrella Ecosystem**:
+  <https://www.serdarbalci.com/ClinicoPathJamoviModule/>
+- **GitHub Repository**: <https://github.com/sbalci/meddecide/>
+- **Issue Tracking & Feedback**: [GitHub
+  Issues](https://github.com/sbalci/ClinicoPathJamoviModule/issues)
 
----
+------------------------------------------------------------------------
 
 ## Citation
 
 If you use meddecide in your research or publications, please cite:
 
-```bibtex
+``` bibtex
 @manual{balci2026clinicopath,
   title  = {ClinicoPath: jamovi Module for Clinicopathological Research},
   author = {Serdar Balci},
@@ -147,4 +199,4 @@ If you use meddecide in your research or publications, please cite:
 
 ## License
 
-GPL (>= 2) — see the [LICENSE.md](LICENSE.md) file for details.
+GPL (\>= 2) — see the [LICENSE.md](LICENSE.md) file for details.

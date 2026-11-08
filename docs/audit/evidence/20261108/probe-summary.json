@@ -1,0 +1,25 @@
+{
+  "cross-analysis": {
+    "PASS": 216,
+    "INFO": 17,
+    "FAIL": 3
+  },
+  "decisioncurve-adapted": {
+    "PASS": 191,
+    "FAIL": 4,
+    "BLOCKED": 1
+  },
+  "kappaSizeFixedN": {
+    "PASS": 164,
+    "INFO": 14
+  },
+  "lassologistic": {
+    "PASS": 83,
+    "FAIL": 2,
+    "BLOCKED": 2
+  },
+  "nogoldstandard": {
+    "PASS": 132,
+    "BLOCKED": 2
+  }
+}

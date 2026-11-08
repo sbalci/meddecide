@@ -24,7 +24,7 @@ each function (for example `?decision`) for the full list.
 | `decision()` | meddecide > Decision > Medical Decision | Sensitivity, specificity, predictive values and likelihood ratios from raw data against a reference standard | [Diagnostic tests](13-diagnostic-tests.html) |
 | `decisioncombine()` | meddecide > Decision > Combine Medical Decision Tests | Accuracy of combinations (patterns) of up to three binary tests | |
 | `decisioncompare()` | meddecide > Decision > Compare Medical Decision Tests | Compare the accuracy of up to three tests on the same patients | |
-| `nogoldstandard()` | meddecide > Decision > Analysis Without Gold Standard | Accuracy of 2-5 tests when there is no reference standard (latent class and composite methods) | [No gold standard](12-nogoldstandard.html) |
+| `nogoldstandard()` | meddecide > Decision > Analysis Without Gold Standard | Latent models for 3-5 tests without a reference standard; reference-rule agreement for 2-5 tests | [No gold standard](12-nogoldstandard.html) |
 | `decisioncalculator()` | meddecide > Decision Calculators > Medical Decision Calculator | Diagnostic accuracy from the four cell counts, with Fagan nomogram | [Diagnostic tests](13-diagnostic-tests.html) |
 | `cotest()` | meddecide > Decision Calculators > Co-Testing Analysis | Post-test probabilities when two tests are done together, with or without conditional dependence | [Co-testing](34-cotest-analysis.html) |
 | `sequentialtests()` | meddecide > Decision Calculators > Sequential Testing Analysis | Serial and parallel two-test strategies | [Sequential testing](36-sequential-testing-comprehensive.html) |
@@ -34,7 +34,7 @@ each function (for example `?decision`) for the full list.
 | `lassologistic()` | meddecide > Prediction Models > LASSO Logistic Regression | Penalised logistic regression for variable selection and risk scores | |
 | `kappaSizeCI()` | Power > Power Analysis by meddecide > Confidence Interval Approach for the Number of Subjects Required | Sample size for a kappa confidence interval of a given width | [kappaSizeCI](07-kappasizeci-comprehensive.html) |
 | `kappaSizePower()` | Power > Power Analysis by meddecide > Power Approach for the Number of Subjects Required | Sample size to test kappa against a null value | [kappaSizePower](09-kappasizepower-comprehensive.html) |
-| `kappaSizeFixedN()` | Power > Power Analysis by meddecide > Lowest Expected Kappa for a Fixed Sample Size | Lowest kappa detectable with a fixed number of subjects | [kappaSizeFixedN](08-kappasizefixedn-comprehensive.html) |
+| `kappaSizeFixedN()` | Power > Power Analysis by meddecide > Lowest Expected Kappa for a Fixed Sample Size | Expected one-sided lower confidence bound at fixed N; not a power calculation | [kappaSizeFixedN](08-kappasizefixedn-comprehensive.html) |
 
 ## Calling conventions
 
@@ -56,3 +56,6 @@ res$ratioTable$asDF
 
 Some results sit inside groups and need a two-part path, for example
 `agreement(...)$krippTableGroup$krippTable`.
+
+For assumptions, denominator differences and validation status, see
+[Choosing and interpreting an analysis](17-methods-and-interpretation.html).

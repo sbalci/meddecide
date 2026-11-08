@@ -18,7 +18,15 @@ nomogrammer(
   Detail = FALSE,
   NullLine = FALSE,
   LabelSize = (14/5),
-  Verbose = FALSE
+  Verbose = FALSE,
+  Theme = NULL,
+  Title = "Fagan Nomogram",
+  PriorLabel = "Prior\nProb.\n(%)",
+  PosteriorLabel = "Posterior\nProb.\n(%)",
+  DetailLabels = c(prevalence = "Prevalence", plr = "PLR", nlr = "NLR", post_pos =
+    "Post(+)", post_neg = "Post(-)"),
+  Colors = c(pos = "red", neg = "blue"),
+  LegendLabels = NULL
 )
 ```
 
@@ -71,6 +79,46 @@ nomogrammer(
 - Verbose:
 
   Logical. If TRUE, prints diagnostic metrics to the console.
+
+- Theme:
+
+  A ggplot2 theme object used as the base theme, for example jamovi's
+  global `ggtheme`. The nomogram's own structural theme (hidden x axis,
+  no grid, no legend) is layered on top of it, so the layout is
+  preserved. Defaults to `theme_bw()`.
+
+- Title:
+
+  Character. Plot title. Callers inside a jamovi analysis pass a
+  translated string; this function is file-level, so it cannot translate
+  one itself.
+
+- PriorLabel:
+
+  Character. Name of the left (prior probability) axis.
+
+- PosteriorLabel:
+
+  Character. Name of the right (posterior probability) axis.
+
+- DetailLabels:
+
+  Named character vector with the words used in the `Detail` text:
+  `prevalence`, `plr`, `nlr`, `post_pos`, `post_neg`. Callers inside a
+  jamovi analysis pass translated strings (this function cannot
+  translate them itself).
+
+- Colors:
+
+  Named character vector with the colors of the `pos` and `neg` lines.
+  Callers pass `.faganColors(choice, theme)` so the lines can follow
+  jamovi's palette.
+
+- LegendLabels:
+
+  Named character vector (`pos`, `neg`) naming the two lines. When
+  given, a legend is drawn at the bottom; colour is then not the only
+  key to the lines.
 
 ## Value
 
@@ -164,13 +212,11 @@ nomogrammer(Prevalence = 0.1, Sens = 0.95, Spec = 0.85,
 #> Positive LR = 6.33 
 #> Negative LR = 0.0588 
 #> Post-test probability (positive test) = 41% 
-#> Post-test probability (negative test) = 1% 
+#> Post-test probability (negative test) = 0.649% 
 #> ===============================
 
 
 # Example 4: Low prevalence scenario (screening test)
 nomogrammer(Prevalence = 0.01, Sens = 0.99, Spec = 0.95, Detail = TRUE)
-#> Warning: Removed 1 row containing missing values or values outside the scale range
-#> (`geom_line()`).
 
 ```

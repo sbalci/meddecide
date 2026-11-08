@@ -116,63 +116,59 @@ Huber - White standard errors, which is appropriate when the
 multivariate normality assumption is not perfectly met - as is typical
 with right-skewed IHC counts.
 
-``` r
-
-set.seed(3)
-n <- 400
-
-# True factor loadings for five immune markers
-lambda <- c(0.75, 0.70, 0.80, 0.65, 0.72)
-
-# Latent immune factor (standardised)
-F <- rnorm(n)
-
-# Unique variances: 1 - lambda^2 (reflective model)
-E <- sapply(sqrt(1 - lambda^2), function(sd) rnorm(n, 0, sd))
-
-# Observed indicators matrix
-X <- outer(F, lambda) + E
-colnames(X) <- c("cd8_til", "pdl1_cps", "cd68_frac", "foxp3_density", "lag3_cells")
-
-# Survival outcome: higher immune activation (F) -> better OS
-# Baseline hazard corresponds roughly to median OS 36 months
-set.seed(42)
-log_hr_true <- -0.4   # protective effect of immune activation
-T_surv <- rexp(n, rate = exp(log_hr_true * F) / 36)
-C_surv <- rexp(n, rate = 1 / 60)   # censoring around 60 months
-time <- pmin(T_surv, C_surv)
-event <- as.integer(T_surv <= C_surv)
-
-df_scenario1 <- data.frame(X, time = time, event = event)
-cat("n =", n, "| events =", sum(event), "| event rate =",
-    round(mean(event), 2), "\n")
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``3``)`\
+`n`` ``<-`` ``400`\
+\
+`# True factor loadings for five immune markers`\
+`lambda`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.75``, ``0.70``, ``0.80``, ``0.65``, ``0.72``)`\
+\
+`# Latent immune factor (standardised)`\
+`F`` ``<-`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n``)`\
+\
+`# Unique variances: 1 - lambda^2 (reflective model)`\
+`E`` ``<-`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(`[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``lambda``^``2``)``, ``function``(``sd``)`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n``, ``0``, ``sd``)``)`\
+\
+`# Observed indicators matrix`\
+`X`` ``<-`` `[`outer`](https://rdrr.io/r/base/outer.html)`(``F``, ``lambda``)`` ``+`` ``E`\
+[`colnames`](https://rdrr.io/r/base/colnames.html)`(``X``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"cd8_til"``, ``"pdl1_cps"``, ``"cd68_frac"``, ``"foxp3_density"``, ``"lag3_cells"``)`\
+\
+`# Survival outcome: higher immune activation (F) -> better OS`\
+`# Baseline hazard corresponds roughly to median OS 36 months`\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``42``)`\
+`log_hr_true`` ``<-`` ``-``0.4``   ``# protective effect of immune activation`\
+`T_surv`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n``, rate ``=`` `[`exp`](https://rdrr.io/r/base/Log.html)`(``log_hr_true`` ``*`` ``F``)`` ``/`` ``36``)`\
+`C_surv`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n``, rate ``=`` ``1`` ``/`` ``60``)``   ``# censoring around 60 months`\
+`time`` ``<-`` `[`pmin`](https://rdrr.io/r/base/Extremes.html)`(``T_surv``, ``C_surv``)`\
+`event`` ``<-`` `[`as.integer`](https://rdrr.io/r/base/integer.html)`(``T_surv`` ``<=`` ``C_surv``)`\
+\
+`df_scenario1`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(``X``, time ``=`` ``time``, event ``=`` ``event``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"n ="``, ``n``, ``"| events ="``, `[`sum`](https://rdrr.io/r/base/sum.html)`(``event``)``, ``"| event rate ="``,`\
+`    `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``event``)``, ``2``)``, ``"\n"``)`
 
     ## n = 400 | events = 238 | event rate = 0.6
 
-``` r
-
-# Verify the CFA recovers loadings close to truth using lavaan directly.
-# This is exactly what latentbiomarker calls internally.
-if (requireNamespace("lavaan", quietly = TRUE)) {
-  model_syn <- '
-    F =~ cd8_til + pdl1_cps + cd68_frac + foxp3_density + lag3_cells
-  '
-  fit1 <- lavaan::cfa(model_syn, data = df_scenario1, estimator = "MLR",
-                      std.lv = TRUE)
-  loadings1 <- lavaan::parameterEstimates(fit1, standardized = TRUE)
-  loadings1 <- loadings1[loadings1$op == "=~",
-                          c("lhs", "rhs", "std.all", "se", "pvalue")]
-  names(loadings1) <- c("Factor", "Indicator", "Std_Loading", "SE", "p")
-  print(loadings1, digits = 3, row.names = FALSE)
-
-  # Fit indices
-  fi <- lavaan::fitMeasures(fit1, c("cfi.robust", "tli.robust",
-                                    "rmsea.robust", "srmr"))
-  cat("\nFit indices (MLR):\n")
-  print(round(fi, 3))
-}
-```
+\
+`# Verify the CFA recovers loadings close to truth using lavaan directly.`\
+`# This is exactly what latentbiomarker calls internally.`\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"lavaan"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``model_syn`` ``<-`` ``'`\
+`    F =~ cd8_til + pdl1_cps + cd68_frac + foxp3_density + lag3_cells`\
+`  '`\
+`  ``fit1`` ``<-`` ``lavaan``::`[`cfa`](https://rdrr.io/pkg/lavaan/man/cfa.html)`(``model_syn``, data ``=`` ``df_scenario1``, estimator ``=`` ``"MLR"``,`\
+`                      std.lv ``=`` ``TRUE``)`\
+`  ``loadings1`` ``<-`` ``lavaan``::`[`parameterEstimates`](https://rdrr.io/pkg/lavaan/man/parameterEstimates.html)`(``fit1``, standardized ``=`` ``TRUE``)`\
+`  ``loadings1`` ``<-`` ``loadings1``[``loadings1``$``op`` ``==`` ``"=~"``,`\
+`                          `[`c`](https://rdrr.io/r/base/c.html)`(``"lhs"``, ``"rhs"``, ``"std.all"``, ``"se"``, ``"pvalue"``)``]`\
+`  `[`names`](https://rdrr.io/r/base/names.html)`(``loadings1``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Factor"``, ``"Indicator"``, ``"Std_Loading"``, ``"SE"``, ``"p"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(``loadings1``, digits ``=`` ``3``, row.names ``=`` ``FALSE``)`\
+\
+`  ``# Fit indices`\
+`  ``fi`` ``<-`` ``lavaan``::`[`fitMeasures`](https://rdrr.io/pkg/lavaan/man/fitMeasures.html)`(``fit1``, `[`c`](https://rdrr.io/r/base/c.html)`(``"cfi.robust"``, ``"tli.robust"``,`\
+`                                    ``"rmsea.robust"``, ``"srmr"``)``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nFit indices (MLR):\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(``fi``, ``3``)``)`\
+`}`
 
     ##  Factor     Indicator Std_Loading    SE p
     ##       F       cd8_til       0.778 0.045 0
@@ -185,26 +181,24 @@ if (requireNamespace("lavaan", quietly = TRUE)) {
     ##   cfi.robust   tli.robust rmsea.robust         srmr 
     ##        0.999        0.997        0.023        0.015
 
-``` r
-
-# Factor score extraction + Cox regression - the second stage
-if (requireNamespace("lavaan", quietly = TRUE) &&
-    requireNamespace("survival", quietly = TRUE)) {
-  scores1 <- lavaan::lavPredict(fit1, method = "regression")[, 1]
-  scores1_std <- as.numeric(scale(scores1))
-
-  cox1 <- survival::coxph(
-    survival::Surv(time, event) ~ scores1_std,
-    data = df_scenario1
-  )
-  summary_cox1 <- summary(cox1)
-  cat("Cox HR for latent immune factor (per SD):\n")
-  print(round(summary_cox1$coefficients[, c(1, 2, 3, 5)], 3))
-  cat("\nTrue log-HR was", log_hr_true,
-      "| Estimated log-HR =",
-      round(coef(cox1), 3), "\n")
-}
-```
+\
+`# Factor score extraction + Cox regression - the second stage`\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"lavaan"``, quietly ``=`` ``TRUE``)`` ``&&`\
+`    `[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"survival"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``scores1`` ``<-`` ``lavaan``::`[`lavPredict`](https://rdrr.io/pkg/lavaan/man/lavPredict.html)`(``fit1``, method ``=`` ``"regression"``)``[``, ``1``]`\
+`  ``scores1_std`` ``<-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(`[`scale`](https://rdrr.io/r/base/scale.html)`(``scores1``)``)`\
+\
+`  ``cox1`` ``<-`` ``survival``::`[`coxph`](https://rdrr.io/pkg/survival/man/coxph.html)`(`\
+`    ``survival``::`[`Surv`](https://rdrr.io/pkg/survival/man/Surv.html)`(``time``, ``event``)`` ``~`` ``scores1_std``,`\
+`    data ``=`` ``df_scenario1`\
+`  ``)`\
+`  ``summary_cox1`` ``<-`` `[`summary`](https://rdrr.io/r/base/summary.html)`(``cox1``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Cox HR for latent immune factor (per SD):\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(``summary_cox1``$``coefficients``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``1``, ``2``, ``3``, ``5``)``]``, ``3``)``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nTrue log-HR was"``, ``log_hr_true``,`\
+`      ``"| Estimated log-HR ="``,`\
+`      `[`round`](https://rdrr.io/r/base/Round.html)`(`[`coef`](https://rdrr.io/r/stats/coef.html)`(``cox1``)``, ``3``)``, ``"\n"``)`\
+`}`
 
     ## Cox HR for latent immune factor (per SD):
     ##      coef exp(coef)  se(coef)  Pr(>|z|) 
@@ -241,43 +235,39 @@ which is the recommended estimator for ordinal manifest variables.
 on the latent-response scale (not the observed 0-3 scale) and that fit
 indices have slightly different reference distributions under WLSMV.
 
-``` r
-
-set.seed(7)
-n2 <- 350
-
-# Latent immune factor (standardised)
-F2 <- rnorm(n2)
-lambda2 <- c(0.70, 0.68, 0.73, 0.65)
-
-# Continuous underlying responses
-E2 <- sapply(sqrt(1 - lambda2^2), function(sd) rnorm(n2, 0, sd))
-Y2_cont <- outer(F2, lambda2) + E2
-
-# Discretise to 0/1/2/3 using quantile thresholds (produces realistic ordinal)
-ordinalise <- function(x, thresholds = c(-0.8, 0.2, 1.0)) {
-  cut(x, c(-Inf, thresholds, Inf), labels = FALSE) - 1L
-}
-X2 <- apply(Y2_cont, 2, ordinalise)
-colnames(X2) <- c("pdl1_score", "p53_score", "ki67_score", "her2_score")
-
-# Survival: higher factor -> shorter OS (aggressive tumour phenotype)
-log_hr_true2 <- 0.35
-T2 <- rexp(n2, rate = exp(log_hr_true2 * F2) / 48)
-C2 <- rexp(n2, rate = 1 / 72)
-time2 <- pmin(T2, C2)
-event2 <- as.integer(T2 <= C2)
-
-df_scenario2 <- data.frame(as.data.frame(X2), time = time2, event = event2)
-cat("Indicator value ranges:\n")
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``7``)`\
+`n2`` ``<-`` ``350`\
+\
+`# Latent immune factor (standardised)`\
+`F2`` ``<-`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n2``)`\
+`lambda2`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.70``, ``0.68``, ``0.73``, ``0.65``)`\
+\
+`# Continuous underlying responses`\
+`E2`` ``<-`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(`[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``lambda2``^``2``)``, ``function``(``sd``)`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n2``, ``0``, ``sd``)``)`\
+`Y2_cont`` ``<-`` `[`outer`](https://rdrr.io/r/base/outer.html)`(``F2``, ``lambda2``)`` ``+`` ``E2`\
+\
+`# Discretise to 0/1/2/3 using quantile thresholds (produces realistic ordinal)`\
+`ordinalise`` ``<-`` ``function``(``x``, ``thresholds`` ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``0.8``, ``0.2``, ``1.0``)``)`` ``{`\
+`  `[`cut`](https://rdrr.io/r/base/cut.html)`(``x``, `[`c`](https://rdrr.io/r/base/c.html)`(``-``Inf``, ``thresholds``, ``Inf``)``, labels ``=`` ``FALSE``)`` ``-`` ``1L`\
+`}`\
+`X2`` ``<-`` `[`apply`](https://rdrr.io/r/base/apply.html)`(``Y2_cont``, ``2``, ``ordinalise``)`\
+[`colnames`](https://rdrr.io/r/base/colnames.html)`(``X2``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"pdl1_score"``, ``"p53_score"``, ``"ki67_score"``, ``"her2_score"``)`\
+\
+`# Survival: higher factor -> shorter OS (aggressive tumour phenotype)`\
+`log_hr_true2`` ``<-`` ``0.35`\
+`T2`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n2``, rate ``=`` `[`exp`](https://rdrr.io/r/base/Log.html)`(``log_hr_true2`` ``*`` ``F2``)`` ``/`` ``48``)`\
+`C2`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n2``, rate ``=`` ``1`` ``/`` ``72``)`\
+`time2`` ``<-`` `[`pmin`](https://rdrr.io/r/base/Extremes.html)`(``T2``, ``C2``)`\
+`event2`` ``<-`` `[`as.integer`](https://rdrr.io/r/base/integer.html)`(``T2`` ``<=`` ``C2``)`\
+\
+`df_scenario2`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``X2``)``, time ``=`` ``time2``, event ``=`` ``event2``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Indicator value ranges:\n"``)`
 
     ## Indicator value ranges:
 
-``` r
-
-print(apply(X2, 2, table))
-```
+\
+[`print`](https://rdrr.io/r/base/print.html)`(`[`apply`](https://rdrr.io/r/base/apply.html)`(``X2``, ``2``, ``table``)``)`
 
     ##   pdl1_score p53_score ki67_score her2_score
     ## 0         76        64         78         62
@@ -285,32 +275,30 @@ print(apply(X2, 2, table))
     ## 2         90       104         90         90
     ## 3         63        45         59         60
 
-``` r
-
-if (requireNamespace("lavaan", quietly = TRUE)) {
-  # Declare indicators as ordered - this triggers polychoric correlations
-  # and WLSMV estimation automatically
-  model_ord <- '
-    F =~ pdl1_score + p53_score + ki67_score + her2_score
-  '
-  fit2 <- lavaan::cfa(model_ord, data = df_scenario2, estimator = "WLSMV",
-                      ordered = c("pdl1_score", "p53_score",
-                                  "ki67_score", "her2_score"),
-                      std.lv = TRUE)
-
-  loadings2 <- lavaan::parameterEstimates(fit2, standardized = TRUE)
-  loadings2 <- loadings2[loadings2$op == "=~",
-                          c("rhs", "std.all", "se", "pvalue")]
-  names(loadings2) <- c("Indicator", "Std_Loading_latent_response",
-                        "SE", "p")
-  print(loadings2, digits = 3, row.names = FALSE)
-
-  fi2 <- lavaan::fitMeasures(fit2, c("cfi.robust", "tli.robust",
-                                     "rmsea.robust", "srmr.robust"))
-  cat("\nFit indices (WLSMV):\n")
-  print(round(fi2, 3))
-}
-```
+\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"lavaan"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``# Declare indicators as ordered - this triggers polychoric correlations`\
+`  ``# and WLSMV estimation automatically`\
+`  ``model_ord`` ``<-`` ``'`\
+`    F =~ pdl1_score + p53_score + ki67_score + her2_score`\
+`  '`\
+`  ``fit2`` ``<-`` ``lavaan``::`[`cfa`](https://rdrr.io/pkg/lavaan/man/cfa.html)`(``model_ord``, data ``=`` ``df_scenario2``, estimator ``=`` ``"WLSMV"``,`\
+`                      ordered ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"pdl1_score"``, ``"p53_score"``,`\
+`                                  ``"ki67_score"``, ``"her2_score"``)``,`\
+`                      std.lv ``=`` ``TRUE``)`\
+\
+`  ``loadings2`` ``<-`` ``lavaan``::`[`parameterEstimates`](https://rdrr.io/pkg/lavaan/man/parameterEstimates.html)`(``fit2``, standardized ``=`` ``TRUE``)`\
+`  ``loadings2`` ``<-`` ``loadings2``[``loadings2``$``op`` ``==`` ``"=~"``,`\
+`                          `[`c`](https://rdrr.io/r/base/c.html)`(``"rhs"``, ``"std.all"``, ``"se"``, ``"pvalue"``)``]`\
+`  `[`names`](https://rdrr.io/r/base/names.html)`(``loadings2``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Indicator"``, ``"Std_Loading_latent_response"``,`\
+`                        ``"SE"``, ``"p"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(``loadings2``, digits ``=`` ``3``, row.names ``=`` ``FALSE``)`\
+\
+`  ``fi2`` ``<-`` ``lavaan``::`[`fitMeasures`](https://rdrr.io/pkg/lavaan/man/fitMeasures.html)`(``fit2``, `[`c`](https://rdrr.io/r/base/c.html)`(``"cfi.robust"``, ``"tli.robust"``,`\
+`                                     ``"rmsea.robust"``, ``"srmr.robust"``)``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nFit indices (WLSMV):\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(``fi2``, ``3``)``)`\
+`}`
 
     ##   Indicator Std_Loading_latent_response    SE p
     ##  pdl1_score                       0.732 0.046 0
@@ -353,92 +341,80 @@ is mathematically a two-level ordered variable - its tetrachoric
 correlation is a special case of the polychoric. You do not need to do
 anything special: auto-detection handles it.
 
-``` r
-
-set.seed(11)
-n3 <- 300
-F3 <- rnorm(n3)
-lambda3 <- c(0.72, 0.68, 0.65, 0.58)   # two continuous, one ordinal, one binary
-
-E3 <- sapply(sqrt(1 - lambda3^2), function(sd) rnorm(n3, 0, sd))
-Y3_cont <- outer(F3, lambda3) + E3
-
-# Indicators:
-# 1. cd8_density: continuous (cells/mm^2 on approximate scale, non-negative)
-cd8_density <- exp(Y3_cont[, 1] + 3)   # lognormal, strictly positive
-# 2. pdl1_cps: continuous (0-100)
-pdl1_cps <- pmax(0, pmin(100, Y3_cont[, 2] * 20 + 30))
-# 3. ihc_score: ordinal 0/1/2/3
-ihc_score <- cut(Y3_cont[, 3], c(-Inf, -0.7, 0.2, 0.9, Inf),
-                 labels = FALSE) - 1L
-# 4. mmrd: binary (MMR-deficient vs proficient)
-mmrd <- as.integer(Y3_cont[, 4] > 0.3)
-
-# Survival
-log_hr3 <- -0.30
-T3 <- rexp(n3, rate = exp(log_hr3 * F3) / 42)
-C3 <- rexp(n3, rate = 1 / 60)
-time3 <- pmin(T3, C3)
-event3 <- as.integer(T3 <= C3)
-
-df_scenario3 <- data.frame(
-  cd8_density, pdl1_cps, ihc_score, mmrd,
-  time = time3, event = event3
-)
-
-cat("Variable types and ranges:\n")
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``11``)`\
+`n3`` ``<-`` ``300`\
+`F3`` ``<-`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n3``)`\
+`lambda3`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.72``, ``0.68``, ``0.65``, ``0.58``)``   ``# two continuous, one ordinal, one binary`\
+\
+`E3`` ``<-`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(`[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``lambda3``^``2``)``, ``function``(``sd``)`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n3``, ``0``, ``sd``)``)`\
+`Y3_cont`` ``<-`` `[`outer`](https://rdrr.io/r/base/outer.html)`(``F3``, ``lambda3``)`` ``+`` ``E3`\
+\
+`# Indicators:`\
+`# 1. cd8_density: continuous (cells/mm^2 on approximate scale, non-negative)`\
+`cd8_density`` ``<-`` `[`exp`](https://rdrr.io/r/base/Log.html)`(``Y3_cont``[``, ``1``]`` ``+`` ``3``)``   ``# lognormal, strictly positive`\
+`# 2. pdl1_cps: continuous (0-100)`\
+`pdl1_cps`` ``<-`` `[`pmax`](https://rdrr.io/r/base/Extremes.html)`(``0``, `[`pmin`](https://rdrr.io/r/base/Extremes.html)`(``100``, ``Y3_cont``[``, ``2``]`` ``*`` ``20`` ``+`` ``30``)``)`\
+`# 3. ihc_score: ordinal 0/1/2/3`\
+`ihc_score`` ``<-`` `[`cut`](https://rdrr.io/r/base/cut.html)`(``Y3_cont``[``, ``3``]``, `[`c`](https://rdrr.io/r/base/c.html)`(``-``Inf``, ``-``0.7``, ``0.2``, ``0.9``, ``Inf``)``,`\
+`                 labels ``=`` ``FALSE``)`` ``-`` ``1L`\
+`# 4. mmrd: binary (MMR-deficient vs proficient)`\
+`mmrd`` ``<-`` `[`as.integer`](https://rdrr.io/r/base/integer.html)`(``Y3_cont``[``, ``4``]`` ``>`` ``0.3``)`\
+\
+`# Survival`\
+`log_hr3`` ``<-`` ``-``0.30`\
+`T3`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n3``, rate ``=`` `[`exp`](https://rdrr.io/r/base/Log.html)`(``log_hr3`` ``*`` ``F3``)`` ``/`` ``42``)`\
+`C3`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n3``, rate ``=`` ``1`` ``/`` ``60``)`\
+`time3`` ``<-`` `[`pmin`](https://rdrr.io/r/base/Extremes.html)`(``T3``, ``C3``)`\
+`event3`` ``<-`` `[`as.integer`](https://rdrr.io/r/base/integer.html)`(``T3`` ``<=`` ``C3``)`\
+\
+`df_scenario3`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  ``cd8_density``, ``pdl1_cps``, ``ihc_score``, ``mmrd``,`\
+`  time ``=`` ``time3``, event ``=`` ``event3`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Variable types and ranges:\n"``)`
 
     ## Variable types and ranges:
 
-``` r
-
-cat(" cd8_density: continuous, range", round(range(cd8_density)), "\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``" cd8_density: continuous, range"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`range`](https://rdrr.io/r/base/range.html)`(``cd8_density``)``)``, ``"\n"``)`
 
     ##  cd8_density: continuous, range 2 353
 
-``` r
-
-cat(" pdl1_cps:    continuous, range", round(range(pdl1_cps)), "\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``" pdl1_cps:    continuous, range"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`range`](https://rdrr.io/r/base/range.html)`(``pdl1_cps``)``)``, ``"\n"``)`
 
     ##  pdl1_cps:    continuous, range 0 84
 
-``` r
-
-cat(" ihc_score:   ordinal, levels", sort(unique(ihc_score)), "\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``" ihc_score:   ordinal, levels"``, `[`sort`](https://rdrr.io/r/base/sort.html)`(`[`unique`](https://rdrr.io/r/base/unique.html)`(``ihc_score``)``)``, ``"\n"``)`
 
     ##  ihc_score:   ordinal, levels 0 1 2 3
 
-``` r
-
-cat(" mmrd:        binary, n(0)=", sum(mmrd == 0),
-    "n(1)=", sum(mmrd == 1), "\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``" mmrd:        binary, n(0)="``, `[`sum`](https://rdrr.io/r/base/sum.html)`(``mmrd`` ``==`` ``0``)``,`\
+`    ``"n(1)="``, `[`sum`](https://rdrr.io/r/base/sum.html)`(``mmrd`` ``==`` ``1``)``, ``"\n"``)`
 
     ##  mmrd:        binary, n(0)= 187 n(1)= 113
 
-``` r
-
-if (requireNamespace("lavaan", quietly = TRUE)) {
-  model_mix <- '
-    F =~ cd8_density + pdl1_cps + ihc_score + mmrd
-  '
-  # WLSMV required because ihc_score and mmrd are non-continuous
-  fit3 <- lavaan::cfa(model_mix, data = df_scenario3,
-                      estimator = "WLSMV",
-                      ordered = c("ihc_score", "mmrd"),
-                      std.lv = TRUE)
-
-  loadings3 <- lavaan::parameterEstimates(fit3, standardized = TRUE)
-  loadings3 <- loadings3[loadings3$op == "=~",
-                          c("rhs", "std.all", "se", "pvalue")]
-  names(loadings3) <- c("Indicator", "Std_Loading", "SE", "p")
-  print(loadings3, digits = 3, row.names = FALSE)
-}
-```
+\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"lavaan"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``model_mix`` ``<-`` ``'`\
+`    F =~ cd8_density + pdl1_cps + ihc_score + mmrd`\
+`  '`\
+`  ``# WLSMV required because ihc_score and mmrd are non-continuous`\
+`  ``fit3`` ``<-`` ``lavaan``::`[`cfa`](https://rdrr.io/pkg/lavaan/man/cfa.html)`(``model_mix``, data ``=`` ``df_scenario3``,`\
+`                      estimator ``=`` ``"WLSMV"``,`\
+`                      ordered ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"ihc_score"``, ``"mmrd"``)``,`\
+`                      std.lv ``=`` ``TRUE``)`\
+\
+`  ``loadings3`` ``<-`` ``lavaan``::`[`parameterEstimates`](https://rdrr.io/pkg/lavaan/man/parameterEstimates.html)`(``fit3``, standardized ``=`` ``TRUE``)`\
+`  ``loadings3`` ``<-`` ``loadings3``[``loadings3``$``op`` ``==`` ``"=~"``,`\
+`                          `[`c`](https://rdrr.io/r/base/c.html)`(``"rhs"``, ``"std.all"``, ``"se"``, ``"pvalue"``)``]`\
+`  `[`names`](https://rdrr.io/r/base/names.html)`(``loadings3``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Indicator"``, ``"Std_Loading"``, ``"SE"``, ``"p"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(``loadings3``, digits ``=`` ``3``, row.names ``=`` ``FALSE``)`\
+`}`
 
     ##    Indicator Std_Loading    SE p
     ##  cd8_density       0.598 2.287 0
@@ -469,34 +445,32 @@ two constructive alternatives: a simple z-score composite (compute each
 indicator’s z-score, average them, use that as a Cox covariate) or
 waiting for a larger cohort.
 
-``` r
-
-set.seed(99)
-n4 <- 50   # too small for CFA
-
-F4 <- rnorm(n4)
-lambda4 <- c(0.72, 0.68, 0.65)
-E4 <- sapply(sqrt(1 - lambda4^2), function(sd) rnorm(n4, 0, sd))
-X4 <- outer(F4, lambda4) + E4
-colnames(X4) <- c("marker_a", "marker_b", "marker_c")
-
-time4 <- rexp(n4, rate = 1/36)
-event4 <- rbinom(n4, 1, 0.6)
-
-df_scenario4 <- data.frame(as.data.frame(X4), time = time4, event = event4)
-
-# Simulate the G1 gate check that latentbiomarker performs
-g1_threshold <- 100
-n_obs <- nrow(df_scenario4)
-if (n_obs < g1_threshold) {
-  cat("HARD REFUSAL - G1 triggered:\n")
-  cat("SEM is data-hungry. With n =", n_obs, "< 100,\n",
-      "factor loadings and fit indices are unreliable.\n",
-      "Consider:\n",
-      "  (1) a simpler z-score composite with conventional Cox regression, or\n",
-      "  (2) waiting for a larger cohort.\n")
-}
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``99``)`\
+`n4`` ``<-`` ``50``   ``# too small for CFA`\
+\
+`F4`` ``<-`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n4``)`\
+`lambda4`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.72``, ``0.68``, ``0.65``)`\
+`E4`` ``<-`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(`[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``lambda4``^``2``)``, ``function``(``sd``)`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n4``, ``0``, ``sd``)``)`\
+`X4`` ``<-`` `[`outer`](https://rdrr.io/r/base/outer.html)`(``F4``, ``lambda4``)`` ``+`` ``E4`\
+[`colnames`](https://rdrr.io/r/base/colnames.html)`(``X4``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"marker_a"``, ``"marker_b"``, ``"marker_c"``)`\
+\
+`time4`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n4``, rate ``=`` ``1``/``36``)`\
+`event4`` ``<-`` `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n4``, ``1``, ``0.6``)`\
+\
+`df_scenario4`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``X4``)``, time ``=`` ``time4``, event ``=`` ``event4``)`\
+\
+`# Simulate the G1 gate check that latentbiomarker performs`\
+`g1_threshold`` ``<-`` ``100`\
+`n_obs`` ``<-`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``df_scenario4``)`\
+`if`` ``(``n_obs`` ``<`` ``g1_threshold``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"HARD REFUSAL - G1 triggered:\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"SEM is data-hungry. With n ="``, ``n_obs``, ``"< 100,\n"``,`\
+`      ``"factor loadings and fit indices are unreliable.\n"``,`\
+`      ``"Consider:\n"``,`\
+`      ``"  (1) a simpler z-score composite with conventional Cox regression, or\n"``,`\
+`      ``"  (2) waiting for a larger cohort.\n"``)`\
+`}`
 
     ## HARD REFUSAL - G1 triggered:
     ## SEM is data-hungry. With n = 50 < 100,
@@ -505,23 +479,21 @@ if (n_obs < g1_threshold) {
     ##    (1) a simpler z-score composite with conventional Cox regression, or
     ##    (2) waiting for a larger cohort.
 
-``` r
-
-# The recommended alternative: z-score composite
-# For n=50, this is statistically defensible where CFA is not
-zscore_composite <- rowMeans(scale(df_scenario4[, c("marker_a",
-                                                      "marker_b",
-                                                      "marker_c")]))
-
-if (requireNamespace("survival", quietly = TRUE)) {
-  cox_composite <- survival::coxph(
-    survival::Surv(time4, event4) ~ zscore_composite,
-    data = df_scenario4
-  )
-  cat("Z-score composite Cox (n=50, 3 indicators):\n")
-  print(round(summary(cox_composite)$coefficients[, c(1, 2, 5)], 3))
-}
-```
+\
+`# The recommended alternative: z-score composite`\
+`# For n=50, this is statistically defensible where CFA is not`\
+`zscore_composite`` ``<-`` `[`rowMeans`](https://rdrr.io/pkg/Matrix/man/colSums-methods.html)`(`[`scale`](https://rdrr.io/r/base/scale.html)`(``df_scenario4``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"marker_a"``,`\
+`                                                      ``"marker_b"``,`\
+`                                                      ``"marker_c"``)``]``)``)`\
+\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"survival"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``cox_composite`` ``<-`` ``survival``::`[`coxph`](https://rdrr.io/pkg/survival/man/coxph.html)`(`\
+`    ``survival``::`[`Surv`](https://rdrr.io/pkg/survival/man/Surv.html)`(``time4``, ``event4``)`` ``~`` ``zscore_composite``,`\
+`    data ``=`` ``df_scenario4`\
+`  ``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Z-score composite Cox (n=50, 3 indicators):\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(`[`summary`](https://rdrr.io/r/base/summary.html)`(``cox_composite``)``$``coefficients``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``1``, ``2``, ``5``)``]``, ``3``)``)`\
+`}`
 
     ## Z-score composite Cox (n=50, 3 indicators):
     ##      coef exp(coef)  Pr(>|z|) 
@@ -560,42 +532,40 @@ indicators are supplied, explaining this structural limitation and
 recommending that users either add a fourth indicator to gain at least 1
 df, or interpret the results without relying on the fit statistics.
 
-``` r
-
-set.seed(21)
-n5 <- 280   # adequate sample size, but only 3 indicators
-F5 <- rnorm(n5)
-lambda5 <- c(0.75, 0.70, 0.68)
-
-E5 <- sapply(sqrt(1 - lambda5^2), function(sd) rnorm(n5, 0, sd))
-X5 <- outer(F5, lambda5) + E5
-colnames(X5) <- c("biomarker_1", "biomarker_2", "biomarker_3")
-
-time5 <- rexp(n5, rate = exp(-0.25 * F5) / 40)
-event5 <- rbinom(n5, 1, 0.55)
-df_scenario5 <- data.frame(as.data.frame(X5), time = time5, event = event5)
-
-if (requireNamespace("lavaan", quietly = TRUE)) {
-  model5 <- '
-    F =~ biomarker_1 + biomarker_2 + biomarker_3
-  '
-  fit5 <- lavaan::cfa(model5, data = df_scenario5, estimator = "MLR",
-                      std.lv = TRUE)
-
-  cat("Model degrees of freedom:", lavaan::fitMeasures(fit5, "df"), "\n")
-
-  fi5 <- lavaan::fitMeasures(fit5, c("cfi.robust", "tli.robust",
-                                      "rmsea.robust", "srmr"))
-  cat("\nFit indices (3 indicators, df = 0):\n")
-  print(round(fi5, 3))
-
-  cat("\nG3-soft INFO notice:\n")
-  cat("With 3 indicators and 1 factor, the model is just-identified (df = 0).\n",
-      "CFI, RMSEA, and SRMR are not meaningful - perfect fit is guaranteed\n",
-      "by construction. Add a fourth indicator to obtain an over-identified\n",
-      "model with testable fit.\n")
-}
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``21``)`\
+`n5`` ``<-`` ``280``   ``# adequate sample size, but only 3 indicators`\
+`F5`` ``<-`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n5``)`\
+`lambda5`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.75``, ``0.70``, ``0.68``)`\
+\
+`E5`` ``<-`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(`[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``lambda5``^``2``)``, ``function``(``sd``)`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n5``, ``0``, ``sd``)``)`\
+`X5`` ``<-`` `[`outer`](https://rdrr.io/r/base/outer.html)`(``F5``, ``lambda5``)`` ``+`` ``E5`\
+[`colnames`](https://rdrr.io/r/base/colnames.html)`(``X5``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"biomarker_1"``, ``"biomarker_2"``, ``"biomarker_3"``)`\
+\
+`time5`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n5``, rate ``=`` `[`exp`](https://rdrr.io/r/base/Log.html)`(``-``0.25`` ``*`` ``F5``)`` ``/`` ``40``)`\
+`event5`` ``<-`` `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n5``, ``1``, ``0.55``)`\
+`df_scenario5`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``X5``)``, time ``=`` ``time5``, event ``=`` ``event5``)`\
+\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"lavaan"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``model5`` ``<-`` ``'`\
+`    F =~ biomarker_1 + biomarker_2 + biomarker_3`\
+`  '`\
+`  ``fit5`` ``<-`` ``lavaan``::`[`cfa`](https://rdrr.io/pkg/lavaan/man/cfa.html)`(``model5``, data ``=`` ``df_scenario5``, estimator ``=`` ``"MLR"``,`\
+`                      std.lv ``=`` ``TRUE``)`\
+\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Model degrees of freedom:"``, ``lavaan``::`[`fitMeasures`](https://rdrr.io/pkg/lavaan/man/fitMeasures.html)`(``fit5``, ``"df"``)``, ``"\n"``)`\
+\
+`  ``fi5`` ``<-`` ``lavaan``::`[`fitMeasures`](https://rdrr.io/pkg/lavaan/man/fitMeasures.html)`(``fit5``, `[`c`](https://rdrr.io/r/base/c.html)`(``"cfi.robust"``, ``"tli.robust"``,`\
+`                                      ``"rmsea.robust"``, ``"srmr"``)``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nFit indices (3 indicators, df = 0):\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(``fi5``, ``3``)``)`\
+\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nG3-soft INFO notice:\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"With 3 indicators and 1 factor, the model is just-identified (df = 0).\n"``,`\
+`      ``"CFI, RMSEA, and SRMR are not meaningful - perfect fit is guaranteed\n"``,`\
+`      ``"by construction. Add a fourth indicator to obtain an over-identified\n"``,`\
+`      ``"model with testable fit.\n"``)`\
+`}`
 
     ## Model degrees of freedom: 0 
     ## 
@@ -635,125 +605,111 @@ detects this via the Fit-poor gate and issues a notice recommending
 `SEMLj` for multi-factor SEM, which supports correlated factors and the
 full structural model including survival.
 
-``` r
-
-set.seed(33)
-n6 <- 450
-
-# Factor 1: proliferation
-F1 <- rnorm(n6)
-# Factor 2: invasion, moderately correlated with F1
-F2 <- 0.3 * F1 + sqrt(1 - 0.3^2) * rnorm(n6)
-
-# Loadings for each factor's three indicators
-l1 <- c(0.80, 0.75, 0.72)   # proliferative markers
-l2 <- c(0.78, 0.73, 0.70)   # invasion markers
-
-# Residual SDs
-sd1 <- sqrt(1 - l1^2)
-sd2 <- sqrt(1 - l2^2)
-
-# Generate indicators (independent per-column residual noise so the covariance
-# stays full-rank / positive-definite; matches the pattern used in scenario 4)
-proliferative <- outer(F1, l1) + sapply(sd1, function(s) rnorm(n6, 0, s))
-invasion      <- outer(F2, l2) + sapply(sd2, function(s) rnorm(n6, 0, s))
-
-colnames(proliferative) <- c("ki67_li", "pcna_expr", "cyclind1_expr")
-colnames(invasion)      <- c("mmp9_expr", "ecadherin_loss", "ni_extent")
-
-# Survival outcome driven mainly by invasion (F2), weakly by proliferation
-log_hr6 <- 0.4 * F2 + 0.15 * F1
-T6 <- rexp(n6, rate = exp(log_hr6) / 48)
-C6 <- rexp(n6, rate = 1 / 72)
-time6 <- pmin(T6, C6)
-event6 <- as.integer(T6 <= C6)
-
-df_scenario6 <- data.frame(
-  as.data.frame(proliferative),
-  as.data.frame(invasion),
-  time = time6, event = event6
-)
-
-cat("Within-group correlations (proliferative):\n")
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``33``)`\
+`n6`` ``<-`` ``450`\
+\
+`# Factor 1: proliferation`\
+`F1`` ``<-`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n6``)`\
+`# Factor 2: invasion, moderately correlated with F1`\
+`F2`` ``<-`` ``0.3`` ``*`` ``F1`` ``+`` `[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``0.3``^``2``)`` ``*`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n6``)`\
+\
+`# Loadings for each factor's three indicators`\
+`l1`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.80``, ``0.75``, ``0.72``)``   ``# proliferative markers`\
+`l2`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.78``, ``0.73``, ``0.70``)``   ``# invasion markers`\
+\
+`# Residual SDs`\
+`sd1`` ``<-`` `[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``l1``^``2``)`\
+`sd2`` ``<-`` `[`sqrt`](https://rdrr.io/r/base/MathFun.html)`(``1`` ``-`` ``l2``^``2``)`\
+\
+`# Generate indicators (independent per-column residual noise so the covariance`\
+`# stays full-rank / positive-definite; matches the pattern used in scenario 4)`\
+`proliferative`` ``<-`` `[`outer`](https://rdrr.io/r/base/outer.html)`(``F1``, ``l1``)`` ``+`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``sd1``, ``function``(``s``)`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n6``, ``0``, ``s``)``)`\
+`invasion``      ``<-`` `[`outer`](https://rdrr.io/r/base/outer.html)`(``F2``, ``l2``)`` ``+`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``sd2``, ``function``(``s``)`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n6``, ``0``, ``s``)``)`\
+\
+[`colnames`](https://rdrr.io/r/base/colnames.html)`(``proliferative``)`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"ki67_li"``, ``"pcna_expr"``, ``"cyclind1_expr"``)`\
+[`colnames`](https://rdrr.io/r/base/colnames.html)`(``invasion``)``      ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"mmp9_expr"``, ``"ecadherin_loss"``, ``"ni_extent"``)`\
+\
+`# Survival outcome driven mainly by invasion (F2), weakly by proliferation`\
+`log_hr6`` ``<-`` ``0.4`` ``*`` ``F2`` ``+`` ``0.15`` ``*`` ``F1`\
+`T6`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n6``, rate ``=`` `[`exp`](https://rdrr.io/r/base/Log.html)`(``log_hr6``)`` ``/`` ``48``)`\
+`C6`` ``<-`` `[`rexp`](https://rdrr.io/r/stats/Exponential.html)`(``n6``, rate ``=`` ``1`` ``/`` ``72``)`\
+`time6`` ``<-`` `[`pmin`](https://rdrr.io/r/base/Extremes.html)`(``T6``, ``C6``)`\
+`event6`` ``<-`` `[`as.integer`](https://rdrr.io/r/base/integer.html)`(``T6`` ``<=`` ``C6``)`\
+\
+`df_scenario6`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  `[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``proliferative``)``,`\
+`  `[`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html)`(``invasion``)``,`\
+`  time ``=`` ``time6``, event ``=`` ``event6`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Within-group correlations (proliferative):\n"``)`
 
     ## Within-group correlations (proliferative):
 
-``` r
-
-print(round(cor(proliferative), 2))
-```
+\
+[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(`[`cor`](https://rdrr.io/r/stats/cor.html)`(``proliferative``)``, ``2``)``)`
 
     ##               ki67_li pcna_expr cyclind1_expr
     ## ki67_li          1.00      0.60          0.62
     ## pcna_expr        0.60      1.00          0.59
     ## cyclind1_expr    0.62      0.59          1.00
 
-``` r
-
-cat("\nWithin-group correlations (invasion):\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nWithin-group correlations (invasion):\n"``)`
 
     ## 
     ## Within-group correlations (invasion):
 
-``` r
-
-print(round(cor(invasion), 2))
-```
+\
+[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(`[`cor`](https://rdrr.io/r/stats/cor.html)`(``invasion``)``, ``2``)``)`
 
     ##                mmp9_expr ecadherin_loss ni_extent
     ## mmp9_expr           1.00           0.63      0.59
     ## ecadherin_loss      0.63           1.00      0.51
     ## ni_extent           0.59           0.51      1.00
 
-``` r
-
-cat("\nCross-group correlations (proliferative vs invasion):\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nCross-group correlations (proliferative vs invasion):\n"``)`
 
     ## 
     ## Cross-group correlations (proliferative vs invasion):
 
-``` r
-
-print(round(cor(proliferative, invasion), 2))
-```
+\
+[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(`[`cor`](https://rdrr.io/r/stats/cor.html)`(``proliferative``, ``invasion``)``, ``2``)``)`
 
     ##               mmp9_expr ecadherin_loss ni_extent
     ## ki67_li            0.16           0.19      0.19
     ## pcna_expr          0.15           0.12      0.13
     ## cyclind1_expr      0.14           0.16      0.12
 
-``` r
-
-if (requireNamespace("lavaan", quietly = TRUE)) {
-  # Force a single-factor model across all 6 indicators
-  model6_single <- '
-    F =~ ki67_li + pcna_expr + cyclind1_expr +
-         mmp9_expr + ecadherin_loss + ni_extent
-  '
-  fit6_single <- lavaan::cfa(model6_single, data = df_scenario6,
-                              estimator = "MLR", std.lv = TRUE)
-
-  fi6_single <- lavaan::fitMeasures(fit6_single,
-                                     c("cfi.robust", "tli.robust",
-                                       "rmsea.robust", "srmr"))
-  cat("Single-factor model fit indices:\n")
-  print(round(fi6_single, 3))
-
-  cfi_val  <- round(fi6_single["cfi.robust"], 3)
-  rmsea_val <- round(fi6_single["rmsea.robust"], 3)
-
-  if (cfi_val < 0.95 || rmsea_val > 0.10) {
-    cat("\nFit-poor notice (as shown in latentbiomarker):\n")
-    cat("Single-factor model fits poorly (CFI =", cfi_val,
-        ", RMSEA =", rmsea_val, ").\n",
-        "Consider splitting into multiple constructs.\n",
-        "SEMLj supports multi-factor SEM with survival outcomes.\n")
-  }
-}
-```
+\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"lavaan"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``# Force a single-factor model across all 6 indicators`\
+`  ``model6_single`` ``<-`` ``'`\
+`    F =~ ki67_li + pcna_expr + cyclind1_expr +`\
+`         mmp9_expr + ecadherin_loss + ni_extent`\
+`  '`\
+`  ``fit6_single`` ``<-`` ``lavaan``::`[`cfa`](https://rdrr.io/pkg/lavaan/man/cfa.html)`(``model6_single``, data ``=`` ``df_scenario6``,`\
+`                              estimator ``=`` ``"MLR"``, std.lv ``=`` ``TRUE``)`\
+\
+`  ``fi6_single`` ``<-`` ``lavaan``::`[`fitMeasures`](https://rdrr.io/pkg/lavaan/man/fitMeasures.html)`(``fit6_single``,`\
+`                                     `[`c`](https://rdrr.io/r/base/c.html)`(``"cfi.robust"``, ``"tli.robust"``,`\
+`                                       ``"rmsea.robust"``, ``"srmr"``)``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Single-factor model fit indices:\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(``fi6_single``, ``3``)``)`\
+\
+`  ``cfi_val``  ``<-`` `[`round`](https://rdrr.io/r/base/Round.html)`(``fi6_single``[``"cfi.robust"``]``, ``3``)`\
+`  ``rmsea_val`` ``<-`` `[`round`](https://rdrr.io/r/base/Round.html)`(``fi6_single``[``"rmsea.robust"``]``, ``3``)`\
+\
+`  ``if`` ``(``cfi_val`` ``<`` ``0.95`` ``||`` ``rmsea_val`` ``>`` ``0.10``)`` ``{`\
+`    `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nFit-poor notice (as shown in latentbiomarker):\n"``)`\
+`    `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Single-factor model fits poorly (CFI ="``, ``cfi_val``,`\
+`        ``", RMSEA ="``, ``rmsea_val``, ``").\n"``,`\
+`        ``"Consider splitting into multiple constructs.\n"``,`\
+`        ``"SEMLj supports multi-factor SEM with survival outcomes.\n"``)`\
+`  ``}`\
+`}`
 
     ## Single-factor model fit indices:
     ##   cfi.robust   tli.robust rmsea.robust         srmr 
@@ -764,29 +720,27 @@ if (requireNamespace("lavaan", quietly = TRUE)) {
     ##  Consider splitting into multiple constructs.
     ##  SEMLj supports multi-factor SEM with survival outcomes.
 
-``` r
-
-if (requireNamespace("lavaan", quietly = TRUE)) {
-  # Compare with the correct two-factor model for reference
-  model6_correct <- '
-    Proliferation =~ ki67_li + pcna_expr + cyclind1_expr
-    Invasion      =~ mmp9_expr + ecadherin_loss + ni_extent
-    Proliferation ~~ Invasion
-  '
-  fit6_correct <- lavaan::cfa(model6_correct, data = df_scenario6,
-                               estimator = "MLR", std.lv = TRUE)
-
-  fi6_correct <- lavaan::fitMeasures(fit6_correct,
-                                      c("cfi.robust", "tli.robust",
-                                        "rmsea.robust", "srmr"))
-  cat("Two-factor model fit indices (for comparison - requires SEMLj):\n")
-  print(round(fi6_correct, 3))
-
-  cat("\nConclusion: The two-factor model fits well (CFI >= 0.95, RMSEA <= 0.06),\n",
-      "while the single-factor model does not. The Fit-poor diagnostic correctly\n",
-      "invites users to graduate to multi-factor SEM in SEMLj.\n")
-}
-```
+\
+`if`` ``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"lavaan"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  ``# Compare with the correct two-factor model for reference`\
+`  ``model6_correct`` ``<-`` ``'`\
+`    Proliferation =~ ki67_li + pcna_expr + cyclind1_expr`\
+`    Invasion      =~ mmp9_expr + ecadherin_loss + ni_extent`\
+`    Proliferation ~~ Invasion`\
+`  '`\
+`  ``fit6_correct`` ``<-`` ``lavaan``::`[`cfa`](https://rdrr.io/pkg/lavaan/man/cfa.html)`(``model6_correct``, data ``=`` ``df_scenario6``,`\
+`                               estimator ``=`` ``"MLR"``, std.lv ``=`` ``TRUE``)`\
+\
+`  ``fi6_correct`` ``<-`` ``lavaan``::`[`fitMeasures`](https://rdrr.io/pkg/lavaan/man/fitMeasures.html)`(``fit6_correct``,`\
+`                                      `[`c`](https://rdrr.io/r/base/c.html)`(``"cfi.robust"``, ``"tli.robust"``,`\
+`                                        ``"rmsea.robust"``, ``"srmr"``)``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Two-factor model fit indices (for comparison - requires SEMLj):\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(``fi6_correct``, ``3``)``)`\
+\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nConclusion: The two-factor model fits well (CFI >= 0.95, RMSEA <= 0.06),\n"``,`\
+`      ``"while the single-factor model does not. The Fit-poor diagnostic correctly\n"``,`\
+`      ``"invites users to graduate to multi-factor SEM in SEMLj.\n"``)`\
+`}`
 
     ## Two-factor model fit indices (for comparison - requires SEMLj):
     ##   cfi.robust   tli.robust rmsea.robust         srmr 

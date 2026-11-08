@@ -45,9 +45,16 @@ roc_result <- psychopdaROC(
 )
 ```
 
+For the assumptions and interpretation of all 15 analyses, see
+[Choosing and interpreting an analysis](17-methods-and-interpretation.html).
+The hypothetical `cancer_biomarker` data below are pseudocode; use the bundled
+`roc_example.csv` in the [executable ROC introduction](03-roc-analysis.html)
+for a runnable example.
+
 ### Understanding ROC Curves
 
-An ROC curve plots sensitivity (true positive rate) against 1-specificity (false positive rate) across all possible cutpoints. The area under the curve (AUC) summarizes overall diagnostic accuracy:
+An ROC curve plots sensitivity (true positive rate) against 1-specificity (false positive rate) across all possible cutpoints. The area under the curve (AUC) summarizes rank discrimination. The following
+labels are informal conventions, not clinical acceptance thresholds:
 
 - AUC = 0.5: No discrimination (diagonal line)
 - AUC = 0.7-0.8: Acceptable discrimination
@@ -461,7 +468,9 @@ publication_size <- kappaSizeCI(
 
 ### Introduction
 
-When sample size is predetermined, calculate expected kappa precision.
+When sample size is predetermined, calculate the expected one-sided lower
+goodness-of-fit confidence bound around the anticipated kappa. This does not
+calculate power or guarantee the lower limit of a future study interval.
 
 ### Usage
 

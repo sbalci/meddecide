@@ -54,15 +54,13 @@ The `nogoldstandard` module implements five different approaches:
 
 The `nogoldstandard` module is part of the ClinicoPath package:
 
-``` r
-
-# Install from CRAN
-install.packages("ClinicoPath")
-
-# Or the development version
-# install.packages("devtools")
-devtools::install_github("sbalci/ClinicoPath")
-```
+\
+`# Install from CRAN`\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"ClinicoPath"``)`\
+\
+`# Or the development version`\
+`# install.packages("devtools")`\
+`devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sbalci/ClinicoPath"``)`
 
 ## Basic Usage
 
@@ -71,72 +69,68 @@ devtools::install_github("sbalci/ClinicoPath")
 Let’s create a sample dataset with 4 diagnostic tests performed on 200
 patients:
 
-``` r
-
-set.seed(123)
-n <- 200  # Number of patients
-
-# True disease status (unknown in practice)
-true_status <- rbinom(n, 1, 0.3)  # 30% prevalence
-
-# Create 4 imperfect tests with different sensitivity/specificity
-test1 <- ifelse(true_status == 1, 
-                rbinom(n, 1, 0.90),  # 90% sensitivity
-                rbinom(n, 1, 0.10))  # 90% specificity
-
-test2 <- ifelse(true_status == 1, 
-                rbinom(n, 1, 0.75),  # 75% sensitivity
-                rbinom(n, 1, 0.05))  # 95% specificity
-
-test3 <- ifelse(true_status == 1, 
-                rbinom(n, 1, 0.85),  # 85% sensitivity
-                rbinom(n, 1, 0.15))  # 85% specificity
-
-test4 <- ifelse(true_status == 1, 
-                rbinom(n, 1, 0.70),  # 70% sensitivity
-                rbinom(n, 1, 0.05))  # 95% specificity
-
-# Convert to categorical format
-test1 <- factor(ifelse(test1 == 1, "pos", "neg"))
-test2 <- factor(ifelse(test2 == 1, "pos", "neg"))
-test3 <- factor(ifelse(test3 == 1, "pos", "neg"))
-test4 <- factor(ifelse(test4 == 1, "pos", "neg"))
-
-# Create data frame
-data <- data.frame(
-  caseID = 1:n,
-  test1 = test1,
-  test2 = test2,
-  test3 = test3,
-  test4 = test4
-)
-
-# View the first few rows
-head(data)
-```
+\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
+`n`` ``<-`` ``200``  ``# Number of patients`\
+\
+`# True disease status (unknown in practice)`\
+`true_status`` ``<-`` `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.3``)``  ``# 30% prevalence`\
+\
+`# Create 4 imperfect tests with different sensitivity/specificity`\
+`test1`` ``<-`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``true_status`` ``==`` ``1``, `\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.90``)``,  ``# 90% sensitivity`\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.10``)``)``  ``# 90% specificity`\
+\
+`test2`` ``<-`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``true_status`` ``==`` ``1``, `\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.75``)``,  ``# 75% sensitivity`\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.05``)``)``  ``# 95% specificity`\
+\
+`test3`` ``<-`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``true_status`` ``==`` ``1``, `\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.85``)``,  ``# 85% sensitivity`\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.15``)``)``  ``# 85% specificity`\
+\
+`test4`` ``<-`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``true_status`` ``==`` ``1``, `\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.70``)``,  ``# 70% sensitivity`\
+`                `[`rbinom`](https://rdrr.io/r/stats/Binomial.html)`(``n``, ``1``, ``0.05``)``)``  ``# 95% specificity`\
+\
+`# Convert to categorical format`\
+`test1`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``test1`` ``==`` ``1``, ``"pos"``, ``"neg"``)``)`\
+`test2`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``test2`` ``==`` ``1``, ``"pos"``, ``"neg"``)``)`\
+`test3`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``test3`` ``==`` ``1``, ``"pos"``, ``"neg"``)``)`\
+`test4`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(`[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``test4`` ``==`` ``1``, ``"pos"``, ``"neg"``)``)`\
+\
+`# Create data frame`\
+`data`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  caseID ``=`` ``1``:``n``,`\
+`  test1 ``=`` ``test1``,`\
+`  test2 ``=`` ``test2``,`\
+`  test3 ``=`` ``test3``,`\
+`  test4 ``=`` ``test4`\
+`)`\
+\
+`# View the first few rows`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``data``)`
 
 ### Running the Analysis
 
 Now let’s analyze this data using the Latent Class Analysis method:
 
-``` r
-
-
-
-result <- nogoldstandard(
-  data = data,
-  test1 = "test1",
-  test1Positive = "pos",
-  test2 = "test2",
-  test2Positive = "pos",
-  test3 = "test3",
-  test3Positive = "pos",
-  test4 = "test4",
-  test4Positive = "pos",
-  test5 = NULL,
-  method = "latent_class"
-)
-```
+\
+\
+\
+`result`` ``<-`` `[`nogoldstandard`](https://www.serdarbalci.com/meddecide/reference/nogoldstandard.md)`(`\
+`  data ``=`` ``data``,`\
+`  test1 ``=`` ``"test1"``,`\
+`  test1Positive ``=`` ``"pos"``,`\
+`  test2 ``=`` ``"test2"``,`\
+`  test2Positive ``=`` ``"pos"``,`\
+`  test3 ``=`` ``"test3"``,`\
+`  test3Positive ``=`` ``"pos"``,`\
+`  test4 ``=`` ``"test4"``,`\
+`  test4Positive ``=`` ``"pos"``,`\
+`  test5 ``=`` ``NULL``,`\
+`  method ``=`` ``"latent_class"`\
+`)`
 
 The result will contain:
 
@@ -167,24 +161,22 @@ Bootstrap resampling involves:
 The enhanced version of the `nogoldstandard` module includes detailed
 progress reporting during bootstrap analysis:
 
-``` r
-
-result_with_ci <- nogoldstandard(
-  data = data,
-  test1 = "test1",
-  test1Positive = "pos",
-  test2 = "test2",
-  test2Positive = "pos",
-  test3 = "test3",
-  test3Positive = "pos",
-  test4 = "test4",
-  test4Positive = "pos",
-  method = "latent_class",
-  bootstrap = TRUE,     # Enable bootstrap
-  nboot = 1000,         # Number of bootstrap samples
-  alpha = 0.05          # For 95% confidence intervals
-)
-```
+\
+`result_with_ci`` ``<-`` `[`nogoldstandard`](https://www.serdarbalci.com/meddecide/reference/nogoldstandard.md)`(`\
+`  data ``=`` ``data``,`\
+`  test1 ``=`` ``"test1"``,`\
+`  test1Positive ``=`` ``"pos"``,`\
+`  test2 ``=`` ``"test2"``,`\
+`  test2Positive ``=`` ``"pos"``,`\
+`  test3 ``=`` ``"test3"``,`\
+`  test3Positive ``=`` ``"pos"``,`\
+`  test4 ``=`` ``"test4"``,`\
+`  test4Positive ``=`` ``"pos"``,`\
+`  method ``=`` ``"latent_class"``,`\
+`  bootstrap ``=`` ``TRUE``,     ``# Enable bootstrap`\
+`  nboot ``=`` ``1000``,         ``# Number of bootstrap samples`\
+`  alpha ``=`` ``0.05``          ``# For 95% confidence intervals`\
+`)`
 
 When running this analysis, you’ll see progress updates in the console:
 
@@ -229,33 +221,31 @@ calculations)
 
 Let’s compare the results from different analysis methods:
 
-``` r
-
-# Run analysis with each method
-methods <- c("latent_class", "composite", "all_positive", "any_positive", "bayesian")
-results <- list()
-
-for (method in methods) {
-  results[[method]] <- nogoldstandard(
-    data = data,
-    test1 = "test1",
-    test1Positive = "pos",
-    test2 = "test2",
-    test2Positive = "pos",
-    test3 = "test3",
-    test3Positive = "pos",
-    test4 = "test4",
-    test4Positive = "pos",
-    method = method
-  )
-}
-
-# Extract prevalence estimates
-prevalence_estimates <- sapply(results, function(x) {
-  x$prevalence$asDF()$estimate[1]
-})
-print(prevalence_estimates)
-```
+\
+`# Run analysis with each method`\
+`methods`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"latent_class"``, ``"composite"``, ``"all_positive"``, ``"any_positive"``, ``"bayesian"``)`\
+`results`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(``)`\
+\
+`for`` ``(``method`` ``in`` ``methods``)`` ``{`\
+`  ``results``[[``method``]``]`` ``<-`` `[`nogoldstandard`](https://www.serdarbalci.com/meddecide/reference/nogoldstandard.md)`(`\
+`    data ``=`` ``data``,`\
+`    test1 ``=`` ``"test1"``,`\
+`    test1Positive ``=`` ``"pos"``,`\
+`    test2 ``=`` ``"test2"``,`\
+`    test2Positive ``=`` ``"pos"``,`\
+`    test3 ``=`` ``"test3"``,`\
+`    test3Positive ``=`` ``"pos"``,`\
+`    test4 ``=`` ``"test4"``,`\
+`    test4Positive ``=`` ``"pos"``,`\
+`    method ``=`` ``method`\
+`  ``)`\
+`}`\
+\
+`# Extract prevalence estimates`\
+`prevalence_estimates`` ``<-`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``results``, ``function``(``x``)`` ``{`\
+`  ``x``$``prevalence``$``asDF``(``)``$``estimate``[``1``]`\
+`}``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``prevalence_estimates``)`
 
 Different methods may produce different estimates. In general:
 
@@ -323,11 +313,9 @@ enhanced implementation:
 If you have prior knowledge about disease prevalence or test
 characteristics, the Bayesian method can incorporate this information:
 
-``` r
-
-# Example of Bayesian analysis with informative priors would be shown here
-# This feature would require customization of the Bayesian method code
-```
+\
+`# Example of Bayesian analysis with informative priors would be shown here`\
+`# This feature would require customization of the Bayesian method code`
 
 ### Conditional Dependence
 
@@ -373,107 +361,105 @@ When possible, validate results against:
 Below is the implementation of the bootstrap function with progress
 reporting:
 
-``` r
-
-.calculateBootstrapCI = function(data, method, nboot, alpha, type, test_index = NULL) {
-    # Simple bootstrap implementation with progress indicators
-    n <- nrow(data)
-    boot_results <- numeric(nboot)
-    
-    # Show starting message
-    message("\n=== Bootstrap Analysis ===")
-    message(sprintf("Starting bootstrap with %d iterations for %s method", nboot, method))
-    message(sprintf("Estimating confidence intervals for %s", type))
-    if (!is.null(test_index)) {
-        message(sprintf("Test index: %d", test_index))
-    }
-    
-    # Progress tracking variables
-    start_time <- Sys.time()
-    last_update <- start_time
-    update_interval <- max(1, floor(nboot / 20))  # Update ~20 times during process
-    success_count <- 0
-    error_count <- 0
-    
-    for (b in 1:nboot) {
-        # Resample data
-        boot_indices <- sample(n, n, replace = TRUE)
-        boot_data <- data[boot_indices, ]
-        
-        # Run analysis on bootstrap sample
-        boot_result <- NULL
-        tryCatch({
-            if (method == "latent_class") {
-                boot_result <- private$.runLCA(boot_data, names(data), NULL)
-            } else if (method == "composite") {
-                boot_result <- private$.runComposite(boot_data)
-            } else if (method == "all_positive") {
-                boot_result <- private$.runAllPositive(boot_data)
-            } else if (method == "any_positive") {
-                boot_result <- private$.runAnyPositive(boot_data)
-            } else if (method == "bayesian") {
-                boot_result <- private$.runBayesian(boot_data)
-            }
-            success_count <- success_count + 1
-        }, error = function(e) {
-            # Count errors but continue bootstrap
-            error_count <- error_count + 1
-        })
-        
-        # Extract relevant statistic
-        if (!is.null(boot_result)) {
-            if (type == "prevalence") {
-                boot_results[b] <- boot_result$prevalence
-            } else if (type == "sensitivity" && !is.null(test_index)) {
-                boot_results[b] <- boot_result$sensitivities[test_index]
-            } else if (type == "specificity" && !is.null(test_index)) {
-                boot_results[b] <- boot_result$specificities[test_index]
-            }
-        } else {
-            boot_results[b] <- NA
-        }
-        
-        # Show progress updates
-        current_time <- Sys.time()
-        if (b %% update_interval == 0 || b == nboot || 
-            as.numeric(difftime(current_time, last_update, units = "secs")) > 10) {
-            elapsed <- as.numeric(difftime(current_time, start_time, units = "secs"))
-            percent_done <- b / nboot * 100
-            est_total <- elapsed / percent_done * 100
-            est_remaining <- est_total - elapsed
-            
-            message(sprintf("  %d/%d (%.1f%%) - %d successful, %d errors - %.1f sec elapsed, ~%.1f sec remaining", 
-                          b, nboot, percent_done, success_count, error_count,
-                          elapsed, est_remaining))
-            
-            last_update <- current_time
-        }
-    }
-    
-    # Show final statistics
-    total_time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
-    message("\n=== Bootstrap Complete ===")
-    message(sprintf("Total time: %.1f seconds (%.2f iterations/sec)", 
-                  total_time, nboot/total_time))
-    message(sprintf("Successful iterations: %d (%.1f%%)", 
-                  success_count, success_count/nboot*100))
-    message(sprintf("Failed iterations: %d (%.1f%%)", 
-                  error_count, error_count/nboot*100))
-    
-    # Calculate percentile CI
-    boot_results <- boot_results[!is.na(boot_results)]
-    
-    if (length(boot_results) > 0) {
-        ci <- quantile(boot_results, c(alpha/2, 1-alpha/2), na.rm=TRUE)
-        message(sprintf("Confidence interval (%.1f%%): [%.4f, %.4f]", 
-                      (1-alpha)*100, ci[1], ci[2]))
-        return(list(lower = ci[1], upper = ci[2]))
-    } else {
-        message("WARNING: No valid bootstrap results obtained. Returning NA.")
-        return(list(lower = NA, upper = NA))
-    }
-}
-```
+\
+`.calculateBootstrapCI`` ``=`` ``function``(``data``, ``method``, ``nboot``, ``alpha``, ``type``, ``test_index`` ``=`` ``NULL``)`` ``{`\
+`    ``# Simple bootstrap implementation with progress indicators`\
+`    ``n`` ``<-`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``data``)`\
+`    ``boot_results`` ``<-`` `[`numeric`](https://rdrr.io/r/base/numeric.html)`(``nboot``)`\
+`    `\
+`    ``# Show starting message`\
+`    `[`message`](https://rdrr.io/r/base/message.html)`(``"\n=== Bootstrap Analysis ==="``)`\
+`    `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Starting bootstrap with %d iterations for %s method"``, ``nboot``, ``method``)``)`\
+`    `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Estimating confidence intervals for %s"``, ``type``)``)`\
+`    ``if`` ``(``!`[`is.null`](https://rdrr.io/r/base/NULL.html)`(``test_index``)``)`` ``{`\
+`        `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Test index: %d"``, ``test_index``)``)`\
+`    ``}`\
+`    `\
+`    ``# Progress tracking variables`\
+`    ``start_time`` ``<-`` `[`Sys.time`](https://rdrr.io/r/base/Sys.time.html)`(``)`\
+`    ``last_update`` ``<-`` ``start_time`\
+`    ``update_interval`` ``<-`` `[`max`](https://rdrr.io/r/base/Extremes.html)`(``1``, `[`floor`](https://rdrr.io/r/base/Round.html)`(``nboot`` ``/`` ``20``)``)``  ``# Update ~20 times during process`\
+`    ``success_count`` ``<-`` ``0`\
+`    ``error_count`` ``<-`` ``0`\
+`    `\
+`    ``for`` ``(``b`` ``in`` ``1``:``nboot``)`` ``{`\
+`        ``# Resample data`\
+`        ``boot_indices`` ``<-`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``n``, ``n``, replace ``=`` ``TRUE``)`\
+`        ``boot_data`` ``<-`` ``data``[``boot_indices``, ``]`\
+`        `\
+`        ``# Run analysis on bootstrap sample`\
+`        ``boot_result`` ``<-`` ``NULL`\
+`        `[`tryCatch`](https://rdrr.io/r/base/conditions.html)`(``{`\
+`            ``if`` ``(``method`` ``==`` ``"latent_class"``)`` ``{`\
+`                ``boot_result`` ``<-`` ``private``$``.runLCA``(``boot_data``, `[`names`](https://rdrr.io/r/base/names.html)`(``data``)``, ``NULL``)`\
+`            ``}`` ``else`` ``if`` ``(``method`` ``==`` ``"composite"``)`` ``{`\
+`                ``boot_result`` ``<-`` ``private``$``.runComposite``(``boot_data``)`\
+`            ``}`` ``else`` ``if`` ``(``method`` ``==`` ``"all_positive"``)`` ``{`\
+`                ``boot_result`` ``<-`` ``private``$``.runAllPositive``(``boot_data``)`\
+`            ``}`` ``else`` ``if`` ``(``method`` ``==`` ``"any_positive"``)`` ``{`\
+`                ``boot_result`` ``<-`` ``private``$``.runAnyPositive``(``boot_data``)`\
+`            ``}`` ``else`` ``if`` ``(``method`` ``==`` ``"bayesian"``)`` ``{`\
+`                ``boot_result`` ``<-`` ``private``$``.runBayesian``(``boot_data``)`\
+`            ``}`\
+`            ``success_count`` ``<-`` ``success_count`` ``+`` ``1`\
+`        ``}``, error ``=`` ``function``(``e``)`` ``{`\
+`            ``# Count errors but continue bootstrap`\
+`            ``error_count`` ``<-`` ``error_count`` ``+`` ``1`\
+`        ``}``)`\
+`        `\
+`        ``# Extract relevant statistic`\
+`        ``if`` ``(``!`[`is.null`](https://rdrr.io/r/base/NULL.html)`(``boot_result``)``)`` ``{`\
+`            ``if`` ``(``type`` ``==`` ``"prevalence"``)`` ``{`\
+`                ``boot_results``[``b``]`` ``<-`` ``boot_result``$``prevalence`\
+`            ``}`` ``else`` ``if`` ``(``type`` ``==`` ``"sensitivity"`` ``&&`` ``!`[`is.null`](https://rdrr.io/r/base/NULL.html)`(``test_index``)``)`` ``{`\
+`                ``boot_results``[``b``]`` ``<-`` ``boot_result``$``sensitivities``[``test_index``]`\
+`            ``}`` ``else`` ``if`` ``(``type`` ``==`` ``"specificity"`` ``&&`` ``!`[`is.null`](https://rdrr.io/r/base/NULL.html)`(``test_index``)``)`` ``{`\
+`                ``boot_results``[``b``]`` ``<-`` ``boot_result``$``specificities``[``test_index``]`\
+`            ``}`\
+`        ``}`` ``else`` ``{`\
+`            ``boot_results``[``b``]`` ``<-`` ``NA`\
+`        ``}`\
+`        `\
+`        ``# Show progress updates`\
+`        ``current_time`` ``<-`` `[`Sys.time`](https://rdrr.io/r/base/Sys.time.html)`(``)`\
+`        ``if`` ``(``b`` `[`%%`](https://rdrr.io/r/base/Arithmetic.html)` ``update_interval`` ``==`` ``0`` ``||`` ``b`` ``==`` ``nboot`` ``||`` `\
+`            `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(`[`difftime`](https://rdrr.io/r/base/difftime.html)`(``current_time``, ``last_update``, units ``=`` ``"secs"``)``)`` ``>`` ``10``)`` ``{`\
+`            ``elapsed`` ``<-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(`[`difftime`](https://rdrr.io/r/base/difftime.html)`(``current_time``, ``start_time``, units ``=`` ``"secs"``)``)`\
+`            ``percent_done`` ``<-`` ``b`` ``/`` ``nboot`` ``*`` ``100`\
+`            ``est_total`` ``<-`` ``elapsed`` ``/`` ``percent_done`` ``*`` ``100`\
+`            ``est_remaining`` ``<-`` ``est_total`` ``-`` ``elapsed`\
+`            `\
+`            `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"  %d/%d (%.1f%%) - %d successful, %d errors - %.1f sec elapsed, ~%.1f sec remaining"``, `\
+`                          ``b``, ``nboot``, ``percent_done``, ``success_count``, ``error_count``,`\
+`                          ``elapsed``, ``est_remaining``)``)`\
+`            `\
+`            ``last_update`` ``<-`` ``current_time`\
+`        ``}`\
+`    ``}`\
+`    `\
+`    ``# Show final statistics`\
+`    ``total_time`` ``<-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(`[`difftime`](https://rdrr.io/r/base/difftime.html)`(`[`Sys.time`](https://rdrr.io/r/base/Sys.time.html)`(``)``, ``start_time``, units ``=`` ``"secs"``)``)`\
+`    `[`message`](https://rdrr.io/r/base/message.html)`(``"\n=== Bootstrap Complete ==="``)`\
+`    `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Total time: %.1f seconds (%.2f iterations/sec)"``, `\
+`                  ``total_time``, ``nboot``/``total_time``)``)`\
+`    `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Successful iterations: %d (%.1f%%)"``, `\
+`                  ``success_count``, ``success_count``/``nboot``*``100``)``)`\
+`    `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Failed iterations: %d (%.1f%%)"``, `\
+`                  ``error_count``, ``error_count``/``nboot``*``100``)``)`\
+`    `\
+`    ``# Calculate percentile CI`\
+`    ``boot_results`` ``<-`` ``boot_results``[``!`[`is.na`](https://rdrr.io/r/base/NA.html)`(``boot_results``)``]`\
+`    `\
+`    ``if`` ``(`[`length`](https://rdrr.io/r/base/length.html)`(``boot_results``)`` ``>`` ``0``)`` ``{`\
+`        ``ci`` ``<-`` `[`quantile`](https://rdrr.io/r/stats/quantile.html)`(``boot_results``, `[`c`](https://rdrr.io/r/base/c.html)`(``alpha``/``2``, ``1``-``alpha``/``2``)``, na.rm``=``TRUE``)`\
+`        `[`message`](https://rdrr.io/r/base/message.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Confidence interval (%.1f%%): [%.4f, %.4f]"``, `\
+`                      ``(``1``-``alpha``)``*``100``, ``ci``[``1``]``, ``ci``[``2``]``)``)`\
+`        `[`return`](https://rdrr.io/r/base/function.html)`(`[`list`](https://rdrr.io/r/base/list.html)`(``lower ``=`` ``ci``[``1``]``, upper ``=`` ``ci``[``2``]``)``)`\
+`    ``}`` ``else`` ``{`\
+`        `[`message`](https://rdrr.io/r/base/message.html)`(``"WARNING: No valid bootstrap results obtained. Returning NA."``)`\
+`        `[`return`](https://rdrr.io/r/base/function.html)`(`[`list`](https://rdrr.io/r/base/list.html)`(``lower ``=`` ``NA``, upper ``=`` ``NA``)``)`\
+`    ``}`\
+`}`
 
 ## References
 
@@ -498,7 +484,5 @@ reporting:
 
 ## Session Information
 
-``` r
-
-sessionInfo()
-```
+\
+[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`

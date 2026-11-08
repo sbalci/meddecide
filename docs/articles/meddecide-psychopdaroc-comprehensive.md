@@ -10,11 +10,13 @@ using the `cutpointr` framework. It supports 12 cutpoint optimization
 methods, 16 optimization metrics, subgroup analysis, DeLong’s test for
 comparing ROC curves, IDI/NRI reclassification indices, effect size and
 power analysis, bootstrap ROC with prior weighting, clinical utility
-analysis, meta-analysis of AUC values, and fixed sensitivity/specificity
-analysis.
+analysis, and fixed sensitivity/specificity analysis.
 
-All examples below use the bundled test datasets. In jamovi, open the
-corresponding `.omv` file. From R, read the `.csv` directly.
+All examples below use the test datasets in the `data-raw/non-rda/`
+folder of the [ClinicoPath
+repository](https://github.com/sbalci/ClinicoPathJamoviModule) (`.omv`
+for jamovi, `.csv` for R). On this website the code is shown without
+output.
 
 ------------------------------------------------------------------------
 
@@ -50,56 +52,45 @@ with `youden`) to find the optimal cutpoint.
 
 #### Default single-marker ROC
 
-``` r
-
-test_data <- read.csv(paste0(data_path, "psychopdaROC_test.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+`test_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_test.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### With confusion matrix and threshold table
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  sensSpecTable = TRUE,
-  showThresholdTable = TRUE,
-  maxThresholds = 20,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  sensSpecTable ``=`` ``TRUE``,`\
+`  showThresholdTable ``=`` ``TRUE``,`\
+`  maxThresholds ``=`` ``20``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Lower values indicate positive class
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  direction = "<=",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  direction ``=`` ``"<="``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -107,219 +98,178 @@ psychopdaROC(
 
 #### Key optimization metrics
 
-``` r
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"maximize_metric"``,`\
+`  metric ``=`` ``"youden"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "maximize_metric",
-  metric = "youden",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"maximize_metric"``,`\
+`  metric ``=`` ``"accuracy"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
-``` r
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"maximize_metric"``,`\
+`  metric ``=`` ``"F1_score"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "maximize_metric",
-  metric = "accuracy",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
-
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "maximize_metric",
-  metric = "F1_score",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
-
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "maximize_metric",
-  metric = "cohens_kappa",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"maximize_metric"``,`\
+`  metric ``=`` ``"cohens_kappa"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Minimize misclassification cost
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "minimize_metric",
-  metric = "misclassification_cost",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"minimize_metric"``,`\
+`  metric ``=`` ``"misclassification_cost"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### LOESS-smoothed Youden
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "maximize_loess_metric",
-  metric = "youden",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"maximize_loess_metric"``,`\
+`  metric ``=`` ``"youden"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Bootstrap-optimized cutpoint
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "maximize_boot_metric",
-  boot_runs = 100,
-  seed = 123,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"maximize_boot_metric"``,`\
+`  boot_runs ``=`` ``100``,`\
+`  seed ``=`` ``123``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Kernel-smoothed Youden
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "oc_youden_kernel",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"oc_youden_kernel"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Parametric normal Youden
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "oc_youden_normal",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"oc_youden_normal"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Manual cutpoint
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "oc_manual",
-  specifyCutScore = "7.5",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"oc_manual"``,`\
+`  specifyCutScore ``=`` ``"7.5"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Cost-benefit optimized cutpoint
 
-``` r
-
-costbenefit_data <- read.csv(paste0(data_path, "psychopdaROC_costbenefit.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = costbenefit_data,
-  classVar = "outcome",
-  positiveClass = "Event",
-  dependentVars = "risk_score",
-  method = "oc_cost_ratio",
-  costratioFP = 0.1,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'costbenefit_data' not found
-```
+\
+`costbenefit_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_costbenefit.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``costbenefit_data``,`\
+`  classVar ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Event"``,`\
+`  negativeClass ``=`` ``"No_Event"``,`\
+`  dependentVars ``=`` ``"risk_score"``,`\
+`  method ``=`` ``"oc_cost_ratio"``,`\
+`  costratioFP ``=`` ``0.1``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Equal sensitivity and specificity
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "oc_equal_sens_spec",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"oc_equal_sens_spec"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Closest to perfect classifier (0,1)
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  method = "oc_closest_01",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  method ``=`` ``"oc_closest_01"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -327,65 +277,53 @@ psychopdaROC(
 
 #### Metric tolerance
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  tol_metric = 0.01,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  tol_metric ``=`` ``0.01``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Tie-breaking methods
 
-``` r
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  break_ties ``=`` ``"mean"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  break_ties = "mean",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
-
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  break_ties = "median",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  break_ties ``=`` ``"median"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### All observed cutpoints
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  allObserved = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  allObserved ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -393,61 +331,48 @@ psychopdaROC(
 
 #### Multi-marker ROC overlay
 
-``` r
-
-multi_data <- read.csv(paste0(data_path, "psychopdaROC_multibiomarker.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3, combined_score),
-  plotROC = TRUE,
-  combinePlots = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+`multi_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_multibiomarker.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``, ``combined_score``)``,`\
+`  plotROC ``=`` ``TRUE``,`\
+`  combinePlots ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### DeLong test for AUC comparison
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3),
-  delongTest = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``)``,`\
+`  delongTest ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Cardiac biomarker comparison
 
-``` r
-
-cardiac_data <- read.csv(paste0(data_path, "psychopdaROC_cardiac.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = cardiac_data,
-  classVar = "mi_status",
-  positiveClass = "MI",
-  dependentVars = vars(troponin, creatinine, bnp),
-  combinePlots = TRUE,
-  delongTest = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! Argument 'dependentVars' contains 'troponin', 'creatinine', 'bnp' which are not present in the dataset
-```
+\
+`cardiac_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_cardiac.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cardiac_data``,`\
+`  classVar ``=`` ``"mi_status"``,`\
+`  positiveClass ``=`` ``"MI"``,`\
+`  negativeClass ``=`` ``"No_MI"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``troponin``, ``creatinine``, ``bnp``)``,`\
+`  combinePlots ``=`` ``TRUE``,`\
+`  delongTest ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -455,88 +380,73 @@ psychopdaROC(
 
 #### Optimal point and confidence bands
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  plotROC = TRUE,
-  showOptimalPoint = TRUE,
-  showConfidenceBands = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  plotROC ``=`` ``TRUE``,`\
+`  showOptimalPoint ``=`` ``TRUE``,`\
+`  showConfidenceBands ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Smoothed ROC with standard error
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  smoothing = TRUE,
-  displaySE = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  smoothing ``=`` ``TRUE``,`\
+`  displaySE ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Publication-ready clean plot
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  cleanPlot = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  cleanPlot ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Legend positions
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3),
-  combinePlots = TRUE,
-  legendPosition = "bottom",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``)``,`\
+`  combinePlots ``=`` ``TRUE``,`\
+`  legendPosition ``=`` ``"bottom"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Direct curve labels
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3),
-  combinePlots = TRUE,
-  directLabel = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``)``,`\
+`  combinePlots ``=`` ``TRUE``,`\
+`  directLabel ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -544,67 +454,55 @@ psychopdaROC(
 
 #### Sensitivity/Specificity vs Threshold
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  showCriterionPlot = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  showCriterionPlot ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Predictive values vs Prevalence
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  showPrevalencePlot = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  showPrevalencePlot ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Test value distribution by class
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  showDotPlot = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  showDotPlot ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Precision-Recall curve
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  precisionRecallCurve = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  precisionRecallCurve ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -612,40 +510,32 @@ psychopdaROC(
 
 #### Prior prevalence adjustment for rare disease
 
-``` r
-
-rare_data <- read.csv(paste0(data_path, "psychopdaROC_rare.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = rare_data,
-  classVar = "rare_disease",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  usePriorPrev = TRUE,
-  priorPrev = 0.05,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'rare_data' not found
-```
+\
+`rare_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_rare.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``rare_data``,`\
+`  classVar ``=`` ``"rare_disease"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"No_Disease"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  usePriorPrev ``=`` ``TRUE``,`\
+`  priorPrev ``=`` ``0.05``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Sample prevalence (default)
 
-``` r
-
-psychopdaROC(
-  data = rare_data,
-  classVar = "rare_disease",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  usePriorPrev = FALSE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'rare_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``rare_data``,`\
+`  classVar ``=`` ``"rare_disease"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"No_Disease"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  usePriorPrev ``=`` ``FALSE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -653,59 +543,46 @@ psychopdaROC(
 
 #### By age group
 
-``` r
-
-subgroup_data <- read.csv(paste0(data_path, "psychopdaROC_subgroup.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = subgroup_data,
-  classVar = "disease",
-  positiveClass = "Disease",
-  dependentVars = "test_score",
-  subGroup = "age_group",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'subgroup_data' not found
-```
+\
+`subgroup_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_subgroup.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``subgroup_data``,`\
+`  classVar ``=`` ``"disease"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"test_score"``,`\
+`  subGroup ``=`` ``"age_group"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### By sex
 
-``` r
-
-psychopdaROC(
-  data = subgroup_data,
-  classVar = "disease",
-  positiveClass = "Disease",
-  dependentVars = "test_score",
-  subGroup = "sex",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'subgroup_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``subgroup_data``,`\
+`  classVar ``=`` ``"disease"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"test_score"``,`\
+`  subGroup ``=`` ``"sex"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Large dataset with site subgroups
 
-``` r
-
-large_data <- read.csv(paste0(data_path, "psychopdaROC_large.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = large_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = vars(biomarker1, biomarker2),
-  subGroup = "site",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'large_data' not found
-```
+\
+`large_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_large.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``large_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"No_Disease"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``biomarker1``, ``biomarker2``)``,`\
+`  subGroup ``=`` ``"site"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -713,89 +590,74 @@ psychopdaROC(
 
 #### Partial AUC (high specificity region)
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  partialAUC = TRUE,
-  partialAUCfrom = 0.8,
-  partialAUCto = 1.0,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  partialAUC ``=`` ``TRUE``,`\
+`  partialAUCfrom ``=`` ``0.8``,`\
+`  partialAUCto ``=`` ``1.0``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Partial AUC (very high specificity)
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  partialAUC = TRUE,
-  partialAUCfrom = 0.9,
-  partialAUCto = 1.0,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  partialAUC ``=`` ``TRUE``,`\
+`  partialAUCfrom ``=`` ``0.9``,`\
+`  partialAUCto ``=`` ``1.0``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Binormal smoothing
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  rocSmoothingMethod = "binormal",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  rocSmoothingMethod ``=`` ``"binormal"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Bootstrap confidence intervals
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  bootstrapCI = TRUE,
-  bootstrapReps = 100,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  bootstrapCI ``=`` ``TRUE``,`\
+`  bootstrapReps ``=`` ``100``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Quantile-based CIs
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  quantileCIs = TRUE,
-  quantiles = "0.1,0.25,0.5,0.75,0.9",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  quantileCIs ``=`` ``TRUE``,`\
+`  quantiles ``=`` ``"0.1,0.25,0.5,0.75,0.9"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -803,82 +665,68 @@ psychopdaROC(
 
 #### Fixed sensitivity for screening (95%)
 
-``` r
-
-screening_data <- read.csv(paste0(data_path, "psychopdaROC_screening.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = screening_data,
-  classVar = "cancer",
-  positiveClass = "Cancer",
-  dependentVars = "psa_level",
-  fixedSensSpecAnalysis = TRUE,
-  fixedAnalysisType = "sensitivity",
-  fixedSensitivityValue = 0.95,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
+\
+`screening_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_screening.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``screening_data``,`\
+`  classVar ``=`` ``"cancer"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  negativeClass ``=`` ``"No_Cancer"``,`\
+`  dependentVars ``=`` ``"psa_level"``,`\
+`  fixedSensSpecAnalysis ``=`` ``TRUE``,`\
+`  fixedAnalysisType ``=`` ``"sensitivity"``,`\
+`  fixedSensitivityValue ``=`` ``0.95``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Fixed specificity for confirmation (90%)
 
-``` r
-
-psychopdaROC(
-  data = screening_data,
-  classVar = "cancer",
-  positiveClass = "Cancer",
-  dependentVars = "psa_level",
-  fixedSensSpecAnalysis = TRUE,
-  fixedAnalysisType = "specificity",
-  fixedSpecificityValue = 0.90,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``screening_data``,`\
+`  classVar ``=`` ``"cancer"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  negativeClass ``=`` ``"No_Cancer"``,`\
+`  dependentVars ``=`` ``"psa_level"``,`\
+`  fixedSensSpecAnalysis ``=`` ``TRUE``,`\
+`  fixedAnalysisType ``=`` ``"specificity"``,`\
+`  fixedSpecificityValue ``=`` ``0.90``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Interpolation methods
 
-``` r
-
-psychopdaROC(
-  data = screening_data,
-  classVar = "cancer",
-  positiveClass = "Cancer",
-  dependentVars = "psa_level",
-  fixedSensSpecAnalysis = TRUE,
-  fixedAnalysisType = "sensitivity",
-  fixedSensitivityValue = 0.95,
-  fixedInterpolation = "linear",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``screening_data``,`\
+`  classVar ``=`` ``"cancer"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  negativeClass ``=`` ``"No_Cancer"``,`\
+`  dependentVars ``=`` ``"psa_level"``,`\
+`  fixedSensSpecAnalysis ``=`` ``TRUE``,`\
+`  fixedAnalysisType ``=`` ``"sensitivity"``,`\
+`  fixedSensitivityValue ``=`` ``0.95``,`\
+`  fixedInterpolation ``=`` ``"linear"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Fixed ROC plot with explanation
 
-``` r
-
-psychopdaROC(
-  data = screening_data,
-  classVar = "cancer",
-  positiveClass = "Cancer",
-  dependentVars = "psa_level",
-  fixedSensSpecAnalysis = TRUE,
-  fixedAnalysisType = "sensitivity",
-  fixedSensitivityValue = 0.95,
-  showFixedROC = TRUE,
-  showFixedExplanation = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``screening_data``,`\
+`  classVar ``=`` ``"cancer"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  negativeClass ``=`` ``"No_Cancer"``,`\
+`  dependentVars ``=`` ``"psa_level"``,`\
+`  fixedSensSpecAnalysis ``=`` ``TRUE``,`\
+`  fixedAnalysisType ``=`` ``"sensitivity"``,`\
+`  fixedSensitivityValue ``=`` ``0.95``,`\
+`  showFixedROC ``=`` ``TRUE``,`\
+`  showFixedExplanation ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -886,70 +734,58 @@ psychopdaROC(
 
 #### Integrated Discrimination Improvement (IDI)
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3),
-  calculateIDI = TRUE,
-  refVar = NULL,
-  idiNriBootRuns = 100
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``)``,`\
+`  calculateIDI ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL``,`\
+`  idiNriBootRuns ``=`` ``100`\
+`)`
 
 #### Category-based Net Reclassification Index (NRI)
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3),
-  calculateNRI = TRUE,
-  refVar = NULL,
-  nriThresholds = "0.3,0.7"
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``)``,`\
+`  calculateNRI ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL``,`\
+`  nriThresholds ``=`` ``"0.3,0.7"`\
+`)`
 
 #### Continuous NRI (no thresholds)
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3),
-  calculateNRI = TRUE,
-  refVar = NULL,
-  nriThresholds = ""
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``)``,`\
+`  calculateNRI ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL``,`\
+`  nriThresholds ``=`` ``""`\
+`)`
 
 #### Comprehensive classifier comparison
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3),
-  compareClassifiers = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``)``,`\
+`  compareClassifiers ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -957,74 +793,62 @@ psychopdaROC(
 
 #### Effect size analysis
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  effectSizeAnalysis = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  effectSizeAnalysis ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Post-hoc power analysis
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  powerAnalysis = TRUE,
-  powerAnalysisType = "post_hoc",
-  significanceLevel = 0.05,
-  targetPower = 0.80,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  powerAnalysis ``=`` ``TRUE``,`\
+`  powerAnalysisType ``=`` ``"post_hoc"``,`\
+`  significanceLevel ``=`` ``0.05``,`\
+`  targetPower ``=`` ``0.80``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Prospective power analysis
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  powerAnalysis = TRUE,
-  powerAnalysisType = "prospective",
-  expectedAUCDifference = 0.10,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  powerAnalysis ``=`` ``TRUE``,`\
+`  powerAnalysisType ``=`` ``"prospective"``,`\
+`  expectedAUCDifference ``=`` ``0.10``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Sample size estimation
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  powerAnalysis = TRUE,
-  powerAnalysisType = "sample_size",
-  correlationROCs = 0.5,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  powerAnalysis ``=`` ``TRUE``,`\
+`  powerAnalysisType ``=`` ``"sample_size"``,`\
+`  correlationROCs ``=`` ``0.5``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -1032,39 +856,33 @@ psychopdaROC(
 
 #### Default prior (AUC=0.7, precision=10)
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  bayesianAnalysis = TRUE,
-  priorAUC = 0.7,
-  priorPrecision = 10,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  priorAUC ``=`` ``0.7``,`\
+`  priorPrecision ``=`` ``10``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Strong prior belief (AUC=0.9, high precision)
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  bayesianAnalysis = TRUE,
-  priorAUC = 0.9,
-  priorPrecision = 50,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  priorAUC ``=`` ``0.9``,`\
+`  priorPrecision ``=`` ``50``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -1072,219 +890,98 @@ psychopdaROC(
 
 #### Decision curve analysis
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  clinicalUtilityAnalysis = TRUE,
-  treatmentThreshold = "0.05,0.5,0.05",
-  harmBenefitRatio = 0.25,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  clinicalUtilityAnalysis ``=`` ``TRUE``,`\
+`  treatmentThresholdMin ``=`` ``0.05``,`\
+`  treatmentThresholdMax ``=`` ``0.5``,`\
+`  treatmentThresholdStep ``=`` ``0.05``,`\
+`  harmBenefitRatio ``=`` ``0.25``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### With intervention cost analysis
 
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  clinicalUtilityAnalysis = TRUE,
-  interventionCost = TRUE,
-  harmBenefitRatio = 1.0,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  clinicalUtilityAnalysis ``=`` ``TRUE``,`\
+`  interventionCost ``=`` ``TRUE``,`\
+`  harmBenefitRatio ``=`` ``1.0``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
-### 15. Meta-Analysis (3+ Variables Required)
+### 15. Within-Cohort Meta-Analysis (Retired)
 
-#### Fixed and random effects meta-analysis
-
-``` r
-
-advanced_data <- read.csv(paste0(data_path2, "psychopdaROC_advanced.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = advanced_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker_excellent, marker_good, marker_moderate,
-                       marker_fair, marker_poor),
-  metaAnalysis = TRUE,
-  metaAnalysisMethod = "both",
-  heterogeneityTest = TRUE,
-  overrideMetaAnalysisWarning = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'advanced_data' not found
-```
-
-#### Forest plot
-
-``` r
-
-psychopdaROC(
-  data = advanced_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker_excellent, marker_good, marker_moderate,
-                       marker_fair, marker_poor),
-  metaAnalysis = TRUE,
-  metaAnalysisMethod = "both",
-  forestPlot = TRUE,
-  overrideMetaAnalysisWarning = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'advanced_data' not found
-```
-
-#### Fixed effects only (3 markers)
-
-``` r
-
-psychopdaROC(
-  data = advanced_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker_excellent, marker_good, marker_moderate),
-  metaAnalysis = TRUE,
-  metaAnalysisMethod = "fixed",
-  overrideMetaAnalysisWarning = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'advanced_data' not found
-```
+Pooling multiple markers measured on the **same patients** as if they
+were independent studies is statistically invalid because the AUCs are
+correlated. The legacy `metaAnalysis`, `metaAnalysisMethod`,
+`heterogeneityTest`, `forestPlot`, and `overrideMetaAnalysisWarning`
+options are retained as hidden arguments for backward compatibility with
+saved `.omv` files and R scripts, but no pooled AUC, heterogeneity test,
+or pooled forest plot is emitted. Use `delongTest = TRUE` or
+`compareClassifiers = TRUE` (Section 6) to compare multiple markers on
+the same cohort.
 
 ------------------------------------------------------------------------
 
-### 16. Clinical Mode Presets
+### 16. Guidance Level (`clinicalMode`)
 
-#### Basic mode (minimal clinical output)
+`clinicalMode` only changes which explanatory notes appear in the
+Procedure Notes panel; it does not change any statistic. To tailor the
+cut-point to a clinical goal, choose the `method` and `metric` (sections
+above), or report performance at a fixed sensitivity or specificity
+(`fixedSensSpecAnalysis`).
 
-``` r
+#### Basic (default)
 
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  clinicalMode = "basic",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  clinicalMode ``=`` ``"basic"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Advanced mode
 
-``` r
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  clinicalMode ``=`` ``"advanced"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  clinicalMode = "advanced",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+#### Comprehensive mode
 
-#### Comprehensive mode (full research-grade output)
-
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  clinicalMode = "comprehensive",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
-
-#### Screening preset
-
-``` r
-
-psychopdaROC(
-  data = screening_data,
-  classVar = "cancer",
-  positiveClass = "Cancer",
-  dependentVars = "psa_level",
-  clinicalPreset = "screening",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
-
-#### Confirmation preset
-
-``` r
-
-psychopdaROC(
-  data = cardiac_data,
-  classVar = "mi_status",
-  positiveClass = "MI",
-  dependentVars = "troponin",
-  clinicalPreset = "confirmation",
-  refVar = NULL
-)
-#> Error:
-#> ! Argument 'dependentVars' contains 'troponin' which is not present in the dataset
-```
-
-#### Balanced and research presets
-
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  clinicalPreset = "balanced",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
-
-``` r
-
-psychopdaROC(
-  data = test_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  clinicalPreset = "research",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'test_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``test_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  clinicalMode ``=`` ``"comprehensive"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -1292,166 +989,125 @@ psychopdaROC(
 
 #### Perfect separation (AUC=1.0)
 
-``` r
-
-perfect_data <- read.csv(paste0(data_path, "psychopdaROC_perfect.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = perfect_data,
-  classVar = "condition",
-  positiveClass = "Positive",
-  dependentVars = "perfect_test",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'perfect_data' not found
-```
+\
+`perfect_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_perfect.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``perfect_data``,`\
+`  classVar ``=`` ``"condition"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` ``"perfect_test"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### No discrimination (AUC~0.5)
 
-``` r
-
-poor_data <- read.csv(paste0(data_path, "psychopdaROC_poor.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = poor_data,
-  classVar = "status",
-  positiveClass = "Case",
-  dependentVars = "poor_marker",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'poor_data' not found
-```
+\
+`poor_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_poor.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``poor_data``,`\
+`  classVar ``=`` ``"status"``,`\
+`  positiveClass ``=`` ``"Case"``,`\
+`  negativeClass ``=`` ``"Control"``,`\
+`  dependentVars ``=`` ``"poor_marker"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Moderate overlap (AUC~0.70)
 
-``` r
-
-overlap_data <- read.csv(paste0(data_path, "psychopdaROC_overlap.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = overlap_data,
-  classVar = "diagnosis",
-  positiveClass = "Diseased",
-  dependentVars = "test_value",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'overlap_data' not found
-```
+\
+`overlap_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_overlap.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``overlap_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Diseased"``,`\
+`  negativeClass ``=`` ``"Non_Diseased"``,`\
+`  dependentVars ``=`` ``"test_value"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Small sample (n=30)
 
-``` r
-
-small_data <- read.csv(paste0(data_path, "psychopdaROC_small.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = small_data,
-  classVar = "class",
-  positiveClass = "Positive",
-  dependentVars = "marker",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'small_data' not found
-```
+\
+`small_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_small.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``small_data``,`\
+`  classVar ``=`` ``"class"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` ``"marker"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Extreme imbalance (2% event rate)
 
-``` r
-
-imbalanced_data <- read.csv(paste0(data_path, "psychopdaROC_imbalanced.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = imbalanced_data,
-  classVar = "rare_outcome",
-  positiveClass = "Event",
-  dependentVars = "predictor",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'imbalanced_data' not found
-```
+\
+`imbalanced_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_imbalanced.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``imbalanced_data``,`\
+`  classVar ``=`` ``"rare_outcome"``,`\
+`  positiveClass ``=`` ``"Event"``,`\
+`  negativeClass ``=`` ``"No_Event"``,`\
+`  dependentVars ``=`` ``"predictor"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Constant predictor (zero variance)
 
-``` r
-
-constant_data <- read.csv(paste0(data_path, "psychopdaROC_constant.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = constant_data,
-  classVar = "outcome",
-  positiveClass = "Positive",
-  dependentVars = "constant_marker",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'constant_data' not found
-```
+\
+`constant_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_constant.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``constant_data``,`\
+`  classVar ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` ``"constant_marker"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Missing data
 
-``` r
-
-missing_data <- read.csv(paste0(data_path, "psychopdaROC_missing.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = missing_data,
-  classVar = "diagnosis",
-  positiveClass = "Disease",
-  dependentVars = vars(test_a, test_b),
-  refVar = NULL
-)
-#> Error:
-#> ! object 'missing_data' not found
-```
+\
+`missing_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_missing.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``missing_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"Healthy"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``test_a``, ``test_b``)``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Rare disease (5% prevalence)
 
-``` r
-
-psychopdaROC(
-  data = rare_data,
-  classVar = "rare_disease",
-  positiveClass = "Disease",
-  dependentVars = "biomarker",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'rare_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``rare_data``,`\
+`  classVar ``=`` ``"rare_disease"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"No_Disease"``,`\
+`  dependentVars ``=`` ``"biomarker"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Large dataset (n=500)
 
-``` r
-
-psychopdaROC(
-  data = large_data,
-  classVar = "disease_status",
-  positiveClass = "Disease",
-  dependentVars = vars(biomarker1, biomarker2),
-  refVar = NULL
-)
-#> Error:
-#> ! object 'large_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``large_data``,`\
+`  classVar ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  negativeClass ``=`` ``"No_Disease"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``biomarker1``, ``biomarker2``)``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -1459,43 +1115,33 @@ psychopdaROC(
 
 #### Compare baseline vs follow-up markers
 
-``` r
-
-timedep_data <- read.csv(paste0(data_path, "psychopdaROC_timedep.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = timedep_data,
-  classVar = "outcome",
-  positiveClass = "Event",
-  dependentVars = vars(baseline_marker, followup_marker),
-  delongTest = TRUE,
-  combinePlots = TRUE,
-  refVar = NULL
-)
-#> Error:
-#> ! object 'timedep_data' not found
-```
+\
+`timedep_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_timedep.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``timedep_data``,`\
+`  classVar ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Event"``,`\
+`  negativeClass ``=`` ``"No_Event"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``baseline_marker``, ``followup_marker``)``,`\
+`  delongTest ``=`` ``TRUE``,`\
+`  combinePlots ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 #### Disease spectrum data
 
-``` r
-
-spectrum_data <- read.csv(paste0(data_path, "psychopdaROC_spectrum.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-psychopdaROC(
-  data = spectrum_data,
-  classVar = "binary_status",
-  positiveClass = "Positive",
-  dependentVars = "continuous_marker",
-  refVar = NULL
-)
-#> Error:
-#> ! object 'spectrum_data' not found
-```
+\
+`spectrum_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"psychopdaROC_spectrum.csv"``)``)`\
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``spectrum_data``,`\
+`  classVar ``=`` ``"binary_status"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` ``"continuous_marker"``,`\
+`  refVar ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -1503,31 +1149,28 @@ psychopdaROC(
 
 Full research-grade analysis combining multiple features.
 
-``` r
-
-psychopdaROC(
-  data = multi_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  dependentVars = vars(marker1, marker2, marker3, combined_score),
-  clinicalMode = "comprehensive",
-  method = "maximize_metric",
-  metric = "youden",
-  delongTest = TRUE,
-  calculateIDI = TRUE,
-  calculateNRI = TRUE,
-  refVar = NULL,
-  bootstrapCI = TRUE,
-  bootstrapReps = 100,
-  clinicalUtilityAnalysis = TRUE,
-  plotROC = TRUE,
-  combinePlots = TRUE,
-  cleanPlot = TRUE,
-  sensSpecTable = TRUE
-)
-#> Error:
-#> ! object 'multi_data' not found
-```
+\
+[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``multi_data``,`\
+`  classVar ``=`` ``"diagnosis"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  negativeClass ``=`` ``"Negative"``,`\
+`  dependentVars ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``marker1``, ``marker2``, ``marker3``, ``combined_score``)``,`\
+`  clinicalMode ``=`` ``"comprehensive"``,`\
+`  method ``=`` ``"maximize_metric"``,`\
+`  metric ``=`` ``"youden"``,`\
+`  delongTest ``=`` ``TRUE``,`\
+`  calculateIDI ``=`` ``TRUE``,`\
+`  calculateNRI ``=`` ``TRUE``,`\
+`  refVar ``=`` ``NULL``,`\
+`  bootstrapCI ``=`` ``TRUE``,`\
+`  bootstrapReps ``=`` ``100``,`\
+`  clinicalUtilityAnalysis ``=`` ``TRUE``,`\
+`  plotROC ``=`` ``TRUE``,`\
+`  combinePlots ``=`` ``TRUE``,`\
+`  cleanPlot ``=`` ``TRUE``,`\
+`  sensSpecTable ``=`` ``TRUE`\
+`)`
 
 ------------------------------------------------------------------------
 

@@ -52,97 +52,89 @@ The default analysis computes Cohen’s kappa (2 raters) or Fleiss’ kappa
 
 #### Basic two-rater kappa
 
-``` r
-
-# Dataset: agreement_pathology
-# Raters: Pathologist1, Pathologist2
-# Diagnoses: Benign, Low-grade malignant, High-grade malignant
-
-agreement_pathology <- read.csv(paste0(data_path, "agreement_pathology.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2)
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
+\
+`# Dataset: agreement_pathology`\
+`# Raters: Pathologist1, Pathologist2`\
+`# Diagnoses: Benign, Low-grade malignant, High-grade malignant`\
+\
+`agreement_pathology`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_pathology.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
 #### With frequency table and additional statistics
 
-``` r
-
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    sft = TRUE,                     # Show contingency (frequency) table
-    pabak = TRUE,                   # Prevalence-Adjusted Bias-Adjusted Kappa
-    gwet = TRUE,                    # Gwet's AC1/AC2 (stable with prevalence imbalance)
-    gwetWeights = "unweighted",     # or "linear", "quadratic"
-    specificAgreement = TRUE,       # Category-specific agreement (PSA/NSA)
-    specificAllCategories = TRUE,   # Show for all categories
-    specificConfidenceIntervals = TRUE,
-    raterBias = TRUE,               # McNemar test for systematic rater bias
-    bhapkar = TRUE,                 # Bhapkar test (multivariate extension)
-    stuartMaxwell = TRUE,           # Stuart-Maxwell marginal homogeneity test
-    agreementHeatmap = TRUE,        # Visual heatmap of cross-tabulation
-    heatmapColorScheme = "bluered", # Color scheme (bluered/viridis/heat/grayscale)
-    heatmapShowPercentages = TRUE,
-    heatmapShowCounts = TRUE,
-    heatmapAnnotationSize = 3.5
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    sft ``=`` ``TRUE``,                     ``# Show contingency (frequency) table`\
+`    pabak ``=`` ``TRUE``,                   ``# Prevalence-Adjusted Bias-Adjusted Kappa`\
+`    gwet ``=`` ``TRUE``,                    ``# Gwet's AC1/AC2 (stable with prevalence imbalance)`\
+`    gwetWeights ``=`` ``"unweighted"``,     ``# or "linear", "quadratic"`\
+`    specificAgreement ``=`` ``TRUE``,       ``# Category-specific agreement (PSA/NSA)`\
+`    specificAllCategories ``=`` ``TRUE``,   ``# Show for all categories`\
+`    specificConfidenceIntervals ``=`` ``TRUE``,`\
+`    raterBias ``=`` ``TRUE``,               ``# McNemar test for systematic rater bias`\
+`    bhapkar ``=`` ``TRUE``,                 ``# Bhapkar test (multivariate extension)`\
+`    stuartMaxwell ``=`` ``TRUE``,           ``# Stuart-Maxwell marginal homogeneity test`\
+`    agreementHeatmap ``=`` ``TRUE``,        ``# Visual heatmap of cross-tabulation`\
+`    heatmapColorScheme ``=`` ``"bluered"``, ``# Color scheme (bluered/viridis/heat/grayscale)`\
+`    heatmapShowPercentages ``=`` ``TRUE``,`\
+`    heatmapShowCounts ``=`` ``TRUE``,`\
+`    heatmapAnnotationSize ``=`` ``3.5`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
 #### With subgroup analysis
 
-``` r
-
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    agreementBySubgroup = TRUE,
-    subgroupVariable = specimen_type,   # Compare kappa across specimen types
-    subgroupForestPlot = TRUE,          # Forest plot of subgroup kappas
-    subgroupMinCases = 10               # Minimum cases per subgroup
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``specimen_type``,   ``# Compare kappa across specimen types`\
+`    subgroupForestPlot ``=`` ``TRUE``,          ``# Forest plot of subgroup kappas`\
+`    subgroupMinCases ``=`` ``10``               ``# Minimum cases per subgroup`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
 ------------------------------------------------------------------------
 
 ### 2. Binary Agreement
 
-``` r
-
-# Dataset: agreement_binary
-# Raters: PathologistX, PathologistY (Positive/Negative)
-
-agreement_binary <- read.csv(paste0(data_path, "agreement_binary.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_binary,
-    conditionBVars = NULL,
-    vars = vars(PathologistX, PathologistY),
-    specificAgreement = TRUE,
-    specificPositiveCategory = "Positive",  # Category for PSA/NSA
-    specificConfidenceIntervals = TRUE,
-    pabak = TRUE,
-    agreementBySubgroup = TRUE,
-    subgroupVariable = specimen_quality
-)
-#> Error:
-#> ! object 'agreement_binary' not found
-```
+\
+`# Dataset: agreement_binary`\
+`# Raters: PathologistX, PathologistY (Positive/Negative)`\
+\
+`agreement_binary`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_binary.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_binary``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``PathologistX``, ``PathologistY``)``,`\
+`    specificAgreement ``=`` ``TRUE``,`\
+`    specificPositiveCategory ``=`` ``"Positive"``,  ``# Category for PSA/NSA`\
+`    specificConfidenceIntervals ``=`` ``TRUE``,`\
+`    pabak ``=`` ``TRUE``,`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``specimen_quality`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_binary' not found`
 
 ------------------------------------------------------------------------
 
@@ -152,53 +144,49 @@ For ordinal data (e.g., tumor grades), weighted kappa accounts for the
 magnitude of disagreement. A Grade 1 vs Grade 3 mismatch is penalized
 more heavily than Grade 1 vs Grade 2.
 
-``` r
+\
+`# Dataset: agreement_ordinal`\
+`# Raters: PathologistA, PathologistB (Grade 1/2/3)`\
+\
+`agreement_ordinal`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_ordinal.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+`# Convert to ordered factors (required for weighted kappa & rank-based methods)`\
+`grade_levels`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Grade 1"``, ``"Grade 2"``, ``"Grade 3"``, ``"Grade 4"``)`\
+`agreement_ordinal``$``PathologistA`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``agreement_ordinal``$``PathologistA``,`\
+`    levels ``=`` ``grade_levels``, ordered ``=`` ``TRUE``)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_ordinal' not found`\
+`agreement_ordinal``$``PathologistB`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``agreement_ordinal``$``PathologistB``,`\
+`    levels ``=`` ``grade_levels``, ordered ``=`` ``TRUE``)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_ordinal' not found`\
+\
+`# Linear weights`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_ordinal``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``PathologistA``, ``PathologistB``)``,`\
+`    wght ``=`` ``"equal"``,              ``# Linear weights`\
+`    showLevelInfo ``=`` ``TRUE``,        ``# Show category-level details`\
+`    kendallW ``=`` ``TRUE``,             ``# Kendall's W (coefficient of concordance)`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``tumor_site`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_ordinal' not found`
 
-# Dataset: agreement_ordinal
-# Raters: PathologistA, PathologistB (Grade 1/2/3)
-
-agreement_ordinal <- read.csv(paste0(data_path, "agreement_ordinal.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-# Convert to ordered factors (required for weighted kappa & rank-based methods)
-grade_levels <- c("Grade 1", "Grade 2", "Grade 3", "Grade 4")
-agreement_ordinal$PathologistA <- factor(agreement_ordinal$PathologistA,
-    levels = grade_levels, ordered = TRUE)
-#> Error:
-#> ! object 'agreement_ordinal' not found
-agreement_ordinal$PathologistB <- factor(agreement_ordinal$PathologistB,
-    levels = grade_levels, ordered = TRUE)
-#> Error:
-#> ! object 'agreement_ordinal' not found
-
-# Linear weights
-agreement(
-    data = agreement_ordinal,
-    conditionBVars = NULL,
-    vars = vars(PathologistA, PathologistB),
-    wght = "equal",              # Linear weights
-    showLevelInfo = TRUE,        # Show category-level details
-    kendallW = TRUE,             # Kendall's W (coefficient of concordance)
-    agreementBySubgroup = TRUE,
-    subgroupVariable = tumor_site
-)
-#> Error:
-#> ! object 'agreement_ordinal' not found
-```
-
-``` r
-
-# Quadratic weights (more forgiving of near-misses)
-agreement(
-    data = agreement_ordinal,
-    conditionBVars = NULL,
-    vars = vars(PathologistA, PathologistB),
-    wght = "squared"
-)
-#> Error:
-#> ! object 'agreement_ordinal' not found
-```
+\
+`# Quadratic weights (more forgiving of near-misses)`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_ordinal``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``PathologistA``, ``PathologistB``)``,`\
+`    wght ``=`` ``"squared"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_ordinal' not found`
 
 ------------------------------------------------------------------------
 
@@ -207,78 +195,74 @@ agreement(
 When 3+ raters are present, the module automatically computes Fleiss’
 kappa. Light’s kappa is the average of all pairwise Cohen’s kappas.
 
-``` r
-
-# Dataset: agreement_threeRater
-# Raters: Rater1, Rater2, Rater3
-
-agreement_threeRater <- read.csv(paste0(data_path, "agreement_threeRater.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_threeRater,
-    conditionBVars = NULL,
-    vars = vars(Rater1, Rater2, Rater3),
-    exct = TRUE,                        # Exact kappa (small samples)
-    lightKappa = TRUE,                  # Light's Kappa (mean pairwise)
-    finn = TRUE,                        # Finn coefficient
-    finnLevels = 3,                     # Number of response categories
-    finnModel = "oneway",               # "oneway" or "twoway"
-    multiAnnotatorConcordance = TRUE,   # Multi-annotator concordance (F1)
-    predictionColumn = 1,               # Which rater is the "prediction"
-    agreementBySubgroup = TRUE,
-    subgroupVariable = tissue_site
-)
-#> Error:
-#> ! object 'agreement_threeRater' not found
-```
+\
+`# Dataset: agreement_threeRater`\
+`# Raters: Rater1, Rater2, Rater3`\
+\
+`agreement_threeRater`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_threeRater.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_threeRater``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1``, ``Rater2``, ``Rater3``)``,`\
+`    exct ``=`` ``TRUE``,                        ``# Exact kappa (small samples)`\
+`    lightKappa ``=`` ``TRUE``,                  ``# Light's Kappa (mean pairwise)`\
+`    finn ``=`` ``TRUE``,                        ``# Finn coefficient`\
+`    finnLevels ``=`` ``3``,                     ``# Number of response categories`\
+`    finnModel ``=`` ``"oneway"``,               ``# "oneway" or "twoway"`\
+`    multiAnnotatorConcordance ``=`` ``TRUE``,   ``# Multi-annotator concordance (F1)`\
+`    predictionColumn ``=`` ``1``,               ``# Which rater is the "prediction"`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``tissue_site`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_threeRater' not found`
 
 #### Five raters with clustering and profiles
 
-``` r
-
-# Dataset: agreement_multiRater
-# Raters: SeniorPath1, SeniorPath2, MidLevelPath, JuniorPath1, JuniorPath2
-
-agreement_multiRater <- read.csv(paste0(data_path, "agreement_multiRater.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_multiRater,
-    conditionBVars = NULL,
-    vars = vars(SeniorPath1, SeniorPath2, MidLevelPath, JuniorPath1, JuniorPath2),
-    lightKappa = TRUE,
-    # Rater clustering
-    raterClustering = TRUE,
-    clusterMethod = "hierarchical",     # or "kmeans"
-    clusterDistance = "correlation",     # or "euclidean", "manhattan"
-    clusterLinkage = "average",         # or "complete", "ward.D2"
-    nClusters = 2,
-    showDendrogram = TRUE,
-    showClusterHeatmap = TRUE,
-    # Case clustering
-    caseClustering = TRUE,
-    caseClusterMethod = "hierarchical",
-    caseClusterDistance = "correlation",
-    caseClusterLinkage = "average",
-    nCaseClusters = 2,
-    showCaseDendrogram = TRUE,
-    showCaseClusterHeatmap = TRUE,
-    # Rater profiles
-    raterProfiles = TRUE,
-    raterProfileType = "boxplot",       # "boxplot", "violin", or "barplot"
-    raterProfileShowPoints = TRUE,
-    # Subgroup
-    agreementBySubgroup = TRUE,
-    subgroupVariable = difficulty,
-    subgroupForestPlot = TRUE,
-    subgroupMinCases = 10
-)
-#> Error:
-#> ! object 'agreement_multiRater' not found
-```
+\
+`# Dataset: agreement_multiRater`\
+`# Raters: SeniorPath1, SeniorPath2, MidLevelPath, JuniorPath1, JuniorPath2`\
+\
+`agreement_multiRater`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_multiRater.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_multiRater``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``SeniorPath1``, ``SeniorPath2``, ``MidLevelPath``, ``JuniorPath1``, ``JuniorPath2``)``,`\
+`    lightKappa ``=`` ``TRUE``,`\
+`    ``# Rater clustering`\
+`    raterClustering ``=`` ``TRUE``,`\
+`    clusterMethod ``=`` ``"hierarchical"``,     ``# or "kmeans"`\
+`    clusterDistance ``=`` ``"correlation"``,     ``# or "euclidean", "manhattan"`\
+`    clusterLinkage ``=`` ``"average"``,         ``# or "complete", "ward.D2"`\
+`    nClusters ``=`` ``2``,`\
+`    showDendrogram ``=`` ``TRUE``,`\
+`    showClusterHeatmap ``=`` ``TRUE``,`\
+`    ``# Case clustering`\
+`    caseClustering ``=`` ``TRUE``,`\
+`    caseClusterMethod ``=`` ``"hierarchical"``,`\
+`    caseClusterDistance ``=`` ``"correlation"``,`\
+`    caseClusterLinkage ``=`` ``"average"``,`\
+`    nCaseClusters ``=`` ``2``,`\
+`    showCaseDendrogram ``=`` ``TRUE``,`\
+`    showCaseClusterHeatmap ``=`` ``TRUE``,`\
+`    ``# Rater profiles`\
+`    raterProfiles ``=`` ``TRUE``,`\
+`    raterProfileType ``=`` ``"boxplot"``,       ``# "boxplot", "violin", or "barplot"`\
+`    raterProfileShowPoints ``=`` ``TRUE``,`\
+`    ``# Subgroup`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``difficulty``,`\
+`    subgroupForestPlot ``=`` ``TRUE``,`\
+`    subgroupMinCases ``=`` ``10`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_multiRater' not found`
 
 ------------------------------------------------------------------------
 
@@ -290,161 +274,153 @@ and CCC.
 
 #### Two continuous raters
 
-``` r
-
-# Dataset: agreement_continuous
-# Raters: MeasurementA, MeasurementB
-
-agreement_continuous <- read.csv(paste0(data_path, "agreement_continuous.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    # Intraclass Correlation Coefficient
-    icc = TRUE,
-    iccType = "icc21",          # ICC(2,1) two-way random, single measures
-    # Bland-Altman analysis
-    blandAltmanPlot = TRUE,
-    baConfidenceLevel = 0.95,
-    proportionalBias = TRUE,    # Test for proportional bias
-    # Lin's Concordance Correlation Coefficient
-    linCCC = TRUE,
-    # Total Deviation Index
-    tdi = TRUE,
-    tdiCoverage = 90,           # Percentage coverage
-    tdiLimit = 10,              # Acceptable limit
-    # Additional methods
-    meanPearson = TRUE,         # Mean Pearson correlation
-    meanSpearman = TRUE,        # Mean Spearman correlation
-    robinsonA = TRUE,           # Robinson's A
-    maxwellRE = TRUE,           # Maxwell's Random Effect model
-    iota = TRUE,                # Iota index
-    iotaStandardize = TRUE,     # Standardize before computing
-    # Subgroup
-    agreementBySubgroup = TRUE,
-    subgroupVariable = tumor_type
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-```
+\
+`# Dataset: agreement_continuous`\
+`# Raters: MeasurementA, MeasurementB`\
+\
+`agreement_continuous`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_continuous.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    ``# Intraclass Correlation Coefficient`\
+`    icc ``=`` ``TRUE``,`\
+`    iccType ``=`` ``"icc21"``,          ``# ICC(2,1) two-way random, single measures`\
+`    ``# Bland-Altman analysis`\
+`    blandAltmanPlot ``=`` ``TRUE``,`\
+`    baConfidenceLevel ``=`` ``0.95``,`\
+`    proportionalBias ``=`` ``TRUE``,    ``# Test for proportional bias`\
+`    ``# Lin's Concordance Correlation Coefficient`\
+`    linCCC ``=`` ``TRUE``,`\
+`    ``# Total Deviation Index`\
+`    tdi ``=`` ``TRUE``,`\
+`    tdiCoverage ``=`` ``90``,           ``# Percentage coverage`\
+`    tdiLimit ``=`` ``10``,              ``# Acceptable limit`\
+`    ``# Additional methods`\
+`    meanPearson ``=`` ``TRUE``,         ``# Mean Pearson correlation`\
+`    meanSpearman ``=`` ``TRUE``,        ``# Mean Spearman correlation`\
+`    robinsonA ``=`` ``TRUE``,           ``# Robinson's A`\
+`    maxwellRE ``=`` ``TRUE``,           ``# Maxwell's Random Effect model`\
+`    iota ``=`` ``TRUE``,                ``# Iota index`\
+`    iotaStandardize ``=`` ``TRUE``,     ``# Standardize before computing`\
+`    ``# Subgroup`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``tumor_type`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`
 
 #### Cycling through all ICC types
 
-``` r
-
-# ICC(1,1): One-way random, single measures
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    icc = TRUE, iccType = "icc11"
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-
-# ICC(2,1): Two-way random, single measures (most common)
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    icc = TRUE, iccType = "icc21"
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-
-# ICC(3,1): Two-way mixed, single measures
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    icc = TRUE, iccType = "icc31"
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-
-# ICC(1,k): One-way random, average measures
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    icc = TRUE, iccType = "icc1k"
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-
-# ICC(2,k): Two-way random, average measures
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    icc = TRUE, iccType = "icc2k"
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-
-# ICC(3,k): Two-way mixed, average measures
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    icc = TRUE, iccType = "icc3k"
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-```
+\
+`# ICC(1,1): One-way random, single measures`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    icc ``=`` ``TRUE``, iccType ``=`` ``"icc11"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`\
+\
+`# ICC(2,1): Two-way random, single measures (most common)`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    icc ``=`` ``TRUE``, iccType ``=`` ``"icc21"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`\
+\
+`# ICC(3,1): Two-way mixed, single measures`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    icc ``=`` ``TRUE``, iccType ``=`` ``"icc31"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`\
+\
+`# ICC(1,k): One-way random, average measures`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    icc ``=`` ``TRUE``, iccType ``=`` ``"icc1k"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`\
+\
+`# ICC(2,k): Two-way random, average measures`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    icc ``=`` ``TRUE``, iccType ``=`` ``"icc2k"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`\
+\
+`# ICC(3,k): Two-way mixed, average measures`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    icc ``=`` ``TRUE``, iccType ``=`` ``"icc3k"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`
 
 #### Three continuous raters (Ki-67)
 
-``` r
-
-# Dataset: pathology_agreement_multimethod (using 3 of 4 raters)
-# Raters: Ki67_HALO, Ki67_Aiforia, Ki67_ImageJ
-
-pathology_multi <- read.csv(paste0(data_path, "pathology_agreement_multimethod.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = pathology_multi,
-    conditionBVars = NULL,
-    vars = vars(Ki67_HALO, Ki67_Aiforia, Ki67_ImageJ),
-    icc = TRUE,
-    meanPearson = TRUE,
-    raterProfiles = TRUE,
-    kripp = TRUE,
-    krippMethod = "interval"    # For continuous data
-)
-#> Error:
-#> ! object 'pathology_multi' not found
-```
+\
+`# Dataset: pathology_agreement_multimethod (using 3 of 4 raters)`\
+`# Raters: Ki67_HALO, Ki67_Aiforia, Ki67_ImageJ`\
+\
+`pathology_multi`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"pathology_agreement_multimethod.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``pathology_multi``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Ki67_HALO``, ``Ki67_Aiforia``, ``Ki67_ImageJ``)``,`\
+`    icc ``=`` ``TRUE``,`\
+`    meanPearson ``=`` ``TRUE``,`\
+`    raterProfiles ``=`` ``TRUE``,`\
+`    kripp ``=`` ``TRUE``,`\
+`    krippMethod ``=`` ``"interval"``    ``# For continuous data`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'pathology_multi' not found`
 
 #### Four continuous raters with bootstrap
 
-``` r
-
-# Dataset: pathology_agreement_multimethod
-# Raters: Ki67_HALO, Ki67_Aiforia, Ki67_ImageJ, Ki67_Manual
-
-pathology_multi <- read.csv(paste0(data_path, "pathology_agreement_multimethod.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = pathology_multi,
-    conditionBVars = NULL,
-    vars = vars(Ki67_HALO, Ki67_Aiforia, Ki67_ImageJ, Ki67_Manual),
-    icc = TRUE,
-    raterClustering = TRUE,
-    caseClustering = TRUE,
-    bootstrapCI = TRUE,
-    nBoot = 100
-)
-#> Error:
-#> ! object 'pathology_multi' not found
-```
+\
+`# Dataset: pathology_agreement_multimethod`\
+`# Raters: Ki67_HALO, Ki67_Aiforia, Ki67_ImageJ, Ki67_Manual`\
+\
+`pathology_multi`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"pathology_agreement_multimethod.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``pathology_multi``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Ki67_HALO``, ``Ki67_Aiforia``, ``Ki67_ImageJ``, ``Ki67_Manual``)``,`\
+`    icc ``=`` ``TRUE``,`\
+`    raterClustering ``=`` ``TRUE``,`\
+`    caseClustering ``=`` ``TRUE``,`\
+`    bootstrapCI ``=`` ``TRUE``,`\
+`    nBoot ``=`` ``100`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'pathology_multi' not found`
 
 ------------------------------------------------------------------------
 
@@ -456,51 +432,47 @@ statistic.
 
 #### Categorical with missing data
 
-``` r
-
-# Dataset: agreement_missing
-# Raters: Rater1, Rater2, Rater3 (with NAs)
-
-agreement_missing <- read.csv(paste0(data_path, "agreement_missing.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_missing,
-    conditionBVars = NULL,
-    vars = vars(Rater1, Rater2, Rater3),
-    kripp = TRUE,
-    krippMethod = "nominal",    # "nominal", "ordinal", "interval", "ratio"
-    bootstrap = TRUE,           # Bootstrap CI for Krippendorff's alpha
-    bootstrapCI = TRUE,
-    nBoot = 100
-)
-#> Error:
-#> ! object 'agreement_missing' not found
-```
+\
+`# Dataset: agreement_missing`\
+`# Raters: Rater1, Rater2, Rater3 (with NAs)`\
+\
+`agreement_missing`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_missing.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_missing``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1``, ``Rater2``, ``Rater3``)``,`\
+`    kripp ``=`` ``TRUE``,`\
+`    krippMethod ``=`` ``"nominal"``,    ``# "nominal", "ordinal", "interval", "ratio"`\
+`    bootstrap ``=`` ``TRUE``,           ``# Bootstrap CI for Krippendorff's alpha`\
+`    bootstrapCI ``=`` ``TRUE``,`\
+`    nBoot ``=`` ``100`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_missing' not found`
 
 #### Continuous with missing data
 
-``` r
-
-# Dataset: pathology_agreement_missing
-# Raters: HALO_Score, Aiforia_Score, ImageJ_Score
-
-pathology_missing <- read.csv(paste0(data_path, "pathology_agreement_missing.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = pathology_missing,
-    conditionBVars = NULL,
-    vars = vars(HALO_Score, Aiforia_Score, ImageJ_Score),
-    kripp = TRUE,
-    krippMethod = "interval",   # Continuous measurement level
-    icc = TRUE                  # Compare with ICC
-)
-#> Error:
-#> ! object 'pathology_missing' not found
-```
+\
+`# Dataset: pathology_agreement_missing`\
+`# Raters: HALO_Score, Aiforia_Score, ImageJ_Score`\
+\
+`pathology_missing`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"pathology_agreement_missing.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``pathology_missing``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``HALO_Score``, ``Aiforia_Score``, ``ImageJ_Score``)``,`\
+`    kripp ``=`` ``TRUE``,`\
+`    krippMethod ``=`` ``"interval"``,   ``# Continuous measurement level`\
+`    icc ``=`` ``TRUE``                  ``# Compare with ICC`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'pathology_missing' not found`
 
 ------------------------------------------------------------------------
 
@@ -509,27 +481,25 @@ agreement(
 Gwet’s AC1/AC2 is more stable than kappa when prevalence is skewed.
 PABAK adjusts for both prevalence and bias.
 
-``` r
-
-# Dataset: agreement_poor (low kappa due to prevalence, not poor raters)
-
-agreement_poor <- read.csv(paste0(data_path, "agreement_poor.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_poor,
-    conditionBVars = NULL,
-    vars = vars(PathologistA, PathologistB),
-    gwet = TRUE,
-    gwetWeights = "unweighted",     # "unweighted", "linear", "quadratic"
-    pabak = TRUE,
-    agreementBySubgroup = TRUE,
-    subgroupVariable = difficulty_level
-)
-#> Error:
-#> ! object 'agreement_poor' not found
-```
+\
+`# Dataset: agreement_poor (low kappa due to prevalence, not poor raters)`\
+\
+`agreement_poor`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_poor.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_poor``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``PathologistA``, ``PathologistB``)``,`\
+`    gwet ``=`` ``TRUE``,`\
+`    gwetWeights ``=`` ``"unweighted"``,     ``# "unweighted", "linear", "quadratic"`\
+`    pabak ``=`` ``TRUE``,`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``difficulty_level`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_poor' not found`
 
 ------------------------------------------------------------------------
 
@@ -546,85 +516,79 @@ kappa analyses.
 
 #### Continuous data: Full hierarchical decomposition
 
-``` r
-
-# Dataset: digital_pathology_validation (continuous Ki-67 scores)
-# Raters: Ki67_Manual, Ki67_AI_Assisted
-# Cluster variable: Institution (4 centers)
-
-digital_path_hier <- read.csv(paste0(data_path, "digital_pathology_validation.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = digital_path_hier,
-    conditionBVars = NULL,
-    vars = vars(Ki67_Manual, Ki67_AI_Assisted),
-    hierarchicalKappa = TRUE,
-    clusterVariable = Institution,           # Nesting variable
-    clusterSpecificKappa = TRUE,             # Kappa per center
-    varianceDecomposition = TRUE,            # Variance components
-    testClusterHomogeneity = TRUE,           # Test if agreement differs across centers
-    shrinkageEstimates = TRUE,               # Empirical Bayes shrinkage
-    clusterRankings = TRUE,                  # Rank centers by agreement
-    iccHierarchical = TRUE,                  # Hierarchical ICC
-    multipleTestCorrection = "bonferroni"    # "none", "bonferroni", "bh", "holm"
-)
-#> Error:
-#> ! object 'digital_path_hier' not found
-```
+\
+`# Dataset: digital_pathology_validation (continuous Ki-67 scores)`\
+`# Raters: Ki67_Manual, Ki67_AI_Assisted`\
+`# Cluster variable: Institution (4 centers)`\
+\
+`digital_path_hier`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"digital_pathology_validation.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``digital_path_hier``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Ki67_Manual``, ``Ki67_AI_Assisted``)``,`\
+`    hierarchicalKappa ``=`` ``TRUE``,`\
+`    clusterVariable ``=`` ``Institution``,           ``# Nesting variable`\
+`    clusterSpecificKappa ``=`` ``TRUE``,             ``# Kappa per center`\
+`    varianceDecomposition ``=`` ``TRUE``,            ``# Variance components`\
+`    testClusterHomogeneity ``=`` ``TRUE``,           ``# Test if agreement differs across centers`\
+`    shrinkageEstimates ``=`` ``TRUE``,               ``# Empirical Bayes shrinkage`\
+`    clusterRankings ``=`` ``TRUE``,                  ``# Rank centers by agreement`\
+`    iccHierarchical ``=`` ``TRUE``,                  ``# Hierarchical ICC`\
+`    multipleTestCorrection ``=`` ``"bonferroni"``    ``# "none", "bonferroni", "bh", "holm"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'digital_path_hier' not found`
 
 #### Categorical data: Pairwise and cluster-specific kappa
 
-``` r
-
-# Dataset: agreement_hierarchical (categorical diagnoses)
-# Raters: HospitalA_Rater1/2, HospitalB_Rater1/2, HospitalC_Rater1/2
-
-agreement_hierarchical <- read.csv(paste0(data_path, "agreement_hierarchical.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_hierarchical,
-    conditionBVars = NULL,
-    vars = vars(
-        HospitalA_Rater1, HospitalA_Rater2,
-        HospitalB_Rater1, HospitalB_Rater2,
-        HospitalC_Rater1, HospitalC_Rater2
-    ),
-    pairwiseKappa = TRUE,
-    referenceRater = HospitalA_Rater1,
-    rankRaters = TRUE
-)
-#> Error:
-#> ! object 'agreement_hierarchical' not found
-```
+\
+`# Dataset: agreement_hierarchical (categorical diagnoses)`\
+`# Raters: HospitalA_Rater1/2, HospitalB_Rater1/2, HospitalC_Rater1/2`\
+\
+`agreement_hierarchical`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_hierarchical.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_hierarchical``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(`\
+`        ``HospitalA_Rater1``, ``HospitalA_Rater2``,`\
+`        ``HospitalB_Rater1``, ``HospitalB_Rater2``,`\
+`        ``HospitalC_Rater1``, ``HospitalC_Rater2`\
+`    ``)``,`\
+`    pairwiseKappa ``=`` ``TRUE``,`\
+`    referenceRater ``=`` ``HospitalA_Rater1``,`\
+`    rankRaters ``=`` ``TRUE`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_hierarchical' not found`
 
 #### Pairwise kappa with reference rater
 
-``` r
-
-# Dataset: comprehensive_agreement_data
-# Raters: Rater_1, Rater_2, Rater_3, Rater_4
-
-comprehensive <- read.csv(paste0(data_path, "comprehensive_agreement_data.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = comprehensive,
-    conditionBVars = NULL,
-    vars = vars(Rater_1, Rater_2, Rater_3, Rater_4),
-    pairwiseKappa = TRUE,
-    referenceRater = Rater_1,       # Compare all raters against this one
-    rankRaters = TRUE,              # Rank raters by agreement with reference
-    agreementBySubgroup = TRUE,
-    subgroupVariable = Difficulty
-)
-#> Error:
-#> ! object 'comprehensive' not found
-```
+\
+`# Dataset: comprehensive_agreement_data`\
+`# Raters: Rater_1, Rater_2, Rater_3, Rater_4`\
+\
+`comprehensive`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"comprehensive_agreement_data.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``comprehensive``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater_1``, ``Rater_2``, ``Rater_3``, ``Rater_4``)``,`\
+`    pairwiseKappa ``=`` ``TRUE``,`\
+`    referenceRater ``=`` ``Rater_1``,       ``# Compare all raters against this one`\
+`    rankRaters ``=`` ``TRUE``,              ``# Rank raters by agreement with reference`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``Difficulty`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'comprehensive' not found`
 
 ------------------------------------------------------------------------
 
@@ -633,27 +597,25 @@ agreement(
 Separates inter-rater from intra-rater reliability using time-point
 suffixes in variable names (e.g., `Rater1_T1`, `Rater1_T2`).
 
-``` r
-
-# Dataset: agreement_testRetest
-# Raters: Rater1_T1, Rater1_T2, Rater2_T1, Rater2_T2, Rater3_T1, Rater3_T2
-
-agreement_testRetest <- read.csv(paste0(data_path, "agreement_testRetest.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_testRetest,
-    conditionBVars = NULL,
-    vars = vars(Rater1_T1, Rater1_T2, Rater2_T1, Rater2_T2, Rater3_T1, Rater3_T2),
-    interIntraRater = TRUE,
-    interIntraSeparator = "_",      # Character separating rater from timepoint
-    finn = TRUE,
-    finnLevels = 3
-)
-#> Error:
-#> ! object 'agreement_testRetest' not found
-```
+\
+`# Dataset: agreement_testRetest`\
+`# Raters: Rater1_T1, Rater1_T2, Rater2_T1, Rater2_T2, Rater3_T1, Rater3_T2`\
+\
+`agreement_testRetest`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_testRetest.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_testRetest``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1_T1``, ``Rater1_T2``, ``Rater2_T1``, ``Rater2_T2``, ``Rater3_T1``, ``Rater3_T2``)``,`\
+`    interIntraRater ``=`` ``TRUE``,`\
+`    interIntraSeparator ``=`` ``"_"``,      ``# Character separating rater from timepoint`\
+`    finn ``=`` ``TRUE``,`\
+`    finnLevels ``=`` ``3`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_testRetest' not found`
 
 ------------------------------------------------------------------------
 
@@ -662,28 +624,26 @@ agreement(
 Compare agreement under two conditions (e.g., manual vs AI-assisted)
 using a bootstrap test of kappa difference.
 
-``` r
-
-# Dataset: agreement_paired_comparison
-# Condition A (vars): Manual_Rater1, Manual_Rater2
-# Condition B (conditionBVars): AI_Rater1, AI_Rater2
-
-agreement_paired <- read.csv(paste0(data_path, "agreement_paired_comparison.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_paired,
-    vars = vars(Manual_Rater1, Manual_Rater2),
-    conditionBVars = vars(AI_Rater1, AI_Rater2),
-    pairedAgreementTest = TRUE,
-    pairedBootN = 200,              # Number of bootstrap replicates
-    agreementBySubgroup = TRUE,
-    subgroupVariable = tumor_type
-)
-#> Error:
-#> ! object 'agreement_paired' not found
-```
+\
+`# Dataset: agreement_paired_comparison`\
+`# Condition A (vars): Manual_Rater1, Manual_Rater2`\
+`# Condition B (conditionBVars): AI_Rater1, AI_Rater2`\
+\
+`agreement_paired`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_paired_comparison.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_paired``,`\
+`    vars ``=`` ``vars``(``Manual_Rater1``, ``Manual_Rater2``)``,`\
+`    conditionBVars ``=`` ``vars``(``AI_Rater1``, ``AI_Rater2``)``,`\
+`    pairedAgreementTest ``=`` ``TRUE``,`\
+`    pairedBootN ``=`` ``200``,              ``# Number of bootstrap replicates`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``tumor_type`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_paired' not found`
 
 ------------------------------------------------------------------------
 
@@ -693,82 +653,76 @@ Compare agreement between conditions (e.g., before vs after training)
 using mixed-effects models. Requires a condition variable in the
 dataset.
 
-``` r
-
-# Dataset: agreement_mixed_effects
-# Raters: Rater1, Rater2
-# Condition: condition (Pre_Training / Post_Training)
-
-agreement_mixed <- read.csv(paste0(data_path, "agreement_mixed_effects.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_mixed,
-    conditionBVars = NULL,
-    vars = vars(Rater1, Rater2),
-    mixedEffectsComparison = TRUE,
-    conditionVariable = condition,
-    icc = TRUE,
-    multipleTestCorrection = "BH"   # Benjamini-Hochberg
-)
-#> Error:
-#> ! object 'agreement_mixed' not found
-```
+\
+`# Dataset: agreement_mixed_effects`\
+`# Raters: Rater1, Rater2`\
+`# Condition: condition (Pre_Training / Post_Training)`\
+\
+`agreement_mixed`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_mixed_effects.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_mixed``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1``, ``Rater2``)``,`\
+`    mixedEffectsComparison ``=`` ``TRUE``,`\
+`    conditionVariable ``=`` ``condition``,`\
+`    icc ``=`` ``TRUE``,`\
+`    multipleTestCorrection ``=`` ``"BH"``   ``# Benjamini-Hochberg`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_mixed' not found`
 
 #### Digital pathology validation
 
-``` r
-
-# Dataset: digital_pathology_validation
-# Raters: Ki67_Manual, Ki67_AI_Assisted
-# Condition: Pathologist_Experience
-
-digital_path <- read.csv(paste0(data_path, "digital_pathology_validation.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = digital_path,
-    conditionBVars = NULL,
-    vars = vars(Ki67_Manual, Ki67_AI_Assisted),
-    mixedEffectsComparison = TRUE,
-    conditionVariable = Pathologist_Experience,
-    blandAltmanPlot = TRUE,
-    linCCC = TRUE,
-    agreementBySubgroup = TRUE,
-    subgroupVariable = Tumor_Type
-)
-#> Error:
-#> ! object 'digital_path' not found
-```
+\
+`# Dataset: digital_pathology_validation`\
+`# Raters: Ki67_Manual, Ki67_AI_Assisted`\
+`# Condition: Pathologist_Experience`\
+\
+`digital_path`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"digital_pathology_validation.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``digital_path``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Ki67_Manual``, ``Ki67_AI_Assisted``)``,`\
+`    mixedEffectsComparison ``=`` ``TRUE``,`\
+`    conditionVariable ``=`` ``Pathologist_Experience``,`\
+`    blandAltmanPlot ``=`` ``TRUE``,`\
+`    linCCC ``=`` ``TRUE``,`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``Tumor_Type`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'digital_path' not found`
 
 ------------------------------------------------------------------------
 
 ### 12. AI Validation
 
-``` r
-
-# Dataset: pathology_agreement_ai
-# Raters: Ki67_AI, Ki67_Pathologist
-
-pathology_ai <- read.csv(paste0(data_path, "pathology_agreement_ai.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = pathology_ai,
-    conditionBVars = NULL,
-    vars = vars(Ki67_AI, Ki67_Pathologist),
-    blandAltmanPlot = TRUE,
-    linCCC = TRUE,
-    icc = TRUE,
-    agreementBySubgroup = TRUE,
-    subgroupVariable = TumorType
-)
-#> Error:
-#> ! object 'pathology_ai' not found
-```
+\
+`# Dataset: pathology_agreement_ai`\
+`# Raters: Ki67_AI, Ki67_Pathologist`\
+\
+`pathology_ai`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"pathology_agreement_ai.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``pathology_ai``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Ki67_AI``, ``Ki67_Pathologist``)``,`\
+`    blandAltmanPlot ``=`` ``TRUE``,`\
+`    linCCC ``=`` ``TRUE``,`\
+`    icc ``=`` ``TRUE``,`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``TumorType`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'pathology_ai' not found`
 
 ------------------------------------------------------------------------
 
@@ -776,78 +730,72 @@ agreement(
 
 Dedicated visualization of cross-tabulated agreement patterns.
 
-``` r
-
-# Dataset: agreement_heatmap_test
-# Raters: Scorer_A, Scorer_B, Scorer_C (HER2 scores: 0, 1+, 2+, 3+)
-
-agreement_heatmap <- read.csv(paste0(data_path, "agreement_heatmap_test.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-# Convert HER2 scores to ordered factors
-her2_levels <- c("0", "1+", "2+", "3+")
-agreement_heatmap$Scorer_A <- factor(agreement_heatmap$Scorer_A,
-    levels = her2_levels, ordered = TRUE)
-#> Error:
-#> ! object 'agreement_heatmap' not found
-agreement_heatmap$Scorer_B <- factor(agreement_heatmap$Scorer_B,
-    levels = her2_levels, ordered = TRUE)
-#> Error:
-#> ! object 'agreement_heatmap' not found
-agreement_heatmap$Scorer_C <- factor(agreement_heatmap$Scorer_C,
-    levels = her2_levels, ordered = TRUE)
-#> Error:
-#> ! object 'agreement_heatmap' not found
-
-agreement(
-    data = agreement_heatmap,
-    conditionBVars = NULL,
-    vars = vars(Scorer_A, Scorer_B, Scorer_C),
-    wght = "equal",                     # Linear weights for ordinal HER2
-    sft = TRUE,                         # Contingency table
-    agreementHeatmap = TRUE,
-    heatmapColorScheme = "bluered",     # "bluered", "viridis", "heat", "grayscale"
-    heatmapShowPercentages = TRUE,
-    heatmapShowCounts = TRUE,
-    heatmapAnnotationSize = 3.5
-)
-#> Error:
-#> ! object 'agreement_heatmap' not found
-```
+\
+`# Dataset: agreement_heatmap_test`\
+`# Raters: Scorer_A, Scorer_B, Scorer_C (HER2 scores: 0, 1+, 2+, 3+)`\
+\
+`agreement_heatmap`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_heatmap_test.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+`# Convert HER2 scores to ordered factors`\
+`her2_levels`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"0"``, ``"1+"``, ``"2+"``, ``"3+"``)`\
+`agreement_heatmap``$``Scorer_A`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``agreement_heatmap``$``Scorer_A``,`\
+`    levels ``=`` ``her2_levels``, ordered ``=`` ``TRUE``)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_heatmap' not found`\
+`agreement_heatmap``$``Scorer_B`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``agreement_heatmap``$``Scorer_B``,`\
+`    levels ``=`` ``her2_levels``, ordered ``=`` ``TRUE``)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_heatmap' not found`\
+`agreement_heatmap``$``Scorer_C`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``agreement_heatmap``$``Scorer_C``,`\
+`    levels ``=`` ``her2_levels``, ordered ``=`` ``TRUE``)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_heatmap' not found`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_heatmap``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Scorer_A``, ``Scorer_B``, ``Scorer_C``)``,`\
+`    wght ``=`` ``"equal"``,                     ``# Linear weights for ordinal HER2`\
+`    sft ``=`` ``TRUE``,                         ``# Contingency table`\
+`    agreementHeatmap ``=`` ``TRUE``,`\
+`    heatmapColorScheme ``=`` ``"bluered"``,     ``# "bluered", "viridis", "heat", "grayscale"`\
+`    heatmapShowPercentages ``=`` ``TRUE``,`\
+`    heatmapShowCounts ``=`` ``TRUE``,`\
+`    heatmapAnnotationSize ``=`` ``3.5`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_heatmap' not found`
 
 ------------------------------------------------------------------------
 
 ### 14. Confusion Matrix
 
-``` r
+\
+`# Dataset: agreement_pathology`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    confusionMatrix ``=`` ``TRUE``,`\
+`    confusionNormalize ``=`` ``"none"``     ``# "none", "row", "column"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
-# Dataset: agreement_pathology
-
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    confusionMatrix = TRUE,
-    confusionNormalize = "none"     # "none", "row", "column"
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
-
-``` r
-
-# Row-normalized (sensitivity per category)
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    confusionMatrix = TRUE,
-    confusionNormalize = "row"
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
+\
+`# Row-normalized (sensitivity per category)`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    confusionMatrix ``=`` ``TRUE``,`\
+`    confusionNormalize ``=`` ``"row"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
 ------------------------------------------------------------------------
 
@@ -856,25 +804,23 @@ agreement(
 BCa (bias-corrected accelerated) bootstrap confidence intervals for all
 agreement statistics.
 
-``` r
-
-# Dataset: agreement_small (n=30)
-
-agreement_small <- read.csv(paste0(data_path, "agreement_small.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_small,
-    conditionBVars = NULL,
-    vars = vars(Rater1, Rater2),
-    bootstrapCI = TRUE,
-    nBoot = 100,                    # Number of bootstrap replicates (100-5000)
-    confLevel = 0.95                # Confidence level
-)
-#> Error:
-#> ! object 'agreement_small' not found
-```
+\
+`# Dataset: agreement_small (n=30)`\
+\
+`agreement_small`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_small.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_small``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1``, ``Rater2``)``,`\
+`    bootstrapCI ``=`` ``TRUE``,`\
+`    nBoot ``=`` ``100``,                    ``# Number of bootstrap replicates (100-5000)`\
+`    confLevel ``=`` ``0.95``                ``# Confidence level`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_small' not found`
 
 ------------------------------------------------------------------------
 
@@ -883,20 +829,18 @@ agreement(
 Evaluates whether a prediction (one rater column) matches the consensus
 of the other annotators.
 
-``` r
-
-# Dataset: agreement_threeRater
-
-agreement(
-    data = agreement_threeRater,
-    conditionBVars = NULL,
-    vars = vars(Rater1, Rater2, Rater3),
-    multiAnnotatorConcordance = TRUE,
-    predictionColumn = 1            # Which rater is the "prediction" (1-indexed)
-)
-#> Error:
-#> ! object 'agreement_threeRater' not found
-```
+\
+`# Dataset: agreement_threeRater`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_threeRater``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1``, ``Rater2``, ``Rater3``)``,`\
+`    multiAnnotatorConcordance ``=`` ``TRUE``,`\
+`    predictionColumn ``=`` ``1``            ``# Which rater is the "prediction" (1-indexed)`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_threeRater' not found`
 
 ------------------------------------------------------------------------
 
@@ -905,22 +849,20 @@ agreement(
 Category-specific agreement rates, important when overall kappa is
 misleading due to prevalence effects.
 
-``` r
-
-# Dataset: agreement_binary
-
-agreement(
-    data = agreement_binary,
-    conditionBVars = NULL,
-    vars = vars(PathologistX, PathologistY),
-    specificAgreement = TRUE,
-    specificPositiveCategory = "Positive",  # Target category for PSA/NSA
-    specificAllCategories = TRUE,           # Show all categories
-    specificConfidenceIntervals = TRUE      # Wilson score CIs
-)
-#> Error:
-#> ! object 'agreement_binary' not found
-```
+\
+`# Dataset: agreement_binary`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_binary``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``PathologistX``, ``PathologistY``)``,`\
+`    specificAgreement ``=`` ``TRUE``,`\
+`    specificPositiveCategory ``=`` ``"Positive"``,  ``# Target category for PSA/NSA`\
+`    specificAllCategories ``=`` ``TRUE``,           ``# Show all categories`\
+`    specificConfidenceIntervals ``=`` ``TRUE``      ``# Wilson score CIs`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_binary' not found`
 
 ------------------------------------------------------------------------
 
@@ -930,43 +872,39 @@ The module can add new computed columns to the dataset.
 
 #### Consensus variable
 
-``` r
-
-# Dataset: agreement_threeRater
-
-agreement(
-    data = agreement_threeRater,
-    conditionBVars = NULL,
-    vars = vars(Rater1, Rater2, Rater3),
-    consensusName = "consensus_rating",
-    consensusRule = "majority",     # "majority", "supermajority", "unanimous"
-    tieBreaker = "exclude"          # "exclude", "first", "lowest", "highest"
-)
-#> Error:
-#> ! object 'agreement_threeRater' not found
-```
+\
+`# Dataset: agreement_threeRater`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_threeRater``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1``, ``Rater2``, ``Rater3``)``,`\
+`    consensusName ``=`` ``"consensus_rating"``,`\
+`    consensusRule ``=`` ``"majority"``,     ``# "majority", "supermajority", "unanimous"`\
+`    tieBreaker ``=`` ``"exclude"``          ``# "exclude", "first", "lowest", "highest"`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_threeRater' not found`
 
 #### Level of Agreement variable
 
-``` r
-
-# Dataset: agreement_pathology
-
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    loaVariable = TRUE,
-    detailLevel = "detailed",       # "simple" or "detailed"
-    loaThresholds = "custom",       # "custom", "quartiles", "tertiles"
-    loaHighThreshold = 75,
-    loaLowThreshold = 56,
-    loaVariableName = "agreement_level",
-    showLoaTable = TRUE
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
+\
+`# Dataset: agreement_pathology`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    loaVariable ``=`` ``TRUE``,`\
+`    detailLevel ``=`` ``"detailed"``,       ``# "simple" or "detailed"`\
+`    loaThresholds ``=`` ``"custom"``,       ``# "custom", "quartiles", "tertiles"`\
+`    loaHighThreshold ``=`` ``75``,`\
+`    loaLowThreshold ``=`` ``56``,`\
+`    loaVariableName ``=`` ``"agreement_level"``,`\
+`    showLoaTable ``=`` ``TRUE`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
 ------------------------------------------------------------------------
 
@@ -974,50 +912,44 @@ agreement(
 
 #### Perfect agreement
 
-``` r
-
-agreement_perfect <- read.csv(paste0(data_path, "agreement_perfect.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-agreement(
-    data = agreement_perfect,
-    conditionBVars = NULL,
-    vars = vars(RaterA, RaterB)
-)
-#> Error:
-#> ! object 'agreement_perfect' not found
-# Expect: kappa = 1.0, 100% agreement
-```
+\
+`agreement_perfect`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"agreement_perfect.csv"``)``)`\
+`#> ``Error```  in `file()`: ``\
+`#> ``!`` cannot open the connection`\
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_perfect``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``RaterA``, ``RaterB``)`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_perfect' not found`\
+`# Expect: kappa = 1.0, 100% agreement`
 
 #### Poor agreement with Gwet’s AC
 
-``` r
-
-agreement(
-    data = agreement_poor,
-    conditionBVars = NULL,
-    vars = vars(PathologistA, PathologistB),
-    gwet = TRUE      # Gwet's AC is stable even when kappa is paradoxically low
-)
-#> Error:
-#> ! object 'agreement_poor' not found
-```
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_poor``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``PathologistA``, ``PathologistB``)``,`\
+`    gwet ``=`` ``TRUE``      ``# Gwet's AC is stable even when kappa is paradoxically low`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_poor' not found`
 
 #### Small sample with bootstrap
 
-``` r
-
-agreement(
-    data = agreement_small,
-    conditionBVars = NULL,
-    vars = vars(Rater1, Rater2),
-    bootstrapCI = TRUE,
-    nBoot = 100
-)
-#> Error:
-#> ! object 'agreement_small' not found
-```
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_small``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Rater1``, ``Rater2``)``,`\
+`    bootstrapCI ``=`` ``TRUE``,`\
+`    nBoot ``=`` ``100`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_small' not found`
 
 ------------------------------------------------------------------------
 
@@ -1026,44 +958,40 @@ agreement(
 The sample size calculator works independently of data – it only
 requires the analysis options to be set.
 
-``` r
+\
+`# Kappa-based sample size`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,         ``# Any dataset (not used for calculation)`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    agreementSampleSize ``=`` ``TRUE``,`\
+`    ssMetric ``=`` ``"kappa"``,                 ``# "kappa", "fleiss", "icc"`\
+`    ssKappaNull ``=`` ``0.4``,                  ``# Null hypothesis kappa`\
+`    ssKappaAlt ``=`` ``0.7``,                   ``# Alternative hypothesis kappa`\
+`    ssNRaters ``=`` ``2``,                      ``# Number of raters`\
+`    ssNCategories ``=`` ``4``,                  ``# Number of categories`\
+`    ssAlpha ``=`` ``0.05``,                     ``# Significance level`\
+`    ssPower ``=`` ``0.80``                      ``# Desired power`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
-# Kappa-based sample size
-agreement(
-    data = agreement_pathology,         # Any dataset (not used for calculation)
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    agreementSampleSize = TRUE,
-    ssMetric = "kappa",                 # "kappa", "fleiss", "icc"
-    ssKappaNull = 0.4,                  # Null hypothesis kappa
-    ssKappaAlt = 0.7,                   # Alternative hypothesis kappa
-    ssNRaters = 2,                      # Number of raters
-    ssNCategories = 4,                  # Number of categories
-    ssAlpha = 0.05,                     # Significance level
-    ssPower = 0.80                      # Desired power
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
-
-``` r
-
-# ICC-based sample size
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    agreementSampleSize = TRUE,
-    ssMetric = "icc",
-    ssKappaNull = 0.5,
-    ssKappaAlt = 0.8,
-    ssNRaters = 2,
-    ssAlpha = 0.05,
-    ssPower = 0.80
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-```
+\
+`# ICC-based sample size`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    agreementSampleSize ``=`` ``TRUE``,`\
+`    ssMetric ``=`` ``"icc"``,`\
+`    ssKappaNull ``=`` ``0.5``,`\
+`    ssKappaAlt ``=`` ``0.8``,`\
+`    ssNRaters ``=`` ``2``,`\
+`    ssAlpha ``=`` ``0.05``,`\
+`    ssPower ``=`` ``0.80`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`
 
 ------------------------------------------------------------------------
 
@@ -1071,143 +999,137 @@ agreement(
 
 #### Confidence level
 
-``` r
-
-# Change from default 95% to 90%
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    confLevel = 0.90       # Applies to all CI calculations
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
+\
+`# Change from default 95% to 90%`\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    confLevel ``=`` ``0.90``       ``# Applies to all CI calculations`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
 ------------------------------------------------------------------------
 
 ### 22. Complete Example: All Categorical Options
 
-``` r
-
-agreement(
-    data = agreement_pathology,
-    conditionBVars = NULL,
-    vars = vars(Pathologist1, Pathologist2),
-    # Display
-    sft = TRUE,
-
-    confLevel = 0.95,
-    # Weighted kappa
-    wght = "unweighted",
-    showLevelInfo = TRUE,
-    # Additional statistics
-    kripp = TRUE,
-    krippMethod = "nominal",
-    bootstrap = TRUE,
-    gwet = TRUE,
-    gwetWeights = "unweighted",
-    pabak = TRUE,
-    # Specific agreement
-    specificAgreement = TRUE,
-    specificAllCategories = TRUE,
-    specificConfidenceIntervals = TRUE,
-    # Bias tests
-    raterBias = TRUE,
-    bhapkar = TRUE,
-    stuartMaxwell = TRUE,
-    # Confusion matrix
-    confusionMatrix = TRUE,
-    confusionNormalize = "none",
-    # Visualization
-    agreementHeatmap = TRUE,
-    # Bootstrap
-    bootstrapCI = TRUE,
-    nBoot = 100,
-    # Subgroup
-    agreementBySubgroup = TRUE,
-    subgroupVariable = specimen_type,
-    subgroupForestPlot = TRUE,
-    subgroupMinCases = 10,
-    # Computed variables
-    consensusName = "consensus",
-    consensusRule = "majority",
-    tieBreaker = "exclude",
-    loaVariable = TRUE,
-    detailLevel = "detailed",
-    loaThresholds = "custom",
-    loaHighThreshold = 75,
-    loaLowThreshold = 56,
-    loaVariableName = "agreement_level",
-    showLoaTable = TRUE,
-    # Sample size
-    agreementSampleSize = TRUE,
-    ssMetric = "kappa",
-    ssKappaNull = 0.4,
-    ssKappaAlt = 0.7,
-    ssNRaters = 2,
-    ssNCategories = 3,
-    ssAlpha = 0.05,
-    ssPower = 0.80
-)
-#> Error:
-#> ! object 'agreement_pathology' not found
-```
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_pathology``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``Pathologist1``, ``Pathologist2``)``,`\
+`    ``# Display`\
+`    sft ``=`` ``TRUE``,`\
+\
+`    confLevel ``=`` ``0.95``,`\
+`    ``# Weighted kappa`\
+`    wght ``=`` ``"unweighted"``,`\
+`    showLevelInfo ``=`` ``TRUE``,`\
+`    ``# Additional statistics`\
+`    kripp ``=`` ``TRUE``,`\
+`    krippMethod ``=`` ``"nominal"``,`\
+`    bootstrap ``=`` ``TRUE``,`\
+`    gwet ``=`` ``TRUE``,`\
+`    gwetWeights ``=`` ``"unweighted"``,`\
+`    pabak ``=`` ``TRUE``,`\
+`    ``# Specific agreement`\
+`    specificAgreement ``=`` ``TRUE``,`\
+`    specificAllCategories ``=`` ``TRUE``,`\
+`    specificConfidenceIntervals ``=`` ``TRUE``,`\
+`    ``# Bias tests`\
+`    raterBias ``=`` ``TRUE``,`\
+`    bhapkar ``=`` ``TRUE``,`\
+`    stuartMaxwell ``=`` ``TRUE``,`\
+`    ``# Confusion matrix`\
+`    confusionMatrix ``=`` ``TRUE``,`\
+`    confusionNormalize ``=`` ``"none"``,`\
+`    ``# Visualization`\
+`    agreementHeatmap ``=`` ``TRUE``,`\
+`    ``# Bootstrap`\
+`    bootstrapCI ``=`` ``TRUE``,`\
+`    nBoot ``=`` ``100``,`\
+`    ``# Subgroup`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``specimen_type``,`\
+`    subgroupForestPlot ``=`` ``TRUE``,`\
+`    subgroupMinCases ``=`` ``10``,`\
+`    ``# Computed variables`\
+`    consensusName ``=`` ``"consensus"``,`\
+`    consensusRule ``=`` ``"majority"``,`\
+`    tieBreaker ``=`` ``"exclude"``,`\
+`    loaVariable ``=`` ``TRUE``,`\
+`    detailLevel ``=`` ``"detailed"``,`\
+`    loaThresholds ``=`` ``"custom"``,`\
+`    loaHighThreshold ``=`` ``75``,`\
+`    loaLowThreshold ``=`` ``56``,`\
+`    loaVariableName ``=`` ``"agreement_level"``,`\
+`    showLoaTable ``=`` ``TRUE``,`\
+`    ``# Sample size`\
+`    agreementSampleSize ``=`` ``TRUE``,`\
+`    ssMetric ``=`` ``"kappa"``,`\
+`    ssKappaNull ``=`` ``0.4``,`\
+`    ssKappaAlt ``=`` ``0.7``,`\
+`    ssNRaters ``=`` ``2``,`\
+`    ssNCategories ``=`` ``3``,`\
+`    ssAlpha ``=`` ``0.05``,`\
+`    ssPower ``=`` ``0.80`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_pathology' not found`
 
 ------------------------------------------------------------------------
 
 ### 24. Complete Example: All Continuous Options
 
-``` r
-
-agreement(
-    data = agreement_continuous,
-    conditionBVars = NULL,
-    vars = vars(MeasurementA, MeasurementB),
-    confLevel = 0.95,
-    # ICC
-    icc = TRUE,
-    iccType = "icc21",
-    # Concordance
-    linCCC = TRUE,
-    # Bland-Altman
-    blandAltmanPlot = TRUE,
-    baConfidenceLevel = 0.95,
-    proportionalBias = TRUE,
-    # TDI
-    tdi = TRUE,
-    tdiCoverage = 90,
-    tdiLimit = 10,
-    # Additional statistics
-    meanPearson = TRUE,
-    maxwellRE = TRUE,
-    iota = TRUE,
-    iotaStandardize = TRUE,
-    kripp = TRUE,
-    krippMethod = "interval",
-    # Bootstrap
-    bootstrapCI = TRUE,
-    nBoot = 100,
-    # Rater profiles
-    raterProfiles = TRUE,
-    raterProfileType = "violin",
-    raterProfileShowPoints = TRUE,
-    # Subgroup
-    agreementBySubgroup = TRUE,
-    subgroupVariable = tumor_type,
-    subgroupForestPlot = TRUE,
-    # Sample size
-    agreementSampleSize = TRUE,
-    ssMetric = "icc",
-    ssKappaNull = 0.5,
-    ssKappaAlt = 0.8,
-    ssNRaters = 2,
-    ssAlpha = 0.05,
-    ssPower = 0.80
-)
-#> Error:
-#> ! object 'agreement_continuous' not found
-```
+\
+[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`    data ``=`` ``agreement_continuous``,`\
+`    conditionBVars ``=`` ``NULL``,`\
+`    vars ``=`` ``vars``(``MeasurementA``, ``MeasurementB``)``,`\
+`    confLevel ``=`` ``0.95``,`\
+`    ``# ICC`\
+`    icc ``=`` ``TRUE``,`\
+`    iccType ``=`` ``"icc21"``,`\
+`    ``# Concordance`\
+`    linCCC ``=`` ``TRUE``,`\
+`    ``# Bland-Altman`\
+`    blandAltmanPlot ``=`` ``TRUE``,`\
+`    baConfidenceLevel ``=`` ``0.95``,`\
+`    proportionalBias ``=`` ``TRUE``,`\
+`    ``# TDI`\
+`    tdi ``=`` ``TRUE``,`\
+`    tdiCoverage ``=`` ``90``,`\
+`    tdiLimit ``=`` ``10``,`\
+`    ``# Additional statistics`\
+`    meanPearson ``=`` ``TRUE``,`\
+`    maxwellRE ``=`` ``TRUE``,`\
+`    iota ``=`` ``TRUE``,`\
+`    iotaStandardize ``=`` ``TRUE``,`\
+`    kripp ``=`` ``TRUE``,`\
+`    krippMethod ``=`` ``"interval"``,`\
+`    ``# Bootstrap`\
+`    bootstrapCI ``=`` ``TRUE``,`\
+`    nBoot ``=`` ``100``,`\
+`    ``# Rater profiles`\
+`    raterProfiles ``=`` ``TRUE``,`\
+`    raterProfileType ``=`` ``"violin"``,`\
+`    raterProfileShowPoints ``=`` ``TRUE``,`\
+`    ``# Subgroup`\
+`    agreementBySubgroup ``=`` ``TRUE``,`\
+`    subgroupVariable ``=`` ``tumor_type``,`\
+`    subgroupForestPlot ``=`` ``TRUE``,`\
+`    ``# Sample size`\
+`    agreementSampleSize ``=`` ``TRUE``,`\
+`    ssMetric ``=`` ``"icc"``,`\
+`    ssKappaNull ``=`` ``0.5``,`\
+`    ssKappaAlt ``=`` ``0.8``,`\
+`    ssNRaters ``=`` ``2``,`\
+`    ssAlpha ``=`` ``0.05``,`\
+`    ssPower ``=`` ``0.80`\
+`)`\
+`#> ``Error``:`\
+`#> ``!`` object 'agreement_continuous' not found`
 
 ------------------------------------------------------------------------
 

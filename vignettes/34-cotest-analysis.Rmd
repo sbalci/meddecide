@@ -32,6 +32,12 @@ knitr::opts_chunk$set(
 
 # Introduction to Co-Testing Analysis
 
+The named scenarios and numerical accuracy/dependence values below are teaching
+assumptions, not guideline estimates or validated diagnostic pathways. Use paired
+evidence from the intended population and a justified reference standard. Sharing
+a specimen or mechanism suggests checking dependence; it does not quantify it.
+See [Choosing and interpreting an analysis](17-methods-and-interpretation.html).
+
 In clinical practice, physicians often use multiple diagnostic tests to improve diagnostic accuracy. The **co-testing analysis** function in ClinicoPath helps clinicians understand how combining two diagnostic tests affects post-test probabilities and clinical decision-making.
 
 ## What is Co-Testing?
@@ -125,9 +131,12 @@ print(covid_dependent)
 ```
 
 ### Key Differences
-When accounting for dependence, the benefit of combined testing is typically **reduced** compared to the independence assumption. This is because:
-- Positive results are less surprising (tests tend to agree)
-- The tests provide less independent evidence
+Dependence can change sensitivity, specificity and predictive values in different
+directions. With positive dependence in both disease groups, an AND rule has
+higher sensitivity and lower specificity than under independence; an OR rule has
+lower sensitivity and higher specificity. A pattern's post-test probability also
+depends on the relative dependence in the two groups. Dependence does not
+universally make a combined test better or worse.
 
 ## Example 3: Cancer Screening Scenario
 
@@ -207,7 +216,9 @@ When dependence parameters are unknown:
 1. **Literature Review**: Look for studies with paired testing data
 2. **Expert Opinion**: Consult specialists familiar with the tests
 3. **Sensitivity Analysis**: Test range of plausible values (0.05, 0.1, 0.2, 0.3)
-4. **Conservative Approach**: Use moderate dependence (0.1-0.2) when uncertain
+4. **Report uncertainty**: There is no universally conservative dependence value.
+   Show a justified range separately in each disease group rather than choosing
+   0.1–0.2 as a clinical default.
 
 ```{r sensitivity_analysis}
 # Sensitivity analysis with different dependence levels
@@ -357,7 +368,8 @@ for (i in 1:nrow(scenarios)) {
 
 ## Key Takeaways
 
-1. **Co-testing can significantly improve diagnostic accuracy** when used appropriately
+1. **A combination changes diagnostic trade-offs**; improvement depends on the rule,
+   dependence, population and consequences of errors.
 2. **Test dependence matters** - ignoring it can lead to overoptimistic results
 3. **Clinical context is crucial** - consider prevalence, thresholds, and consequences
 4. **Sensitivity analysis** helps understand uncertainty in dependence parameters
@@ -379,7 +391,7 @@ for (i in 1:nrow(scenarios)) {
 ### After Analysis
 - Interpret results in clinical context
 - Consider cost-effectiveness implications
-- Validate findings with clinical experience
+- Validate the chosen rule prospectively or in independent paired data
 - Update analysis as new data becomes available
 
 ## Limitations

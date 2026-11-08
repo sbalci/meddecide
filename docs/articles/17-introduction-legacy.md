@@ -54,12 +54,10 @@ meddecide encompasses four main areas of medical decision analysis:
 - **Pharmacoeconomics**: Personalized medicine cost-effectiveness
 - **Real-World Evidence**: Population-based decision modeling
 
-``` r
-
-
-library(dplyr)
-library(pROC)
-```
+\
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`pROC`](https://xrobin.github.io/pROC/)`)`
 
 ## Getting Started
 
@@ -76,42 +74,38 @@ specialized tools for medical decision analysis.
 
 #### In R:
 
-``` r
-
-# Install from GitHub
-if (!requireNamespace("devtools", quietly = TRUE)) {
-  install.packages("devtools")
-}
-devtools::install_github("sbalci/meddecide")
-
-# Load the package
-```
+\
+`# Install from GitHub`\
+`if`` ``(``!`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"devtools"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"devtools"``)`\
+`}`\
+`devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sbalci/meddecide"``)`\
+\
+`# Load the package`
 
 ### Sample Datasets
 
 meddecide includes comprehensive datasets for decision analysis
 training:
 
-``` r
-
-# Load decision analysis datasets
-data(basic_decision_data)
-data(markov_decision_data) 
-data(precision_oncology_data)
-
-# Decision tree data overview
-cat("Basic decision data dimensions:", nrow(basic_decision_data), "×", ncol(basic_decision_data), "\n")
-cat("Key variables:", paste(names(basic_decision_data)[1:8], collapse = ", "), "...\n")
-
-# Markov model data overview
-cat("Markov decision data dimensions:", nrow(markov_decision_data), "×", ncol(markov_decision_data), "\n")
-cat("Key variables:", paste(names(markov_decision_data)[1:8], collapse = ", "), "...\n")
-
-# Precision oncology data overview
-cat("Precision oncology data dimensions:", nrow(precision_oncology_data), "×", ncol(precision_oncology_data), "\n")
-molecular_vars <- names(precision_oncology_data)[grepl("Mutation|Status|TPS", names(precision_oncology_data))]
-cat("Biomarker variables:", paste(molecular_vars[1:5], collapse = ", "), "...\n")
-```
+\
+`# Load decision analysis datasets`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``basic_decision_data``)`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``markov_decision_data``)`` `\
+[`data`](https://rdrr.io/r/utils/data.html)`(``precision_oncology_data``)`\
+\
+`# Decision tree data overview`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Basic decision data dimensions:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``basic_decision_data``)``, ``"×"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``basic_decision_data``)``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Key variables:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(`[`names`](https://rdrr.io/r/base/names.html)`(``basic_decision_data``)``[``1``:``8``]``, collapse ``=`` ``", "``)``, ``"...\n"``)`\
+\
+`# Markov model data overview`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Markov decision data dimensions:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``markov_decision_data``)``, ``"×"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``markov_decision_data``)``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Key variables:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(`[`names`](https://rdrr.io/r/base/names.html)`(``markov_decision_data``)``[``1``:``8``]``, collapse ``=`` ``", "``)``, ``"...\n"``)`\
+\
+`# Precision oncology data overview`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Precision oncology data dimensions:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``precision_oncology_data``)``, ``"×"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``precision_oncology_data``)``, ``"\n"``)`\
+`molecular_vars`` ``<-`` `[`names`](https://rdrr.io/r/base/names.html)`(``precision_oncology_data``)``[`[`grepl`](https://rdrr.io/r/base/grep.html)`(``"Mutation|Status|TPS"``, `[`names`](https://rdrr.io/r/base/names.html)`(``precision_oncology_data``)``)``]`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Biomarker variables:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(``molecular_vars``[``1``:``5``]``, collapse ``=`` ``", "``)``, ``"...\n"``)`
 
 ## Core Analysis Workflows
 
@@ -119,267 +113,259 @@ cat("Biomarker variables:", paste(molecular_vars[1:5], collapse = ", "), "...\n"
 
 Foundation for biomarker validation and diagnostic test assessment.
 
-``` r
-
-# ROC Analysis Example
-# In jamovi: meddecide > ROC > ROC Analysis
-
-# Using precision oncology data for biomarker evaluation
-data(precision_oncology_data)
-
-# Create binary outcome for treatment response
-response_binary <- as.numeric(precision_oncology_data$Treatment_Response %in% 
-                             c("Complete_Response", "Partial_Response"))
-
-cat("ROC Analysis Example - PD-L1 TPS for Treatment Response\n")
-cat("=====================================================\n\n")
-
-# Basic ROC statistics
-if(requireNamespace("pROC", quietly = TRUE)) {
-  library(pROC)
-  
-  # ROC analysis for PD-L1 TPS
-  roc_pdl1 <- roc(response_binary, precision_oncology_data$PD_L1_TPS, quiet = TRUE)
-  
-  cat("PD-L1 TPS ROC Results:\n")
-  cat("AUC:", round(auc(roc_pdl1), 3), "\n")
-  cat("95% CI:", paste(round(ci.auc(roc_pdl1), 3), collapse = " - "), "\n")
-  
-  # Optimal cutpoint
-  optimal_cutpoint <- coords(roc_pdl1, "best", ret = "threshold")
-  cat("Optimal cutpoint:", round(optimal_cutpoint, 1), "%\n")
-  
-  # Clinical cutpoints evaluation
-  cutpoints <- c(1, 10, 20, 50)
-  cat("\nPerformance at Clinical Cutpoints:\n")
-  
-  for(cutpoint in cutpoints) {
-    sens <- coords(roc_pdl1, cutpoint, ret = "sensitivity")
-    spec <- coords(roc_pdl1, cutpoint, ret = "specificity")
-    cat(paste0("PD-L1 >=", cutpoint, "%: Sensitivity = ", round(sens, 3), 
-              ", Specificity = ", round(spec, 3), "\n"))
-  }
-}
-
-# Diagnostic test characteristics
-n_positive <- sum(precision_oncology_data$PD_L1_TPS >= 50)
-n_total <- nrow(precision_oncology_data)
-prevalence <- round(n_positive / n_total * 100, 1)
-
-cat("\nDiagnostic Test Characteristics:\n")
-cat("PD-L1 >=50% prevalence:", prevalence, "%\n")
-cat("Sample size:", n_total, "patients\n")
-```
+\
+`# ROC Analysis Example`\
+`# In jamovi: meddecide > ROC > ROC Analysis`\
+\
+`# Using precision oncology data for biomarker evaluation`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``precision_oncology_data``)`\
+\
+`# Create binary outcome for treatment response`\
+`response_binary`` ``<-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``precision_oncology_data``$``Treatment_Response`` `[`%in%`](https://rdrr.io/r/base/match.html)` `\
+`                             `[`c`](https://rdrr.io/r/base/c.html)`(``"Complete_Response"``, ``"Partial_Response"``)``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"ROC Analysis Example - PD-L1 TPS for Treatment Response\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"=====================================================\n\n"``)`\
+\
+`# Basic ROC statistics`\
+`if``(`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"pROC"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  `[`library`](https://rdrr.io/r/base/library.html)`(`[`pROC`](https://xrobin.github.io/pROC/)`)`\
+`  `\
+`  ``# ROC analysis for PD-L1 TPS`\
+`  ``roc_pdl1`` ``<-`` `[`roc`](https://rdrr.io/pkg/pROC/man/roc.html)`(``response_binary``, ``precision_oncology_data``$``PD_L1_TPS``, quiet ``=`` ``TRUE``)`\
+`  `\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"PD-L1 TPS ROC Results:\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"AUC:"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`auc`](https://rdrr.io/pkg/pROC/man/auc.html)`(``roc_pdl1``)``, ``3``)``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"95% CI:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(`[`ci.auc`](https://rdrr.io/pkg/pROC/man/ci.auc.html)`(``roc_pdl1``)``, ``3``)``, collapse ``=`` ``" - "``)``, ``"\n"``)`\
+`  `\
+`  ``# Optimal cutpoint`\
+`  ``optimal_cutpoint`` ``<-`` `[`coords`](https://rdrr.io/pkg/pROC/man/coords.html)`(``roc_pdl1``, ``"best"``, ret ``=`` ``"threshold"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Optimal cutpoint:"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``optimal_cutpoint``, ``1``)``, ``"%\n"``)`\
+`  `\
+`  ``# Clinical cutpoints evaluation`\
+`  ``cutpoints`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``1``, ``10``, ``20``, ``50``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nPerformance at Clinical Cutpoints:\n"``)`\
+`  `\
+`  ``for``(``cutpoint`` ``in`` ``cutpoints``)`` ``{`\
+`    ``sens`` ``<-`` `[`coords`](https://rdrr.io/pkg/pROC/man/coords.html)`(``roc_pdl1``, ``cutpoint``, ret ``=`` ``"sensitivity"``)`\
+`    ``spec`` ``<-`` `[`coords`](https://rdrr.io/pkg/pROC/man/coords.html)`(``roc_pdl1``, ``cutpoint``, ret ``=`` ``"specificity"``)`\
+`    `[`cat`](https://rdrr.io/r/base/cat.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``"PD-L1 >="``, ``cutpoint``, ``"%: Sensitivity = "``, `[`round`](https://rdrr.io/r/base/Round.html)`(``sens``, ``3``)``, `\
+`              ``", Specificity = "``, `[`round`](https://rdrr.io/r/base/Round.html)`(``spec``, ``3``)``, ``"\n"``)``)`\
+`  ``}`\
+`}`\
+\
+`# Diagnostic test characteristics`\
+`n_positive`` ``<-`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``precision_oncology_data``$``PD_L1_TPS`` ``>=`` ``50``)`\
+`n_total`` ``<-`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``precision_oncology_data``)`\
+`prevalence`` ``<-`` `[`round`](https://rdrr.io/r/base/Round.html)`(``n_positive`` ``/`` ``n_total`` ``*`` ``100``, ``1``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nDiagnostic Test Characteristics:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"PD-L1 >=50% prevalence:"``, ``prevalence``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Sample size:"``, ``n_total``, ``"patients\n"``)`
 
 ### 2. Simple Decision Tree Analysis
 
 Evaluate treatment alternatives with immediate outcomes.
 
-``` r
-
-# Decision Tree Analysis Example
-# In jamovi: meddecide > Decision > Decision Tree Graph
-
-# Using basic decision data
-data(basic_decision_data)
-
-cat("Decision Tree Analysis Example - Surgery vs Medical Treatment\n")
-cat("===========================================================\n\n")
-
-# Decision analysis summary
-decision_summary <- basic_decision_data %>%
-  group_by(treatment) %>%
-  summarise(
-    n = n(),
-    mean_prob_success = round(mean(prob_success_surgery + prob_success_medical)/2, 3),
-    mean_cost = round(mean(cost_surgery + cost_medical)/2, 0),
-    mean_utility_success = round(mean(utility_success), 3),
-    clinical_response_rate = round(mean(clinical_outcome == "Complete_Response") * 100, 1),
-    .groups = 'drop'
-  )
-
-cat("Decision Alternatives:\n")
-print(decision_summary)
-
-# Expected value calculation example
-surgery_cases <- basic_decision_data[basic_decision_data$treatment == "Surgery", ]
-medical_cases <- basic_decision_data[basic_decision_data$treatment == "Medical Treatment", ]
-
-if(nrow(surgery_cases) > 0 && nrow(medical_cases) > 0) {
-  # Surgery expected values
-  surgery_ev_cost <- mean(surgery_cases$cost_surgery * surgery_cases$prob_success_surgery + 
-                         surgery_cases$cost_complications * surgery_cases$prob_complications)
-  
-  surgery_ev_utility <- mean(surgery_cases$utility_success * surgery_cases$prob_success_surgery + 
-                            surgery_cases$utility_failure * (1 - surgery_cases$prob_success_surgery))
-  
-  # Medical treatment expected values  
-  medical_ev_cost <- mean(medical_cases$cost_medical * medical_cases$prob_success_medical)
-  
-  medical_ev_utility <- mean(medical_cases$utility_success * medical_cases$prob_success_medical + 
-                            medical_cases$utility_failure * (1 - medical_cases$prob_success_medical))
-  
-  cat("\nExpected Value Analysis:\n")
-  cat("Surgery - Expected Cost: $", round(surgery_ev_cost, 0), 
-      ", Expected Utility: ", round(surgery_ev_utility, 3), "\n")
-  cat("Medical - Expected Cost: $", round(medical_ev_cost, 0), 
-      ", Expected Utility: ", round(medical_ev_utility, 3), "\n")
-  
-  # Cost-effectiveness ratio
-  if(medical_ev_utility != surgery_ev_utility) {
-    icer <- (surgery_ev_cost - medical_ev_cost) / (surgery_ev_utility - medical_ev_utility)
-    cat("Incremental Cost-Effectiveness Ratio: $", round(abs(icer), 0), " per utility unit\n")
-  }
-}
-```
+\
+`# Decision Tree Analysis Example`\
+`# In jamovi: meddecide > Decision > Decision Tree Graph`\
+\
+`# Using basic decision data`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``basic_decision_data``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Decision Tree Analysis Example - Surgery vs Medical Treatment\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"===========================================================\n\n"``)`\
+\
+`# Decision analysis summary`\
+`decision_summary`` ``<-`` ``basic_decision_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)`(``treatment``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise`](https://dplyr.tidyverse.org/reference/summarise.html)`(`\
+`    n ``=`` `[`n`](https://dplyr.tidyverse.org/reference/context.html)`(``)``,`\
+`    mean_prob_success ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``prob_success_surgery`` ``+`` ``prob_success_medical``)``/``2``, ``3``)``,`\
+`    mean_cost ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``cost_surgery`` ``+`` ``cost_medical``)``/``2``, ``0``)``,`\
+`    mean_utility_success ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``utility_success``)``, ``3``)``,`\
+`    clinical_response_rate ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``clinical_outcome`` ``==`` ``"Complete_Response"``)`` ``*`` ``100``, ``1``)``,`\
+`    .groups ``=`` ``'drop'`\
+`  ``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Decision Alternatives:\n"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``decision_summary``)`\
+\
+`# Expected value calculation example`\
+`surgery_cases`` ``<-`` ``basic_decision_data``[``basic_decision_data``$``treatment`` ``==`` ``"Surgery"``, ``]`\
+`medical_cases`` ``<-`` ``basic_decision_data``[``basic_decision_data``$``treatment`` ``==`` ``"Medical Treatment"``, ``]`\
+\
+`if``(`[`nrow`](https://rdrr.io/r/base/nrow.html)`(``surgery_cases``)`` ``>`` ``0`` ``&&`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``medical_cases``)`` ``>`` ``0``)`` ``{`\
+`  ``# Surgery expected values`\
+`  ``surgery_ev_cost`` ``<-`` `[`mean`](https://rdrr.io/r/base/mean.html)`(``surgery_cases``$``cost_surgery`` ``*`` ``surgery_cases``$``prob_success_surgery`` ``+`` `\
+`                         ``surgery_cases``$``cost_complications`` ``*`` ``surgery_cases``$``prob_complications``)`\
+`  `\
+`  ``surgery_ev_utility`` ``<-`` `[`mean`](https://rdrr.io/r/base/mean.html)`(``surgery_cases``$``utility_success`` ``*`` ``surgery_cases``$``prob_success_surgery`` ``+`` `\
+`                            ``surgery_cases``$``utility_failure`` ``*`` ``(``1`` ``-`` ``surgery_cases``$``prob_success_surgery``)``)`\
+`  `\
+`  ``# Medical treatment expected values  `\
+`  ``medical_ev_cost`` ``<-`` `[`mean`](https://rdrr.io/r/base/mean.html)`(``medical_cases``$``cost_medical`` ``*`` ``medical_cases``$``prob_success_medical``)`\
+`  `\
+`  ``medical_ev_utility`` ``<-`` `[`mean`](https://rdrr.io/r/base/mean.html)`(``medical_cases``$``utility_success`` ``*`` ``medical_cases``$``prob_success_medical`` ``+`` `\
+`                            ``medical_cases``$``utility_failure`` ``*`` ``(``1`` ``-`` ``medical_cases``$``prob_success_medical``)``)`\
+`  `\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nExpected Value Analysis:\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Surgery - Expected Cost: $"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``surgery_ev_cost``, ``0``)``, `\
+`      ``", Expected Utility: "``, `[`round`](https://rdrr.io/r/base/Round.html)`(``surgery_ev_utility``, ``3``)``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Medical - Expected Cost: $"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``medical_ev_cost``, ``0``)``, `\
+`      ``", Expected Utility: "``, `[`round`](https://rdrr.io/r/base/Round.html)`(``medical_ev_utility``, ``3``)``, ``"\n"``)`\
+`  `\
+`  ``# Cost-effectiveness ratio`\
+`  ``if``(``medical_ev_utility`` ``!=`` ``surgery_ev_utility``)`` ``{`\
+`    ``icer`` ``<-`` ``(``surgery_ev_cost`` ``-`` ``medical_ev_cost``)`` ``/`` ``(``surgery_ev_utility`` ``-`` ``medical_ev_utility``)`\
+`    `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Incremental Cost-Effectiveness Ratio: $"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`abs`](https://rdrr.io/r/base/MathFun.html)`(``icer``)``, ``0``)``, ``" per utility unit\n"``)`\
+`  ``}`\
+`}`
 
 ### 3. Markov Model Analysis
 
 Long-term disease progression modeling for chronic conditions.
 
-``` r
-
-# Markov Model Analysis Example
-# In jamovi: meddecide > Decision > Decision Tree Graph (Markov Model Tree)
-
-# Using markov decision data
-data(markov_decision_data)
-
-cat("Markov Model Analysis Example - Chronic Disease Management\n")
-cat("=========================================================\n\n")
-
-# Treatment strategy comparison
-strategy_summary <- markov_decision_data %>%
-  group_by(treatment_strategy) %>%
-  summarise(
-    n_states = n(),
-    mean_healthy_to_sick = round(mean(prob_healthy_to_sick), 4),
-    mean_sick_to_recovered = round(mean(prob_sick_to_recovered), 4),
-    annual_cost_healthy = round(mean(cost_healthy_state), 0),
-    annual_cost_sick = round(mean(cost_sick_state), 0),
-    annual_utility_healthy = round(mean(utility_healthy), 3),
-    annual_utility_sick = round(mean(utility_sick), 3),
-    .groups = 'drop'
-  )
-
-cat("Treatment Strategy Comparison:\n")
-print(strategy_summary)
-
-# Transition probability validation
-cat("\nTransition Probability Validation:\n")
-sample_state <- markov_decision_data[1, ]
-prob_sum <- sample_state$prob_healthy_to_sick + (1 - sample_state$prob_healthy_to_sick)
-cat("Probability sum check (should = 1.0):", prob_sum, "\n")
-
-# Long-term outcome simulation (simplified)
-time_horizon <- 10  # years
-initial_cohort <- 1000
-
-cat("\nSimulated 10-Year Outcomes (per 1000 patients):\n")
-for(strategy in unique(markov_decision_data$treatment_strategy)) {
-  strategy_data <- markov_decision_data[markov_decision_data$treatment_strategy == strategy, ][1, ]
-  
-  # Simplified simulation
-  annual_transition_rate <- strategy_data$prob_healthy_to_sick
-  annual_recovery_rate <- strategy_data$prob_sick_to_recovered
-  
-  # Estimate patients progressing over time horizon
-  patients_progressing <- round(initial_cohort * annual_transition_rate * time_horizon)
-  
-  # Estimate total costs
-  total_cost <- strategy_data$cost_healthy_state * time_horizon + 
-                patients_progressing * strategy_data$cost_sick_state
-  
-  cat(paste0(strategy, ": ", patients_progressing, " progressions, $", 
-            round(total_cost, 0), " total cost\n"))
-}
-```
+\
+`# Markov Model Analysis Example`\
+`# In jamovi: meddecide > Decision > Decision Tree Graph (Markov Model Tree)`\
+\
+`# Using markov decision data`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``markov_decision_data``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Markov Model Analysis Example - Chronic Disease Management\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"=========================================================\n\n"``)`\
+\
+`# Treatment strategy comparison`\
+`strategy_summary`` ``<-`` ``markov_decision_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)`(``treatment_strategy``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise`](https://dplyr.tidyverse.org/reference/summarise.html)`(`\
+`    n_states ``=`` `[`n`](https://dplyr.tidyverse.org/reference/context.html)`(``)``,`\
+`    mean_healthy_to_sick ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``prob_healthy_to_sick``)``, ``4``)``,`\
+`    mean_sick_to_recovered ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``prob_sick_to_recovered``)``, ``4``)``,`\
+`    annual_cost_healthy ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``cost_healthy_state``)``, ``0``)``,`\
+`    annual_cost_sick ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``cost_sick_state``)``, ``0``)``,`\
+`    annual_utility_healthy ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``utility_healthy``)``, ``3``)``,`\
+`    annual_utility_sick ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``utility_sick``)``, ``3``)``,`\
+`    .groups ``=`` ``'drop'`\
+`  ``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Treatment Strategy Comparison:\n"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``strategy_summary``)`\
+\
+`# Transition probability validation`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nTransition Probability Validation:\n"``)`\
+`sample_state`` ``<-`` ``markov_decision_data``[``1``, ``]`\
+`prob_sum`` ``<-`` ``sample_state``$``prob_healthy_to_sick`` ``+`` ``(``1`` ``-`` ``sample_state``$``prob_healthy_to_sick``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Probability sum check (should = 1.0):"``, ``prob_sum``, ``"\n"``)`\
+\
+`# Long-term outcome simulation (simplified)`\
+`time_horizon`` ``<-`` ``10``  ``# years`\
+`initial_cohort`` ``<-`` ``1000`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nSimulated 10-Year Outcomes (per 1000 patients):\n"``)`\
+`for``(``strategy`` ``in`` `[`unique`](https://rdrr.io/r/base/unique.html)`(``markov_decision_data``$``treatment_strategy``)``)`` ``{`\
+`  ``strategy_data`` ``<-`` ``markov_decision_data``[``markov_decision_data``$``treatment_strategy`` ``==`` ``strategy``, ``]``[``1``, ``]`\
+`  `\
+`  ``# Simplified simulation`\
+`  ``annual_transition_rate`` ``<-`` ``strategy_data``$``prob_healthy_to_sick`\
+`  ``annual_recovery_rate`` ``<-`` ``strategy_data``$``prob_sick_to_recovered`\
+`  `\
+`  ``# Estimate patients progressing over time horizon`\
+`  ``patients_progressing`` ``<-`` `[`round`](https://rdrr.io/r/base/Round.html)`(``initial_cohort`` ``*`` ``annual_transition_rate`` ``*`` ``time_horizon``)`\
+`  `\
+`  ``# Estimate total costs`\
+`  ``total_cost`` ``<-`` ``strategy_data``$``cost_healthy_state`` ``*`` ``time_horizon`` ``+`` `\
+`                ``patients_progressing`` ``*`` ``strategy_data``$``cost_sick_state`\
+`  `\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``strategy``, ``": "``, ``patients_progressing``, ``" progressions, $"``, `\
+`            `[`round`](https://rdrr.io/r/base/Round.html)`(``total_cost``, ``0``)``, ``" total cost\n"``)``)`\
+`}`
 
 ### 4. Precision Medicine Decision Analysis
 
 Biomarker-guided treatment selection with cost-effectiveness evaluation.
 
-``` r
-
-# Precision Medicine Decision Analysis
-# Combining diagnostic testing with treatment selection
-
-data(precision_oncology_data)
-
-cat("Precision Medicine Decision Analysis\n")
-cat("===================================\n\n")
-
-# Biomarker testing strategy evaluation
-biomarker_strategy <- precision_oncology_data %>%
-  mutate(
-    # Define testing strategy
-    test_egfr = TRUE,  # Universal EGFR testing
-    test_pdl1 = TRUE,  # Universal PD-L1 testing
-    
-    # Treatment assignment based on biomarkers
-    recommended_treatment = case_when(
-      EGFR_Mutation == "Positive" ~ "EGFR_TKI",
-      PD_L1_TPS >= 50 ~ "Anti_PD1_Mono",
-      PD_L1_TPS >= 1 ~ "Combo_Immuno",
-      TRUE ~ "Chemotherapy"
-    ),
-    
-    # Estimate treatment costs
-    treatment_cost = case_when(
-      recommended_treatment == "EGFR_TKI" ~ 120000,
-      recommended_treatment == "Anti_PD1_Mono" ~ 150000,
-      recommended_treatment == "Combo_Immuno" ~ 200000,
-      TRUE ~ 80000
-    ),
-    
-    # Testing costs
-    testing_cost = 3000,  # Comprehensive biomarker panel
-    
-    # Total cost
-    total_cost = treatment_cost + testing_cost
-  )
-
-# Strategy outcomes
-strategy_outcomes <- biomarker_strategy %>%
-  group_by(recommended_treatment) %>%
-  summarise(
-    n_patients = n(),
-    percentage = round(n() / nrow(biomarker_strategy) * 100, 1),
-    response_rate = round(mean(Treatment_Response %in% c("Complete_Response", "Partial_Response")) * 100, 1),
-    median_pfs = median(PFS_Months),
-    mean_cost = round(mean(total_cost), 0),
-    .groups = 'drop'
-  )
-
-cat("Biomarker-Guided Treatment Strategy Outcomes:\n")
-print(strategy_outcomes)
-
-# Cost-effectiveness summary
-total_responses <- sum(biomarker_strategy$Treatment_Response %in% c("Complete_Response", "Partial_Response"))
-total_cost <- sum(biomarker_strategy$total_cost)
-cost_per_response <- round(total_cost / total_responses, 0)
-
-cat("\nOverall Strategy Performance:\n")
-cat("Total patients:", nrow(biomarker_strategy), "\n")
-cat("Total responses:", total_responses, "\n")
-cat("Response rate:", round(total_responses / nrow(biomarker_strategy) * 100, 1), "%\n")
-cat("Cost per response: $", cost_per_response, "\n")
-
-# Compare with standard care (no biomarker testing)
-standard_care_response_rate <- 25  # Assumed standard chemotherapy response rate
-standard_care_cost <- 80000  # Standard chemotherapy cost
-cost_per_response_standard <- round(standard_care_cost / (standard_care_response_rate/100), 0)
-
-cat("\nComparison with Standard Care:\n")
-cat("Standard care cost per response: $", cost_per_response_standard, "\n")
-cat("Biomarker strategy cost per response: $", cost_per_response, "\n")
-
-if(cost_per_response < cost_per_response_standard) {
-  cat("Biomarker strategy is more cost-effective\n")
-} else {
-  cat("Standard care is more cost-effective\n")
-}
-```
+\
+`# Precision Medicine Decision Analysis`\
+`# Combining diagnostic testing with treatment selection`\
+\
+[`data`](https://rdrr.io/r/utils/data.html)`(``precision_oncology_data``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Precision Medicine Decision Analysis\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"===================================\n\n"``)`\
+\
+`# Biomarker testing strategy evaluation`\
+`biomarker_strategy`` ``<-`` ``precision_oncology_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(`\
+`    ``# Define testing strategy`\
+`    test_egfr ``=`` ``TRUE``,  ``# Universal EGFR testing`\
+`    test_pdl1 ``=`` ``TRUE``,  ``# Universal PD-L1 testing`\
+`    `\
+`    ``# Treatment assignment based on biomarkers`\
+`    recommended_treatment ``=`` `[`case_when`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html)`(`\
+`      ``EGFR_Mutation`` ``==`` ``"Positive"`` ``~`` ``"EGFR_TKI"``,`\
+`      ``PD_L1_TPS`` ``>=`` ``50`` ``~`` ``"Anti_PD1_Mono"``,`\
+`      ``PD_L1_TPS`` ``>=`` ``1`` ``~`` ``"Combo_Immuno"``,`\
+`      ``TRUE`` ``~`` ``"Chemotherapy"`\
+`    ``)``,`\
+`    `\
+`    ``# Estimate treatment costs`\
+`    treatment_cost ``=`` `[`case_when`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html)`(`\
+`      ``recommended_treatment`` ``==`` ``"EGFR_TKI"`` ``~`` ``120000``,`\
+`      ``recommended_treatment`` ``==`` ``"Anti_PD1_Mono"`` ``~`` ``150000``,`\
+`      ``recommended_treatment`` ``==`` ``"Combo_Immuno"`` ``~`` ``200000``,`\
+`      ``TRUE`` ``~`` ``80000`\
+`    ``)``,`\
+`    `\
+`    ``# Testing costs`\
+`    testing_cost ``=`` ``3000``,  ``# Comprehensive biomarker panel`\
+`    `\
+`    ``# Total cost`\
+`    total_cost ``=`` ``treatment_cost`` ``+`` ``testing_cost`\
+`  ``)`\
+\
+`# Strategy outcomes`\
+`strategy_outcomes`` ``<-`` ``biomarker_strategy`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)`(``recommended_treatment``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise`](https://dplyr.tidyverse.org/reference/summarise.html)`(`\
+`    n_patients ``=`` `[`n`](https://dplyr.tidyverse.org/reference/context.html)`(``)``,`\
+`    percentage ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`n`](https://dplyr.tidyverse.org/reference/context.html)`(``)`` ``/`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``biomarker_strategy``)`` ``*`` ``100``, ``1``)``,`\
+`    response_rate ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``Treatment_Response`` `[`%in%`](https://rdrr.io/r/base/match.html)` `[`c`](https://rdrr.io/r/base/c.html)`(``"Complete_Response"``, ``"Partial_Response"``)``)`` ``*`` ``100``, ``1``)``,`\
+`    median_pfs ``=`` `[`median`](https://rdrr.io/r/stats/median.html)`(``PFS_Months``)``,`\
+`    mean_cost ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``total_cost``)``, ``0``)``,`\
+`    .groups ``=`` ``'drop'`\
+`  ``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Biomarker-Guided Treatment Strategy Outcomes:\n"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``strategy_outcomes``)`\
+\
+`# Cost-effectiveness summary`\
+`total_responses`` ``<-`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``biomarker_strategy``$``Treatment_Response`` `[`%in%`](https://rdrr.io/r/base/match.html)` `[`c`](https://rdrr.io/r/base/c.html)`(``"Complete_Response"``, ``"Partial_Response"``)``)`\
+`total_cost`` ``<-`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``biomarker_strategy``$``total_cost``)`\
+`cost_per_response`` ``<-`` `[`round`](https://rdrr.io/r/base/Round.html)`(``total_cost`` ``/`` ``total_responses``, ``0``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nOverall Strategy Performance:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Total patients:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``biomarker_strategy``)``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Total responses:"``, ``total_responses``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Response rate:"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``total_responses`` ``/`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``biomarker_strategy``)`` ``*`` ``100``, ``1``)``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Cost per response: $"``, ``cost_per_response``, ``"\n"``)`\
+\
+`# Compare with standard care (no biomarker testing)`\
+`standard_care_response_rate`` ``<-`` ``25``  ``# Assumed standard chemotherapy response rate`\
+`standard_care_cost`` ``<-`` ``80000``  ``# Standard chemotherapy cost`\
+`cost_per_response_standard`` ``<-`` `[`round`](https://rdrr.io/r/base/Round.html)`(``standard_care_cost`` ``/`` ``(``standard_care_response_rate``/``100``)``, ``0``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nComparison with Standard Care:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Standard care cost per response: $"``, ``cost_per_response_standard``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Biomarker strategy cost per response: $"``, ``cost_per_response``, ``"\n"``)`\
+\
+`if``(``cost_per_response`` ``<`` ``cost_per_response_standard``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Biomarker strategy is more cost-effective\n"``)`\
+`}`` ``else`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Standard care is more cost-effective\n"``)`\
+`}`
 
 ## Advanced Applications
 
@@ -387,81 +373,77 @@ if(cost_per_response < cost_per_response_standard) {
 
 Evaluate diagnostic test reliability and inter-observer agreement.
 
-``` r
-
-cat("Agreement Analysis Applications\n")
-cat("==============================\n\n")
-
-# Load biomarker validation data for agreement analysis
-data(biomarker_validation_study)
-
-# Multi-platform agreement
-platform_agreement <- biomarker_validation_study %>%
-  summarise(
-    n_cases = n(),
-    correlation = round(cor(Platform_A_PD_L1, Platform_B_PD_L1), 3),
-    mean_difference = round(mean(Platform_B_PD_L1 - Platform_A_PD_L1), 2),
-    agreement_within_10pct = round(mean(abs(Platform_B_PD_L1 - Platform_A_PD_L1) <= 10) * 100, 1),
-    overall_agreement = round(mean(Platform_Agreement) * 100, 1)
-  )
-
-cat("Multi-Platform Biomarker Agreement:\n")
-cat("Cases analyzed:", platform_agreement$n_cases, "\n")
-cat("Correlation:", platform_agreement$correlation, "\n")
-cat("Mean difference:", platform_agreement$mean_difference, "%\n")
-cat("Agreement within ±10%:", platform_agreement$agreement_within_10pct, "%\n")
-cat("Overall agreement:", platform_agreement$overall_agreement, "%\n")
-
-# Clinical significance
-if(platform_agreement$correlation >= 0.90 && platform_agreement$overall_agreement >= 85) {
-  cat("Conclusion: Platforms show excellent agreement for clinical use\n")
-} else {
-  cat("Conclusion: Platform harmonization may be needed\n")
-}
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Agreement Analysis Applications\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"==============================\n\n"``)`\
+\
+`# Load biomarker validation data for agreement analysis`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``biomarker_validation_study``)`\
+\
+`# Multi-platform agreement`\
+`platform_agreement`` ``<-`` ``biomarker_validation_study`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise`](https://dplyr.tidyverse.org/reference/summarise.html)`(`\
+`    n_cases ``=`` `[`n`](https://dplyr.tidyverse.org/reference/context.html)`(``)``,`\
+`    correlation ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`cor`](https://rdrr.io/r/stats/cor.html)`(``Platform_A_PD_L1``, ``Platform_B_PD_L1``)``, ``3``)``,`\
+`    mean_difference ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``Platform_B_PD_L1`` ``-`` ``Platform_A_PD_L1``)``, ``2``)``,`\
+`    agreement_within_10pct ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(`[`abs`](https://rdrr.io/r/base/MathFun.html)`(``Platform_B_PD_L1`` ``-`` ``Platform_A_PD_L1``)`` ``<=`` ``10``)`` ``*`` ``100``, ``1``)``,`\
+`    overall_agreement ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(`[`mean`](https://rdrr.io/r/base/mean.html)`(``Platform_Agreement``)`` ``*`` ``100``, ``1``)`\
+`  ``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Multi-Platform Biomarker Agreement:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Cases analyzed:"``, ``platform_agreement``$``n_cases``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Correlation:"``, ``platform_agreement``$``correlation``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Mean difference:"``, ``platform_agreement``$``mean_difference``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Agreement within ±10%:"``, ``platform_agreement``$``agreement_within_10pct``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Overall agreement:"``, ``platform_agreement``$``overall_agreement``, ``"%\n"``)`\
+\
+`# Clinical significance`\
+`if``(``platform_agreement``$``correlation`` ``>=`` ``0.90`` ``&&`` ``platform_agreement``$``overall_agreement`` ``>=`` ``85``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Conclusion: Platforms show excellent agreement for clinical use\n"``)`\
+`}`` ``else`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Conclusion: Platform harmonization may be needed\n"``)`\
+`}`
 
 ### Power Analysis
 
 Sample size and statistical power calculations for diagnostic studies.
 
-``` r
-
-cat("\nPower Analysis for Diagnostic Studies\n")
-cat("====================================\n\n")
-
-# Sample size calculation for ROC analysis
-# Based on AUC difference detection
-
-auc_null <- 0.5      # Null hypothesis (no discrimination)
-auc_alternative <- 0.75  # Alternative hypothesis (good discrimination)
-alpha <- 0.05        # Type I error rate
-power <- 0.80        # Desired power
-
-# Simplified sample size estimation
-# Using normal approximation for AUC
-z_alpha <- qnorm(1 - alpha/2)  # 1.96 for 95% confidence
-z_beta <- qnorm(power)         # 0.84 for 80% power
-
-# Approximate sample size (simplified formula)
-estimated_n <- ((z_alpha + z_beta)^2 * 2) / ((auc_alternative - auc_null)^2 * 4)
-
-cat("Sample Size Estimation for ROC Study:\n")
-cat("Null AUC:", auc_null, "\n")
-cat("Alternative AUC:", auc_alternative, "\n") 
-cat("Alpha:", alpha, "\n")
-cat("Power:", power, "\n")
-cat("Estimated sample size:", round(estimated_n), "per group\n")
-cat("Total sample size:", round(estimated_n * 2), "\n")
-
-# Recommendations
-if(estimated_n < 50) {
-  cat("Recommendation: Small study feasible\n")
-} else if(estimated_n < 200) {
-  cat("Recommendation: Moderate-sized study required\n")
-} else {
-  cat("Recommendation: Large study required, consider multi-center collaboration\n")
-}
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nPower Analysis for Diagnostic Studies\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"====================================\n\n"``)`\
+\
+`# Sample size calculation for ROC analysis`\
+`# Based on AUC difference detection`\
+\
+`auc_null`` ``<-`` ``0.5``      ``# Null hypothesis (no discrimination)`\
+`auc_alternative`` ``<-`` ``0.75``  ``# Alternative hypothesis (good discrimination)`\
+`alpha`` ``<-`` ``0.05``        ``# Type I error rate`\
+`power`` ``<-`` ``0.80``        ``# Desired power`\
+\
+`# Simplified sample size estimation`\
+`# Using normal approximation for AUC`\
+`z_alpha`` ``<-`` `[`qnorm`](https://rdrr.io/r/stats/Normal.html)`(``1`` ``-`` ``alpha``/``2``)``  ``# 1.96 for 95% confidence`\
+`z_beta`` ``<-`` `[`qnorm`](https://rdrr.io/r/stats/Normal.html)`(``power``)``         ``# 0.84 for 80% power`\
+\
+`# Approximate sample size (simplified formula)`\
+`estimated_n`` ``<-`` ``(``(``z_alpha`` ``+`` ``z_beta``)``^``2`` ``*`` ``2``)`` ``/`` ``(``(``auc_alternative`` ``-`` ``auc_null``)``^``2`` ``*`` ``4``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Sample Size Estimation for ROC Study:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Null AUC:"``, ``auc_null``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Alternative AUC:"``, ``auc_alternative``, ``"\n"``)`` `\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Alpha:"``, ``alpha``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Power:"``, ``power``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Estimated sample size:"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``estimated_n``)``, ``"per group\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Total sample size:"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``estimated_n`` ``*`` ``2``)``, ``"\n"``)`\
+\
+`# Recommendations`\
+`if``(``estimated_n`` ``<`` ``50``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Recommendation: Small study feasible\n"``)`\
+`}`` ``else`` ``if``(``estimated_n`` ``<`` ``200``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Recommendation: Moderate-sized study required\n"``)`\
+`}`` ``else`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Recommendation: Large study required, consider multi-center collaboration\n"``)`\
+`}`
 
 ## Integration with Other Modules
 

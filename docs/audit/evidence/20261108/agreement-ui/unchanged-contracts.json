@@ -1,0 +1,8 @@
+{
+  "canonical/jamovi/agreement.a.yaml": true,
+  "canonical/jamovi/agreement.r.yaml": true,
+  "canonical/R/agreement.h.R": true,
+  "meddecide/jamovi/agreement.a.yaml": true,
+  "meddecide/jamovi/agreement.r.yaml": true,
+  "meddecide/R/agreement.h.R": true
+}

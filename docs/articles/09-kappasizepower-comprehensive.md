@@ -2,11 +2,24 @@
 
 ## Introduction
 
-The `kappasizepower` function provides **power analysis for sample size
-determination** in inter-rater agreement studies. Unlike fixed sample
-size analysis, this function answers the question: *“How many subjects
-do I need to detect a meaningful improvement in agreement between
-raters?”*
+The
+[`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+function provides **power analysis for sample size determination** in
+inter-rater agreement studies. Unlike fixed sample size analysis, this
+function answers the question: *“How many subjects do I need to reject a
+specified null kappa when the true kappa is a specified alternative?”*
+
+This is a two-sided goodness-of-fit calculation under a
+common-correlation, common-margin model. It is not a generic
+Cohen/weighted-kappa or ICC power calculator. The null `kappa0` here
+differs from the anticipated `kappa0` in
+[`kappaSizeCI()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md)
+and
+[`kappaSizeFixedN()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md).
+The published formula treats the category proportions as known; actual
+power can differ when they are estimated. For binary outcomes the module
+adds simulation-based checks; for more categories and raters follow the
+displayed advice to simulate the intended analysis.
 
 ### When to Use kappasizepower
 
@@ -35,10 +48,11 @@ For kappa agreement: **κ₁ - κ₀ + Power + Alpha → Required N**
 - **H₁**: κ = κ₁ (alternative hypothesis agreement level)
 - **Effect Size**: κ₁ - κ₀ (improvement in agreement)
 
-#### Critical Validation
+#### Direction of the test
 
-**κ₁ must be greater than κ₀** - The alternative hypothesis should
-represent better agreement than the null hypothesis.
+Usually κ₁ is greater than κ₀ (the study aims to show better agreement
+than κ₀). If κ₁ is below κ₀, the analysis warns that it is sizing a
+study to show *worse* agreement.
 
 ## Theoretical Background
 
@@ -55,14 +69,20 @@ chance
 
 #### Agreement Interpretation Guidelines
 
-| Kappa Range | Agreement Level | Research Interpretation                 |
-|-------------|-----------------|-----------------------------------------|
-| \< 0.00     | Poor            | Unacceptable for clinical use           |
-| 0.00-0.20   | Slight          | Needs substantial improvement           |
-| 0.21-0.40   | Fair            | May be acceptable for some applications |
-| 0.41-0.60   | Moderate        | Acceptable for many clinical uses       |
-| 0.61-0.80   | Good            | Strong agreement for clinical practice  |
-| 0.81-1.00   | Excellent       | Ideal agreement level                   |
+| Kappa     | Landis & Koch (1977) label |
+|-----------|----------------------------|
+| \< 0.00   | Poor                       |
+| 0.00-0.20 | Slight                     |
+| 0.21-0.40 | Fair                       |
+| 0.41-0.60 | Moderate                   |
+| 0.61-0.80 | Substantial                |
+| 0.81-1.00 | Almost perfect             |
+
+These bands are a descriptive convention proposed by Landis and Koch;
+they are not validated clinical thresholds. Which kappa is good enough
+depends on the clinical question and the consequences of disagreement,
+and should be judged on the confidence interval rather than the point
+estimate.
 
 ### Power Analysis Theory
 
@@ -72,7 +92,7 @@ Sample size requirements depend on:
 
 1.  **Effect Size (κ₁ - κ₀)**: Larger differences require smaller
     samples
-2.  **Desired Power**: Higher power requires larger samples  
+2.  **Desired Power**: Higher power requires larger samples\
 3.  **Significance Level (α)**: Stricter levels require larger samples
 4.  **Number of Categories**: More categories generally require larger
     samples
@@ -83,37 +103,38 @@ Sample size requirements depend on:
 
 #### Statistical Framework
 
-The `kappasizepower` function uses the `kappaSize` package
-implementation of power calculations for different numbers of outcome
-categories:
+The
+[`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+function uses the `kappaSize` package implementation of power
+calculations for different numbers of outcome categories:
 
 #### Binary Outcomes (2 categories)
 
-Uses asymptotic variance estimates for binary kappa with finite sample
-corrections.
+Uses a one-degree-of-freedom noncentral chi-square approximation based
+on expected agreement-pattern probabilities under the null and
+alternative. This is an asymptotic goodness-of-fit method, not an exact
+finite-sample power calculation.
 
 #### Multi-category Outcomes (3-5 categories)
 
-Employs generalized kappa variance formulas accounting for: - Number of
-categories and raters - Marginal probability distributions - Complex
-covariance structures
+Uses common-correlation agreement-pattern models for three to five
+categories. These do not provide arbitrary covariance structures,
+weighted-kappa planning or clustered-subject inference.
 
 ## Function Parameters and Usage
 
 ### Basic Syntax
 
-``` r
-
-kappaSizePower(
-  outcome = "2",           # Number of categories (2, 3, 4, or 5)
-  kappa0 = 0.40,          # Null hypothesis kappa value
-  kappa1 = 0.60,          # Alternative hypothesis kappa value
-  props = "0.30, 0.70",   # Category proportions
-  raters = "2",           # Number of raters (2-5)
-  alpha = 0.05,           # Significance level
-  power = 0.80            # Desired power
-)
-```
+\
+[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,           ``# Number of categories (2, 3, 4, or 5)`\
+`  kappa0 ``=`` ``0.40``,          ``# Null hypothesis kappa value`\
+`  kappa1 ``=`` ``0.60``,          ``# Alternative hypothesis kappa value`\
+`  props ``=`` ``"0.30, 0.70"``,   ``# Category proportions`\
+`  raters ``=`` ``"2"``,           ``# Number of raters (2-6)`\
+`  alpha ``=`` ``0.05``,           ``# Significance level`\
+`  power ``=`` ``0.80``            ``# Desired power`\
+`)`
 
 ### Parameter Details
 
@@ -151,7 +172,7 @@ kappaSizePower(
 
 #### `raters`: Number of Raters
 
-- **Options**: “2”, “3”, “4”, “5”
+- **Options**: “2”, “3”, “4”, “5”, “6”
 - **Impact**: More raters can improve precision but increase complexity
 - **Practical considerations**: Availability, cost, training
   requirements
@@ -178,19 +199,17 @@ kappaSizePower(
 **Scenario**: Emergency physicians want to validate that training
 improves chest X-ray agreement for pneumonia detection.
 
-``` r
-
-# Emergency department pneumonia training validation
-result <- kappaSizePower(
-  outcome = "2",
-  kappa0 = 0.50,          # Current fair agreement
-  kappa1 = 0.75,          # Target good agreement post-training
-  props = "0.25, 0.75",   # 25% pneumonia prevalence
-  raters = "2",           # Two emergency physicians
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Emergency department pneumonia training validation`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.50``,          ``# Current moderate agreement`\
+`  kappa1 ``=`` ``0.75``,          ``# Target substantial agreement post-training`\
+`  props ``=`` ``"0.25, 0.75"``,   ``# 25% pneumonia prevalence`\
+`  raters ``=`` ``"2"``,           ``# Two emergency physicians`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 **Clinical Context**: - Training programs require validation of
 effectiveness - Patient safety depends on reliable pneumonia detection -
@@ -201,19 +220,17 @@ Effect size of 0.25 (0.75 - 0.50) represents meaningful improvement
 **Scenario**: Radiologists implementing new BI-RADS standardization want
 to demonstrate improved agreement.
 
-``` r
-
-# Mammography screening standardization study
-result <- kappaSizePower(
-  outcome = "2",
-  kappa0 = 0.60,          # Current good agreement
-  kappa1 = 0.80,          # Target excellent agreement
-  props = "0.12, 0.88",   # 12% positive findings (BI-RADS 4-5)
-  raters = "2",           # Two radiologists
-  alpha = 0.05,
-  power = 0.85            # Higher power for screening validation
-)
-```
+\
+`# Mammography screening standardization study`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.60``,          ``# Current moderate agreement`\
+`  kappa1 ``=`` ``0.80``,          ``# Target substantial agreement`\
+`  props ``=`` ``"0.12, 0.88"``,   ``# 12% positive findings (BI-RADS 4-5)`\
+`  raters ``=`` ``"2"``,           ``# Two radiologists`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.85``            ``# Higher power for screening validation`\
+`)`
 
 **Clinical Context**: - Screening programs require high agreement
 levels - Effect size of 0.20 represents substantial improvement - Higher
@@ -226,19 +243,17 @@ power (85%) provides stronger evidence
 **Scenario**: Cardiologists validating new echocardiographic staging
 criteria.
 
-``` r
-
-# Heart failure staging validation study
-result <- kappaSizePower(
-  outcome = "3",
-  kappa0 = 0.55,          # Current moderate agreement
-  kappa1 = 0.75,          # Target good agreement
-  props = "0.20, 0.50, 0.30",  # Mild, Moderate, Severe
-  raters = "2",           # Two cardiologists
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Heart failure staging validation study`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"3"``,`\
+`  kappa0 ``=`` ``0.55``,          ``# Current moderate agreement`\
+`  kappa1 ``=`` ``0.75``,          ``# Target substantial agreement`\
+`  props ``=`` ``"0.20, 0.50, 0.30"``,  ``# Mild, Moderate, Severe`\
+`  raters ``=`` ``"2"``,           ``# Two cardiologists`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 **Clinical Context**: - Staging affects treatment decisions -
 Standardization improves patient outcomes - Multi-category assessment
@@ -249,19 +264,17 @@ adds complexity
 **Scenario**: Emergency physicians implementing standardized burn
 severity assessment.
 
-``` r
-
-# Burn severity grading standardization
-result <- kappaSizePower(
-  outcome = "3",
-  kappa0 = 0.60,          # Current good agreement
-  kappa1 = 0.85,          # Target excellent agreement
-  props = "0.40, 0.35, 0.25",  # First, Second, Third degree
-  raters = "3",           # Three emergency physicians
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Burn severity grading standardization`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"3"``,`\
+`  kappa0 ``=`` ``0.60``,          ``# Current moderate agreement`\
+`  kappa1 ``=`` ``0.85``,          ``# Target almost perfect agreement`\
+`  props ``=`` ``"0.40, 0.35, 0.25"``,  ``# First, Second, Third degree`\
+`  raters ``=`` ``"3"``,           ``# Three emergency physicians`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 **Clinical Context**: - Burn severity affects triage decisions - Large
 effect size (0.25) represents major improvement - Multiple raters
@@ -274,19 +287,17 @@ increase reliability
 **Scenario**: Pathologists implementing standardized tumor grading
 criteria.
 
-``` r
-
-# Tumor grading standardization study
-result <- kappaSizePower(
-  outcome = "4",
-  kappa0 = 0.60,          # Current good agreement
-  kappa1 = 0.80,          # Target very good agreement
-  props = "0.15, 0.25, 0.35, 0.25",  # Grade 1, 2, 3, 4
-  raters = "3",           # Three pathologists
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Tumor grading standardization study`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"4"``,`\
+`  kappa0 ``=`` ``0.60``,          ``# Current moderate agreement`\
+`  kappa1 ``=`` ``0.80``,          ``# Target substantial agreement`\
+`  props ``=`` ``"0.15, 0.25, 0.35, 0.25"``,  ``# Grade 1, 2, 3, 4`\
+`  raters ``=`` ``"3"``,           ``# Three pathologists`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 **Clinical Context**: - Tumor grading affects treatment decisions -
 Standardization reduces inter-institutional variability - Four
@@ -297,19 +308,17 @@ categories require careful power analysis
 **Scenario**: Neuropsychologists validating structured cognitive
 assessment protocol.
 
-``` r
-
-# Cognitive assessment tool validation
-result <- kappaSizePower(
-  outcome = "4",
-  kappa0 = 0.55,          # Current moderate agreement
-  kappa1 = 0.75,          # Target good agreement
-  props = "0.20, 0.30, 0.30, 0.20",  # Normal, MCI, Mild, Moderate+ dementia
-  raters = "2",           # Two neuropsychologists
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Cognitive assessment tool validation`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"4"``,`\
+`  kappa0 ``=`` ``0.55``,          ``# Current moderate agreement`\
+`  kappa1 ``=`` ``0.75``,          ``# Target substantial agreement`\
+`  props ``=`` ``"0.20, 0.30, 0.30, 0.20"``,  ``# Normal, MCI, Mild, Moderate+ dementia`\
+`  raters ``=`` ``"2"``,           ``# Two neuropsychologists`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 **Clinical Context**: - Cognitive assessment affects care planning -
 Structured protocols improve consistency - Effect size of 0.20
@@ -322,19 +331,17 @@ represents meaningful improvement
 **Scenario**: Surgeons implementing standardized Clavien-Dindo
 classification.
 
-``` r
-
-# Surgical complication grading validation
-result <- kappaSizePower(
-  outcome = "4",
-  kappa0 = 0.65,          # Current good agreement
-  kappa1 = 0.85,          # Target excellent agreement
-  props = "0.40, 0.30, 0.20, 0.10",  # None, Grade I, II, III+
-  raters = "3",           # Three surgeons
-  alpha = 0.01,           # Strict significance level
-  power = 0.90            # High power requirement
-)
-```
+\
+`# Surgical complication grading validation`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"4"``,`\
+`  kappa0 ``=`` ``0.65``,          ``# Current substantial agreement`\
+`  kappa1 ``=`` ``0.85``,          ``# Target almost perfect agreement`\
+`  props ``=`` ``"0.40, 0.30, 0.20, 0.10"``,  ``# None, Grade I, II, III+`\
+`  raters ``=`` ``"3"``,           ``# Three surgeons`\
+`  alpha ``=`` ``0.01``,           ``# Strict significance level`\
+`  power ``=`` ``0.90``            ``# High power requirement`\
+`)`
 
 **Clinical Context**: - Surgical outcomes require high precision -
 Strict alpha (0.01) and high power (90%) for rigorous validation - Large
@@ -344,19 +351,17 @@ effect size (0.20) represents substantial improvement
 
 **Scenario**: Pathologists standardizing immunohistochemical scoring.
 
-``` r
-
-# Biomarker expression standardization
-result <- kappaSizePower(
-  outcome = "3",
-  kappa0 = 0.70,          # Current good agreement
-  kappa1 = 0.90,          # Target excellent agreement
-  props = "0.30, 0.45, 0.25",  # Low, Moderate, High expression
-  raters = "2",           # Two pathologists
-  alpha = 0.01,           # Strict significance level
-  power = 0.90            # High power requirement
-)
-```
+\
+`# Biomarker expression standardization`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"3"``,`\
+`  kappa0 ``=`` ``0.70``,          ``# Current substantial agreement`\
+`  kappa1 ``=`` ``0.90``,          ``# Target almost perfect agreement`\
+`  props ``=`` ``"0.30, 0.45, 0.25"``,  ``# Low, Moderate, High expression`\
+`  raters ``=`` ``"2"``,           ``# Two pathologists`\
+`  alpha ``=`` ``0.01``,           ``# Strict significance level`\
+`  power ``=`` ``0.90``            ``# High power requirement`\
+`)`
 
 **Clinical Context**: - Biomarker scoring affects treatment decisions -
 Research applications require high precision - Large effect size (0.20)
@@ -370,55 +375,49 @@ with strict criteria
 
 Require large sample sizes but may be clinically meaningful:
 
-``` r
-
-# Small but clinically significant improvement
-result <- kappaSizePower(
-  outcome = "2",
-  kappa0 = 0.70,          # Already good agreement
-  kappa1 = 0.80,          # Modest improvement
-  props = "0.50, 0.50",   # Balanced categories
-  raters = "2",
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Small but clinically significant improvement`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.70``,          ``# Already substantial agreement`\
+`  kappa1 ``=`` ``0.80``,          ``# Modest improvement`\
+`  props ``=`` ``"0.50, 0.50"``,   ``# Balanced categories`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 #### Large Effect Sizes (κ₁ - κ₀ \> 0.30)
 
 Require smaller sample sizes, easier to detect:
 
-``` r
-
-# Large improvement from training
-result <- kappaSizePower(
-  outcome = "2",
-  kappa0 = 0.30,          # Poor baseline agreement
-  kappa1 = 0.70,          # Good post-training agreement
-  props = "0.25, 0.75",
-  raters = "2",
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Large improvement from training`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.30``,          ``# Fair baseline agreement`\
+`  kappa1 ``=`` ``0.70``,          ``# substantial post-training agreement`\
+`  props ``=`` ``"0.25, 0.75"``,`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 ### Dealing with Unbalanced Proportions
 
 #### Rare Event Studies
 
-``` r
-
-# Rare disease diagnosis agreement
-result <- kappaSizePower(
-  outcome = "2",
-  kappa0 = 0.60,
-  kappa1 = 0.80,
-  props = "0.05, 0.95",   # 5% rare disease prevalence
-  raters = "3",
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Rare disease diagnosis agreement`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.60``,`\
+`  kappa1 ``=`` ``0.80``,`\
+`  props ``=`` ``"0.05, 0.95"``,   ``# 5% rare disease prevalence`\
+`  raters ``=`` ``"3"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 **Considerations for Unbalanced Data**: - May require larger sample
 sizes - Consider stratified analysis approaches - Validate results with
@@ -428,19 +427,17 @@ simulation studies
 
 #### Research Validation Studies
 
-``` r
-
-# High-power research validation
-result <- kappaSizePower(
-  outcome = "5",
-  kappa0 = 0.50,
-  kappa1 = 0.70,
-  props = "0.10, 0.20, 0.35, 0.25, 0.10",
-  raters = "4",
-  alpha = 0.01,           # Strict significance
-  power = 0.95            # Very high power
-)
-```
+\
+`# High-power research validation`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"5"``,`\
+`  kappa0 ``=`` ``0.50``,`\
+`  kappa1 ``=`` ``0.70``,`\
+`  props ``=`` ``"0.10, 0.20, 0.35, 0.25, 0.10"``,`\
+`  raters ``=`` ``"4"``,`\
+`  alpha ``=`` ``0.01``,           ``# Strict significance`\
+`  power ``=`` ``0.95``            ``# Very high power`\
+`)`
 
 **High-Power Considerations**: - Necessary for definitive validation
 studies - Required for regulatory submissions - Increases sample size
@@ -450,19 +447,17 @@ requirements substantially
 
 #### Coordinated Research Networks
 
-``` r
-
-# Multi-center standardization study
-result <- kappaSizePower(
-  outcome = "4",
-  kappa0 = 0.55,          # Current multi-center variability
-  kappa1 = 0.75,          # Target standardized agreement
-  props = "0.25, 0.30, 0.25, 0.20",
-  raters = "3",           # Representative raters per site
-  alpha = 0.05,
-  power = 0.85            # Higher power for multi-center
-)
-```
+\
+`# Multi-center standardization study`\
+`result`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"4"``,`\
+`  kappa0 ``=`` ``0.55``,          ``# Current multi-center variability`\
+`  kappa1 ``=`` ``0.75``,          ``# Target standardized agreement`\
+`  props ``=`` ``"0.25, 0.30, 0.25, 0.20"``,`\
+`  raters ``=`` ``"3"``,           ``# Representative raters per site`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.85``            ``# Higher power for multi-center`\
+`)`
 
 **Multi-Center Considerations**: - Account for between-site
 variability - Consider hierarchical study designs - Plan for adequate
@@ -516,7 +511,8 @@ alternative study designs - Plan for adaptive or sequential designs
 
 #### 3. **Inadequate Baseline Assessment**
 
-**Problem**: Poor κ₀ estimation leading to underpowered studies
+**Problem**: An unjustified null κ₀ or optimistic alternative κ₁ leading
+to an unsuitable design
 
 **Solution**: - Conduct thorough baseline assessment - Use multiple data
 sources for κ₀ estimation - Consider sensitivity analyses
@@ -532,41 +528,33 @@ rater availability and scheduling - Consider quality control procedures
 
 #### Pre-study Planning Checklist
 
-Literature review completed for realistic κ₀ and κ₁ values
-
-Proportion estimates obtained from reliable sources
-
-Power analysis conducted with multiple scenarios
-
-Feasibility assessment completed
-
-Rater training protocol established
-
-Quality control procedures defined
+- [ ] Literature review completed for realistic κ₀ and κ₁ values
+- [ ] Proportion estimates obtained from reliable sources
+- [ ] Power analysis conducted with multiple scenarios
+- [ ] Feasibility assessment completed
+- [ ] Rater training protocol established
+- [ ] Quality control procedures defined
 
 #### During-study Monitoring
 
-Interim agreement assessments conducted
-
-Rater consistency monitored
-
-Protocol adherence documented
-
-Sample size adequacy reassessed
+- [ ] Interim agreement assessments conducted
+- [ ] Rater consistency monitored
+- [ ] Protocol adherence documented
+- [ ] Sample size adequacy reassessed
 
 #### Post-study Validation
 
-Achieved agreement levels compared to predictions
-
-Power analysis assumptions validated
-
-Lessons learned documented for future studies
+- [ ] Achieved agreement levels compared to predictions
+- [ ] Power analysis assumptions validated
+- [ ] Lessons learned documented for future studies
 
 ## Interpretation of Results
 
 ### Understanding Power Analysis Output
 
-The `kappasizepower` function provides:
+The
+[`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+function provides:
 
 1.  **Required Sample Size**: Number of subjects needed
 2.  **Study Design Summary**: Comprehensive explanation of parameters
@@ -590,8 +578,9 @@ development**
 #### In Grant Applications
 
 “Power analysis using kappasizepower indicated that N subjects are
-required to detect an improvement in inter-rater agreement from κ₀=X to
-κ₁=Y with 80% power at the 5% significance level.”
+required to reject the null kappa κ₀=X when the true kappa is κ₁=Y in a
+two-sided goodness-of-fit test with 80% power at the 5% significance
+level.”
 
 #### In Study Protocols
 
@@ -610,20 +599,15 @@ conclusions
 
 ### Error Messages and Solutions
 
-#### “kappa1 must be greater than kappa0”
+#### Warning: “Alternative below the null”
 
-**Cause**: Alternative hypothesis agreement is not better than null
-hypothesis
+**Cause**: κ₁ is smaller than κ₀. The analysis still runs, but it then
+sizes a study to show that agreement is *worse* than κ₀.
 
-**Solution**:
+**Solution**: if you want to show an improvement, swap the two values.
 
-``` r
-# Incorrect
-kappa0 = 0.70, kappa1 = 0.60  # kappa1 < kappa0
-
-# Correct
-kappa0 = 0.60, kappa1 = 0.70  # kappa1 > kappa0
-```
+\
+[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(``kappa0 ``=`` ``0.60``, kappa1 ``=`` ``0.70``, props ``=`` ``"0.20, 0.80"``)`
 
 #### “Proportions must sum to 1”
 
@@ -631,40 +615,22 @@ kappa0 = 0.60, kappa1 = 0.70  # kappa1 > kappa0
 
 **Solution**: Adjust proportions or use normalized values
 
-``` r
+\
+`# Incorrect`\
+`props`` ``=`` ``"0.25, 0.80"``  ``# Sums to 1.05`\
+\
+`# Correct`\
+`props`` ``=`` ``"0.24, 0.76"``  ``# Sums to 1.00`
 
-# Incorrect
-props = "0.25, 0.80"  # Sums to 1.05
+#### Warning: “Low power”
 
-# Correct
-props = "0.24, 0.76"  # Sums to 1.00
-```
+**Cause**: the requested power is below 0.50, so the study is more
+likely to miss κ₁ than to detect it.
 
-#### “Power should be at least 0.5 for meaningful analysis”
+**Solution**: use a conventional power of 0.80 or 0.90.
 
-**Cause**: Power set too low for reasonable detection
-
-**Solution**: Increase power to at least 50%, typically 80%
-
-``` r
-
-# Problematic
-power = 0.30  # Too low
-
-# Recommended
-power = 0.80  # Standard minimum
-```
-
-#### “kappaSize package not installed”
-
-**Cause**: Required dependency not available
-
-**Solution**: Install the kappaSize package
-
-``` r
-
-install.packages("kappaSize")
-```
+\
+[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(``power ``=`` ``0.80``)`
 
 ### Computational Issues
 
@@ -672,8 +638,9 @@ install.packages("kappaSize")
 
 When sample sizes exceed feasible limits:
 
-**Solutions**: - Reduce effect size expectations (smaller κ₁ - κ₀) -
-Accept lower power (minimum 80%) - Consider multi-stage or adaptive
+**Solutions**: - Reconsider κ₁: a larger, still clinically meaningful
+difference (κ₁ - κ₀) needs fewer subjects - Do not go below a power of
+0.80 just to reduce the sample size - Consider multi-stage or adaptive
 designs - Explore alternative study approaches
 
 #### Small Effect Sizes
@@ -696,9 +663,12 @@ studies
 
 ### Complementary Functions
 
-The `kappasizepower` function works alongside:
+The
+[`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+function works alongside:
 
-- **`kappasizefixedn`**: For fixed sample size power analysis
+- **[`kappaSizeFixedN()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md)**:
+  For an expected one-sided lower confidence bound with fixed N
 - **Other agreement functions**: For post-hoc agreement assessment
 - **Sample size calculators**: For comprehensive study planning
 
@@ -721,22 +691,25 @@ The function integrates well with:
 
 ## Summary
 
-The `kappasizepower` function provides essential power analysis
-capabilities for inter-rater agreement studies. Key takeaways:
+The
+[`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+function provides essential power analysis capabilities for inter-rater
+agreement studies. Key takeaways:
 
 1.  **Use for prospective study planning** requiring specific power
     levels
-2.  **Ensures adequate sample sizes** for detecting meaningful agreement
-    improvements
-3.  **Supports 2-5 categories** and 2-5 raters with comprehensive
-    validation
-4.  **Requires κ₁ \> κ₀** for valid power analysis
+2.  **Provides approximate sample sizes** for a prespecified null and
+    alternative; confirm achieved power for the intended analysis
+3.  **Supports 2-5 categories** and 2-6 raters under the stated model
+4.  **Requires distinct κ₀ and κ₁**, with the clinically justified
+    alternative specified in advance
 5.  **Integrates with comprehensive research planning** workflows
 
-By understanding and properly applying this tool, researchers can design
-adequately powered studies to validate inter-rater agreement
-improvements, supporting evidence-based advances in clinical practice
-and research methodology.
+This plans a test of one population kappa against a specified null; it
+is not a test of change before and after training or a comparison of two
+rater panels. The sample-size formula is approximate. Read the
+achieved-power and sparse-cell notices, and simulate the intended
+analysis before finalizing a study.
 
 ## References
 

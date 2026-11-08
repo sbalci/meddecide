@@ -45,15 +45,13 @@ Prediction modeling is essential when:
 
 ## Installation and Setup
 
-``` r
-
-# Load required libraries
-
-library(dplyr)
-library(pROC)
-library(ggplot2)
-library(mice)
-```
+\
+`# Load required libraries`\
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`pROC`](https://xrobin.github.io/pROC/)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`mice`](https://github.com/amices/mice)`)`
 
 ## Understanding Prediction Models
 
@@ -111,235 +109,219 @@ guidelines:
 
 ### Simple Clinical Model
 
-``` r
-
-# Load example data
-data(modelbuilder_test_data)
-
-# Build basic clinical model
-result <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  showModelSummary = TRUE,
-  showPerformanceMetrics = TRUE
-)
-```
+\
+`# Load example data`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``modelbuilder_test_data``)`\
+\
+`# Build basic clinical model`\
+`result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  showModelSummary ``=`` ``TRUE``,`\
+`  showPerformanceMetrics ``=`` ``TRUE`\
+`)`
 
 ### Enhanced Clinical Model
 
-``` r
-
-# Build enhanced clinical model
-result <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  enhancedPredictors = c("age", "sex", "diabetes", "hypertension", 
-                        "smoking", "cholesterol", "bmi", "systolic_bp"),
-  buildEnhancedModel = TRUE,
-  splitData = TRUE,
-  crossValidation = TRUE,
-  showROCCurves = TRUE
-)
-```
+\
+`# Build enhanced clinical model`\
+`result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  enhancedPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                        ``"smoking"``, ``"cholesterol"``, ``"bmi"``, ``"systolic_bp"``)``,`\
+`  buildEnhancedModel ``=`` ``TRUE``,`\
+`  splitData ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  showROCCurves ``=`` ``TRUE`\
+`)`
 
 ### Biomarker Model with Validation
 
-``` r
-
-# Build biomarker model with comprehensive validation
-result <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  biomarkerPredictors = c("age", "sex", "diabetes", "hypertension", 
-                         "smoking", "cholesterol", "troponin", "creatinine"),
-  buildBiomarkerModel = TRUE,
-  splitData = TRUE,
-  crossValidation = TRUE,
-  bootstrapValidation = TRUE,
-  missingDataMethod = "multiple_imputation",
-  showCalibrationPlots = TRUE,
-  compareModels = TRUE
-)
-```
+\
+`# Build biomarker model with comprehensive validation`\
+`result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  biomarkerPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                         ``"smoking"``, ``"cholesterol"``, ``"troponin"``, ``"creatinine"``)``,`\
+`  buildBiomarkerModel ``=`` ``TRUE``,`\
+`  splitData ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  bootstrapValidation ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``"multiple_imputation"``,`\
+`  showCalibrationPlots ``=`` ``TRUE``,`\
+`  compareModels ``=`` ``TRUE`\
+`)`
 
 ## Advanced Configuration
 
 ### Missing Data Handling
 
-``` r
-
-# Complete cases analysis
-result_complete <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "troponin"),
-  buildBasicModel = TRUE,
-  missingDataMethod = "complete_cases"
-)
-
-# Multiple imputation
-result_imputed <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "troponin"),
-  buildBasicModel = TRUE,
-  missingDataMethod = "multiple_imputation",
-  imputationSets = 10
-)
-
-# Variable exclusion for high missing rates
-result_excluded <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "troponin"),
-  buildBasicModel = TRUE,
-  missingDataMethod = "exclude_missing"
-)
-```
+\
+`# Complete cases analysis`\
+`result_complete`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"troponin"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``"complete_cases"`\
+`)`\
+\
+`# Multiple imputation`\
+`result_imputed`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"troponin"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``"multiple_imputation"``,`\
+`  imputationSets ``=`` ``10`\
+`)`\
+\
+`# Variable exclusion for high missing rates`\
+`result_excluded`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"troponin"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``"exclude_missing"`\
+`)`
 
 ### Variable Transformations and Interactions
 
-``` r
-
-# Include variable transformations
-result_transformed <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "cholesterol", "troponin"),
-  buildBasicModel = TRUE,
-  transformVariables = TRUE,
-  transformMethod = "log"
-)
-
-# Include interaction terms
-result_interactions <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "smoking"),
-  buildBasicModel = TRUE,
-  includeInteractions = TRUE,
-  interactionTerms = "age*sex, diabetes*smoking"
-)
-```
+\
+`# Include variable transformations`\
+`result_transformed`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"cholesterol"``, ``"troponin"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  transformVariables ``=`` ``TRUE``,`\
+`  transformMethod ``=`` ``"log"`\
+`)`\
+\
+`# Include interaction terms`\
+`result_interactions`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"smoking"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  includeInteractions ``=`` ``TRUE``,`\
+`  interactionTerms ``=`` ``"age*sex, diabetes*smoking"`\
+`)`
 
 ### Stepwise Variable Selection
 
-``` r
-
-# Stepwise selection with AIC
-result_stepwise_aic <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  enhancedPredictors = c("age", "sex", "diabetes", "hypertension", 
-                        "smoking", "cholesterol", "bmi", "systolic_bp"),
-  buildEnhancedModel = TRUE,
-  useStepwise = TRUE,
-  stepwiseDirection = "both",
-  selectionCriterion = "aic"
-)
-
-# Stepwise selection with BIC
-result_stepwise_bic <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  enhancedPredictors = c("age", "sex", "diabetes", "hypertension", 
-                        "smoking", "cholesterol", "bmi", "systolic_bp"),
-  buildEnhancedModel = TRUE,
-  useStepwise = TRUE,
-  stepwiseDirection = "both",
-  selectionCriterion = "bic"
-)
-```
+\
+`# Stepwise selection with AIC`\
+`result_stepwise_aic`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  enhancedPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                        ``"smoking"``, ``"cholesterol"``, ``"bmi"``, ``"systolic_bp"``)``,`\
+`  buildEnhancedModel ``=`` ``TRUE``,`\
+`  useStepwise ``=`` ``TRUE``,`\
+`  stepwiseDirection ``=`` ``"both"``,`\
+`  selectionCriterion ``=`` ``"aic"`\
+`)`\
+\
+`# Stepwise selection with BIC`\
+`result_stepwise_bic`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  enhancedPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                        ``"smoking"``, ``"cholesterol"``, ``"bmi"``, ``"systolic_bp"``)``,`\
+`  buildEnhancedModel ``=`` ``TRUE``,`\
+`  useStepwise ``=`` ``TRUE``,`\
+`  stepwiseDirection ``=`` ``"both"``,`\
+`  selectionCriterion ``=`` ``"bic"`\
+`)`
 
 ### Validation Methods
 
-``` r
-
-# Cross-validation
-result_cv <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  crossValidation = TRUE,
-  cvFolds = 10
-)
-
-# Bootstrap validation
-result_bootstrap <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  bootstrapValidation = TRUE,
-  bootstrapReps = 1000
-)
-
-# Combined validation
-result_combined <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  crossValidation = TRUE,
-  bootstrapValidation = TRUE,
-  cvFolds = 5,
-  bootstrapReps = 500
-)
-```
+\
+`# Cross-validation`\
+`result_cv`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  cvFolds ``=`` ``10`\
+`)`\
+\
+`# Bootstrap validation`\
+`result_bootstrap`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  bootstrapValidation ``=`` ``TRUE``,`\
+`  bootstrapReps ``=`` ``1000`\
+`)`\
+\
+`# Combined validation`\
+`result_combined`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  bootstrapValidation ``=`` ``TRUE``,`\
+`  cvFolds ``=`` ``5``,`\
+`  bootstrapReps ``=`` ``500`\
+`)`
 
 ## Clinical Research Applications
 
 ### Application 1: Cardiovascular Risk Prediction
 
-``` r
-
-# Cardiovascular risk assessment model
-cv_risk_model <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  
-  # Build multiple models for comparison
-  buildBasicModel = TRUE,
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  
-  buildEnhancedModel = TRUE,
-  enhancedPredictors = c("age", "sex", "diabetes", "hypertension", 
-                        "smoking", "cholesterol", "bmi", "family_history"),
-  
-  buildBiomarkerModel = TRUE,
-  biomarkerPredictors = c("age", "sex", "diabetes", "hypertension", 
-                         "smoking", "cholesterol", "troponin", "creatinine"),
-  
-  # Configuration
-  splitData = TRUE,
-  crossValidation = TRUE,
-  missingDataMethod = "multiple_imputation",
-  
-  # Outputs
-  compareModels = TRUE,
-  showROCCurves = TRUE,
-  showCalibrationPlots = TRUE,
-  generateRiskScore = TRUE,
-  exportForDCA = TRUE
-)
-```
+\
+`# Cardiovascular risk assessment model`\
+`cv_risk_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  `\
+`  ``# Build multiple models for comparison`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  `\
+`  buildEnhancedModel ``=`` ``TRUE``,`\
+`  enhancedPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                        ``"smoking"``, ``"cholesterol"``, ``"bmi"``, ``"family_history"``)``,`\
+`  `\
+`  buildBiomarkerModel ``=`` ``TRUE``,`\
+`  biomarkerPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                         ``"smoking"``, ``"cholesterol"``, ``"troponin"``, ``"creatinine"``)``,`\
+`  `\
+`  ``# Configuration`\
+`  splitData ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``"multiple_imputation"``,`\
+`  `\
+`  ``# Outputs`\
+`  compareModels ``=`` ``TRUE``,`\
+`  showROCCurves ``=`` ``TRUE``,`\
+`  showCalibrationPlots ``=`` ``TRUE``,`\
+`  generateRiskScore ``=`` ``TRUE``,`\
+`  exportForDCA ``=`` ``TRUE`\
+`)`
 
 **Clinical Interpretation:** - Basic model provides foundation risk
 assessment - Enhanced model adds lifestyle and laboratory factors -
@@ -348,104 +330,98 @@ guides clinical implementation
 
 ### Application 2: Biomarker Validation Study
 
-``` r
-
-# Biomarker validation for new cardiac marker
-biomarker_study <- modelbuilder(
-  data = biomarker_validation_data,
-  outcome = "major_adverse_cardiac_event",
-  outcomePositive = "Yes",
-  
-  # Reference clinical model
-  buildBasicModel = TRUE,
-  basicPredictors = c("age", "sex", "diabetes", "hypertension", "chest_pain"),
-  basicModelName = "clinical_model",
-  
-  # Biomarker-enhanced model
-  buildBiomarkerModel = TRUE,
-  biomarkerPredictors = c("age", "sex", "diabetes", "hypertension", 
-                         "chest_pain", "new_biomarker"),
-  biomarkerModelName = "biomarker_model",
-  
-  # Validation
-  splitData = TRUE,
-  crossValidation = TRUE,
-  calculateNRI = TRUE,
-  calculateIDI = TRUE,
-  
-  # Outputs
-  compareModels = TRUE,
-  showPerformanceMetrics = TRUE,
-  exportForDCA = TRUE
-)
-```
+\
+`# Biomarker validation for new cardiac marker`\
+`biomarker_study`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``biomarker_validation_data``,`\
+`  outcome ``=`` ``"major_adverse_cardiac_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  `\
+`  ``# Reference clinical model`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, ``"chest_pain"``)``,`\
+`  basicModelName ``=`` ``"clinical_model"``,`\
+`  `\
+`  ``# Biomarker-enhanced model`\
+`  buildBiomarkerModel ``=`` ``TRUE``,`\
+`  biomarkerPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                         ``"chest_pain"``, ``"new_biomarker"``)``,`\
+`  biomarkerModelName ``=`` ``"biomarker_model"``,`\
+`  `\
+`  ``# Validation`\
+`  splitData ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  calculateNRI ``=`` ``TRUE``,`\
+`  calculateIDI ``=`` ``TRUE``,`\
+`  `\
+`  ``# Outputs`\
+`  compareModels ``=`` ``TRUE``,`\
+`  showPerformanceMetrics ``=`` ``TRUE``,`\
+`  exportForDCA ``=`` ``TRUE`\
+`)`
 
 ### Application 3: Personalized Treatment Selection
 
-``` r
-
-# Treatment selection model
-treatment_model <- modelbuilder(
-  data = treatment_response_data,
-  outcome = "treatment_response",
-  outcomePositive = "Responder",
-  
-  # Personalized model
-  buildCustomModel = TRUE,
-  customPredictors = c("age", "sex", "disease_severity", "biomarker_profile", 
-                      "genetic_score", "comorbidity_index"),
-  customModelName = "personalized_treatment",
-  
-  # Advanced options
-  includeInteractions = TRUE,
-  interactionTerms = "age*biomarker_profile, disease_severity*genetic_score",
-  transformVariables = TRUE,
-  useStepwise = TRUE,
-  
-  # Validation
-  splitData = TRUE,
-  crossValidation = TRUE,
-  bootstrapValidation = TRUE,
-  
-  # Clinical utility
-  generateRiskScore = TRUE,
-  exportForDCA = TRUE
-)
-```
+\
+`# Treatment selection model`\
+`treatment_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``treatment_response_data``,`\
+`  outcome ``=`` ``"treatment_response"``,`\
+`  outcomePositive ``=`` ``"Responder"``,`\
+`  `\
+`  ``# Personalized model`\
+`  buildCustomModel ``=`` ``TRUE``,`\
+`  customPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"disease_severity"``, ``"biomarker_profile"``, `\
+`                      ``"genetic_score"``, ``"comorbidity_index"``)``,`\
+`  customModelName ``=`` ``"personalized_treatment"``,`\
+`  `\
+`  ``# Advanced options`\
+`  includeInteractions ``=`` ``TRUE``,`\
+`  interactionTerms ``=`` ``"age*biomarker_profile, disease_severity*genetic_score"``,`\
+`  transformVariables ``=`` ``TRUE``,`\
+`  useStepwise ``=`` ``TRUE``,`\
+`  `\
+`  ``# Validation`\
+`  splitData ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  bootstrapValidation ``=`` ``TRUE``,`\
+`  `\
+`  ``# Clinical utility`\
+`  generateRiskScore ``=`` ``TRUE``,`\
+`  exportForDCA ``=`` ``TRUE`\
+`)`
 
 ### Application 4: Multi-center Model Development
 
-``` r
-
-# Multi-center prediction model
-multicenter_model <- modelbuilder(
-  data = multicenter_study_data,
-  outcome = "clinical_outcome",
-  outcomePositive = "Yes",
-  
-  # Enhanced model with site adjustments
-  buildEnhancedModel = TRUE,
-  enhancedPredictors = c("age", "sex", "diabetes", "hypertension", 
-                        "smoking", "cholesterol", "site"),
-  
-  # Robust validation
-  splitData = TRUE,
-  crossValidation = TRUE,
-  cvFolds = 10,
-  bootstrapValidation = TRUE,
-  
-  # Missing data handling
-  missingDataMethod = "multiple_imputation",
-  imputationSets = 20,
-  
-  # Comprehensive outputs
-  compareModels = TRUE,
-  showModelSummary = TRUE,
-  showPerformanceMetrics = TRUE,
-  showCalibrationPlots = TRUE,
-  exportForDCA = TRUE
-)
-```
+\
+`# Multi-center prediction model`\
+`multicenter_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``multicenter_study_data``,`\
+`  outcome ``=`` ``"clinical_outcome"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  `\
+`  ``# Enhanced model with site adjustments`\
+`  buildEnhancedModel ``=`` ``TRUE``,`\
+`  enhancedPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                        ``"smoking"``, ``"cholesterol"``, ``"site"``)``,`\
+`  `\
+`  ``# Robust validation`\
+`  splitData ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  cvFolds ``=`` ``10``,`\
+`  bootstrapValidation ``=`` ``TRUE``,`\
+`  `\
+`  ``# Missing data handling`\
+`  missingDataMethod ``=`` ``"multiple_imputation"``,`\
+`  imputationSets ``=`` ``20``,`\
+`  `\
+`  ``# Comprehensive outputs`\
+`  compareModels ``=`` ``TRUE``,`\
+`  showModelSummary ``=`` ``TRUE``,`\
+`  showPerformanceMetrics ``=`` ``TRUE``,`\
+`  showCalibrationPlots ``=`` ``TRUE``,`\
+`  exportForDCA ``=`` ``TRUE`\
+`)`
 
 ## Interpreting Results
 
@@ -473,33 +449,31 @@ fit (p \> 0.05 indicates good fit)
 
 ### Model Comparison
 
-``` r
-
-# Compare multiple models
-comparison_result <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  
-  # Build all model types
-  buildBasicModel = TRUE,
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  
-  buildEnhancedModel = TRUE,
-  enhancedPredictors = c("age", "sex", "diabetes", "hypertension", 
-                        "smoking", "cholesterol", "bmi"),
-  
-  buildBiomarkerModel = TRUE,
-  biomarkerPredictors = c("age", "sex", "diabetes", "hypertension", 
-                         "smoking", "cholesterol", "troponin"),
-  
-  # Comparison settings
-  compareModels = TRUE,
-  showPerformanceMetrics = TRUE,
-  calculateNRI = TRUE,
-  calculateIDI = TRUE
-)
-```
+\
+`# Compare multiple models`\
+`comparison_result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  `\
+`  ``# Build all model types`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  `\
+`  buildEnhancedModel ``=`` ``TRUE``,`\
+`  enhancedPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                        ``"smoking"``, ``"cholesterol"``, ``"bmi"``)``,`\
+`  `\
+`  buildBiomarkerModel ``=`` ``TRUE``,`\
+`  biomarkerPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, `\
+`                         ``"smoking"``, ``"cholesterol"``, ``"troponin"``)``,`\
+`  `\
+`  ``# Comparison settings`\
+`  compareModels ``=`` ``TRUE``,`\
+`  showPerformanceMetrics ``=`` ``TRUE``,`\
+`  calculateNRI ``=`` ``TRUE``,`\
+`  calculateIDI ``=`` ``TRUE`\
+`)`
 
 **Interpretation Guidelines:** - Higher AUC indicates better
 discrimination - Calibration slope closer to 1.0 indicates better
@@ -523,126 +497,116 @@ realistic
 
 ### 1. Study Design and Data Quality
 
-``` r
-
-# Ensure adequate sample size
-n_events <- sum(clinical_data$outcome == "Yes")
-n_predictors <- length(predictor_variables)
-epv <- n_events / n_predictors
-
-# Rule of thumb: EPV should be >= 10
-if (epv < 10) {
-  warning("Events per variable (EPV) is low. Consider reducing predictors or increasing sample size.")
-}
-
-# Check data quality
-summary(clinical_data)
-```
+\
+`# Ensure adequate sample size`\
+`n_events`` ``<-`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``clinical_data``$``outcome`` ``==`` ``"Yes"``)`\
+`n_predictors`` ``<-`` `[`length`](https://rdrr.io/r/base/length.html)`(``predictor_variables``)`\
+`epv`` ``<-`` ``n_events`` ``/`` ``n_predictors`\
+\
+`# Rule of thumb: EPV should be >= 10`\
+`if`` ``(``epv`` ``<`` ``10``)`` ``{`\
+`  `[`warning`](https://rdrr.io/r/base/warning.html)`(``"Events per variable (EPV) is low. Consider reducing predictors or increasing sample size."``)`\
+`}`\
+\
+`# Check data quality`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``clinical_data``)`
 
 ### 2. Variable Selection
 
-``` r
-
-# Clinical relevance first
-clinical_predictors <- c("age", "sex", "diabetes", "hypertension")
-
-# Add variables based on clinical knowledge
-enhanced_predictors <- c(clinical_predictors, "smoking", "cholesterol", "family_history")
-
-# Consider biomarkers last
-biomarker_predictors <- c(enhanced_predictors, "troponin", "creatinine", "bnp")
-
-# Use stepwise selection judiciously
-stepwise_model <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  enhancedPredictors = biomarker_predictors,
-  buildEnhancedModel = TRUE,
-  useStepwise = TRUE,
-  selectionCriterion = "bic"  # BIC is more conservative than AIC
-)
-```
+\
+`# Clinical relevance first`\
+`clinical_predictors`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)`\
+\
+`# Add variables based on clinical knowledge`\
+`enhanced_predictors`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``clinical_predictors``, ``"smoking"``, ``"cholesterol"``, ``"family_history"``)`\
+\
+`# Consider biomarkers last`\
+`biomarker_predictors`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``enhanced_predictors``, ``"troponin"``, ``"creatinine"``, ``"bnp"``)`\
+\
+`# Use stepwise selection judiciously`\
+`stepwise_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  enhancedPredictors ``=`` ``biomarker_predictors``,`\
+`  buildEnhancedModel ``=`` ``TRUE``,`\
+`  useStepwise ``=`` ``TRUE``,`\
+`  selectionCriterion ``=`` ``"bic"``  ``# BIC is more conservative than AIC`\
+`)`
 
 ### 3. Validation Strategy
 
-``` r
-
-# Comprehensive validation approach
-validation_model <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  
-  # Multiple validation methods
-  splitData = TRUE,           # Internal validation
-  crossValidation = TRUE,     # Cross-validation
-  bootstrapValidation = TRUE, # Bootstrap validation
-  
-  cvFolds = 10,
-  bootstrapReps = 1000,
-  
-  # Performance assessment
-  showPerformanceMetrics = TRUE,
-  showCalibrationPlots = TRUE,
-  compareModels = TRUE
-)
-```
+\
+`# Comprehensive validation approach`\
+`validation_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  `\
+`  ``# Multiple validation methods`\
+`  splitData ``=`` ``TRUE``,           ``# Internal validation`\
+`  crossValidation ``=`` ``TRUE``,     ``# Cross-validation`\
+`  bootstrapValidation ``=`` ``TRUE``, ``# Bootstrap validation`\
+`  `\
+`  cvFolds ``=`` ``10``,`\
+`  bootstrapReps ``=`` ``1000``,`\
+`  `\
+`  ``# Performance assessment`\
+`  showPerformanceMetrics ``=`` ``TRUE``,`\
+`  showCalibrationPlots ``=`` ``TRUE``,`\
+`  compareModels ``=`` ``TRUE`\
+`)`
 
 ### 4. Missing Data Strategy
 
-``` r
-
-# Assess missing data patterns
-missing_summary <- clinical_data %>%
-  summarise_all(~sum(is.na(.))) %>%
-  gather(variable, missing_count) %>%
-  mutate(missing_percent = missing_count / nrow(clinical_data) * 100) %>%
-  arrange(desc(missing_percent))
-
-# Choose appropriate method
-if (max(missing_summary$missing_percent) < 5) {
-  # Low missing data: complete cases
-  method <- "complete_cases"
-} else if (max(missing_summary$missing_percent) < 20) {
-  # Moderate missing data: multiple imputation
-  method <- "multiple_imputation"
-} else {
-  # High missing data: exclude variables
-  method <- "exclude_missing"
-}
-
-model_missing <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  missingDataMethod = method
-)
-```
+\
+`# Assess missing data patterns`\
+`missing_summary`` ``<-`` ``clinical_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise_all`](https://dplyr.tidyverse.org/reference/summarise_all.html)`(``~`[`sum`](https://rdrr.io/r/base/sum.html)`(`[`is.na`](https://rdrr.io/r/base/NA.html)`(``.``)``)``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  ``gather``(``variable``, ``missing_count``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(``missing_percent ``=`` ``missing_count`` ``/`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``clinical_data``)`` ``*`` ``100``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`arrange`](https://dplyr.tidyverse.org/reference/arrange.html)`(`[`desc`](https://dplyr.tidyverse.org/reference/desc.html)`(``missing_percent``)``)`\
+\
+`# Choose appropriate method`\
+`if`` ``(`[`max`](https://rdrr.io/r/base/Extremes.html)`(``missing_summary``$``missing_percent``)`` ``<`` ``5``)`` ``{`\
+`  ``# Low missing data: complete cases`\
+`  ``method`` ``<-`` ``"complete_cases"`\
+`}`` ``else`` ``if`` ``(`[`max`](https://rdrr.io/r/base/Extremes.html)`(``missing_summary``$``missing_percent``)`` ``<`` ``20``)`` ``{`\
+`  ``# Moderate missing data: multiple imputation`\
+`  ``method`` ``<-`` ``"multiple_imputation"`\
+`}`` ``else`` ``{`\
+`  ``# High missing data: exclude variables`\
+`  ``method`` ``<-`` ``"exclude_missing"`\
+`}`\
+\
+`model_missing`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``method`\
+`)`
 
 ## Clinical Risk Scores
 
 ### Generating Risk Scores
 
-``` r
-
-# Generate clinical risk score
-risk_score_model <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension", "smoking"),
-  buildBasicModel = TRUE,
-  
-  # Risk score generation
-  generateRiskScore = TRUE,
-  riskScorePoints = "framingham"  # or "simple" or "deciles"
-)
-```
+\
+`# Generate clinical risk score`\
+`risk_score_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, ``"smoking"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  `\
+`  ``# Risk score generation`\
+`  generateRiskScore ``=`` ``TRUE``,`\
+`  riskScorePoints ``=`` ``"framingham"``  ``# or "simple" or "deciles"`\
+`)`
 
 ### Risk Score Implementation
 
@@ -657,65 +621,59 @@ Population-specific ranges - Suitable for quality metrics
 
 ### Clinical Risk Score Example
 
-``` r
-
-# Example: Cardiovascular Risk Score
-# Age: 65 years = 2 points
-# Sex: Male = 3 points
-# Diabetes: Yes = 4 points
-# Hypertension: Yes = 2 points
-# Smoking: Current = 5 points
-# Total Score: 16 points
-
-# Risk interpretation:
-# 0-5 points: Low risk (<5%)
-# 6-10 points: Moderate risk (5-15%)
-# 11-15 points: High risk (15-30%)
-# >15 points: Very high risk (>30%)
-```
+\
+`# Example: Cardiovascular Risk Score`\
+`# Age: 65 years = 2 points`\
+`# Sex: Male = 3 points`\
+`# Diabetes: Yes = 4 points`\
+`# Hypertension: Yes = 2 points`\
+`# Smoking: Current = 5 points`\
+`# Total Score: 16 points`\
+\
+`# Risk interpretation:`\
+`# 0-5 points: Low risk (<5%)`\
+`# 6-10 points: Moderate risk (5-15%)`\
+`# 11-15 points: High risk (15-30%)`\
+`# >15 points: Very high risk (>30%)`
 
 ## Integration with Decision Curve Analysis
 
 ### DCA Preparation
 
-``` r
-
-# Build models for DCA
-dca_models <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  
-  # Multiple models for comparison
-  buildBasicModel = TRUE,
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  basicModelName = "clinical_model",
-  
-  buildBiomarkerModel = TRUE,
-  biomarkerPredictors = c("age", "sex", "diabetes", "hypertension", "troponin"),
-  biomarkerModelName = "biomarker_model",
-  
-  # DCA preparation
-  createPredictions = TRUE,
-  exportForDCA = TRUE
-)
-```
+\
+`# Build models for DCA`\
+`dca_models`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  `\
+`  ``# Multiple models for comparison`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  basicModelName ``=`` ``"clinical_model"``,`\
+`  `\
+`  buildBiomarkerModel ``=`` ``TRUE``,`\
+`  biomarkerPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``, ``"troponin"``)``,`\
+`  biomarkerModelName ``=`` ``"biomarker_model"``,`\
+`  `\
+`  ``# DCA preparation`\
+`  createPredictions ``=`` ``TRUE``,`\
+`  exportForDCA ``=`` ``TRUE`\
+`)`
 
 ### DCA Workflow
 
-``` r
-
-# After model building, use DCA module
-# 1. Models create prediction columns automatically
-# 2. Columns named: [model_name]_prob
-# 3. Ready for direct use in DCA
-
-# Example DCA setup:
-# Outcome: cardiovascular_event
-# Positive outcome: Yes
-# Prediction models: clinical_model_prob, biomarker_model_prob
-# Threshold range: 5% to 50%
-```
+\
+`# After model building, use DCA module`\
+`# 1. Models create prediction columns automatically`\
+`# 2. Columns named: [model_name]_prob`\
+`# 3. Ready for direct use in DCA`\
+\
+`# Example DCA setup:`\
+`# Outcome: cardiovascular_event`\
+`# Positive outcome: Yes`\
+`# Prediction models: clinical_model_prob, biomarker_model_prob`\
+`# Threshold range: 5% to 50%`
 
 ## Troubleshooting
 
@@ -727,22 +685,20 @@ dca_models <- modelbuilder(
 
 **Solutions:**
 
-``` r
-
-# Increase maximum iterations
-result <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes"),
-  buildBasicModel = TRUE,
-  # Convergence handled automatically in enhanced version
-)
-
-# Check for perfect separation
-separation_check <- table(clinical_data$perfect_predictor, clinical_data$cardiovascular_event)
-print(separation_check)
-```
+\
+`# Increase maximum iterations`\
+`result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  ``# Convergence handled automatically in enhanced version`\
+`)`\
+\
+`# Check for perfect separation`\
+`separation_check`` ``<-`` `[`table`](https://rdrr.io/r/base/table.html)`(``clinical_data``$``perfect_predictor``, ``clinical_data``$``cardiovascular_event``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``separation_check``)`
 
 #### Issue 2: Perfect Separation
 
@@ -750,12 +706,10 @@ print(separation_check)
 
 **Solutions:**
 
-``` r
-
-# The enhanced modelbuilder automatically detects and warns about separation
-# Remove or combine categories of problematic variables
-# Use penalized regression (if available)
-```
+\
+`# The enhanced modelbuilder automatically detects and warns about separation`\
+`# Remove or combine categories of problematic variables`\
+`# Use penalized regression (if available)`
 
 #### Issue 3: Low Event Rate
 
@@ -763,21 +717,19 @@ print(separation_check)
 
 **Solutions:**
 
-``` r
-
-# Check events per variable
-n_events <- sum(clinical_data$outcome == "Yes")
-n_predictors <- length(predictor_variables)
-epv <- n_events / n_predictors
-
-if (epv < 10) {
-  # Reduce number of predictors
-  essential_predictors <- c("age", "sex", "primary_risk_factor")
-  
-  # Or combine outcome categories
-  # Or collect more data
-}
-```
+\
+`# Check events per variable`\
+`n_events`` ``<-`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``clinical_data``$``outcome`` ``==`` ``"Yes"``)`\
+`n_predictors`` ``<-`` `[`length`](https://rdrr.io/r/base/length.html)`(``predictor_variables``)`\
+`epv`` ``<-`` ``n_events`` ``/`` ``n_predictors`\
+\
+`if`` ``(``epv`` ``<`` ``10``)`` ``{`\
+`  ``# Reduce number of predictors`\
+`  ``essential_predictors`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"primary_risk_factor"``)`\
+`  `\
+`  ``# Or combine outcome categories`\
+`  ``# Or collect more data`\
+`}`
 
 #### Issue 4: High Missing Data
 
@@ -785,29 +737,27 @@ if (epv < 10) {
 
 **Solutions:**
 
-``` r
-
-# Use multiple imputation
-result <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "biomarker"),
-  buildBasicModel = TRUE,
-  missingDataMethod = "multiple_imputation",
-  imputationSets = 20
-)
-
-# Or exclude high-missing variables
-result <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "biomarker"),
-  buildBasicModel = TRUE,
-  missingDataMethod = "exclude_missing"
-)
-```
+\
+`# Use multiple imputation`\
+`result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"biomarker"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``"multiple_imputation"``,`\
+`  imputationSets ``=`` ``20`\
+`)`\
+\
+`# Or exclude high-missing variables`\
+`result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"biomarker"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  missingDataMethod ``=`` ``"exclude_missing"`\
+`)`
 
 ## Reporting Results
 
@@ -837,32 +787,30 @@ When reporting prediction model results:
 
 ### Example Report Template
 
-``` r
-
-# Generate comprehensive model report
-report_model <- modelbuilder(
-  data = modelbuilder_test_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  
-  # Model development
-  buildBasicModel = TRUE,
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  
-  # Validation
-  splitData = TRUE,
-  crossValidation = TRUE,
-  bootstrapValidation = TRUE,
-  
-  # Comprehensive outputs
-  showModelSummary = TRUE,
-  showPerformanceMetrics = TRUE,
-  showCalibrationPlots = TRUE,
-  compareModels = TRUE,
-  generateRiskScore = TRUE,
-  exportForDCA = TRUE
-)
-```
+\
+`# Generate comprehensive model report`\
+`report_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``modelbuilder_test_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  `\
+`  ``# Model development`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  `\
+`  ``# Validation`\
+`  splitData ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  bootstrapValidation ``=`` ``TRUE``,`\
+`  `\
+`  ``# Comprehensive outputs`\
+`  showModelSummary ``=`` ``TRUE``,`\
+`  showPerformanceMetrics ``=`` ``TRUE``,`\
+`  showCalibrationPlots ``=`` ``TRUE``,`\
+`  compareModels ``=`` ``TRUE``,`\
+`  generateRiskScore ``=`` ``TRUE``,`\
+`  exportForDCA ``=`` ``TRUE`\
+`)`
 
 **Sample Report Text:** “We developed a clinical prediction model for
 cardiovascular events using logistic regression. The model included age,
@@ -878,151 +826,136 @@ range.”
 
 ### Custom Prediction Models
 
-``` r
-
-# Complex custom model with interactions
-custom_model <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  
-  # Custom variable combination
-  buildCustomModel = TRUE,
-  customPredictors = c("age", "sex", "diabetes", "cholesterol", 
-                      "family_history", "exercise", "diet_score"),
-  
-  # Advanced features
-  includeInteractions = TRUE,
-  interactionTerms = "age*sex, diabetes*cholesterol, family_history*exercise",
-  transformVariables = TRUE,
-  transformMethod = "polynomial",
-  
-  # Variable selection
-  useStepwise = TRUE,
-  stepwiseDirection = "both",
-  selectionCriterion = "bic"
-)
-```
+\
+`# Complex custom model with interactions`\
+`custom_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  `\
+`  ``# Custom variable combination`\
+`  buildCustomModel ``=`` ``TRUE``,`\
+`  customPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"cholesterol"``, `\
+`                      ``"family_history"``, ``"exercise"``, ``"diet_score"``)``,`\
+`  `\
+`  ``# Advanced features`\
+`  includeInteractions ``=`` ``TRUE``,`\
+`  interactionTerms ``=`` ``"age*sex, diabetes*cholesterol, family_history*exercise"``,`\
+`  transformVariables ``=`` ``TRUE``,`\
+`  transformMethod ``=`` ``"polynomial"``,`\
+`  `\
+`  ``# Variable selection`\
+`  useStepwise ``=`` ``TRUE``,`\
+`  stepwiseDirection ``=`` ``"both"``,`\
+`  selectionCriterion ``=`` ``"bic"`\
+`)`
 
 ### Model Updating and Recalibration
 
-``` r
-
-# Original model
-original_model <- modelbuilder(
-  data = original_dataset,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE
-)
-
-# Updated model with new data
-updated_model <- modelbuilder(
-  data = updated_dataset,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  
-  # Compare to original
-  compareModels = TRUE
-)
-```
+\
+`# Original model`\
+`original_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``original_dataset``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE`\
+`)`\
+\
+`# Updated model with new data`\
+`updated_model`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``updated_dataset``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  `\
+`  ``# Compare to original`\
+`  compareModels ``=`` ``TRUE`\
+`)`
 
 ### Multi-outcome Models
 
-``` r
-
-# Separate models for different outcomes
-primary_outcome <- modelbuilder(
-  data = clinical_data,
-  outcome = "primary_endpoint",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  basicModelName = "primary_model"
-)
-
-secondary_outcome <- modelbuilder(
-  data = clinical_data,
-  outcome = "secondary_endpoint",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  basicModelName = "secondary_model"
-)
-```
+\
+`# Separate models for different outcomes`\
+`primary_outcome`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"primary_endpoint"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  basicModelName ``=`` ``"primary_model"`\
+`)`\
+\
+`secondary_outcome`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"secondary_endpoint"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  basicModelName ``=`` ``"secondary_model"`\
+`)`
 
 ## Quality Assurance
 
 ### Model Validation Checklist
 
-**Sample Size**: Adequate events per variable (EPV \>= 10)
-
-**Data Quality**: Missing data patterns assessed and handled
-
-**Variable Selection**: Clinically relevant predictors included
-
-**Model Fitting**: Convergence achieved, no separation issues
-
-**Performance**: Discrimination and calibration adequate
-
-**Validation**: Cross-validation or bootstrap performed
-
-**Clinical Utility**: Decision curve analysis completed
-
-**Reporting**: Transparent methodology and results
+- [ ] **Sample Size**: Adequate events per variable (EPV \>= 10)
+- [ ] **Data Quality**: Missing data patterns assessed and handled
+- [ ] **Variable Selection**: Clinically relevant predictors included
+- [ ] **Model Fitting**: Convergence achieved, no separation issues
+- [ ] **Performance**: Discrimination and calibration adequate
+- [ ] **Validation**: Cross-validation or bootstrap performed
+- [ ] **Clinical Utility**: Decision curve analysis completed
+- [ ] **Reporting**: Transparent methodology and results
 
 ### Validation Steps
 
-``` r
-
-# 1. Data quality assessment
-summary(clinical_data)
-
-# 2. Model development
-model_result <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  showModelSummary = TRUE
-)
-
-# 3. Performance evaluation
-performance_check <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  showPerformanceMetrics = TRUE,
-  showCalibrationPlots = TRUE
-)
-
-# 4. Validation
-validation_check <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  crossValidation = TRUE,
-  bootstrapValidation = TRUE
-)
-
-# 5. Clinical utility
-utility_check <- modelbuilder(
-  data = clinical_data,
-  outcome = "cardiovascular_event",
-  outcomePositive = "Yes",
-  basicPredictors = c("age", "sex", "diabetes", "hypertension"),
-  buildBasicModel = TRUE,
-  exportForDCA = TRUE
-)
-```
+\
+`# 1. Data quality assessment`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``clinical_data``)`\
+\
+`# 2. Model development`\
+`model_result`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  showModelSummary ``=`` ``TRUE`\
+`)`\
+\
+`# 3. Performance evaluation`\
+`performance_check`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  showPerformanceMetrics ``=`` ``TRUE``,`\
+`  showCalibrationPlots ``=`` ``TRUE`\
+`)`\
+\
+`# 4. Validation`\
+`validation_check`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  crossValidation ``=`` ``TRUE``,`\
+`  bootstrapValidation ``=`` ``TRUE`\
+`)`\
+\
+`# 5. Clinical utility`\
+`utility_check`` ``<-`` ``modelbuilder``(`\
+`  data ``=`` ``clinical_data``,`\
+`  outcome ``=`` ``"cardiovascular_event"``,`\
+`  outcomePositive ``=`` ``"Yes"``,`\
+`  basicPredictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"age"``, ``"sex"``, ``"diabetes"``, ``"hypertension"``)``,`\
+`  buildBasicModel ``=`` ``TRUE``,`\
+`  exportForDCA ``=`` ``TRUE`\
+`)`
 
 ## Conclusion
 

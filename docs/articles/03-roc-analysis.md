@@ -1,70 +1,76 @@
 # ROC Curve Analysis
 
-This vignette shows how to perform Receiver Operating Characteristic
-(ROC) analysis with **meddecide** using the
-[`psychopdaROC()`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)
-function.
+This article is a short introduction to ROC analysis with **Advanced ROC
+Analysis**
+([`psychopdaROC()`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md),
+**meddecide \> ROC**). For every option see the [comprehensive
+guide](https://www.serdarbalci.com/meddecide/articles/meddecide-psychopdaroc-comprehensive.md);
+for a clinically oriented alternative see [Clinical ROC
+Analysis](https://www.serdarbalci.com/meddecide/articles/meddecide-enhancedroc-comprehensive.md).
 
-## Loading the Data
+## Data
 
-``` r
+\
+`df_roc`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`system.file`](https://rdrr.io/r/base/system.file.html)`(``"extdata"``, ``"roc_example.csv"``, package ``=`` ``"meddecide"``)``)`\
+[`table`](https://rdrr.io/r/base/table.html)`(``df_roc``$``class``)`\
+`#> `\
+`#> neg pos `\
+`#>  10  10`
 
-df_roc <- read.csv(system.file("extdata", "roc_example.csv", package = "meddecide"))
-head(df_roc)
-```
+## ROC curve and AUC
 
-## Creating the ROC Curve
+Columns are passed by name. Name both the positive and the negative
+level of the outcome: they are required, and the analysis waits until
+both are chosen rather than guessing which level means “disease”.
 
-``` r
+\
+`roc_res`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``df_roc``,`\
+`  dependentVars ``=`` ``"value"``,   ``# marker column(s)`\
+`  classVar ``=`` ``"class"``,        ``# outcome column`\
+`  positiveClass ``=`` ``"pos"``,`\
+`  negativeClass ``=`` ``"neg"``,`\
+`  plotROC ``=`` ``TRUE`\
+`)`\
+\
+`roc_res``$``resultsTable``[[``1``]``]``$``asDF``  ``# optimal cut-point, sensitivity, specificity, AUC`\
+`#>              cutpoint sensitivity specificity ppv       npv youden  AUC`\
+`#> "cutpoint_1"      0.5         0.7           1   1 0.7692308    0.7 0.88`\
+`#>              metricValue`\
+`#> "cutpoint_1"         0.7`\
+`roc_res``$``aucSummaryTable``$``asDF``    ``# AUC with its confidence interval`\
+`#>         variable  auc  ci_lower  ci_upper           p`\
+`#> "value"    value 0.88 0.6269735 0.9696931 0.008030168`\
+`roc_res``$``plotROC``[[``1``]``]``            ``# ROC curve`
 
-roc_res <- psychopdaROC(
-  data = df_roc,
-  dependentVars = "value",   # the marker column(s), by NAME
-  classVar = "class",        # the outcome column, by NAME
-  positiveClass = "1"        # name the positive level; leaving it unset
-)                            # makes the analysis assume the last level
-roc_res$plot
-```
+![](03-roc-analysis_files/figure-html/roc-1.png)
 
-The resulting plot shows the ROC curve along with the area under the
-curve (AUC). You can extract the AUC value and other statistics from the
-result object.
+`resultsTable` and `plotROC` hold one element per marker, hence `[[1]]`.
 
-``` r
+By default the cut-point maximises Youden’s J (sensitivity +
+specificity - 1) and the AUC confidence interval uses DeLong’s standard
+error on the logit scale (`aucInference = "logit"`). With 20 cases, as
+here, the interval is wide and the “optimal” cut-point is unstable; a
+cut-point chosen on the same data looks better than it will on new
+patients.
 
-roc_res$AUC
-```
+## Choosing a threshold
 
-## Bootstrapping and Confidence Intervals
+- **Youden’s J** balances sensitivity and specificity. It ignores
+  prevalence and the different costs of false positives and false
+  negatives.
 
-The `pROC` package provides robust methods for computing confidence
-intervals for diagnostic metrics.
+For a marker that is higher in disease:
 
-``` r
+- **Rule-out**: pick the highest threshold that still gives the required
+  sensitivity (for example at least 0.95).
+- **Rule-in**: pick the lowest threshold that gives the required
+  specificity.
+- **Consequences**: when the harms of the two errors differ, use a cost
+  ratio (`method = "oc_cost_ratio"`) or a decision curve
+  ([`decisioncurve()`](https://www.serdarbalci.com/meddecide/reference/decisioncurve.md),
+  **meddecide \> Decision Curve Analysis**).
 
-# Calculate AUC confidence intervals using pROC
-library(pROC)
-roc_obj <- roc(response = outcome, predictor = biomarker)
-pROC::ci.auc(roc_obj, method = "bootstrap")
-
-# Calculate threshold-specific confidence intervals
-pROC::ci.thresholds(roc_obj)
-```
-
-These methods provide statistically sound confidence intervals for your
-ROC analysis.
-
-## Threshold Selection (Clinician-Friendly)
-
-- Youden’s J: Choose the cutpoint that maximizes Sensitivity +
-  Specificity − 1. Good for overall discrimination, not always aligned
-  with clinical priorities.
-- Rule‑out goal: Choose the lowest threshold achieving high Sensitivity
-  (e.g., \>=0.95); accept lower Specificity to minimize missed disease.
-- Rule‑in goal: Choose the highest threshold achieving high Specificity
-  (e.g., \>=0.95); accept lower Sensitivity to minimize false positives.
-- Prevalence and consequences: Prefer thresholds that maximize expected
-  clinical utility in your setting (consider prevalence and
-  harms/benefits). In practice, review the cutpoint table and select the
-  row that meets your clinical constraint (e.g., Sens \>=0.90) with the
-  best complementary metric.
+`sensSpecTable = TRUE` adds a confusion matrix at the chosen cut-point,
+and `fixedSensSpecAnalysis = TRUE` reports the threshold that achieves a
+fixed sensitivity or specificity.

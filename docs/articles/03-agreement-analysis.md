@@ -1,624 +1,176 @@
-# Inter-Rater Agreement and Reliability Analysis in Pathology
-
-> **These
-> [`agreement()`](https://www.serdarbalci.com/meddecide/reference/agreement.md)
-> code examples predate the current API.** The R chunks below were
-> written against an older argument list (`rater1_var`,
-> `agreement_type`, `pathologyContext`, `diagnosticStyleAnalysis`, and
-> similar) that no longer exists, so copying them will produce
-> `unused argument` errors. The narrative, the statistics and the
-> clinical guidance remain correct; only the argument names are stale.
-> All chunks are set to `eval = FALSE`, so nothing here is executed when
-> the article is built. A rewrite against the current API is planned.
->
-> For the real argument list see
-> [`?agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md).
-> A working call looks like this — verified against meddecide 1.0.4,
-> three pathologists rating 60 cases on a three-level scale:
->
-> ``` r
->
-> agreement(
->   data  = ratings,
->   vars  = c("Pathologist_1", "Pathologist_2", "Pathologist_3"),
->   wght  = "unweighted",       # or "squared" / "equal" for an ordinal scale
->   exct  = FALSE,
->   kripp = TRUE,               # Krippendorff's alpha
->   krippMethod = "nominal",
->   confLevel = 0.95,
->   agreementHeatmap = TRUE,
->   pairwiseKappa = TRUE
-> )
-> #> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001
-> #> Krippendorff's Alpha (nominal)                                   alpha 0.735
-> ```
-
-## Introduction
-
-Inter-rater agreement and reliability analysis are fundamental to
-pathology practice, quality assurance, and research. This comprehensive
-guide covers agreement analysis for pathologists, from basic Cohen’s
-kappa to advanced methods for complex study designs.
-
-**Learning Objectives:**
-
-- Understand types of agreement measures and their appropriate use
-- Master interpretation of kappa statistics in pathological contexts
-- Learn to design and power agreement studies
-- Apply agreement analysis to different pathological scenarios
-- Implement quality assurance programs using agreement metrics
-
-### Clinical Applications in Pathology
-
-Agreement analysis is essential for:
-
-1.  **Diagnostic Consistency**: Evaluating inter-pathologist agreement
-    on diagnoses
-2.  **Biomarker Scoring**: Assessing concordance in IHC, FISH, and
-    molecular markers
-3.  **Grading Systems**: Validating tumor grading and staging protocols
-4.  **Digital Pathology**: Comparing traditional vs. digital diagnosis
-5.  **Training Programs**: Monitoring resident and fellow progress
-6.  **Quality Assurance**: Establishing institutional benchmarks
-
-``` r
-
-library(dplyr)
-library(ggplot2)
-library(knitr)
-library(irr)
-```
-
-## Dataset Overview
-
-### Comprehensive Agreement Datasets
-
-The package includes multiple datasets for different agreement
-scenarios:
-
-#### Breast Cancer Agreement Study
-
-``` r
-
-# Load breast cancer pathologist agreement data
-data(breast_agreement_data)
-
-# Overview of the study
-str(breast_agreement_data)
-cat(
-  "Study includes:", nrow(breast_agreement_data), "cases from",
-  length(unique(breast_agreement_data$Institution)), "institutions\n"
-)
-
-# Preview the data structure
-head(breast_agreement_data)
-```
-
-This dataset represents a multi-institutional study of breast cancer
-diagnosis agreement with: - **3 pathologists** with different experience
-levels - **200 cases** including various breast lesions  
-- **4 diagnostic categories**: Benign, Atypical, DCIS, Invasive
-Carcinoma - **Institutional variability** across academic and community
-settings
-
-#### Melanoma Agreement Study
-
-``` r
-
-# Load melanoma agreement data for histologic features
-data(melanoma_agreement_data)
-
-# Study characteristics
-table(melanoma_agreement_data$Histologic_Subtype)
-table(melanoma_agreement_data$Breslow_Category)
-```
-
-## Types of Agreement Analysis
-
-### 1. Binary Classifications (Cohen’s Kappa)
-
-#### Basic Two-Rater Agreement
-
-``` r
-
-# Evaluate agreement between two experienced pathologists
-agreement_result <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  agreement_type = "kappa",
-  conf_level = 0.95
-)
-
-# View results
-print(agreement_result)
-
-# Interpretation
-if (agreement_result$kappa > 0.81) {
-  cat("Agreement is ALMOST PERFECT (κ >0.81)")
-} else if (agreement_result$kappa > 0.61) {
-  cat("Agreement is SUBSTANTIAL (κ 0.61-0.80)")
-} else if (agreement_result$kappa > 0.41) {
-  cat("Agreement is MODERATE (κ 0.41-0.60)")
-} else {
-  cat("Agreement needs improvement (κ <=0.40)")
-}
-```
-
-#### Weighted Kappa for Ordinal Categories
-
-``` r
-
-# For ordinal variables like tumor grades
-# Convert to ordered factors if needed
-breast_agreement_data$Grade_1 <- factor(breast_agreement_data$Grade_Pathologist_1,
-  levels = 1:3, ordered = TRUE
-)
-breast_agreement_data$Grade_2 <- factor(breast_agreement_data$Grade_Pathologist_2,
-  levels = 1:3, ordered = TRUE
-)
-
-# Weighted kappa accounts for degree of disagreement
-weighted_agreement <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Grade_1",
-  rater2_var = "Grade_2",
-  agreement_type = "weighted_kappa",
-  weights = "quadratic", # Penalizes larger disagreements more
-  conf_level = 0.95
-)
-
-print(weighted_agreement)
-```
-
-### 2. Multiple Raters (Fleiss’ Kappa)
-
-#### Three-Pathologist Study Design
-
-``` r
-
-# Reshape data for multiple raters
-library(dplyr)
-
-# Create matrix format required for Fleiss' kappa
-multi_rater_data <- breast_agreement_data %>%
-  select(Case_ID, Pathologist_1_Diagnosis, Pathologist_2_Diagnosis, Pathologist_3_Diagnosis)
-
-# Calculate Fleiss' kappa
-fleiss_result <- agreement(
-  data = multi_rater_data,
-  rater_vars = c("Pathologist_1_Diagnosis", "Pathologist_2_Diagnosis", "Pathologist_3_Diagnosis"),
-  agreement_type = "fleiss",
-  conf_level = 0.95
-)
-
-print(fleiss_result)
-```
-
-#### Category-Specific Agreement
-
-``` r
-
-# Examine agreement for each diagnostic category
-category_agreement <- agreement(
-  data = multi_rater_data,
-  rater_vars = c("Pathologist_1_Diagnosis", "Pathologist_2_Diagnosis", "Pathologist_3_Diagnosis"),
-  agreement_type = "fleiss",
-  category_specific = TRUE
-)
-
-# Plot category-specific kappa values
-plot(category_agreement, type = "category")
-```
-
-### 3. Continuous Measurements (ICC)
-
-> **Not yet released in meddecide.** The `icccoeff` analysis used in
-> this section is not part of the meddecide 1.0.4 release; it is
-> documented here ahead of a future release and will not appear in your
-> jamovi menu yet. Everything else in this article uses `agreement`,
-> which ships today.
-
-#### Intraclass Correlation Coefficient
-
-``` r
-
-# For continuous measurements like Ki-67 percentages
-icc_result <- icccoeff(
-  data = breast_agreement_data,
-  vars = c("Ki67_Pathologist_1", "Ki67_Pathologist_2", "Ki67_Pathologist_3"),
-  icc_type = "icc2_k", # Two-way random effects, average measures
-  confidence_level = "0.95"
-)
-
-print(icc_result)
-
-# ICC interpretation:
-# < 0.50: Poor reliability
-# 0.50-0.75: Moderate reliability
-# 0.75-0.90: Good reliability
-# > 0.90: Excellent reliability
-```
-
-#### Bland-Altman Analysis
-
-``` r
-
-# For method comparison studies
-bland_altman_plot <- agreement(
-  data = breast_agreement_data,
-  method1 = "Ki67_Pathologist_1",
-  method2 = "Ki67_Pathologist_2",
-  analysis_type = "bland_altman",
-  plot_type = "difference",
-  limits_of_agreement = TRUE
-)
-
-print(bland_altman_plot)
-```
-
-## Factors Affecting Agreement
-
-### Experience Level Analysis
-
-``` r
-
-# Compare agreement by pathologist experience
-experience_comparison <- breast_agreement_data %>%
-  group_by(Pathologist_Experience) %>%
-  summarise(
-    agreement_with_consensus = agreement(
-      rater1_var = "Pathologist_Diagnosis",
-      rater2_var = "Consensus_Diagnosis",
-      agreement_type = "kappa"
-    )$kappa,
-    .groups = "drop"
-  )
-
-print(experience_comparison)
-
-# Visualize experience effect
-ggplot(experience_comparison, aes(x = Pathologist_Experience, y = agreement_with_consensus)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  labs(
-    title = "Agreement with Consensus by Experience Level",
-    x = "Pathologist Experience",
-    y = "Kappa Coefficient"
-  ) +
-  theme_minimal()
-```
-
-### Case Difficulty Analysis
-
-``` r
-
-# Examine agreement by case difficulty
-difficulty_analysis <- breast_agreement_data %>%
-  mutate(
-    case_difficulty = case_when(
-      Consensus_Confidence >= 4 ~ "Easy",
-      Consensus_Confidence == 3 ~ "Moderate",
-      Consensus_Confidence <= 2 ~ "Difficult"
-    )
-  ) %>%
-  group_by(case_difficulty) %>%
-  summarise(
-    kappa = agreement(
-      rater1_var = "Pathologist_1_Diagnosis",
-      rater2_var = "Pathologist_2_Diagnosis",
-      agreement_type = "kappa"
-    )$kappa,
-    n_cases = n(),
-    .groups = "drop"
-  )
-
-print(difficulty_analysis)
-```
-
-## Study Design and Sample Size Planning
-
-### Power Analysis for Agreement Studies
-
-#### Binary Outcomes
-
-``` r
-
-# Calculate sample size for detecting moderate vs substantial agreement
-power_analysis <- kappaSizePower(
-  outcome = "2", # Binary outcome
-  kappa0 = 0.4, # Null hypothesis (moderate agreement)
-  kappa1 = 0.6, # Alternative hypothesis (substantial agreement)
-  props = "0.3, 0.7", # Expected proportions (30% positive, 70% negative)
-  raters = "2", # Two raters
-  alpha = 0.05, # Type I error
-  power = 0.80 # Statistical power
-)
-
-print(power_analysis)
-```
-
-#### Multiple Categories
-
-``` r
-
-# Sample size for 4-category diagnostic classification
-power_multicat <- kappaSizePower(
-  outcome = "4",
-  kappa0 = 0.5,
-  kappa1 = 0.7,
-  props = "0.25, 0.25, 0.25, 0.25", # Equal proportions
-  raters = "2",
-  alpha = 0.05,
-  power = 0.80
-)
-
-print(power_multicat)
-```
-
-### Precision-Based Sample Size
-
-#### Confidence Interval Approach
-
-``` r
-
-# Sample size for desired precision (CI width)
-precision_analysis <- kappaSizeCI(
-  outcome = "2",
-  kappa0 = 0.6, # Anticipated kappa - NOT a null hypothesis value
-  kappaL = 0.5, # Lower confidence limit wanted
-  kappaU = 0.7, # Upper confidence limit wanted
-  alpha = 0.05, # 1 - alpha is the confidence level; there is no conf_level argument
-  props = "0.4, 0.6",
-  raters = "2"
-)
-
-print(precision_analysis)
-```
-
-#### Fixed Sample Size Analysis
-
-``` r
-
-# What precision can we achieve with available sample?
-fixed_n_result <- kappaSizeFixedN(
-  outcome = "2",
-  kappa0 = 0.6,
-  props = "0.3, 0.7",
-  raters = "2",
-  alpha = 0.05,
-  n = 150 # Available sample size
-)
-
-print(fixed_n_result)
-```
-
-## Advanced Applications
-
-### Conditional Kappa Analysis
-
-``` r
-
-# Agreement conditional on true positive/negative status
-conditional_agreement <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  truth_var = "Gold_Standard",
-  analysis_type = "conditional_kappa"
-)
-
-print(conditional_agreement)
-```
-
-### Multi-Level Agreement (Hierarchical)
-
-``` r
-
-# Account for clustering by institution
-library(lme4)
-
-multilevel_model <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  cluster_var = "Institution",
-  analysis_type = "multilevel_kappa"
-)
-
-print(multilevel_model)
-```
-
-### Longitudinal Agreement (Test-Retest)
-
-``` r
-
-# Agreement across time points
-test_retest <- agreement(
-  data = breast_agreement_data,
-  time1_var = "Initial_Diagnosis",
-  time2_var = "Repeat_Diagnosis",
-  subject_id = "Case_ID",
-  analysis_type = "test_retest"
-)
-
-print(test_retest)
-```
-
-## Quality Assurance Applications
-
-### Establishing QA Benchmarks
-
-``` r
-
-# Set institutional benchmarks
-qa_standards <- list(
-  diagnostic_agreement = list(
-    minimum_kappa = 0.6,
-    target_kappa = 0.8,
-    benchmark_cases = 100
-  ),
-  biomarker_scoring = list(
-    minimum_icc = 0.75,
-    target_icc = 0.90,
-    benchmark_cases = 50
-  )
-)
-
-# Monitor ongoing performance
-current_performance <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Consensus_Diagnosis",
-  agreement_type = "kappa"
-)
-
-# Check against benchmark
-if (current_performance$kappa >= qa_standards$diagnostic_agreement$target_kappa) {
-  cat("✓ Performance EXCEEDS target benchmark")
-} else if (current_performance$kappa >= qa_standards$diagnostic_agreement$minimum_kappa) {
-  cat("⚠ Performance meets minimum but below target")
-} else {
-  cat("✗ Performance BELOW minimum standard - intervention needed")
-}
-```
-
-### Training Assessment
-
-``` r
-
-# Monitor trainee progress over time
-trainee_progress <- breast_agreement_data %>%
-  filter(Pathologist_Level == "Resident") %>%
-  group_by(Training_Month) %>%
-  summarise(
-    agreement_with_attending = agreement(
-      rater1_var = "Resident_Diagnosis",
-      rater2_var = "Attending_Diagnosis",
-      agreement_type = "kappa"
-    )$kappa,
-    .groups = "drop"
-  )
-
-# Plot learning curve
-ggplot(trainee_progress, aes(x = Training_Month, y = agreement_with_attending)) +
-  geom_line(size = 1.2) +
-  geom_point(size = 3) +
-  geom_hline(
-    yintercept = 0.6, linetype = "dashed", color = "red",
-    alpha = 0.7
-  ) +
-  annotate("text",
-    x = max(trainee_progress$Training_Month) * 0.8, y = 0.65,
-    label = "Minimum Standard", color = "red"
-  ) +
-  labs(
-    title = "Resident Training Progress: Agreement with Attending",
-    x = "Training Month",
-    y = "Kappa Coefficient"
-  ) +
-  theme_minimal()
-```
-
-## Interpretation Guidelines
-
-### Clinical Significance vs Statistical Significance
-
-``` r
-
-# Large sample may show statistical significance for clinically unimportant differences
-large_study_result <- agreement(
-  data = large_agreement_dataset, # Hypothetical large dataset
-  rater1_var = "Rater1",
-  rater2_var = "Rater2",
-  agreement_type = "kappa"
-)
-
-# Consider both p-value AND effect size
-cat("Statistical significance: p =", large_study_result$p_value, "\n")
-cat("Clinical significance: κ =", large_study_result$kappa, "\n")
-
-if (large_study_result$p_value < 0.05 & large_study_result$kappa < 0.4) {
-  cat("Statistically significant but clinically inadequate agreement")
-}
-```
-
-### Reporting Standards
-
-``` r
-
-# Template for reporting agreement results
-agreement_report <- function(result) {
-  cat("Agreement Analysis Report\n")
-  cat("========================\n\n")
-  cat("Sample size:", result$n, "cases\n")
-  cat(
-    "Kappa coefficient:", round(result$kappa, 3),
-    "(95% CI:", round(result$ci_lower, 3), "-", round(result$ci_upper, 3), ")\n"
-  )
-  cat("P-value:", format.pval(result$p_value), "\n")
-  cat("Interpretation:", result$interpretation, "\n")
-  cat("Recommendation:", result$recommendation, "\n")
-}
-
-# Example usage
-main_result <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  agreement_type = "kappa"
-)
-
-agreement_report(main_result)
-```
-
-## Best Practices and Recommendations
-
-### Study Design Considerations
-
-1.  **Sample Size Planning**
-    - Use power analysis for hypothesis testing
-    - Use precision analysis for descriptive studies
-    - Account for expected agreement levels and prevalence
-2.  **Rater Selection**
-    - Include raters representative of intended users
-    - Balance experience levels appropriately
-    - Ensure adequate training before study
-3.  **Case Selection**
-    - Include full spectrum of difficulty
-    - Ensure adequate representation of all categories
-    - Consider enrichment for rare categories
-
-### Statistical Considerations
-
-1.  **Choose Appropriate Measure**
-    - Cohen’s kappa: Two raters, nominal/ordinal data
-    - Weighted kappa: Ordinal data with meaningful ordering
-    - Fleiss’ kappa: Multiple raters, nominal data
-    - ICC: Continuous measurements
-2.  **Account for Prevalence Effects**
-    - Kappa can be low even with high percentage agreement if prevalence
-      is extreme
-    - Report both kappa and percentage agreement
-    - Consider prevalence-adjusted kappa when appropriate
-3.  **Multiple Comparisons**
-    - Adjust p-values when testing multiple agreements
-    - Focus on clinically important comparisons
-    - Report confidence intervals rather than just p-values
-
-### Regulatory Considerations
-
-1.  **FDA Guidance Compliance**
-    - Document predefined acceptable agreement levels
-    - Include appropriate statistical analysis plan
-    - Consider regulatory precedents for similar devices/tests
-2.  **Quality Assurance Integration**
-    - Establish ongoing monitoring procedures
-    - Define trigger levels for intervention
-    - Document corrective action procedures
-
-------------------------------------------------------------------------
-
-This comprehensive guide provides pathologists and clinical researchers
-with the tools and knowledge needed to conduct rigorous agreement
-studies, from initial planning through final interpretation and quality
-assurance implementation.
+# Inter-Rater Agreement and Reliability in Pathology
+
+This article is a short, practical guide to the **Interrater
+Reliability** analysis
+([`agreement()`](https://www.serdarbalci.com/meddecide/reference/agreement.md),
+jamovi menu **meddecide \> Agreement \> Interrater Reliability**). It
+shows which statistic fits which kind of rating, and how to read the
+result tables from R. For every option, see
+[`?agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)
+or the [comprehensive
+guide](https://www.serdarbalci.com/meddecide/articles/meddecide-agreement-comprehensive.md).
+
+Each rater is one column of `data`; each row is one case. Pass the rater
+columns to `vars`. With two raters the analysis reports Cohen’s kappa;
+with three or more, Fleiss’ kappa.
+
+## Choosing a statistic
+
+| Ratings | Primary statistic | Options |
+|----|----|----|
+| Nominal (e.g. diagnosis) | Cohen’s / Fleiss’ kappa | default; `kripp = TRUE`, `gwet = TRUE` |
+| Ordinal (e.g. grade 1-3) | Weighted kappa (2 raters); ordinal alpha or Gwet’s AC2 (3+ raters) | `wght = "equal"` (linear) or `"squared"` (quadratic); with 3+ raters `allPairsKappa = TRUE` gives weighted kappa per pair, or `krippMethod = "ordinal"`, `gwetWeights` |
+| Rare category, skewed prevalence | Gwet’s AC1, PABAK | `gwet = TRUE`, `pabak = TRUE` |
+| Continuous (e.g. Ki-67 %) | ICC, Lin’s CCC, Bland-Altman | `icc = TRUE`, `linCCC = TRUE`, `blandAltmanPlot = TRUE` |
+| Missing ratings, any scale | Krippendorff’s alpha | `kripp = TRUE`, `krippMethod = "nominal"/"ordinal"/"interval"/"ratio"` |
+| Which pairs disagree | All-pairs kappa | `allPairsKappa = TRUE` |
+
+## Nominal ratings: three raters
+
+The bundled `histopathology` data has three binary rater columns.
+
+\
+[`data`](https://rdrr.io/r/utils/data.html)`(``histopathology``)`\
+\
+`res`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater 1"``, ``"Rater 2"``, ``"Rater 3"``)``,`\
+`  kripp ``=`` ``TRUE``,`\
+`  gwet ``=`` ``TRUE``,`\
+`  allPairsKappa ``=`` ``TRUE`\
+`)`\
+\
+`res``$``irrtable``$``asDF``                          ``# Fleiss' kappa`\
+`#>        method subjects raters peragree     kappa ci_lower  ci_upper        z`\
+`#> "1" Fleiss' κ      250      3 76.30522 0.6512801 0.572085 0.7304752 16.19697`\
+`#>                p`\
+`#> "1" 8.688896e-41`\
+`res``$``krippTableGroup``$``krippTable``$``asDF``        ``# Krippendorff's alpha`\
+`#>                             method subjects raters     alpha`\
+`#> "1" Krippendorff's Alpha (nominal)      250      3 0.6540881`\
+`#>                                interpretation`\
+`#> "1" Insufficient agreement - discard variable`\
+`res``$``gwetGroup``$``gwetTable``$``asDF``               ``# Gwet's AC1`\
+`#>                      method subjects raters coefficient      se ci_lower`\
+`#> "1" Gwet's AC1 (unweighted)      250      3     0.69976 0.03545     0.63`\
+`#>     ci_upper           p`\
+`#> "1"     0.77 7.61843e-53`\
+`res``$``allPairsKappaTable``$``asDF``                ``# Cohen's kappa for every pair`\
+`#>       rater_a rater_b   n  peragree     kappa         se  ci_lower  ci_upper`\
+`#> "1_2" Rater 1 Rater 2 249 0.9196787 0.8205535 0.03832152 0.7454447 0.8956623`\
+`#> "1_3" Rater 1 Rater 3 249 0.8433735 0.6661395 0.04800118 0.5720589 0.7602201`\
+`#> "2_3" Rater 2 Rater 3 250 0.7600000 0.4943707 0.05604538 0.3845237 0.6042176`\
+`#>               z             p`\
+`#> "1_2" 21.412343 1.025272e-101`\
+`#> "1_3" 13.877566  8.663573e-44`\
+`#> "2_3"  8.820899  1.135447e-18`
+
+Several tables live inside result groups, so the path has two parts
+(`res$krippTableGroup$krippTable`, `res$gwetGroup$gwetTable`,
+`res$iccGroup$iccTable`).
+
+## Ordinal ratings: weighted kappa
+
+For two raters scoring an ordered scale, weighted kappa gives partial
+credit for near-misses. `wght = "squared"` (quadratic weights) is the
+usual choice for grades.
+
+\
+`res_w`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rater A"``, ``"Rater B"``)``,`\
+`  wght ``=`` ``"squared"`\
+`)`\
+`res_w``$``irrtable``$``asDF`\
+`#>                   method subjects raters peragree     kappa  ci_lower  ci_upper`\
+`#> "1" Quadratic-weighted κ      250      2     58.8 0.4005073 0.2832064 0.5178081`\
+`#>            z            p`\
+`#> "1" 6.376624 1.810345e-10`
+
+## Continuous measurements: ICC and Lin’s CCC
+
+\
+`res_c`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Measurement1"``, ``"Measurement2"``)``,`\
+`  icc ``=`` ``TRUE``,`\
+`  iccType ``=`` ``"icc21"``,`\
+`  linCCC ``=`` ``TRUE``,`\
+`  blandAltmanPlot ``=`` ``TRUE`\
+`)`\
+`res_c``$``iccGroup``$``iccTable``$``asDF`\
+`#>                                 model subjects raters icc_value   ci_lower`\
+`#> "1" ICC(2,1) - Two-way random, single      250      2 0.1718531 0.04903747`\
+`#>      ci_upper  f_value df1 df2           p`\
+`#> "1" 0.2895482 1.414754 249 249 0.003187137`\
+`res_c``$``iccGroup``$``linCCCTable``$``asDF`\
+`#>                         comparison subjects       ccc   ci_lower  ci_upper`\
+`#> "1_2" Measurement1 vs Measurement2      250 0.1712834 0.06751243 0.2713883`\
+`#>       pearson_r bias_factor   interpretation`\
+`#> "1_2" 0.2011813   0.8513884 Poor concordance`
+
+Pick the ICC model from the study design (Shrout & Fleiss 1979; McGraw &
+Wong 1996):
+
+| `iccType` | Model | Use when |
+|----|----|----|
+| `icc11` / `icc1k` | One-way random effects | each case is rated by a different set of raters |
+| `icc21` / `icc2k` | Two-way random effects, absolute agreement | the same raters rate every case and are a sample of possible raters |
+| `icc31` / `icc3k` | Two-way mixed effects, consistency | the same fixed raters rate every case and only their ranking matters |
+
+The `1` forms give the reliability of a single rater; the `k` forms give
+the reliability of the mean of the k raters, which is always higher.
+
+## Rater clustering
+
+`raterClustering = TRUE` groups raters by how alike they rate. See
+[Diagnostic Style
+Clustering](https://www.serdarbalci.com/meddecide/articles/15-diagnostic-style-clustering.md).
+
+## Interpreting kappa
+
+Landis and Koch (1977) proposed these descriptive bands. They are a
+convention, not a validated clinical threshold; always report the
+confidence interval.
+
+| Kappa       | Landis & Koch label |
+|-------------|---------------------|
+| \< 0        | Poor                |
+| 0.00 - 0.20 | Slight              |
+| 0.21 - 0.40 | Fair                |
+| 0.41 - 0.60 | Moderate            |
+| 0.61 - 0.80 | Substantial         |
+| 0.81 - 1.00 | Almost perfect      |
+
+For the ICC, Koo and Li (2016) suggest \< 0.50 poor, 0.50 - 0.75
+moderate, 0.75 - 0.90 good and \> 0.90 excellent, judged on the 95%
+confidence interval.
+
+Kappa depends on prevalence: with one very common category, kappa can be
+low while percent agreement is high (the “kappa paradox”). Report
+percent agreement alongside kappa, and consider Gwet’s AC1 or PABAK.
+
+## Sample size
+
+To plan an agreement study, use the kappa sample-size tools under
+jamovi’s **Power** menu:
+[`kappaSizeCI()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md),
+[`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+and
+[`kappaSizeFixedN()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md).
+
+## References
+
+- Landis JR, Koch GG. The measurement of observer agreement for
+  categorical data. *Biometrics*. 1977;33:159-174.
+- Shrout PE, Fleiss JL. Intraclass correlations: uses in assessing rater
+  reliability. *Psychol Bull*. 1979;86:420-428.
+- McGraw KO, Wong SP. Forming inferences about some intraclass
+  correlation coefficients. *Psychol Methods*. 1996;1:30-46.
+- Koo TK, Li MY. A guideline of selecting and reporting intraclass
+  correlation coefficients for reliability research. *J Chiropr Med*.
+  2016;15:155-163.
+- Gwet KL. Computing inter-rater reliability and its variance in the
+  presence of high agreement. *Br J Math Stat Psychol*. 2008;61:29-48.
+- Krippendorff K. *Content Analysis: An Introduction to Its
+  Methodology*. 4th ed. Sage; 2018.

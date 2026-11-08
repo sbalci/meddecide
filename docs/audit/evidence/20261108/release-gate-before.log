@@ -1,0 +1,56 @@
+RELEASE GATE  /Users/serdarbalci/Documents/GitHub/meddecide
+
+  version 1.1.4 consistent across DESCRIPTION / 0000.yaml / CITATION.cff
+  NEWS.md: 1.1.4 (release) has NO heading
+  license: GPL (>= 2); AGPL packages in newest build/: 1
+  citations: 141 defined, 141 cited, 0 dangling
+  clearWith: 0 dangling entries
+  renderFun: 0 unresolved
+  build artifacts committed: 0; tracked scratch: 0
+  compilerMode: tame missing on 0 of 15 .u.yaml
+  visible: (!x) / ((x)) silent-always-visible: 0
+  non-structural HTML entities: 0
+  requiresData: 0 missing (0 shipped), 0 surplus (0 shipped)
+  renderer private$ state: 0 images (0 shipped)
+  bare set.seed(): 0 functions (0 shipped)
+  Imports: 29 checked, 0 unused
+  CollapseBox/variable-box Title Case: 0 off-convention (0 shipped)
+  .() separator/padding: 0 sites (0 shipped)
+  i18n catalog: 7911 msgids, 0 not used by this module
+  .() " [..]" truncation: 0 sites (0 shipped)
+  .() braced \u{} escapes: 0 sites (0 shipped)
+  translation format specifiers: 0 mismatched
+  notice title colours: 0 renderers (0 shipped)
+  jamovi 28.3 features: 0 File/Text, 0 vector images; minApp 2.7.27
+  column format tokens: 0 malformed (0 shipped)
+  fabricated statistics: 0 methods (0 shipped)
+  heavy setState payloads: 0 sites (0 shipped, 0 waived)
+  description newlines: 0 shipped, 0 debt
+  bug-report URL: 1 distinct repository
+  datasets: 8 listed, 0 duplicate descriptions, 0 missing files, 0 contract breaks
+  sentinel $insert(): 0 shipped, 0 debt
+  fixed rows built in .run(): 0 tables (0 shipped)
+  all-caps .() strings: 0 (0 shipped); British spellings: none
+  nested CollapseBox: 0 panels (0 shipped)
+  forward references: 0 (0 shipped)
+  review breadcrumbs: 0 user-facing files, 0 test assertions
+  HTML <table> outside help methods: 1 (1 shipped)
+  results hidden/blanked on a failure path: 0 (0 shipped)
+  variable boxes not first: 0 (0 shipped)
+  factor levels typed as String: 1 (1 shipped)
+  numbers entered as one String: 0 (0 shipped)
+  guidance shown on every run: 0 (0 shipped)
+  Preformatted never filled: 0 (0 shipped)
+  failures reported as table footnotes: 0 (0 shipped)
+  duplicated ComboBox options / childless headings: 0 (0 shipped)
+  module-level plot theme options: 0 (0 shipped)
+  R notation / verb labels / bare eponyms: 0 (0 shipped)
+  numbers formatted into text cells: 0 (0 shipped)
+  comments blaming Notice serialisation: 0 (0 shipped)
+
+  WARN  NEWS.md has no heading the release workflow can match for 1.1.4, so the release would be published with the placeholder body "Release 1.1.4." (newest heading: meddecide 1.1.3 (2026-11-07)). Add the heading before the version bump - the tag guard makes a release un-retryable.
+  WARN  build/R4.6.0-arm64-macos ships AGPL-licensed package(s) pander; the library does not accept AGPL-3 - trace the importing package and ask the jamovi team
+  WARN  1 shipped methods draw a table as HTML instead of a Table result: agreement::.run (1)
+  WARN  1 shipped String options name a factor level: agreement::specificPositiveCategory
+
+0 blocking, 4 advisory

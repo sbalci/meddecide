@@ -1,6 +1,9 @@
 # Medical Decision Analysis
 
-Implements comprehensive medical decision analysis including:
+Backend of the jamovi `decision` analysis: the diagnostic accuracy of
+one binary test against a binary reference standard, from the 2x2 table
+formed by the positive and negative levels chosen for each of two
+categorical variables.
 
 ## Value
 
@@ -9,19 +12,13 @@ internally by the jamovi analysis wrapper and not called directly.
 
 ## Details
 
-This module provides tools for analyzing diagnostic test performance
-with options for various visualization methods and statistical
-comparisons.
-
-- Sensitivity, specificity and predictive values
-
-## Usage
-
-1.  Provide test and reference standard data
-
-2.  Select analysis options
-
-3.  View results in tables and plots
+Reports sensitivity, specificity, sample accuracy, prevalence,
+predictive values (at the sample prevalence, or by Bayes' theorem at a
+supplied population prevalence) and likelihood ratios. Optional outputs:
+95 percent confidence intervals (Clopper-Pearson and log-scale intervals
+from [`epiR::epi.tests()`](https://rdrr.io/pkg/epiR/man/epi.tests.html),
+Agresti-Caffo for Youden's index), a Fagan nomogram, narrative panels,
+and the false-positive and false-negative cases.
 
 ## Super classes
 

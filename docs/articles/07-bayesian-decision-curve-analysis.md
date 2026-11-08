@@ -71,7 +71,7 @@ clinician would recommend intervention:
 - **Low thresholds (1-5%)**: Used when missing disease is very harmful
   (e.g., cancer screening)
 - **Medium thresholds (10-20%)**: Balanced scenarios (e.g., cardiac
-  interventions)  
+  interventions)\
 - **High thresholds (30-50%)**: Used when intervention has significant
   risks (e.g., major surgery)
 
@@ -89,54 +89,48 @@ clinician would recommend intervention:
 
 ### Load Required Libraries
 
-``` r
-
-library(dplyr)
-library(ggplot2)
-
-# Use the histopathology dataset for examples
-# Try to load the dataset, if it fails create a simple example dataset
-if (exists("histopathology")) {
-  mydata <- histopathology
-} else {
-  tryCatch(
-    {
-      data("histopathology", package = "meddecide")
-      mydata <- histopathology
-    },
-    error = function(e) {
-      # Create a simple synthetic dataset for demonstration if data loading fails
-      set.seed(123)
-      n <- 200
-      mydata <<- data.frame(
-        Age = rnorm(n, 60, 15),
-        Grade = sample(c("Low", "Medium", "High"), n, replace = TRUE),
-        TStage = sample(c("T1", "T2", "T3", "T4"), n, replace = TRUE),
-        MeasurementA = rnorm(n, 50, 20),
-        MeasurementB = rnorm(n, 100, 30),
-        Death = sample(0:1, n, replace = TRUE, prob = c(0.7, 0.3))
-      )
-    }
-  )
-}
-
-# Display basic dataset information
-cat("Dataset dimensions:", nrow(mydata), "rows ×", ncol(mydata), "columns\n")
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
+\
+`# Use the histopathology dataset for examples`\
+`# Try to load the dataset, if it fails create a simple example dataset`\
+`if`` ``(`[`exists`](https://rdrr.io/r/base/exists.html)`(``"histopathology"``)``)`` ``{`\
+`  ``mydata`` ``<-`` ``histopathology`\
+`}`` ``else`` ``{`\
+`  `[`tryCatch`](https://rdrr.io/r/base/conditions.html)`(`\
+`    ``{`\
+`      `[`data`](https://rdrr.io/r/utils/data.html)`(``"histopathology"``, package ``=`` ``"meddecide"``)`\
+`      ``mydata`` ``<-`` ``histopathology`\
+`    ``}``,`\
+`    error ``=`` ``function``(``e``)`` ``{`\
+`      ``# Create a simple synthetic dataset for demonstration if data loading fails`\
+`      `[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
+`      ``n`` ``<-`` ``200`\
+`      ``mydata`` ``<<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`        Age ``=`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n``, ``60``, ``15``)``,`\
+`        Grade ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Low"``, ``"Medium"``, ``"High"``)``, ``n``, replace ``=`` ``TRUE``)``,`\
+`        TStage ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"T1"``, ``"T2"``, ``"T3"``, ``"T4"``)``, ``n``, replace ``=`` ``TRUE``)``,`\
+`        MeasurementA ``=`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n``, ``50``, ``20``)``,`\
+`        MeasurementB ``=`` `[`rnorm`](https://rdrr.io/r/stats/Normal.html)`(``n``, ``100``, ``30``)``,`\
+`        Death ``=`` `[`sample`](https://rdrr.io/r/base/sample.html)`(``0``:``1``, ``n``, replace ``=`` ``TRUE``, prob ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.7``, ``0.3``)``)`\
+`      ``)`\
+`    ``}`\
+`  ``)`\
+`}`\
+\
+`# Display basic dataset information`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Dataset dimensions:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``mydata``)``, ``"rows ×"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``mydata``)``, ``"columns\n"``)`
 
     ## Dataset dimensions: 250 rows × 38 columns
 
-``` r
-
-cat("Outcome variable 'Death':", table(mydata$Death), "\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Outcome variable 'Death':"``, `[`table`](https://rdrr.io/r/base/table.html)`(``mydata``$``Death``)``, ``"\n"``)`
 
     ## Outcome variable 'Death': 169 80
 
-``` r
-
-cat("Available predictors:", paste(c("Age", "Grade", "TStage", "MeasurementA", "MeasurementB"), collapse = ", "), "\n")
-```
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Available predictors:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"MeasurementA"``, ``"MeasurementB"``)``, collapse ``=`` ``", "``)``, ``"\n"``)`
 
     ## Available predictors: Age, Grade, TStage, MeasurementA, MeasurementB
 
@@ -161,21 +155,19 @@ The Bayesian DCA workflow follows these steps:
 Let’s evaluate whether age and tumor measurements can guide treatment
 decisions for cancer patients.
 
-``` r
-
-# Basic Bayesian DCA comparing age and measurements as predictors
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = c("Age", "MeasurementA", "MeasurementB"),
-  thresholdMin = 0.05, # 5% minimum threshold
-  thresholdMax = 0.40, # 40% maximum threshold
-  thresholdPoints = 30, # 30 evaluation points
-  bayesianAnalysis = TRUE,
-  nDraws = 2000, # Number of posterior draws
-  priorStrength = 2 # Weak prior
-)
-```
+\
+`# Basic Bayesian DCA comparing age and measurements as predictors`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  thresholdMin ``=`` ``0.05``, ``# 5% minimum threshold`\
+`  thresholdMax ``=`` ``0.40``, ``# 40% maximum threshold`\
+`  thresholdPoints ``=`` ``30``, ``# 30 evaluation points`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  nDraws ``=`` ``2000``, ``# Number of posterior draws`\
+`  priorStrength ``=`` ``2`` ``# Weak prior`\
+`)`
 
 **What you get:** - Net benefit curves with credible intervals -
 Probability of each strategy being optimal - Strategy comparison across
@@ -185,21 +177,19 @@ thresholds - Comprehensive statistical tables
 
 For comparison, run the same analysis using frequentist methods:
 
-``` r
-
-# Frequentist DCA with bootstrap confidence intervals
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = c("Age", "MeasurementA", "MeasurementB"),
-  thresholdMin = 0.05,
-  thresholdMax = 0.40,
-  thresholdPoints = 30,
-  bayesianAnalysis = FALSE, # Use frequentist approach
-  bootstrapCI = TRUE,
-  bootstrapReps = 2000 # Bootstrap replications
-)
-```
+\
+`# Frequentist DCA with bootstrap confidence intervals`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  thresholdMin ``=`` ``0.05``,`\
+`  thresholdMax ``=`` ``0.40``,`\
+`  thresholdPoints ``=`` ``30``,`\
+`  bayesianAnalysis ``=`` ``FALSE``, ``# Use frequentist approach`\
+`  bootstrapCI ``=`` ``TRUE``,`\
+`  bootstrapReps ``=`` ``2000`` ``# Bootstrap replications`\
+`)`
 
 **Differences:** - Bootstrap confidence intervals instead of credible
 intervals - No probability statements about superiority - No EVPI
@@ -209,26 +199,24 @@ calculations available
 
 Evaluate binary test results (e.g., imaging findings, genetic markers):
 
-``` r
-
-# Convert measurements to binary tests for demonstration
-mydata_binary <- mydata %>%
-  mutate(
-    HighMeasurementA = ifelse(MeasurementA > median(MeasurementA, na.rm = TRUE), 1, 0),
-    PositiveGrade = ifelse(Grade %in% c("High"), 1, 0)
-  )
-
-# Analyze binary diagnostic tests
-bayesdca(
-  data = mydata_binary,
-  outcomes = "Death",
-  predictors = c("HighMeasurementA", "PositiveGrade"),
-  thresholdMin = 0.10,
-  thresholdMax = 0.50,
-  bayesianAnalysis = TRUE,
-  nDraws = 2000
-)
-```
+\
+`# Convert measurements to binary tests for demonstration`\
+`mydata_binary`` ``<-`` ``mydata`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(`\
+`    HighMeasurementA ``=`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``MeasurementA`` ``>`` `[`median`](https://rdrr.io/r/stats/median.html)`(``MeasurementA``, na.rm ``=`` ``TRUE``)``, ``1``, ``0``)``,`\
+`    PositiveGrade ``=`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``Grade`` `[`%in%`](https://rdrr.io/r/base/match.html)` `[`c`](https://rdrr.io/r/base/c.html)`(``"High"``)``, ``1``, ``0``)`\
+`  ``)`\
+\
+`# Analyze binary diagnostic tests`\
+`bayesdca``(`\
+`  data ``=`` ``mydata_binary``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"HighMeasurementA"``, ``"PositiveGrade"``)``,`\
+`  thresholdMin ``=`` ``0.10``,`\
+`  thresholdMax ``=`` ``0.50``,`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  nDraws ``=`` ``2000`\
+`)`
 
 **Binary Test Features:** - Tests are applied directly without threshold
 cutoffs - Results show performance at different decision thresholds -
@@ -238,21 +226,19 @@ Useful for imaging findings, genetic tests, lab markers
 
 When your study population differs from the target population:
 
-``` r
-
-# Use external prevalence data (e.g., from registry)
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = c("Age", "MeasurementA"),
-  thresholdMin = 0.05,
-  thresholdMax = 0.35,
-  useExternalPrevalence = TRUE,
-  externalCases = 150, # Known cases in target population
-  externalTotal = 1000, # Total target population
-  bayesianAnalysis = TRUE
-)
-```
+\
+`# Use external prevalence data (e.g., from registry)`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"MeasurementA"``)``,`\
+`  thresholdMin ``=`` ``0.05``,`\
+`  thresholdMax ``=`` ``0.35``,`\
+`  useExternalPrevalence ``=`` ``TRUE``,`\
+`  externalCases ``=`` ``150``, ``# Known cases in target population`\
+`  externalTotal ``=`` ``1000``, ``# Total target population`\
+`  bayesianAnalysis ``=`` ``TRUE`\
+`)`
 
 **When to Use:** - Study cohort has different characteristics than
 target population - Registry data provides better prevalence estimates -
@@ -265,20 +251,18 @@ Multi-site validation with varying prevalence
 EVPI quantifies the **maximum value** of conducting additional research
 to reduce uncertainty:
 
-``` r
-
-# Full analysis with EVPI calculation
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = c("Age", "MeasurementA", "MeasurementB", "TStage"),
-  thresholdMin = 0.05,
-  thresholdMax = 0.40,
-  bayesianAnalysis = TRUE,
-  calculateEVPI = TRUE, # Enable EVPI calculation
-  nDraws = 3000 # More draws for stable EVPI
-)
-```
+\
+`# Full analysis with EVPI calculation`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"MeasurementA"``, ``"MeasurementB"``, ``"TStage"``)``,`\
+`  thresholdMin ``=`` ``0.05``,`\
+`  thresholdMax ``=`` ``0.40``,`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  calculateEVPI ``=`` ``TRUE``, ``# Enable EVPI calculation`\
+`  nDraws ``=`` ``3000`` ``# More draws for stable EVPI`\
+`)`
 
 **EVPI Interpretation:** - **High EVPI**: Additional research would be
 valuable - **Low EVPI**: Current evidence is sufficient for decision
@@ -289,19 +273,17 @@ valuable - **Zero EVPI**: Perfect certainty about optimal strategy
 
 Control how continuous predictors are interpreted:
 
-``` r
-
-# For biomarkers where LOWER values indicate risk
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = "MeasurementB",
-  directionIndicator = "<=", # Lower values = positive prediction
-  thresholdMin = 0.10,
-  thresholdMax = 0.40,
-  bayesianAnalysis = TRUE
-)
-```
+\
+`# For biomarkers where LOWER values indicate risk`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` ``"MeasurementB"``,`\
+`  directionIndicator ``=`` ``"<="``, ``# Lower values = positive prediction`\
+`  thresholdMin ``=`` ``0.10``,`\
+`  thresholdMax ``=`` ``0.40``,`\
+`  bayesianAnalysis ``=`` ``TRUE`\
+`)`
 
 **Direction Options:** - **“\>=”**: Higher values indicate positive
 outcome (default) - **“\<=”**: Lower values indicate positive outcome
@@ -310,26 +292,24 @@ outcome (default) - **“\<=”**: Lower values indicate positive outcome
 
 Explore the impact of different prior specifications:
 
-``` r
-
-# Weak prior (default)
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = "Age",
-  priorStrength = 2, # Weak prior
-  bayesianAnalysis = TRUE
-)
-
-# Strong prior (more conservative)
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = "Age",
-  priorStrength = 10, # Strong prior
-  bayesianAnalysis = TRUE
-)
-```
+\
+`# Weak prior (default)`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` ``"Age"``,`\
+`  priorStrength ``=`` ``2``, ``# Weak prior`\
+`  bayesianAnalysis ``=`` ``TRUE`\
+`)`\
+\
+`# Strong prior (more conservative)`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` ``"Age"``,`\
+`  priorStrength ``=`` ``10``, ``# Strong prior`\
+`  bayesianAnalysis ``=`` ``TRUE`\
+`)`
 
 **Prior Strength Guide:** - **0.5-2**: Very weak prior (data-driven) -
 **2-5**: Weak prior (default range) - **5-10**: Moderate prior
@@ -342,34 +322,32 @@ bayesdca(
 Let’s work through a complete analysis for a cancer treatment decision
 model:
 
-``` r
-
-# Comprehensive cancer treatment decision analysis
-cancer_dca <- bayesdca(
-  data = mydata,
-
-  # Core variables
-  outcomes = "Death",
-  predictors = c("Age", "TStage", "MeasurementA", "MeasurementB"),
-
-  # Threshold settings (5% to 40% - typical for cancer treatment)
-  thresholdMin = 0.05,
-  thresholdMax = 0.40,
-  thresholdPoints = 35,
-
-  # Bayesian analysis with EVPI
-  bayesianAnalysis = TRUE,
-  nDraws = 3000,
-  priorStrength = 2,
-  calculateEVPI = TRUE,
-
-  # External prevalence (if applicable)
-  useExternalPrevalence = FALSE,
-
-  # Classification direction
-  directionIndicator = ">="
-)
-```
+\
+`# Comprehensive cancer treatment decision analysis`\
+`cancer_dca`` ``<-`` ``bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+\
+`  ``# Core variables`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"TStage"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+\
+`  ``# Threshold settings (5% to 40% - typical for cancer treatment)`\
+`  thresholdMin ``=`` ``0.05``,`\
+`  thresholdMax ``=`` ``0.40``,`\
+`  thresholdPoints ``=`` ``35``,`\
+\
+`  ``# Bayesian analysis with EVPI`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  nDraws ``=`` ``3000``,`\
+`  priorStrength ``=`` ``2``,`\
+`  calculateEVPI ``=`` ``TRUE``,`\
+\
+`  ``# External prevalence (if applicable)`\
+`  useExternalPrevalence ``=`` ``FALSE``,`\
+\
+`  ``# Classification direction`\
+`  directionIndicator ``=`` ``">="`\
+`)`
 
 #### Interpreting the Results
 
@@ -394,42 +372,40 @@ decisions
 
 ### Core Parameters
 
-``` r
-
-bayesdca(
-  data = mydata, # Required: Data frame
-
-  # Required variables
-  outcomes = "Death", # Binary outcome (0/1 or factor)
-  outcomePos = "Yes", # Positive level (if factor)
-  predictors = c("Age", "Test1"), # Models/tests to evaluate
-
-  # Threshold settings
-  thresholdMin = 0.01, # Minimum threshold (0.1-50%)
-  thresholdMax = 0.50, # Maximum threshold (1-99%)
-  thresholdPoints = 50, # Number of evaluation points
-
-  # Analysis type
-  bayesianAnalysis = TRUE, # TRUE=Bayesian, FALSE=Frequentist
-
-  # Bayesian settings
-  nDraws = 2000, # Posterior draws (500-10000)
-  priorStrength = 2, # Prior strength (0.1-10)
-  calculateEVPI = FALSE, # Enable EVPI calculation
-
-  # Frequentist settings
-  bootstrapCI = TRUE, # Bootstrap confidence intervals
-  bootstrapReps = 2000, # Bootstrap replications
-
-  # External prevalence
-  useExternalPrevalence = FALSE, # Use external prevalence data
-  externalCases = 100, # Cases in external data
-  externalTotal = 500, # Total in external data
-
-  # Technical settings
-  directionIndicator = ">=" # Prediction direction
-)
-```
+\
+`bayesdca``(`\
+`  data ``=`` ``mydata``, ``# Required: Data frame`\
+\
+`  ``# Required variables`\
+`  outcomes ``=`` ``"Death"``, ``# Binary outcome (0/1 or factor)`\
+`  outcomePos ``=`` ``"Yes"``, ``# Positive level (if factor)`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Test1"``)``, ``# Models/tests to evaluate`\
+\
+`  ``# Threshold settings`\
+`  thresholdMin ``=`` ``0.01``, ``# Minimum threshold (0.1-50%)`\
+`  thresholdMax ``=`` ``0.50``, ``# Maximum threshold (1-99%)`\
+`  thresholdPoints ``=`` ``50``, ``# Number of evaluation points`\
+\
+`  ``# Analysis type`\
+`  bayesianAnalysis ``=`` ``TRUE``, ``# TRUE=Bayesian, FALSE=Frequentist`\
+\
+`  ``# Bayesian settings`\
+`  nDraws ``=`` ``2000``, ``# Posterior draws (500-10000)`\
+`  priorStrength ``=`` ``2``, ``# Prior strength (0.1-10)`\
+`  calculateEVPI ``=`` ``FALSE``, ``# Enable EVPI calculation`\
+\
+`  ``# Frequentist settings`\
+`  bootstrapCI ``=`` ``TRUE``, ``# Bootstrap confidence intervals`\
+`  bootstrapReps ``=`` ``2000``, ``# Bootstrap replications`\
+\
+`  ``# External prevalence`\
+`  useExternalPrevalence ``=`` ``FALSE``, ``# Use external prevalence data`\
+`  externalCases ``=`` ``100``, ``# Cases in external data`\
+`  externalTotal ``=`` ``500``, ``# Total in external data`\
+\
+`  ``# Technical settings`\
+`  directionIndicator ``=`` ``">="`` ``# Prediction direction`\
+`)`
 
 ### Parameter Selection Guidelines
 
@@ -465,27 +441,25 @@ bayesdca(
 
 #### **Curve Interpretation**
 
-``` r
-
-# Example showing different curve patterns
-# (This would be actual analysis output in practice)
-
-# Pattern 1: Clear winner
-# One model consistently above others
-# Interpretation: Strong evidence for using this model
-
-# Pattern 2: Threshold-dependent
-# Different models optimal at different thresholds
-# Interpretation: Threshold selection matters
-
-# Pattern 3: Minimal differences
-# All models similar performance
-# Interpretation: Simple approaches may suffice
-
-# Pattern 4: No benefit
-# All models below treat all/none
-# Interpretation: Models not clinically useful
-```
+\
+`# Example showing different curve patterns`\
+`# (This would be actual analysis output in practice)`\
+\
+`# Pattern 1: Clear winner`\
+`# One model consistently above others`\
+`# Interpretation: Strong evidence for using this model`\
+\
+`# Pattern 2: Threshold-dependent`\
+`# Different models optimal at different thresholds`\
+`# Interpretation: Threshold selection matters`\
+\
+`# Pattern 3: Minimal differences`\
+`# All models similar performance`\
+`# Interpretation: Simple approaches may suffice`\
+\
+`# Pattern 4: No benefit`\
+`# All models below treat all/none`\
+`# Interpretation: Models not clinically useful`
 
 #### **Clinical Decision Rules**
 
@@ -518,27 +492,25 @@ utility** if the net benefit improvement is negligible.
 
 ### Example 1: Cancer Screening Program
 
-``` r
-
-# Evaluate biomarker panel for cancer screening
-screening_analysis <- bayesdca(
-  data = screening_cohort,
-  outcomes = "Cancer",
-  predictors = c("Biomarker_Panel", "Clinical_Score", "Imaging_Result"),
-
-  # Low thresholds appropriate for screening
-  thresholdMin = 0.01, # 1% - very sensitive
-  thresholdMax = 0.10, # 10% - still screening range
-  thresholdPoints = 20,
-  bayesianAnalysis = TRUE,
-  calculateEVPI = TRUE,
-
-  # External prevalence from cancer registry
-  useExternalPrevalence = TRUE,
-  externalCases = 50, # Registry cancer rate
-  externalTotal = 1000 # Registry population
-)
-```
+\
+`# Evaluate biomarker panel for cancer screening`\
+`screening_analysis`` ``<-`` ``bayesdca``(`\
+`  data ``=`` ``screening_cohort``,`\
+`  outcomes ``=`` ``"Cancer"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Biomarker_Panel"``, ``"Clinical_Score"``, ``"Imaging_Result"``)``,`\
+\
+`  ``# Low thresholds appropriate for screening`\
+`  thresholdMin ``=`` ``0.01``, ``# 1% - very sensitive`\
+`  thresholdMax ``=`` ``0.10``, ``# 10% - still screening range`\
+`  thresholdPoints ``=`` ``20``,`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  calculateEVPI ``=`` ``TRUE``,`\
+\
+`  ``# External prevalence from cancer registry`\
+`  useExternalPrevalence ``=`` ``TRUE``,`\
+`  externalCases ``=`` ``50``, ``# Registry cancer rate`\
+`  externalTotal ``=`` ``1000`` ``# Registry population`\
+`)`
 
 **Key Questions:** - At what threshold should we recommend further
 testing? - Is the biomarker panel worth the additional cost? - Should we
@@ -546,23 +518,21 @@ implement this in a screening program?
 
 ### Example 2: Treatment Selection Model
 
-``` r
-
-# Personalized treatment selection model
-treatment_analysis <- bayesdca(
-  data = treatment_cohort,
-  outcomes = "TreatmentFailure",
-  predictors = c("GenomicScore", "ClinicalModel", "Combined_Score"),
-
-  # Moderate thresholds for treatment decisions
-  thresholdMin = 0.15, # 15% - consider treatment
-  thresholdMax = 0.45, # 45% - high-risk threshold
-  thresholdPoints = 30,
-  bayesianAnalysis = TRUE,
-  priorStrength = 3, # Moderate prior for treatment
-  calculateEVPI = TRUE
-)
-```
+\
+`# Personalized treatment selection model`\
+`treatment_analysis`` ``<-`` ``bayesdca``(`\
+`  data ``=`` ``treatment_cohort``,`\
+`  outcomes ``=`` ``"TreatmentFailure"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"GenomicScore"``, ``"ClinicalModel"``, ``"Combined_Score"``)``,`\
+\
+`  ``# Moderate thresholds for treatment decisions`\
+`  thresholdMin ``=`` ``0.15``, ``# 15% - consider treatment`\
+`  thresholdMax ``=`` ``0.45``, ``# 45% - high-risk threshold`\
+`  thresholdPoints ``=`` ``30``,`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  priorStrength ``=`` ``3``, ``# Moderate prior for treatment`\
+`  calculateEVPI ``=`` ``TRUE`\
+`)`
 
 **Key Questions:** - Which patients should receive intensive
 treatment? - Is genomic testing worth the cost for treatment
@@ -570,25 +540,23 @@ selection? - What threshold should guide treatment decisions?
 
 ### Example 3: Diagnostic Test Evaluation
 
-``` r
-
-# Compare diagnostic tests for rapid diagnosis
-diagnostic_analysis <- bayesdca(
-  data = diagnostic_cohort,
-  outcomes = "Disease",
-  predictors = c("Rapid_Test", "Standard_Test", "Combined_Tests"),
-
-  # Broad threshold range for diagnostic evaluation
-  thresholdMin = 0.05,
-  thresholdMax = 0.50,
-  thresholdPoints = 45,
-  bayesianAnalysis = TRUE,
-  calculateEVPI = TRUE,
-
-  # Direction: positive test results indicate disease
-  directionIndicator = ">="
-)
-```
+\
+`# Compare diagnostic tests for rapid diagnosis`\
+`diagnostic_analysis`` ``<-`` ``bayesdca``(`\
+`  data ``=`` ``diagnostic_cohort``,`\
+`  outcomes ``=`` ``"Disease"``,`\
+`  predictors ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rapid_Test"``, ``"Standard_Test"``, ``"Combined_Tests"``)``,`\
+\
+`  ``# Broad threshold range for diagnostic evaluation`\
+`  thresholdMin ``=`` ``0.05``,`\
+`  thresholdMax ``=`` ``0.50``,`\
+`  thresholdPoints ``=`` ``45``,`\
+`  bayesianAnalysis ``=`` ``TRUE``,`\
+`  calculateEVPI ``=`` ``TRUE``,`\
+\
+`  ``# Direction: positive test results indicate disease`\
+`  directionIndicator ``=`` ``">="`\
+`)`
 
 **Key Questions:** - Should we replace the standard test with the rapid
 test? - At what probability should we initiate treatment? - Is the
@@ -600,117 +568,107 @@ combined approach worth the additional complexity?
 
 #### **Probability Calibration**
 
-``` r
-
-# For machine learning models, ensure probabilities are well-calibrated
-# before DCA analysis
-
-# Example with logistic regression calibration
-library(rms)
-
-# Calibrate predictions
-calibrated_probs <- predict(calibration_model, type = "response")
-
-# Use calibrated probabilities in DCA
-bayesdca(
-  data = mydata,
-  outcomes = "Death",
-  predictors = "calibrated_probs",
-  thresholdMin = 0.05,
-  thresholdMax = 0.40,
-  bayesianAnalysis = TRUE
-)
-```
+\
+`# For machine learning models, ensure probabilities are well-calibrated`\
+`# before DCA analysis`\
+\
+`# Example with logistic regression calibration`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`rms`](https://hbiostat.org/R/rms/)`)`\
+\
+`# Calibrate predictions`\
+`calibrated_probs`` ``<-`` `[`predict`](https://rdrr.io/r/stats/predict.html)`(``calibration_model``, type ``=`` ``"response"``)`\
+\
+`# Use calibrated probabilities in DCA`\
+`bayesdca``(`\
+`  data ``=`` ``mydata``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` ``"calibrated_probs"``,`\
+`  thresholdMin ``=`` ``0.05``,`\
+`  thresholdMax ``=`` ``0.40``,`\
+`  bayesianAnalysis ``=`` ``TRUE`\
+`)`
 
 #### **Multi-class Outcomes**
 
-``` r
-
-# For outcomes with multiple categories, create binary versions
-mydata_binary <- mydata %>%
-  mutate(
-    Death_vs_Others = ifelse(Outcome == "Death", 1, 0),
-    Progression_vs_Others = ifelse(Outcome == "Progression", 1, 0)
-  )
-
-# Analyze each binary outcome separately
-bayesdca(data = mydata_binary, outcomes = "Death_vs_Others", ...)
-bayesdca(data = mydata_binary, outcomes = "Progression_vs_Others", ...)
-```
+\
+`# For outcomes with multiple categories, create binary versions`\
+`mydata_binary`` ``<-`` ``mydata`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(`\
+`    Death_vs_Others ``=`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``Outcome`` ``==`` ``"Death"``, ``1``, ``0``)``,`\
+`    Progression_vs_Others ``=`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``Outcome`` ``==`` ``"Progression"``, ``1``, ``0``)`\
+`  ``)`\
+\
+`# Analyze each binary outcome separately`\
+`bayesdca``(``data ``=`` ``mydata_binary``, outcomes ``=`` ``"Death_vs_Others"``, ``...``)`\
+`bayesdca``(``data ``=`` ``mydata_binary``, outcomes ``=`` ``"Progression_vs_Others"``, ``...``)`
 
 ### Model Validation Considerations
 
 #### **Cross-validation Strategy**
 
-``` r
-
-# For internal validation, use cross-validation
-library(pROC)
-
-# Example 5-fold cross-validation
-set.seed(123)
-folds <- createFolds(mydata$Death, k = 5)
-
-cv_results <- list()
-for (i in 1:5) {
-  train_data <- mydata[-folds[[i]], ]
-  test_data <- mydata[folds[[i]], ]
-
-  # Fit model on training data
-  model <- glm(Death ~ Age + MeasurementA, data = train_data, family = binomial)
-
-  # Predict on test data
-  test_data$predictions <- predict(model, test_data, type = "response")
-
-  # Run DCA on test predictions
-  cv_results[[i]] <- bayesdca(
-    data = test_data,
-    outcomes = "Death",
-    predictors = "predictions",
-    bayesianAnalysis = TRUE
-  )
-}
-```
+\
+`# For internal validation, use cross-validation`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`pROC`](https://xrobin.github.io/pROC/)`)`\
+\
+`# Example 5-fold cross-validation`\
+[`set.seed`](https://rdrr.io/r/base/Random.html)`(``123``)`\
+`folds`` ``<-`` ``createFolds``(``mydata``$``Death``, k ``=`` ``5``)`\
+\
+`cv_results`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(``)`\
+`for`` ``(``i`` ``in`` ``1``:``5``)`` ``{`\
+`  ``train_data`` ``<-`` ``mydata``[``-``folds``[[``i``]``]``, ``]`\
+`  ``test_data`` ``<-`` ``mydata``[``folds``[[``i``]``]``, ``]`\
+\
+`  ``# Fit model on training data`\
+`  ``model`` ``<-`` `[`glm`](https://rdrr.io/r/stats/glm.html)`(``Death`` ``~`` ``Age`` ``+`` ``MeasurementA``, data ``=`` ``train_data``, family ``=`` ``binomial``)`\
+\
+`  ``# Predict on test data`\
+`  ``test_data``$``predictions`` ``<-`` `[`predict`](https://rdrr.io/r/stats/predict.html)`(``model``, ``test_data``, type ``=`` ``"response"``)`\
+\
+`  ``# Run DCA on test predictions`\
+`  ``cv_results``[[``i``]``]`` ``<-`` ``bayesdca``(`\
+`    data ``=`` ``test_data``,`\
+`    outcomes ``=`` ``"Death"``,`\
+`    predictors ``=`` ``"predictions"``,`\
+`    bayesianAnalysis ``=`` ``TRUE`\
+`  ``)`\
+`}`
 
 #### **External Validation**
 
-``` r
-
-# For external validation on independent dataset
-external_results <- bayesdca(
-  data = external_cohort,
-  outcomes = "Death",
-  predictors = "model_predictions", # From original model
-
-  # May need different threshold range
-  thresholdMin = 0.05,
-  thresholdMax = 0.35,
-
-  # Account for different prevalence
-  useExternalPrevalence = TRUE,
-  externalCases = external_cases,
-  externalTotal = external_total,
-  bayesianAnalysis = TRUE
-)
-```
+\
+`# For external validation on independent dataset`\
+`external_results`` ``<-`` ``bayesdca``(`\
+`  data ``=`` ``external_cohort``,`\
+`  outcomes ``=`` ``"Death"``,`\
+`  predictors ``=`` ``"model_predictions"``, ``# From original model`\
+\
+`  ``# May need different threshold range`\
+`  thresholdMin ``=`` ``0.05``,`\
+`  thresholdMax ``=`` ``0.35``,`\
+\
+`  ``# Account for different prevalence`\
+`  useExternalPrevalence ``=`` ``TRUE``,`\
+`  externalCases ``=`` ``external_cases``,`\
+`  externalTotal ``=`` ``external_total``,`\
+`  bayesianAnalysis ``=`` ``TRUE`\
+`)`
 
 ### Cost-Effectiveness Integration
 
 #### **Incorporating Costs**
 
-``` r
-
-# DCA can be extended to include costs
-# Net benefit becomes: NB = (TP × Benefit - FP × Harm) / Cost
-
-# Example: Modify net benefit calculation for cost-effectiveness
-# This would require custom calculation outside the standard DCA framework
-
-cost_adjusted_analysis <- function(dca_results, intervention_cost, harm_cost) {
-  # Custom function to adjust net benefit for costs
-  # Implementation would depend on specific cost structure
-}
-```
+\
+`# DCA can be extended to include costs`\
+`# Net benefit becomes: NB = (TP × Benefit - FP × Harm) / Cost`\
+\
+`# Example: Modify net benefit calculation for cost-effectiveness`\
+`# This would require custom calculation outside the standard DCA framework`\
+\
+`cost_adjusted_analysis`` ``<-`` ``function``(``dca_results``, ``intervention_cost``, ``harm_cost``)`` ``{`\
+`  ``# Custom function to adjust net benefit for costs`\
+`  ``# Implementation would depend on specific cost structure`\
+`}`
 
 ## Troubleshooting and Best Practices
 
@@ -720,116 +678,98 @@ cost_adjusted_analysis <- function(dca_results, intervention_cost, harm_cost) {
 
 **Problem**: Outcome variable not properly coded
 
-``` r
-
-# Solution: Ensure binary coding
-mydata$outcome_binary <- ifelse(mydata$Outcome == "Event", 1, 0)
-# Or specify positive level for factors
-bayesdca(..., outcomes = "Status", outcomePos = "Dead")
-```
+\
+`# Solution: Ensure binary coding`\
+`mydata``$``outcome_binary`` ``<-`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``mydata``$``Outcome`` ``==`` ``"Event"``, ``1``, ``0``)`\
+`# Or specify positive level for factors`\
+`bayesdca``(``...``, outcomes ``=`` ``"Status"``, outcomePos ``=`` ``"Dead"``)`
 
 **Problem**: Prediction probabilities outside \[0,1\] range
 
-``` r
-
-# Solution: Check and constrain predictions
-summary(mydata$predictions)
-mydata$predictions <- pmin(pmax(mydata$predictions, 0.001), 0.999)
-```
+\
+`# Solution: Check and constrain predictions`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``mydata``$``predictions``)`\
+`mydata``$``predictions`` ``<-`` `[`pmin`](https://rdrr.io/r/base/Extremes.html)`(`[`pmax`](https://rdrr.io/r/base/Extremes.html)`(``mydata``$``predictions``, ``0.001``)``, ``0.999``)`
 
 **Problem**: Missing values in predictors
 
-``` r
-
-# Solution: Handle missing values appropriately
-# Remove cases with missing predictors
-complete_data <- mydata[complete.cases(mydata[, c("outcome", "predictor1", "predictor2")]), ]
-
-# Or impute missing values (use appropriate method)
-library(mice)
-imputed_data <- complete(mice(mydata))
-```
+\
+`# Solution: Handle missing values appropriately`\
+`# Remove cases with missing predictors`\
+`complete_data`` ``<-`` ``mydata``[`[`complete.cases`](https://rdrr.io/r/stats/complete.cases.html)`(``mydata``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"outcome"``, ``"predictor1"``, ``"predictor2"``)``]``)``, ``]`\
+\
+`# Or impute missing values (use appropriate method)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`mice`](https://github.com/amices/mice)`)`\
+`imputed_data`` ``<-`` `[`complete`](https://tidyr.tidyverse.org/reference/complete.html)`(`[`mice`](https://amices.org/mice/reference/mice.html)`(``mydata``)``)`
 
 #### **Threshold Selection Issues**
 
 **Problem**: Unclear what threshold range to use
 
-``` r
-
-# Solution: Use clinical guidelines or literature
-# For cancer: often 5-20%
-# For screening: often 1-10%
-# For surgery: often 20-50%
-
-# Start broad and narrow based on results
-bayesdca(..., thresholdMin = 0.01, thresholdMax = 0.50)
-```
+\
+`# Solution: Use clinical guidelines or literature`\
+`# For cancer: often 5-20%`\
+`# For screening: often 1-10%`\
+`# For surgery: often 20-50%`\
+\
+`# Start broad and narrow based on results`\
+`bayesdca``(``...``, thresholdMin ``=`` ``0.01``, thresholdMax ``=`` ``0.50``)`
 
 **Problem**: All models perform similarly
 
-``` r
-
-# Solutions:
-# 1. Check if sample size is adequate
-# 2. Consider if models are actually different
-# 3. Look at EVPI - high values suggest more research needed
-# 4. Focus on interpretability and implementation costs
-```
+\
+`# Solutions:`\
+`# 1. Check if sample size is adequate`\
+`# 2. Consider if models are actually different`\
+`# 3. Look at EVPI - high values suggest more research needed`\
+`# 4. Focus on interpretability and implementation costs`
 
 #### **Interpretation Challenges**
 
 **Problem**: Negative net benefit values
 
-``` r
-
-# This is normal and expected!
-# Net benefit can be negative - it just means the strategy
-# performs worse than "treat none"
-# Focus on relative differences between strategies
-```
+\
+`# This is normal and expected!`\
+`# Net benefit can be negative - it just means the strategy`\
+`# performs worse than "treat none"`\
+`# Focus on relative differences between strategies`
 
 **Problem**: Very wide confidence intervals
 
-``` r
-
-# Solutions:
-# 1. Increase sample size if possible
-# 2. Use stronger priors (increase priorStrength)
-# 3. Consider if more research is needed (check EVPI)
-# 4. Focus on threshold ranges with narrow intervals
-```
+\
+`# Solutions:`\
+`# 1. Increase sample size if possible`\
+`# 2. Use stronger priors (increase priorStrength)`\
+`# 3. Consider if more research is needed (check EVPI)`\
+`# 4. Focus on threshold ranges with narrow intervals`
 
 ### Performance Optimization
 
 #### **Large Dataset Handling**
 
-``` r
-
-# For large datasets (>10,000 observations)
-# Consider reducing computational burden
-
-# Reduce posterior draws for initial exploration
-bayesdca(..., nDraws = 1000) # Instead of 2000+
-
-# Reduce threshold points for initial analysis
-bayesdca(..., thresholdPoints = 20) # Instead of 50+
-
-# Use frequentist approach for speed
-bayesdca(..., bayesianAnalysis = FALSE, bootstrapCI = TRUE)
-```
+\
+`# For large datasets (>10,000 observations)`\
+`# Consider reducing computational burden`\
+\
+`# Reduce posterior draws for initial exploration`\
+`bayesdca``(``...``, nDraws ``=`` ``1000``)`` ``# Instead of 2000+`\
+\
+`# Reduce threshold points for initial analysis`\
+`bayesdca``(``...``, thresholdPoints ``=`` ``20``)`` ``# Instead of 50+`\
+\
+`# Use frequentist approach for speed`\
+`bayesdca``(``...``, bayesianAnalysis ``=`` ``FALSE``, bootstrapCI ``=`` ``TRUE``)`
 
 #### **Memory Management**
 
-``` r
-
-# For memory-intensive analyses
-# Clean up intermediate objects
-gc()
-
-# Use data.table for large datasets
-library(data.table)
-setDT(mydata)
-```
+\
+`# For memory-intensive analyses`\
+`# Clean up intermediate objects`\
+[`gc`](https://rdrr.io/r/base/gc.html)`(``)`\
+\
+`# Use data.table for large datasets`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`data.table`](https://r-datatable.com)`)`\
+[`setDT`](https://rdrr.io/pkg/data.table/man/setDT.html)`(``mydata``)`
 
 ## Integration with ClinicoPath Workflow
 
@@ -849,31 +789,25 @@ setDT(mydata)
 
 #### **ROC Analysis First**
 
-``` r
-
-# Step 1: Traditional ROC analysis
-roc_analysis <- roc(data = mydata, outcomes = "Death", predictors = "Age")
-
-# Step 2: Decision curve analysis for clinical utility
-dca_analysis <- bayesdca(data = mydata, outcomes = "Death", predictors = "Age")
-```
+\
+`# Step 1: Traditional ROC analysis`\
+`roc_analysis`` ``<-`` `[`roc`](https://rdrr.io/pkg/pROC/man/roc.html)`(``data ``=`` ``mydata``, outcomes ``=`` ``"Death"``, predictors ``=`` ``"Age"``)`\
+\
+`# Step 2: Decision curve analysis for clinical utility`\
+`dca_analysis`` ``<-`` ``bayesdca``(``data ``=`` ``mydata``, outcomes ``=`` ``"Death"``, predictors ``=`` ``"Age"``)`
 
 #### **Decision Trees for Implementation**
 
-``` r
-
-# Use decision tree analysis for implementation planning
-# after DCA shows clinical utility
-decision_tree_analysis <- decisiongraph(...)
-```
+\
+`# Use decision tree analysis for implementation planning`\
+`# after DCA shows clinical utility`\
+`decision_tree_analysis`` ``<-`` ``decisiongraph``(``...``)`
 
 #### **Cost-Effectiveness Analysis**
 
-``` r
-
-# Integrate DCA results with cost-effectiveness models
-# for full economic evaluation
-```
+\
+`# Integrate DCA results with cost-effectiveness models`\
+`# for full economic evaluation`
 
 ## Reporting Guidelines
 
@@ -904,17 +838,15 @@ decision_tree_analysis <- decisiongraph(...)
 
 #### **Publication-Ready Plots**
 
-``` r
-
-# The Bayesian DCA module produces publication-ready plots
-# with proper formatting:
-# - Professional color schemes
-# - Percentage formatting for thresholds
-# - Appropriate confidence bands
-# - Clear legends and labels
-
-# Plots can be exported at high resolution for publications
-```
+\
+`# The Bayesian DCA module produces publication-ready plots`\
+`# with proper formatting:`\
+`# - Professional color schemes`\
+`# - Percentage formatting for thresholds`\
+`# - Appropriate confidence bands`\
+`# - Clear legends and labels`\
+\
+`# Plots can be exported at high resolution for publications`
 
 ## Conclusion
 

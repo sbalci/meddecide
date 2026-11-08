@@ -26,27 +26,35 @@ cutpoints.
 
 ### Basic Usage
 
-``` r
+\
+\
+\
+`# Load example data`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``cancer_biomarker``)``  ``# Hypothetical dataset`\
+\
+`# Basic ROC analysis`\
+`roc_result`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` ``"PSA"``,           ``# Test variable`\
+`  classVar ``=`` ``"cancer_status"``,      ``# Binary outcome (0/1)`\
+`  positiveClass ``=`` ``"1"``,             ``# Which level is positive`\
+`  negativeClass ``=`` ``"0"``              ``# Which level is negative (both are required)`\
+`)`
 
-
-
-# Load example data
-data(cancer_biomarker)  # Hypothetical dataset
-
-# Basic ROC analysis
-roc_result <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = "PSA",           # Test variable
-  classVar = "cancer_status",      # Binary outcome (0/1)
-  positiveClass = "1"              # Which level is positive
-)
-```
+For the assumptions and interpretation of all 15 analyses, see [Choosing
+and interpreting an
+analysis](https://www.serdarbalci.com/meddecide/articles/17-methods-and-interpretation.md).
+The hypothetical `cancer_biomarker` data below are pseudocode; use the
+bundled `roc_example.csv` in the [executable ROC
+introduction](https://www.serdarbalci.com/meddecide/articles/03-roc-analysis.md)
+for a runnable example.
 
 ### Understanding ROC Curves
 
 An ROC curve plots sensitivity (true positive rate) against
 1-specificity (false positive rate) across all possible cutpoints. The
-area under the curve (AUC) summarizes overall diagnostic accuracy:
+area under the curve (AUC) summarizes rank discrimination. The following
+labels are informal conventions, not clinical acceptance thresholds:
 
 - AUC = 0.5: No discrimination (diagonal line)
 - AUC = 0.7-0.8: Acceptable discrimination
@@ -57,118 +65,119 @@ area under the curve (AUC) summarizes overall diagnostic accuracy:
 
 The package offers several methods to determine optimal cutpoints:
 
-``` r
-
-# Method 1: Maximize Youden's Index (default)
-roc_youden <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = "PSA",
-  classVar = "cancer_status",
-  positiveClass = "1",
-  method = "maximize_metric",
-  metric = "youden"  # Sensitivity + Specificity - 1
-)
-
-# Method 2: Cost-benefit optimization
-roc_cost <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = "PSA",
-  classVar = "cancer_status",
-  positiveClass = "1",
-  method = "oc_cost_ratio",
-  costratioFP = 2.5  # False positives cost 2.5x more than false negatives
-)
-
-# Method 3: Equal sensitivity and specificity
-roc_equal <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = "PSA",
-  classVar = "cancer_status",
-  positiveClass = "1",
-  method = "oc_equal_sens_spec"
-)
-```
+\
+`# Method 1: Maximize Youden's Index (default)`\
+`roc_youden`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` ``"PSA"``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  method ``=`` ``"maximize_metric"``,`\
+`  metric ``=`` ``"youden"``  ``# Sensitivity + Specificity - 1`\
+`)`\
+\
+`# Method 2: Cost-benefit optimization`\
+`roc_cost`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` ``"PSA"``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  method ``=`` ``"oc_cost_ratio"``,`\
+`  costratioFP ``=`` ``2.5``  ``# False positives cost 2.5x more than false negatives`\
+`)`\
+\
+`# Method 3: Equal sensitivity and specificity`\
+`roc_equal`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` ``"PSA"``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  method ``=`` ``"oc_equal_sens_spec"`\
+`)`
 
 ### Comparing Multiple Tests
 
-``` r
-
-# Compare multiple biomarkers
-roc_comparison <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = c("PSA", "CA125", "CEA"),  # Multiple tests
-  classVar = "cancer_status",
-  positiveClass = "1",
-  combinePlots = TRUE,        # Show all curves in one plot
-  delongTest = TRUE           # Statistical comparison of AUCs
-)
-```
+\
+`# Compare multiple biomarkers`\
+`roc_comparison`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"PSA"``, ``"CA125"``, ``"CEA"``)``,  ``# Multiple tests`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  combinePlots ``=`` ``TRUE``,        ``# Show all curves in one plot`\
+`  delongTest ``=`` ``TRUE``           ``# Statistical comparison of AUCs`\
+`)`
 
 ### Advanced Features
 
-``` r
-
-# Bootstrap confidence intervals
-roc_bootstrap <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = "PSA",
-  classVar = "cancer_status",
-  positiveClass = "1",
-  bootstrapCI = TRUE,
-  bootstrapReps = 2000
-)
-
-# Partial AUC (focus on high specificity region)
-roc_partial <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = "PSA",
-  classVar = "cancer_status",
-  positiveClass = "1",
-  partialAUC = TRUE,
-  partialAUCfrom = 0.8,  # Specificity range 80-100%
-  partialAUCto = 1.0
-)
-
-# Net Reclassification Index (NRI) and IDI
-roc_nri <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = c("PSA", "NewBiomarker"),
-  classVar = "cancer_status",
-  positiveClass = "1",
-  calculateIDI = TRUE,
-  calculateNRI = TRUE,
-  refVar = "PSA",  # Compare NewBiomarker against PSA
-  nriThresholds = "0.2,0.5"  # Risk categories: <20%, 20-50%, >50%
-)
-```
+\
+`# Bootstrap confidence intervals`\
+`roc_bootstrap`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` ``"PSA"``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  bootstrapCI ``=`` ``TRUE``,`\
+`  bootstrapReps ``=`` ``2000`\
+`)`\
+\
+`# Partial AUC (focus on high specificity region)`\
+`roc_partial`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` ``"PSA"``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  partialAUC ``=`` ``TRUE``,`\
+`  partialAUCfrom ``=`` ``0.8``,  ``# Specificity range 80-100%`\
+`  partialAUCto ``=`` ``1.0`\
+`)`\
+\
+`# Net Reclassification Index (NRI) and IDI`\
+`roc_nri`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"PSA"``, ``"NewBiomarker"``)``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  calculateIDI ``=`` ``TRUE``,`\
+`  calculateNRI ``=`` ``TRUE``,`\
+`  refVar ``=`` ``"PSA"``,  ``# Compare NewBiomarker against PSA`\
+`  nriThresholds ``=`` ``"0.2,0.5"``  ``# Risk categories: <20%, 20-50%, >50%`\
+`)`
 
 ### Visualization Options
 
-``` r
-
-# Publication-ready plots
-roc_publication <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = c("PSA", "CA125"),
-  classVar = "cancer_status",
-  positiveClass = "1",
-  plotROC = TRUE,
-  cleanPlot = TRUE,           # Clean plot for publications
-  showOptimalPoint = TRUE,    # Mark optimal cutpoint
-  legendPosition = "bottomright"
-)
-
-# Additional diagnostic plots
-roc_diagnostic <- psychopdaROC(
-  data = cancer_biomarker,
-  dependentVars = "PSA",
-  classVar = "cancer_status",
-  positiveClass = "1",
-  showCriterionPlot = TRUE,   # Sensitivity/Specificity vs threshold
-  showPrevalencePlot = TRUE,  # PPV/NPV vs prevalence
-  showDotPlot = TRUE          # Distribution by class
-)
-```
+\
+`# Publication-ready plots`\
+`roc_publication`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"PSA"``, ``"CA125"``)``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  plotROC ``=`` ``TRUE``,`\
+`  cleanPlot ``=`` ``TRUE``,           ``# Clean plot for publications`\
+`  showOptimalPoint ``=`` ``TRUE``,    ``# Mark optimal cutpoint`\
+`  legendPosition ``=`` ``"bottom"`\
+`)`\
+\
+`# Additional diagnostic plots`\
+`roc_diagnostic`` ``<-`` `[`psychopdaROC`](https://www.serdarbalci.com/meddecide/reference/psychopdaROC.md)`(`\
+`  data ``=`` ``cancer_biomarker``,`\
+`  dependentVars ``=`` ``"PSA"``,`\
+`  classVar ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"1"``,`\
+`  negativeClass ``=`` ``"0"``,`\
+`  showCriterionPlot ``=`` ``TRUE``,   ``# Sensitivity/Specificity vs threshold`\
+`  showPrevalencePlot ``=`` ``TRUE``,  ``# PPV/NPV vs prevalence`\
+`  showDotPlot ``=`` ``TRUE``          ``# Distribution by class`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -182,17 +191,17 @@ and likelihood ratios.
 
 ### Basic Analysis
 
-``` r
-
-# Evaluate a new rapid test against gold standard
-decision_result <- decision(
-  data = diagnostic_data,
-  gold = "pcr_result",        # Gold standard test
-  goldPositive = "positive",   # Positive level of gold standard
-  newtest = "rapid_test",      # New test to evaluate
-  testPositive = "positive"    # Positive level of new test
-)
-```
+\
+`# Evaluate a new rapid test against gold standard`\
+`decision_result`` ``<-`` `[`decision`](https://www.serdarbalci.com/meddecide/reference/decision.md)`(`\
+`  data ``=`` ``diagnostic_data``,`\
+`  gold ``=`` ``"pcr_result"``,        ``# Gold standard test`\
+`  goldPositive ``=`` ``"positive"``,   ``# Positive level of gold standard`\
+`  goldNegative ``=`` ``"negative"``,   ``# Negative level of gold standard`\
+`  newtest ``=`` ``"rapid_test"``,      ``# New test to evaluate`\
+`  testPositive ``=`` ``"positive"``,   ``# Positive level of new test`\
+`  testNegative ``=`` ``"negative"``    ``# Negative level of new test`\
+`)`
 
 ### Understanding the Output
 
@@ -212,51 +221,51 @@ The function provides:
 
 When the study population differs from the target population:
 
-``` r
-
-# Adjust for population prevalence
-decision_adjusted <- decision(
-  data = diagnostic_data,
-  gold = "pcr_result",
-  goldPositive = "positive",
-  newtest = "rapid_test",
-  testPositive = "positive",
-  pp = TRUE,                  # Use prior probability
-  pprob = 0.05                # 5% prevalence in general population
-)
-```
+\
+`# Adjust for population prevalence`\
+`decision_adjusted`` ``<-`` `[`decision`](https://www.serdarbalci.com/meddecide/reference/decision.md)`(`\
+`  data ``=`` ``diagnostic_data``,`\
+`  gold ``=`` ``"pcr_result"``,`\
+`  goldPositive ``=`` ``"positive"``,`\
+`  goldNegative ``=`` ``"negative"``,`\
+`  newtest ``=`` ``"rapid_test"``,`\
+`  testPositive ``=`` ``"positive"``,`\
+`  testNegative ``=`` ``"negative"``,`\
+`  pp ``=`` ``TRUE``,                  ``# Use prior probability`\
+`  pprob ``=`` ``0.05``                ``# 5% prevalence in general population`\
+`)`
 
 ### Confidence Intervals
 
-``` r
-
-# Add 95% confidence intervals
-decision_ci <- decision(
-  data = diagnostic_data,
-  gold = "pcr_result",
-  goldPositive = "positive",
-  newtest = "rapid_test",
-  testPositive = "positive",
-  ci = TRUE                   # Calculate confidence intervals
-)
-```
+\
+`# Add 95% confidence intervals`\
+`decision_ci`` ``<-`` `[`decision`](https://www.serdarbalci.com/meddecide/reference/decision.md)`(`\
+`  data ``=`` ``diagnostic_data``,`\
+`  gold ``=`` ``"pcr_result"``,`\
+`  goldPositive ``=`` ``"positive"``,`\
+`  goldNegative ``=`` ``"negative"``,`\
+`  newtest ``=`` ``"rapid_test"``,`\
+`  testPositive ``=`` ``"positive"``,`\
+`  testNegative ``=`` ``"negative"``,`\
+`  ci ``=`` ``TRUE``                   ``# Calculate confidence intervals`\
+`)`
 
 ### Fagan Nomogram
 
 Visualize how test results change disease probability:
 
-``` r
-
-# Create Fagan nomogram
-decision_fagan <- decision(
-  data = diagnostic_data,
-  gold = "pcr_result",
-  goldPositive = "positive",
-  newtest = "rapid_test",
-  testPositive = "positive",
-  fagan = TRUE                # Generate Fagan nomogram
-)
-```
+\
+`# Create Fagan nomogram`\
+`decision_fagan`` ``<-`` `[`decision`](https://www.serdarbalci.com/meddecide/reference/decision.md)`(`\
+`  data ``=`` ``diagnostic_data``,`\
+`  gold ``=`` ``"pcr_result"``,`\
+`  goldPositive ``=`` ``"positive"``,`\
+`  goldNegative ``=`` ``"negative"``,`\
+`  newtest ``=`` ``"rapid_test"``,`\
+`  testPositive ``=`` ``"positive"``,`\
+`  testNegative ``=`` ``"negative"``,`\
+`  fagan ``=`` ``TRUE``                ``# Generate Fagan nomogram`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -269,31 +278,27 @@ When you have summary statistics instead of raw data, use
 
 ### Basic Usage
 
-``` r
-
-# From a published 2x2 table
-calc_result <- decisioncalculator(
-  TP = 85,    # True positives
-  FP = 15,    # False positives  
-  FN = 10,    # False negatives
-  TN = 90     # True negatives
-)
-```
+\
+`# From a published 2x2 table`\
+`calc_result`` ``<-`` `[`decisioncalculator`](https://www.serdarbalci.com/meddecide/reference/decisioncalculator.md)`(`\
+`  TP ``=`` ``85``,    ``# True positives`\
+`  FP ``=`` ``15``,    ``# False positives  `\
+`  FN ``=`` ``10``,    ``# False negatives`\
+`  TN ``=`` ``90``     ``# True negatives`\
+`)`
 
 ### Adjusting for Prevalence
 
-``` r
-
-# Adjust for different population prevalence
-calc_adjusted <- decisioncalculator(
-  TP = 85,
-  FP = 15,
-  FN = 10,
-  TN = 90,
-  pp = TRUE,
-  pprob = 0.02  # 2% prevalence in screening population
-)
-```
+\
+`# Adjust for different population prevalence`\
+`calc_adjusted`` ``<-`` `[`decisioncalculator`](https://www.serdarbalci.com/meddecide/reference/decisioncalculator.md)`(`\
+`  TP ``=`` ``85``,`\
+`  FP ``=`` ``15``,`\
+`  FN ``=`` ``10``,`\
+`  TN ``=`` ``90``,`\
+`  pp ``=`` ``TRUE``,`\
+`  pprob ``=`` ``0.02``  ``# 2% prevalence in screening population`\
+`)`
 
 ### Interpreting Results
 
@@ -313,14 +318,12 @@ classifying the same subjects.
 
 ### Two Raters (Cohen’s Kappa)
 
-``` r
-
-# Two pathologists rating tumor grades
-kappa_result <- agreement(
-  data = pathology_data,
-  vars = c("pathologist1", "pathologist2")
-)
-```
+\
+`# Two pathologists rating tumor grades`\
+`kappa_result`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``pathology_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"pathologist1"``, ``"pathologist2"``)`\
+`)`
 
 ### Interpretation:
 
@@ -333,38 +336,32 @@ kappa_result <- agreement(
 
 ### Weighted Kappa for Ordinal Data
 
-``` r
-
-# For ordinal categories (e.g., grades 1-5)
-weighted_kappa <- agreement(
-  data = pathology_data,
-  vars = c("pathologist1", "pathologist2"),
-  wght = "squared"  # Squared weights for ordinal data
-)
-```
+\
+`# For ordinal categories (e.g., grades 1-5)`\
+`weighted_kappa`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``pathology_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"pathologist1"``, ``"pathologist2"``)``,`\
+`  wght ``=`` ``"squared"``  ``# Squared weights for ordinal data`\
+`)`
 
 ### Multiple Raters (Fleiss’ Kappa)
 
-``` r
-
-# Three or more raters
-fleiss_kappa <- agreement(
-  data = radiology_data,
-  vars = c("radiologist1", "radiologist2", "radiologist3", "radiologist4")
-)
-```
+\
+`# Three or more raters`\
+`fleiss_kappa`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``radiology_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"radiologist1"``, ``"radiologist2"``, ``"radiologist3"``, ``"radiologist4"``)`\
+`)`
 
 ### Exact Kappa
 
-``` r
-
-# For small samples with 3+ raters
-exact_kappa <- agreement(
-  data = small_study,
-  vars = c("rater1", "rater2", "rater3"),
-  exct = TRUE  # Use exact method
-)
-```
+\
+`# For small samples with 3+ raters`\
+`exact_kappa`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``small_study``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rater1"``, ``"rater2"``, ``"rater3"``)``,`\
+`  exct ``=`` ``TRUE``  ``# Use exact method`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -376,51 +373,45 @@ Plan sample sizes for interrater reliability studies.
 
 ### Basic Sample Size Calculation
 
-``` r
-
-# Sample size for binary outcome
-sample_size <- kappaSizePower(
-  outcome = "2",           # Binary outcome
-  kappa0 = 0.4,           # Null hypothesis: fair agreement
-  kappa1 = 0.6,           # Alternative: moderate agreement
-  props = "0.3, 0.7",     # 30% positive, 70% negative
-  raters = "2",           # Two raters
-  alpha = 0.05,           # Type I error rate
-  power = 0.80            # Statistical power
-)
-```
+\
+`# Sample size for binary outcome`\
+`sample_size`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,           ``# Binary outcome`\
+`  kappa0 ``=`` ``0.4``,           ``# Null hypothesis: fair agreement`\
+`  kappa1 ``=`` ``0.6``,           ``# Alternative: moderate agreement`\
+`  props ``=`` ``"0.3, 0.7"``,     ``# 30% positive, 70% negative`\
+`  raters ``=`` ``"2"``,           ``# Two raters`\
+`  alpha ``=`` ``0.05``,           ``# Type I error rate`\
+`  power ``=`` ``0.80``            ``# Statistical power`\
+`)`
 
 ### Multiple Categories
 
-``` r
-
-# Sample size for 3-category outcome
-sample_size_3cat <- kappaSizePower(
-  outcome = "3",
-  kappa0 = 0.4,
-  kappa1 = 0.6,
-  props = "0.2, 0.5, 0.3",  # Category proportions
-  raters = "2",
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Sample size for 3-category outcome`\
+`sample_size_3cat`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"3"``,`\
+`  kappa0 ``=`` ``0.4``,`\
+`  kappa1 ``=`` ``0.6``,`\
+`  props ``=`` ``"0.2, 0.5, 0.3"``,  ``# Category proportions`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 ### Multiple Raters
 
-``` r
-
-# Sample size for 3 raters
-sample_size_3raters <- kappaSizePower(
-  outcome = "2",
-  kappa0 = 0.4,
-  kappa1 = 0.6,
-  props = "0.4, 0.6",
-  raters = "3",             # Three raters
-  alpha = 0.05,
-  power = 0.80
-)
-```
+\
+`# Sample size for 3 raters`\
+`sample_size_3raters`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.4``,`\
+`  kappa1 ``=`` ``0.6``,`\
+`  props ``=`` ``"0.4, 0.6"``,`\
+`  raters ``=`` ``"3"``,             ``# Three raters`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -432,35 +423,31 @@ Calculate sample size based on desired confidence interval width.
 
 ### Basic Usage
 
-``` r
-
-# Sample size for precise kappa estimation
-ci_sample_size <- kappaSizeCI(
-  outcome = "2",
-  kappa0 = 0.6,      # Expected kappa
-  kappaL = 0.4,      # Lower CI bound
-  kappaU = 0.8,      # Upper CI bound
-  props = "0.2, 0.8",
-  raters = "2",
-  alpha = 0.05
-)
-```
+\
+`# Sample size for precise kappa estimation`\
+`ci_sample_size`` ``<-`` `[`kappaSizeCI`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.6``,      ``# Expected kappa`\
+`  kappaL ``=`` ``0.4``,      ``# Lower CI bound`\
+`  kappaU ``=`` ``0.8``,      ``# Upper CI bound`\
+`  props ``=`` ``"0.2, 0.8"``,`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05`\
+`)`
 
 ### Planning for Publication
 
-``` r
-
-# Narrow CI for publication standards
-publication_size <- kappaSizeCI(
-  outcome = "2",
-  kappa0 = 0.7,      # Expected substantial agreement
-  kappaL = 0.6,      # Lower bound still substantial
-  kappaU = 0.8,      # Upper bound
-  props = "0.3, 0.7",
-  raters = "2",
-  alpha = 0.05
-)
-```
+\
+`# Narrow CI for publication standards`\
+`publication_size`` ``<-`` `[`kappaSizeCI`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.7``,      ``# Expected substantial agreement`\
+`  kappaL ``=`` ``0.6``,      ``# Lower bound still substantial`\
+`  kappaU ``=`` ``0.8``,      ``# Upper bound`\
+`  props ``=`` ``"0.3, 0.7"``,`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -468,37 +455,36 @@ publication_size <- kappaSizeCI(
 
 ### Introduction
 
-When sample size is predetermined, calculate expected kappa precision.
+When sample size is predetermined, calculate the expected one-sided
+lower goodness-of-fit confidence bound around the anticipated kappa.
+This does not calculate power or guarantee the lower limit of a future
+study interval.
 
 ### Usage
 
-``` r
-
-# What kappa precision with 100 subjects?
-fixed_n_result <- kappaSizeFixedN(
-  outcome = "2",
-  kappa0 = 0.5,       # Expected kappa
-  props = "0.4, 0.6",
-  raters = "2",
-  alpha = 0.05,
-  n = 100             # Fixed sample size
-)
-```
+\
+`# What kappa precision with 100 subjects?`\
+`fixed_n_result`` ``<-`` `[`kappaSizeFixedN`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.5``,       ``# Expected kappa`\
+`  props ``=`` ``"0.4, 0.6"``,`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  n ``=`` ``100``             ``# Fixed sample size`\
+`)`
 
 ### Feasibility Assessment
 
-``` r
-
-# Check if available sample provides adequate precision
-feasibility <- kappaSizeFixedN(
-  outcome = "3",
-  kappa0 = 0.6,
-  props = "0.3, 0.4, 0.3",
-  raters = "2",
-  alpha = 0.05,
-  n = 50              # Available subjects
-)
-```
+\
+`# Check if available sample provides adequate precision`\
+`feasibility`` ``<-`` `[`kappaSizeFixedN`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md)`(`\
+`  outcome ``=`` ``"3"``,`\
+`  kappa0 ``=`` ``0.6``,`\
+`  props ``=`` ``"0.3, 0.4, 0.3"``,`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  n ``=`` ``50``              ``# Available subjects`\
+`)`
 
 ------------------------------------------------------------------------
 

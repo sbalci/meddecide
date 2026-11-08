@@ -2,6 +2,14 @@
 
 ## Introduction to Co-Testing Analysis
 
+The named scenarios and numerical accuracy/dependence values below are
+teaching assumptions, not guideline estimates or validated diagnostic
+pathways. Use paired evidence from the intended population and a
+justified reference standard. Sharing a specimen or mechanism suggests
+checking dependence; it does not quantify it. See [Choosing and
+interpreting an
+analysis](https://www.serdarbalci.com/meddecide/articles/17-methods-and-interpretation.md).
+
 In clinical practice, physicians often use multiple diagnostic tests to
 improve diagnostic accuracy. The **co-testing analysis** function in
 ClinicoPath helps clinicians understand how combining two diagnostic
@@ -65,22 +73,20 @@ are affected by the same confounding factors
 Let’s analyze a scenario where we use an antigen test and PCR test for
 COVID-19 screening, assuming they are independent.
 
-``` r
-
-# COVID-19 screening with antigen + PCR (independent)
-covid_independent <- cotest(
-  test1_sens = 0.68,    # Antigen test sensitivity
-  test1_spec = 0.99,    # Antigen test specificity
-  test2_sens = 0.95,    # PCR test sensitivity
-  test2_spec = 0.99,    # PCR test specificity
-  prevalence = 0.05,    # Community prevalence (5%)
-  indep = TRUE,         # Assume independence
-  fagan = TRUE,         # Show Fagan nomogram
-  fnote = TRUE          # Show explanatory footnotes
-)
-
-print(covid_independent)
-```
+\
+`# COVID-19 screening with antigen + PCR (independent)`\
+`covid_independent`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.68``,    ``# Antigen test sensitivity`\
+`  test1_spec ``=`` ``0.99``,    ``# Antigen test specificity`\
+`  test2_sens ``=`` ``0.95``,    ``# PCR test sensitivity`\
+`  test2_spec ``=`` ``0.99``,    ``# PCR test specificity`\
+`  prevalence ``=`` ``0.05``,    ``# Community prevalence (5%)`\
+`  indep ``=`` ``TRUE``,         ``# Assume independence`\
+`  fagan ``=`` ``TRUE``,         ``# Show Fagan nomogram`\
+`  fnote ``=`` ``TRUE``          ``# Show explanatory footnotes`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``covid_independent``)`
 
 #### Interpretation
 
@@ -94,55 +100,54 @@ print(covid_independent)
 Now let’s consider the same tests but account for potential dependence
 (e.g., both tests may be affected by viral load).
 
-``` r
-
-# COVID-19 screening with antigen + PCR (dependent)
-covid_dependent <- cotest(
-  test1_sens = 0.68,    # Antigen test sensitivity
-  test1_spec = 0.99,    # Antigen test specificity
-  test2_sens = 0.95,    # PCR test sensitivity
-  test2_spec = 0.99,    # PCR test specificity
-  prevalence = 0.05,    # Community prevalence (5%)
-  indep = FALSE,        # Account for dependence
-  cond_dep_pos = 0.15,  # Dependence in COVID+ patients
-  cond_dep_neg = 0.05,  # Dependence in COVID- patients
-  fagan = TRUE,         # Show Fagan nomogram
-  fnote = TRUE          # Show explanatory footnotes
-)
-
-print(covid_dependent)
-```
+\
+`# COVID-19 screening with antigen + PCR (dependent)`\
+`covid_dependent`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.68``,    ``# Antigen test sensitivity`\
+`  test1_spec ``=`` ``0.99``,    ``# Antigen test specificity`\
+`  test2_sens ``=`` ``0.95``,    ``# PCR test sensitivity`\
+`  test2_spec ``=`` ``0.99``,    ``# PCR test specificity`\
+`  prevalence ``=`` ``0.05``,    ``# Community prevalence (5%)`\
+`  indep ``=`` ``FALSE``,        ``# Account for dependence`\
+`  cond_dep_pos ``=`` ``0.15``,  ``# Dependence in COVID+ patients`\
+`  cond_dep_neg ``=`` ``0.05``,  ``# Dependence in COVID- patients`\
+`  fagan ``=`` ``TRUE``,         ``# Show Fagan nomogram`\
+`  fnote ``=`` ``TRUE``          ``# Show explanatory footnotes`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``covid_dependent``)`
 
 #### Key Differences
 
-When accounting for dependence, the benefit of combined testing is
-typically **reduced** compared to the independence assumption. This is
-because: - Positive results are less surprising (tests tend to agree) -
-The tests provide less independent evidence
+Dependence can change sensitivity, specificity and predictive values in
+different directions. With positive dependence in both disease groups,
+an AND rule has higher sensitivity and lower specificity than under
+independence; an OR rule has lower sensitivity and higher specificity. A
+pattern’s post-test probability also depends on the relative dependence
+in the two groups. Dependence does not universally make a combined test
+better or worse.
 
 ### Example 3: Cancer Screening Scenario
 
 Breast cancer screening using mammography and ultrasound in a high-risk
 population.
 
-``` r
-
-# Breast cancer screening in high-risk women
-cancer_screening <- cotest(
-  test1_sens = 0.88,    # Mammography sensitivity
-  test1_spec = 0.92,    # Mammography specificity
-  test2_sens = 0.95,    # Ultrasound sensitivity
-  test2_spec = 0.85,    # Ultrasound specificity
-  prevalence = 0.08,    # High-risk population (8% prevalence)
-  indep = FALSE,        # Tests likely dependent
-  cond_dep_pos = 0.25,  # High dependence in cancer patients
-  cond_dep_neg = 0.15,  # Moderate dependence in non-cancer patients
-  fagan = TRUE,
-  fnote = TRUE
-)
-
-print(cancer_screening)
-```
+\
+`# Breast cancer screening in high-risk women`\
+`cancer_screening`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.88``,    ``# Mammography sensitivity`\
+`  test1_spec ``=`` ``0.92``,    ``# Mammography specificity`\
+`  test2_sens ``=`` ``0.95``,    ``# Ultrasound sensitivity`\
+`  test2_spec ``=`` ``0.85``,    ``# Ultrasound specificity`\
+`  prevalence ``=`` ``0.08``,    ``# High-risk population (8% prevalence)`\
+`  indep ``=`` ``FALSE``,        ``# Tests likely dependent`\
+`  cond_dep_pos ``=`` ``0.25``,  ``# High dependence in cancer patients`\
+`  cond_dep_neg ``=`` ``0.15``,  ``# Moderate dependence in non-cancer patients`\
+`  fagan ``=`` ``TRUE``,`\
+`  fnote ``=`` ``TRUE`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``cancer_screening``)`
 
 #### Clinical Decision Points
 
@@ -155,24 +160,22 @@ Intermediate probabilities
 
 Evaluating chest pain patients using troponin and CK-MB.
 
-``` r
-
-# Cardiac biomarkers for myocardial infarction
-cardiac_biomarkers <- cotest(
-  test1_sens = 0.92,    # Troponin sensitivity
-  test1_spec = 0.89,    # Troponin specificity
-  test2_sens = 0.85,    # CK-MB sensitivity
-  test2_spec = 0.94,    # CK-MB specificity
-  prevalence = 0.25,    # ED chest pain patients (25% MI rate)
-  indep = FALSE,        # Biomarkers likely correlated
-  cond_dep_pos = 0.30,  # High correlation in MI patients
-  cond_dep_neg = 0.20,  # Moderate correlation in non-MI patients
-  fagan = TRUE,
-  fnote = TRUE
-)
-
-print(cardiac_biomarkers)
-```
+\
+`# Cardiac biomarkers for myocardial infarction`\
+`cardiac_biomarkers`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.92``,    ``# Troponin sensitivity`\
+`  test1_spec ``=`` ``0.89``,    ``# Troponin specificity`\
+`  test2_sens ``=`` ``0.85``,    ``# CK-MB sensitivity`\
+`  test2_spec ``=`` ``0.94``,    ``# CK-MB specificity`\
+`  prevalence ``=`` ``0.25``,    ``# ED chest pain patients (25% MI rate)`\
+`  indep ``=`` ``FALSE``,        ``# Biomarkers likely correlated`\
+`  cond_dep_pos ``=`` ``0.30``,  ``# High correlation in MI patients`\
+`  cond_dep_neg ``=`` ``0.20``,  ``# Moderate correlation in non-MI patients`\
+`  fagan ``=`` ``TRUE``,`\
+`  fnote ``=`` ``TRUE`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``cardiac_biomarkers``)`
 
 #### Clinical Application
 
@@ -207,38 +210,37 @@ When dependence parameters are unknown:
 2.  **Expert Opinion**: Consult specialists familiar with the tests
 3.  **Sensitivity Analysis**: Test range of plausible values (0.05, 0.1,
     0.2, 0.3)
-4.  **Conservative Approach**: Use moderate dependence (0.1-0.2) when
-    uncertain
+4.  **Report uncertainty**: There is no universally conservative
+    dependence value. Show a justified range separately in each disease
+    group rather than choosing 0.1–0.2 as a clinical default.
 
-``` r
-
-# Sensitivity analysis with different dependence levels
-scenarios <- list(
-  "Low Dependence" = 0.05,
-  "Moderate Dependence" = 0.15,
-  "High Dependence" = 0.30
-)
-
-sensitivity_results <- lapply(names(scenarios), function(scenario_name) {
-  dep_value <- scenarios[[scenario_name]]
-  
-  result <- cotest(
-    test1_sens = 0.85,
-    test1_spec = 0.90,
-    test2_sens = 0.80,
-    test2_spec = 0.95,
-    prevalence = 0.10,
-    indep = FALSE,
-    cond_dep_pos = dep_value,
-    cond_dep_neg = dep_value
-  )
-  
-  cat("\n", scenario_name, "(ρ =", dep_value, "):\n")
-  print(result)
-  
-  return(result)
-})
-```
+\
+`# Sensitivity analysis with different dependence levels`\
+`scenarios`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  ``"Low Dependence"`` ``=`` ``0.05``,`\
+`  ``"Moderate Dependence"`` ``=`` ``0.15``,`\
+`  ``"High Dependence"`` ``=`` ``0.30`\
+`)`\
+\
+`sensitivity_results`` ``<-`` `[`lapply`](https://rdrr.io/r/base/lapply.html)`(`[`names`](https://rdrr.io/r/base/names.html)`(``scenarios``)``, ``function``(``scenario_name``)`` ``{`\
+`  ``dep_value`` ``<-`` ``scenarios``[[``scenario_name``]``]`\
+`  `\
+`  ``result`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`    test1_sens ``=`` ``0.85``,`\
+`    test1_spec ``=`` ``0.90``,`\
+`    test2_sens ``=`` ``0.80``,`\
+`    test2_spec ``=`` ``0.95``,`\
+`    prevalence ``=`` ``0.10``,`\
+`    indep ``=`` ``FALSE``,`\
+`    cond_dep_pos ``=`` ``dep_value``,`\
+`    cond_dep_neg ``=`` ``dep_value`\
+`  ``)`\
+`  `\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\n"``, ``scenario_name``, ``"(ρ ="``, ``dep_value``, ``"):\n"``)`\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(``result``)`\
+`  `\
+`  `[`return`](https://rdrr.io/r/base/function.html)`(``result``)`\
+`}``)`
 
 ### Impact of Ignoring Dependence
 
@@ -256,72 +258,68 @@ Ignoring conditional dependence when it exists typically leads to:
 While this function models simultaneous testing, it can inform
 sequential testing strategies:
 
-``` r
-
-# First test: High sensitivity screening test
-first_test <- cotest(
-  test1_sens = 0.95,    # High sensitivity screening
-  test1_spec = 0.80,    # Lower specificity acceptable
-  test2_sens = 0.95,    # Dummy second test (same values)
-  test2_spec = 0.80,
-  prevalence = 0.05,
-  indep = TRUE
-)
-
-# If first test positive, use confirmatory test
-confirmatory_test <- cotest(
-  test1_sens = 0.95,    # Original screening test
-  test1_spec = 0.80,
-  test2_sens = 0.85,    # Confirmatory test (different characteristics)
-  test2_spec = 0.98,    # Higher specificity
-  prevalence = 0.25,    # Higher prevalence after positive screen
-  indep = FALSE,
-  cond_dep_pos = 0.20,
-  cond_dep_neg = 0.10
-)
-
-cat("Sequential Testing Strategy:\n")
-cat("Step 1 - Screening Test Results:\n")
-print(first_test)
-
-cat("\nStep 2 - Confirmatory Testing (if screen positive):\n")
-print(confirmatory_test)
-```
+\
+`# First test: High sensitivity screening test`\
+`first_test`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.95``,    ``# High sensitivity screening`\
+`  test1_spec ``=`` ``0.80``,    ``# Lower specificity acceptable`\
+`  test2_sens ``=`` ``0.95``,    ``# Dummy second test (same values)`\
+`  test2_spec ``=`` ``0.80``,`\
+`  prevalence ``=`` ``0.05``,`\
+`  indep ``=`` ``TRUE`\
+`)`\
+\
+`# If first test positive, use confirmatory test`\
+`confirmatory_test`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.95``,    ``# Original screening test`\
+`  test1_spec ``=`` ``0.80``,`\
+`  test2_sens ``=`` ``0.85``,    ``# Confirmatory test (different characteristics)`\
+`  test2_spec ``=`` ``0.98``,    ``# Higher specificity`\
+`  prevalence ``=`` ``0.25``,    ``# Higher prevalence after positive screen`\
+`  indep ``=`` ``FALSE``,`\
+`  cond_dep_pos ``=`` ``0.20``,`\
+`  cond_dep_neg ``=`` ``0.10`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Sequential Testing Strategy:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Step 1 - Screening Test Results:\n"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``first_test``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nStep 2 - Confirmatory Testing (if screen positive):\n"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``confirmatory_test``)`
 
 ### Cost-Effectiveness Considerations
 
 Co-testing analysis can inform cost-effectiveness decisions:
 
-``` r
-
-# High-cost, high-accuracy test combination
-high_cost_scenario <- cotest(
-  test1_sens = 0.98,    # Expensive, highly accurate test 1
-  test1_spec = 0.99,
-  test2_sens = 0.96,    # Expensive, highly accurate test 2
-  test2_spec = 0.99,
-  prevalence = 0.02,    # Low prevalence setting
-  indep = TRUE,
-  fagan = TRUE
-)
-
-# Moderate-cost, good-accuracy test combination
-moderate_cost_scenario <- cotest(
-  test1_sens = 0.85,    # Moderate cost, good accuracy test 1
-  test1_spec = 0.90,
-  test2_sens = 0.88,    # Moderate cost, good accuracy test 2
-  test2_spec = 0.92,
-  prevalence = 0.02,    # Same prevalence
-  indep = TRUE,
-  fagan = TRUE
-)
-
-cat("High-Cost Scenario:\n")
-print(high_cost_scenario)
-
-cat("\nModerate-Cost Scenario:\n")
-print(moderate_cost_scenario)
-```
+\
+`# High-cost, high-accuracy test combination`\
+`high_cost_scenario`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.98``,    ``# Expensive, highly accurate test 1`\
+`  test1_spec ``=`` ``0.99``,`\
+`  test2_sens ``=`` ``0.96``,    ``# Expensive, highly accurate test 2`\
+`  test2_spec ``=`` ``0.99``,`\
+`  prevalence ``=`` ``0.02``,    ``# Low prevalence setting`\
+`  indep ``=`` ``TRUE``,`\
+`  fagan ``=`` ``TRUE`\
+`)`\
+\
+`# Moderate-cost, good-accuracy test combination`\
+`moderate_cost_scenario`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`  test1_sens ``=`` ``0.85``,    ``# Moderate cost, good accuracy test 1`\
+`  test1_spec ``=`` ``0.90``,`\
+`  test2_sens ``=`` ``0.88``,    ``# Moderate cost, good accuracy test 2`\
+`  test2_spec ``=`` ``0.92``,`\
+`  prevalence ``=`` ``0.02``,    ``# Same prevalence`\
+`  indep ``=`` ``TRUE``,`\
+`  fagan ``=`` ``TRUE`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"High-Cost Scenario:\n"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``high_cost_scenario``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nModerate-Cost Scenario:\n"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``moderate_cost_scenario``)`
 
 ## Clinical Decision Thresholds
 
@@ -329,42 +327,40 @@ Understanding when co-testing changes clinical decisions:
 
 ### Treatment Threshold Analysis
 
-``` r
-
-# Define clinical scenarios with different action thresholds
-scenarios <- data.frame(
-  Clinical_Setting = c("Screening", "Symptomatic", "High_Risk"),
-  Prevalence = c(0.01, 0.15, 0.40),
-  Treatment_Threshold = c(0.05, 0.20, 0.60),
-  Test_Threshold = c(0.02, 0.08, 0.30)
-)
-
-for (i in 1:nrow(scenarios)) {
-  setting <- scenarios[i, ]
-  
-  cat("\n", setting$Clinical_Setting, "Setting:\n")
-  cat("Prevalence:", setting$Prevalence * 100, "%\n")
-  cat("Treatment threshold:", setting$Treatment_Threshold * 100, "%\n")
-  
-  result <- cotest(
-    test1_sens = 0.85,
-    test1_spec = 0.90,
-    test2_sens = 0.80,
-    test2_spec = 0.95,
-    prevalence = setting$Prevalence,
-    indep = TRUE
-  )
-  
-  print(result)
-}
-```
+\
+`# Define clinical scenarios with different action thresholds`\
+`scenarios`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Clinical_Setting ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Screening"``, ``"Symptomatic"``, ``"High_Risk"``)``,`\
+`  Prevalence ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.01``, ``0.15``, ``0.40``)``,`\
+`  Treatment_Threshold ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.05``, ``0.20``, ``0.60``)``,`\
+`  Test_Threshold ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.02``, ``0.08``, ``0.30``)`\
+`)`\
+\
+`for`` ``(``i`` ``in`` ``1``:`[`nrow`](https://rdrr.io/r/base/nrow.html)`(``scenarios``)``)`` ``{`\
+`  ``setting`` ``<-`` ``scenarios``[``i``, ``]`\
+`  `\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"\n"``, ``setting``$``Clinical_Setting``, ``"Setting:\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Prevalence:"``, ``setting``$``Prevalence`` ``*`` ``100``, ``"%\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Treatment threshold:"``, ``setting``$``Treatment_Threshold`` ``*`` ``100``, ``"%\n"``)`\
+`  `\
+`  ``result`` ``<-`` `[`cotest`](https://www.serdarbalci.com/meddecide/reference/cotest.md)`(`\
+`    test1_sens ``=`` ``0.85``,`\
+`    test1_spec ``=`` ``0.90``,`\
+`    test2_sens ``=`` ``0.80``,`\
+`    test2_spec ``=`` ``0.95``,`\
+`    prevalence ``=`` ``setting``$``Prevalence``,`\
+`    indep ``=`` ``TRUE`\
+`  ``)`\
+`  `\
+`  `[`print`](https://rdrr.io/r/base/print.html)`(``result``)`\
+`}`
 
 ## Summary and Best Practices
 
 ### Key Takeaways
 
-1.  **Co-testing can significantly improve diagnostic accuracy** when
-    used appropriately
+1.  **A combination changes diagnostic trade-offs**; improvement depends
+    on the rule, dependence, population and consequences of errors.
 2.  **Test dependence matters** - ignoring it can lead to overoptimistic
     results
 3.  **Clinical context is crucial** - consider prevalence, thresholds,
@@ -392,7 +388,7 @@ for (i in 1:nrow(scenarios)) {
 
 - Interpret results in clinical context
 - Consider cost-effectiveness implications
-- Validate findings with clinical experience
+- Validate the chosen rule prospectively or in independent paired data
 - Update analysis as new data becomes available
 
 ### Limitations

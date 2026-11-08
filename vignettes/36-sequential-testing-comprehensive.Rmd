@@ -121,6 +121,12 @@ Combined Specificity = Sp₁ × Sp₂
 
 # Example Data and Clinical Scenarios
 
+Named scenarios, costs and accuracy values in this guide are hypothetical teaching
+inputs. They are not clinical guidelines or validated pathways. Combined accuracy
+assumes conditional independence within disease groups, and uncertainty in the
+entered parameters is not propagated. See
+[Choosing and interpreting an analysis](17-methods-and-interpretation.html).
+
 ## Loading the Example Datasets
 
 These example datasets are distributed with the umbrella **ClinicoPath** package
@@ -228,19 +234,19 @@ strategy_subset %>%
   theme_minimal()
 ```
 
-## Strategy Selection Guidelines
+## Illustrative strategy trade-offs
 
 ```{r strategy-guidelines}
 guidelines <- data.frame(
   Strategy = c("Serial Positive", "Serial Negative", "Parallel"),
   `Primary Goal` = c("Minimize false positives", "Minimize false negatives", "Comprehensive evaluation"),
-  `Best When` = c("High-stakes diagnosis", "Cannot miss cases", "Emergency situations"),
+  `Positive Rule` = c("Both tests positive", "At least one test positive", "At least one test positive"),
   `Trade-off` = c("Lower sensitivity", "Lower specificity", "Higher cost"),
-  `Example Use` = c("Cancer screening → biopsy", "Rare disease screening", "MI rule-out in ED"),
+  `Testing Workload` = c("Second test after first positive", "Second test after first negative", "Both tests for everyone"),
   check.names = FALSE
 )
 
-kable(guidelines, caption = "Strategy Selection Guidelines")
+kable(guidelines, caption = "Illustrative Boolean rules and workload; not clinical recommendations")
 ```
 
 # Clinical Applications by Specialty

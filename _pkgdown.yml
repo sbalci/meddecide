@@ -9,6 +9,7 @@ articles:
       - 01-introduction
       - 16-use-in-r
       - 02-comprehensive-guide
+      - 17-methods-and-interpretation
 
   - title: Agreement
     navbar: Agreement

@@ -55,423 +55,389 @@ For this tutorial, we’ll use the `histopathology` dataset included in
 ClinicoPath, which contains clinical and pathological data from 250
 patients.
 
-``` r
-
-# Load the histopathology dataset
-data(histopathology)
-
-# Overview of the dataset
-str(histopathology)
-
-# Key variables for decision tree analysis
-cat("Continuous Variables:\n")
-continuous_vars <- c("Age", "Grade", "TStage", "OverallTime", "MeasurementA", "MeasurementB")
-print(continuous_vars)
-
-cat("\nCategorical Variables:\n")
-categorical_vars <- c("Sex", "Group", "Grade_Level", "LVI", "PNI", "LymphNodeMetastasis", "Mortality5yr")
-print(categorical_vars)
-
-cat("\nOutcome Variables:\n")
-outcome_vars <- c("Outcome", "Death", "Mortality5yr", "Outcome2")
-print(outcome_vars)
-```
+\
+`# Load the histopathology dataset`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``histopathology``)`\
+\
+`# Overview of the dataset`\
+[`str`](https://rdrr.io/r/utils/str.html)`(``histopathology``)`\
+\
+`# Key variables for decision tree analysis`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Continuous Variables:\n"``)`\
+`continuous_vars`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"OverallTime"``, ``"MeasurementA"``, ``"MeasurementB"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``continuous_vars``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nCategorical Variables:\n"``)`\
+`categorical_vars`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``, ``"Grade_Level"``, ``"LVI"``, ``"PNI"``, ``"LymphNodeMetastasis"``, ``"Mortality5yr"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``categorical_vars``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nOutcome Variables:\n"``)`\
+`outcome_vars`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Outcome"``, ``"Death"``, ``"Mortality5yr"``, ``"Outcome2"``)`\
+[`print`](https://rdrr.io/r/base/print.html)`(``outcome_vars``)`
 
 ## Basic Decision Tree Analysis
 
 ### Example 1: Simple CART Tree for Mortality Prediction
 
-``` r
-
-# Basic CART tree for mortality prediction
-# Note: This is a jamovi module function. In R, use:
-# library(jjstatsplot)
-# basic_tree <- treeadvanced(
-#   data = histopathology,
-#   vars = c("Age", "Grade", "TStage"),
-#   facs = c("Sex", "LVI", "PNI"),
-#   target = "Mortality5yr",
-#   targetLevel = "Dead",
-#   algorithm = "rpart",
-#   validation = "cv",
-#   show_tree_plot = TRUE,
-#   show_importance_plot = TRUE,
-#   show_performance_metrics = TRUE
-# )
-```
+\
+`# Basic CART tree for mortality prediction`\
+`# Note: This is a jamovi module function. In R, use:`\
+`# library(jjstatsplot)`\
+`# basic_tree <- treeadvanced(`\
+`#   data = histopathology,`\
+`#   vars = c("Age", "Grade", "TStage"),`\
+`#   facs = c("Sex", "LVI", "PNI"),`\
+`#   target = "Mortality5yr",`\
+`#   targetLevel = "Dead",`\
+`#   algorithm = "rpart",`\
+`#   validation = "cv",`\
+`#   show_tree_plot = TRUE,`\
+`#   show_importance_plot = TRUE,`\
+`#   show_performance_metrics = TRUE`\
+`# )`
 
 ### Example 2: Conditional Inference Tree
 
-``` r
-
-# Conditional inference tree with unbiased variable selection
-ctree_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "OverallTime", "MeasurementA", "MeasurementB"),
-  facs = c("Grade_Level", "Group", "LymphNodeMetastasis"),
-  target = "Outcome",
-  targetLevel = "1",
-  algorithm = "ctree",
-  validation = "bootstrap",
-  max_depth = 5,
-  show_tree_plot = TRUE,
-  show_roc_curve = TRUE,
-  show_confusion_matrix = TRUE
-)
-```
+\
+`# Conditional inference tree with unbiased variable selection`\
+`ctree_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"OverallTime"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Grade_Level"``, ``"Group"``, ``"LymphNodeMetastasis"``)``,`\
+`  target ``=`` ``"Outcome"``,`\
+`  targetLevel ``=`` ``"1"``,`\
+`  algorithm ``=`` ``"ctree"``,`\
+`  validation ``=`` ``"bootstrap"``,`\
+`  max_depth ``=`` ``5``,`\
+`  show_tree_plot ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE``,`\
+`  show_confusion_matrix ``=`` ``TRUE`\
+`)`
 
 ## Advanced Ensemble Methods
 
 ### Example 3: Random Forest for Comprehensive Analysis
 
-``` r
-
-# Random Forest with feature selection and validation
-rf_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "OverallTime", "MeasurementA", "MeasurementB"),
-  facs = c("Sex", "Group", "Grade_Level", "LVI", "PNI", "LymphNodeMetastasis"),
-  target = "Mortality5yr",
-  targetLevel = "Dead",
-  algorithm = "randomforest",
-  validation = "cv",
-  cv_folds = 5,
-  n_estimators = 200,
-  feature_selection = TRUE,
-  importance_method = "permutation",
-  show_importance_plot = TRUE,
-  show_performance_metrics = TRUE,
-  show_validation_curves = TRUE,
-  show_roc_curve = TRUE
-)
-```
+\
+`# Random Forest with feature selection and validation`\
+`rf_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"OverallTime"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``, ``"Grade_Level"``, ``"LVI"``, ``"PNI"``, ``"LymphNodeMetastasis"``)``,`\
+`  target ``=`` ``"Mortality5yr"``,`\
+`  targetLevel ``=`` ``"Dead"``,`\
+`  algorithm ``=`` ``"randomforest"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  cv_folds ``=`` ``5``,`\
+`  n_estimators ``=`` ``200``,`\
+`  feature_selection ``=`` ``TRUE``,`\
+`  importance_method ``=`` ``"permutation"``,`\
+`  show_importance_plot ``=`` ``TRUE``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_validation_curves ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE`\
+`)`
 
 ### Example 4: Gradient Boosting (XGBoost) with Hyperparameter Tuning
 
-``` r
-
-# XGBoost with automated hyperparameter optimization
-xgb_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "OverallTime", "MeasurementA", "MeasurementB"),
-  facs = c("Sex", "Group", "Grade_Level", "LVI", "PNI"),
-  target = "Outcome",
-  targetLevel = "1",
-  algorithm = "xgboost",
-  validation = "holdout",
-  test_split = 0.3,
-  hyperparameter_tuning = TRUE,
-  tuning_method = "random",
-  n_estimators = 100,
-  learning_rate = 0.1,
-  max_depth = 6,
-  show_importance_plot = TRUE,
-  show_performance_metrics = TRUE,
-  show_roc_curve = TRUE,
-  show_calibration_plot = TRUE
-)
-```
+\
+`# XGBoost with automated hyperparameter optimization`\
+`xgb_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"OverallTime"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``, ``"Grade_Level"``, ``"LVI"``, ``"PNI"``)``,`\
+`  target ``=`` ``"Outcome"``,`\
+`  targetLevel ``=`` ``"1"``,`\
+`  algorithm ``=`` ``"xgboost"``,`\
+`  validation ``=`` ``"holdout"``,`\
+`  test_split ``=`` ``0.3``,`\
+`  hyperparameter_tuning ``=`` ``TRUE``,`\
+`  tuning_method ``=`` ``"random"``,`\
+`  n_estimators ``=`` ``100``,`\
+`  learning_rate ``=`` ``0.1``,`\
+`  max_depth ``=`` ``6``,`\
+`  show_importance_plot ``=`` ``TRUE``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE``,`\
+`  show_calibration_plot ``=`` ``TRUE`\
+`)`
 
 ## Class Imbalance Handling
 
 ### Example 5: Handling Imbalanced Clinical Data
 
-``` r
-
-# Create imbalanced outcome for demonstration
-imbalanced_data <- histopathology %>%
-  mutate(RareEvent = ifelse(Grade >= 3 & LVI == "Present", "Yes", "No"))
-
-# Model with class imbalance handling
-imbalanced_model <- treeadvanced(
-  data = imbalanced_data,
-  vars = c("Age", "TStage", "OverallTime"),
-  facs = c("Sex", "Group", "PNI", "LymphNodeMetastasis"),
-  target = "RareEvent",
-  targetLevel = "Yes",
-  algorithm = "randomforest",
-  validation = "cv",
-  handle_imbalance = TRUE,
-  imbalance_method = "smote",
-  show_performance_metrics = TRUE,
-  show_roc_curve = TRUE,
-  show_confusion_matrix = TRUE
-)
-```
+\
+`# Create imbalanced outcome for demonstration`\
+`imbalanced_data`` ``<-`` ``histopathology`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(``RareEvent ``=`` `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``Grade`` ``>=`` ``3`` ``&`` ``LVI`` ``==`` ``"Present"``, ``"Yes"``, ``"No"``)``)`\
+\
+`# Model with class imbalance handling`\
+`imbalanced_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``imbalanced_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"TStage"``, ``"OverallTime"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``, ``"PNI"``, ``"LymphNodeMetastasis"``)``,`\
+`  target ``=`` ``"RareEvent"``,`\
+`  targetLevel ``=`` ``"Yes"``,`\
+`  algorithm ``=`` ``"randomforest"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  handle_imbalance ``=`` ``TRUE``,`\
+`  imbalance_method ``=`` ``"smote"``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE``,`\
+`  show_confusion_matrix ``=`` ``TRUE`\
+`)`
 
 ## Clinical Context Applications
 
 ### Example 6: Diagnostic Classification
 
-``` r
-
-# Diagnostic model for disease classification
-diagnostic_model <- treeadvanced(
-  data = histopathology,
-  vars = c("MeasurementA", "MeasurementB", "Age"),
-  facs = c("Sex", "Grade_Level"),
-  target = "Disease Status",
-  targetLevel = "Ill",
-  algorithm = "ensemble",
-  validation = "cv",
-  clinical_context = "diagnosis",
-  cost_sensitive_thresholds = TRUE,
-  fn_fp_ratio = 3.0,  # Higher cost for missing disease
-  show_performance_metrics = TRUE,
-  show_roc_curve = TRUE,
-  show_calibration_plot = TRUE
-)
-```
+\
+`# Diagnostic model for disease classification`\
+`diagnostic_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"MeasurementA"``, ``"MeasurementB"``, ``"Age"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Grade_Level"``)``,`\
+`  target ``=`` ``"Disease Status"``,`\
+`  targetLevel ``=`` ``"Ill"``,`\
+`  algorithm ``=`` ``"ensemble"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  clinical_context ``=`` ``"diagnosis"``,`\
+`  cost_sensitive_thresholds ``=`` ``TRUE``,`\
+`  fn_fp_ratio ``=`` ``3.0``,  ``# Higher cost for missing disease`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE``,`\
+`  show_calibration_plot ``=`` ``TRUE`\
+`)`
 
 ### Example 7: Prognosis Prediction with Bootstrap Confidence
 
-``` r
-
-# Prognostic model with uncertainty quantification
-prognosis_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "OverallTime"),
-  facs = c("LVI", "PNI", "LymphNodeMetastasis"),
-  target = "Mortality5yr",
-  targetLevel = "Dead",
-  algorithm = "xgboost",
-  validation = "bootstrap",
-  clinical_context = "prognosis",
-  bootstrap_confidence = TRUE,
-  n_bootstrap = 500,
-  show_performance_metrics = TRUE,
-  show_validation_curves = TRUE
-)
-```
+\
+`# Prognostic model with uncertainty quantification`\
+`prognosis_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"OverallTime"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"LVI"``, ``"PNI"``, ``"LymphNodeMetastasis"``)``,`\
+`  target ``=`` ``"Mortality5yr"``,`\
+`  targetLevel ``=`` ``"Dead"``,`\
+`  algorithm ``=`` ``"xgboost"``,`\
+`  validation ``=`` ``"bootstrap"``,`\
+`  clinical_context ``=`` ``"prognosis"``,`\
+`  bootstrap_confidence ``=`` ``TRUE``,`\
+`  n_bootstrap ``=`` ``500``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_validation_curves ``=`` ``TRUE`\
+`)`
 
 ## Advanced Interpretability
 
 ### Example 8: SHAP Analysis for Feature Explanation
 
-``` r
-
-# Model with SHAP analysis for interpretability
-shap_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "MeasurementA"),
-  facs = c("Sex", "LVI", "PNI"),
-  target = "Outcome",
-  targetLevel = "1",
-  algorithm = "randomforest",
-  validation = "cv",
-  interpretability = TRUE,
-  shap_analysis = TRUE,
-  partial_dependence = TRUE,
-  interaction_analysis = TRUE,
-  show_performance_metrics = TRUE
-)
-```
+\
+`# Model with SHAP analysis for interpretability`\
+`shap_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"MeasurementA"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"LVI"``, ``"PNI"``)``,`\
+`  target ``=`` ``"Outcome"``,`\
+`  targetLevel ``=`` ``"1"``,`\
+`  algorithm ``=`` ``"randomforest"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  interpretability ``=`` ``TRUE``,`\
+`  shap_analysis ``=`` ``TRUE``,`\
+`  partial_dependence ``=`` ``TRUE``,`\
+`  interaction_analysis ``=`` ``TRUE``,`\
+`  show_performance_metrics ``=`` ``TRUE`\
+`)`
 
 ### Example 9: Biomarker Discovery
 
-``` r
-
-# Biomarker discovery with comprehensive feature analysis
-biomarker_model <- treeadvanced(
-  data = histopathology,
-  vars = c("MeasurementA", "MeasurementB", "Age", "Grade", "TStage"),
-  facs = c("Sex", "Group", "LVI", "PNI", "LymphNodeMetastasis"),
-  target = "Outcome2",
-  targetLevel = "DOD",  # Death of Disease
-  algorithm = "ensemble",
-  validation = "cv",
-  clinical_context = "biomarker",
-  feature_selection = TRUE,
-  importance_method = "shap",
-  interpretability = TRUE,
-  partial_dependence = TRUE,
-  show_importance_plot = TRUE,
-  show_performance_metrics = TRUE
-)
-```
+\
+`# Biomarker discovery with comprehensive feature analysis`\
+`biomarker_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"MeasurementA"``, ``"MeasurementB"``, ``"Age"``, ``"Grade"``, ``"TStage"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``, ``"LVI"``, ``"PNI"``, ``"LymphNodeMetastasis"``)``,`\
+`  target ``=`` ``"Outcome2"``,`\
+`  targetLevel ``=`` ``"DOD"``,  ``# Death of Disease`\
+`  algorithm ``=`` ``"ensemble"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  clinical_context ``=`` ``"biomarker"``,`\
+`  feature_selection ``=`` ``TRUE``,`\
+`  importance_method ``=`` ``"shap"``,`\
+`  interpretability ``=`` ``TRUE``,`\
+`  partial_dependence ``=`` ``TRUE``,`\
+`  show_importance_plot ``=`` ``TRUE``,`\
+`  show_performance_metrics ``=`` ``TRUE`\
+`)`
 
 ## Treatment Response Prediction
 
 ### Example 10: Personalized Treatment Selection
 
-``` r
-
-# Treatment response prediction model
-treatment_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "MeasurementA", "MeasurementB"),
-  facs = c("Sex", "Grade_Level", "LVI", "PNI"),
-  target = "Group",
-  targetLevel = "Treatment",
-  algorithm = "xgboost",
-  validation = "temporal",  # For treatment sequence data
-  clinical_context = "treatment",
-  hyperparameter_tuning = TRUE,
-  interpretability = TRUE,
-  shap_analysis = TRUE,
-  show_performance_metrics = TRUE,
-  show_roc_curve = TRUE
-)
-```
+\
+`# Treatment response prediction model`\
+`treatment_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Grade_Level"``, ``"LVI"``, ``"PNI"``)``,`\
+`  target ``=`` ``"Group"``,`\
+`  targetLevel ``=`` ``"Treatment"``,`\
+`  algorithm ``=`` ``"xgboost"``,`\
+`  validation ``=`` ``"temporal"``,  ``# For treatment sequence data`\
+`  clinical_context ``=`` ``"treatment"``,`\
+`  hyperparameter_tuning ``=`` ``TRUE``,`\
+`  interpretability ``=`` ``TRUE``,`\
+`  shap_analysis ``=`` ``TRUE``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE`\
+`)`
 
 ## Risk Stratification
 
 ### Example 11: Patient Risk Categorization
 
-``` r
-
-# Risk stratification with cost-sensitive learning
-risk_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "OverallTime"),
-  facs = c("Sex", "LVI", "PNI", "LymphNodeMetastasis"),
-  target = "Mortality5yr",
-  targetLevel = "Dead",
-  algorithm = "ensemble",
-  validation = "cv",
-  clinical_context = "risk",
-  cost_sensitive_thresholds = TRUE,
-  fn_fp_ratio = 2.0,
-  handle_imbalance = TRUE,
-  imbalance_method = "cost_sensitive",
-  show_performance_metrics = TRUE,
-  show_roc_curve = TRUE,
-  show_calibration_plot = TRUE
-)
-```
+\
+`# Risk stratification with cost-sensitive learning`\
+`risk_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"OverallTime"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"LVI"``, ``"PNI"``, ``"LymphNodeMetastasis"``)``,`\
+`  target ``=`` ``"Mortality5yr"``,`\
+`  targetLevel ``=`` ``"Dead"``,`\
+`  algorithm ``=`` ``"ensemble"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  clinical_context ``=`` ``"risk"``,`\
+`  cost_sensitive_thresholds ``=`` ``TRUE``,`\
+`  fn_fp_ratio ``=`` ``2.0``,`\
+`  handle_imbalance ``=`` ``TRUE``,`\
+`  imbalance_method ``=`` ``"cost_sensitive"``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE``,`\
+`  show_calibration_plot ``=`` ``TRUE`\
+`)`
 
 ## Model Export and Deployment
 
 ### Example 12: Clinical Decision Support System
 
-``` r
-
-# Model for clinical decision support deployment
-deployment_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "MeasurementA"),
-  facs = c("Sex", "LVI", "PNI"),
-  target = "Mortality5yr",
-  targetLevel = "Dead",
-  algorithm = "xgboost",
-  validation = "holdout",
-  test_split = 0.2,
-  export_model = TRUE,
-  bootstrap_confidence = TRUE,
-  n_bootstrap = 200,
-  missing_data_handling = "model",
-  show_performance_metrics = TRUE,
-  clinical_context = "diagnosis"
-)
-```
+\
+`# Model for clinical decision support deployment`\
+`deployment_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"MeasurementA"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"LVI"``, ``"PNI"``)``,`\
+`  target ``=`` ``"Mortality5yr"``,`\
+`  targetLevel ``=`` ``"Dead"``,`\
+`  algorithm ``=`` ``"xgboost"``,`\
+`  validation ``=`` ``"holdout"``,`\
+`  test_split ``=`` ``0.2``,`\
+`  export_model ``=`` ``TRUE``,`\
+`  bootstrap_confidence ``=`` ``TRUE``,`\
+`  n_bootstrap ``=`` ``200``,`\
+`  missing_data_handling ``=`` ``"model"``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  clinical_context ``=`` ``"diagnosis"`\
+`)`
 
 ## Missing Data Handling
 
 ### Example 13: Robust Analysis with Missing Data
 
-``` r
-
-# Create dataset with missing values for demonstration
-missing_data <- histopathology
-missing_data$Age[sample(nrow(missing_data), 20)] <- NA
-missing_data$MeasurementA[sample(nrow(missing_data), 15)] <- NA
-
-# Model with advanced missing data handling
-missing_model <- treeadvanced(
-  data = missing_data,
-  vars = c("Age", "Grade", "TStage", "MeasurementA", "MeasurementB"),
-  facs = c("Sex", "Group", "LVI"),
-  target = "Outcome",
-  targetLevel = "1",
-  algorithm = "randomforest",
-  validation = "cv",
-  missing_data_handling = "tree",  # Tree-based imputation
-  show_performance_metrics = TRUE,
-  show_importance_plot = TRUE
-)
-```
+\
+`# Create dataset with missing values for demonstration`\
+`missing_data`` ``<-`` ``histopathology`\
+`missing_data``$``Age``[`[`sample`](https://rdrr.io/r/base/sample.html)`(`[`nrow`](https://rdrr.io/r/base/nrow.html)`(``missing_data``)``, ``20``)``]`` ``<-`` ``NA`\
+`missing_data``$``MeasurementA``[`[`sample`](https://rdrr.io/r/base/sample.html)`(`[`nrow`](https://rdrr.io/r/base/nrow.html)`(``missing_data``)``, ``15``)``]`` ``<-`` ``NA`\
+\
+`# Model with advanced missing data handling`\
+`missing_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``missing_data``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``, ``"LVI"``)``,`\
+`  target ``=`` ``"Outcome"``,`\
+`  targetLevel ``=`` ``"1"``,`\
+`  algorithm ``=`` ``"randomforest"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  missing_data_handling ``=`` ``"tree"``,  ``# Tree-based imputation`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_importance_plot ``=`` ``TRUE`\
+`)`
 
 ## Screening Applications
 
 ### Example 14: Population Screening Model
 
-``` r
-
-# Screening model with high sensitivity
-screening_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "MeasurementA", "MeasurementB"),
-  facs = c("Sex", "Group"),
-  target = "Disease Status",
-  targetLevel = "Ill",
-  algorithm = "ensemble",
-  validation = "bootstrap",
-  clinical_context = "screening",
-  cost_sensitive_thresholds = TRUE,
-  fn_fp_ratio = 5.0,  # Very high cost for missing disease in screening
-  show_performance_metrics = TRUE,
-  show_roc_curve = TRUE,
-  show_calibration_plot = TRUE
-)
-```
+\
+`# Screening model with high sensitivity`\
+`screening_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"MeasurementA"``, ``"MeasurementB"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``)``,`\
+`  target ``=`` ``"Disease Status"``,`\
+`  targetLevel ``=`` ``"Ill"``,`\
+`  algorithm ``=`` ``"ensemble"``,`\
+`  validation ``=`` ``"bootstrap"``,`\
+`  clinical_context ``=`` ``"screening"``,`\
+`  cost_sensitive_thresholds ``=`` ``TRUE``,`\
+`  fn_fp_ratio ``=`` ``5.0``,  ``# Very high cost for missing disease in screening`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE``,`\
+`  show_calibration_plot ``=`` ``TRUE`\
+`)`
 
 ## Comparative Analysis
 
 ### Example 15: Algorithm Comparison
 
-``` r
-
-# Compare multiple algorithms on the same dataset
-algorithms <- c("rpart", "ctree", "randomforest", "xgboost")
-results <- list()
-
-for (algo in algorithms) {
-  cat(paste("\nTraining", algo, "model...\n"))
-  
-  model <- treeadvanced(
-    data = histopathology,
-    vars = c("Age", "Grade", "TStage", "MeasurementA"),
-    facs = c("Sex", "LVI", "PNI"),
-    target = "Mortality5yr",
-    targetLevel = "Dead",
-    algorithm = algo,
-    validation = "cv",
-    cv_folds = 5,
-    show_performance_metrics = TRUE
-  )
-  
-  results[[algo]] <- model
-}
-```
+\
+`# Compare multiple algorithms on the same dataset`\
+`algorithms`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rpart"``, ``"ctree"``, ``"randomforest"``, ``"xgboost"``)`\
+`results`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(``)`\
+\
+`for`` ``(``algo`` ``in`` ``algorithms``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(`[`paste`](https://rdrr.io/r/base/paste.html)`(``"\nTraining"``, ``algo``, ``"model...\n"``)``)`\
+`  `\
+`  ``model`` ``<-`` ``treeadvanced``(`\
+`    data ``=`` ``histopathology``,`\
+`    vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"MeasurementA"``)``,`\
+`    facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"LVI"``, ``"PNI"``)``,`\
+`    target ``=`` ``"Mortality5yr"``,`\
+`    targetLevel ``=`` ``"Dead"``,`\
+`    algorithm ``=`` ``algo``,`\
+`    validation ``=`` ``"cv"``,`\
+`    cv_folds ``=`` ``5``,`\
+`    show_performance_metrics ``=`` ``TRUE`\
+`  ``)`\
+`  `\
+`  ``results``[[``algo``]``]`` ``<-`` ``model`\
+`}`
 
 ## Advanced Visualization
 
 ### Example 16: Comprehensive Visualization Suite
 
-``` r
-
-# Model with all visualization options enabled
-viz_model <- treeadvanced(
-  data = histopathology,
-  vars = c("Age", "Grade", "TStage", "OverallTime"),
-  facs = c("Sex", "Group", "LVI", "PNI"),
-  target = "Outcome",
-  targetLevel = "1",
-  algorithm = "randomforest",
-  validation = "cv",
-  interpretability = TRUE,
-  show_tree_plot = TRUE,
-  show_importance_plot = TRUE,
-  show_performance_metrics = TRUE,
-  show_validation_curves = TRUE,
-  show_roc_curve = TRUE,
-  show_calibration_plot = TRUE,
-  show_confusion_matrix = TRUE,
-  shap_analysis = TRUE,
-  partial_dependence = TRUE,
-  interaction_analysis = TRUE
-)
-```
+\
+`# Model with all visualization options enabled`\
+`viz_model`` ``<-`` ``treeadvanced``(`\
+`  data ``=`` ``histopathology``,`\
+`  vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Age"``, ``"Grade"``, ``"TStage"``, ``"OverallTime"``)``,`\
+`  facs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Sex"``, ``"Group"``, ``"LVI"``, ``"PNI"``)``,`\
+`  target ``=`` ``"Outcome"``,`\
+`  targetLevel ``=`` ``"1"``,`\
+`  algorithm ``=`` ``"randomforest"``,`\
+`  validation ``=`` ``"cv"``,`\
+`  interpretability ``=`` ``TRUE``,`\
+`  show_tree_plot ``=`` ``TRUE``,`\
+`  show_importance_plot ``=`` ``TRUE``,`\
+`  show_performance_metrics ``=`` ``TRUE``,`\
+`  show_validation_curves ``=`` ``TRUE``,`\
+`  show_roc_curve ``=`` ``TRUE``,`\
+`  show_calibration_plot ``=`` ``TRUE``,`\
+`  show_confusion_matrix ``=`` ``TRUE``,`\
+`  shap_analysis ``=`` ``TRUE``,`\
+`  partial_dependence ``=`` ``TRUE``,`\
+`  interaction_analysis ``=`` ``TRUE`\
+`)`
 
 ## Clinical Reporting
 

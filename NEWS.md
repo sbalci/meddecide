@@ -1,3 +1,33 @@
+# meddecide 1.1.4 (2026-11-08)
+
+## Documentation and release review
+
+- **Interrater Reliability UI:** an available-category hint beside the positive-category
+  box combines the categories from all selected raters and refreshes after selection
+  or level changes. The welcome panel now stacks Quick Start and Available Methods
+  as headings and lists. Entered categories and statistical calculations are unchanged.
+- Corrected the fixed-N kappa guide: the result is an expected one-sided lower
+  confidence bound, not achieved power, a minimum detectable kappa, or a guarantee
+  about a future study's interval.
+- Corrected confidence-limit planning: the limit requiring the larger N governs;
+  it is not always the geometrically nearer limit. Distinguished anticipated kappa
+  in CI/fixed-N planning from the null kappa in power planning, and documented the
+  common-margin model, up to six raters and the need for design-specific simulation.
+- Added a guide covering all 15 analyses: reference standards, prevalence transport,
+  denominator differences, conditional dependence, cutpoint optimism, calibration,
+  internal versus external validation, decision-curve utilities and latent-class
+  identifiability. Documented the lack of case-control prevalence correction in DCA.
+- Updated README installation requirements to 1.1.4, qualified verification claims,
+  and added a maintained README.Rmd source and links to the methods guide.
+- Recorded the 2026-11-08 release review with current test/compiler evidence and
+  unresolved submission checks. Local validation is separate from jamovi library
+  acceptance; bundled dependency licensing and platform acceptance remain review items.
+
+This documentation update changes no estimator, statistical default, clinical cutoff,
+analysis schema or saved-analysis contract. The 1.1.3 entry below records the earlier
+implementation changes. See `docs/audit/RELEASE_READINESS_1.1.4_20261108.md` for the
+scope and limitations of the current review.
+
 # meddecide 1.1.3 (2026-11-07)
 
 No estimate or test changes: every sensitivity, specificity, predictive value, likelihood ratio,

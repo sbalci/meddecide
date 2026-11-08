@@ -1,0 +1,152 @@
+[
+  {
+    "analysis": "agreement",
+    "files": {
+      "R/agreement.b.R": true,
+      "jamovi/agreement.a.yaml": true,
+      "jamovi/agreement.u.yaml": true,
+      "jamovi/agreement.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "cotest",
+    "files": {
+      "R/cotest.b.R": true,
+      "jamovi/cotest.a.yaml": true,
+      "jamovi/cotest.u.yaml": true,
+      "jamovi/cotest.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "decision",
+    "files": {
+      "R/decision.b.R": true,
+      "jamovi/decision.a.yaml": true,
+      "jamovi/decision.u.yaml": true,
+      "jamovi/decision.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "decisioncalculator",
+    "files": {
+      "R/decisioncalculator.b.R": true,
+      "jamovi/decisioncalculator.a.yaml": true,
+      "jamovi/decisioncalculator.u.yaml": true,
+      "jamovi/decisioncalculator.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "decisioncombine",
+    "files": {
+      "R/decisioncombine.b.R": true,
+      "jamovi/decisioncombine.a.yaml": true,
+      "jamovi/decisioncombine.u.yaml": true,
+      "jamovi/decisioncombine.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "decisioncompare",
+    "files": {
+      "R/decisioncompare.b.R": true,
+      "jamovi/decisioncompare.a.yaml": true,
+      "jamovi/decisioncompare.u.yaml": true,
+      "jamovi/decisioncompare.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "decisioncurve",
+    "files": {
+      "R/decisioncurve.b.R": true,
+      "jamovi/decisioncurve.a.yaml": true,
+      "jamovi/decisioncurve.u.yaml": true,
+      "jamovi/decisioncurve.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "enhancedROC",
+    "files": {
+      "R/enhancedROC.b.R": true,
+      "jamovi/enhancedROC.a.yaml": true,
+      "jamovi/enhancedROC.u.yaml": true,
+      "jamovi/enhancedROC.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "kappaSizeCI",
+    "files": {
+      "R/kappaSizeCI.b.R": true,
+      "jamovi/kappaSizeCI.a.yaml": true,
+      "jamovi/kappaSizeCI.u.yaml": true,
+      "jamovi/kappaSizeCI.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "kappaSizeFixedN",
+    "files": {
+      "R/kappaSizeFixedN.b.R": true,
+      "jamovi/kappaSizeFixedN.a.yaml": true,
+      "jamovi/kappaSizeFixedN.u.yaml": true,
+      "jamovi/kappaSizeFixedN.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "kappaSizePower",
+    "files": {
+      "R/kappaSizePower.b.R": true,
+      "jamovi/kappaSizePower.a.yaml": true,
+      "jamovi/kappaSizePower.u.yaml": true,
+      "jamovi/kappaSizePower.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "lassologistic",
+    "files": {
+      "R/lassologistic.b.R": true,
+      "jamovi/lassologistic.a.yaml": true,
+      "jamovi/lassologistic.u.yaml": true,
+      "jamovi/lassologistic.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "nogoldstandard",
+    "files": {
+      "R/nogoldstandard.b.R": true,
+      "jamovi/nogoldstandard.a.yaml": true,
+      "jamovi/nogoldstandard.u.yaml": true,
+      "jamovi/nogoldstandard.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "psychopdaROC",
+    "files": {
+      "R/psychopdaROC.b.R": true,
+      "jamovi/psychopdaROC.a.yaml": true,
+      "jamovi/psychopdaROC.u.yaml": true,
+      "jamovi/psychopdaROC.r.yaml": true
+    },
+    "drift": []
+  },
+  {
+    "analysis": "sequentialtests",
+    "files": {
+      "R/sequentialtests.b.R": true,
+      "jamovi/sequentialtests.a.yaml": true,
+      "jamovi/sequentialtests.u.yaml": true,
+      "jamovi/sequentialtests.r.yaml": true
+    },
+    "drift": []
+  }
+]

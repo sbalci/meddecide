@@ -1,6 +1,6 @@
 ---
 title: "Sample Size Calculations for Interobserver Agreement Studies"
-subtitle: "Using kappasizeci for Cohen's Kappa Confidence Interval Approaches"
+subtitle: "Expected goodness-of-fit confidence limits under the common-correlation model"
 date: last-modified
 author: "ClinicoPath"
 output: html_document
@@ -8,7 +8,7 @@ output: html_document
 
 # Introduction
 
-The `kappasizeci` function provides statistical power analysis for interobserver agreement studies using Cohen's kappa statistic. This function calculates the required sample size to achieve a specified precision (confidence interval width) for kappa coefficient estimates in studies evaluating agreement between multiple raters or observers.
+The `kappaSizeCI()` function plans the number of subjects for expected goodness-of-fit confidence limits around an anticipated kappa. It performs no hypothesis test and provides no power guarantee. It uses a common-correlation, common-margin model; its kappa coincides with Cohen's kappa for two raters with equal margins. It does not plan weighted kappa or ICC studies.
 
 ## What is Cohen's Kappa?
 
@@ -20,7 +20,13 @@ Where:
 - $p_o$ = observed proportional agreement
 - $p_e$ = expected agreement by chance
 
-**Kappa Interpretation Guidelines:**
+These descriptive labels do not define clinical acceptance thresholds. Select a clinically
+justified precision requirement and consider category-specific disagreements. Expected limits
+are planning quantities: a realized interval is random and is not guaranteed to fall inside
+the requested limits. A Wald or bootstrap interval from another analysis can have different
+precision from the goodness-of-fit interval planned here.
+
+**Descriptive kappa labels:**
 - κ < 0.00: Poor agreement (worse than chance)
 - κ = 0.00-0.20: Slight agreement  
 - κ = 0.21-0.40: Fair agreement
@@ -33,7 +39,7 @@ Where:
 Interobserver agreement studies require adequate sample sizes to:
 
 1. **Ensure Precision**: Achieve narrow confidence intervals around kappa estimates
-2. **Statistical Power**: Detect clinically meaningful differences in agreement
+2. **Choose the planning aim**: Use `kappaSizePower()` instead when sizing a hypothesis test
 3. **Resource Planning**: Optimize study costs and logistics
 4. **Regulatory Requirements**: Meet standards for validation studies
 5. **Publication Standards**: Satisfy journal requirements for reliability studies
@@ -41,7 +47,7 @@ Interobserver agreement studies require adequate sample sizes to:
 ## Key Features of kappasizeci
 
 - **Multiple Categories**: Supports 2-5 outcome categories
-- **Flexible Rater Numbers**: Accommodates 2-5 raters
+- **Flexible Rater Numbers**: Accommodates 2-6 raters
 - **Confidence Interval Approach**: Focuses on precision rather than hypothesis testing
 - **Real-world Applications**: Covers medical, psychological, and quality control scenarios
 - **Performance Optimized**: Intelligent caching for repeated calculations
@@ -84,14 +90,17 @@ if (!requireNamespace("kappaSize", quietly = TRUE)) {
 - **kappaL**: Lower bound of desired confidence interval
 - **kappaU**: Upper bound of desired confidence interval
 
-The interval [kappaL, kappaU] defines the precision requirement, but note **which** part of it
-drives the answer: the calculation sizes on whichever limit lies *nearer* `kappa0`, not on the
-full width. With `kappa0 = 0.60` and `kappaL = 0.55`, the required sample size is 1,625 for every
+The interval [kappaL, kappaU] defines the expected precision requirement. The calculation
+sizes on whichever limit requires more subjects under the goodness-of-fit model, not on the
+full width. This is often, but not always, the limit nearer `kappa0`: the model is asymmetric.
+For example, with `kappa0 = 0.75`, `kappaL = 0.60` and `kappaU = 0.85`, the lower limit drives
+the required N even though the upper limit is closer. With `kappa0 = 0.60` and
+`kappaL = 0.55`, the required sample size is 1,625 for every
 `kappaU` from 0.65 all the way to 0.99 — widening the upper limit buys nothing. In one-sided mode
 `kappaU` is not used at all.
 
-Because the requirement grows as roughly one over the square of that distance, tightening the
-nearer limit is expensive: distances of 0.20, 0.05 and 0.01 need about 118, 1,625 and 38,203
+Because the requirement grows roughly as one over the square of the governing distance,
+tightening the binding limit is expensive: distances of 0.20, 0.05 and 0.01 need about 118, 1,625 and 38,203
 subjects respectively. An interval narrow enough to be unsizeable is refused with an explanation
 rather than left to compute indefinitely.
 
@@ -1240,12 +1249,12 @@ kable(optimization_strategies, caption = "Study Size Optimization Strategies")
 
 ## Key Takeaways
 
-The `kappasizeci` function provides essential sample size planning capabilities for interobserver agreement studies. Key benefits include:
+The `kappaSizeCI()` function provides essential sample size planning capabilities for interobserver agreement studies. Key benefits include:
 
 ### Statistical Accuracy
 - **Precision-Based Approach**: Focus on confidence interval width rather than hypothesis testing
 - **Multiple Categories**: Support for 2-5 outcome categories covering real-world applications
-- **Flexible Design**: Accommodates 2-5 raters for various study designs
+- **Flexible Design**: Accommodates 2-6 raters under the stated rating model
 - **Validated Methods**: Uses established kappaSize package algorithms
 
 ### Practical Applications
@@ -1255,9 +1264,9 @@ The `kappasizeci` function provides essential sample size planning capabilities 
 - **Content Analysis**: Qualitative coding, media analysis, educational assessment
 
 ### Implementation Benefits
-- **Study Planning**: Accurate sample size determination for research planning
-- **Resource Optimization**: Appropriate sample sizes minimize costs while ensuring precision
-- **Regulatory Compliance**: Meet standards for validation and reliability studies
+- **Study Planning**: Approximate sample size under the stated model and precision target
+- **Resource Planning**: Compare anticipated precision under feasible subject and rater counts
+- **Design Documentation**: Record assumptions; a sample-size calculation alone does not establish regulatory compliance
 - **Publication Quality**: Satisfy journal requirements for methodological rigor
 
 ## Recommendations for Practice

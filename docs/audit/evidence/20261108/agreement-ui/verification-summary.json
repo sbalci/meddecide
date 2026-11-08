@@ -1,0 +1,17 @@
+{
+  "javascript_tests_passed": 8,
+  "javascript_tests_failed": 0,
+  "focused_R_tests_passed": true,
+  "source_context_translation_skips": 1,
+  "equivalent_numeric_configurations": 6,
+  "welcome_text_preserved": true,
+  "schema_ui_compiler": "PASS",
+  "generated_header_unchanged": true,
+  "canonical_and_sibling_match": true,
+  "release_gate_blocking": 0,
+  "release_gate_advisory": 2,
+  "scoped_diff_check": "PASS",
+  "guide_news_build_exit_code": 0,
+  "jmo_rebuilt": false,
+  "desktop_acceptance_performed": false
+}

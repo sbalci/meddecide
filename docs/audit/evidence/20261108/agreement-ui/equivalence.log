@@ -1,0 +1,7 @@
+binary : all result tables identical
+multi_rater : all result tables identical
+specific : all result tables identical
+bad_category : all result tables identical
+ordinal : all result tables identical
+continuous : all result tables identical
+welcome: original table removed; all displayed text identical

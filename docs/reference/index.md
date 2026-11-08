@@ -65,9 +65,9 @@
 - [`kappaSizeCIClass`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCIClass.md)
   : Confidence Interval Approach for the Number of Subjects Required
 - [`kappaSizeFixedN()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md)
-  : Lowest Expected Value for a fixed sample size
+  : Lowest Expected Kappa for a Fixed Sample Size
 - [`kappaSizeFixedNClass`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedNClass.md)
-  : Lowest Expected Value for a fixed sample size
+  : Lowest Expected Kappa for a Fixed Sample Size
 - [`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
   : Power Approach for the Number of Subjects Required
 - [`kappaSizePowerClass`](https://www.serdarbalci.com/meddecide/reference/kappaSizePowerClass.md)

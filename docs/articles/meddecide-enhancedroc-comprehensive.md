@@ -11,8 +11,11 @@ sensitivity/specificity analysis, optimal cutoff determination,
 comparative ROC analysis, calibration assessment, multi-class ROC,
 clinical impact metrics, and class imbalance detection.
 
-All examples below use the bundled test datasets. In jamovi, open the
-corresponding `.omv` file. From R, read the `.csv` directly.
+All examples below use the test datasets in the `data-raw/non-rda/`
+folder of the [ClinicoPath
+repository](https://github.com/sbalci/ClinicoPathJamoviModule) (`.omv`
+for jamovi, `.csv` for R). On this website the code is shown without
+output.
 
 ------------------------------------------------------------------------
 
@@ -29,7 +32,7 @@ corresponding `.omv` file. From R, read the `.csv` directly.
 | `enhancedroc_confirmatory` | 250 | Confirmed/Not | 45% | High-specificity markers | Confirmatory testing |
 | `enhancedroc_small` | 60 | Positive/Negative | 30% | Single simple marker | Small sample testing |
 | `enhancedroc_validation` | 350 | Positive/Negative | 30% | Probability predictors, biomarker | CROC / convex hull |
-| `enhancedroc_tiedscores` | 200 | Disease/No Disease | 35% | Ordinal scores (many ties) | Tied score handling |
+| `enhancedroc_tiedscores` | 200 | Disease/No Disease | 35% | Ordinal scores (many ties) | Scores with many ties |
 
 ------------------------------------------------------------------------
 
@@ -40,57 +43,46 @@ cutoff via Youden Index, and diagnostic performance metrics.
 
 #### Basic single ROC
 
-``` r
-
-biomarker_data <- read.csv(paste0(data_path, "enhancedroc_biomarker.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+`biomarker_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_biomarker.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### With cutoff table and clinical metrics
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  cutoffTable = TRUE,
-  clinicalMetrics = TRUE,
-  prevalence = 0.30,
-  useObservedPrevalence = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  cutoffTable ``=`` ``TRUE``,`\
+`  clinicalMetrics ``=`` ``TRUE``,`\
+`  prevalence ``=`` ``0.30``,`\
+`  useObservedPrevalence ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Direction control and custom cutoffs
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  direction = "higher",
-  customCutoffs = "5.0,7.5,10.0"
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  direction ``=`` ``"higher"``,`\
+`  customCutoffs ``=`` ``"5.0,7.5,10.0"`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -101,65 +93,54 @@ test.
 
 #### Five-marker comparison with DeLong
 
-``` r
-
-comparative_data <- read.csv(paste0(data_path, "enhancedroc_comparative.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = comparative_data,
-  outcome = "cancer_status",
-  positiveClass = "Cancer",
-  predictors = vars(established_marker, novel_marker1, novel_marker2,
-                    imaging_score, genetic_risk_score),
-  analysisType = "comparative",
-  pairwiseComparisons = TRUE,
-  comparisonMethod = "delong",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'comparative_data' not found
-```
+\
+`comparative_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_comparative.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``comparative_data``,`\
+`  outcome ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``established_marker``, ``novel_marker1``, ``novel_marker2``,`\
+`                    ``imaging_score``, ``genetic_risk_score``)``,`\
+`  analysisType ``=`` ``"comparative"``,`\
+`  pairwiseComparisons ``=`` ``TRUE``,`\
+`  comparisonMethod ``=`` ``"delong"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Bootstrap comparison with metrics differences
 
-``` r
-
-enhancedROC(
-  data = comparative_data,
-  outcome = "cancer_status",
-  positiveClass = "Cancer",
-  predictors = vars(established_marker, novel_marker1),
-  analysisType = "comparative",
-  comparisonMethod = "bootstrap",
-  bootstrapSamples = 100,
-  showMetricsDiff = TRUE,
-  statisticalComparison = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'comparative_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``comparative_data``,`\
+`  outcome ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``established_marker``, ``novel_marker1``)``,`\
+`  analysisType ``=`` ``"comparative"``,`\
+`  comparisonMethod ``=`` ``"bootstrap"``,`\
+`  bootstrapSamples ``=`` ``100``,`\
+`  showMetricsDiff ``=`` ``TRUE``,`\
+`  statisticalComparison ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Comprehensive analysis with clinical interpretation
 
-``` r
-
-enhancedROC(
-  data = comparative_data,
-  outcome = "cancer_status",
-  positiveClass = "Cancer",
-  predictors = vars(established_marker, novel_marker1, novel_marker2,
-                    imaging_score, genetic_risk_score),
-  analysisType = "comprehensive",
-  comprehensive_output = TRUE,
-  clinical_interpretation = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'comparative_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``comparative_data``,`\
+`  outcome ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``established_marker``, ``novel_marker1``, ``novel_marker2``,`\
+`                    ``imaging_score``, ``genetic_risk_score``)``,`\
+`  analysisType ``=`` ``"comprehensive"``,`\
+`  comprehensive_output ``=`` ``TRUE``,`\
+`  clinical_interpretation ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -167,61 +148,51 @@ enhancedROC(
 
 #### BCa bootstrap confidence intervals
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  useBootstrap = TRUE,
-  bootstrapSamples = 100,
-  bootstrapMethod = "bca",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  useBootstrap ``=`` ``TRUE``,`\
+`  bootstrapSamples ``=`` ``100``,`\
+`  bootstrapMethod ``=`` ``"bca"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Percentile bootstrap with stratification
 
-``` r
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  useBootstrap ``=`` ``TRUE``,`\
+`  bootstrapSamples ``=`` ``100``,`\
+`  bootstrapMethod ``=`` ``"percentile"``,`\
+`  stratifiedBootstrap ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  useBootstrap = TRUE,
-  bootstrapSamples = 100,
-  bootstrapMethod = "percentile",
-  stratifiedBootstrap = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+#### 90% CI with a bootstrap CI for the partial AUC
 
-#### 90% CI with bootstrap CIs for cutoff and partial AUC
-
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  confidenceLevel = 90,
-  useBootstrap = TRUE,
-  bootstrapSamples = 100,
-  bootstrapCutoffCI = TRUE,
-  bootstrapPartialAUC = TRUE,
-  partialAuc = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  confidenceLevel ``=`` ``90``,`\
+`  useBootstrap ``=`` ``TRUE``,`\
+`  bootstrapSamples ``=`` ``100``,`\
+`  bootstrapPartialAUC ``=`` ``TRUE``,`\
+`  partialAuc ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -229,58 +200,49 @@ enhancedROC(
 
 #### Clinical theme with cutoff points and confidence bands
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  rocCurve = TRUE,
-  showCutoffPoints = TRUE,
-  showConfidenceBands = TRUE,
-  plotTheme = "clinical",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  rocCurve ``=`` ``TRUE``,`\
+`  showCutoffPoints ``=`` ``TRUE``,`\
+`  showConfidenceBands ``=`` ``TRUE``,`\
+`  plotTheme ``=`` ``"clinical"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Classic theme with custom dimensions
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  rocCurve = TRUE,
-  plotTheme = "classic",
-  plotWidth = 800,
-  plotHeight = 800,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  rocCurve ``=`` ``TRUE``,`\
+`  plotTheme ``=`` ``"classic"``,`\
+`  plotWidth ``=`` ``800``,`\
+`  plotHeight ``=`` ``800``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Comparative ROC overlay plot
 
-``` r
-
-enhancedROC(
-  data = comparative_data,
-  outcome = "cancer_status",
-  positiveClass = "Cancer",
-  predictors = vars(established_marker, novel_marker1),
-  analysisType = "comparative",
-  rocCurve = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'comparative_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``comparative_data``,`\
+`  outcome ``=`` ``"cancer_status"``,`\
+`  positiveClass ``=`` ``"Cancer"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``established_marker``, ``novel_marker1``)``,`\
+`  analysisType ``=`` ``"comparative"``,`\
+`  rocCurve ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -288,51 +250,42 @@ enhancedROC(
 
 #### Youden Index plot
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  youdenOptimization = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  youdenOptimization ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Cutoff analysis plot
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  cutoffTable = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  cutoffTable ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Clinical decision plot
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  clinicalMetrics = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  clinicalMetrics ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -340,112 +293,97 @@ enhancedROC(
 
 #### Binormal smoothing
 
-``` r
-
-validation_data <- read.csv(paste0(data_path2, "enhancedroc_validation.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = validation_data,
-  outcome = "outcome",
-  positiveClass = "Positive",
-  predictors = "biomarker",
-  smoothMethod = "binormal",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'validation_data' not found
-```
+\
+`validation_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path2``, ``"enhancedroc_validation.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``validation_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker"``,`\
+`  smoothMethod ``=`` ``"binormal"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Partial AUC (high specificity region)
 
-``` r
-
-enhancedROC(
-  data = validation_data,
-  outcome = "outcome",
-  positiveClass = "Positive",
-  predictors = "biomarker",
-  partialAuc = TRUE,
-  partialAucType = "specificity",
-  partialRange = "0.8,1.0",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'validation_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``validation_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker"``,`\
+`  partialAuc ``=`` ``TRUE``,`\
+`  partialAucType ``=`` ``"specificity"``,`\
+`  partialAucFrom ``=`` ``0.8``,`\
+`  partialAucTo ``=`` ``1.0``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Partial AUC (high sensitivity region)
 
-``` r
-
-enhancedROC(
-  data = validation_data,
-  outcome = "outcome",
-  positiveClass = "Positive",
-  predictors = "biomarker",
-  partialAuc = TRUE,
-  partialAucType = "sensitivity",
-  partialRange = "0.9,1.0",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'validation_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``validation_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker"``,`\
+`  partialAuc ``=`` ``TRUE``,`\
+`  partialAucType ``=`` ``"sensitivity"``,`\
+`  partialAucFrom ``=`` ``0.9``,`\
+`  partialAucTo ``=`` ``1.0``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### CROC analysis (Concentrated ROC)
 
-``` r
-
-enhancedROC(
-  data = validation_data,
-  outcome = "outcome",
-  positiveClass = "Positive",
-  predictors = "biomarker",
-  crocAnalysis = TRUE,
-  crocAlpha = 7.0,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'validation_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``validation_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker"``,`\
+`  crocAnalysis ``=`` ``TRUE``,`\
+`  crocAlpha ``=`` ``7.0``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Convex hull analysis
 
-``` r
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``validation_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker"``,`\
+`  convexHull ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
-enhancedROC(
-  data = validation_data,
-  outcome = "outcome",
-  positiveClass = "Positive",
-  predictors = "biomarker",
-  convexHull = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'validation_data' not found
-```
+#### Scores with many ties
 
-#### Tied score handling
+Ordinal scores and rounded lab values produce many ties. A tied pair of
+patients (one positive, one negative) always counts one half in the AUC,
+and a note under the AUC table reports how many ties there are and the
+bounds the AUC could take if they were broken either way. No option is
+needed.
 
-``` r
-
-tied_data <- read.csv(paste0(data_path2, "enhancedroc_tiedscores.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = tied_data,
-  outcome = "disease",
-  positiveClass = "Disease",
-  predictors = vars(ordinal_score, rounded_lab, composite_score),
-  tiedScoreHandling = "average",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'tied_data' not found
-```
+\
+`tied_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path2``, ``"enhancedroc_tiedscores.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``tied_data``,`\
+`  outcome ``=`` ``"disease"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``ordinal_score``, ``rounded_lab``, ``composite_score``)``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -453,45 +391,35 @@ enhancedROC(
 
 #### Screening context: high sensitivity threshold
 
-``` r
-
-screening_data <- read.csv(paste0(data_path, "enhancedroc_screening.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = screening_data,
-  outcome = "screening_indication",
-  positiveClass = "Screen Positive",
-  predictors = "sensitive_marker",
-  sensitivityThreshold = 0.95,
-  specificityThreshold = 0.5,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
+\
+`screening_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_screening.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``screening_data``,`\
+`  outcome ``=`` ``"screening_indication"``,`\
+`  positiveClass ``=`` ``"Screen Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"sensitive_marker"``,`\
+`  sensitivityThreshold ``=`` ``0.95``,`\
+`  specificityThreshold ``=`` ``0.5``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Confirmatory context: high specificity threshold
 
-``` r
-
-confirmatory_data <- read.csv(paste0(data_path, "enhancedroc_confirmatory.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = confirmatory_data,
-  outcome = "confirmed_diagnosis",
-  positiveClass = "Confirmed",
-  predictors = "specific_marker",
-  sensitivityThreshold = 0.5,
-  specificityThreshold = 0.95,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'confirmatory_data' not found
-```
+\
+`confirmatory_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_confirmatory.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``confirmatory_data``,`\
+`  outcome ``=`` ``"confirmed_diagnosis"``,`\
+`  positiveClass ``=`` ``"Confirmed"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"specific_marker"``,`\
+`  sensitivityThreshold ``=`` ``0.5``,`\
+`  specificityThreshold ``=`` ``0.95``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -499,43 +427,35 @@ enhancedROC(
 
 #### Imbalance detection with PRC recommendation
 
-``` r
-
-imbalanced_data <- read.csv(paste0(data_path, "enhancedroc_imbalanced.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = imbalanced_data,
-  outcome = "rare_disease",
-  positiveClass = "Positive",
-  predictors = vars(screening_marker, confirmatory_marker),
-  detectImbalance = TRUE,
-  imbalanceThreshold = 3.0,
-  showImbalanceWarning = TRUE,
-  recommendPRC = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'imbalanced_data' not found
-```
+\
+`imbalanced_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_imbalanced.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``imbalanced_data``,`\
+`  outcome ``=`` ``"rare_disease"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``screening_marker``, ``confirmatory_marker``)``,`\
+`  detectImbalance ``=`` ``TRUE``,`\
+`  imbalanceThreshold ``=`` ``3.0``,`\
+`  showImbalanceWarning ``=`` ``TRUE``,`\
+`  recommendPRC ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Lower imbalance threshold (more sensitive detection)
 
-``` r
-
-enhancedROC(
-  data = imbalanced_data,
-  outcome = "rare_disease",
-  positiveClass = "Positive",
-  predictors = "screening_marker",
-  detectImbalance = TRUE,
-  imbalanceThreshold = 1.5,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'imbalanced_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``imbalanced_data``,`\
+`  outcome ``=`` ``"rare_disease"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"screening_marker"``,`\
+`  detectImbalance ``=`` ``TRUE``,`\
+`  imbalanceThreshold ``=`` ``1.5``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -543,87 +463,72 @@ enhancedROC(
 
 #### Biomarker screening preset
 
-``` r
-
-enhancedROC(
-  data = screening_data,
-  outcome = "screening_indication",
-  positiveClass = "Screen Positive",
-  predictors = "sensitive_marker",
-  clinicalContext = "screening",
-  clinicalPresets = "biomarker_screening",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``screening_data``,`\
+`  outcome ``=`` ``"screening_indication"``,`\
+`  positiveClass ``=`` ``"Screen Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"sensitive_marker"``,`\
+`  clinicalContext ``=`` ``"screening"``,`\
+`  clinicalPresets ``=`` ``"biomarker_screening"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Confirmatory testing preset
 
-``` r
-
-enhancedROC(
-  data = confirmatory_data,
-  outcome = "confirmed_diagnosis",
-  positiveClass = "Confirmed",
-  predictors = "specific_marker",
-  clinicalContext = "diagnosis",
-  clinicalPresets = "confirmatory_testing",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'confirmatory_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``confirmatory_data``,`\
+`  outcome ``=`` ``"confirmed_diagnosis"``,`\
+`  positiveClass ``=`` ``"Confirmed"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"specific_marker"``,`\
+`  clinicalContext ``=`` ``"diagnosis"``,`\
+`  clinicalPresets ``=`` ``"confirmatory_testing"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Diagnostic validation preset (balanced)
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  clinicalContext = "prognosis",
-  clinicalPresets = "diagnostic_validation",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  clinicalContext ``=`` ``"prognosis"``,`\
+`  clinicalPresets ``=`` ``"diagnostic_validation"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Research comprehensive preset
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = vars(biomarker1, biomarker2, clinical_risk_score),
-  clinicalPresets = "research_comprehensive",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``biomarker1``, ``biomarker2``, ``clinical_risk_score``)``,`\
+`  clinicalPresets ``=`` ``"research_comprehensive"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Monitoring context with custom settings
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  clinicalContext = "monitoring",
-  clinicalPresets = "custom",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  clinicalContext ``=`` ``"monitoring"``,`\
+`  clinicalPresets ``=`` ``"custom"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -631,60 +536,49 @@ enhancedROC(
 
 #### Full calibration assessment
 
-``` r
-
-calibration_data <- read.csv(paste0(data_path, "enhancedroc_calibration.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = calibration_data,
-  outcome = "outcome",
-  positiveClass = "Event",
-  predictors = vars(predicted_prob, risk_score),
-  calibrationAnalysis = TRUE,
-  calibrationPlot = TRUE,
-  brierScore = TRUE,
-  calibrationMetrics = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'calibration_data' not found
-```
+\
+`calibration_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_calibration.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``calibration_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Event"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``predicted_prob``, ``risk_score``)``,`\
+`  calibrationAnalysis ``=`` ``TRUE``,`\
+`  calibrationPlot ``=`` ``TRUE``,`\
+`  brierScore ``=`` ``TRUE``,`\
+`  calibrationMetrics ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Hosmer-Lemeshow test
 
-``` r
-
-enhancedROC(
-  data = calibration_data,
-  outcome = "outcome",
-  positiveClass = "Event",
-  predictors = "predicted_prob",
-  hosmerLemeshow = TRUE,
-  hlGroups = 10,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'calibration_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``calibration_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Event"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"predicted_prob"``,`\
+`  hosmerLemeshow ``=`` ``TRUE``,`\
+`  hlGroups ``=`` ``10``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Hosmer-Lemeshow with fewer groups
 
-``` r
-
-enhancedROC(
-  data = calibration_data,
-  outcome = "outcome",
-  positiveClass = "Event",
-  predictors = "predicted_prob",
-  hosmerLemeshow = TRUE,
-  hlGroups = 5,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'calibration_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``calibration_data``,`\
+`  outcome ``=`` ``"outcome"``,`\
+`  positiveClass ``=`` ``"Event"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"predicted_prob"``,`\
+`  hosmerLemeshow ``=`` ``TRUE``,`\
+`  hlGroups ``=`` ``5``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -692,43 +586,35 @@ enhancedROC(
 
 #### One-vs-Rest with macro averaging
 
-``` r
-
-multiclass_data <- read.csv(paste0(data_path, "enhancedroc_multiclass.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = multiclass_data,
-  outcome = "disease_severity",
-  positiveClass = "Severe",
-  predictors = vars(biomarker_A, biomarker_B, imaging_severity_score),
-  multiClassROC = TRUE,
-  multiClassStrategy = "ovr",
-  multiClassAveraging = "macro",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'multiclass_data' not found
-```
+\
+`multiclass_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_multiclass.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``multiclass_data``,`\
+`  outcome ``=`` ``"disease_severity"``,`\
+`  positiveClass ``=`` ``"Severe"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` `[`vars`](https://dplyr.tidyverse.org/reference/vars.html)`(``biomarker_A``, ``biomarker_B``, ``imaging_severity_score``)``,`\
+`  multiClassROC ``=`` ``TRUE``,`\
+`  multiClassStrategy ``=`` ``"ovr"``,`\
+`  multiClassAveraging ``=`` ``"macro"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### One-vs-One with weighted averaging
 
-``` r
-
-enhancedROC(
-  data = multiclass_data,
-  outcome = "disease_severity",
-  positiveClass = "Severe",
-  predictors = "biomarker_A",
-  multiClassROC = TRUE,
-  multiClassStrategy = "ovo",
-  multiClassAveraging = "weighted",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'multiclass_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``multiclass_data``,`\
+`  outcome ``=`` ``"disease_severity"``,`\
+`  positiveClass ``=`` ``"Severe"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker_A"``,`\
+`  multiClassROC ``=`` ``TRUE``,`\
+`  multiClassStrategy ``=`` ``"ovo"``,`\
+`  multiClassAveraging ``=`` ``"weighted"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -736,37 +622,31 @@ enhancedROC(
 
 #### Clinical impact with NNT calculation
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  clinicalImpact = TRUE,
-  nntCalculation = TRUE,
-  decisionImpactTable = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  clinicalImpact ``=`` ``TRUE``,`\
+`  nntCalculation ``=`` ``TRUE``,`\
+`  decisionImpactTable ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Clinical utility curve
 
-``` r
-
-enhancedROC(
-  data = biomarker_data,
-  outcome = "disease_status",
-  positiveClass = "Disease",
-  predictors = "biomarker1",
-  clinicalUtilityCurve = TRUE,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'biomarker_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``biomarker_data``,`\
+`  outcome ``=`` ``"disease_status"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"biomarker1"``,`\
+`  clinicalUtilityCurve ``=`` ``TRUE``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 
@@ -774,54 +654,43 @@ enhancedROC(
 
 #### Small sample (n=60)
 
-``` r
-
-small_data <- read.csv(paste0(data_path, "enhancedroc_small.csv"))
-#> Error in `file()`:
-#> ! cannot open the connection
-
-enhancedROC(
-  data = small_data,
-  outcome = "disease",
-  positiveClass = "Positive",
-  predictors = "marker",
-  useBootstrap = TRUE,
-  bootstrapSamples = 100,
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'small_data' not found
-```
+\
+`small_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(`[`paste0`](https://rdrr.io/r/base/paste.html)`(``data_path``, ``"enhancedroc_small.csv"``)``)`\
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``small_data``,`\
+`  outcome ``=`` ``"disease"``,`\
+`  positiveClass ``=`` ``"Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"marker"``,`\
+`  useBootstrap ``=`` ``TRUE``,`\
+`  bootstrapSamples ``=`` ``100``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Low prevalence screening data
 
-``` r
-
-enhancedROC(
-  data = screening_data,
-  outcome = "screening_indication",
-  positiveClass = "Screen Positive",
-  predictors = "sensitive_marker",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'screening_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``screening_data``,`\
+`  outcome ``=`` ``"screening_indication"``,`\
+`  positiveClass ``=`` ``"Screen Positive"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"sensitive_marker"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 #### Tied scores
 
-``` r
-
-enhancedROC(
-  data = tied_data,
-  outcome = "disease",
-  positiveClass = "Disease",
-  predictors = "ordinal_score",
-  customCutoffs = NULL
-)
-#> Error:
-#> ! object 'tied_data' not found
-```
+\
+[`enhancedROC`](https://www.serdarbalci.com/meddecide/reference/enhancedROC.md)`(`\
+`  data ``=`` ``tied_data``,`\
+`  outcome ``=`` ``"disease"``,`\
+`  positiveClass ``=`` ``"Disease"``,`\
+`  validationNegative ``=`` ``NULL``,`\
+`  predictors ``=`` ``"ordinal_score"``,`\
+`  customCutoffs ``=`` ``NULL`\
+`)`
 
 ------------------------------------------------------------------------
 

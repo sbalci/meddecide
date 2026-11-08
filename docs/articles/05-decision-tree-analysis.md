@@ -26,22 +26,20 @@ nodes (triangles).
 We’ll use several comprehensive test datasets to demonstrate all
 features:
 
-``` r
-
-# Load test datasets
-data("basic_decision_data")      # Basic treatment comparison
-data("markov_decision_data")     # Markov model data  
-data("pharma_decision_data")     # Drug comparison study
-data("screening_decision_data")  # Screening program analysis
-data("minimal_test_data")        # Simple functionality test
-data("edge_case_data")          # Edge cases and error testing
-
-# Display dataset summaries
-cat("Basic Decision Data:", nrow(basic_decision_data), "rows,", ncol(basic_decision_data), "columns\n")
-cat("Markov Decision Data:", nrow(markov_decision_data), "rows,", ncol(markov_decision_data), "columns\n")
-cat("Pharma Decision Data:", nrow(pharma_decision_data), "rows,", ncol(pharma_decision_data), "columns\n")
-cat("Screening Decision Data:", nrow(screening_decision_data), "rows,", ncol(screening_decision_data), "columns\n")
-```
+\
+`# Load test datasets`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"basic_decision_data"``)``      ``# Basic treatment comparison`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"markov_decision_data"``)``     ``# Markov model data  `\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"pharma_decision_data"``)``     ``# Drug comparison study`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"screening_decision_data"``)``  ``# Screening program analysis`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"minimal_test_data"``)``        ``# Simple functionality test`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``"edge_case_data"``)``          ``# Edge cases and error testing`\
+\
+`# Display dataset summaries`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Basic Decision Data:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``basic_decision_data``)``, ``"rows,"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``basic_decision_data``)``, ``"columns\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Markov Decision Data:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``markov_decision_data``)``, ``"rows,"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``markov_decision_data``)``, ``"columns\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Pharma Decision Data:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``pharma_decision_data``)``, ``"rows,"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``pharma_decision_data``)``, ``"columns\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Screening Decision Data:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``screening_decision_data``)``, ``"rows,"``, `[`ncol`](https://rdrr.io/r/base/nrow.html)`(``screening_decision_data``)``, ``"columns\n"``)`
 
 ## Basic Usage Examples
 
@@ -50,69 +48,61 @@ cat("Screening Decision Data:", nrow(screening_decision_data), "rows,", ncol(scr
 Let’s start with a basic treatment comparison using the minimal test
 dataset:
 
-``` r
-
-# Examine the minimal test data structure
-head(minimal_test_data)
-
-# This dataset contains:
-# - treatment: Decision variable (A vs B)
-# - prob1, prob2: Probability variables
-# - cost1, cost2: Cost variables  
-# - utility1, utility2: Utility variables
-# - outcome: Outcome variable
-```
+\
+`# Examine the minimal test data structure`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``minimal_test_data``)`\
+\
+`# This dataset contains:`\
+`# - treatment: Decision variable (A vs B)`\
+`# - prob1, prob2: Probability variables`\
+`# - cost1, cost2: Cost variables  `\
+`# - utility1, utility2: Utility variables`\
+`# - outcome: Outcome variable`
 
 #### Creating a Basic Decision Tree
 
-``` r
-
-# In jamovi, you would:
-# 1. Load the minimal_test_data
-# 2. Go to meddecide > Decision > Decision Tree Graph
-# 3. Set variables:
-#    - Decisions: treatment
-#    - Probabilities: prob1, prob2
-#    - Costs: cost1, cost2
-#    - Utilities: utility1, utility2
-#    - Outcomes: outcome
-# 4. Choose layout: horizontal
-# 5. Enable: Show Probabilities, Show Costs, Show Utilities
-```
+\
+`# In jamovi, you would:`\
+`# 1. Load the minimal_test_data`\
+`# 2. Go to meddecide > Decision > Decision Tree Graph`\
+`# 3. Set variables:`\
+`#    - Decisions: treatment`\
+`#    - Probabilities: prob1, prob2`\
+`#    - Costs: cost1, cost2`\
+`#    - Utilities: utility1, utility2`\
+`#    - Outcomes: outcome`\
+`# 4. Choose layout: horizontal`\
+`# 5. Enable: Show Probabilities, Show Costs, Show Utilities`
 
 ### Example 2: Pharmaceutical Cost-Effectiveness Analysis
 
 Using the comprehensive pharmaceutical dataset:
 
-``` r
-
-# Examine pharmaceutical data structure
-head(pharma_decision_data)
-
-# Key variables:
-# - drug_regimen: Main decision variable (4 treatment options)
-# - dosing_strategy: Secondary decision variable
-# - prob_response, prob_severe_ae: Probability variables
-# - cost_drug_per_cycle, cost_administration: Cost variables
-# - utility_response, utility_stable: Utility variables
-```
+\
+`# Examine pharmaceutical data structure`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``pharma_decision_data``)`\
+\
+`# Key variables:`\
+`# - drug_regimen: Main decision variable (4 treatment options)`\
+`# - dosing_strategy: Secondary decision variable`\
+`# - prob_response, prob_severe_ae: Probability variables`\
+`# - cost_drug_per_cycle, cost_administration: Cost variables`\
+`# - utility_response, utility_stable: Utility variables`
 
 #### Advanced Configuration
 
-``` r
-
-# Advanced jamovi configuration:
-# 1. Decisions: drug_regimen, dosing_strategy
-# 2. Probabilities: prob_response, prob_severe_ae, prob_discontinuation
-# 3. Costs: cost_drug_per_cycle, cost_administration, cost_monitoring
-# 4. Utilities: utility_response, utility_stable, utility_progression
-# 5. Tree Type: Cost-Effectiveness Tree
-# 6. Layout: Horizontal
-# 7. Color Scheme: Medical Theme
-# 8. Enable Expected Values calculation
-# 9. Set discount rate: 3%
-# 10. Time horizon: 5 years
-```
+\
+`# Advanced jamovi configuration:`\
+`# 1. Decisions: drug_regimen, dosing_strategy`\
+`# 2. Probabilities: prob_response, prob_severe_ae, prob_discontinuation`\
+`# 3. Costs: cost_drug_per_cycle, cost_administration, cost_monitoring`\
+`# 4. Utilities: utility_response, utility_stable, utility_progression`\
+`# 5. Tree Type: Cost-Effectiveness Tree`\
+`# 6. Layout: Horizontal`\
+`# 7. Color Scheme: Medical Theme`\
+`# 8. Enable Expected Values calculation`\
+`# 9. Set discount rate: 3%`\
+`# 10. Time horizon: 5 years`
 
 ## Testing All Module Arguments
 
@@ -136,382 +126,348 @@ head(pharma_decision_data)
 - ICER calculations
 - Net benefit analysis
 
-``` r
-
-# Test each tree type with markov_decision_data:
-
-# 1. Simple Decision Tree
-# - Focus on treatment_strategy decisions
-# - Use basic probabilities
-
-# 2. Markov Model Tree  
-# - Include transition probabilities
-# - Multi-cycle analysis
-# - State-specific costs and utilities
-
-# 3. Cost-Effectiveness Tree
-# - Full economic evaluation
-# - All cost components
-# - Utility measurements
-```
+\
+`# Test each tree type with markov_decision_data:`\
+\
+`# 1. Simple Decision Tree`\
+`# - Focus on treatment_strategy decisions`\
+`# - Use basic probabilities`\
+\
+`# 2. Markov Model Tree  `\
+`# - Include transition probabilities`\
+`# - Multi-cycle analysis`\
+`# - State-specific costs and utilities`\
+\
+`# 3. Cost-Effectiveness Tree`\
+`# - Full economic evaluation`\
+`# - All cost components`\
+`# - Utility measurements`
 
 ### Layout Options Testing
 
-``` r
-
-# Test all layout orientations:
-
-# 1. Horizontal Layout (default)
-# - Tree flows left to right
-# - Decision node on left, outcomes on right
-# - Best for simple trees
-
-# 2. Vertical Layout
-# - Tree flows top to bottom  
-# - Good for presentation slides
-# - Compact for wide trees
-
-# 3. Radial Layout  
-# - Tree radiates from center
-# - Artistic presentation
-# - Good for complex trees with many branches
-```
+\
+`# Test all layout orientations:`\
+\
+`# 1. Horizontal Layout (default)`\
+`# - Tree flows left to right`\
+`# - Decision node on left, outcomes on right`\
+`# - Best for simple trees`\
+\
+`# 2. Vertical Layout`\
+`# - Tree flows top to bottom  `\
+`# - Good for presentation slides`\
+`# - Compact for wide trees`\
+\
+`# 3. Radial Layout  `\
+`# - Tree radiates from center`\
+`# - Artistic presentation`\
+`# - Good for complex trees with many branches`
 
 ### Display Options Testing
 
 #### Node Shape Configuration
 
-``` r
-
-# Test node shape options:
-
-# 1. Show Node Shapes = TRUE (default)
-# - Squares for decision nodes
-# - Circles for chance nodes  
-# - Triangles for terminal nodes
-# - Clear visual distinction
-
-# 2. Show Node Shapes = FALSE
-# - All nodes as circles
-# - Color coding only
-# - Simpler appearance
-```
+\
+`# Test node shape options:`\
+\
+`# 1. Show Node Shapes = TRUE (default)`\
+`# - Squares for decision nodes`\
+`# - Circles for chance nodes  `\
+`# - Triangles for terminal nodes`\
+`# - Clear visual distinction`\
+\
+`# 2. Show Node Shapes = FALSE`\
+`# - All nodes as circles`\
+`# - Color coding only`\
+`# - Simpler appearance`
 
 #### Label Display Options
 
-``` r
-
-# Test label configurations:
-
-# 1. Show Probabilities = TRUE
-# - Display "p=0.75" on branches
-# - Help interpret chance outcomes
-# - Essential for probability assessment
-
-# 2. Show Costs = TRUE  
-# - Display "Cost: $15,000" on terminal nodes
-# - Critical for cost-effectiveness
-# - Currency formatting
-
-# 3. Show Utilities = TRUE
-# - Display "Utility: 0.85" on terminal nodes  
-# - Quality of life measures
-# - QALY calculations
-
-# 4. Show Node Labels = TRUE
-# - Descriptive text on nodes
-# - Treatment names, outcome descriptions
-# - Improve interpretation
-
-# 5. Show Branch Labels = TRUE
-# - Text on connecting lines
-# - Probability values, condition names
-# - Decision pathway clarity
-```
+\
+`# Test label configurations:`\
+\
+`# 1. Show Probabilities = TRUE`\
+`# - Display "p=0.75" on branches`\
+`# - Help interpret chance outcomes`\
+`# - Essential for probability assessment`\
+\
+`# 2. Show Costs = TRUE  `\
+`# - Display "Cost: $15,000" on terminal nodes`\
+`# - Critical for cost-effectiveness`\
+`# - Currency formatting`\
+\
+`# 3. Show Utilities = TRUE`\
+`# - Display "Utility: 0.85" on terminal nodes  `\
+`# - Quality of life measures`\
+`# - QALY calculations`\
+\
+`# 4. Show Node Labels = TRUE`\
+`# - Descriptive text on nodes`\
+`# - Treatment names, outcome descriptions`\
+`# - Improve interpretation`\
+\
+`# 5. Show Branch Labels = TRUE`\
+`# - Text on connecting lines`\
+`# - Probability values, condition names`\
+`# - Decision pathway clarity`
 
 ### Color Scheme Testing
 
-``` r
-
-# Test all color schemes:
-
-# 1. Default Theme
-# - Green decisions, blue chance, orange terminals
-# - Standard clinical colors
-# - Good general purpose
-
-# 2. Colorblind Friendly  
-# - Carefully selected colors
-# - Accessible to colorblind users
-# - High contrast options
-
-# 3. Medical Theme
-# - Professional medical colors
-# - Suitable for clinical presentations
-# - Conservative appearance
-
-# 4. Economic Theme
-# - Colors representing cost/benefit
-# - Green for savings, red for costs
-# - Financial analysis focus
-```
+\
+`# Test all color schemes:`\
+\
+`# 1. Default Theme`\
+`# - Green decisions, blue chance, orange terminals`\
+`# - Standard clinical colors`\
+`# - Good general purpose`\
+\
+`# 2. Colorblind Friendly  `\
+`# - Carefully selected colors`\
+`# - Accessible to colorblind users`\
+`# - High contrast options`\
+\
+`# 3. Medical Theme`\
+`# - Professional medical colors`\
+`# - Suitable for clinical presentations`\
+`# - Conservative appearance`\
+\
+`# 4. Economic Theme`\
+`# - Colors representing cost/benefit`\
+`# - Green for savings, red for costs`\
+`# - Financial analysis focus`
 
 ## Analysis Options Testing
 
 ### Expected Value Calculations
 
-``` r
-
-# Test expected value features:
-
-# 1. Calculate Expected Values = TRUE
-# - Automatic cost and utility calculations
-# - Probability-weighted outcomes
-# - Decision tree rollback analysis
-
-# Configuration with screening_decision_data:
-# - Multiple screening strategies
-# - Cost per test, diagnostic workup
-# - Utilities for different health states
-# - Life years gained calculations
-```
+\
+`# Test expected value features:`\
+\
+`# 1. Calculate Expected Values = TRUE`\
+`# - Automatic cost and utility calculations`\
+`# - Probability-weighted outcomes`\
+`# - Decision tree rollback analysis`\
+\
+`# Configuration with screening_decision_data:`\
+`# - Multiple screening strategies`\
+`# - Cost per test, diagnostic workup`\
+`# - Utilities for different health states`\
+`# - Life years gained calculations`
 
 ### Sensitivity Analysis
 
-``` r
-
-# Test sensitivity analysis options:
-
-# 1. Sensitivity Analysis = TRUE
-# - One-way sensitivity analysis
-# - Parameter variation testing
-# - Robust decision making
-
-# 2. Tornado Diagram = TRUE  
-# - Visual sensitivity results
-# - Parameters ranked by impact
-# - Range of outcomes displayed
-
-# Using pharma_decision_data for sensitivity:
-# - Vary drug efficacy (prob_response)
-# - Vary cost parameters
-# - Vary utility values
-# - Assess decision robustness
-```
+\
+`# Test sensitivity analysis options:`\
+\
+`# 1. Sensitivity Analysis = TRUE`\
+`# - One-way sensitivity analysis`\
+`# - Parameter variation testing`\
+`# - Robust decision making`\
+\
+`# 2. Tornado Diagram = TRUE  `\
+`# - Visual sensitivity results`\
+`# - Parameters ranked by impact`\
+`# - Range of outcomes displayed`\
+\
+`# Using pharma_decision_data for sensitivity:`\
+`# - Vary drug efficacy (prob_response)`\
+`# - Vary cost parameters`\
+`# - Vary utility values`\
+`# - Assess decision robustness`
 
 ### Economic Parameters
 
-``` r
-
-# Test economic parameter settings:
-
-# 1. Discount Rate testing:
-# - 0% (no discounting)
-# - 3% (standard health economics)
-# - 5% (conservative approach)
-# - 7% (high discount rate)
-
-# 2. Time Horizon testing:
-# - 1 year (short-term analysis)
-# - 5 years (medium-term)
-# - 10 years (long-term)
-# - Lifetime (maximum horizon)
-
-# Impact on net present value calculations
-# Future cost and benefit discounting
-```
+\
+`# Test economic parameter settings:`\
+\
+`# 1. Discount Rate testing:`\
+`# - 0% (no discounting)`\
+`# - 3% (standard health economics)`\
+`# - 5% (conservative approach)`\
+`# - 7% (high discount rate)`\
+\
+`# 2. Time Horizon testing:`\
+`# - 1 year (short-term analysis)`\
+`# - 5 years (medium-term)`\
+`# - 10 years (long-term)`\
+`# - Lifetime (maximum horizon)`\
+\
+`# Impact on net present value calculations`\
+`# Future cost and benefit discounting`
 
 ## Output Tables Testing
 
 ### Summary Table Features
 
-``` r
-
-# Test summary table with basic_decision_data:
-
-# Summary Table includes:
-# - Strategy names
-# - Expected costs (discounted)
-# - Expected utilities (QALYs)
-# - Incremental Cost-Effectiveness Ratios (ICERs)
-# - Net benefit at willingness-to-pay thresholds
-
-# Currency formatting for costs
-# Decimal precision for utilities  
-# ICER calculation accuracy
-```
+\
+`# Test summary table with basic_decision_data:`\
+\
+`# Summary Table includes:`\
+`# - Strategy names`\
+`# - Expected costs (discounted)`\
+`# - Expected utilities (QALYs)`\
+`# - Incremental Cost-Effectiveness Ratios (ICERs)`\
+`# - Net benefit at willingness-to-pay thresholds`\
+\
+`# Currency formatting for costs`\
+`# Decimal precision for utilities  `\
+`# ICER calculation accuracy`
 
 ### Node Details Table
 
-``` r
-
-# Test node details table:
-
-# Node Table includes:
-# - Node ID (unique identifier)
-# - Node Type (decision/chance/terminal)
-# - Node Label (descriptive text)
-# - Probability values
-# - Cost values  
-# - Utility values
-
-# Useful for:
-# - Debugging tree structure
-# - Verifying calculations
-# - Detailed documentation
-```
+\
+`# Test node details table:`\
+\
+`# Node Table includes:`\
+`# - Node ID (unique identifier)`\
+`# - Node Type (decision/chance/terminal)`\
+`# - Node Label (descriptive text)`\
+`# - Probability values`\
+`# - Cost values  `\
+`# - Utility values`\
+\
+`# Useful for:`\
+`# - Debugging tree structure`\
+`# - Verifying calculations`\
+`# - Detailed documentation`
 
 ### Sensitivity Analysis Table
 
-``` r
-
-# Test sensitivity analysis table:
-
-# Sensitivity Table includes:
-# - Parameter names
-# - Base case values
-# - Low/high range values
-# - Low/high results
-# - Range of impact
-
-# Parameter ranking by importance
-# Threshold analysis capability
-# Scenario analysis support
-```
+\
+`# Test sensitivity analysis table:`\
+\
+`# Sensitivity Table includes:`\
+`# - Parameter names`\
+`# - Base case values`\
+`# - Low/high range values`\
+`# - Low/high results`\
+`# - Range of impact`\
+\
+`# Parameter ranking by importance`\
+`# Threshold analysis capability`\
+`# Scenario analysis support`
 
 ## Edge Cases and Error Handling
 
 ### Missing Data Testing
 
-``` r
+\
+`# Test with edge_case_data containing missing values`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``edge_case_data``)`\
+\
+`# Edge cases include:`\
+`# - Missing treatment assignments`\
+`# - Zero probabilities  `\
+`# - Negative costs`\
+`# - Utilities outside 0-1 range`\
+`# - Single category variables`
 
-# Test with edge_case_data containing missing values
-head(edge_case_data)
-
-# Edge cases include:
-# - Missing treatment assignments
-# - Zero probabilities  
-# - Negative costs
-# - Utilities outside 0-1 range
-# - Single category variables
-```
-
-``` r
-
-# Test error handling:
-
-# 1. Missing Required Variables
-# - No decision variables specified
-# - No cost or utility data
-# - Expected: Informative error message
-
-# 2. Invalid Probability Values
-# - Probabilities < 0 or > 1
-# - Expected: Data validation warning
-
-# 3. Negative Costs
-# - Cost values < 0
-# - Expected: Warning or automatic correction
-
-# 4. Invalid Utility Values  
-# - Utilities < 0 or > 1
-# - Expected: Range validation
-
-# 5. Insufficient Data
-# - Fewer than 2 decision options
-# - Expected: Minimum data requirement message
-```
+\
+`# Test error handling:`\
+\
+`# 1. Missing Required Variables`\
+`# - No decision variables specified`\
+`# - No cost or utility data`\
+`# - Expected: Informative error message`\
+\
+`# 2. Invalid Probability Values`\
+`# - Probabilities < 0 or > 1`\
+`# - Expected: Data validation warning`\
+\
+`# 3. Negative Costs`\
+`# - Cost values < 0`\
+`# - Expected: Warning or automatic correction`\
+\
+`# 4. Invalid Utility Values  `\
+`# - Utilities < 0 or > 1`\
+`# - Expected: Range validation`\
+\
+`# 5. Insufficient Data`\
+`# - Fewer than 2 decision options`\
+`# - Expected: Minimum data requirement message`
 
 ## Performance Testing
 
 ### Large Dataset Handling
 
-``` r
-
-# Test with large datasets:
-
-# 1. Markov data (200 scenarios)
-# - Complex multi-state model
-# - Many transition probabilities
-# - State-specific costs/utilities
-
-# 2. Screening data (120 scenarios)  
-# - Multiple screening strategies
-# - Population-specific parameters
-# - Test performance characteristics
-
-# Performance metrics:
-# - Tree generation time
-# - Plot rendering speed
-# - Memory usage
-# - Table population speed
-```
+\
+`# Test with large datasets:`\
+\
+`# 1. Markov data (200 scenarios)`\
+`# - Complex multi-state model`\
+`# - Many transition probabilities`\
+`# - State-specific costs/utilities`\
+\
+`# 2. Screening data (120 scenarios)  `\
+`# - Multiple screening strategies`\
+`# - Population-specific parameters`\
+`# - Test performance characteristics`\
+\
+`# Performance metrics:`\
+`# - Tree generation time`\
+`# - Plot rendering speed`\
+`# - Memory usage`\
+`# - Table population speed`
 
 ### Complex Tree Structures
 
-``` r
-
-# Test complex tree configurations:
-
-# 1. Multiple Decision Variables
-# - Primary and secondary decisions
-# - Nested decision structures  
-# - Interaction effects
-
-# 2. Many Outcome Branches
-# - Multiple chance nodes
-# - Numerous terminal outcomes
-# - Complex probability trees
-
-# 3. Deep Tree Hierarchies
-# - Multi-level decisions
-# - Sequential choices
-# - Time-dependent paths
-```
+\
+`# Test complex tree configurations:`\
+\
+`# 1. Multiple Decision Variables`\
+`# - Primary and secondary decisions`\
+`# - Nested decision structures  `\
+`# - Interaction effects`\
+\
+`# 2. Many Outcome Branches`\
+`# - Multiple chance nodes`\
+`# - Numerous terminal outcomes`\
+`# - Complex probability trees`\
+\
+`# 3. Deep Tree Hierarchies`\
+`# - Multi-level decisions`\
+`# - Sequential choices`\
+`# - Time-dependent paths`
 
 ## Comparison with Other Methods
 
 ### Validation Against Manual Calculations
 
-``` r
-
-# Validate expected value calculations:
-
-# Manual calculation example with minimal_test_data:
-# Treatment A:
-# - Expected Cost = (prob1 * cost1) + (prob2 * cost2)  
-# - Expected Utility = (prob1 * utility1) + (prob2 * utility2)
-
-# Treatment B:
-# - Similar calculations
-# - Compare with module output
-
-# ICER calculation:
-# - (Cost_B - Cost_A) / (Utility_B - Utility_A)
-# - Verify against summary table
-```
+\
+`# Validate expected value calculations:`\
+\
+`# Manual calculation example with minimal_test_data:`\
+`# Treatment A:`\
+`# - Expected Cost = (prob1 * cost1) + (prob2 * cost2)  `\
+`# - Expected Utility = (prob1 * utility1) + (prob2 * utility2)`\
+\
+`# Treatment B:`\
+`# - Similar calculations`\
+`# - Compare with module output`\
+\
+`# ICER calculation:`\
+`# - (Cost_B - Cost_A) / (Utility_B - Utility_A)`\
+`# - Verify against summary table`
 
 ### Sensitivity Analysis Validation
 
-``` r
-
-# Validate sensitivity analysis:
-
-# 1. One-way sensitivity
-# - Manually vary single parameters
-# - Compare impact on outcomes
-# - Verify tornado diagram rankings
-
-# 2. Two-way sensitivity  
-# - Vary two parameters simultaneously
-# - Create sensitivity matrices
-# - Identify interaction effects
-
-# 3. Probabilistic sensitivity
-# - Monte Carlo simulation
-# - Parameter uncertainty modeling
-# - Confidence interval generation
-```
+\
+`# Validate sensitivity analysis:`\
+\
+`# 1. One-way sensitivity`\
+`# - Manually vary single parameters`\
+`# - Compare impact on outcomes`\
+`# - Verify tornado diagram rankings`\
+\
+`# 2. Two-way sensitivity  `\
+`# - Vary two parameters simultaneously`\
+`# - Create sensitivity matrices`\
+`# - Identify interaction effects`\
+\
+`# 3. Probabilistic sensitivity`\
+`# - Monte Carlo simulation`\
+`# - Parameter uncertainty modeling`\
+`# - Confidence interval generation`
 
 ## Best Practices and Recommendations
 
@@ -543,83 +499,75 @@ head(edge_case_data)
 
 ### Data Issues
 
-``` r
-
-# Common problems and solutions:
-
-# 1. "No data provided for analysis"
-# Solution: Check data loading and variable selection
-
-# 2. "Missing required variables"  
-# Solution: Specify at least one decision, cost, or utility variable
-
-# 3. Probabilities don't sum to 1
-# Solution: Normalize probability variables
-
-# 4. Negative costs or utilities
-# Solution: Check data entry and transformations
-
-# 5. Tree too complex to display
-# Solution: Simplify structure or use subsets
-```
+\
+`# Common problems and solutions:`\
+\
+`# 1. "No data provided for analysis"`\
+`# Solution: Check data loading and variable selection`\
+\
+`# 2. "Missing required variables"  `\
+`# Solution: Specify at least one decision, cost, or utility variable`\
+\
+`# 3. Probabilities don't sum to 1`\
+`# Solution: Normalize probability variables`\
+\
+`# 4. Negative costs or utilities`\
+`# Solution: Check data entry and transformations`\
+\
+`# 5. Tree too complex to display`\
+`# Solution: Simplify structure or use subsets`
 
 ### Visualization Issues
 
-``` r
-
-# Visualization problems:
-
-# 1. Overlapping node labels
-# Solution: Reduce label length or change layout
-
-# 2. Tree too wide/tall
-# Solution: Adjust layout orientation
-
-# 3. Colors not distinguishable  
-# Solution: Change color scheme
-
-# 4. Missing plot elements
-# Solution: Check display option settings
-
-# 5. Poor plot quality
-# Solution: Adjust figure dimensions
-```
+\
+`# Visualization problems:`\
+\
+`# 1. Overlapping node labels`\
+`# Solution: Reduce label length or change layout`\
+\
+`# 2. Tree too wide/tall`\
+`# Solution: Adjust layout orientation`\
+\
+`# 3. Colors not distinguishable  `\
+`# Solution: Change color scheme`\
+\
+`# 4. Missing plot elements`\
+`# Solution: Check display option settings`\
+\
+`# 5. Poor plot quality`\
+`# Solution: Adjust figure dimensions`
 
 ## Advanced Applications
 
 ### Multi-Criteria Decision Analysis
 
-``` r
-
-# Incorporate multiple decision criteria:
-
-# 1. Cost-effectiveness
-# 2. Safety profiles  
-# 3. Patient preferences
-# 4. Implementation feasibility
-# 5. Equity considerations
-
-# Weight different criteria
-# Composite scoring systems
-# Stakeholder involvement
-```
+\
+`# Incorporate multiple decision criteria:`\
+\
+`# 1. Cost-effectiveness`\
+`# 2. Safety profiles  `\
+`# 3. Patient preferences`\
+`# 4. Implementation feasibility`\
+`# 5. Equity considerations`\
+\
+`# Weight different criteria`\
+`# Composite scoring systems`\
+`# Stakeholder involvement`
 
 ### Budget Impact Analysis
 
-``` r
-
-# Extend to budget impact:
-
-# 1. Population-level costs
-# 2. Implementation timelines
-# 3. Resource requirements
-# 4. Capacity constraints
-# 5. Affordability thresholds
-
-# Multi-year projections
-# Scenario modeling
-# Policy implications
-```
+\
+`# Extend to budget impact:`\
+\
+`# 1. Population-level costs`\
+`# 2. Implementation timelines`\
+`# 3. Resource requirements`\
+`# 4. Capacity constraints`\
+`# 5. Affordability thresholds`\
+\
+`# Multi-year projections`\
+`# Scenario modeling`\
+`# Policy implications`
 
 ## Conclusion
 
@@ -627,7 +575,7 @@ The Decision Tree Graph module provides a comprehensive toolkit for
 cost-effectiveness analysis in healthcare. Key strengths include:
 
 1.  **Flexibility**: Multiple tree types and configurations
-2.  **Visual Appeal**: Professional publication-ready graphics  
+2.  **Visual Appeal**: Professional publication-ready graphics\
 3.  **Economic Rigor**: Standard health economics calculations
 4.  **User-Friendly**: Intuitive jamovi interface
 5.  **Comprehensive Output**: Tables, plots, and sensitivity analysis

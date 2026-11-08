@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Inter-Rater Agreement and Reliability Analysis in Pathology • meddecide</title>
+<title>Inter-Rater Agreement and Reliability in Pathology • meddecide</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Inter-Rater Agreement and Reliability Analysis in Pathology">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Inter-Rater Agreement and Reliability in Pathology">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">meddecide</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.53.01</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,62 +33,35 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/01-introduction.html">MedDecide 01: Introduction to Medical Decision Analysis for Pathologists</a></li>
-    <li><a class="dropdown-item" href="../articles/02-comprehensive-guide.html">meddecide: Medical Decision Making in R</a></li>
-    <li><a class="dropdown-item" href="../articles/03-agreement-advanced-features.html">Advanced Features in Interrater Agreement Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/03-agreement-analysis.html">Inter-Rater Agreement and Reliability Analysis in Pathology</a></li>
-    <li><a class="dropdown-item" href="../articles/03-roc-analysis.html">ROC Curve Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/04-decision-tree-guide.html">Medical Decision Tree - Clinical Implementation Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/05-decision-tree-analysis.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
-    <li><a class="dropdown-item" href="../articles/06-decision-tree-vs-markov.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/06-jamovi-workflow-examples.html">Jamovi Workflow Examples for Decision Tree and Markov Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/07-bayesian-decision-curve-analysis.html">Bayesian Decision Curve Analysis - Advanced Clinical Decision Making</a></li>
-    <li><a class="dropdown-item" href="../articles/07-decision-trees.html">Decision Tree and Markov Chain Analysis Examples</a></li>
-    <li><a class="dropdown-item" href="../articles/07-kappasizeci-comprehensive.html">Sample Size Calculations for Interobserver Agreement Studies</a></li>
-    <li><a class="dropdown-item" href="../articles/08-decision-panel-clinical.html">Clinical Applications of Decision Panel Optimization</a></li>
-    <li><a class="dropdown-item" href="../articles/08-kappasizefixedn-comprehensive.html">Complete Guide to kappasizefixedn: Fixed Sample Size Kappa Power Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/09-decision-panel-advanced.html">Advanced Features and Customization in Decision Panel Optimization</a></li>
-    <li><a class="dropdown-item" href="../articles/09-kappasizepower-comprehensive.html">Complete Guide to kappasizepower: Power Analysis for Inter-rater Agreement Studies</a></li>
-    <li><a class="dropdown-item" href="../articles/10-decision-panel-optimization.html">Introduction to Decision Panel Optimization</a></li>
-    <li><a class="dropdown-item" href="../articles/11-precision-oncology.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/12-nogoldstandard.html">Analyzing Diagnostic Tests without a Gold Standard</a></li>
-    <li><a class="dropdown-item" href="../articles/13-diagnostic-tests.html">Diagnostic Test Evaluation</a></li>
-    <li><a class="dropdown-item" href="../articles/14-diagnostic-style-quick-guide.html">Quick Guide: Diagnostic Style Clustering in jamovi</a></li>
-    <li><a class="dropdown-item" href="../articles/15-diagnostic-style-clustering.html">Diagnostic Style Clustering: Identifying Pathologist 'Schools' and Diagnostic Preferences</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Getting started</h6></li>
+    <li><a class="dropdown-item" href="../articles/01-introduction.html">Introduction to meddecide</a></li>
     <li><a class="dropdown-item" href="../articles/16-use-in-r.html">Use meddecide in R</a></li>
-    <li><a class="dropdown-item" href="../articles/17-introduction-legacy.html">meddecide: Introduction to Medical Decision Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/18-roc-analysis-legacy.html">ROC Curve Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/19-decisionpanel-advanced-legacy.html">Advanced Features and Customization in Decision Panel Optimization</a></li>
-    <li><a class="dropdown-item" href="../articles/20-decisionpanel-clinical-legacy.html">Clinical Applications of Decision Panel Optimization</a></li>
-    <li><a class="dropdown-item" href="../articles/21-decisionpanel-optimization-legacy.html">Introduction to Decision Panel Optimization</a></li>
-    <li><a class="dropdown-item" href="../articles/22-diagnostic-style-clustering-legacy.html">Diagnostic Style Clustering: Identifying Pathologist 'Schools' and Diagnostic Preferences</a></li>
-    <li><a class="dropdown-item" href="../articles/23-diagnostic-style-quick-guide-legacy.html">Quick Guide: Diagnostic Style Clustering in jamovi</a></li>
-    <li><a class="dropdown-item" href="../articles/24-agreement-analysis-legacy.html">Inter-Rater Agreement and Reliability Analysis in Pathology</a></li>
-    <li><a class="dropdown-item" href="../articles/25-diagnostic-tests-legacy.html">Diagnostic Test Evaluation</a></li>
-    <li><a class="dropdown-item" href="../articles/25-jamovi-workflow-examples-legacy.html">Jamovi Workflow Examples for Decision Tree and Markov Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/26-medical-decision-tree-guide-legacy.html">Medical Decision Tree - Clinical Implementation Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/27-nogoldstandard-legacy.html">Analyzing Diagnostic Tests without a Gold Standard</a></li>
-    <li><a class="dropdown-item" href="../articles/28-decision-tree-examples-legacy.html">Decision Tree and Markov Chain Analysis Examples</a></li>
-    <li><a class="dropdown-item" href="../articles/29-decision-tree-vs-markov-analysis-legacy.html">Decision Tree vs Markov Chain Analysis: Complete Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/30-decisiontree-analysis-vignette-legacy.html">Decision Tree Graph Analysis: Comprehensive Guide and Testing</a></li>
-    <li><a class="dropdown-item" href="../articles/31-precision-oncology-biomarkers-legacy.html">Precision Oncology: Biomarker-Guided Treatment Selection and Outcome Analysis</a></li>
-    <li><a class="dropdown-item" href="../articles/31-treeadvanced-comprehensive.html">Advanced Decision Tree Analysis in ClinicoPath</a></li>
-    <li><a class="dropdown-item" href="../articles/32-vignettes-legacy.html">meddecide: Medical Decision Making in R</a></li>
-    <li><a class="dropdown-item" href="../articles/33-use-in-r-legacy.html">Use meddecide in R</a></li>
-    <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
-    <li><a class="dropdown-item" href="../articles/35-screening-calculator-comprehensive.html">Screening Test Calculator: A Comprehensive Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/38-modelbuilder-comprehensive.html">Clinical Prediction Model Builder</a></li>
-    <li><a class="dropdown-item" href="../articles/clinicopath-descriptives-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/decisionpanel_threshold_calculator.html">Decision Panel Threshold Calculator (p_t)</a></li>
-    <li><a class="dropdown-item" href="../articles/meddecide-01-oncodatasets-examples.html">meddecide: Medical Decision Analysis with Oncology Data</a></li>
-    <li><a class="dropdown-item" href="../articles/meddecide-05-decisiongraph-comprehensive.html">Decision Tree Analysis with decisiongraph: A Comprehensive Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Analysis and Modality Comparison</a></li>
-    <li><a class="dropdown-item" href="../articles/meddecide-15-multiclass-diagnostics-comprehensive.html">Multi-class Diagnostic Performance Evaluation</a></li>
-    <li><a class="dropdown-item" href="../articles/meddecide-31-latentbiomarker.html">Latent biomarker constructs and survival</a></li>
+    <li><a class="dropdown-item" href="../articles/02-comprehensive-guide.html">meddecide: Medical Decision Making in R</a></li>
+    <li><a class="dropdown-item" href="../articles/17-methods-and-interpretation.html">Choosing and interpreting a meddecide analysis</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Agreement</h6></li>
+    <li><a class="dropdown-item" href="../articles/03-agreement-analysis.html">Inter-Rater Agreement and Reliability in Pathology</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-agreement-comprehensive.html">Interrater Reliability &amp; Agreement Analysis - Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/15-diagnostic-style-clustering.html">Diagnostic Style Clustering: Do Pathologists Form Schools?</a></li>
+    <li><a class="dropdown-item" href="../articles/meddecide-09-digital-pathology-validation.html">Digital Pathology Validation: Agreement Between Glass and Digital Reads</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-32-ysrb-interobserver.html">Interobserver reliability beyond a single kappa</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Diagnostic tests &amp; decision</h6></li>
+    <li><a class="dropdown-item" href="../articles/13-diagnostic-tests.html">Diagnostic Test Evaluation</a></li>
+    <li><a class="dropdown-item" href="../articles/34-cotest-analysis.html">Co-Testing Analysis: Combining Diagnostic Tests for Better Clinical Decision Making</a></li>
+    <li><a class="dropdown-item" href="../articles/36-sequential-testing-comprehensive.html">Sequential Testing Analysis: A Comprehensive Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/12-nogoldstandard.html">Analyzing Diagnostic Tests without a Gold Standard</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>ROC</h6></li>
+    <li><a class="dropdown-item" href="../articles/03-roc-analysis.html">ROC Curve Analysis</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-enhancedroc-comprehensive.html">Clinical ROC Analysis (enhancedROC) - Comprehensive Guide</a></li>
     <li><a class="dropdown-item" href="../articles/meddecide-psychopdaroc-comprehensive.html">Advanced ROC Analysis (psychopdaROC) - Comprehensive Guide</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Sample size</h6></li>
+    <li><a class="dropdown-item" href="../articles/07-kappasizeci-comprehensive.html">Sample Size Calculations for Interobserver Agreement Studies</a></li>
+    <li><a class="dropdown-item" href="../articles/08-kappasizefixedn-comprehensive.html">Expected kappa lower bound with a fixed sample size</a></li>
+    <li><a class="dropdown-item" href="../articles/09-kappasizepower-comprehensive.html">Complete Guide to kappasizepower: Power Analysis for Inter-rater Agreement Studies</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -111,11 +84,8 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Inter-Rater Agreement and Reliability Analysis in Pathology</h1>
-                        <h4 data-toc-skip class="author">ClinicoPath
-Development Team</h4>
+      <h1>Inter-Rater Agreement and Reliability in Pathology</h1>
             
-            <h4 data-toc-skip class="date">2026-08-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/sbalci/ClinicoPathJamoviModule/blob/HEAD/vignettes/03-agreement-analysis.Rmd" class="external-link"><code>vignettes/03-agreement-analysis.Rmd</code></a></small>
       <div class="d-none name"><code>03-agreement-analysis.Rmd</code></div>
@@ -123,682 +93,285 @@ Development Team</h4>
 
     
     
-<blockquote>
-<p><strong>These <code><a href="../reference/agreement.html">agreement()</a></code> code examples predate the
-current API.</strong> The R chunks below were written against an older
-argument list (<code>rater1_var</code>, <code>agreement_type</code>,
-<code>pathologyContext</code>, <code>diagnosticStyleAnalysis</code>, and
-similar) that no longer exists, so copying them will produce
-<code>unused argument</code> errors. The narrative, the statistics and
-the clinical guidance remain correct; only the argument names are stale.
-All chunks are set to <code>eval = FALSE</code>, so nothing here is
-executed when the article is built. A rewrite against the current API is
-planned.</p>
-<p>For the real argument list see <code><a href="../reference/agreement.html">?agreement</a></code>. A working
-call looks like this — verified against meddecide 1.0.4, three
-pathologists rating 60 cases on a three-level scale:</p>
+<p>This article is a short, practical guide to the <strong>Interrater
+Reliability</strong> analysis (<code><a href="../reference/agreement.html">agreement()</a></code>, jamovi menu
+<strong>meddecide &gt; Agreement &gt; Interrater Reliability</strong>).
+It shows which statistic fits which kind of rating, and how to read the
+result tables from R. For every option, see <code><a href="../reference/agreement.html">?agreement</a></code> or
+the <a href="meddecide-agreement-comprehensive.html">comprehensive
+guide</a>.</p>
+<p>Each rater is one column of <code>data</code>; each row is one case.
+Pass the rater columns to <code>vars</code>. With two raters the
+analysis reports Cohen’s kappa; with three or more, Fleiss’ kappa.</p>
+<div class="section level2">
+<h2 id="choosing-a-statistic">Choosing a statistic<a class="anchor" aria-label="anchor" href="#choosing-a-statistic"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Ratings</th>
+<th>Primary statistic</th>
+<th>Options</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Nominal (e.g. diagnosis)</td>
+<td>Cohen’s / Fleiss’ kappa</td>
+<td>default; <code>kripp = TRUE</code>, <code>gwet = TRUE</code>
+</td>
+</tr>
+<tr class="even">
+<td>Ordinal (e.g. grade 1-3)</td>
+<td>Weighted kappa (2 raters); ordinal alpha or Gwet’s AC2 (3+
+raters)</td>
+<td>
+<code>wght = "equal"</code> (linear) or <code>"squared"</code>
+(quadratic); with 3+ raters <code>allPairsKappa = TRUE</code> gives
+weighted kappa per pair, or <code>krippMethod = "ordinal"</code>,
+<code>gwetWeights</code>
+</td>
+</tr>
+<tr class="odd">
+<td>Rare category, skewed prevalence</td>
+<td>Gwet’s AC1, PABAK</td>
+<td>
+<code>gwet = TRUE</code>, <code>pabak = TRUE</code>
+</td>
+</tr>
+<tr class="even">
+<td>Continuous (e.g. Ki-67 %)</td>
+<td>ICC, Lin’s CCC, Bland-Altman</td>
+<td>
+<code>icc = TRUE</code>, <code>linCCC = TRUE</code>,
+<code>blandAltmanPlot = TRUE</code>
+</td>
+</tr>
+<tr class="odd">
+<td>Missing ratings, any scale</td>
+<td>Krippendorff’s alpha</td>
+<td>
+<code>kripp = TRUE</code>,
+<code>krippMethod = "nominal"/"ordinal"/"interval"/"ratio"</code>
+</td>
+</tr>
+<tr class="even">
+<td>Which pairs disagree</td>
+<td>All-pairs kappa</td>
+<td><code>allPairsKappa = TRUE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
+<h2 id="nominal-ratings-three-raters">Nominal ratings: three raters<a class="anchor" aria-label="anchor" href="#nominal-ratings-three-raters"></a>
+</h2>
+<p>The bundled <code>histopathology</code> data has three binary rater
+columns.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data  <span class="op">=</span> <span class="va">ratings</span>,</span>
-<span>  vars  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pathologist_1"</span>, <span class="st">"Pathologist_2"</span>, <span class="st">"Pathologist_3"</span><span class="op">)</span>,</span>
-<span>  wght  <span class="op">=</span> <span class="st">"unweighted"</span>,       <span class="co"># or "squared" / "equal" for an ordinal scale</span></span>
-<span>  exct  <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  kripp <span class="op">=</span> <span class="cn">TRUE</span>,               <span class="co"># Krippendorff's alpha</span></span>
-<span>  krippMethod <span class="op">=</span> <span class="st">"nominal"</span>,</span>
-<span>  confLevel <span class="op">=</span> <span class="fl">0.95</span>,</span>
-<span>  agreementHeatmap <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  pairwiseKappa <span class="op">=</span> <span class="cn">TRUE</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">histopathology</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
+<span>  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rater 1"</span>, <span class="st">"Rater 2"</span>, <span class="st">"Rater 3"</span><span class="op">)</span>,</span>
+<span>  kripp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  gwet <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  allPairsKappa <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p &lt;.001</span></span>
-<span><span class="co">#&gt; Krippendorff's Alpha (nominal)                                   alpha 0.735</span></span></code></pre></div>
-</blockquote>
+<span></span>
+<span><span class="va">res</span><span class="op">$</span><span class="va">irrtable</span><span class="op">$</span><span class="va">asDF</span>                          <span class="co"># Fleiss' kappa</span></span>
+<span><span class="co">#&gt;        method subjects raters peragree     kappa ci_lower  ci_upper        z</span></span>
+<span><span class="co">#&gt; "1" Fleiss' κ      250      3 76.30522 0.6512801 0.572085 0.7304752 16.19697</span></span>
+<span><span class="co">#&gt;                p</span></span>
+<span><span class="co">#&gt; "1" 8.688896e-41</span></span>
+<span><span class="va">res</span><span class="op">$</span><span class="va">krippTableGroup</span><span class="op">$</span><span class="va">krippTable</span><span class="op">$</span><span class="va">asDF</span>        <span class="co"># Krippendorff's alpha</span></span>
+<span><span class="co">#&gt;                             method subjects raters     alpha</span></span>
+<span><span class="co">#&gt; "1" Krippendorff's Alpha (nominal)      250      3 0.6540881</span></span>
+<span><span class="co">#&gt;                                interpretation</span></span>
+<span><span class="co">#&gt; "1" Insufficient agreement - discard variable</span></span>
+<span><span class="va">res</span><span class="op">$</span><span class="va">gwetGroup</span><span class="op">$</span><span class="va">gwetTable</span><span class="op">$</span><span class="va">asDF</span>               <span class="co"># Gwet's AC1</span></span>
+<span><span class="co">#&gt;                      method subjects raters coefficient      se ci_lower</span></span>
+<span><span class="co">#&gt; "1" Gwet's AC1 (unweighted)      250      3     0.69976 0.03545     0.63</span></span>
+<span><span class="co">#&gt;     ci_upper           p</span></span>
+<span><span class="co">#&gt; "1"     0.77 7.61843e-53</span></span>
+<span><span class="va">res</span><span class="op">$</span><span class="va">allPairsKappaTable</span><span class="op">$</span><span class="va">asDF</span>                <span class="co"># Cohen's kappa for every pair</span></span>
+<span><span class="co">#&gt;       rater_a rater_b   n  peragree     kappa         se  ci_lower  ci_upper</span></span>
+<span><span class="co">#&gt; "1_2" Rater 1 Rater 2 249 0.9196787 0.8205535 0.03832152 0.7454447 0.8956623</span></span>
+<span><span class="co">#&gt; "1_3" Rater 1 Rater 3 249 0.8433735 0.6661395 0.04800118 0.5720589 0.7602201</span></span>
+<span><span class="co">#&gt; "2_3" Rater 2 Rater 3 250 0.7600000 0.4943707 0.05604538 0.3845237 0.6042176</span></span>
+<span><span class="co">#&gt;               z             p</span></span>
+<span><span class="co">#&gt; "1_2" 21.412343 1.025272e-101</span></span>
+<span><span class="co">#&gt; "1_3" 13.877566  8.663573e-44</span></span>
+<span><span class="co">#&gt; "2_3"  8.820899  1.135447e-18</span></span></code></pre></div>
+<p>Several tables live inside result groups, so the path has two parts
+(<code>res$krippTableGroup$krippTable</code>,
+<code>res$gwetGroup$gwetTable</code>,
+<code>res$iccGroup$iccTable</code>).</p>
+</div>
 <div class="section level2">
-<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+<h2 id="ordinal-ratings-weighted-kappa">Ordinal ratings: weighted kappa<a class="anchor" aria-label="anchor" href="#ordinal-ratings-weighted-kappa"></a>
 </h2>
-<p>Inter-rater agreement and reliability analysis are fundamental to
-pathology practice, quality assurance, and research. This comprehensive
-guide covers agreement analysis for pathologists, from basic Cohen’s
-kappa to advanced methods for complex study designs.</p>
-<p><strong>Learning Objectives:</strong></p>
-<ul>
-<li>Understand types of agreement measures and their appropriate
-use</li>
-<li>Master interpretation of kappa statistics in pathological
-contexts</li>
-<li>Learn to design and power agreement studies</li>
-<li>Apply agreement analysis to different pathological scenarios</li>
-<li>Implement quality assurance programs using agreement metrics</li>
-</ul>
-<div class="section level3">
-<h3 id="clinical-applications-in-pathology">Clinical Applications in Pathology<a class="anchor" aria-label="anchor" href="#clinical-applications-in-pathology"></a>
-</h3>
-<p>Agreement analysis is essential for:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Diagnostic Consistency</strong>: Evaluating
-inter-pathologist agreement on diagnoses</li>
-<li>
-<strong>Biomarker Scoring</strong>: Assessing concordance in IHC,
-FISH, and molecular markers</li>
-<li>
-<strong>Grading Systems</strong>: Validating tumor grading and
-staging protocols</li>
-<li>
-<strong>Digital Pathology</strong>: Comparing traditional
-vs. digital diagnosis</li>
-<li>
-<strong>Training Programs</strong>: Monitoring resident and fellow
-progress</li>
-<li>
-<strong>Quality Assurance</strong>: Establishing institutional
-benchmarks</li>
-</ol>
+<p>For two raters scoring an ordered scale, weighted kappa gives partial
+credit for near-misses. <code>wght = "squared"</code> (quadratic
+weights) is the usual choice for grades.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org" class="external-link">irr</a></span><span class="op">)</span></span></code></pre></div>
-</div>
+<code class="sourceCode R"><span><span class="va">res_w</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
+<span>  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rater A"</span>, <span class="st">"Rater B"</span><span class="op">)</span>,</span>
+<span>  wght <span class="op">=</span> <span class="st">"squared"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">res_w</span><span class="op">$</span><span class="va">irrtable</span><span class="op">$</span><span class="va">asDF</span></span>
+<span><span class="co">#&gt;                   method subjects raters peragree     kappa  ci_lower  ci_upper</span></span>
+<span><span class="co">#&gt; "1" Quadratic-weighted κ      250      2     58.8 0.4005073 0.2832064 0.5178081</span></span>
+<span><span class="co">#&gt;            z            p</span></span>
+<span><span class="co">#&gt; "1" 6.376624 1.810345e-10</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="dataset-overview">Dataset Overview<a class="anchor" aria-label="anchor" href="#dataset-overview"></a>
+<h2 id="continuous-measurements-icc-and-lins-ccc">Continuous measurements: ICC and Lin’s CCC<a class="anchor" aria-label="anchor" href="#continuous-measurements-icc-and-lins-ccc"></a>
 </h2>
-<div class="section level3">
-<h3 id="comprehensive-agreement-datasets">Comprehensive Agreement Datasets<a class="anchor" aria-label="anchor" href="#comprehensive-agreement-datasets"></a>
-</h3>
-<p>The package includes multiple datasets for different agreement
-scenarios:</p>
-<div class="section level4">
-<h4 id="breast-cancer-agreement-study">Breast Cancer Agreement Study<a class="anchor" aria-label="anchor" href="#breast-cancer-agreement-study"></a>
-</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load breast cancer pathologist agreement data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">breast_agreement_data</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Overview of the study</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">breast_agreement_data</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span></span>
-<span>  <span class="st">"Study includes:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">breast_agreement_data</span><span class="op">)</span>, <span class="st">"cases from"</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">breast_agreement_data</span><span class="op">$</span><span class="va">Institution</span><span class="op">)</span><span class="op">)</span>, <span class="st">"institutions\n"</span></span>
+<code class="sourceCode R"><span><span class="va">res_c</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">histopathology</span>,</span>
+<span>  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Measurement1"</span>, <span class="st">"Measurement2"</span><span class="op">)</span>,</span>
+<span>  icc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  iccType <span class="op">=</span> <span class="st">"icc21"</span>,</span>
+<span>  linCCC <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  blandAltmanPlot <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Preview the data structure</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">breast_agreement_data</span><span class="op">)</span></span></code></pre></div>
-<p>This dataset represents a multi-institutional study of breast cancer
-diagnosis agreement with: - <strong>3 pathologists</strong> with
-different experience levels - <strong>200 cases</strong> including
-various breast lesions<br>
-- <strong>4 diagnostic categories</strong>: Benign, Atypical, DCIS,
-Invasive Carcinoma - <strong>Institutional variability</strong> across
-academic and community settings</p>
-</div>
-<div class="section level4">
-<h4 id="melanoma-agreement-study">Melanoma Agreement Study<a class="anchor" aria-label="anchor" href="#melanoma-agreement-study"></a>
-</h4>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load melanoma agreement data for histologic features</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">melanoma_agreement_data</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Study characteristics</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">melanoma_agreement_data</span><span class="op">$</span><span class="va">Histologic_Subtype</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">melanoma_agreement_data</span><span class="op">$</span><span class="va">Breslow_Category</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
+<span><span class="va">res_c</span><span class="op">$</span><span class="va">iccGroup</span><span class="op">$</span><span class="va">iccTable</span><span class="op">$</span><span class="va">asDF</span></span>
+<span><span class="co">#&gt;                                 model subjects raters icc_value   ci_lower</span></span>
+<span><span class="co">#&gt; "1" ICC(2,1) - Two-way random, single      250      2 0.1718531 0.04903747</span></span>
+<span><span class="co">#&gt;      ci_upper  f_value df1 df2           p</span></span>
+<span><span class="co">#&gt; "1" 0.2895482 1.414754 249 249 0.003187137</span></span>
+<span><span class="va">res_c</span><span class="op">$</span><span class="va">iccGroup</span><span class="op">$</span><span class="va">linCCCTable</span><span class="op">$</span><span class="va">asDF</span></span>
+<span><span class="co">#&gt;                         comparison subjects       ccc   ci_lower  ci_upper</span></span>
+<span><span class="co">#&gt; "1_2" Measurement1 vs Measurement2      250 0.1712834 0.06751243 0.2713883</span></span>
+<span><span class="co">#&gt;       pearson_r bias_factor   interpretation</span></span>
+<span><span class="co">#&gt; "1_2" 0.2011813   0.8513884 Poor concordance</span></span></code></pre></div>
+<p>Pick the ICC model from the study design (Shrout &amp; Fleiss 1979;
+McGraw &amp; Wong 1996):</p>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th><code>iccType</code></th>
+<th>Model</th>
+<th>Use when</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>
+<code>icc11</code> / <code>icc1k</code>
+</td>
+<td>One-way random effects</td>
+<td>each case is rated by a different set of raters</td>
+</tr>
+<tr class="even">
+<td>
+<code>icc21</code> / <code>icc2k</code>
+</td>
+<td>Two-way random effects, absolute agreement</td>
+<td>the same raters rate every case and are a sample of possible
+raters</td>
+</tr>
+<tr class="odd">
+<td>
+<code>icc31</code> / <code>icc3k</code>
+</td>
+<td>Two-way mixed effects, consistency</td>
+<td>the same fixed raters rate every case and only their ranking
+matters</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>1</code> forms give the reliability of a single rater; the
+<code>k</code> forms give the reliability of the mean of the k raters,
+which is always higher.</p>
 </div>
 <div class="section level2">
-<h2 id="types-of-agreement-analysis">Types of Agreement Analysis<a class="anchor" aria-label="anchor" href="#types-of-agreement-analysis"></a>
+<h2 id="rater-clustering">Rater clustering<a class="anchor" aria-label="anchor" href="#rater-clustering"></a>
 </h2>
-<div class="section level3">
-<h3 id="binary-classifications-cohens-kappa">1. Binary Classifications (Cohen’s Kappa)<a class="anchor" aria-label="anchor" href="#binary-classifications-cohens-kappa"></a>
-</h3>
-<div class="section level4">
-<h4 id="basic-two-rater-agreement">Basic Two-Rater Agreement<a class="anchor" aria-label="anchor" href="#basic-two-rater-agreement"></a>
-</h4>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Evaluate agreement between two experienced pathologists</span></span>
-<span><span class="va">agreement_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  rater1_var <span class="op">=</span> <span class="st">"Pathologist_1_Diagnosis"</span>,</span>
-<span>  rater2_var <span class="op">=</span> <span class="st">"Pathologist_2_Diagnosis"</span>,</span>
-<span>  agreement_type <span class="op">=</span> <span class="st">"kappa"</span>,</span>
-<span>  conf_level <span class="op">=</span> <span class="fl">0.95</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># View results</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">agreement_result</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Interpretation</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="va">agreement_result</span><span class="op">$</span><span class="va">kappa</span> <span class="op">&gt;</span> <span class="fl">0.81</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Agreement is ALMOST PERFECT (κ &gt;0.81)"</span><span class="op">)</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">agreement_result</span><span class="op">$</span><span class="va">kappa</span> <span class="op">&gt;</span> <span class="fl">0.61</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Agreement is SUBSTANTIAL (κ 0.61-0.80)"</span><span class="op">)</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">agreement_result</span><span class="op">$</span><span class="va">kappa</span> <span class="op">&gt;</span> <span class="fl">0.41</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Agreement is MODERATE (κ 0.41-0.60)"</span><span class="op">)</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Agreement needs improvement (κ &lt;=0.40)"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="weighted-kappa-for-ordinal-categories">Weighted Kappa for Ordinal Categories<a class="anchor" aria-label="anchor" href="#weighted-kappa-for-ordinal-categories"></a>
-</h4>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># For ordinal variables like tumor grades</span></span>
-<span><span class="co"># Convert to ordered factors if needed</span></span>
-<span><span class="va">breast_agreement_data</span><span class="op">$</span><span class="va">Grade_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">breast_agreement_data</span><span class="op">$</span><span class="va">Grade_Pathologist_1</span>,</span>
-<span>  levels <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, ordered <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">breast_agreement_data</span><span class="op">$</span><span class="va">Grade_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">breast_agreement_data</span><span class="op">$</span><span class="va">Grade_Pathologist_2</span>,</span>
-<span>  levels <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, ordered <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Weighted kappa accounts for degree of disagreement</span></span>
-<span><span class="va">weighted_agreement</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  rater1_var <span class="op">=</span> <span class="st">"Grade_1"</span>,</span>
-<span>  rater2_var <span class="op">=</span> <span class="st">"Grade_2"</span>,</span>
-<span>  agreement_type <span class="op">=</span> <span class="st">"weighted_kappa"</span>,</span>
-<span>  weights <span class="op">=</span> <span class="st">"quadratic"</span>, <span class="co"># Penalizes larger disagreements more</span></span>
-<span>  conf_level <span class="op">=</span> <span class="fl">0.95</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">weighted_agreement</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="multiple-raters-fleiss-kappa">2. Multiple Raters (Fleiss’ Kappa)<a class="anchor" aria-label="anchor" href="#multiple-raters-fleiss-kappa"></a>
-</h3>
-<div class="section level4">
-<h4 id="three-pathologist-study-design">Three-Pathologist Study Design<a class="anchor" aria-label="anchor" href="#three-pathologist-study-design"></a>
-</h4>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Reshape data for multiple raters</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Create matrix format required for Fleiss' kappa</span></span>
-<span><span class="va">multi_rater_data</span> <span class="op">&lt;-</span> <span class="va">breast_agreement_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Case_ID</span>, <span class="va">Pathologist_1_Diagnosis</span>, <span class="va">Pathologist_2_Diagnosis</span>, <span class="va">Pathologist_3_Diagnosis</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calculate Fleiss' kappa</span></span>
-<span><span class="va">fleiss_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">multi_rater_data</span>,</span>
-<span>  rater_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pathologist_1_Diagnosis"</span>, <span class="st">"Pathologist_2_Diagnosis"</span>, <span class="st">"Pathologist_3_Diagnosis"</span><span class="op">)</span>,</span>
-<span>  agreement_type <span class="op">=</span> <span class="st">"fleiss"</span>,</span>
-<span>  conf_level <span class="op">=</span> <span class="fl">0.95</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fleiss_result</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="category-specific-agreement">Category-Specific Agreement<a class="anchor" aria-label="anchor" href="#category-specific-agreement"></a>
-</h4>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Examine agreement for each diagnostic category</span></span>
-<span><span class="va">category_agreement</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">multi_rater_data</span>,</span>
-<span>  rater_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pathologist_1_Diagnosis"</span>, <span class="st">"Pathologist_2_Diagnosis"</span>, <span class="st">"Pathologist_3_Diagnosis"</span><span class="op">)</span>,</span>
-<span>  agreement_type <span class="op">=</span> <span class="st">"fleiss"</span>,</span>
-<span>  category_specific <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Plot category-specific kappa values</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">category_agreement</span>, type <span class="op">=</span> <span class="st">"category"</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="continuous-measurements-icc">3. Continuous Measurements (ICC)<a class="anchor" aria-label="anchor" href="#continuous-measurements-icc"></a>
-</h3>
-<blockquote>
-<p><strong>Not yet released in meddecide.</strong> The
-<code>icccoeff</code> analysis used in this section is not part of the
-meddecide 1.0.4 release; it is documented here ahead of a future release
-and will not appear in your jamovi menu yet. Everything else in this
-article uses <code>agreement</code>, which ships today.</p>
-</blockquote>
-<div class="section level4">
-<h4 id="intraclass-correlation-coefficient">Intraclass Correlation Coefficient<a class="anchor" aria-label="anchor" href="#intraclass-correlation-coefficient"></a>
-</h4>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># For continuous measurements like Ki-67 percentages</span></span>
-<span><span class="va">icc_result</span> <span class="op">&lt;-</span> <span class="fu">icccoeff</span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ki67_Pathologist_1"</span>, <span class="st">"Ki67_Pathologist_2"</span>, <span class="st">"Ki67_Pathologist_3"</span><span class="op">)</span>,</span>
-<span>  icc_type <span class="op">=</span> <span class="st">"icc2_k"</span>, <span class="co"># Two-way random effects, average measures</span></span>
-<span>  confidence_level <span class="op">=</span> <span class="st">"0.95"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">icc_result</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># ICC interpretation:</span></span>
-<span><span class="co"># &lt; 0.50: Poor reliability</span></span>
-<span><span class="co"># 0.50-0.75: Moderate reliability</span></span>
-<span><span class="co"># 0.75-0.90: Good reliability</span></span>
-<span><span class="co"># &gt; 0.90: Excellent reliability</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="bland-altman-analysis">Bland-Altman Analysis<a class="anchor" aria-label="anchor" href="#bland-altman-analysis"></a>
-</h4>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># For method comparison studies</span></span>
-<span><span class="va">bland_altman_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  method1 <span class="op">=</span> <span class="st">"Ki67_Pathologist_1"</span>,</span>
-<span>  method2 <span class="op">=</span> <span class="st">"Ki67_Pathologist_2"</span>,</span>
-<span>  analysis_type <span class="op">=</span> <span class="st">"bland_altman"</span>,</span>
-<span>  plot_type <span class="op">=</span> <span class="st">"difference"</span>,</span>
-<span>  limits_of_agreement <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">bland_altman_plot</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
+<p><code>raterClustering = TRUE</code> groups raters by how alike they
+rate. See <a href="15-diagnostic-style-clustering.html">Diagnostic Style
+Clustering</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="factors-affecting-agreement">Factors Affecting Agreement<a class="anchor" aria-label="anchor" href="#factors-affecting-agreement"></a>
+<h2 id="interpreting-kappa">Interpreting kappa<a class="anchor" aria-label="anchor" href="#interpreting-kappa"></a>
 </h2>
-<div class="section level3">
-<h3 id="experience-level-analysis">Experience Level Analysis<a class="anchor" aria-label="anchor" href="#experience-level-analysis"></a>
-</h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Compare agreement by pathologist experience</span></span>
-<span><span class="va">experience_comparison</span> <span class="op">&lt;-</span> <span class="va">breast_agreement_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Pathologist_Experience</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
-<span>    agreement_with_consensus <span class="op">=</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>      rater1_var <span class="op">=</span> <span class="st">"Pathologist_Diagnosis"</span>,</span>
-<span>      rater2_var <span class="op">=</span> <span class="st">"Consensus_Diagnosis"</span>,</span>
-<span>      agreement_type <span class="op">=</span> <span class="st">"kappa"</span></span>
-<span>    <span class="op">)</span><span class="op">$</span><span class="va">kappa</span>,</span>
-<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">experience_comparison</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualize experience effect</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">experience_comparison</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Pathologist_Experience</span>, y <span class="op">=</span> <span class="va">agreement_with_consensus</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Agreement with Consensus by Experience Level"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Pathologist Experience"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Kappa Coefficient"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="case-difficulty-analysis">Case Difficulty Analysis<a class="anchor" aria-label="anchor" href="#case-difficulty-analysis"></a>
-</h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Examine agreement by case difficulty</span></span>
-<span><span class="va">difficulty_analysis</span> <span class="op">&lt;-</span> <span class="va">breast_agreement_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span>    case_difficulty <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html" class="external-link">case_when</a></span><span class="op">(</span></span>
-<span>      <span class="va">Consensus_Confidence</span> <span class="op">&gt;=</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"Easy"</span>,</span>
-<span>      <span class="va">Consensus_Confidence</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"Moderate"</span>,</span>
-<span>      <span class="va">Consensus_Confidence</span> <span class="op">&lt;=</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"Difficult"</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">case_difficulty</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
-<span>    kappa <span class="op">=</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>      rater1_var <span class="op">=</span> <span class="st">"Pathologist_1_Diagnosis"</span>,</span>
-<span>      rater2_var <span class="op">=</span> <span class="st">"Pathologist_2_Diagnosis"</span>,</span>
-<span>      agreement_type <span class="op">=</span> <span class="st">"kappa"</span></span>
-<span>    <span class="op">)</span><span class="op">$</span><span class="va">kappa</span>,</span>
-<span>    n_cases <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">difficulty_analysis</span><span class="op">)</span></span></code></pre></div>
-</div>
+<p>Landis and Koch (1977) proposed these descriptive bands. They are a
+convention, not a validated clinical threshold; always report the
+confidence interval.</p>
+<table class="table">
+<thead><tr class="header">
+<th>Kappa</th>
+<th>Landis &amp; Koch label</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>&lt; 0</td>
+<td>Poor</td>
+</tr>
+<tr class="even">
+<td>0.00 - 0.20</td>
+<td>Slight</td>
+</tr>
+<tr class="odd">
+<td>0.21 - 0.40</td>
+<td>Fair</td>
+</tr>
+<tr class="even">
+<td>0.41 - 0.60</td>
+<td>Moderate</td>
+</tr>
+<tr class="odd">
+<td>0.61 - 0.80</td>
+<td>Substantial</td>
+</tr>
+<tr class="even">
+<td>0.81 - 1.00</td>
+<td>Almost perfect</td>
+</tr>
+</tbody>
+</table>
+<p>For the ICC, Koo and Li (2016) suggest &lt; 0.50 poor, 0.50 - 0.75
+moderate, 0.75 - 0.90 good and &gt; 0.90 excellent, judged on the 95%
+confidence interval.</p>
+<p>Kappa depends on prevalence: with one very common category, kappa can
+be low while percent agreement is high (the “kappa paradox”). Report
+percent agreement alongside kappa, and consider Gwet’s AC1 or PABAK.</p>
 </div>
 <div class="section level2">
-<h2 id="study-design-and-sample-size-planning">Study Design and Sample Size Planning<a class="anchor" aria-label="anchor" href="#study-design-and-sample-size-planning"></a>
+<h2 id="sample-size">Sample size<a class="anchor" aria-label="anchor" href="#sample-size"></a>
 </h2>
-<div class="section level3">
-<h3 id="power-analysis-for-agreement-studies">Power Analysis for Agreement Studies<a class="anchor" aria-label="anchor" href="#power-analysis-for-agreement-studies"></a>
-</h3>
-<div class="section level4">
-<h4 id="binary-outcomes">Binary Outcomes<a class="anchor" aria-label="anchor" href="#binary-outcomes"></a>
-</h4>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Calculate sample size for detecting moderate vs substantial agreement</span></span>
-<span><span class="va">power_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kappaSizePower.html">kappaSizePower</a></span><span class="op">(</span></span>
-<span>  outcome <span class="op">=</span> <span class="st">"2"</span>, <span class="co"># Binary outcome</span></span>
-<span>  kappa0 <span class="op">=</span> <span class="fl">0.4</span>, <span class="co"># Null hypothesis (moderate agreement)</span></span>
-<span>  kappa1 <span class="op">=</span> <span class="fl">0.6</span>, <span class="co"># Alternative hypothesis (substantial agreement)</span></span>
-<span>  props <span class="op">=</span> <span class="st">"0.3, 0.7"</span>, <span class="co"># Expected proportions (30% positive, 70% negative)</span></span>
-<span>  raters <span class="op">=</span> <span class="st">"2"</span>, <span class="co"># Two raters</span></span>
-<span>  alpha <span class="op">=</span> <span class="fl">0.05</span>, <span class="co"># Type I error</span></span>
-<span>  power <span class="op">=</span> <span class="fl">0.80</span> <span class="co"># Statistical power</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">power_analysis</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="multiple-categories">Multiple Categories<a class="anchor" aria-label="anchor" href="#multiple-categories"></a>
-</h4>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Sample size for 4-category diagnostic classification</span></span>
-<span><span class="va">power_multicat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kappaSizePower.html">kappaSizePower</a></span><span class="op">(</span></span>
-<span>  outcome <span class="op">=</span> <span class="st">"4"</span>,</span>
-<span>  kappa0 <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>  kappa1 <span class="op">=</span> <span class="fl">0.7</span>,</span>
-<span>  props <span class="op">=</span> <span class="st">"0.25, 0.25, 0.25, 0.25"</span>, <span class="co"># Equal proportions</span></span>
-<span>  raters <span class="op">=</span> <span class="st">"2"</span>,</span>
-<span>  alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  power <span class="op">=</span> <span class="fl">0.80</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">power_multicat</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level3">
-<h3 id="precision-based-sample-size">Precision-Based Sample Size<a class="anchor" aria-label="anchor" href="#precision-based-sample-size"></a>
-</h3>
-<div class="section level4">
-<h4 id="confidence-interval-approach">Confidence Interval Approach<a class="anchor" aria-label="anchor" href="#confidence-interval-approach"></a>
-</h4>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Sample size for desired precision (CI width)</span></span>
-<span><span class="va">precision_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kappaSizeCI.html">kappaSizeCI</a></span><span class="op">(</span></span>
-<span>  outcome <span class="op">=</span> <span class="st">"2"</span>,</span>
-<span>  kappa0 <span class="op">=</span> <span class="fl">0.6</span>, <span class="co"># Anticipated kappa - NOT a null hypothesis value</span></span>
-<span>  kappaL <span class="op">=</span> <span class="fl">0.5</span>, <span class="co"># Lower confidence limit wanted</span></span>
-<span>  kappaU <span class="op">=</span> <span class="fl">0.7</span>, <span class="co"># Upper confidence limit wanted</span></span>
-<span>  alpha <span class="op">=</span> <span class="fl">0.05</span>, <span class="co"># 1 - alpha is the confidence level; there is no conf_level argument</span></span>
-<span>  props <span class="op">=</span> <span class="st">"0.4, 0.6"</span>,</span>
-<span>  raters <span class="op">=</span> <span class="st">"2"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">precision_analysis</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="fixed-sample-size-analysis">Fixed Sample Size Analysis<a class="anchor" aria-label="anchor" href="#fixed-sample-size-analysis"></a>
-</h4>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># What precision can we achieve with available sample?</span></span>
-<span><span class="va">fixed_n_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kappaSizeFixedN.html">kappaSizeFixedN</a></span><span class="op">(</span></span>
-<span>  outcome <span class="op">=</span> <span class="st">"2"</span>,</span>
-<span>  kappa0 <span class="op">=</span> <span class="fl">0.6</span>,</span>
-<span>  props <span class="op">=</span> <span class="st">"0.3, 0.7"</span>,</span>
-<span>  raters <span class="op">=</span> <span class="st">"2"</span>,</span>
-<span>  alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  n <span class="op">=</span> <span class="fl">150</span> <span class="co"># Available sample size</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fixed_n_result</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
+<p>To plan an agreement study, use the kappa sample-size tools under
+jamovi’s <strong>Power</strong> menu: <code><a href="../reference/kappaSizeCI.html">kappaSizeCI()</a></code>,
+<code><a href="../reference/kappaSizePower.html">kappaSizePower()</a></code> and <code><a href="../reference/kappaSizeFixedN.html">kappaSizeFixedN()</a></code>.</p>
 </div>
 <div class="section level2">
-<h2 id="advanced-applications">Advanced Applications<a class="anchor" aria-label="anchor" href="#advanced-applications"></a>
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div class="section level3">
-<h3 id="conditional-kappa-analysis">Conditional Kappa Analysis<a class="anchor" aria-label="anchor" href="#conditional-kappa-analysis"></a>
-</h3>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Agreement conditional on true positive/negative status</span></span>
-<span><span class="va">conditional_agreement</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  rater1_var <span class="op">=</span> <span class="st">"Pathologist_1_Diagnosis"</span>,</span>
-<span>  rater2_var <span class="op">=</span> <span class="st">"Pathologist_2_Diagnosis"</span>,</span>
-<span>  truth_var <span class="op">=</span> <span class="st">"Gold_Standard"</span>,</span>
-<span>  analysis_type <span class="op">=</span> <span class="st">"conditional_kappa"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">conditional_agreement</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="multi-level-agreement-hierarchical">Multi-Level Agreement (Hierarchical)<a class="anchor" aria-label="anchor" href="#multi-level-agreement-hierarchical"></a>
-</h3>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Account for clustering by institution</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">multilevel_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  rater1_var <span class="op">=</span> <span class="st">"Pathologist_1_Diagnosis"</span>,</span>
-<span>  rater2_var <span class="op">=</span> <span class="st">"Pathologist_2_Diagnosis"</span>,</span>
-<span>  cluster_var <span class="op">=</span> <span class="st">"Institution"</span>,</span>
-<span>  analysis_type <span class="op">=</span> <span class="st">"multilevel_kappa"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">multilevel_model</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="longitudinal-agreement-test-retest">Longitudinal Agreement (Test-Retest)<a class="anchor" aria-label="anchor" href="#longitudinal-agreement-test-retest"></a>
-</h3>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Agreement across time points</span></span>
-<span><span class="va">test_retest</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  time1_var <span class="op">=</span> <span class="st">"Initial_Diagnosis"</span>,</span>
-<span>  time2_var <span class="op">=</span> <span class="st">"Repeat_Diagnosis"</span>,</span>
-<span>  subject_id <span class="op">=</span> <span class="st">"Case_ID"</span>,</span>
-<span>  analysis_type <span class="op">=</span> <span class="st">"test_retest"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">test_retest</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="quality-assurance-applications">Quality Assurance Applications<a class="anchor" aria-label="anchor" href="#quality-assurance-applications"></a>
-</h2>
-<div class="section level3">
-<h3 id="establishing-qa-benchmarks">Establishing QA Benchmarks<a class="anchor" aria-label="anchor" href="#establishing-qa-benchmarks"></a>
-</h3>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Set institutional benchmarks</span></span>
-<span><span class="va">qa_standards</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  diagnostic_agreement <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    minimum_kappa <span class="op">=</span> <span class="fl">0.6</span>,</span>
-<span>    target_kappa <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>    benchmark_cases <span class="op">=</span> <span class="fl">100</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  biomarker_scoring <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    minimum_icc <span class="op">=</span> <span class="fl">0.75</span>,</span>
-<span>    target_icc <span class="op">=</span> <span class="fl">0.90</span>,</span>
-<span>    benchmark_cases <span class="op">=</span> <span class="fl">50</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Monitor ongoing performance</span></span>
-<span><span class="va">current_performance</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  rater1_var <span class="op">=</span> <span class="st">"Pathologist_1_Diagnosis"</span>,</span>
-<span>  rater2_var <span class="op">=</span> <span class="st">"Consensus_Diagnosis"</span>,</span>
-<span>  agreement_type <span class="op">=</span> <span class="st">"kappa"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Check against benchmark</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="va">current_performance</span><span class="op">$</span><span class="va">kappa</span> <span class="op">&gt;=</span> <span class="va">qa_standards</span><span class="op">$</span><span class="va">diagnostic_agreement</span><span class="op">$</span><span class="va">target_kappa</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"✓ Performance EXCEEDS target benchmark"</span><span class="op">)</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">current_performance</span><span class="op">$</span><span class="va">kappa</span> <span class="op">&gt;=</span> <span class="va">qa_standards</span><span class="op">$</span><span class="va">diagnostic_agreement</span><span class="op">$</span><span class="va">minimum_kappa</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"⚠ Performance meets minimum but below target"</span><span class="op">)</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"✗ Performance BELOW minimum standard - intervention needed"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="training-assessment">Training Assessment<a class="anchor" aria-label="anchor" href="#training-assessment"></a>
-</h3>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Monitor trainee progress over time</span></span>
-<span><span class="va">trainee_progress</span> <span class="op">&lt;-</span> <span class="va">breast_agreement_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Pathologist_Level</span> <span class="op">==</span> <span class="st">"Resident"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Training_Month</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
-<span>    agreement_with_attending <span class="op">=</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>      rater1_var <span class="op">=</span> <span class="st">"Resident_Diagnosis"</span>,</span>
-<span>      rater2_var <span class="op">=</span> <span class="st">"Attending_Diagnosis"</span>,</span>
-<span>      agreement_type <span class="op">=</span> <span class="st">"kappa"</span></span>
-<span>    <span class="op">)</span><span class="op">$</span><span class="va">kappa</span>,</span>
-<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Plot learning curve</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">trainee_progress</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Training_Month</span>, y <span class="op">=</span> <span class="va">agreement_with_attending</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span></span>
-<span>    yintercept <span class="op">=</span> <span class="fl">0.6</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>, color <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>    alpha <span class="op">=</span> <span class="fl">0.7</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="external-link">annotate</a></span><span class="op">(</span><span class="st">"text"</span>,</span>
-<span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">trainee_progress</span><span class="op">$</span><span class="va">Training_Month</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.8</span>, y <span class="op">=</span> <span class="fl">0.65</span>,</span>
-<span>    label <span class="op">=</span> <span class="st">"Minimum Standard"</span>, color <span class="op">=</span> <span class="st">"red"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Resident Training Progress: Agreement with Attending"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Training Month"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Kappa Coefficient"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="interpretation-guidelines">Interpretation Guidelines<a class="anchor" aria-label="anchor" href="#interpretation-guidelines"></a>
-</h2>
-<div class="section level3">
-<h3 id="clinical-significance-vs-statistical-significance">Clinical Significance vs Statistical Significance<a class="anchor" aria-label="anchor" href="#clinical-significance-vs-statistical-significance"></a>
-</h3>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Large sample may show statistical significance for clinically unimportant differences</span></span>
-<span><span class="va">large_study_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">large_agreement_dataset</span>, <span class="co"># Hypothetical large dataset</span></span>
-<span>  rater1_var <span class="op">=</span> <span class="st">"Rater1"</span>,</span>
-<span>  rater2_var <span class="op">=</span> <span class="st">"Rater2"</span>,</span>
-<span>  agreement_type <span class="op">=</span> <span class="st">"kappa"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Consider both p-value AND effect size</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Statistical significance: p ="</span>, <span class="va">large_study_result</span><span class="op">$</span><span class="va">p_value</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Clinical significance: κ ="</span>, <span class="va">large_study_result</span><span class="op">$</span><span class="va">kappa</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="va">large_study_result</span><span class="op">$</span><span class="va">p_value</span> <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="op">&amp;</span> <span class="va">large_study_result</span><span class="op">$</span><span class="va">kappa</span> <span class="op">&lt;</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Statistically significant but clinically inadequate agreement"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="reporting-standards">Reporting Standards<a class="anchor" aria-label="anchor" href="#reporting-standards"></a>
-</h3>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Template for reporting agreement results</span></span>
-<span><span class="va">agreement_report</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">result</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Agreement Analysis Report\n"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"========================\n\n"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Sample size:"</span>, <span class="va">result</span><span class="op">$</span><span class="va">n</span>, <span class="st">"cases\n"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span></span>
-<span>    <span class="st">"Kappa coefficient:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">kappa</span>, <span class="fl">3</span><span class="op">)</span>,</span>
-<span>    <span class="st">"(95% CI:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">ci_lower</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"-"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">ci_upper</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">")\n"</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"P-value:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.pval.html" class="external-link">format.pval</a></span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">p_value</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Interpretation:"</span>, <span class="va">result</span><span class="op">$</span><span class="va">interpretation</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Recommendation:"</span>, <span class="va">result</span><span class="op">$</span><span class="va">recommendation</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="co"># Example usage</span></span>
-<span><span class="va">main_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/agreement.html">agreement</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">breast_agreement_data</span>,</span>
-<span>  rater1_var <span class="op">=</span> <span class="st">"Pathologist_1_Diagnosis"</span>,</span>
-<span>  rater2_var <span class="op">=</span> <span class="st">"Pathologist_2_Diagnosis"</span>,</span>
-<span>  agreement_type <span class="op">=</span> <span class="st">"kappa"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">agreement_report</span><span class="op">(</span><span class="va">main_result</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="best-practices-and-recommendations">Best Practices and Recommendations<a class="anchor" aria-label="anchor" href="#best-practices-and-recommendations"></a>
-</h2>
-<div class="section level3">
-<h3 id="study-design-considerations">Study Design Considerations<a class="anchor" aria-label="anchor" href="#study-design-considerations"></a>
-</h3>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Sample Size Planning</strong>
 <ul>
-<li>Use power analysis for hypothesis testing</li>
-<li>Use precision analysis for descriptive studies</li>
-<li>Account for expected agreement levels and prevalence</li>
+<li>Landis JR, Koch GG. The measurement of observer agreement for
+categorical data. <em>Biometrics</em>. 1977;33:159-174.</li>
+<li>Shrout PE, Fleiss JL. Intraclass correlations: uses in assessing
+rater reliability. <em>Psychol Bull</em>. 1979;86:420-428.</li>
+<li>McGraw KO, Wong SP. Forming inferences about some intraclass
+correlation coefficients. <em>Psychol Methods</em>. 1996;1:30-46.</li>
+<li>Koo TK, Li MY. A guideline of selecting and reporting intraclass
+correlation coefficients for reliability research. <em>J Chiropr
+Med</em>. 2016;15:155-163.</li>
+<li>Gwet KL. Computing inter-rater reliability and its variance in the
+presence of high agreement. <em>Br J Math Stat Psychol</em>.
+2008;61:29-48.</li>
+<li>Krippendorff K. <em>Content Analysis: An Introduction to Its
+Methodology</em>. 4th ed. Sage; 2018.</li>
 </ul>
-</li>
-<li>
-<strong>Rater Selection</strong>
-<ul>
-<li>Include raters representative of intended users</li>
-<li>Balance experience levels appropriately</li>
-<li>Ensure adequate training before study</li>
-</ul>
-</li>
-<li>
-<strong>Case Selection</strong>
-<ul>
-<li>Include full spectrum of difficulty</li>
-<li>Ensure adequate representation of all categories</li>
-<li>Consider enrichment for rare categories</li>
-</ul>
-</li>
-</ol>
-</div>
-<div class="section level3">
-<h3 id="statistical-considerations">Statistical Considerations<a class="anchor" aria-label="anchor" href="#statistical-considerations"></a>
-</h3>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Choose Appropriate Measure</strong>
-<ul>
-<li>Cohen’s kappa: Two raters, nominal/ordinal data</li>
-<li>Weighted kappa: Ordinal data with meaningful ordering</li>
-<li>Fleiss’ kappa: Multiple raters, nominal data</li>
-<li>ICC: Continuous measurements</li>
-</ul>
-</li>
-<li>
-<strong>Account for Prevalence Effects</strong>
-<ul>
-<li>Kappa can be low even with high percentage agreement if prevalence
-is extreme</li>
-<li>Report both kappa and percentage agreement</li>
-<li>Consider prevalence-adjusted kappa when appropriate</li>
-</ul>
-</li>
-<li>
-<strong>Multiple Comparisons</strong>
-<ul>
-<li>Adjust p-values when testing multiple agreements</li>
-<li>Focus on clinically important comparisons</li>
-<li>Report confidence intervals rather than just p-values</li>
-</ul>
-</li>
-</ol>
-</div>
-<div class="section level3">
-<h3 id="regulatory-considerations">Regulatory Considerations<a class="anchor" aria-label="anchor" href="#regulatory-considerations"></a>
-</h3>
-<ol style="list-style-type: decimal">
-<li>
-<strong>FDA Guidance Compliance</strong>
-<ul>
-<li>Document predefined acceptable agreement levels</li>
-<li>Include appropriate statistical analysis plan</li>
-<li>Consider regulatory precedents for similar devices/tests</li>
-</ul>
-</li>
-<li>
-<strong>Quality Assurance Integration</strong>
-<ul>
-<li>Establish ongoing monitoring procedures</li>
-<li>Define trigger levels for intervention</li>
-<li>Document corrective action procedures</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>This comprehensive guide provides pathologists and clinical
-researchers with the tools and knowledge needed to conduct rigorous
-agreement studies, from initial planning through final interpretation
-and quality assurance implementation.</p>
-</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

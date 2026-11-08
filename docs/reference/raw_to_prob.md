@@ -1,12 +1,13 @@
-# Convert raw test values to predicted probabilities using ROC curve
+# Convert raw test values to fitted logistic probabilities
 
-Maps raw test values to probabilities based on their position in the ROC
-curve
+Fits a logistic regression of the binary outcome on the marker. The
+predictor is centered and scaled internally to keep fitted probabilities
+stable when measurement units change.
 
 ## Usage
 
 ``` r
-raw_to_prob(values, actual, direction = ">=")
+raw_to_prob(values, actual, direction = ">=", warn = TRUE)
 ```
 
 ## Arguments
@@ -22,6 +23,12 @@ raw_to_prob(values, actual, direction = ">=")
 - direction:
 
   Direction of test ("\>=" or "\<=")
+
+- warn:
+
+  Logical; emit a consolidated warning when logistic calibration shows
+  separation, non-convergence, or fitting failure. Bootstrap callers set
+  this to `FALSE` and report one aggregate diagnostic instead.
 
 ## Value
 

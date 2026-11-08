@@ -784,6 +784,12 @@ agreement(
 Category-specific agreement rates, important when overall kappa is misleading
 due to prevalence effects.
 
+In jamovi, enabling **Specific agreement indices** displays an **Available categories**
+hint below **Positive category**. It combines categories across the selected raters;
+enter the intended label in the box. Lists longer than 30 categories show the first
+30 and the total count. The hint updates when raters or their category labels change
+and never changes the category you entered.
+
 ```{r specific-agreement}
 # Dataset: agreement_binary
 

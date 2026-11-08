@@ -16,22 +16,20 @@
 > A working call looks like this — verified against meddecide 1.0.4,
 > three pathologists rating 60 cases on a three-level scale:
 >
-> ``` r
->
-> agreement(
->   data  = ratings,
->   vars  = c("Pathologist_1", "Pathologist_2", "Pathologist_3"),
->   wght  = "unweighted",       # or "squared" / "equal" for an ordinal scale
->   exct  = FALSE,
->   kripp = TRUE,               # Krippendorff's alpha
->   krippMethod = "nominal",
->   confLevel = 0.95,
->   agreementHeatmap = TRUE,
->   pairwiseKappa = TRUE
-> )
-> #> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001
-> #> Krippendorff's Alpha (nominal)                                   alpha 0.735
-> ```
+> \
+> [`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+> `  data  ``=`` ``ratings``,`\
+> `  vars  ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Pathologist_1"``, ``"Pathologist_2"``, ``"Pathologist_3"``)``,`\
+> `  wght  ``=`` ``"unweighted"``,       ``# or "squared" / "equal" for an ordinal scale`\
+> `  exct  ``=`` ``FALSE``,`\
+> `  kripp ``=`` ``TRUE``,               ``# Krippendorff's alpha`\
+> `  krippMethod ``=`` ``"nominal"``,`\
+> `  confLevel ``=`` ``0.95``,`\
+> `  agreementHeatmap ``=`` ``TRUE``,`\
+> `  pairwiseKappa ``=`` ``TRUE`\
+> `)`\
+> `#> Fleiss' Kappa for m Raters   subjects 60   raters 3   %agree 75   kappa 0.734   z 13.71   p <.001`\
+> `#> Krippendorff's Alpha (nominal)                                   alpha 0.735`
 
 ## Introduction
 
@@ -61,13 +59,11 @@ Agreement analysis is essential for:
 5.  **Training Programs**: Monitoring resident and fellow progress
 6.  **Quality Assurance**: Establishing institutional benchmarks
 
-``` r
-
-library(dplyr)
-library(ggplot2)
-library(knitr)
-library(irr)
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`knitr`](https://yihui.org/knitr/)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`irr`](https://www.r-project.org)`)`
 
 ## Dataset Overview
 
@@ -78,40 +74,36 @@ scenarios:
 
 #### Breast Cancer Agreement Study
 
-``` r
-
-# Load breast cancer pathologist agreement data
-data(breast_agreement_data)
-
-# Overview of the study
-str(breast_agreement_data)
-cat(
-  "Study includes:", nrow(breast_agreement_data), "cases from",
-  length(unique(breast_agreement_data$Institution)), "institutions\n"
-)
-
-# Preview the data structure
-head(breast_agreement_data)
-```
+\
+`# Load breast cancer pathologist agreement data`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``breast_agreement_data``)`\
+\
+`# Overview of the study`\
+[`str`](https://rdrr.io/r/utils/str.html)`(``breast_agreement_data``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(`\
+`  ``"Study includes:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``breast_agreement_data``)``, ``"cases from"``,`\
+`  `[`length`](https://rdrr.io/r/base/length.html)`(`[`unique`](https://rdrr.io/r/base/unique.html)`(``breast_agreement_data``$``Institution``)``)``, ``"institutions\n"`\
+`)`\
+\
+`# Preview the data structure`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``breast_agreement_data``)`
 
 This dataset represents a multi-institutional study of breast cancer
 diagnosis agreement with: - **3 pathologists** with different experience
-levels - **200 cases** including various breast lesions  
-- **4 diagnostic categories**: Benign, Atypical, DCIS, Invasive
+levels - **200 cases** including various breast lesions\
+\- **4 diagnostic categories**: Benign, Atypical, DCIS, Invasive
 Carcinoma - **Institutional variability** across academic and community
 settings
 
 #### Melanoma Agreement Study
 
-``` r
-
-# Load melanoma agreement data for histologic features
-data(melanoma_agreement_data)
-
-# Study characteristics
-table(melanoma_agreement_data$Histologic_Subtype)
-table(melanoma_agreement_data$Breslow_Category)
-```
+\
+`# Load melanoma agreement data for histologic features`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``melanoma_agreement_data``)`\
+\
+`# Study characteristics`\
+[`table`](https://rdrr.io/r/base/table.html)`(``melanoma_agreement_data``$``Histologic_Subtype``)`\
+[`table`](https://rdrr.io/r/base/table.html)`(``melanoma_agreement_data``$``Breslow_Category``)`
 
 ## Types of Agreement Analysis
 
@@ -119,97 +111,89 @@ table(melanoma_agreement_data$Breslow_Category)
 
 #### Basic Two-Rater Agreement
 
-``` r
-
-# Evaluate agreement between two experienced pathologists
-agreement_result <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  agreement_type = "kappa",
-  conf_level = 0.95
-)
-
-# View results
-print(agreement_result)
-
-# Interpretation
-if (agreement_result$kappa > 0.81) {
-  cat("Agreement is ALMOST PERFECT (κ >0.81)")
-} else if (agreement_result$kappa > 0.61) {
-  cat("Agreement is SUBSTANTIAL (κ 0.61-0.80)")
-} else if (agreement_result$kappa > 0.41) {
-  cat("Agreement is MODERATE (κ 0.41-0.60)")
-} else {
-  cat("Agreement needs improvement (κ <=0.40)")
-}
-```
+\
+`# Evaluate agreement between two experienced pathologists`\
+`agreement_result`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  rater1_var ``=`` ``"Pathologist_1_Diagnosis"``,`\
+`  rater2_var ``=`` ``"Pathologist_2_Diagnosis"``,`\
+`  agreement_type ``=`` ``"kappa"``,`\
+`  conf_level ``=`` ``0.95`\
+`)`\
+\
+`# View results`\
+[`print`](https://rdrr.io/r/base/print.html)`(``agreement_result``)`\
+\
+`# Interpretation`\
+`if`` ``(``agreement_result``$``kappa`` ``>`` ``0.81``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Agreement is ALMOST PERFECT (κ >0.81)"``)`\
+`}`` ``else`` ``if`` ``(``agreement_result``$``kappa`` ``>`` ``0.61``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Agreement is SUBSTANTIAL (κ 0.61-0.80)"``)`\
+`}`` ``else`` ``if`` ``(``agreement_result``$``kappa`` ``>`` ``0.41``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Agreement is MODERATE (κ 0.41-0.60)"``)`\
+`}`` ``else`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Agreement needs improvement (κ <=0.40)"``)`\
+`}`
 
 #### Weighted Kappa for Ordinal Categories
 
-``` r
-
-# For ordinal variables like tumor grades
-# Convert to ordered factors if needed
-breast_agreement_data$Grade_1 <- factor(breast_agreement_data$Grade_Pathologist_1,
-  levels = 1:3, ordered = TRUE
-)
-breast_agreement_data$Grade_2 <- factor(breast_agreement_data$Grade_Pathologist_2,
-  levels = 1:3, ordered = TRUE
-)
-
-# Weighted kappa accounts for degree of disagreement
-weighted_agreement <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Grade_1",
-  rater2_var = "Grade_2",
-  agreement_type = "weighted_kappa",
-  weights = "quadratic", # Penalizes larger disagreements more
-  conf_level = 0.95
-)
-
-print(weighted_agreement)
-```
+\
+`# For ordinal variables like tumor grades`\
+`# Convert to ordered factors if needed`\
+`breast_agreement_data``$``Grade_1`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``breast_agreement_data``$``Grade_Pathologist_1``,`\
+`  levels ``=`` ``1``:``3``, ordered ``=`` ``TRUE`\
+`)`\
+`breast_agreement_data``$``Grade_2`` ``<-`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``breast_agreement_data``$``Grade_Pathologist_2``,`\
+`  levels ``=`` ``1``:``3``, ordered ``=`` ``TRUE`\
+`)`\
+\
+`# Weighted kappa accounts for degree of disagreement`\
+`weighted_agreement`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  rater1_var ``=`` ``"Grade_1"``,`\
+`  rater2_var ``=`` ``"Grade_2"``,`\
+`  agreement_type ``=`` ``"weighted_kappa"``,`\
+`  weights ``=`` ``"quadratic"``, ``# Penalizes larger disagreements more`\
+`  conf_level ``=`` ``0.95`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``weighted_agreement``)`
 
 ### 2. Multiple Raters (Fleiss’ Kappa)
 
 #### Three-Pathologist Study Design
 
-``` r
-
-# Reshape data for multiple raters
-library(dplyr)
-
-# Create matrix format required for Fleiss' kappa
-multi_rater_data <- breast_agreement_data %>%
-  select(Case_ID, Pathologist_1_Diagnosis, Pathologist_2_Diagnosis, Pathologist_3_Diagnosis)
-
-# Calculate Fleiss' kappa
-fleiss_result <- agreement(
-  data = multi_rater_data,
-  rater_vars = c("Pathologist_1_Diagnosis", "Pathologist_2_Diagnosis", "Pathologist_3_Diagnosis"),
-  agreement_type = "fleiss",
-  conf_level = 0.95
-)
-
-print(fleiss_result)
-```
+\
+`# Reshape data for multiple raters`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`\
+\
+`# Create matrix format required for Fleiss' kappa`\
+`multi_rater_data`` ``<-`` ``breast_agreement_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`select`](https://dplyr.tidyverse.org/reference/select.html)`(``Case_ID``, ``Pathologist_1_Diagnosis``, ``Pathologist_2_Diagnosis``, ``Pathologist_3_Diagnosis``)`\
+\
+`# Calculate Fleiss' kappa`\
+`fleiss_result`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``multi_rater_data``,`\
+`  rater_vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Pathologist_1_Diagnosis"``, ``"Pathologist_2_Diagnosis"``, ``"Pathologist_3_Diagnosis"``)``,`\
+`  agreement_type ``=`` ``"fleiss"``,`\
+`  conf_level ``=`` ``0.95`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``fleiss_result``)`
 
 #### Category-Specific Agreement
 
-``` r
-
-# Examine agreement for each diagnostic category
-category_agreement <- agreement(
-  data = multi_rater_data,
-  rater_vars = c("Pathologist_1_Diagnosis", "Pathologist_2_Diagnosis", "Pathologist_3_Diagnosis"),
-  agreement_type = "fleiss",
-  category_specific = TRUE
-)
-
-# Plot category-specific kappa values
-plot(category_agreement, type = "category")
-```
+\
+`# Examine agreement for each diagnostic category`\
+`category_agreement`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``multi_rater_data``,`\
+`  rater_vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Pathologist_1_Diagnosis"``, ``"Pathologist_2_Diagnosis"``, ``"Pathologist_3_Diagnosis"``)``,`\
+`  agreement_type ``=`` ``"fleiss"``,`\
+`  category_specific ``=`` ``TRUE`\
+`)`\
+\
+`# Plot category-specific kappa values`\
+[`plot`](https://rdrr.io/r/graphics/plot.default.html)`(``category_agreement``, type ``=`` ``"category"``)`
 
 ### 3. Continuous Measurements (ICC)
 
@@ -221,99 +205,91 @@ plot(category_agreement, type = "category")
 
 #### Intraclass Correlation Coefficient
 
-``` r
-
-# For continuous measurements like Ki-67 percentages
-icc_result <- icccoeff(
-  data = breast_agreement_data,
-  rater_vars = c("Ki67_Pathologist_1", "Ki67_Pathologist_2", "Ki67_Pathologist_3"),
-  icc_type = "ICC(2,k)", # Two-way random effects, average measures
-  conf_level = 0.95
-)
-
-print(icc_result)
-
-# ICC interpretation:
-# < 0.50: Poor reliability
-# 0.50-0.75: Moderate reliability
-# 0.75-0.90: Good reliability
-# > 0.90: Excellent reliability
-```
+\
+`# For continuous measurements like Ki-67 percentages`\
+`icc_result`` ``<-`` ``icccoeff``(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  rater_vars ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Ki67_Pathologist_1"``, ``"Ki67_Pathologist_2"``, ``"Ki67_Pathologist_3"``)``,`\
+`  icc_type ``=`` ``"ICC(2,k)"``, ``# Two-way random effects, average measures`\
+`  conf_level ``=`` ``0.95`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``icc_result``)`\
+\
+`# ICC interpretation:`\
+`# < 0.50: Poor reliability`\
+`# 0.50-0.75: Moderate reliability`\
+`# 0.75-0.90: Good reliability`\
+`# > 0.90: Excellent reliability`
 
 #### Bland-Altman Analysis
 
-``` r
-
-# For method comparison studies
-bland_altman_plot <- agreement(
-  data = breast_agreement_data,
-  method1 = "Ki67_Pathologist_1",
-  method2 = "Ki67_Pathologist_2",
-  analysis_type = "bland_altman",
-  plot_type = "difference",
-  limits_of_agreement = TRUE
-)
-
-print(bland_altman_plot)
-```
+\
+`# For method comparison studies`\
+`bland_altman_plot`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  method1 ``=`` ``"Ki67_Pathologist_1"``,`\
+`  method2 ``=`` ``"Ki67_Pathologist_2"``,`\
+`  analysis_type ``=`` ``"bland_altman"``,`\
+`  plot_type ``=`` ``"difference"``,`\
+`  limits_of_agreement ``=`` ``TRUE`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``bland_altman_plot``)`
 
 ## Factors Affecting Agreement
 
 ### Experience Level Analysis
 
-``` r
-
-# Compare agreement by pathologist experience
-experience_comparison <- breast_agreement_data %>%
-  group_by(Pathologist_Experience) %>%
-  summarise(
-    agreement_with_consensus = agreement(
-      rater1_var = "Pathologist_Diagnosis",
-      rater2_var = "Consensus_Diagnosis",
-      agreement_type = "kappa"
-    )$kappa,
-    .groups = "drop"
-  )
-
-print(experience_comparison)
-
-# Visualize experience effect
-ggplot(experience_comparison, aes(x = Pathologist_Experience, y = agreement_with_consensus)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  labs(
-    title = "Agreement with Consensus by Experience Level",
-    x = "Pathologist Experience",
-    y = "Kappa Coefficient"
-  ) +
-  theme_minimal()
-```
+\
+`# Compare agreement by pathologist experience`\
+`experience_comparison`` ``<-`` ``breast_agreement_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)`(``Pathologist_Experience``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise`](https://dplyr.tidyverse.org/reference/summarise.html)`(`\
+`    agreement_with_consensus ``=`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`      rater1_var ``=`` ``"Pathologist_Diagnosis"``,`\
+`      rater2_var ``=`` ``"Consensus_Diagnosis"``,`\
+`      agreement_type ``=`` ``"kappa"`\
+`    ``)``$``kappa``,`\
+`    .groups ``=`` ``"drop"`\
+`  ``)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``experience_comparison``)`\
+\
+`# Visualize experience effect`\
+[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``experience_comparison``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``Pathologist_Experience``, y ``=`` ``agreement_with_consensus``)``)`` ``+`\
+`  `[`geom_bar`](https://ggplot2.tidyverse.org/reference/geom_bar.html)`(``stat ``=`` ``"identity"``, fill ``=`` ``"steelblue"``)`` ``+`\
+`  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
+`    title ``=`` ``"Agreement with Consensus by Experience Level"``,`\
+`    x ``=`` ``"Pathologist Experience"``,`\
+`    y ``=`` ``"Kappa Coefficient"`\
+`  ``)`` ``+`\
+`  `[`theme_minimal`](https://ggplot2.tidyverse.org/reference/ggtheme.html)`(``)`
 
 ### Case Difficulty Analysis
 
-``` r
-
-# Examine agreement by case difficulty
-difficulty_analysis <- breast_agreement_data %>%
-  mutate(
-    case_difficulty = case_when(
-      Consensus_Confidence >= 4 ~ "Easy",
-      Consensus_Confidence == 3 ~ "Moderate",
-      Consensus_Confidence <= 2 ~ "Difficult"
-    )
-  ) %>%
-  group_by(case_difficulty) %>%
-  summarise(
-    kappa = agreement(
-      rater1_var = "Pathologist_1_Diagnosis",
-      rater2_var = "Pathologist_2_Diagnosis",
-      agreement_type = "kappa"
-    )$kappa,
-    n_cases = n(),
-    .groups = "drop"
-  )
-
-print(difficulty_analysis)
-```
+\
+`# Examine agreement by case difficulty`\
+`difficulty_analysis`` ``<-`` ``breast_agreement_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(`\
+`    case_difficulty ``=`` `[`case_when`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html)`(`\
+`      ``Consensus_Confidence`` ``>=`` ``4`` ``~`` ``"Easy"``,`\
+`      ``Consensus_Confidence`` ``==`` ``3`` ``~`` ``"Moderate"``,`\
+`      ``Consensus_Confidence`` ``<=`` ``2`` ``~`` ``"Difficult"`\
+`    ``)`\
+`  ``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)`(``case_difficulty``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise`](https://dplyr.tidyverse.org/reference/summarise.html)`(`\
+`    kappa ``=`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`      rater1_var ``=`` ``"Pathologist_1_Diagnosis"``,`\
+`      rater2_var ``=`` ``"Pathologist_2_Diagnosis"``,`\
+`      agreement_type ``=`` ``"kappa"`\
+`    ``)``$``kappa``,`\
+`    n_cases ``=`` `[`n`](https://dplyr.tidyverse.org/reference/context.html)`(``)``,`\
+`    .groups ``=`` ``"drop"`\
+`  ``)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``difficulty_analysis``)`
 
 ## Study Design and Sample Size Planning
 
@@ -321,255 +297,233 @@ print(difficulty_analysis)
 
 #### Binary Outcomes
 
-``` r
-
-# Calculate sample size for detecting moderate vs substantial agreement
-power_analysis <- kappaSizePower(
-  outcome = "2", # Binary outcome
-  kappa0 = 0.4, # Null hypothesis (moderate agreement)
-  kappa1 = 0.6, # Alternative hypothesis (substantial agreement)
-  props = "0.3, 0.7", # Expected proportions (30% positive, 70% negative)
-  raters = "2", # Two raters
-  alpha = 0.05, # Type I error
-  power = 0.80 # Statistical power
-)
-
-print(power_analysis)
-```
+\
+`# Calculate sample size for detecting moderate vs substantial agreement`\
+`power_analysis`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"2"``, ``# Binary outcome`\
+`  kappa0 ``=`` ``0.4``, ``# Null hypothesis (moderate agreement)`\
+`  kappa1 ``=`` ``0.6``, ``# Alternative hypothesis (substantial agreement)`\
+`  props ``=`` ``"0.3, 0.7"``, ``# Expected proportions (30% positive, 70% negative)`\
+`  raters ``=`` ``"2"``, ``# Two raters`\
+`  alpha ``=`` ``0.05``, ``# Type I error`\
+`  power ``=`` ``0.80`` ``# Statistical power`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``power_analysis``)`
 
 #### Multiple Categories
 
-``` r
-
-# Sample size for 4-category diagnostic classification
-power_multicat <- kappaSizePower(
-  outcome = "4",
-  kappa0 = 0.5,
-  kappa1 = 0.7,
-  props = "0.25, 0.25, 0.25, 0.25", # Equal proportions
-  raters = "2",
-  alpha = 0.05,
-  power = 0.80
-)
-
-print(power_multicat)
-```
+\
+`# Sample size for 4-category diagnostic classification`\
+`power_multicat`` ``<-`` `[`kappaSizePower`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)`(`\
+`  outcome ``=`` ``"4"``,`\
+`  kappa0 ``=`` ``0.5``,`\
+`  kappa1 ``=`` ``0.7``,`\
+`  props ``=`` ``"0.25, 0.25, 0.25, 0.25"``, ``# Equal proportions`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  power ``=`` ``0.80`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``power_multicat``)`
 
 ### Precision-Based Sample Size
 
 #### Confidence Interval Approach
 
-``` r
-
-# Sample size for desired precision (CI width)
-precision_analysis <- kappaSizeCI(
-  outcome = "2",
-  kappa0 = 0.6, # Anticipated kappa - NOT a null hypothesis value
-  kappaL = 0.5, # Lower confidence limit wanted
-  kappaU = 0.7, # Upper confidence limit wanted
-  alpha = 0.05, # 1 - alpha is the confidence level; there is no conf_level argument
-  props = "0.4, 0.6",
-  raters = "2"
-)
-
-print(precision_analysis)
-```
+\
+`# Sample size for desired precision (CI width)`\
+`precision_analysis`` ``<-`` `[`kappaSizeCI`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.6``, ``# Anticipated kappa - NOT a null hypothesis value`\
+`  kappaL ``=`` ``0.5``, ``# Lower confidence limit wanted`\
+`  kappaU ``=`` ``0.7``, ``# Upper confidence limit wanted`\
+`  alpha ``=`` ``0.05``, ``# 1 - alpha is the confidence level; there is no conf_level argument`\
+`  props ``=`` ``"0.4, 0.6"``,`\
+`  raters ``=`` ``"2"`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``precision_analysis``)`
 
 #### Fixed Sample Size Analysis
 
-``` r
-
-# What precision can we achieve with available sample?
-fixed_n_result <- kappaSizeFixedN(
-  outcome = "2",
-  kappa0 = 0.6,
-  props = "0.3, 0.7",
-  raters = "2",
-  alpha = 0.05,
-  n = 150 # Available sample size
-)
-
-print(fixed_n_result)
-```
+\
+`# What precision can we achieve with available sample?`\
+`fixed_n_result`` ``<-`` `[`kappaSizeFixedN`](https://www.serdarbalci.com/meddecide/reference/kappaSizeFixedN.md)`(`\
+`  outcome ``=`` ``"2"``,`\
+`  kappa0 ``=`` ``0.6``,`\
+`  props ``=`` ``"0.3, 0.7"``,`\
+`  raters ``=`` ``"2"``,`\
+`  alpha ``=`` ``0.05``,`\
+`  n ``=`` ``150`` ``# Available sample size`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``fixed_n_result``)`
 
 ## Advanced Applications
 
 ### Conditional Kappa Analysis
 
-``` r
-
-# Agreement conditional on true positive/negative status
-conditional_agreement <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  truth_var = "Gold_Standard",
-  analysis_type = "conditional_kappa"
-)
-
-print(conditional_agreement)
-```
+\
+`# Agreement conditional on true positive/negative status`\
+`conditional_agreement`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  rater1_var ``=`` ``"Pathologist_1_Diagnosis"``,`\
+`  rater2_var ``=`` ``"Pathologist_2_Diagnosis"``,`\
+`  truth_var ``=`` ``"Gold_Standard"``,`\
+`  analysis_type ``=`` ``"conditional_kappa"`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``conditional_agreement``)`
 
 ### Multi-Level Agreement (Hierarchical)
 
-``` r
-
-# Account for clustering by institution
-library(lme4)
-
-multilevel_model <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  cluster_var = "Institution",
-  analysis_type = "multilevel_kappa"
-)
-
-print(multilevel_model)
-```
+\
+`# Account for clustering by institution`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`lme4`](https://github.com/lme4/lme4/)`)`\
+\
+`multilevel_model`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  rater1_var ``=`` ``"Pathologist_1_Diagnosis"``,`\
+`  rater2_var ``=`` ``"Pathologist_2_Diagnosis"``,`\
+`  cluster_var ``=`` ``"Institution"``,`\
+`  analysis_type ``=`` ``"multilevel_kappa"`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``multilevel_model``)`
 
 ### Longitudinal Agreement (Test-Retest)
 
-``` r
-
-# Agreement across time points
-test_retest <- agreement(
-  data = breast_agreement_data,
-  time1_var = "Initial_Diagnosis",
-  time2_var = "Repeat_Diagnosis",
-  subject_id = "Case_ID",
-  analysis_type = "test_retest"
-)
-
-print(test_retest)
-```
+\
+`# Agreement across time points`\
+`test_retest`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  time1_var ``=`` ``"Initial_Diagnosis"``,`\
+`  time2_var ``=`` ``"Repeat_Diagnosis"``,`\
+`  subject_id ``=`` ``"Case_ID"``,`\
+`  analysis_type ``=`` ``"test_retest"`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``test_retest``)`
 
 ## Quality Assurance Applications
 
 ### Establishing QA Benchmarks
 
-``` r
-
-# Set institutional benchmarks
-qa_standards <- list(
-  diagnostic_agreement = list(
-    minimum_kappa = 0.6,
-    target_kappa = 0.8,
-    benchmark_cases = 100
-  ),
-  biomarker_scoring = list(
-    minimum_icc = 0.75,
-    target_icc = 0.90,
-    benchmark_cases = 50
-  )
-)
-
-# Monitor ongoing performance
-current_performance <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Consensus_Diagnosis",
-  agreement_type = "kappa"
-)
-
-# Check against benchmark
-if (current_performance$kappa >= qa_standards$diagnostic_agreement$target_kappa) {
-  cat("✓ Performance EXCEEDS target benchmark")
-} else if (current_performance$kappa >= qa_standards$diagnostic_agreement$minimum_kappa) {
-  cat("⚠ Performance meets minimum but below target")
-} else {
-  cat("✗ Performance BELOW minimum standard - intervention needed")
-}
-```
+\
+`# Set institutional benchmarks`\
+`qa_standards`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  diagnostic_agreement ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    minimum_kappa ``=`` ``0.6``,`\
+`    target_kappa ``=`` ``0.8``,`\
+`    benchmark_cases ``=`` ``100`\
+`  ``)``,`\
+`  biomarker_scoring ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    minimum_icc ``=`` ``0.75``,`\
+`    target_icc ``=`` ``0.90``,`\
+`    benchmark_cases ``=`` ``50`\
+`  ``)`\
+`)`\
+\
+`# Monitor ongoing performance`\
+`current_performance`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  rater1_var ``=`` ``"Pathologist_1_Diagnosis"``,`\
+`  rater2_var ``=`` ``"Consensus_Diagnosis"``,`\
+`  agreement_type ``=`` ``"kappa"`\
+`)`\
+\
+`# Check against benchmark`\
+`if`` ``(``current_performance``$``kappa`` ``>=`` ``qa_standards``$``diagnostic_agreement``$``target_kappa``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"✓ Performance EXCEEDS target benchmark"``)`\
+`}`` ``else`` ``if`` ``(``current_performance``$``kappa`` ``>=`` ``qa_standards``$``diagnostic_agreement``$``minimum_kappa``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"⚠ Performance meets minimum but below target"``)`\
+`}`` ``else`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"✗ Performance BELOW minimum standard - intervention needed"``)`\
+`}`
 
 ### Training Assessment
 
-``` r
-
-# Monitor trainee progress over time
-trainee_progress <- breast_agreement_data %>%
-  filter(Pathologist_Level == "Resident") %>%
-  group_by(Training_Month) %>%
-  summarise(
-    agreement_with_attending = agreement(
-      rater1_var = "Resident_Diagnosis",
-      rater2_var = "Attending_Diagnosis",
-      agreement_type = "kappa"
-    )$kappa,
-    .groups = "drop"
-  )
-
-# Plot learning curve
-ggplot(trainee_progress, aes(x = Training_Month, y = agreement_with_attending)) +
-  geom_line(size = 1.2) +
-  geom_point(size = 3) +
-  geom_hline(
-    yintercept = 0.6, linetype = "dashed", color = "red",
-    alpha = 0.7
-  ) +
-  annotate("text",
-    x = max(trainee_progress$Training_Month) * 0.8, y = 0.65,
-    label = "Minimum Standard", color = "red"
-  ) +
-  labs(
-    title = "Resident Training Progress: Agreement with Attending",
-    x = "Training Month",
-    y = "Kappa Coefficient"
-  ) +
-  theme_minimal()
-```
+\
+`# Monitor trainee progress over time`\
+`trainee_progress`` ``<-`` ``breast_agreement_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`filter`](https://rdrr.io/r/stats/filter.html)`(``Pathologist_Level`` ``==`` ``"Resident"``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)`(``Training_Month``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`summarise`](https://dplyr.tidyverse.org/reference/summarise.html)`(`\
+`    agreement_with_attending ``=`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`      rater1_var ``=`` ``"Resident_Diagnosis"``,`\
+`      rater2_var ``=`` ``"Attending_Diagnosis"``,`\
+`      agreement_type ``=`` ``"kappa"`\
+`    ``)``$``kappa``,`\
+`    .groups ``=`` ``"drop"`\
+`  ``)`\
+\
+`# Plot learning curve`\
+[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``trainee_progress``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``Training_Month``, y ``=`` ``agreement_with_attending``)``)`` ``+`\
+`  `[`geom_line`](https://ggplot2.tidyverse.org/reference/geom_path.html)`(``size ``=`` ``1.2``)`` ``+`\
+`  `[`geom_point`](https://ggplot2.tidyverse.org/reference/geom_point.html)`(``size ``=`` ``3``)`` ``+`\
+`  `[`geom_hline`](https://ggplot2.tidyverse.org/reference/geom_abline.html)`(`\
+`    yintercept ``=`` ``0.6``, linetype ``=`` ``"dashed"``, color ``=`` ``"red"``,`\
+`    alpha ``=`` ``0.7`\
+`  ``)`` ``+`\
+`  `[`annotate`](https://ggplot2.tidyverse.org/reference/annotate.html)`(``"text"``,`\
+`    x ``=`` `[`max`](https://rdrr.io/r/base/Extremes.html)`(``trainee_progress``$``Training_Month``)`` ``*`` ``0.8``, y ``=`` ``0.65``,`\
+`    label ``=`` ``"Minimum Standard"``, color ``=`` ``"red"`\
+`  ``)`` ``+`\
+`  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
+`    title ``=`` ``"Resident Training Progress: Agreement with Attending"``,`\
+`    x ``=`` ``"Training Month"``,`\
+`    y ``=`` ``"Kappa Coefficient"`\
+`  ``)`` ``+`\
+`  `[`theme_minimal`](https://ggplot2.tidyverse.org/reference/ggtheme.html)`(``)`
 
 ## Interpretation Guidelines
 
 ### Clinical Significance vs Statistical Significance
 
-``` r
-
-# Large sample may show statistical significance for clinically unimportant differences
-large_study_result <- agreement(
-  data = large_agreement_dataset, # Hypothetical large dataset
-  rater1_var = "Rater1",
-  rater2_var = "Rater2",
-  agreement_type = "kappa"
-)
-
-# Consider both p-value AND effect size
-cat("Statistical significance: p =", large_study_result$p_value, "\n")
-cat("Clinical significance: κ =", large_study_result$kappa, "\n")
-
-if (large_study_result$p_value < 0.05 & large_study_result$kappa < 0.4) {
-  cat("Statistically significant but clinically inadequate agreement")
-}
-```
+\
+`# Large sample may show statistical significance for clinically unimportant differences`\
+`large_study_result`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``large_agreement_dataset``, ``# Hypothetical large dataset`\
+`  rater1_var ``=`` ``"Rater1"``,`\
+`  rater2_var ``=`` ``"Rater2"``,`\
+`  agreement_type ``=`` ``"kappa"`\
+`)`\
+\
+`# Consider both p-value AND effect size`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Statistical significance: p ="``, ``large_study_result``$``p_value``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Clinical significance: κ ="``, ``large_study_result``$``kappa``, ``"\n"``)`\
+\
+`if`` ``(``large_study_result``$``p_value`` ``<`` ``0.05`` ``&`` ``large_study_result``$``kappa`` ``<`` ``0.4``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Statistically significant but clinically inadequate agreement"``)`\
+`}`
 
 ### Reporting Standards
 
-``` r
-
-# Template for reporting agreement results
-agreement_report <- function(result) {
-  cat("Agreement Analysis Report\n")
-  cat("========================\n\n")
-  cat("Sample size:", result$n, "cases\n")
-  cat(
-    "Kappa coefficient:", round(result$kappa, 3),
-    "(95% CI:", round(result$ci_lower, 3), "-", round(result$ci_upper, 3), ")\n"
-  )
-  cat("P-value:", format.pval(result$p_value), "\n")
-  cat("Interpretation:", result$interpretation, "\n")
-  cat("Recommendation:", result$recommendation, "\n")
-}
-
-# Example usage
-main_result <- agreement(
-  data = breast_agreement_data,
-  rater1_var = "Pathologist_1_Diagnosis",
-  rater2_var = "Pathologist_2_Diagnosis",
-  agreement_type = "kappa"
-)
-
-agreement_report(main_result)
-```
+\
+`# Template for reporting agreement results`\
+`agreement_report`` ``<-`` ``function``(``result``)`` ``{`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Agreement Analysis Report\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"========================\n\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Sample size:"``, ``result``$``n``, ``"cases\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(`\
+`    ``"Kappa coefficient:"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``result``$``kappa``, ``3``)``,`\
+`    ``"(95% CI:"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``result``$``ci_lower``, ``3``)``, ``"-"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``result``$``ci_upper``, ``3``)``, ``")\n"`\
+`  ``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"P-value:"``, `[`format.pval`](https://rdrr.io/pkg/Hmisc/man/format.pval.html)`(``result``$``p_value``)``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Interpretation:"``, ``result``$``interpretation``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Recommendation:"``, ``result``$``recommendation``, ``"\n"``)`\
+`}`\
+\
+`# Example usage`\
+`main_result`` ``<-`` `[`agreement`](https://www.serdarbalci.com/meddecide/reference/agreement.md)`(`\
+`  data ``=`` ``breast_agreement_data``,`\
+`  rater1_var ``=`` ``"Pathologist_1_Diagnosis"``,`\
+`  rater2_var ``=`` ``"Pathologist_2_Diagnosis"``,`\
+`  agreement_type ``=`` ``"kappa"`\
+`)`\
+\
+`agreement_report``(``main_result``)`
 
 ## Best Practices and Recommendations
 

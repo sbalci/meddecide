@@ -191,8 +191,8 @@ specificity are agreement with that rule.
 ## Conditional independence
 
 The latent model assumes the tests err independently within each class. Two tests that share a mechanism
-(the same target, the same reader, the same specimen) violate this and can make both look more accurate
-than they are.
+(the same target, the same reader, the same specimen) can violate this assumption and bias the
+estimates; sharing a mechanism alone does not prove conditional dependence.
 
 - **Four or five tests**: the bivariate-residual table compares each observed pairwise table with the one
   the fitted model implies. A residual above 3.84 is descriptive evidence against conditional
@@ -201,8 +201,8 @@ than they are.
   Penalized EM shows the same table, computed from the unpenalized fit of the same model.
 - **Three tests**: the two-class model has 7 parameters for 7 free cell frequencies, so it usually
   reproduces the observed table exactly. Dependence cannot be detected from the data, the residuals read
-  "Not assessable", and the analysis warns that conditional independence cannot be checked. A fourth test
-  that errs independently is needed to detect dependence.
+  "Not assessable", and the analysis warns that conditional independence cannot be checked. A fourth test creates residual degrees of freedom and permits some model checks; it
+  does not guarantee detection of dependence or identify the responsible test pair.
 
 The analysis does not fit dependence models (direct test-to-test associations, more than two classes, or
 random-effects latent class models).

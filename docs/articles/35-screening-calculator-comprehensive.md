@@ -83,40 +83,36 @@ Probability** (Predictive Value)
 The package includes five comprehensive datasets with realistic clinical
 scenarios:
 
-``` r
-
-# Load all screening calculator datasets
-data(screening_examples)
-data(prevalence_demo) 
-data(performance_demo)
-data(sequential_demo)
-data(common_tests)
-
-# Display overview of main clinical scenarios
-kable(screening_examples[1:5, c("scenario", "setting", "sensitivity", "specificity", "prevalence", "ppv")], 
-      caption = "Sample Clinical Scenarios",
-      digits = 3)
-```
+\
+`# Load all screening calculator datasets`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``screening_examples``)`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``prevalence_demo``)`` `\
+[`data`](https://rdrr.io/r/utils/data.html)`(``performance_demo``)`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``sequential_demo``)`\
+[`data`](https://rdrr.io/r/utils/data.html)`(``common_tests``)`\
+\
+`# Display overview of main clinical scenarios`\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``screening_examples``[``1``:``5``, `[`c`](https://rdrr.io/r/base/c.html)`(``"scenario"``, ``"setting"``, ``"sensitivity"``, ``"specificity"``, ``"prevalence"``, ``"ppv"``)``]``, `\
+`      caption ``=`` ``"Sample Clinical Scenarios"``,`\
+`      digits ``=`` ``3``)`
 
 ### COVID-19 Testing Scenarios
 
 Let’s examine how COVID-19 rapid tests perform in different settings:
 
-``` r
-
-covid_data <- screening_examples[screening_examples$scenario == "COVID-19 Rapid Test", ]
-
-kable(covid_data[, c("setting", "prevalence", "ppv", "npv", "interpretation")],
-      caption = "COVID-19 Rapid Test Performance by Setting",
-      digits = 3)
-```
+\
+`covid_data`` ``<-`` ``screening_examples``[``screening_examples``$``scenario`` ``==`` ``"COVID-19 Rapid Test"``, ``]`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``covid_data``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"setting"``, ``"prevalence"``, ``"ppv"``, ``"npv"``, ``"interpretation"``)``]``,`\
+`      caption ``=`` ``"COVID-19 Rapid Test Performance by Setting"``,`\
+`      digits ``=`` ``3``)`
 
 #### Key Insights:
 
 1.  **Community screening** (2% prevalence): Only 26% of positive tests
     are true positives
 2.  **Outbreak testing** (15% prevalence): 78% of positive tests are
-    true positives  
+    true positives\
 3.  **Symptomatic patients** (40% prevalence): 94% of positive tests are
     true positives
 
@@ -127,14 +123,12 @@ interpretation!
 
 Mammography shows the classic challenge of cancer screening:
 
-``` r
-
-mammo_data <- screening_examples[screening_examples$scenario == "Mammography Screening", ]
-
-kable(mammo_data[, c("setting", "prevalence", "sensitivity", "specificity", "ppv", "npv")],
-      caption = "Mammography Performance by Age Group", 
-      digits = 3)
-```
+\
+`mammo_data`` ``<-`` ``screening_examples``[``screening_examples``$``scenario`` ``==`` ``"Mammography Screening"``, ``]`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``mammo_data``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"setting"``, ``"prevalence"``, ``"sensitivity"``, ``"specificity"``, ``"ppv"``, ``"npv"``)``]``,`\
+`      caption ``=`` ``"Mammography Performance by Age Group"``, `\
+`      digits ``=`` ``3``)`
 
 Even with good test characteristics (80-85% sensitivity, 88-92%
 specificity), PPV remains low due to low cancer prevalence. This
@@ -144,26 +138,24 @@ explains why positive mammograms require tissue confirmation.
 
 ### Demonstration with Fixed Test Performance
 
-``` r
-
-# Use the prevalence demo data
-prevalence_plot_data <- prevalence_demo %>%
-  select(prevalence, ppv, npv) %>%
-  tidyr::pivot_longer(cols = c(ppv, npv), names_to = "metric", values_to = "value")
-
-ggplot(prevalence_plot_data, aes(x = prevalence, y = value, color = metric)) +
-  geom_line(size = 1.2) +
-  geom_point(size = 3) +
-  scale_x_log10(labels = scales::percent) +
-  scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
-  labs(title = "How Disease Prevalence Affects Predictive Values",
-       subtitle = "Fixed test performance: Sensitivity = 90%, Specificity = 90%",
-       x = "Disease Prevalence (log scale)",
-       y = "Predictive Value", 
-       color = "Metric") +
-  theme_minimal() +
-  theme(legend.position = "bottom")
-```
+\
+`# Use the prevalence demo data`\
+`prevalence_plot_data`` ``<-`` ``prevalence_demo`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  `[`select`](https://dplyr.tidyverse.org/reference/select.html)`(``prevalence``, ``ppv``, ``npv``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  ``tidyr``::`[`pivot_longer`](https://tidyr.tidyverse.org/reference/pivot_longer.html)`(``cols ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``ppv``, ``npv``)``, names_to ``=`` ``"metric"``, values_to ``=`` ``"value"``)`\
+\
+[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``prevalence_plot_data``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``prevalence``, y ``=`` ``value``, color ``=`` ``metric``)``)`` ``+`\
+`  `[`geom_line`](https://ggplot2.tidyverse.org/reference/geom_path.html)`(``size ``=`` ``1.2``)`` ``+`\
+`  `[`geom_point`](https://ggplot2.tidyverse.org/reference/geom_point.html)`(``size ``=`` ``3``)`` ``+`\
+`  `[`scale_x_log10`](https://ggplot2.tidyverse.org/reference/scale_continuous.html)`(``labels ``=`` ``scales``::`[`percent`](https://scales.r-lib.org/reference/percent_format.html)`)`` ``+`\
+`  `[`scale_y_continuous`](https://ggplot2.tidyverse.org/reference/scale_continuous.html)`(``labels ``=`` ``scales``::`[`percent`](https://scales.r-lib.org/reference/percent_format.html)`, limits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``, ``1``)``)`` ``+`\
+`  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(``title ``=`` ``"How Disease Prevalence Affects Predictive Values"``,`\
+`       subtitle ``=`` ``"Fixed test performance: Sensitivity = 90%, Specificity = 90%"``,`\
+`       x ``=`` ``"Disease Prevalence (log scale)"``,`\
+`       y ``=`` ``"Predictive Value"``, `\
+`       color ``=`` ``"Metric"``)`` ``+`\
+`  `[`theme_minimal`](https://ggplot2.tidyverse.org/reference/ggtheme.html)`(``)`` ``+`\
+`  `[`theme`](https://ggplot2.tidyverse.org/reference/theme.html)`(``legend.position ``=`` ``"bottom"``)`
 
 ### Critical Clinical Lessons
 
@@ -179,14 +171,12 @@ ggplot(prevalence_plot_data, aes(x = prevalence, y = value, color = metric)) +
 
 HIV testing demonstrates the power of sequential testing:
 
-``` r
-
-hiv_data <- screening_examples[screening_examples$scenario == "HIV Testing", ]
-
-kable(hiv_data[, c("setting", "prevalence", "ppv", "clinical_action")],
-      caption = "HIV Testing: From Screening to Confirmation",
-      digits = 3)
-```
+\
+`hiv_data`` ``<-`` ``screening_examples``[``screening_examples``$``scenario`` ``==`` ``"HIV Testing"``, ``]`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``hiv_data``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"setting"``, ``"prevalence"``, ``"ppv"``, ``"clinical_action"``)``]``,`\
+`      caption ``=`` ``"HIV Testing: From Screening to Confirmation"``,`\
+`      digits ``=`` ``3``)`
 
 The progression from 9% PPV (general population screening) to \>99%
 (confirmatory testing) shows how sequential testing transforms
@@ -194,30 +184,26 @@ diagnostic certainty.
 
 ### Mathematical Progression
 
-``` r
+\
+`# Show how probability evolves through testing`\
+`sequential_data`` ``<-`` ``sequential_demo`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``sequential_data``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"test_sequence"``, ``"final_probability"``)``]``,`\
+`      caption ``=`` ``"Disease Probability Evolution Through Sequential Testing"``,`\
+`      digits ``=`` ``3``)`
 
-# Show how probability evolves through testing
-sequential_data <- sequential_demo
-
-kable(sequential_data[, c("test_sequence", "final_probability")],
-      caption = "Disease Probability Evolution Through Sequential Testing",
-      digits = 3)
-```
-
-``` r
-
-ggplot(sequential_data, aes(x = test_sequence, y = final_probability)) +
-  geom_col(fill = "steelblue", alpha = 0.7) +
-  geom_text(aes(label = paste0(round(final_probability * 100, 1), "%")), 
-            vjust = -0.5, size = 4) +
-  scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
-  labs(title = "Disease Probability After Sequential Testing",
-       subtitle = "Sensitivity = 85%, Specificity = 90%, Initial Prevalence = 10%",
-       x = "Test Sequence Pattern",
-       y = "Final Disease Probability") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
+\
+[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``sequential_data``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``test_sequence``, y ``=`` ``final_probability``)``)`` ``+`\
+`  `[`geom_col`](https://ggplot2.tidyverse.org/reference/geom_bar.html)`(``fill ``=`` ``"steelblue"``, alpha ``=`` ``0.7``)`` ``+`\
+`  `[`geom_text`](https://ggplot2.tidyverse.org/reference/geom_text.html)`(`[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``label ``=`` `[`paste0`](https://rdrr.io/r/base/paste.html)`(`[`round`](https://rdrr.io/r/base/Round.html)`(``final_probability`` ``*`` ``100``, ``1``)``, ``"%"``)``)``, `\
+`            vjust ``=`` ``-``0.5``, size ``=`` ``4``)`` ``+`\
+`  `[`scale_y_continuous`](https://ggplot2.tidyverse.org/reference/scale_continuous.html)`(``labels ``=`` ``scales``::`[`percent`](https://scales.r-lib.org/reference/percent_format.html)`, limits ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0``, ``1``)``)`` ``+`\
+`  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(``title ``=`` ``"Disease Probability After Sequential Testing"``,`\
+`       subtitle ``=`` ``"Sensitivity = 85%, Specificity = 90%, Initial Prevalence = 10%"``,`\
+`       x ``=`` ``"Test Sequence Pattern"``,`\
+`       y ``=`` ``"Final Disease Probability"``)`` ``+`\
+`  `[`theme_minimal`](https://ggplot2.tidyverse.org/reference/ggtheme.html)`(``)`` ``+`\
+`  `[`theme`](https://ggplot2.tidyverse.org/reference/theme.html)`(``axis.text.x ``=`` `[`element_text`](https://ggplot2.tidyverse.org/reference/element.html)`(``angle ``=`` ``45``, hjust ``=`` ``1``)``)`
 
 ## Practical Clinical Applications
 
@@ -249,28 +235,24 @@ ggplot(sequential_data, aes(x = test_sequence, y = final_probability)) +
 
 ### Test Performance Comparison
 
-``` r
-
-# Create heatmap showing PPV across different sens/spec combinations
-ggplot(performance_demo, aes(x = factor(specificity), y = factor(sensitivity), fill = ppv)) +
-  geom_tile() +
-  geom_text(aes(label = round(ppv, 2)), color = "white", size = 4) +
-  scale_fill_gradient(low = "red", high = "green", name = "PPV", labels = scales::percent) +
-  labs(title = "Positive Predictive Value Heatmap",
-       subtitle = "Fixed prevalence = 10%",
-       x = "Specificity", 
-       y = "Sensitivity") +
-  theme_minimal()
-```
+\
+`# Create heatmap showing PPV across different sens/spec combinations`\
+[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``performance_demo``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``specificity``)``, y ``=`` `[`factor`](https://rdrr.io/r/base/factor.html)`(``sensitivity``)``, fill ``=`` ``ppv``)``)`` ``+`\
+`  `[`geom_tile`](https://ggplot2.tidyverse.org/reference/geom_tile.html)`(``)`` ``+`\
+`  `[`geom_text`](https://ggplot2.tidyverse.org/reference/geom_text.html)`(`[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``label ``=`` `[`round`](https://rdrr.io/r/base/Round.html)`(``ppv``, ``2``)``)``, color ``=`` ``"white"``, size ``=`` ``4``)`` ``+`\
+`  `[`scale_fill_gradient`](https://ggplot2.tidyverse.org/reference/scale_gradient.html)`(``low ``=`` ``"red"``, high ``=`` ``"green"``, name ``=`` ``"PPV"``, labels ``=`` ``scales``::`[`percent`](https://scales.r-lib.org/reference/percent_format.html)`)`` ``+`\
+`  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(``title ``=`` ``"Positive Predictive Value Heatmap"``,`\
+`       subtitle ``=`` ``"Fixed prevalence = 10%"``,`\
+`       x ``=`` ``"Specificity"``, `\
+`       y ``=`` ``"Sensitivity"``)`` ``+`\
+`  `[`theme_minimal`](https://ggplot2.tidyverse.org/reference/ggtheme.html)`(``)`
 
 ### Reference Test Characteristics
 
-``` r
-
-kable(common_tests, 
-      caption = "Common Clinical Tests: Reference Characteristics",
-      col.names = c("Test", "Sensitivity Range", "Specificity Range", "Typical Prevalence", "Clinical Use"))
-```
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``common_tests``, `\
+`      caption ``=`` ``"Common Clinical Tests: Reference Characteristics"``,`\
+`      col.names ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Test"``, ``"Sensitivity Range"``, ``"Specificity Range"``, ``"Typical Prevalence"``, ``"Clinical Use"``)``)`
 
 ## Using the Calculator in jamovi
 
@@ -282,7 +264,7 @@ kable(common_tests,
   Calculator**
 - Enter test characteristics:
   - **Sensitivity**: True positive rate (0.01 to 0.99)
-  - **Specificity**: True negative rate (0.01 to 0.99)  
+  - **Specificity**: True negative rate (0.01 to 0.99)\
   - **Prevalence**: Disease prevalence in your population (0.001 to
     0.999)
 
@@ -329,8 +311,8 @@ nomogram - Available for single tests and sequential testing scenarios
 #### Clinical Context
 
 Built-in examples from: - **COVID-19 testing** in different
-populations - **Cancer screening** across age groups  
-- **Cardiac stress testing** in various risk categories - **Infectious
+populations - **Cancer screening** across age groups\
+\- **Cardiac stress testing** in various risk categories - **Infectious
 disease screening** and confirmation - **Biomarker testing** for cancer
 detection
 
@@ -340,52 +322,46 @@ detection
 
 #### Coronary Artery Disease Detection
 
-``` r
-
-# Simulate a typical CAD diagnostic pathway
-cad_pathway <- data.frame(
-  Stage = c("Pre-test", "After Stress Test", "After Catheterization"),
-  Test = c("Clinical Assessment", "Exercise Stress Test", "Cardiac Catheterization"),
-  Prevalence = c(0.25, 0.70, 0.95),
-  Test_Performance = c("N/A", "Sens 85%, Spec 75%", "Sens 95%, Spec 98%"),
-  Clinical_Action = c("Risk stratification", "Consider catheterization", "Treatment planning")
-)
-
-kable(cad_pathway, caption = "Coronary Artery Disease: Multi-Stage Diagnostic Pathway")
-```
+\
+`# Simulate a typical CAD diagnostic pathway`\
+`cad_pathway`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Stage ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Pre-test"``, ``"After Stress Test"``, ``"After Catheterization"``)``,`\
+`  Test ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Clinical Assessment"``, ``"Exercise Stress Test"``, ``"Cardiac Catheterization"``)``,`\
+`  Prevalence ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.25``, ``0.70``, ``0.95``)``,`\
+`  Test_Performance ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"N/A"``, ``"Sens 85%, Spec 75%"``, ``"Sens 95%, Spec 98%"``)``,`\
+`  Clinical_Action ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Risk stratification"``, ``"Consider catheterization"``, ``"Treatment planning"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``cad_pathway``, caption ``=`` ``"Coronary Artery Disease: Multi-Stage Diagnostic Pathway"``)`
 
 #### Breast Cancer Screening and Diagnosis
 
-``` r
-
-breast_pathway <- data.frame(
-  Stage = c("Population Screening", "Abnormal Mammogram", "Tissue Diagnosis"),
-  Prevalence = c("0.8%", "7.2%", "92%"),
-  PPV = c("N/A", "7.2%", "92%"), 
-  Next_Step = c("Annual mammography", "Tissue biopsy", "Treatment planning"),
-  False_Positive_Rate = c("N/A", "93%", "8%")
-)
-
-kable(breast_pathway, caption = "Breast Cancer: From Screening to Diagnosis")
-```
+\
+`breast_pathway`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Stage ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Population Screening"``, ``"Abnormal Mammogram"``, ``"Tissue Diagnosis"``)``,`\
+`  Prevalence ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"0.8%"``, ``"7.2%"``, ``"92%"``)``,`\
+`  PPV ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"N/A"``, ``"7.2%"``, ``"92%"``)``, `\
+`  Next_Step ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Annual mammography"``, ``"Tissue biopsy"``, ``"Treatment planning"``)``,`\
+`  False_Positive_Rate ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"N/A"``, ``"93%"``, ``"8%"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``breast_pathway``, caption ``=`` ``"Breast Cancer: From Screening to Diagnosis"``)`
 
 ### Outbreak Investigation Scenarios
 
 During disease outbreaks, prevalence changes dramatically:
 
-``` r
-
-outbreak_data <- data.frame(
-  Setting = c("Pre-outbreak", "Early outbreak", "Peak outbreak", "Post-outbreak"),
-  Estimated_Prevalence = c(0.001, 0.05, 0.20, 0.02),
-  PPV_Rapid_Test = c(0.08, 0.46, 0.81, 0.26),
-  Clinical_Strategy = c("Standard screening", "Enhanced surveillance", "Containment focus", "Return to baseline")
-)
-
-kable(outbreak_data, 
-      caption = "COVID-19 Testing Strategy by Outbreak Phase",
-      digits = 2)
-```
+\
+`outbreak_data`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Setting ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Pre-outbreak"``, ``"Early outbreak"``, ``"Peak outbreak"``, ``"Post-outbreak"``)``,`\
+`  Estimated_Prevalence ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.001``, ``0.05``, ``0.20``, ``0.02``)``,`\
+`  PPV_Rapid_Test ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.08``, ``0.46``, ``0.81``, ``0.26``)``,`\
+`  Clinical_Strategy ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Standard screening"``, ``"Enhanced surveillance"``, ``"Containment focus"``, ``"Return to baseline"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``outbreak_data``, `\
+`      caption ``=`` ``"COVID-19 Testing Strategy by Outbreak Phase"``,`\
+`      digits ``=`` ``2``)`
 
 ## Statistical Concepts and Calculations
 
@@ -394,32 +370,28 @@ kable(outbreak_data,
 Likelihood ratios quantify how much a test result changes disease
 probability:
 
-``` r
-
-lr_guide <- data.frame(
-  LR_Positive = c(">10", "5-10", "2-5", "1-2", "<1"),
-  Evidence_For = c("Strong", "Moderate", "Weak", "Minimal", "Against"),
-  LR_Negative = c("<0.1", "0.1-0.2", "0.2-0.5", "0.5-1", ">1"),
-  Evidence_Against = c("Strong", "Moderate", "Weak", "Minimal", "For")
-)
-
-kable(lr_guide, caption = "Likelihood Ratio Interpretation Guide")
-```
+\
+`lr_guide`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  LR_Positive ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``">10"``, ``"5-10"``, ``"2-5"``, ``"1-2"``, ``"<1"``)``,`\
+`  Evidence_For ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Strong"``, ``"Moderate"``, ``"Weak"``, ``"Minimal"``, ``"Against"``)``,`\
+`  LR_Negative ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"<0.1"``, ``"0.1-0.2"``, ``"0.2-0.5"``, ``"0.5-1"``, ``">1"``)``,`\
+`  Evidence_Against ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Strong"``, ``"Moderate"``, ``"Weak"``, ``"Minimal"``, ``"For"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``lr_guide``, caption ``=`` ``"Likelihood Ratio Interpretation Guide"``)`
 
 ### Probability Conversion
 
 Converting between odds and probabilities:
 
-``` r
-
-conversion_examples <- data.frame(
-  Probability = c(0.01, 0.05, 0.10, 0.25, 0.50, 0.75, 0.90),
-  Odds = c("1:99", "1:19", "1:9", "1:3", "1:1", "3:1", "9:1"),
-  Clinical_Context = c("Rare disease", "Uncommon", "Screening", "Symptomatic", "50-50", "Likely", "Very likely")
-)
-
-kable(conversion_examples, caption = "Probability to Odds Conversion Examples")
-```
+\
+`conversion_examples`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Probability ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.01``, ``0.05``, ``0.10``, ``0.25``, ``0.50``, ``0.75``, ``0.90``)``,`\
+`  Odds ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"1:99"``, ``"1:19"``, ``"1:9"``, ``"1:3"``, ``"1:1"``, ``"3:1"``, ``"9:1"``)``,`\
+`  Clinical_Context ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rare disease"``, ``"Uncommon"``, ``"Screening"``, ``"Symptomatic"``, ``"50-50"``, ``"Likely"``, ``"Very likely"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``conversion_examples``, caption ``=`` ``"Probability to Odds Conversion Examples"``)`
 
 ## Case Studies
 
@@ -427,24 +399,22 @@ kable(conversion_examples, caption = "Probability to Odds Conversion Examples")
 
 **Scenario**: 55-year-old man with elevated PSA (4.5 ng/mL)
 
-**Test Characteristics**: - Sensitivity: 70% - Specificity: 80%  
-- Prevalence in this age group: 3%
+**Test Characteristics**: - Sensitivity: 70% - Specificity: 80%\
+\- Prevalence in this age group: 3%
 
 **Calculations**:
 
-``` r
-
-psa_ppv <- (0.70 * 0.03) / ((0.70 * 0.03) + (0.20 * 0.97))
-psa_npv <- (0.80 * 0.97) / ((0.80 * 0.97) + (0.30 * 0.03))
-
-cat("PSA Screening Results:\n")
-cat("PPV =", round(psa_ppv * 100, 1), "%\n")
-cat("NPV =", round(psa_npv * 100, 1), "%\n")
-cat("\nClinical Interpretation:\n")
-cat("- Only", round(psa_ppv * 100, 1), "% of positive PSA tests indicate cancer\n")
-cat("- Tissue biopsy needed for confirmation\n")
-cat("- Consider patient preferences and comorbidities\n")
-```
+\
+`psa_ppv`` ``<-`` ``(``0.70`` ``*`` ``0.03``)`` ``/`` ``(``(``0.70`` ``*`` ``0.03``)`` ``+`` ``(``0.20`` ``*`` ``0.97``)``)`\
+`psa_npv`` ``<-`` ``(``0.80`` ``*`` ``0.97``)`` ``/`` ``(``(``0.80`` ``*`` ``0.97``)`` ``+`` ``(``0.30`` ``*`` ``0.03``)``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"PSA Screening Results:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"PPV ="``, `[`round`](https://rdrr.io/r/base/Round.html)`(``psa_ppv`` ``*`` ``100``, ``1``)``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"NPV ="``, `[`round`](https://rdrr.io/r/base/Round.html)`(``psa_npv`` ``*`` ``100``, ``1``)``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nClinical Interpretation:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"- Only"``, `[`round`](https://rdrr.io/r/base/Round.html)`(``psa_ppv`` ``*`` ``100``, ``1``)``, ``"% of positive PSA tests indicate cancer\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"- Tissue biopsy needed for confirmation\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"- Consider patient preferences and comorbidities\n"``)`
 
 ### Case Study 2: COVID-19 Contact Tracing
 
@@ -453,22 +423,20 @@ cat("- Consider patient preferences and comorbidities\n")
 **Initial rapid test**: Negative **Question**: How confident can we be
 that they don’t have COVID-19?
 
-``` r
-
-# Scenario parameters
-covid_sens <- 0.85
-covid_spec <- 0.95
-covid_prev_contact <- 0.15  # Higher prevalence as a contact
-
-# Calculate NPV
-covid_npv <- (covid_spec * (1 - covid_prev_contact)) / 
-             ((covid_spec * (1 - covid_prev_contact)) + ((1 - covid_sens) * covid_prev_contact))
-
-cat("COVID-19 Contact Tracing:\n")
-cat("Negative rapid test NPV =", round(covid_npv * 100, 1), "%\n")
-cat("Probability of disease despite negative test =", round((1-covid_npv) * 100, 1), "%\n")
-cat("\nRecommendation: Consider repeat testing or quarantine period\n")
-```
+\
+`# Scenario parameters`\
+`covid_sens`` ``<-`` ``0.85`\
+`covid_spec`` ``<-`` ``0.95`\
+`covid_prev_contact`` ``<-`` ``0.15``  ``# Higher prevalence as a contact`\
+\
+`# Calculate NPV`\
+`covid_npv`` ``<-`` ``(``covid_spec`` ``*`` ``(``1`` ``-`` ``covid_prev_contact``)``)`` ``/`` `\
+`             ``(``(``covid_spec`` ``*`` ``(``1`` ``-`` ``covid_prev_contact``)``)`` ``+`` ``(``(``1`` ``-`` ``covid_sens``)`` ``*`` ``covid_prev_contact``)``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"COVID-19 Contact Tracing:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Negative rapid test NPV ="``, `[`round`](https://rdrr.io/r/base/Round.html)`(``covid_npv`` ``*`` ``100``, ``1``)``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Probability of disease despite negative test ="``, `[`round`](https://rdrr.io/r/base/Round.html)`(``(``1``-``covid_npv``)`` ``*`` ``100``, ``1``)``, ``"%\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nRecommendation: Consider repeat testing or quarantine period\n"``)`
 
 ## Troubleshooting and Common Mistakes
 
@@ -483,7 +451,7 @@ cat("\nRecommendation: Consider repeat testing or quarantine period\n")
 #### 2. **Using Wrong Prevalence**
 
 - **Population prevalence**: For screening scenarios
-- **Clinical prevalence**: For symptomatic patients  
+- **Clinical prevalence**: For symptomatic patients\
 - **Post-test prevalence**: For sequential testing
 
 #### 3. **Misinterpreting Results**
@@ -516,7 +484,7 @@ Extreme prevalence values - Clinically implausible combinations
 #### Mathematical Edge Cases
 
 - Perfect specificity → Infinite positive LR
-- Zero specificity → Infinite negative LR  
+- Zero specificity → Infinite negative LR\
 - Extreme prevalence → Undefined predictive values
 
 ## Best Practices and Recommendations
@@ -567,18 +535,16 @@ Extreme prevalence values - Clinically implausible combinations
 
 When multiple tests are performed simultaneously:
 
-``` r
-
-# Example: Combined testing approach
-parallel_example <- data.frame(
-  Strategy = c("Test A alone", "Test B alone", "Either positive", "Both positive"),
-  Sensitivity = c(0.80, 0.70, 0.94, 0.56),
-  Specificity = c(0.90, 0.95, 0.86, 0.99),
-  Clinical_Use = c("Standard approach", "Alternative test", "High sensitivity", "High specificity")
-)
-
-kable(parallel_example, caption = "Parallel Testing Strategies")
-```
+\
+`# Example: Combined testing approach`\
+`parallel_example`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Strategy ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Test A alone"``, ``"Test B alone"``, ``"Either positive"``, ``"Both positive"``)``,`\
+`  Sensitivity ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.80``, ``0.70``, ``0.94``, ``0.56``)``,`\
+`  Specificity ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.90``, ``0.95``, ``0.86``, ``0.99``)``,`\
+`  Clinical_Use ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Standard approach"``, ``"Alternative test"``, ``"High sensitivity"``, ``"High specificity"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``parallel_example``, caption ``=`` ``"Parallel Testing Strategies"``)`
 
 ### Bayesian Networks and Complex Pathways
 
@@ -614,7 +580,7 @@ real-world medical decision-making.
 1.  **Prevalence is crucial**: Test performance depends heavily on
     disease prevalence
 2.  **Sequential testing is powerful**: Multiple tests can dramatically
-    improve diagnostic accuracy  
+    improve diagnostic accuracy\
 3.  **Context matters**: Screening vs. diagnostic contexts require
     different interpretation
 4.  **Clinical judgment remains essential**: Tests inform but don’t
@@ -630,6 +596,6 @@ real-world medical decision-making.
 ### Further Reading
 
 - Bayes’ theorem in medical diagnosis
-- Diagnostic test evaluation methodology  
+- Diagnostic test evaluation methodology\
 - Clinical decision-making under uncertainty
 - Evidence-based medicine principles

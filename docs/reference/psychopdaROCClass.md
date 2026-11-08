@@ -11,8 +11,6 @@ A psychopdaROCResults object containing:
 
 - `resultsTable`: Detailed results for each threshold
 
-- `simpleResultsTable`: Summary AUC results with confidence intervals
-
 - `sensSpecTable`: Confusion matrix at optimal cutpoint
 
 - `plotROC`: ROC curve visualization
@@ -68,7 +66,7 @@ beyond basic ROC curve generation. Key features include:
 
 - Dot plots showing class distributions
 
-- Interactive ROC plots
+- Additional static ROC visualization
 
 - Confidence bands and quantile confidence intervals
 
@@ -80,6 +78,20 @@ beyond basic ROC curve generation. Key features include:
 
 - Hospital/site comparisons
 
+Single-AUC inference defaults to a logit transformation of the DeLong
+standard error; the legacy untransformed approximation remains
+selectable. Patient summaries use one prespecified mean or median per
+patient for all calculations. They estimate patient-summary accuracy,
+not lesion-level accuracy. Pairwise DeLong output includes raw and
+Holm-adjusted p-values. IDI/NRI remain exploratory apparent estimates
+with percentile intervals and no significance test. Within-cohort
+meta-analysis is unavailable, including legacy overrides.
+
+Computationally intensive options and more than 10000 selected marker
+values require the Run selected analyses button. In R, pass
+`run = TRUE`. Basic analysis otherwise updates automatically unless
+manual mode is enabled.
+
 ## Note
 
 This function originally developed by Lucas Friesen in the psychoPDA
@@ -87,6 +99,14 @@ module. Enhanced version with additional features added to the
 ClinicoPath module.
 
 ## References
+
+Kottas, M., Kuss, O., & Zapf, A. (2014). A modified Wald interval for
+the area under the ROC curve (AUC) in diagnostic case-control studies.
+BMC Medical Research Methodology, 14, 26. doi:10.1186/1471-2288-14-26.
+
+Pepe, M. S., Janes, H., & Li, C. I. (2014). Net risk reclassification P
+values: valid or misleading? JNCI, 106(4), dju041.
+doi:10.1093/jnci/dju041.
 
 DeLong, E. R., DeLong, D. M., & Clarke-Pearson, D. L. (1988). Comparing
 the areas under two or more correlated receiver operating characteristic
@@ -115,6 +135,8 @@ cutpoint optimization methods
 
 ### Public methods
 
+- [`psychopdaROCClass$init()`](#method-psychopdaROCClass-init)
+
 - [`psychopdaROCClass$asSource()`](#method-psychopdaROCClass-asSource)
 
 - [`psychopdaROCClass$clone()`](#method-psychopdaROCClass-clone)
@@ -138,7 +160,6 @@ Inherited methods
 - [`jmvcore::Analysis$addAddon()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-addAddon)
 - [`jmvcore::Analysis$asProtoBuf()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-asProtoBuf)
 - [`jmvcore::Analysis$check()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-check)
-- [`jmvcore::Analysis$init()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-init)
 - [`jmvcore::Analysis$optionsChangedHandler()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-optionsChangedHandler)
 - [`jmvcore::Analysis$postInit()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-postInit)
 - [`jmvcore::Analysis$print()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-print)
@@ -149,6 +170,22 @@ Inherited methods
 - [`jmvcore::Analysis$setStatus()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-setStatus)
 - [`jmvcore::Analysis$translate()`](https://rdrr.io/pkg/jmvcore/man/Analysis.html#method-translate)
 - `psychopdaROCBase$initialize()`
+
+------------------------------------------------------------------------
+
+### `psychopdaROCClass$init()`
+
+Initialize safely when an R caller has not selected any variables.
+
+#### Usage
+
+    psychopdaROCClass$init(noThrow = FALSE)
+
+#### Arguments
+
+- `noThrow`:
+
+  Capture initialization errors in the analysis error state when TRUE.
 
 ------------------------------------------------------------------------
 
@@ -192,16 +229,17 @@ result1 <- psychopdaROC(
   data = medical_roc_data,
   dependentVars = "biomarker1",
   classVar = "disease_status",
-  positiveClass = "Disease",
+  positiveClass = "Disease", negativeClass = "Healthy",
   refVar = NULL
 )
 
 # Compare multiple biomarkers with DeLong test
 result2 <- psychopdaROC(
+  run = TRUE,
   data = medical_roc_data,
   dependentVars = c("biomarker1", "biomarker2", "biomarker3"),
   classVar = "disease_status",
-  positiveClass = "Disease",
+  positiveClass = "Disease", negativeClass = "Healthy",
   delongTest = TRUE,
   combinePlots = TRUE,
   refVar = NULL
@@ -209,10 +247,11 @@ result2 <- psychopdaROC(
 
 # Advanced analysis with IDI/NRI
 result3 <- psychopdaROC(
+  run = TRUE,
   data = medical_roc_data,
   dependentVars = c("biomarker1", "biomarker2"),
   classVar = "disease_status",
-  positiveClass = "Disease",
+  positiveClass = "Disease", negativeClass = "Healthy",
   calculateIDI = TRUE,
   calculateNRI = TRUE,
   refVar = "biomarker1",
@@ -224,7 +263,7 @@ result4 <- psychopdaROC(
   data = medical_roc_data,
   dependentVars = "biomarker1",
   classVar = "disease_status",
-  positiveClass = "Disease",
+  positiveClass = "Disease", negativeClass = "Healthy",
   method = "oc_cost_ratio",
   costratioFP = 2.5,  # False positives cost 2.5x false negatives
   refVar = NULL
@@ -235,17 +274,18 @@ result5 <- psychopdaROC(
   data = medical_roc_data,
   dependentVars = "biomarker1",
   classVar = "disease_status",
-  positiveClass = "Disease",
+  positiveClass = "Disease", negativeClass = "Healthy",
   subGroup = "hospital",
   refVar = NULL
 )
 
 # Comprehensive analysis with all features
 result6 <- psychopdaROC(
+  run = TRUE,
   data = medical_roc_data,
   dependentVars = c("biomarker1", "biomarker2"),
   classVar = "disease_status",
-  positiveClass = "Disease",
+  positiveClass = "Disease", negativeClass = "Healthy",
   method = "maximize_metric",
   metric = "youden",
   plotROC = TRUE,
@@ -264,15 +304,15 @@ result6 <- psychopdaROC(
 data(financial_roc_data)
 
 financial_result <- psychopdaROC(
+  run = TRUE,
   data = financial_roc_data,
   dependentVars = c("credit_score", "income_debt_ratio", "employment_score"),
   classVar = "default_status",
-  positiveClass = "Default",
+  positiveClass = "Default", negativeClass = "No_Default",
   direction = "<=", # Lower credit scores indicate higher risk
   method = "oc_cost_ratio",
   costratioFP = 0.1, # False positives (rejected good clients) cost less
-  delongTest = TRUE,
-  subGroup = "client_type",
+  subGroup = "client_type", # DeLong comparisons require an ungrouped analysis
   refVar = NULL
 )
 
@@ -280,10 +320,11 @@ financial_result <- psychopdaROC(
 data(education_roc_data)
 
 education_result <- psychopdaROC(
+  run = TRUE,
   data = education_roc_data,
   dependentVars = c("exam_score", "project_score", "peer_score"),
   classVar = "pass_status",
-  positiveClass = "Pass",
+  positiveClass = "Pass", negativeClass = "Fail",
   method = "maximize_metric",
   metric = "accuracy",
   calculateIDI = TRUE,
@@ -295,10 +336,11 @@ education_result <- psychopdaROC(
 data(manufacturing_roc_data)
 
 quality_result <- psychopdaROC(
+  run = TRUE,
   data = manufacturing_roc_data,
   dependentVars = c("dimension_score", "surface_score", "strength_score"),
   classVar = "quality_status",
-  positiveClass = "Defect",
+  positiveClass = "Defect", negativeClass = "Pass",
   method = "oc_equal_sens_spec", # Balanced sensitivity/specificity
   plotROC = TRUE,
   showCriterionPlot = TRUE,

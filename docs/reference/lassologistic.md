@@ -26,7 +26,7 @@ lassologistic(
   coef_plot = TRUE,
   roc_plot = TRUE,
   scoringSystem = FALSE,
-  scoringMethod = "schneeweiss",
+  scoringMethod = "maxscaled",
   scoringMaxPoints = 10,
   scoreCutMethod = "median",
   scoreCutPoints = "",
@@ -36,7 +36,8 @@ lassologistic(
   showMethodologyNotes = FALSE,
   includeClinicalGuidance = FALSE,
   showVariableImportance = FALSE,
-  showModelComparison = FALSE
+  showModelComparison = FALSE,
+  patientID = NULL
 )
 ```
 
@@ -44,7 +45,7 @@ lassologistic(
 
 - data:
 
-  The data as a data frame.
+  The data as a data frame, with one independent observation per row.
 
 - outcome:
 
@@ -53,8 +54,14 @@ lassologistic(
 
 - outcomeLevel:
 
-  Level of outcome considered as the positive class (event). For factor
-  outcomes, if left empty the second level is used.
+  Level of the outcome that is the event (positive class), for example
+  Malignant. Required for a nominal or ordinal outcome: it is never
+  taken from the order of the levels, and until it is chosen the
+  analysis shows the levels found and fits nothing. A numeric outcome
+  coded 0/1 is read as 1 = event without a choice; for any other numeric
+  coding, set the outcome's measure type to Nominal and choose the
+  level. From R the argument has no default: pass the level, or NULL for
+  a 0/1 outcome.
 
 - explanatory:
 
@@ -88,7 +95,9 @@ lassologistic(
 
 - standardize:
 
-  Whether to standardize predictor variables before fitting.
+  Whether glmnet standardizes predictors within each training fold and
+  bootstrap fit, using its population (1/n) standard deviation. Reported
+  coefficients remain on the original measurement scale.
 
 - suitabilityCheck:
 
@@ -98,7 +107,9 @@ lassologistic(
 - bootstrapValidation:
 
   Perform bootstrap optimism-corrected validation (Harrell method).
-  Reports corrected AUC, calibration slope, and Brier score.
+  Reports corrected AUC, calibration slope, and Brier score. Scaling and
+  lambda selection are repeated within every resample. Copies of an
+  observation in a bootstrap sample remain in the same CV fold.
 
 - bootstrapN:
 
@@ -123,18 +134,32 @@ lassologistic(
 
 - scoringMethod:
 
-  Method for converting regression coefficients to integer points.
-  Beta10: multiply by 10, round (Zhang et al. 2017). Schneeweiss: divide
-  by smallest absolute coefficient (Mehta et al. 2016). Sullivan:
-  reference-variable scaling (Sullivan et al. 2004, Framingham method).
-  Compare: generate all three and show performance comparison.
+  Method for converting each predictor's log-odds contribution (the
+  coefficient times the contrast its criterion applies) to integer
+  points. Beta10: multiply by 10 and round (the Beta10/integer method of
+  Mehta et al. 2016). Smallest: divide by the smallest contribution and
+  round, a Sullivan-type scale with one point per smallest contribution
+  (Sullivan et al. 2004); contributions below 1e-8 of the largest are
+  not used as the divisor. This option was previously labeled
+  "Schneeweiss"; Schneeweiss et al. 2003 instead add one point per 0.3
+  increase in the log odds ratio. Max-scaled: divide by the largest
+  absolute coefficient and multiply by scoringMaxPoints, so the
+  strongest predictor scores exactly the maximum. This option was
+  previously labeled "Sullivan/D'Agostino"; it is not the Sullivan 2004
+  Framingham procedure, which awards points per category of each factor
+  relative to a reference factor's per-category distance. Compare:
+  generate all three and show performance comparison; the selected
+  points and score performance then use Max-scaled, the default. Every
+  method gives a selected predictor at least one point (of its sign)
+  when its points would round to zero, and caps a single predictor at
+  1000 points.
 
 - scoringMaxPoints:
 
-  Points assigned to the strongest predictor in the reference-scaled
-  Sullivan method. The Beta10 method uses a fixed x10 coefficient
-  scaling and ignores this value; the Schneeweiss method scales by the
-  smallest coefficient and also ignores it.
+  Points assigned to the strongest predictor in the Max-scaled method.
+  The Beta10 method uses a fixed x10 coefficient scaling and ignores
+  this value; the Smallest method scales by the smallest contribution
+  and also ignores it.
 
 - scoreCutMethod:
 
@@ -142,8 +167,9 @@ lassologistic(
   predictor earns its points when the patient's value exceeds this cut.
   'median' (the default) splits at the sample median, which is
   data-derived and will differ in another cohort. 'manual' lets you
-  enter established clinical thresholds, which is what makes a score
-  portable.
+  enter established clinical thresholds. Fixed cutoffs alone do not
+  establish transportability; the score still requires external
+  validation.
 
 - scoreCutPoints:
 
@@ -155,8 +181,9 @@ lassologistic(
 
 - scoreLookupTable:
 
-  Generate a lookup table mapping each possible total score to predicted
-  probability of the positive class.
+  Generate a table listing each observed total score with its number of
+  cases, events and observed (in-sample) event rate. These are
+  proportions in this dataset, not model predictions.
 
 - showSummary:
 
@@ -180,7 +207,14 @@ lassologistic(
 
 - showModelComparison:
 
-  Compare LASSO vs standard logistic using selected variables.
+  Compare the selected penalized model with unpenalized logistic refits.
+
+- patientID:
+
+  Optional identifier for independent patients. Repeated or missing IDs
+  among analyzed rows are rejected. Each row is otherwise assumed
+  independent; repeated lesions, visits, or readings require a
+  patient-level summary or a method that accounts for clustering.
 
 ## Value
 
@@ -190,7 +224,7 @@ A results object containing:
 |------------------------------|-----|-----|-----|-----|-----------|
 | `results$todo`               |     |     |     |     | a html    |
 | `results$notices`            |     |     |     |     | a html    |
-| `results$suitabilityReport`  |     |     |     |     | a html    |
+| `results$suitabilityReport`  |     |     |     |     | a table   |
 | `results$modelSummary`       |     |     |     |     | a table   |
 | `results$coefficients`       |     |     |     |     | a table   |
 | `results$performance`        |     |     |     |     | a table   |
@@ -214,6 +248,6 @@ Tables can be converted to data frames with `asDF` or
 [`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html). For
 example:
 
-`results$modelSummary$asDF`
+`results$suitabilityReport$asDF`
 
-`as.data.frame(results$modelSummary)`
+`as.data.frame(results$suitabilityReport)`

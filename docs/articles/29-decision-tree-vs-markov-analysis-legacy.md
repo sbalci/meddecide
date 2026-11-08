@@ -14,7 +14,7 @@ A decision tree is a graphical representation of a decision problem that
 maps out:
 
 - **Decision nodes** (squares): Choice points where decisions are made
-- **Chance nodes** (circles): Probabilistic events beyond our control  
+- **Chance nodes** (circles): Probabilistic events beyond our control\
 - **Terminal nodes** (triangles): Final outcomes with associated costs
   and utilities
 
@@ -46,7 +46,7 @@ receive immediate surgery or conservative treatment?
 **ICER (Incremental Cost-Effectiveness Ratio):**
 
 - Incremental Cost: \$4,861
-- Incremental Utility: 0.094 QALYs  
+- Incremental Utility: 0.094 QALYs\
 - **ICER: \$51,744 per QALY**
 
 #### Clinical Interpretation
@@ -65,7 +65,7 @@ A Markov model tracks a population through different **health states**
 over time, where:
 
 - Patients can transition between states each cycle (e.g., annually)
-- Transition probabilities depend only on current state (not history)  
+- Transition probabilities depend only on current state (not history)\
 - Each state has associated costs and quality of life values
 
 ### Example: Chronic Heart Disease Management
@@ -136,7 +136,7 @@ different heart disease management strategies over 20 years?
 **Best for:**
 
 - ✅ **Chronic diseases** (diabetes, heart disease, cancer)
-- ✅ **Long-term analysis** (years to lifetime)  
+- ✅ **Long-term analysis** (years to lifetime)\
 - ✅ **Disease progression** modeling
 - ✅ **Complex interventions** with ongoing effects
 - ✅ **Policy decisions** affecting populations
@@ -211,7 +211,7 @@ Variables needed:
     ICER = (Cost_A - Cost_B) / (Effect_A - Effect_B)
 
 - **\< \$50,000/QALY:** Generally cost-effective
-- **\$50,000-\$100,000/QALY:** Moderately cost-effective  
+- **\$50,000-\$100,000/QALY:** Moderately cost-effective\
 - **\> \$100,000/QALY:** Not cost-effective (U.S. standards)
 
 **Net Benefit:**
@@ -233,7 +233,7 @@ Variables needed:
 **Utilities:**
 
 - 1.0 = Perfect health
-- 0.8-0.9 = Mild symptoms/limitations  
+- 0.8-0.9 = Mild symptoms/limitations\
 - 0.6-0.8 = Moderate impairment
 - 0.4-0.6 = Severe limitations
 - \< 0.4 = Very poor quality of life

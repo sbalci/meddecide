@@ -7,7 +7,15 @@ output: html_document
 
 # Introduction
 
-The `kappasizepower` function provides **power analysis for sample size determination** in inter-rater agreement studies. Unlike fixed sample size analysis, this function answers the question: *"How many subjects do I need to detect a meaningful improvement in agreement between raters?"*
+The `kappaSizePower()` function provides **power analysis for sample size determination** in inter-rater agreement studies. Unlike fixed sample size analysis, this function answers the question: *"How many subjects do I need to reject a specified null kappa when the true kappa is a specified alternative?"*
+
+
+This is a two-sided goodness-of-fit calculation under a common-correlation, common-margin
+model. It is not a generic Cohen/weighted-kappa or ICC power calculator. The null `kappa0`
+here differs from the anticipated `kappa0` in `kappaSizeCI()` and `kappaSizeFixedN()`.
+The published formula treats the category proportions as known; actual power can differ when
+they are estimated. For binary outcomes the module adds simulation-based checks; for more
+categories and raters follow the displayed advice to simulate the intended analysis.
 
 ## When to Use kappasizepower
 
@@ -80,16 +88,17 @@ Sample size requirements depend on:
 
 ### Statistical Framework
 
-The `kappasizepower` function uses the `kappaSize` package implementation of power calculations for different numbers of outcome categories:
+The `kappaSizePower()` function uses the `kappaSize` package implementation of power calculations for different numbers of outcome categories:
 
 ### Binary Outcomes (2 categories)
-Uses asymptotic variance estimates for binary kappa with finite sample corrections.
+Uses a one-degree-of-freedom noncentral chi-square approximation based on expected
+agreement-pattern probabilities under the null and alternative. This is an
+asymptotic goodness-of-fit method, not an exact finite-sample power calculation.
 
 ### Multi-category Outcomes (3-5 categories)
-Employs generalized kappa variance formulas accounting for:
-- Number of categories and raters
-- Marginal probability distributions
-- Complex covariance structures
+Uses common-correlation agreement-pattern models for three to five categories.
+These do not provide arbitrary covariance structures, weighted-kappa planning or
+clustered-subject inference.
 
 # Function Parameters and Usage
 
@@ -101,7 +110,7 @@ kappaSizePower(
   kappa0 = 0.40,          # Null hypothesis kappa value
   kappa1 = 0.60,          # Alternative hypothesis kappa value
   props = "0.30, 0.70",   # Category proportions
-  raters = "2",           # Number of raters (2-5)
+  raters = "2",           # Number of raters (2-6)
   alpha = 0.05,           # Significance level
   power = 0.80            # Desired power
 )
@@ -137,7 +146,7 @@ kappaSizePower(
 - **Sources**: Registry data, literature, preliminary studies
 
 ### `raters`: Number of Raters
-- **Options**: "2", "3", "4", "5"
+- **Options**: "2", "3", "4", "5", "6"
 - **Impact**: More raters can improve precision but increase complexity
 - **Practical considerations**: Availability, cost, training requirements
 
@@ -494,7 +503,7 @@ result <- kappaSizePower(
 
 ### 3. **Inadequate Baseline Assessment**
 
-**Problem**: Poor κ₀ estimation leading to underpowered studies
+**Problem**: An unjustified null κ₀ or optimistic alternative κ₁ leading to an unsuitable design
 
 **Solution**:
 - Conduct thorough baseline assessment
@@ -538,7 +547,7 @@ result <- kappaSizePower(
 
 ## Understanding Power Analysis Output
 
-The `kappasizepower` function provides:
+The `kappaSizePower()` function provides:
 
 1. **Required Sample Size**: Number of subjects needed
 2. **Study Design Summary**: Comprehensive explanation of parameters and context
@@ -562,7 +571,7 @@ Use results to:
 
 ### In Grant Applications
 
-"Power analysis using kappasizepower indicated that N subjects are required to detect an improvement in inter-rater agreement from κ₀=X to κ₁=Y with 80% power at the 5% significance level."
+"Power analysis using kappasizepower indicated that N subjects are required to reject the null kappa κ₀=X when the true kappa is κ₁=Y in a two-sided goodness-of-fit test with 80% power at the 5% significance level."
 
 ### In Study Protocols
 
@@ -650,9 +659,9 @@ With 4-5 raters and 4-5 categories:
 
 ## Complementary Functions
 
-The `kappasizepower` function works alongside:
+The `kappaSizePower()` function works alongside:
 
-- **`kappasizefixedn`**: For fixed sample size power analysis
+- **`kappaSizeFixedN()`**: For an expected one-sided lower confidence bound with fixed N
 - **Other agreement functions**: For post-hoc agreement assessment
 - **Sample size calculators**: For comprehensive study planning
 
@@ -675,15 +684,16 @@ The function integrates well with:
 
 # Summary
 
-The `kappasizepower` function provides essential power analysis capabilities for inter-rater agreement studies. Key takeaways:
+The `kappaSizePower()` function provides essential power analysis capabilities for inter-rater agreement studies. Key takeaways:
 
 1. **Use for prospective study planning** requiring specific power levels
-2. **Ensures adequate sample sizes** for detecting meaningful agreement improvements
-3. **Supports 2-5 categories** and 2-5 raters with comprehensive validation
-4. **Requires κ₁ > κ₀** for valid power analysis
+2. **Provides approximate sample sizes** for a prespecified null and alternative;
+   confirm achieved power for the intended analysis
+3. **Supports 2-5 categories** and 2-6 raters under the stated model
+4. **Requires distinct κ₀ and κ₁**, with the clinically justified alternative specified in advance
 5. **Integrates with comprehensive research planning** workflows
 
-By understanding and properly applying this tool, researchers can design adequately powered studies to validate inter-rater agreement improvements, supporting evidence-based advances in clinical practice and research methodology.
+This plans a test of one population kappa against a specified null; it is not a test of change before and after training or a comparison of two rater panels. The sample-size formula is approximate. Read the achieved-power and sparse-cell notices, and simulate the intended analysis before finalizing a study.
 
 # References
 

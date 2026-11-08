@@ -5,7 +5,14 @@ Compute Net Reclassification Index (NRI)
 ## Usage
 
 ``` r
-computeNRI(new_values, ref_values, actual, direction = ">=", thresholds = NULL)
+computeNRI(
+  new_values,
+  ref_values,
+  actual,
+  direction = ">=",
+  thresholds = NULL,
+  warn = TRUE
+)
 ```
 
 ## Arguments
@@ -29,6 +36,11 @@ computeNRI(new_values, ref_values, actual, direction = ">=", thresholds = NULL)
 - thresholds:
 
   Risk category thresholds (NULL for continuous NRI)
+
+- warn:
+
+  Emit a warning when the logistic calibration shows separation or fails
+  to converge. Set to `FALSE` inside bootstrap replicates.
 
 ## Value
 

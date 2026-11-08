@@ -48,4 +48,6 @@ bootstrapNRI(
 
 ## Value
 
-List with NRI components and confidence intervals
+List with NRI components and exploratory percentile intervals. The
+compatibility field `p_value` is `NA`: refitted apparent bootstrap tail
+fractions are not calibrated null-hypothesis tests.

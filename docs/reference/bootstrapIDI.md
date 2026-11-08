@@ -44,4 +44,5 @@ bootstrapIDI(
 
 ## Value
 
-List with IDI, confidence intervals, and p-value
+List with apparent IDI and exploratory percentile intervals. The
+compatibility field `p_value` is `NA`; no null test is provided.

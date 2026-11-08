@@ -1,7 +1,13 @@
 # Advanced ROC Analysis
 
-Receiver Operating Characteristic (ROC) curve analysis with optimal
-cutpoint determination.
+Exploratory Receiver Operating Characteristic (ROC) curve analysis with
+optimal cutpoint determination. Analyze independent rows or a
+prespecified mean or median per patient. Patient summaries require an ID
+and a consistent outcome within each patient; all calculations and
+resampling then use one summary per patient. Nominal coverage is not
+guaranteed in small or imbalanced samples. Cutpoints selected on these
+data report apparent performance and require validation in the intended
+setting.
 
 ## Usage
 
@@ -9,13 +15,17 @@ cutpoint determination.
 psychopdaROC(
   manualRun = FALSE,
   run = FALSE,
+  showExplanations = FALSE,
   clinicalMode = "basic",
   data,
+  patientID = NULL,
+  analysisUnit = "rows",
+  aucInference = "logit",
   dependentVars,
   classVar,
   positiveClass,
+  negativeClass,
   subGroup = NULL,
-  clinicalPreset = "none",
   method = "maximize_metric",
   metric = "youden",
   direction = ">=",
@@ -32,10 +42,10 @@ psychopdaROC(
   showThresholdTable = FALSE,
   maxThresholds = 20,
   delongTest = FALSE,
-  plotROC = TRUE,
-  combinePlots = TRUE,
+  plotROC = FALSE,
+  combinePlots = FALSE,
   cleanPlot = FALSE,
-  showOptimalPoint = TRUE,
+  showOptimalPoint = FALSE,
   displaySE = FALSE,
   smoothing = FALSE,
   showConfidenceBands = FALSE,
@@ -57,7 +67,7 @@ psychopdaROC(
   compareClassifiers = FALSE,
   calculateIDI = FALSE,
   calculateNRI = FALSE,
-  refVar,
+  refVar = NULL,
   nriThresholds = "",
   idiNriBootRuns = 1000,
   effectSizeAnalysis = FALSE,
@@ -71,19 +81,21 @@ psychopdaROC(
   priorAUC = 0.7,
   priorPrecision = 10,
   clinicalUtilityAnalysis = FALSE,
-  treatmentThreshold = "0.05,0.5,0.05",
+  treatmentThresholdMin = 0.05,
+  treatmentThresholdMax = 0.5,
+  treatmentThresholdStep = 0.05,
   harmBenefitRatio = 0.25,
   interventionCost = FALSE,
   fixedSensSpecAnalysis = FALSE,
   fixedAnalysisType = "sensitivity",
   fixedSensitivityValue = 0.9,
   fixedSpecificityValue = 0.9,
-  showFixedROC = TRUE,
+  showFixedROC = FALSE,
   fixedInterpolation = "linear",
-  showFixedExplanation = TRUE,
+  showFixedExplanation = FALSE,
   metaAnalysis = FALSE,
   metaAnalysisMethod = "both",
-  heterogeneityTest = TRUE,
+  heterogeneityTest = FALSE,
   forestPlot = FALSE,
   overrideMetaAnalysisWarning = FALSE
 )
@@ -94,23 +106,53 @@ psychopdaROC(
 - manualRun:
 
   When TRUE, results are only computed after clicking the Run button.
-  Useful for skipping intermediate recomputes while adjusting options on
-  slow bootstrap or cutpoint analyses.
+  Intensive options and datasets with more than 10000 selected marker
+  values always require Run, even when this option is FALSE.
 
 - run:
 
-  .
+  Set TRUE to run intensive options, large datasets, or manual mode.
+
+- showExplanations:
+
+  Show optional educational interpretation and procedure details. Input
+  and scope notices remain visible.
 
 - clinicalMode:
 
-  Select the complexity level of analysis: Basic - Essential ROC metrics
-  for clinical decision making Advanced - Additional statistical
-  comparisons and metrics Comprehensive - Full research-grade analysis
-  with all options
+  Selects which guidance notes are shown in the Procedure Notes panel.
+  Basic explains the AUC bands and warns that a cutpoint searched on
+  these data is optimistic; Advanced and Comprehensive give a shorter
+  research framing. This option does not switch any analysis on or off -
+  every optional analysis has its own checkbox.
 
 - data:
 
-  The data as a data frame.
+  The data as a data frame, with one independent observation per row.
+
+- patientID:
+
+  Identifier for independent patients. Required for patient summaries.
+  With independent rows, supplying an ID checks for duplicates and
+  rejects repeated patients.
+
+- analysisUnit:
+
+  Choose a clinically prespecified summary before inspecting results.
+  The mean or median of observed scores is calculated for each patient
+  and marker, including a separate IDI/NRI reference. Patients with all
+  scores missing for a marker are excluded for that marker. Outcomes and
+  subgroups must be consistent within patients. This estimates
+  patient-level accuracy of the summary, not accuracy of individual
+  lesions or visits.
+
+- aucInference:
+
+  Logit DeLong uses the DeLong standard error with a logit delta
+  transformation for the 95\\ test against AUC 0.5. The legacy option
+  uses the untransformed normal approximation. Both remain asymptotic;
+  unavailable or zero variance gives missing inference. Pairwise AUC
+  comparisons use ordinary paired DeLong.
 
 - dependentVars:
 
@@ -119,26 +161,27 @@ psychopdaROC(
 
 - classVar:
 
-  Binary classification variable representing the true class (gold
-  standard). Must have exactly two levels.
+  Classification variable representing the true class (gold standard).
+  Choose one positive and one negative level. Only observations in those
+  two levels are analyzed; other levels and missing outcomes are
+  excluded and counted.
 
 - positiveClass:
 
-  Specifies which level of the class variable should be treated as the
-  positive class.
+  Level of classVar treated as the positive class (condition present).
+  Required: NULL leaves the analysis waiting for a choice; levels are
+  never inferred from their order.
+
+- negativeClass:
+
+  Level of classVar treated as the negative class (condition absent).
+  Required: NULL leaves the analysis waiting for a choice. Other levels
+  are excluded.
 
 - subGroup:
 
   Optional grouping variable for stratified analysis. ROC curves will be
   calculated separately for each group.
-
-- clinicalPreset:
-
-  Choose a preset configuration optimized for specific clinical
-  scenarios: Screening - High sensitivity to avoid missing cases
-  Confirmation - High specificity to avoid false positives Balanced -
-  Equal weight to sensitivity and specificity Research - Comprehensive
-  analysis for publication
 
 - method:
 
@@ -148,7 +191,9 @@ psychopdaROC(
 - metric:
 
   Metric to optimize when determining the cutpoint. Only applies to
-  maximize/minimize methods.
+  maximize/minimize methods. The legacy p_chisquared option identifier
+  denotes the Pearson chi-squared statistic (without continuity
+  correction), not its p-value.
 
 - direction:
 
@@ -163,15 +208,15 @@ psychopdaROC(
 - tol_metric:
 
   Cutpoints whose metric is within this tolerance of the best value are
-  treated as equivalent and averaged together. BEHAVIOUR CHANGE
-  (1.0.4) - the default was 0.05, which is 50000 times wider than the
-  1e-06 used by the underlying cutpointr package and meant the reported
-  "optimal" cutpoint was usually not the one maximising the metric. On
-  the bundled example data 39 of 200 candidate thresholds, spanning 52.1
-  to 67.7, fell within 0.05 Youden of the optimum and were averaged,
-  giving a cutpoint with 84.5 percent sensitivity in place of the 94.4
-  percent available at the true optimum. Raise it deliberately if you
-  want that averaging as a guard against over-fitting one threshold.
+  treated as equivalent and averaged together. BEHAVIOR CHANGE (1.0.4) -
+  the default was 0.05, which is 50000 times wider than the 1e-06 used
+  by the underlying cutpointr package and meant the reported "optimal"
+  cutpoint was usually not the one maximizing the metric. On the bundled
+  example data 39 of 200 candidate thresholds, spanning 52.1 to 67.7,
+  fell within 0.05 Youden of the optimum and were averaged, giving a
+  cutpoint with 84.5 percent sensitivity in place of the 94.4 percent
+  available at the true optimum. Raise it deliberately if you want that
+  averaging as a guard against over-fitting one threshold.
 
 - break_ties:
 
@@ -242,12 +287,14 @@ psychopdaROC(
 
 - showOptimalPoint:
 
-  Display the optimal cutpoint on the ROC curve.
+  Display the selected cutpoint on the ROC curve. When all tied
+  cutpoints are listed, mark the first selected cutpoint.
 
 - displaySE:
 
-  Display standard error bands on ROC curves (when LOESS smoothing is
-  applied).
+  Display the pointwise 95\\ LOESS smooth. This describes uncertainty in
+  the visual smooth, not the Wilson intervals for ROC sensitivity and
+  specificity or a simultaneous ROC confidence region.
 
 - smoothing:
 
@@ -267,7 +314,9 @@ psychopdaROC(
 
 - interactiveROC:
 
-  Create an interactive HTML ROC plot (requires plotROC package).
+  Create an additional static ROC plot. The stable option name is
+  retained for saved analyses; the jamovi Image output does not provide
+  HTML interaction.
 
 - showCriterionPlot:
 
@@ -284,7 +333,9 @@ psychopdaROC(
 
 - precisionRecallCurve:
 
-  Display precision-recall curves alongside ROC curves.
+  Display precision-recall step curves with average precision. The
+  classifier comparison table reports the separate interpolated AUC-PR
+  estimate.
 
 - partialAUC:
 
@@ -304,8 +355,11 @@ psychopdaROC(
 
 - bootstrapCI:
 
-  Calculate bootstrap confidence intervals for AUC and optimal
-  cutpoints.
+  Calculate bootstrap confidence intervals for full AUC and a separate
+  Youden reference cutoff, sensitivity and specificity. This does not
+  follow the main Cutpoint Method. Tied Youden optima use seeded random
+  selection in both the original sample and stratified bootstrap
+  replicates.
 
 - bootstrapReps:
 
@@ -340,13 +394,19 @@ psychopdaROC(
 
 - refVar:
 
-  Reference test variable for IDI and NRI calculations. Other variables
-  will be compared against this reference.
+  Reference test for IDI and NRI (a numeric variable; it need not be one
+  of the test variables, and it cannot be the class variable). Every
+  test variable other than the reference is compared against it. NULL
+  uses the first test variable.
 
 - nriThresholds:
 
   Comma-separated probability thresholds (0-1) defining risk categories
-  for NRI. Leave empty for continuous NRI.
+  for NRI. Leave empty for continuous NRI. In both variants, predicted
+  risks differing by at most sqrt(machine epsilon), approximately
+  1.5e-8, are treated as numerical ties. This tolerance removes
+  numerical roundoff and is not a clinically meaningful change
+  threshold.
 
 - idiNriBootRuns:
 
@@ -354,14 +414,14 @@ psychopdaROC(
 
 - effectSizeAnalysis:
 
-  Calculate effect sizes for ROC curve differences using Cohen's
-  conventions and standardized mean differences between AUC values.
+  Calculate within-marker standardized differences between outcome
+  classes and pairwise differences in those effects. Size bands are
+  descriptive conventions only.
 
 - powerAnalysis:
 
-  Perform statistical power analysis for ROC curve comparisons including
-  sample size estimation and power calculations for detecting AUC
-  differences.
+  Approximate power and sample size for each marker's AUC against 0.5.
+  Does not calculate power for a difference between markers.
 
 - powerAnalysisType:
 
@@ -369,8 +429,10 @@ psychopdaROC(
 
 - expectedAUCDifference:
 
-  Expected difference in AUC values for power calculations and sample
-  size estimation.
+  Target AUC above chance (target AUC = 0.5 + this value) for
+  prospective power and sample size estimation, separately for each
+  marker. A target AUC of exactly 1 is degenerate and has no sample size
+  recommendation.
 
 - targetPower:
 
@@ -383,8 +445,8 @@ psychopdaROC(
 
 - correlationROCs:
 
-  Expected correlation between paired ROC curves for power calculations.
-  Use 0.5 for moderate correlation, 0.0 for independent samples.
+  Deprecated compatibility option, ignored. Power compares each marker's
+  AUC with 0.5; there is no paired AUC comparison in this calculation.
 
 - bayesianAnalysis:
 
@@ -409,10 +471,17 @@ psychopdaROC(
   Perform clinical utility analysis including net benefit curves,
   decision curve analysis, and clinical impact assessment.
 
-- treatmentThreshold:
+- treatmentThresholdMin:
 
-  Treatment threshold range for decision curve analysis (min,max,step).
-  Example: "0.05,0.5,0.05" creates thresholds from 5 percent to 50
+  Lowest treatment threshold probability for the decision curve.
+
+- treatmentThresholdMax:
+
+  Highest treatment threshold probability for the decision curve.
+
+- treatmentThresholdStep:
+
+  Step between thresholds. The defaults give thresholds from 5 to 50
   percent in 5 percent steps.
 
 - harmBenefitRatio:
@@ -452,8 +521,10 @@ psychopdaROC(
 
 - fixedInterpolation:
 
-  Method for interpolating between observed points to achieve target
-  sensitivity/specificity.
+  Method for selecting a cutoff near the target sensitivity/specificity.
+  Achieved rates always use empirical classifications at the returned
+  cutoff. Linear interpolation may miss the target; Stepwise meets or
+  exceeds it.
 
 - showFixedExplanation:
 
@@ -463,82 +534,78 @@ psychopdaROC(
 
 - metaAnalysis:
 
-  Perform meta-analysis of AUC values across multiple test variables.
-  Requires at least 3 test variables to enable pooled effect estimation.
+  Shows why marker columns from one cohort cannot be pooled as
+  independent studies. No pooled estimate or inference is computed,
+  including with the legacy override.
 
 - metaAnalysisMethod:
 
-  Statistical method for combining AUC estimates across
-  studies/variables.
+  Deprecated compatibility option. Within-cohort meta-analysis is
+  unavailable.
 
 - heterogeneityTest:
 
-  Perform Cochran's Q test and calculate I² statistic to assess
-  heterogeneity between AUC estimates.
+  Deprecated compatibility option. No heterogeneity inference is
+  computed.
 
 - forestPlot:
 
-  Create forest plot visualization of individual and pooled AUC
-  estimates with confidence intervals.
+  Deprecated compatibility option. No pooled forest plot is computed.
 
 - overrideMetaAnalysisWarning:
 
-  ADVANCED OPTION: Bypass the independence assumption check for
-  meta-analysis. WARNING - Only use if you fully understand the
-  statistical implications. Meta-analysis on non-independent data
-  produces invalid results and should NOT be used for formal inference.
-  Use DeLong's test instead for within-study comparisons of multiple
+  Deprecated and ignored. An override cannot correct dependence between
   markers.
 
 ## Value
 
 A results object containing:
 
-|                                       |     |     |     |     |                    |
-|---------------------------------------|-----|-----|-----|-----|--------------------|
-| `results$instructions`                |     |     |     |     | a html             |
-| `results$procedureNotes`              |     |     |     |     | a html             |
-| `results$runSummary`                  |     |     |     |     | a html             |
-| `results$simpleResultsTable`          |     |     |     |     | a table            |
-| `results$clinicalInterpretationTable` |     |     |     |     | a table            |
-| `results$resultsTable`                |     |     |     |     | an array of tables |
-| `results$sensSpecTable`               |     |     |     |     | an array of htmls  |
-| `results$thresholdTable`              |     |     |     |     | a table            |
-| `results$fixedSensSpecTable`          |     |     |     |     | a table            |
-| `results$fixedSensSpecExplanation`    |     |     |     |     | a html             |
-| `results$aucSummaryTable`             |     |     |     |     | a table            |
-| `results$delongComparisonTable`       |     |     |     |     | a table            |
-| `results$delongTest`                  |     |     |     |     | a preformatted     |
-| `results$plotROC`                     |     |     |     |     | an array of images |
-| `results$interactivePlot`             |     |     |     |     | an image           |
-| `results$fixedSensSpecROC`            |     |     |     |     | an array of images |
-| `results$criterionPlot`               |     |     |     |     | an array of images |
-| `results$prevalencePlot`              |     |     |     |     | an array of images |
-| `results$dotPlot`                     |     |     |     |     | an array of images |
-| `results$dotPlotMessage`              |     |     |     |     | a html             |
-| `results$precisionRecallPlot`         |     |     |     |     | an array of images |
-| `results$idiTable`                    |     |     |     |     | a table            |
-| `results$nriTable`                    |     |     |     |     | a table            |
-| `results$effectSizeTable`             |     |     |     |     | a table            |
-| `results$powerAnalysisTable`          |     |     |     |     | a table            |
-| `results$bayesianROCTable`            |     |     |     |     | a table            |
-| `results$clinicalUtilityTable`        |     |     |     |     | a table            |
-| `results$metaAnalysisWarning`         |     |     |     |     | a html             |
-| `results$metaAnalysisTable`           |     |     |     |     | a table            |
-| `results$decisionCurveTable`          |     |     |     |     | a table            |
-| `results$partialAUCTable`             |     |     |     |     | a table            |
-| `results$bootstrapCITable`            |     |     |     |     | a table            |
-| `results$rocComparisonTable`          |     |     |     |     | a table            |
-| `results$effectSizePlot`              |     |     |     |     | an array of images |
-| `results$powerCurvePlot`              |     |     |     |     | an array of images |
-| `results$bayesianTracePlot`           |     |     |     |     | an array of images |
-| `results$decisionCurvePlot`           |     |     |     |     | an array of images |
-| `results$metaAnalysisForestPlot`      |     |     |     |     | an array of images |
+|  |  |  |  |  |  |
+|----|----|----|----|----|----|
+| `results$instructions` |  |  |  |  | a html |
+| `results$procedureNotes` |  |  |  |  | a html |
+| `results$runSummary` |  |  |  |  | a html |
+| `results$outcomeCoding` |  |  |  |  | Class levels with their counts and the role each plays in the analysis |
+| `results$clinicalInterpretationTable` |  |  |  |  | a table |
+| `results$resultsTable` |  |  |  |  | an array of tables |
+| `results$sensSpecTable` |  |  |  |  | an array of tables |
+| `results$thresholdTable` |  |  |  |  | a table |
+| `results$fixedSensSpecTable` |  |  |  |  | a table |
+| `results$fixedSensSpecExplanation` |  |  |  |  | a html |
+| `results$aucSummaryTable` |  |  |  |  | a table |
+| `results$delongComparisonTable` |  |  |  |  | a table |
+| `results$delongTest` |  |  |  |  | a preformatted |
+| `results$plotROC` |  |  |  |  | an array of images |
+| `results$interactivePlot` |  |  |  |  | an image |
+| `results$fixedSensSpecROC` |  |  |  |  | an array of images |
+| `results$criterionPlot` |  |  |  |  | an array of images |
+| `results$prevalencePlot` |  |  |  |  | an array of images |
+| `results$dotPlot` |  |  |  |  | an array of images |
+| `results$dotPlotMessage` |  |  |  |  | a html |
+| `results$precisionRecallPlot` |  |  |  |  | an array of images |
+| `results$idiTable` |  |  |  |  | a table |
+| `results$nriTable` |  |  |  |  | a table |
+| `results$effectSizeTable` |  |  |  |  | a table |
+| `results$powerAnalysisTable` |  |  |  |  | a table |
+| `results$bayesianROCTable` |  |  |  |  | a table |
+| `results$clinicalUtilityTable` |  |  |  |  | a table |
+| `results$metaAnalysisWarning` |  |  |  |  | a html |
+| `results$metaAnalysisTable` |  |  |  |  | a table |
+| `results$decisionCurveTable` |  |  |  |  | a table |
+| `results$partialAUCTable` |  |  |  |  | a table |
+| `results$bootstrapCITable` |  |  |  |  | a table |
+| `results$rocComparisonTable` |  |  |  |  | a table |
+| `results$effectSizePlot` |  |  |  |  | an array of images |
+| `results$powerCurvePlot` |  |  |  |  | an array of images |
+| `results$bayesianTracePlot` |  |  |  |  | an array of images |
+| `results$decisionCurvePlot` |  |  |  |  | an array of images |
+| `results$metaAnalysisForestPlot` |  |  |  |  | an array of images |
 
 Tables can be converted to data frames with `asDF` or
 [`as.data.frame`](https://rdrr.io/r/base/as.data.frame.html). For
 example:
 
-`results$simpleResultsTable$asDF`
+`results$outcomeCoding$asDF`
 
-`as.data.frame(results$simpleResultsTable)`
+`as.data.frame(results$outcomeCoding)`

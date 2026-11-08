@@ -19,7 +19,7 @@ dataset.
 ### Key Features Covered
 
 - **Simple Decision Trees**: Basic treatment comparisons
-- **Markov Models**: Long-term health state modeling  
+- **Markov Models**: Long-term health state modeling\
 - **Cost-Effectiveness Analysis**: Economic evaluation with ICER and NMB
 - **Sensitivity Analysis**: One-way and probabilistic sensitivity
   analysis
@@ -32,74 +32,68 @@ We’ll use a comprehensive COVID-19 treatment dataset with 40 patients
 comparing four treatment strategies across different patient
 populations.
 
-``` r
+\
+`# Load required libraries`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`meddecide`](https://github.com/sbalci/ClinicoPathJamoviModule/)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
+\
+`# Load the test dataset`\
+`covid_data`` ``<-`` `[`read.csv`](https://rdrr.io/r/utils/read.table.html)`(``"data/decisiongraph_test_data.csv"``)`\
+\
+`# Display dataset structure`\
+[`str`](https://rdrr.io/r/utils/str.html)`(``covid_data``)`
 
-# Load required libraries
-library(meddecide)
-library(dplyr)
-library(ggplot2)
-
-# Load the test dataset
-covid_data <- read.csv("data/decisiongraph_test_data.csv")
-
-# Display dataset structure
-str(covid_data)
-```
-
-``` r
-
-# Preview the first few rows
-head(covid_data, 3)
-
-# Summary of key variables
-cat("Dataset contains:\n")
-cat("- Patients:", nrow(covid_data), "\n")
-cat("- Treatment strategies:", length(unique(covid_data$treatment_strategy)), "\n")
-cat("- Age groups:", length(unique(covid_data$age_group)), "\n")
-cat("- Comorbidity types:", length(unique(covid_data$comorbidities)), "\n")
-```
+\
+`# Preview the first few rows`\
+[`head`](https://rdrr.io/r/utils/head.html)`(``covid_data``, ``3``)`\
+\
+`# Summary of key variables`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Dataset contains:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"- Patients:"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``covid_data``)``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"- Treatment strategies:"``, `[`length`](https://rdrr.io/r/base/length.html)`(`[`unique`](https://rdrr.io/r/base/unique.html)`(``covid_data``$``treatment_strategy``)``)``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"- Age groups:"``, `[`length`](https://rdrr.io/r/base/length.html)`(`[`unique`](https://rdrr.io/r/base/unique.html)`(``covid_data``$``age_group``)``)``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"- Comorbidity types:"``, `[`length`](https://rdrr.io/r/base/length.html)`(`[`unique`](https://rdrr.io/r/base/unique.html)`(``covid_data``$``comorbidities``)``)``, ``"\n"``)`
 
 ## 1. Simple Decision Tree Analysis
 
 Let’s start with a basic decision tree comparing treatment strategies
 based on recovery probability and treatment costs.
 
-``` r
-
-# Basic decision tree analysis
-simple_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "simple",
-  
-  # Core variables
-  decisions = "treatment_strategy",
-  probabilities = "recovery_prob", 
-  costs = "treatment_cost",
-  utilities = "recovery_utility",
-  outcomes = "clinical_outcome",
-  
-  # Visualization settings  
-  layout = "horizontal",
-  nodeShapes = TRUE,
-  showProbabilities = TRUE,
-  showCosts = TRUE,
-  showUtilities = TRUE,
-  
-  # Output options
-  calculateExpectedValues = TRUE,
-  summaryTable = TRUE,
-  
-  # Performance settings
-  performanceMode = "standard"
-)
-```
+\
+`# Basic decision tree analysis`\
+`simple_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"simple"``,`\
+`  `\
+`  ``# Core variables`\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  probabilities ``=`` ``"recovery_prob"``, `\
+`  costs ``=`` ``"treatment_cost"``,`\
+`  utilities ``=`` ``"recovery_utility"``,`\
+`  outcomes ``=`` ``"clinical_outcome"``,`\
+`  `\
+`  ``# Visualization settings  `\
+`  layout ``=`` ``"horizontal"``,`\
+`  nodeShapes ``=`` ``TRUE``,`\
+`  showProbabilities ``=`` ``TRUE``,`\
+`  showCosts ``=`` ``TRUE``,`\
+`  showUtilities ``=`` ``TRUE``,`\
+`  `\
+`  ``# Output options`\
+`  calculateExpectedValues ``=`` ``TRUE``,`\
+`  summaryTable ``=`` ``TRUE``,`\
+`  `\
+`  ``# Performance settings`\
+`  performanceMode ``=`` ``"standard"`\
+`)`
 
 #### Understanding Simple Decision Trees
 
 The simple decision tree shows:
 
 - **Decision nodes** (squares): Treatment strategy choices
-- **Chance nodes** (circles): Probability of recovery  
+- **Chance nodes** (circles): Probability of recovery\
 - **Terminal nodes** (triangles): Final outcomes with costs and
   utilities
 - **Expected values**: Calculated for each treatment path
@@ -113,39 +107,37 @@ Visualize decision trade-offs clearly
 For long-term analysis, we’ll model patient transitions through health
 states over time.
 
-``` r
-
-# Markov model for long-term analysis
-markov_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "markov",
-  
-  # Markov-specific variables
-  healthStates = c("healthy_state", "mild_state", "severe_state", 
-                   "critical_state", "dead_state"),
-  transitionProbs = c("transition_healthy_mild", "transition_mild_severe",
-                     "transition_severe_critical", "transition_critical_dead",
-                     "transition_mild_healthy", "transition_severe_mild",
-                     "transition_critical_severe"),
-  
-  # Time parameters
-  cycleLength = 1,  # 1-year cycles
-  timeHorizon = 10, # 10-year analysis
-  discountRate = 0.03, # 3% annual discount rate
-  
-  # Markov options
-  cycleCorrection = TRUE,  # Half-cycle correction
-  cohortTrace = TRUE,      # Generate cohort trace
-  cohortSize = 1000,       # Starting cohort size
-  
-  # Cost and utility variables
-  costs = c("outpatient_cost", "hospitalization_cost", "icu_cost"),
-  utilities = c("outpatient_utility", "hospitalization_utility", "icu_utility"),
-  
-  # Output options
-  summaryTable = TRUE
-)
-```
+\
+`# Markov model for long-term analysis`\
+`markov_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"markov"``,`\
+`  `\
+`  ``# Markov-specific variables`\
+`  healthStates ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"healthy_state"``, ``"mild_state"``, ``"severe_state"``, `\
+`                   ``"critical_state"``, ``"dead_state"``)``,`\
+`  transitionProbs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"transition_healthy_mild"``, ``"transition_mild_severe"``,`\
+`                     ``"transition_severe_critical"``, ``"transition_critical_dead"``,`\
+`                     ``"transition_mild_healthy"``, ``"transition_severe_mild"``,`\
+`                     ``"transition_critical_severe"``)``,`\
+`  `\
+`  ``# Time parameters`\
+`  cycleLength ``=`` ``1``,  ``# 1-year cycles`\
+`  timeHorizon ``=`` ``10``, ``# 10-year analysis`\
+`  discountRate ``=`` ``0.03``, ``# 3% annual discount rate`\
+`  `\
+`  ``# Markov options`\
+`  cycleCorrection ``=`` ``TRUE``,  ``# Half-cycle correction`\
+`  cohortTrace ``=`` ``TRUE``,      ``# Generate cohort trace`\
+`  cohortSize ``=`` ``1000``,       ``# Starting cohort size`\
+`  `\
+`  ``# Cost and utility variables`\
+`  costs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"outpatient_cost"``, ``"hospitalization_cost"``, ``"icu_cost"``)``,`\
+`  utilities ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"outpatient_utility"``, ``"hospitalization_utility"``, ``"icu_utility"``)``,`\
+`  `\
+`  ``# Output options`\
+`  summaryTable ``=`` ``TRUE`\
+`)`
 
 #### Understanding Markov Models
 
@@ -166,37 +158,35 @@ Long-term treatment effectiveness - Lifetime cost-effectiveness analysis
 Now let’s perform a comprehensive economic evaluation comparing all
 treatment strategies.
 
-``` r
-
-# Comprehensive cost-effectiveness analysis
-cea_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "costeffectiveness",
-  
-  # Decision variables
-  decisions = "treatment_strategy",
-  costs = c("treatment_cost", "hospitalization_cost", "icu_cost"),
-  utilities = c("recovery_utility", "hospitalization_utility", "icu_utility"),
-  
-  # Cost-effectiveness parameters
-  calculateNMB = TRUE,
-  willingnessToPay = 50000,  # $50,000 per QALY
-  
-  # ICER analysis
-  incrementalAnalysis = TRUE,
-  dominanceAnalysis = TRUE,
-  icer_confidence_intervals = FALSE, # Set to TRUE for CI calculations
-  
-  # Output options
-  summaryTable = TRUE,
-  decisionComparison = TRUE,
-  
-  # Visualization
-  layout = "horizontal",
-  colorScheme = "economic",
-  plotComparison = TRUE
-)
-```
+\
+`# Comprehensive cost-effectiveness analysis`\
+`cea_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"costeffectiveness"``,`\
+`  `\
+`  ``# Decision variables`\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  costs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"treatment_cost"``, ``"hospitalization_cost"``, ``"icu_cost"``)``,`\
+`  utilities ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"recovery_utility"``, ``"hospitalization_utility"``, ``"icu_utility"``)``,`\
+`  `\
+`  ``# Cost-effectiveness parameters`\
+`  calculateNMB ``=`` ``TRUE``,`\
+`  willingnessToPay ``=`` ``50000``,  ``# $50,000 per QALY`\
+`  `\
+`  ``# ICER analysis`\
+`  incrementalAnalysis ``=`` ``TRUE``,`\
+`  dominanceAnalysis ``=`` ``TRUE``,`\
+`  icer_confidence_intervals ``=`` ``FALSE``, ``# Set to TRUE for CI calculations`\
+`  `\
+`  ``# Output options`\
+`  summaryTable ``=`` ``TRUE``,`\
+`  decisionComparison ``=`` ``TRUE``,`\
+`  `\
+`  ``# Visualization`\
+`  layout ``=`` ``"horizontal"``,`\
+`  colorScheme ``=`` ``"economic"``,`\
+`  plotComparison ``=`` ``TRUE`\
+`)`
 
 #### Understanding Cost-Effectiveness Analysis
 
@@ -226,69 +216,65 @@ Let’s explore how robust our results are to parameter uncertainty.
 
 ### 4.1 One-Way Sensitivity Analysis
 
-``` r
-
-# One-way sensitivity analysis with tornado diagram
-sensitivity_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "costeffectiveness",
-  
-  # Core analysis
-  decisions = "treatment_strategy",
-  costs = "treatment_cost",
-  utilities = "recovery_utility",
-  
-  # Sensitivity analysis
-  sensitivityAnalysis = TRUE,
-  tornado = TRUE,
-  
-  # Cost-effectiveness
-  calculateNMB = TRUE,
-  willingnessToPay = 50000,
-  
-  # Output options
-  summaryTable = TRUE
-)
-```
+\
+`# One-way sensitivity analysis with tornado diagram`\
+`sensitivity_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"costeffectiveness"``,`\
+`  `\
+`  ``# Core analysis`\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  costs ``=`` ``"treatment_cost"``,`\
+`  utilities ``=`` ``"recovery_utility"``,`\
+`  `\
+`  ``# Sensitivity analysis`\
+`  sensitivityAnalysis ``=`` ``TRUE``,`\
+`  tornado ``=`` ``TRUE``,`\
+`  `\
+`  ``# Cost-effectiveness`\
+`  calculateNMB ``=`` ``TRUE``,`\
+`  willingnessToPay ``=`` ``50000``,`\
+`  `\
+`  ``# Output options`\
+`  summaryTable ``=`` ``TRUE`\
+`)`
 
 ### 4.2 Probabilistic Sensitivity Analysis (PSA)
 
-``` r
-
-# Probabilistic sensitivity analysis
-psa_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "costeffectiveness",
-  
-  # Core analysis
-  decisions = "treatment_strategy", 
-  costs = c("treatment_cost", "hospitalization_cost"),
-  utilities = c("recovery_utility", "hospitalization_utility"),
-  probabilities = c("recovery_prob", "hospitalization_prob"),
-  
-  # PSA settings
-  probabilisticAnalysis = TRUE,
-  numSimulations = 1000,  # Increase for more precision
-  psa_distributions = "normal",
-  
-  # Advanced PSA outputs
-  psa_advanced_outputs = TRUE,
-  ceacThresholds = "0,100000,5000",  # $0 to $100k, $5k steps
-  
-  # Parameter correlations
-  correlatedParameters = TRUE,
-  correlationMatrix = c("correlation_param1", "correlation_param2", "correlation_param3"),
-  
-  # Cost-effectiveness
-  calculateNMB = TRUE,
-  willingnessToPay = 50000,
-  
-  # Performance optimization
-  performanceMode = "standard",
-  memoryOptimization = TRUE,
-  parallelProcessing = FALSE  # Set TRUE if you have multiple cores
-)
-```
+\
+`# Probabilistic sensitivity analysis`\
+`psa_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"costeffectiveness"``,`\
+`  `\
+`  ``# Core analysis`\
+`  decisions ``=`` ``"treatment_strategy"``, `\
+`  costs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"treatment_cost"``, ``"hospitalization_cost"``)``,`\
+`  utilities ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"recovery_utility"``, ``"hospitalization_utility"``)``,`\
+`  probabilities ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"recovery_prob"``, ``"hospitalization_prob"``)``,`\
+`  `\
+`  ``# PSA settings`\
+`  probabilisticAnalysis ``=`` ``TRUE``,`\
+`  numSimulations ``=`` ``1000``,  ``# Increase for more precision`\
+`  psa_distributions ``=`` ``"normal"``,`\
+`  `\
+`  ``# Advanced PSA outputs`\
+`  psa_advanced_outputs ``=`` ``TRUE``,`\
+`  ceacThresholds ``=`` ``"0,100000,5000"``,  ``# $0 to $100k, $5k steps`\
+`  `\
+`  ``# Parameter correlations`\
+`  correlatedParameters ``=`` ``TRUE``,`\
+`  correlationMatrix ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"correlation_param1"``, ``"correlation_param2"``, ``"correlation_param3"``)``,`\
+`  `\
+`  ``# Cost-effectiveness`\
+`  calculateNMB ``=`` ``TRUE``,`\
+`  willingnessToPay ``=`` ``50000``,`\
+`  `\
+`  ``# Performance optimization`\
+`  performanceMode ``=`` ``"standard"``,`\
+`  memoryOptimization ``=`` ``TRUE``,`\
+`  parallelProcessing ``=`` ``FALSE``  ``# Set TRUE if you have multiple cores`\
+`)`
 
 #### Understanding PSA Results
 
@@ -305,32 +291,30 @@ psa_analysis <- decisiongraph(
 
 Determine the value of reducing uncertainty in key parameters.
 
-``` r
-
-# Value of information analysis
-voi_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "costeffectiveness",
-  
-  # Core analysis
-  decisions = "treatment_strategy",
-  costs = "treatment_cost", 
-  utilities = "recovery_utility",
-  probabilities = "recovery_prob",
-  
-  # VOI analysis
-  valueOfInformation = TRUE,
-  evpi_parameters = c("evpi_param1", "evpi_param2"),
-  
-  # Required: PSA for VOI
-  probabilisticAnalysis = TRUE,
-  numSimulations = 1000,
-  
-  # Cost-effectiveness
-  calculateNMB = TRUE,
-  willingnessToPay = 50000
-)
-```
+\
+`# Value of information analysis`\
+`voi_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"costeffectiveness"``,`\
+`  `\
+`  ``# Core analysis`\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  costs ``=`` ``"treatment_cost"``, `\
+`  utilities ``=`` ``"recovery_utility"``,`\
+`  probabilities ``=`` ``"recovery_prob"``,`\
+`  `\
+`  ``# VOI analysis`\
+`  valueOfInformation ``=`` ``TRUE``,`\
+`  evpi_parameters ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"evpi_param1"``, ``"evpi_param2"``)``,`\
+`  `\
+`  ``# Required: PSA for VOI`\
+`  probabilisticAnalysis ``=`` ``TRUE``,`\
+`  numSimulations ``=`` ``1000``,`\
+`  `\
+`  ``# Cost-effectiveness`\
+`  calculateNMB ``=`` ``TRUE``,`\
+`  willingnessToPay ``=`` ``50000`\
+`)`
 
 #### Understanding Value of Information
 
@@ -347,32 +331,30 @@ parameters drive decision uncertainty most
 Estimate the financial impact of adopting new treatments at population
 level.
 
-``` r
-
-# Budget impact analysis
-budget_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "costeffectiveness",
-  
-  # Core analysis
-  decisions = "treatment_strategy",
-  costs = c("treatment_cost", "hospitalization_cost"),
-  utilities = "recovery_utility",
-  
-  # Budget impact parameters
-  budgetImpactAnalysis = TRUE,
-  targetPopulationSize = 100000,   # 100,000 eligible patients
-  marketPenetration = 0.3,         # 30% uptake rate
-  cohortSize = 1000,              # Analysis cohort size
-  
-  # Time horizon
-  timeHorizon = 5,
-  
-  # Cost-effectiveness  
-  calculateNMB = TRUE,
-  willingnessToPay = 50000
-)
-```
+\
+`# Budget impact analysis`\
+`budget_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"costeffectiveness"``,`\
+`  `\
+`  ``# Core analysis`\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  costs ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"treatment_cost"``, ``"hospitalization_cost"``)``,`\
+`  utilities ``=`` ``"recovery_utility"``,`\
+`  `\
+`  ``# Budget impact parameters`\
+`  budgetImpactAnalysis ``=`` ``TRUE``,`\
+`  targetPopulationSize ``=`` ``100000``,   ``# 100,000 eligible patients`\
+`  marketPenetration ``=`` ``0.3``,         ``# 30% uptake rate`\
+`  cohortSize ``=`` ``1000``,              ``# Analysis cohort size`\
+`  `\
+`  ``# Time horizon`\
+`  timeHorizon ``=`` ``5``,`\
+`  `\
+`  ``# Cost-effectiveness  `\
+`  calculateNMB ``=`` ``TRUE``,`\
+`  willingnessToPay ``=`` ``50000`\
+`)`
 
 #### Understanding Budget Impact
 
@@ -381,68 +363,64 @@ could receive treatment - **Market penetration**: Proportion actually
 receiving new treatment - **Budget impact**:
 `(New treatment cost - Current cost) × Penetration × Population`
 
-**Applications:** - Healthcare system planning - Formulary decisions  
-- Resource allocation - Policy impact assessment
+**Applications:** - Healthcare system planning - Formulary decisions\
+\- Resource allocation - Policy impact assessment
 
 ## 7. Advanced Features and Customization
 
 ### 7.1 Performance Optimization
 
-``` r
-
-# Large-scale analysis with performance optimization
-large_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "costeffectiveness",
-  
-  # Core analysis
-  decisions = "treatment_strategy",
-  costs = "treatment_cost",
-  utilities = "recovery_utility", 
-  
-  # Large PSA
-  probabilisticAnalysis = TRUE,
-  numSimulations = 5000,  # Large simulation
-  
-  # Performance settings
-  performanceMode = "fast",          # Prioritize speed
-  memoryOptimization = TRUE,         # Enable memory efficiency  
-  parallelProcessing = TRUE,         # Use multiple cores if available
-  
-  # Cost-effectiveness
-  calculateNMB = TRUE,
-  willingnessToPay = 50000
-)
-```
+\
+`# Large-scale analysis with performance optimization`\
+`large_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"costeffectiveness"``,`\
+`  `\
+`  ``# Core analysis`\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  costs ``=`` ``"treatment_cost"``,`\
+`  utilities ``=`` ``"recovery_utility"``, `\
+`  `\
+`  ``# Large PSA`\
+`  probabilisticAnalysis ``=`` ``TRUE``,`\
+`  numSimulations ``=`` ``5000``,  ``# Large simulation`\
+`  `\
+`  ``# Performance settings`\
+`  performanceMode ``=`` ``"fast"``,          ``# Prioritize speed`\
+`  memoryOptimization ``=`` ``TRUE``,         ``# Enable memory efficiency  `\
+`  parallelProcessing ``=`` ``TRUE``,         ``# Use multiple cores if available`\
+`  `\
+`  ``# Cost-effectiveness`\
+`  calculateNMB ``=`` ``TRUE``,`\
+`  willingnessToPay ``=`` ``50000`\
+`)`
 
 ### 7.2 Custom Visualization Settings
 
-``` r
-
-# Custom visualization and output
-custom_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "simple",
-  
-  # Core variables
-  decisions = "treatment_strategy",
-  probabilities = "recovery_prob",
-  costs = "treatment_cost", 
-  utilities = "recovery_utility",
-  
-  # Custom visualization
-  layout = "radial",              # Radial tree layout
-  colorScheme = "medical",        # Medical color scheme
-  nodeShapes = TRUE,              # Different shapes per node type
-  nodeLabels = TRUE,              # Show node labels
-  branchLabels = TRUE,            # Show branch labels
-  
-  # Detailed outputs
-  summaryTable = TRUE,
-  decisionComparison = TRUE,
-  calculateExpectedValues = TRUE
-)
-```
+\
+`# Custom visualization and output`\
+`custom_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"simple"``,`\
+`  `\
+`  ``# Core variables`\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  probabilities ``=`` ``"recovery_prob"``,`\
+`  costs ``=`` ``"treatment_cost"``, `\
+`  utilities ``=`` ``"recovery_utility"``,`\
+`  `\
+`  ``# Custom visualization`\
+`  layout ``=`` ``"radial"``,              ``# Radial tree layout`\
+`  colorScheme ``=`` ``"medical"``,        ``# Medical color scheme`\
+`  nodeShapes ``=`` ``TRUE``,              ``# Different shapes per node type`\
+`  nodeLabels ``=`` ``TRUE``,              ``# Show node labels`\
+`  branchLabels ``=`` ``TRUE``,            ``# Show branch labels`\
+`  `\
+`  ``# Detailed outputs`\
+`  summaryTable ``=`` ``TRUE``,`\
+`  decisionComparison ``=`` ``TRUE``,`\
+`  calculateExpectedValues ``=`` ``TRUE`\
+`)`
 
 ## 8. Interpreting Results
 
@@ -451,7 +429,7 @@ custom_analysis <- decisiongraph(
 #### For Simple Decision Trees:
 
 1.  **Highest Expected Utility**: Best clinical outcomes
-2.  **Lowest Expected Cost**: Most economical option  
+2.  **Lowest Expected Cost**: Most economical option\
 3.  **Best Utility-Cost Ratio**: Balance of effectiveness and cost
 
 #### For Cost-Effectiveness Analysis:
@@ -468,62 +446,58 @@ custom_analysis <- decisiongraph(
 
 ### Clinical Decision Framework
 
-``` r
-
-# Example decision framework
-cat("CLINICAL DECISION FRAMEWORK\n")
-cat("==========================\n\n")
-
-cat("1. EFFICACY (Primary consideration)\n")
-cat("   - Recovery probability > 80%: Highly effective\n") 
-cat("   - Recovery probability 60-80%: Moderately effective\n")
-cat("   - Recovery probability < 60%: Less effective\n\n")
-
-cat("2. SAFETY (Secondary consideration)\n")
-cat("   - ICU probability < 5%: Low risk\n")
-cat("   - ICU probability 5-15%: Moderate risk\n") 
-cat("   - ICU probability > 15%: High risk\n\n")
-
-cat("3. COST-EFFECTIVENESS (Tertiary consideration)\n")
-cat("   - ICER < $50,000/QALY: Cost-effective\n")
-cat("   - ICER $50,000-$100,000/QALY: Possibly cost-effective\n")
-cat("   - ICER > $100,000/QALY: Not cost-effective\n\n")
-
-cat("4. BUDGET IMPACT (Health system consideration)\n") 
-cat("   - Budget impact < 1% of total budget: Minimal impact\n")
-cat("   - Budget impact 1-5% of total budget: Moderate impact\n")
-cat("   - Budget impact > 5% of total budget: Major impact\n")
-```
+\
+`# Example decision framework`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"CLINICAL DECISION FRAMEWORK\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"==========================\n\n"``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"1. EFFICACY (Primary consideration)\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - Recovery probability > 80%: Highly effective\n"``)`` `\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - Recovery probability 60-80%: Moderately effective\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - Recovery probability < 60%: Less effective\n\n"``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"2. SAFETY (Secondary consideration)\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - ICU probability < 5%: Low risk\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - ICU probability 5-15%: Moderate risk\n"``)`` `\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - ICU probability > 15%: High risk\n\n"``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"3. COST-EFFECTIVENESS (Tertiary consideration)\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - ICER < $50,000/QALY: Cost-effective\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - ICER $50,000-$100,000/QALY: Possibly cost-effective\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - ICER > $100,000/QALY: Not cost-effective\n\n"``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"4. BUDGET IMPACT (Health system consideration)\n"``)`` `\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - Budget impact < 1% of total budget: Minimal impact\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - Budget impact 1-5% of total budget: Moderate impact\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"   - Budget impact > 5% of total budget: Major impact\n"``)`
 
 ## 9. Best Practices and Tips
 
 ### 9.1 Data Preparation
 
-``` r
-
-# Ensure proper data formatting
-covid_data_clean <- covid_data %>%
-  # Convert factors if needed
-  mutate(
-    treatment_strategy = as.factor(treatment_strategy),
-    age_group = as.factor(age_group),
-    clinical_outcome = as.factor(clinical_outcome)
-  ) %>%
-  # Check for missing values
-  filter(complete.cases(.)) %>%
-  # Validate probability ranges
-  filter(
-    recovery_prob >= 0 & recovery_prob <= 1,
-    hospitalization_prob >= 0 & hospitalization_prob <= 1
-  ) %>%
-  # Validate cost values  
-  filter(
-    treatment_cost >= 0,
-    hospitalization_cost >= 0
-  )
-
-cat("Data validation complete. Cleaned dataset has", nrow(covid_data_clean), "rows.")
-```
+\
+`# Ensure proper data formatting`\
+`covid_data_clean`` ``<-`` ``covid_data`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  ``# Convert factors if needed`\
+`  `[`mutate`](https://dplyr.tidyverse.org/reference/mutate.html)`(`\
+`    treatment_strategy ``=`` `[`as.factor`](https://rdrr.io/r/base/factor.html)`(``treatment_strategy``)``,`\
+`    age_group ``=`` `[`as.factor`](https://rdrr.io/r/base/factor.html)`(``age_group``)``,`\
+`    clinical_outcome ``=`` `[`as.factor`](https://rdrr.io/r/base/factor.html)`(``clinical_outcome``)`\
+`  ``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  ``# Check for missing values`\
+`  `[`filter`](https://dplyr.tidyverse.org/reference/filter.html)`(`[`complete.cases`](https://rdrr.io/r/stats/complete.cases.html)`(``.``)``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  ``# Validate probability ranges`\
+`  `[`filter`](https://dplyr.tidyverse.org/reference/filter.html)`(`\
+`    ``recovery_prob`` ``>=`` ``0`` ``&`` ``recovery_prob`` ``<=`` ``1``,`\
+`    ``hospitalization_prob`` ``>=`` ``0`` ``&`` ``hospitalization_prob`` ``<=`` ``1`\
+`  ``)`` `[`%>%`](https://www.serdarbalci.com/meddecide/reference/pipe.md)\
+`  ``# Validate cost values  `\
+`  `[`filter`](https://dplyr.tidyverse.org/reference/filter.html)`(`\
+`    ``treatment_cost`` ``>=`` ``0``,`\
+`    ``hospitalization_cost`` ``>=`` ``0`\
+`  ``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Data validation complete. Cleaned dataset has"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``covid_data_clean``)``, ``"rows."``)`
 
 ### 9.2 Analysis Tips
 
@@ -538,7 +512,7 @@ cat("Data validation complete. Cleaned dataset has", nrow(covid_data_clean), "ro
 **Validation Checklist:**
 
 - ✅ Probabilities between 0 and 1
-- ✅ Costs are non-negative  
+- ✅ Costs are non-negative\
 - ✅ Utilities typically between 0 and 1
 - ✅ Transition probabilities sum to 1 (Markov models)
 - ✅ Time horizon is reasonable for condition
@@ -546,33 +520,31 @@ cat("Data validation complete. Cleaned dataset has", nrow(covid_data_clean), "ro
 
 ### 9.3 Common Issues and Solutions
 
-``` r
-
-# Common error: Invalid CEAC format
-# ❌ Wrong: ceacThresholds = "0 to 100000 by 5000"  
-# ✅ Correct: ceacThresholds = "0,100000,5000"
-
-# Common error: Too many simulations
-# ❌ Wrong: numSimulations = 50000 (may cause memory issues)
-# ✅ Correct: numSimulations = 1000 to 5000 
-
-# Common error: Missing required variables
-# ❌ Wrong: treeType = "markov" without healthStates
-# ✅ Correct: Always include required variables for each tree type
-
-# Performance optimization for large analyses
-# ✅ Use chunked processing for very large datasets
-large_data_analysis <- decisiongraph(
-  data = covid_data,
-  treeType = "costeffectiveness", 
-  decisions = "treatment_strategy",
-  costs = "treatment_cost",
-  utilities = "recovery_utility",
-  performanceMode = "fast",      # Speed optimization
-  memoryOptimization = TRUE,     # Memory efficiency
-  numSimulations = 2000         # Reasonable simulation count
-)
-```
+\
+`# Common error: Invalid CEAC format`\
+`# ❌ Wrong: ceacThresholds = "0 to 100000 by 5000"  `\
+`# ✅ Correct: ceacThresholds = "0,100000,5000"`\
+\
+`# Common error: Too many simulations`\
+`# ❌ Wrong: numSimulations = 50000 (may cause memory issues)`\
+`# ✅ Correct: numSimulations = 1000 to 5000 `\
+\
+`# Common error: Missing required variables`\
+`# ❌ Wrong: treeType = "markov" without healthStates`\
+`# ✅ Correct: Always include required variables for each tree type`\
+\
+`# Performance optimization for large analyses`\
+`# ✅ Use chunked processing for very large datasets`\
+`large_data_analysis`` ``<-`` ``decisiongraph``(`\
+`  data ``=`` ``covid_data``,`\
+`  treeType ``=`` ``"costeffectiveness"``, `\
+`  decisions ``=`` ``"treatment_strategy"``,`\
+`  costs ``=`` ``"treatment_cost"``,`\
+`  utilities ``=`` ``"recovery_utility"``,`\
+`  performanceMode ``=`` ``"fast"``,      ``# Speed optimization`\
+`  memoryOptimization ``=`` ``TRUE``,     ``# Memory efficiency`\
+`  numSimulations ``=`` ``2000``         ``# Reasonable simulation count`\
+`)`
 
 ## 10. Conclusion
 
@@ -587,8 +559,8 @@ messages - **Performance**: Optimized for large-scale analyses with
 memory management
 
 **Applications:** - Clinical treatment guidelines - Healthcare
-technology assessment  
-- Formulary and coverage decisions - Research prioritization - Policy
+technology assessment\
+\- Formulary and coverage decisions - Research prioritization - Policy
 analysis
 
 **Next Steps:** 1. Apply to your own clinical data 2. Validate results

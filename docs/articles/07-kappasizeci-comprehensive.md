@@ -2,11 +2,14 @@
 
 ## Introduction
 
-The `kappasizeci` function provides statistical power analysis for
-interobserver agreement studies using Cohen’s kappa statistic. This
-function calculates the required sample size to achieve a specified
-precision (confidence interval width) for kappa coefficient estimates in
-studies evaluating agreement between multiple raters or observers.
+The
+[`kappaSizeCI()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md)
+function plans the number of subjects for expected goodness-of-fit
+confidence limits around an anticipated kappa. It performs no hypothesis
+test and provides no power guarantee. It uses a common-correlation,
+common-margin model; its kappa coincides with Cohen’s kappa for two
+raters with equal margins. It does not plan weighted kappa or ICC
+studies.
 
 ### What is Cohen’s Kappa?
 
@@ -21,9 +24,17 @@ accounting for the possibility of chance agreement:
 Where: - $`p_o`$ = observed proportional agreement - $`p_e`$ = expected
 agreement by chance
 
-**Kappa Interpretation Guidelines:** - κ \< 0.00: Poor agreement (worse
-than chance) - κ = 0.00-0.20: Slight agreement  
-- κ = 0.21-0.40: Fair agreement - κ = 0.41-0.60: Moderate agreement - κ
+These descriptive labels do not define clinical acceptance thresholds.
+Select a clinically justified precision requirement and consider
+category-specific disagreements. Expected limits are planning
+quantities: a realized interval is random and is not guaranteed to fall
+inside the requested limits. A Wald or bootstrap interval from another
+analysis can have different precision from the goodness-of-fit interval
+planned here.
+
+**Descriptive kappa labels:** - κ \< 0.00: Poor agreement (worse than
+chance) - κ = 0.00-0.20: Slight agreement\
+\- κ = 0.21-0.40: Fair agreement - κ = 0.41-0.60: Moderate agreement - κ
 = 0.61-0.80: Substantial agreement - κ = 0.81-1.00: Almost perfect
 agreement
 
@@ -33,8 +44,9 @@ Interobserver agreement studies require adequate sample sizes to:
 
 1.  **Ensure Precision**: Achieve narrow confidence intervals around
     kappa estimates
-2.  **Statistical Power**: Detect clinically meaningful differences in
-    agreement
+2.  **Choose the planning aim**: Use
+    [`kappaSizePower()`](https://www.serdarbalci.com/meddecide/reference/kappaSizePower.md)
+    instead when sizing a hypothesis test
 3.  **Resource Planning**: Optimize study costs and logistics
 4.  **Regulatory Requirements**: Meet standards for validation studies
 5.  **Publication Standards**: Satisfy journal requirements for
@@ -43,7 +55,7 @@ Interobserver agreement studies require adequate sample sizes to:
 ### Key Features of kappasizeci
 
 - **Multiple Categories**: Supports 2-5 outcome categories
-- **Flexible Rater Numbers**: Accommodates 2-5 raters
+- **Flexible Rater Numbers**: Accommodates 2-6 raters
 - **Confidence Interval Approach**: Focuses on precision rather than
   hypothesis testing
 - **Real-world Applications**: Covers medical, psychological, and
@@ -53,12 +65,10 @@ Interobserver agreement studies require adequate sample sizes to:
 
 ### Installation and Setup
 
-``` r
-
-# Load required libraries
-
-library(dplyr)
-```
+\
+`# Load required libraries`\
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`
 
     ## 
     ## Attaching package: 'dplyr'
@@ -71,27 +81,25 @@ library(dplyr)
     ## 
     ##     intersect, setdiff, setequal, union
 
-``` r
-
-library(knitr)
-
-# Set options for better output
-options(digits = 3)
-knitr::opts_chunk$set(
-  fig.width = 12,
-  fig.height = 8,
-    dpi = 300,
-  echo = TRUE,
-  eval = FALSE,
-  out.width = "100%"
-)
-
-# Check if required packages are available
-if (!requireNamespace("kappaSize", quietly = TRUE)) {
-  message("Note: kappaSize package required for sample size calculations")
-  message("Install with: install.packages('kappaSize')")
-}
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`knitr`](https://yihui.org/knitr/)`)`\
+\
+`# Set options for better output`\
+[`options`](https://rdrr.io/r/base/options.html)`(``digits ``=`` ``3``)`\
+`knitr``::`[`opts_chunk`](https://rdrr.io/pkg/knitr/man/opts_chunk.html)`$``set``(`\
+`  fig.width ``=`` ``12``,`\
+`  fig.height ``=`` ``8``,`\
+`    dpi ``=`` ``300``,`\
+`  echo ``=`` ``TRUE``,`\
+`  eval ``=`` ``FALSE``,`\
+`  out.width ``=`` ``"100%"`\
+`)`\
+\
+`# Check if required packages are available`\
+`if`` ``(``!`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"kappaSize"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  `[`message`](https://rdrr.io/r/base/message.html)`(``"Note: kappaSize package required for sample size calculations"``)`\
+`  `[`message`](https://rdrr.io/r/base/message.html)`(``"Install with: install.packages('kappaSize')"``)`\
+`}`
 
 ## Understanding the Parameters
 
@@ -108,18 +116,22 @@ if (!requireNamespace("kappaSize", quietly = TRUE)) {
 - **kappaL**: Lower bound of desired confidence interval
 - **kappaU**: Upper bound of desired confidence interval
 
-The interval \[kappaL, kappaU\] defines the precision requirement, but
-note **which** part of it drives the answer: the calculation sizes on
-whichever limit lies *nearer* `kappa0`, not on the full width. With
-`kappa0 = 0.60` and `kappaL = 0.55`, the required sample size is 1,625
-for every `kappaU` from 0.65 all the way to 0.99 — widening the upper
-limit buys nothing. In one-sided mode `kappaU` is not used at all.
+The interval \[kappaL, kappaU\] defines the expected precision
+requirement. The calculation sizes on whichever limit requires more
+subjects under the goodness-of-fit model, not on the full width. This is
+often, but not always, the limit nearer `kappa0`: the model is
+asymmetric. For example, with `kappa0 = 0.75`, `kappaL = 0.60` and
+`kappaU = 0.85`, the lower limit drives the required N even though the
+upper limit is closer. With `kappa0 = 0.60` and `kappaL = 0.55`, the
+required sample size is 1,625 for every `kappaU` from 0.65 all the way
+to 0.99 — widening the upper limit buys nothing. In one-sided mode
+`kappaU` is not used at all.
 
-Because the requirement grows as roughly one over the square of that
-distance, tightening the nearer limit is expensive: distances of 0.20,
-0.05 and 0.01 need about 118, 1,625 and 38,203 subjects respectively. An
-interval narrow enough to be unsizeable is refused with an explanation
-rather than left to compute indefinitely.
+Because the requirement grows roughly as one over the square of the
+governing distance, tightening the binding limit is expensive: distances
+of 0.20, 0.05 and 0.01 need about 118, 1,625 and 38,203 subjects
+respectively. An interval narrow enough to be unsizeable is refused with
+an explanation rather than left to compute indefinitely.
 
 #### Study Design Parameters
 
@@ -134,36 +146,34 @@ rather than left to compute indefinitely.
 
 ### Parameter Relationships
 
-``` r
-
-# Create parameter relationship examples
-param_examples <- data.frame(
-  Study_Type = c(
-    "High Precision",
-    "Standard Precision", 
-    "Lower Precision",
-    "Many Categories",
-    "Few Categories",
-    "Many Raters",
-    "Few Raters"
-  ),
-  
-  Precision_Width = c(0.10, 0.20, 0.40, 0.20, 0.20, 0.20, 0.20),
-  Expected_Sample_Size = c("Large", "Medium", "Small", "Large", "Small", "Small", "Large"),
-  
-  Typical_Application = c(
-    "Regulatory validation studies",
-    "Standard research studies",
-    "Preliminary feasibility studies", 
-    "Complex diagnostic classifications",
-    "Binary diagnostic decisions",
-    "Multi-reader validation studies",
-    "Pilot agreement studies"
-  )
-)
-
-kable(param_examples, caption = "Parameter Relationships and Expected Sample Size Effects")
-```
+\
+`# Create parameter relationship examples`\
+`param_examples`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Study_Type ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"High Precision"``,`\
+`    ``"Standard Precision"``, `\
+`    ``"Lower Precision"``,`\
+`    ``"Many Categories"``,`\
+`    ``"Few Categories"``,`\
+`    ``"Many Raters"``,`\
+`    ``"Few Raters"`\
+`  ``)``,`\
+`  `\
+`  Precision_Width ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.10``, ``0.20``, ``0.40``, ``0.20``, ``0.20``, ``0.20``, ``0.20``)``,`\
+`  Expected_Sample_Size ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Large"``, ``"Medium"``, ``"Small"``, ``"Large"``, ``"Small"``, ``"Small"``, ``"Large"``)``,`\
+`  `\
+`  Typical_Application ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Regulatory validation studies"``,`\
+`    ``"Standard research studies"``,`\
+`    ``"Preliminary feasibility studies"``, `\
+`    ``"Complex diagnostic classifications"``,`\
+`    ``"Binary diagnostic decisions"``,`\
+`    ``"Multi-reader validation studies"``,`\
+`    ``"Pilot agreement studies"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``param_examples``, caption ``=`` ``"Parameter Relationships and Expected Sample Size Effects"``)`
 
 ## Basic Usage Examples
 
@@ -172,44 +182,42 @@ kable(param_examples, caption = "Parameter Relationships and Expected Sample Siz
 The simplest case involves binary classifications (e.g., Disease/No
 Disease):
 
-``` r
-
-# Example: Mammography screening agreement
-# Two radiologists reviewing mammograms for suspicious findings
-
-# Study parameters
-binary_study <- list(
-  description = "Mammography screening agreement study",
-  outcome = "2",           # Binary: Suspicious / Not suspicious
-  kappa0 = 0.75,          # Expected high agreement
-  kappaL = 0.65,          # Lower confidence bound
-  kappaU = 0.85,          # Upper confidence bound  
-  props = "0.15, 0.85",   # 15% suspicious findings
-  raters = "2",           # Two radiologists
-  alpha = 0.05            # 5% significance level
-)
-
-# Display study design
-cat("Study Design:\n")
-cat("Purpose:", binary_study$description, "\n")
-cat("Expected κ:", binary_study$kappa0, "\n") 
-cat("Precision: ±", (as.numeric(binary_study$kappaU) - as.numeric(binary_study$kappaL))/2, "\n")
-cat("Prevalence: 15% suspicious findings\n")
-cat("Raters: 2 radiologists\n\n")
-
-# In practice, you would call:
-# result <- kappaSizeCI(
-#   outcome = binary_study$outcome,
-#   kappa0 = binary_study$kappa0, 
-#   kappaL = binary_study$kappaL,
-#   kappaU = binary_study$kappaU,
-#   props = binary_study$props,
-#   raters = binary_study$raters,
-#   alpha = binary_study$alpha
-# )
-
-cat("Sample size calculation would be performed using kappaSize package\n")
-```
+\
+`# Example: Mammography screening agreement`\
+`# Two radiologists reviewing mammograms for suspicious findings`\
+\
+`# Study parameters`\
+`binary_study`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  description ``=`` ``"Mammography screening agreement study"``,`\
+`  outcome ``=`` ``"2"``,           ``# Binary: Suspicious / Not suspicious`\
+`  kappa0 ``=`` ``0.75``,          ``# Expected high agreement`\
+`  kappaL ``=`` ``0.65``,          ``# Lower confidence bound`\
+`  kappaU ``=`` ``0.85``,          ``# Upper confidence bound  `\
+`  props ``=`` ``"0.15, 0.85"``,   ``# 15% suspicious findings`\
+`  raters ``=`` ``"2"``,           ``# Two radiologists`\
+`  alpha ``=`` ``0.05``            ``# 5% significance level`\
+`)`\
+\
+`# Display study design`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Study Design:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Purpose:"``, ``binary_study``$``description``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Expected κ:"``, ``binary_study``$``kappa0``, ``"\n"``)`` `\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Precision: ±"``, ``(`[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``binary_study``$``kappaU``)`` ``-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``binary_study``$``kappaL``)``)``/``2``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Prevalence: 15% suspicious findings\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Raters: 2 radiologists\n\n"``)`\
+\
+`# In practice, you would call:`\
+`# result <- kappaSizeCI(`\
+`#   outcome = binary_study$outcome,`\
+`#   kappa0 = binary_study$kappa0, `\
+`#   kappaL = binary_study$kappaL,`\
+`#   kappaU = binary_study$kappaU,`\
+`#   props = binary_study$props,`\
+`#   raters = binary_study$raters,`\
+`#   alpha = binary_study$alpha`\
+`# )`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Sample size calculation would be performed using kappaSize package\n"``)`
 
 #### Understanding Binary Study Results
 
@@ -223,115 +231,109 @@ Diagnostic studies often require κ \> 0.70 for clinical acceptability
 
 Many clinical assessments use three-level classifications:
 
-``` r
-
-# Example: Cancer grading study
-# Pathologists grading tumor differentiation
-
-three_cat_study <- list(
-  description = "Pathological tumor grading agreement",
-  outcome = "3",                    # Three grades
-  kappa0 = 0.70,                   # Good expected agreement
-  kappaL = 0.60,                   # Lower bound
-  kappaU = 0.80,                   # Upper bound
-  props = "0.20, 0.50, 0.30",      # Well, Moderate, Poor differentiation
-  raters = "3",                    # Three pathologists
-  alpha = 0.05
-)
-
-cat("Three-Category Study Design:\n")
-cat("Purpose:", three_cat_study$description, "\n")
-cat("Categories: Well differentiated (20%), Moderate (50%), Poor (30%)\n")
-cat("Expected κ:", three_cat_study$kappa0, "\n")
-cat("Precision width:", as.numeric(three_cat_study$kappaU) - as.numeric(three_cat_study$kappaL), "\n")
-cat("Raters: 3 pathologists\n\n")
-
-# Parse proportions to show distribution
-props_values <- as.numeric(strsplit(three_cat_study$props, ",")[[1]])
-prop_labels <- c("Well differentiated", "Moderately differentiated", "Poorly differentiated")
-
-prop_table <- data.frame(
-  Category = prop_labels,
-  Proportion = props_values,
-  Percentage = paste0(props_values * 100, "%")
-)
-
-kable(prop_table, caption = "Expected Category Distributions")
-```
+\
+`# Example: Cancer grading study`\
+`# Pathologists grading tumor differentiation`\
+\
+`three_cat_study`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  description ``=`` ``"Pathological tumor grading agreement"``,`\
+`  outcome ``=`` ``"3"``,                    ``# Three grades`\
+`  kappa0 ``=`` ``0.70``,                   ``# substantial expected agreement`\
+`  kappaL ``=`` ``0.60``,                   ``# Lower bound`\
+`  kappaU ``=`` ``0.80``,                   ``# Upper bound`\
+`  props ``=`` ``"0.20, 0.50, 0.30"``,      ``# Well, Moderate, Poor differentiation`\
+`  raters ``=`` ``"3"``,                    ``# Three pathologists`\
+`  alpha ``=`` ``0.05`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Three-Category Study Design:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Purpose:"``, ``three_cat_study``$``description``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Categories: Well differentiated (20%), Moderate (50%), Poor (30%)\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Expected κ:"``, ``three_cat_study``$``kappa0``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Precision width:"``, `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``three_cat_study``$``kappaU``)`` ``-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``three_cat_study``$``kappaL``)``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Raters: 3 pathologists\n\n"``)`\
+\
+`# Parse proportions to show distribution`\
+`props_values`` ``<-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(`[`strsplit`](https://rdrr.io/r/base/strsplit.html)`(``three_cat_study``$``props``, ``","``)``[[``1``]``]``)`\
+`prop_labels`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Well differentiated"``, ``"Moderately differentiated"``, ``"Poorly differentiated"``)`\
+\
+`prop_table`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Category ``=`` ``prop_labels``,`\
+`  Proportion ``=`` ``props_values``,`\
+`  Percentage ``=`` `[`paste0`](https://rdrr.io/r/base/paste.html)`(``props_values`` ``*`` ``100``, ``"%"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``prop_table``, caption ``=`` ``"Expected Category Distributions"``)`
 
 ### Four-Category Outcomes
 
 Four-category systems are common in radiology and quality assessments:
 
-``` r
-
-# Example: BI-RADS assessment
-# Radiologists using BI-RADS classification
-
-four_cat_study <- list(
-  description = "BI-RADS classification agreement study",
-  outcome = "4",
-  kappa0 = 0.75,
-  kappaL = 0.65,
-  kappaU = 0.85,
-  props = "0.40, 0.30, 0.20, 0.10",  # BI-RADS 1, 2, 3, 4/5
-  raters = "3",
-  alpha = 0.05
-)
-
-cat("Four-Category Study Design:\n")
-cat("Purpose:", four_cat_study$description, "\n")
-cat("BI-RADS Categories:\n")
-
-props_values <- as.numeric(strsplit(four_cat_study$props, ",")[[1]])
-birads_labels <- c("BI-RADS 1 (Normal)", "BI-RADS 2 (Benign)", "BI-RADS 3 (Probably benign)", "BI-RADS 4/5 (Suspicious)")
-
-birads_table <- data.frame(
-  Category = birads_labels,
-  Proportion = props_values,
-  Percentage = paste0(props_values * 100, "%"),
-  Clinical_Action = c("Routine screening", "Routine screening", "Short-term follow-up", "Biopsy recommended")
-)
-
-kable(birads_table, caption = "BI-RADS Category Distribution and Clinical Actions")
-```
+\
+`# Example: BI-RADS assessment`\
+`# Radiologists using BI-RADS classification`\
+\
+`four_cat_study`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  description ``=`` ``"BI-RADS classification agreement study"``,`\
+`  outcome ``=`` ``"4"``,`\
+`  kappa0 ``=`` ``0.75``,`\
+`  kappaL ``=`` ``0.65``,`\
+`  kappaU ``=`` ``0.85``,`\
+`  props ``=`` ``"0.40, 0.30, 0.20, 0.10"``,  ``# BI-RADS 1, 2, 3, 4/5`\
+`  raters ``=`` ``"3"``,`\
+`  alpha ``=`` ``0.05`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Four-Category Study Design:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Purpose:"``, ``four_cat_study``$``description``, ``"\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"BI-RADS Categories:\n"``)`\
+\
+`props_values`` ``<-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(`[`strsplit`](https://rdrr.io/r/base/strsplit.html)`(``four_cat_study``$``props``, ``","``)``[[``1``]``]``)`\
+`birads_labels`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"BI-RADS 1 (Normal)"``, ``"BI-RADS 2 (Benign)"``, ``"BI-RADS 3 (Probably benign)"``, ``"BI-RADS 4/5 (Suspicious)"``)`\
+\
+`birads_table`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Category ``=`` ``birads_labels``,`\
+`  Proportion ``=`` ``props_values``,`\
+`  Percentage ``=`` `[`paste0`](https://rdrr.io/r/base/paste.html)`(``props_values`` ``*`` ``100``, ``"%"``)``,`\
+`  Clinical_Action ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Routine screening"``, ``"Routine screening"``, ``"Short-term follow-up"``, ``"Biopsy recommended"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``birads_table``, caption ``=`` ``"BI-RADS Category Distribution and Clinical Actions"``)`
 
 ### Five-Category Outcomes
 
 Five-category systems are often used in psychological assessments and
 Likert scales:
 
-``` r
-
-# Example: Pain assessment study
-# Nurses rating pain using behavioral indicators
-
-five_cat_study <- list(
-  description = "Pediatric pain assessment agreement",
-  outcome = "5",
-  kappa0 = 0.60,                   # Moderate agreement expected for subjective assessment
-  kappaL = 0.45,
-  kappaU = 0.75,
-  props = "0.20, 0.25, 0.25, 0.20, 0.10",  # No pain to severe pain
-  raters = "3",
-  alpha = 0.05
-)
-
-cat("Five-Category Study Design:\n")
-cat("Purpose:", five_cat_study$description, "\n")
-
-props_values <- as.numeric(strsplit(five_cat_study$props, ",")[[1]])
-pain_labels <- c("No pain (0)", "Mild pain (1-3)", "Moderate pain (4-6)", "Severe pain (7-8)", "Extreme pain (9-10)")
-
-pain_table <- data.frame(
-  Pain_Level = pain_labels,
-  Proportion = props_values,
-  Percentage = paste0(props_values * 100, "%"),
-  Intervention = c("None", "Non-pharmacological", "Mild analgesics", "Strong analgesics", "Immediate intervention")
-)
-
-kable(pain_table, caption = "Pain Assessment Categories and Interventions")
-```
+\
+`# Example: Pain assessment study`\
+`# Nurses rating pain using behavioral indicators`\
+\
+`five_cat_study`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  description ``=`` ``"Pediatric pain assessment agreement"``,`\
+`  outcome ``=`` ``"5"``,`\
+`  kappa0 ``=`` ``0.60``,                   ``# Moderate agreement expected for subjective assessment`\
+`  kappaL ``=`` ``0.45``,`\
+`  kappaU ``=`` ``0.75``,`\
+`  props ``=`` ``"0.20, 0.25, 0.25, 0.20, 0.10"``,  ``# No pain to severe pain`\
+`  raters ``=`` ``"3"``,`\
+`  alpha ``=`` ``0.05`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Five-Category Study Design:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Purpose:"``, ``five_cat_study``$``description``, ``"\n"``)`\
+\
+`props_values`` ``<-`` `[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(`[`strsplit`](https://rdrr.io/r/base/strsplit.html)`(``five_cat_study``$``props``, ``","``)``[[``1``]``]``)`\
+`pain_labels`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``"No pain (0)"``, ``"Mild pain (1-3)"``, ``"Moderate pain (4-6)"``, ``"Severe pain (7-8)"``, ``"Extreme pain (9-10)"``)`\
+\
+`pain_table`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Pain_Level ``=`` ``pain_labels``,`\
+`  Proportion ``=`` ``props_values``,`\
+`  Percentage ``=`` `[`paste0`](https://rdrr.io/r/base/paste.html)`(``props_values`` ``*`` ``100``, ``"%"``)``,`\
+`  Intervention ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"None"``, ``"Non-pharmacological"``, ``"Mild analgesics"``, ``"Strong analgesics"``, ``"Immediate intervention"``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``pain_table``, caption ``=`` ``"Pain Assessment Categories and Interventions"``)`
 
 ## Real-World Applications
 
@@ -339,271 +341,261 @@ kable(pain_table, caption = "Pain Assessment Categories and Interventions")
 
 #### Diagnostic Agreement Studies
 
-``` r
-
-# Collection of diagnostic agreement scenarios
-diagnostic_scenarios <- list(
-  
-  # Radiology
-  chest_xray = list(
-    study = "Pneumonia Detection in Emergency Department",
-    setting = "Emergency department physicians reading chest X-rays",
-    outcome = "2",
-    kappa0 = 0.65,
-    precision = 0.20,
-    props = "0.25, 0.75",  # 25% pneumonia prevalence
-    raters = "3",
-    rationale = "Emergency setting requires good agreement for rapid diagnosis"
-  ),
-  
-  # Dermatology  
-  skin_lesion = list(
-    study = "Melanoma Risk Assessment",
-    setting = "Dermatologists evaluating suspicious skin lesions",
-    outcome = "2", 
-    kappa0 = 0.70,
-    precision = 0.20,
-    props = "0.08, 0.92",  # Low melanoma prevalence
-    raters = "4",
-    rationale = "Critical diagnosis requires high agreement and multiple readers"
-  ),
-  
-  # Cardiology
-  ecg_abnormal = list(
-    study = "ECG Abnormality Detection",
-    setting = "Cardiologists interpreting ECGs for abnormalities",
-    outcome = "2",
-    kappa0 = 0.80,
-    precision = 0.15,
-    props = "0.35, 0.65",  # 35% abnormal ECGs
-    raters = "2", 
-    rationale = "High precision needed for cardiac diagnosis"
-  )
-)
-
-# Create summary table
-diagnostic_summary <- data.frame(
-  Study = sapply(diagnostic_scenarios, function(x) x$study),
-  Setting = sapply(diagnostic_scenarios, function(x) x$setting),
-  Categories = sapply(diagnostic_scenarios, function(x) x$outcome),
-  Expected_Kappa = sapply(diagnostic_scenarios, function(x) x$kappa0),
-  Precision_Width = sapply(diagnostic_scenarios, function(x) x$precision),
-  Raters = sapply(diagnostic_scenarios, function(x) x$raters),
-  Rationale = sapply(diagnostic_scenarios, function(x) x$rationale)
-)
-
-kable(diagnostic_summary, caption = "Diagnostic Agreement Study Examples")
-```
+\
+`# Collection of diagnostic agreement scenarios`\
+`diagnostic_scenarios`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  `\
+`  ``# Radiology`\
+`  chest_xray ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Pneumonia Detection in Emergency Department"``,`\
+`    setting ``=`` ``"Emergency department physicians reading chest X-rays"``,`\
+`    outcome ``=`` ``"2"``,`\
+`    kappa0 ``=`` ``0.65``,`\
+`    precision ``=`` ``0.20``,`\
+`    props ``=`` ``"0.25, 0.75"``,  ``# 25% pneumonia prevalence`\
+`    raters ``=`` ``"3"``,`\
+`    rationale ``=`` ``"Emergency setting requires good agreement for rapid diagnosis"`\
+`  ``)``,`\
+`  `\
+`  ``# Dermatology  `\
+`  skin_lesion ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Melanoma Risk Assessment"``,`\
+`    setting ``=`` ``"Dermatologists evaluating suspicious skin lesions"``,`\
+`    outcome ``=`` ``"2"``, `\
+`    kappa0 ``=`` ``0.70``,`\
+`    precision ``=`` ``0.20``,`\
+`    props ``=`` ``"0.08, 0.92"``,  ``# Low melanoma prevalence`\
+`    raters ``=`` ``"4"``,`\
+`    rationale ``=`` ``"Critical diagnosis requires high agreement and multiple readers"`\
+`  ``)``,`\
+`  `\
+`  ``# Cardiology`\
+`  ecg_abnormal ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"ECG Abnormality Detection"``,`\
+`    setting ``=`` ``"Cardiologists interpreting ECGs for abnormalities"``,`\
+`    outcome ``=`` ``"2"``,`\
+`    kappa0 ``=`` ``0.80``,`\
+`    precision ``=`` ``0.15``,`\
+`    props ``=`` ``"0.35, 0.65"``,  ``# 35% abnormal ECGs`\
+`    raters ``=`` ``"2"``, `\
+`    rationale ``=`` ``"High precision needed for cardiac diagnosis"`\
+`  ``)`\
+`)`\
+\
+`# Create summary table`\
+`diagnostic_summary`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Study ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``diagnostic_scenarios``, ``function``(``x``)`` ``x``$``study``)``,`\
+`  Setting ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``diagnostic_scenarios``, ``function``(``x``)`` ``x``$``setting``)``,`\
+`  Categories ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``diagnostic_scenarios``, ``function``(``x``)`` ``x``$``outcome``)``,`\
+`  Expected_Kappa ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``diagnostic_scenarios``, ``function``(``x``)`` ``x``$``kappa0``)``,`\
+`  Precision_Width ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``diagnostic_scenarios``, ``function``(``x``)`` ``x``$``precision``)``,`\
+`  Raters ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``diagnostic_scenarios``, ``function``(``x``)`` ``x``$``raters``)``,`\
+`  Rationale ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``diagnostic_scenarios``, ``function``(``x``)`` ``x``$``rationale``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``diagnostic_summary``, caption ``=`` ``"Diagnostic Agreement Study Examples"``)`
 
 #### Multi-Category Medical Assessments
 
-``` r
-
-# Medical severity and staging studies
-severity_scenarios <- list(
-  
-  cancer_stage = list(
-    study = "Cancer TNM Staging",
-    categories = c("T1", "T2", "T3", "T4"),
-    outcome = "4",
-    kappa0 = 0.75,
-    props = "0.30, 0.35, 0.25, 0.10",
-    raters = "3",
-    clinical_impact = "Treatment planning directly depends on staging accuracy"
-  ),
-  
-  asthma_severity = list(
-    study = "Asthma Severity Classification", 
-    categories = c("Mild intermittent", "Mild persistent", "Moderate persistent", "Severe persistent"),
-    outcome = "4",
-    kappa0 = 0.65,
-    props = "0.25, 0.30, 0.30, 0.15",
-    raters = "2",
-    clinical_impact = "Medication choice and monitoring frequency based on severity"
-  ),
-  
-  fracture_grade = list(
-    study = "Fracture Classification",
-    categories = c("Grade I", "Grade II", "Grade III"),
-    outcome = "3", 
-    kappa0 = 0.80,
-    props = "0.40, 0.35, 0.25",
-    raters = "4",
-    clinical_impact = "Surgical decision making based on fracture severity"
-  )
-)
-
-cat("Medical Severity Assessment Studies:\n\n")
-
-for (scenario_name in names(severity_scenarios)) {
-  scenario <- severity_scenarios[[scenario_name]]
-  cat("Study:", scenario$study, "\n")
-  cat("Categories:", paste(scenario$categories, collapse = ", "), "\n")
-  cat("Expected κ:", scenario$kappa0, "\n")
-  cat("Clinical Impact:", scenario$clinical_impact, "\n")
-  cat("Recommended Raters:", scenario$raters, "\n\n")
-}
-```
+\
+`# Medical severity and staging studies`\
+`severity_scenarios`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  `\
+`  cancer_stage ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Cancer TNM Staging"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"T1"``, ``"T2"``, ``"T3"``, ``"T4"``)``,`\
+`    outcome ``=`` ``"4"``,`\
+`    kappa0 ``=`` ``0.75``,`\
+`    props ``=`` ``"0.30, 0.35, 0.25, 0.10"``,`\
+`    raters ``=`` ``"3"``,`\
+`    clinical_impact ``=`` ``"Treatment planning directly depends on staging accuracy"`\
+`  ``)``,`\
+`  `\
+`  asthma_severity ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Asthma Severity Classification"``, `\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Mild intermittent"``, ``"Mild persistent"``, ``"Moderate persistent"``, ``"Severe persistent"``)``,`\
+`    outcome ``=`` ``"4"``,`\
+`    kappa0 ``=`` ``0.65``,`\
+`    props ``=`` ``"0.25, 0.30, 0.30, 0.15"``,`\
+`    raters ``=`` ``"2"``,`\
+`    clinical_impact ``=`` ``"Medication choice and monitoring frequency based on severity"`\
+`  ``)``,`\
+`  `\
+`  fracture_grade ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Fracture Classification"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Grade I"``, ``"Grade II"``, ``"Grade III"``)``,`\
+`    outcome ``=`` ``"3"``, `\
+`    kappa0 ``=`` ``0.80``,`\
+`    props ``=`` ``"0.40, 0.35, 0.25"``,`\
+`    raters ``=`` ``"4"``,`\
+`    clinical_impact ``=`` ``"Surgical decision making based on fracture severity"`\
+`  ``)`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Medical Severity Assessment Studies:\n\n"``)`\
+\
+`for`` ``(``scenario_name`` ``in`` `[`names`](https://rdrr.io/r/base/names.html)`(``severity_scenarios``)``)`` ``{`\
+`  ``scenario`` ``<-`` ``severity_scenarios``[[``scenario_name``]``]`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Study:"``, ``scenario``$``study``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Categories:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(``scenario``$``categories``, collapse ``=`` ``", "``)``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Expected κ:"``, ``scenario``$``kappa0``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Clinical Impact:"``, ``scenario``$``clinical_impact``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Recommended Raters:"``, ``scenario``$``raters``, ``"\n\n"``)`\
+`}`
 
 ### Psychological and Behavioral Research
 
 #### Mental Health Assessments
 
-``` r
-
-# Psychological assessment scenarios
-psych_scenarios <- list(
-  
-  depression_severity = list(
-    study = "Depression Severity Rating",
-    instrument = "Clinical interview with standardized criteria",
-    outcome = "5",
-    categories = c("None", "Mild", "Moderate", "Severe", "Extreme"),
-    kappa0 = 0.60,  # Lower due to subjective nature
-    props = "0.15, 0.20, 0.30, 0.25, 0.10",
-    raters = "2",
-    challenges = "Subjective symptoms, cultural factors, patient disclosure variability"
-  ),
-  
-  autism_severity = list(
-    study = "Autism Spectrum Disorder Severity",
-    instrument = "ADOS (Autism Diagnostic Observation Schedule)",
-    outcome = "4",
-    categories = c("No evidence", "Mild", "Moderate", "Severe"),
-    kappa0 = 0.75,  # Higher with standardized tool
-    props = "0.20, 0.25, 0.30, 0.25",
-    raters = "3",
-    challenges = "Developmental variability, behavioral observation context"
-  ),
-  
-  anxiety_rating = list(
-    study = "Anxiety Disorder Classification", 
-    instrument = "Structured clinical interview",
-    outcome = "3",
-    categories = c("No anxiety disorder", "Anxiety disorder present", "Severe anxiety disorder"),
-    kappa0 = 0.65,
-    props = "0.40, 0.40, 0.20",
-    raters = "2",
-    challenges = "Symptom overlap between disorders, comorbidity effects"
-  )
-)
-
-# Create detailed table
-psych_table <- data.frame(
-  Study = sapply(psych_scenarios, function(x) x$study),
-  Instrument = sapply(psych_scenarios, function(x) x$instrument),
-  Categories = sapply(psych_scenarios, function(x) x$outcome),
-  Expected_Kappa = sapply(psych_scenarios, function(x) x$kappa0),
-  Raters = sapply(psych_scenarios, function(x) x$raters),
-  Main_Challenges = sapply(psych_scenarios, function(x) x$challenges)
-)
-
-kable(psych_table, caption = "Psychological Assessment Agreement Studies")
-```
+\
+`# Psychological assessment scenarios`\
+`psych_scenarios`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  `\
+`  depression_severity ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Depression Severity Rating"``,`\
+`    instrument ``=`` ``"Clinical interview with standardized criteria"``,`\
+`    outcome ``=`` ``"5"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"None"``, ``"Mild"``, ``"Moderate"``, ``"Severe"``, ``"Extreme"``)``,`\
+`    kappa0 ``=`` ``0.60``,  ``# Lower due to subjective nature`\
+`    props ``=`` ``"0.15, 0.20, 0.30, 0.25, 0.10"``,`\
+`    raters ``=`` ``"2"``,`\
+`    challenges ``=`` ``"Subjective symptoms, cultural factors, patient disclosure variability"`\
+`  ``)``,`\
+`  `\
+`  autism_severity ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Autism Spectrum Disorder Severity"``,`\
+`    instrument ``=`` ``"ADOS (Autism Diagnostic Observation Schedule)"``,`\
+`    outcome ``=`` ``"4"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"No evidence"``, ``"Mild"``, ``"Moderate"``, ``"Severe"``)``,`\
+`    kappa0 ``=`` ``0.75``,  ``# Higher with standardized tool`\
+`    props ``=`` ``"0.20, 0.25, 0.30, 0.25"``,`\
+`    raters ``=`` ``"3"``,`\
+`    challenges ``=`` ``"Developmental variability, behavioral observation context"`\
+`  ``)``,`\
+`  `\
+`  anxiety_rating ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Anxiety Disorder Classification"``, `\
+`    instrument ``=`` ``"Structured clinical interview"``,`\
+`    outcome ``=`` ``"3"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"No anxiety disorder"``, ``"Anxiety disorder present"``, ``"Severe anxiety disorder"``)``,`\
+`    kappa0 ``=`` ``0.65``,`\
+`    props ``=`` ``"0.40, 0.40, 0.20"``,`\
+`    raters ``=`` ``"2"``,`\
+`    challenges ``=`` ``"Symptom overlap between disorders, comorbidity effects"`\
+`  ``)`\
+`)`\
+\
+`# Create detailed table`\
+`psych_table`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Study ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``psych_scenarios``, ``function``(``x``)`` ``x``$``study``)``,`\
+`  Instrument ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``psych_scenarios``, ``function``(``x``)`` ``x``$``instrument``)``,`\
+`  Categories ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``psych_scenarios``, ``function``(``x``)`` ``x``$``outcome``)``,`\
+`  Expected_Kappa ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``psych_scenarios``, ``function``(``x``)`` ``x``$``kappa0``)``,`\
+`  Raters ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``psych_scenarios``, ``function``(``x``)`` ``x``$``raters``)``,`\
+`  Main_Challenges ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``psych_scenarios``, ``function``(``x``)`` ``x``$``challenges``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``psych_table``, caption ``=`` ``"Psychological Assessment Agreement Studies"``)`
 
 #### Behavioral Observation Studies
 
-``` r
-
-# Behavioral observation scenarios
-behavioral_scenarios <- data.frame(
-  Study_Type = c(
-    "Classroom Behavior Observation",
-    "Clinical Behavior Assessment", 
-    "Developmental Milestone Evaluation",
-    "Social Interaction Coding",
-    "Communication Skill Rating"
-  ),
-  
-  Setting = c(
-    "Elementary school classroom",
-    "Clinical psychology office",
-    "Pediatric developmental clinic", 
-    "Playground observation",
-    "Speech therapy session"
-  ),
-  
-  Categories = c(3, 4, 5, 3, 4),
-  
-  Category_Examples = c(
-    "On-task, Off-task, Disruptive",
-    "Cooperative, Neutral, Resistant, Aggressive",
-    "Not achieved, Emerging, Achieved, Advanced, Mastered",
-    "Positive, Neutral, Negative",
-    "Poor, Fair, Good, Excellent"
-  ),
-  
-  Expected_Kappa = c(0.65, 0.70, 0.60, 0.55, 0.75),
-  
-  Typical_Raters = c(2, 3, 2, 4, 2),
-  
-  Key_Considerations = c(
-    "Observer fatigue, context variability",
-    "Behavioral definitions, training level",
-    "Age-related variability, assessment timing",
-    "Social dynamics, observation period",
-    "Skill complexity, assessment criteria"
-  )
-)
-
-kable(behavioral_scenarios, caption = "Behavioral Observation Agreement Studies")
-```
+\
+`# Behavioral observation scenarios`\
+`behavioral_scenarios`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Study_Type ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Classroom Behavior Observation"``,`\
+`    ``"Clinical Behavior Assessment"``, `\
+`    ``"Developmental Milestone Evaluation"``,`\
+`    ``"Social Interaction Coding"``,`\
+`    ``"Communication Skill Rating"`\
+`  ``)``,`\
+`  `\
+`  Setting ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Elementary school classroom"``,`\
+`    ``"Clinical psychology office"``,`\
+`    ``"Pediatric developmental clinic"``, `\
+`    ``"Playground observation"``,`\
+`    ``"Speech therapy session"`\
+`  ``)``,`\
+`  `\
+`  Categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``3``, ``4``, ``5``, ``3``, ``4``)``,`\
+`  `\
+`  Category_Examples ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"On-task, Off-task, Disruptive"``,`\
+`    ``"Cooperative, Neutral, Resistant, Aggressive"``,`\
+`    ``"Not achieved, Emerging, Achieved, Advanced, Mastered"``,`\
+`    ``"Positive, Neutral, Negative"``,`\
+`    ``"Poor, Fair, Good, Excellent"`\
+`  ``)``,`\
+`  `\
+`  Expected_Kappa ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``0.65``, ``0.70``, ``0.60``, ``0.55``, ``0.75``)``,`\
+`  `\
+`  Typical_Raters ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``3``, ``2``, ``4``, ``2``)``,`\
+`  `\
+`  Key_Considerations ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Observer fatigue, context variability"``,`\
+`    ``"Behavioral definitions, training level"``,`\
+`    ``"Age-related variability, assessment timing"``,`\
+`    ``"Social dynamics, observation period"``,`\
+`    ``"Skill complexity, assessment criteria"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``behavioral_scenarios``, caption ``=`` ``"Behavioral Observation Agreement Studies"``)`
 
 ### Quality Control and Performance Assessment
 
 #### Manufacturing and Production
 
-``` r
-
-# Quality control scenarios
-qc_scenarios <- list(
-  
-  product_inspection = list(
-    study = "Manufacturing Quality Control",
-    context = "Final product inspection in electronics manufacturing",
-    outcome = "3",
-    categories = c("Pass", "Minor defect", "Major defect"),
-    kappa0 = 0.85,  # High agreement expected for objective criteria
-    props = "0.80, 0.15, 0.05",
-    raters = "4",
-    precision_requirement = "High precision needed for quality certification"
-  ),
-  
-  food_safety = list(
-    study = "Restaurant Food Safety Inspection",
-    context = "Health department restaurant inspections",
-    outcome = "4", 
-    categories = c("Excellent", "Good", "Fair", "Poor"),
-    kappa0 = 0.75,
-    props = "0.20, 0.40, 0.30, 0.10",
-    raters = "2",
-    precision_requirement = "Good agreement needed for regulatory compliance"
-  ),
-  
-  service_quality = list(
-    study = "Customer Service Quality Assessment",
-    context = "Call center service quality evaluation",
-    outcome = "5",
-    categories = c("Poor", "Below average", "Average", "Good", "Excellent"),
-    kappa0 = 0.70,
-    props = "0.05, 0.15, 0.40, 0.30, 0.10",
-    raters = "3",
-    precision_requirement = "Moderate precision for performance management"
-  )
-)
-
-cat("Quality Control Agreement Studies:\n\n")
-
-for (scenario_name in names(qc_scenarios)) {
-  scenario <- qc_scenarios[[scenario_name]]
-  cat("Study:", scenario$study, "\n")
-  cat("Context:", scenario$context, "\n")
-  cat("Categories:", paste(scenario$categories, collapse = " | "), "\n")
-  cat("Expected Agreement:", scenario$kappa0, "\n")
-  cat("Precision Requirement:", scenario$precision_requirement, "\n")
-  cat("Inspectors/Raters:", scenario$raters, "\n\n")
-}
-```
+\
+`# Quality control scenarios`\
+`qc_scenarios`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  `\
+`  product_inspection ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Manufacturing Quality Control"``,`\
+`    context ``=`` ``"Final product inspection in electronics manufacturing"``,`\
+`    outcome ``=`` ``"3"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Pass"``, ``"Minor defect"``, ``"Major defect"``)``,`\
+`    kappa0 ``=`` ``0.85``,  ``# High agreement expected for objective criteria`\
+`    props ``=`` ``"0.80, 0.15, 0.05"``,`\
+`    raters ``=`` ``"4"``,`\
+`    precision_requirement ``=`` ``"High precision needed for quality certification"`\
+`  ``)``,`\
+`  `\
+`  food_safety ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Restaurant Food Safety Inspection"``,`\
+`    context ``=`` ``"Health department restaurant inspections"``,`\
+`    outcome ``=`` ``"4"``, `\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Excellent"``, ``"Good"``, ``"Fair"``, ``"Poor"``)``,`\
+`    kappa0 ``=`` ``0.75``,`\
+`    props ``=`` ``"0.20, 0.40, 0.30, 0.10"``,`\
+`    raters ``=`` ``"2"``,`\
+`    precision_requirement ``=`` ``"Good agreement needed for regulatory compliance"`\
+`  ``)``,`\
+`  `\
+`  service_quality ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Customer Service Quality Assessment"``,`\
+`    context ``=`` ``"Call center service quality evaluation"``,`\
+`    outcome ``=`` ``"5"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Poor"``, ``"Below average"``, ``"Average"``, ``"Good"``, ``"Excellent"``)``,`\
+`    kappa0 ``=`` ``0.70``,`\
+`    props ``=`` ``"0.05, 0.15, 0.40, 0.30, 0.10"``,`\
+`    raters ``=`` ``"3"``,`\
+`    precision_requirement ``=`` ``"Moderate precision for performance management"`\
+`  ``)`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Quality Control Agreement Studies:\n\n"``)`\
+\
+`for`` ``(``scenario_name`` ``in`` `[`names`](https://rdrr.io/r/base/names.html)`(``qc_scenarios``)``)`` ``{`\
+`  ``scenario`` ``<-`` ``qc_scenarios``[[``scenario_name``]``]`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Study:"``, ``scenario``$``study``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Context:"``, ``scenario``$``context``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Categories:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(``scenario``$``categories``, collapse ``=`` ``" | "``)``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Expected Agreement:"``, ``scenario``$``kappa0``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Precision Requirement:"``, ``scenario``$``precision_requirement``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Inspectors/Raters:"``, ``scenario``$``raters``, ``"\n\n"``)`\
+`}`
 
 ## Advanced Applications
 
@@ -611,119 +603,115 @@ for (scenario_name in names(qc_scenarios)) {
 
 #### Genomic Classification Studies
 
-``` r
-
-# Precision medicine scenarios requiring agreement studies
-precision_scenarios <- list(
-  
-  variant_classification = list(
-    study = "Genetic Variant Pathogenicity Classification",
-    context = "Clinical geneticists classifying variants using ACMG guidelines",
-    outcome = "5",
-    categories = c("Benign", "Likely benign", "VUS", "Likely pathogenic", "Pathogenic"),
-    kappa0 = 0.70,
-    props = "0.25, 0.30, 0.25, 0.15, 0.05",
-    raters = "3",
-    clinical_significance = "Variant classification directly impacts treatment decisions"
-  ),
-  
-  immunohistochemistry = list(
-    study = "IHC Biomarker Scoring",
-    context = "Pathologists scoring HER2 expression in breast cancer",
-    outcome = "4",
-    categories = c("0", "1+", "2+", "3+"),
-    kappa0 = 0.80,
-    props = "0.30, 0.25, 0.25, 0.20",
-    raters = "2", 
-    clinical_significance = "HER2 status determines targeted therapy eligibility"
-  ),
-  
-  radiogenomics = list(
-    study = "Imaging Biomarker Assessment",
-    context = "Radiologists assessing radiomic features predictive of genomic subtypes",
-    outcome = "3",
-    categories = c("Low probability", "Intermediate probability", "High probability"),
-    kappa0 = 0.65,
-    props = "0.40, 0.35, 0.25", 
-    raters = "4",
-    clinical_significance = "Imaging biomarkers guide biopsy decisions and treatment planning"
-  )
-)
-
-# Create precision medicine summary
-precision_table <- data.frame(
-  Study = sapply(precision_scenarios, function(x) x$study),
-  Context = sapply(precision_scenarios, function(x) x$context),
-  Categories = sapply(precision_scenarios, function(x) x$outcome),
-  Expected_Kappa = sapply(precision_scenarios, function(x) x$kappa0),
-  Raters = sapply(precision_scenarios, function(x) x$raters),
-  Clinical_Impact = sapply(precision_scenarios, function(x) x$clinical_significance)
-)
-
-kable(precision_table, caption = "Precision Medicine Agreement Studies")
-```
+\
+`# Precision medicine scenarios requiring agreement studies`\
+`precision_scenarios`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  `\
+`  variant_classification ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Genetic Variant Pathogenicity Classification"``,`\
+`    context ``=`` ``"Clinical geneticists classifying variants using ACMG guidelines"``,`\
+`    outcome ``=`` ``"5"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Benign"``, ``"Likely benign"``, ``"VUS"``, ``"Likely pathogenic"``, ``"Pathogenic"``)``,`\
+`    kappa0 ``=`` ``0.70``,`\
+`    props ``=`` ``"0.25, 0.30, 0.25, 0.15, 0.05"``,`\
+`    raters ``=`` ``"3"``,`\
+`    clinical_significance ``=`` ``"Variant classification directly impacts treatment decisions"`\
+`  ``)``,`\
+`  `\
+`  immunohistochemistry ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"IHC Biomarker Scoring"``,`\
+`    context ``=`` ``"Pathologists scoring HER2 expression in breast cancer"``,`\
+`    outcome ``=`` ``"4"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"0"``, ``"1+"``, ``"2+"``, ``"3+"``)``,`\
+`    kappa0 ``=`` ``0.80``,`\
+`    props ``=`` ``"0.30, 0.25, 0.25, 0.20"``,`\
+`    raters ``=`` ``"2"``, `\
+`    clinical_significance ``=`` ``"HER2 status determines targeted therapy eligibility"`\
+`  ``)``,`\
+`  `\
+`  radiogenomics ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Imaging Biomarker Assessment"``,`\
+`    context ``=`` ``"Radiologists assessing radiomic features predictive of genomic subtypes"``,`\
+`    outcome ``=`` ``"3"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Low probability"``, ``"Intermediate probability"``, ``"High probability"``)``,`\
+`    kappa0 ``=`` ``0.65``,`\
+`    props ``=`` ``"0.40, 0.35, 0.25"``, `\
+`    raters ``=`` ``"4"``,`\
+`    clinical_significance ``=`` ``"Imaging biomarkers guide biopsy decisions and treatment planning"`\
+`  ``)`\
+`)`\
+\
+`# Create precision medicine summary`\
+`precision_table`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Study ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``precision_scenarios``, ``function``(``x``)`` ``x``$``study``)``,`\
+`  Context ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``precision_scenarios``, ``function``(``x``)`` ``x``$``context``)``,`\
+`  Categories ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``precision_scenarios``, ``function``(``x``)`` ``x``$``outcome``)``,`\
+`  Expected_Kappa ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``precision_scenarios``, ``function``(``x``)`` ``x``$``kappa0``)``,`\
+`  Raters ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``precision_scenarios``, ``function``(``x``)`` ``x``$``raters``)``,`\
+`  Clinical_Impact ``=`` `[`sapply`](https://rdrr.io/r/base/lapply.html)`(``precision_scenarios``, ``function``(``x``)`` ``x``$``clinical_significance``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``precision_table``, caption ``=`` ``"Precision Medicine Agreement Studies"``)`
 
 ### Content Analysis and Communication Research
 
 #### Qualitative Research Applications
 
-``` r
-
-# Content analysis scenarios
-content_scenarios <- list(
-  
-  interview_coding = list(
-    study = "Qualitative Interview Theme Identification",
-    context = "Researchers coding patient interview themes about treatment experiences",
-    outcome = "4",
-    themes = c("Positive experience", "Mixed experience", "Negative experience", "Unclear/Ambiguous"),
-    kappa0 = 0.60,  # Lower due to interpretive nature
-    props = "0.30, 0.35, 0.25, 0.10",
-    raters = "2",
-    challenges = "Subjective interpretation, context dependency, cultural factors"
-  ),
-  
-  media_sentiment = list(
-    study = "News Media Sentiment Analysis",
-    context = "Researchers coding sentiment in health news coverage",
-    outcome = "3",
-    categories = c("Negative", "Neutral", "Positive"),
-    kappa0 = 0.75,  # Higher with clear guidelines
-    props = "0.25, 0.50, 0.25",
-    raters = "3",
-    challenges = "Implicit bias, cultural interpretation, context effects"
-  ),
-  
-  social_media = list(
-    study = "Social Media Health Information Classification",
-    context = "Analysts classifying health information accuracy in social posts",
-    outcome = "4",
-    categories = c("Accurate", "Partially accurate", "Misleading", "False"),
-    kappa0 = 0.65,
-    props = "0.40, 0.30, 0.20, 0.10",
-    raters = "4",
-    challenges = "Evolving information, source credibility assessment, expertise required"
-  )
-)
-
-cat("Content Analysis Agreement Studies:\n\n")
-
-for (scenario_name in names(content_scenarios)) {
-  scenario <- content_scenarios[[scenario_name]]
-  cat("Study:", scenario$study, "\n")
-  cat("Context:", scenario$context, "\n")
-  
-  if ("themes" %in% names(scenario)) {
-    cat("Themes:", paste(scenario$themes, collapse = " | "), "\n")
-  } else {
-    cat("Categories:", paste(scenario$categories, collapse = " | "), "\n")
-  }
-  
-  cat("Expected κ:", scenario$kappa0, "\n")
-  cat("Coders:", scenario$raters, "\n")
-  cat("Challenges:", scenario$challenges, "\n\n")
-}
-```
+\
+`# Content analysis scenarios`\
+`content_scenarios`` ``<-`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`  `\
+`  interview_coding ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Qualitative Interview Theme Identification"``,`\
+`    context ``=`` ``"Researchers coding patient interview themes about treatment experiences"``,`\
+`    outcome ``=`` ``"4"``,`\
+`    themes ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Positive experience"``, ``"Mixed experience"``, ``"Negative experience"``, ``"Unclear/Ambiguous"``)``,`\
+`    kappa0 ``=`` ``0.60``,  ``# Lower due to interpretive nature`\
+`    props ``=`` ``"0.30, 0.35, 0.25, 0.10"``,`\
+`    raters ``=`` ``"2"``,`\
+`    challenges ``=`` ``"Subjective interpretation, context dependency, cultural factors"`\
+`  ``)``,`\
+`  `\
+`  media_sentiment ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"News Media Sentiment Analysis"``,`\
+`    context ``=`` ``"Researchers coding sentiment in health news coverage"``,`\
+`    outcome ``=`` ``"3"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Negative"``, ``"Neutral"``, ``"Positive"``)``,`\
+`    kappa0 ``=`` ``0.75``,  ``# Higher with clear guidelines`\
+`    props ``=`` ``"0.25, 0.50, 0.25"``,`\
+`    raters ``=`` ``"3"``,`\
+`    challenges ``=`` ``"Implicit bias, cultural interpretation, context effects"`\
+`  ``)``,`\
+`  `\
+`  social_media ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(`\
+`    study ``=`` ``"Social Media Health Information Classification"``,`\
+`    context ``=`` ``"Analysts classifying health information accuracy in social posts"``,`\
+`    outcome ``=`` ``"4"``,`\
+`    categories ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Accurate"``, ``"Partially accurate"``, ``"Misleading"``, ``"False"``)``,`\
+`    kappa0 ``=`` ``0.65``,`\
+`    props ``=`` ``"0.40, 0.30, 0.20, 0.10"``,`\
+`    raters ``=`` ``"4"``,`\
+`    challenges ``=`` ``"Evolving information, source credibility assessment, expertise required"`\
+`  ``)`\
+`)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Content Analysis Agreement Studies:\n\n"``)`\
+\
+`for`` ``(``scenario_name`` ``in`` `[`names`](https://rdrr.io/r/base/names.html)`(``content_scenarios``)``)`` ``{`\
+`  ``scenario`` ``<-`` ``content_scenarios``[[``scenario_name``]``]`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Study:"``, ``scenario``$``study``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Context:"``, ``scenario``$``context``, ``"\n"``)`\
+`  `\
+`  ``if`` ``(``"themes"`` `[`%in%`](https://rdrr.io/r/base/match.html)` `[`names`](https://rdrr.io/r/base/names.html)`(``scenario``)``)`` ``{`\
+`    `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Themes:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(``scenario``$``themes``, collapse ``=`` ``" | "``)``, ``"\n"``)`\
+`  ``}`` ``else`` ``{`\
+`    `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Categories:"``, `[`paste`](https://rdrr.io/r/base/paste.html)`(``scenario``$``categories``, collapse ``=`` ``" | "``)``, ``"\n"``)`\
+`  ``}`\
+`  `\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Expected κ:"``, ``scenario``$``kappa0``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Coders:"``, ``scenario``$``raters``, ``"\n"``)`\
+`  `[`cat`](https://rdrr.io/r/base/cat.html)`(``"Challenges:"``, ``scenario``$``challenges``, ``"\n\n"``)`\
+`}`
 
 ## Sample Size Planning Guidelines
 
@@ -731,197 +719,189 @@ for (scenario_name in names(content_scenarios)) {
 
 #### Determining Precision Requirements
 
-``` r
-
-# Precision requirement guidelines
-precision_guide <- data.frame(
-  Study_Purpose = c(
-    "Regulatory validation",
-    "Clinical decision support validation", 
-    "Research instrument development",
-    "Preliminary feasibility study",
-    "Quality improvement initiative",
-    "Educational assessment tool",
-    "Exploratory research"
-  ),
-  
-  Recommended_Precision = c(
-    "±0.05 to ±0.10",
-    "±0.10 to ±0.15", 
-    "±0.10 to ±0.20",
-    "±0.15 to ±0.25",
-    "±0.10 to ±0.20",
-    "±0.15 to ±0.25",
-    "±0.20 to ±0.30"
-  ),
-  
-  Minimum_Kappa = c(
-    ">=0.80",
-    ">=0.70",
-    ">=0.60", 
-    ">=0.50",
-    ">=0.60",
-    ">=0.60",
-    ">=0.40"
-  ),
-  
-  Typical_Sample_Size = c(
-    "Large (200-500+)",
-    "Medium-Large (100-300)",
-    "Medium (50-200)",
-    "Small-Medium (30-100)",
-    "Medium (50-150)",
-    "Medium (50-150)",
-    "Small (20-80)"
-  ),
-  
-  Key_Considerations = c(
-    "Regulatory standards, patient safety",
-    "Clinical impact, diagnostic accuracy",
-    "Psychometric properties, validity evidence",
-    "Resource constraints, proof of concept",
-    "Operational feasibility, cost-effectiveness",
-    "Educational outcomes, assessment reliability",
-    "Hypothesis generation, method development"
-  )
-)
-
-kable(precision_guide, caption = "Precision Requirements by Study Purpose")
-```
+\
+`# Precision requirement guidelines`\
+`precision_guide`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Study_Purpose ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Regulatory validation"``,`\
+`    ``"Clinical decision support validation"``, `\
+`    ``"Research instrument development"``,`\
+`    ``"Preliminary feasibility study"``,`\
+`    ``"Quality improvement initiative"``,`\
+`    ``"Educational assessment tool"``,`\
+`    ``"Exploratory research"`\
+`  ``)``,`\
+`  `\
+`  Recommended_Precision ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"±0.05 to ±0.10"``,`\
+`    ``"±0.10 to ±0.15"``, `\
+`    ``"±0.10 to ±0.20"``,`\
+`    ``"±0.15 to ±0.25"``,`\
+`    ``"±0.10 to ±0.20"``,`\
+`    ``"±0.15 to ±0.25"``,`\
+`    ``"±0.20 to ±0.30"`\
+`  ``)``,`\
+`  `\
+`  Minimum_Kappa ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``">=0.80"``,`\
+`    ``">=0.70"``,`\
+`    ``">=0.60"``, `\
+`    ``">=0.50"``,`\
+`    ``">=0.60"``,`\
+`    ``">=0.60"``,`\
+`    ``">=0.40"`\
+`  ``)``,`\
+`  `\
+`  Typical_Sample_Size ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Large (200-500+)"``,`\
+`    ``"Medium-Large (100-300)"``,`\
+`    ``"Medium (50-200)"``,`\
+`    ``"Small-Medium (30-100)"``,`\
+`    ``"Medium (50-150)"``,`\
+`    ``"Medium (50-150)"``,`\
+`    ``"Small (20-80)"`\
+`  ``)``,`\
+`  `\
+`  Key_Considerations ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Regulatory standards, patient safety"``,`\
+`    ``"Clinical impact, diagnostic accuracy"``,`\
+`    ``"Psychometric properties, validity evidence"``,`\
+`    ``"Resource constraints, proof of concept"``,`\
+`    ``"Operational feasibility, cost-effectiveness"``,`\
+`    ``"Educational outcomes, assessment reliability"``,`\
+`    ``"Hypothesis generation, method development"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``precision_guide``, caption ``=`` ``"Precision Requirements by Study Purpose"``)`
 
 #### Rater Selection and Training
 
-``` r
-
-# Rater selection guidelines
-rater_guide <- data.frame(
-  Number_of_Raters = c("2", "3", "4", "5"),
-  
-  Advantages = c(
-    "Simple design, lower cost, faster completion",
-    "Tie-breaking capability, moderate cost increase",
-    "Good reliability, majority decision possible", 
-    "High reliability, robust against outliers"
-  ),
-  
-  Disadvantages = c(
-    "No tie-breaking, vulnerable to outliers",
-    "Moderate cost increase, scheduling complexity",
-    "Higher cost, scheduling challenges",
-    "High cost, logistical complexity"
-  ),
-  
-  Best_For = c(
-    "Well-defined criteria, experienced raters",
-    "Standard research studies, moderate complexity",
-    "Complex assessments, validation studies",
-    "High-stakes decisions, regulatory studies"
-  ),
-  
-  Sample_Size_Effect = c(
-    "Baseline (largest sample needed)",
-    "10-20% reduction from 2-rater design",
-    "20-30% reduction from 2-rater design",
-    "25-35% reduction from 2-rater design"
-  )
-)
-
-kable(rater_guide, caption = "Rater Number Selection Guidelines")
-```
+\
+`# Rater selection guidelines`\
+`rater_guide`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Number_of_Raters ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"2"``, ``"3"``, ``"4"``, ``"5"``)``,`\
+`  `\
+`  Advantages ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Simple design, lower cost, faster completion"``,`\
+`    ``"Tie-breaking capability, moderate cost increase"``,`\
+`    ``"Good reliability, majority decision possible"``, `\
+`    ``"High reliability, robust against outliers"`\
+`  ``)``,`\
+`  `\
+`  Disadvantages ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"No tie-breaking, vulnerable to outliers"``,`\
+`    ``"Moderate cost increase, scheduling complexity"``,`\
+`    ``"Higher cost, scheduling challenges"``,`\
+`    ``"High cost, logistical complexity"`\
+`  ``)``,`\
+`  `\
+`  Best_For ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Well-defined criteria, experienced raters"``,`\
+`    ``"Standard research studies, moderate complexity"``,`\
+`    ``"Complex assessments, validation studies"``,`\
+`    ``"High-stakes decisions, regulatory studies"`\
+`  ``)``,`\
+`  `\
+`  Sample_Size_Effect ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Baseline (largest sample needed)"``,`\
+`    ``"10-20% reduction from 2-rater design"``,`\
+`    ``"20-30% reduction from 2-rater design"``,`\
+`    ``"25-35% reduction from 2-rater design"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``rater_guide``, caption ``=`` ``"Rater Number Selection Guidelines"``)`
 
 ### Statistical Considerations
 
 #### Effect of Prevalence on Sample Size
 
-``` r
-
-# Create examples showing prevalence effects
-prevalence_examples <- data.frame(
-  Condition = c(
-    "Common condition",
-    "Moderate prevalence",
-    "Rare condition",
-    "Very rare condition"
-  ),
-  
-  Prevalence = c("50%", "25%", "10%", "2%"),
-  
-  Proportions = c(
-    "0.50, 0.50",
-    "0.25, 0.75", 
-    "0.10, 0.90",
-    "0.02, 0.98"
-  ),
-  
-  Sample_Size_Effect = c(
-    "Baseline (optimal)",
-    "10-20% increase",
-    "50-100% increase", 
-    "200-400% increase"
-  ),
-  
-  Examples = c(
-    "Gender classification, coin flip outcomes",
-    "Hypertension screening, common infections",
-    "Cancer screening, rare genetic variants",
-    "Adverse drug reactions, rare diseases"
-  ),
-  
-  Recommendations = c(
-    "Standard sample size calculations apply",
-    "Plan for moderate sample size increase",
-    "Consider enriched sampling strategies",
-    "Multi-site collaboration often necessary"
-  )
-)
-
-kable(prevalence_examples, caption = "Prevalence Effects on Sample Size Requirements")
-```
+\
+`# Create examples showing prevalence effects`\
+`prevalence_examples`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Condition ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Common condition"``,`\
+`    ``"Moderate prevalence"``,`\
+`    ``"Rare condition"``,`\
+`    ``"Very rare condition"`\
+`  ``)``,`\
+`  `\
+`  Prevalence ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"50%"``, ``"25%"``, ``"10%"``, ``"2%"``)``,`\
+`  `\
+`  Proportions ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"0.50, 0.50"``,`\
+`    ``"0.25, 0.75"``, `\
+`    ``"0.10, 0.90"``,`\
+`    ``"0.02, 0.98"`\
+`  ``)``,`\
+`  `\
+`  Sample_Size_Effect ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Baseline (optimal)"``,`\
+`    ``"10-20% increase"``,`\
+`    ``"50-100% increase"``, `\
+`    ``"200-400% increase"`\
+`  ``)``,`\
+`  `\
+`  Examples ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Gender classification, coin flip outcomes"``,`\
+`    ``"Hypertension screening, common infections"``,`\
+`    ``"Cancer screening, rare genetic variants"``,`\
+`    ``"Adverse drug reactions, rare diseases"`\
+`  ``)``,`\
+`  `\
+`  Recommendations ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Standard sample size calculations apply"``,`\
+`    ``"Plan for moderate sample size increase"``,`\
+`    ``"Consider enriched sampling strategies"``,`\
+`    ``"Multi-site collaboration often necessary"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``prevalence_examples``, caption ``=`` ``"Prevalence Effects on Sample Size Requirements"``)`
 
 #### Category Distribution Optimization
 
-``` r
-
-# Guidelines for optimal category distributions
-distribution_guide <- data.frame(
-  Scenario = c(
-    "Balanced design",
-    "Clinical reality",
-    "Enriched sampling",
-    "Natural prevalence"
-  ),
-  
-  Strategy = c(
-    "Equal proportions across categories",
-    "Proportions match real-world prevalence",
-    "Oversample rare categories for power",
-    "Use observed prevalence from pilot data"
-  ),
-  
-  Advantages = c(
-    "Optimal statistical power, simple analysis",
-    "Generalizable results, realistic estimates",
-    "Adequate power for rare categories",
-    "Most accurate prevalence estimates"
-  ),
-  
-  Disadvantages = c(
-    "May not reflect real prevalence",
-    "May lack power for rare categories", 
-    "Complex sampling, generalizability concerns",
-    "May require very large samples"
-  ),
-  
-  Best_For = c(
-    "Method development, proof of concept",
-    "Validation studies, clinical implementation",
-    "Rare disease studies, safety assessments",
-    "Epidemiological studies, surveillance"
-  )
-)
-
-kable(distribution_guide, caption = "Category Distribution Strategy Guidelines")
-```
+\
+`# Guidelines for optimal category distributions`\
+`distribution_guide`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Scenario ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Balanced design"``,`\
+`    ``"Clinical reality"``,`\
+`    ``"Enriched sampling"``,`\
+`    ``"Natural prevalence"`\
+`  ``)``,`\
+`  `\
+`  Strategy ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Equal proportions across categories"``,`\
+`    ``"Proportions match real-world prevalence"``,`\
+`    ``"Oversample rare categories for power"``,`\
+`    ``"Use observed prevalence from pilot data"`\
+`  ``)``,`\
+`  `\
+`  Advantages ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Optimal statistical power, simple analysis"``,`\
+`    ``"Generalizable results, realistic estimates"``,`\
+`    ``"Adequate power for rare categories"``,`\
+`    ``"Most accurate prevalence estimates"`\
+`  ``)``,`\
+`  `\
+`  Disadvantages ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"May not reflect real prevalence"``,`\
+`    ``"May lack power for rare categories"``, `\
+`    ``"Complex sampling, generalizability concerns"``,`\
+`    ``"May require very large samples"`\
+`  ``)``,`\
+`  `\
+`  Best_For ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Method development, proof of concept"``,`\
+`    ``"Validation studies, clinical implementation"``,`\
+`    ``"Rare disease studies, safety assessments"``,`\
+`    ``"Epidemiological studies, surveillance"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``distribution_guide``, caption ``=`` ``"Category Distribution Strategy Guidelines"``)`
 
 ## Best Practices and Recommendations
 
@@ -929,224 +909,216 @@ kable(distribution_guide, caption = "Category Distribution Strategy Guidelines")
 
 #### Pre-Study Planning
 
-``` r
-
-# Comprehensive planning checklist
-planning_checklist <- data.frame(
-  Phase = c(
-    rep("Design Phase", 5),
-    rep("Preparation Phase", 4), 
-    rep("Execution Phase", 4),
-    rep("Analysis Phase", 3)
-  ),
-  
-  Checklist_Item = c(
-    "Define study objectives and research questions",
-    "Specify outcome categories and operational definitions",
-    "Determine precision requirements and target kappa",
-    "Estimate category prevalence from literature/pilot data",
-    "Calculate required sample size with appropriate precision",
-    
-    "Develop rater training materials and protocols",
-    "Create standardized assessment procedures",
-    "Establish inter-rater reliability training program", 
-    "Pilot test procedures with small sample",
-    
-    "Recruit and train raters to criterion standard",
-    "Implement quality control procedures during data collection",
-    "Monitor inter-rater agreement throughout study",
-    "Document any protocol deviations or issues",
-    
-    "Calculate achieved kappa with confidence intervals",
-    "Compare achieved vs. planned precision",
-    "Report methodology and results transparently"
-  ),
-  
-  Critical_Success_Factor = c(
-    "Clear, specific, measurable objectives",
-    "Unambiguous category definitions with examples",
-    "Realistic precision requirements for study purpose",
-    "Accurate prevalence estimates or conservative assumptions",
-    "Adequate sample size with 10-20% overage",
-    
-    "Comprehensive training until criterion reliability achieved",
-    "Standardized procedures reducing rater variability",
-    "Regular reliability assessments and retraining",
-    "Small-scale validation before full implementation",
-    
-    "Consistent application of trained procedures",
-    "Real-time monitoring and feedback systems",
-    "Documentation of agreement levels throughout",
-    "Transparent reporting of all methodological details",
-    
-    "Appropriate statistical methods and reporting",
-    "Honest assessment of achieved vs. planned outcomes",
-    "Complete methodology section enabling replication"
-  )
-)
-
-kable(planning_checklist, caption = "Comprehensive Study Planning Checklist")
-```
+\
+`# Comprehensive planning checklist`\
+`planning_checklist`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Phase ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Design Phase"``, ``5``)``,`\
+`    `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Preparation Phase"``, ``4``)``, `\
+`    `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Execution Phase"``, ``4``)``,`\
+`    `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Analysis Phase"``, ``3``)`\
+`  ``)``,`\
+`  `\
+`  Checklist_Item ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Define study objectives and research questions"``,`\
+`    ``"Specify outcome categories and operational definitions"``,`\
+`    ``"Determine precision requirements and target kappa"``,`\
+`    ``"Estimate category prevalence from literature/pilot data"``,`\
+`    ``"Calculate required sample size with appropriate precision"``,`\
+`    `\
+`    ``"Develop rater training materials and protocols"``,`\
+`    ``"Create standardized assessment procedures"``,`\
+`    ``"Establish inter-rater reliability training program"``, `\
+`    ``"Pilot test procedures with small sample"``,`\
+`    `\
+`    ``"Recruit and train raters to criterion standard"``,`\
+`    ``"Implement quality control procedures during data collection"``,`\
+`    ``"Monitor inter-rater agreement throughout study"``,`\
+`    ``"Document any protocol deviations or issues"``,`\
+`    `\
+`    ``"Calculate achieved kappa with confidence intervals"``,`\
+`    ``"Compare achieved vs. planned precision"``,`\
+`    ``"Report methodology and results transparently"`\
+`  ``)``,`\
+`  `\
+`  Critical_Success_Factor ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Clear, specific, measurable objectives"``,`\
+`    ``"Unambiguous category definitions with examples"``,`\
+`    ``"Realistic precision requirements for study purpose"``,`\
+`    ``"Accurate prevalence estimates or conservative assumptions"``,`\
+`    ``"Adequate sample size with 10-20% overage"``,`\
+`    `\
+`    ``"Comprehensive training until criterion reliability achieved"``,`\
+`    ``"Standardized procedures reducing rater variability"``,`\
+`    ``"Regular reliability assessments and retraining"``,`\
+`    ``"Small-scale validation before full implementation"``,`\
+`    `\
+`    ``"Consistent application of trained procedures"``,`\
+`    ``"Real-time monitoring and feedback systems"``,`\
+`    ``"Documentation of agreement levels throughout"``,`\
+`    ``"Transparent reporting of all methodological details"``,`\
+`    `\
+`    ``"Appropriate statistical methods and reporting"``,`\
+`    ``"Honest assessment of achieved vs. planned outcomes"``,`\
+`    ``"Complete methodology section enabling replication"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``planning_checklist``, caption ``=`` ``"Comprehensive Study Planning Checklist"``)`
 
 #### Common Pitfalls and Solutions
 
-``` r
-
-# Common pitfalls and their solutions
-pitfalls_guide <- data.frame(
-  Common_Pitfall = c(
-    "Inadequate rater training",
-    "Unclear category definitions",
-    "Insufficient sample size",
-    "Ignoring prevalence effects", 
-    "Over-optimistic kappa expectations",
-    "No pilot testing",
-    "Inadequate quality control",
-    "Poor documentation"
-  ),
-  
-  Consequences = c(
-    "Low agreement, unreliable results",
-    "Inconsistent interpretation, poor agreement",
-    "Wide confidence intervals, imprecise estimates",
-    "Unexpected large sample size requirements",
-    "Disappointed by achieved agreement levels",
-    "Protocol problems discovered too late",
-    "Agreement drift over time, inconsistent results",
-    "Irreproducible methods, unclear procedures"
-  ),
-  
-  Prevention_Strategy = c(
-    "Comprehensive training to criterion standard",
-    "Develop detailed decision rules with examples",
-    "Conservative sample size calculations with overage",
-    "Use realistic prevalence estimates in planning",
-    "Base expectations on literature and pilot data",
-    "Always conduct small-scale pilot testing",
-    "Continuous monitoring with regular feedback",
-    "Detailed protocol documentation and reporting"
-  ),
-  
-  Detection_Method = c(
-    "Monitor training agreement, regular assessments",
-    "Track disagreements and confusion patterns",
-    "Monitor confidence interval width during study",
-    "Compare pilot vs. planned prevalence estimates",
-    "Compare achieved vs. expected agreement levels",
-    "Small pilot reveals procedural issues",
-    "Track agreement trends over time",
-    "External review and replication attempts"
-  )
-)
-
-kable(pitfalls_guide, caption = "Common Pitfalls and Prevention Strategies")
-```
+\
+`# Common pitfalls and their solutions`\
+`pitfalls_guide`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Common_Pitfall ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Inadequate rater training"``,`\
+`    ``"Unclear category definitions"``,`\
+`    ``"Insufficient sample size"``,`\
+`    ``"Ignoring prevalence effects"``, `\
+`    ``"Over-optimistic kappa expectations"``,`\
+`    ``"No pilot testing"``,`\
+`    ``"Inadequate quality control"``,`\
+`    ``"Poor documentation"`\
+`  ``)``,`\
+`  `\
+`  Consequences ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Low agreement, unreliable results"``,`\
+`    ``"Inconsistent interpretation, poor agreement"``,`\
+`    ``"Wide confidence intervals, imprecise estimates"``,`\
+`    ``"Unexpected large sample size requirements"``,`\
+`    ``"Disappointed by achieved agreement levels"``,`\
+`    ``"Protocol problems discovered too late"``,`\
+`    ``"Agreement drift over time, inconsistent results"``,`\
+`    ``"Irreproducible methods, unclear procedures"`\
+`  ``)``,`\
+`  `\
+`  Prevention_Strategy ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Comprehensive training to criterion standard"``,`\
+`    ``"Develop detailed decision rules with examples"``,`\
+`    ``"Conservative sample size calculations with overage"``,`\
+`    ``"Use realistic prevalence estimates in planning"``,`\
+`    ``"Base expectations on literature and pilot data"``,`\
+`    ``"Always conduct small-scale pilot testing"``,`\
+`    ``"Continuous monitoring with regular feedback"``,`\
+`    ``"Detailed protocol documentation and reporting"`\
+`  ``)``,`\
+`  `\
+`  Detection_Method ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Monitor training agreement, regular assessments"``,`\
+`    ``"Track disagreements and confusion patterns"``,`\
+`    ``"Monitor confidence interval width during study"``,`\
+`    ``"Compare pilot vs. planned prevalence estimates"``,`\
+`    ``"Compare achieved vs. expected agreement levels"``,`\
+`    ``"Small pilot reveals procedural issues"``,`\
+`    ``"Track agreement trends over time"``,`\
+`    ``"External review and replication attempts"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``pitfalls_guide``, caption ``=`` ``"Common Pitfalls and Prevention Strategies"``)`
 
 ### Interpretation Guidelines
 
 #### Kappa Interpretation in Context
 
-``` r
-
-# Context-specific interpretation guidelines
-interpretation_guide <- data.frame(
-  Clinical_Context = c(
-    "Life-threatening diagnosis",
-    "Treatment selection",
-    "Screening decisions", 
-    "Quality improvement",
-    "Research classification",
-    "Educational assessment"
-  ),
-  
-  Minimum_Acceptable_Kappa = c(
-    ">=0.80",
-    ">=0.70",
-    ">=0.60",
-    ">=0.60", 
-    ">=0.50",
-    ">=0.60"
-  ),
-  
-  Interpretation_Considerations = c(
-    "Patient safety paramount, minimal disagreement tolerated",
-    "Treatment effectiveness depends on accurate classification",
-    "Balance sensitivity/specificity with resource utilization",
-    "Improvement trends more important than absolute values",
-    "Scientific rigor balanced with practical constraints",
-    "Educational outcomes require reliable measurement"
-  ),
-  
-  Action_If_Below_Threshold = c(
-    "Additional training, refined criteria, expert consensus",
-    "Protocol revision, additional validation studies",
-    "Enhanced training, clearer guidelines, pilot testing",
-    "Process improvement, additional training, system changes",
-    "Method refinement, additional categories, expert review",
-    "Rubric revision, faculty development, norm setting"
-  )
-)
-
-kable(interpretation_guide, caption = "Context-Specific Kappa Interpretation Guidelines")
-```
+\
+`# Context-specific interpretation guidelines`\
+`interpretation_guide`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Clinical_Context ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Life-threatening diagnosis"``,`\
+`    ``"Treatment selection"``,`\
+`    ``"Screening decisions"``, `\
+`    ``"Quality improvement"``,`\
+`    ``"Research classification"``,`\
+`    ``"Educational assessment"`\
+`  ``)``,`\
+`  `\
+`  Minimum_Acceptable_Kappa ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``">=0.80"``,`\
+`    ``">=0.70"``,`\
+`    ``">=0.60"``,`\
+`    ``">=0.60"``, `\
+`    ``">=0.50"``,`\
+`    ``">=0.60"`\
+`  ``)``,`\
+`  `\
+`  Interpretation_Considerations ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Patient safety paramount, minimal disagreement tolerated"``,`\
+`    ``"Treatment effectiveness depends on accurate classification"``,`\
+`    ``"Balance sensitivity/specificity with resource utilization"``,`\
+`    ``"Improvement trends more important than absolute values"``,`\
+`    ``"Scientific rigor balanced with practical constraints"``,`\
+`    ``"Educational outcomes require reliable measurement"`\
+`  ``)``,`\
+`  `\
+`  Action_If_Below_Threshold ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Additional training, refined criteria, expert consensus"``,`\
+`    ``"Protocol revision, additional validation studies"``,`\
+`    ``"Enhanced training, clearer guidelines, pilot testing"``,`\
+`    ``"Process improvement, additional training, system changes"``,`\
+`    ``"Method refinement, additional categories, expert review"``,`\
+`    ``"Rubric revision, faculty development, norm setting"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``interpretation_guide``, caption ``=`` ``"Context-Specific Kappa Interpretation Guidelines"``)`
 
 #### Reporting Standards
 
-``` r
-
-# Comprehensive reporting standards
-reporting_elements <- data.frame(
-  Report_Section = c(
-    rep("Methods", 8),
-    rep("Results", 5),
-    rep("Discussion", 3)
-  ),
-  
-  Required_Element = c(
-    "Study design and objectives",
-    "Rater selection and qualifications", 
-    "Training procedures and criterion standards",
-    "Assessment materials and procedures",
-    "Category definitions and decision rules",
-    "Sample size calculation and rationale",
-    "Data collection procedures and timeline",
-    "Statistical analysis plan",
-    
-    "Sample characteristics and representativeness",
-    "Achieved sample size vs. planned",
-    "Kappa coefficients with confidence intervals", 
-    "Agreement by category and rater pairs",
-    "Sensitivity analyses and robustness checks",
-    
-    "Comparison with literature values",
-    "Clinical or practical significance",
-    "Limitations and future directions"
-  ),
-  
-  Reporting_Detail = c(
-    "Clear research questions and hypotheses",
-    "Professional background, experience level, training status",
-    "Duration, methods, assessments, criterion achievement",
-    "Materials used, standardization procedures, blinding",
-    "Operational definitions, examples, decision algorithms",
-    "Precision requirements, prevalence assumptions, power",
-    "Recruitment, randomization, quality control measures",
-    "Software, statistical methods, confidence interval approach",
-    
-    "Demographics, inclusion/exclusion, representativeness",
-    "Actual vs. planned N, reasons for any differences",
-    "Point estimates, confidence intervals, interpretation guidelines",
-    "Category-specific agreement, patterns of disagreement", 
-    "Robustness to assumptions, alternative analyses",
-    
-    "Literature context, benchmark comparisons",
-    "Clinical impact, decision-making implications",
-    "Study limitations, generalizability, future research needs"
-  )
-)
-
-kable(reporting_elements, caption = "Comprehensive Reporting Standards for Agreement Studies")
-```
+\
+`# Comprehensive reporting standards`\
+`reporting_elements`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Report_Section ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Methods"``, ``8``)``,`\
+`    `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Results"``, ``5``)``,`\
+`    `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Discussion"``, ``3``)`\
+`  ``)``,`\
+`  `\
+`  Required_Element ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Study design and objectives"``,`\
+`    ``"Rater selection and qualifications"``, `\
+`    ``"Training procedures and criterion standards"``,`\
+`    ``"Assessment materials and procedures"``,`\
+`    ``"Category definitions and decision rules"``,`\
+`    ``"Sample size calculation and rationale"``,`\
+`    ``"Data collection procedures and timeline"``,`\
+`    ``"Statistical analysis plan"``,`\
+`    `\
+`    ``"Sample characteristics and representativeness"``,`\
+`    ``"Achieved sample size vs. planned"``,`\
+`    ``"Kappa coefficients with confidence intervals"``, `\
+`    ``"Agreement by category and rater pairs"``,`\
+`    ``"Sensitivity analyses and robustness checks"``,`\
+`    `\
+`    ``"Comparison with literature values"``,`\
+`    ``"Clinical or practical significance"``,`\
+`    ``"Limitations and future directions"`\
+`  ``)``,`\
+`  `\
+`  Reporting_Detail ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Clear research questions and hypotheses"``,`\
+`    ``"Professional background, experience level, training status"``,`\
+`    ``"Duration, methods, assessments, criterion achievement"``,`\
+`    ``"Materials used, standardization procedures, blinding"``,`\
+`    ``"Operational definitions, examples, decision algorithms"``,`\
+`    ``"Precision requirements, prevalence assumptions, power"``,`\
+`    ``"Recruitment, randomization, quality control measures"``,`\
+`    ``"Software, statistical methods, confidence interval approach"``,`\
+`    `\
+`    ``"Demographics, inclusion/exclusion, representativeness"``,`\
+`    ``"Actual vs. planned N, reasons for any differences"``,`\
+`    ``"Point estimates, confidence intervals, interpretation guidelines"``,`\
+`    ``"Category-specific agreement, patterns of disagreement"``, `\
+`    ``"Robustness to assumptions, alternative analyses"``,`\
+`    `\
+`    ``"Literature context, benchmark comparisons"``,`\
+`    ``"Clinical impact, decision-making implications"``,`\
+`    ``"Study limitations, generalizability, future research needs"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``reporting_elements``, caption ``=`` ``"Comprehensive Reporting Standards for Agreement Studies"``)`
 
 ## Troubleshooting and Problem-Solving
 
@@ -1154,149 +1126,145 @@ kable(reporting_elements, caption = "Comprehensive Reporting Standards for Agree
 
 #### Common Parameter Errors
 
-``` r
-
-# Common parameter validation errors and solutions
-validation_errors <- data.frame(
-  Error_Type = c(
-    "Kappa out of range",
-    "Invalid confidence bounds",
-    "Proportion count mismatch",
-    "Proportions don't sum to 1",
-    "Invalid rater count",
-    "Invalid outcome categories",
-    "Alpha out of range"
-  ),
-  
-  Example_Error = c(
-    "kappa0 = 1.2 or kappa0 = -0.5",
-    "kappaL = 0.80, kappaU = 0.70",
-    "outcome='3' but props='0.5, 0.5'",
-    "props = '0.30, 0.80' (sums to 1.10)",
-    "raters = '6' or raters = '1'",
-    "outcome = '6' or outcome = '1'",
-    "alpha = 1.5 or alpha = -0.05"
-  ),
-  
-  Solution = c(
-    "Use values between 0.01 and 0.99",
-    "Ensure kappaL < kappaU, both in (0,1)",
-    "Provide exactly n proportions for n categories",
-    "Ensure proportions sum to 1.0 (±0.01)",
-    "Use 2, 3, 4, or 5 raters only", 
-    "Use 2, 3, 4, or 5 outcome categories only",
-    "Use values between 0.01 and 0.99"
-  ),
-  
-  Prevention = c(
-    "Check literature for realistic kappa ranges",
-    "Plan CI width carefully, validate bounds",
-    "Count categories carefully, double-check input",
-    "Verify proportions sum to 1, use decimals",
-    "Review study design for practical rater numbers",
-    "Confirm category system matches study needs",
-    "Use standard significance levels (0.05, 0.01)"
-  )
-)
-
-kable(validation_errors, caption = "Common Parameter Validation Errors and Solutions")
-```
+\
+`# Common parameter validation errors and solutions`\
+`validation_errors`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Error_Type ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Kappa out of range"``,`\
+`    ``"Invalid confidence bounds"``,`\
+`    ``"Proportion count mismatch"``,`\
+`    ``"Proportions don't sum to 1"``,`\
+`    ``"Invalid rater count"``,`\
+`    ``"Invalid outcome categories"``,`\
+`    ``"Alpha out of range"`\
+`  ``)``,`\
+`  `\
+`  Example_Error ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"kappa0 = 1.2 or kappa0 = -0.5"``,`\
+`    ``"kappaL = 0.80, kappaU = 0.70"``,`\
+`    ``"outcome='3' but props='0.5, 0.5'"``,`\
+`    ``"props = '0.30, 0.80' (sums to 1.10)"``,`\
+`    ``"raters = '6' or raters = '1'"``,`\
+`    ``"outcome = '6' or outcome = '1'"``,`\
+`    ``"alpha = 1.5 or alpha = -0.05"`\
+`  ``)``,`\
+`  `\
+`  Solution ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Use values between 0.01 and 0.99"``,`\
+`    ``"Ensure kappaL < kappaU, both in (0,1)"``,`\
+`    ``"Provide exactly n proportions for n categories"``,`\
+`    ``"Ensure proportions sum to 1.0 (±0.01)"``,`\
+`    ``"Use 2, 3, 4, or 5 raters only"``, `\
+`    ``"Use 2, 3, 4, or 5 outcome categories only"``,`\
+`    ``"Use values between 0.01 and 0.99"`\
+`  ``)``,`\
+`  `\
+`  Prevention ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Check literature for realistic kappa ranges"``,`\
+`    ``"Plan CI width carefully, validate bounds"``,`\
+`    ``"Count categories carefully, double-check input"``,`\
+`    ``"Verify proportions sum to 1, use decimals"``,`\
+`    ``"Review study design for practical rater numbers"``,`\
+`    ``"Confirm category system matches study needs"``,`\
+`    ``"Use standard significance levels (0.05, 0.01)"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``validation_errors``, caption ``=`` ``"Common Parameter Validation Errors and Solutions"``)`
 
 #### Proportion Specification Challenges
 
-``` r
-
-# Proportion specification guidance
-proportion_guidance <- data.frame(
-  Challenge = c(
-    "Unknown true proportions",
-    "Literature values unavailable",
-    "Multiple possible distributions",
-    "Rare category concerns",
-    "Unbalanced categories"
-  ),
-  
-  Approach = c(
-    "Use pilot data or expert estimates",
-    "Use balanced distribution as conservative estimate",
-    "Perform sensitivity analysis with multiple scenarios",
-    "Consider enriched sampling strategy",
-    "Plan for increased sample size"
-  ),
-  
-  Example_Solution = c(
-    "props = '0.25, 0.75' based on 20-patient pilot",
-    "props = '0.33, 0.33, 0.34' for 3-category equal distribution",
-    "Calculate sample size for best/worst/most likely scenarios",
-    "props = '0.15, 0.85' with targeted recruitment of rare cases",
-    "props = '0.10, 0.90' with 2-3x larger sample size"
-  ),
-  
-  Validation_Strategy = c(
-    "Compare pilot to early study data, adjust if needed",
-    "Monitor actual proportions, recalculate if significantly different",
-    "Report sensitivity analysis results, justify chosen scenario",
-    "Document enrichment strategy, discuss generalizability",
-    "Plan interim analysis to confirm adequate rare category sample"
-  )
-)
-
-kable(proportion_guidance, caption = "Proportion Specification Guidance and Solutions")
-```
+\
+`# Proportion specification guidance`\
+`proportion_guidance`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Challenge ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Unknown true proportions"``,`\
+`    ``"Literature values unavailable"``,`\
+`    ``"Multiple possible distributions"``,`\
+`    ``"Rare category concerns"``,`\
+`    ``"Unbalanced categories"`\
+`  ``)``,`\
+`  `\
+`  Approach ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Use pilot data or expert estimates"``,`\
+`    ``"Use balanced distribution as conservative estimate"``,`\
+`    ``"Perform sensitivity analysis with multiple scenarios"``,`\
+`    ``"Consider enriched sampling strategy"``,`\
+`    ``"Plan for increased sample size"`\
+`  ``)``,`\
+`  `\
+`  Example_Solution ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"props = '0.25, 0.75' based on 20-patient pilot"``,`\
+`    ``"props = '0.33, 0.33, 0.34' for 3-category equal distribution"``,`\
+`    ``"Calculate sample size for best/worst/most likely scenarios"``,`\
+`    ``"props = '0.15, 0.85' with targeted recruitment of rare cases"``,`\
+`    ``"props = '0.10, 0.90' with 2-3x larger sample size"`\
+`  ``)``,`\
+`  `\
+`  Validation_Strategy ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Compare pilot to early study data, adjust if needed"``,`\
+`    ``"Monitor actual proportions, recalculate if significantly different"``,`\
+`    ``"Report sensitivity analysis results, justify chosen scenario"``,`\
+`    ``"Document enrichment strategy, discuss generalizability"``,`\
+`    ``"Plan interim analysis to confirm adequate rare category sample"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``proportion_guidance``, caption ``=`` ``"Proportion Specification Guidance and Solutions"``)`
 
 ### Performance Optimization
 
 #### Large Study Considerations
 
-``` r
-
-# Optimization strategies for large studies
-optimization_strategies <- data.frame(
-  Study_Size = c(
-    "Small (N<100)",
-    "Medium (N=100-500)", 
-    "Large (N=500-1000)",
-    "Very Large (N>1000)"
-  ),
-  
-  Primary_Challenges = c(
-    "Limited precision, recruitment",
-    "Rater scheduling, quality control",
-    "Data management, rater consistency", 
-    "Multi-site coordination, standardization"
-  ),
-  
-  Optimization_Strategies = c(
-    "Careful planning, over-recruitment, focused training",
-    "Batch processing, regular reliability checks",
-    "Database systems, ongoing training, drift monitoring",
-    "Central training, standardized protocols, real-time monitoring"
-  ),
-  
-  Quality_Control = c(
-    "100% double rating, immediate feedback",
-    "Random subset double rating (20-30%)",
-    "Systematic quality checks, quarterly retraining",
-    "Automated quality metrics, central review system"
-  ),
-  
-  Technology_Solutions = c(
-    "Simple data entry, manual tracking",
-    "Database with validation rules",
-    "Automated workflows, dashboard monitoring",
-    "Enterprise systems, real-time analytics"
-  )
-)
-
-kable(optimization_strategies, caption = "Study Size Optimization Strategies")
-```
+\
+`# Optimization strategies for large studies`\
+`optimization_strategies`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Study_Size ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Small (N<100)"``,`\
+`    ``"Medium (N=100-500)"``, `\
+`    ``"Large (N=500-1000)"``,`\
+`    ``"Very Large (N>1000)"`\
+`  ``)``,`\
+`  `\
+`  Primary_Challenges ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Limited precision, recruitment"``,`\
+`    ``"Rater scheduling, quality control"``,`\
+`    ``"Data management, rater consistency"``, `\
+`    ``"Multi-site coordination, standardization"`\
+`  ``)``,`\
+`  `\
+`  Optimization_Strategies ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Careful planning, over-recruitment, focused training"``,`\
+`    ``"Batch processing, regular reliability checks"``,`\
+`    ``"Database systems, ongoing training, drift monitoring"``,`\
+`    ``"Central training, standardized protocols, real-time monitoring"`\
+`  ``)``,`\
+`  `\
+`  Quality_Control ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"100% double rating, immediate feedback"``,`\
+`    ``"Random subset double rating (20-30%)"``,`\
+`    ``"Systematic quality checks, quarterly retraining"``,`\
+`    ``"Automated quality metrics, central review system"`\
+`  ``)``,`\
+`  `\
+`  Technology_Solutions ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(`\
+`    ``"Simple data entry, manual tracking"``,`\
+`    ``"Database with validation rules"``,`\
+`    ``"Automated workflows, dashboard monitoring"``,`\
+`    ``"Enterprise systems, real-time analytics"`\
+`  ``)`\
+`)`\
+\
+[`kable`](https://rdrr.io/pkg/knitr/man/kable.html)`(``optimization_strategies``, caption ``=`` ``"Study Size Optimization Strategies"``)`
 
 ## Summary and Recommendations
 
 ### Key Takeaways
 
-The `kappasizeci` function provides essential sample size planning
-capabilities for interobserver agreement studies. Key benefits include:
+The
+[`kappaSizeCI()`](https://www.serdarbalci.com/meddecide/reference/kappaSizeCI.md)
+function provides essential sample size planning capabilities for
+interobserver agreement studies. Key benefits include:
 
 #### Statistical Accuracy
 
@@ -1304,7 +1272,8 @@ capabilities for interobserver agreement studies. Key benefits include:
   rather than hypothesis testing
 - **Multiple Categories**: Support for 2-5 outcome categories covering
   real-world applications
-- **Flexible Design**: Accommodates 2-5 raters for various study designs
+- **Flexible Design**: Accommodates 2-6 raters under the stated rating
+  model
 - **Validated Methods**: Uses established kappaSize package algorithms
 
 #### Practical Applications
@@ -1320,12 +1289,12 @@ capabilities for interobserver agreement studies. Key benefits include:
 
 #### Implementation Benefits
 
-- **Study Planning**: Accurate sample size determination for research
-  planning
-- **Resource Optimization**: Appropriate sample sizes minimize costs
-  while ensuring precision
-- **Regulatory Compliance**: Meet standards for validation and
-  reliability studies
+- **Study Planning**: Approximate sample size under the stated model and
+  precision target
+- **Resource Planning**: Compare anticipated precision under feasible
+  subject and rater counts
+- **Design Documentation**: Record assumptions; a sample-size
+  calculation alone does not establish regulatory compliance
 - **Publication Quality**: Satisfy journal requirements for
   methodological rigor
 
@@ -1370,7 +1339,5 @@ capabilities for interobserver agreement studies. Key benefits include:
 - Consider the comprehensive test datasets for method validation
 - Review the performance optimization features for large-scale studies
 
-``` r
-
-sessionInfo()
-```
+\
+[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`

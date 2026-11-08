@@ -47,56 +47,48 @@ The module can optimize test panels based on various criteria:
 
 ## Installation and Loading
 
-``` r
+\
+`# Install meddecide package`\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"meddecide"``)`\
+\
+`# Or install from GitHub`\
+`devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"ClinicoPath/meddecide"``)`
 
-# Install meddecide package
-install.packages("meddecide")
-
-# Or install from GitHub
-devtools::install_github("ClinicoPath/meddecide")
-```
-
-``` r
-
-# Load required packages
-
-library(dplyr)
-library(ggplot2)
-library(rpart)
-library(rpart.plot)
-library(knitr)
-library(forcats)
-```
+\
+`# Load required packages`\
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`dplyr`](https://dplyr.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`ggplot2`](https://ggplot2.tidyverse.org)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`rpart`](https://github.com/bethatkinson/rpart)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`rpart.plot`](http://www.milbo.org/rpart-plot/index.md)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`knitr`](https://yihui.org/knitr/)`)`\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`forcats`](https://forcats.tidyverse.org/)`)`
 
 ## Basic Example: COVID-19 Screening
 
 Let’s start with a simple example using COVID-19 screening data:
 
-``` r
-
-# Examine the data structure
-str(covid_screening_data)
-
-# Check disease prevalence
-table(covid_screening_data$covid_status)
-prop.table(table(covid_screening_data$covid_status))
-```
+\
+`# Examine the data structure`\
+[`str`](https://rdrr.io/r/utils/str.html)`(``covid_screening_data``)`\
+\
+`# Check disease prevalence`\
+[`table`](https://rdrr.io/r/base/table.html)`(``covid_screening_data``$``covid_status``)`\
+[`prop.table`](https://rdrr.io/r/base/proportions.html)`(`[`table`](https://rdrr.io/r/base/table.html)`(``covid_screening_data``$``covid_status``)``)`
 
 ### Running Basic Analysis
 
-``` r
-
-# Basic decision panel analysis
-covid_panel <- decisionpanel(
-  data = covid_screening_data,
-  tests = c("rapid_antigen", "pcr", "chest_ct"),
-  testLevels = c("Positive", "Positive", "Abnormal"),
-  gold = "covid_status",
-  goldPositive = "Positive",
-  strategies = "all",
-  optimizationCriteria = "accuracy"
-)
-```
+\
+`# Basic decision panel analysis`\
+`covid_panel`` ``<-`` ``decisionpanel``(`\
+`  data ``=`` ``covid_screening_data``,`\
+`  tests ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rapid_antigen"``, ``"pcr"``, ``"chest_ct"``)``,`\
+`  testLevels ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Positive"``, ``"Positive"``, ``"Abnormal"``)``,`\
+`  gold ``=`` ``"covid_status"``,`\
+`  goldPositive ``=`` ``"Positive"``,`\
+`  strategies ``=`` ``"all"``,`\
+`  optimizationCriteria ``=`` ``"accuracy"`\
+`)`
 
 ### Interpreting Results
 
@@ -111,144 +103,134 @@ The analysis provides several key outputs:
 
 ### Parallel Testing Example
 
-``` r
-
-# Simulate parallel testing with ANY rule
-# Positive if rapid_antigen OR pcr is positive
-parallel_any <- with(
-  covid_screening_data,
-  rapid_antigen == "Positive" | pcr == "Positive"
-)
-
-# Create confusion matrix
-conf_matrix_any <- table(
-  Predicted = parallel_any,
-  Actual = covid_screening_data$covid_status == "Positive"
-)
-
-print(conf_matrix_any)
-
-# Calculate metrics
-sensitivity_any <- conf_matrix_any[2, 2] / sum(conf_matrix_any[, 2])
-specificity_any <- conf_matrix_any[1, 1] / sum(conf_matrix_any[, 1])
-
-cat("Parallel ANY Rule:\n")
-cat(sprintf("Sensitivity: %.1f%%\n", sensitivity_any * 100))
-cat(sprintf("Specificity: %.1f%%\n", specificity_any * 100))
-```
+\
+`# Simulate parallel testing with ANY rule`\
+`# Positive if rapid_antigen OR pcr is positive`\
+`parallel_any`` ``<-`` `[`with`](https://rdrr.io/r/base/with.html)`(`\
+`  ``covid_screening_data``,`\
+`  ``rapid_antigen`` ``==`` ``"Positive"`` ``|`` ``pcr`` ``==`` ``"Positive"`\
+`)`\
+\
+`# Create confusion matrix`\
+`conf_matrix_any`` ``<-`` `[`table`](https://rdrr.io/r/base/table.html)`(`\
+`  Predicted ``=`` ``parallel_any``,`\
+`  Actual ``=`` ``covid_screening_data``$``covid_status`` ``==`` ``"Positive"`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``conf_matrix_any``)`\
+\
+`# Calculate metrics`\
+`sensitivity_any`` ``<-`` ``conf_matrix_any``[``2``, ``2``]`` ``/`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``conf_matrix_any``[``, ``2``]``)`\
+`specificity_any`` ``<-`` ``conf_matrix_any``[``1``, ``1``]`` ``/`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``conf_matrix_any``[``, ``1``]``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"Parallel ANY Rule:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Sensitivity: %.1f%%\n"``, ``sensitivity_any`` ``*`` ``100``)``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Specificity: %.1f%%\n"``, ``specificity_any`` ``*`` ``100``)``)`
 
 ### Sequential Testing Example
 
-``` r
-
-# Simulate sequential testing
-# Start with rapid test, only do PCR if rapid is positive
-sequential_result <- rep("Negative", nrow(covid_screening_data))
-
-# Those with positive rapid test
-rapid_pos_idx <- which(covid_screening_data$rapid_antigen == "Positive")
-
-# Among those, check PCR
-sequential_result[rapid_pos_idx] <-
-  ifelse(covid_screening_data$pcr[rapid_pos_idx] == "Positive",
-    "Positive", "Negative"
-  )
-
-# Create confusion matrix
-conf_matrix_seq <- table(
-  Predicted = sequential_result == "Positive",
-  Actual = covid_screening_data$covid_status == "Positive"
-)
-
-print(conf_matrix_seq)
-
-# Calculate metrics
-sensitivity_seq <- conf_matrix_seq[2, 2] / sum(conf_matrix_seq[, 2])
-specificity_seq <- conf_matrix_seq[1, 1] / sum(conf_matrix_seq[, 1])
-
-cat("\nSequential Testing:\n")
-cat(sprintf("Sensitivity: %.1f%%\n", sensitivity_seq * 100))
-cat(sprintf("Specificity: %.1f%%\n", specificity_seq * 100))
-
-# Calculate cost savings
-pcr_tests_saved <- sum(covid_screening_data$rapid_antigen == "Negative")
-cat(sprintf(
-  "PCR tests saved: %d (%.1f%%)\n",
-  pcr_tests_saved,
-  pcr_tests_saved / nrow(covid_screening_data) * 100
-))
-```
+\
+`# Simulate sequential testing`\
+`# Start with rapid test, only do PCR if rapid is positive`\
+`sequential_result`` ``<-`` `[`rep`](https://rdrr.io/r/base/rep.html)`(``"Negative"``, `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``covid_screening_data``)``)`\
+\
+`# Those with positive rapid test`\
+`rapid_pos_idx`` ``<-`` `[`which`](https://rdrr.io/r/base/which.html)`(``covid_screening_data``$``rapid_antigen`` ``==`` ``"Positive"``)`\
+\
+`# Among those, check PCR`\
+`sequential_result``[``rapid_pos_idx``]`` ``<-`\
+`  `[`ifelse`](https://rdrr.io/r/base/ifelse.html)`(``covid_screening_data``$``pcr``[``rapid_pos_idx``]`` ``==`` ``"Positive"``,`\
+`    ``"Positive"``, ``"Negative"`\
+`  ``)`\
+\
+`# Create confusion matrix`\
+`conf_matrix_seq`` ``<-`` `[`table`](https://rdrr.io/r/base/table.html)`(`\
+`  Predicted ``=`` ``sequential_result`` ``==`` ``"Positive"``,`\
+`  Actual ``=`` ``covid_screening_data``$``covid_status`` ``==`` ``"Positive"`\
+`)`\
+\
+[`print`](https://rdrr.io/r/base/print.html)`(``conf_matrix_seq``)`\
+\
+`# Calculate metrics`\
+`sensitivity_seq`` ``<-`` ``conf_matrix_seq``[``2``, ``2``]`` ``/`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``conf_matrix_seq``[``, ``2``]``)`\
+`specificity_seq`` ``<-`` ``conf_matrix_seq``[``1``, ``1``]`` ``/`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``conf_matrix_seq``[``, ``1``]``)`\
+\
+[`cat`](https://rdrr.io/r/base/cat.html)`(``"\nSequential Testing:\n"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Sensitivity: %.1f%%\n"``, ``sensitivity_seq`` ``*`` ``100``)``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(``"Specificity: %.1f%%\n"``, ``specificity_seq`` ``*`` ``100``)``)`\
+\
+`# Calculate cost savings`\
+`pcr_tests_saved`` ``<-`` `[`sum`](https://rdrr.io/r/base/sum.html)`(``covid_screening_data``$``rapid_antigen`` ``==`` ``"Negative"``)`\
+[`cat`](https://rdrr.io/r/base/cat.html)`(`[`sprintf`](https://rdrr.io/r/base/sprintf.html)`(`\
+`  ``"PCR tests saved: %d (%.1f%%)\n"``,`\
+`  ``pcr_tests_saved``,`\
+`  ``pcr_tests_saved`` ``/`` `[`nrow`](https://rdrr.io/r/base/nrow.html)`(``covid_screening_data``)`` ``*`` ``100`\
+`)``)`
 
 ## Cost-Effectiveness Analysis
 
 When costs are considered, the optimal strategy may change:
 
-``` r
-
-# Analysis with costs
-covid_panel_cost <- decisionpanel(
-  data = covid_screening_data,
-  tests = c("rapid_antigen", "pcr", "chest_ct"),
-  testLevels = c("Positive", "Positive", "Abnormal"),
-  gold = "covid_status",
-  goldPositive = "Positive",
-  strategies = "all",
-  optimizationCriteria = "utility",
-  useCosts = TRUE,
-  testCosts = "5,50,200", # Costs for each test
-  fpCost = 500, # Cost of false positive
-  fnCost = 5000 # Cost of false negative
-)
-```
+\
+`# Analysis with costs`\
+`covid_panel_cost`` ``<-`` ``decisionpanel``(`\
+`  data ``=`` ``covid_screening_data``,`\
+`  tests ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rapid_antigen"``, ``"pcr"``, ``"chest_ct"``)``,`\
+`  testLevels ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Positive"``, ``"Positive"``, ``"Abnormal"``)``,`\
+`  gold ``=`` ``"covid_status"``,`\
+`  goldPositive ``=`` ``"Positive"``,`\
+`  strategies ``=`` ``"all"``,`\
+`  optimizationCriteria ``=`` ``"utility"``,`\
+`  useCosts ``=`` ``TRUE``,`\
+`  testCosts ``=`` ``"5,50,200"``, ``# Costs for each test`\
+`  fpCost ``=`` ``500``, ``# Cost of false positive`\
+`  fnCost ``=`` ``5000`` ``# Cost of false negative`\
+`)`
 
 ## Visualization
 
 ### Performance Comparison Plot
 
-``` r
-
-# Create performance comparison data
-strategies <- data.frame(
-  Strategy = c("Rapid Only", "PCR Only", "Parallel ANY", "Sequential"),
-  Sensitivity = c(65, 95, 98, 62),
-  Specificity = c(98, 99, 97, 99.9),
-  Cost = c(5, 50, 55, 15)
-)
-
-# Plot sensitivity vs specificity
-ggplot(strategies, aes(x = 100 - Specificity, y = Sensitivity)) +
-  geom_point(aes(size = Cost), alpha = 0.6) +
-  geom_text(aes(label = Strategy), vjust = -1) +
-  scale_size_continuous(range = c(3, 10)) +
-  xlim(0, 5) +
-  ylim(60, 100) +
-  labs(
-    title = "Testing Strategy Comparison",
-    x = "False Positive Rate (%)",
-    y = "Sensitivity (%)",
-    size = "Cost ($)"
-  ) +
-  theme_minimal()
-```
+\
+`# Create performance comparison data`\
+`strategies`` ``<-`` `[`data.frame`](https://rdrr.io/r/base/data.frame.html)`(`\
+`  Strategy ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Rapid Only"``, ``"PCR Only"``, ``"Parallel ANY"``, ``"Sequential"``)``,`\
+`  Sensitivity ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``65``, ``95``, ``98``, ``62``)``,`\
+`  Specificity ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``98``, ``99``, ``97``, ``99.9``)``,`\
+`  Cost ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``5``, ``50``, ``55``, ``15``)`\
+`)`\
+\
+`# Plot sensitivity vs specificity`\
+[`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)`(``strategies``, `[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``x ``=`` ``100`` ``-`` ``Specificity``, y ``=`` ``Sensitivity``)``)`` ``+`\
+`  `[`geom_point`](https://ggplot2.tidyverse.org/reference/geom_point.html)`(`[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``size ``=`` ``Cost``)``, alpha ``=`` ``0.6``)`` ``+`\
+`  `[`geom_text`](https://ggplot2.tidyverse.org/reference/geom_text.html)`(`[`aes`](https://ggplot2.tidyverse.org/reference/aes.html)`(``label ``=`` ``Strategy``)``, vjust ``=`` ``-``1``)`` ``+`\
+`  `[`scale_size_continuous`](https://ggplot2.tidyverse.org/reference/scale_size.html)`(``range ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``3``, ``10``)``)`` ``+`\
+`  `[`xlim`](https://ggplot2.tidyverse.org/reference/lims.html)`(``0``, ``5``)`` ``+`\
+`  `[`ylim`](https://ggplot2.tidyverse.org/reference/lims.html)`(``60``, ``100``)`` ``+`\
+`  `[`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`(`\
+`    title ``=`` ``"Testing Strategy Comparison"``,`\
+`    x ``=`` ``"False Positive Rate (%)"``,`\
+`    y ``=`` ``"Sensitivity (%)"``,`\
+`    size ``=`` ``"Cost ($)"`\
+`  ``)`` ``+`\
+`  `[`theme_minimal`](https://ggplot2.tidyverse.org/reference/ggtheme.html)`(``)`
 
 ## Decision Trees
 
 Decision trees provide clear algorithms for clinical use:
 
-``` r
-
-# Generate decision tree
-covid_tree <- decisionpanel(
-  data = covid_screening_data,
-  tests = c("rapid_antigen", "pcr", "chest_ct", "symptom_score"),
-  testLevels = c("Positive", "Positive", "Abnormal", ">5"),
-  gold = "covid_status",
-  goldPositive = "Positive",
-  createTree = TRUE,
-  treeMethod = "cart",
-  maxDepth = 3
-)
-```
+\
+`# Generate decision tree`\
+`covid_tree`` ``<-`` ``decisionpanel``(`\
+`  data ``=`` ``covid_screening_data``,`\
+`  tests ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rapid_antigen"``, ``"pcr"``, ``"chest_ct"``, ``"symptom_score"``)``,`\
+`  testLevels ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Positive"``, ``"Positive"``, ``"Abnormal"``, ``">5"``)``,`\
+`  gold ``=`` ``"covid_status"``,`\
+`  goldPositive ``=`` ``"Positive"``,`\
+`  createTree ``=`` ``TRUE``,`\
+`  treeMethod ``=`` ``"cart"``,`\
+`  maxDepth ``=`` ``3`\
+`)`
 
 ### Interpreting the Tree
 
@@ -272,39 +254,35 @@ A typical decision tree output might look like:
 
 Validate panel performance using k-fold cross-validation:
 
-``` r
-
-# Run with cross-validation
-covid_panel_cv <- decisionpanel(
-  data = covid_screening_data,
-  tests = c("rapid_antigen", "pcr", "chest_ct"),
-  testLevels = c("Positive", "Positive", "Abnormal"),
-  gold = "covid_status",
-  goldPositive = "Positive",
-  crossValidate = TRUE,
-  nFolds = 5,
-  seed = 123
-)
-```
+\
+`# Run with cross-validation`\
+`covid_panel_cv`` ``<-`` ``decisionpanel``(`\
+`  data ``=`` ``covid_screening_data``,`\
+`  tests ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rapid_antigen"``, ``"pcr"``, ``"chest_ct"``)``,`\
+`  testLevels ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Positive"``, ``"Positive"``, ``"Abnormal"``)``,`\
+`  gold ``=`` ``"covid_status"``,`\
+`  goldPositive ``=`` ``"Positive"``,`\
+`  crossValidate ``=`` ``TRUE``,`\
+`  nFolds ``=`` ``5``,`\
+`  seed ``=`` ``123`\
+`)`
 
 ### Bootstrap Confidence Intervals
 
 Get uncertainty estimates for performance metrics:
 
-``` r
-
-# Run with bootstrap
-covid_panel_boot <- decisionpanel(
-  data = covid_screening_data,
-  tests = c("rapid_antigen", "pcr", "chest_ct"),
-  testLevels = c("Positive", "Positive", "Abnormal"),
-  gold = "covid_status",
-  goldPositive = "Positive",
-  bootstrap = TRUE,
-  bootReps = 1000,
-  seed = 123
-)
-```
+\
+`# Run with bootstrap`\
+`covid_panel_boot`` ``<-`` ``decisionpanel``(`\
+`  data ``=`` ``covid_screening_data``,`\
+`  tests ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"rapid_antigen"``, ``"pcr"``, ``"chest_ct"``)``,`\
+`  testLevels ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Positive"``, ``"Positive"``, ``"Abnormal"``)``,`\
+`  gold ``=`` ``"covid_status"``,`\
+`  goldPositive ``=`` ``"Positive"``,`\
+`  bootstrap ``=`` ``TRUE``,`\
+`  bootReps ``=`` ``1000``,`\
+`  seed ``=`` ``123`\
+`)`
 
 ## Best Practices
 
@@ -333,7 +311,5 @@ balance performance with resource utilization.
 
 ## Session Information
 
-``` r
-
-sessionInfo()
-```
+\
+[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`

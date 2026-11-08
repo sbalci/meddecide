@@ -1,0 +1,13 @@
+Reading vignettes/meddecide-agreement-comprehensive.Rmd
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `articles/meddecide-agreement-comprehensive.html`
+[WARNING] Deprecated: --mathjax. Use --math-method=mathjax[:URL] instead.
+── Building news ───────────────────────────────────────────────────────────────
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+[WARNING] Deprecated: --mathml. Use --math-method=mathml instead.
+Writing `news/index.html`
+── Building search index ───────────────────────────────────────────────────────
