@@ -40,8 +40,7 @@ The **psychopdaROC** module provides advanced Receiver Operating Characteristic
 framework. It supports 12 cutpoint optimization methods, 16 optimization metrics,
 subgroup analysis, DeLong's test for comparing ROC curves, IDI/NRI reclassification
 indices, effect size and power analysis, bootstrap ROC with prior weighting,
-clinical utility analysis, meta-analysis of AUC values, and fixed
-sensitivity/specificity analysis.
+clinical utility analysis, and fixed sensitivity/specificity analysis.
 
 All examples below use the test datasets in the `data-raw/non-rda/` folder of the
 [ClinicoPath repository](https://github.com/sbalci/ClinicoPathJamoviModule)
@@ -1009,61 +1008,15 @@ psychopdaROC(
 
 ---
 
-## 15. Meta-Analysis (3+ Variables Required)
+## 15. Within-Cohort Meta-Analysis (Retired)
 
-### Fixed and random effects meta-analysis
-
-```{r meta-both}
-advanced_data <- read.csv(paste0(data_path2, "psychopdaROC_advanced.csv"))
-
-psychopdaROC(
-  data = advanced_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  negativeClass = "Negative",
-  dependentVars = vars(marker_excellent, marker_good, marker_moderate,
-                       marker_fair, marker_poor),
-  metaAnalysis = TRUE,
-  metaAnalysisMethod = "both",
-  heterogeneityTest = TRUE,
-  overrideMetaAnalysisWarning = TRUE,
-  refVar = NULL
-)
-```
-
-### Forest plot
-
-```{r meta-forest}
-psychopdaROC(
-  data = advanced_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  negativeClass = "Negative",
-  dependentVars = vars(marker_excellent, marker_good, marker_moderate,
-                       marker_fair, marker_poor),
-  metaAnalysis = TRUE,
-  metaAnalysisMethod = "both",
-  forestPlot = TRUE,
-  overrideMetaAnalysisWarning = TRUE,
-  refVar = NULL
-)
-```
-
-### Fixed effects only (3 markers)
-
-```{r meta-fixed}
-psychopdaROC(
-  data = advanced_data,
-  classVar = "diagnosis",
-  positiveClass = "Positive",
-  negativeClass = "Negative",
-  dependentVars = vars(marker_excellent, marker_good, marker_moderate),
-  metaAnalysis = TRUE,
-  metaAnalysisMethod = "fixed",
-  overrideMetaAnalysisWarning = TRUE,
-  refVar = NULL
-)
-```
+Pooling multiple markers measured on the **same patients** as if they were independent
+studies is statistically invalid because the AUCs are correlated. The legacy
+`metaAnalysis`, `metaAnalysisMethod`, `heterogeneityTest`, `forestPlot`, and
+`overrideMetaAnalysisWarning` options are retained as hidden arguments for backward
+compatibility with saved `.omv` files and R scripts, but no pooled AUC, heterogeneity
+test, or pooled forest plot is emitted. Use `delongTest = TRUE` or
+`compareClassifiers = TRUE` (Section 6) to compare multiple markers on the same cohort.
 
 ---
 
