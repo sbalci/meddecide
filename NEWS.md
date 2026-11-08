@@ -28,7 +28,26 @@ except that the two ranges below return to their defaults (see the R note).
   - the confusion matrices show their note explaining which cells are true and false positives
     and negatives (it was set and then erased before display);
   - no matrix is drawn at an infinite cut-point when no usable cut-point exists, and no empty
-    per-variable matrix appears next to the subgroup matrices.
+    per-variable matrix appears next to the subgroup matrices;
+  - Optimization metric and Tie breaking method are disabled when the cutpoint method fixes its own
+    criterion (for example kernel or normal Youden), fixed-sensitivity/specificity shortfall note
+    keys no longer collide for variable names that differ only by spaces versus dots (`A B` vs
+    `A.B`), and failed parametric/kernel ROC curve smoothing emits a user-facing warning.
+- **Clinical ROC Analysis:**
+  - sensitivity and specificity 95% confidence interval text in the Diagnostic Performance table
+    always retains three decimal places (`(%.3f, %.3f)`);
+  - a partial AUC that falls below the chance diagonal suppresses the raw R console warning and
+    retains its explanatory table note even when explanatory footnotes are hidden;
+  - the Validation Context table marks the default Unit of observation (`slide (default setting)`).
+- **Interrater Reliability, Medical Decision, Compare Medical Decision Tests, and Decision Curve Analysis:**
+  - enabling Hierarchical kappa without a cluster variable (or Mixed-effects comparison without a
+    condition variable) raises a single warning notice instead of repeating it for each sub-table;
+  - Medical Decision guards Youden direction against 32-bit integer overflow at very large sample
+    sizes and adds a truncation note when discordant comparator cases exceed `maxCasesShow`;
+  - Compare Medical Decision Tests notes missing observations omitted from the original-data
+    cross-tabulation and names the selected positive and negative levels on each 2x2 table;
+  - Decision Curve Analysis notes when a model's observed range of benefit reaches the boundary of
+    the analyzed threshold window.
 - **Corrected sentences.** Medical Decision now gives the actual reason a likelihood ratio is not
   estimable, and no longer prints an NPV of 99.975% as "100.0%". The specific-agreement interval
   note states the count it uses (2a + b + c, each agreed case counted twice). A specific agreement
