@@ -12832,6 +12832,16 @@ msgstr "Otomatik (0.01 ila 0.99)"
 msgid "Automatically detect class imbalance and recommend PRC when appropriate"
 msgstr "Sınıf dengesizliğini otomatik olarak tespit et ve uygun olduğunda PRC öner"
 
+#: jamovi/js/agreement.events.js:68
+msgid "Available categories (first 30 of {total}): {categories}"
+msgstr ""
+"Kullanılabilir kategoriler (toplam {total} kategorinin ilk 30’u): "
+"{categories}"
+
+#: jamovi/js/agreement.events.js:67
+msgid "Available categories: {categories}"
+msgstr "Kullanılabilir kategoriler: {categories}"
+
 #: R/decisioncurve.b.R
 msgid "Available levels: {levels}."
 msgstr "Mevcut düzeyler: {levels}."
@@ -14460,6 +14470,14 @@ msgstr "Kategoriler"
 #: R/agreement.b.R
 msgid "Categories are mutually exclusive and consistent"
 msgstr "Kategoriler birbirini dışlar ve tutarlıdır"
+
+#: jamovi/js/agreement.events.js:74
+msgid ""
+"Categories could not be loaded. Check the levels in the selected rater "
+"variables."
+msgstr ""
+"Kategoriler yüklenemedi. Seçili değerlendirici değişkenlerinin düzeylerini "
+"kontrol edin."
 
 #: agreement/options/loaThresholds.title
 msgid "Categorization method (detailed mode)"
@@ -20034,6 +20052,10 @@ msgstr ">2 düzeyli sonuçlar için çok sınıflı ROC analizini etkinleştir"
 #: R/agreement.b.R
 msgid "Enable optional outputs as needed"
 msgstr ""
+
+#: jamovi/js/agreement.events.js:23
+msgid "Enable specific agreement to see the available categories."
+msgstr "Kullanılabilir kategorileri görmek için kategoriye özgü uyumu etkinleştirin."
 
 #: decisioncurve/options/multiModelComparison.title
 msgid "Enhanced multi-model comparison"
@@ -26721,6 +26743,10 @@ msgstr "Uyum Sınırı (LoA) Kategorisi"
 msgid "LoA distribution table"
 msgstr "Uyum Sınırı (LoA) dağılım tablosu"
 
+#: jamovi/js/agreement.events.js:33
+msgid "Loading categories..."
+msgstr "Kategoriler yükleniyor..."
+
 #: psychopdaROC/options/smoothing.title
 #: psychopdaROC/ui[8][0][0][1][0]/smoothing.label
 msgid "LOESS smoothing"
@@ -29775,6 +29801,12 @@ msgid ""
 msgstr ""
 "Seçilen pozitif ve negatif düzeyler uygulandıktan sonra {test} için hiç olgu "
 "kalmadı."
+
+#: jamovi/js/agreement.events.js:61
+msgid "No categories available. Select nominal or ordinal rater variables."
+msgstr ""
+"Kullanılabilir kategori yok. Nominal veya sıralı değerlendirici "
+"değişkenlerini seçin."
 
 #: R/decision.b.R
 msgid "no change in the probability of disease"
@@ -39040,6 +39072,10 @@ msgstr ""
 #: R/psychopdaROC.b.R
 msgid "Select one or more numeric Test Variables."
 msgstr "Bir veya daha fazla sayısal Test Değişkeni seçin."
+
+#: jamovi/js/agreement.events.js:29
+msgid "Select rater variables to see the available categories."
+msgstr "Kullanılabilir kategorileri görmek için değerlendirici değişkenlerini seçin."
 
 #: R/decisioncompare.b.R
 msgid ""
@@ -52095,31 +52131,3 @@ msgstr "τ² Çalışmalar Arası Varyans"
 
 #~ msgid "Treatment Threshold Range"
 #~ msgstr "Tedavi Eşik Aralığı"
-
-#: agreement.events.js
-msgid "Enable specific agreement to see the available categories."
-msgstr "Kullanılabilir kategorileri görmek için kategoriye özgü uyumu etkinleştirin."
-
-#: agreement.events.js
-msgid "Select rater variables to see the available categories."
-msgstr "Kullanılabilir kategorileri görmek için değerlendirici değişkenlerini seçin."
-
-#: agreement.events.js
-msgid "Loading categories..."
-msgstr "Kategoriler yükleniyor..."
-
-#: agreement.events.js
-msgid "No categories available. Select nominal or ordinal rater variables."
-msgstr "Kullanılabilir kategori yok. Nominal veya sıralı değerlendirici değişkenlerini seçin."
-
-#: agreement.events.js
-msgid "Available categories: {categories}"
-msgstr "Kullanılabilir kategoriler: {categories}"
-
-#: agreement.events.js
-msgid "Available categories (first 30 of {total}): {categories}"
-msgstr "Kullanılabilir kategoriler (toplam {total} kategorinin ilk 30’u): {categories}"
-
-#: agreement.events.js
-msgid "Categories could not be loaded. Check the levels in the selected rater variables."
-msgstr "Kategoriler yüklenemedi. Seçili değerlendirici değişkenlerinin düzeylerini kontrol edin."

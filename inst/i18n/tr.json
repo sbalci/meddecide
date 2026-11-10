@@ -5491,6 +5491,12 @@
             "Automatically detect class imbalance and recommend PRC when appropriate": [
                 "Sınıf dengesizliğini otomatik olarak tespit et ve uygun olduğunda PRC öner"
             ],
+            "Available categories (first 30 of {total}): {categories}": [
+                "Kullanılabilir kategoriler (toplam {total} kategorinin ilk 30’u): {categories}"
+            ],
+            "Available categories: {categories}": [
+                "Kullanılabilir kategoriler: {categories}"
+            ],
             "Available levels: {levels}.": [
                 "Mevcut düzeyler: {levels}."
             ],
@@ -6366,6 +6372,9 @@
             ],
             "Categories are mutually exclusive and consistent": [
                 "Kategoriler birbirini dışlar ve tutarlıdır"
+            ],
+            "Categories could not be loaded. Check the levels in the selected rater variables.": [
+                "Kategoriler yüklenemedi. Seçili değerlendirici değişkenlerinin düzeylerini kontrol edin."
             ],
             "Categorization method (detailed mode)": [
                 "Kategorizasyon yöntemi (ayrıntılı mod)"
@@ -9222,6 +9231,9 @@
             ],
             "Enable optional outputs as needed": [
                 ""
+            ],
+            "Enable specific agreement to see the available categories.": [
+                "Kullanılabilir kategorileri görmek için kategoriye özgü uyumu etkinleştirin."
             ],
             "Enhanced multi-model comparison": [
                 "Gelişmiş Çoklu Model Karşılaştırması"
@@ -12403,6 +12415,9 @@
             "LoA distribution table": [
                 "Uyum Sınırı (LoA) dağılım tablosu"
             ],
+            "Loading categories...": [
+                "Kategoriler yükleniyor..."
+            ],
             "LOESS smoothing": [
                 "LOESS düzeltme"
             ],
@@ -14028,6 +14043,9 @@
             ],
             "No cases remain for {test} after applying the selected positive and negative levels.": [
                 "Seçilen pozitif ve negatif düzeyler uygulandıktan sonra {test} için hiç olgu kalmadı."
+            ],
+            "No categories available. Select nominal or ordinal rater variables.": [
+                "Kullanılabilir kategori yok. Nominal veya sıralı değerlendirici değişkenlerini seçin."
             ],
             "no change in the probability of disease": [
                 "hastalık olasılığında değişiklik yok"
@@ -18558,6 +18576,9 @@
             ],
             "Select one or more numeric Test Variables.": [
                 "Bir veya daha fazla sayısal Test Değişkeni seçin."
+            ],
+            "Select rater variables to see the available categories.": [
+                "Kullanılabilir kategorileri görmek için değerlendirici değişkenlerini seçin."
             ],
             "Select reference and test levels; binary recoding is displayed after validation": [
                 "Referans ve test düzeylerini seçin; ikili yeniden kodlama doğrulamadan sonra gösterilir"

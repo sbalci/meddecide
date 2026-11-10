@@ -10898,6 +10898,14 @@ msgstr ""
 msgid "Automatically detect class imbalance and recommend PRC when appropriate"
 msgstr ""
 
+#: jamovi/js/agreement.events.js:68
+msgid "Available categories (first 30 of {total}): {categories}"
+msgstr ""
+
+#: jamovi/js/agreement.events.js:67
+msgid "Available categories: {categories}"
+msgstr ""
+
 #: R/decisioncurve.b.R
 msgid "Available levels: {levels}."
 msgstr ""
@@ -12323,6 +12331,12 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Categories are mutually exclusive and consistent"
+msgstr ""
+
+#: jamovi/js/agreement.events.js:74
+msgid ""
+"Categories could not be loaded. Check the levels in the selected rater "
+"variables."
 msgstr ""
 
 #: agreement/options/loaThresholds.title
@@ -17110,6 +17124,10 @@ msgstr ""
 
 #: R/agreement.b.R
 msgid "Enable optional outputs as needed"
+msgstr ""
+
+#: jamovi/js/agreement.events.js:23
+msgid "Enable specific agreement to see the available categories."
 msgstr ""
 
 #: decisioncurve/options/multiModelComparison.title
@@ -22735,6 +22753,10 @@ msgstr ""
 msgid "LoA distribution table"
 msgstr ""
 
+#: jamovi/js/agreement.events.js:33
+msgid "Loading categories..."
+msgstr ""
+
 #: psychopdaROC/options/smoothing.title
 #: psychopdaROC/ui[8][0][0][1][0]/smoothing.label
 msgid "LOESS smoothing"
@@ -25445,6 +25467,10 @@ msgstr ""
 msgid ""
 "No cases remain for {test} after applying the selected positive and negative "
 "levels."
+msgstr ""
+
+#: jamovi/js/agreement.events.js:61
+msgid "No categories available. Select nominal or ordinal rater variables."
 msgstr ""
 
 #: R/decision.b.R
@@ -33314,6 +33340,10 @@ msgstr ""
 
 #: R/psychopdaROC.b.R
 msgid "Select one or more numeric Test Variables."
+msgstr ""
+
+#: jamovi/js/agreement.events.js:29
+msgid "Select rater variables to see the available categories."
 msgstr ""
 
 #: R/decisioncompare.b.R
@@ -43622,31 +43652,3 @@ msgstr ""
 
 #~ msgid "Treatment Threshold Range"
 #~ msgstr ""
-
-#: agreement.events.js
-msgid "Enable specific agreement to see the available categories."
-msgstr ""
-
-#: agreement.events.js
-msgid "Select rater variables to see the available categories."
-msgstr ""
-
-#: agreement.events.js
-msgid "Loading categories..."
-msgstr ""
-
-#: agreement.events.js
-msgid "No categories available. Select nominal or ordinal rater variables."
-msgstr ""
-
-#: agreement.events.js
-msgid "Available categories: {categories}"
-msgstr ""
-
-#: agreement.events.js
-msgid "Available categories (first 30 of {total}): {categories}"
-msgstr ""
-
-#: agreement.events.js
-msgid "Categories could not be loaded. Check the levels in the selected rater variables."
-msgstr ""

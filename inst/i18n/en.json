@@ -5491,6 +5491,12 @@
             "Automatically detect class imbalance and recommend PRC when appropriate": [
                 ""
             ],
+            "Available categories (first 30 of {total}): {categories}": [
+                ""
+            ],
+            "Available categories: {categories}": [
+                ""
+            ],
             "Available levels: {levels}.": [
                 ""
             ],
@@ -6365,6 +6371,9 @@
                 "Categories"
             ],
             "Categories are mutually exclusive and consistent": [
+                ""
+            ],
+            "Categories could not be loaded. Check the levels in the selected rater variables.": [
                 ""
             ],
             "Categorization method (detailed mode)": [
@@ -9221,6 +9230,9 @@
                 ""
             ],
             "Enable optional outputs as needed": [
+                ""
+            ],
+            "Enable specific agreement to see the available categories.": [
                 ""
             ],
             "Enhanced multi-model comparison": [
@@ -12403,6 +12415,9 @@
             "LoA distribution table": [
                 ""
             ],
+            "Loading categories...": [
+                ""
+            ],
             "LOESS smoothing": [
                 ""
             ],
@@ -14027,6 +14042,9 @@
                 ""
             ],
             "No cases remain for {test} after applying the selected positive and negative levels.": [
+                ""
+            ],
+            "No categories available. Select nominal or ordinal rater variables.": [
                 ""
             ],
             "no change in the probability of disease": [
@@ -18557,6 +18575,9 @@
                 ""
             ],
             "Select one or more numeric Test Variables.": [
+                ""
+            ],
+            "Select rater variables to see the available categories.": [
                 ""
             ],
             "Select reference and test levels; binary recoding is displayed after validation": [
